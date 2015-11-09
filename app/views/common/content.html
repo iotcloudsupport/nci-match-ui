@@ -3,17 +3,29 @@
 
     <!-- Navigation -->
     <!--<div ng-include="'views/common/navigation.html'"></div>-->
-    <div ng-include="'views/common/topnavbar.html'"></div>
+    <!--<div ng-include="'views/common/topnavbar.html'"></div>-->
 
     <!-- Page wraper -->
     <!-- ng-class with current state name give you the ability to extended customization your view -->
     <div id="page-wrapper" class="gray-bg {{$state.current.name}}">
 
         <!-- Page wrapper -->
-        <!--<div ng-include="'views/common/topnavbar.html'"></div>-->
+        <div ng-include="'views/common/topnavbar.html'"></div>
 
         <!-- Main view  -->
-        <div ui-view></div>
+        <div ui-view>  </div>
+
+
+
+        <!--<div ng-include="'views/common/rest_tabs.html'"></div>-->
+        <div ng-include="'views/common/single_tab.html'"></div>
+
+        <!--<div ng-include="'views/common/tabs_panels.html'"></div>-->
+        <!--<div ng-include="'views/common/tabs.html'"></div>-->
+        <!--<div ng-include="'views/common/table_data_tables.html'"></div>-->
+        <!--<div ng-include="'views/common/table_foo_table.html'"></div>-->
+        <!--<div ng-include="'views/common/dashboard_4.html'"></div>-->
+
 
         <!-- Footer -->
         <div ng-include="'views/common/footer.html'"></div>

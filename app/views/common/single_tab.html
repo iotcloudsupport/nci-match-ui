@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-controller="myApp" >
+<body>
+<div class="panel panel-success">
+    <div class="panel-heading">
+
+        <h4 class="panel-title pull-left">
+            Generate Reports
+        </h4>
+
+
+
+
+
+        <div class="clearfix"></div>
+    </div>
+
+    <!--{{main.patientData}}-->
+
+    <div>
+    <!--<button ng-click="click()">Click me</button>-->
+        <button ng-click="click()" ng-controller="ClickCtrl" class="btn btn-default pull-right">
+            Generate
+        </button>
+
+       --> {{artist.profile}}
+    </div>
+
+        <div ng-controller="PatientCtrl as main" class="panel-body">
+
+            <table class="table table-striped table-bordered table-hover ">
+            <tr ng-repeat = "txd in main.patientData">
+                <thead>
+                    <tr>
+                        <th>PSN</th>
+                        <th>Received Date</th>
+                        <th>Registration Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat = "tt in txd.biopsies">
+                        <td>{{ tt.biopsySequenceNumber }}</td>
+                        <td>{{ tt.specimenReceivedDate }}</td>
+                        <td>{{ tt.ptenOrderDate }}</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+
+</div>
+</body>
+</html>

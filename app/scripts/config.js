@@ -26,6 +26,17 @@ function config($stateProvider, $urlRouterProvider) {
             templateUrl: "views/minor.html",
             data: { pageTitle: 'Example view' }
         })
+        .state('dashboards_top', {
+            abstract: true,
+            url: "/dashboards_top",
+            templateUrl: "views/common/content_top_navigation.html",
+        })
+        //.state('dashboards_top.dashboard_4', {
+        //    url: "/dashboard_4",
+        //    templateUrl: "views/dashboard_4.html",
+        //    data: { pageTitle: 'Dashboard 4' },
+        //})
+
 }
 angular
     .module('inspinia')
