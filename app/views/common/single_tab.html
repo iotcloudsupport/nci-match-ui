@@ -11,8 +11,10 @@
         <div class="clearfix"></div>
     </div>
 
+    <!--
+     # Generator for Angular table
+     -->
     <div ng-controller="ClickCtrl" >
-    <!--<button ng-click="click()">Click me</button>-->
 
         <button ng-click="loadData()"  class="btn btn-success pull-right">
             Generate
@@ -22,8 +24,6 @@
             <thead>
             <tr>
                 <th class="label2">Enroll</th>
-                <!--<th class="label2">Status</th>-->
-
             </tr>
             </thead>
         </table>
@@ -52,17 +52,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr >
-                        <td width="33%">{{dt | date:'yyyy-MM-dd HH:mm:ss Z'}} </td>
+                    <tr ng:repeat="item in jsonData.items">
+                        <td width="33%">{{item.date | date:'yyyy-MM-dd HH:mm:ss'}} </td>
                         <td width="33%">
-                            <a ng-href="http://localhost:4567/downloadReportFile?filename={{jsonData}}">{{jsonData}}</a>
+                            <a ng-href="http://localhost:4567/downloadReportFile?filename={{item.link}}">{{item.link}}</a>
                         </td>
-                        <td width="33%">JSON</td>
+                        <td width="33%">{{item.format}}</td>
                     </tr>
                 </tbody>
-
         </table>
-
     </div>
 
 

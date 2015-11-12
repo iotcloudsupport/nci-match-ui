@@ -41,7 +41,13 @@ var ClickCtrl = angular.module('ClickCtrl',[]);
 
 function handleAnchorClick($scope, $http) {
 
-    var URL = "http://localhost:4567/generateReport?name=screenVsEnrolled";
+    $scope.jsonData = {
+        items: [{
+
+        }]
+    };
+
+    var URL = "http://localhost:4568/generateReport?name=screenVsEnrolled";
     //var URL = "http://localhost:4567/patientSpecimenTrackingSummary";
     //var URL = "http://localhost:8080/match/common/rs/getBasicPatientsData"
 
@@ -60,7 +66,12 @@ function handleAnchorClick($scope, $http) {
                     $scope.json = "btn-default";
                 }
 
-                $scope.jsonData = data;
+                $scope.jsonData.items.push({
+                    date: new Date(),
+                    format: 'json',
+                    link: data
+                });
+                //$scope.jsonData = data;
             })
             .error(function (data, status, header, config) {
                 $scope.ResponseDetails = "Data: " + data +
