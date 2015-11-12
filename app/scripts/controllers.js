@@ -39,24 +39,6 @@ function MainCtrl() {
  */
 var ClickCtrl = angular.module('ClickCtrl',[]);
 
-//$scope.loadData = function()
-
-//$scope.loadData = function() {
-//    var URL = "http://localhost:4567/patientSpecimenTrackingSummary";
-//    var response = $http.get(URL);
-//    response.success(function(data, status, headers, config) {
-//        $scope.profile = data;
-//        alert("Ok.");
-//
-//    });
-//
-//    response.error(function(data, status, headers, config) {
-//        alert("Error.");
-//    });
-//
-//};
-
-
 function handleAnchorClick($scope, $http) {
 
     var URL = "http://localhost:4567/generateReport?name=screenVsEnrolled";
@@ -66,6 +48,18 @@ function handleAnchorClick($scope, $http) {
     $scope.loadData = function () {
         $http.get(URL)
             .success(function (data, status, headers, config) {
+                $scope.json = "btn-default";
+                $scope.pdf = "btn-default";
+                $scope.csv = "btn-default";
+                $scope.dt = new Date();
+
+                if(data.indexOf(".json") !== -1){
+                    $scope.json = "btn-primary";
+                }
+                else{
+                    $scope.json = "btn-default";
+                }
+
                 $scope.jsonData = data;
             })
             .error(function (data, status, header, config) {
@@ -75,37 +69,8 @@ function handleAnchorClick($scope, $http) {
                     "<br />config: " + jsonFilter(config);
             });
 
-        //return $scope.jsonData;
     };
 }
-
-
-
-    //function handleAnchorClick($scope, $http) {
-    //    //var URL = "http://localhost:4567/patientSpecimenTrackingSummary";
-    //
-    //    $scope.loadData = function() {
-    //        //var URL = "http://localhost:4567/patientSpecimenTrackingSummary";
-    //        var URL = "http://localhost:8080/match/common/rs/getBasicPatientsData";
-    //
-    //        var response = $http.get(URL);
-    //        response.success(function(data, status, headers, config) {
-    //
-    //            alert("Ok")
-    //            $scope.jsonData = data;
-    //
-    //
-    //        });
-    //
-    //        response.error(function(data, status, headers, config) {
-    //            alert("Error.");
-    //        });
-    //
-    //    };
-    //}
-
-
-
 
 angular
     .module('inspinia')
