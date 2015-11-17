@@ -10,21 +10,33 @@
     <div id="page-wrapper" class="gray-bg {{$state.current.name}}">
 
         <!-- Page wrapper -->
-        <div ng-include="'views/common/topnavbar.html'"></div>
+        <!--<div ng-include="'views/common/topnavbar.html'"></div>-->
+        <div ng-include="'views/common/navbar.html'"></div>
 
+        <!--<div ng-include="'views/common/reportboard1.html'" include-replace></div>-->
+
+        <div ng-include src="'views/common/reportboard1.html'"></div>
+
+        <!--<div ng-include src="'views/common/dashboard.html'" ng-controller="ctrlB" onload="hi()"></div>-->
+
+        <!--<div ng-include="'views/common/dashboard.html'"></div>-->
         <!-- Main view  -->
         <div ui-view>  </div>
 
 
 
-        <!--<div ng-include="'views/common/rest_tabs.html'"></div>-->
-        <div ng-include="'views/common/single_tab.html'"></div>
 
+
+        <!--<div ng-include="'views/common/layouts.html'"></div>-->
         <!--<div ng-include="'views/common/tabs_panels.html'"></div>-->
         <!--<div ng-include="'views/common/tabs.html'"></div>-->
         <!--<div ng-include="'views/common/table_data_tables.html'"></div>-->
+        <!--<div ng-include="'views/common/table_basic.html'"></div>-->
         <!--<div ng-include="'views/common/table_foo_table.html'"></div>-->
         <!--<div ng-include="'views/common/dashboard_4.html'"></div>-->
+        <!--<div ng-include="'views/common/icons.html'"></div>-->
+        <!--<div ng-include="'views/common/widgets.html'"></div>-->
+        <!--<div ng-include="'views/common/off_canvas_menu.html'"></div>-->
 
 
         <!-- Footer -->

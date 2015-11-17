@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html ng-controller="myApp" >
+<html ng-controller="reportApp" >
 <body>
 
-<div class="panel panel-success"  ng-controller="ClickCtrl" >
+<div class="panel panel-success" ng-controller="reportCtrl" >
     <div class="panel-heading">
 
         <h4 class="panel-title pull-left">
@@ -22,7 +22,7 @@
                     <input type="radio" id="s158" name="quality[25]" value="3" /> CSV
                 </label>
                 <label style="margin: 0 2px;">
-                    <button ng-click="loadData()" class="btn btn-primary active pull-right">
+                    <button ng-click="loadReportData()" class="btn btn-primary active pull-right">
                         Generate
                     </button>
                 </label>
@@ -60,7 +60,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng:repeat="item in jsonData.items">
+                    <tr ng:repeat="item in reportData.items">
                         <td width="33%">{{item.date | date:'yyyy-MM-dd HH:mm:ss'}} </td>
                         <td width="33%">
                             <a ng-href="http://localhost:4567/downloadReportFile?filename={{item.link}}">{{item.link}}</a>
