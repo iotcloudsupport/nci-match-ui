@@ -7,20 +7,20 @@
 
     <!-- Page wraper -->
     <!-- ng-class with current state name give you the ability to extended customization your view -->
-    <div id="page-wrapper" class="gray-bg {{$state.current.name}}">
+    <div id="page-wrapper" class="gray-bg {{$state.current.name}}"  ng-controller="activeCtrl">
 
         <!-- Page wrapper -->
         <!--<div ng-include="'views/common/topnavbar.html'"></div>-->
         <div ng-include="'views/common/navbar.html'"></div>
 
-        <!--<div ng-include="'views/common/reportboard1.html'" include-replace></div>-->
-
-        <div ng-include src="'views/common/reportboard1.html'"></div>
-
-        <!--<div ng-include src="'views/common/dashboard.html'" ng-controller="ctrlB" onload="hi()"></div>-->
-
-        <!--<div ng-include="'views/common/dashboard.html'"></div>-->
-        <!-- Main view  -->
+        <div>
+            <div ng-switch on="pFilter">
+                <div  ng-switch-when="report"><div ng-include="'views/common/reportboard1.html'"></div></div>
+                <div  ng-switch-when="dashboard"><div ng-include="'views/common/dashboard.html'"></div></div>
+                <div  ng-switch-default><div ng-include="'views/common/reportboard1.html'"></div></div>
+            </div>
+        </div>
+                <!-- Main view  -->
         <div ui-view>  </div>
 
 
