@@ -23,17 +23,14 @@ function handleReport($scope, $http) {
                 $scope.json = "btn-default";
                 $scope.pdf = "btn-default";
                 $scope.csv = "btn-default";
-                //$scope.dt = data.createdDate;
-                var d = data.createdDate;
 
-                //var dte = moment.unix(d/1000).utc().format("LLL") + " GMT");
+                var generateDate = moment.unix(data.createdDate/1000).utc().format('LLL') + ' GMT';
 
                 $scope.reportData.items.push({
                     format: 'json',
                     name: data.name,
-                    dt: d
+                    dt: generateDate
                 });
-                //$scope.reportData = data;
             })
             .error(function (data, status, header, config) {
                 $scope.ResponseDetails = "Data: " + data +
@@ -41,7 +38,6 @@ function handleReport($scope, $http) {
                     "<br />headers: " + jsonFilter(header) +
                     "<br />config: " + jsonFilter(config);
             });
-
     };
 }
 

@@ -1,0 +1,128 @@
+/**
+ * Created by hendrikssonm on 11/12/15.
+ */
+/**
+ * treatmentArmCtrl - controller
+ */
+
+var treatmentArmId;
+var excTable;
+var diseasesSelected = [];
+var tasSelected = [];
+
+function makeTreatmentArms2d(treatmentArms) {
+    var json2d = [];
+    $.each(treatmentArms, function( key, value ) {
+        if (tasSelected.length === 0 || tasSelected.indexOf(value.treatmentArmId) >= 0) {
+            var dateOpened = '';
+            var dateDown = '';
+            var dateCreated = '';
+            if (value.dateOpened != undefined && value.dateOpened != null) {
+                dateOpened = moment.unix(value.dateOpened/1000).utc().format('LLL') + ' GMT';
+            }
+            // if TA has been suspended and closed, only show closed
+            if (value.dateSuspended != undefined && value.dateSuspended != null) {
+                dateDown = moment.unix(value.dateSuspended/1000).utc().format('LLL') + ' GMT';
+            }
+            if (value.dateClosed != undefined && value.dateClosed != null) {
+                dateDown = moment.unix(value.dateClosed/1000).utc().format('LLL') + ' GMT';
+            }
+            if (value.dateCreated != undefined && value.dateCreated != null) {
+                dateCreated = moment.unix(value.dateCreated/1000).utc().format('LLL') + ' GMT';
+            }
+
+            var treatmentArmId = (value.treatmentArmId !== undefined || value.treatmentArmId !== null) ? value.treatmentArmId : null;
+
+            var treatmetIdLink = "<a class='report-link' href='treatmentArmsDetails.html?treatmentArmId=" +
+                treatmentArmId + "&treatmentArmsList=true'>" +
+                "<i class='fa fa-medkit'></i> " + treatmentArmId + "</a>";
+
+            json2d.push([
+                treatmetIdLink,
+                value.treatmentArmName,
+                value.currentPatients,
+                value.formerPatients,
+                value.notEnrolledPatients,
+                value.pendingPatients,
+                value.treatmentArmStatus,
+                dateCreated,
+                dateOpened,
+                dateDown
+            ]);
+        }
+    });
+
+
+    var curTable = $('#treatment-arms').dataTable( {
+        'data': json2d,
+        'bAutoWidth' : true,
+        'bFilter': true,
+        'bSearchable':true,
+        'bInfo':false,
+        'bPaginate': true,
+        'bDestroy': true,
+        'aaSorting': [],
+        'iDisplayLength': 100,
+        'order' : [[0, "asc"]],
+        'language' : { 'zeroRecords': 'There are no treatment arms.' },
+        'createdRow': function ( row, data, index ) {
+            //$('td', row).eq(1).addClass(determinePatientStatusColor(data[1]));
+        }
+    });
+
+
+    //return json2d;
+}
+
+
+var treatmentarmCtrl = angular.module('treatmentarmCtrl',[]);
+
+function treatmentarmTable($scope, $http) {
+
+    $scope.taData = {
+        items: [{
+
+        }]
+    };
+    var URL = "http://localhost:8080/match/common/rs/getBasicTreatmentArms";
+
+    $scope.loadTAData = function () {
+        $http.get(URL)
+            .success(function (data, status, headers, config) {
+
+                angular.forEach(data, function(value, key) {
+
+                    makeTreatmentArms2d(data);
+
+                    //var st = value.currentStatus;
+                    //var version = '-';
+                    //
+                    //if(st == 'ON_TREATMENT_ARM' ){
+                    //    version = value.currentTreatmentArm.id;
+                    //}
+                    //
+                    //$scope.taData.items.push({
+                    //    psn: value.patientSequenceNumber,
+                    //    status: value.currentStatus,
+                    //    step: value.currentStepNumber,
+                    //    diseases: value.diseases,
+                    //    ta: version,
+                    //    regdata: value.registrationDate
+                    //
+                    //});
+                });
+
+            })
+            .error(function (data, status, header, config) {
+                $scope.ResponseDetails = "Data: " + data +
+                    "<br />status: " + status +
+                    "<br />headers: " + jsonFilter(header) +
+                    "<br />config: " + jsonFilter(config);
+            });
+
+    };
+}
+
+angular
+    .module('inspinia')
+    .controller('treatmentarmCtrl', treatmentarmTable)
