@@ -84,27 +84,6 @@ function patientTable($scope, $http) {
 
                 makePatients2d(data);
 
-                //angular.forEach(data, function(value, key) {
-                //    var st = value.currentStatus;
-                //    var version = '-';
-                //
-                //    if(st == 'ON_TREATMENT_ARM' ){
-                //        version = value.currentTreatmentArm.id;
-                //    }
-                //
-                //    $scope.patientData.items.push({
-                //        psn: value.patientSequenceNumber,
-                //        status: value.currentStatus,
-                //        step: value.currentStepNumber,
-                //        diseases: value.diseases,
-                //        ta: version,
-                //        regdata: value.registrationDate
-                //
-                //    });
-                //});
-
-
-
             })
             .error(function (data, status, header, config) {
                 $scope.ResponseDetails = "Data: " + data +
