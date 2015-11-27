@@ -185,8 +185,24 @@ module.exports = function (grunt) {
         },
         usemin: {
             html: ['dist/index.html']
+        },
+        karma: {
+            unit: {
+                options: {
+                    frameworks: ['jasmine'],
+                    singleRun: true,
+                    browsers: ['PhantomJS'],
+                    files: [
+                        'public/components/angular/angular.js',
+                        'public/components/angular-mocks/angular-mocks.js',
+                        'src/js/**/*.js'
+                    ]
+                }
+            }
         }
     });
+
+    grunt.loadNpmTasks('grunt-karma');
 
     // Run live version of app
     grunt.registerTask('live', [

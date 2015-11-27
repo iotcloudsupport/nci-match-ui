@@ -93,8 +93,8 @@ function handleReport($scope, $http) {
             .error(function (data, status, header, config) {
                 $scope.ResponseDetails = "Data: " + data +
                     "<br />status: " + status +
-                    "<br />headers: " + jsonFilter(header) +
-                    "<br />config: " + jsonFilter(config);
+                    "<br />headers: " + JSON.stringify(header) +
+                    "<br />config: " + JSON.stringify(config);
             });
     };
 }
@@ -102,13 +102,33 @@ function handleReport($scope, $http) {
 // #load the generatble reports
 function loadGeneratorData($scope, $http) {
 
-    var URL = "http://localhost:4567/reportList";
+    var URL = "http://localhost:4568/reportList";
+
+    //$http({
+    //    method: 'GET',
+    //    url: URL,
+    //    headers : {'Content-Type':'application/json; charset=UTF-8'}
+    //}).then(function successCallback(response) {
+    //    alert("---> "+response)
+    //    // this callback will be called asynchronously
+    //    // when the response is available
+    //}, function errorCallback(response) {
+    //
+    //    alert(JSON.stringify(response))
+    //    // called asynchronously if an error occurs
+    //    // or server returns response with an error status.
+    //});
+
+
 
     $scope.generateReportLinks = function () {
 
-        $http.get(URL)
+        $http
+            .get(URL)
             .success(function (data, status, headers, config) {
                 var array = [];
+
+                alert("Data Found-- > " + JSON.stringify(data))
 
                 $.each(data, function (key, value) {
                     array.push({
@@ -121,10 +141,15 @@ function loadGeneratorData($scope, $http) {
 
             })
             .error(function (data, status, header, config) {
+
+
+                alert("Error Found-- > " + JSON.stringify(config))
+
                 $scope.ResponseDetails = "Data: " + data +
                     "<br />status: " + status +
-                    "<br />headers: " + jsonFilter(header) +
-                    "<br />config: " + jsonFilter(config);
+                    "<br />headers: " + JSON.stringify(header) +
+                    "<br />config: " + JSON.stringify(config)
+                ;
             });
     };
 }
