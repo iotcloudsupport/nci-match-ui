@@ -23,7 +23,12 @@
                             <select ng-model="template" ng-options="t.name for t in templates">
                                 <option value="">(blank)</option>
                             </select>
-                            <h1>Selected report: <tt>{{template.id}}</tt></h1>
+                            <h1>Selected report: <tt>{{template.key}}</tt></h1>
+
+                            <div ng-show="template.id">
+                                <input>{{template.id}}</input>
+                            </div>
+
                             <hr/>
                         </div>
                     <!--</div>-->

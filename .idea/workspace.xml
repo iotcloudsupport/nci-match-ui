@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="26d435af-7587-4805-a8a4-312b9b564000" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gruntfile.js" afterPath="$PROJECT_DIR$/Gruntfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bower.json" afterPath="$PROJECT_DIR$/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/patientCtrl.js" afterPath="$PROJECT_DIR$/app/scripts/patientCtrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/common/ncireport.html" afterPath="$PROJECT_DIR$/app/views/common/ncireport.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/reportCtrl.js" afterPath="$PROJECT_DIR$/app/scripts/reportCtrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nci-match-ui.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -63,7 +59,7 @@
           <file leaf-file-name="sampleProvider_spec.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/spec/sampleProvider_spec.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.7169345">
+                <state vertical-scroll-proportion="0.8854962">
                   <caret line="238" column="0" selection-start-line="238" selection-start-column="0" selection-end-line="238" selection-end-column="0" />
                   <folding />
                 </state>
@@ -132,21 +128,21 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="reportCtrl.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="reportCtrl.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/scripts/reportCtrl.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="1.1990111">
-                  <caret line="138" column="41" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
+                <state vertical-scroll-proportion="-17.392857">
+                  <caret line="116" column="34" selection-start-line="116" selection-start-column="34" selection-end-line="116" selection-end-column="34" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ncireport.html" pinned="false" current-in-tab="false">
+          <file leaf-file-name="ncireport.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/views/common/ncireport.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-9.0">
-                  <caret line="23" column="60" selection-start-line="23" selection-start-column="60" selection-end-line="23" selection-end-column="60" />
+                <state vertical-scroll-proportion="0.82182986">
+                  <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
                   <folding />
                 </state>
               </provider>
@@ -219,7 +215,6 @@
         <option value="$PROJECT_DIR$/app/views/common/treatmentarm.html" />
         <option value="$PROJECT_DIR$/app/views/common/content.html" />
         <option value="$PROJECT_DIR$/app/index.html" />
-        <option value="$PROJECT_DIR$/app/views/common/ncireport.html" />
         <option value="$PROJECT_DIR$/Gruntfile.js" />
         <option value="$PROJECT_DIR$/spec/sample_spec.js" />
         <option value="$PROJECT_DIR$/spec/unittest.conf.js" />
@@ -231,6 +226,7 @@
         <option value="$PROJECT_DIR$/spec/sampleProvider_spec.js" />
         <option value="$PROJECT_DIR$/app/scripts/patientCtrl.js" />
         <option value="$PROJECT_DIR$/app/scripts/reportCtrl.js" />
+        <option value="$PROJECT_DIR$/app/views/common/ncireport.html" />
       </list>
     </option>
   </component>
@@ -510,7 +506,7 @@
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17992425" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32575756" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24980299" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26343518" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -891,16 +887,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/sampleProvider_spec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7169345">
+        <state vertical-scroll-proportion="0.8854962">
           <caret line="238" column="0" selection-start-line="238" selection-start-column="0" selection-end-line="238" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/common/ncireport.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.0">
-          <caret line="23" column="60" selection-start-line="23" selection-start-column="60" selection-end-line="23" selection-end-column="60" />
           <folding />
         </state>
       </provider>
@@ -915,8 +903,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/reportCtrl.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1990111">
-          <caret line="138" column="41" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
+        <state vertical-scroll-proportion="-17.392857">
+          <caret line="116" column="34" selection-start-line="116" selection-start-column="34" selection-end-line="116" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/common/ncireport.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.82182986">
+          <caret line="32" column="30" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="30" />
           <folding />
         </state>
       </provider>
