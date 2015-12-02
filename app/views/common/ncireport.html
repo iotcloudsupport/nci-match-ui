@@ -1,12 +1,7 @@
 <!DOCTYPE html>
-<html ng-controller="reportBoardApp" >
+<html ng-app="myApp">
 <body>
-
-
-
-
     <div id="wrapper">
-
 
         <div class="row">
             <div class="col-lg-12">
@@ -16,64 +11,61 @@
                         <h5>Generate Report Table </h5>
                     </div>
 
-
                     <!--LOAD report links-->
                     <div class="col-sm-4"  >
                         <div ng-controller="loadCtrl" ng-init="generateReportLinks()">
-                            <select ng-model="template" ng-options="t.name for t in templates">
-                                <option value="">(blank)</option>
-                            </select>
-                            <h1>Selected report: <tt>{{template.key}}</tt></h1>
+                            <br/>
 
-                            <div ng-show="template.id">
-                                <input>{{template.id}}</input>
-                            </div>
+                                <select ng-model="template"
+                                        ng-change="reportSelect({selectedReport: template})"
+                                        ng-options="t.name for t in templates">
+                                    <option value="">(blank)</option>
+                                </select>
+                                <h1>Selected report: {{template.key}}</h1>
 
-                            <hr/>
-                        </div>
-                    <!--</div>-->
+                                <div ng-show="template.id">
+                                    <input type="text" ng-model="rootFolders">
+                                    <!--<tt>text = {{template.id}}</tt>-->
+                                    </input>
+                                </div>
 
+                            <br/>
 
-                    <!--<div class="ibox-content">-->
-
-                        <div class="row" ng-controller="generateCtrl">
                             <div class="col-sm-1 pull-left">
-                                <div class="input-group" ng-controller="loadCtrl" >
+                                <div class="input-group" >
                                     <span class="input-group-btn">
-
-
-                                        <button type="button" ng-click="loadReportData()" class="btn btn-lg btn-primary"> Generate </button>
+                                        <button type="button"
+                                                ng-click="selectedReportOfList({reportParameters: selected})"
+                                                class="btn btn-lg btn-primary">
+                                            Generate
+                                        </button>
                                     </span>
                                 </div>
+
                             </div>
                         </div>
+                    </div>
 
+                    <div class="ibox-content">
+                        <div class="table-responsive">
 
-
-
+                            <table class="table table-striped table-bordered table-hover" id="reports">
+                                <thead>
+                                <tr>
+                                    <th class="label2" width = "33%">Date</th>
+                                    <th class="label2" width = "33%">Link</th>
+                                    <th class="label2" width = "33%">Format</th>
+                                </tr>
+                                </thead>
+                            </table>
                         </div>
-
-
-                        <div class="ibox-content">
-                            <div class="table-responsive">
-
-                                <table class="table table-striped table-bordered table-hover" id="reports">
-                                    <thead>
-                                    <tr>
-                                        <th class="label2" width = "33%">Date</th>
-                                        <th class="label2" width = "33%">Link</th>
-                                        <th class="label2" width = "33%">Format</th>
-                                    </tr>
-                                    </thead>
-                                </table>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
 
 </body>
 
