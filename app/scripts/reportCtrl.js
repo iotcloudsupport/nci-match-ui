@@ -6,6 +6,9 @@
  */
 var reportTable ="";
 
+//function typeParam(id){
+//    alert(id)
+//}
 
 function makeReportTable(report) {
     var json2d = [];
@@ -14,12 +17,46 @@ function makeReportTable(report) {
     var status = report.status;
     var message = report.message;
     var reportdate = moment.unix(dateint/1000).utc().format('LLL') + ' GMT';
-    var generatedLink = "http://localhost:4567/downloadReportFile?name=" + link + "&createdDate=" + dateint + "&type=" + message;
-    var generatedUrl = '<a href="' + generatedLink + '">' + link + '</a>';
+    var generatedLink = "http://localhost:4567/downloadReportFile?name=" + link + "&createdDate=" + dateint + "&type=json" + message;
 
-    alert(JSON.stringify(report))
+    var r = $.now();
+    var generatedUrl = '<div id="r-' + r + '">' +
+        '<a href="' + generatedLink + '"> <b>JSON</b> ' +
+        '<i class="fa fa-file-code-o fa-lg"> </i> ' +
+            link +
+        '</a></div>';
 
-    json2d.push([reportdate,'<a href="' + generatedLink + '">' + generatedUrl + '</a>','<a href="#">JSON</a>']);
+    var typearray = [];
+
+    typearray.push({
+        json: '<div id="r-' + r + '">' +
+        '<a href="http://localhost:4567/downloadReportFile?name=' + link +
+        '&createdDate=' + dateint + '&type=json" >' +
+        '<b>JSON</b> <i class="fa fa-file-code-o fa-lg"></i> ' + link + '</a></div>',
+        csv: '<div id="r-' + r + '">' +
+        '<a href="http://localhost:4567/downloadReportFile?name=' + link +
+        '&createdDate=' + dateint + '&type=csv" >' +
+        '<b>CSV</b> <i class="fa fa-file-text-o fa-lg"></i> ' + link + '</a></div>',
+        excel: '<div id="r-' + r + '"><a href="http://localhost:4567/downloadReportFile?name=' + link +
+        '&createdDate=' + dateint + '&type=excel" >' +
+        '<b>EXCEL</b> <i class="fa fa-file-excel-o fa-lg"></i> ' + link + '</a></div>'
+    });
+
+    var typeFormat = '<div class="radio" >' +
+                '  <input checked="checked" id="json-' + r + '" name="' + r + '" type="radio" value="json"/>' +
+                    '  JSON  ' +
+                '  <input id="csv-' + r + '" name="' + r + '" type="radio" value="csv"/>' +
+                    '  CSV  ' +
+                '  <input id="excel-' + r + '" name="' + r + '" type="radio" value="excel"/>' +
+                    '  EXCEL  '
+            '</div>';
+
+
+    $('#json-' + r).attr('checked','checked');
+
+    json2d.push([reportdate,
+        generatedUrl,
+        typeFormat, typearray]);
 
     //Build Datatable and add new rows
     if(reportTable.length == 0) {
@@ -42,11 +79,36 @@ function makeReportTable(report) {
     }
     else{
         reportTable.dataTable().fnAddData(json2d);
-
     }
 
+    //$(":radio[name='sectionRules'][value='1']").attr('checked', 'checked');
 
-    //return json2d;
+    reportTable.on('click', 'input[name="' + r + '"]:radio', function(e){
+        var TYPE = [];
+        var type = $(this).val();
+        var txt = "";
+        $(this).toggleClass('active');
+
+        // update column following here...
+        var followingCell = $(this).parents('td').prev();
+
+        var rowIndex = reportTable.fnGetPosition( $(this).closest('tr')[0] );
+        var aData = reportTable.fnGetData( rowIndex  );
+        TYPE = aData[3];
+
+            if(type === 'json'){
+                txt = TYPE[0].json;
+            }
+            else if (type === 'csv'){
+                txt = TYPE[0].csv;
+            }
+            else if (type === 'excel'){
+                txt = TYPE[0].excel;
+            }
+
+        followingCell.html(txt);
+        return false;
+    });
 }
 
 //Modules
@@ -60,30 +122,7 @@ var loadCtrlParam = angular.module('loadCtrlParam',[]);
 var loadCtrl = angular.module('loadCtrl',[]);
 var myService = angular.module('myService',[]);
 var serviceParam = angular.module('serviceParam',[]);
-var SharedDataService = angular.module('SharedDataService',[]);
-
-
-
-//********************
-//angular.factory("sharedData", function() {
-//    var _data = {
-//        name: "david manske"
-//    };
-//    return {
-//        data: _data
-//    };
-//});
-//
-//angular.controller("firstController", function ($scope, sharedData) {
-//    $scope.data = sharedData.data;
-//});
-//
-//angular.controller("secondController", function ($scope, sharedData) {
-//    $scope.data = sharedData.data;
-//});
-//**********************
-
-
+var radioCtrl = angular.module('reportTable',[]);
 
 function serviceReport() {
     var array = [];
@@ -165,6 +204,7 @@ function loadGeneratorData($scope, $http) {
         var pdataName = "-";
         var p$$hashKey = "-";
         var selectedarray = [];
+        $('#parameterValidationErrorMessage').hide();
 
         selected = param.selectedReport;
         pname = selected.name;
@@ -185,68 +225,58 @@ function loadGeneratorData($scope, $http) {
 
         $scope.selectedreport = selectedarray;
         $scope.selected = $scope.selectedreport[0];
-
     };
 
 
-        $scope.selectedReportOfList = function (param) {
+    $scope.selectedReportOfList = function (param) {
 
-            var reportname = "-";
-            var reportparams = "-";
+        var reportname = "-";
+        var reportparams = "-";
 
-            //var selected = [];
-            parameters = param.reportParameters;
+        //var selected = [];
+        parameters = param.reportParameters;
 
-            if(parameters != null){
-                reportname = parameters.pname;
-                reportparams = parameters.pdataName;
-            }
-            var inputparameters = $scope.rootFolders;
-            var URL = "http://localhost:4567/generateReport?name=" + reportname
-                + "&" + reportparams
-                + " = " + inputparameters;
+        if(parameters != null){
+            reportname = parameters.pname;
+            reportparams = parameters.pdataName;
+        }
 
-            $http.get(URL)
-                .success(function (data, status, headers, config) {
-                    makeReportTable(data);
-                })
-                .error(function (data, status, header, config) {
-                    $scope.ResponseDetails = "Data: " + data +
-                        "<br />status: " + status +
-                        "<br />headers: " + JSON.stringify(header) +
-                        "<br />config: " + JSON.stringify(config);
-                });
+        var inputparameters = $scope.rootFolders;
+        var URL = "http://localhost:4567/generateReport?name=" + reportname
+            + "&" + reportparams
+            + " = " + inputparameters;
+
+        $http.get(URL)
+            .success(function (data, status, headers, config) {
+                makeReportTable(data);
+            })
+            .error(function (data, status, header, config) {
+                $('#parameterValidationErrorMessage').show();
+                document.getElementById("parameterLostErrorMessage").textContent=data.message;
+                $scope.ResponseDetails = "Data: " + data +
+                    "<br />status: " + status +
+                    "<br />headers: " + JSON.stringify(header) +
+                    "<br />config: " + JSON.stringify(config);
+            });
         };
-    //};
+    }3
+
+
+ //#load the generatble reports
+function radioParameter($scope) {
+
+    $scope.typeParam=function(){
+        alert("---> " + $scope.myValue)
+        //$scope.myType =(typeof $scope.myValue);
     }
-
-
-// #load the generatble reports
-//function enterParameter($scope, $http) {
-//
-//    //Directive
-//    $scope.parameterSet = function () {
-//
-//        return function (scope, element, attrs) {
-//            element.bind("keydown keypress", function (event) {
-//                if (event.which === 13) {
-//                    scope.$apply(function () {
-//                        scope.$eval(attrs.myEnter);
-//                    });
-//
-//                    event.preventDefault();
-//                }
-//            });
-//        };
-//
-//    }
-//}
+}
 
 
 
 angular
     .module('inspinia')
     .controller('loadCtrl', loadGeneratorData)
+    .controller('radioCtrl', radioParameter)
 
     //.directive('loadCtrlParam', enterParameter)
 
