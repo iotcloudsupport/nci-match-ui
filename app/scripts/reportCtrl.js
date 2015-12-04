@@ -244,7 +244,7 @@ function loadGeneratorData($scope, $http) {
         var inputparameters = $scope.rootFolders;
         var URL = "http://localhost:4567/generateReport?name=" + reportname
             + "&" + reportparams
-            + " = " + inputparameters;
+            + "=" + inputparameters;
 
         $http.get(URL)
             .success(function (data, status, headers, config) {
