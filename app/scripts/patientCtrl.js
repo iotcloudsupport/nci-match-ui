@@ -47,7 +47,7 @@ function makePatients2d(patients) {
 
     var curTable = $('#patients').dataTable( {
         'data': json2d,
-        'bAutoWidth' : true,
+        'bAutoWidth' : false,
         'bFilter': true,
         'bSearchable':true,
         'bInfo':false,
@@ -79,24 +79,6 @@ function patientTable($scope, $http) {
     var URL = "http://localhost:8080/match/common/rs/getBasicPatientsData";
 
     $scope.loadPatientData = function () {
-        //$http({
-        //    method: 'GET',
-        //    url: URL,
-        //    headers : {'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}
-        //}).then(function successCallback(response) {
-        //
-        //
-        //    alert("---> "+response)
-        //    // this callback will be called asynchronously
-        //    // when the response is available
-        //}, function errorCallback(response) {
-        //
-        //    alert(JSON.stringify(response))
-        //    // called asynchronously if an error occurs
-        //    // or server returns response with an error status.
-        //});
-
-
 
         $http.get(URL)
             .success(function (data, status, headers, config) {

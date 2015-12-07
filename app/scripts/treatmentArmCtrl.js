@@ -55,7 +55,7 @@ function makeTreatmentArms2d(treatmentArms) {
 
     var curTable = $('#treatment-arms').dataTable( {
         'data': json2d,
-        'bAutoWidth' : true,
+        'bAutoWidth' : false,
         'bFilter': true,
         'bSearchable':true,
         'bInfo':false,
@@ -89,27 +89,8 @@ function treatmentarmTable($scope, $http) {
     $scope.loadTAData = function () {
         $http.get(URL)
             .success(function (data, status, headers, config) {
-
                 angular.forEach(data, function(value, key) {
-
                     makeTreatmentArms2d(data);
-
-                    //var st = value.currentStatus;
-                    //var version = '-';
-                    //
-                    //if(st == 'ON_TREATMENT_ARM' ){
-                    //    version = value.currentTreatmentArm.id;
-                    //}
-                    //
-                    //$scope.taData.items.push({
-                    //    psn: value.patientSequenceNumber,
-                    //    status: value.currentStatus,
-                    //    step: value.currentStepNumber,
-                    //    diseases: value.diseases,
-                    //    ta: version,
-                    //    regdata: value.registrationDate
-                    //
-                    //});
                 });
 
             })

@@ -105,7 +105,6 @@ function makeBioTable(array) {
                     });
                 }
                 else {
-
                     json2d.push([biopsyDetailHref, patientDetailHref, "-", "-", "-",
                         specimenReceivedDate, specimenFailureDate, ptenOrderDate,
                         ptenResultDate, pathologyReviewdate, "-"
@@ -117,7 +116,7 @@ function makeBioTable(array) {
 
     var bioTable = $('#biopsies').dataTable( {
         'data': json2d,
-        'bAutoWidth' : true,
+        'bAutoWidth' : false,
         'bFilter': true,
         'bSearchable':true,
         'bInfo':false,

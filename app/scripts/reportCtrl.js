@@ -62,7 +62,7 @@ function makeReportTable(report) {
     if(reportTable.length == 0) {
         reportTable = $('#reports').dataTable({
             'data': json2d,
-            'bAutoWidth': true,
+            'bAutoWidth': false,
             'bFilter': true,
             'bSearchable': true,
             'bInfo': false,
@@ -152,11 +152,6 @@ function injectParam(param) {
     //serviceParam.mySharedObject.myText = param;
     return serviceParam;
 }
-
-//function sharedData($scope,selectedarray) {
-//    $scope.selectedreport = selectedarray;
-//}
-
 
 // #load the generatble reports
 function loadGeneratorData($scope, $http) {

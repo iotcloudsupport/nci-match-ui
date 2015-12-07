@@ -104,7 +104,7 @@ function makeMsnTable(array) {
 
     var molecularTable = $('#molecular').dataTable( {
         'data': json2d,
-        'bAutoWidth' : true,
+        'bAutoWidth' : false,
         'bFilter': true,
         'bSearchable':true,
         'bInfo':false,
