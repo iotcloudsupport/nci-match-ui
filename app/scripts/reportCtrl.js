@@ -6,10 +6,6 @@
  */
 var reportTable ="";
 
-//function typeParam(id){
-//    alert(id)
-//}
-
 function makeReportTable(report) {
     var json2d = [];
     var dateint =  report.createdDate;
@@ -17,46 +13,79 @@ function makeReportTable(report) {
     var status = report.status;
     var message = report.message;
     var reportdate = moment.unix(dateint/1000).utc().format('LLL') + ' GMT';
-    var generatedLink = "http://localhost:4567/downloadReportFile?name=" + link + "&createdDate=" + dateint + "&type=json" + message;
+    var generatedLinkJson = "http://localhost:4567/downloadReportFile?name=" + link + "&createdDate=" + dateint + "&type=json" + message;
+    var generatedLinkCsv = "http://localhost:4567/downloadReportFile?name=" + link + "&createdDate=" + dateint + "&type=csv" + message;
+    var generatedLinkExcel = "http://localhost:4567/downloadReportFile?name=" + link + "&createdDate=" + dateint + "&type=excel" + message;
 
     var r = $.now();
     var generatedUrl = '<div id="r-' + r + '">' +
-        '<a href="' + generatedLink + '"> <b>JSON</b> ' +
+        '<a href="' + generatedLinkJson + '"> <b>JSON</b> ' +
         '<i class="fa fa-file-code-o fa-lg"> </i> ' +
             link +
         '</a></div>';
 
     var typearray = [];
 
-    typearray.push({
-        json: '<div id="r-' + r + '">' +
-        '<a href="http://localhost:4567/downloadReportFile?name=' + link +
-        '&createdDate=' + dateint + '&type=json" >' +
-        '<b>JSON</b> <i class="fa fa-file-code-o fa-lg"></i> ' + link + '</a></div>',
-        csv: '<div id="r-' + r + '">' +
-        '<a href="http://localhost:4567/downloadReportFile?name=' + link +
-        '&createdDate=' + dateint + '&type=csv" >' +
-        '<b>CSV</b> <i class="fa fa-file-text-o fa-lg"></i> ' + link + '</a></div>',
-        excel: '<div id="r-' + r + '"><a href="http://localhost:4567/downloadReportFile?name=' + link +
-        '&createdDate=' + dateint + '&type=excel" >' +
-        '<b>EXCEL</b> <i class="fa fa-file-excel-o fa-lg"></i> ' + link + '</a></div>'
-    });
+    //typearray.push({
+    //    json: '<div id="r-' + r + '">' +
+    //    '<a href="http://localhost:4567/downloadReportFile?name=' + link +
+    //    '&createdDate=' + dateint + '&type=json" >' +
+    //    '<b>JSON</b> <i class="fa fa-file-code-o fa-lg"></i> ' + link + '</a></div>',
+    //    csv: '<div id="r-' + r + '">' +
+    //    '<a href="http://localhost:4567/downloadReportFile?name=' + link +
+    //    '&createdDate=' + dateint + '&type=csv" >' +
+    //    '<b>CSV</b> <i class="fa fa-file-text-o fa-lg"></i> ' + link + '</a></div>',
+    //    excel: '<div id="r-' + r + '"><a href="http://localhost:4567/downloadReportFile?name=' + link +
+    //    '&createdDate=' + dateint + '&type=excel" >' +
+    //    '<b>EXCEL</b> <i class="fa fa-file-excel-o fa-lg"></i> ' + link + '</a></div>'
+    //});
 
-    var typeFormat = '<div class="radio" >' +
-                '  <input checked="checked" id="json-' + r + '" name="' + r + '" type="radio" value="json"/>' +
-                    '  JSON  ' +
-                '  <input id="csv-' + r + '" name="' + r + '" type="radio" value="csv"/>' +
-                    '  CSV  ' +
-                '  <input id="excel-' + r + '" name="' + r + '" type="radio" value="excel"/>' +
-                    '  EXCEL  '
-            '</div>';
+    var LinkJson = "http://localhost:4567/downloadReportFile?name=" + link + "&createdDate=" + dateint + "&type=json" + message;
+    var LinkCsv = "http://localhost:4567/downloadReportFile?name=" + link + "&createdDate=" + dateint + "&type=csv" + message;
+    var LinkExcel = "http://localhost:4567/downloadReportFile?name=" + link + "&createdDate=" + dateint + "&type=excel" + message;
+
+    //<button type="button" class="btn btn-primary">Primary</button>
+
+    //var generatedLinkJson = '<button type="button" class="btn btn-success"><a href="' + LinkJson +  '">' +
+    //    '<b>JSON</b> <i class="fa fa-file-code-o fa-lg"></i> ' + link + '</a></button>';
+    //
+    //var generatedLinkCsv = '<button type="button" class="btn btn-primary"><a href="' + LinkCsv +  '">' +
+    //    '<b>CSV</b> <i class="fa fa-file-text-o fa-lg"></i> ' + link + '</a></button>';
+    //
+    ////var generatedLinkExcel = '<button type="button" class="btn btn-warning"><a href="' + LinkExcel +  '">' +
+    ////    '<b>EXCEL</b> <i class="fa fa-file-excel-o fa-lg"></i> ' + link + '</a></button>';
+    //
+    //var generatedLinkExcel = '<a class="btn btn-primary" type="button" href="' + LinkExcel +  '">' +
+    //    '<b>EXCEL</b> <i class="fa fa-file-excel-o fa-lg"></i> ' + link + '</a>'
+
+
+    var generatedLinkJson = '<a class="btn btn-success" type="button" href="' + LinkJson +  '">' +
+        '<b>JSON</b> <i class="fa fa-file-code-o fa-lg"></i> ' + link + '</a>';
+    var generatedLinkCsv = '<a class="btn btn-warning" type="button" href="' + LinkCsv +  '">' +
+        '<b>CSV</b> <i class="fa fa-file-text-o fa-lg"></i> ' + link + '</a>';
+    var generatedLinkExcel = '<a class="btn btn-primary" type="button" href="' + LinkExcel +  '">' +
+        '<b>EXCEL</b> <i class="fa fa-file-excel-o fa-lg"></i> ' + link + '</a>'
+
+
+    //var generatedLinkCsv = "http://localhost:4567/downloadReportFile?name=" + link + "&createdDate=" + dateint + "&type=csv" + message;
+    //var generatedLinkExcel = "http://localhost:4567/downloadReportFile?name=" + link + "&createdDate=" + dateint + "&type=excel" + message;
+
+    var LinkArray = generatedLinkJson + " " + generatedLinkCsv + " " + generatedLinkExcel;
+
+    //var typeFormat = '<div class="radio" >' +
+    //            '  <input checked="checked" id="json-' + r + '" name="' + r + '" type="radio" value="json"/>' +
+    //                '  JSON  ' +
+    //            '  <input id="csv-' + r + '" name="' + r + '" type="radio" value="csv"/>' +
+    //                '  CSV  ' +
+    //            '  <input id="excel-' + r + '" name="' + r + '" type="radio" value="excel"/>' +
+    //                '  EXCEL  '
+    //        '</div>';
 
 
     $('#json-' + r).attr('checked','checked');
 
-    json2d.push([reportdate,
-        generatedUrl,
-        typeFormat, typearray]);
+    //json2d.push([reportdate, LinkArray, typeFormat, typearray]);
+    json2d.push([reportdate, LinkArray]);
 
     //Build Datatable and add new rows
     if(reportTable.length == 0) {
@@ -83,42 +112,42 @@ function makeReportTable(report) {
 
     //$(":radio[name='sectionRules'][value='1']").attr('checked', 'checked');
 
-    reportTable.on('click', 'input[name="' + r + '"]:radio', function(e){
-        var TYPE = [];
-        var type = $(this).val();
-        var txt = "";
-        $(this).toggleClass('active');
-
-        // update column following here...
-        var followingCell = $(this).parents('td').prev();
-
-        var rowIndex = reportTable.fnGetPosition( $(this).closest('tr')[0] );
-        var aData = reportTable.fnGetData( rowIndex  );
-        TYPE = aData[3];
-
-            if(type === 'json'){
-                txt = TYPE[0].json;
-            }
-            else if (type === 'csv'){
-                txt = TYPE[0].csv;
-            }
-            else if (type === 'excel'){
-                txt = TYPE[0].excel;
-            }
-
-        followingCell.html(txt);
-        return false;
-    });
+    //reportTable.on('click', 'input[name="' + r + '"]:radio', function(e){
+    //    var TYPE = [];
+    //    var type = $(this).val();
+    //    var txt = "";
+    //    $(this).toggleClass('active');
+    //
+    //    // update column following here...
+    //    var followingCell = $(this).parents('td').prev();
+    //
+    //    var rowIndex = reportTable.fnGetPosition( $(this).closest('tr')[0] );
+    //    var aData = reportTable.fnGetData( rowIndex  );
+    //    TYPE = aData[3];
+    //
+    //        if(type === 'json'){
+    //            txt = TYPE[0].json;
+    //        }
+    //        else if (type === 'csv'){
+    //            txt = TYPE[0].csv;
+    //        }
+    //        else if (type === 'excel'){
+    //            txt = TYPE[0].excel;
+    //        }
+    //
+    //    followingCell.html(txt);
+    //    return false;
+    //});
 }
 
 //Modules
-var DataController1 = angular.module('DataController1',[]);
+//var DataController1 = angular.module('DataController1',[]);
 //var sharedData = angular.module('sharedData',[]);
-var generateCtrl = angular.module('generateCtrl',[]);
-var myApp = angular.module("myApp", []);
+//var generateCtrl = angular.module('generateCtrl',[]);
+//var myApp = angular.module("myApp", []);
 
 var reportCtrl = angular.module('reportCtrl',[]);
-var loadCtrlParam = angular.module('loadCtrlParam',[]);
+//var loadCtrlParam = angular.module('loadCtrlParam',[]);
 var loadCtrl = angular.module('loadCtrl',[]);
 var myService = angular.module('myService',[]);
 var serviceParam = angular.module('serviceParam',[]);
@@ -209,7 +238,6 @@ function loadGeneratorData($scope, $http) {
             pdataName = pdata[0].name;
             pdisplayName = pdata[0].displayName;
         }
-
 
         selectedarray.push({
             pname: pname,
