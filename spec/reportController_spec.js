@@ -62,7 +62,7 @@ angular.module('reportListApp', [])
         //Start describes
         getReportWithParametersData;
     })
-    .controller('reportListAppController', function requiredReportParametersController($scope, $http) {
+    .controller('requireParametersforReportController', function requiredReportParametersController($scope, $http) {
         var getRequireParameterforReportData = function getRequireParameterforReportData() {
             $http.get('http://localhost:4567/geneList', {
                 params: { selectedReport: $scope.keyword }
@@ -96,8 +96,6 @@ angular.module('reportListApp', [])
         //Start describes
         getRequireParameterforReportData;
     });
-
-//param.selectedReport == "geneSummaryReport"
 
 //Describes
 describe('reportListAppController', function() {
@@ -144,6 +142,7 @@ describe('reportListAppController', function() {
             id: 'IDH1'
     }];
 
+    //*** STAR CONDITION TESTS ***//
     beforeEach(inject(function(_$controller_, _$httpBackend_) {
         $controller = _$controller_;
         $scope = {};
@@ -152,7 +151,7 @@ describe('reportListAppController', function() {
             Search: httpData
         });
     }));
-
+    //Load report without parameters
     it('should load report WITHOUT parameters', function () {
         var noParametersController = $controller('reportListAppControllerWithoutParameters', { $scope: $scope });
         //$httpBackend.flush();
@@ -167,29 +166,27 @@ describe('reportListAppController', function() {
             Search: httpParamsData
         });
     }));
-
+    //Load report with parameters
     it('should load report WITH parameters', function () {
         var withParametersController = $controller('reportListAppController', { $scope: $scope });
         //$httpBackend.flush();
-        expect($scope.reportwithparams).toEqual(httpReportParameters);
+        expect($scope.reportwithparams).toEqual(httpParamsData);
     });
 
-    //Load report that requires parameter/parameters
     beforeEach(inject(function(_$controller_, _$httpBackend_) {
         $controller = _$controller_;
         $scope = {};
         $httpBackend = _$httpBackend_;
         $httpBackend.whenGET('http://localhost:4567/geneList?selectedReport=geneSummaryReport').respond({
-            Search: httpParamsData
+            Search: httpReportParameters
         });
     }));
-
-    it('should load Required Parameter WITH report selection', function () {
-        var withParametersController = $controller('reportListAppController', { $scope: $scope });
+    //Load report that requires parameter/parameters
+    it('should load Required PARAMETERS WITH report selection', function () {
+        var requiredParametersController = $controller('requireParametersforReportController', { $scope: $scope });
         //$httpBackend.flush();
         expect($scope.reportrequiredparameters).toEqual(httpReportParameters);
     });
-
 });
 
 
