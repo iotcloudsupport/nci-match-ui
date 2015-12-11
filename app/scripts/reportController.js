@@ -6,6 +6,9 @@
  */
 var reportTable ="";
 
+
+
+
 function makeReportTable(report) {
     var json2d = [];
     var dateint =  report.createdDate;
@@ -71,6 +74,9 @@ var reportCtrl = angular.module('reportCtrl',[]);
 var loadCtrl = angular.module('loadCtrl',[]);
 var myService = angular.module('myService',[]);
 var serviceParam = angular.module('serviceParam',[]);
+var ExampleCtrl = angular.module('myApp',[]);
+
+
 
 $('#parameterslist').multiselect();
 
@@ -102,6 +108,122 @@ function injectParam(param) {
     //serviceParam.mySharedObject.myText = param;
     return serviceParam;
 }
+
+function paramInject($scope) {
+    $scope.injectParameter = function () {
+
+        //alert("pop")
+        $scope.example2model = [];
+        $scope.example2data = [
+            {id: 1, label: "David"},
+            {id: 2, label: "Jhon"},
+            {id: 3, label: "Danny"}];
+        $scope.example2settings = {displayProp: 'id'};
+
+    }
+
+}
+
+
+/*
+
+ var app_directives = angular.module('app.directives', []);
+
+
+ function paramInject($scope) {
+
+ $scope.injectParameter = function () {
+
+ $scope.roles = [
+ {"id": 1, "name": "Manager", "assignable": true},
+ {"id": 2, "name": "Developer", "assignable": true},
+ {"id": 3, "name": "Reporter", "assignable": true}
+ ];
+
+ $scope.member = {roles: []};
+ $scope.selected_items = [];
+
+
+ alert(JSON.stringify($scope.roles))
+
+
+
+ app_directives.directive('dropdownMultiselect', function(){
+
+ alert("dang")
+ return {
+ restrict: 'E',
+ scope:{
+ model: '=',
+ options: '=',
+ pre_selected: '=preSelected'
+ },
+ template: "<div class='btn-group' data-ng-class='{open: open}'>"+
+ "<button class='btn btn-small'>Select</button>"+
+ "<button class='btn btn-small dropdown-toggle' data-ng-click='open=!open;openDropdown()'><span class='caret'></span></button>"+
+ "<ul class='dropdown-menu' aria-labelledby='dropdownMenu'>" +
+ "<li><a data-ng-click='selectAll()'><i class='icon-ok-sign'></i>  Check All</a></li>" +
+ "<li><a data-ng-click='deselectAll();'><i class='icon-remove-sign'></i>  Uncheck All</a></li>" +
+ "<li class='divider'></li>" +
+ "<li data-ng-repeat='option in options'> <a data-ng-click='setSelectedItem()'>{{option.name}}<span data-ng-class='isChecked(option.id)'></span></a></li>" +
+ "</ul>" +
+ "</div>" ,
+ controller: function($scope){
+
+ $scope.openDropdown = function(){
+ $scope.selected_items = [];
+ for(var i=0; i<$scope.pre_selected.length; i++){                        $scope.selected_items.push($scope.pre_selected[i].id);
+ }
+ };
+
+ $scope.selectAll = function () {
+ $scope.model = _.pluck($scope.options, 'id');
+ console.log($scope.model);
+ };
+ $scope.deselectAll = function() {
+ $scope.model=[];
+ console.log($scope.model);
+ };
+ $scope.setSelectedItem = function(){
+ var id = this.option.id;
+ if (_.contains($scope.model, id)) {
+ $scope.model = _.without($scope.model, id);
+ } else {
+ $scope.model.push(id);
+ }
+ console.log($scope.model);
+ return false;
+ };
+ $scope.isChecked = function (id) {
+ if (_.contains($scope.model, id)) {
+ return 'icon-ok pull-right';
+ }
+ return false;
+ };
+ }
+ }
+ });
+
+ //
+ //
+ //
+ //
+ //$scope.example2model = [];
+ //    $scope.example2data = [
+ //        {id: 1, label: "David"},
+ //        {id: 2, label: "Jhon"},
+ //        {id: 3, label: "Danny"}];
+ //    $scope.example2settings = {displayProp: 'id'};
+ //
+ //    alert(JSON.stringify($scope.example2data))
+ //
+ }
+
+ }
+
+
+ */
+
 
 // #load the generatble reports
 function loadGeneratorData($scope, $http) {
@@ -313,19 +435,30 @@ function loadGeneratorData($scope, $http) {
 angular
     .module('inspinia')
     .controller('loadCtrl', loadGeneratorData)
-    //.controller('radioCtrl', radioParameter)
-
-    //.directive('loadCtrlParam', enterParameter)
-
     //Factory
     .factory('myService', serviceReport)
     .factory('serviceParam', injectParam)
+    .controller('ExampleCtrl', paramInject)
 
-.controller('MyCtrl', ['$scope', 'myService', function($scope, myService) {
+    .controller('MyCtrl', ['$scope', 'myService', function($scope, myService) {
         $scope.myText = myService.mySharedObject.myText;
         $scope.updateObject = myService.updateObject;
         $scope.myService = myService;
         $scope.mySharedObject =  myService.mySharedObject;
 
-    }]
-    )
+    }])
+
+//*******************//
+
+//.controller('ExampleCtrl', ['$scope', function($scope) {
+//    $scope.example2model = [];
+//    $scope.example2data = [
+//        {id: 1, label: "David"},
+//        {id: 2, label: "Jhon"},
+//        {id: 3, label: "Danny"}];
+//    $scope.example2settings = {displayProp: 'id'};
+//}])
+
+
+
+//*******************//
