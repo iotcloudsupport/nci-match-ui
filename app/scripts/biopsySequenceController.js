@@ -5,11 +5,6 @@
  * treatmentArmCtrl - controller
  */
 
-var treatmentArmId;
-var excTable;
-var diseasesSelected = [];
-var tasSelected = [];
-
 function makeBioTable(array) {
     var json2d = [];
     if (array !== null) {
@@ -125,10 +120,7 @@ function makeBioTable(array) {
         'aaSorting': [],
         'iDisplayLength': 100,
         'order' : [[0, "asc"]],
-        'language' : { 'zeroRecords': 'There are no biopsy sequence.' },
-        'createdRow': function ( row, data, index ) {
-            //$('td', row).eq(1).addClass(determinePatientStatusColor(data[1]));
-        }
+        'language' : { 'zeroRecords': 'There are no biopsy sequence.' }
     });
 }
 
@@ -146,14 +138,14 @@ function biopsysequeceTable($scope, $http) {
 
     $scope.loadBioData = function () {
         $http.get(URL)
-            .success(function (data, status, headers, config) {
+            .success(function (data) {
                     makeBioTable(data);
             })
             .error(function (data, status, header, config) {
                 $scope.ResponseDetails = "Data: " + data +
                     "<br />status: " + status +
-                    "<br />headers: " + jsonFilter(header) +
-                    "<br />config: " + jsonFilter(config);
+                    "<br />headers: " + JSON.stringify(header) +
+                    "<br />config: " + JSON.stringify(config);
             });
 
     };
