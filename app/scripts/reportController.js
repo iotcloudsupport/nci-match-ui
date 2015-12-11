@@ -6,9 +6,6 @@
  */
 var reportTable ="";
 
-
-
-
 function makeReportTable(report) {
     var json2d = [];
     var dateint =  report.createdDate;
@@ -42,7 +39,6 @@ function makeReportTable(report) {
 
     $('#json-' + r).attr('checked','checked');
 
-    //json2d.push([reportdate, LinkArray, typeFormat, typearray]);
     json2d.push([reportdate, LinkArray]);
 
     //Build Datatable and add new rows
@@ -75,8 +71,6 @@ var loadCtrl = angular.module('loadCtrl',[]);
 var myService = angular.module('myService',[]);
 var serviceParam = angular.module('serviceParam',[]);
 var ExampleCtrl = angular.module('myApp',[]);
-
-
 
 $('#parameterslist').multiselect();
 
@@ -250,7 +244,6 @@ function loadGeneratorData($scope, $http) {
                             displayname = value.params[0].displayName;
                         }
                     }
-
 
                     //injectParam(value);
                     array.push({
