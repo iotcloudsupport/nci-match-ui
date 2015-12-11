@@ -5,22 +5,14 @@
  * molecularSequenceCtrl - controller
  */
 
-var treatmentArmId;
-var excTable;
-var diseasesSelected = [];
-var tasSelected = [];
-
 function makeMsnTable(array) {
     var json2d = [];
 
     if (array !== null) {
         $.each(array, function (key, value) {
-
             var patientSequenceNumber = value.patientSequenceNumber;
-
             //Biopsies
             var biopsies = value.biopsies;
-
             //Get all Biopsies
             $.each(biopsies, function (nr, data) {
 
@@ -55,12 +47,6 @@ function makeMsnTable(array) {
                 ptenResultDate = moment(ptenResultDate).utc().format('MMMM D, YYYY h:mm A') + ' GMT';
                 specimenFailureDate = moment(specimenFailureDate).utc().format('MMMM D, YYYY h:mm A') + ' GMT';
                 pathologyReviewdate = moment(pathologyReviewdate).utc().format('MMMM D, YYYY h:mm A') + ' GMT';
-                specimenReceivedDate = moment(specimenReceivedDate).utc().format('MMMM D, YYYY h:mm A') + ' GMT';
-
-                ptenOrderDate = (ptenOrderDate !== 'Invalid date GMT') ? ptenOrderDate : "-";
-                ptenResultDate = (ptenResultDate !== 'Invalid date GMT') ? ptenResultDate : "-";
-                specimenFailureDate = (specimenFailureDate !== 'Invalid date GMT') ? specimenFailureDate : "-";
-                pathologyReviewdate = (pathologyReviewdate !== 'Invalid date GMT') ? pathologyReviewdate : "-";
 
                 //Samples are found -- loop
                 if (samples.length > 0) {
@@ -70,12 +56,10 @@ function makeMsnTable(array) {
                         && value.molecularSequenceNumber.length > 0) ? value.molecularSequenceNumber : "-";
 
                         if(molecularSequenceNumber !== '-') {
-
                             //Sample values
                             var lab = value.lab;
                             var dnaShippedDate = moment(value.dnaShippedDate).utc().format('MMMM D, YYYY h:mm A') + ' GMT';
                             var trackingNumber = value.trackingNumber;
-
                             //Build FedEx number link
                             var fedEx = '<a class="report-link" href="http://www.fedex.com/apps/fedextrack/?action=track&tracknumbers='
                                 + trackingNumber +
@@ -113,10 +97,7 @@ function makeMsnTable(array) {
         'aaSorting': [],
         'iDisplayLength': 100,
         'order' : [[0, "asc"]],
-        'language' : { 'zeroRecords': 'There are no molecular sequence.' },
-        'createdRow': function ( row, data, index ) {
-            //$('td', row).eq(1).addClass(determinePatientStatusColor(data[1]));
-        }
+        'language' : { 'zeroRecords': 'There are no molecular sequence.' }
     });
 }
 
@@ -128,16 +109,15 @@ function molecularTable($scope, $http) {
 
     $scope.loadMsnData = function () {
         $http.get(URL)
-            .success(function (data, status, headers, config) {
+            .success(function (data) {
                     makeMsnTable(data);
             })
             .error(function (data, status, header, config) {
                 $scope.ResponseDetails = "Data: " + data +
                     "<br />status: " + status +
-                    "<br />headers: " + jsonFilter(header) +
-                    "<br />config: " + jsonFilter(config);
+                    "<br />headers: " + JSON.stringify(header) +
+                    "<br />config: " + JSON.stringify(config);
             });
-
     };
 }
 
