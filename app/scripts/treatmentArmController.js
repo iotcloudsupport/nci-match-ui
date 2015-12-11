@@ -68,10 +68,6 @@ var treatmentarmCtrl = angular.module('treatmentarmCtrl',[]);
 
 function treatmentarmTable($scope, $http) {
 
-    //$scope.taData = {
-    //    items: [{
-    //    }]
-    //};
     var URL = "http://localhost:8080/match/common/rs/getBasicTreatmentArms";
 
     $scope.loadTAData = function () {
