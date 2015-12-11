@@ -4,10 +4,6 @@
 /**
  * treatmentArmCtrl - controller
  */
-
-var treatmentArmId;
-var excTable;
-var diseasesSelected = [];
 var tasSelected = [];
 
 function makeTreatmentArms2d(treatmentArms) {
@@ -52,7 +48,6 @@ function makeTreatmentArms2d(treatmentArms) {
         }
     });
 
-
     var curTable = $('#treatment-arms').dataTable( {
         'data': json2d,
         'bAutoWidth' : false,
@@ -64,14 +59,8 @@ function makeTreatmentArms2d(treatmentArms) {
         'aaSorting': [],
         'iDisplayLength': 100,
         'order' : [[0, "asc"]],
-        'language' : { 'zeroRecords': 'There are no treatment arms.' },
-        'createdRow': function ( row, data, index ) {
-            //$('td', row).eq(1).addClass(determinePatientStatusColor(data[1]));
-        }
+        'language' : { 'zeroRecords': 'There are no treatment arms.' }
     });
-
-
-    //return json2d;
 }
 
 
@@ -79,28 +68,25 @@ var treatmentarmCtrl = angular.module('treatmentarmCtrl',[]);
 
 function treatmentarmTable($scope, $http) {
 
-    $scope.taData = {
-        items: [{
-
-        }]
-    };
+    //$scope.taData = {
+    //    items: [{
+    //    }]
+    //};
     var URL = "http://localhost:8080/match/common/rs/getBasicTreatmentArms";
 
     $scope.loadTAData = function () {
         $http.get(URL)
-            .success(function (data, status, headers, config) {
-                angular.forEach(data, function(value, key) {
+            .success(function (data) {
+                angular.forEach(data, function() {
                     makeTreatmentArms2d(data);
                 });
-
             })
             .error(function (data, status, header, config) {
                 $scope.ResponseDetails = "Data: " + data +
                     "<br />status: " + status +
-                    "<br />headers: " + jsonFilter(header) +
-                    "<br />config: " + jsonFilter(config);
+                    "<br />headers: " + JSON.stringify(header) +
+                    "<br />config: " + JSON.stringify(config);
             });
-
     };
 }
 
