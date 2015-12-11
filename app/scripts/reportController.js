@@ -223,7 +223,6 @@ function paramInject($scope) {
 function loadGeneratorData($scope, $http) {
     var array = [];
     var URL = "http://localhost:4567/reportList";
-    //var URL = "http://localhost:4567/geneList";
 
     $scope.generateReportLinks = function () {
 
@@ -267,16 +266,10 @@ function loadGeneratorData($scope, $http) {
             });
     };
 
-    //http://localhost:4567/patientList
-    //http://localhost:4567/treatmentArmIdList
-    //http://localhost:4567/variantList
-
     $scope.reportSelect = function (param) {
-        var pname = "-";
         var pdata = [];
         var pdisplayName = "-";
         var pdataName = "-";
-        var p$$hashKey = "-";
         var selectedarray = [];
         var namesarray = [];
         var URL = "";
@@ -284,30 +277,20 @@ function loadGeneratorData($scope, $http) {
 
         if(param.selectedReport == "geneSummaryReport" ||
             param.selectedReport == "patientsByGeneName") {
-            //geneSummaryReport
-            //patientsByGeneName
             URL = "http://localhost:4567/geneList";
         }
         else if(param.selectedReport == "treatmentArmSummaryReport" ||
             param.selectedReport == "diseaseCoverageByTreatmentArm") {
-            //treatmentArmSummaryReport
-            //diseaseCoverageByTreatmentArm
             URL = "http://localhost:4567/treatmentArmIdList";
         }
         else if(param.selectedReport == "variantSummaryReport" ||
             param.selectedReport == "qualifyingVariantSummaryReport") {
-            //variantSummaryReport
-            //qualifyingVariantSummaryReport
             URL = "http://localhost:4567/variantList";
         }
         else if(param.selectedReport == "patientEligibleArmsNoTiebreaker") {
-            //patientEligibleArmsNoTiebreaker
             URL = "http://localhost:4567/patientList";
         }
         else{
-            //$scope.selectedreport = selectedarray;
-            //$scope.selected = $scope.selectedreport[0];
-
             namesarray.push({
                 name: '-',
                 id: '-'
@@ -319,27 +302,14 @@ function loadGeneratorData($scope, $http) {
         $http
             .get(URL)
             .success(function (data, status, headers, config) {
-
                 $.each(data, function (key, value) {
-                    var dataname = "-";
-                    var displayname = "-";
-
-                    //var inx = '<input type="checkbox" >' + value + '</input>';
                     var inx = value ;
-
-                    //if(value != null){
-                    //    dataname = value[0].name;
-                    //    displayname = value[0].displayName;
-                    //}
-                    ////injectParam(value);
                     namesarray.push({
                         name: key,
                         id: inx
                     });
                 });
                 $scope.namelist = namesarray;
-
-                //$scope.namelist = $scope.nameslist[0];
             })
             .error(function (data, status, header, config) {
                 $scope.ResponseDetails = "Data: " + data +

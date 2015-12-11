@@ -22,7 +22,8 @@ module.exports = function(config) {
       //'spec/reportCtrl_spec.js'
       //
       //'spec/sampleProvider.js',
-      'spec/sampleProvider_spec.js'
+      //'spec/sampleProvider_spec.js'
+      'spec/reportController_spec.js'
     ],
 
 
