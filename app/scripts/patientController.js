@@ -82,9 +82,7 @@ function patientTable($scope, $http) {
 
         $http.get(URL)
             .success(function (data, status, headers, config) {
-
                 makePatients2d(data);
-
             })
             .error(function (data, status, header, config) {
                 $scope.ResponseDetails = "Data: " + data +

@@ -23,6 +23,10 @@ module.exports = function(config) {
       //
       //'spec/sampleProvider.js',
       //'spec/sampleProvider_spec.js'
+      'spec/patientController_spec.js',
+      'spec/treatmentArmController_spec.js',
+      'spec/biopsySequenceController_spec.js',
+      'spec/molecularSequenceController_spec.js',
       'spec/reportController_spec.js'
     ],
 
