@@ -19,21 +19,6 @@ function makeMsnTable(array) {
                 var biopsySequenceNumber = (data.biopsySequenceNumber !== null
                 && data.biopsySequenceNumber.length > 0) ? data.biopsySequenceNumber : "-";
 
-                var ptenOrderDate = (data.ptenOrderDate !== null
-                && data.ptenOrderDate.length > 0) ? data.ptenOrderDate : "-";
-
-                var ptenResultDate = (data.ptenResultDate !== null
-                && data.ptenResultDate.length > 0) ? data.ptenResultDate : "-";
-
-                var specimenReceivedDate = (data.specimenReceivedDate !== null
-                && data.specimenReceivedDate.length > 0) ? data.specimenReceivedDate : "-";
-
-                var specimenFailureDate = (data.specimenFailureDate !== null
-                && data.specimenFailureDate.length > 0) ? data.specimenFailureDate : "-";
-
-                var pathologyReviewdate = (data.pathologyReviewdate !== null
-                && data.pathologyReviewdate.length > 0) ? data.pathologyReviewdate : "-";
-
                 var samples = data.samples;
 
                 var patientDetailHref = "<a class='report-link' href='patientDetails.html?patientId=" + patientSequenceNumber + "'>" +
@@ -42,11 +27,6 @@ function makeMsnTable(array) {
                 var biopsyDetailHref = "<a class='report-link' href='mdAndersonMessages.html?patientSequenceNumber=" + patientSequenceNumber +
                     "&biopsySequenceNumber=" + biopsySequenceNumber + "'>" +
                     "<i class='fa fa-tasks report-link'></i> " + biopsySequenceNumber + "</a>";
-
-                ptenOrderDate = moment(ptenOrderDate).utc().format('MMMM D, YYYY h:mm A') + ' GMT';
-                ptenResultDate = moment(ptenResultDate).utc().format('MMMM D, YYYY h:mm A') + ' GMT';
-                specimenFailureDate = moment(specimenFailureDate).utc().format('MMMM D, YYYY h:mm A') + ' GMT';
-                pathologyReviewdate = moment(pathologyReviewdate).utc().format('MMMM D, YYYY h:mm A') + ' GMT';
 
                 //Samples are found -- loop
                 if (samples.length > 0) {

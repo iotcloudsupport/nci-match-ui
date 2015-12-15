@@ -124,6 +124,7 @@ function makeBioTable(array) {
     });
 }
 
+//Controller
 var biopsysequenceCtrl = angular.module('biopsysequenceCtrl',[]);
 
 function biopsysequeceTable($scope, $http) {

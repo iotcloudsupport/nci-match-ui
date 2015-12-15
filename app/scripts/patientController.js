@@ -61,12 +61,9 @@ function makePatients2d(patients) {
             //$('td', row).eq(1).addClass(determinePatientStatusColor(data[1]));
         }
     });
-
-
-    //return json2d;
 }
 
-
+//Controller
 var patientCtrl = angular.module('patientCtrl',[]);
 
 function patientTable($scope, $http) {
@@ -81,7 +78,7 @@ function patientTable($scope, $http) {
     $scope.loadPatientData = function () {
 
         $http.get(URL)
-            .success(function (data, status, headers, config) {
+            .success(function (data) {
                 makePatients2d(data);
             })
             .error(function (data, status, header, config) {

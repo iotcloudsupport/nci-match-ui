@@ -4,9 +4,8 @@
 /**
  * ReportCtrl - controller
  */
-var reportTable ="";
-
 function makeLoadReportTable(report) {
+    reportTable ="";
     var json2d = [];
 
     $.each(report, function (key, value) {
@@ -26,44 +25,40 @@ function makeLoadReportTable(report) {
         var generatedLinkCsv = '<a class="btn btn-warning" type="button" href="' + LinkCsv +  '">' +
             '<i class="fa fa-file-text-o fa-lg"></i> <b>CSV</b> </a>';
         var generatedLinkExcel = '<a class="btn btn-primary" type="button" href="' + LinkExcel +  '">' +
-            '<i class="fa fa-file-excel-o fa-lg"></i> <b>EXCEL</b> </a>'
+            '<i class="fa fa-file-excel-o fa-lg"></i> <b>EXCEL</b> </a>';
 
         var LinkArray = generatedLinkJson + " " + generatedLinkCsv + " " + generatedLinkExcel;
 
         json2d.push([link, description, LinkArray]);
     });
-    //Build Datatable and add new rows
-    if(reportTable.length == 0) {
-        reportTable = $('#readyreports').dataTable({
-            'data': json2d,
-            'bAutoWidth': false,
-            'bFilter': true,
-            'bSearchable': true,
-            'bInfo': false,
-            'bPaginate': true,
-            'bDestroy': true,
-            'aaSorting': [],
-            'iDisplayLength': 100,
-            'order': [[0, "asc"]],
-            'language': {'zeroRecords': 'There are no report links.'}
-        });
-    }
-    else{
-        reportTable.dataTable().fnAddData(json2d);
-    }
+
+    var curTable = $('#readyreports').dataTable( {
+        'data': json2d,
+        'bAutoWidth' : false,
+        'bFilter': true,
+        'bSearchable':true,
+        'bInfo':false,
+        'bPaginate': true,
+        'bDestroy': true,
+        'aaSorting': [],
+        'iDisplayLength': 100,
+        'order' : [[0, "asc"]],
+        'language' : { 'zeroRecords': 'There are no report links.' }
+    });
 }
 
-//Modules
+//Controller
 var loadCtrl = angular.module('loadCtrl',[]);
 
 // #load the generatble reports
 function loadGeneratorData($scope, $http) {
-    var array = [];
+
     var URL = "http://localhost:4567/reportList";
     $scope.generateLoadReportLinks = function () {
         $http
             .get(URL)
             .success(function (data) {
+                var array = [];
                 $.each(data, function (key, value) {
                     var dataname = "-";
                     var displayname = "-";

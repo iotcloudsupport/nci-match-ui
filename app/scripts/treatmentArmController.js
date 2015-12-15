@@ -63,7 +63,7 @@ function makeTreatmentArms2d(treatmentArms) {
     });
 }
 
-
+//Controller
 var treatmentarmCtrl = angular.module('treatmentarmCtrl',[]);
 
 function treatmentarmTable($scope, $http) {
