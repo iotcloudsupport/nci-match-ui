@@ -10,11 +10,12 @@ function makeLoadReportTable(report) {
 
     $.each(report, function (key, value) {
         var link = "-";
-        var dateint = "-";
+        var displayname = "-";
         var description = "-";
 
         link = value.name;
         description = value.description;
+        displayname = value.displayname;
 
         var LinkJson = "http://localhost:4567/downloadReportFile?name=" + link + "&type=json";
         var LinkCsv = "http://localhost:4567/downloadReportFile?name=" + link + "&type=csv";
@@ -29,7 +30,7 @@ function makeLoadReportTable(report) {
 
         var LinkArray = generatedLinkJson + " " + generatedLinkCsv + " " + generatedLinkExcel;
 
-        json2d.push([link, description, LinkArray]);
+        json2d.push([displayname, description, LinkArray]);
     });
 
     var curTable = $('#readyreports').dataTable( {
@@ -60,6 +61,7 @@ function loadGeneratorData($scope, $http) {
         $http
             .get(URL)
             .success(function (data) {
+
                 var array = [];
                 $.each(data, function (key, value) {
                     var dataname = "-";
@@ -68,13 +70,12 @@ function loadGeneratorData($scope, $http) {
 
                     if(value != null){
                         dataname = value.name;
-                        displayname = value.displayname;
+                        displayname = value.displayName;
                         description = value.description;
                     }
 
                     array.push({
                         name: dataname,
-                        id: dataname,
                         description: description,
                         dataname: dataname,
                         displayname: displayname
