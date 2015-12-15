@@ -59,6 +59,7 @@ function makeTreatmentArms2d(treatmentArms) {
         'aaSorting': [],
         'iDisplayLength': 100,
         'order' : [[0, "asc"]],
+        "dom": 'T<"clear">lfrtip',
         'language' : { 'zeroRecords': 'There are no treatment arms.' }
     });
 }
