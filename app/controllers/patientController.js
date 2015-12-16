@@ -57,39 +57,21 @@ function makePatients2d(patients) {
         'iDisplayLength': 100,
         'order' : [[0, "asc"]],
         "dom": 'T<"clear">lfrtip',
-        'language' : { 'zeroRecords': 'There are no patients.' },
-        'createdRow': function ( row, data, index ) {
-            //$('td', row).eq(1).addClass(determinePatientStatusColor(data[1]));
-        }
+        'language' : { 'zeroRecords': 'There are no patients.' }
     });
 }
 
 //Controller
-var patientCtrl = angular.module('patientCtrl',[]);
+var patientCtrl = angular.module('myApp',[]);
 
-function patientTable($scope, $http) {
-
-    $scope.patientData = {
-        items: [{
-
-        }]
-    };
-    var URL = "http://localhost:8080/match/common/rs/getBasicPatientsData";
-
-    $scope.loadPatientData = function () {
-
-        $http.get(URL)
-            .success(function (data) {
-                makePatients2d(data);
-            })
-            .error(function (data, status, header, config) {
-                $scope.ResponseDetails = "Data: " + data +
-                    "<br />status: " + status +
-                    "<br />headers: " + jsonFilter(header) +
-                    "<br />config: " + jsonFilter(config);
+function patientTable($scope, restCallService) {
+    $scope.loadPatientData = function (id) {
+        restCallService.async(id)
+            .then(function (d) {
+                $scope.data = d;
+                makePatients2d($scope.data);
             });
-
-    };
+    }
 }
 
 angular

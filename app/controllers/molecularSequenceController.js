@@ -84,22 +84,15 @@ function makeMsnTable(array) {
 
 var molecularSequenceCtrl = angular.module('molecularSequenceCtrl',[]);
 
-function molecularTable($scope, $http) {
-
-    var URL = "http://localhost:4567/patientSpecimenTrackingSummary";
-
-    $scope.loadMsnData = function () {
-        $http.get(URL)
-            .success(function (data) {
-                    makeMsnTable(data);
-            })
-            .error(function (data, status, header, config) {
-                $scope.ResponseDetails = "Data: " + data +
-                    "<br />status: " + status +
-                    "<br />headers: " + JSON.stringify(header) +
-                    "<br />config: " + JSON.stringify(config);
+function molecularTable($scope, restCallService) {
+    $scope.loadMsnData = function (id) {
+        restCallService.async(id)
+            .then(function (d) {
+                //alert(d)
+                $scope.data = d;
+                makeMsnTable($scope.data);
             });
-    };
+    }
 }
 
 angular

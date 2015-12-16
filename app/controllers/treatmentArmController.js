@@ -67,24 +67,14 @@ function makeTreatmentArms2d(treatmentArms) {
 //Controller
 var treatmentarmCtrl = angular.module('treatmentarmCtrl',[]);
 
-function treatmentarmTable($scope, $http) {
-
-    var URL = "http://localhost:8080/match/common/rs/getBasicTreatmentArms";
-
-    $scope.loadTAData = function () {
-        $http.get(URL)
-            .success(function (data) {
-                angular.forEach(data, function() {
-                    makeTreatmentArms2d(data);
-                });
-            })
-            .error(function (data, status, header, config) {
-                $scope.ResponseDetails = "Data: " + data +
-                    "<br />status: " + status +
-                    "<br />headers: " + JSON.stringify(header) +
-                    "<br />config: " + JSON.stringify(config);
+function treatmentarmTable($scope, restCallService) {
+    $scope.loadTAData = function (id) {
+        restCallService.async(id)
+            .then(function (d) {
+                $scope.data = d;
+                makeTreatmentArms2d($scope.data);
             });
-    };
+    }
 }
 
 angular

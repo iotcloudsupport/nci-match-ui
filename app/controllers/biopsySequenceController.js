@@ -128,29 +128,15 @@ function makeBioTable(array) {
 //Controller
 var biopsysequenceCtrl = angular.module('biopsysequenceCtrl',[]);
 
-function biopsysequeceTable($scope, $http) {
-
-    $scope.bioData = {
-        items: [{
-
-        }]
-    };
-
-    var URL = "http://localhost:4567/patientSpecimenTrackingSummary";
-
-    $scope.loadBioData = function () {
-        $http.get(URL)
-            .success(function (data) {
-                    makeBioTable(data);
-            })
-            .error(function (data, status, header, config) {
-                $scope.ResponseDetails = "Data: " + data +
-                    "<br />status: " + status +
-                    "<br />headers: " + JSON.stringify(header) +
-                    "<br />config: " + JSON.stringify(config);
+function biopsysequeceTable($scope, restCallService) {
+    $scope.loadBioData = function (id) {
+        restCallService.async(id)
+            .then(function (d) {
+                //alert(d)
+                $scope.data = d;
+                makeBioTable($scope.data);
             });
-
-    };
+    }
 }
 
 angular
