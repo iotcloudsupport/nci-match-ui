@@ -15,6 +15,9 @@ angular.module('myApp',[]);
                 else if(id=='molecularsequence' || id=='biopsysequence'){
                     URL = "http://localhost:4567/patientSpecimenTrackingSummary";
                 }
+                else if(id=='report'){
+                    URL = "http://localhost:4567/reportList";
+                }
 
                 // $http returns a promise, which has a then function, which also returns a promise
                 var promise = $http.get(URL)

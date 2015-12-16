@@ -2,29 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="26d435af-7587-4805-a8a4-312b9b564000" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/dashboardController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/navigationController.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/reportController.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/common/dashboard_2.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/common/dashboard_4.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/common/off_canvas_menu.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/common/rest_panel.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/common/rest_tabs.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/common/table_basic.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/common/table_data_tables.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/common/table_foo_table.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/common/tabs_panels.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/views/common/widgets.html" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/scripts/biopsySequenceController.js" afterPath="$PROJECT_DIR$/app/controllers/biopsySequenceController.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/scripts/molecularSequenceController.js" afterPath="$PROJECT_DIR$/app/controllers/molecularSequenceController.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/scripts/patientController.js" afterPath="$PROJECT_DIR$/app/controllers/patientController.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/scripts/treatmentArmController.js" afterPath="$PROJECT_DIR$/app/controllers/treatmentArmController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/common/biopsysequence.html" afterPath="$PROJECT_DIR$/app/views/common/biopsysequence.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/app/scripts/reportController.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/common/molecularsequence.html" afterPath="$PROJECT_DIR$/app/views/common/molecularsequence.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scripts/navigationController.js" afterPath="$PROJECT_DIR$/app/scripts/navigationController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/common/patients.html" afterPath="$PROJECT_DIR$/app/views/common/patients.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/common/treatmentarm.html" afterPath="$PROJECT_DIR$/app/views/common/treatmentarm.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/navigationController.js" afterPath="$PROJECT_DIR$/app/controllers/navigationController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/common/ncireport.html" afterPath="$PROJECT_DIR$/app/views/common/ncireport.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/reportController.js" afterPath="$PROJECT_DIR$/app/controllers/reportController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/services/restCallService.js" afterPath="$PROJECT_DIR$/app/services/restCallService.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="nci-match-ui.iws" />
@@ -47,14 +30,14 @@
     </favorites_list>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5098232">
+    <splitter split-orientation="horizontal" split-proportion="0.6878531">
       <split-first>
         <leaf>
-          <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.625502">
-                  <caret line="96" column="24" selection-start-line="96" selection-start-column="24" selection-end-line="96" selection-end-column="24" />
+                <state vertical-scroll-proportion="-25.096775">
+                  <caret line="97" column="24" selection-start-line="97" selection-start-column="24" selection-end-line="97" selection-end-column="24" />
                   <folding />
                 </state>
               </provider>
@@ -66,19 +49,6 @@
                 <state vertical-scroll-proportion="0.0">
                   <caret line="31" column="53" selection-start-line="31" selection-start-column="53" selection-end-line="31" selection-end-column="53" />
                   <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="directives.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/scripts/directives.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="28" column="3" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
-                  <folding>
-                    <element signature="n#!!doc" expanded="true" />
-                    <element signature="n#!!block;n#pageTitle#0" expanded="false" />
-                  </folding>
                 </state>
               </provider>
             </entry>
@@ -95,11 +65,33 @@
               </provider>
             </entry>
           </file>
+          <file leaf-file-name="ncireport.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/views/common/ncireport.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="-15.333333">
+                  <caret line="23" column="88" selection-start-line="23" selection-start-column="88" selection-end-line="23" selection-end-column="88" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
           <file leaf-file-name="biopsySequenceController.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/controllers/biopsySequenceController.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state vertical-scroll-proportion="0.0">
-                  <caret line="121" column="31" selection-start-line="121" selection-start-column="31" selection-end-line="121" selection-end-column="31" />
+                  <caret line="139" column="1" selection-start-line="130" selection-start-column="0" selection-end-line="139" selection-end-column="1" />
+                  <folding>
+                    <element signature="n#!!doc" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="dashboardController.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/controllers/dashboardController.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
                   </folding>
@@ -110,8 +102,8 @@
           <file leaf-file-name="restCallService.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/services/restCallService.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="-12.142858">
-                  <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+                <state vertical-scroll-proportion="-12.857142">
+                  <caret line="18" column="61" selection-start-line="18" selection-start-column="61" selection-end-line="18" selection-end-column="61" />
                   <folding />
                 </state>
               </provider>
@@ -127,11 +119,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="reportController.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/scripts/reportController.js">
+          <file leaf-file-name="reportController.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/app/controllers/reportController.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0">
-                  <caret line="30" column="94" selection-start-line="30" selection-start-column="94" selection-end-line="30" selection-end-column="94" />
+                <state vertical-scroll-proportion="0.4815106">
+                  <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
                   <folding />
                 </state>
               </provider>
@@ -154,8 +146,8 @@
           <file leaf-file-name="treatmentArmController.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/controllers/treatmentArmController.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.9707887">
-                  <caret line="81" column="54" selection-start-line="81" selection-start-column="54" selection-end-line="81" selection-end-column="54" />
+                <state vertical-scroll-proportion="0.27301338">
+                  <caret line="26" column="95" selection-start-line="26" selection-start-column="95" selection-end-line="26" selection-end-column="95" />
                   <folding />
                 </state>
               </provider>
@@ -187,6 +179,18 @@
                 <state vertical-scroll-proportion="0.0">
                   <caret line="99" column="56" selection-start-line="99" selection-start-column="56" selection-end-line="99" selection-end-column="56" />
                   <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="navigationController.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/controllers/navigationController.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="31" column="2" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="2" />
+                  <folding>
+                    <element signature="n#!!doc" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -239,8 +243,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/views/common/top_navigation.html" />
-        <option value="$PROJECT_DIR$/app/views/common/topnavbar.html" />
         <option value="$PROJECT_DIR$/app/views/common/nihnavigation.html" />
         <option value="$PROJECT_DIR$/app/views/common/reportboard.html" />
         <option value="$PROJECT_DIR$/app/scripts/app.js" />
@@ -269,9 +271,7 @@
         <option value="$PROJECT_DIR$/spec/biopsySequenceController_spec.js" />
         <option value="$PROJECT_DIR$/spec/reportController_spec.js" />
         <option value="$PROJECT_DIR$/bower.json" />
-        <option value="$PROJECT_DIR$/app/views/common/ncireport.html" />
         <option value="$PROJECT_DIR$/app/views/common/content.html" />
-        <option value="$PROJECT_DIR$/app/scripts/reportController.js" />
         <option value="$PROJECT_DIR$/app/scripts/navigationController.js" />
         <option value="$PROJECT_DIR$/app/services/indexService" />
         <option value="$PROJECT_DIR$/app/services/indexService.js" />
@@ -280,7 +280,6 @@
         <option value="$PROJECT_DIR$/app/views/common/molecularsequence.html" />
         <option value="$PROJECT_DIR$/app/views/common/biopsysequence.html" />
         <option value="$PROJECT_DIR$/app/scripts/biopsySequenceController.js" />
-        <option value="$PROJECT_DIR$/app/services/restCallService.js" />
         <option value="$PROJECT_DIR$/app/directives/tableDirective.js" />
         <option value="$PROJECT_DIR$/app/controllers/biopsySequenceController.js" />
         <option value="$PROJECT_DIR$/app/scripts/molecularSequenceController.js" />
@@ -289,7 +288,12 @@
         <option value="$PROJECT_DIR$/app/controllers/patientController.js" />
         <option value="$PROJECT_DIR$/app/scripts/treatmentArmController.js" />
         <option value="$PROJECT_DIR$/app/controllers/treatmentArmController.js" />
+        <option value="$PROJECT_DIR$/app/controllers/navigationController.js" />
+        <option value="$PROJECT_DIR$/app/services/restCallService.js" />
+        <option value="$PROJECT_DIR$/app/scripts/reportController.js" />
         <option value="$PROJECT_DIR$/app/index.html" />
+        <option value="$PROJECT_DIR$/app/views/common/ncireport.html" />
+        <option value="$PROJECT_DIR$/app/controllers/reportController.js" />
       </list>
     </option>
   </component>
@@ -301,10 +305,10 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-2558" />
-    <option name="y" value="-425" />
-    <option name="width" value="2472" />
-    <option name="height" value="1174" />
+    <option name="x" value="-2560" />
+    <option name="y" value="-518" />
+    <option name="width" value="2560" />
+    <option name="height" value="1418" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -605,15 +609,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2558" y="-425" width="2472" height="1174" extended-state="0" />
-    <editor active="false" />
+    <frame x="-2560" y="-518" width="2560" height="1418" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40435606" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24980299" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16897959" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16312057" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294753" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -738,6 +742,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -877,14 +884,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/common/ncireport.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2581967">
-          <caret line="21" column="47" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/directives.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -900,14 +899,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.7142856">
           <caret line="4" column="85" selection-start-line="4" selection-start-column="85" selection-end-line="4" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/reportController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="94" selection-start-line="30" selection-start-column="94" selection-end-line="30" selection-end-column="94" />
           <folding />
         </state>
       </provider>
@@ -936,30 +927,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/services/restCallService.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.142858">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/directives/tableDirective.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
             <element signature="e#0#47#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/biopsySequenceController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="121" column="31" selection-start-line="121" selection-start-column="31" selection-end-line="121" selection-end-column="31" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -972,14 +945,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/patientController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="78" column="44" selection-start-line="78" selection-start-column="44" selection-end-line="78" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/molecularSequenceController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -988,18 +953,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
+    <entry file="file://$PROJECT_DIR$/app/controllers/dashboardController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.625502">
-          <caret line="96" column="24" selection-start-line="96" selection-start-column="24" selection-end-line="96" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/patientController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="78" column="44" selection-start-line="78" selection-start-column="44" selection-end-line="78" selection-end-column="44" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/navigationController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="2" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="2" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/treatmentArmController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9707887">
-          <caret line="81" column="54" selection-start-line="81" selection-start-column="54" selection-end-line="81" selection-end-column="54" />
+        <state vertical-scroll-proportion="0.27301338">
+          <caret line="26" column="95" selection-start-line="26" selection-start-column="95" selection-end-line="26" selection-end-column="95" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/services/restCallService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.857142">
+          <caret line="18" column="61" selection-start-line="18" selection-start-column="61" selection-end-line="18" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/biopsySequenceController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="139" column="1" selection-start-line="130" selection-start-column="0" selection-end-line="139" selection-end-column="1" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-25.096775">
+          <caret line="97" column="24" selection-start-line="97" selection-start-column="24" selection-end-line="97" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/common/ncireport.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.333333">
+          <caret line="23" column="88" selection-start-line="23" selection-start-column="88" selection-end-line="23" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/reportController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4815106">
+          <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
           <folding />
         </state>
       </provider>

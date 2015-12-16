@@ -53,17 +53,15 @@ function makeLoadReportTable(report) {
 //Controller
 var loadCtrl = angular.module('loadCtrl',[]);
 
-// #load the generatble reports
-function loadGeneratorData($scope, $http) {
 
-    var URL = "http://localhost:4567/reportList";
-    $scope.generateLoadReportLinks = function () {
-        $http
-            .get(URL)
-            .success(function (data) {
+function loadGeneratorData($scope, restCallService) {
+    $scope.generateLoadReportLinks = function (id) {
+        restCallService.async(id)
+            .then(function (d) {
+                $scope.data = d;
 
                 var array = [];
-                $.each(data, function (key, value) {
+                $.each($scope.data, function (key, value) {
                     var dataname = "-";
                     var displayname = "-";
                     var description = "-";
@@ -81,16 +79,11 @@ function loadGeneratorData($scope, $http) {
                         displayname: displayname
                     });
                 });
+
                 makeLoadReportTable(array);
-            })
-            .error(function (data, status, header, config) {
-                $scope.ResponseDetails = "Data: " + data +
-                    "<br />status: " + status +
-                    "<br />headers: " + JSON.stringify(header) +
-                    "<br />config: " + JSON.stringify(config)
-                ;
+                //makeBioTable($scope.data);
             });
-        };
+    }
 }
 
 angular
