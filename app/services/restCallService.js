@@ -2,21 +2,37 @@
 angular.module('myApp',[]);
 
     function restService($http) {
+
+        var service = {
+            patient:  "http://localhost:8080/match/common/rs/getBasicPatientsData",
+            treatmentarm: "http://localhost:8080/match/common/rs/getBasicTreatmentArms",
+            molecularsequence: "http://localhost:4567/patientSpecimenTrackingSummary",
+            biopsysequence: "http://localhost:4567/patientSpecimenTrackingSummary",
+            report: "http://localhost:4567/reportList"
+        };
+
         var URL = "";
         var Data = {
             async: function (id) {
 
-                if(id=='patient'){
-                    URL = "http://localhost:8080/match/common/rs/getBasicPatientsData";
-                }
-                else if(id=='treatmentarm'){
-                    URL = "http://localhost:8080/match/common/rs/getBasicTreatmentArms";
-                }
-                else if(id=='molecularsequence' || id=='biopsysequence'){
-                    URL = "http://localhost:4567/patientSpecimenTrackingSummary";
-                }
-                else if(id=='report'){
-                    URL = "http://localhost:4567/reportList";
+                switch (id) {
+                    case 'patient':
+                        URL = service.patient;
+                        break;
+                    case 'treatmentarm':
+                        URL = service.treatmentarm;
+                        break;
+                    case 'molecularsequence':
+                        URL = service.molecularsequence;
+                        break;
+                    case 'biopsysequence':
+                        URL = service.biopsysequence;
+                        break;
+                    case 'report':
+                        URL = service.report;
+                        break;
+                    default:
+                        break;
                 }
 
                 // $http returns a promise, which has a then function, which also returns a promise
@@ -38,8 +54,6 @@ angular.module('myApp',[]);
         };
         return Data;
     }
-//});
-
 
 angular
     .module('inspinia')

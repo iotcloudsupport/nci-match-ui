@@ -37,8 +37,8 @@ function makeLoadReportTable(report) {
         'data': json2d,
         responsive: true,
         'bAutoWidth' : false,
-        'bFilter': true,
-        'bSearchable':true,
+        'bFilter': false,
+        'bSearchable':false,
         'bInfo':false,
         'bPaginate': true,
         'bDestroy': true,
@@ -53,9 +53,9 @@ function makeLoadReportTable(report) {
 //Controller
 var loadCtrl = angular.module('loadCtrl',[]);
 
-
 function loadGeneratorData($scope, restCallService) {
     $scope.generateLoadReportLinks = function (id) {
+        //Http Service call
         restCallService.async(id)
             .then(function (d) {
                 $scope.data = d;
@@ -81,7 +81,6 @@ function loadGeneratorData($scope, restCallService) {
                 });
 
                 makeLoadReportTable(array);
-                //makeBioTable($scope.data);
             });
     }
 }
