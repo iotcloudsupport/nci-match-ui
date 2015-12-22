@@ -292,8 +292,8 @@ module.exports = function (grunt) {
         'filerev',
         'usemin',
         'htmlmin',
-        'copy:dist',
-        'compress'
+        'copy:dist'
+        //'compress:dist'
     ]);
 
 };
