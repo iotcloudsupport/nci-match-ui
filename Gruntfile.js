@@ -215,6 +215,11 @@ module.exports = function (grunt) {
         usemin: {
             html: ['dist/index.html']
         },
+        concat: {
+            dist: {
+
+            }
+        },
         compress: {
             dist: {
                 mode: 'tgz',
