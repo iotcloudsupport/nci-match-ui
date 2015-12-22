@@ -200,11 +200,17 @@ module.exports = function (grunt) {
                 }]
             }
         },
+        //useminPrepare: {
+        //    html: 'app/index.html',
+        //    options: {
+        //        dest: 'dist'
+        //    }
+        //},
         useminPrepare: {
-            html: 'app/index.html',
             options: {
-                dest: 'dist'
-            }
+                dest: '<%= appConfig.dist %>'
+            },
+            html: '<%= appConfig.app %>/index.html'
         },
         usemin: {
             html: ['dist/index.html']
