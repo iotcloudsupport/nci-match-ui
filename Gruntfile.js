@@ -230,6 +230,33 @@ module.exports = function (grunt) {
                 }]
             }
         },
+
+        'string-replace': {
+            dist: {
+                files: {
+                    'dist/scripts/common.js' : 'dist/scripts/common.js'
+                },
+                options: {
+                    replacements: [{
+                        pattern: '$HOSTNAME',
+                        replacement: '<%= cliOptions.hostname %>'
+                    },{
+                        pattern: '$PORT',
+                        replacement: '<%= cliOptions.port %>'
+                    },{
+                        pattern: '$CONTEXT_PATH',
+                        replacement: '<%= cliOptions.contextPath %>'
+                    },{
+                        pattern: '$GUI_BUILD_DATE',
+                        replacement: '<%= cliOptions.guiVersionFunc() %>'
+                    },{
+                        pattern: '$GUI_VERSION',
+                        replacement: '<%= cliOptions.guiVersion %>'
+                    }]
+                }
+            }
+        },
+
         compress: {
             dist: {
                 mode: 'tgz',
@@ -292,7 +319,8 @@ module.exports = function (grunt) {
         'filerev',
         'usemin',
         'htmlmin',
-        'copy:dist'
+        'copy:dist',
+        'string-replace:dist'
         ,'compress:dist'
     ]);
 
