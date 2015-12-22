@@ -287,7 +287,7 @@ module.exports = function (grunt) {
         'less',
         'useminPrepare',
         'concat',
-        'cssmin',
+        //'cssmin',
         'uglify',
         'filerev',
         'usemin',
