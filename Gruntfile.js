@@ -293,7 +293,7 @@ module.exports = function (grunt) {
         'usemin',
         'htmlmin',
         'copy:dist'
-        //,'compress:dist'
+        ,'compress:dist'
     ]);
 
 };
