@@ -24,8 +24,8 @@ module.exports = function (grunt) {
     var cliOptions = {
         hostname: grunt.option('hostname') || 'localhost',
         port: grunt.option('port') || '8080',
-        contextPath: grunt.option('contextPath') || '/match',
-        filepath: '<%= config.dist %>/' + (grunt.option('filename') || 'match-ui.tgz'),
+        contextPath: grunt.option('contextPath') || '/nci-match-ui',
+        filepath: '<%= appConfig.dist %>/' + (grunt.option('filename') || 'nci-match-ui.tgz'),
         guiVersion: grunt.option('guiVersion') || '1.1.0',
         guiVersionFunc: function() {
             return 'built on ' + new Date().getFullYear() + '-' +
