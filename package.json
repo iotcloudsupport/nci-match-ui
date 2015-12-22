@@ -3,9 +3,11 @@
   "version": "2.2.0",
   "description": "INSPINIA - Responsive Admin Theme",
   "dependencies": {
+    "config-chain": "latest",
     "grunt": "^0.4.5"
   },
   "devDependencies": {
+    "bower": "^1.7.1",
     "grunt": "^0.4.5",
     "grunt-concurrent": "^1.0.0",
     "grunt-contrib-clean": "^0.6.0",
@@ -17,6 +19,7 @@
     "grunt-contrib-less": "^0.11.4",
     "grunt-contrib-uglify": "^0.6.0",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-compress": "~0.12.0",
     "grunt-filerev": "^2.0.0",
     "grunt-usemin": "^2.4.0",
     "jasmine-core": "^2.3.4",
@@ -27,11 +30,11 @@
     "karma-jasmine": "^0.3.6",
     "karma-phantomjs-launcher": "^0.2.1",
     "load-grunt-tasks": "^0.6.0",
+    "lodash.clonedeep": "~3.0.2",
+    "lodash.union": "~3.1.0",
+    "lodash.uniq": "~3.2.2",
+    "lodash.without": "~3.2.1",
     "phantomjs": "^1.9.19",
     "time-grunt": "^1.0.0"
-  },
-  "engines": {
-    "node": "0.10.33",
-    "npm": "3.3.11"
   }
 }
