@@ -319,9 +319,9 @@ module.exports = function (grunt) {
         'filerev',
         'usemin',
         'htmlmin',
-        'copy:dist',
-        'string-replace:dist'
-        ,'compress:dist'
+        'copy:dist'
+        //,'string-replace:dist'
+        //,'compress:dist'
     ]);
 
 };
