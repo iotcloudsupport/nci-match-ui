@@ -220,6 +220,16 @@ module.exports = function (grunt) {
 
             }
         },
+        cssmin: {
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: '<%= appConfig.app %>/styles',
+                    src: '{,*/}*.css',
+                    dest: '<%= appConfig.dist %>/styles'
+                }]
+            }
+        },
         compress: {
             dist: {
                 mode: 'tgz',
