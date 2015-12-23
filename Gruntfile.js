@@ -185,6 +185,25 @@ module.exports = function (grunt) {
         },
         usemin: {
             html: ['dist/index.html']
+        },
+        compress: {
+            dist: {
+                mode: 'tgz',
+                options: {
+                    archive: '<%= cliOptions.filepath %>'
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%= appConfig.dist %>/',
+                    src: ['**/*'],
+                    dest: 'matchbox-ui/'
+                },{
+                    expand: true,
+                    cwd: '<%= appConfig.bower_components %>/',
+                    src: ['**/*'],
+                    dest: 'bower_components/'
+                }]
+            }
         }
     });
 
@@ -213,7 +232,8 @@ module.exports = function (grunt) {
         'uglify',
         'filerev',
         'usemin',
-        'htmlmin'
+        'htmlmin',
+        'compress:dist'
     ]);
 
 };
