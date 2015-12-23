@@ -13,22 +13,6 @@ module.exports = function (grunt) {
         dist: 'dist'
     };
 
-    // Command line options
-    var cliOptions = {
-        hostname: grunt.option('hostname') || 'localhost',
-        port: grunt.option('port') || '8080',
-        contextPath: grunt.option('contextPath') || '/match-ui',
-        filepath: '<%= appConfig.dist %>/' + (grunt.option('filename') || 'match-ui.tgz'),
-        guiVersion: grunt.option('guiVersion') || '1.1.0',
-        guiVersionFunc: function() {
-            return 'built on ' + new Date().getFullYear() + '-' +
-                (((new Date().getMonth()+1) < 10)?'0':'') + (new Date().getMonth()+1) + '-' +
-                ((new Date().getDate() < 10)?'0':'') + (new Date().getDate()) + ' ' +
-                ((new Date().getHours() < 10)?'0':'') + new Date().getHours() + ':' +
-                ((new Date().getMinutes() < 10)?'0':'') + new Date().getMinutes();
-        }
-    };
-
     // Grunt configuration
     grunt.initConfig({
 
@@ -202,7 +186,7 @@ module.exports = function (grunt) {
         compress: {
             dist: {
                 options: {
-                    archive: 'match-ui.zip',
+                    archive: 'match-ui.tgz',
                     pretty: true
                 },
                 expand: true,
@@ -211,7 +195,6 @@ module.exports = function (grunt) {
                 dest: '/'
             }
         },
-
         usemin: {
             html: ['dist/index.html']
         }
