@@ -193,10 +193,22 @@ module.exports = function (grunt) {
                     {
                     expand: true,
                     src: ['**'],
-                    cwd: 'bin/debug/'
+                    cwd: 'app/'
                     }
                 ]
             }
+            //
+            //
+            //dist: {
+            //    options: {
+            //        archive: 'match-ui.tgz',
+            //        pretty: true
+            //    },
+            //    expand: true,
+            //    cwd: 'assets/',
+            //    src: ['**/*'],
+            //    dest: '/'
+            //}
         },
         usemin: {
             html: ['dist/index.html']
