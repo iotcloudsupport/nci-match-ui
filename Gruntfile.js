@@ -183,6 +183,7 @@ module.exports = function (grunt) {
                 dest: 'dist'
             }
         },
+        // Generate and compress tar file
         compress: {
             dist: {
                 options: {
@@ -197,24 +198,11 @@ module.exports = function (grunt) {
                     }
                 ]
             }
-            //
-            //
-            //dist: {
-            //    options: {
-            //        archive: 'match-ui.tgz',
-            //        pretty: true
-            //    },
-            //    expand: true,
-            //    cwd: 'assets/',
-            //    src: ['**/*'],
-            //    dest: '/'
-            //}
         },
         usemin: {
             html: ['dist/index.html']
         }
     });
-
     // Run live version of app
     grunt.registerTask('live', [
         'clean:server',
