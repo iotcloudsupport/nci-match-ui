@@ -187,7 +187,7 @@ module.exports = function (grunt) {
         compress: {
             dist: {
                 options: {
-                    archive: "match-ui.tgz",
+                    archive: "nci-match-ui.tgz",
                     pretty: true
                 },
                 files: [
