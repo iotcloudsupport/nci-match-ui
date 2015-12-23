@@ -186,13 +186,16 @@ module.exports = function (grunt) {
         compress: {
             dist: {
                 options: {
-                    archive: 'match-ui.tgz',
+                    archive: "match-ui.tgz",
                     pretty: true
                 },
-                expand: true,
-                cwd: 'assets/',
-                src: ['**/*'],
-                dest: '/'
+                files: [
+                    {
+                    expand: true,
+                    src: ['**'],
+                    cwd: 'bin/debug/'
+                    }
+                ]
             }
         },
         usemin: {
