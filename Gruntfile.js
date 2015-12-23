@@ -17,7 +17,7 @@ module.exports = function (grunt) {
     var cliOptions = {
         hostname: grunt.option('hostname') || 'localhost',
         port: grunt.option('port') || '8080',
-        contextPath: grunt.option('contextPath') || '/match',
+        contextPath: grunt.option('contextPath') || '/match-ui',
         filepath: '<%= appConfig.dist %>/' + (grunt.option('filename') || 'match-ui.tgz'),
         guiVersion: grunt.option('guiVersion') || '1.1.0',
         guiVersionFunc: function() {
@@ -199,9 +199,6 @@ module.exports = function (grunt) {
                 dest: 'dist'
             }
         },
-        usemin: {
-            html: ['dist/index.html']
-        },
         compress: {
             dist: {
                 mode: 'tgz',
@@ -220,6 +217,9 @@ module.exports = function (grunt) {
                     dest: 'bower_components/'
                 }]
             }
+        },
+        usemin: {
+            html: ['dist/index.html']
         }
     });
 
@@ -236,6 +236,8 @@ module.exports = function (grunt) {
         'build',
         'connect:dist:keepalive'
     ]);
+
+    grunt.registerTask('default', ['compress']);
 
     // Build version for production
     grunt.registerTask('build', [
