@@ -23,6 +23,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 .animated.infinite {
     -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
 }
 
@@ -245,6 +246,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 .shake {
     -webkit-animation-name: shake;
+    -moz-animation-name: shake;
     animation-name: shake;
 }
 
@@ -523,6 +525,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 .bounceIn {
     -webkit-animation-name: bounceIn;
+    -moz-animation-name: bounceIn;
     animation-name: bounceIn;
 }
 
@@ -854,6 +857,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 .bounceOutDown {
     -webkit-animation-name: bounceOutDown;
+    -moz-animation-name: bounceOutDown;
     animation-name: bounceOutDown;
 }
 
@@ -1087,6 +1091,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 .fadeInDownBig {
     -webkit-animation-name: fadeInDownBig;
+    -moz-animation-name: fadeInDownBig;
     animation-name: fadeInDownBig;
 }
 
@@ -1297,6 +1302,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 .fadeInUpBig {
     -webkit-animation-name: fadeInUpBig;
+    -moz-animation-name: fadeInUpBig;
     animation-name: fadeInUpBig;
 }
 
@@ -1497,6 +1503,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 .fadeOutRight {
     -webkit-animation-name: fadeOutRight;
+    -moz-animation-name: fadeOutRight;
     animation-name: fadeOutRight;
 }
 
@@ -1809,6 +1816,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     -ms-backface-visibility: visible !important;
     backface-visibility: visible !important;
     -webkit-animation-name: flipInY;
+    -moz-animation-name: flipInY;
     animation-name: flipInY;
 }
 
@@ -1985,6 +1993,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     -webkit-animation-name: lightSpeedOut;
     animation-name: lightSpeedOut;
     -webkit-animation-timing-function: ease-in;
+    -moz-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
 }
 
@@ -2255,6 +2264,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 .rotateOut {
     -webkit-animation-name: rotateOut;
+    -moz-animation-name: rotateOut;
     animation-name: rotateOut;
 }
 
@@ -2501,6 +2511,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 .slideInLeft {
     -webkit-animation-name: slideInLeft;
+    -moz-animation-name: slideInLeft;
     animation-name: slideInLeft;
 }
 
@@ -2770,6 +2781,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 .hinge {
     -webkit-animation-name: hinge;
+    -moz-animation-name: hinge;
     animation-name: hinge;
 }
 
