@@ -190,13 +190,15 @@ module.exports = function (grunt) {
                     archive: "nci-match-ui.tgz",
                     pretty: true
                 },
-                files: [
-                    {
+                files: [{
                     expand: true,
                     src: ['**'],
                     cwd: 'app/'
-                    }
-                ]
+                }, {
+                    expand: true,
+                    src: ['**'],
+                    cwd: 'bower_components/'
+                }]
             }
         },
         usemin: {
