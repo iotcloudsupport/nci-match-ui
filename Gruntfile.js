@@ -193,11 +193,13 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     src: ['**'],
-                    cwd: 'app/'
+                    cwd: 'app/',
+                    dest: 'app/'
                 }, {
                     expand: true,
                     src: ['**'],
-                    cwd: 'bower_components/'
+                    cwd: 'bower_components/',
+                    dest: 'bower_components/'
                 }]
             }
         },
