@@ -200,7 +200,7 @@ module.exports = function (grunt) {
             }
         },
         compress: {
-            main: {
+            dist: {
                 options: {
                     archive: 'match-ui.zip',
                     pretty: true
@@ -211,6 +211,7 @@ module.exports = function (grunt) {
                 dest: '/'
             }
         },
+
         usemin: {
             html: ['dist/index.html']
         }
