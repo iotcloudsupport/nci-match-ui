@@ -1,0 +1,72 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Biopsy Sequence Numbers</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a ui-sref="index.dashboard">Dasboard</a>
+            </li>
+            <li class="active">
+                <strong>Biopsy Sequence Numbers</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+<div class="wrapper wrapper-content p-xl">
+    <div class="animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-sm-3 pull-right">
+                                <div class="input-group"><input type="text" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm btn-primary"> Go!</button> </span></div>
+                            </div>
+                        </div>
+                        <div class="table-responsive" ng-controller="BiopsiesController" ng-init="loadBiopsiesList()">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>BSN </th>
+                                    <th>PSN </th>
+                                    <th>MSN </th>
+                                    <th>Lab </th>
+                                    <th>Tracking Number </th>
+                                    <th>Specimen Received Date </th>
+                                    <th>Specimen Failure Date </th>
+                                    <th>Assay Ordered Date </th>
+                                    <th>Assay Result Date </th>
+                                    <th>Pathology Confirmation Date </th>
+                                    <th>Nucleic Acid Sendout Date </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="biopsy in biopsiesList">
+                                    <td>{{ biopsy.biopsySeqenuceNumber }}</td>
+                                    <td>{{ biopsy.patientSequenceNumber }}</td>
+                                    <td>{{ biopsy.molecularSequenceNumber }}</td>
+                                    <td>{{ biopsy.lab }}</td>
+                                    <td>{{ biopsy.trackingNumber }}</td>
+                                    <td>{{ biopsy.specimenReceivedDate | gmt }}</td>
+                                    <td>{{ biopsy.specimenFailureDate | gmt }}</td>
+                                    <td>{{ biopsy.ptenOrderDate | gmt }}</td>
+                                    <td>{{ biopsy.ptenResultDate | gmt }}</td>
+                                    <td>{{ biopsy.pathologyReviewDate | gmt }}</td>
+                                    <td>{{ biopsy.nucleicAcidSendoutDate | gmt }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
