@@ -200,22 +200,15 @@ module.exports = function (grunt) {
             }
         },
         compress: {
-            dist: {
-                mode: 'tgz',
+            main: {
                 options: {
-                    archive: '<%= cliOptions.filepath %>'
+                    archive: 'match-ui.zip',
+                    pretty: true
                 },
-                files: [{
-                    expand: true,
-                    cwd: '<%= appConfig.dist %>/',
-                    src: ['**/*'],
-                    dest: 'matchbox-ui/'
-                },{
-                    expand: true,
-                    cwd: '<%= appConfig.bower_components %>/',
-                    src: ['**/*'],
-                    dest: 'bower_components/'
-                }]
+                expand: true,
+                cwd: 'assets/',
+                src: ['**/*'],
+                dest: '/'
             }
         },
         usemin: {
