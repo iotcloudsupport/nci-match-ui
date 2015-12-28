@@ -7,12 +7,12 @@ angular.module('config.matchbox', [])
                 'reportApiBaseUrl': urlPrefix + ':9292',
                 'treatmentArmApiBaseUrl': urlPrefix + ':9393',
                 'lookApiBaseUrl': urlPrefix + ':9494',
-            }
+            };
         }
         return {
             'matchApiBaseUrl': urlPrefix + ':' + $location.port() + '/match',
             'reportApiBaseUrl': urlPrefix + ':' + $location.port() + '/reportapi',
             'treatmentArmApiBaseUrl': urlPrefix + ':' + $location.port() + '/treatmentarmapi',
             'lookApiBaseUrl': urlPrefix + ':' + $location.port() + '/lookupapi',
-        }
+        };
     });

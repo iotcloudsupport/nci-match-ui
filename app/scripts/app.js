@@ -10,9 +10,10 @@
         'reports.matchbox',
         'filters.matchbox',
         'config.matchbox',
+        'http.matchbox',
         'angular-storage',
         'angular-jwt',
         'ui.router',
         'ui.bootstrap'
-    ])
+    ]);
 })();

@@ -68,6 +68,7 @@ angular
         $rootScope.$state = $state;
         $rootScope.$on('$locationChangeStart', function() {
             var token = store.get('token');
+
             if (token) {
                 if (!jwtHelper.isTokenExpired(token)) {
                     if (!auth.isAuthenticated) {

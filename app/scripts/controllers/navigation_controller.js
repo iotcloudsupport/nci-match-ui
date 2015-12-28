@@ -9,6 +9,6 @@ angular
             store.remove('profile');
             store.remove('token');
             $location.path("/auth/login");
-        }
+        };
 
     });
