@@ -30,15 +30,15 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr ng-repeat="report in reportList">
-                                    <td>{{ report.displayName }}</td>
-                                    <td>{{ report.description }}</td>
-                                    <td>
-                                        <a class="btn btn-sm btn-primary" ng-href="{{ report.excelHref }}" type="button">EXCEL</a>
-                                        <a class="btn btn-sm btn-success" ng-href="{{ report.jsonHref }}"  type="button">JSON</a>
-                                        <a class="btn btn-sm btn-warning" ng-href="{{ report.csvHref }}"  type="button">CSV</a>
-                                    </td>
-                                </tr>
+                                    <tr ng-repeat="report in reportList">
+                                        <td>{{ report.displayName }}</td>
+                                        <td>{{ report.description }}</td>
+                                        <td>
+                                            <a class="btn btn-sm btn-primary" ng-href="{{ report.excelHref }}" type="button">EXCEL</a>
+                                            <a class="btn btn-sm btn-success" ng-href="{{ report.jsonHref }}"  type="button">JSON</a>
+                                            <a class="btn btn-sm btn-warning" ng-href="{{ report.csvHref }}"  type="button">CSV</a>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
