@@ -13,6 +13,20 @@ angular.module('http.matchbox', [])
             }
         };
     })
+    .factory('biopsySequenceService', function($http, matchConfig) {
+        return {
+            getBiopsySequenceList: function() {
+                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/patientSpecimenTrackingSummary');
+            }
+        };
+    })
+    .factory('molecularSequenceService', function($http, matchConfig) {
+        return {
+            getMolecularSequenceList: function() {
+                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/patientSpecimenTrackingSummary');
+            }
+        };
+    })
     .factory('reportService', function($http, matchConfig) {
         return {
             getReportList: function() {

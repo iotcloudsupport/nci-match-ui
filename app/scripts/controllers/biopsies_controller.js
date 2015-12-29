@@ -1,20 +1,20 @@
 angular.module('biopsies.matchbox',[])
-    .controller('BiopsiesController', function( $scope, $http, matchConfig, DTOptionsBuilder, DTColumnDefBuilder ) {
-
+    .controller('BiopsiesController', function( $scope, $http, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, biopsySequenceService ) {
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(100);
         this.dtColumnDefs = [];
         this.dtInstance = {};
 
-        $scope.biopsiesList = []
+        $scope.biopsiesList = [];
 
         $scope.loadBiopsiesList = function() {
-            $http.get(matchConfig.matchApiBaseUrl + '/common/rs/patientSpecimenTrackingSummary')
-                .success(function (data) {
-                    angular.forEach(data, function(value, key) {
+            biopsySequenceService
+                .getBiopsySequenceList()
+                .then(function(d) {
+                    angular.forEach(d.data, function (value, key) {
                         var patientSequenceNumber = value.patientSequenceNumber;
                         if (angular.isDefined(value.biopsies) && angular.isArray(value.biopsies)) {
-                            angular.forEach(value.biopsies, function(value, key) {
+                            angular.forEach(value.biopsies, function (value, key) {
                                 var biopsyTemplate = {
                                     'patientSequenceNumber': patientSequenceNumber,
                                     'biopsySeqenuceNumber': value.biopsySequenceNumber,
@@ -27,10 +27,10 @@ angular.module('biopsies.matchbox',[])
                                     'ptenResultDate': value.ptenResultDate,
                                     'pathologyReviewDate': value.pathologyReviewdate,
                                     'nucleicAcidSendoutDate': '-'
-                                }
+                                };
 
                                 if (angular.isDefined(value.samples) && angular.isArray(value.samples)) {
-                                    angular.forEach(value.samples, function(value, key) {
+                                    angular.forEach(value.samples, function (value, key) {
                                         biopsyWithSample = angular.copy(biopsyTemplate);
                                         biopsyWithSample.molecularSequenceNumber = value.molecularSequenceNumber;
                                         biopsyWithSample.lab = value.lab;
@@ -44,10 +44,6 @@ angular.module('biopsies.matchbox',[])
                             });
                         }
                     });
-                })
-                .error(function (data, status, header, config) {
-                    console.log(data + '|' + status + '|' + header + '|' + config);
                 });
-        }
-
+        };
     });

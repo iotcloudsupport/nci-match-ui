@@ -1,6 +1,5 @@
 angular.module('reports.matchbox',[])
     .controller('ReportsController', function($scope, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, reportService) {
-
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(25);
         this.dtColumnDefs = [
@@ -26,6 +25,5 @@ angular.module('reports.matchbox',[])
                         });
                     });
                 });
-        }
-
+        };
     });
