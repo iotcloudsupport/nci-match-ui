@@ -1,17 +1,17 @@
 angular.module('molecular-sequences.matchbox',[])
-    .controller('MolecularSequencesController', function( $scope, $http, matchConfig, DTOptionsBuilder, DTColumnDefBuilder ) {
-
+    .controller('MolecularSequencesController', function( $scope, $http, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, molecularSequenceService ) {
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(100);
         this.dtColumnDefs = [];
         this.dtInstance = {};
 
-        $scope.molecularSequencesList = []
+        $scope.molecularSequencesList = [];
 
         $scope.loadMolecularSequencesList = function() {
-            $http.get(matchConfig.matchApiBaseUrl + '/common/rs/patientSpecimenTrackingSummary')
-                .success(function (data) {
-                    angular.forEach(data, function(value, key) {
+            molecularSequenceService
+                .getMolecularSequenceList()
+                .then(function(d) {
+                    angular.forEach(d.data, function(value, key) {
                         var patientSequenceNumber = value.patientSequenceNumber;
                         if (angular.isDefined(value.biopsies) && angular.isArray(value.biopsies)) {
                             angular.forEach(value.biopsies, function (value, key) {
@@ -31,10 +31,6 @@ angular.module('molecular-sequences.matchbox',[])
                             });
                         }
                     });
-                })
-                .error(function (data, status, header, config) {
-                    console.log(data + '|' + status + '|' + header + '|' + config);
                 });
-        }
-
+        };
     });
