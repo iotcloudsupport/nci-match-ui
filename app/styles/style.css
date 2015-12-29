@@ -498,9 +498,10 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
     margin-top: 0px;
 }
 .top-navigation .navbar-brand {
-    background: #ab0102;
-    color: #fff;
-    padding: 15px 25px;
+    background: #fff;
+    color: #ab0102;
+    padding: 15px 35px;
+    font-weight: 600;
 }
 .top-navigation .navbar-top-links li:last-child {
     margin-right: 0;
