@@ -20,7 +20,25 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
         .state('index.patients', {
             url: "/patients",
             templateUrl: "views/patients.html",
-            data: { pageTitle: 'Patients', requiresLogin: true }
+            data: { pageTitle: 'Patients', requiresLogin: true },
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            serie: true,
+                            files: ['bower_components/dataTables/media/js/jquery.dataTables.min.js','bower_components/dataTables/media/css/dataTables.bootstrap.min.css']
+                        },
+                        {
+                            serie: true,
+                            files: ['bower_components/dataTables/media/js/dataTables.bootstrap.min.js']
+                        },
+                        {
+                            name: 'datatables',
+                            files: ['bower_components/angular-datatables/dist/angular-datatables.min.js']
+                        }
+                    ]);
+                }
+            }
         })
         .state('index.treatment-arms', {
             url: "/treatment-arms",

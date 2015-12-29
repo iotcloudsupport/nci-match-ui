@@ -1,7 +1,8 @@
 angular.module('reports.matchbox',[])
     .controller('ReportsController', function($scope, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, reportService) {
 
-        this.dtOptions = DTOptionsBuilder.newOptions();
+        this.dtOptions = DTOptionsBuilder.newOptions()
+            .withDisplayLength(25);
         this.dtColumnDefs = [
             DTColumnDefBuilder.newColumnDef(1).notSortable(),
             DTColumnDefBuilder.newColumnDef(2).notSortable()
