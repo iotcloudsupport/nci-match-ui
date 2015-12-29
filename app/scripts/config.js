@@ -99,7 +99,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                         },
                         {
                             serie: true,
-                            files: ['bower_components/datatables/media/js/datatables.bootstrap.min.js']
+                            files: ['bower_components/datatables/media/js/dataTables.bootstrap.min.js']
                         },
                         {
                             name: 'datatables',
