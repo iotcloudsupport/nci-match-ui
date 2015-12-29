@@ -1,5 +1,10 @@
-function config($stateProvider, $urlRouterProvider, authProvider, $httpProvider, jwtInterceptorProvider) {
+function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authProvider, $httpProvider, jwtInterceptorProvider) {
     $urlRouterProvider.otherwise("/index/dashboard");
+
+    $ocLazyLoadProvider.config({
+        // Set to true if you want to see what and when is dynamically loaded
+        debug: false
+    });
 
     $stateProvider
         .state('index', {
@@ -36,6 +41,24 @@ function config($stateProvider, $urlRouterProvider, authProvider, $httpProvider,
             url: "/reports",
             templateUrl: "views/reports.html",
             data: { pageTitle: 'Reports', requiresLogin: true },
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            serie: true,
+                            files: ['bower_components/dataTables/media/js/jquery.dataTables.min.js','bower_components/dataTables/media/css/dataTables.bootstrap.min.css']
+                        },
+                        {
+                            serie: true,
+                            files: ['bower_components/dataTables/media/js/dataTables.bootstrap.min.js']
+                        },
+                        {
+                            name: 'datatables',
+                            files: ['bower_components/angular-datatables/dist/angular-datatables.min.js']
+                        }
+                    ]);
+                }
+            }
         })
         .state('auth', {
             abstract: true,

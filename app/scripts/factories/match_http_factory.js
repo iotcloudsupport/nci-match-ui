@@ -16,9 +16,9 @@ angular.module('http.matchbox', [])
             }
         };
     })
-    .factory('httpReports', function($http, matchConfig) {
+    .factory('reportService', function($http, matchConfig) {
         return {
-            async: function() {
+            getReportList: function() {
                 return $http.get(matchConfig.reportApiBaseUrl + '/reportList');
             }
         };

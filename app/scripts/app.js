@@ -1,6 +1,7 @@
 (function () {
     angular.module('matchbox', [
         'auth0',
+        'oc.lazyLoad',
         'login.matchbox',
         'nav.matchbox',
         'patients.matchbox',
