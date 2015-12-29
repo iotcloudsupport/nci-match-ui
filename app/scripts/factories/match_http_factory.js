@@ -1,17 +1,14 @@
-/**
- * Created by hendrikssonm on 12/24/15.
- */
 angular.module('http.matchbox', [])
-    .factory('httpPatients', function($http, matchConfig) {
+    .factory('patientService', function($http, matchConfig) {
         return {
-            async: function() {
+            getBasicPatientsData: function() {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getBasicPatientsData');
             }
         };
     })
-    .factory('httpTreatmentArms', function($http, matchConfig) {
+    .factory('treatmentArmService', function($http, matchConfig) {
         return {
-            async: function() {
+            getBasicTreatmentArms: function() {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getBasicTreatmentArms');
             }
         };
