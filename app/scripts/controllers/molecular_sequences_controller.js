@@ -1,5 +1,10 @@
 angular.module('molecular-sequences.matchbox',[])
-    .controller('MolecularSequencesController', function( $scope, $http, matchConfig ) {
+    .controller('MolecularSequencesController', function( $scope, $http, matchConfig, DTOptionsBuilder, DTColumnDefBuilder ) {
+
+        this.dtOptions = DTOptionsBuilder.newOptions()
+            .withDisplayLength(100);
+        this.dtColumnDefs = [];
+        this.dtInstance = {};
 
         $scope.molecularSequencesList = []
 
