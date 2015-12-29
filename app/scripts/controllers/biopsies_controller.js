@@ -1,5 +1,10 @@
 angular.module('biopsies.matchbox',[])
-    .controller('BiopsiesController', function( $scope, $http, matchConfig ) {
+    .controller('BiopsiesController', function( $scope, $http, matchConfig, DTOptionsBuilder, DTColumnDefBuilder ) {
+
+        this.dtOptions = DTOptionsBuilder.newOptions()
+            .withDisplayLength(100);
+        this.dtColumnDefs = [];
+        this.dtInstance = {};
 
         $scope.biopsiesList = []
 

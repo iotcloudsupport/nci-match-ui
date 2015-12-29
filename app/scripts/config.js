@@ -66,12 +66,48 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
         .state('index.biopsies', {
             url: "/biopsies",
             templateUrl: "views/biopsies.html",
-            data: { pageTitle: 'Biopsy Sequence Numbers', requiresLogin: true }
+            data: { pageTitle: 'Biopsy Sequence Numbers', requiresLogin: true },
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            serie: true,
+                            files: ['bower_components/dataTables/media/js/jquery.dataTables.min.js','bower_components/dataTables/media/css/dataTables.bootstrap.min.css']
+                        },
+                        {
+                            serie: true,
+                            files: ['bower_components/dataTables/media/js/dataTables.bootstrap.min.js']
+                        },
+                        {
+                            name: 'datatables',
+                            files: ['bower_components/angular-datatables/dist/angular-datatables.min.js']
+                        }
+                    ]);
+                }
+            }
         })
         .state('index.molecular-sequences', {
             url: "/molecular-sequences",
             templateUrl: "views/molecular_sequences.html",
-            data: { pageTitle: 'Molecular Sequence Numbers', requiresLogin: true }
+            data: { pageTitle: 'Molecular Sequence Numbers', requiresLogin: true },
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            serie: true,
+                            files: ['bower_components/dataTables/media/js/jquery.dataTables.min.js','bower_components/dataTables/media/css/dataTables.bootstrap.min.css']
+                        },
+                        {
+                            serie: true,
+                            files: ['bower_components/dataTables/media/js/dataTables.bootstrap.min.js']
+                        },
+                        {
+                            name: 'datatables',
+                            files: ['bower_components/angular-datatables/dist/angular-datatables.min.js']
+                        }
+                    ]);
+                }
+            }
         })
         .state('index.reports', {
             url: "/reports",
