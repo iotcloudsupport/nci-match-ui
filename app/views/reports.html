@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
-                <div class="ibox-content" ng-controller="ReportsController as ReportsCtrl" ng-init="init()">
+                <div class="ibox-content" ng-controller="ReportsController as ReportsCtrl" ng-init="loadReportList()">
                     <table datatable="ng" dt-options="ReportsCtrl.dtOptions" dt-column-defs="ReportsCtrl.dtColumnDefs" dt-instance="ReportsCtrl.dtInstance" class="table table-striped table-bordered table-hover">
                         <thead>
                         <tr>

@@ -1,15 +1,16 @@
 angular.module('reports.matchbox',[])
     .controller('ReportsController', function($scope, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, reportService) {
 
+        this.dtOptions = DTOptionsBuilder.newOptions();
+        this.dtColumnDefs = [
+            DTColumnDefBuilder.newColumnDef(1).notSortable(),
+            DTColumnDefBuilder.newColumnDef(2).notSortable()
+        ];
+        this.dtInstance = {};
+
         $scope.reportList = [];
 
-        $scope.init = function() {
-            $scope.dtOptions = DTOptionsBuilder.newOptions();
-            $scope.dtColumnDefs = [
-                DTColumnDefBuilder.newColumnDef(2).notSortable()
-            ];
-            $scope.dtInstance = {};
-
+        $scope.loadReportList = function() {
             reportService
                 .getReportList()
                 .then(function(d) {
