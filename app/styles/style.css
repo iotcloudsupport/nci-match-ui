@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&lang=en");
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&lang=en");
 h1,
 h2,
 h3,
@@ -311,7 +311,7 @@ body.mini-navbar .navbar-default .nav>li>.nav-second-level li a {
 .mini-navbar .nav-second-level {
     position: absolute;
     left: 70px;
-    top: 0px;
+    top: 0;
     background-color: #2f4050;
     padding: 10px 10px 10px 10px;
     font-size: 12px
@@ -401,7 +401,7 @@ body.fixed-nav #wrapper #page-wrapper {
 }
 
 .body-small .navbar-fixed-top {
-    margin-left: 0px
+    margin-left: 0
 }
 
 body.mini-navbar .navbar-static-side {
@@ -466,11 +466,11 @@ body.canvas-menu .navbar-static-side {
 }
 
 body.fixed-sidebar.mini-navbar .navbar-static-side {
-    width: 0px
+    width: 0
 }
 
 body.fixed-sidebar.mini-navbar #page-wrapper {
-    margin: 0 0 0 0px
+    margin: 0 0 0 0
 }
 
 body.body-small.fixed-sidebar.mini-navbar #page-wrapper {
@@ -609,7 +609,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
 }
 
 .navbar .dropdown-menu {
-    margin-top: 0px
+    margin-top: 0
 }
 
 .top-navigation .navbar-brand {
@@ -646,7 +646,7 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
 
 .top-navigation.body-small .wrapper.wrapper-content,
 .body-small .top-navigation .wrapper.wrapper-content {
-    padding: 40px 0px 40px 0px
+    padding: 40px 0 40px 0
 }
 
 .navbar-toggle {
@@ -1341,7 +1341,7 @@ button.dim:active:before {
 
 .onoffswitch-switch {
     width: 20px;
-    margin: 0px;
+    margin: 0;
     background: #FFFFFF;
     border: 2px solid #ab0102;
     border-radius: 2px;
@@ -1360,7 +1360,7 @@ button.dim:active:before {
 }
 
 .onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-switch {
-    right: 0px
+    right: 0
 }
 
 .chosen-container-single .chosen-single {
@@ -1781,8 +1781,8 @@ a.list-group-item.active:focus {
 .jqstooltip {
     position: absolute;
     display: block;
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: 0;
     visibility: hidden;
     background: #2b303a;
     background-color: rgba(43, 48, 58, 0.8);
@@ -1996,7 +1996,7 @@ table.dataTable thead .sorting:after {
 }
 
 .widget-head-color-box {
-    border-radius: 5px 5px 0px 0px;
+    border-radius: 5px 5px 0 0;
     margin-top: 10px
 }
 
@@ -2190,7 +2190,7 @@ table.dataTable thead .sorting:after {
 }
 
 .ibox.ui-sortable-placeholder {
-    margin: 0px 0px 23px !important
+    margin: 0 0 23px !important
 }
 
 .onoffswitch {
@@ -2258,7 +2258,7 @@ table.dataTable thead .sorting:after {
 .onoffswitch-switch {
     display: block;
     width: 18px;
-    margin: 0px;
+    margin: 0;
     background: #FFFFFF;
     border: 2px solid #ab0102;
     border-radius: 3px;
@@ -2277,7 +2277,7 @@ table.dataTable thead .sorting:after {
 }
 
 .onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-switch {
-    right: 0px
+    right: 0
 }
 
 .ui-jqgrid {
@@ -2309,9 +2309,9 @@ table.dataTable thead .sorting:after {
 
 .ui-jqgrid .ui-jqgrid-titlebar {
     position: relative;
-    border-left: 0px solid;
-    border-right: 0px solid;
-    border-top: 0px solid
+    border-left: 0 solid;
+    border-right: 0 solid;
+    border-top: 0 solid
 }
 
 .ui-widget-header {
@@ -2319,8 +2319,8 @@ table.dataTable thead .sorting:after {
     background-image: none;
     background-color: #f5f5f6;
     text-transform: uppercase;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px
+    border-top-left-radius: 0;
+    border-top-right-radius: 0
 }
 
 .ui-jqgrid tr.ui-row-ltr td {
@@ -2336,7 +2336,7 @@ table.dataTable thead .sorting:after {
     font-size: 12px;
     height: 15px;
     border: 1px solid #CCCCCC;
-    border-radius: 0px
+    border-radius: 0
 }
 
 .ui-state-default,
@@ -2359,7 +2359,7 @@ table.dataTable thead .sorting:after {
 }
 
 .ui-jqgrid tr.ui-search-toolbar th {
-    border-top-width: 0px !important;
+    border-top-width: 0 !important;
     border-top-color: inherit !important;
     border-top-style: ridge !important
 }
@@ -2414,12 +2414,12 @@ table.dataTable thead .sorting:after {
 }
 
 .ui-pg-table .navtable .ui-corner-all {
-    border-radius: 0px
+    border-radius: 0
 }
 
 .ui-jqgrid .ui-pg-button:hover {
     padding: 1px;
-    border: 0px
+    border: 0
 }
 
 .ui-jqgrid .loading {
@@ -3020,7 +3020,7 @@ a.forum-item-title:hover {
 
 @media (max-width:992px) {
     .forum-info {
-        margin: 15px 0 10px 0px;
+        margin: 15px 0 10px 0;
         display: none
     }
     .forum-desc {
@@ -4008,12 +4008,12 @@ body.fixed-sidebar.body-small.mini-navbar .footer.fixed {
 }
 
 body.body-small .footer.fixed {
-    margin-left: 0px
+    margin-left: 0
 }
 
 .page-heading {
     border-top: 0;
-    padding: 0px 10px 20px 10px
+    padding: 0 10px 20px 10px
 }
 
 .panel-heading h1,
@@ -4101,7 +4101,7 @@ body.body-small .footer.fixed {
 }
 
 .ui-tab .tab-content {
-    padding: 20px 0px
+    padding: 20px 0
 }
 
 .no-padding {
@@ -4121,7 +4121,7 @@ body.body-small .footer.fixed {
 }
 
 .ibox-content.text-box {
-    padding-bottom: 0px;
+    padding-bottom: 0;
     padding-top: 15px
 }
 
@@ -4268,7 +4268,7 @@ code {
     border-color: #e7eaec;
     border-image: none;
     border-style: solid solid none;
-    border-width: 4px 0px 0;
+    border-width: 4px 0 0;
     color: inherit;
     margin-bottom: 0;
     padding: 14px 15px 7px;
@@ -4282,7 +4282,7 @@ code {
     border-color: #e7eaec;
     border-image: none;
     border-style: solid solid none;
-    border-width: 1px 0px
+    border-width: 1px 0
 }
 
 .ibox-footer {
@@ -4485,7 +4485,7 @@ table.table-mail tr td {
 .progress-mini,
 .progress-mini .progress-bar {
     height: 5px;
-    margin-bottom: 0px
+    margin-bottom: 0
 }
 
 .progress-bar-navy-light {
@@ -5042,7 +5042,7 @@ body.modal-open {
     font-size: 180px;
     font-weight: 800;
     letter-spacing: -10px;
-    margin-bottom: 0px
+    margin-bottom: 0
 }
 
 .middle-box h1 {
@@ -5173,7 +5173,7 @@ ul.notes li div a {
 }
 
 ul.notes li {
-    margin: 10px 40px 50px 0px;
+    margin: 10px 40px 50px 0;
     float: left
 }
 
@@ -5483,7 +5483,7 @@ a.compose-mail {
     background-color: #ffffff;
     border: 1px solid #e7eaec;
     border-top: 0;
-    padding: 0px;
+    padding: 0;
     margin-bottom: 20px
 }
 
@@ -5495,7 +5495,7 @@ a.compose-mail {
 }
 
 .mail-box-header h2 {
-    margin-top: 0px
+    margin-top: 0
 }
 
 .mailbox-content .tag-list li a {
@@ -5655,7 +5655,7 @@ dd.project-people {
 @media (max-width:992px) {
     .chat-users,
     .chat-statistic {
-        margin-left: 0px
+        margin-left: 0
     }
 }
 
@@ -5884,7 +5884,7 @@ table.issue-tracker tbody tr td {
 .agile-list li {
     background: #FAFAFB;
     border: 1px solid #e7eaec;
-    margin: 0px 0 10px 0;
+    margin: 0 0 10px 0;
     padding: 10px;
     border-radius: 2px
 }
@@ -6568,7 +6568,7 @@ del {
 
 .sk-spinner-chasing-dots .sk-dot2 {
     top: auto;
-    bottom: 0px;
+    bottom: 0;
     -webkit-animation-delay: -1s;
     -moz-animation-delay: -1s;
     animation-delay: -1s
@@ -7383,7 +7383,7 @@ body.landing-page {
 
 .landing-page .navbar-wrapper .navbar.navbar-scroll {
     padding-top: 0;
-    padding-bottom: 0px;
+    padding-bottom: 0;
     border-bottom: 1px solid #e7eaec;
     border-radius: 0
 }
@@ -8053,7 +8053,7 @@ body.rtls .footer.fixed {
 @media (max-width:992px) {
     body.rtls .chat-users,
     body.rtls .chat-statistic {
-        margin-right: 0px
+        margin-right: 0
     }
 }
 
@@ -8098,7 +8098,7 @@ body.rtls.body-small.fixed-sidebar.mini-navbar .navbar-static-side {
 }
 
 .body-small.rtls .navbar-fixed-top {
-    margin-right: 0px
+    margin-right: 0
 }
 
 .body-small.rtls .navbar-header {
@@ -8126,7 +8126,7 @@ body.rtls.top-navigation .footer.fixed {
     }
     .body-small.rtls #page-wrapper {
         position: inherit;
-        margin: 0 0 0 0px;
+        margin: 0 0 0 0;
         min-height: 1000px
     }
     .body-small.rtls .navbar-static-side {
@@ -8156,7 +8156,7 @@ body.rtls.top-navigation .footer.fixed {
 .theme-config {
     position: absolute;
     top: 90px;
-    right: 0px;
+    right: 0;
     overflow: hidden
 }
 
@@ -8168,17 +8168,17 @@ body.rtls.top-navigation .footer.fixed {
 }
 
 .theme-config-box.show {
-    margin-right: 0px
+    margin-right: 0
 }
 
 .spin-icon {
     background: #ab0102;
     position: absolute;
     padding: 7px 10px 7px 13px;
-    border-radius: 20px 0px 0px 20px;
+    border-radius: 20px 0 0 20px;
     font-size: 16px;
     top: 0;
-    left: 0px;
+    left: 0;
     width: 40px;
     color: #fff;
     cursor: pointer
@@ -8500,7 +8500,7 @@ body.skin-2 #wrapper {
 }
 
 .skin-2 .dashoard-1 .wrapper-content {
-    padding: 0px 30px 25px 30px
+    padding: 0 30px 25px 30px
 }
 
 .skin-2 .ibox-title {
@@ -8720,7 +8720,7 @@ body.skin-3 {
 @media (max-width:768px) {
     #page-wrapper {
         position: inherit;
-        margin: 0 0 0 0px;
+        margin: 0 0 0 0;
         min-height: 1000px
     }
     .body-small .navbar-static-side {
@@ -8749,7 +8749,7 @@ body.skin-3 {
         min-height: 100% !important
     }
     .sidebar-content .wrapper {
-        padding-right: 0px;
+        padding-right: 0;
         z-index: 1
     }
     .fixed-sidebar.body-small .navbar-static-side {
