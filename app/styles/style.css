@@ -3850,6 +3850,7 @@ video {
 .modal-content {
     background-clip: padding-box;
     background-color: #FFFFFF;
+    border: 1px solid #000;
     border: 1px solid rgba(0, 0, 0, 0);
     border-radius: 4px;
     -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
@@ -4338,8 +4339,7 @@ table.table-mail tr td {
     font-size: 14px;
     margin: 0 0 7px;
     padding: 0;
-    text-overflow: ellipsis;
-    float: left
+    text-overflow: ellipsis
 }
 
 .ibox-title .label {
@@ -4349,7 +4349,6 @@ table.table-mail tr td {
 
 .ibox-tools {
     display: inline-block;
-    float: right;
     margin-top: 0;
     position: relative;
     padding: 0
