@@ -1,4 +1,4 @@
-@import url("http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&lang=en");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&lang=en");
 h1,
 h2,
 h3,
@@ -1850,6 +1850,7 @@ table.dataTable thead .sorting:after {
     content: "\f0dc";
     float: right;
     font-family: fontawesome;
+    color: #323232;
     color: rgba(50, 50, 50, 0.5)
 }
 
@@ -3829,6 +3830,7 @@ a:focus {
 
 .hr-line-solid {
     border-bottom: 1px solid #e7eaec;
+    background-color: #000;
     background-color: rgba(0, 0, 0, 0);
     border-style: solid !important;
     margin-top: 15px;
@@ -5238,7 +5240,7 @@ ul.notes li div:focus {
     -moz-transform: scale(1.1);
     -ms-transform: scale(1.1);
     -o-transform: scale(1.1);
-    tranform: scale(1.1);
+    transform: scale(1.1);
     position: relative;
     z-index: 5
 }
@@ -5403,7 +5405,7 @@ ul.notes li div {
     border: 0.6em solid transparent;
     border-right: 0.6em solid #f1f1f1;
     border-bottom: 0.6em solid #f1f1f1;
-    right: 0em;
+    right: 0;
     bottom: 0
 }
 
@@ -6272,12 +6274,15 @@ del {
     overflow: hidden;
     -webkit-transition-timing-function: ease;
     -moz-transition-timing-function: ease;
+    -o-transition-timing-function: ease;
     transition-timing-function: ease;
     -webkit-transition-duration: .35s;
     -moz-transition-duration: .35s;
+    -o-transition-duration: .35s;
     transition-duration: .35s;
     -webkit-transition-property: height, visibility;
     -moz-transition-property: height, visibility;
+    -o-transition-property: height, visibility;
     transition-property: height, visibility
 }
 
@@ -6287,6 +6292,7 @@ del {
     background-color: #ab0102;
     margin: 0 auto;
     -webkit-animation: sk-rotatePlane 1.2s infinite ease-in-out;
+    -moz-animation: sk-rotatePlane 1.2s infinite ease-in-out;
     animation: sk-rotatePlane 1.2s infinite ease-in-out
 }
 
@@ -6338,6 +6344,7 @@ del {
     top: 0;
     left: 0;
     -webkit-animation: sk-doubleBounce 2s infinite ease-in-out;
+    -moz-animation: sk-doubleBounce 2s infinite ease-in-out;
     animation: sk-doubleBounce 2s infinite ease-in-out
 }
 
@@ -6385,6 +6392,7 @@ del {
     width: 6px;
     display: inline-block;
     -webkit-animation: sk-waveStretchDelay 1.2s infinite ease-in-out;
+    -moz-animation: sk-waveStretchDelay 1.2s infinite ease-in-out;
     animation: sk-waveStretchDelay 1.2s infinite ease-in-out
 }
 
@@ -6454,6 +6462,7 @@ del {
     top: 0;
     left: 0;
     -webkit-animation: sk-wanderingCubeMove 1.8s infinite ease-in-out;
+    -moz-animation: sk-wanderingCubeMove 1.8s infinite ease-in-out;
     animation: sk-wanderingCubeMove 1.8s infinite ease-in-out
 }
 
@@ -6516,6 +6525,7 @@ del {
     background-color: #ab0102;
     border-radius: 100%;
     -webkit-animation: sk-pulseScaleOut 1s infinite ease-in-out;
+    -moz-animation: sk-pulseScaleOut 1s infinite ease-in-out;
     animation: sk-pulseScaleOut 1s infinite ease-in-out
 }
 
@@ -6550,6 +6560,7 @@ del {
     position: relative;
     text-align: center;
     -webkit-animation: sk-chasingDotsRotate 2s infinite linear;
+    -moz-animation: sk-chasingDotsRotate 2s infinite linear;
     animation: sk-chasingDotsRotate 2s infinite linear
 }
 
@@ -6563,6 +6574,7 @@ del {
     background-color: #ab0102;
     border-radius: 100%;
     -webkit-animation: sk-chasingDotsBounce 2s infinite ease-in-out;
+    -moz-animation: sk-chasingDotsBounce 2s infinite ease-in-out;
     animation: sk-chasingDotsBounce 2s infinite ease-in-out
 }
 
@@ -6624,7 +6636,8 @@ del {
     background-color: #ab0102;
     border-radius: 100%;
     display: inline-block;
-    -webkit-animation: sk-threeBounceDelay 1.4s infinite ease-in-out;
+    -webkit-animation: sk-chasingDotsBounce 2s infinite ease-in-out;
+    -moz-animation: sk-chasingDotsBounce 2s infinite ease-in-out;
     animation: sk-threeBounceDelay 1.4s infinite ease-in-out;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both
@@ -6692,6 +6705,7 @@ del {
     background-color: #ab0102;
     border-radius: 100%;
     -webkit-animation: sk-circleBounceDelay 1.2s infinite ease-in-out;
+    -moz-animation: sk-circleBounceDelay 1.2s infinite ease-in-out;
     animation: sk-circleBounceDelay 1.2s infinite ease-in-out;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both
@@ -6889,6 +6903,7 @@ del {
     background-color: #ab0102;
     float: left;
     -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+    -moz-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
     animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out
 }
 
@@ -6980,6 +6995,7 @@ del {
     position: relative;
     margin: 0 auto;
     -webkit-animation: sk-innerCircle 1s linear infinite;
+    -moz-animation: sk-innerCircle 1s linear infinite;
     animation: sk-innerCircle 1s linear infinite
 }
 
@@ -7040,6 +7056,7 @@ del {
     background-color: #ab0102;
     border-radius: 100%;
     -webkit-animation: sk-circleFadeDelay 1.2s infinite ease-in-out;
+    -moz-animation: sk-circleFadeDelay 1.2s infinite ease-in-out;
     animation: sk-circleFadeDelay 1.2s infinite ease-in-out;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both
@@ -7460,6 +7477,7 @@ body.landing-page {
     opacity: 0;
     -webkit-transition-property: opacity;
     -moz-transition-property: opacity;
+    -o-transition-property: opacity;
     transition-property: opacity
 }
 
