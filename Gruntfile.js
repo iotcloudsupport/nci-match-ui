@@ -238,4 +238,6 @@ module.exports = function (grunt) {
         'compress:dist'
     ]);
 
+    //grunt.loadNpmTasks('grunt-karma');
+
 };
