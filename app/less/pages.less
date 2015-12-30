@@ -252,22 +252,25 @@ ul.notes li div {
 
 ul.notes li div {
   -webkit-transform: rotate(-6deg);
-  -o-transform: rotate(-6deg);
   -moz-transform: rotate(-6deg);
+  -o-transform: rotate(-6deg);
+  transform: rotate(-6deg);
 }
 
 ul.notes li:nth-child(even) div {
-  -o-transform: rotate(4deg);
   -webkit-transform: rotate(4deg);
   -moz-transform: rotate(4deg);
+  -o-transform: rotate(4deg);
+  transform: rotate(4deg);
   position: relative;
   top: 5px;
 }
 
 ul.notes li:nth-child(3n) div {
-  -o-transform: rotate(-3deg);
   -webkit-transform: rotate(-3deg);
   -moz-transform: rotate(-3deg);
+  -o-transform: rotate(-3deg);
+  transform: rotate(-3deg);
   position: relative;
   top: -5px;
 }
@@ -276,6 +279,7 @@ ul.notes li:nth-child(5n) div {
   -o-transform: rotate(5deg);
   -webkit-transform: rotate(5deg);
   -moz-transform: rotate(5deg);
+  transform: rotate(5deg);
   position: relative;
   top: -10px;
 }
@@ -284,6 +288,7 @@ ul.notes li div:hover, ul.notes li div:focus {
   -webkit-transform: scale(1.1);
   -moz-transform: scale(1.1);
   -o-transform: scale(1.1);
+  tranform: scale(1.1);
   position: relative;
   z-index: 5;
 }
@@ -299,9 +304,9 @@ ul.notes li div {
   -moz-box-shadow: 5px 5px 7px rgba(33, 33, 33, 1);
   -webkit-box-shadow: 5px 5px 7px rgba(33, 33, 33, .7);
   box-shadow: 5px 5px 7px rgba(33, 33, 33, .7);
+  -webkit-transition: -webkit-transform .15s linear;
   -moz-transition: -moz-transform .15s linear;
   -o-transition: -o-transform .15s linear;
-  -webkit-transition: -webkit-transform .15s linear;
 }
 
 /* FILE MANAGER */

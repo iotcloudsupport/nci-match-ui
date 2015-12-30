@@ -675,9 +675,9 @@ table.dataTable thead .sorting:after {
 .pace {
   -webkit-pointer-events: none;
   pointer-events: none;
-
   -webkit-user-select: none;
   -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 
@@ -1819,6 +1819,8 @@ a.forum-item-title:hover {
     margin-left: -25px;
     -webkit-transform: translateZ(0);
     -moz-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
     -webkit-backface-visibility: hidden;
     font-size: 19px;
   }
