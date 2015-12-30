@@ -207,6 +207,7 @@ module.exports = function (grunt) {
             html: ['dist/index.html']
         }
     });
+
     // Run live version of app
     grunt.registerTask('live', [
         'clean:server',
@@ -221,7 +222,10 @@ module.exports = function (grunt) {
         'connect:dist:keepalive'
     ]);
 
-    grunt.registerTask('default', ['compress']);
+    // Run the unit tests, build it, and compress it.
+    grunt.registerTask('default', [
+        'build'
+    ]);
 
     // Build version for production
     grunt.registerTask('build', [
