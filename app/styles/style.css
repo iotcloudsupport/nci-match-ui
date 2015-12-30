@@ -1,4 +1,4 @@
-@import url("http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&lang=en");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&lang=en");
 h1,
 h2,
 h3,
@@ -1287,8 +1287,8 @@ button.dim:active:before {
     color: white;
     font-family: Trebuchet, Arial, sans-serif;
     font-weight: bold;
-    -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     box-sizing: border-box
 }
 
@@ -2190,8 +2190,8 @@ table.dataTable thead .sorting:after {
     color: white;
     font-family: Trebuchet, Arial, sans-serif;
     font-weight: bold;
-    -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     box-sizing: border-box
 }
 
@@ -2578,9 +2578,9 @@ table.dataTable thead .sorting:after {
     min-height: 30px;
     background: #f2fbff;
     border: 1px dashed #b6bcbf;
-    box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
 }
 
 .dd-empty {
@@ -2632,9 +2632,9 @@ table.dataTable thead .sorting:after {
     line-height: 1.333333em;
     font-family: open sans, lucida grande, lucida sans unicode, helvetica, arial, sans-serif;
     padding: 5px;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box
+    box-sizing: border-box
 }
 
 #nestable2 .dd-handle {
@@ -2652,9 +2652,9 @@ table.dataTable thead .sorting:after {
 #nestable2-output {
     font-size: 12px;
     padding: 25px;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box
+    box-sizing: border-box
 }
 
 .CodeMirror {
