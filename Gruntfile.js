@@ -222,10 +222,8 @@ module.exports = function (grunt) {
         'connect:dist:keepalive'
     ]);
 
-    // Run the unit tests, build it, and compress it.
-    grunt.registerTask('default', [
-        'build'
-    ]);
+    // Run the unit tests
+    grunt.registerTask('test', []);
 
     // Build version for production
     grunt.registerTask('build', [
@@ -243,5 +241,11 @@ module.exports = function (grunt) {
     ]);
 
     //grunt.loadNpmTasks('grunt-karma');
+
+    // Run the unit tests, build it, and compress it.
+    grunt.registerTask('default', [
+        'test',
+        'build'
+    ]);
 
 };
