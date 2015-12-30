@@ -13,22 +13,22 @@ describe('Filter: filters.matchbox', function () {
     });
 
     it('should return a dash for a undefined value', function () {
-        var toGMT = $filter('toGMT');
+        var toGMT = $filter('gmt');
         expect(toGMT(undefined)).toEqual('-');
     });
 
     it('should return a dash for a null value', function () {
-        var toGMT = $filter('toGMT');
+        var toGMT = $filter('gmt');
         expect(toGMT(null)).toEqual('-');
     });
 
     it('should return a dash for a non-number value', function () {
-        var toGMT = $filter('toGMT');
+        var toGMT = $filter('gmt');
         expect(toGMT('1234')).toEqual('-');
     });
 
     it('should return a formatted GMT date', function() {
-        var toGMT = $filter('toGMT');
+        var toGMT = $filter('gmt');
         expect(toGMT(1327303085000)).toEqual('January 23, 2012 7:18 AM GMT');
     });
 
