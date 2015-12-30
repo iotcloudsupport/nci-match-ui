@@ -253,6 +253,7 @@ ul.notes li div {
 ul.notes li div {
   -webkit-transform: rotate(-6deg);
   -moz-transform: rotate(-6deg);
+  -ms-transform: rotate(-6deg);
   -o-transform: rotate(-6deg);
   transform: rotate(-6deg);
 }
@@ -260,6 +261,7 @@ ul.notes li div {
 ul.notes li:nth-child(even) div {
   -webkit-transform: rotate(4deg);
   -moz-transform: rotate(4deg);
+  -ms-transform: rotate(4deg);
   -o-transform: rotate(4deg);
   transform: rotate(4deg);
   position: relative;
@@ -269,6 +271,7 @@ ul.notes li:nth-child(even) div {
 ul.notes li:nth-child(3n) div {
   -webkit-transform: rotate(-3deg);
   -moz-transform: rotate(-3deg);
+  -ms-transform: rotate(-3deg);
   -o-transform: rotate(-3deg);
   transform: rotate(-3deg);
   position: relative;
@@ -276,9 +279,10 @@ ul.notes li:nth-child(3n) div {
 }
 
 ul.notes li:nth-child(5n) div {
-  -o-transform: rotate(5deg);
   -webkit-transform: rotate(5deg);
   -moz-transform: rotate(5deg);
+  -ms-transform: rotate(5deg);
+  -o-transform: rotate(5deg);
   transform: rotate(5deg);
   position: relative;
   top: -10px;
@@ -287,6 +291,7 @@ ul.notes li:nth-child(5n) div {
 ul.notes li div:hover, ul.notes li div:focus {
   -webkit-transform: scale(1.1);
   -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
   -o-transform: scale(1.1);
   tranform: scale(1.1);
   position: relative;
@@ -301,8 +306,8 @@ ul.notes li div {
   height: 210px;
   width: 210px;
   padding: 1em;
-  -moz-box-shadow: 5px 5px 7px rgba(33, 33, 33, 1);
   -webkit-box-shadow: 5px 5px 7px rgba(33, 33, 33, .7);
+  -moz-box-shadow: 5px 5px 7px rgba(33, 33, 33, 1);
   box-shadow: 5px 5px 7px rgba(33, 33, 33, .7);
   -webkit-transition: -webkit-transform .15s linear;
   -moz-transition: -moz-transform .15s linear;
@@ -503,6 +508,8 @@ a.compose-mail {
 
 .feed-element .well {
   border: 1px solid @border-color;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
   box-shadow: none;
   margin-top: 10px;
   margin-bottom: 5px;

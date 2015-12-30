@@ -1,4 +1,4 @@
-@import url("http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&lang=en");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&lang=en");
 h1,
 h2,
 h3,
@@ -99,6 +99,8 @@ h5 {
 .dropdown-menu {
     border: medium none;
     border-radius: 3px;
+    -webkit-box-shadow: 0 0 3px rgba(86, 96, 117, 0.7);
+    -moz-box-shadow: 0 0 3px rgba(86, 96, 117, 0.7);
     box-shadow: 0 0 3px rgba(86, 96, 117, 0.7);
     display: none;
     float: left;
@@ -595,6 +597,8 @@ body.canvas-menu.mini-navbar nav.navbar-static-side {
 }
 
 .top-navigation .navbar-nav .dropdown-menu {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
     box-shadow: none;
     border: 1px solid #e7eaec
 }
@@ -1030,6 +1034,8 @@ fieldset[disabled] .btn-link.active {
 
 .btn-white:active,
 .btn-white.active {
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) inset;
+    -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) inset;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) inset
 }
 
@@ -1071,6 +1077,8 @@ fieldset[disabled] .btn-white.active {
 .popover,
 .progress,
 .progress-bar {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
     box-shadow: none
 }
 
@@ -1110,50 +1118,74 @@ button.dim:active {
 }
 
 button.btn-primary.dim {
+    -webkit-box-shadow: inset 0 0 0 #8d0102, 0 5px 0 0 #8d0102, 0 10px 5px #999;
+    -moz-box-shadow: inset 0 0 0 #8d0102, 0 5px 0 0 #8d0102, 0 10px 5px #999;
     box-shadow: inset 0 0 0 #8d0102, 0 5px 0 0 #8d0102, 0 10px 5px #999
 }
 
 button.btn-primary.dim:active {
+    -webkit-box-shadow: inset 0 0 0 #8d0102, 0 2px 0 0 #8d0102, 0 5px 3px #999;
+    -moz-box-shadow: inset 0 0 0 #8d0102, 0 2px 0 0 #8d0102, 0 5px 3px #999;
     box-shadow: inset 0 0 0 #8d0102, 0 2px 0 0 #8d0102, 0 5px 3px #999
 }
 
 button.btn-default.dim {
+    -webkit-box-shadow: inset 0 0 0 #b3b3b3, 0 5px 0 0 #b3b3b3, 0 10px 5px #999;
+    -moz-box-shadow: inset 0 0 0 #b3b3b3, 0 5px 0 0 #b3b3b3, 0 10px 5px #999;
     box-shadow: inset 0 0 0 #b3b3b3, 0 5px 0 0 #b3b3b3, 0 10px 5px #999
 }
 
 button.btn-default.dim:active {
+    -webkit-box-shadow: inset 0 0 0 #b3b3b3, 0 2px 0 0 #b3b3b3, 0 5px 3px #999;
+    -moz-box-shadow: inset 0 0 0 #b3b3b3, 0 2px 0 0 #b3b3b3, 0 5px 3px #999;
     box-shadow: inset 0 0 0 #b3b3b3, 0 2px 0 0 #b3b3b3, 0 5px 3px #999
 }
 
 button.btn-warning.dim {
+    -webkit-box-shadow: inset 0 0 0 #f79d3c, 0 5px 0 0 #f79d3c, 0 10px 5px #999;
+    -moz-box-shadow: inset 0 0 0 #f79d3c, 0 5px 0 0 #f79d3c, 0 10px 5px #999;
     box-shadow: inset 0 0 0 #f79d3c, 0 5px 0 0 #f79d3c, 0 10px 5px #999
 }
 
 button.btn-warning.dim:active {
+    -webkit-box-shadow: inset 0 0 0 #f79d3c, 0 2px 0 0 #f79d3c, 0 5px 3px #999;
+    -moz-box-shadow: inset 0 0 0 #f79d3c, 0 2px 0 0 #f79d3c, 0 5px 3px #999;
     box-shadow: inset 0 0 0 #f79d3c, 0 2px 0 0 #f79d3c, 0 5px 3px #999
 }
 
 button.btn-info.dim {
+    -webkit-box-shadow: inset 0 0 0 #1eacae, 0 5px 0 0 #1eacae, 0 10px 5px #999;
+    -moz-box-shadow: inset 0 0 0 #1eacae, 0 5px 0 0 #1eacae, 0 10px 5px #999;
     box-shadow: inset 0 0 0 #1eacae, 0 5px 0 0 #1eacae, 0 10px 5px #999
 }
 
 button.btn-info.dim:active {
+    -webkit-box-shadow: inset 0 0 0 #1eacae, 0 2px 0 0 #1eacae, 0 5px 3px #999;
+    -moz-box-shadow: inset 0 0 0 #1eacae, 0 2px 0 0 #1eacae, 0 5px 3px #999;
     box-shadow: inset 0 0 0 #1eacae, 0 2px 0 0 #1eacae, 0 5px 3px #999
 }
 
 button.btn-success.dim {
+    -webkit-box-shadow: inset 0 0 0 #1872ab, 0 5px 0 0 #1872ab, 0 10px 5px #999;
+    -moz-box-shadow: inset 0 0 0 #1872ab, 0 5px 0 0 #1872ab, 0 10px 5px #999;
     box-shadow: inset 0 0 0 #1872ab, 0 5px 0 0 #1872ab, 0 10px 5px #999
 }
 
 button.btn-success.dim:active {
+    -webkit-box-shadow: inset 0 0 0 #1872ab, 0 2px 0 0 #1872ab, 0 5px 3px #999;
+    -moz-box-shadow: inset 0 0 0 #1872ab, 0 2px 0 0 #1872ab, 0 5px 3px #999;
     box-shadow: inset 0 0 0 #1872ab, 0 2px 0 0 #1872ab, 0 5px 3px #999
 }
 
 button.btn-danger.dim {
+    -webkit-box-shadow: inset 0 0 0 #ea394c, 0 5px 0 0 #ea394c, 0 10px 5px #999;
+    -moz-box-shadow: inset 0 0 0 #ea394c, 0 5px 0 0 #ea394c, 0 10px 5px #999;
     box-shadow: inset 0 0 0 #ea394c, 0 5px 0 0 #ea394c, 0 10px 5px #999
 }
 
 button.btn-danger.dim:active {
+    -webkit-box-shadow: inset 0 0 0 #ea394c, 0 2px 0 0 #ea394c, 0 5px 3px #999;
+    -moz-box-shadow: inset 0 0 0 #ea394c, 0 2px 0 0 #ea394c, 0 5px 3px #999;
     box-shadow: inset 0 0 0 #ea394c, 0 2px 0 0 #ea394c, 0 5px 3px #999
 }
 
@@ -1333,6 +1365,8 @@ button.dim:active:before {
 
 .chosen-container-single .chosen-single {
     background: #ffffff;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
     box-shadow: none;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -1354,6 +1388,8 @@ button.dim:active:before {
     background: #f1f1f1;
     border: 1px solid #ededed;
     border-radius: 2px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
     box-shadow: none;
     color: #333333;
     cursor: default;
@@ -1447,6 +1483,8 @@ button.dim:active:before {
     background-color: #ffffff;
     background-image: none;
     background-repeat: repeat-x;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
     box-shadow: none;
     color: #333333;
     text-shadow: none
@@ -1565,6 +1603,8 @@ button.dim:active:before {
 
 .chat-element .well {
     border: 1px solid #e7eaec;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
     box-shadow: none;
     margin-top: 10px;
     margin-bottom: 5px;
@@ -2127,11 +2167,15 @@ table.dataTable thead .sorting:after {
 
 .noUi-connect {
     background: none repeat scroll 0 0 #ab0102;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
     box-shadow: none
 }
 
 .slider_red .noUi-connect {
     background: none repeat scroll 0 0 #ed5565;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
     box-shadow: none
 }
 
@@ -2808,9 +2852,9 @@ label.error {
 .cg-notify-message.inspinia-notify {
     background: #fff;
     padding: 0;
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.2);
     -webkit-box-shadow: 0 0 1 px rgba(0, 0, 0, 0.1), 0 2 px 4 px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0 0 1 px rgba(0, 0, 0, 0.1), 0 2 px 4 px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.2);
     border: none;
     margin-top: 30px;
     color: inherit
@@ -3118,6 +3162,7 @@ a.forum-item-title:hover {
         margin-left: -25px;
         -webkit-transform: translateZ(0);
         -moz-transform: translateZ(0);
+        -ms-transform: translateZ(0);
         -o-transform: translateZ(0);
         transform: translateZ(0);
         -webkit-backface-visibility: hidden;
@@ -3814,6 +3859,8 @@ video {
     background-color: #FFFFFF;
     border: 1px solid rgba(0, 0, 0, 0);
     border-radius: 4px;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     outline: 0 none;
     position: relative
@@ -5150,6 +5197,7 @@ ul.notes li div {
 ul.notes li div {
     -webkit-transform: rotate(-6deg);
     -moz-transform: rotate(-6deg);
+    -ms-transform: rotate(-6deg);
     -o-transform: rotate(-6deg);
     transform: rotate(-6deg)
 }
@@ -5157,6 +5205,7 @@ ul.notes li div {
 ul.notes li:nth-child(even) div {
     -webkit-transform: rotate(4deg);
     -moz-transform: rotate(4deg);
+    -ms-transform: rotate(4deg);
     -o-transform: rotate(4deg);
     transform: rotate(4deg);
     position: relative;
@@ -5166,6 +5215,7 @@ ul.notes li:nth-child(even) div {
 ul.notes li:nth-child(3n) div {
     -webkit-transform: rotate(-3deg);
     -moz-transform: rotate(-3deg);
+    -ms-transform: rotate(-3deg);
     -o-transform: rotate(-3deg);
     transform: rotate(-3deg);
     position: relative;
@@ -5173,9 +5223,10 @@ ul.notes li:nth-child(3n) div {
 }
 
 ul.notes li:nth-child(5n) div {
-    -o-transform: rotate(5deg);
     -webkit-transform: rotate(5deg);
     -moz-transform: rotate(5deg);
+    -ms-transform: rotate(5deg);
+    -o-transform: rotate(5deg);
     transform: rotate(5deg);
     position: relative;
     top: -10px
@@ -5185,6 +5236,7 @@ ul.notes li div:hover,
 ul.notes li div:focus {
     -webkit-transform: scale(1.1);
     -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
     -o-transform: scale(1.1);
     tranform: scale(1.1);
     position: relative;
@@ -5199,8 +5251,8 @@ ul.notes li div {
     height: 210px;
     width: 210px;
     padding: 1em;
-    -moz-box-shadow: 5px 5px 7px #212121;
     -webkit-box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
+    -moz-box-shadow: 5px 5px 7px #212121;
     box-shadow: 5px 5px 7px rgba(33, 33, 33, 0.7);
     -webkit-transition: -webkit-transform .15s linear;
     -moz-transition: -moz-transform .15s linear;
@@ -5401,6 +5453,8 @@ a.compose-mail {
 
 .feed-element .well {
     border: 1px solid #e7eaec;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
     box-shadow: none;
     margin-top: 10px;
     margin-bottom: 5px;
@@ -6645,67 +6699,89 @@ del {
 
 .sk-spinner-circle .sk-circle2 {
     -webkit-transform: rotate(30deg);
+    -moz-transform: rotate(30deg);
     -ms-transform: rotate(30deg);
+    -o-transform: rotate(30deg);
     transform: rotate(30deg)
 }
 
 .sk-spinner-circle .sk-circle3 {
     -webkit-transform: rotate(60deg);
+    -moz-transform: rotate(60deg);
     -ms-transform: rotate(60deg);
+    -o-transform: rotate(60deg);
     transform: rotate(60deg)
 }
 
 .sk-spinner-circle .sk-circle4 {
     -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
     transform: rotate(90deg)
 }
 
 .sk-spinner-circle .sk-circle5 {
     -webkit-transform: rotate(120deg);
+    -moz-transform: rotate(120deg);
     -ms-transform: rotate(120deg);
+    -o-transform: rotate(120deg);
     transform: rotate(120deg)
 }
 
 .sk-spinner-circle .sk-circle6 {
     -webkit-transform: rotate(150deg);
+    -moz-transform: rotate(150deg);
     -ms-transform: rotate(150deg);
+    -o-transform: rotate(150deg);
     transform: rotate(150deg)
 }
 
 .sk-spinner-circle .sk-circle7 {
     -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
     transform: rotate(180deg)
 }
 
 .sk-spinner-circle .sk-circle8 {
     -webkit-transform: rotate(210deg);
+    -moz-transform: rotate(210deg);
     -ms-transform: rotate(210deg);
+    -o-transform: rotate(210deg);
     transform: rotate(210deg)
 }
 
 .sk-spinner-circle .sk-circle9 {
     -webkit-transform: rotate(240deg);
+    -moz-transform: rotate(240deg);
     -ms-transform: rotate(240deg);
+    -o-transform: rotate(240deg);
     transform: rotate(240deg)
 }
 
 .sk-spinner-circle .sk-circle10 {
     -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
     -ms-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
     transform: rotate(270deg)
 }
 
 .sk-spinner-circle .sk-circle11 {
     -webkit-transform: rotate(300deg);
+    -moz-transform: rotate(300deg);
     -ms-transform: rotate(300deg);
+    -o-transform: rotate(300deg);
     transform: rotate(300deg)
 }
 
 .sk-spinner-circle .sk-circle12 {
     -webkit-transform: rotate(330deg);
+    -moz-transform: rotate(330deg);
     -ms-transform: rotate(330deg);
+    -o-transform: rotate(330deg);
     transform: rotate(330deg)
 }
 
@@ -6973,6 +7049,7 @@ del {
     -webkit-transform: rotate(30deg);
     -moz-transform: rotate(30deg);
     -ms-transform: rotate(30deg);
+    -o-transform: rotate(30deg);
     transform: rotate(30deg)
 }
 
@@ -6980,6 +7057,7 @@ del {
     -webkit-transform: rotate(60deg);
     -moz-transform: rotate(60deg);
     -ms-transform: rotate(60deg);
+    -o-transform: rotate(60deg);
     transform: rotate(60deg)
 }
 
@@ -6987,6 +7065,7 @@ del {
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
     transform: rotate(90deg)
 }
 
@@ -6994,6 +7073,7 @@ del {
     -webkit-transform: rotate(120deg);
     -moz-transform: rotate(120deg);
     -ms-transform: rotate(120deg);
+    -o-transform: rotate(120deg);
     transform: rotate(120deg)
 }
 
@@ -7001,6 +7081,7 @@ del {
     -webkit-transform: rotate(150deg);
     -moz-transform: rotate(150deg);
     -ms-transform: rotate(150deg);
+    -o-transform: rotate(150deg);
     transform: rotate(150deg)
 }
 
@@ -7008,6 +7089,7 @@ del {
     -webkit-transform: rotate(180deg);
     -moz-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
     transform: rotate(180deg)
 }
 
@@ -7015,6 +7097,7 @@ del {
     -webkit-transform: rotate(210deg);
     -moz-transform: rotate(210deg);
     -ms-transform: rotate(210deg);
+    -o-transform: rotate(210deg);
     transform: rotate(210deg)
 }
 
@@ -7022,6 +7105,7 @@ del {
     -webkit-transform: rotate(240deg);
     -moz-transform: rotate(240deg);
     -ms-transform: rotate(240deg);
+    -o-transform: rotate(240deg);
     transform: rotate(240deg)
 }
 
@@ -7029,6 +7113,7 @@ del {
     -webkit-transform: rotate(270deg);
     -moz-transform: rotate(270deg);
     -ms-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
     transform: rotate(270deg)
 }
 
@@ -7036,6 +7121,7 @@ del {
     -webkit-transform: rotate(300deg);
     -moz-transform: rotate(300deg);
     -ms-transform: rotate(300deg);
+    -o-transform: rotate(300deg);
     transform: rotate(300deg)
 }
 
@@ -7043,6 +7129,7 @@ del {
     -webkit-transform: rotate(330deg);
     -moz-transform: rotate(330deg);
     -ms-transform: rotate(330deg);
+    -o-transform: rotate(330deg);
     transform: rotate(330deg)
 }
 
