@@ -1784,7 +1784,7 @@ a.list-group-item.active:focus {
     left: 0;
     top: 0;
     visibility: hidden;
-    background: #2b303a;
+    background-color: #2b303a;
     background-color: rgba(43, 48, 58, 0.8);
     color: white;
     text-align: left;
@@ -2440,8 +2440,6 @@ table.dataTable thead .sorting:after {
 }
 
 .ui-jqgrid .form-control {
-    height: 10px;
-    width: auto;
     display: inline;
     padding: 10px 12px
 }
@@ -6640,6 +6638,7 @@ del {
     -moz-animation: sk-chasingDotsBounce 2s infinite ease-in-out;
     animation: sk-threeBounceDelay 1.4s infinite ease-in-out;
     -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
     animation-fill-mode: both
 }
 
@@ -6708,6 +6707,7 @@ del {
     -moz-animation: sk-circleBounceDelay 1.2s infinite ease-in-out;
     animation: sk-circleBounceDelay 1.2s infinite ease-in-out;
     -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
     animation-fill-mode: both
 }
 
@@ -7059,6 +7059,7 @@ del {
     -moz-animation: sk-circleFadeDelay 1.2s infinite ease-in-out;
     animation: sk-circleFadeDelay 1.2s infinite ease-in-out;
     -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
     animation-fill-mode: both
 }
 
@@ -8761,8 +8762,7 @@ body.skin-3 {
         display: none
     }
     .navbar-header {
-        display: inline;
-        float: left
+        display: inline
     }
     .sidebard-panel {
         z-index: 2;
