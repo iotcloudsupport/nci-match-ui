@@ -1334,7 +1334,9 @@ button.dim:active:before {
 .chosen-container-single .chosen-single {
     background: #ffffff;
     box-shadow: none;
+    -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
+    box-sizing: border-box;
     background-color: #FFFFFF;
     border: 1px solid #CBD5DD;
     border-radius: 2px;
@@ -2234,7 +2236,9 @@ table.dataTable thead .sorting:after {
 }
 
 .ui-jqgrid {
-    -moz-box-sizing: content-box
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box
 }
 
 .ui-jqgrid-btable {
@@ -2504,8 +2508,9 @@ table.dataTable thead .sorting:after {
     background: #f5f5f5;
     -webkit-border-radius: 3px;
     border-radius: 3px;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
 }
 
 .dd-handle span {
@@ -2574,6 +2579,7 @@ table.dataTable thead .sorting:after {
     background: #f2fbff;
     border: 1px dashed #b6bcbf;
     box-sizing: border-box;
+    -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box
 }
 
@@ -2600,6 +2606,7 @@ table.dataTable thead .sorting:after {
 
 .dd-dragel .dd-handle {
     -webkit-box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.1);
     box-shadow: 2px 4px 6px 0 rgba(0, 0, 0, 0.1)
 }
 
@@ -2626,7 +2633,8 @@ table.dataTable thead .sorting:after {
     font-family: open sans, lucida grande, lucida sans unicode, helvetica, arial, sans-serif;
     padding: 5px;
     box-sizing: border-box;
-    -moz-box-sizing: border-box
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box
 }
 
 #nestable2 .dd-handle {
@@ -2645,7 +2653,8 @@ table.dataTable thead .sorting:after {
     font-size: 12px;
     padding: 25px;
     box-sizing: border-box;
-    -moz-box-sizing: border-box
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box
 }
 
 .CodeMirror {
@@ -3107,6 +3116,7 @@ a.forum-item-title:hover {
         left: 50%;
         margin-left: -25px;
         -webkit-transform: translateZ(0);
+        -moz-transform: translateZ(0);
         -webkit-backface-visibility: hidden;
         font-size: 19px
     }
@@ -3825,6 +3835,7 @@ video {
 
 .animated.modal.fade .modal-dialog {
     -webkit-transform: none;
+    -moz-transform: none;
     -ms-transform: none;
     -o-transform: none;
     transform: none
@@ -6175,6 +6186,7 @@ del {
 
 .metismenu .active>a>.fa.plus-times {
     -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg)
 }
@@ -6918,66 +6930,77 @@ del {
 
 .sk-spinner-fading-circle .sk-circle2 {
     -webkit-transform: rotate(30deg);
+    -moz-transform: rotate(30deg);
     -ms-transform: rotate(30deg);
     transform: rotate(30deg)
 }
 
 .sk-spinner-fading-circle .sk-circle3 {
     -webkit-transform: rotate(60deg);
+    -moz-transform: rotate(60deg);
     -ms-transform: rotate(60deg);
     transform: rotate(60deg)
 }
 
 .sk-spinner-fading-circle .sk-circle4 {
     -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     transform: rotate(90deg)
 }
 
 .sk-spinner-fading-circle .sk-circle5 {
     -webkit-transform: rotate(120deg);
+    -moz-transform: rotate(120deg);
     -ms-transform: rotate(120deg);
     transform: rotate(120deg)
 }
 
 .sk-spinner-fading-circle .sk-circle6 {
     -webkit-transform: rotate(150deg);
+    -moz-transform: rotate(150deg);
     -ms-transform: rotate(150deg);
     transform: rotate(150deg)
 }
 
 .sk-spinner-fading-circle .sk-circle7 {
     -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     transform: rotate(180deg)
 }
 
 .sk-spinner-fading-circle .sk-circle8 {
     -webkit-transform: rotate(210deg);
+    -moz-transform: rotate(210deg);
     -ms-transform: rotate(210deg);
     transform: rotate(210deg)
 }
 
 .sk-spinner-fading-circle .sk-circle9 {
     -webkit-transform: rotate(240deg);
+    -moz-transform: rotate(240deg);
     -ms-transform: rotate(240deg);
     transform: rotate(240deg)
 }
 
 .sk-spinner-fading-circle .sk-circle10 {
     -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
     -ms-transform: rotate(270deg);
     transform: rotate(270deg)
 }
 
 .sk-spinner-fading-circle .sk-circle11 {
     -webkit-transform: rotate(300deg);
+    -moz-transform: rotate(300deg);
     -ms-transform: rotate(300deg);
     transform: rotate(300deg)
 }
 
 .sk-spinner-fading-circle .sk-circle12 {
     -webkit-transform: rotate(330deg);
+    -moz-transform: rotate(330deg);
     -ms-transform: rotate(330deg);
     transform: rotate(330deg)
 }
