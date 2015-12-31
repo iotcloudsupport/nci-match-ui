@@ -1,55 +1,73 @@
-var app = angular.module('match_http_Factory', []);
-app.factory('patientService', function() {
-    var factory = {};
-    factory.beAwesome = function() {
-        return 'Awesome!';
-    }
-    return factory;
-});
-app.factory('treatmentArmService', function() {
-    var factory = {};
-    factory.beAwesome = function() {
-        return 'Awesome!';
-    }
-    return factory;
+function servicePatientCtrl($scope, httplink) {
+    $scope.palink = httplink;
+}
+function serviceTaCtrl($scope, treatmentArmFactory) {
+    $scope.talink = treatmentArmFactory;
+}
+function serviceBiopsyCtrl($scope, biopsySequenceFactory) {
+    $scope.biopsylink = biopsySequenceFactory;
+}
+function serviceMsnCtrl($scope, molecularSequenceFactory) {
+    $scope.msnlink = molecularSequenceFactory;
+}
+
+//angular.module('config.matchbox.Factory', ['ngResource'])
+//    .factory('apilink', function() {
+//        return "/common/rs/getBasicPatientsData";
+//    });
+angular.module('patientFactory', ['ngResource'])
+    .factory('httplink', function() {
+        return "/common/rs/getBasicPatientsData";
+    });
+angular.module('treatmentArmFactory', ['ngResource'])
+    .factory('treatmentArmFactory', function() {
+        return "/common/rs/getBasicTreatmentArms";
+    });
+angular.module('biopsySequenceFactory', ['ngResource'])
+    .factory('biopsySequenceFactory', function() {
+        return "/common/rs/patientSpecimenTrackingSummary";
+    });
+angular.module('molecularSequenceFactory', ['ngResource'])
+    .factory('molecularSequenceFactory', function() {
+        return "/common/rs/patientSpecimenTrackingSummary";
+    });
+
+describe('Patient http factory ', function() {
+    beforeEach(module('patientFactory'));
+    it('should be Patient factory service',
+        inject(function($rootScope, $controller) {
+        var scope = $rootScope.$new();
+        var ctrl = $controller(servicePatientCtrl, {$scope: scope});
+        expect(scope.palink).toEqual("/common/rs/getBasicPatientsData");
+    }));
 });
 
-//Patient Service
-describe('app: match_http_Factory patientService', function() {
-    beforeEach(module('match_http_Factory'));
-    var $controller;
-    beforeEach(inject(function(_$controller_) {
-        $controller = _$controller_;
+describe('Treatment Arm http factory ', function() {
+    beforeEach(module('treatmentArmFactory'));
+    it('should be Ta factory service',
+        inject(function($rootScope, $controller) {
+        var scope = $rootScope.$new();
+        var ctrl = $controller(serviceTaCtrl, {$scope: scope});
+        expect(scope.talink).toEqual("/common/rs/getBasicTreatmentArms");
     }));
-    // Factory of interest is called patientService
-    describe('factory: patientService', function() {
-        var factory = null;
-        beforeEach(inject(function(patientService) {
-            factory = patientService;
-        }))
-        it('Should define methods', function() {
-            expect(factory.beAwesome).toBeDefined()
-            expect(factory.beAwesome).toEqual(jasmine.any(Function));
-        });
-    });
-})
+});
 
-//Treatment Arm Service
-describe('app: match_http_Factory treatmentArmService', function() {
-    beforeEach(module('match_http_Factory'));
-    var $controller;
-    beforeEach(inject(function(_$controller_) {
-        $controller = _$controller_;
-    }));
-    // Factory of interest is called treatmentArmService
-    describe('factory: treatmentArmService', function() {
-        var factory = null;
-        beforeEach(inject(function(treatmentArmService) {
-            factory = treatmentArmService;
-        }))
-        it('Should define methods', function() {
-            expect(factory.beAwesome).toBeDefined()
-            expect(factory.beAwesome).toEqual(jasmine.any(Function));
-        });
-    });
+describe('Biopsy sequence http factory ', function() {
+    beforeEach(module('biopsySequenceFactory'));
+    it('should be biopsy sequence factory service',
+        inject(function($rootScope, $controller) {
+            var scope = $rootScope.$new();
+            var ctrl = $controller(serviceBiopsyCtrl, {$scope: scope});
+            expect(scope.biopsylink).toEqual("/common/rs/patientSpecimenTrackingSummary");
+        }));
+});
+
+describe('Molecular sequence http factory ', function() {
+    beforeEach(module('molecularSequenceFactory'));
+    it('should be biopsy sequence factory service',
+        inject(function($rootScope, $controller) {
+            var scope = $rootScope.$new();
+            var ctrl = $controller(serviceMsnCtrl, {$scope: scope});
+            expect(scope.msnlink).toEqual("/common/rs/patientSpecimenTrackingSummary");
+        }));
 });
