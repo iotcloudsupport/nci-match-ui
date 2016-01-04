@@ -22,8 +22,8 @@ patientList.controller('PatientListCtrl', ['$scope', function($scope){
         ];
 }]);
 
-describe('phonesApp', function() {
-    describe('phoneApp patientController', function() {
+describe('patientListApp', function() {
+    describe('patientListApp patientController', function() {
         beforeEach(module('patientController'));
         describe('PatientListCtrl', function() {
             it('should create "patientSequenceNumber" be 202re',
@@ -66,8 +66,8 @@ taList.controller('TaListCtrl', ['$scope', function($scope){
         ];
 }]);
 
-describe('phonesApp', function() {
-    describe('phoneApp taController', function() {
+describe('taListApp', function() {
+    describe('taListApp taController', function() {
         beforeEach(module('taController'));
         describe('TaListCtrl', function() {
             it('should create "treatmentArmName" be CukeTest770-4',
