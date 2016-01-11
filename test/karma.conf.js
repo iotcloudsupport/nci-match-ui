@@ -22,13 +22,16 @@ module.exports = function(config) {
       '../bower_components/angular-animate/angular-animate.js',
       '../bower_components/angular-cookies/angular-cookies.js',
       '../bower_components/angular-resource/angular-resource.js',
-      '../bower_components/angular-route/angular-route.js',
       '../bower_components/angular-sanitize/angular-sanitize.js',
       '../bower_components/angular-touch/angular-touch.js',
       '../bower_components/jquery-ui/jquery-ui.js',
-      '../bower_components/angular-ui-sortable/sortable.js',
       '../bower_components/angular-mocks/angular-mocks.js',
-      'spec/factories/match_factories_spec.js'
+      '../bower_components/moment/moment.js',
+      // MATCHBox Custom Scripts
+      '../app/scripts/**/*.js',
+      // MATCHBox Custom Script Specs
+      'spec/filters/*.js'
+      //'spec/factories/match_factories_spec.js'
     ],
 
 
