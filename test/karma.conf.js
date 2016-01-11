@@ -30,7 +30,8 @@ module.exports = function(config) {
       // MATCHBox Custom Scripts
       '../app/scripts/**/*.js',
       // MATCHBox Custom Script Specs
-      'spec/filters/*.js'
+      'spec/filters/*.js',
+      'spec/factories/match_config_factory_spec.js'
       //'spec/factories/match_factories_spec.js'
     ],
 
