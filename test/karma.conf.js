@@ -27,12 +27,11 @@ module.exports = function(config) {
       '../bower_components/jquery-ui/jquery-ui.js',
       '../bower_components/angular-mocks/angular-mocks.js',
       '../bower_components/moment/moment.js',
-      // MATCHBox Custom Scripts
+      // matchbox custom scripts
       '../app/scripts/**/*.js',
-      // MATCHBox Custom Script Specs
+      // matchbox custom script specs
       'spec/filters/*.js',
-      'spec/factories/match_config_factory_spec.js'
-      //'spec/factories/match_factories_spec.js'
+      'spec/factories/*.js'
     ],
 
 
