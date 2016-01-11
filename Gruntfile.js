@@ -205,6 +205,12 @@ module.exports = function (grunt) {
         },
         usemin: {
             html: ['dist/index.html']
+        },
+        karma: {
+            unit: {
+                configFile: 'test/karma.conf.js',
+                singleRun: true
+            }
         }
     });
 
@@ -223,7 +229,9 @@ module.exports = function (grunt) {
     ]);
 
     // Run the unit tests
-    grunt.registerTask('test', []);
+    grunt.registerTask('test', [
+        'karma'
+    ]);
 
     // Build version for production
     grunt.registerTask('build', [
@@ -239,8 +247,6 @@ module.exports = function (grunt) {
         'htmlmin',
         'compress:dist'
     ]);
-
-    //grunt.loadNpmTasks('grunt-karma');
 
     // Run the unit tests, build it, and compress it.
     grunt.registerTask('default', [
