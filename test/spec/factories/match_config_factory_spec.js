@@ -1,4 +1,4 @@
-describe('Factory: MATCH Config', function () {
+describe('MATCHBox Factory: MATCH Config', function () {
 
     beforeEach(module('config.matchbox'));
 
