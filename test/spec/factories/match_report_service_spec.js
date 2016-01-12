@@ -1,4 +1,4 @@
-describe('HTTP MATCHBox Factory: Biopsy Sequence Service', function () {
+describe('Factory: Biopsy Sequence Service Factory', function () {
 
     beforeEach(module('config.matchbox', 'http.matchbox'));
 

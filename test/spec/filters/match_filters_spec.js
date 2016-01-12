@@ -1,4 +1,4 @@
-describe('MATCHBox Filter: Long to GMT', function () {
+describe('Filter: GMT Filter', function () {
 
     beforeEach(module('filters.matchbox'));
 

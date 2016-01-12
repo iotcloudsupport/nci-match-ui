@@ -1,4 +1,4 @@
-describe('HTTP MATCHBox Factory: Molecular Sequence Service', function () {
+describe('Factory: Molecular Sequence Service Factory', function () {
 
     beforeEach(module('config.matchbox', 'http.matchbox'));
 

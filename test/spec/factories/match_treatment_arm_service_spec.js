@@ -1,4 +1,4 @@
-describe('HTTP MATCHBox Factory: Treatment Arm Service', function () {
+describe('Factory: Treatment Arm Service Factory', function () {
 
     beforeEach(module('config.matchbox', 'http.matchbox'));
 
