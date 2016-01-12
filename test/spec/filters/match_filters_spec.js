@@ -1,11 +1,9 @@
 describe('MATCHBox Filter: Long to GMT', function () {
 
-    // load the matchbox filters module
     beforeEach(module('filters.matchbox'));
 
     var filter;
 
-    // Initialize the filter
     beforeEach(function () {
         inject(function (_$filter_) {
             filter = _$filter_;
