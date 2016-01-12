@@ -53,4 +53,5 @@ describe('Controller: Patients Controller', function () {
 
         expect(scope.patientList.length).toBe(0);
     });
+
 });

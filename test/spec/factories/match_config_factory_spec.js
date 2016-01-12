@@ -4,11 +4,9 @@ describe('Factory: MATCH Config Factory', function () {
 
     var matchConfig;
 
-    beforeEach(function () {
-        inject(function (_matchConfig_) {
-            matchConfig = _matchConfig_;
-        });
-    });
+    beforeEach(inject(function (_matchConfig_) {
+        matchConfig = _matchConfig_;
+    }));
 
     it('should return "http://server:80/match" for the match api base url', function () {
         expect(matchConfig.matchApiBaseUrl).toEqual('http://server:80/match');

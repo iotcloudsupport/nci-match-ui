@@ -4,11 +4,9 @@ describe('Filter: GMT Filter', function () {
 
     var filter;
 
-    beforeEach(function () {
-        inject(function (_$filter_) {
-            filter = _$filter_;
-        });
-    });
+    beforeEach(inject(function (_$filter_) {
+        filter = _$filter_;
+    }));
 
     it('should return a dash for a undefined value', function () {
         var toGMT = filter('gmt');

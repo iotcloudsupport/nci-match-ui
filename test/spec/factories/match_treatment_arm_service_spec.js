@@ -5,12 +5,10 @@ describe('Factory: Treatment Arm Service Factory', function () {
     var treatmentArmService,
         httpBackend;
 
-    beforeEach(function () {
-        inject(function (_treatmentArmService_, $httpBackend) {
-            treatmentArmService = _treatmentArmService_;
-            httpBackend = $httpBackend;
-        });
-    });
+    beforeEach(inject(function (_treatmentArmService_, $httpBackend) {
+        treatmentArmService = _treatmentArmService_;
+        httpBackend = $httpBackend;
+    }));
 
     afterEach(function () {
         httpBackend.verifyNoOutstandingExpectation();

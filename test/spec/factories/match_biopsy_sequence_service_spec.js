@@ -5,12 +5,10 @@ describe('Factory: Biopsy Sequence Service Factory', function () {
     var biopsySequenceService,
         httpBackend;
 
-    beforeEach(function () {
-        inject(function (_biopsySequenceService_, $httpBackend) {
-            biopsySequenceService = _biopsySequenceService_;
-            httpBackend = $httpBackend;
-        });
-    });
+    beforeEach(inject(function (_biopsySequenceService_, $httpBackend) {
+        biopsySequenceService = _biopsySequenceService_;
+        httpBackend = $httpBackend;
+    }));
 
     afterEach(function () {
         httpBackend.verifyNoOutstandingExpectation();

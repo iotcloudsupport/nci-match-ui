@@ -5,12 +5,10 @@ describe('Factory: Molecular Sequence Service Factory', function () {
     var molecularSequenceService,
         httpBackend;
 
-    beforeEach(function () {
-        inject(function (_molecularSequenceService_, $httpBackend) {
-            molecularSequenceService = _molecularSequenceService_;
-            httpBackend = $httpBackend;
-        });
-    });
+    beforeEach(inject(function (_molecularSequenceService_, $httpBackend) {
+        molecularSequenceService = _molecularSequenceService_;
+        httpBackend = $httpBackend;
+    }));
 
     afterEach(function () {
         httpBackend.verifyNoOutstandingExpectation();

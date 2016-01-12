@@ -5,12 +5,10 @@ describe('Factory: Patient Service Factory', function () {
     var patientService,
         httpBackend;
 
-    beforeEach(function () {
-        inject(function (_patientService_, $httpBackend) {
-            patientService = _patientService_;
-            httpBackend = $httpBackend;
-        });
-    });
+    beforeEach(inject(function (_patientService_, $httpBackend) {
+        patientService = _patientService_;
+        httpBackend = $httpBackend;
+    }));
 
     afterEach(function () {
         httpBackend.verifyNoOutstandingExpectation();
