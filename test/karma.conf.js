@@ -48,9 +48,10 @@ module.exports = function(config) {
     },
 
     coverageReporter: {
-      type: 'html',
+      type: 'cobertura',
       dir: 'coverage/',
-      subdir: 'report-html'
+      subdir: 'report-cobertura',
+      file: 'test-coverage.txt'
     },
 
     // test results reporter to use
