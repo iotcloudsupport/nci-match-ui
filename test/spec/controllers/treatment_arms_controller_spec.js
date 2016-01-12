@@ -1,4 +1,4 @@
-describe('Controller: Patients Controller', function () {
+describe('Controller: Treatment Arms Controller', function () {
 
     beforeEach(module('config.matchbox', 'http.matchbox', 'treatment-arms.matchbox'));
 
@@ -30,7 +30,7 @@ describe('Controller: Patients Controller', function () {
         httpBackend.verifyNoOutstandingRequest();
     });
 
-    it('should populate the patient list object with 3 patients on a success response', function() {
+    it('should populate the treatment arm list with 2 arms on a success response', function() {
         httpBackend.when('GET', 'http://server:80/match/common/rs/getBasicTreatmentArms')
             .respond([
                 {treatmentArmId: 'MB-S1'},
@@ -44,7 +44,7 @@ describe('Controller: Patients Controller', function () {
         expect(scope.treatmentArmList[1].treatmentArmId).toBe('MB-S2');
     });
 
-    it('should not populate the patient list object on an error response', function() {
+    it('should not populate the treatment arm list on an error response', function() {
         httpBackend.when('GET', 'http://server:80/match/common/rs/getBasicTreatmentArms').respond(500);
         scope.loadTreatmentArmList();
         httpBackend.flush();

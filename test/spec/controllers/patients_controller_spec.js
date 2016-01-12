@@ -30,7 +30,7 @@ describe('Controller: Patients Controller', function () {
         httpBackend.verifyNoOutstandingRequest();
     });
 
-    it('should populate the patient list object with 3 patients on a success response', function() {
+    it('should populate the patient list with 3 patients on a success response', function() {
         httpBackend.when('GET', 'http://server:80/match/common/rs/getBasicPatientsData')
             .respond([
                 {patientSequenceNumber: '100'},
@@ -46,7 +46,7 @@ describe('Controller: Patients Controller', function () {
         expect(scope.patientList[2].patientSequenceNumber).toBe('102');
     });
 
-    it('should not populate the patient list object on an error response', function() {
+    it('should not populate the patient list on an error response', function() {
         httpBackend.when('GET', 'http://server:80/match/common/rs/getBasicPatientsData').respond(500);
         scope.loadPatientList();
         httpBackend.flush();
