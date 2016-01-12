@@ -15,7 +15,7 @@ describe('Controller: Patients Controller', function () {
                 newOptions: function() {
                     return {
                         withDisplayLength: function(length) {
-                            // This is a mock function f the DTOptionsBuilder
+                            // This is a mock function of the DTOptionsBuilder
                         }
                     }
                 }

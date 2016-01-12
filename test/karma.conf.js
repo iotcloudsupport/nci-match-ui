@@ -44,18 +44,25 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      '../app/scripts/**/*.js': ['coverage']
     },
 
+    coverageReporter: {
+      type: 'html',
+      dir: 'coverage/',
+      subdir: 'report-html'
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['dots', 'junit'],
+    reporters: ['dots', 'junit', 'coverage'],
 
 
     junitReporter: {
-      outputDir: 'reports',
+      outputDir: 'junit/',
       outputFile: 'test-results.xml',
+      suite: 'matchbox',
       useBrowserName: false
     },
 
@@ -88,7 +95,8 @@ module.exports = function(config) {
       'karma-chrome-launcher',
       'karma-firefox-launcher',
       'karma-jasmine',
-      'karma-junit-reporter'
+      'karma-junit-reporter',
+      'karma-coverage'
     ],
 
     // Continuous Integration mode
