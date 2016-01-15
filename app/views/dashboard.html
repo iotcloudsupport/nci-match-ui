@@ -1,4 +1,3 @@
-
 <div class="row  border-bottom white-bg dashboard-header">
     <div class="col-sm-3">
         <h2>Welcome MATCHBox User</h2>
@@ -28,9 +27,9 @@
     </div>
 
     <div class="col-sm-6">
-        <!--<div class="flot-chart dashboard-chart" ng-controller="dashboardFlotOne as chart">-->
-            <!--<div flot class="flot-chart-content" dataset="chart.flotData" options="chart.flotOptions"></div>-->
-        <!--</div>-->
+        <div class="flot-chart dashboard-chart">
+            <div flot class="flot-chart-content" dataset="chart.flotData" options="chart.flotOptions"></div>
+        </div>
         <div class="row text-left">
             <div class="col-xs-4">
                 <div class=" m-l-md">
@@ -49,35 +48,32 @@
 
         </div>
     </div>
+
+    <div class="col-sm-3">
+        <div class="statistic-box">
+            <h4>
+                Project Beta progress
+            </h4>
+            <p>
+                You have two project with not compleated task.
+            </p>
+
+            <div class="row text-center" ng-controller="chartJsCtrl as chart">
+                <div class="col-lg-6" >
+                    <canvas polarchart options="chart.polarOptions" data="chart.polarData" width="80" height="80"></canvas>
+                    <h5>Kolter</h5>
+                </div>
+                <div class="col-lg-6">
+                    <canvas doughnutchart options="chart.doughnutOptions" data="chart.doughnutData" width="78" height="78"></canvas>
+                    <h5>Maxtor</h5>
+                </div>
+            </div>
+            <div class="m-t">
+                <small>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>
+            </div>
+        </div>
+    </div>
 </div>
-
-    <!--<div class="col-sm-3">-->
-        <!--<div class="statistic-box">-->
-            <!--<h4>-->
-                <!--Project Beta progress-->
-            <!--</h4>-->
-
-            <!--<p>-->
-                <!--You have two project with not compleated task.-->
-            <!--</p>-->
-
-            <!--<div class="row text-center" ng-controller="chartJsCtrl as chart">-->
-                <!--<div class="col-lg-6" >-->
-                    <!--<canvas polarchart options="chart.polarOptions" data="chart.polarData" width="80" height="80"></canvas>-->
-                    <!--<h5>Kolter</h5>-->
-                <!--</div>-->
-                <!--<div class="col-lg-6">-->
-                    <!--<canvas doughnutchart options="chart.doughnutOptions" data="chart.doughnutData" width="78" height="78"></canvas>-->
-                    <!--<h5>Maxtor</h5>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="m-t">-->
-                <!--<small>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>-->
-            <!--</div>-->
-
-        <!--</div>-->
-    <!--</div>-->
-
 
 <div class="row">
     <div class="col-lg-14">
