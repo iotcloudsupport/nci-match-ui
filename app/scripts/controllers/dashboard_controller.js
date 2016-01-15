@@ -12,6 +12,7 @@ angular.module('dashboard.matchbox',[])
             .withOption('bInfo', false)
             .withOption('bPaginate', true)
             .withOption('paging', true)
+            .withOption('bLengthChange', false)
         ;
         this.dtColumnDefs = [];
         this.dtInstance = {};
