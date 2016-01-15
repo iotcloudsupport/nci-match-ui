@@ -301,58 +301,58 @@
                                                                    class="table table-striped table-hover">
                                                     <thead>
 
-                                                    <!--<tr>-->
-                                                    <!--<th>Patient Sequence Number</th>-->
-                                                    <!--<th>BiopsySequenceNumber</th>-->
-                                                    <!--<th>MolecularSequenceNumber</th>-->
-                                                    <!--<th>Job Name</th>-->
-                                                    <!--<th>Date Assigned</th>-->
-                                                    <!--<th>patientCurrentStatus</th>-->
-                                                    <!--<th>Patient StepNumber</th>-->
-                                                    <!--<th>Patient Concordance </th>-->
-                                                    <!--<th>Off Trial Date </th>-->
-                                                    <!--</tr>-->
-                                                    <!--</thead>-->
-                                                    <!--<tbody>-->
-                                                    <!--<tr ng-repeat="dt in dashboardList">-->
-                                                        <!--<td>{{ dt.patientSequenceNumber }}</td>-->
-                                                        <!--<td>{{ dt.biopsySequenceNumber }}</td>-->
-                                                        <!--<td>{{ dt.molecularSequenceNumber || '-' }}</td>-->
-                                                        <!--<td>{{ dt.jobName || '-' }}</td>-->
-                                                        <!--<td><span class="label label-success">-->
-                                                        <!--{{ dt.dateAssigned | gmt }}-->
-                                                        <!--</span></td>-->
-                                                        <!--<td>{{ dt.patientCurrentStatus || '-' }}</td>-->
-                                                        <!--<td>{{ dt.patientStepNumber || '-' }}</td>-->
-                                                        <!--<td>{{ dt.patientConcordance }}</td>-->
-                                                        <!--<td><span class="label label-primary">-->
-                                                        <!--{{ dt.hoursPending || ' - ' }}-->
-                                                    <!--</span></td>-->
-                                                    <!--</tr>-->
-
-
                                                     <tr>
-                                                        <th>Patient Sequence Number</th>
-                                                        <th>Status</th>
-                                                        <th>Step Number</th>
-                                                        <th>Disease</th>
-                                                        <th>Treatment Arm</th>
-                                                        <th>Treatment Arm Version</th>
-                                                        <th>Registration Date </th>
-                                                        <th>Off Trial Date </th>
+                                                    <th>Patient Sequence Number</th>
+                                                    <th>BiopsySequenceNumber</th>
+                                                    <th>MolecularSequenceNumber</th>
+                                                    <th>Job Name</th>
+                                                    <th>Date Assigned</th>
+                                                    <th>patientCurrentStatus</th>
+                                                    <th>Patient StepNumber</th>
+                                                    <th>Patient Concordance </th>
+                                                    <th>Off Trial Date </th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr ng-repeat="patient in dashboardList">
-                                                        <td>{{ patient.patientSequenceNumber }}</td>
-                                                        <td>{{ patient.currentStatus }}</td>
-                                                        <td>{{ patient.currentStepNumber }}</td>
-                                                        <td>{{ patient.diseases || '-' }}</td>
-                                                        <td>{{ patient.currentTreatmentArm.id || '-' }}</td>
-                                                        <td>{{ patient.currentTreatmentArm.version || '-' }}</td>
-                                                        <td>{{ patient.registrationDate | gmt }}</td>
-                                                        <td>{{ patient.offTrialDate | gmt }}</td>
+                                                    <tr ng-repeat="dt in dashboardList">
+                                                        <td>{{ dt.patientSequenceNumber }}</td>
+                                                        <td>{{ dt.biopsySequenceNumber }}</td>
+                                                        <td>{{ dt.molecularSequenceNumber || '-' }}</td>
+                                                        <td>{{ dt.jobName || '-' }}</td>
+                                                        <td><span class="label label-success">
+                                                        {{ dt.dateAssigned | gmt }}
+                                                        </span></td>
+                                                        <td>{{ dt.patientCurrentStatus || '-' }}</td>
+                                                        <td>{{ dt.patientStepNumber || '-' }}</td>
+                                                        <td>{{ dt.patientConcordance }}</td>
+                                                        <td><span class="label label-primary">
+                                                        {{ dt.hoursPending || ' - ' }}
+                                                    </span></td>
                                                     </tr>
+
+
+                                                    <!--<tr>-->
+                                                        <!--<th>Patient Sequence Number</th>-->
+                                                        <!--<th>Status</th>-->
+                                                        <!--<th>Step Number</th>-->
+                                                        <!--<th>Disease</th>-->
+                                                        <!--<th>Treatment Arm</th>-->
+                                                        <!--<th>Treatment Arm Version</th>-->
+                                                        <!--<th>Registration Date </th>-->
+                                                        <!--<th>Off Trial Date </th>-->
+                                                    <!--</tr>-->
+                                                    <!--</thead>-->
+                                                    <!--<tbody>-->
+                                                    <!--<tr ng-repeat="patient in dashboardList">-->
+                                                        <!--<td>{{ patient.patientSequenceNumber }}</td>-->
+                                                        <!--<td>{{ patient.currentStatus }}</td>-->
+                                                        <!--<td>{{ patient.currentStepNumber }}</td>-->
+                                                        <!--<td>{{ patient.diseases || '-' }}</td>-->
+                                                        <!--<td>{{ patient.currentTreatmentArm.id || '-' }}</td>-->
+                                                        <!--<td>{{ patient.currentTreatmentArm.version || '-' }}</td>-->
+                                                        <!--<td>{{ patient.registrationDate | gmt }}</td>-->
+                                                        <!--<td>{{ patient.offTrialDate | gmt }}</td>-->
+                                                    <!--</tr>-->
 
 
                                                     </tbody>

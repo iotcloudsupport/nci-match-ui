@@ -37,8 +37,8 @@ angular.module('http.matchbox', [])
     .factory('patientsWithPendingAssignmentReportService', function($http, matchConfig) {
         return {
             getPatientPendingAssignmentReports: function() {
-                //return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getPatientsWithPendingAssignmentReport');
-                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getBasicPatientsData');
+                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getPatientsWithPendingAssignmentReport');
+                //return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getBasicPatientsData');
             }
         };
     })
