@@ -27,6 +27,28 @@ angular.module('http.matchbox', [])
             }
         };
     })
+    .factory('patientsWithPendingVariantReportService', function($http, matchConfig) {
+        return {
+            getPatientVariantReports: function() {
+                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getPatientsWithPendingVariantReport');
+            }
+        };
+    })
+    .factory('patientsWithPendingAssignmentReportService', function($http, matchConfig) {
+        return {
+            getPatientPendingAssignmentReports: function() {
+                //return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getPatientsWithPendingAssignmentReport');
+                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getBasicPatientsData');
+            }
+        };
+    })
+    .factory('patientsInLimboService', function($http, matchConfig) {
+        return {
+            getPatientInLimboReports: function() {
+                return $http.get(matchConfig.reportApiBaseUrl + '/limboPatient');
+            }
+        };
+    })
     .factory('reportService', function($http, matchConfig) {
         return {
             getReportList: function() {

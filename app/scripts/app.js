@@ -4,6 +4,7 @@
         'oc.lazyLoad',
         'login.matchbox',
         'nav.matchbox',
+        'dashboard.matchbox',
         'patients.matchbox',
         'treatment-arms.matchbox',
         'biopsies.matchbox',
