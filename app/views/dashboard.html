@@ -1,26 +1,26 @@
-<div class="row  border-bottom white-bg dashboard-header">
-    <div class="col-sm-3">
+<div class="row border-bottom white-bg dashboard-header">
+    <div class="col-sm-3" ng-controller="DashboardStatisticsController" ng-init="loadDashboardStatistics()">
         <h2>Welcome MATCHBox User</h2>
-        <small>Last updated on January 15, 2016 4:12 PM GMT.</small>
+        <small>Last updated on {{ lastUpdated | gmt }}.</small>
         <ul class="list-group clear-list m-t">
             <li class="list-group-item fist-item">
-                <span class="pull-right">798</span>
+                <span class="pull-right">{{ numberOfPatients }}</span>
                 <span class="label label-info"><i class="fa fa-group"></i></span>Number of Patients
             </li>
             <li class="list-group-item">
-                <span class="pull-right">645</span>
+                <span class="pull-right">{{ numberOfScreenedPatients }}</span>
                 <span class="label label-info"><i class="fa fa-group"></i></span>Number of Screened Patients
             </li>
             <li class="list-group-item">
-                <span class="pull-right">25</span>
+                <span class="pull-right">{{ numberOfPatientsWithTreatment }}</span>
                 <span class="label label-success"><i class="fa fa-medkit"></i></span>Number of Patients on Treatment
             </li>
             <li class="list-group-item">
-                <span class="pull-right">10</span>
+                <span class="pull-right">{{ numberOfPendingVariantReports }}</span>
                 <span class="label label-warning"><i class="fa fa-newspaper-o"></i></span>Pending Variant Report(s)
             </li>
             <li class="list-group-item">
-                <span class="pull-right">5</span>
+                <span class="pull-right">{{ numberOfPendingAssignmentReports }}</span>
                 <span class="label label-warning"><i class="fa fa-newspaper-o"></i></span>Pending Assignment Report(s)
             </li>
         </ul>
@@ -77,52 +77,39 @@
     </div>
 </div>
 
-
-
-
-
 <div class="row">
     <div class="col-lg-14">
         <div class="wrapper wrapper-content">
             <div class="row">
-
                 <div class="col-lg-3">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
                             <h5>Your daily feed</h5>
-
-                            <!-- This is example of local custom ibox tools -->
                             <div class="ibox-tools">
                                 <span class="label label-warning-light">10 Messages</span>
                             </div>
                         </div>
                         <div class="ibox-content">
-
                             <div>
                                 <div class="feed-activity-list">
-
                                     <div class="feed-element">
                                         <a ui-sref="profile" class="pull-left">
                                             <span class="success">
                                                 <i class="fa fa-heartbeat fa-4x"></i>
                                             </span>
                                         </a>
-
                                         <div class="media-body ">
                                             <small class="pull-right">5m ago</small>
                                             <strong>MD Andersson</strong> posted a new blog. <br>
                                             <small class="text-muted">Today 5:60 pm - 12.06.2014</small>
-
                                         </div>
                                     </div>
-
                                     <div class="feed-element">
                                         <a ui-sref="profile" class="pull-left">
                                             <span class="danger">
                                                 <i class="fa fa-cogs fa-4x"></i>
                                             </span>
                                         </a>
-
                                         <div class="media-body ">
                                             <small class="pull-right">2h ago</small>
                                             <strong>MATCH Team</strong> posted message on <strong>MD Andersson</strong> site. <br>
@@ -135,7 +122,6 @@
                                                 <i class="fa fa-magnet fa-4x"></i>
                                             </span>
                                         </a>
-
                                         <div class="media-body ">
                                             <small class="pull-right">2h ago</small>
                                             <strong>User editional in loop</strong> --> <strong>Patient re22014 limbo</strong>. <br>
@@ -148,7 +134,6 @@
                                                 <i class="fa fa-database fa-4x"></i>
                                             </span>
                                         </a>
-
                                         <div class="media-body ">
                                             <small class="pull-right text-navy">5h ago</small>
                                             <strong>MATCH DB update</strong> update following <strong>New Additions</strong>. <br>
@@ -165,7 +150,6 @@
                                                 <i class="fa fa-database fa-4x"></i>
                                             </span>
                                         </a>
-
                                         <div class="media-body ">
                                             <small class="pull-right">2h ago</small>
                                             <strong>MATCH DB update</strong> posted message on <strong>Update completed</strong> <br>
@@ -184,21 +168,18 @@
                                                 <i class="fa fa-envelope fa-4x"></i>
                                             </span>
                                         </a>
-
                                         <div class="media-body ">
                                             <small class="pull-right">23h ago</small>
                                             <strong>Global email announcement send </strong> by <strong>Match Admin</strong>. <br>
                                             <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
                                         </div>
                                     </div>
-
                                     <div class="feed-element">
                                         <a ui-sref="profile" class="pull-left">
                                             <span class="btn btn-danger">
                                                 <i class="fa fa-envelope fa-4x"></i>
                                             </span>
                                         </a>
-
                                         <div class="media-body ">
                                             <small class="pull-right">23h ago</small>
                                             <strong>Global email announcement send </strong> by <strong>Match DB Admin</strong>. <br>
@@ -212,14 +193,10 @@
                     </div>
                 </div>
 
-
-
-
                 <div class="col-lg-9">
                     <div class="ibox">
                         <div class="ibox-content">
                             <div class="ibox float-e-margins">
-
                             <span class="text-muted small pull-right">Last modification:
                                 <i class="fa fa-clock-o"></i> 2:10 pm - 12.06.2014
                             </span>
@@ -282,16 +259,13 @@
                                             </div>
                                         </div>
                                         <div id="tab-2" class="tab-pane active" ng-show="tab == 2">
-                                            <div class="panel-body" ng-controller="DashboardController as DashCtrl"
-                                                 ng-init="loadPatientPendingAssignmentReportsList()">
-
+                                            <div class="panel-body" ng-controller="DashboardController as DashCtrl" ng-init="loadPatientPendingAssignmentReportsList()">
                                                 <table datatable="ng"
                                                        dt-options="DashCtrl.dtOptions"
                                                        dt-column-defs="DashCtrl.dtColumnDefs"
                                                        dt-instance="DashCtrl.dtInstance"
                                                        class="table table-striped table-bordered table-hover">
                                                     <thead>
-
                                                     <tr>
                                                         <th>Patient Sequence Number</th>
                                                         <th>Patient Current Status</th>
@@ -306,8 +280,6 @@
                                                         <td>{{ tt.jobName || '-'  }}</td>
                                                         <td><span class="label label-primary">{{ tt.hoursPending || ' - ' }}</span></td>
                                                     </tr>
-
-
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -329,7 +301,6 @@
                                                         <th>Variant Report Confirmation Date </th>
                                                     </tr>
                                                     </thead>
-
                                                     <tbody>
                                                     <tr ng-repeat="lt in dashboardList">
                                                         <td>{{ lt.patientSequenceNumber }}</td>
