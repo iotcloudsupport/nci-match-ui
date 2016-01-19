@@ -58,22 +58,28 @@
                 You have two project with not compleated task.
             </p>
 
-            <div class="row text-center" ng-controller="chartJsCtrl as chart">
-                <div class="col-lg-6" >
-                    <canvas polarchart options="chart.polarOptions" data="chart.polarData" width="80" height="80"></canvas>
-                    <h5>Kolter</h5>
-                </div>
-                <div class="col-lg-6">
-                    <canvas doughnutchart options="chart.doughnutOptions" data="chart.doughnutData" width="78" height="78"></canvas>
-                    <h5>Maxtor</h5>
-                </div>
-            </div>
+            <!--<div class="row text-center" ng-controller="chartJsCtrl as chart">-->
+                <!--<div class="col-lg-6" >-->
+                    <!--<canvas polarchart options="chart.polarOptions" data="chart.polarData" width="80" height="80"></canvas>-->
+                    <!--<h5>Kolter</h5>-->
+                <!--</div>-->
+                <!--<div class="col-lg-6">-->
+                    <!--<canvas doughnutchart options="chart.doughnutOptions" data="chart.doughnutData" width="78" height="78"></canvas>-->
+                    <!--<h5>Maxtor</h5>-->
+                <!--</div>-->
+            <!--</div>-->
+
+
             <div class="m-t">
                 <small>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>
             </div>
         </div>
     </div>
 </div>
+
+
+
+
 
 <div class="row">
     <div class="col-lg-14">
@@ -195,8 +201,6 @@
 
 
 
-
-
                 <div class="col-lg-9">
                     <div class="ibox">
                         <div class="ibox-content">
@@ -267,24 +271,13 @@
                                             <div class="panel-body" ng-controller="DashboardController as DashCtrl"
                                                  ng-init="loadPatientPendingAssignmentReportsList()">
 
-
-                                                <!--"patientSequenceNumber" : 10372,-->
-                                                <!--"biopsySequenceNumber" : 10372-005,-->
-                                                <!--"molecularSequenceNumber" : 10372_10372-005-001,-->
-                                                <!--"jobName" : somejob1,-->
-                                                <!--"dateAssigned" : 1450030042446,-->
-                                                <!--"patientStatus" : PENDING_CONFIRMATION,-->
-                                                <!--"patientCurrentStatus" : PENDING_CONFIRMATION,-->
-                                                <!--"patientStepNumber" : 0,-->
-                                                <!--"patientConcordance" : Y,-->
-                                                <!--"hoursPending" : 791-->
-
                                                 <table datatable="ng"
                                                        dt-options="DashCtrl.dtOptions"
                                                        dt-column-defs="DashCtrl.dtColumnDefs"
                                                        dt-instance="DashCtrl.dtInstance"
                                                        class="table table-striped table-bordered table-hover">
                                                     <thead>
+
                                                     <tr>
                                                         <th>Patient Sequence Number</th>
                                                         <th>Patient Current Status</th>
@@ -299,30 +292,6 @@
                                                         <td>{{ tt.jobName || '-'  }}</td>
                                                         <td><span class="label label-primary">{{ tt.hoursPending || ' - ' }}</span></td>
                                                     </tr>
-
-
-                                                    <!--<tr>-->
-                                                    <!--<th>Patient Sequence Number</th>-->
-                                                    <!--<th>Status</th>-->
-                                                    <!--<th>Step Number</th>-->
-                                                    <!--<th>Disease</th>-->
-                                                    <!--<th>Treatment Arm</th>-->
-                                                    <!--<th>Treatment Arm Version</th>-->
-                                                    <!--<th>Registration Date </th>-->
-                                                    <!--<th>Off Trial Date </th>-->
-                                                    <!--</tr>-->
-                                                    <!--</thead>-->
-                                                    <!--<tbody>-->
-                                                    <!--<tr ng-repeat="patient in dashboardList">-->
-                                                    <!--<td>{{ patient.patientSequenceNumber }}</td>-->
-                                                    <!--<td>{{ patient.currentStatus }}</td>-->
-                                                    <!--<td>{{ patient.currentStepNumber }}</td>-->
-                                                    <!--<td>{{ patient.diseases || '-' }}</td>-->
-                                                    <!--<td>{{ patient.currentTreatmentArm.id || '-' }}</td>-->
-                                                    <!--<td>{{ patient.currentTreatmentArm.version || '-' }}</td>-->
-                                                    <!--<td>{{ patient.registrationDate | gmt }}</td>-->
-                                                    <!--<td>{{ patient.offTrialDate | gmt }}</td>-->
-                                                    <!--</tr>-->
 
 
                                                     </tbody>
@@ -357,15 +326,6 @@
                                                     </tr>
                                                     </tbody>
                                                 </table>
-
-                                                <!--var variantReportLink = "<a class='report-link' href='views/ngsRuns.html?treatmentArmId=" +-->
-                                                <!--"&patientId=" + patientSequenceNumber +-->
-                                                <!--"&biopsySequenceNumber=" + biopsySequenceNumber +-->
-                                                <!--"&molecularSequenceNumber=" + molecularSequenceNumber +-->
-                                                <!--"&jobName=" + jobName +-->
-                                                <!--"&status=" + currentPatientStatus + "'>" +-->
-                                                <!--"<i class='fa fa-file-text-o'></i> Variant Report</a>";-->
-
                                             </div>
                                         </div>
                                     </div>
