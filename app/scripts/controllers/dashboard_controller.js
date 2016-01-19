@@ -1,6 +1,7 @@
 angular.module('dashboard.matchbox',[])
-    .controller('DashboardStatisticsController', function($scope) {
+    .controller('DashboardStatisticsController', function($scope, workflowApi) {
         $scope.lastUpdated = (new Date()).getTime();
+        $scope.name = 'MATCHBox User';
         $scope.numberOfPatients = '?';
         $scope.numberOfScreenedPatients = '?';
         $scope.numberOfPatientsWithTreatment = '?';
@@ -8,12 +9,15 @@ angular.module('dashboard.matchbox',[])
         $scope.numberOfPendingAssignmentReports = '?';
 
         $scope.loadDashboardStatistics = function() {
-            // TODO: Make call to API to retrieve statistics
-            $scope.numberOfPatients = '798';
-            $scope.numberOfScreenedPatients = '645';
-            $scope.numberOfPatientsWithTreatment = '25';
-            $scope.numberOfPendingVariantReports = '10';
-            $scope.numberOfPendingAssignmentReports = '5';
+            workflowApi
+                .getDashboardStatistcs()
+                .then(function(d) {
+                    $scope.numberOfPatients = d.data.number_of_patients;
+                    $scope.numberOfScreenedPatients = d.data.number_of_screened_patients;
+                    $scope.numberOfPatientsWithTreatment = d.data.number_of_patients_with_treatment;
+                    $scope.numberOfPendingVariantReports = d.data.number_of_pending_variant_reports;
+                    $scope.numberOfPendingAssignmentReports = d.data.number_of_pending_assignment_reports;
+                });
         }
     })
     .controller('DashboardController', function($scope,
