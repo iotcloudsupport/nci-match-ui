@@ -22,12 +22,7 @@ angular.module('dashboard.matchbox',[])
     })
     .controller('DashboardPendingReviewController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, reportApi ) {
         this.dtOptions = DTOptionsBuilder.newOptions()
-            .withDisplayLength(10)
-            .withOption('bFilter', true)
-            .withOption('bAutoWidth', false)
-            .withOption('bInfo', false)
-            .withOption('bPaginate', true)
-            .withOption('paging', true)
+            .withDisplayLength(25)
             .withOption('bLengthChange', false);
         this.dtColumnDefs = [];
         this.dtInstance = {};
