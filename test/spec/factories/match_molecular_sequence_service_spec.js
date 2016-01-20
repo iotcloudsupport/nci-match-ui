@@ -1,12 +1,12 @@
-describe('Factory: Molecular Sequence Service Factory', function () {
+describe('Factory: Get Molecular Sequence List Service', function () {
 
     beforeEach(module('config.matchbox', 'http.matchbox'));
 
-    var molecularSequenceService,
+    var matchApi,
         httpBackend;
 
-    beforeEach(inject(function (_molecularSequenceService_, $httpBackend) {
-        molecularSequenceService = _molecularSequenceService_;
+    beforeEach(inject(function (_matchApi_, $httpBackend) {
+        matchApi = _matchApi_;
         httpBackend = $httpBackend;
     }));
 
@@ -17,7 +17,7 @@ describe('Factory: Molecular Sequence Service Factory', function () {
 
     it('should return back a list with 4 patient specimen tracking objects', function () {
         httpBackend.when('GET', 'http://server:80/match/common/rs/patientSpecimenTrackingSummary').respond([{}, {}, {}, {}]);
-        molecularSequenceService
+        matchApi
             .getMolecularSequenceList()
             .then(function(response) {
                 expect(response.status).toBe(200);
@@ -28,7 +28,7 @@ describe('Factory: Molecular Sequence Service Factory', function () {
 
     it ('should return back an internal server error', function() {
         httpBackend.when('GET', 'http://server:80/match/common/rs/patientSpecimenTrackingSummary').respond(500);
-        molecularSequenceService
+        matchApi
             .getMolecularSequenceList()
             .then(
                 function(response) {

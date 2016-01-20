@@ -12,6 +12,10 @@ describe('Factory: MATCH Config Factory', function () {
         expect(matchConfig.matchApiBaseUrl).toEqual('http://server:80/match');
     });
 
+    it('should return "http://server:80/lookupapi" for the lookup api base url', function () {
+        expect(matchConfig.lookApiBaseUrl).toEqual('http://server:80/lookupapi');
+    });
+
     it('should return "http://server:80/reportapi" for the report api base url', function () {
         expect(matchConfig.reportApiBaseUrl).toEqual('http://server:80/reportapi');
     });
@@ -20,8 +24,7 @@ describe('Factory: MATCH Config Factory', function () {
         expect(matchConfig.treatmentArmApiBaseUrl).toEqual('http://server:80/treatmentarmapi');
     });
 
-    it('should return "http://server:80/lookupapi" for the lookup api base url', function () {
-        expect(matchConfig.lookApiBaseUrl).toEqual('http://server:80/lookupapi');
+    it('should return "http://server:80/matchapi" for the workflow api base url', function () {
+        expect(matchConfig.workflowApiBaseUrl).toEqual('http://server:80/matchapi');
     });
-
 });

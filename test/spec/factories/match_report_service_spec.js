@@ -1,12 +1,12 @@
-describe('Factory: Biopsy Sequence Service Factory', function () {
+describe('Factory: Get Report List Service', function () {
 
     beforeEach(module('config.matchbox', 'http.matchbox'));
 
-    var reportService,
+    var reportApi,
         httpBackend;
 
-    beforeEach(inject(function (_reportService_, $httpBackend) {
-        reportService = _reportService_;
+    beforeEach(inject(function (_reportApi_, $httpBackend) {
+        reportApi = _reportApi_;
         httpBackend = $httpBackend;
     }));
 
@@ -17,7 +17,7 @@ describe('Factory: Biopsy Sequence Service Factory', function () {
 
     it('should return back a list with 1 report', function () {
         httpBackend.when('GET', 'http://server:80/reportapi/reportList').respond([{}]);
-        reportService
+        reportApi
             .getReportList()
             .then(function(response) {
                 expect(response.status).toBe(200);
@@ -28,7 +28,7 @@ describe('Factory: Biopsy Sequence Service Factory', function () {
 
     it ('should return back an internal server error', function() {
         httpBackend.when('GET', 'http://server:80/reportapi/reportList').respond(500);
-        reportService
+        reportApi
             .getReportList()
             .then(
                 function(response) {
