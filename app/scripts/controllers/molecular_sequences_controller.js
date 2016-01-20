@@ -1,5 +1,5 @@
 angular.module('molecular-sequences.matchbox',[])
-    .controller('MolecularSequencesController', function( $scope, $http, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, molecularSequenceService ) {
+    .controller('MolecularSequencesController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi ) {
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(100);
         this.dtColumnDefs = [];
@@ -8,7 +8,7 @@ angular.module('molecular-sequences.matchbox',[])
         $scope.molecularSequencesList = [];
 
         $scope.loadMolecularSequencesList = function() {
-            molecularSequenceService
+            matchApi
                 .getMolecularSequenceList()
                 .then(function(d) {
                     angular.forEach(d.data, function(value, key) {

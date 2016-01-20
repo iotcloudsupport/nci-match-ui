@@ -1,5 +1,5 @@
 angular.module('dashboard.matchbox',[])
-    .controller('DashboardStatisticsController', function($scope, workflowApi) {
+    .controller('DashboardStatisticsController', function( $scope, workflowApi ) {
         $scope.lastUpdated = (new Date()).getTime();
         $scope.name = 'MATCHBox User';
         $scope.numberOfPatients = '?';
@@ -20,12 +20,7 @@ angular.module('dashboard.matchbox',[])
                 });
         }
     })
-    .controller('DashboardPendingReviewController', function($scope,
-                                                DTOptionsBuilder,
-                                                DTColumnDefBuilder,
-                                                patientsWithPendingVariantReportService,
-                                                patientsWithPendingAssignmentReportService,
-                                                patientsInLimboService) {
+    .controller('DashboardPendingReviewController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, reportApi ) {
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(10)
             .withOption('bFilter', true)
@@ -37,14 +32,12 @@ angular.module('dashboard.matchbox',[])
         this.dtColumnDefs = [];
         this.dtInstance = {};
 
-        $scope.store = {};
-
         $scope.pendingVariantReportList = [];
         $scope.pendingAssignmentReportList = [];
         $scope.concordancePatientList = [];
 
         $scope.loadPatientVariantReportsList = function() {
-            patientsWithPendingVariantReportService
+            matchApi
                 .getPatientVariantReports()
                 .then(function(d) {
                     $scope.pendingVariantReportList = d.data;
@@ -52,7 +45,7 @@ angular.module('dashboard.matchbox',[])
         }
 
         $scope.loadPatientPendingAssignmentReportsList = function() {
-            patientsWithPendingAssignmentReportService
+            matchApi
                 .getPatientPendingAssignmentReports()
                 .then(function(d) {
                     $scope.pendingAssignmentReportList = d.data;
@@ -60,7 +53,7 @@ angular.module('dashboard.matchbox',[])
         }
 
         $scope.loadLimboPatientsList = function() {
-            patientsInLimboService
+            reportApi
                 .getPatientInLimboReports()
                 .then(function(d) {
                     $scope.concordancePatientList = d.data;

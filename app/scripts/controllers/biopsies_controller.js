@@ -1,5 +1,5 @@
 angular.module('biopsies.matchbox',[])
-    .controller('BiopsiesController', function( $scope, $http, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, biopsySequenceService ) {
+    .controller('BiopsiesController', function( $scope, $http, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, matchApi ) {
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(100);
         this.dtColumnDefs = [];
@@ -8,7 +8,7 @@ angular.module('biopsies.matchbox',[])
         $scope.biopsiesList = [];
 
         $scope.loadBiopsiesList = function() {
-            biopsySequenceService
+            matchApi
                 .getBiopsySequenceList()
                 .then(function(d) {
                     angular.forEach(d.data, function (value, key) {

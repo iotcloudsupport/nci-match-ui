@@ -1,5 +1,5 @@
 angular.module('reports.matchbox',[])
-    .controller('ReportsController', function($scope, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, reportService) {
+    .controller('ReportsController', function( $scope, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, reportApi ) {
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(25);
         this.dtColumnDefs = [
@@ -11,7 +11,7 @@ angular.module('reports.matchbox',[])
         $scope.reportList = [];
 
         $scope.loadReportList = function() {
-            reportService
+            reportApi
                 .getReportList()
                 .then(function(d) {
                     $.each(d.data, function( key, value ) {

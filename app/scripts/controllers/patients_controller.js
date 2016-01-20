@@ -1,5 +1,5 @@
 angular.module('patients.matchbox',[])
-    .controller('PatientsController', function($scope, DTOptionsBuilder, DTColumnDefBuilder, patientService) {
+    .controller('PatientsController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi ) {
 
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(100);
@@ -9,7 +9,7 @@ angular.module('patients.matchbox',[])
         $scope.patientList = [];
 
         $scope.loadPatientList = function() {
-            patientService
+            matchApi
                 .getBasicPatientsData()
                 .then(function(d) {
                     $scope.patientList = d.data;
