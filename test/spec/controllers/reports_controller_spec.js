@@ -6,7 +6,7 @@ describe('Controller: Reports Controller', function () {
         httpBackend,
         scope;
 
-    beforeEach(inject(function ($controller, $rootScope, _reportService_, $httpBackend) {
+    beforeEach(inject(function ($controller, $rootScope, _reportApi_, $httpBackend) {
         scope = $rootScope.$new();
         httpBackend = $httpBackend;
         reportsCtrl = $controller('ReportsController', {
@@ -27,7 +27,7 @@ describe('Controller: Reports Controller', function () {
                     }
                 }
             },
-            reportService: _reportService_
+            reportApi: _reportApi_
         });
     }));
 

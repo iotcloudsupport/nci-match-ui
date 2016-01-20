@@ -6,7 +6,7 @@ describe('Controller: Treatment Arms Controller', function () {
         httpBackend,
         scope;
 
-    beforeEach(inject(function ($controller, $rootScope, _treatmentArmService_, $httpBackend) {
+    beforeEach(inject(function ($controller, $rootScope, _matchApi_, $httpBackend) {
         scope = $rootScope.$new();
         httpBackend = $httpBackend;
         treatmentArmsCtrl = $controller('TreatmentArmsController', {
@@ -21,7 +21,7 @@ describe('Controller: Treatment Arms Controller', function () {
                 }
             },
             DTColumnDefBuilder: null,
-            treatmentArmService: _treatmentArmService_
+            matchApi: _matchApi_
         });
     }));
 

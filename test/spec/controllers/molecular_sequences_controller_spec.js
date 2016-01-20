@@ -6,7 +6,7 @@ describe('Controller: Molecular Sequences Controller', function () {
         httpBackend,
         scope;
 
-    beforeEach(inject(function ($controller, $rootScope, _molecularSequenceService_, $httpBackend) {
+    beforeEach(inject(function ($controller, $rootScope, _matchApi_, $httpBackend) {
         scope = $rootScope.$new();
         httpBackend = $httpBackend;
         molecularSequencesCtrl = $controller('MolecularSequencesController', {
@@ -20,7 +20,7 @@ describe('Controller: Molecular Sequences Controller', function () {
                 }
             },
             DTColumnDefBuilder: null,
-            molecularSequenceService: _molecularSequenceService_
+            matchApi: _matchApi_
         });
     }));
 

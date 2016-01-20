@@ -6,7 +6,7 @@ describe('Controller: Biopsies Controller', function () {
         httpBackend,
         scope;
 
-    beforeEach(inject(function ($controller, $rootScope, _biopsySequenceService_, $httpBackend) {
+    beforeEach(inject(function ($controller, $rootScope, _matchApi_, $httpBackend) {
         scope = $rootScope.$new();
         httpBackend = $httpBackend;
         biopsiesCtrl = $controller('BiopsiesController', {
@@ -20,7 +20,7 @@ describe('Controller: Biopsies Controller', function () {
                 }
             },
             DTColumnDefBuilder: null,
-            biopsySequenceService: _biopsySequenceService_
+            matchApi: _matchApi_
         });
     }));
 
