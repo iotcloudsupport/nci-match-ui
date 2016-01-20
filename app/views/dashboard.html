@@ -84,7 +84,7 @@
                 <div class="col-lg-3">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>Your daily feed</h5>
+                            <h5>Activity Feed</h5>
                             <div class="ibox-tools">
                                 <span class="label label-warning-light">10 Messages</span>
                             </div>
@@ -197,17 +197,9 @@
                     <div class="ibox">
                         <div class="ibox-content">
                             <div class="ibox float-e-margins">
-                            <span class="text-muted small pull-right">Last modification:
-                                <i class="fa fa-clock-o"></i> 2:10 pm - 12.06.2014
-                            </span>
-                                <h2>Dashboard Reports</h2>
-                                <p>
-                                    All clients need to be verified before you can send email and set a project.
-                                </p>
+                                <h2>Item(s) Pending Review</h2>
                                 <div class="clients-list">
-
                                     <ul class="nav nav-tabs">
-                                        <span class="pull-right small text-muted">1406 Elements</span>
                                         <li ng-class="{'active' : tab == 1}"><a ng-click="tab = 1" ng-init="tab = 1">
                                             <i class="fa fa-calendar fa-lw"></i>
                                             Variant Report(s)
@@ -221,10 +213,9 @@
                                             Concordance
                                         </a></li>
                                     </ul>
-
                                     <div class="table-responsive">
                                         <div id="tab-1" class="tab-pane active" ng-show="tab == 1" >
-                                            <div class="panel-body" ng-controller="DashboardController as DashCtrl"
+                                            <div class="panel-body" ng-controller="DashboardPendingReviewController as DashCtrl"
                                                  ng-init="loadPatientVariantReportsList()">
                                                 <table datatable="ng"
                                                        dt-options="DashCtrl.dtOptions"
@@ -237,29 +228,28 @@
                                                         <th>MSN</th>
                                                         <th>Job Name</th>
                                                         <th>Location</th>
-                                                        <th>Patient Status</th>
-                                                        <th>Variant Report Received Date </th>
-                                                        <th>Variant Report Received Date </th>
-                                                        <th>Days Pending </th>
+                                                        <th>Specimen Received Date</th>
+                                                        <th>Variant Report Received Date</th>
+                                                        <th>Days Pending</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr ng-repeat="dt in dashboardList">
-                                                        <td>{{ dt.patientSequenceNumber || '-' }}</td>
-                                                        <td>{{ dt.molecularSequenceNumber || '-' }}</td>
-                                                        <td>{{ dt.jobName || '-' }}</td>
-                                                        <td>{{ dt.location || '-' }}</td>
-                                                        <td>{{ dt.ngsStatus || '-' }}</td>
-                                                        <td>{{ dt.specimenReceivedDate | gmt }}</td>
-                                                        <td>{{ dt.ngsDateReceived | gmt }}</td>
-                                                        <td><span class="label label-primary">{{ dt.daysPending || '-' }}</span></td>
+                                                    <tr ng-repeat="item in pendingVariantReportList">
+                                                        <td>{{ item.patientSequenceNumber || '-' }}</td>
+                                                        <td>{{ item.molecularSequenceNumber || '-' }}</td>
+                                                        <td>{{ item.jobName || '-' }}</td>
+                                                        <td>{{ item.location || '-' }}</td>
+                                                        <td>{{ item.specimenReceivedDate | gmt }}</td>
+                                                        <td>{{ item.ngsDateReceived | gmt }}</td>
+                                                        <td><span class="label label-primary">{{ item.daysPending || '-' }}</span></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
                                         </div>
                                         <div id="tab-2" class="tab-pane active" ng-show="tab == 2">
-                                            <div class="panel-body" ng-controller="DashboardController as DashCtrl" ng-init="loadPatientPendingAssignmentReportsList()">
+                                            <div class="panel-body" ng-controller="DashboardPendingReviewController as DashCtrl"
+                                                 ng-init="loadPatientPendingAssignmentReportsList()">
                                                 <table datatable="ng"
                                                        dt-options="DashCtrl.dtOptions"
                                                        dt-column-defs="DashCtrl.dtColumnDefs"
@@ -268,24 +258,22 @@
                                                     <thead>
                                                     <tr>
                                                         <th>Patient Sequence Number</th>
-                                                        <th>Patient Current Status</th>
-                                                        <th>Assignment Report</th>
-                                                        <th>Assignment Date	Hours Pending</th>
+                                                        <th>Assignment Date</th>
+                                                        <th>Hours Pending</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr ng-repeat="tt in dashboardList">
-                                                        <td>{{ tt.patientSequenceNumber }}</td>
-                                                        <td>{{ tt.patientCurrentStatus || '-' }}</td>
-                                                        <td>{{ tt.jobName || '-'  }}</td>
-                                                        <td><span class="label label-primary">{{ tt.hoursPending || ' - ' }}</span></td>
+                                                    <tr ng-repeat="item in pendingAssignmentReportList">
+                                                        <td>{{ item.patientSequenceNumber }}</td>
+                                                        <td>{{ item.dateAssigned | gmt  }}</td>
+                                                        <td><span class="label label-primary">{{ item.hoursPending || ' - ' }}</span></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
                                         </div>
                                         <div id="tab-3" class="tab-pane active" ng-show="tab == 3" >
-                                            <div class="panel-body" ng-controller="DashboardController as DashCtrl"
+                                            <div class="panel-body" ng-controller="DashboardPendingReviewController as DashCtrl"
                                                  ng-init="loadLimboPatientsList()">
                                                 <table datatable="ng"
                                                        dt-options="DashCtrl.dtOptions"
@@ -298,16 +286,16 @@
                                                         <th>Molecular Sequence Number</th>
                                                         <th>Variant Report</th>
                                                         <th>Concordance</th>
-                                                        <th>Variant Report Confirmation Date </th>
+                                                        <th>Variant Report Confirmation Date</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr ng-repeat="lt in dashboardList">
-                                                        <td>{{ lt.patientSequenceNumber }}</td>
-                                                        <td>{{ lt.molecularSequenceNumber || '-' }}</td>
-                                                        <td>{{ lt.jobName || '-' }}</td>
-                                                        <td>{{ lt.concordance || '-' }}</td>
-                                                        <td>{{ lt.date_verified | gmt }}</td>
+                                                    <tr ng-repeat="item in concordancePatientList">
+                                                        <td>{{ item.patientSequenceNumber }}</td>
+                                                        <td>{{ item.molecularSequenceNumber || '-' }}</td>
+                                                        <td>{{ item.jobName || '-' }}</td>
+                                                        <td>{{ item.concordance || '-' }}</td>
+                                                        <td>{{ item.date_verified | gmt }}</td>
                                                     </tr>
                                                     </tbody>
                                                 </table>

@@ -20,7 +20,7 @@ angular.module('dashboard.matchbox',[])
                 });
         }
     })
-    .controller('DashboardController', function($scope,
+    .controller('DashboardPendingReviewController', function($scope,
                                                 DTOptionsBuilder,
                                                 DTColumnDefBuilder,
                                                 patientsWithPendingVariantReportService,
@@ -33,38 +33,37 @@ angular.module('dashboard.matchbox',[])
             .withOption('bInfo', false)
             .withOption('bPaginate', true)
             .withOption('paging', true)
-            .withOption('bLengthChange', false)
-        ;
+            .withOption('bLengthChange', false);
         this.dtColumnDefs = [];
         this.dtInstance = {};
 
-        this.dtColumnDefs = [
-            DTColumnDefBuilder.newColumnDef(0).notVisible()
-        ];
-
         $scope.store = {};
 
-        $scope.dashboardList = [];
+        $scope.pendingVariantReportList = [];
+        $scope.pendingAssignmentReportList = [];
+        $scope.concordancePatientList = [];
 
         $scope.loadPatientVariantReportsList = function() {
             patientsWithPendingVariantReportService
                 .getPatientVariantReports()
                 .then(function(d) {
-                    $scope.dashboardList = d.data;
+                    $scope.pendingVariantReportList = d.data;
                 });
-        },
+        }
+
         $scope.loadPatientPendingAssignmentReportsList = function() {
             patientsWithPendingAssignmentReportService
                 .getPatientPendingAssignmentReports()
                 .then(function(d) {
-                    $scope.dashboardList = d.data;
+                    $scope.pendingAssignmentReportList = d.data;
                 });
         }
+
         $scope.loadLimboPatientsList = function() {
             patientsInLimboService
                 .getPatientInLimboReports()
                 .then(function(d) {
-                    $scope.dashboardList = d.data;
+                    $scope.concordancePatientList = d.data;
                 });
-        };
+        }
 });
