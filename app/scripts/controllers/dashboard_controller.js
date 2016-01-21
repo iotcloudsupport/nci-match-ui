@@ -51,7 +51,32 @@ angular.module('dashboard.matchbox',[])
             reportApi
                 .getPatientInLimboReports()
                 .then(function(d) {
-                    $scope.concordancePatientList = d.data;
+
+                    angular.forEach(d.data, function (value) {
+
+                        var patientSequenceNumber = value.psn;
+                        var biopsySequenceNumber = value.bsn;
+                        var molecularSequenceNumber = value.msn;
+                        var jobName = value.job_name;
+                        var currentPatientStatus = value.currentPatientStatus;
+
+                        var variantReportLink =  "patientId=" + patientSequenceNumber +
+                            "&biopsySequenceNumber=" + biopsySequenceNumber +
+                            "&molecularSequenceNumber=" + molecularSequenceNumber +
+                            "&jobName=" + jobName +
+                            "&status=" + currentPatientStatus + "'";
+
+                        var concordanceTemplate = {
+                            'psn': patientSequenceNumber,
+                            'msn': molecularSequenceNumber,
+                            'variantReport': variantReportLink,
+                            'concordance': value.concordance,
+                            'date_verified': value.date_verified
+                        };
+
+                        $scope.concordancePatientList.push(concordanceTemplate);
+
+                    });
                 });
         }
 });

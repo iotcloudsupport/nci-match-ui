@@ -281,9 +281,16 @@
                                                     </thead>
                                                     <tbody>
                                                     <tr ng-repeat="item in concordancePatientList">
-                                                        <td>{{ item.patientSequenceNumber }}</td>
-                                                        <td>{{ item.molecularSequenceNumber || '-' }}</td>
-                                                        <td>{{ item.jobName || '-' }}</td>
+                                                        <td>{{ item.psn }}</td>
+                                                        <td>{{ item.msn || '-' }}</td>
+                                                        <!--<td>{{ item.variantReport || '-' }}</td>-->
+
+                                                        <td><a ng-href="#/ngsRuns/{{item.variantReport}}">
+                                                                <i class='fa fa-file-text-o'></i>
+                                                                Variant Report
+                                                            </a>
+                                                        </td>
+
                                                         <td>{{ item.concordance || '-' }}</td>
                                                         <td>{{ item.date_verified | gmt }}</td>
                                                     </tr>
