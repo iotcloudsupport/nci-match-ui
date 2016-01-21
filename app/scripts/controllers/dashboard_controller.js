@@ -79,4 +79,18 @@ angular.module('dashboard.matchbox',[])
                     });
                 });
         }
-});
+
+
+    })
+    .controller('DashboardSequencedConfirmedController', function( $scope, reportApi) {
+        $scope.loadSequencedConfirmedDonutChart = function() {
+            $scope.sequencedConfirmedModel = [
+                {label: "0 aMOI", value: 1},
+                {label: "1 aMOI", value: 6},
+                {label: "2 aMOI", value: 3},
+                {label: "3 aMOI", value: 5},
+                {label: "4 aMOI", value: 0},
+                {label: "5+ aMOI", value: 2}
+            ];
+        }
+    });
