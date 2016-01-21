@@ -26,10 +26,10 @@
         </ul>
     </div>
 
-    <div class="col-sm-6">
+    <!--<div class="col-sm-6">
         <div class="flot-chart dashboard-chart">
             <div flot class="flot-chart-content" dataset="chart.flotData" options="chart.flotOptions"></div>
-        </div>-->
+        </div>
         <div class="row text-left">
             <div class="col-xs-4">
                 <div class=" m-l-md">
@@ -47,7 +47,17 @@
             </div>
 
         </div>
+    </div>-->
+
+    <div class="col-sm-6">
+        <div class="statistic-box">
+            <h2 style="text-align: center">Sequenced and Confirmed Patients</h2>
+            <div ng-controller="DashboardSequencedConfirmedController" ng-init="loadSequencedConfirmedDonutChart()">
+                <sequenced-confirmed-donut id="sequencedConfirmedDonutChart" labels="labels" data="sequencedConfirmedModel"></sequenced-confirmed-donut>
+            </div>
+        </div>
     </div>
+
 
     <div class="col-sm-3">
         <div class="statistic-box">
@@ -55,7 +65,7 @@
                 Project Beta progress
             </h4>
             <p>
-                You have two project with not compleated task.
+                You have two projects with uncompleted tasks.
             </p>
 
             <!--<div class="row text-center" ng-controller="chartJsCtrl as chart">-->
@@ -300,6 +310,8 @@
                             </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </div>
