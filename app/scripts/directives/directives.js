@@ -98,6 +98,26 @@ function minimalizaSidebar($timeout) {
     };
 };
 
+/**
+ * sequencedConfirmedDonut - Directive for the Sequenced and Confirmed Patients donut chart
+ */
+function sequencedConfirmedDonut($rootScope) {
+    return {
+        restrict: 'E',
+        template: '<div></div>',
+        replace: true,
+        link: function($scope, element, attrs) {
+            var data = $scope[attrs.data],
+                labels = $scope[attrs.labels];
+            Morris.Donut({
+                element: element,
+                data: data
+            });
+
+        }
+    };
+};
+
 
 /**
  *
@@ -109,3 +129,4 @@ angular
     .directive('sideNavigation', sideNavigation)
     .directive('iboxTools', iboxTools)
     .directive('minimalizaSidebar', minimalizaSidebar)
+    .directive('sequencedConfirmedDonut', sequencedConfirmedDonut)
