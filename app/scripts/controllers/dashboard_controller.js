@@ -22,8 +22,10 @@ angular.module('dashboard.matchbox',[])
     })
     .controller('DashboardPendingReviewController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, reportApi ) {
         this.dtOptions = DTOptionsBuilder.newOptions()
-            .withDisplayLength(25)
+            .withDisplayLength(25);
+        this.dtOptions = DTOptionsBuilder.newOptions()
             .withOption('bLengthChange', false);
+
         this.dtColumnDefs = [];
         this.dtInstance = {};
 
@@ -75,7 +77,6 @@ angular.module('dashboard.matchbox',[])
                         };
 
                         $scope.concordancePatientList.push(concordanceTemplate);
-
                     });
                 });
         }
