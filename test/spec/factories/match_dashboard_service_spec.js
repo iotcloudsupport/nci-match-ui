@@ -1,10 +1,3 @@
-//angular.module('dashboard.matchbox', [])
-//.factory('dtOptionsBuilder', [function() {
-//    var dtOptionsBuilder = null; // initialize here...
-//    return dtOptionsBuilder;
-//}]);
-
-
 describe('Factory: Dashboard Service Factory', function () {
 
     beforeEach(module('config.matchbox', 'http.matchbox'));
