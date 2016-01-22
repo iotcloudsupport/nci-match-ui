@@ -6,6 +6,12 @@ angular.module('molecular-sequences.matchbox',[])
         this.dtInstance = {};
 
         $scope.molecularSequencesList = [];
+        $scope.sites = {
+            'mgh': 0,
+            'yale': 0,
+            'mocha': 0,
+            'mda': 0
+        }
 
         $scope.loadMolecularSequencesList = function() {
             matchApi
@@ -26,11 +32,16 @@ angular.module('molecular-sequences.matchbox',[])
                                             'trackingNumber': value.trackingNumber,
                                             'nucleicAcidSendoutDate': value.dnaShippedDate
                                         });
+                                        if (value.lab === 'MGH') $scope.sites.mgh++;
+                                        if (value.lab === 'Yale') $scope.sites.yale++;
+                                        if (value.lab === 'MoCha') $scope.sites.mocha++;
+                                        if (value.lab === 'MDACC') $scope.sites.mda++;
                                     });
                                 }
                             });
                         }
                     });
+                    $scope.sites.total = $scope.sites.mgh + $scope.sites.yale + $scope.sites.mocha + $scope.sites.mda;
                 });
         };
     });
