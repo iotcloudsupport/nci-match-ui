@@ -94,4 +94,30 @@ angular.module('dashboard.matchbox',[])
                 {label: "5+ aMOI", value: 2}
             ];
         }
+    })
+    .controller('DashboardTreatmentArmAccrualController', function( $scope ) {
+        this.barOptions = {
+            scaleBeginAtZero: true,
+            scaleShowGridLines: true,
+            scaleGridLineColor: "rgba(0,0,0,.05)",
+            scaleGridLineWidth: 1,
+            barShowStroke: true,
+            barStrokeWidth: 2,
+            barValueSpacing: 5,
+            barDatasetSpacing: 1
+        };
+
+        this.barData = {
+            labels: ['EAY131-Q', 'EAY131-B', 'EAY131-H', 'EAY131-U', 'EAY131-E'],
+            datasets: [
+                {
+                    label: "Accural Dataset",
+                    fillColor: "rgba(151,187,205,0.5)",
+                    strokeColor: "rgba(220,220,220,0.8)",
+                    highlightFill: "rgba(220,220,220,0.75)",
+                    highlightStroke: "rgba(220,220,220,1)",
+                    data: [6, 3, 2, 2, 1]
+                }
+            ]
+        };
     });

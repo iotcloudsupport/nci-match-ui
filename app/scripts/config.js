@@ -30,6 +30,13 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                         {
                             name: 'datatables',
                             files: ['bower_components/angular-datatables/dist/angular-datatables.min.js']
+                        },
+                        {
+                            files: ['bower_components/chartjs/Chart.min.js']
+                        },
+                        {
+                            name: 'angles',
+                            files: ['bower_components/angles/angles.js']
                         }
                     ]);
                 }
