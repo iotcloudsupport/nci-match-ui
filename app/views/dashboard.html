@@ -27,12 +27,12 @@
         </ul>
     </div>
 
-    <div class="col-sm-6" ng-controller="DashboardTreatmentArmAccrualController as chart">
+    <div class="col-sm-6" ng-controller="DashboardTreatmentArmAccrualController as chart" ng-init="loadTreatmentArmAccrual()">
         <div class="ibox float-e-margins">
             <h5>Top 5 Treatment Arm Accrual</h5>
             <div class="ibox-content">
                 <div>
-                    <canvas barchart options="chart.barOptions" data="chart.barData" height="100" responsive=true ></canvas>
+                    <canvas barchart options="chart.barOptions" ng-attr-data="barData" height="100" responsive=true ></canvas>
                 </div>
             </div>
         </div>
@@ -182,10 +182,9 @@
                                                        class="table table-striped table-bordered table-hover">
                                                     <thead>
                                                     <tr>
-                                                        <th>Patient Sequence Number</th>
-                                                        <th>MSN</th>
-                                                        <th>Job Name</th>
-                                                        <th>Location</th>
+                                                        <th>Molecular Sequence Number</th>
+                                                        <th>Analysis ID</th>
+                                                        <th>Site</th>
                                                         <th>Specimen Received Date</th>
                                                         <th>Variant Report Received Date</th>
                                                         <th>Days Pending</th>
@@ -193,7 +192,6 @@
                                                     </thead>
                                                     <tbody>
                                                     <tr ng-repeat="item in pendingVariantReportList">
-                                                        <td>{{ item.patientSequenceNumber || '-' }}</td>
                                                         <td>{{ item.molecularSequenceNumber || '-' }}</td>
                                                         <td>{{ item.jobName || '-' }}</td>
                                                         <td>{{ item.location || '-' }}</td>

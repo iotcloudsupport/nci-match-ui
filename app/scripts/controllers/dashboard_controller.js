@@ -107,17 +107,25 @@ angular.module('dashboard.matchbox',[])
             barDatasetSpacing: 1
         };
 
-        this.barData = {
-            labels: ['EAY131-Q', 'EAY131-B', 'EAY131-H', 'EAY131-U', 'EAY131-E'],
-            datasets: [
-                {
-                    label: "Accural Dataset",
-                    fillColor: "rgba(151,187,205,0.5)",
-                    strokeColor: "rgba(220,220,220,0.8)",
-                    highlightFill: "rgba(220,220,220,0.75)",
-                    highlightStroke: "rgba(220,220,220,1)",
-                    data: [6, 3, 2, 2, 1]
-                }
-            ]
-        };
+        $scope.loadTreatmentArmAccrual = function() {
+            // TODO: Invoke the backend rest service and populate
+            // the armNames and armValues variable.
+
+            armNames = ['EAY131-Q', 'EAY131-B', 'EAY131-H', 'EAY131-U', 'EAY131-E'];
+            armValues = [6, 3, 2, 2, 1];
+
+            $scope.barData = {
+                labels: armNames,
+                datasets: [
+                    {
+                        label: "Accural Dataset",
+                        fillColor: "rgba(151,187,205,0.5)",
+                        strokeColor: "rgba(220,220,220,0.8)",
+                        highlightFill: "rgba(220,220,220,0.75)",
+                        highlightStroke: "rgba(220,220,220,1)",
+                        data: armValues
+                    }
+                ]
+            };
+        }
     });
