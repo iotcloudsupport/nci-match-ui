@@ -9,6 +9,7 @@ describe('Controller: dashboard Controller', function () {
     beforeEach(inject(function ($controller,
                                 $rootScope,
                                 _matchApi_,
+                                _reportApi_,
                                 $httpBackend) {
         scope = $rootScope.$new();
         httpBackend = $httpBackend;
@@ -35,6 +36,7 @@ describe('Controller: dashboard Controller', function () {
                 }
             },
             matchApi: _matchApi_,
+            reportApi: _reportApi_
         });
 
 
@@ -154,4 +156,44 @@ describe('Controller: dashboard Controller', function () {
         expect(scope.pendingAssignmentReportList.length).toBe(0);
     });
 
+    afterEach(function () {
+        httpBackend.verifyNoOutstandingExpectation();
+        httpBackend.verifyNoOutstandingRequest();
+    });
+
+
+    it('should populate the dashboard Patient In Limbo Reports list with  on a success response', function() {
+        httpBackend.when('GET', 'http://server:80/reportapi/limboPatient')
+            .respond([
+                {
+                    "psn" : "202re",
+                    "msn" : "202_N-15-00005",
+                    "bsn" : "N-15-00005",
+                    "concordance" : "W",
+                    "currentPatientStatus" : "REGISTRATION"
+                },
+                {
+                    "psn" : "203re",
+                    "msn" : "203_N-15-00005",
+                    "bsn" : "N-15-00006",
+                    "job_name" : "somejob2",
+                    "currentPatientStatus" : "PENDING_CONFIRMATION"
+                }
+            ]);
+        scope.loadLimboPatientsList();
+        httpBackend.flush();
+
+        expect(scope.concordancePatientList.length).toBe(2);
+        expect(scope.concordancePatientList[0].psn).toBe("202re");
+        expect(scope.concordancePatientList[0].msn).toBe('202_N-15-00005');
+        expect(scope.concordancePatientList[0].concordance).toBe("W");
+    });
+
+    it('should not populate the Patient In Limbo Reports on an error response', function() {
+        httpBackend.when('GET', 'http://server:80/reportapi/limboPatient').respond(500);
+        scope.loadLimboPatientsList();
+        httpBackend.flush();
+
+        expect(scope.concordancePatientList.length).toBe(0);
+    });
 });
