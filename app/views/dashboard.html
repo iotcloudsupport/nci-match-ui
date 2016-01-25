@@ -38,9 +38,11 @@
         </div>
     </div>
 
-    <div class="col-sm-3">
-        <div ng-controller="DashboardSequencedConfirmedController" ng-init="loadSequencedConfirmedDonutChart()">
-            <sequenced-confirmed-donut id="sequencedConfirmedDonutChart" labels="labels" data="sequencedConfirmedModel"></sequenced-confirmed-donut>
+    <div class="col-sm-3" ng-controller="DashboardChartJsDonutController as chartjsDonut" ng-init="loadChartjsDonutChart()">
+        <div class="ibox float-e-margins">
+            <div>
+                <canvas doughnutchart options="chartjsDonut.donutOptions" ng-attr-data="donutData" height="250" responsive=true></canvas>
+            </div>
         </div>
     </div>
 
