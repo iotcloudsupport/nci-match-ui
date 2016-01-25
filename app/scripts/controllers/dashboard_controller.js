@@ -83,18 +83,6 @@ angular.module('dashboard.matchbox',[])
 
 
     })
-    .controller('DashboardSequencedConfirmedController', function( $scope, reportApi) {
-        $scope.loadSequencedConfirmedDonutChart = function() {
-            $scope.sequencedConfirmedModel = [
-                {label: "0 aMOI", value: 1},
-                {label: "1 aMOI", value: 6},
-                {label: "2 aMOI", value: 3},
-                {label: "3 aMOI", value: 5},
-                {label: "4 aMOI", value: 0},
-                {label: "5+ aMOI", value: 2}
-            ];
-        }
-    })
     .controller('DashboardTreatmentArmAccrualController', function( $scope ) {
         this.barOptions = {
             scaleBeginAtZero: true,
@@ -128,4 +116,62 @@ angular.module('dashboard.matchbox',[])
                 ]
             };
         }
-    });
+    })
+    .controller('DashboardChartJsDonutController', function( $scope, reportApi) {
+        this.donutOptions = {
+            segmentShowStroke: true,
+            segmentStrokeColor: "#fff",
+            segmentStrokeWidth: 2,
+            percentageInnerCutout: 45, // This is 0 for Pie charts
+            animationSteps: 100,
+            animationEasing: "easeOutBounce",
+            animateRotate: true,
+            animateScale: false,
+            responsive: true,
+        };
+        $scope.loadChartjsDonutChart = function() {
+            aMoiLabels = ['0 aMOI', '1 aMOI', '2 aMOI', '3 aMOI', '4 aMOI', '5+ aMOI'];
+            aMoiValues = [45, 21, 4, 35, 9, 6];
+            aMoiHighlight = "#000088"; //"#dedede";
+
+            $scope.donutData = [
+            {
+                value: aMoiValues[0],
+                color: "#23c6c8",
+                highlight: aMoiHighlight,
+                label: aMoiLabels[0]
+            },
+            {
+                value: aMoiValues[1],
+                color: "#1c84c6",
+                highlight: aMoiHighlight,
+                label: aMoiLabels[1]
+            },
+            {
+                value: aMoiValues[2],
+                color: "#f8ac59",
+                highlight: aMoiHighlight,
+                label: aMoiLabels[2]
+            },
+            {
+                value: aMoiValues[3],
+                color: "#1ab394",
+                highlight: aMoiHighlight,
+                label: aMoiLabels[3]
+            },
+            {
+                value: aMoiValues[4],
+                color: "#8f8f8f",
+                highlight: aMoiHighlight,
+                label: aMoiLabels[4]
+            },
+            {
+                value: aMoiValues[5],
+                color: "#b5b8cf",
+                highlight: aMoiHighlight,
+                label: aMoiLabels[5]
+            }
+            ];
+        }
+    })
+;
