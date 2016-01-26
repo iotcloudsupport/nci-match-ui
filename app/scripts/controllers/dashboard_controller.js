@@ -116,6 +116,10 @@ angular.module('dashboard.matchbox',[])
                 ]
             };
         }
+
+
+        var ctx = $('#treatmentArmAccrualCanvas')[0].getContext('2d');
+        ctx.canvas.height = 100;
     })
     .controller('DashboardChartJsDonutController', function( $scope, reportApi) {
         this.donutOptions = {
@@ -129,6 +133,7 @@ angular.module('dashboard.matchbox',[])
             animateScale: false,
             responsive: true,
         };
+
         $scope.loadChartjsDonutChart = function() {
             aMoiLabels = ['0 aMOI', '1 aMOI', '2 aMOI', '3 aMOI', '4 aMOI', '5+ aMOI'];
             aMoiValues = [45, 21, 4, 35, 9, 6];
@@ -173,5 +178,8 @@ angular.module('dashboard.matchbox',[])
             }
             ];
         }
+
+        var ctx = $('#amoiCanvas')[0].getContext('2d');
+        ctx.canvas.height = 200;
     })
 ;
