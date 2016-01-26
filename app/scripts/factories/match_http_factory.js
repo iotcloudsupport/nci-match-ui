@@ -4,7 +4,7 @@ angular.module('http.matchbox', [])
             getDashboardStatistcs: function() {
                 return $http.get(matchConfig.workflowApiBaseUrl + '/dashboardStatistics');
             }
-        }
+        };
     })
     .factory('matchApi', function($http, matchConfig) {
         return {
@@ -26,7 +26,7 @@ angular.module('http.matchbox', [])
             getPatientPendingAssignmentReports: function() {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getPatientsWithPendingAssignmentReport');
             }
-        }
+        };
     })
     .factory('reportApi', function($http, matchConfig) {
         return {
@@ -36,10 +36,17 @@ angular.module('http.matchbox', [])
             getReportList: function() {
                 return $http.get(matchConfig.reportApiBaseUrl + '/reportList');
             }
-        }
+        };
+    })
+    .factory('feedApi', function($http, matchConfig) {
+        return {
+            getActivityFeedList: function() {
+                return $http.get(matchConfig.reportApiBaseUrl + '/reportList');
+            }
+        };
     })
     .factory('treatmentArmApi', function($http, matchConfig) {
         return {
 
-        }
+        };
     });
