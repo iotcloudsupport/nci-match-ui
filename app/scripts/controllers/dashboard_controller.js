@@ -18,7 +18,7 @@ angular.module('dashboard.matchbox',[])
                     $scope.numberOfPendingVariantReports = d.data.number_of_pending_variant_reports;
                     $scope.numberOfPendingAssignmentReports = d.data.number_of_pending_assignment_reports;
                 });
-        }
+        };
     })
     .controller('DashboardPendingReviewController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, reportApi ) {
         this.dtOptions = DTOptionsBuilder.newOptions()
@@ -51,38 +51,115 @@ angular.module('dashboard.matchbox',[])
 
         $scope.loadLimboPatientsList = function() {
             reportApi
-                .getPatientInLimboReports()
-                .then(function(d) {
+            .getPatientInLimboReports()
+            .then(function(d) {
 
-                    angular.forEach(d.data, function (value) {
+                angular.forEach(d.data, function (value) {
 
-                        var patientSequenceNumber = value.psn;
-                        var biopsySequenceNumber = value.bsn;
-                        var molecularSequenceNumber = value.msn;
-                        var jobName = value.job_name;
-                        var currentPatientStatus = value.currentPatientStatus;
+                    var patientSequenceNumber = value.psn;
+                    var biopsySequenceNumber = value.bsn;
+                    var molecularSequenceNumber = value.msn;
+                    var jobName = value.job_name;
+                    var currentPatientStatus = value.currentPatientStatus;
 
-                        var variantReportLink =  "patientId=" + patientSequenceNumber +
-                            "&biopsySequenceNumber=" + biopsySequenceNumber +
-                            "&molecularSequenceNumber=" + molecularSequenceNumber +
-                            "&jobName=" + jobName +
-                            "&status=" + currentPatientStatus + "'";
+                    var variantReportLink =  "patientId=" + patientSequenceNumber +
+                        "&biopsySequenceNumber=" + biopsySequenceNumber +
+                        "&molecularSequenceNumber=" + molecularSequenceNumber +
+                        "&jobName=" + jobName +
+                        "&status=" + currentPatientStatus + "'";
 
-                        var concordanceTemplate = {
-                            'psn': patientSequenceNumber,
-                            'msn': molecularSequenceNumber,
-                            'variantReport': variantReportLink,
-                            'concordance': value.concordance,
-                            'date_verified': value.date_verified
-                        };
+                    var concordanceTemplate = {
+                        'psn': patientSequenceNumber,
+                        'msn': molecularSequenceNumber,
+                        'variantReport': variantReportLink,
+                        'concordance': value.concordance,
+                        'date_verified': value.date_verified
+                    };
 
-                        $scope.concordancePatientList.push(concordanceTemplate);
-                    });
+                    $scope.concordancePatientList.push(concordanceTemplate);
                 });
-        }
-
-
+            });
+        };
     })
+
+
+    .controller('DashboardActivityFeedController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, feedApi ) {
+        this.dtOptions = DTOptionsBuilder.newOptions()
+            .withDisplayLength(25);
+        this.dtOptions = DTOptionsBuilder.newOptions()
+            .withOption('bLengthChange', false);
+
+        this.dtColumnDefs = [];
+        this.dtInstance = {};
+
+        $scope.activityList = [];
+
+        $scope.icons = [
+            'fa fa-heartbeat fa-4x',
+            'fa fa-cogs fa-4x',
+            'fa fa-database fa-4x',
+            'fa fa-envelope fa-4x',
+            'fa fa-users fa-4x',
+            'fa fa-car fa-4x',
+            'fa fa-thumbs-up fa-4x',
+            'fa fa-life-ring fa-4x',
+            'fa fa-anchor fa-4x',
+            'fa fa-exclamation-triangle fa-4x'
+        ];
+
+        $scope.message = [
+            'Working progress ..',
+            'System rerun',
+            'DB issue ..',
+            'Mail expected',
+            'Users be aware',
+            'Car broke down',
+            'Great work',
+            'Support needed',
+            'Solid ground',
+            'Watch out'
+        ];
+
+        $scope.status = [
+            'btn-danger',
+            'btn-success',
+            'btn-default',
+            'btn-warning',
+            'btn-priority'
+        ];
+
+
+        $scope.loadActivityList = function() {
+            feedApi
+            .getActivityFeedList()
+            .then(function(d) {
+
+                $scope.activityList = [];
+
+                angular.forEach(d.data, function (value) {
+                    $scope.num = (Math.ceil(Math.random() * 9));
+                    $scope.icon = (Math.ceil(Math.random() * 5));
+                    $scope.time = new Date();
+
+                    if($scope.activityList.length < $scope.num) {
+                        var feedTemplate = {
+                            "pic": $scope.icons[$scope.num],
+                            "status": $scope.status[$scope.icon],
+                            "messages": $scope.num,
+                            "time": $scope.time,
+                            "displayName": $scope.message[$scope.num],
+                            "description": "Delayed DB configuration"
+                        };
+                        $scope.activityList.push(feedTemplate);
+                    }
+                });
+            });
+        };
+    })
+
+
+
+
     .controller('DashboardTreatmentArmAccrualController', function( $scope ) {
         this.barOptions = {
             scaleBeginAtZero: true,
