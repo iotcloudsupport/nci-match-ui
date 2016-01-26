@@ -182,6 +182,12 @@ angular.module('dashboard.matchbox',[])
             barDatasetSpacing: 1
         };
 
+        $scope.setCanvasHeight = function() {
+            // Need a better way to set the height of the canvas
+            var ctx = $('#treatmentArmAccrualCanvas')[0].getContext('2d');
+            ctx.canvas.height = 100;
+        }
+
         $scope.loadTreatmentArmAccrual = function() {
             // TODO: Invoke the backend rest service and populate
             // the armNames and armValues variable.
@@ -203,9 +209,6 @@ angular.module('dashboard.matchbox',[])
                 ]
             };
         }
-
-        var ctx = $('#treatmentArmAccrualCanvas')[0].getContext('2d');
-        ctx.canvas.height = 100;
     })
     .controller('DashboardChartJsDonutController', function( $scope, reportApi) {
         this.donutOptions = {
@@ -219,6 +222,12 @@ angular.module('dashboard.matchbox',[])
             animateScale: false,
             responsive: true,
         };
+
+        $scope.setCanvasHeight = function() {
+            // Need a better way to set the height of the canvas
+            var ctx = $('#amoiCanvas')[0].getContext('2d');
+            ctx.canvas.height = 200;
+        }
 
         $scope.loadChartjsDonutChart = function() {
             aMoiLabels = ['0 aMOI', '1 aMOI', '2 aMOI', '3 aMOI', '4 aMOI', '5+ aMOI'];
@@ -264,8 +273,5 @@ angular.module('dashboard.matchbox',[])
             }
             ];
         }
-
-        var ctx = $('#amoiCanvas')[0].getContext('2d');
-        ctx.canvas.height = 200;
     })
 ;

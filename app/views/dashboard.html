@@ -27,7 +27,7 @@
         </ul>
     </div>
 
-    <div class="col-sm-6" ng-controller="DashboardTreatmentArmAccrualController as chart" ng-init="loadTreatmentArmAccrual()">
+    <div class="col-sm-6" ng-controller="DashboardTreatmentArmAccrualController as chart" ng-init="setCanvasHeight();loadTreatmentArmAccrual();">
         <div class="statistic-box">
             <div class="text-center">
                 <h4>Top 5 Treatment Arm Accrual</h4>
@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <div class="col-sm-3" ng-controller="DashboardChartJsDonutController as chartjsDonut" ng-init="loadChartjsDonutChart()">
+    <div class="col-sm-3" ng-controller="DashboardChartJsDonutController as chartjsDonut" ng-init="setCanvasHeight();loadChartjsDonutChart();">
         <div class="statistic-box">
             <div class="text-center">
                 <h4>Sequenced & Confirmed Patients with aMOI(s)</h4>
@@ -225,8 +225,6 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
