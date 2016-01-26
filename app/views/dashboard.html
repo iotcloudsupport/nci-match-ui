@@ -28,22 +28,19 @@
     </div>
 
     <div class="col-sm-6" ng-controller="DashboardTreatmentArmAccrualController as chart" ng-init="loadTreatmentArmAccrual()">
-        <div class="ibox float-e-margins">
-            <h5>Top 5 Treatment Arm Accrual</h5>
-            <div class="ibox-content">
-                <div>
-                    <canvas barchart options="chart.barOptions" ng-attr-data="barData" height="100" responsive=true ></canvas>
-                </div>
+        <div class="statistic-box">
+            <canvas barchart options="chart.barOptions" ng-attr-data="barData" height="200" responsive=true ></canvas>
+        </div>
+        <div class="row text-center">
+            <div class="col-xs-12">
+                <span class="h5 font-bold m-t block">Top 5 Treatment Arm Accrual</span>
             </div>
         </div>
     </div>
 
     <div class="col-sm-3" ng-controller="DashboardChartJsDonutController as chartjsDonut" ng-init="loadChartjsDonutChart()">
-        <div class="ibox float-e-margins">
-            <div>
-                <canvas doughnutchart options="chartjsDonut.donutOptions" ng-attr-data="donutData" height="250" responsive=true></canvas>
-            </div>
-        </div>
+        <h4>Sequenced & Confirmed Patients with aMOI(s)</h4>
+        <canvas doughnutchart options="chartjsDonut.donutOptions" ng-attr-data="donutData" height="400" responsive=true></canvas>
     </div>
 
 </div>
