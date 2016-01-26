@@ -32,7 +32,7 @@
             <div class="text-center">
                 <h4>Top 5 Treatment Arm Accrual</h4>
             </div>
-            <canvas barchart options="chart.barOptions" ng-attr-data="barData" height="100" responsive=true ></canvas>
+            <canvas id="treatmentArmAccrualCanvas" barchart options="chart.barOptions" ng-attr-data="barData" responsive=true ></canvas>
         </div>
     </div>
 
@@ -41,7 +41,7 @@
             <div class="text-center">
                 <h4>Sequenced & Confirmed Patients with aMOI(s)</h4>
             </div>
-            <canvas doughnutchart options="chartjsDonut.donutOptions" ng-attr-data="donutData" height="200" responsive=true></canvas>
+            <canvas id="amoiCanvas" doughnutchart options="chartjsDonut.donutOptions" ng-attr-data="donutData" responsive=true></canvas>
         </div>
     </div>
 
