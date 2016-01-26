@@ -10,7 +10,8 @@ angular.module('molecular-sequences.matchbox',[])
             'mgh': 0,
             'yale': 0,
             'mocha': 0,
-            'mda': 0
+            'mda': 0,
+            'total': 100
         }
 
         $scope.loadMolecularSequencesList = function() {
