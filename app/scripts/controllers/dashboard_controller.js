@@ -131,7 +131,7 @@ angular.module('dashboard.matchbox',[])
         };
         $scope.loadChartjsDonutChart = function() {
             aMoiLabels = ['0 aMOI', '1 aMOI', '2 aMOI', '3 aMOI', '4 aMOI', '5+ aMOI'];
-            aMoiValues = [45, 21, 4, 35, 9, 6];
+            aMoiValues = [4, 35, 45, 9, 6, 21]; //[4, 10, 14, 6, 10, 16]; //[45, 21, 4, 35, 9, 6];
             aMoiHighlight = "#000088"; //"#dedede";
 
             $scope.donutData = [
@@ -149,25 +149,25 @@ angular.module('dashboard.matchbox',[])
             },
             {
                 value: aMoiValues[2],
-                color: "#f8ac59",
+                color: "#ab0102",
                 highlight: aMoiHighlight,
                 label: aMoiLabels[2]
             },
             {
                 value: aMoiValues[3],
-                color: "#1ab394",
+                color: "#f8ac59",
                 highlight: aMoiHighlight,
                 label: aMoiLabels[3]
             },
             {
                 value: aMoiValues[4],
-                color: "#8f8f8f",
+                color: "#707070",
                 highlight: aMoiHighlight,
                 label: aMoiLabels[4]
             },
             {
                 value: aMoiValues[5],
-                color: "#b5b8cf",
+                color: "#cfcfcf",
                 highlight: aMoiHighlight,
                 label: aMoiLabels[5]
             }
