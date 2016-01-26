@@ -39,6 +39,10 @@ describe('Controller: dashboard Controller', function () {
             reportApi: _reportApi_
         });
 
+        chartjsDonut = $controller('DashboardChartJsDonutController', {
+            $scope: scope
+        });
+
 
     }));
 
@@ -196,4 +200,12 @@ describe('Controller: dashboard Controller', function () {
 
         expect(scope.concordancePatientList.length).toBe(0);
     });
+
+    it('should populate the aMOI donut chart on a success response', function() {
+        scope.loadChartjsDonutChart();
+
+        expect(scope.donutData.length).toBe(6);
+        expect(scope.donutData[0].value).toBe(4);
+        expect(scope.donutData[5].label).toBe('5+ aMOI');
+    })
 });
