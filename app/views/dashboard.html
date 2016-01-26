@@ -190,6 +190,38 @@
                                                 </table>
                                             </div>
                                         </tab>
+                                        <tab heading="Rejoin Trial">
+                                            <div class="panel-body"
+                                                 ng-controller="DashboardPendingReviewController as DashCtrl"
+                                                 ng-init="loadRejoinPatientsList()">
+                                                <table datatable="ng"
+                                                       dt-options="DashCtrl.dtOptions"
+                                                       dt-column-defs="DashCtrl.dtColumnDefs"
+                                                       dt-instance="DashCtrl.dtInstance"
+                                                       class="table table-striped table-bordered table-hover">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Patient Sequence Number</th>
+                                                        <th>Treatment Arm</th>
+                                                        <th>Treatment Arm Version</th>
+                                                        <th>Rejoin Detected Date</th>
+                                                        <th>Notified ECOG Date</th>
+                                                        <th>Rejoined Date</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr ng-repeat="item in rejoinPatientList">
+                                                        <td>{{ item.psn }}</td>
+                                                        <td>{{ item.treatmentArmId }}</td>
+                                                        <td>{{ item.treatmentArmVersion }}</td>
+                                                        <td>{{ item.dateScanned || gmt }}</td>
+                                                        <td>{{ item.dateSentToECOG | gmt }}</td>
+                                                        <td>{{ item.dateRejoined | gmt }}</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </tab>
                                     </tabset>
                                 </div>
                             </div>

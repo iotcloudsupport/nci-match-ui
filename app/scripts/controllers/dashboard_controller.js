@@ -32,6 +32,8 @@ angular.module('dashboard.matchbox',[])
         $scope.pendingVariantReportList = [];
         $scope.pendingAssignmentReportList = [];
         $scope.concordancePatientList = [];
+        $scope.rejoinPatientList = [];
+
 
         $scope.loadPatientVariantReportsList = function() {
             matchApi
@@ -53,9 +55,7 @@ angular.module('dashboard.matchbox',[])
             reportApi
             .getPatientInLimboReports()
             .then(function(d) {
-
                 angular.forEach(d.data, function (value) {
-
                     var patientSequenceNumber = value.psn;
                     var biopsySequenceNumber = value.bsn;
                     var molecularSequenceNumber = value.msn;
@@ -80,9 +80,11 @@ angular.module('dashboard.matchbox',[])
                 });
             });
         };
+
+        $scope.loadRejoinPatientList = function() {
+
+        }
     })
-
-
     .controller('DashboardActivityFeedController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, feedApi ) {
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(25);
@@ -128,7 +130,6 @@ angular.module('dashboard.matchbox',[])
             'btn-priority'
         ];
 
-
         $scope.loadActivityList = function() {
             feedApi
             .getActivityFeedList()
@@ -156,10 +157,6 @@ angular.module('dashboard.matchbox',[])
             });
         };
     })
-
-
-
-
     .controller('DashboardTreatmentArmAccrualController', function( $scope ) {
         this.barOptions = {
             scaleBeginAtZero: true,
@@ -193,7 +190,6 @@ angular.module('dashboard.matchbox',[])
                 ]
             };
         }
-
 
         var ctx = $('#treatmentArmAccrualCanvas')[0].getContext('2d');
         ctx.canvas.height = 100;
