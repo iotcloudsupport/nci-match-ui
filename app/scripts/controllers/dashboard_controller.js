@@ -20,7 +20,7 @@ angular.module('dashboard.matchbox',[])
                 });
         };
     })
-    .controller('DashboardPendingReviewController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, reportApi ) {
+    .controller('DashboardPendingReviewController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, workflowApi, reportApi ) {
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(25);
         this.dtOptions = DTOptionsBuilder.newOptions()
@@ -53,36 +53,52 @@ angular.module('dashboard.matchbox',[])
 
         $scope.loadLimboPatientsList = function() {
             reportApi
-            .getPatientInLimboReports()
-            .then(function(d) {
-                angular.forEach(d.data, function (value) {
-                    var patientSequenceNumber = value.psn;
-                    var biopsySequenceNumber = value.bsn;
-                    var molecularSequenceNumber = value.msn;
-                    var jobName = value.job_name;
-                    var currentPatientStatus = value.currentPatientStatus;
+                .getPatientInLimboReports()
+                .then(function(d) {
+                    angular.forEach(d.data, function (value) {
+                        var patientSequenceNumber = value.psn;
+                        var biopsySequenceNumber = value.bsn;
+                        var molecularSequenceNumber = value.msn;
+                        var jobName = value.job_name;
+                        var currentPatientStatus = value.currentPatientStatus;
 
-                    var variantReportLink =  "patientId=" + patientSequenceNumber +
-                        "&biopsySequenceNumber=" + biopsySequenceNumber +
-                        "&molecularSequenceNumber=" + molecularSequenceNumber +
-                        "&jobName=" + jobName +
-                        "&status=" + currentPatientStatus + "'";
+                        var variantReportLink =  "patientId=" + patientSequenceNumber +
+                            "&biopsySequenceNumber=" + biopsySequenceNumber +
+                            "&molecularSequenceNumber=" + molecularSequenceNumber +
+                            "&jobName=" + jobName +
+                            "&status=" + currentPatientStatus + "'";
 
-                    var concordanceTemplate = {
-                        'psn': patientSequenceNumber,
-                        'msn': molecularSequenceNumber,
-                        'variantReport': variantReportLink,
-                        'concordance': value.concordance,
-                        'date_verified': value.date_verified
-                    };
+                        var concordanceTemplate = {
+                            'psn': patientSequenceNumber,
+                            'msn': molecularSequenceNumber,
+                            'variantReport': variantReportLink,
+                            'concordance': value.concordance,
+                            'date_verified': value.date_verified
+                        };
 
-                    $scope.concordancePatientList.push(concordanceTemplate);
+                        $scope.concordancePatientList.push(concordanceTemplate);
+                    });
                 });
-            });
         };
 
-        $scope.loadRejoinPatientList = function() {
-
+        $scope.loadRejoinPatientsList = function() {
+            workflowApi
+                .getPatientRejoinTrialPendingReview()
+                .then(function(d) {
+                    angular.forEach(d.data, function(value) {
+                        patientSequenceNumber = value.patientSequenceNumber;
+                        latestTrigger = value.patientRejoinTriggers[value.patientRejoinTriggers.length - 1];
+                        if (! angular.isDefined(latestTrigger.dateRejoined)) {
+                            $scope.rejoinPatientList.push({
+                                'patientSequenceNumber': patientSequenceNumber,
+                                'treatmentArmId': latestTrigger.treatmentArmId,
+                                'treatmentArmVersion': latestTrigger.treatmentArmVersion,
+                                'dateScanned': latestTrigger.dateScanned,
+                                'dateSentToECOG': latestTrigger.dateSentToECOG
+                            });
+                        }
+                    });
+                });
         }
     })
     .controller('DashboardActivityFeedController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, feedApi ) {
@@ -134,9 +150,6 @@ angular.module('dashboard.matchbox',[])
             feedApi
             .getActivityFeedList()
             .then(function(d) {
-
-                $scope.activityList = [];
-
                 angular.forEach(d.data, function (value) {
                     $scope.num = (Math.ceil(Math.random() * 9));
                     $scope.icon = (Math.ceil(Math.random() * 5));
