@@ -22,8 +22,8 @@ angular.module('dashboard.matchbox',[])
     })
     .controller('DashboardPendingReviewController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, workflowApi, reportApi ) {
         this.dtOptions = DTOptionsBuilder.newOptions()
-            .withDisplayLength(25);
-        this.dtOptions = DTOptionsBuilder.newOptions()
+            .withDisplayLength(25)
+            .withOption('bPaginate', false)
             .withOption('bLengthChange', false);
 
         this.dtColumnDefs = [];
@@ -33,7 +33,6 @@ angular.module('dashboard.matchbox',[])
         $scope.pendingAssignmentReportList = [];
         $scope.concordancePatientList = [];
         $scope.rejoinPatientList = [];
-
 
         $scope.loadPatientVariantReportsList = function() {
             matchApi
