@@ -6,11 +6,11 @@
         <ul class="list-group clear-list m-t">
             <li class="list-group-item fist-item">
                 <span class="pull-right">{{ numberOfPatients }}</span>
-                <span class="label label-info"><i class="fa fa-group"></i></span>Number of Patients
+                <span class="label label-info"><i class="fa fa-group"></i></span>Number of Registered Patients
             </li>
             <li class="list-group-item">
                 <span class="pull-right">{{ numberOfScreenedPatients }}</span>
-                <span class="label label-info"><i class="fa fa-group"></i></span>Number of Screened Patients
+                <span class="label label-info"><i class="fa fa-group"></i></span>Number of Patients with Confirmed Variant Report
             </li>
             <li class="list-group-item">
                 <span class="pull-right">{{ numberOfPatientsWithTreatment }}</span>
@@ -109,9 +109,10 @@
                                                        class="table table-striped table-bordered table-hover">
                                                     <thead>
                                                     <tr>
+                                                        <th>Patient Sequence Number</th>
                                                         <th>Molecular Sequence Number</th>
                                                         <th>Analysis ID</th>
-                                                        <th>Site</th>
+                                                        <th>Lab</th>
                                                         <th>Specimen Received Date</th>
                                                         <th>Variant Report Received Date</th>
                                                         <th>Days Pending</th>
@@ -119,6 +120,7 @@
                                                     </thead>
                                                     <tbody>
                                                     <tr ng-repeat="item in pendingVariantReportList">
+                                                        <td>{{ item.patientSequenceNumber || '-' }}</td>
                                                         <td>{{ item.molecularSequenceNumber || '-' }}</td>
                                                         <td>{{ item.jobName || '-' }}</td>
                                                         <td>{{ item.location || '-' }}</td>
@@ -142,6 +144,7 @@
                                                     <thead>
                                                     <tr>
                                                         <th>Patient Sequence Number</th>
+                                                        <th>Molecular Sequence Number</th>
                                                         <th>Assignment Date</th>
                                                         <th>Hours Pending</th>
                                                     </tr>
@@ -149,6 +152,7 @@
                                                     <tbody>
                                                     <tr ng-repeat="item in pendingAssignmentReportList">
                                                         <td>{{ item.patientSequenceNumber }}</td>
+                                                        <td>{{ item.molecularSequenceNumber || '-' }}</td>
                                                         <td>{{ item.dateAssigned | gmt  }}</td>
                                                         <td><span class="label label-primary">{{ item.hoursPending || ' - ' }}</span></td>
                                                     </tr>
@@ -202,8 +206,7 @@
                                                     <thead>
                                                     <tr>
                                                         <th>Patient Sequence Number</th>
-                                                        <th>Treatment Arm</th>
-                                                        <th>Treatment Arm Version</th>
+                                                        <th>Eligible Treatment Arm</th>
                                                         <th>Scanned Date</th>
                                                         <th>Notified ECOG Date</th>
                                                     </tr>
@@ -211,8 +214,7 @@
                                                     <tbody>
                                                     <tr ng-repeat="item in rejoinPatientList">
                                                         <td>{{ item.patientSequenceNumber }}</td>
-                                                        <td>{{ item.treatmentArmId }}</td>
-                                                        <td>{{ item.treatmentArmVersion }}</td>
+                                                        <td>{{ item.treatmentArmId }} ({{ item.treatmentArmVersion }})</td>
                                                         <td>{{ item.dateScanned || gmt}}</td>
                                                         <td>{{ item.dateSentToECOG || gmt }}</td>
                                                     </tr>
