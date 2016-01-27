@@ -11,7 +11,7 @@ angular.module('molecular-sequences.matchbox',[])
             'yale': 0,
             'mocha': 0,
             'mda': 0,
-            'total': 100
+            'total': 0
         }
 
         $scope.loadMolecularSequencesList = function() {
@@ -42,7 +42,8 @@ angular.module('molecular-sequences.matchbox',[])
                             });
                         }
                     });
-                    $scope.sites.total = $scope.sites.mgh + $scope.sites.yale + $scope.sites.mocha + $scope.sites.mda;
+                    var total = $scope.sites.mgh + $scope.sites.yale + $scope.sites.mocha + $scope.sites.mda;
+                    $scope.sites.total = (total === 0) ? 1 : total;
                 });
         };
     });
