@@ -22,8 +22,10 @@ angular.module('dashboard.matchbox',[])
     })
     .controller('DashboardPendingReviewController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, workflowApi, reportApi ) {
         this.dtOptions = DTOptionsBuilder.newOptions()
-            .withDisplayLength(25)
+            .withDisplayLength(25);
+        this.dtOptions = DTOptionsBuilder.newOptions()
             .withOption('bPaginate', false)
+        this.dtOptions = DTOptionsBuilder.newOptions()
             .withOption('bLengthChange', false);
 
         this.dtColumnDefs = [];
@@ -98,7 +100,7 @@ angular.module('dashboard.matchbox',[])
                         }
                     });
                 });
-        }
+        };
     })
     .controller('DashboardActivityFeedController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, feedApi ) {
         this.dtOptions = DTOptionsBuilder.newOptions()
@@ -149,17 +151,23 @@ angular.module('dashboard.matchbox',[])
             feedApi
             .getActivityFeedList()
             .then(function(d) {
+
                 angular.forEach(d.data, function (value) {
                     $scope.num = (Math.ceil(Math.random() * 9));
                     $scope.icon = (Math.ceil(Math.random() * 5));
-                    $scope.time = new Date();
+                    $scope.time = value.timestamp;
+                    $scope.age = value.age;
+                    $scope.message = value.message;
+                    $scope.actor = value.actor;
 
                     if($scope.activityList.length < $scope.num) {
                         var feedTemplate = {
                             "pic": $scope.icons[$scope.num],
                             "status": $scope.status[$scope.icon],
-                            "messages": $scope.num,
+                            "messages": $scope.message,
                             "time": $scope.time,
+                            "age": $scope.age,
+                            "actor": $scope.actor,
                             "displayName": $scope.message[$scope.num],
                             "description": "Delayed DB configuration"
                         };
