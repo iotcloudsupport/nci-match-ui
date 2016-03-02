@@ -4,8 +4,8 @@ angular.module('http.matchbox', [])
             getDashboardStatistcs: function() {
                 return $http.get(matchConfig.workflowApiBaseUrl + '/dashboardStatistics');
             },
-            getPatientRejoinTrialPendingReview: function() {
-                return $http.get(matchConfig.workflowApiBaseUrl + '/patientRejoinTrialPendingReview');
+            getRejoinRequested: function() {
+                return $http.get(matchConfig.workflowApiBaseUrl + '/rejoinRequested');
             }
         };
     })

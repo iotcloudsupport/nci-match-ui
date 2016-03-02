@@ -182,11 +182,7 @@
                                                     <tr ng-repeat="item in concordancePatientList">
                                                         <td>{{ item.psn }}</td>
                                                         <td>{{ item.msn || '-' }}</td>
-                                                        <td><a ng-href="#/ngsRuns/{{item.variantReport}}">
-                                                                <i class='fa fa-file-text-o'></i>
-                                                                Variant Report
-                                                            </a>
-                                                        </td>
+                                                        <td>Variant Report</td>
                                                         <td>{{ item.concordance || '-' }}</td>
                                                         <td>{{ item.date_verified | gmt }}</td>
                                                     </tr>
@@ -194,10 +190,10 @@
                                                 </table>
                                             </div>
                                         </tab>
-                                        <tab heading="Rejoin Trial">
+                                        <tab heading="Rejoin Requested">
                                             <div class="panel-body"
                                                  ng-controller="DashboardPendingReviewController as DashCtrl"
-                                                 ng-init="loadRejoinPatientsList()">
+                                                 ng-init="loadRejoinRequestedPatientsList()">
                                                 <table datatable="ng"
                                                        dt-options="DashCtrl.dtOptions"
                                                        dt-column-defs="DashCtrl.dtColumnDefs"
@@ -206,15 +202,15 @@
                                                     <thead>
                                                     <tr>
                                                         <th>Patient Sequence Number</th>
-                                                        <th>Eligible Treatment Arm</th>
-                                                        <th>Scanned Date</th>
+                                                        <th>Eligible Treatment Arm(s)</th>
+                                                        <th>Last Scanned Date</th>
                                                         <th>Notified ECOG Date</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr ng-repeat="item in rejoinPatientList">
+                                                    <tr ng-repeat="item in rejoinRequestedPatientList">
                                                         <td>{{ item.patientSequenceNumber }}</td>
-                                                        <td>{{ item.treatmentArmId }} ({{ item.treatmentArmVersion }})</td>
+                                                        <td>{{ item.treatmentArm }}</td>
                                                         <td>{{ item.dateScanned || gmt}}</td>
                                                         <td>{{ item.dateSentToECOG || gmt }}</td>
                                                     </tr>

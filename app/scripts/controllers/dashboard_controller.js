@@ -34,7 +34,7 @@ angular.module('dashboard.matchbox',[])
         $scope.pendingVariantReportList = [];
         $scope.pendingAssignmentReportList = [];
         $scope.concordancePatientList = [];
-        $scope.rejoinPatientList = [];
+        $scope.rejoinRequestedPatientList = [];
 
         $scope.loadPatientVariantReportsList = function() {
             matchApi
@@ -82,18 +82,21 @@ angular.module('dashboard.matchbox',[])
                 });
         };
 
-        $scope.loadRejoinPatientsList = function() {
+        $scope.loadRejoinRequestedPatientsList = function() {
             workflowApi
-                .getPatientRejoinTrialPendingReview()
+                .getRejoinRequested()
                 .then(function(d) {
                     angular.forEach(d.data, function(value) {
                         patientSequenceNumber = value.patientSequenceNumber;
                         latestTrigger = value.patientRejoinTriggers[value.patientRejoinTriggers.length - 1];
                         if (! angular.isDefined(latestTrigger.dateRejoined)) {
-                            $scope.rejoinPatientList.push({
+                            treatmentArmList = [];
+                            angular.forEach(latestTrigger.eligibleArms, function(eligibleArm) {
+                                treatmentArmList.push(eligibleArm.treatmentArmId + ' (' + eligibleArm.treatmentArmVersion + ')')
+                            });
+                            $scope.rejoinRequestedPatientList.push({
                                 'patientSequenceNumber': patientSequenceNumber,
-                                'treatmentArmId': latestTrigger.treatmentArmId,
-                                'treatmentArmVersion': latestTrigger.treatmentArmVersion,
+                                'treatmentArm': treatmentArmList.join(', '),
                                 'dateScanned': latestTrigger.dateScanned,
                                 'dateSentToECOG': latestTrigger.dateSentToECOG
                             });
