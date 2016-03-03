@@ -17,10 +17,7 @@ angular.module('http.matchbox', [])
             getBasicTreatmentArms: function() {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getBasicTreatmentArms');
             },
-            getBiopsySequenceList: function() {
-                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/patientSpecimenTrackingSummary');
-            },
-            getMolecularSequenceList: function() {
+            getPatientSpecimentTrackingSummary: function() {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/patientSpecimenTrackingSummary');
             },
             getPatientVariantReports: function() {

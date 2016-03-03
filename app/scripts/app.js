@@ -7,7 +7,7 @@
         'dashboard.matchbox',
         'patients.matchbox',
         'treatment-arms.matchbox',
-        'biopsies.matchbox',
+        'specimen-tracking.matchbox',
         'reports.matchbox',
         'filters.matchbox',
         'config.matchbox',

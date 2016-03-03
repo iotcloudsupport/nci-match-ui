@@ -1,11 +1,11 @@
-angular.module('biopsies.matchbox',[])
-    .controller('BiopsiesController', function( $scope, $http, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, matchApi ) {
+angular.module('specimen-tracking.matchbox',[])
+    .controller('SpecimenTrackingController', function( $scope, $http, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, matchApi ) {
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(100);
         this.dtColumnDefs = [];
         this.dtInstance = {};
 
-        $scope.biopsiesList = [];
+        $scope.specimentTrackingList = [];
         $scope.sites = {
             'mgh': 0,
             'yale': 0,
@@ -14,9 +14,9 @@ angular.module('biopsies.matchbox',[])
             'total': 0
         }
 
-        $scope.loadBiopsiesList = function() {
+        $scope.loadSpecimenTrackingList = function() {
             matchApi
-                .getBiopsySequenceList()
+                .getPatientSpecimentTrackingSummary()
                 .then(function(d) {
                     angular.forEach(d.data, function (value, key) {
                         var patientSequenceNumber = value.patientSequenceNumber;
@@ -43,14 +43,14 @@ angular.module('biopsies.matchbox',[])
                                         biopsyWithSample.lab = value.lab;
                                         biopsyWithSample.trackingNumber = value.trackingNumber;
                                         biopsyWithSample.nucleicAcidSendoutDate = value.dnaShippedDate;
-                                        $scope.biopsiesList.push(biopsyWithSample);
+                                        $scope.specimentTrackingList.push(biopsyWithSample);
                                         if (value.lab === 'MGH') $scope.sites.mgh++;
                                         if (value.lab === 'Yale') $scope.sites.yale++;
                                         if (value.lab === 'MoCha') $scope.sites.mocha++;
                                         if (value.lab === 'MDACC') $scope.sites.mda++;
                                     });
                                 } else {
-                                    $scope.biopsiesList.push(biopsyTemplate);
+                                    $scope.specimentTrackingList.push(biopsyTemplate);
                                 }
                             });
                         }

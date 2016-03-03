@@ -88,10 +88,10 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                 }
             }
         })
-        .state('index.biopsies', {
-            url: "/biopsies",
-            templateUrl: "views/biopsies.html",
-            data: { pageTitle: 'Biopsy Sequence Numbers', requiresLogin: true },
+        .state('index.specimen-tracking', {
+            url: "/specimen-tracking",
+            templateUrl: "views/specimen_tracking.html",
+            data: { pageTitle: 'Specimen Tracking', requiresLogin: true },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
