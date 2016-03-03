@@ -7,11 +7,22 @@ angular.module('specimen-tracking.matchbox',[])
 
         $scope.specimentTrackingList = [];
         $scope.sites = {
-            'mgh': 0,
-            'yale': 0,
-            'mocha': 0,
-            'mda': 0,
-            'total': 0
+            'mgh': {
+                'count': 0,
+                'percent': 0
+            },
+            'yale': {
+                'count': 0,
+                'percent': 0
+            },
+            'mda': {
+                'count': 0,
+                'percent': 0
+            },
+            'mocha': {
+                'count': 0,
+                'percent': 0
+            }
         }
 
         $scope.loadSpecimenTrackingList = function() {
@@ -44,10 +55,10 @@ angular.module('specimen-tracking.matchbox',[])
                                         biopsyWithSample.trackingNumber = value.trackingNumber;
                                         biopsyWithSample.nucleicAcidSendoutDate = value.dnaShippedDate;
                                         $scope.specimentTrackingList.push(biopsyWithSample);
-                                        if (value.lab === 'MGH') $scope.sites.mgh++;
-                                        if (value.lab === 'Yale') $scope.sites.yale++;
-                                        if (value.lab === 'MoCha') $scope.sites.mocha++;
-                                        if (value.lab === 'MDACC') $scope.sites.mda++;
+                                        if (value.lab === 'MGH') $scope.sites.mgh.count++;
+                                        if (value.lab === 'Yale') $scope.sites.yale.count++;
+                                        if (value.lab === 'MoCha') $scope.sites.mocha.count++;
+                                        if (value.lab === 'MDACC') $scope.sites.mda.count++;
                                     });
                                 } else {
                                     $scope.specimentTrackingList.push(biopsyTemplate);
@@ -56,8 +67,17 @@ angular.module('specimen-tracking.matchbox',[])
                         }
                     });
 
-                    var total = $scope.sites.mgh + $scope.sites.yale + $scope.sites.mocha + $scope.sites.mda;
-                    $scope.sites.total = (total === 0) ? 1 : total;
+                    updateSiteStatistics();
                 });
         };
+
+        updateSiteStatistics = function() {
+            var total = $scope.sites.mgh.count + $scope.sites.yale.count + $scope.sites.mocha.count + $scope.sites.mda.count;
+            total = (total === 0) ? 1 : total;
+
+            $scope.sites.mgh.percent = ($scope.sites.mgh.count / total) * 100;
+            $scope.sites.yale.percent = ($scope.sites.yale.count / total) * 100;
+            $scope.sites.mda.percent = ($scope.sites.mda.count / total) * 100;
+            $scope.sites.mocha.percent = ($scope.sites.mocha.count / total) * 100;
+        }
     });

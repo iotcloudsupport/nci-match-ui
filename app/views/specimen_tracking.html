@@ -23,20 +23,20 @@
                     <div class="ibox-content">
                         <div class="row">
                             <div class="col-md-3">
-                                <h1 class="no-margins">{{ sites.mgh }}</h1>
-                                <div class="font-bold text-success">{{ (sites.mgh / sites.total) * 100 }}% <small>Massachusetts General Hospital</small></div>
+                                <h1 class="no-margins">{{ sites.mgh.count }}</h1>
+                                <div class="font-bold text-success">{{ sites.mgh.percent }}% <small>Massachusetts General Hospital</small></div>
                             </div>
                             <div class="col-md-3">
-                                <h1 class="no-margins">{{ sites.yale }}</h1>
-                                <div class="font-bold text-success">{{ (sites.yale / sites.total) * 100 }}% <small>Yale</small></div>
+                                <h1 class="no-margins">{{ sites.yale.count }}</h1>
+                                <div class="font-bold text-success">{{ sites.yale.percent }}% <small>Yale</small></div>
                             </div>
                             <div class="col-md-3">
-                                <h1 class="no-margins">{{ sites.mocha }}</h1>
-                                <div class="font-bold text-success">{{ (sites.mocha / sites.total) * 100 }}% <small>MoCha</small></div>
+                                <h1 class="no-margins">{{ sites.mocha.count }}</h1>
+                                <div class="font-bold text-success">{{ sites.mocha.percent }}% <small>MoCha</small></div>
                             </div>
                             <div class="col-md-3">
-                                <h1 class="no-margins">{{ sites.mda }}</h1>
-                                <div class="font-bold text-success">{{ (sites.yale / sites.total) * 100 }}% <small>MD Anderson Cancer Center</small></div>
+                                <h1 class="no-margins">{{ sites.mda.count }}</h1>
+                                <div class="font-bold text-success">{{ sites.mda.percent }}% <small>MD Anderson Cancer Center</small></div>
                             </div>
                         </div>
                     </div>
