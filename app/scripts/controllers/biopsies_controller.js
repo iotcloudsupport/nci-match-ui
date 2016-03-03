@@ -6,6 +6,13 @@ angular.module('biopsies.matchbox',[])
         this.dtInstance = {};
 
         $scope.biopsiesList = [];
+        $scope.sites = {
+            'mgh': 0,
+            'yale': 0,
+            'mocha': 0,
+            'mda': 0,
+            'total': 0
+        }
 
         $scope.loadBiopsiesList = function() {
             matchApi
@@ -37,6 +44,10 @@ angular.module('biopsies.matchbox',[])
                                         biopsyWithSample.trackingNumber = value.trackingNumber;
                                         biopsyWithSample.nucleicAcidSendoutDate = value.dnaShippedDate;
                                         $scope.biopsiesList.push(biopsyWithSample);
+                                        if (value.lab === 'MGH') $scope.sites.mgh++;
+                                        if (value.lab === 'Yale') $scope.sites.yale++;
+                                        if (value.lab === 'MoCha') $scope.sites.mocha++;
+                                        if (value.lab === 'MDACC') $scope.sites.mda++;
                                     });
                                 } else {
                                     $scope.biopsiesList.push(biopsyTemplate);
@@ -44,6 +55,9 @@ angular.module('biopsies.matchbox',[])
                             });
                         }
                     });
+
+                    var total = $scope.sites.mgh + $scope.sites.yale + $scope.sites.mocha + $scope.sites.mda;
+                    $scope.sites.total = (total === 0) ? 1 : total;
                 });
         };
     });

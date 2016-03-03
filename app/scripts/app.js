@@ -8,7 +8,6 @@
         'patients.matchbox',
         'treatment-arms.matchbox',
         'biopsies.matchbox',
-        'molecular-sequences.matchbox',
         'reports.matchbox',
         'filters.matchbox',
         'config.matchbox',
