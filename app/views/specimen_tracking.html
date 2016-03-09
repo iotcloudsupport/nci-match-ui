@@ -24,19 +24,19 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <h1 class="no-margins">{{ sites.mgh.count }}</h1>
-                                <div class="font-bold text-success">{{ sites.mgh.percent }}% <small>Massachusetts General Hospital</small></div>
+                                <div class="font-bold text-success">{{ sites.mgh.percent | number:0 }}% <small>Massachusetts General Hospital</small></div>
                             </div>
                             <div class="col-md-3">
                                 <h1 class="no-margins">{{ sites.yale.count }}</h1>
-                                <div class="font-bold text-success">{{ sites.yale.percent }}% <small>Yale</small></div>
+                                <div class="font-bold text-success">{{ sites.yale.percent | number:0 }}% <small>Yale</small></div>
                             </div>
                             <div class="col-md-3">
                                 <h1 class="no-margins">{{ sites.mocha.count }}</h1>
-                                <div class="font-bold text-success">{{ sites.mocha.percent }}% <small>MoCha</small></div>
+                                <div class="font-bold text-success">{{ sites.mocha.percent | number:0 }}% <small>MoCha</small></div>
                             </div>
                             <div class="col-md-3">
                                 <h1 class="no-margins">{{ sites.mda.count }}</h1>
-                                <div class="font-bold text-success">{{ sites.mda.percent }}% <small>MD Anderson Cancer Center</small></div>
+                                <div class="font-bold text-success">{{ sites.mda.percent | number:0 }}% <small>MD Anderson Cancer Center</small></div>
                             </div>
                         </div>
                     </div>
@@ -65,18 +65,18 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="biopsy in biopsiesList">
-                                <td>{{ biopsy.biopsySeqenuceNumber }}</td>
-                                <td>{{ biopsy.patientSequenceNumber }}</td>
-                                <td>{{ biopsy.molecularSequenceNumber }}</td>
-                                <td>{{ biopsy.lab }}</td>
-                                <td>{{ biopsy.trackingNumber }}</td>
-                                <td>{{ biopsy.specimenReceivedDate | gmt }}</td>
-                                <td>{{ biopsy.specimenFailureDate | gmt }}</td>
-                                <td>{{ biopsy.ptenOrderDate | gmt }}</td>
-                                <td>{{ biopsy.ptenResultDate | gmt }}</td>
-                                <td>{{ biopsy.pathologyReviewDate | gmt }}</td>
-                                <td>{{ biopsy.nucleicAcidSendoutDate | gmt }}</td>
+                            <tr ng-repeat="specimenTrackingItem in specimenTrackingList">
+                                <td>{{ specimenTrackingItem.biopsySeqenuceNumber }}</td>
+                                <td>{{ specimenTrackingItem.patientSequenceNumber }}</td>
+                                <td>{{ specimenTrackingItem.molecularSequenceNumber }}</td>
+                                <td>{{ specimenTrackingItem.lab }}</td>
+                                <td>{{ specimenTrackingItem.trackingNumber }}</td>
+                                <td>{{ specimenTrackingItem.specimenReceivedDate | gmt }}</td>
+                                <td>{{ specimenTrackingItem.specimenFailureDate | gmt }}</td>
+                                <td>{{ specimenTrackingItem.ptenOrderDate | gmt }}</td>
+                                <td>{{ specimenTrackingItem.ptenResultDate | gmt }}</td>
+                                <td>{{ specimenTrackingItem.pathologyReviewDate | gmt }}</td>
+                                <td>{{ specimenTrackingItem.nucleicAcidSendoutDate | gmt }}</td>
                             </tr>
                             </tbody>
                         </table>

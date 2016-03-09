@@ -5,7 +5,7 @@ angular.module('specimen-tracking.matchbox',[])
         this.dtColumnDefs = [];
         this.dtInstance = {};
 
-        $scope.specimentTrackingList = [];
+        $scope.specimenTrackingList = [];
         $scope.sites = {
             'mgh': {
                 'count': 0,
@@ -54,14 +54,15 @@ angular.module('specimen-tracking.matchbox',[])
                                         biopsyWithSample.lab = value.lab;
                                         biopsyWithSample.trackingNumber = value.trackingNumber;
                                         biopsyWithSample.nucleicAcidSendoutDate = value.dnaShippedDate;
-                                        $scope.specimentTrackingList.push(biopsyWithSample);
+                                        $scope.specimenTrackingList.push(biopsyWithSample);
+
                                         if (value.lab === 'MGH') $scope.sites.mgh.count++;
                                         if (value.lab === 'Yale') $scope.sites.yale.count++;
                                         if (value.lab === 'MoCha') $scope.sites.mocha.count++;
                                         if (value.lab === 'MDACC') $scope.sites.mda.count++;
                                     });
                                 } else {
-                                    $scope.specimentTrackingList.push(biopsyTemplate);
+                                    $scope.specimenTrackingList.push(biopsyTemplate);
                                 }
                             });
                         }
