@@ -65,6 +65,11 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                 }
             }
         })
+        .state('index.patient', {
+            url: "/patient/:patientSequenceNumber",
+            templateUrl: "views/patient.html",
+            data: { pageTitle: 'Patient', requiresLogin: true }
+        })
         .state('index.treatment-arms', {
             url: "/treatment-arms",
             templateUrl: "views/treatment_arms.html",
@@ -87,6 +92,11 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                     ]);
                 }
             }
+        })
+        .state('index.treatment-arm', {
+            url: "/treatment-arm/:treatmentArmId/:treatmentArmVersion",
+            templateUrl: "views/treatment_arm.html",
+            data: { pageTitle: 'Treatment Arm', requiresLogin: true }
         })
         .state('index.specimen-tracking', {
             url: "/specimen-tracking",

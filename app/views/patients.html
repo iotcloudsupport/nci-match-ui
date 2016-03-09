@@ -28,19 +28,17 @@
                                 <th>Step Number</th>
                                 <th>Disease</th>
                                 <th>Treatment Arm</th>
-                                <th>Treatment Arm Version</th>
                                 <th>Registration Date </th>
                                 <th>Off Trial Date </th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr ng-repeat="patient in patientList">
-                                <td>{{ patient.patientSequenceNumber }}</td>
+                                <td><a ui-sref="index.patient({ patientSequenceNumber: patient.patientSequenceNumber })">{{ patient.patientSequenceNumber }}</a></td>
                                 <td>{{ patient.currentStatus }}</td>
                                 <td>{{ patient.currentStepNumber }}</td>
                                 <td>{{ patient.diseases || '-' }}</td>
-                                <td>{{ patient.currentTreatmentArm.id || '-' }}</td>
-                                <td>{{ patient.currentTreatmentArm.version || '-' }}</td>
+                                <td><a ui-sref="index.treatment-arm({ treatmentArmId: patient.currentTreatmentArmId, treatmentArmVersion: patient.currentTreatmentArmVersion })">{{ patient.currentTreatmentArm || '-' }}</a></td>
                                 <td>{{ patient.registrationDate | gmt }}</td>
                                 <td>{{ patient.offTrialDate | gmt }}</td>
                             </tr>

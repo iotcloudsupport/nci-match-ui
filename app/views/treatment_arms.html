@@ -37,7 +37,7 @@
                             </thead>
                             <tbody>
                             <tr ng-repeat="treatmentArm in treatmentArmList">
-                                <td>{{ treatmentArm.treatmentArmId }}</td>
+                                <td><a ui-sref="index.treatment-arm({ treatmentArmId: treatmentArm.treatmentArmId, treatmentArmVersion: 'v1' })">{{ treatmentArm.treatmentArmId }}</a></td>
                                 <td>{{ treatmentArm.treatmentArmName }}</td>
                                 <td>{{ treatmentArm.currentPatients }}</td>
                                 <td>{{ treatmentArm.formerPatients }}</td>
