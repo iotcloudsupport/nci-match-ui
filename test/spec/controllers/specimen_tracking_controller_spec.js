@@ -37,12 +37,12 @@ describe('Controller: Specimen Tracking Controller', function () {
         scope.loadSpecimenTrackingList();
         httpBackend.flush();
 
-        expect(scope.specimentTrackingList.length).toBe(1);
-        expect(scope.specimentTrackingList[0].patientSequenceNumber).toBe('10368');
-        expect(scope.specimentTrackingList[0].biopsySeqenuceNumber).toBe('N-15-00005');
-        expect(scope.specimentTrackingList[0].molecularSequenceNumber).toBe('10368_1000_N-15-00005');
-        expect(scope.specimentTrackingList[0].lab).toBe('MGH');
-        expect(scope.specimentTrackingList[0].trackingNumber).toBe('987654321');
+        expect(scope.specimenTrackingList.length).toBe(1);
+        expect(scope.specimenTrackingList[0].patientSequenceNumber).toBe('10368');
+        expect(scope.specimenTrackingList[0].biopsySeqenuceNumber).toBe('N-15-00005');
+        expect(scope.specimenTrackingList[0].molecularSequenceNumber).toBe('10368_1000_N-15-00005');
+        expect(scope.specimenTrackingList[0].lab).toBe('MGH');
+        expect(scope.specimenTrackingList[0].trackingNumber).toBe('987654321');
     });
 
     it('should not populate the specimen tracking list on an error response', function() {
@@ -50,7 +50,7 @@ describe('Controller: Specimen Tracking Controller', function () {
         scope.loadSpecimenTrackingList();
         httpBackend.flush();
 
-        expect(scope.specimentTrackingList.length).toBe(0);
+        expect(scope.specimenTrackingList.length).toBe(0);
     });
 
     it('should populate the specimen tracking list with 5 entries, MGH count == 2, MDACC count == 3, and the other sites count == 0 on a success response', function() {
@@ -66,7 +66,7 @@ describe('Controller: Specimen Tracking Controller', function () {
         scope.loadSpecimenTrackingList();
         httpBackend.flush();
 
-        expect(scope.specimentTrackingList.length).toBe(5);
+        expect(scope.specimenTrackingList.length).toBe(5);
         expect(scope.sites.mgh.count).toBe(2);
         expect(scope.sites.mgh.percent).toBe(40);
         expect(scope.sites.yale.count).toBe(0);
