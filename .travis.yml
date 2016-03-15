@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - '0.12.1'
+before_script:
+  - 'npm install -g bower karma grunt-cli'
+  - 'npm install'
+  - 'bower install'
+after_script:
+  - 'grunt'
