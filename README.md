@@ -1,7 +1,7 @@
 # NCI MATCHBox User Interface
 This repository contains the Matchbox UI.
 
-https://travis-ci.org/CBIIT/nci-match-ui.svg?branch=master
+[![Build Status](https://travis-ci.org/CBIIT/nci-match-ui.svg?branch=master)](https://travis-ci.org/CBIIT/nci-match-ui)
 
 [![Code Climate](https://codeclimate.com/github/CBIIT/nci-match-ui/badges/gpa.svg)](https://codeclimate.com/github/CBIIT/nci-match-ui)
 
