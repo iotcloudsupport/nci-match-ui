@@ -76,9 +76,13 @@ angular.module('specimen-tracking.matchbox',[])
             var total = $scope.sites.mgh.count + $scope.sites.yale.count + $scope.sites.mocha.count + $scope.sites.mda.count;
             total = (total === 0) ? 1 : total;
 
-            $scope.sites.mgh.percent = ($scope.sites.mgh.count / total) * 100;
-            $scope.sites.yale.percent = ($scope.sites.yale.count / total) * 100;
-            $scope.sites.mda.percent = ($scope.sites.mda.count / total) * 100;
-            $scope.sites.mocha.percent = ($scope.sites.mocha.count / total) * 100;
+            $scope.sites.mgh.percent = calculatePercent($scope.sites.mgh.count, total);
+            $scope.sites.yale.percent = calculatePercent($scope.sites.yale.count, total);
+            $scope.sites.mda.percent = calculatePercent($scope.sites.mda.count, total);
+            $scope.sites.mocha.percent = calculatePercent($scope.sites.mocha.count, total);
+        }
+
+        calculatePercent = function(numerator, denominator) {
+            return (numerator / denominator) * 100;
         }
     });
