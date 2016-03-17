@@ -1,4 +1,4 @@
-describe('Factory: Get Biopsy Sequence List Service', function () {
+describe('Factory: Get Patient Speciment Tracking Summary Service', function () {
 
     beforeEach(module('config.matchbox', 'http.matchbox'));
 

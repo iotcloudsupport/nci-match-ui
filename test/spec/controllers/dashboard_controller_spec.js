@@ -11,7 +11,6 @@ describe('Controller: dashboard Controller', function () {
                                 $rootScope,
                                 _matchApi_,
                                 _reportApi_,
-                                _feedApi_,
                                 $httpBackend) {
         scope = $rootScope.$new();
         httpBackend = $httpBackend;
@@ -38,8 +37,7 @@ describe('Controller: dashboard Controller', function () {
                 }
             },
             matchApi: _matchApi_,
-            reportApi: _reportApi_,
-            feedApi: _feedApi_
+            reportApi: _reportApi_
         });
 
         //Controller
@@ -70,8 +68,7 @@ describe('Controller: dashboard Controller', function () {
                 }
             },
             matchApi: _matchApi_,
-            reportApi: _reportApi_,
-            feedApi: _feedApi_
+            reportApi: _reportApi_
         });
     }));
 
@@ -238,52 +235,4 @@ describe('Controller: dashboard Controller', function () {
         expect(scope.donutData[5].label).toBe('5+ aMOI');
     });
 
-    //it('should populate the dashboard Activity Feed list with  on a success response', function() {
-    //    httpBackend.when('GET', 'http://server:80/newsFeed/1')
-    //        .respond([
-    //            {
-    //                "pic": "",
-    //                "status": "TEST 1",
-    //                "messages": "TEST 1 MESSAGE",
-    //                "time": "123",
-    //                "age": "5",
-    //                "actor": "BL",
-    //                "displayName": "BL1",
-    //                "description": "Delayed DB configuration"
-    //            },
-    //            {
-    //                "pic": "",
-    //                "status": "TEST 2",
-    //                "messages": "TEST 2 MESSAGE",
-    //                "time": "1234",
-    //                "age": "6",
-    //                "actor": "BW",
-    //                "displayName": "BW1",
-    //                "description": "Delayed DB 2 configuration"
-    //            }
-    //        ]);
-    //    scope.loadActivityList();
-    //    httpBackend.flush();
-    //
-    //    expect(scope.activityList.length).toBe(2);
-    //    expect(scope.activityList[0].status).toBe("TEST 1");
-    //    expect(scope.activityList[0].time).toBe('123');
-    //    expect(scope.activityList[0].description).toBe("Delayed DB configuration");
-    //});
-
-    //it('should not populate the Activity Feed list on an error response', function() {
-    //    httpBackend.when('GET', 'http://server:80/reportapi/limboPatient').respond(500);
-    //    scope.loadLimboPatientsList();
-    //    httpBackend.flush();
-    //
-    //    expect(scope.activityList.length).toBe(0);
-    //});
-
-    //it('should populate the Activity Feed list on a success response', function() {
-    //    scope.loadChartjsDonutChart();
-    //
-    //    expect(scope.activityList.length).toBe(6);
-    //    expect(scope.activityList[0].value).toBe(4);
-    //    expect(scope.activityList[5].label).toBe('5+ aMOI');
-    //});
 });

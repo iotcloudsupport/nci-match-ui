@@ -1,4 +1,4 @@
-describe('Factory: Dashboard Service Factory', function () {
+describe('Factory: Get Patients with Pending Variant Reports Service', function () {
 
     beforeEach(module('config.matchbox', 'http.matchbox'));
 

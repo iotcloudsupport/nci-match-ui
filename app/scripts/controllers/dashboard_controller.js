@@ -105,7 +105,7 @@ angular.module('dashboard.matchbox',[])
                 });
         };
     })
-    .controller('DashboardActivityFeedController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, feedApi ) {
+    .controller('DashboardActivityFeedController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, reportApi ) {
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(25);
         this.dtOptions = DTOptionsBuilder.newOptions()
@@ -151,10 +151,9 @@ angular.module('dashboard.matchbox',[])
         ];
 
         $scope.loadActivityList = function() {
-            feedApi
+            reportApi
             .getActivityFeedList()
             .then(function(d) {
-
                 angular.forEach(d.data, function (value) {
                     $scope.num = (Math.ceil(Math.random() * 9));
                     $scope.icon = (Math.ceil(Math.random() * 5));
@@ -220,7 +219,7 @@ angular.module('dashboard.matchbox',[])
             };
         }
     })
-    .controller('DashboardChartJsDonutController', function( $scope, reportApi) {
+    .controller('DashboardChartJsDonutController', function( $scope, reportApi ) {
         this.donutOptions = {
             segmentShowStroke: true,
             segmentStrokeColor: "#fff",

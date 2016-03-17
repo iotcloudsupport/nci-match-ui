@@ -10,6 +10,7 @@ angular.module('http.matchbox', [])
         };
     })
     .factory('matchApi', function($http, matchConfig) {
+        // Note: Legacy API that will be replaced in the future.
         return {
             getBasicPatientsData: function() {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getBasicPatientsData');
@@ -35,18 +36,9 @@ angular.module('http.matchbox', [])
             },
             getReportList: function() {
                 return $http.get(matchConfig.reportApiBaseUrl + '/reportList');
-            }
-        };
-    })
-    .factory('feedApi', function($http, matchConfig) {
-        return {
+            },
             getActivityFeedList: function() {
                 return $http.get(matchConfig.reportApiBaseUrl + '/reportList');
             }
-        };
-    })
-    .factory('treatmentArmApi', function($http, matchConfig) {
-        return {
-
         };
     });
