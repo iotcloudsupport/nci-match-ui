@@ -50,10 +50,9 @@ module.exports = function(config) {
     },
 
     coverageReporter: {
-      type: 'cobertura',
+      type: 'lcov',
       dir: 'coverage/',
-      subdir: 'report-cobertura',
-      file: 'test-coverage.txt'
+      subdir: 'report-lcov'
     },
 
     // test results reporter to use
