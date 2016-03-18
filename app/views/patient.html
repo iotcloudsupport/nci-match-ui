@@ -17,52 +17,54 @@
 
     </div>
 </div>
+
+
 <div class="wrapper wrapper-content p-xl">
-    <div class="animated fadeInRight">
+
+    <div class="row border-bottom white-bg dashboard-header animated fadeInRight">
 
         <div class="row">
             <div class="col-lg-9">
-                <div class="ibox float-e-margins h5">
+                <div class="ibox float-e-margins h4">
                     <div class="ibox-content">
 
                         <ul class="list-group clear-list m-t">
                             <li class="list-group-item fist-item">
                                 <span class="pull-right"> 200re </span>
-                            <span class="label label-info">
+                                <span class="label label-info">
                                 <i class="fa fa-group"></i>
-                            </span> Patient Sequence Number
+                                </span> Patient Sequence Number
                             </li>
                             <li class="list-group-item">
                                 <span class="pull-right"> Current Status</span>
-                            <span class="label label-info">
+                                <span class="label label-info">
                                 <i class="fa fa-group"></i>
-                            </span> Number of Patients with Confirmed Variant Report
+                                </span> Number of Patients with Confirmed Variant Report
                             </li>
                             <li class="list-group-item">
                                 <span class="pull-right"> Current Step Number</span>
-                            <span class="label label-success">
+                                <span class="label label-success">
                                 <i class="fa fa-medkit"></i>
-                            </span> Number of Patients on Treatment
+                                </span> Number of Patients on Treatment
                             </li>
                             <li class="list-group-item">
                                 <span class="pull-right"> Current Treatment Arm</span>
-                            <span class="label label-warning">
+                                <span class="label label-warning">
                                 <i class="fa fa-newspaper-o"></i>
-                            </span> Pending Variant Report(s)
+                                </span> Pending Variant Report(s)
                             </li>
                             <li class="list-group-item">
                                 <span class="pull-right"> Current Assignment Reason</span>
-                            <span class="label label-warning">
+                                <span class="label label-warning">
                                 <i class="fa fa-newspaper-o"></i>
-                            </span> Pending Assignment Report(s)
+                                </span> Pending Assignment Report(s)
                             </li>
                         </ul>
-
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-3" ng-controller="DashboardChartJsDonutController as chartjsDonut" ng-init="setCanvasHeight();loadChartjsDonutChart();">
+            <div class="col-lg-3" ng-controller="DashboardChartJsDonutController as chartjsDonut" ng-init="setCanvasHeight();loadChartjsDonutChart();">
                 <div class="ibox-content">
                     <div class="text-center">
                         <h4>Sequenced & Confirmed Patients with aMOI(s)</h4>
@@ -72,10 +74,11 @@
             </div>
 
         </div>
+    </div>
 
 
         <!--<div class="wrapper wrapper-content p-xl">-->
-        <div class="animated fadeInRight">
+    <div class="animated fadeInRight">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
@@ -216,17 +219,10 @@
 
                                 </tbody></table>
 
-
-
-
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-
 
 </div>
