@@ -49,7 +49,7 @@
                             <tr ng-repeat="patient in patientList">
                                 <td class="tHi" ng-style="style"
                                     ng-mouseleave="style={}"
-                                    ng-mouseover="style={'color': 'navy','font-weight':'bold','text-decoration':'underline','background-color':'silver','cursor':'pointer'}"
+                                    ng-mouseover="style={'color': 'navy','font-weight':'bold','text-decoration':'underline','cursor':'pointer'}"
                                     ui-sref="index.patient({ patientSequenceNumber: patient.patientSequenceNumber })">
                                     {{ patient.patientSequenceNumber }}
                                 </td>
@@ -58,7 +58,7 @@
                                 <td>{{ patient.diseases || '-' }}</td>
                                 <td class="tHi" ng-style="style"
                                     ng-mouseleave="style={}"
-                                    ng-mouseover="style={'color': 'navy','font-weight':'normal','text-decoration':'underline','background-color':'silver','cursor':'pointer'}"
+                                    ng-mouseover="style={'color': 'navy','font-weight':'normal','text-decoration':'underline','cursor':'pointer'}"
                                     ui-sref="index.treatment-arm({ treatmentArmId: patient.currentTreatmentArmId })">
                                     {{ patient.currentTreatmentArmId }}
                                 </td>
