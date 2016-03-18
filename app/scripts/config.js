@@ -46,6 +46,14 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
             url: "/patients",
             templateUrl: "views/patients.html",
             data: { pageTitle: 'Patients', requiresLogin: true },
+            //controller: function($scope, $psnParams) {
+            //    alert("$stateParams --- "+JSON.stringify($psnParams))
+            //    // get the id
+            //    $scope.psn = $psnParams.patientSequenceNumber;
+            //
+            //    // get the location
+            //    //$scope.location = $stateParams.partyLocation;
+            //},
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -68,7 +76,28 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
         .state('index.patient', {
             url: "/patient/:patientSequenceNumber",
             templateUrl: "views/patient.html",
-            data: { pageTitle: 'Patient', requiresLogin: true }
+            data: { pageTitle: 'Patient', requiresLogin: true },
+            controller: function($scope, $stateParams) {
+                $scope.psn = $stateParams.patientSequenceNumber;
+            },
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            serie: true,
+                            files: ['bower_components/datatables/media/js/jquery.dataTables.min.js','bower_components/datatables/media/css/dataTables.bootstrap.min.css']
+                        },
+                        {
+                            serie: true,
+                            files: ['bower_components/datatables/media/js/dataTables.bootstrap.min.js']
+                        },
+                        {
+                            name: 'datatables',
+                            files: ['bower_components/angular-datatables/dist/angular-datatables.min.js']
+                        }
+                    ]);
+                }
+            }
         })
         .state('index.treatment-arms', {
             url: "/treatment-arms",
