@@ -6,6 +6,8 @@
         'nav.matchbox',
         'dashboard.matchbox',
         'patients.matchbox',
+        'patient.matchbox',
+        'service.matchbox',
         'treatment-arms.matchbox',
         'specimen-tracking.matchbox',
         'reports.matchbox',

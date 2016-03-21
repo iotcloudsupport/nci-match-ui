@@ -6,7 +6,6 @@ before_script:
 - npm install
 - bower install
 after_script:
-- grunt
 - codeclimate-test-reporter < test/coverage/report-lcov/lcov.info
 notifications:
   slack:
