@@ -8,14 +8,15 @@ angular.module('treatment-arms.matchbox',[])
 
         $scope.treatmentArmList = [];
 
-        /*$scope.loadTreatmentArmList = function() {
+        $scope.loadTreatmentArmList = function() {
             matchApi
                 .getBasicTreatmentArms()
                 .then(function(d) {
                     $scope.treatmentArmList = d.data;
+                    console.log($scope);
                 });
-        };*/
-        $scope.loadTreatmentArmList = function() {
+        };
+        $scope.displayTreatmentArmList = function() {
             treatmentArmApi
                 .getTreatmentArms()
                 .then(function(d) {
