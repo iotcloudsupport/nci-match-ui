@@ -41,4 +41,13 @@ angular.module('http.matchbox', [])
                 return $http.get(matchConfig.reportApiBaseUrl + '/reportList');
             }
         };
-    });
+    })
+    .factory('treatmentArmApi', function($http, matchConfig) {
+        //http://localhost:10235/treatmentarm/getTreatmentArms
+        return {
+            getTreatmentArms: function() {
+                return $http.get(matchConfig.treatmentArmApiBaseUrl + '/getTreatmentArms');
+            }
+        };
+    })
+;
