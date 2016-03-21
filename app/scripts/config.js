@@ -46,14 +46,6 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
             url: "/patients",
             templateUrl: "views/patients.html",
             data: { pageTitle: 'Patients', requiresLogin: true },
-            //controller: function($scope, $psnParams) {
-            //    alert("$stateParams --- "+JSON.stringify($psnParams))
-            //    // get the id
-            //    $scope.psn = $psnParams.patientSequenceNumber;
-            //
-            //    // get the location
-            //    //$scope.location = $stateParams.partyLocation;
-            //},
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
