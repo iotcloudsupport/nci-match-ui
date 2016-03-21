@@ -1,5 +1,5 @@
 angular.module('treatment-arms.matchbox',[])
-    .controller('TreatmentArmsController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi ) {
+    .controller('TreatmentArmsController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, treatmentArmApi ) {
 
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(25);
@@ -8,12 +8,21 @@ angular.module('treatment-arms.matchbox',[])
 
         $scope.treatmentArmList = [];
 
-        $scope.loadTreatmentArmList = function() {
+        /*$scope.loadTreatmentArmList = function() {
             matchApi
                 .getBasicTreatmentArms()
                 .then(function(d) {
                     $scope.treatmentArmList = d.data;
                 });
+        };*/
+        $scope.loadTreatmentArmList = function() {
+            treatmentArmApi
+                .getTreatmentArms()
+                .then(function(d) {
+                    $scope.treatmentArmList = d.data;
+                    console.log($scope);
+                });
         };
+
 
     });
