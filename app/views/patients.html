@@ -22,14 +22,6 @@
                     <div class="ibox-content" ng-controller="PatientsController as PatientsCtrl"
                          ng-init="loadPatientList()">
 
-                        <!--"patientSequenceNumber": "10001",-->
-                        <!--"currentStatus": "REGISTRATION",-->
-                        <!--"currentStepNumber": "0",-->
-                        <!--"diseases": "",-->
-                        <!--"currentTreatmentArm": null,-->
-                        <!--"registrationDate": 1439843678000,-->
-                        <!--"offTrialDate": null-->
-
                         <table datatable="ng" dt-options="PatientsCtrl.dtOptions"
                                dt-column-defs="PatientsCtrl.dtColumnDefs"
                                dt-instance="PatientsCtrl.dtInstance"
@@ -62,16 +54,6 @@
                                     ui-sref="index.treatment-arm({ treatmentArmId: patient.currentTreatmentArmId })">
                                     {{ patient.currentTreatmentArmId }}
                                 </td>
-                                <!--<td>-->
-                                    <!--{{ patient.currentTreatmentArmId || '-' }}-->
-                                    <!--&lt;!&ndash;<a ui-sref="index.treatment-arm">&ndash;&gt;-->
-                                        <!--&lt;!&ndash;{{ patient.currentTreatmentArmId || '-' }}&ndash;&gt;-->
-                                    <!--&lt;!&ndash;</a>&ndash;&gt;-->
-
-                                    <!--&lt;!&ndash;<a ui-sref="index.treatment-arm({ treatmentArmId: patient.currentTreatmentArmId })">&ndash;&gt;-->
-                                        <!--&lt;!&ndash;{{ patient.currentTreatmentArmId || '-' }}&ndash;&gt;-->
-                                    <!--&lt;!&ndash;</a>&ndash;&gt;-->
-                                <!--</td>-->
                                 <td>{{ patient.registrationDate | gmt }}</td>
                                 <td>{{ patient.offTrialDate | gmt }}</td>
                             </tr>
