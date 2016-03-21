@@ -17,7 +17,7 @@ describe('Controller: Patients Controller', function () {
                         withDisplayLength: function(length) {
                             // This is a mock function of the DTOptionsBuilder
                         }
-                    }
+                    };
                 }
             },
             DTColumnDefBuilder: null,
