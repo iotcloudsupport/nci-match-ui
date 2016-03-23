@@ -65,11 +65,25 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                 }
             }
         })
+
+    //var home = {
+    //                 name: 'home',
+    //                 url: '/',
+    //                 template: 'Hello {{name}}',
+    //                controller: ['$scope', function ($scope) {
+    //                     $scope.name = "World";
+    //                }]
+    //         };
+
+
         .state('index.patient', {
             url: "/patient/:patientSequenceNumber",
             templateUrl: "views/patient.html",
             data: { pageTitle: 'Patient', requiresLogin: true },
+            //controller: "PatientController as vm",
+            controller: 'PatientController',
             controller: function($scope, $stateParams) {
+                $scope.name = "patientState";
                 $scope.psn = $stateParams.patientSequenceNumber;
             },
             resolve: {

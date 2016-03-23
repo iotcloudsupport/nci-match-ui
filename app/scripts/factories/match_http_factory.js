@@ -15,6 +15,9 @@ angular.module('http.matchbox', [])
             getBasicPatientsData: function() {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getBasicPatientsData');
             },
+            getPatientDetailsData: function(psn) {
+                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getPatientDetails?patientSequenceNumber=' + psn);
+            },
             getBasicTreatmentArms: function() {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getBasicTreatmentArms');
             },
