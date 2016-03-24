@@ -1,7 +1,9 @@
 angular.module('patient.matchbox',[])
-    .controller('PatientController', function( $scope, DTOptionsBuilder,
-                                               DTColumnDefBuilder, matchApi, $stateParams) {
-
+    .controller('PatientController', function( $scope,
+                                               DTOptionsBuilder,
+                                               DTColumnDefBuilder,
+                                               matchApi,
+                                               $stateParams ) {
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(100);
         $scope.Biopsy = {};
@@ -9,14 +11,9 @@ angular.module('patient.matchbox',[])
         $scope.patientDetailsList = [];
 
         $scope.loadPatientDetailsList = function () {
-
-            //alert("patientSequenceNumber--> "+$stateParams.patientSequenceNumber)
-
             matchApi
                 .getPatientDetailsData($stateParams.patientSequenceNumber)
                 .then(function (d) {
-
-                    //alert(JSON.stringify(d))
                     angular.forEach(d, function (value) {
                         var TA = '-';
                         var Biopsy = '-';

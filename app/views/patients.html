@@ -33,8 +33,8 @@
                                 <th>Step Number</th>
                                 <th>Disease</th>
                                 <th>Treatment Arm</th>
-                                <th>Registration Date </th>
-                                <th>Off Trial Date </th>
+                                <th>Registration Date</th>
+                                <th>Off Trial Date</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -44,8 +44,8 @@
                                         <i class="fa fa-user"></i> {{ patient.patientSequenceNumber }}
                                     </a>
                                 </td>
-                                <td ng-style="{'color':'{{patient.currentStatus | status}}'}">
-                                    {{ patient.currentStatus}}
+                                <td ng-style="{'color':'{{ patient.currentStatus | status }}'}">
+                                    {{ patient.currentStatus }}
                                 </td>
                                 <td>{{ patient.currentStepNumber }}</td>
                                 <td>{{ patient.diseases || '-' }}</td>
