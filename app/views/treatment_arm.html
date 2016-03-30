@@ -17,10 +17,592 @@
 
     </div>
 </div>
+
 <div class="wrapper wrapper-content p-xl">
+
+    <div class="row border-bottom dashboard-header animated fadeInRight">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins h4">
+                    <div class="ibox-content" ng-controller="TreatmentArmController">
+                        <ul class="list-group clear-list m-t">
+                            <li class="list-group-item fist-item">
+                                <span class="pull-right"> {{taid}}</span>
+                                <span class="label label-warning">
+                                    <i class="fa fa-medkit"></i>
+                                </span> Treatment Arm Id
+                            </li>
+                            <li class="list-group-item">
+                                <span class="pull-right"> Dasatinib in DDR2 mutations</span>
+                                <span class="label label-warning">
+                                    <i class="fa fa-medkit"></i>
+                                </span> Treatment Arm Name
+                            </li>
+                            <li class="list-group-item">
+                                <span class="pull-right"> 2016-02-20</span>
+                                <span class="label label-warning">
+                                    <i class="fa fa-newspaper-o"></i>
+                                </span> Treatment Arm Approval Date
+                            </li>
+                            <li class="list-group-item">
+                                <span class="pull-right"> Dasatinib</span>
+                                <span class="label label-warning">
+                                    <i class="fa fa-medkit"></i>
+                                </span> Target
+                            </li>
+                            <li class="list-group-item">
+                                <span class="pull-right"> DDR2</span>
+                                <span class="label label-success">
+                                    <i class="fa fa-newspaper-o"></i>
+                                </span> Gene(s)
+                            </li>
+                            <li class="list-group-item">
+                                <span class="pull-right"> Dasatinib in DDR2 activating mutations</span>
+                                <span class="label label-success">
+                                    <i class="fa fa-medkit"></i>
+                                </span> Description
+                            </li>
+                            <li class="list-group-item">
+                                <span class="pull-right"> 0/35</span>
+                                <span class="label label-info">
+                                    <i class="fa fa-group"></i>
+                                </span> Patients Assigned
+                            </li>
+                            <li class="list-group-item">
+                                <span class="pull-right"> OPEN</span>
+                                <span class="label label-info">
+                                    <i class="fa fa-medkit"></i>
+                                </span> Current Status
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="animated fadeInRight">
         <div class="row">
-            !!! UNDER CONSTRUCTION !!!
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content" ng-controller="TreatmentArmController">
+
+                        <table id="treatmentArmHistorySteps" class="table">
+                            <thead>
+                                <tr role="row"><td colspan="9" class="panel-heading-table" rowspan="1">History</td></tr>
+
+                                <th width="40%" class="label2 sorting_disabled" rowspan="1" colspan="1">Status</th>
+                                <th width="50%" class="label2 sorting_disabled" rowspan="1" colspan="1">Date</th>
+                            </thead>
+                            <tbody>
+                                <tr><td>PENDING</td><td>August 12, 2015 4:00 AM GMT</td></tr>
+                                <tr><td>READY</td><td>February 19, 2016 10:10 PM GMT</td></tr>
+                                <tr><td>OPEN</td><td>February 22, 2016 10:10 PM GMT</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+
+                        <table id="drugs" class="table">
+                            <thead>
+                                <tr role="row"><td colspan="9" class="panel-heading-table" rowspan="1">Drugs</td></tr>
+
+                                <th width="40%" class="label2 sorting_disabled" rowspan="1" colspan="1">Id</th>
+                                <th width="50%" class="label2 sorting_disabled" rowspan="1" colspan="1">Name</th>
+                            </thead>
+                            <tbody>
+                                <tr><td>781254</td><td>AZD9291</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <table id="singleNucleotideVariants" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">
+                            <thead>
+                                <tr role="row"><td colspan="12" class="panel-heading-table" rowspan="1">Single Nucleotide Variant(s)</td></tr>
+                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">ID</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Gene</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Level Of Evidence</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Chrom</th>
+                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Position</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Reference</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Alternative</th>
+                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Lit Ref</th>
+                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Variant Description</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Total # Patients With Variant</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Patients With Variant On Arm</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">% Of Patients With Variant On Arm Of Total Patients With Variant</th>
+                            </thead>
+                            <tbody>
+                                <tr style="font-weight:bold" class="info">
+                                    <td colspan="12">
+                                        <table width="25%">
+                                            <tr>
+                                                <td class="info">
+                                                    <i class="fa fa-angle-right fa-lg"></i> <span> INCLUDED </span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr style="cursor: auto;" role="row" class="odd">
+                                    <td class="status-blue">COSM6224</td>
+                                    <td>EGFR</td>
+                                    <td>1</td>
+                                    <td>chr7</td>
+                                    <td>55259515</td>
+                                    <td>T</td>
+                                    <td>G</td>
+                                    <td>20573926, 19692684, 20022809</td>
+                                    <td>p.L858R</td>
+                                    <td>4</td>
+                                    <td>0</td>
+                                    <td>0%</td>
+                                </tr>
+                                <tr style="cursor: auto;" role="row" class="odd">
+                                    <td class="status-blue">COSM6224</td>
+                                    <td>EGFR</td>
+                                    <td>1</td>
+                                    <td>chr7</td>
+                                    <td>55259515</td>
+                                    <td>T</td>
+                                    <td>G</td>
+                                    <td>20573926, 19692684, 20022809</td>
+                                    <td>p.L858R</td>
+                                    <td>4</td>
+                                    <td>0</td>
+                                    <td>0%</td>
+                                </tr>
+                                <tr style="cursor: auto;" role="row" class="odd">
+                                    <td class="status-blue">COSM6224</td>
+                                    <td>EGFR</td>
+                                    <td>1</td>
+                                    <td>chr7</td>
+                                    <td>55259515</td>
+                                    <td>T</td>
+                                    <td>G</td>
+                                    <td>20573926, 19692684, 20022809</td>
+                                    <td>p.L858R</td>
+                                    <td>4</td>
+                                    <td>0</td>
+                                    <td>0%</td>
+                                </tr>
+                                <tr style="cursor: auto;" role="row" class="odd">
+                                    <td class="status-blue">COSM6224</td>
+                                    <td>EGFR</td>
+                                    <td>1</td>
+                                    <td>chr7</td>
+                                    <td>55259515</td>
+                                    <td>T</td>
+                                    <td>G</td>
+                                    <td>20573926, 19692684, 20022809</td>
+                                    <td>p.L858R</td>
+                                    <td>4</td>
+                                    <td>0</td>
+                                    <td>0%</td>
+                                </tr>
+                                <tr style="font-weight:bold" class="info">
+                                    <td colspan="12">
+                                        <table width="25%">
+                                            <tr>
+                                                <td class="info">
+                                                    <i class="fa fa-angle-right fa-lg"></i> <span> EXCLUDED </span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr style="cursor: auto;" role="row" class="odd">
+                                    <td class="status-blue">COSM224</td>
+                                    <td>EGFR</td>
+                                    <td>1</td>
+                                    <td>chr7</td>
+                                    <td>55259515</td>
+                                    <td>T</td>
+                                    <td>G</td>
+                                    <td>20573926, 19692684, 20022809</td>
+                                    <td>p.L858R</td>
+                                    <td>4</td>
+                                    <td>0</td>
+                                    <td>0%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <table id="indels" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">
+                            <thead>
+                                <tr role="row"><td colspan="12" class="panel-heading-table" rowspan="1">Indel(s)</td></tr>
+                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">ID</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Gene</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Level Of Evidence</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Chrom</th>
+                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Position</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Reference</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Alternative</th>
+                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Lit Ref</th>
+                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Variant Description</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Total # Patients With Variant</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Patients With Variant On Arm</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">% Of Patients With Variant On Arm Of Total Patients With Variant</th>
+                            </thead>
+                            <tbody>
+                                <tr style="font-weight:bold" class="info">
+                                    <td colspan="12">
+                                        <table width="25%">
+                                            <tr>
+                                                <td class="info">
+                                                    <i class="fa fa-angle-right fa-lg"></i> <span> INCLUDED </span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr style="cursor: auto;" role="row" class="odd">
+                                    <td class="status-blue">COSM6224</td>
+                                    <td>EGFR</td>
+                                    <td>1</td>
+                                    <td>chr7</td>
+                                    <td>55259515</td>
+                                    <td>CAAGGAATTAAGAGAA</td>
+                                    <td>C</td>
+                                    <td>20573926, 19692684, 20022809</td>
+                                    <td>p.L858R</td>
+                                    <td>4</td>
+                                    <td>0</td>
+                                    <td>0%</td>
+                                </tr>
+                                <tr style="cursor: auto;" role="row" class="odd">
+                                    <td class="status-blue">COSM6224</td>
+                                    <td>EGFR</td>
+                                    <td>1</td>
+                                    <td>chr7</td>
+                                    <td>55259515</td>
+                                    <td>AAGGAATTAAGAGA</td>
+                                    <td>A</td>
+                                    <td>20573926, 19692684, 20022809</td>
+                                    <td>p.L858R</td>
+                                    <td>4</td>
+                                    <td>0</td>
+                                    <td>0%</td>
+                                </tr>
+                                <tr style="cursor: auto;" role="row" class="odd">
+                                    <td class="status-blue">COSM6224</td>
+                                    <td>EGFR</td>
+                                    <td>1</td>
+                                    <td>chr7</td>
+                                    <td>55259515</td>
+                                    <td>AAGGAATTATAAGAGA</td>
+                                    <td>A</td>
+                                    <td>20573926, 19692684, 20022809</td>
+                                    <td>p.L858R</td>
+                                    <td>4</td>
+                                    <td>0</td>
+                                    <td>0%</td>
+                                </tr>
+                                <tr style="cursor: auto;" role="row" class="odd">
+                                    <td class="status-blue">COSM6224</td>
+                                    <td>EGFR</td>
+                                    <td>1</td>
+                                    <td>chr7</td>
+                                    <td>55259515</td>
+                                    <td>GGAATTAAGAGAAAGG</td>
+                                    <td>G</td>
+                                    <td>20573926, 19692684, 20022809</td>
+                                    <td>p.L858R</td>
+                                    <td>4</td>
+                                    <td>0</td>
+                                    <td>0%</td>
+                                </tr>
+                                <tr style="font-weight:bold" class="info">
+                                    <td colspan="12">
+                                        <table width="25%">
+                                            <tr>
+                                                <td class="info">
+                                                    <i class="fa fa-angle-right fa-lg"></i> <span> EXCLUDED </span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr style="cursor: auto;" role="row" class="odd">
+                                    <td class="status-blue">COSM224</td>
+                                    <td>EGFR</td>
+                                    <td>1</td>
+                                    <td>chr7</td>
+                                    <td>55259515</td>
+                                    <td>GGAATTAAGAGAAAGGTA</td>
+                                    <td>G</td>
+                                    <td>20573926, 19692684, 20022809</td>
+                                    <td>p.L858R</td>
+                                    <td>4</td>
+                                    <td>0</td>
+                                    <td>0%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <table id="copyNumberVariants" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">
+                            <thead>
+                                <tr role="row"><td colspan="9" class="panel-heading-table" rowspan="1">Copy Number Variant(s)</td></tr>
+                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">ID</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Level Of Evidence</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Chrom</th>
+                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Position</th>
+                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Lit Ref</th>
+                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Variant Description</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Total # Patients With Variant</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Patients With Variant On Arm</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">% Of Patients With Variant On Arm Of Total Patients With Variant</th>
+                            </thead>
+                            <tbody>
+                                <tr style="cursor: auto;" role="row" class="odd">
+                                    <td colspan="9">There are no copy number variant records for this treatment arm.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <table id="geneFusionVariant" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">
+                            <thead>
+                                <tr role="row"><td colspan="9" class="panel-heading-table" rowspan="1">Gene Fusion Variant(s)</td></tr>
+                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">ID</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Gene</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Level Of Evidence</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Total # Patients With Variant</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Patients With Variant On Arm</th>
+                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">% Of Patients With Variant On Arm Of Total Patients With Variant</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="cursor: auto;" role="row" class="odd">
+                                    <td colspan="9">There are no gene fusion variant records for this treatment arm.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <table id="nonHotSpotRules" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">
+                            <thead>
+                                <tr role="row"><td colspan="8" class="panel-heading-table" rowspan="1">Non Hot Spot Rule(s)</td></tr>
+                                    <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Oncomine Variant Class</th>
+                                    <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Gene</th>
+                                    <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Level Of Evidence</th>
+                                    <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Function</th>
+                                    <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Lit Ref</th>
+                                    <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Variant Description</th>
+                                    <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Exon</th>
+                                    <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Protein Match String</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="font-weight:bold" class="info">
+                                    <td colspan="8">
+                                        <table width="25%">
+                                            <tr>
+                                                <td class="info">
+                                                    <i class="fa fa-angle-right fa-lg"></i> <span> INCLUDED </span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr style="cursor: auto;" role="row" class="odd">
+                                    <td class="status-blue">-</td>
+                                    <td>EGFR</td>
+                                    <td>1</td>
+                                    <td>nonframeshiftinsertion</td>
+                                    <td>55259515</td>
+                                    <td>-</td>
+                                    <td>19</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <table id="exclusionaryDrugs" class="table">
+                            <thead>
+                                <tr role="row"><td colspan="9" class="panel-heading-table" rowspan="1">Exclusionary Drugs</td></tr>
+                                    <th width="40%" class="label2 sorting_disabled" rowspan="1" colspan="1">Id</th>
+                                    <th width="50%" class="label2 sorting_disabled" rowspan="1" colspan="1">Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>-</td><td>Dasatinib</td></tr>
+                                <tr><td>750691</td><td>Afatinib</td></tr>
+                                <tr><td>781254</td><td>AZD9291</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <table id="exclusionaryDiseases" class="table">
+                            <thead>
+                                <tr role="row"><td colspan="9" class="panel-heading-table" rowspan="1">Exclusionary Diseases</td></tr>
+                                    <th width="30%" class="label2 sorting_disabled" rowspan="1" colspan="1">CTEP Category</th>
+                                    <th width="30%" class="label2 sorting_disabled" rowspan="1" colspan="1">CTEP Term</th>
+                                    <th width="30%" class="label2 sorting_disabled" rowspan="1" colspan="1">Medra Code</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Non-Small Cell Lung Cancer</td><td>Bronchioloalveolar carcinoma</td><td>10058354</td></tr>
+                                <tr><td>Small Cell Lung Cancer</td><td>Small Cell Lung Cancer</td><td>10041071</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <table id="exclusionCriteria" class="table">
+                            <thead>
+                                <tr role="row"><td colspan="2" class="panel-heading-table" rowspan="1">Exclusion Criteria</td></tr>
+                                    <th width="30%" class="label2 sorting_disabled" rowspan="1" colspan="1">ID</th>
+                                    <th width="30%" class="label2 sorting_disabled" rowspan="1" colspan="1">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td colspan="2">There are no exclusion criteria records for this treatment arm.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+                        <table id="ihcAssays" class="table">
+                            <thead>
+                                <tr role="row"><td colspan="5" class="panel-heading-table" rowspan="1">IHC Assays</td></tr>
+                                    <th width="20%" class="label2 sorting_disabled" rowspan="1" colspan="1">Gene</th>
+                                    <th width="20%" class="label2 sorting_disabled" rowspan="1" colspan="1">IHC Status</th>
+                                    <th width="20%" class="label2 sorting_disabled" rowspan="1" colspan="1">IHC Variant</th>
+                                    <th width="20%" class="label2 sorting_disabled" rowspan="1" colspan="1">Description</th>
+                                    <th width="20%" class="label2 sorting_disabled" rowspan="1" colspan="1">Level Of Evidence</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td colspan="2">There are no IHC assays for this treatment arm.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Diseases Represented In Assignments To This Treatment Arm</h5>
+                    </div>
+                    <div class="ibox-content" ng-controller="TreatmentArmController">
+                        <div class="flot-chart">
+                            <flot dataset="diseasePieDataset" options="pieOptions" height="180px"></flot>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Patient Assignment Outcome</h5>
+                    </div>
+                    <div class="ibox-content" ng-controller="TreatmentArmController">
+                        <div class="flot-chart">
+                            <flot dataset="pieDataset" options="pieOptions" height="180px"></flot>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+
+
