@@ -6,7 +6,7 @@ describe('Controller: Treatment Arms Controller', function () {
         httpBackend,
         scope;
 
-    beforeEach(inject(function ($controller, $rootScope, _matchApi_, $httpBackend) {
+    beforeEach(inject(function ($controller, $rootScope, _treatmentArmApi_, $httpBackend) {
         scope = $rootScope.$new();
         httpBackend = $httpBackend;
         treatmentArmsCtrl = $controller('TreatmentArmsController', {
@@ -21,7 +21,7 @@ describe('Controller: Treatment Arms Controller', function () {
                 }
             },
             DTColumnDefBuilder: null,
-            matchApi: _matchApi_
+            treatmentArmApi: _treatmentArmApi_
         });
     }));
 
@@ -31,12 +31,12 @@ describe('Controller: Treatment Arms Controller', function () {
     });
 
     it('should populate the treatment arm list with 2 arms on a success response', function() {
-        httpBackend.when('GET', 'http://server:80/match/common/rs/getBasicTreatmentArms')
+        httpBackend.when('GET', 'http://server:80/treatmentarmapi/basicTreatmentArms')
             .respond([
                 {treatmentArmId: 'MB-S1'},
                 {treatmentArmId: 'MB-S2'}
             ]);
-        scope.loadTreatmentArmList();
+        scope.displayTreatmentArmList();
         httpBackend.flush();
 
         expect(scope.treatmentArmList.length).toBe(2);
@@ -45,8 +45,8 @@ describe('Controller: Treatment Arms Controller', function () {
     });
 
     it('should not populate the treatment arm list on an error response', function() {
-        httpBackend.when('GET', 'http://server:80/match/common/rs/getBasicTreatmentArms').respond(500);
-        scope.loadTreatmentArmList();
+        httpBackend.when('GET', 'http://server:80/treatmentarmapi/basicTreatmentArms').respond(500);
+        scope.displayTreatmentArmList();
         httpBackend.flush();
 
         expect(scope.treatmentArmList.length).toBe(0);
