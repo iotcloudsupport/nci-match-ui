@@ -33,26 +33,27 @@
                                 <th>Step Number</th>
                                 <th>Disease</th>
                                 <th>Treatment Arm</th>
-                                <th>Registration Date </th>
-                                <th>Off Trial Date </th>
+                                <th>Registration Date</th>
+                                <th>Off Trial Date</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr ng-repeat="patient in patientList">
-                                <td class="tHi" ng-style="style"
-                                    ng-mouseleave="style={}"
-                                    ng-mouseover="style={'color': 'navy','font-weight':'bold','text-decoration':'underline','cursor':'pointer'}"
-                                    ui-sref="index.patient({ patientSequenceNumber: patient.patientSequenceNumber })">
-                                    {{ patient.patientSequenceNumber }}
+                                <td>
+                                    <a ui-sref="index.patient({ patientSequenceNumber: patient.patientSequenceNumber })">
+                                        <i class="fa fa-user"></i> {{ patient.patientSequenceNumber }}
+                                    </a>
                                 </td>
-                                <td>{{ patient.currentStatus }}</td>
+                                <td ng-style="{'color':'{{ patient.currentStatus | status }}'}">
+                                    {{ patient.currentStatus }}
+                                </td>
                                 <td>{{ patient.currentStepNumber }}</td>
                                 <td>{{ patient.diseases || '-' }}</td>
-                                <td class="tHi" ng-style="style"
-                                    ng-mouseleave="style={}"
-                                    ng-mouseover="style={'color': 'navy','font-weight':'normal','text-decoration':'underline','cursor':'pointer'}"
-                                    ui-sref="index.treatment-arm({ treatmentArmId: patient.currentTreatmentArmId })">
-                                    {{ patient.currentTreatmentArmId }}
+                                <td ng-if="patient.currentTreatmentArm === null">-</td>
+                                <td ng-if="patient.currentTreatmentArm !== null">
+                                    <a ui-sref="index.treatment-arm({ treatmentArmId: patient.currentTreatmentArmId, treatmentArmVersion: patient.currentTreatmentArmVersion })">
+                                        <i class="fa fa-medkit"></i> {{ patient.currentTreatmentArm || '-' }}
+                                    </a>
                                 </td>
                                 <td>{{ patient.registrationDate | gmt }}</td>
                                 <td>{{ patient.offTrialDate | gmt }}</td>

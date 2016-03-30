@@ -69,9 +69,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
             url: "/patient/:patientSequenceNumber",
             templateUrl: "views/patient.html",
             data: { pageTitle: 'Patient', requiresLogin: true },
-            controller: function($scope, $stateParams) {
-                $scope.psn = $stateParams.patientSequenceNumber;
-            },
+            controller: 'PatientController',
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([

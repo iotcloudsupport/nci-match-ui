@@ -1,6 +1,6 @@
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Patients</h2>
+        <h2>Patient</h2>
         <ol class="breadcrumb">
             <li>
                 <a ui-sref="index.dashboard">Dashboard</a>
@@ -9,7 +9,7 @@
                 <a ui-sref="index.patients">Patients</a>
             </li>
             <li class="active">
-                <strong>Patient Details</strong>
+                <strong>Patient</strong>
             </li>
         </ol>
     </div>
@@ -17,212 +17,47 @@
 
     </div>
 </div>
-
-
 <div class="wrapper wrapper-content p-xl">
-
-    <div class="row border-bottom white-bg dashboard-header animated fadeInRight">
-
-        <div class="row">
-            <div class="col-lg-9">
-                <div class="ibox float-e-margins h4">
-                    <div class="ibox-content">
-
-                        <ul class="list-group clear-list m-t">
-                            <li class="list-group-item fist-item">
-                                <span class="pull-right"> 200re </span>
-                                <span class="label label-info">
-                                <i class="fa fa-group"></i>
-                                </span> Patient Sequence Number
-                            </li>
-                            <li class="list-group-item">
-                                <span class="pull-right"> Current Status</span>
-                                <span class="label label-info">
-                                <i class="fa fa-group"></i>
-                                </span> Number of Patients with Confirmed Variant Report
-                            </li>
-                            <li class="list-group-item">
-                                <span class="pull-right"> Current Step Number</span>
-                                <span class="label label-success">
-                                <i class="fa fa-medkit"></i>
-                                </span> Number of Patients on Treatment
-                            </li>
-                            <li class="list-group-item">
-                                <span class="pull-right"> Current Treatment Arm</span>
-                                <span class="label label-warning">
-                                <i class="fa fa-newspaper-o"></i>
-                                </span> Pending Variant Report(s)
-                            </li>
-                            <li class="list-group-item">
-                                <span class="pull-right"> Current Assignment Reason</span>
-                                <span class="label label-warning">
-                                <i class="fa fa-newspaper-o"></i>
-                                </span> Pending Assignment Report(s)
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3" ng-controller="DashboardChartJsDonutController as chartjsDonut" ng-init="setCanvasHeight();loadChartjsDonutChart();">
-                <div class="ibox-content">
-                    <div class="text-center">
-                        <h4>Sequenced & Confirmed Patients with aMOI(s)</h4>
-                    </div>
-                    <canvas id="amoiCanvas" doughnutchart options="chartjsDonut.donutOptions" ng-attr-data="donutData" responsive=true></canvas>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-
-        <!--<div class="wrapper wrapper-content p-xl">-->
     <div class="animated fadeInRight">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-content" ng-controller="PatientController" >
-
-                            ---> {{psn}}
-
-                            <!--<div class="ibox float-e-margins" ng-controller="PatientController">-->
-                                <!--<div class="ibox-content" ng-init="loadPatientTableList()">-->
-
-                            <table id="patientTriggers" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>History</h5>
+                    </div>
+                    <div class="ibox-content" ng-controller="PatientController as PatientCtrl" ng-init="loadPatientDetailsList()">
+                        <div class="table-responsive">
+                            <table datatable="ng" dt-options="PatientCtrl.dtOptions"
+                                   dt-column-defs="PatientCtrl.dtColumnDefs"
+                                   dt-instance="PatientCtrl.dtInstance"
+                                   class="table table-striped table-bordered table-hover">
                                 <thead>
-                                <tr role="row"><td colspan="9" class="panel-heading-table" rowspan="1">History</td></tr>
-                                <!--<tr role="row"><th width="1%" class="label2 sorting_disabled" rowspan="1" colspan="1"></th>-->
-                                <th width="12%" class="label2 sorting_disabled" rowspan="1" colspan="1">Patient Status</th>
-                                <th width="20%" class="label2 sorting_disabled" rowspan="1" colspan="1">Treatment Arm</th>
-                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Assignment Logic</th>
-                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Variant Report</th>
-                                <th width="12%" class="label2 sorting_disabled" rowspan="1" colspan="1">Status Date</th>
-                                <th width="15%" class="label2 sorting_disabled" rowspan="1" colspan="1">Comments</th></tr>
+                                <tr>
+                                    <th>Patient Status</th>
+                                    <th>Step Number</th>
+                                    <th>Treatment Arm</th>
+                                    <th>Variant Report</th>
+                                    <th>Assignment Logic</th>
+                                    <th>Status Date</th>
+                                    <th>Comments</th>
+                                </tr>
                                 </thead>
                                 <tbody>
-                                <tr style="font-weight:bold" class="info">
-
-                                    <td colspan="9">
-                                        <table width="25%">
-                                            <tr>
-                                                <td class="info">
-                                                    <i class="fa fa-angle-right fa-lg"></i> <span class="text-danger"> Step Number: 0 </span>
-                                                </td>
-                                                <td class="warning">
-                                                    | Biopsy Sequence Number:
-                                                    <a href="mdAndersonMessages.html?patientSequenceNumber=1029&biopsySequenceNumber=bsn-1029&concordance=Y">
-                                                        <i class="fa fa-tasks report-link"></i>
-                                                        bsn-1029
-                                                    </a>
-                                                </td>
-                                            </tr>
-
-                                        </table>
-                                    </td>
-
+                                <tr ng-repeat="patient in patientDetailsList">
+                                    <td>{{ patient.patientStatus }}</td>
+                                    <td>{{ patient.stepNumber || '-' }}</td>
+                                    <td>{{ patient.currentTreatmentArmId }}</td>
+                                    <td>{{ patient.variantReport || '-' }}</td>
+                                    <td>{{ patient.assignmentLogic }}</td>
+                                    <td>{{ patient.statusDate | gmt }}</td>
+                                    <td>{{ patient.comments || '-' }}</td>
                                 </tr>
-                                <tr style="cursor: auto;" role="row" class="odd">
-                                    <!--<td>-->
-                                    <!--<button data="bsn-1032|1455730936785" class="btn btn-xs btn-primary" name="bsn-1032" type="button" id="bsn-1032">-->
-                                    <!--<span class="fa fa-plus fa-fw" id="sbsn-1032"></span></button>-->
-                                    <!--</td>-->
-
-                                    <td class="status-blue">REGISTRATION</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>February 17, 2016 5:42 PM GMT</td></tr>
-                                <tr style="cursor: auto;" role="row" class="even">
-                                    <!--<td></td>-->
-                                    <td class="status-purple">PENDING_CONFIRMATION</td>
-                                    <td>-</td>
-                                    <td><a href="patientAssignmentReasons.html?patientId=1032&amp;biopsySequenceNumber=bsn-1032&amp;molecularSequenceNumber=msn-1032&amp;jobName=job-1032&amp;dateAssigned=1455730948979&amp;dateConfirmed=1455730952949&amp;dataSentToECOG=null&amp;dataReceivedByECOG=null&amp;patientStatus=PENDING_CONFIRMATION&amp;patientCurrentStatus=REJOIN_REQUESTED&amp;patientConcordance=Y&amp;patientStepNumber=0" class="report-link">
-                                        <i class="fa fa-file-text-o report-link"></i> Assignment Report</a>
-                                    </td>
-                                    <td><a href="ngsRuns.html?treatmentArmId=-&amp;patientId=1032&amp;biopsySequenceNumber=bsn-1032&amp;molecularSequenceNumber=msn-1032&amp;jobName=job-1032&amp;status=CONFIRMED" class="report-link"><i class="fa fa-file-text-o report-link"></i> Variant Report</a></td>
-                                    <td>February 17, 2016 5:42 PM GMT</td>
-                                    <td>-</td></tr>
-                                <tr style="cursor: auto;" role="row" class="odd">
-                                    <!--<td></td>-->
-                                    <td class="status-purple">PENDING_OFF_STUDY</td>
-                                    <td>-</td>
-                                    <td><a href="patientAssignmentReasons.html?patientId=1032&amp;biopsySequenceNumber=bsn-1032&amp;molecularSequenceNumber=msn-1032&amp;jobName=job-1032&amp;dateAssigned=1455730948979&amp;dateConfirmed=1455730952949&amp;dataSentToECOG=null&amp;dataReceivedByECOG=null&amp;patientStatus=PENDING_OFF_STUDY&amp;patientCurrentStatus=REJOIN_REQUESTED&amp;patientConcordance=Y&amp;patientStepNumber=0" class="report-link">
-                                        <i class="fa fa-file-text-o report-link"></i> Assignment Report</a></td>
-                                    <td><a href="ngsRuns.html?treatmentArmId=-&amp;patientId=1032&amp;biopsySequenceNumber=bsn-1032&amp;molecularSequenceNumber=msn-1032&amp;jobName=job-1032&amp;status=CONFIRMED" class="report-link">
-                                        <i class="fa fa-file-text-o report-link"></i> Variant Report</a></td>
-                                    <td>February 17, 2016 5:42 PM GMT</td>
-                                    <td>-</td>
-                                </tr>
-                                <tr style="cursor: auto;" role="row" class="even">
-                                    <!--<td></td>-->
-                                    <td class="status-red">OFF_TRIAL_NO_TA_AVAILABLE</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>February 17, 2016 5:42 PM GMT</td>
-                                    <td>MESSAGE</td></tr>
-                                <tr data="&lt;a class='report-link' href='treatmentArmsDetails.html?patientList=true&amp;treatmentArmId=rejoinTest7&amp;treatmentArmVersion=2016-02-01'&gt; &lt;i class='fa fa-medkit report-link'&gt;&lt;/i&gt;   rejoinTest7 ( 2016-02-01 ) &lt;/a&gt;,&lt;a class='report-link' href='treatmentArmsDetails.html?patientList=true&amp;treatmentArmId=rejoinTest8&amp;treatmentArmVersion=2016-02-01'&gt; &lt;i class='fa fa-medkit report-link'&gt;&lt;/i&gt;   rejoinTest8 ( 2016-02-01 ) &lt;/a&gt;" role="row" class="odd">
-                                    <!--<td></td>-->
-                                    <td class="status-purple">REJOIN_REQUESTED</td>
-                                    <td><a href="treatmentArmsDetails.html?patientList=true&amp;treatmentArmId=rejoinTest7&amp;treatmentArmVersion=2016-02-01" class="report-link">
-                                        <i class="fa fa-medkit report-link"></i>   rejoinTest7 ( 2016-02-01 ) </a>,<a href="treatmentArmsDetails.html?patientList=true&amp;treatmentArmId=rejoinTest8&amp;treatmentArmVersion=2016-02-01" class="report-link">
-                                        <i class="fa fa-medkit report-link"></i>   rejoinTest8 ( 2016-02-01 ) </a></td>
-                                    <td>-</td>
-                                    <td><a href="ngsRuns.html?treatmentArmId=-&amp;patientId=1032&amp;biopsySequenceNumber=bsn-1032&amp;molecularSequenceNumber=msn-1032&amp;jobName=job-1032&amp;status=CONFIRMED" class="report-link"><i class="fa fa-file-text-o report-link">
-
-                                    </i> Variant Report</a></td>
-                                    <td>February 17, 2016 5:43 PM GMT</td><td>Patient is eligible for arms rejoinTest7 (2016-02-01), rejoinTest8 (2016-02-01).</td></tr>
-                                <tr data="&lt;a class='report-link' href='treatmentArmsDetails.html?patientList=true&amp;treatmentArmId=rejoinTest7&amp;treatmentArmVersion=2016-02-01'&gt; &lt;i class='fa fa-medkit report-link'&gt;&lt;/i&gt;   rejoinTest7 ( 2016-02-01 ) &lt;/a&gt;,&lt;a class='report-link' href='treatmentArmsDetails.html?patientList=true&amp;treatmentArmId=rejoinTest8&amp;treatmentArmVersion=2016-02-01'&gt; &lt;i class='fa fa-medkit report-link'&gt;&lt;/i&gt;   rejoinTest8 ( 2016-02-01 ) &lt;/a&gt;,&lt;a class='report-link' href='treatmentArmsDetails.html?patientList=true&amp;treatmentArmId=rejoinTest9&amp;treatmentArmVersion=2016-02-01'&gt; &lt;i class='fa fa-medkit report-link'&gt;&lt;/i&gt;   rejoinTest9 ( 2016-02-01 ) &lt;/a&gt;" role="row" class="even">
-                                    <!--<td></td>-->
-                                    <td class="status-purple">REJOIN_REQUESTED</td>
-                                    <td><a href="treatmentArmsDetails.html?patientList=true&amp;treatmentArmId=rejoinTest7&amp;treatmentArmVersion=2016-02-01" class="report-link">
-                                        <i class="fa fa-medkit report-link"></i>   rejoinTest7 ( 2016-02-01 ) </a>,<a href="treatmentArmsDetails.html?patientList=true&amp;treatmentArmId=rejoinTest8&amp;treatmentArmVersion=2016-02-01" class="report-link">
-                                        <i class="fa fa-medkit report-link"></i>   rejoinTest8 ( 2016-02-01 ) </a>,<a href="treatmentArmsDetails.html?patientList=true&amp;treatmentArmId=rejoinTest9&amp;treatmentArmVersion=2016-02-01" class="report-link">
-                                        <i class="fa fa-medkit report-link"></i>   rejoinTest9 ( 2016-02-01 ) </a></td>
-                                    <td>-</td>
-                                    <td><a href="ngsRuns.html?treatmentArmId=-&amp;patientId=1032&amp;biopsySequenceNumber=bsn-1032&amp;molecularSequenceNumber=msn-1032&amp;jobName=job-1032&amp;status=CONFIRMED" class="report-link">
-                                        <i class="fa fa-file-text-o report-link"></i> Variant Report</a></td>
-                                    <td>February 17, 2016 5:43 PM GMT</td><td>Patient is eligible for arms rejoinTest7 (2016-02-01), rejoinTest8 (2016-02-01), rejoinTest9 (2016-02-01).</td></tr>
-
-
-                                <tr style="font-weight:bold" class="info">
-
-                                    <td colspan="9">
-                                        <table width="25%">
-                                            <tr>
-                                                <td class="info">
-                                                    <i class="fa fa-angle-right fa-lg"></i> <span class="text-danger"> Step Number: 1 </span>
-                                                </td>
-                                                <td class="warning">
-                                                    | Biopsy Sequence Number:
-                                                    <a href="mdAndersonMessages.html?patientSequenceNumber=1029&biopsySequenceNumber=bsn-1029&concordance=Y">
-                                                        <i class="fa fa-tasks report-link"></i>
-                                                        bsn-1030
-                                                    </a>
-                                                </td>
-                                            </tr>
-
-                                        </table>
-                                    </td>
-
-
-                                    </td>
-                                </tr>
-
-                                <tr data="&lt;a class='report-link' href='treatmentArmsDetails.html?patientList=true&amp;treatmentArmId=rejoinTest5&amp;treatmentArmVersion=2016-02-01'&gt;&lt;i class='fa fa-medkit report-link'&gt;&lt;/i&gt; rejoinTest5 ( 2016-02-01 ) &lt;/a&gt; " role="row" class="odd">
-
-
-                                    <td class="status-green">ON_TREATMENT_ARM</td>
-                                    <td><a href="treatmentArmsDetails.html?patientList=true&amp;treatmentArmId=rejoinTest5&amp;treatmentArmVersion=2016-02-01" class="report-link"><i class="fa fa-medkit report-link"></i> rejoinTest5 ( 2016-02-01 ) </a> </td><td><a href="patientAssignmentReasons.html?patientId=1030&amp;biopsySequenceNumber=bsn-1030&amp;molecularSequenceNumber=msn-1030&amp;jobName=job-1030&amp;dateAssigned=1455730813225&amp;dateConfirmed=1455730931292&amp;dataSentToECOG=null&amp;dataReceivedByECOG=null&amp;patientStatus=ON_TREATMENT_ARM&amp;patientCurrentStatus=ON_TREATMENT_ARM&amp;patientConcordance=Y&amp;patientStepNumber=1" class="report-link"><i class="fa fa-file-text-o report-link"></i> Assignment Report</a></td><td><a href="ngsRuns.html?treatmentArmId=rejoinTest5&amp;patientId=1030&amp;biopsySequenceNumber=bsn-1030&amp;molecularSequenceNumber=msn-1030&amp;jobName=job-1030&amp;status=CONFIRMED" class="report-link"><i class="fa fa-file-text-o report-link"></i> Variant Report</a></td><td>February 17, 2016 5:42 PM GMT</td><td>MESSAGE</td></tr>
-
-                                </tbody></table>
-
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+    </div>
 </div>

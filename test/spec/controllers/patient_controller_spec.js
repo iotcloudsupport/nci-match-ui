@@ -6,11 +6,13 @@ describe('Controller: Patient Details Controller', function () {
         httpBackend,
         scope;
 
-    beforeEach(inject(function ($controller, $rootScope, _matchApi_, $httpBackend) {
+    beforeEach(inject(function ($routeParams, $controller, $rootScope, _matchApi_, $stateParams, $httpBackend) {
         scope = $rootScope.$new();
         httpBackend = $httpBackend;
+        $routeParams.patientSequenceNumber = "10356";
         patientsCtrl = $controller('PatientController', {
             $scope: scope,
+            //$routeParams: {patientSequenceNumber: 'patientSequenceNumber'},
             DTOptionsBuilder: {
                 newOptions: function() {
                     return {
@@ -31,27 +33,27 @@ describe('Controller: Patient Details Controller', function () {
     //});
     //
     //it('should populate the patient list with 3 patients on a success response', function() {
-    //    httpBackend.when('GET', 'http://server:80/match/common/rs/getBasicPatientsData')
+    //    httpBackend.when('GET', 'http://server:80//common/rs/getPatientDetails?patientSequenceNumber=10065')
     //        .respond([
-    //            {patientSequenceNumber: '100'},
-    //            {patientSequenceNumber: '101'},
-    //            {patientSequenceNumber: '102'}
+    //            {patientStatus: 'ON_TREATMENT_ARM'},
+    //            {currentTreatmentArmId: 'EAY131-B'},
+    //            {comments: 'ABCD'}
     //        ]);
     //    scope.loadPatientDetailsList();
     //    httpBackend.flush();
     //
-    //    expect(scope.patientList.length).toBe(3);
-    //    expect(scope.patientList[0].patientSequenceNumber).toBe('100');
-    //    expect(scope.patientList[1].patientSequenceNumber).toBe('101');
-    //    expect(scope.patientList[2].patientSequenceNumber).toBe('102');
+    //    expect(scope.patientDetailsList.length).toBe(3);
+    //    expect(scope.patientDetailsList[0].patientStatus).toBe('ON_TREATMENT_ARM');
+    //    expect(scope.patientDetailsList[1].currentTreatmentArmId).toBe('EAY131-B');
+    //    expect(scope.patientDetailsList[2].comments).toBe('ABCD');
     //});
     //
     //it('should not populate the patient list on an error response', function() {
-    //    httpBackend.when('GET', 'http://server:80/match/common/rs/getBasicPatientsData').respond(500);
-    //    scope.loadPatientTableList();
+    //    httpBackend.when('GET', 'http://server:80//common/rs/getPatientDetails?patientSequenceNumber=10065').respond(500);
+    //    scope.loadPatientDetailsList();
     //    httpBackend.flush();
     //
-    //    expect(scope.patientList.length).toBe(0);
+    //    expect(scope.patientDetailsList.length).toBe(0);
     //});
 
 });
