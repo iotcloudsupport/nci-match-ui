@@ -117,7 +117,29 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
         .state('index.treatment-arm', {
             url: "/treatment-arm/:treatmentArmId/:treatmentArmVersion",
             templateUrl: "views/treatment_arm.html",
-            data: { pageTitle: 'Treatment Arm', requiresLogin: true }
+            data: { pageTitle: 'Treatment Arm', requiresLogin: true },
+            controller: function($scope, $stateParams) {
+                $scope.taid = $stateParams.treatmentArmId;
+                $scope.tavsn = $stateParams.treatmentArmVersion;
+            },
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            serie: true,
+                            files: ['bower_components/datatables/media/js/jquery.dataTables.min.js','bower_components/datatables/media/css/dataTables.bootstrap.min.css']
+                        },
+                        {
+                            serie: true,
+                            files: ['bower_components/datatables/media/js/dataTables.bootstrap.min.js']
+                        },
+                        {
+                            name: 'datatables',
+                            files: ['bower_components/angular-datatables/dist/angular-datatables.min.js']
+                        }
+                    ]);
+                }
+            }
         })
         .state('index.specimen-tracking', {
             url: "/specimen-tracking",
