@@ -43,10 +43,9 @@ angular.module('http.matchbox', [])
         };
     })
     .factory('treatmentArmApi', function($http, matchConfig) {
-        //http://localhost:10235/treatmentarm/getTreatmentArms
         return {
             getTreatmentArms: function() {
-                return $http.get(matchConfig.treatmentArmApiBaseUrl + '/getTreatmentArms');
+                return $http.get(matchConfig.treatmentArmApiBaseUrl + '/basicTreatmentArms');
             }
         };
     })
