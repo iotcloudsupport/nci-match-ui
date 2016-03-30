@@ -2,11 +2,11 @@ describe('Factory: Get Basic Treatment Arms Service', function () {
 
     beforeEach(module('config.matchbox', 'http.matchbox'));
 
-    var matchApi,
+    var treatmentArmApi,
         httpBackend;
 
-    beforeEach(inject(function (_matchApi_, $httpBackend) {
-        matchApi = _matchApi_;
+    beforeEach(inject(function (_treatmentArmApi_, $httpBackend) {
+        treatmentArmApi = _treatmentArmApi_;
         httpBackend = $httpBackend;
     }));
 
@@ -16,9 +16,9 @@ describe('Factory: Get Basic Treatment Arms Service', function () {
     });
 
     it('should return back a list with 5 treatment arms', function () {
-        httpBackend.when('GET', 'http://server:80/match/common/rs/getBasicTreatmentArms').respond([{}, {}, {}, {}, {}]);
-        matchApi
-            .getBasicTreatmentArms()
+        httpBackend.when('GET', 'http://server:80/treatmentarmapi/basicTreatmentArms').respond([{}, {}, {}, {}, {}]);
+        treatmentArmApi
+            .getTreatmentArms()
             .then(function(response) {
                 expect(response.status).toBe(200);
                 expect(response.data.length).toBe(5);
@@ -27,9 +27,9 @@ describe('Factory: Get Basic Treatment Arms Service', function () {
     });
 
     it ('should return back an internal server error', function() {
-        httpBackend.when('GET', 'http://server:80/match/common/rs/getBasicTreatmentArms').respond(500);
-        matchApi
-            .getBasicTreatmentArms()
+        httpBackend.when('GET', 'http://server:80/treatmentarmapi/basicTreatmentArms').respond(500);
+        treatmentArmApi
+            .getTreatmentArms()
             .then(
                 function(response) {
                     throw 'Not expecting the success block to be called.';
