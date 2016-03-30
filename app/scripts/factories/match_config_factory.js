@@ -6,7 +6,7 @@ angular.module('config.matchbox', [])
                 'matchApiBaseUrl': urlPrefix + ':8080/match',
                 'lookApiBaseUrl': urlPrefix + ':9595',//9595
                 'reportApiBaseUrl': urlPrefix + ':9292',//9292
-                'treatmentArmApiBaseUrl': urlPrefix + ':10235/treatmentarm',//':4569',
+                'treatmentArmApiBaseUrl': urlPrefix + ':10235',//':4569',
                 'workflowApiBaseUrl' : urlPrefix + ':4570',
                 'activityFeedApiBaseUrl' : urlPrefix + ':9898'//9898
             };
