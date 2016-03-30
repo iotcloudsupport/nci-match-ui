@@ -7,15 +7,7 @@ angular.module('treatment-arms.matchbox',[])
         this.dtInstance = {};
 
         $scope.treatmentArmList = [];
-
-        /*$scope.loadTreatmentArmList = function() {
-            matchApi
-                .getBasicTreatmentArms()
-                .then(function(d) {
-                    $scope.treatmentArmList = d.data;
-                    console.log($scope);
-                });
-        };*/
+        
         $scope.displayTreatmentArmList = function() {
             treatmentArmApi
                 .getTreatmentArms()
