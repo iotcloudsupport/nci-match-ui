@@ -9,6 +9,7 @@
         'patient.matchbox',
         'service.matchbox',
         'treatment-arms.matchbox',
+        'treatment-arm.matchbox',
         'specimen-tracking.matchbox',
         'reports.matchbox',
         'filters.matchbox',
@@ -16,6 +17,7 @@
         'http.matchbox',
         'angular-storage',
         'angular-jwt',
+        'angular-flot',
         'ui.router',
         'ui.bootstrap'
     ]);
