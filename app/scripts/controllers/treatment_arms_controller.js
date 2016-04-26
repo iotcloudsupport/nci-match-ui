@@ -7,7 +7,7 @@ angular.module('treatment-arms.matchbox',[])
         this.dtInstance = {};
 
         $scope.treatmentArmList = [];
-        
+
         $scope.displayTreatmentArmList = function() {
             treatmentArmApi
                 .getTreatmentArms()
