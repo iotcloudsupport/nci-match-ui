@@ -36,7 +36,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="treatmentArm in treatmentArmList">
+                            <!--<tr ng-repeat="treatmentArm in treatmentArmList">
                                 <td><a ui-sref="index.treatment-arm({ treatmentArmId: treatmentArm.treatmentArmId, treatmentArmVersion: 'v1' })">{{ treatmentArm.treatmentArmId }}</a></td>
                                 <td>{{ treatmentArm.treatmentArmName }}</td>
                                 <td>{{ treatmentArm.currentPatients }}</td>
@@ -47,6 +47,18 @@
                                 <td>{{ treatmentArm.dateCreated | gmt }}</td>
                                 <td>{{ treatmentArm.dateOpened | gmt }}</td>
                                 <td>{{ (treatmentArm.dateClosed || treatmentArm.dateSuspended) | gmt }}</td>
+                            </tr>-->
+                            <tr>
+                                <td><a ui-sref="index.treatment-arm({ treatmentArmId: 'EAY131-A', treatmentArmVersion: 'v1' })">EAY131-A</a></td>
+                                <td>Tafatinib</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>OPEN</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
                             </tr>
                             </tbody>
                         </table>
