@@ -1,5 +1,5 @@
 <div class="row wrapper border-bottom white-bg page-heading">
-    <div class="col-lg-10">
+    <div class="col-lg-10" ng-controller="TreatmentArmController">
         <h2>Treatment Arm</h2>
         <ol class="breadcrumb">
             <li>
@@ -9,599 +9,570 @@
                 <a ui-sref="index.treatment-arms">Treatment Arms</a>
             </li>
             <li class="active">
-                <strong>Treatment Arm</strong>
+                <strong>Treatment Arm {{taid}}</strong>
             </li>
         </ol>
     </div>
-    <div class="col-lg-2">
-
-    </div>
+    <div class="col-lg-2"></div>
 </div>
 
 <div class="wrapper wrapper-content p-xl">
 
-    <div class="row border-bottom dashboard-header animated fadeInRight">
-
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="ibox float-e-margins h4">
-                    <div class="ibox-content" ng-controller="TreatmentArmController">
-                        <ul class="list-group clear-list m-t">
-                            <li class="list-group-item fist-item">
-                                <span class="pull-right"> {{taid}}</span>
-                                <span class="label label-warning">
-                                    <i class="fa fa-medkit"></i>
-                                </span> Treatment Arm Id
-                            </li>
-                            <li class="list-group-item">
-                                <span class="pull-right"> Dasatinib in DDR2 mutations</span>
-                                <span class="label label-warning">
-                                    <i class="fa fa-medkit"></i>
-                                </span> Treatment Arm Name
-                            </li>
-                            <li class="list-group-item">
-                                <span class="pull-right"> 2016-02-20</span>
-                                <span class="label label-warning">
-                                    <i class="fa fa-newspaper-o"></i>
-                                </span> Treatment Arm Approval Date
-                            </li>
-                            <li class="list-group-item">
-                                <span class="pull-right"> Dasatinib</span>
-                                <span class="label label-warning">
-                                    <i class="fa fa-medkit"></i>
-                                </span> Target
-                            </li>
-                            <li class="list-group-item">
-                                <span class="pull-right"> DDR2</span>
-                                <span class="label label-success">
-                                    <i class="fa fa-newspaper-o"></i>
-                                </span> Gene(s)
-                            </li>
-                            <li class="list-group-item">
-                                <span class="pull-right"> Dasatinib in DDR2 activating mutations</span>
-                                <span class="label label-success">
-                                    <i class="fa fa-medkit"></i>
-                                </span> Description
-                            </li>
-                            <li class="list-group-item">
-                                <span class="pull-right"> 0/35</span>
-                                <span class="label label-info">
-                                    <i class="fa fa-group"></i>
-                                </span> Patients Assigned
-                            </li>
-                            <li class="list-group-item">
-                                <span class="pull-right"> OPEN</span>
-                                <span class="label label-info">
-                                    <i class="fa fa-medkit"></i>
-                                </span> Current Status
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="animated fadeInRight">
         <div class="row">
             <div class="col-lg-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-content" ng-controller="TreatmentArmController">
-
-                        <table id="treatmentArmHistorySteps" class="table">
-                            <thead>
-                                <tr role="row"><td colspan="9" class="panel-heading-table" rowspan="1">History</td></tr>
-
-                                <th width="40%" class="label2 sorting_disabled" rowspan="1" colspan="1">Status</th>
-                                <th width="50%" class="label2 sorting_disabled" rowspan="1" colspan="1">Date</th>
-                            </thead>
-                            <tbody>
-                                <tr><td>PENDING</td><td>August 12, 2015 4:00 AM GMT</td></tr>
-                                <tr><td>READY</td><td>February 19, 2016 10:10 PM GMT</td></tr>
-                                <tr><td>OPEN</td><td>February 22, 2016 10:10 PM GMT</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="animated fadeInRight">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-content">
-
-                        <table id="drugs" class="table">
-                            <thead>
-                                <tr role="row"><td colspan="9" class="panel-heading-table" rowspan="1">Drugs</td></tr>
-
-                                <th width="40%" class="label2 sorting_disabled" rowspan="1" colspan="1">Id</th>
-                                <th width="50%" class="label2 sorting_disabled" rowspan="1" colspan="1">Name</th>
-                            </thead>
-                            <tbody>
-                                <tr><td>781254</td><td>AZD9291</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="animated fadeInRight">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-content">
-                        <table id="singleNucleotideVariants" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">
-                            <thead>
-                                <tr role="row"><td colspan="12" class="panel-heading-table" rowspan="1">Single Nucleotide Variant(s)</td></tr>
-                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">ID</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Gene</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Level Of Evidence</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Chrom</th>
-                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Position</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Reference</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Alternative</th>
-                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Lit Ref</th>
-                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Variant Description</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Total # Patients With Variant</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Patients With Variant On Arm</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">% Of Patients With Variant On Arm Of Total Patients With Variant</th>
-                            </thead>
-                            <tbody>
-                                <tr style="font-weight:bold" class="info">
-                                    <td colspan="12">
-                                        <table width="25%">
-                                            <tr>
-                                                <td class="info">
-                                                    <i class="fa fa-angle-right fa-lg"></i> <span> INCLUDED </span>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr style="cursor: auto;" role="row" class="odd">
-                                    <td class="status-blue">COSM6224</td>
-                                    <td>EGFR</td>
-                                    <td>1</td>
-                                    <td>chr7</td>
-                                    <td>55259515</td>
-                                    <td>T</td>
-                                    <td>G</td>
-                                    <td>20573926, 19692684, 20022809</td>
-                                    <td>p.L858R</td>
-                                    <td>4</td>
-                                    <td>0</td>
-                                    <td>0%</td>
-                                </tr>
-                                <tr style="cursor: auto;" role="row" class="odd">
-                                    <td class="status-blue">COSM6224</td>
-                                    <td>EGFR</td>
-                                    <td>1</td>
-                                    <td>chr7</td>
-                                    <td>55259515</td>
-                                    <td>T</td>
-                                    <td>G</td>
-                                    <td>20573926, 19692684, 20022809</td>
-                                    <td>p.L858R</td>
-                                    <td>4</td>
-                                    <td>0</td>
-                                    <td>0%</td>
-                                </tr>
-                                <tr style="cursor: auto;" role="row" class="odd">
-                                    <td class="status-blue">COSM6224</td>
-                                    <td>EGFR</td>
-                                    <td>1</td>
-                                    <td>chr7</td>
-                                    <td>55259515</td>
-                                    <td>T</td>
-                                    <td>G</td>
-                                    <td>20573926, 19692684, 20022809</td>
-                                    <td>p.L858R</td>
-                                    <td>4</td>
-                                    <td>0</td>
-                                    <td>0%</td>
-                                </tr>
-                                <tr style="cursor: auto;" role="row" class="odd">
-                                    <td class="status-blue">COSM6224</td>
-                                    <td>EGFR</td>
-                                    <td>1</td>
-                                    <td>chr7</td>
-                                    <td>55259515</td>
-                                    <td>T</td>
-                                    <td>G</td>
-                                    <td>20573926, 19692684, 20022809</td>
-                                    <td>p.L858R</td>
-                                    <td>4</td>
-                                    <td>0</td>
-                                    <td>0%</td>
-                                </tr>
-                                <tr style="font-weight:bold" class="info">
-                                    <td colspan="12">
-                                        <table width="25%">
-                                            <tr>
-                                                <td class="info">
-                                                    <i class="fa fa-angle-right fa-lg"></i> <span> EXCLUDED </span>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr style="cursor: auto;" role="row" class="odd">
-                                    <td class="status-blue">COSM224</td>
-                                    <td>EGFR</td>
-                                    <td>1</td>
-                                    <td>chr7</td>
-                                    <td>55259515</td>
-                                    <td>T</td>
-                                    <td>G</td>
-                                    <td>20573926, 19692684, 20022809</td>
-                                    <td>p.L858R</td>
-                                    <td>4</td>
-                                    <td>0</td>
-                                    <td>0%</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="animated fadeInRight">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-content">
-                        <table id="indels" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">
-                            <thead>
-                                <tr role="row"><td colspan="12" class="panel-heading-table" rowspan="1">Indel(s)</td></tr>
-                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">ID</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Gene</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Level Of Evidence</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Chrom</th>
-                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Position</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Reference</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Alternative</th>
-                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Lit Ref</th>
-                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Variant Description</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Total # Patients With Variant</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Patients With Variant On Arm</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">% Of Patients With Variant On Arm Of Total Patients With Variant</th>
-                            </thead>
-                            <tbody>
-                                <tr style="font-weight:bold" class="info">
-                                    <td colspan="12">
-                                        <table width="25%">
-                                            <tr>
-                                                <td class="info">
-                                                    <i class="fa fa-angle-right fa-lg"></i> <span> INCLUDED </span>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr style="cursor: auto;" role="row" class="odd">
-                                    <td class="status-blue">COSM6224</td>
-                                    <td>EGFR</td>
-                                    <td>1</td>
-                                    <td>chr7</td>
-                                    <td>55259515</td>
-                                    <td>CAAGGAATTAAGAGAA</td>
-                                    <td>C</td>
-                                    <td>20573926, 19692684, 20022809</td>
-                                    <td>p.L858R</td>
-                                    <td>4</td>
-                                    <td>0</td>
-                                    <td>0%</td>
-                                </tr>
-                                <tr style="cursor: auto;" role="row" class="odd">
-                                    <td class="status-blue">COSM6224</td>
-                                    <td>EGFR</td>
-                                    <td>1</td>
-                                    <td>chr7</td>
-                                    <td>55259515</td>
-                                    <td>AAGGAATTAAGAGA</td>
-                                    <td>A</td>
-                                    <td>20573926, 19692684, 20022809</td>
-                                    <td>p.L858R</td>
-                                    <td>4</td>
-                                    <td>0</td>
-                                    <td>0%</td>
-                                </tr>
-                                <tr style="cursor: auto;" role="row" class="odd">
-                                    <td class="status-blue">COSM6224</td>
-                                    <td>EGFR</td>
-                                    <td>1</td>
-                                    <td>chr7</td>
-                                    <td>55259515</td>
-                                    <td>AAGGAATTATAAGAGA</td>
-                                    <td>A</td>
-                                    <td>20573926, 19692684, 20022809</td>
-                                    <td>p.L858R</td>
-                                    <td>4</td>
-                                    <td>0</td>
-                                    <td>0%</td>
-                                </tr>
-                                <tr style="cursor: auto;" role="row" class="odd">
-                                    <td class="status-blue">COSM6224</td>
-                                    <td>EGFR</td>
-                                    <td>1</td>
-                                    <td>chr7</td>
-                                    <td>55259515</td>
-                                    <td>GGAATTAAGAGAAAGG</td>
-                                    <td>G</td>
-                                    <td>20573926, 19692684, 20022809</td>
-                                    <td>p.L858R</td>
-                                    <td>4</td>
-                                    <td>0</td>
-                                    <td>0%</td>
-                                </tr>
-                                <tr style="font-weight:bold" class="info">
-                                    <td colspan="12">
-                                        <table width="25%">
-                                            <tr>
-                                                <td class="info">
-                                                    <i class="fa fa-angle-right fa-lg"></i> <span> EXCLUDED </span>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr style="cursor: auto;" role="row" class="odd">
-                                    <td class="status-blue">COSM224</td>
-                                    <td>EGFR</td>
-                                    <td>1</td>
-                                    <td>chr7</td>
-                                    <td>55259515</td>
-                                    <td>GGAATTAAGAGAAAGGTA</td>
-                                    <td>G</td>
-                                    <td>20573926, 19692684, 20022809</td>
-                                    <td>p.L858R</td>
-                                    <td>4</td>
-                                    <td>0</td>
-                                    <td>0%</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="animated fadeInRight">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-content">
-                        <table id="copyNumberVariants" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">
-                            <thead>
-                                <tr role="row"><td colspan="9" class="panel-heading-table" rowspan="1">Copy Number Variant(s)</td></tr>
-                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">ID</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Level Of Evidence</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Chrom</th>
-                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Position</th>
-                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Lit Ref</th>
-                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Variant Description</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Total # Patients With Variant</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Patients With Variant On Arm</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">% Of Patients With Variant On Arm Of Total Patients With Variant</th>
-                            </thead>
-                            <tbody>
-                                <tr style="cursor: auto;" role="row" class="odd">
-                                    <td colspan="9">There are no copy number variant records for this treatment arm.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="animated fadeInRight">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-content">
-                        <table id="geneFusionVariant" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">
-                            <thead>
-                                <tr role="row"><td colspan="9" class="panel-heading-table" rowspan="1">Gene Fusion Variant(s)</td></tr>
-                                <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">ID</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Gene</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Level Of Evidence</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Total # Patients With Variant</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Patients With Variant On Arm</th>
-                                <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">% Of Patients With Variant On Arm Of Total Patients With Variant</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                <tr style="cursor: auto;" role="row" class="odd">
-                                    <td colspan="9">There are no gene fusion variant records for this treatment arm.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="animated fadeInRight">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-content">
-                        <table id="nonHotSpotRules" class="table table-striped table-bordered table-hover dataTable no-footer" role="grid">
-                            <thead>
-                                <tr role="row"><td colspan="8" class="panel-heading-table" rowspan="1">Non Hot Spot Rule(s)</td></tr>
-                                    <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Oncomine Variant Class</th>
-                                    <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Gene</th>
-                                    <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Level Of Evidence</th>
-                                    <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Function</th>
-                                    <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Lit Ref</th>
-                                    <th width="8%" class="label2 sorting_disabled" rowspan="1" colspan="1">Variant Description</th>
-                                    <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Exon</th>
-                                    <th width="5%" class="label2 sorting_disabled" rowspan="1" colspan="1">Protein Match String</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr style="font-weight:bold" class="info">
-                                    <td colspan="8">
-                                        <table width="25%">
-                                            <tr>
-                                                <td class="info">
-                                                    <i class="fa fa-angle-right fa-lg"></i> <span> INCLUDED </span>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                                <tr style="cursor: auto;" role="row" class="odd">
-                                    <td class="status-blue">-</td>
-                                    <td>EGFR</td>
-                                    <td>1</td>
-                                    <td>nonframeshiftinsertion</td>
-                                    <td>55259515</td>
-                                    <td>-</td>
-                                    <td>19</td>
-                                    <td>-</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="animated fadeInRight">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-content">
-                        <table id="exclusionaryDrugs" class="table">
-                            <thead>
-                                <tr role="row"><td colspan="9" class="panel-heading-table" rowspan="1">Exclusionary Drugs</td></tr>
-                                    <th width="40%" class="label2 sorting_disabled" rowspan="1" colspan="1">Id</th>
-                                    <th width="50%" class="label2 sorting_disabled" rowspan="1" colspan="1">Name</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>-</td><td>Dasatinib</td></tr>
-                                <tr><td>750691</td><td>Afatinib</td></tr>
-                                <tr><td>781254</td><td>AZD9291</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="animated fadeInRight">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-content">
-                        <table id="exclusionaryDiseases" class="table">
-                            <thead>
-                                <tr role="row"><td colspan="9" class="panel-heading-table" rowspan="1">Exclusionary Diseases</td></tr>
-                                    <th width="30%" class="label2 sorting_disabled" rowspan="1" colspan="1">CTEP Category</th>
-                                    <th width="30%" class="label2 sorting_disabled" rowspan="1" colspan="1">CTEP Term</th>
-                                    <th width="30%" class="label2 sorting_disabled" rowspan="1" colspan="1">Medra Code</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>Non-Small Cell Lung Cancer</td><td>Bronchioloalveolar carcinoma</td><td>10058354</td></tr>
-                                <tr><td>Small Cell Lung Cancer</td><td>Small Cell Lung Cancer</td><td>10041071</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="animated fadeInRight">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-content">
-                        <table id="exclusionCriteria" class="table">
-                            <thead>
-                                <tr role="row"><td colspan="2" class="panel-heading-table" rowspan="1">Exclusion Criteria</td></tr>
-                                    <th width="30%" class="label2 sorting_disabled" rowspan="1" colspan="1">ID</th>
-                                    <th width="30%" class="label2 sorting_disabled" rowspan="1" colspan="1">Description</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td colspan="2">There are no exclusion criteria records for this treatment arm.</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="animated fadeInRight">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-content">
-                        <table id="ihcAssays" class="table">
-                            <thead>
-                                <tr role="row"><td colspan="5" class="panel-heading-table" rowspan="1">IHC Assays</td></tr>
-                                    <th width="20%" class="label2 sorting_disabled" rowspan="1" colspan="1">Gene</th>
-                                    <th width="20%" class="label2 sorting_disabled" rowspan="1" colspan="1">IHC Status</th>
-                                    <th width="20%" class="label2 sorting_disabled" rowspan="1" colspan="1">IHC Variant</th>
-                                    <th width="20%" class="label2 sorting_disabled" rowspan="1" colspan="1">Description</th>
-                                    <th width="20%" class="label2 sorting_disabled" rowspan="1" colspan="1">Level Of Evidence</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr><td colspan="2">There are no IHC assays for this treatment arm.</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="animated fadeInRight">
-        <div class="row">
-            <div class="col-lg-6">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Diseases Represented In Assignments To This Treatment Arm</h5>
+                        <h5>Information </h5>
                     </div>
-                    <div class="ibox-content" ng-controller="TreatmentArmController">
-                        <div class="flot-chart">
-                            <flot dataset="diseasePieDataset" options="pieOptions" height="180px"></flot>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>Patient Assignment Outcome</h5>
-                    </div>
-                    <div class="ibox-content" ng-controller="TreatmentArmController">
-                        <div class="flot-chart">
-                            <flot dataset="pieDataset" options="pieOptions" height="180px"></flot>
+                    <div class="ibox-content" style="padding:5px 40px">
+
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div ng-controller="TreatmentArmController">
+                                    <ul class="list-group clear-list m-t">
+                                        <li class="list-group-item">
+                                            <span class="pull-right"> {{taid}}</span>
+                                            <span class="label label-warning" style="margin:0 8px 0 0">
+                                            <i class="fa fa-medkit"></i>
+                                            </span> Name
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="pull-right"> Dasatinib in DDR2 activating mutations</span>
+                                            <span class="label label-warning" style="margin:0 8px 0 0">
+                                            <i class="fa fa-medkit"></i>
+                                            </span> Description
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="pull-right"> 2016-02-20</span>
+                                            <span class="label label-warning" style="margin:0 8px 0 0">
+                                            <i class="fa fa-newspaper-o"></i>
+                                            </span> Current Version
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="pull-right"> DDR2</span>
+                                            <span class="label label-success" style="margin:0 8px 0 0">
+                                                <i class="fa fa-newspaper-o"></i>
+                                            </span> Gene(s)
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="pull-right"> 0</span>
+                                            <span class="label label-success" style="margin:0 8px 0 0">
+                                                <i class="fa fa-group"></i>
+                                            </span> Patients Assigned
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="pull-right"> OPEN</span>
+                                            <span class="label label-success" style="margin:0 8px 0 0">
+                                                <i class="fa fa-medkit"></i>
+                                            </span> Current Status
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="pull-right"> AZD9291 (781254)</span>
+                                            <span class="label label-success" style="margin:0 8px 0 0">
+                                                <i class="fa fa-medkit"></i>
+                                            </span> Drug
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div ng-controller="TreatmentArmController">
+                                    <ul class="list-group clear-list m-t">
+                                        <li class="list-group-item">
+                                            <span class="label label-info" style="margin:0 8px 0 0">
+                                                <i class="fa fa-medkit"></i>
+                                            </span> History
+                                        </li>
+                                        <li class="list-group-item">
+                                            <table id="drugs" class="table table-bordered table-hover">
+                                                <thead>
+                                                <th width="40%" class="label2 sorting_disabled" rowspan="1" colspan="1">Status</th>
+                                                <th width="50%" class="label2 sorting_disabled" rowspan="1" colspan="1">Date</th>
+                                                </thead>
+                                                <tbody>
+                                                <tr><td>PENDING</td><td>August 12, 2015 4:00 AM GMT</td></tr>
+                                                <tr><td>READY</td><td>February 19, 2016 10:10 PM GMT</td></tr>
+                                                <tr><td>OPEN</td><td>February 22, 2016 10:10 PM GMT</td></tr>
+                                                </tbody>
+                                            </table>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="animated fadeInRight">
+        <div class="ibox float-e-margins">
+
+            <div class="ibox-content">
+                <div class="tabs-container">
+                    <tabset>
+                        <tab heading="Analysis">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="ibox float-e-margins">
+                                            <div class="ibox-title">
+                                                <h5>Patient Assignment Outcome</h5>
+                                            </div>
+                                            <div class="ibox-content" ng-controller="TreatmentArmController">
+                                                <div class="flot-chart" style="height:200px">
+                                                    <flot dataset="pieDataset" options="pieOptions" height="180px" style="margin:10px"></flot>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ibox float-e-margins">
+                                            <div class="ibox-content" ng-controller="TreatmentArmController">
+                                                <div id="legendContainer" style="padding:10px 40px;text-align:left;overflow-y:auto"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="ibox float-e-margins">
+                                            <div class="ibox-title">
+                                                <h5>Diseases Represented In Assignments To This Treatment Arm</h5>
+                                            </div>
+                                            <div class="ibox-content" ng-controller="TreatmentArmController">
+                                                <div class="flot-chart" style="height:200px">
+                                                    <flot dataset="diseasePieDataset" options="diseasePieOptions"  style="margin:10px"></flot> <!-- height="180px" -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ibox float-e-margins">
+                                            <div class="ibox-content" ng-controller="TreatmentArmController">
+                                                <div id="diseaseLegendContainer" style="padding:10px 40px;text-align:left;overflow-y:auto"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ibox float-e-margins">
+                                    <div class="ibox-title">
+                                        <h5>All Patients Data</h5>
+                                    </div>
+                                    <div class="ibox-content" ng-controller="TreatmentArmController">
+                                        <table datatable="ng" class="table table-striped table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Slot</th>
+                                                    <th>PSN</th>
+                                                    <th>TA Version</th>
+                                                    <th>Patient Assignment Status Outcome</th>
+                                                    <th>Assignment Logic</th>
+                                                    <th>Variant Report</th>
+                                                    <th>Date Selected</th>
+                                                    <th>Date On Arm</th>
+                                                    <th>Date Of Next Status</th>
+                                                    <th>Step</th>
+                                                    <th>Disease</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="item in patients">
+                                                    <td>{{item.Patient.slot || '-'}}</td>
+                                                    <td>{{item.Patient.patientSequenceNumber || '-'}}</td>
+                                                    <td>{{item.Patient.treatmentArmVersion || '-'}}</td>
+                                                    <td>{{item.Patient.patientAssignmentStatusOutcome || '-'}}</td>
+                                                    <td>{{item.Patient.assignmentLogic || '-'}}</td>
+                                                    <td>{{item.Patient.variantReport || '-'}}</td>
+                                                    <td>{{item.Patient.dateSelected || '-'}}</td>
+                                                    <td>{{item.Patient.dateOnArm || '-'}}</td>
+                                                    <td>{{item.Patient.dateOffArm || '-'}}</td>
+                                                    <td>{{item.Patient.step || '-'}}</td>
+                                                    <td>{{item.Patient.diseases || '-'}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </tab>
+                        <tab heading="Rules">
+                            <div class="panel-body">
+                                <div class="tabs-container">
+                                    <tabset>
+                                        <tab heading="Inclusions/Exclusions">
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="ibox float-e-margins">
+                                                            <div class="ibox-title">
+                                                                <h5>Inclusionary Drugs</h5>
+                                                            </div>
+                                                            <div class="ibox-content" ng-controller="TreatmentArmController">
+                                                                <table datatable="ng" class="table table-striped table-bordered table-hover" style="width:100%">
+                                                                    <thead>
+                                                                    <!--<tr>
+                                                                        <th colspan="2">Inclusionary Drugs</th>
+                                                                    </tr>-->
+                                                                    <tr>
+                                                                        <th>ID</th>
+                                                                        <th>Description</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr ng-repeat="item in exclusionCriteria">
+                                                                        <td>{{item.ExclCrit.id || '-'}}</td>
+                                                                        <td>{{item.ExclCrit.description || '-'}}</td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="ibox float-e-margins">
+                                                            <div class="ibox-title">
+                                                                <h5>Inclusionary Diseases</h5>
+                                                            </div>
+                                                            <div class="ibox-content" ng-controller="TreatmentArmController">
+                                                                <table datatable="ng" class="table table-striped table-bordered table-hover" style="width:100%">
+                                                                    <thead>
+
+                                                                    <tr>
+                                                                        <th>CTEP Category</th>
+                                                                        <th>CTEP Term</th>
+                                                                        <th>MEDRA Code</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr ng-repeat="item in exclusionaryDiseases">
+                                                                        <td>{{item.ExclDisease.ctepCategory || '-'}}</td>
+                                                                        <td>{{item.ExclDisease.ctepTerm || '-'}}</td>
+                                                                        <td>{{item.ExclDisease.medraCode || '-'}}</td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="ibox float-e-margins">
+                                                            <div class="ibox-title">
+                                                                <h5>Exclusionary Drugs</h5>
+                                                            </div>
+                                                            <div class="ibox-content" ng-controller="TreatmentArmController">
+                                                                <table datatable="ng" class="table table-striped table-bordered table-hover" style="width:100%">
+                                                                    <thead>
+
+                                                                    <tr>
+                                                                        <th>ID</th>
+                                                                        <th>Name</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr ng-repeat="item in exclusionaryDrugs">
+                                                                        <td>{{item.ExclDrug.id || '-'}}</td>
+                                                                        <td>{{item.ExclDrug.name || '-'}}</td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="ibox float-e-margins">
+                                                            <div class="ibox-title">
+                                                                <h5>Exclusionary Diseases</h5>
+                                                            </div>
+                                                            <div class="ibox-content" ng-controller="TreatmentArmController">
+                                                                <table datatable="ng" class="table table-striped table-bordered table-hover" style="width:100%">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>CTEP Category</th>
+                                                                        <th>CTEP Term</th>
+                                                                        <th>MEDRA Code</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr ng-repeat="item in exclusionaryDiseases">
+                                                                        <td>{{item.ExclDisease.ctepCategory || '-'}}</td>
+                                                                        <td>{{item.ExclDisease.ctepTerm || '-'}}</td>
+                                                                        <td>{{item.ExclDisease.medraCode || '-'}}</td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+
+                                        </tab>
+                                        <tab heading="SNV">
+                                            <div class="panel-body">
+                                                <div class="ibox float-e-margins">
+                                                    <div class="ibox-content" ng-controller="TreatmentArmController">
+                                                        <div class="btn-group">
+                                                            <label class="btn btn-outline btn-success" ng-model="type" value='inclusion' btn-radio="'inclusion'" ng-class="{'active'}">INCLUSION</label>
+                                                            <label class="btn btn-outline btn-success" ng-model="type" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <table datatable="ng" class="table table-striped table-bordered table-hover" style="width:100%">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>ID</th>
+                                                                <th>Gene</th>
+                                                                <th>LOE</th>
+                                                                <th>CHR</th>
+                                                                <th>POS</th>
+                                                                <th>REF</th>
+                                                                <th>ALT</th>
+                                                                <th>LIT</th>
+                                                                <th>Protein</th>
+                                                                <th>Total # Patients Current And Former With Variant</th>
+                                                                <th>Patients Current And Former With Variant Assigned To This Arm</th>
+                                                                <th>% Of Patients Current And Former With Variant On Arm Of Total Patients With Variant</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr ng-repeat="item in snvs">
+                                                                <td ng-show="item.SNV[type]">{{item.SNV.id || '-'}}</td>
+                                                                <td ng-show="item.SNV[type]">{{item.SNV.gene || '-'}}</td>
+                                                                <td ng-show="item.SNV[type]">{{item.SNV.levelOfEvidence || '-'}}</td>
+                                                                <td ng-show="item.SNV[type]">{{item.SNV.chrom || '-'}}</td>
+                                                                <td ng-show="item.SNV[type]">{{item.SNV.position || '-'}}</td>
+                                                                <td ng-show="item.SNV[type]">{{item.SNV.reference || '-'}}</td>
+                                                                <td ng-show="item.SNV[type]">{{item.SNV.alternative || '-'}}</td>
+                                                                <td ng-show="item.SNV[type]">{{item.SNV.litRef || '-'}}</td>
+                                                                <td ng-show="item.SNV[type]">{{item.SNV.protein || '-'}}</td>
+                                                                <td ng-show="item.SNV[type]">{{item.SNV.totNumPtsWithVariant || '-'}}</td>
+                                                                <td ng-show="item.SNV[type]">{{item.SNV.ptsWithVariantOnArm || '-'}}</td>
+                                                                <td ng-show="item.SNV[type]">{{item.SNV.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </tab>
+                                        <tab heading="Indel">
+                                            <div class="panel-body">
+                                                <div class="ibox float-e-margins">
+                                                    <div class="ibox-content" ng-controller="TreatmentArmController">
+                                                        <div class="btn-group">
+                                                            <label class="btn btn-outline btn-success" ng-model="type" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
+                                                            <label class="btn btn-outline btn-success" ng-model="type" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <table datatable="ng" class="table table-striped table-bordered table-hover" style="width:100%">
+                                                            <thead>
+                                                            <tr>
+                                                                <th style="text-align:center">ID</th>
+                                                                <th style="text-align:center">Gene</th>
+                                                                <th style="text-align:center">LOE</th>
+                                                                <th style="text-align:center">CHR</th>
+                                                                <th style="text-align:center">POS</th>
+                                                                <th style="text-align:center">REF</th>
+                                                                <th style="text-align:center">ALT</th>
+                                                                <th style="text-align:center">LIT</th>
+                                                                <th style="text-align:center">Protein</th>
+                                                                <th style="text-align:center">Total # Patients Current And Former With Variant</th>
+                                                                <th style="text-align:center">Patients Current And Former With Variant Assigned To This Arm</th>
+                                                                <th style="text-align:center">% Of Patients Current And Former With Variant On Arm Of Total Patients With Variant</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr ng-repeat="item in indels">
+                                                                <td ng-show="item.Indel[type]" style="text-align:center">{{item.Indel.id || '-'}}</td>
+                                                                <td ng-show="item.Indel[type]" style="text-align:center">{{item.Indel.gene || '-'}}</td>
+                                                                <td ng-show="item.Indel[type]" style="text-align:center">{{item.Indel.levelOfEvidence || '-'}}</td>
+                                                                <td ng-show="item.Indel[type]" style="text-align:center">{{item.Indel.chrom || '-'}}</td>
+                                                                <td ng-show="item.Indel[type]" style="text-align:center">{{item.Indel.position || '-'}}</td>
+                                                                <td ng-show="item.Indel[type]" style="text-align:center">{{item.Indel.reference || '-'}}</td>
+                                                                <td ng-show="item.Indel[type]" style="text-align:center">{{item.Indel.alternative || '-'}}</td>
+                                                                <td ng-show="item.Indel[type]" style="text-align:center">{{item.Indel.litRef || '-'}}</td>
+                                                                <td ng-show="item.Indel[type]" style="text-align:center">{{item.Indel.protein || '-'}}</td>
+                                                                <td ng-show="item.Indel[type]" style="text-align:center">{{item.Indel.totNumPtsWithVariant || '-'}}</td>
+                                                                <td ng-show="item.Indel[type]" style="text-align:center">{{item.Indel.ptsWithVariantOnArm || '-'}}</td>
+                                                                <td ng-show="item.Indel[type]" style="text-align:center">{{item.Indel.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </tab>
+                                        <tab heading="CNV">
+                                            <div class="panel-body">
+                                                <div class="ibox float-e-margins">
+                                                    <div class="ibox-content" ng-controller="TreatmentArmController">
+                                                        <div class="btn-group">
+                                                            <label class="btn btn-outline btn-success" ng-model="type" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
+                                                            <label class="btn btn-outline btn-success" ng-model="type" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <table datatable="ng" class="table table-striped table-bordered table-hover" style="width:100%">
+                                                            <thead>
+                                                            <tr>
+                                                                <th style="text-align:center">Gene</th>
+                                                                <th style="text-align:center">LOE</th>
+                                                                <th style="text-align:center">CHR</th>
+                                                                <th style="text-align:center">POS</th>
+                                                                <th style="text-align:center">LIT</th>
+                                                                <th style="text-align:center">Protein</th>
+                                                                <th style="text-align:center">Total # Patients Current And Former With Copy Number</th>
+                                                                <th style="text-align:center">Patients Current And Former With Copy Number Assigned To This Arm</th>
+                                                                <th style="text-align:center">% Of Patients Current And Former With Copy Number On Arm Of Total Patients With Variant</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr ng-repeat="item in cnvs">
+                                                                <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.gene || '-'}}</td>
+                                                                <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.levelOfEvidence || '-'}}</td>
+                                                                <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.chrom || '-'}}</td>
+                                                                <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.position || '-'}}</td>
+                                                                <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.litRef || '-'}}</td>
+                                                                <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.protein || '-'}}</td>
+                                                                <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.totNumPtsWithVariant || '-'}}</td>
+                                                                <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.ptsWithVariantOnArm || '-'}}</td>
+                                                                <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </tab>
+                                        <tab heading="Gene Fusion">
+                                            <div class="panel-body">
+                                                <div class="ibox float-e-margins">
+                                                    <div class="ibox-content" ng-controller="TreatmentArmController">
+                                                        <div class="btn-group">
+                                                            <label class="btn btn-outline btn-success" ng-model="type" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
+                                                            <label class="btn btn-outline btn-success" ng-model="type" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <table datatable="ng" class="table table-striped table-bordered table-hover" style="width:100%">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>ID</th>
+                                                                <th>Gene</th>
+                                                                <th>Level Of Evidence</th>
+                                                                <th>Lit Ref</th>
+                                                                <th>Total # Patients Current and Former With Gene Fusion</th>
+                                                                <th>Patients Current And Former With Gene Fusion Assigned To This Arm</th>
+                                                                <th>% Of Patients Current And Former With Gene Fusion On Arm Of Total Patients With Gene Fusion</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr ng-repeat="item in geneFusions">
+                                                                <td ng-show="item.GF[type]">{{item.GF.id || '-'}}</td>
+                                                                <td ng-show="item.GF[type]" style="text-align:center">{{item.GF.gene || '-'}}</td>
+                                                                <td ng-show="item.GF[type]" style="text-align:center">{{item.GF.levelOfEvidence || '-'}}</td>
+                                                                <td ng-show="item.GF[type]" style="text-align:center">{{item.GF.litRef || '-'}}</td>
+                                                                <td ng-show="item.GF[type]" style="text-align:center">{{item.GF.totNumPtsWithVariant || '-'}}</td>
+                                                                <td ng-show="item.GF[type]" style="text-align:center">{{item.GF.ptsWithVariantOnArm || '-'}}</td>
+                                                                <td ng-show="item.GF[type]" style="text-align:center">{{item.GF.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </tab>
+                                        <tab heading="Non-Hotspot Rules">
+                                            <div class="panel-body">
+                                                <div class="ibox float-e-margins">
+                                                    <div class="ibox-content" ng-controller="TreatmentArmController">
+                                                        <div class="btn-group">
+                                                            <label class="btn btn-outline btn-success" ng-model="type" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
+                                                            <label class="btn btn-outline btn-success" ng-model="type" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <table datatable="ng" class="table table-striped table-bordered table-hover" style="width:100%">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>Oncomine Variant Class</th>
+                                                                <th>Gene</th>
+                                                                <th>Level Of Evidence</th>
+                                                                <th>Function</th>
+                                                                <th>Lit Ref</th>
+                                                                <th>Variant Description</th>
+                                                                <th>Exon</th>
+                                                                <th>Protein Regex</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr ng-repeat="item in nhrs">
+                                                                <td ng-show="item.NHR[type]">{{item.NHR.oncomineVariantClass || '-'}}</td>
+                                                                <td ng-show="item.NHR[type]" style="text-align:center">{{item.NHR.gene || '-'}}</td>
+                                                                <td ng-show="item.NHR[type]" style="text-align:center">{{item.NHR.levelOfEvidence || '-'}}</td>
+                                                                <td ng-show="item.NHR[type]" style="text-align:center">{{item.NHR.function || '-'}}</td>
+                                                                <td ng-show="item.NHR[type]" style="text-align:center">{{item.NHR.litRef || '-'}}</td>
+                                                                <td ng-show="item.NHR[type]" style="text-align:center">{{item.NHR.variantDescription || '-'}}</td>
+                                                                <td ng-show="item.NHR[type]" style="text-align:center">{{item.NHR.exon || '-'}}</td>
+                                                                <td ng-show="item.NHR[type]" style="text-align:center">{{item.NHR.proteinRegex || '-'}}</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </tab>
+                                        <tab heading="Non-Sequencing Assays">
+                                            <div class="panel-body">
+                                                <div class="ibox float-e-margins">
+                                                    <div class="ibox-content" ng-controller="TreatmentArmController">
+                                                        <div class="btn-group">
+                                                            <label class="btn btn-outline btn-success" ng-model="type" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
+                                                            <label class="btn btn-outline btn-success" ng-model="type" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
+                                                        </div>
+                                                        <br><br>
+                                                        <table datatable="ng" class="table table-striped table-bordered table-hover" style="width:100%">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>Assay</th>
+                                                                <th>Gene</th>
+                                                                <th>Result</th>
+                                                                <th>Variant Association</th>
+                                                                <th>LOE</th>
+                                                                <th>Total # Patients Current And Former With Gene</th>
+                                                                <th>Patients Current And Former With Gene Assigned To This Arm</th>
+                                                                <th>% Of Patients Current And Former With Gene On Arm Of Total Patients With Variant</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr ng-repeat="item in nonSequencingAssays">
+                                                                <td ng-show="item.NsAssay[type]" style="text-align:center">{{item.NsAssay.assay || '-'}}</td>
+                                                                <td ng-show="item.NsAssay[type]" style="text-align:center">{{item.NsAssay.gene || '-'}}</td>
+                                                                <td ng-show="item.NsAssay[type]" style="text-align:center">{{item.NsAssay.result || '-'}}</td>
+                                                                <td ng-show="item.NsAssay[type]" style="text-align:center">{{item.NsAssay.variantAssociation || '-'}}</td>
+                                                                <td ng-show="item.NsAssay[type]" style="text-align:center">{{item.NsAssay.levelOfEvidence || '-'}}</td>
+                                                                <td ng-show="item.NsAssay[type]" style="text-align:center">{{item.NsAssay.totNumPtsWithGene || '-'}}</td>
+                                                                <td ng-show="item.NsAssay[type]" style="text-align:center">{{item.NsAssay.ptsWithGeneOnArm || '-'}}</td>
+                                                                <td ng-show="item.NsAssay[type]" style="text-align:center">{{item.NsAssay.pctPtsWithGeneOnArmOfTotPtsWithGene || '-'}}</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </tab>
+                                    </tabset>
+                                </div>
+                            </div>
+
+
+                        </tab>
+                    </tabset>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 
