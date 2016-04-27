@@ -1,10 +1,34 @@
 angular.module('treatment-arm.matchbox',[])
     .controller('TreatmentArmController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, treatmentArmApi) {
 
-        this.dtOptions = DTOptionsBuilder.newOptions()
+        /*this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(25);
+        this.dtOptions = DTOptionsBuilder.newOptions()
+            .withOption('lengthChange', false);*/
+
+        this.dtOptions = DTOptionsBuilder.newOptions()
+            .withOption('paging', false)
+            .withOption('info', false);
+       /*this.dtOptions = DTOptionsBuilder.newOptions()
+            .withOption('ordering', false);*/
+        /*this.dtOptions = DTOptionsBuilder.newOptions()
+            .withOption('info', false);*/
+
         this.dtColumnDefs = [];
         this.dtInstance = {};
+
+        /*
+         .controller('DashboardActivityFeedController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, reportApi ) {
+         this.dtOptions = DTOptionsBuilder.newOptions()
+         .withDisplayLength(25);
+         this.dtOptions = DTOptionsBuilder.newOptions()
+         .withOption('bLengthChange', false);
+
+         this.dtColumnDefs = [];
+         this.dtInstance = {};
+
+         $scope.activityList = [];
+         */
 
         $scope.pieDataset = [
             {
@@ -398,18 +422,7 @@ angular.module('treatment-arm.matchbox',[])
                     },
                 }
             ];
-        /*
-         <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.id || '-'}}</td>
-         <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.levelOfEvidence || '-'}}</td>
-         <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.chrom || '-'}}</td>
-         <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.position || '-'}}</td>
-         <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.litRef || '-'}}</td>
-         <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.protein || '-'}}</td>
-         <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.totNumPtsWithVariant || '-'}}</td>
-         <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.ptsWithVariantOnArm || '-'}}</td>
-         <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
 
-         */
         $scope.cnvs = [
             {
                 "CNV": {
