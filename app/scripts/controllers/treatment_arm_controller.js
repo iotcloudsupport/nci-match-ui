@@ -9,6 +9,7 @@ angular.module('treatment-arm.matchbox',[])
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withOption('paging', false)
             .withOption('info', false);
+
        /*this.dtOptions = DTOptionsBuilder.newOptions()
             .withOption('ordering', false);*/
         /*this.dtOptions = DTOptionsBuilder.newOptions()
@@ -16,6 +17,8 @@ angular.module('treatment-arm.matchbox',[])
 
         this.dtColumnDefs = [];
         this.dtInstance = {};
+
+        this.activeChoice = 'inclusion';
 
         /*
          .controller('DashboardActivityFeedController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, reportApi ) {
@@ -165,6 +168,7 @@ angular.module('treatment-arm.matchbox',[])
             },
             legend: {
                 show: true,
+                //position: "nw"
                 container: '#legendContainer'
             }
         };
