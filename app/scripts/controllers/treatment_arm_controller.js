@@ -73,7 +73,7 @@ angular.module('treatment-arm.matchbox',[])
                   $scope.diseasePieDataset = newDiseaseData;
             });
         };
-        
+
         function setupTooltip(label, xval, yval) {
             /*
              var retString = label;
