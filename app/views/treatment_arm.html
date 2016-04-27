@@ -121,7 +121,7 @@
                                             <div class="ibox-title">
                                                 <h5>Patient Assignment Outcome</h5>
                                             </div>
-                                            <<div class="ibox-content" ng-controller="TreatmentArmController as TreatmentArmCtrl" ng-init="getPieDataSet()">
+                                            <<div class="ibox-content" ng-controller="TreatmentArmController as TreatmentArmCtrl" ng-init="getPatientStatusDataSet()">
                                                 <div class="flot-chart" style="height:200px">
                                                     <flot dataset="pieDataset" options="pieOptions" height="180px" style="margin:10px"></flot>
 
@@ -139,7 +139,7 @@
                                             <div class="ibox-title">
                                                 <h5>Diseases Represented In Assignments To This Treatment Arm</h5>
                                             </div>
-                                            <div class="ibox-content" ng-controller="TreatmentArmController">
+                                            <<div class="ibox-content" ng-controller="TreatmentArmController as TreatmentArmCtrl" ng-init="getPatientDiseaseDataSet()">
                                                 <div class="flot-chart" style="height:200px">
                                                     <flot dataset="diseasePieDataset" options="diseasePieOptions"  style="margin:10px"></flot> <!-- height="180px" -->
                                                 </div>

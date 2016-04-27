@@ -40,7 +40,7 @@ angular.module('treatment-arm.matchbox',[])
                 });
         };
 
-        $scope.getPieDataSet = function(){
+        $scope.getPatientStatusDataSet = function(){
             treatmentArmApi.getPatientStatusGraph($stateParams.treatmentArmId)
                 .then(function(d){
                     modifiedData = [];
@@ -53,81 +53,27 @@ angular.module('treatment-arm.matchbox',[])
                             })
                         });
                     });
-                    console.log(modifiedData);
                     $scope.pieDataset = modifiedData
                 });
         };
 
-        $scope.diseasePieDataset = [
-            {
-                label: "Endocrine cancer, NOS", //--215re, 205re, 203re",
-                data: 3,
-                color: "#1c84c6",
-                psns: "215re, 205re, 203re"
-            },
-            {
-                label: "Glioblastoma multiforme", //--201re,  206re, 252re, 255re, 302re, 202re",
-                data: 6,
-                color: "#f8ac59",
-                psns: "201re,  206re, 252re, 255re, 302re, 202re"
-            },
-            {
-                label: "Head & neck cancer, NOS", //--202re, 211re, 312re, 304re",
-                data: 4,
-                color: "#23c6c8",
-                psns: "202re, 211re, 312re, 304re"
-            },
-            {
-                label: "Retinoblastoma", //--201re,  206re, 252re, 255re, 302re, 202re",
-                data: 2,
-                color: "#62c2ff",
-                psns: "201re,  206re, 252re, 255re, 302re, 202re"
-            },
-            {
-                label: "Skin Cancer, NOS", //--202re, 211re, 312re, 304re",
-                data: 7,
-                color: "#f8ce9f",
-                psns: "202re, 211re, 312re, 304re"
-            },
-            {
-                label: "Breast Cancer, NOS", //--201re,  206re, 252re, 255re, 302re, 202re",
-                data: 10,
-                color: "#7dc3c8",
-                psns: "201re,  206re, 252re, 255re, 302re, 202re"
-            },
-            {
-                label: "Bone cancer, NOS", //--202re, 211re, 312re, 304re",
-                data: 4,
-                color: "#29516b",
-                psns: "202re, 211re, 312re, 304re"
-            },
-            {
-                label: "Chrondrosarcoma", //--201re,  206re, 252re, 255re, 302re, 202re",
-                data: 2,
-                color: "#8c6231",
-                psns: "201re,  206re, 252re, 255re, 302re, 202re"
-            },
-            {
-                label: "Diffuse brainstem glioma", //--202re, 211re, 312re, 304re",
-                data: 7,
-                color: "#0D4B4c",
-                psns: "202re, 211re, 312re, 304re"
-            },
-            {
-                label: "Anaplastic astrocytoma", //--201re,  206re, 252re, 255re, 302re, 202re",
-                data: 10,
-                color: "#1A7585",
-                psns: "201re,  206re, 252re, 255re, 302re, 202re"
-            },
-            {
-                label: "Endocrine cancer, NOS", //--202re, 211re, 312re, 304re",
-                data: 4,
-                color: "#23c6c8",
-                psns: "202re, 211re, 312re, 304re"
-            }
-
-        ];
-
+        $scope.getPatientDiseaseDataSet = function(){
+          treatmentArmApi.getPatientDiseaseGraph($stateParams.treatmentArmId)
+              .then(function(d){
+                  newDiseaseData = [];
+                  angular.forEach(d.data[0].disease_array, function(object){
+                      newDiseaseData.push({
+                          label: object.label,
+                          data: object.data,
+                          psns: "" + angular.forEach(object.psns, function(psn){
+                              psn + ",";
+                          })
+                      });
+                  });
+                  $scope.diseasePieDataset = newDiseaseData;
+            });
+        };
+        
         function setupTooltip(label, xval, yval) {
             /*
              var retString = label;

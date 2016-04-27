@@ -55,6 +55,9 @@ angular.module('http.matchbox', [])
             },
             getPatientStatusGraph: function(id){
                 return $http.get(matchConfig.treatmentArmApiBaseUrl + '/patientStatusGraph/' + id);
+            },
+            getPatientDiseaseGraph: function(id){
+                return $http.get(matchConfig.treatmentArmApiBaseUrl + '/patientDiseaseGraph/'+ id);
             }
         };
     })
