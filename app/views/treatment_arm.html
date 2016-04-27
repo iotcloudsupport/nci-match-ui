@@ -157,8 +157,12 @@
                                     <div class="ibox-title">
                                         <h5>All Patients Data</h5>
                                     </div>
-                                    <div class="ibox-content" ng-controller="TreatmentArmController">
-                                        <table datatable="ng" class="table table-striped table-bordered table-hover">
+                                    <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
+                                        <table datatable="ng"
+                                               dt-options="TaCtrl.dtOptions"
+                                               dt-column-defs="TaCtrl.dtColumnDefs"
+                                               dt-instance="TaCtrl.dtInstance"
+                                               class="table table-striped table-bordered table-hover">
                                             <thead>
                                                 <tr>
                                                     <th>Slot</th>
@@ -206,8 +210,12 @@
                                                             <div class="ibox-title">
                                                                 <h5>Inclusionary Drugs</h5>
                                                             </div>
-                                                            <div class="ibox-content" ng-controller="TreatmentArmController">
-                                                                <table datatable="ng" class="table table-striped table-bordered table-hover" style="width:100%">
+                                                            <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
+                                                                <table datatable="ng"
+                                                                       dt-options="TaCtrl.dtOptions"
+                                                                       dt-column-defs="TaCtrl.dtColumnDefs"
+                                                                       dt-instance="TaCtrl.dtInstance"
+                                                                       class="table table-striped table-bordered table-hover" style="width:100%">
                                                                     <thead>
                                                                     <!--<tr>
                                                                         <th colspan="2">Inclusionary Drugs</th>
@@ -232,8 +240,12 @@
                                                             <div class="ibox-title">
                                                                 <h5>Inclusionary Diseases</h5>
                                                             </div>
-                                                            <div class="ibox-content" ng-controller="TreatmentArmController">
-                                                                <table datatable="ng" class="table table-striped table-bordered table-hover" style="width:100%">
+                                                            <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
+                                                                <table datatable="ng"
+                                                                       dt-options="TaCtrl.dtOptions"
+                                                                       dt-column-defs="TaCtrl.dtColumnDefs"
+                                                                       dt-instance="TaCtrl.dtInstance"
+                                                                       class="table table-striped table-bordered table-hover" style="width:100%">
                                                                     <thead>
 
                                                                     <tr>
@@ -260,8 +272,12 @@
                                                             <div class="ibox-title">
                                                                 <h5>Exclusionary Drugs</h5>
                                                             </div>
-                                                            <div class="ibox-content" ng-controller="TreatmentArmController">
-                                                                <table datatable="ng" class="table table-striped table-bordered table-hover" style="width:100%">
+                                                            <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
+                                                                <table datatable="ng"
+                                                                        dt-options="TaCtrl.dtOptions"
+                                                                        dt-column-defs="TaCtrl.dtColumnDefs"
+                                                                        dt-instance="TaCtrl.dtInstance"
+                                                                        class="table table-striped table-bordered table-hover" style="width:100%">
                                                                     <thead>
 
                                                                     <tr>
@@ -284,8 +300,12 @@
                                                             <div class="ibox-title">
                                                                 <h5>Exclusionary Diseases</h5>
                                                             </div>
-                                                            <div class="ibox-content" ng-controller="TreatmentArmController">
-                                                                <table datatable="ng" class="table table-striped table-bordered table-hover" style="width:100%">
+                                                            <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
+                                                                <table datatable="ng"
+                                                                        dt-options="TaCtrl.dtOptions"
+                                                                        dt-column-defs="TaCtrl.dtColumnDefs"
+                                                                        dt-instance="TaCtrl.dtInstance"
+                                                                        class="table table-striped table-bordered table-hover" style="width:100%">
                                                                     <thead>
                                                                     <tr>
                                                                         <th>CTEP Category</th>
@@ -314,13 +334,17 @@
                                         <tab heading="SNV">
                                             <div class="panel-body">
                                                 <div class="ibox float-e-margins">
-                                                    <div class="ibox-content" ng-controller="TreatmentArmController">
+                                                    <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
                                                         <div class="btn-group">
                                                             <label class="btn btn-outline btn-success" ng-model="type" value='inclusion' btn-radio="'inclusion'" ng-class="{'active'}">INCLUSION</label>
                                                             <label class="btn btn-outline btn-success" ng-model="type" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
                                                         </div>
                                                         <br><br>
-                                                        <table datatable="ng" class="table table-striped table-bordered table-hover" style="width:100%">
+                                                        <table datatable="ng"
+                                                               dt-options="TaCtrl.dtOptions"
+                                                               dt-column-defs="TaCtrl.dtColumnDefs"
+                                                               dt-instance="TaCtrl.dtInstance"
+                                                               class="table table-striped table-bordered table-hover" style="width:100%">
                                                             <thead>
                                                             <tr>
                                                                 <th>ID</th>
@@ -361,13 +385,17 @@
                                         <tab heading="Indel">
                                             <div class="panel-body">
                                                 <div class="ibox float-e-margins">
-                                                    <div class="ibox-content" ng-controller="TreatmentArmController">
+                                                    <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
                                                         <div class="btn-group">
                                                             <label class="btn btn-outline btn-success" ng-model="type" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
                                                             <label class="btn btn-outline btn-success" ng-model="type" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
                                                         </div>
                                                         <br><br>
-                                                        <table datatable="ng" class="table table-striped table-bordered table-hover" style="width:100%">
+                                                        <table datatable="ng"
+                                                               dt-options="TaCtrl.dtOptions"
+                                                               dt-column-defs="TaCtrl.dtColumnDefs"
+                                                               dt-instance="TaCtrl.dtInstance"
+                                                               class="table table-striped table-bordered table-hover" style="width:100%">
                                                             <thead>
                                                             <tr>
                                                                 <th style="text-align:center">ID</th>
@@ -408,13 +436,17 @@
                                         <tab heading="CNV">
                                             <div class="panel-body">
                                                 <div class="ibox float-e-margins">
-                                                    <div class="ibox-content" ng-controller="TreatmentArmController">
+                                                    <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
                                                         <div class="btn-group">
                                                             <label class="btn btn-outline btn-success" ng-model="type" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
                                                             <label class="btn btn-outline btn-success" ng-model="type" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
                                                         </div>
                                                         <br><br>
-                                                        <table datatable="ng" class="table table-striped table-bordered table-hover" style="width:100%">
+                                                        <table datatable="ng"
+                                                               dt-options="TaCtrl.dtOptions"
+                                                               dt-column-defs="TaCtrl.dtColumnDefs"
+                                                               dt-instance="TaCtrl.dtInstance"
+                                                               class="table table-striped table-bordered table-hover" style="width:100%">
                                                             <thead>
                                                             <tr>
                                                                 <th style="text-align:center">Gene</th>
@@ -449,19 +481,23 @@
                                         <tab heading="Gene Fusion">
                                             <div class="panel-body">
                                                 <div class="ibox float-e-margins">
-                                                    <div class="ibox-content" ng-controller="TreatmentArmController">
+                                                    <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
                                                         <div class="btn-group">
                                                             <label class="btn btn-outline btn-success" ng-model="type" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
                                                             <label class="btn btn-outline btn-success" ng-model="type" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
                                                         </div>
                                                         <br><br>
-                                                        <table datatable="ng" class="table table-striped table-bordered table-hover" style="width:100%">
+                                                        <table datatable="ng"
+                                                               dt-options="TaCtrl.dtOptions"
+                                                               dt-column-defs="TaCtrl.dtColumnDefs"
+                                                               dt-instance="TaCtrl.dtInstance"
+                                                               class="table table-striped table-bordered table-hover" style="width:100%">
                                                             <thead>
                                                             <tr>
                                                                 <th>ID</th>
                                                                 <th>Gene</th>
-                                                                <th>Level Of Evidence</th>
-                                                                <th>Lit Ref</th>
+                                                                <th>LOE</th>
+                                                                <th>LIT</th>
                                                                 <th>Total # Patients Current and Former With Gene Fusion</th>
                                                                 <th>Patients Current And Former With Gene Fusion Assigned To This Arm</th>
                                                                 <th>% Of Patients Current And Former With Gene Fusion On Arm Of Total Patients With Gene Fusion</th>
@@ -486,21 +522,25 @@
                                         <tab heading="Non-Hotspot Rules">
                                             <div class="panel-body">
                                                 <div class="ibox float-e-margins">
-                                                    <div class="ibox-content" ng-controller="TreatmentArmController">
+                                                    <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
                                                         <div class="btn-group">
                                                             <label class="btn btn-outline btn-success" ng-model="type" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
                                                             <label class="btn btn-outline btn-success" ng-model="type" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
                                                         </div>
                                                         <br><br>
-                                                        <table datatable="ng" class="table table-striped table-bordered table-hover" style="width:100%">
+                                                        <table datatable="ng"
+                                                               dt-options="TaCtrl.dtOptions"
+                                                               dt-column-defs="TaCtrl.dtColumnDefs"
+                                                               dt-instance="TaCtrl.dtInstance"
+                                                               class="table table-striped table-bordered table-hover" style="width:100%">
                                                             <thead>
                                                             <tr>
                                                                 <th>Oncomine Variant Class</th>
                                                                 <th>Gene</th>
-                                                                <th>Level Of Evidence</th>
+                                                                <th>LOE</th>
                                                                 <th>Function</th>
-                                                                <th>Lit Ref</th>
-                                                                <th>Variant Description</th>
+                                                                <th>LIT</th>
+                                                                <th>PROTEIN</th>
                                                                 <th>Exon</th>
                                                                 <th>Protein Regex</th>
                                                             </tr>
@@ -525,13 +565,17 @@
                                         <tab heading="Non-Sequencing Assays">
                                             <div class="panel-body">
                                                 <div class="ibox float-e-margins">
-                                                    <div class="ibox-content" ng-controller="TreatmentArmController">
+                                                    <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
                                                         <div class="btn-group">
                                                             <label class="btn btn-outline btn-success" ng-model="type" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
                                                             <label class="btn btn-outline btn-success" ng-model="type" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
                                                         </div>
                                                         <br><br>
-                                                        <table datatable="ng" class="table table-striped table-bordered table-hover" style="width:100%">
+                                                        <table datatable="ng"
+                                                               dt-options="TaCtrl.dtOptions"
+                                                               dt-column-defs="TaCtrl.dtColumnDefs"
+                                                               dt-instance="TaCtrl.dtInstance"
+                                                               class="table table-striped table-bordered table-hover" style="width:100%">
                                                             <thead>
                                                             <tr>
                                                                 <th>Assay</th>
