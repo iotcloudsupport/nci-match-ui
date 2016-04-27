@@ -49,6 +49,12 @@ angular.module('http.matchbox', [])
         return {
             getTreatmentArms: function() {
                 return $http.get(matchConfig.treatmentArmApiBaseUrl + '/basicTreatmentArms');
+            },
+            getTreatmentArmDetails: function(id) {
+                return $http.get(matchConfig.treatmentArmApiBaseUrl + '/treatmentArms/' + id);
+            },
+            getPatientStatusGraph: function(id){
+                return $http.get(matchConfig.treatmentArmApiBaseUrl + '/patientStatusGraph/' + id);
             }
         };
     })

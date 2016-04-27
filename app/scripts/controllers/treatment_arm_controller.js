@@ -1,5 +1,5 @@
 angular.module('treatment-arm.matchbox',[])
-    .controller('TreatmentArmController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, treatmentArmApi) {
+    .controller('TreatmentArmController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, treatmentArmApi, $stateParams) {
 
         /*this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(25);
@@ -30,32 +30,33 @@ angular.module('treatment-arm.matchbox',[])
          $scope.activityList = [];
          */
 
-        $scope.pieDataset = [
-            {
-                label: "NOT_ELIGIBLE",
-                data: 3,
-                color: "#bababa",
-                psns: "215re, 203re, 312re"
-            },
-            {
-                label: "PENDING_APPROVAL",
-                data: 2,
-                color: "#9933FF",
-                psns: "201re, 302re"
-            },
-            {
-                label: "ON_TREATMENT_ARM",
-                data: 5,
-                color: "#00bd07",
-                psns: "202re, 211re, 252re, 255re, 304re"
-            },
-            {
-                label: "FORMERLY_ON_TREATMENT_ARM",
-                data: 2,
-                color: "#f8c706",
-                psns: "205re, 206re"
-            }
-        ];
+        $scope.pieDataSet = [];
+
+        $scope.displayTreatmentArm = function() {
+            treatmentArmApi
+                .getTreatmentArmDetails($stateParams.treatmentArmId)
+                .then(function(d) {
+                    console.log(d.data);
+                });
+        };
+
+        $scope.getPieDataSet = function(){
+            treatmentArmApi.getPatientStatusGraph($stateParams.treatmentArmId)
+                .then(function(d){
+                    modifiedData = [];
+                    angular.forEach(d.data[0].status_array, function(object){
+                        modifiedData.push({
+                            label:  object.label,
+                            data: object.data,
+                            psns: "" + angular.forEach(object.psns, function(psn){
+                                psn + ",";
+                            })
+                        });
+                    });
+                    console.log(modifiedData);
+                    $scope.pieDataset = modifiedData
+                });
+        };
 
         $scope.diseasePieDataset = [
             {
