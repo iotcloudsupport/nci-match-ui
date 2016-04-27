@@ -117,6 +117,60 @@
                         <tab heading="Analysis">
                             <div class="panel-body">
                                 <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="ibox float-e-margins">
+                                            <div class="ibox-title">
+                                                <h5>Charts</h5>
+                                            </div>
+                                            <div class="ibox-content">
+                                                <carousel>
+                                                    <slide class="active">
+
+                                                        <div class="ibox float-e-margins">
+                                                            <div class="ibox-title">
+                                                                <h5>Diseases Represented In Assignments To This Treatment Arm</h5>
+                                                            </div>
+                                                            <div class="ibox-content" ng-controller="TreatmentArmController">
+                                                                <div style="float:left">
+                                                                    <div id="diseaseLegendContainer" style="padding:10px 40px;text-align:left;overflow-y:auto"></div>
+                                                                </div>
+                                                                <div class="flot-chart" style="height:300px">
+
+                                                                    <flot dataset="diseasePieDataset" options="diseasePieOptions" height="300px"></flot>
+
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </slide>
+                                                    <slide>
+
+                                                            <div class="ibox float-e-margins">
+                                                                <div class="ibox-title">
+                                                                    <h5>Patient Assignment Outcome</h5>
+                                                                </div>
+                                                                <div class="ibox-content" ng-controller="TreatmentArmController">
+                                                                    <div style="float:left">
+                                                                        <div id="legendContainer" style="padding:10px 40px;text-align:left;overflow-y:auto"></div>
+                                                                    </div>
+                                                                    <div class="flot-chart" style="height:300px">
+
+                                                                        <flot dataset="pieDataset" options="pieOptions" height="300px"></flot>
+
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+
+                                                    </slide>
+                                                </carousel>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<div class="row">
                                     <div class="col-lg-6">
                                         <div class="ibox float-e-margins">
                                             <div class="ibox-title">
@@ -142,7 +196,7 @@
                                             </div>
                                             <div class="ibox-content" ng-controller="TreatmentArmController">
                                                 <div class="flot-chart" style="height:200px">
-                                                    <flot dataset="diseasePieDataset" options="diseasePieOptions"  style="margin:10px"></flot> <!-- height="180px" -->
+                                                    <flot dataset="diseasePieDataset" options="diseasePieOptions"  style="margin:10px"></flot>
                                                 </div>
                                             </div>
                                         </div>
@@ -152,7 +206,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-title">
                                         <h5>All Patients Data</h5>
@@ -335,9 +389,10 @@
                                             <div class="panel-body">
                                                 <div class="ibox float-e-margins">
                                                     <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
+                                                        <!--<pre>{{TaCtrl.activeChoice || 'null'}}</pre>-->
                                                         <div class="btn-group">
-                                                            <label class="btn btn-outline btn-success" ng-model="type" value='inclusion' btn-radio="'inclusion'" ng-class="{'active'}">INCLUSION</label>
-                                                            <label class="btn btn-outline btn-success" ng-model="type" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
+                                                            <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='inclusion' btn-radio="'inclusion'" ng-class="{'active'}">INCLUSION</label>
+                                                            <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
                                                         </div>
                                                         <br><br>
                                                         <table datatable="ng"
@@ -363,18 +418,18 @@
                                                             </thead>
                                                             <tbody>
                                                             <tr ng-repeat="item in snvs">
-                                                                <td ng-show="item.SNV[type]">{{item.SNV.id || '-'}}</td>
-                                                                <td ng-show="item.SNV[type]">{{item.SNV.gene || '-'}}</td>
-                                                                <td ng-show="item.SNV[type]">{{item.SNV.levelOfEvidence || '-'}}</td>
-                                                                <td ng-show="item.SNV[type]">{{item.SNV.chrom || '-'}}</td>
-                                                                <td ng-show="item.SNV[type]">{{item.SNV.position || '-'}}</td>
-                                                                <td ng-show="item.SNV[type]">{{item.SNV.reference || '-'}}</td>
-                                                                <td ng-show="item.SNV[type]">{{item.SNV.alternative || '-'}}</td>
-                                                                <td ng-show="item.SNV[type]">{{item.SNV.litRef || '-'}}</td>
-                                                                <td ng-show="item.SNV[type]">{{item.SNV.protein || '-'}}</td>
-                                                                <td ng-show="item.SNV[type]">{{item.SNV.totNumPtsWithVariant || '-'}}</td>
-                                                                <td ng-show="item.SNV[type]">{{item.SNV.ptsWithVariantOnArm || '-'}}</td>
-                                                                <td ng-show="item.SNV[type]">{{item.SNV.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
+                                                                <td ng-show="item.SNV[TaCtrl.activeChoice]">{{item.SNV.id || '-'}}</td>
+                                                                <td ng-show="item.SNV[TaCtrl.activeChoice]">{{item.SNV.gene || '-'}}</td>
+                                                                <td ng-show="item.SNV[TaCtrl.activeChoice]">{{item.SNV.levelOfEvidence || '-'}}</td>
+                                                                <td ng-show="item.SNV[TaCtrl.activeChoice]">{{item.SNV.chrom || '-'}}</td>
+                                                                <td ng-show="item.SNV[TaCtrl.activeChoice]">{{item.SNV.position || '-'}}</td>
+                                                                <td ng-show="item.SNV[TaCtrl.activeChoice]">{{item.SNV.reference || '-'}}</td>
+                                                                <td ng-show="item.SNV[TaCtrl.activeChoice]">{{item.SNV.alternative || '-'}}</td>
+                                                                <td ng-show="item.SNV[TaCtrl.activeChoice]">{{item.SNV.litRef || '-'}}</td>
+                                                                <td ng-show="item.SNV[TaCtrl.activeChoice]">{{item.SNV.protein || '-'}}</td>
+                                                                <td ng-show="item.SNV[TaCtrl.activeChoice]">{{item.SNV.totNumPtsWithVariant || '-'}}</td>
+                                                                <td ng-show="item.SNV[TaCtrl.activeChoice]">{{item.SNV.ptsWithVariantOnArm || '-'}}</td>
+                                                                <td ng-show="item.SNV[TaCtrl.activeChoice]">{{item.SNV.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
                                                             </tr>
                                                             </tbody>
                                                         </table>
@@ -387,8 +442,8 @@
                                                 <div class="ibox float-e-margins">
                                                     <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
                                                         <div class="btn-group">
-                                                            <label class="btn btn-outline btn-success" ng-model="type" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
-                                                            <label class="btn btn-outline btn-success" ng-model="type" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
+                                                            <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
+                                                            <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
                                                         </div>
                                                         <br><br>
                                                         <table datatable="ng"
@@ -414,18 +469,18 @@
                                                             </thead>
                                                             <tbody>
                                                             <tr ng-repeat="item in indels">
-                                                                <td ng-show="item.Indel[type]" style="text-align:center">{{item.Indel.id || '-'}}</td>
-                                                                <td ng-show="item.Indel[type]" style="text-align:center">{{item.Indel.gene || '-'}}</td>
-                                                                <td ng-show="item.Indel[type]" style="text-align:center">{{item.Indel.levelOfEvidence || '-'}}</td>
-                                                                <td ng-show="item.Indel[type]" style="text-align:center">{{item.Indel.chrom || '-'}}</td>
-                                                                <td ng-show="item.Indel[type]" style="text-align:center">{{item.Indel.position || '-'}}</td>
-                                                                <td ng-show="item.Indel[type]" style="text-align:center">{{item.Indel.reference || '-'}}</td>
-                                                                <td ng-show="item.Indel[type]" style="text-align:center">{{item.Indel.alternative || '-'}}</td>
-                                                                <td ng-show="item.Indel[type]" style="text-align:center">{{item.Indel.litRef || '-'}}</td>
-                                                                <td ng-show="item.Indel[type]" style="text-align:center">{{item.Indel.protein || '-'}}</td>
-                                                                <td ng-show="item.Indel[type]" style="text-align:center">{{item.Indel.totNumPtsWithVariant || '-'}}</td>
-                                                                <td ng-show="item.Indel[type]" style="text-align:center">{{item.Indel.ptsWithVariantOnArm || '-'}}</td>
-                                                                <td ng-show="item.Indel[type]" style="text-align:center">{{item.Indel.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
+                                                                <td ng-show="item.Indel[TaCtrl.activeChoice]" style="text-align:center">{{item.Indel.id || '-'}}</td>
+                                                                <td ng-show="item.Indel[TaCtrl.activeChoice]" style="text-align:center">{{item.Indel.gene || '-'}}</td>
+                                                                <td ng-show="item.Indel[TaCtrl.activeChoice]" style="text-align:center">{{item.Indel.levelOfEvidence || '-'}}</td>
+                                                                <td ng-show="item.Indel[TaCtrl.activeChoice]" style="text-align:center">{{item.Indel.chrom || '-'}}</td>
+                                                                <td ng-show="item.Indel[TaCtrl.activeChoice]" style="text-align:center">{{item.Indel.position || '-'}}</td>
+                                                                <td ng-show="item.Indel[TaCtrl.activeChoice]" style="text-align:center">{{item.Indel.reference || '-'}}</td>
+                                                                <td ng-show="item.Indel[TaCtrl.activeChoice]" style="text-align:center">{{item.Indel.alternative || '-'}}</td>
+                                                                <td ng-show="item.Indel[TaCtrl.activeChoice]" style="text-align:center">{{item.Indel.litRef || '-'}}</td>
+                                                                <td ng-show="item.Indel[TaCtrl.activeChoice]" style="text-align:center">{{item.Indel.protein || '-'}}</td>
+                                                                <td ng-show="item.Indel[TaCtrl.activeChoice]" style="text-align:center">{{item.Indel.totNumPtsWithVariant || '-'}}</td>
+                                                                <td ng-show="item.Indel[TaCtrl.activeChoice]" style="text-align:center">{{item.Indel.ptsWithVariantOnArm || '-'}}</td>
+                                                                <td ng-show="item.Indel[TaCtrl.activeChoice]" style="text-align:center">{{item.Indel.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
                                                             </tr>
                                                             </tbody>
                                                         </table>
@@ -438,8 +493,8 @@
                                                 <div class="ibox float-e-margins">
                                                     <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
                                                         <div class="btn-group">
-                                                            <label class="btn btn-outline btn-success" ng-model="type" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
-                                                            <label class="btn btn-outline btn-success" ng-model="type" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
+                                                            <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
+                                                            <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
                                                         </div>
                                                         <br><br>
                                                         <table datatable="ng"
@@ -462,15 +517,15 @@
                                                             </thead>
                                                             <tbody>
                                                             <tr ng-repeat="item in cnvs">
-                                                                <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.gene || '-'}}</td>
-                                                                <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.levelOfEvidence || '-'}}</td>
-                                                                <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.chrom || '-'}}</td>
-                                                                <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.position || '-'}}</td>
-                                                                <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.litRef || '-'}}</td>
-                                                                <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.protein || '-'}}</td>
-                                                                <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.totNumPtsWithVariant || '-'}}</td>
-                                                                <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.ptsWithVariantOnArm || '-'}}</td>
-                                                                <td ng-show="item.CNV[type]" style="text-align:center">{{item.CNV.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
+                                                                <td ng-show="item.CNV[TaCtrl.activeChoice]" style="text-align:center">{{item.CNV.gene || '-'}}</td>
+                                                                <td ng-show="item.CNV[TaCtrl.activeChoice]" style="text-align:center">{{item.CNV.levelOfEvidence || '-'}}</td>
+                                                                <td ng-show="item.CNV[TaCtrl.activeChoice]" style="text-align:center">{{item.CNV.chrom || '-'}}</td>
+                                                                <td ng-show="item.CNV[TaCtrl.activeChoice]" style="text-align:center">{{item.CNV.position || '-'}}</td>
+                                                                <td ng-show="item.CNV[TaCtrl.activeChoice]" style="text-align:center">{{item.CNV.litRef || '-'}}</td>
+                                                                <td ng-show="item.CNV[TaCtrl.activeChoice]" style="text-align:center">{{item.CNV.protein || '-'}}</td>
+                                                                <td ng-show="item.CNV[TaCtrl.activeChoice]" style="text-align:center">{{item.CNV.totNumPtsWithVariant || '-'}}</td>
+                                                                <td ng-show="item.CNV[TaCtrl.activeChoice]" style="text-align:center">{{item.CNV.ptsWithVariantOnArm || '-'}}</td>
+                                                                <td ng-show="item.CNV[TaCtrl.activeChoice]" style="text-align:center">{{item.CNV.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
                                                             </tr>
                                                             </tbody>
                                                         </table>
@@ -483,8 +538,8 @@
                                                 <div class="ibox float-e-margins">
                                                     <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
                                                         <div class="btn-group">
-                                                            <label class="btn btn-outline btn-success" ng-model="type" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
-                                                            <label class="btn btn-outline btn-success" ng-model="type" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
+                                                            <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
+                                                            <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
                                                         </div>
                                                         <br><br>
                                                         <table datatable="ng"
@@ -505,13 +560,13 @@
                                                             </thead>
                                                             <tbody>
                                                             <tr ng-repeat="item in geneFusions">
-                                                                <td ng-show="item.GF[type]">{{item.GF.id || '-'}}</td>
-                                                                <td ng-show="item.GF[type]" style="text-align:center">{{item.GF.gene || '-'}}</td>
-                                                                <td ng-show="item.GF[type]" style="text-align:center">{{item.GF.levelOfEvidence || '-'}}</td>
-                                                                <td ng-show="item.GF[type]" style="text-align:center">{{item.GF.litRef || '-'}}</td>
-                                                                <td ng-show="item.GF[type]" style="text-align:center">{{item.GF.totNumPtsWithVariant || '-'}}</td>
-                                                                <td ng-show="item.GF[type]" style="text-align:center">{{item.GF.ptsWithVariantOnArm || '-'}}</td>
-                                                                <td ng-show="item.GF[type]" style="text-align:center">{{item.GF.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
+                                                                <td ng-show="item.GF[TaCtrl.activeChoice]">{{item.GF.id || '-'}}</td>
+                                                                <td ng-show="item.GF[TaCtrl.activeChoice]" style="text-align:center">{{item.GF.gene || '-'}}</td>
+                                                                <td ng-show="item.GF[TaCtrl.activeChoice]" style="text-align:center">{{item.GF.levelOfEvidence || '-'}}</td>
+                                                                <td ng-show="item.GF[TaCtrl.activeChoice]" style="text-align:center">{{item.GF.litRef || '-'}}</td>
+                                                                <td ng-show="item.GF[TaCtrl.activeChoice]" style="text-align:center">{{item.GF.totNumPtsWithVariant || '-'}}</td>
+                                                                <td ng-show="item.GF[TaCtrl.activeChoice]" style="text-align:center">{{item.GF.ptsWithVariantOnArm || '-'}}</td>
+                                                                <td ng-show="item.GF[TaCtrl.activeChoice]" style="text-align:center">{{item.GF.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
                                                             </tr>
                                                             </tbody>
                                                         </table>
@@ -524,8 +579,8 @@
                                                 <div class="ibox float-e-margins">
                                                     <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
                                                         <div class="btn-group">
-                                                            <label class="btn btn-outline btn-success" ng-model="type" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
-                                                            <label class="btn btn-outline btn-success" ng-model="type" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
+                                                            <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
+                                                            <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
                                                         </div>
                                                         <br><br>
                                                         <table datatable="ng"
@@ -547,14 +602,14 @@
                                                             </thead>
                                                             <tbody>
                                                             <tr ng-repeat="item in nhrs">
-                                                                <td ng-show="item.NHR[type]">{{item.NHR.oncomineVariantClass || '-'}}</td>
-                                                                <td ng-show="item.NHR[type]" style="text-align:center">{{item.NHR.gene || '-'}}</td>
-                                                                <td ng-show="item.NHR[type]" style="text-align:center">{{item.NHR.levelOfEvidence || '-'}}</td>
-                                                                <td ng-show="item.NHR[type]" style="text-align:center">{{item.NHR.function || '-'}}</td>
-                                                                <td ng-show="item.NHR[type]" style="text-align:center">{{item.NHR.litRef || '-'}}</td>
-                                                                <td ng-show="item.NHR[type]" style="text-align:center">{{item.NHR.variantDescription || '-'}}</td>
-                                                                <td ng-show="item.NHR[type]" style="text-align:center">{{item.NHR.exon || '-'}}</td>
-                                                                <td ng-show="item.NHR[type]" style="text-align:center">{{item.NHR.proteinRegex || '-'}}</td>
+                                                                <td ng-show="item.NHR[TaCtrl.activeChoice]">{{item.NHR.oncomineVariantClass || '-'}}</td>
+                                                                <td ng-show="item.NHR[TaCtrl.activeChoice]" style="text-align:center">{{item.NHR.gene || '-'}}</td>
+                                                                <td ng-show="item.NHR[TaCtrl.activeChoice]" style="text-align:center">{{item.NHR.levelOfEvidence || '-'}}</td>
+                                                                <td ng-show="item.NHR[TaCtrl.activeChoice]" style="text-align:center">{{item.NHR.function || '-'}}</td>
+                                                                <td ng-show="item.NHR[TaCtrl.activeChoice]" style="text-align:center">{{item.NHR.litRef || '-'}}</td>
+                                                                <td ng-show="item.NHR[TaCtrl.activeChoice]" style="text-align:center">{{item.NHR.variantDescription || '-'}}</td>
+                                                                <td ng-show="item.NHR[TaCtrl.activeChoice]" style="text-align:center">{{item.NHR.exon || '-'}}</td>
+                                                                <td ng-show="item.NHR[TaCtrl.activeChoice]" style="text-align:center">{{item.NHR.proteinRegex || '-'}}</td>
                                                             </tr>
                                                             </tbody>
                                                         </table>
@@ -567,8 +622,8 @@
                                                 <div class="ibox float-e-margins">
                                                     <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
                                                         <div class="btn-group">
-                                                            <label class="btn btn-outline btn-success" ng-model="type" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
-                                                            <label class="btn btn-outline btn-success" ng-model="type" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
+                                                            <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
+                                                            <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
                                                         </div>
                                                         <br><br>
                                                         <table datatable="ng"
@@ -590,14 +645,14 @@
                                                             </thead>
                                                             <tbody>
                                                             <tr ng-repeat="item in nonSequencingAssays">
-                                                                <td ng-show="item.NsAssay[type]" style="text-align:center">{{item.NsAssay.assay || '-'}}</td>
-                                                                <td ng-show="item.NsAssay[type]" style="text-align:center">{{item.NsAssay.gene || '-'}}</td>
-                                                                <td ng-show="item.NsAssay[type]" style="text-align:center">{{item.NsAssay.result || '-'}}</td>
-                                                                <td ng-show="item.NsAssay[type]" style="text-align:center">{{item.NsAssay.variantAssociation || '-'}}</td>
-                                                                <td ng-show="item.NsAssay[type]" style="text-align:center">{{item.NsAssay.levelOfEvidence || '-'}}</td>
-                                                                <td ng-show="item.NsAssay[type]" style="text-align:center">{{item.NsAssay.totNumPtsWithGene || '-'}}</td>
-                                                                <td ng-show="item.NsAssay[type]" style="text-align:center">{{item.NsAssay.ptsWithGeneOnArm || '-'}}</td>
-                                                                <td ng-show="item.NsAssay[type]" style="text-align:center">{{item.NsAssay.pctPtsWithGeneOnArmOfTotPtsWithGene || '-'}}</td>
+                                                                <td ng-show="item.NsAssay[TaCtrl.activeChoice]" style="text-align:center">{{item.NsAssay.assay || '-'}}</td>
+                                                                <td ng-show="item.NsAssay[TaCtrl.activeChoice]" style="text-align:center">{{item.NsAssay.gene || '-'}}</td>
+                                                                <td ng-show="item.NsAssay[TaCtrl.activeChoice]" style="text-align:center">{{item.NsAssay.result || '-'}}</td>
+                                                                <td ng-show="item.NsAssay[TaCtrl.activeChoice]" style="text-align:center">{{item.NsAssay.variantAssociation || '-'}}</td>
+                                                                <td ng-show="item.NsAssay[TaCtrl.activeChoice]" style="text-align:center">{{item.NsAssay.levelOfEvidence || '-'}}</td>
+                                                                <td ng-show="item.NsAssay[TaCtrl.activeChoice]" style="text-align:center">{{item.NsAssay.totNumPtsWithGene || '-'}}</td>
+                                                                <td ng-show="item.NsAssay[TaCtrl.activeChoice]" style="text-align:center">{{item.NsAssay.ptsWithGeneOnArm || '-'}}</td>
+                                                                <td ng-show="item.NsAssay[TaCtrl.activeChoice]" style="text-align:center">{{item.NsAssay.pctPtsWithGeneOnArmOfTotPtsWithGene || '-'}}</td>
                                                             </tr>
                                                             </tbody>
                                                         </table>
