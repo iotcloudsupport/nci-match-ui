@@ -13,7 +13,6 @@ angular.module('treatment-arms.matchbox',[])
                 .getTreatmentArms()
                 .then(function(d) {
                     $scope.treatmentArmList = d.data;
-                    console.log($scope);
                 });
         };
 
