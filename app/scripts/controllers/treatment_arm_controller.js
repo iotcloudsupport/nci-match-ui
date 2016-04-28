@@ -1,175 +1,112 @@
 angular.module('treatment-arm.matchbox',[])
-    .controller('TreatmentArmController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, treatmentArmApi, $stateParams) {
-
-        /*this.dtOptions = DTOptionsBuilder.newOptions()
-            .withDisplayLength(25);
-        this.dtOptions = DTOptionsBuilder.newOptions()
-            .withOption('lengthChange', false);*/
+    .controller('TreatmentArmController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, treatmentArmApi) {
 
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withOption('paging', false)
             .withOption('info', false);
-
-       /*this.dtOptions = DTOptionsBuilder.newOptions()
-            .withOption('ordering', false);*/
-        /*this.dtOptions = DTOptionsBuilder.newOptions()
-            .withOption('info', false);*/
 
         this.dtColumnDefs = [];
         this.dtInstance = {};
 
         this.activeChoice = 'inclusion';
 
-        /*
-         .controller('DashboardActivityFeedController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, reportApi ) {
-         this.dtOptions = DTOptionsBuilder.newOptions()
-         .withDisplayLength(25);
-         this.dtOptions = DTOptionsBuilder.newOptions()
-         .withOption('bLengthChange', false);
-
-         this.dtColumnDefs = [];
-         this.dtInstance = {};
-
-         $scope.activityList = [];
-         */
-        
         $scope.pieDataset = [
             {
                 label: "ON_TREATMENT_ARM",
                 data: 5,
-                color: "#1c84c6", //color: "#bababa",
+                color: "#1c84c6",
                 psns: "215re, 203re, 312re"
             },
             {
                 label: "PENDING_APPROVAL",
                 data: 3,
-                color: "#23c6c8", //color: "#9933FF",
+                color: "#23c6c8",
                 psns: "201re, 302re"
             },
             {
                 label: "FORMERLY_ON_TREATMENT_ARM",
                 data: 2,
-                color: "#f8ac59", //color: "#f8c706",
+                color: "#f8ac59",
                 psns: "205re, 206re"
             },
             {
                 label: "NOT_ELIGIBLE",
                 data: 1,
-                color: "#ab0102", //color: "#00bd07",
+                color: "#ab0102",
                 psns: "202re, 211re, 252re, 255re, 304re"
             }
         ];
 
         $scope.diseasePieDataset = [
             {
-                label: "Endocrine cancer, NOS", //--215re, 205re, 203re",
+                label: "Endocrine cancer, NOS",
                 data: 3,
-                color: "#707070", //"#1c84c6",
+                color: "#707070",
                 psns: "215re, 205re, 203re"
             },
             {
-                label: "Glioblastoma multiforme", //--201re,  206re, 252re, 255re, 302re, 202re",
+                label: "Glioblastoma multiforme",
                 data: 6,
-                color: "#cfcfcf", //"#f8ac59",
+                color: "#cfcfcf",
                 psns: "201re,  206re, 252re, 255re, 302re, 202re"
             },
             {
-                label: "Head & neck cancer, NOS", //--202re, 211re, 312re, 304re",
+                label: "Head & neck cancer, NOS",
                 data: 4,
-                color: "#23c6c8", //"#23c6c8",
+                color: "#23c6c8",
                 psns: "202re, 211re, 312re, 304re"
             },
             {
-                label: "Retinoblastoma", //--201re,  206re, 252re, 255re, 302re, 202re",
+                label: "Retinoblastoma",
                 data: 2,
-                color: "#1c84c6", //"#62c2ff",
+                color: "#1c84c6",
                 psns: "201re,  206re, 252re, 255re, 302re, 202re"
             },
             {
-                label: "Skin Cancer, NOS", //--202re, 211re, 312re, 304re",
+                label: "Skin Cancer, NOS",
                 data: 7,
-                color: "#ab0102", //"#f8ce9f",
+                color: "#ab0102",
                 psns: "202re, 211re, 312re, 304re"
             },
             {
-                label: "Breast Cancer, NOS", //--201re,  206re, 252re, 255re, 302re, 202re",
+                label: "Breast Cancer, NOS",
                 data: 10,
-                color: "#f8ac59", //"#7dc3c8",
+                color: "#f8ac59",
                 psns: "201re,  206re, 252re, 255re, 302re, 202re"
             },
             {
-                label: "Bone cancer, NOS", //--202re, 211re, 312re, 304re",
+                label: "Bone cancer, NOS",
                 data: 4,
-                color: "#707070", //"#29516b",
+                color: "#707070",
                 psns: "202re, 211re, 312re, 304re"
             },
             {
-                label: "Chrondrosarcoma", //--201re,  206re, 252re, 255re, 302re, 202re",
+                label: "Chrondrosarcoma",
                 data: 2,
-                color: "#cfcfcf", //"#8c6231",
+                color: "#cfcfcf",
                 psns: "201re,  206re, 252re, 255re, 302re, 202re"
             },
             {
-                label: "Diffuse brainstem glioma", //--202re, 211re, 312re, 304re",
+                label: "Diffuse brainstem glioma",
                 data: 7,
-                color: "#23c6c8", //"#0D4B4c",
+                color: "#23c6c8",
                 psns: "202re, 211re, 312re, 304re"
             },
             {
-                label: "Anaplastic astrocytoma", //--201re,  206re, 252re, 255re, 302re, 202re",
+                label: "Anaplastic astrocytoma",
                 data: 10,
-                color: "#1c84c6", //"#1A7585",
+                color: "#1c84c6",
                 psns: "201re,  206re, 252re, 255re, 302re, 202re"
             },
             {
-                label: "Endocrine cancer, NOS", //--202re, 211re, 312re, 304re",
+                label: "Endocrine cancer, NOS",
                 data: 4,
-                color: "#ab0102", //"#23c6c8",
+                color: "#ab0102",
                 psns: "202re, 211re, 312re, 304re"
             }
-
-        $scope.getPatientStatusDataSet = function(){
-            treatmentArmApi.getPatientStatusGraph($stateParams.treatmentArmId)
-                .then(function(d){
-                    modifiedData = [];
-                    angular.forEach(d.data[0].status_array, function(object){
-                        modifiedData.push({
-                            label:  object.label,
-                            data: object.data,
-                            psns: "" + angular.forEach(object.psns, function(psn){
-                                psn + ",";
-                            })
-                        });
-                    });
-                    $scope.pieDataset = modifiedData
-                });
-        };
-
-        $scope.getPatientDiseaseDataSet = function(){
-          treatmentArmApi.getPatientDiseaseGraph($stateParams.treatmentArmId)
-              .then(function(d){
-                  newDiseaseData = [];
-                  angular.forEach(d.data[0].disease_array, function(object){
-                      newDiseaseData.push({
-                          label: object.label,
-                          data: object.data,
-                          psns: "" + angular.forEach(object.psns, function(psn){
-                              psn + ",";
-                          })
-                      });
-                  });
-                  $scope.diseasePieDataset = newDiseaseData;
-            });
-        };
+        ];
 
         function setupTooltip(label, xval, yval) {
-            /*
-             var retString = label;
-             var pos = retString.search("--");
-             return retString.substring(0, pos);
-             */
-            //var pos = label.search("--");
-            //return label.substring(0, pos) + "<br><span>----------------------------------</span><br>" + label.substring(pos+2);
             return label + "<br>------------------------------------------<br>Patients: " + yval;
         }
 
@@ -184,13 +121,8 @@ angular.module('treatment-arm.matchbox',[])
             },
             tooltip: true,
             tooltipOpts: {
-                //content: "%p.0%, %s",
                 content: function(label, xval, yval) {
-                    //console.log(label);
-                    //console.log(yval);
-                    //console.log($scope.diseasePieDataset[0].psns);
                     return setupTooltip(label, xval, yval);
-                    //return "%p.0%, %s " + "test" + psns;
                 },
                 shifts: {
                     x: 20,
@@ -200,7 +132,6 @@ angular.module('treatment-arm.matchbox',[])
             },
             legend: {
                 show: true,
-                //position: "nw"
                 container: '#legendContainer'
             }
         };
@@ -216,12 +147,10 @@ angular.module('treatment-arm.matchbox',[])
             },
             tooltip: true,
             tooltipOpts: {
-                //content: "%p.0%, %s",
                 content: function(label, xval, yval) {
                     console.log(label);
                     console.log(yval);
                     return setupTooltip(label, xval, yval);
-                    //return "%p.0%, %s " + "test" + psns;
                 },
                 shifts: {
                     x: 20,
@@ -751,47 +680,5 @@ angular.module('treatment-arm.matchbox',[])
                 content: "x: %x, y: %y"
             }
         };
-
-        /**
-         * Bar Chart data
-         */
-        $scope.flotChartData = [
-            {
-                label: "bar",
-                data: [
-                    [0, 10],
-                    [1, 34],
-                    [2, 25],
-                    [3, 19],
-                    [4, 34],
-                    [5, 32]
-                ]
-            }
-        ];
-
-
-
-
-
-
-            $scope.horizontalData = {
-                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-                series: [
-                    [5, 4, 3, 7, 5, 10, 3],
-                    [3, 2, 9, 5, 4, 6, 4]
-                ]
-            };
-
-            $scope.horizontalOptions = {
-                seriesBarDistance: 10,
-                reverseData: true,
-                horizontalBars: true,
-                axisY: {
-                    offset: 70
-                }
-            };
-
-
-
 
     });
