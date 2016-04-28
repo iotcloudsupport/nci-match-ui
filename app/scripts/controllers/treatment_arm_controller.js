@@ -1,5 +1,5 @@
 angular.module('treatment-arm.matchbox',[])
-    .controller('TreatmentArmController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, treatmentArmApi) {
+    .controller('TreatmentArmController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, treatmentArmApi, $stateParams) {
 
         /*this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(25);
@@ -32,7 +32,7 @@ angular.module('treatment-arm.matchbox',[])
 
          $scope.activityList = [];
          */
-
+        
         $scope.pieDataset = [
             {
                 label: "ON_TREATMENT_ARM",
@@ -128,8 +128,40 @@ angular.module('treatment-arm.matchbox',[])
                 psns: "202re, 211re, 312re, 304re"
             }
 
-        ];
+        $scope.getPatientStatusDataSet = function(){
+            treatmentArmApi.getPatientStatusGraph($stateParams.treatmentArmId)
+                .then(function(d){
+                    modifiedData = [];
+                    angular.forEach(d.data[0].status_array, function(object){
+                        modifiedData.push({
+                            label:  object.label,
+                            data: object.data,
+                            psns: "" + angular.forEach(object.psns, function(psn){
+                                psn + ",";
+                            })
+                        });
+                    });
+                    $scope.pieDataset = modifiedData
+                });
+        };
 
+        $scope.getPatientDiseaseDataSet = function(){
+          treatmentArmApi.getPatientDiseaseGraph($stateParams.treatmentArmId)
+              .then(function(d){
+                  newDiseaseData = [];
+                  angular.forEach(d.data[0].disease_array, function(object){
+                      newDiseaseData.push({
+                          label: object.label,
+                          data: object.data,
+                          psns: "" + angular.forEach(object.psns, function(psn){
+                              psn + ",";
+                          })
+                      });
+                  });
+                  $scope.diseasePieDataset = newDiseaseData;
+            });
+        };
+        
         function setupTooltip(label, xval, yval) {
             /*
              var retString = label;

@@ -23,7 +23,6 @@
                         <table datatable="ng" dt-options="TreatmentArmsCtrl.dtOptions" dt-column-defs="TreatmentArmsCtrl.dtColumnDefs" dt-instance="TreatmentArmsCtrl.dtInstance" class="table table-striped table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Name </th>
                                 <th>Current Patients </th>
                                 <th>Former Patients </th>
@@ -36,29 +35,16 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <!--<tr ng-repeat="treatmentArm in treatmentArmList">
-                                <td><a ui-sref="index.treatment-arm({ treatmentArmId: treatmentArm.treatmentArmId, treatmentArmVersion: 'v1' })">{{ treatmentArm.treatmentArmId }}</a></td>
-                                <td>{{ treatmentArm.treatmentArmName }}</td>
-                                <td>{{ treatmentArm.currentPatients }}</td>
-                                <td>{{ treatmentArm.formerPatients }}</td>
-                                <td>{{ treatmentArm.notEnrolledPatients }}</td>
-                                <td>{{ treatmentArm.pendingPatients }}</td>
-                                <td>{{ treatmentArm.treatmentArmStatus }}</td>
-                                <td>{{ treatmentArm.dateCreated | gmt }}</td>
-                                <td>{{ treatmentArm.dateOpened | gmt }}</td>
-                                <td>{{ (treatmentArm.dateClosed || treatmentArm.dateSuspended) | gmt }}</td>
-                            </tr>-->
-                            <tr>
-                                <td><a ui-sref="index.treatment-arm({ treatmentArmId: 'EAY131-A', treatmentArmVersion: 'v1' })">EAY131-A</a></td>
-                                <td>Tafatinib</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>OPEN</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
+                            <tr ng-repeat="treatmentArm in treatmentArmList">
+                                <td><a ui-sref="index.treatment-arm({ treatmentArmId: treatmentArm._id, treatmentArmVersion: 'v1' })">{{ treatmentArm._id }}</a></td>
+                                <td>{{ treatmentArm.current_patients }}</td>
+                                <td>{{ treatmentArm.former_patients }}</td>
+                                <td>{{ treatmentArm.not_enrolled_patients }}</td>
+                                <td>{{ treatmentArm.pending_patients }}</td>
+                                <td>{{ treatmentArm.treatment_arm_status }}</td>
+                                <td>{{ treatmentArm.date_created | date:'longDate' }}</td>
+                                <td>{{ treatmentArm.date_opened | date:'longDate' }}</td>
+                                <td>{{ (treatmentArm.date_closed || treatmentArm.date_suspended) | date:'longDate' }}</td>
                             </tr>
                             </tbody>
                         </table>
