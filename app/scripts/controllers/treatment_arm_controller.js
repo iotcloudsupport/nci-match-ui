@@ -1,5 +1,5 @@
 angular.module('treatment-arm.matchbox',[])
-    .controller('TreatmentArmController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, treatmentArmApi) {
+    .controller('TreatmentArmController', function( $scope, $window, DTOptionsBuilder, DTColumnDefBuilder, treatmentArmApi) {
 
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withOption('paging', false)
@@ -9,6 +9,120 @@ angular.module('treatment-arm.matchbox',[])
         this.dtInstance = {};
 
         this.activeChoice = 'inclusion';
+
+        this.altColumnDefs = [
+            DTColumnDefBuilder.newColumnDef(4).withOption('createdCell', createpubmedlinks)
+        ];
+
+        function createpubmedlinks(td, cellData,  rowData, row, col) {
+            console.log('here');
+            console.log(td);
+            console.log(cellData);
+            console.log(rowData);
+            console.log(row);
+            console.log(col);
+            // split the string into individual lit refs
+            // for each:
+            // create the html piece to open the new page and display the number as a link
+            console.log('<a onClick="openPubMed()">' + cellData + '</a>');
+            $(td).html('<a onClick="openPubMed()">' + cellData + '</a>');
+            // add the html piece to the td
+            //return 'here'; //THIS is WORKING!!!! continue from here.
+        };
+        /*
+         $('#example').dataTable( {
+            "columnDefs": [ {
+                "targets": 3,
+                "createdCell": function (td, cellData, rowData, row, col) {
+                    if ( cellData < 1 ) {
+                        $(td).css('color', 'red')
+                    }
+                }
+            } ]
+         } );
+         */
+
+        function openPubMed() {
+            console.log('inpubmed');
+        };
+
+        $scope.openGene = function(data) {
+            console.log('data');
+            console.log(data);
+            // window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln="+gene.toLowerCase(), "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=300, left=300, width=600, height=400");
+            $window.open('http://cancer.sanger.ac.uk/cosmic/gene/overview?ln='+data.toLowerCase(), 'cosmic', 'width=500,height=400');
+        };
+
+        $scope.openId = function(cosmicId) {
+            var cid = "";
+            var cia = [];
+
+            if (cosmicId !== undefined && cosmicId !== null) {
+                //COSF  endings
+                var tmp = cosmicId.indexOf("COSF");
+
+                if(tmp > 0) {
+                    cid = cosmicId.substring(tmp, cosmicId.length);
+                    cia = cid.split("COSF");
+                    var fid =  cia[1].split(".");
+                    //return ("<a class='report-link' onClick='openCosmicFusionId(\"" + fid[0] + "\")' >" + cosmicId + "</a>");
+                    $window.open('http://cancer.sanger.ac.uk/cosmic/fusion/summary?id='+fid[0], 'cosmic', 'width=500,height=400');
+                } else {
+                    //COSM endings
+                    var tmp = cosmicId.indexOf("COSM");
+
+                    if(tmp != -1) {
+                        cid = cosmicId.substring(tmp, cosmicId.length);
+                        cia = cid.split("COSM");
+                        var fid =  cia[1].split(".");
+                        //return ("<a class='report-link' onClick='openCosmicId(\"" + fid[0] + "\")' >" + cosmicId + "</a>");
+                        $window.open("http://cancer.sanger.ac.uk/cosmic/mutation/overview?id="+fid[0], "cosmic", 'width=500,height=400');
+                    }
+                }
+            }
+        };
+
+        $scope.openPubmed = function(pubMedIds) {
+            var pubmed = [];
+            if (pubMedIds !== null) {
+                $.each(pubMedIds, function(key, value) {
+                    // On rare occassion there is not be a pub med id in field but another type of reference
+                    // Checking to make sure the value is all numbers; thus a valid pub med id
+                    var numericId = value.match(/\s*?([0-9]+)/);
+                    if (numericId != null && numericId[1] != "") {
+                        pubmed.push("<a class='report-link' onClick='openPubMed(\"" + numericId[1] + "\")' >" + value + "</a>");
+                    } else {
+                        pubmed.push(value);
+                    }
+                });
+            } else {
+                pubmed = "-";
+            }
+            return pubmed;
+        };
+
+        function openPubMed(pubMedId) {
+            window.open("http://www.ncbi.nlm.nih.gov/pubmed/?term="+pubMedId, "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=300, left=300, width=600, height=400");
+        }
+
+        function getPubMedLinks(pubMedIds){
+            var pubmed = [];
+            if (pubMedIds !== null) {
+                $.each(pubMedIds, function(key, value) {
+                    // On rare occassion there is not be a pub med id in field but another type of reference
+                    // Checking to make sure the value is all numbers; thus a valid pub med id
+                    var numericId = value.match(/\s*?([0-9]+)/);
+                    if (numericId != null && numericId[1] != "") {
+                        pubmed.push("<a class='report-link' onClick='openPubMed(\"" + numericId[1] + "\")' >" + value + "</a>");
+                    } else {
+                        pubmed.push(value);
+                    }
+                });
+            } else {
+                pubmed = "-";
+            }
+            return pubmed;
+        }
 
         $scope.pieDataset = [
             {
@@ -164,7 +278,9 @@ angular.module('treatment-arm.matchbox',[])
             }
         };
 
-        $scope.indels =
+        $scope.indelsInclusion = [];
+
+        $scope.indelsExclusion =
             [
                 {
                     "Indel": {
@@ -200,120 +316,12 @@ angular.module('treatment-arm.matchbox',[])
                         "pctPtsWithVarOnArmOfTotPtsWithVar": "20%",
                         "inclusion": false,
                         "exclusion": true
-                    },
-                },
-                {
-                    "Indel": {
-                        "id": "COSM1256700",
-                        "gene": "EBFRA",
-                        "levelOfEvidence": "2",
-                        "chrom": "chr7",
-                        "position": "5522678451",
-                        "reference": "G",
-                        "alternative": "A",
-                        "litRef": "2348587",
-                        "protein": "p.G719A",
-                        "totNumPtsWithVariant": "1",
-                        "ptsWithVariantOnArm": "1",
-                        "pctPtsWithVarOnArmOfTotPtsWithVar": "20%",
-                        "inclusion": true,
-                        "exclusion": false
-                    },
-                },
-                {
-                    "Indel": {
-                        "id": "COSM125678",
-                        "gene": "EBFRA",
-                        "levelOfEvidence": "2",
-                        "chrom": "chr7",
-                        "position": "5522678455",
-                        "reference": "C",
-                        "alternative": "T",
-                        "litRef": "2348587",
-                        "protein": "p.G719A",
-                        "totNumPtsWithVariant": "0",
-                        "ptsWithVariantOnArm": "0",
-                        "pctPtsWithVarOnArmOfTotPtsWithVar": "0%",
-                        "inclusion": true,
-                        "exclusion": false
-                    },
-                },
-                {
-                    "Indel": {
-                        "id": "COSM99995",
-                        "gene": "EBFRA",
-                        "levelOfEvidence": "1",
-                        "chrom": "chr7",
-                        "position": "5522678457",
-                        "reference": "C",
-                        "alternative": "T",
-                        "litRef": "2348587",
-                        "protein": "p.G719A",
-                        "totNumPtsWithVariant": "0",
-                        "ptsWithVariantOnArm": "0",
-                        "pctPtsWithVarOnArmOfTotPtsWithVar": "0%",
-                        "inclusion": true,
-                        "exclusion": false
-                    },
-                },
-                {
-                    "Indel": {
-                        "id": "COSM9999000",
-                        "gene": "EBFRA",
-                        "levelOfEvidence": "1",
-                        "chrom": "chr7",
-                        "position": "5522678459",
-                        "reference": "C",
-                        "alternative": "T",
-                        "litRef": "2348587",
-                        "protein": "p.G719A",
-                        "totNumPtsWithVariant": "2",
-                        "ptsWithVariantOnArm": "1",
-                        "pctPtsWithVarOnArmOfTotPtsWithVar": "20%",
-                        "inclusion": true,
-                        "exclusion": false
                     },
                 }
             ];
 
-        $scope.snvs =
+        $scope.snvsInclusion =
             [
-                {
-                    "SNV": {
-                        "id": "COSM111112345",
-                        "gene": "EBFRA",
-                        "levelOfEvidence": "3",
-                        "chrom": "chr7",
-                        "position": "5522678453",
-                        "reference": "C",
-                        "alternative": "T",
-                        "litRef": "2348587",
-                        "protein": "p.G719A",
-                        "totNumPtsWithVariant": "0",
-                        "ptsWithVariantOnArm": "0",
-                        "pctPtsWithVarOnArmOfTotPtsWithVar": "0%",
-                        "inclusion": false,
-                        "exclusion": true
-                    },
-                },
-                {
-                    "SNV": {
-                        "id": "COSM000012567",
-                        "gene": "EBFRA",
-                        "levelOfEvidence": "2",
-                        "chrom": "chr7",
-                        "position": "552267845",
-                        "reference": "G",
-                        "alternative": "A",
-                        "litRef": "2348587",
-                        "protein": "p.G719A",
-                        "totNumPtsWithVariant": "2",
-                        "ptsWithVariantOnArm": "1",
-                        "pctPtsWithVarOnArmOfTotPtsWithVar": "20%",
-                        "inclusion": false,
-                        "exclusion": true
-                    },
-                },
                 {
                     "SNV": {
                         "id": "COSM1256700",
@@ -388,7 +396,41 @@ angular.module('treatment-arm.matchbox',[])
                 }
             ];
 
-        $scope.cnvs = [
+        $scope.snvsExclusion =
+            [
+                {
+                    "SNV": {
+                        "id": "COSM111112345",
+                        "gene": "EBFRA",
+                        "levelOfEvidence": "3",
+                        "chrom": "chr7",
+                        "position": "5522678453",
+                        "reference": "C",
+                        "alternative": "T",
+                        "litRef": "2348587",
+                        "protein": "p.G719A",
+                        "inclusion": false,
+                        "exclusion": true
+                    },
+                },
+                {
+                    "SNV": {
+                        "id": "COSM000012567",
+                        "gene": "EBFRA",
+                        "levelOfEvidence": "2",
+                        "chrom": "chr7",
+                        "position": "552267845",
+                        "reference": "G",
+                        "alternative": "A",
+                        "litRef": "2348587",
+                        "protein": "p.G719A",
+                        "inclusion": false,
+                        "exclusion": true
+                    },
+                }
+            ];
+
+        $scope.cnvsInclusion = [
             {
                 "CNV": {
                     "gene": "ERBB2",
@@ -403,7 +445,10 @@ angular.module('treatment-arm.matchbox',[])
                     "inclusion": true,
                     "exclusion": false
                 },
-            },
+            }
+        ];
+
+        $scope.cnvsExclusion = [
             {
                 "CNV": {
                     "gene": "ERBB661",
@@ -412,9 +457,6 @@ angular.module('treatment-arm.matchbox',[])
                     "position": "3785648800",
                     "litRef": "379810671",
                     "protein": "ERBB661 Amplification",
-                    "totNumPtsWithVariant": "0",
-                    "ptsWithVariantOnArm": "0",
-                    "pctPtsWithVarOnArmOfTotPtsWithVar": "-",
                     "inclusion": false,
                     "exclusion": true
                 },
@@ -422,7 +464,7 @@ angular.module('treatment-arm.matchbox',[])
         ];
 
 
-        $scope.geneFusions = [
+        $scope.geneFusionsInclusion = [
             {
                 "GF": {
                     "id": "EML4-ALK.E13A20.COSF1062",
@@ -462,30 +504,44 @@ angular.module('treatment-arm.matchbox',[])
                     "inclusion": true,
                     "exclusion": false
                 },
-            },
+            }
+        ];
+
+        $scope.geneFusionsExclusion = [
             {
                 "GF": {
                     "id": "EML4-ALK.EBA17",
                     "gene": "ALK",
                     "levelOfEvidence": "1",
                     "litRef": "234566",
-                    "totNumPtsWithVariant": "0",
-                    "ptsWithVariantOnArm": "0",
-                    "pctPtsWithVarOnArmOfTotPtsWithVar": "-",
                     "inclusion": false,
                     "exclusion": true
                 },
             }
         ];
 
-        $scope.nhrs = [
+        $scope.nhrsInclusion = [
             {
                 "NHR": {
                     "oncomineVariantClass": "-",
                     "gene": "EGFR",
                     "levelOfEvidence" : "1",
                     "function": "nonframeshiftinsertion",
-                    "litRef": "5525915",
+                    "litRef": "26051236",
+                    "variantDescription": "-",
+                    "exon": "19",
+                    "proteinRegex": "-",
+                    "inclusion": true,
+                    "exclusion": false
+                },
+            },
+            {
+                "NHR": {
+                    "oncomineVariantClass": "-",
+                    "gene": "EGFR",
+                    "levelOfEvidence" : "1",
+                    "function": "nonframeshiftinsertion",
+                    "litRef": "26051236, 19692684",
                     "variantDescription": "-",
                     "exon": "19",
                     "proteinRegex": "-",
@@ -495,6 +551,8 @@ angular.module('treatment-arm.matchbox',[])
             }
 
         ];
+
+        $scope.nhrsExclusion = [];
 
         $scope.exclusionaryDrugs = [
             {
@@ -535,7 +593,7 @@ angular.module('treatment-arm.matchbox',[])
         ];
 
 
-        $scope.nonSequencingAssays = [
+        $scope.nonSequencingAssaysInclusion = [
             {
                 "NsAssay": {
                     "assay": "IHC",
@@ -563,7 +621,10 @@ angular.module('treatment-arm.matchbox',[])
                     "inclusion": true,
                     "exclusion": false
                 },
-            },
+            }
+        ];
+
+        $scope.nonSequencingAssaysExclusion = [
             {
                 "NsAssay": {
                     "assay": "IHC",
@@ -571,9 +632,6 @@ angular.module('treatment-arm.matchbox',[])
                     "result": "NEGATIVE",
                     "variantAssociation": "EMPTY",
                     "levelOfEvidence": "1",
-                    "totNumPtsWithGene": "0",
-                    "ptsWithGeneOnArm": "0",
-                    "pctPtsWithGeneOnArmOfTotPtsWithGene": "0%",
                     "inclusion": false,
                     "exclusion": true
                 },
@@ -680,5 +738,7 @@ angular.module('treatment-arm.matchbox',[])
                 content: "x: %x, y: %y"
             }
         };
+
+
 
     });
