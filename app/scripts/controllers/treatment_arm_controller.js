@@ -10,6 +10,11 @@ angular.module('treatment-arm.matchbox',[])
 
         this.activeChoice = 'inclusion';
 
+        this.ddOptions = DTOptionsBuilder.newOptions()
+            .withOption('paging', false)
+            .withOption('info', false)
+            .withOption('bFilter', false);
+
         this.altColumnDefs = [
             DTColumnDefBuilder.newColumnDef(4).withOption('createdCell', createpubmedlinks)
         ];
