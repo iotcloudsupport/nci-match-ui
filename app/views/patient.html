@@ -105,6 +105,41 @@
                 <tab heading="Summary">
                     <div class="panel-body">
                         <div class="row">
+                            <div class="col-md-5 center-block">
+                                <div class="ibox float-e-margins">
+                                    <div class="row">
+                                        <div class="col-xs-4">
+                                            <h3>Actions Needed</h3>
+                                        </div>
+                                    </div>
+                                    <div class="ibox-content inspinia-timeline">
+                                    <ul class="sortable-list connectList agile-list ui-sortable">
+                                        <li class="warning-element">
+                                            Simply dummy text of the printing and typesetting industry.
+                                            <div class="agile-detail">
+                                                <a href="#" class="pull-right btn btn-xs btn-white">Tag</a>
+                                                <i class="fa fa-clock-o"></i> 12.10.2015
+                                            </div>
+                                        </li>
+                                        <li class="warning-element">
+                                            Which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic
+                                            words etc.
+                                            <div class="agile-detail">
+                                                <a href="#" class="pull-right btn btn-xs btn-white">Tag</a>
+                                                <i class="fa fa-clock-o"></i> 09.12.2015
+                                            </div>
+                                        </li>
+                                        <li class="warning-element">
+                                            Packages and web page editors now use Lorem Ipsum as
+                                            <div class="agile-detail">
+                                                <a href="#" class="pull-right btn btn-xs btn-primary">Done</a>
+                                                <i class="fa fa-clock-o"></i> 08.04.2015
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-md-7">
                                 <div class="ibox float-e-margins">
                                     <div class="row">
@@ -176,50 +211,6 @@
                                                     <p>
                                                         Any comments during registration would go here.
                                                     </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-5 center-block">
-                                <div class="row push-down-40px">
-                                    <div class="col-md-10 ">
-                                        <div class="widget style1 alert-widget-red-bg">
-                                            <div class="row">
-                                                <div class="col-xs-4">
-                                                    <i class="fa fa-warning fa-3x"></i>
-                                                </div>
-                                                <div class="col-xs-8">
-                                                    <h3 class="font-bold">Action needed</h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <div class="widget style1 alert-widget-yellow-bg">
-                                            <div class="row">
-                                                <div class="col-xs-4">
-                                                    <i class="fa fa-warning fa-3x"></i>
-                                                </div>
-                                                <div class="col-xs-8">
-                                                    <h3 class="font-bold">Some warnings</h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <div class="widget style1 alert-widget-green-bg">
-                                            <div class="row">
-                                                <div class="col-xs-4">
-                                                    <i class="fa fa-info fa-3x"></i>
-                                                </div>
-                                                <div class="col-xs-8">
-                                                    <h3 class="font-bold">Some information</h3>
                                                 </div>
                                             </div>
                                         </div>
@@ -501,7 +492,7 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="variant in biopsy.singleNucleitideVariants" style="cursor: auto;" role="row" class="odd">
-                                    <td> <input type="checkbox" ng-checked="{{::variant.confirm}}"></td>
+                                    <td> <input type="checkbox" ng-model="variant.confirm" ng-confirm-click="You sure?" ng-click="doConfirm()"></td>
                                     <td>{{::variant.id}}</td>
                                     <td>{{::variant.aMOI}}</td>
                                     <td>{{::variant.chrom}}</td>
@@ -669,7 +660,7 @@
                                 <button class="btn btn-default" title="Export Assignment Report to Excel"><i class="fa fa-file-excel-o"></i>&nbsp;&nbsp;Excel</button>
                             </div>
                         </div>
-                        
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="header-info-box assignment-header-box">

@@ -8,7 +8,8 @@
         DTColumnDefBuilder,
         matchApiMock,
         $stateParams,
-        $log) {
+        $log,
+        prompt) {
 
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(100);
@@ -28,6 +29,8 @@
         $scope.setVariantReportMode = setVariantReportMode;
         $scope.getVariantReportTypeClass = getVariantReportTypeClass;
         $scope.getVariantReportModeClass = getVariantReportModeClass;
+        $scope.confirm = confirm;
+        $scope.doConfirm = doConfirm;
 
         $scope.loadPatientData = loadPatientData;
 
@@ -59,11 +62,7 @@
 
         function setVariantReport() {
             $scope.variantReport = $scope.variantReports[$scope.variantReportType + '' + $scope.variantReportMode];
-            $log.debug('$scope.variantReportType = ' + $scope.variantReportType);
-            $log.debug('$scope.variantReportMode = ' + $scope.variantReportMode);
-            $log.debug('$scope.variantReport = ' + $scope.variantReport);
         }
-
 
         function loadPatientData() {
             matchApiMock
@@ -269,7 +268,49 @@
                     setVariantReport();
                 });
         }
-
+        
+        function doConfirm() {
+            $log.debug('doConfirm');
+        }
+        
+        function confirm(index, list, propertyName) {
+            var item = list[index];
+            
+            if (typeof item !== 'object' || !item)
+                return;
+            
+            if (!(propertyName in item))
+                return;
+            
+            var previousValue = !!item[propertyName];
+            $log.debug('previousValue: ' + previousValue);
+            
+            function success(name) {
+                $log.debug('Confirmed: ' + name);
+                $log.debug('item[propertyName] before: ' + item[propertyName]);
+                item[propertyName] = !previousValue;
+                $log.debug('item[propertyName] after: ' + item[propertyName]);
+                $scope.$apply();
+            }
+            
+            function failure() {
+                $log.debug('Rejected');
+                $log.debug('item[propertyName] before: ' + item[propertyName]);
+                item[propertyName] = previousValue;
+                $log.debug('item[propertyName] after: ' + item[propertyName]);
+                $scope.$apply();
+            }
+            
+            //ask the user for a string
+            prompt({
+                title: 'Confirmation Changed',
+                message: 'Please enter a reson for removing the confirmation:',
+                input: true,
+                //label: 'Reason',
+                // value: 'Current name',
+                // values: ['other', 'possible', 'names']
+            }).then(success, failure);
+        }
     }
 
 })();

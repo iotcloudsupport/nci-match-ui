@@ -19,7 +19,7 @@
                 $rootScope.$on('$stateChangeStart', listener);
             }
         }
-    };
+    }
 
     /**
      * sideNavigation - Directive for run metsiMenu on sidebar navigation
@@ -33,8 +33,8 @@
                     element.metisMenu();
                 });
             }
-        };
-    };
+        }
+    }
 
     /**
      * iboxTools - Directive for iBox tools elements in right corner of ibox
@@ -65,8 +65,8 @@
                         ibox.remove();
                     }
             }
-        };
-    };
+        }
+    }
 
     /**
      * minimalizaSidebar - Directive for minimalize sidebar
@@ -98,8 +98,8 @@
                     }
                 }
             }
-        };
-    };
+        }
+    }
 
 
     /**
@@ -158,8 +158,26 @@
                     }, 50);
                 }
             }
-        };
-    };
+        }
+    }
+    
+    function ngConfirmClick(prompt) {
+        return {
+            priority: -1,
+            restrict: 'A',
+            link: function (scope, element, attrs) {
+                element.bind('click', function (e) {
+                    // console.log('prompt'+prompt);
+                    
+                    var message = attrs.ngConfirmClick;
+                    if (message && !confirm(message)) {
+                        e.stopImmediatePropagation();
+                        e.preventDefault();
+                    }
+                });
+            }
+        }
+    }
 
     /**
      *
@@ -173,5 +191,6 @@
         .directive('dropZone', dropZone)
         .directive('minimalizaSidebar', minimalizaSidebar)
         .directive('collapseToggle', collapseToggle)
+        .directive('ngConfirmClick', ngConfirmClick)
 
 })();
