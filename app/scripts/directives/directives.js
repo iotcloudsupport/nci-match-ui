@@ -138,10 +138,7 @@
         return {
             restrict: 'A',
             scope: true,
-            template:
-            `<div class="ibox-tools ibox-tools-with-h3-title dropdown" dropdown>
-                <a ng-click="showhide()"> <i class="fa fa-chevron-up"></i></a>
-            </div>`,
+            template: '<div class="ibox-tools ibox-tools-with-h3-title dropdown" dropdown><a ng-click="showhide()"> <i class="fa fa-chevron-up"></i></a></div>',
             controller: function ($scope, $element) {
                 // Function for collapse ibox
                 $scope.showhide = function () {
