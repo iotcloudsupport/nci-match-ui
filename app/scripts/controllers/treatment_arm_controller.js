@@ -25,7 +25,7 @@ angular.module('treatment-arm.matchbox',[])
             console.log(rowData);
             console.log(row);
             console.log(col);
-            
+
             $(td).html('<a onClick="openPubMed()">' + cellData + '</a>');
         };
 
@@ -85,7 +85,7 @@ angular.module('treatment-arm.matchbox',[])
             {
                 label: "NOT_ELIGIBLE",
                 data: 1,
-                color: "#ab0102",
+                color: "#1ab394",
                 psns: "202re, 211re, 252re, 255re, 304re"
             }
         ];
@@ -94,67 +94,61 @@ angular.module('treatment-arm.matchbox',[])
             {
                 label: "Endocrine cancer, NOS",
                 data: 3,
-                color: "#707070",
+                color: "#1c84c6",
                 psns: "215re, 205re, 203re"
             },
             {
                 label: "Glioblastoma multiforme",
                 data: 6,
-                color: "#cfcfcf",
+                color: "#23c6c8",
                 psns: "201re,  206re, 252re, 255re, 302re, 202re"
             },
             {
                 label: "Head & neck cancer, NOS",
                 data: 4,
-                color: "#23c6c8",
+                color: "#f8ac59",
                 psns: "202re, 211re, 312re, 304re"
             },
             {
                 label: "Retinoblastoma",
                 data: 2,
-                color: "#1c84c6",
+                color: "#1ab394",
                 psns: "201re,  206re, 252re, 255re, 302re, 202re"
             },
             {
                 label: "Skin Cancer, NOS",
                 data: 7,
-                color: "#ab0102",
+                color: "#707070",
                 psns: "202re, 211re, 312re, 304re"
-            },
-            {
-                label: "Breast Cancer, NOS",
-                data: 10,
-                color: "#f8ac59",
-                psns: "201re,  206re, 252re, 255re, 302re, 202re"
             },
             {
                 label: "Bone cancer, NOS",
                 data: 4,
-                color: "#707070",
+                color: "#1c84c6",
                 psns: "202re, 211re, 312re, 304re"
             },
             {
                 label: "Chrondrosarcoma",
                 data: 2,
-                color: "#cfcfcf",
+                color: "#23c6c8",
                 psns: "201re,  206re, 252re, 255re, 302re, 202re"
             },
             {
                 label: "Diffuse brainstem glioma",
                 data: 7,
-                color: "#23c6c8",
+                color: "#f8ac59",
                 psns: "202re, 211re, 312re, 304re"
             },
             {
                 label: "Anaplastic astrocytoma",
                 data: 10,
-                color: "#1c84c6",
+                color: "#1ab394",
                 psns: "201re,  206re, 252re, 255re, 302re, 202re"
             },
             {
                 label: "Endocrine cancer, NOS",
                 data: 4,
-                color: "#ab0102",
+                color: "#707070",
                 psns: "202re, 211re, 312re, 304re"
             }
         ];
