@@ -51,6 +51,12 @@ angular.module('treatment-arm.matchbox',[])
             console.log('inpubmed');
         };
 
+        $scope.openPubMed = function(data) {
+            console.log(data);
+            $window.open("http://www.ncbi.nlm.nih.gov/pubmed/?term="+data, 'lit', "width=600, height=400");
+
+        };
+
         $scope.openGene = function(data) {
             console.log('data');
             console.log(data);
@@ -296,7 +302,11 @@ angular.module('treatment-arm.matchbox',[])
                         "position": "5522678453",
                         "reference": "C",
                         "alternative": "T",
-                        "litRef": "2348587",
+                        "litRefs": [
+                            {
+                                "litRef": "19692684"
+                            }
+                        ],
                         "protein": "p.G719A",
                         "totNumPtsWithVariant": "0",
                         "ptsWithVariantOnArm": "0",
@@ -314,7 +324,11 @@ angular.module('treatment-arm.matchbox',[])
                         "position": "552267845",
                         "reference": "G",
                         "alternative": "A",
-                        "litRef": "2348587",
+                        "litRefs": [
+                            {
+                                "litRef": "26051236"
+                            }
+                        ],
                         "protein": "p.G719A",
                         "totNumPtsWithVariant": "2",
                         "ptsWithVariantOnArm": "1",
@@ -336,7 +350,11 @@ angular.module('treatment-arm.matchbox',[])
                         "position": "5522678451",
                         "reference": "G",
                         "alternative": "A",
-                        "litRef": "2348587",
+                        "litRefs": [
+                            {
+                                "litRef": "26051236"
+                            }
+                        ],
                         "protein": "p.G719A",
                         "totNumPtsWithVariant": "1",
                         "ptsWithVariantOnArm": "1",
@@ -354,7 +372,14 @@ angular.module('treatment-arm.matchbox',[])
                         "position": "5522678455",
                         "reference": "C",
                         "alternative": "T",
-                        "litRef": "2348587",
+                        "litRefs": [
+                            {
+                                "litRef": "26051236"
+                            },
+                            {
+                                "litRef": "19692684"
+                            }
+                        ],
                         "protein": "p.G719A",
                         "totNumPtsWithVariant": "0",
                         "ptsWithVariantOnArm": "0",
@@ -372,7 +397,11 @@ angular.module('treatment-arm.matchbox',[])
                         "position": "5522678457",
                         "reference": "C",
                         "alternative": "T",
-                        "litRef": "2348587",
+                        "litRefs": [
+                            {
+                                "litRef": "26051236"
+                            }
+                        ],
                         "protein": "p.G719A",
                         "totNumPtsWithVariant": "0",
                         "ptsWithVariantOnArm": "0",
@@ -390,7 +419,14 @@ angular.module('treatment-arm.matchbox',[])
                         "position": "5522678459",
                         "reference": "C",
                         "alternative": "T",
-                        "litRef": "2348587",
+                        "litRefs": [
+                            {
+                                "litRef": "26051236"
+                            },
+                            {
+                                "litRef": "19692684"
+                            }
+                        ],
                         "protein": "p.G719A",
                         "totNumPtsWithVariant": "2",
                         "ptsWithVariantOnArm": "1",
@@ -405,14 +441,18 @@ angular.module('treatment-arm.matchbox',[])
             [
                 {
                     "SNV": {
-                        "id": "COSM111112345",
-                        "gene": "EBFRA",
+                        "id": "COSM746",
+                        "gene": "PIK3CA",
                         "levelOfEvidence": "3",
                         "chrom": "chr7",
                         "position": "5522678453",
                         "reference": "C",
                         "alternative": "T",
-                        "litRef": "2348587",
+                        "litRefs": [
+                            {
+                                "litRef": "21266528"
+                            }
+                        ],
                         "protein": "p.G719A",
                         "inclusion": false,
                         "exclusion": true
@@ -420,14 +460,22 @@ angular.module('treatment-arm.matchbox',[])
                 },
                 {
                     "SNV": {
-                        "id": "COSM000012567",
-                        "gene": "EBFRA",
+                        "id": "COSM757",
+                        "gene": "PIK3CA",
                         "levelOfEvidence": "2",
                         "chrom": "chr7",
-                        "position": "552267845",
+                        "position": "178927980",
                         "reference": "G",
                         "alternative": "A",
-                        "litRef": "2348587",
+                        "litRefs": [
+                            {
+                                "litRef": "17376864"
+                            },
+                            {
+                                "litRef": "22949682"
+                            }
+
+                        ],
                         "protein": "p.G719A",
                         "inclusion": false,
                         "exclusion": true
@@ -442,7 +490,11 @@ angular.module('treatment-arm.matchbox',[])
                     "levelOfEvidence": "1",
                     "chrom": "chr17",
                     "position": "37856492",
-                    "litRef": "3798106",
+                    "litRefs": [
+                        {
+                            "litRef": "19692684"
+                        }
+                    ],
                     "protein": "ERBB2 Amplification",
                     "totNumPtsWithVariant": "0",
                     "ptsWithVariantOnArm": "0",
@@ -460,7 +512,11 @@ angular.module('treatment-arm.matchbox',[])
                     "levelOfEvidence": "1",
                     "chrom": "chr17",
                     "position": "3785648800",
-                    "litRef": "379810671",
+                    "litRefs": [
+                        {
+                            "litRef": "26051236"
+                        }
+                    ],
                     "protein": "ERBB661 Amplification",
                     "inclusion": false,
                     "exclusion": true
@@ -475,7 +531,11 @@ angular.module('treatment-arm.matchbox',[])
                     "id": "EML4-ALK.E13A20.COSF1062",
                     "gene": "ALK",
                     "levelOfEvidence": "1",
-                    "litRef": "12345545",
+                    "litRefs": [
+                        {
+                            "litRef": "23724913"
+                        }
+                    ],
                     "totNumPtsWithVariant": "0",
                     "ptsWithVariantOnArm": "0",
                     "pctPtsWithVarOnArmOfTotPtsWithVar": "-",
@@ -489,7 +549,14 @@ angular.module('treatment-arm.matchbox',[])
                     "id": "EML4-ALK.E13A20.COSF1065",
                     "gene": "ALK",
                     "levelOfEvidence": "1",
-                    "litRef": "12345545",
+                    "litRefs": [
+                        {
+                            "litRef": "26051236"
+                        },
+                        {
+                            "litRef": "19692684"
+                        }
+                    ],
                     "totNumPtsWithVariant": "0",
                     "ptsWithVariantOnArm": "0",
                     "pctPtsWithVarOnArmOfTotPtsWithVar": "-",
@@ -502,7 +569,14 @@ angular.module('treatment-arm.matchbox',[])
                     "id": "EML4-ALK.E13A20.COSF1762",
                     "gene": "ALK",
                     "levelOfEvidence": "1",
-                    "litRef": "12345545",
+                    "litRefs": [
+                        {
+                            "litRef": "26051236"
+                        },
+                        {
+                            "litRef": "19692684"
+                        }
+                    ],
                     "totNumPtsWithVariant": "0",
                     "ptsWithVariantOnArm": "0",
                     "pctPtsWithVarOnArmOfTotPtsWithVar": "-",
@@ -518,7 +592,11 @@ angular.module('treatment-arm.matchbox',[])
                     "id": "EML4-ALK.EBA17",
                     "gene": "ALK",
                     "levelOfEvidence": "1",
-                    "litRef": "234566",
+                    "litRefs": [
+                        {
+                            "litRef": "234566"
+                        }
+                    ],
                     "inclusion": false,
                     "exclusion": true
                 },
@@ -532,7 +610,11 @@ angular.module('treatment-arm.matchbox',[])
                     "gene": "EGFR",
                     "levelOfEvidence" : "1",
                     "function": "nonframeshiftinsertion",
-                    "litRef": "26051236",
+                    "litRefs": [
+                        {
+                            "litRef": "26051236"
+                        }
+                    ],
                     "variantDescription": "-",
                     "exon": "19",
                     "proteinRegex": "-",
@@ -546,7 +628,15 @@ angular.module('treatment-arm.matchbox',[])
                     "gene": "EGFR",
                     "levelOfEvidence" : "1",
                     "function": "nonframeshiftinsertion",
-                    "litRef": "26051236, 19692684",
+                    "litRefs": [
+                        {
+                            "litRef": "26051236"
+                        },
+                        {
+                            "litRef": "19692684"
+                        }
+
+                    ],
                     "variantDescription": "-",
                     "exon": "19",
                     "proteinRegex": "-",
@@ -633,7 +723,7 @@ angular.module('treatment-arm.matchbox',[])
             {
                 "NsAssay": {
                     "assay": "IHC",
-                    "gene": "XYZ",
+                    "gene": "ALK",
                     "result": "NEGATIVE",
                     "variantAssociation": "EMPTY",
                     "levelOfEvidence": "1",
