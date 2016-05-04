@@ -20,47 +20,21 @@ angular.module('treatment-arm.matchbox',[])
         ];
 
         function createpubmedlinks(td, cellData,  rowData, row, col) {
-            console.log('here');
             console.log(td);
             console.log(cellData);
             console.log(rowData);
             console.log(row);
             console.log(col);
-            // split the string into individual lit refs
-            // for each:
-            // create the html piece to open the new page and display the number as a link
-            console.log('<a onClick="openPubMed()">' + cellData + '</a>');
+            
             $(td).html('<a onClick="openPubMed()">' + cellData + '</a>');
-            // add the html piece to the td
-            //return 'here'; //THIS is WORKING!!!! continue from here.
-        };
-        /*
-         $('#example').dataTable( {
-            "columnDefs": [ {
-                "targets": 3,
-                "createdCell": function (td, cellData, rowData, row, col) {
-                    if ( cellData < 1 ) {
-                        $(td).css('color', 'red')
-                    }
-                }
-            } ]
-         } );
-         */
-
-        function openPubMed() {
-            console.log('inpubmed');
         };
 
         $scope.openPubMed = function(data) {
-            console.log(data);
             $window.open("http://www.ncbi.nlm.nih.gov/pubmed/?term="+data, 'lit', "width=600, height=400");
 
         };
 
         $scope.openGene = function(data) {
-            console.log('data');
-            console.log(data);
-            // window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln="+gene.toLowerCase(), "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=300, left=300, width=600, height=400");
             $window.open('http://cancer.sanger.ac.uk/cosmic/gene/overview?ln='+data.toLowerCase(), 'cosmic', 'width=500,height=400');
         };
 
@@ -69,71 +43,25 @@ angular.module('treatment-arm.matchbox',[])
             var cia = [];
 
             if (cosmicId !== undefined && cosmicId !== null) {
-                //COSF  endings
                 var tmp = cosmicId.indexOf("COSF");
 
                 if(tmp > 0) {
                     cid = cosmicId.substring(tmp, cosmicId.length);
                     cia = cid.split("COSF");
                     var fid =  cia[1].split(".");
-                    //return ("<a class='report-link' onClick='openCosmicFusionId(\"" + fid[0] + "\")' >" + cosmicId + "</a>");
                     $window.open('http://cancer.sanger.ac.uk/cosmic/fusion/summary?id='+fid[0], 'cosmic', 'width=500,height=400');
                 } else {
-                    //COSM endings
                     var tmp = cosmicId.indexOf("COSM");
 
                     if(tmp != -1) {
                         cid = cosmicId.substring(tmp, cosmicId.length);
                         cia = cid.split("COSM");
                         var fid =  cia[1].split(".");
-                        //return ("<a class='report-link' onClick='openCosmicId(\"" + fid[0] + "\")' >" + cosmicId + "</a>");
                         $window.open("http://cancer.sanger.ac.uk/cosmic/mutation/overview?id="+fid[0], "cosmic", 'width=500,height=400');
                     }
                 }
             }
         };
-
-        $scope.openPubmed = function(pubMedIds) {
-            var pubmed = [];
-            if (pubMedIds !== null) {
-                $.each(pubMedIds, function(key, value) {
-                    // On rare occassion there is not be a pub med id in field but another type of reference
-                    // Checking to make sure the value is all numbers; thus a valid pub med id
-                    var numericId = value.match(/\s*?([0-9]+)/);
-                    if (numericId != null && numericId[1] != "") {
-                        pubmed.push("<a class='report-link' onClick='openPubMed(\"" + numericId[1] + "\")' >" + value + "</a>");
-                    } else {
-                        pubmed.push(value);
-                    }
-                });
-            } else {
-                pubmed = "-";
-            }
-            return pubmed;
-        };
-
-        function openPubMed(pubMedId) {
-            window.open("http://www.ncbi.nlm.nih.gov/pubmed/?term="+pubMedId, "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=300, left=300, width=600, height=400");
-        }
-
-        function getPubMedLinks(pubMedIds){
-            var pubmed = [];
-            if (pubMedIds !== null) {
-                $.each(pubMedIds, function(key, value) {
-                    // On rare occassion there is not be a pub med id in field but another type of reference
-                    // Checking to make sure the value is all numbers; thus a valid pub med id
-                    var numericId = value.match(/\s*?([0-9]+)/);
-                    if (numericId != null && numericId[1] != "") {
-                        pubmed.push("<a class='report-link' onClick='openPubMed(\"" + numericId[1] + "\")' >" + value + "</a>");
-                    } else {
-                        pubmed.push(value);
-                    }
-                });
-            } else {
-                pubmed = "-";
-            }
-            return pubmed;
-        }
 
         $scope.pieDataset = [
             {
