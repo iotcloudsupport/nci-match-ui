@@ -1,24 +1,25 @@
-(function () {
+// (function () {
     "use strict";
 
-    angular.module('filters.matchbox', [])
-        .filter('gmt', gmt)
-        .filter('status', status)
-        .filter('analysisStatus', analysisStatus)
-        .filter('assayStatus', assayStatus)
-        .filter('concordance', concordance);
+    // angular.module('filters.matchbox', [])
+    //     .filter('gmt', gmt)
+    //     .filter('status', status)
+    //     .filter('analysisStatus', analysisStatus)
+    //     .filter('assayStatus', assayStatus)
+    //     .filter('concordance', concordance);
 
-    function gmt() {
+    angular.module('filters.matchbox', [])
+    .filter('gmt', function() {
         return function (date) {
             if (angular.isDefined(date) && angular.isNumber(date)) {
                 return moment.unix(date / 1000).utc().format('LLL') + ' GMT';
             } else {
                 return '-';
             }
-        };
-    }
+        }
+    })
 
-    function concordance() {
+    .filter('concordance', function() {
         return function(text) {
             if (!text || typeof text !== "string")
                 return '';
@@ -31,9 +32,9 @@
                 return '';
             }
         }
-    }
+    })
 
-    function analysisStatus() {
+    .filter('analysisStatus', function() {
         return function (text) {
             if (!text || typeof text !== "string")
                 return '';
@@ -52,10 +53,10 @@
             else {
                 return '';
             }
-        };
-    }
+        }
+    })
 
-    function assayStatus() {
+    .filter('assayStatus', function() {
         return function (text) {
             if (!text || typeof text !== "string")
                 return '';
@@ -71,10 +72,10 @@
             else {
                 return '';
             }
-        };
-    }
+        }
+    })
         
-    function status() {
+    .filter('status˛', function() {
         return function (text) {
             if (!text || typeof text !== "string")
                 return '';
@@ -101,5 +102,5 @@
                 return '';
             }
         };
-    }
-})();
+    })
+// })();
