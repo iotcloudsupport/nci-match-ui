@@ -1,5 +1,8 @@
 'use strict';
 module.exports = function (grunt) {
+	
+	//added for grunt-docker
+	grunt.loadNpmTasks('grunt-docker');
 
     // Load grunt tasks automatically
     require('load-grunt-tasks')(grunt);
@@ -15,6 +18,20 @@ module.exports = function (grunt) {
 
     // Grunt configuration
     grunt.initConfig({
+
+	docker: {
+    		options: {
+      			// These options are applied to all tasks
+    			},
+    		app: {
+      			// Specify `src` and `dest` directly on the task object
+      			src: ['path/to/source/files/*.{coffee,js}'],
+      			dest: 'where/you/want/your/generated/doc/files',
+      			options: {
+        			// ...
+      			}
+    		}
+  	},
 
         // Project settings
         inspinia: appConfig,
