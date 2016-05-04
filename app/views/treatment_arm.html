@@ -210,9 +210,6 @@
                                                                        dt-instance="TaCtrl.dtInstance"
                                                                        class="table table-striped table-bordered table-hover" style="width:100%">
                                                                     <thead>
-                                                                    <!--<tr>
-                                                                        <th colspan="2">Inclusionary Drugs</th>
-                                                                    </tr>-->
                                                                     <tr>
                                                                         <th>ID</th>
                                                                         <th>Description</th>
@@ -358,7 +355,13 @@
                                                                     <td>{{item.SNV.position || '-'}}</td>
                                                                     <td>{{item.SNV.reference || '-'}}</td>
                                                                     <td>{{item.SNV.alternative || '-'}}</td>
-                                                                    <td>{{item.SNV.litRef || '-'}}</td>
+                                                                    <td>
+                                                                        <table>
+                                                                            <tr ng-repeat="subitem in item.SNV.litRefs">
+                                                                                <td><a ng-click="openPubMed(subitem.litRef)">{{subitem.litRef || '-'}}</a></td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
                                                                     <td>{{item.SNV.protein || '-'}}</td>
                                                                     <td style="text-align:right">{{item.SNV.totNumPtsWithVariant || '-'}}</td>
                                                                     <td style="text-align:right">{{item.SNV.ptsWithVariantOnArm || '-'}}</td>
@@ -388,14 +391,20 @@
                                                                 </thead>
                                                                 <tbody>
                                                                 <tr ng-repeat="item in snvsExclusion">
-                                                                    <td>{{item.SNV.id || '-'}}</td>
+                                                                    <td><a ng-click="openId(item.SNV.id)">{{item.SNV.id || '-'}}</td>
                                                                     <td><a ng-click="openGene(item.SNV.gene)">{{item.SNV.gene || '-'}}</a></td>
                                                                     <td>{{item.SNV.levelOfEvidence || '-'}}</td>
                                                                     <td>{{item.SNV.chrom || '-'}}</td>
                                                                     <td>{{item.SNV.position || '-'}}</td>
                                                                     <td>{{item.SNV.reference || '-'}}</td>
                                                                     <td>{{item.SNV.alternative || '-'}}</td>
-                                                                    <td>{{item.SNV.litRef || '-'}}</td>
+                                                                    <td>
+                                                                        <table>
+                                                                            <tr ng-repeat="subitem in item.SNV.litRefs">
+                                                                                <td><a ng-click="openPubMed(subitem.litRef)">{{subitem.litRef || '-'}}</a></td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
                                                                     <td>{{item.SNV.protein || '-'}}</td>
                                                                 </tr>
                                                                 </tbody>
@@ -438,14 +447,20 @@
                                                                 </thead>
                                                                 <tbody>
                                                                 <tr ng-repeat="item in indelsInclusion">
-                                                                    <td>{{item.Indel.id || '-'}}</td>
+                                                                    <td><a ng-click="openId(item.Indel.id)">{{item.Indel.id || '-'}}</td>
                                                                     <td><a ng-click="openGene(item.Indel.gene)">{{item.Indel.gene || '-'}}</a></td>
                                                                     <td>{{item.Indel.levelOfEvidence || '-'}}</td>
                                                                     <td>{{item.Indel.chrom || '-'}}</td>
                                                                     <td>{{item.Indel.position || '-'}}</td>
                                                                     <td>{{item.Indel.reference || '-'}}</td>
                                                                     <td>{{item.Indel.alternative || '-'}}</td>
-                                                                    <td>{{item.Indel.litRef || '-'}}</td>
+                                                                    <td>
+                                                                        <table>
+                                                                            <tr ng-repeat="subitem in item.Indel.litRefs">
+                                                                                <td><a ng-click="openPubMed(subitem.litRef)">{{subitem.litRef || '-'}}</a></td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
                                                                     <td>{{item.Indel.protein || '-'}}</td>
                                                                     <td style="text-align:right">{{item.Indel.totNumPtsWithVariant || '-'}}</td>
                                                                     <td style="text-align:right">{{item.Indel.ptsWithVariantOnArm || '-'}}</td>
@@ -475,14 +490,20 @@
                                                                 </thead>
                                                                 <tbody>
                                                                 <tr ng-repeat="item in indelsExclusion">
-                                                                    <td>{{item.Indel.id || '-'}}</td>
+                                                                    <td><a ng-click="openId(item.Indel.id)">{{item.Indel.id || '-'}}</td>
                                                                     <td><a ng-click="openGene(item.Indel.gene)">{{item.Indel.gene || '-'}}</a></td>
                                                                     <td>{{item.Indel.levelOfEvidence || '-'}}</td>
                                                                     <td>{{item.Indel.chrom || '-'}}</td>
                                                                     <td>{{item.Indel.position || '-'}}</td>
                                                                     <td>{{item.Indel.reference || '-'}}</td>
                                                                     <td>{{item.Indel.alternative || '-'}}</td>
-                                                                    <td>{{item.Indel.litRef || '-'}}</td>
+                                                                    <td>
+                                                                        <table>
+                                                                            <tr ng-repeat="subitem in item.Indel.litRefs">
+                                                                                <td><a ng-click="openPubMed(subitem.litRef)">{{subitem.litRef || '-'}}</a></td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
                                                                     <td>{{item.Indel.protein || '-'}}</td>
                                                                 </tr>
                                                                 </tbody>
@@ -526,7 +547,13 @@
                                                                     <td>{{item.CNV.levelOfEvidence || '-'}}</td>
                                                                     <td>{{item.CNV.chrom || '-'}}</td>
                                                                     <td>{{item.CNV.position || '-'}}</td>
-                                                                    <td>{{item.CNV.litRef || '-'}}</td>
+                                                                    <td>
+                                                                        <table>
+                                                                            <tr ng-repeat="subitem in item.CNV.litRefs">
+                                                                                <td><a ng-click="openPubMed(subitem.litRef)">{{subitem.litRef || '-'}}</a></td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
                                                                     <td>{{item.CNV.protein || '-'}}</td>
                                                                     <td style="text-align:right">{{item.CNV.totNumPtsWithVariant || '-'}}</td>
                                                                     <td style="text-align:right">{{item.CNV.ptsWithVariantOnArm || '-'}}</td>
@@ -557,7 +584,13 @@
                                                                     <td>{{item.CNV.levelOfEvidence || '-'}}</td>
                                                                     <td>{{item.CNV.chrom || '-'}}</td>
                                                                     <td>{{item.CNV.position || '-'}}</td>
-                                                                    <td>{{item.CNV.litRef || '-'}}</td>
+                                                                    <td>
+                                                                        <table>
+                                                                            <tr ng-repeat="subitem in item.CNV.litRefs">
+                                                                                <td><a ng-click="openPubMed(subitem.litRef)">{{subitem.litRef || '-'}}</a></td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
                                                                     <td>{{item.CNV.protein || '-'}}</td>
                                                                 </tr>
                                                                 </tbody>
@@ -598,7 +631,13 @@
                                                                     <td>{{item.GF.id || '-'}}</td>
                                                                     <td><a ng-click="openGene(item.GF.gene)">{{item.GF.gene || '-'}}</a></td>
                                                                     <td>{{item.GF.levelOfEvidence || '-'}}</td>
-                                                                    <td>{{item.GF.litRef || '-'}}</td>
+                                                                    <td>
+                                                                        <table>
+                                                                            <tr ng-repeat="subitem in item.GF.litRefs">
+                                                                                <td><a ng-click="openPubMed(subitem.litRef)">{{subitem.litRef || '-'}}</a></td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
                                                                     <td style="text-align:right">{{item.GF.totNumPtsWithVariant || '-'}}</td>
                                                                     <td style="text-align:right">{{item.GF.ptsWithVariantOnArm || '-'}}</td>
                                                                     <td style="text-align:right">{{item.GF.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
@@ -625,7 +664,13 @@
                                                                     <td>{{item.GF.id || '-'}}</td>
                                                                     <td><a ng-click="openGene(item.GF.gene)">{{item.GF.gene || '-'}}</a></td>
                                                                     <td>{{item.GF.levelOfEvidence || '-'}}</td>
-                                                                    <td>{{item.GF.litRef || '-'}}</td>
+                                                                    <td>
+                                                                        <table>
+                                                                            <tr ng-repeat="subitem in item.GF.litRefs">
+                                                                                <td><a ng-click="openPubMed(subitem.litRef)">{{subitem.litRef || '-'}}</a></td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
                                                                 </tr>
                                                                 </tbody>
                                                             </table>
@@ -647,7 +692,7 @@
                                                         <div ng-show="TaCtrl.activeChoice == 'inclusion'">
                                                             <table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
-                                                                   dt-column-defs="TaCtrl.altColumnDefs"
+                                                                   dt-column-defs="TaCtrl.dtColumnDefs"
                                                                    dt-instance="TaCtrl.dtInstance"
                                                                    class="table table-striped table-bordered table-hover" style="width:100%">
                                                                 <thead>
@@ -668,7 +713,13 @@
                                                                     <td><a ng-click="openGene(item.NHR.gene)">{{item.NHR.gene || '-'}}</a></td>
                                                                     <td>{{item.NHR.levelOfEvidence || '-'}}</td>
                                                                     <td>{{item.NHR.function || '-'}}</td>
-                                                                    <td>{{item.NHR.litRef || '-'}}</td>
+                                                                    <td>
+                                                                        <table>
+                                                                            <tr ng-repeat="subitem in item.NHR.litRefs">
+                                                                                <td><a ng-click="openPubMed(subitem.litRef)">{{subitem.litRef || '-'}}</a></td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
                                                                     <td>{{item.NHR.variantDescription || '-'}}</td>
                                                                     <td>{{item.NHR.exon || '-'}}</td>
                                                                     <td>{{item.NHR.proteinRegex || '-'}}</td>
@@ -701,7 +752,13 @@
                                                                     <td><a ng-click="openGene(item.NHR.gene)">{{item.NHR.gene || '-'}}</a></td>
                                                                     <td>{{item.NHR.levelOfEvidence || '-'}}</td>
                                                                     <td>{{item.NHR.function || '-'}}</td>
-                                                                    <td>{{item.NHR.litRef || '-'}}</td>
+                                                                    <td>
+                                                                        <table>
+                                                                            <tr ng-repeat="subitem in item.NHR.litRefs">
+                                                                                <td><a ng-click="openPubMed(subitem.litRef)">{{subitem.litRef || '-'}}</a></td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </td>
                                                                     <td>{{item.NHR.variantDescription || '-'}}</td>
                                                                     <td>{{item.NHR.exon || '-'}}</td>
                                                                     <td>{{item.NHR.proteinRegex || '-'}}</td>
@@ -771,7 +828,7 @@
                                                                 </thead>
                                                                 <tbody>
                                                                 <tr ng-repeat="item in nonSequencingAssaysExclusion">
-                                                                    <td><a href="http://www.google.com">{{item.NsAssay.assay || '-'}}</a></td>
+                                                                    <td>{{item.NsAssay.assay || '-'}}</td>
                                                                     <td><a ng-click="openGene(item.NsAssay.gene)">{{item.NsAssay.gene || '-'}}</a></td>
                                                                     <td>{{item.NsAssay.result || '-'}}</td>
                                                                     <td>{{item.NsAssay.variantAssociation || '-'}}</td>
