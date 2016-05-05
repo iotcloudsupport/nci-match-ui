@@ -628,7 +628,7 @@
                                                                 </thead>
                                                                 <tbody>
                                                                 <tr ng-repeat="item in geneFusionsInclusion">
-                                                                    <td>{{item.GF.id || '-'}}</td>
+                                                                    <td><a ng-click="openId(item.GF.id)">{{item.GF.id || '-'}}</td>
                                                                     <td><a ng-click="openGene(item.GF.gene)">{{item.GF.gene || '-'}}</a></td>
                                                                     <td>{{item.GF.levelOfEvidence || '-'}}</td>
                                                                     <td>
@@ -661,7 +661,7 @@
                                                                 </thead>
                                                                 <tbody>
                                                                 <tr ng-repeat="item in geneFusionsExclusion">
-                                                                    <td>{{item.GF.id || '-'}}</td>
+                                                                    <td><a ng-click="openId(item.GF.id)">{{item.GF.id || '-'}}</td>
                                                                     <td><a ng-click="openGene(item.GF.gene)">{{item.GF.gene || '-'}}</a></td>
                                                                     <td>{{item.GF.levelOfEvidence || '-'}}</td>
                                                                     <td>
@@ -841,6 +841,7 @@
                                                 </div>
                                             </div>
                                         </tab>
+
                                     </tabset>
                                 </div>
                             </div>
