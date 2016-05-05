@@ -6,7 +6,7 @@
                 <a ui-sref="index.dashboard">Dashboard</a>
             </li>
             <!--<li>-->
-                <!--<a ui-sref="index.patients">Patients</a>-->
+            <!--<a ui-sref="index.patients">Patients</a>-->
             <!--</li>-->
             <li class="active">
                 <strong>IR Admin</strong>
@@ -40,23 +40,7 @@
                                     <div class="ibox-title">
                                         <h5>Ion Reporters' Statuses</h5>
                                         <span class="label label-primary">Currecnt Status</span>
-                                        <!--<div class="ibox-tools">-->
-                                            <!--<a class="collapse-link">-->
-                                                <!--<i class="fa fa-chevron-up"></i>-->
-                                            <!--</a>-->
-                                            <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#">-->
-                                                <!--<i class="fa fa-wrench"></i>-->
-                                            <!--</a>-->
-                                            <!--<ul class="dropdown-menu dropdown-user">-->
-                                                <!--<li><a href="#">Config option 1</a>-->
-                                                <!--</li>-->
-                                                <!--<li><a href="#">Config option 2</a>-->
-                                                <!--</li>-->
-                                            <!--</ul>-->
-                                            <!--<a class="close-link">-->
-                                                <!--<i class="fa fa-times"></i>-->
-                                            <!--</a>-->
-                                        <!--</div>-->
+
                                     </div>
 
                                     <div class="ibox-content">
@@ -65,24 +49,44 @@
 
                                             <div class="row">
                                                 <div class="col-xs-12 content top-border">
-                                                    <small class="text-navy">2 hour ago</small>
-                                                    <table  width="100%">
-                                                        <thead>
-                                                            <tr>
-                                                                <th></th>
-                                                                <th>IP Address</th>
-                                                                <th>Internal IP Address</th>
-                                                                <th>Host Name</th>
-                                                                <th>Location</th>
-                                                                <th>Status</th>
-                                                                <th>Last Contact</th>
-                                                                <th>Data Files</th>
 
-                                                            </tr>
+
+                                                    <table class="table">
+                                                        <thead>
+                                                            <th></th>
+                                                            <th>IP Address</th>
+                                                            <th>Internal IP Address</th>
+                                                            <th>Host Name</th>
+                                                            <th>Location</th>
+                                                            <th>Status</th>
+                                                            <th>Last Contact</th>
+                                                            <th>Data Files</th>
                                                         </thead>
                                                         <tbody>
                                                         <tr>
-                                                            <td> <i class="fa fa-clock-o fa-2x" style="color:green"></i></td>
+                                                            <td> <i class="fa fa-clock-o fa-2x" style="color:green"></i><small class="text-navy"> 2 hour ago</small></td>
+                                                            <td>129.43.127.133</td>
+                                                            <td>129.43.127.133</td>
+                                                            <td>NCI-MATCH-IR</td>
+                                                            <td>MoCha</td>
+                                                            <td>Lost contact! Last heartbeat was sent 321141 minutes ago</td>
+                                                            <td>September 23, 2015 1:00 PM GMT</td>
+
+                                                            <td>T 7</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> <i class="fa fa-exclamation-triangle fa-2x" style="color:orange"></i><small class="text-navy"> 4 hour ago</small></td>
+                                                            <td>129.43.127.133</td>
+                                                            <td>129.43.127.133</td>
+                                                            <td>NCI-MATCH-IR</td>
+                                                            <td>MoCha</td>
+                                                            <td>Lost contact! Last heartbeat was sent 321141 minutes ago</td>
+                                                            <td>September 23, 2015 1:00 PM GMT</td>
+
+                                                            <td>T 7</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> <i class="fa fa-exclamation-triangle fa-2x" style="color:orange"></i><small class="text-navy"> 1 hour ago</small></td>
                                                             <td>129.43.127.133</td>
                                                             <td>129.43.127.133</td>
                                                             <td>NCI-MATCH-IR</td>
@@ -93,159 +97,13 @@
                                                             <td>T 7</td>
 
                                                         </tr>
-                                                        </tbody>
-                                                    </table>
 
-                                                </div>
-
-
-                                            </div>
-
-
-                                        </div>
-
-
-                                        <div class="timeline-item">
-                                            <div class="row">
-
-                                                <div class="col-xs-12 content top-border">
-                                                    <small class="text-navy">12 hour ago</small>
-                                                    <table  width="100%">
-                                                        <thead>
-                                                        <tr>
-                                                            <th></th>
-                                                            <th>IP Address</th>
-                                                            <th>Internal IP Address</th>
-                                                            <th>Host Name</th>
-                                                            <th>Location</th>
-                                                            <th>Status</th>
-                                                            <th>Last Contact</th>
-                                                            <th>Data Files</th>
-
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <tr>
-                                                            <td> <i class="fa fa-exclamation-triangle fa-2x" style="color:orange"></i></td>
-                                                            <td>129.43.127.133</td>
-                                                            <td>129.43.127.133</td>
-                                                            <td>NCI-MATCH-IR</td>
-                                                            <td>MoCha</td>
-                                                            <td>Lost contact! Last heartbeat was sent 321141 minutes ago</td>
-                                                            <td>September 23, 2015 1:00 PM GMT</td>
-
-                                                            <td>T 7</td>
-
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="timeline-item">
-                                            <div class="row">
-
-                                                <div class="col-xs-12 content top-border">
-                                                    <small class="text-navy">23 hour ago</small>
-                                                    <table  width="100%">
-                                                        <thead>
-                                                        <tr>
-                                                            <th></th>
-                                                            <th>IP Address</th>
-                                                            <th>Internal IP Address</th>
-                                                            <th>Host Name</th>
-                                                            <th>Location</th>
-                                                            <th>Status</th>
-                                                            <th>Last Contact</th>
-                                                            <th>Data Files</th>
-
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <tr>
-                                                            <td> <i class="fa fa-exclamation-triangle fa-2x danger" style="color:orange"></i></td>
-                                                            <td>129.43.127.133</td>
-                                                            <td>129.43.127.133</td>
-                                                            <td>NCI-MATCH-IR</td>
-                                                            <td>MoCha</td>
-                                                            <td>Lost contact! Last heartbeat was sent 321141 minutes ago</td>
-                                                            <td>September 23, 2015 1:00 PM GMT</td>
-
-                                                            <td>T 7</td>
-
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="timeline-item">
-                                            <div class="row">
-
-                                                <div class="col-xs-12 content">
-                                                    <small class="text-navy">21 hour ago</small>
-                                                    <table  width="100%">
-                                                        <thead>
-                                                        <tr>
-                                                            <th></th>
-                                                            <th>IP Address</th>
-                                                            <th>Internal IP Address</th>
-                                                            <th>Host Name</th>
-                                                            <th>Location</th>
-                                                            <th>Status</th>
-                                                            <th>Last Contact</th>
-                                                            <th>Data Files</th>
-
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <tr>
-                                                            <td> <i class="fa fa-spinner fa-pulse fa-2x fa-fw margin-bottom" style="color:royalblue"></i></td>
-                                                            <td>129.43.127.133</td>
-                                                            <td>129.43.127.133</td>
-                                                            <td>NCI-MATCH-IR</td>
-                                                            <td>MoCha</td>
-                                                            <td>Lost contact! Last heartbeat was sent 321141 minutes ago</td>
-                                                            <td>September 23, 2015 1:00 PM GMT</td>
-
-                                                            <td>T 7</td>
-
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="timeline-item">
-                                            <div class="row">
-
-                                                <div class="col-xs-12 content top-border ">
-                                                    <small class="text-navy">23 hour ago</small>
-                                                    <table  width="100%">
-                                                        <thead>
-                                                        <tr>
-                                                            <th></th>
-                                                            <th>IP Address</th>
-                                                            <th>Internal IP Address</th>
-                                                            <th>Host Name</th>
-                                                            <th>Location</th>
-                                                            <th>Status</th>
-                                                            <th>Last Contact</th>
-                                                            <th>Data Files</th>
-
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
                                                         <tr>
                                                             <td>
-                                                                <a href="">
-                                                                    <i class="fa fa-lock fa-2x danger"></i>
-                                                                </a>
+                                                            <a href="">
+                                                            <i class="fa fa-lock fa-2x danger"></i>
+                                                            </a>
+                                                                <small class="text-navy"> Locked</small>
                                                             </td>
                                                             <td>129.43.127.133</td>
                                                             <td>129.43.127.133</td>
@@ -255,14 +113,25 @@
                                                             <td>September 23, 2015 1:00 PM GMT</td>
 
                                                             <td>T 7</td>
-
                                                         </tr>
+
+
                                                         </tbody>
                                                     </table>
 
+
+
+
                                                 </div>
+
+
                                             </div>
+
+
                                         </div>
+
+
+
 
                                     </div>
                                 </div>
@@ -277,155 +146,392 @@
                         <div class="tabs-container">
 
 
-                                <tabset>
-                                    <tab>
-                                        <tab-heading>
-                                            <i class="fa fa-puzzle-piece fa-2x"></i>
-                                            MoCha
-                                        </tab-heading>
-                                        <div class="panel-body">
-                                            <strong>Lorem ipsum dolor sit amet, consectetuer adipiscing</strong>
+                            <tabset>
+                                <tab>
+                                    <tab-heading>
+                                        <i class="fa fa-puzzle-piece fa-2x"></i>
+                                        MoCha
+                                    </tab-heading>
+                                    <div class="panel-body">
 
-                                            <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of
-                                                spring which I enjoy with my whole heart. I am alone, and feel the charm of
-                                                existence in this spot, which was created for the bliss of souls like mine.</p>
+                                            <div class="panel-group" id="accordion">
+                                                <div class="panel panel-success">
+                                                    <div class="panel-heading">
+                                                        <h5 class="panel-title">
+                                                            <a data-toggle="collapse" target="_local" data-parent="#accordion" href="#collapseOne">Positive Control- MoCha</a>
+                                                        </h5>
+                                                    </div>
 
-                                            <p>I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil
-                                                existence, that I neglect my talents. I should be incapable of drawing a single stroke
-                                                at
-                                                the present moment; and yet I feel that I never was a greater artist than now. When.</p>
+                                                    <div id="collapseOne" class="panel-collapse collapse in">
+                                                        <div class="panel-body">
+
+
+                                                            <div class="col-lg-12">
+
+                                                                <button style="width:300px; margin: 0px 3px 8px 3px"
+                                                                        data-dismiss="modal" class="btn btn-primary pull-right"
+                                                                        type="button" data="129.43.127.133" id="generateMoCha">
+                                                                    <i class="fa fa-cogs fa-2x pull-left"></i> Generate MSN
+                                                                </button>
+
+
+                                                                <div class="ibox float-e-margins">
+                                                                    <div class="ibox-content">
+
+                                                                        <table class="table">
+                                                                            <thead>
+                                                                            <tr>
+                                                                                <th>Molecular Sequence Number</th>
+                                                                                <th>Date Created</th>
+                                                                                <th>Date Received</th>
+                                                                                <th>Variant Reports</th>
+                                                                                <th>Status</th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            <tr>
+                                                                                <td>SampleControl_MoCha_10</td>
+                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                <td><a href="#" >SampleControl_MoCha_10</a></td>
+                                                                                <td>PASSED</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>SampleControl_MoCha_11</td>
+                                                                                <td>September 12, 2015 3:19 PM GMT</td>
+                                                                                <td>September 12, 2015 3:21 PM GMT</td>
+                                                                                <td><a href="#" >SampleControl_MoCha_10</a></td>
+                                                                                <td>PASSED</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>SampleControl_MoCha_12</td>
+                                                                                <td>September 15, 2015 3:19 PM GMT</td>
+                                                                                <td>September 15, 2015 3:21 PM GMT</td>
+                                                                                <td><a href="#" >SampleControl_MoCha_10</a></td>
+                                                                                <td>FAILED</td>
+                                                                            </tr>
+                                                                            </tbody>
+                                                                        </table>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="panel panel-success">
+                                                    <div class="panel-heading">
+                                                        <h4 class="panel-title">
+                                                            <a data-toggle="collapse" target="_local" data-parent="#accordion" href="#collapseTwo">No Template Control - MoCha</a>
+                                                        </h4>
+                                                    </div>
+                                                    <div id="collapseTwo" class="panel-collapse collapse">
+                                                        <div class="panel-body">
+
+                                                            <div class="col-lg-12">
+
+                                                                <button style="width:300px; margin: 0px 3px 8px 3px"
+                                                                        data-dismiss="modal" class="btn btn-primary pull-right"
+                                                                        type="button" data="129.43.127.133" id="generateMoCha">
+                                                                    <i class="fa fa-cogs fa-2x pull-left"></i> Generate MSN
+                                                                </button>
+
+
+                                                                <div class="ibox float-e-margins">
+
+                                                                    <div class="ibox-content">
+
+                                                                        <table class="table">
+                                                                            <thead>
+                                                                            <tr>
+                                                                                <th>Molecular Sequence Number</th>
+                                                                                <th>Date Created</th>
+                                                                                <th>Date Received</th>
+                                                                                <th>Variant Reports</th>
+                                                                                <th>Status</th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            <tr>
+                                                                                <td>SampleControl_MoCha_10</td>
+                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                <td><a href="#" >SampleControl_MoCha_10</a></td>
+                                                                                <td>PASSED</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>SampleControl_MoCha_11</td>
+                                                                                <td>September 12, 2015 3:19 PM GMT</td>
+                                                                                <td>September 12, 2015 3:21 PM GMT</td>
+                                                                                <td><a href="#" >SampleControl_MoCha_10</a></td>
+                                                                                <td>PASSED</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>SampleControl_MoCha_12</td>
+                                                                                <td>September 15, 2015 3:19 PM GMT</td>
+                                                                                <td>September 15, 2015 3:21 PM GMT</td>
+                                                                                <td><a href="#" >SampleControl_MoCha_10</a></td>
+                                                                                <td>FAILED</td>
+                                                                            </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                    </div>
+                                </tab>
+                                <tab>
+                                    <tab-heading>
+                                        <i class="fa fa-cubes fa-2x"></i>
+                                        Yale
+                                    </tab-heading>
+                                    <div class="panel-body">
+                                        <div class="panel-group" id="accordion">
+                                            <div class="panel panel-success">
+                                                <div class="panel-heading">
+                                                    <h5 class="panel-title">
+                                                        <a data-toggle="collapse" target="_local" data-parent="#accordion" href="#collapseYaleOne">Positive Control - Yale</a>
+                                                    </h5>
+                                                </div>
+
+                                                <div id="collapseYaleOne" class="panel-collapse collapse in">
+                                                    <div class="panel-body">
+
+
+                                                        <div class="col-lg-12">
+
+                                                            <button style="width:300px; margin: 0px 3px 8px 3px"
+                                                                    data-dismiss="modal" class="btn btn-primary pull-right"
+                                                                    type="button" data="129.43.127.133" id="generateMoCha">
+                                                                <i class="fa fa-cogs fa-2x pull-left"></i> Generate MSN
+                                                            </button>
+
+
+                                                            <div class="ibox float-e-margins">
+                                                                <div class="ibox-content">
+
+                                                                    <table class="table">
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th>Molecular Sequence Number</th>
+                                                                            <th>Date Created</th>
+                                                                            <th>Date Received</th>
+                                                                            <th>Variant Reports</th>
+                                                                            <th>Status</th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <tr>
+                                                                            <td>SampleControl_Yale_10</td>
+                                                                            <td>September 18, 2015 3:19 PM GMT</td>
+                                                                            <td>September 18, 2015 3:21 PM GMT</td>
+                                                                            <td><a href="#" >SampleControl_Yale_10</a></td>
+                                                                            <td>PASSED</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>SampleControl_Yale_11</td>
+                                                                            <td>September 12, 2015 3:19 PM GMT</td>
+                                                                            <td>September 12, 2015 3:21 PM GMT</td>
+                                                                            <td><a href="#" >SampleControl_Yale_10</a></td>
+                                                                            <td>PASSED</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>SampleControl_Yale_12</td>
+                                                                            <td>September 15, 2015 3:19 PM GMT</td>
+                                                                            <td>September 15, 2015 3:21 PM GMT</td>
+                                                                            <td><a href="#" >SampleControl_Yale_10</a></td>
+                                                                            <td>FAILED</td>
+                                                                        </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-success">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        <a data-toggle="collapse" target="_local" data-parent="#accordion" href="#collapseYaleTwo">No Template Control - Yale</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseYaleTwo" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+
+                                                        <div class="col-lg-12">
+
+                                                            <button style="width:300px; margin: 0px 3px 8px 3px"
+                                                                    data-dismiss="modal" class="btn btn-primary pull-right"
+                                                                    type="button" data="129.43.127.133" id="generateMoCha">
+                                                                <i class="fa fa-cogs fa-2x pull-left"></i> Generate MSN
+                                                            </button>
+
+
+                                                            <div class="ibox float-e-margins">
+
+                                                                <div class="ibox-content">
+
+                                                                    <table class="table">
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th>Molecular Sequence Number</th>
+                                                                            <th>Date Created</th>
+                                                                            <th>Date Received</th>
+                                                                            <th>Variant Reports</th>
+                                                                            <th>Status</th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <tr>
+                                                                            <td>SampleControl_MoCha_10</td>
+                                                                            <td>September 18, 2015 3:19 PM GMT</td>
+                                                                            <td>September 18, 2015 3:21 PM GMT</td>
+                                                                            <td><a href="#" >SampleControl_MoCha_10</a></td>
+                                                                            <td>PASSED</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>SampleControl_MoCha_11</td>
+                                                                            <td>September 12, 2015 3:19 PM GMT</td>
+                                                                            <td>September 12, 2015 3:21 PM GMT</td>
+                                                                            <td><a href="#" >SampleControl_MoCha_10</a></td>
+                                                                            <td>PASSED</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>SampleControl_MoCha_12</td>
+                                                                            <td>September 15, 2015 3:19 PM GMT</td>
+                                                                            <td>September 15, 2015 3:21 PM GMT</td>
+                                                                            <td><a href="#" >SampleControl_MoCha_10</a></td>
+                                                                            <td>FAILED</td>
+                                                                        </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </tab>
-                                    <tab>
-                                        <tab-heading>
-                                            <i class="fa fa-cubes fa-2x"></i>
-                                            Yale
-                                        </tab-heading>
-                                        <div class="panel-body">
-                                            <strong>Donec quam felis</strong>
+                                    </div>
+                                </tab>
+                                <tab>
+                                    <tab-heading>
+                                        <i class="fa fa-compass fa-2x"></i>
+                                        MGH
+                                    </tab-heading>
+                                    <div class="panel-body">
+                                        <strong>Lorem ipsum dolor sit amet, consectetuer adipiscing</strong>
 
-                                            <p>Thousand unknown plants are noticed by me: when I hear the buzz of the little world among
-                                                the stalks, and grow familiar with the countless indescribable forms of the insects
-                                                and flies, then I feel the presence of the Almighty, who formed us in his own image, and
-                                                the breath </p>
+                                        <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of
+                                            spring which I enjoy with my whole heart. I am alone, and feel the charm of
+                                            existence in this spot, which was created for the bliss of souls like mine.</p>
 
-                                            <p>I am alone, and feel the charm of existence in this spot, which was created for the bliss
-                                                of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite
-                                                sense of mere tranquil existence, that I neglect my talents. I should be incapable of
-                                                drawing a single stroke at the present moment; and yet.</p>
-                                        </div>
-                                    </tab>
-                                    <tab>
-                                        <tab-heading>
-                                            <i class="fa fa-compass fa-2x"></i>
-                                            MGH
-                                        </tab-heading>
-                                        <div class="panel-body">
-                                            <strong>Lorem ipsum dolor sit amet, consectetuer adipiscing</strong>
+                                        <p>I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil
+                                            existence, that I neglect my talents. I should be incapable of drawing a single stroke
+                                            at
+                                            the present moment; and yet I feel that I never was a greater artist than now. When.</p>
+                                    </div>
+                                </tab>
+                                <tab>
+                                    <tab-heading>
+                                        <i class="fa fa-leaf fa-2x"></i>
+                                        MD Anderson
+                                    </tab-heading>
+                                    <div class="panel-body">
+                                        <strong>Lorem ipsum dolor sit amet, consectetuer adipiscing</strong>
 
-                                            <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of
-                                                spring which I enjoy with my whole heart. I am alone, and feel the charm of
-                                                existence in this spot, which was created for the bliss of souls like mine.</p>
+                                        <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of
+                                            spring which I enjoy with my whole heart. I am alone, and feel the charm of
+                                            existence in this spot, which was created for the bliss of souls like mine.</p>
 
-                                            <p>I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil
-                                                existence, that I neglect my talents. I should be incapable of drawing a single stroke
-                                                at
-                                                the present moment; and yet I feel that I never was a greater artist than now. When.</p>
-                                        </div>
-                                    </tab>
-                                    <tab>
-                                        <tab-heading>
-                                            <i class="fa fa-leaf fa-2x"></i>
-                                            MD Anderson
-                                        </tab-heading>
-                                        <div class="panel-body">
-                                            <strong>Lorem ipsum dolor sit amet, consectetuer adipiscing</strong>
+                                        <p>I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil
+                                            existence, that I neglect my talents. I should be incapable of drawing a single stroke
+                                            at
+                                            the present moment; and yet I feel that I never was a greater artist than now. When.</p>
+                                    </div>
+                                </tab>
+                            </tabset>
 
-                                            <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of
-                                                spring which I enjoy with my whole heart. I am alone, and feel the charm of
-                                                existence in this spot, which was created for the bliss of souls like mine.</p>
-
-                                            <p>I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil
-                                                existence, that I neglect my talents. I should be incapable of drawing a single stroke
-                                                at
-                                                the present moment; and yet I feel that I never was a greater artist than now. When.</p>
-                                        </div>
-                                    </tab>
-                                </tabset>
-
-                            </div>
+                        </div>
 
 
-                            <!--MoCha-->
-                            <!--Yale-->
-                            <!--MGH-->
-                            <!--MD Anderson-->
+                        <!--MoCha-->
+                        <!--Yale-->
+                        <!--MGH-->
+                        <!--MD Anderson-->
 
-                                <!--<tabset>-->
+                        <!--<tabset>-->
 
-                                    <!--<tab heading="MoCha">-->
+                        <!--<tab heading="MoCha">-->
 
-                                        <!--<div class="panel-body"-->
-                                             <!--ng-controller="DashboardPendingReviewController as DashCtrl"-->
-                                             <!--ng-init="loadPatientPendingAssignmentReportsList()">-->
-                                            <!--<table datatable="ng"-->
-                                                   <!--dt-options="DashCtrl.dtOptions"-->
-                                                   <!--dt-column-defs="DashCtrl.dtColumnDefs"-->
-                                                   <!--dt-instance="DashCtrl.dtInstance"-->
-                                                   <!--class="table table-striped table-bordered table-hover">-->
-                                                <!--<thead>-->
-                                                <!--<tr>-->
-                                                    <!--<th>Patient Sequence Number</th>-->
-                                                    <!--<th>Molecular Sequence Number</th>-->
-                                                    <!--<th>Assignment Date</th>-->
-                                                    <!--<th>Hours Pending</th>-->
-                                                <!--</tr>-->
-                                                <!--</thead>-->
-                                                <!--<tbody>-->
-                                                <!--<tr ng-repeat="item in pendingAssignmentReportList">-->
-                                                    <!--<td>{{ item.patientSequenceNumber }}</td>-->
-                                                    <!--<td>{{ item.molecularSequenceNumber || '-' }}</td>-->
-                                                    <!--<td>{{ item.dateAssigned | gmt  }}</td>-->
-                                                    <!--<td><span class="label label-primary">{{ item.hoursPending || ' - ' }}</span></td>-->
-                                                <!--</tr>-->
-                                                <!--</tbody>-->
-                                            <!--</table>-->
-                                        <!--</div>-->
-                                    <!--</tab>-->
+                        <!--<div class="panel-body"-->
+                        <!--ng-controller="DashboardPendingReviewController as DashCtrl"-->
+                        <!--ng-init="loadPatientPendingAssignmentReportsList()">-->
+                        <!--<table datatable="ng"-->
+                        <!--dt-options="DashCtrl.dtOptions"-->
+                        <!--dt-column-defs="DashCtrl.dtColumnDefs"-->
+                        <!--dt-instance="DashCtrl.dtInstance"-->
+                        <!--class="table table-striped table-bordered table-hover">-->
+                        <!--<thead>-->
+                        <!--<tr>-->
+                        <!--<th>Patient Sequence Number</th>-->
+                        <!--<th>Molecular Sequence Number</th>-->
+                        <!--<th>Assignment Date</th>-->
+                        <!--<th>Hours Pending</th>-->
+                        <!--</tr>-->
+                        <!--</thead>-->
+                        <!--<tbody>-->
+                        <!--<tr ng-repeat="item in pendingAssignmentReportList">-->
+                        <!--<td>{{ item.patientSequenceNumber }}</td>-->
+                        <!--<td>{{ item.molecularSequenceNumber || '-' }}</td>-->
+                        <!--<td>{{ item.dateAssigned | gmt  }}</td>-->
+                        <!--<td><span class="label label-primary">{{ item.hoursPending || ' - ' }}</span></td>-->
+                        <!--</tr>-->
+                        <!--</tbody>-->
+                        <!--</table>-->
+                        <!--</div>-->
+                        <!--</tab>-->
 
-                                    <!--<tab heading="Yale">-->
+                        <!--<tab heading="Yale">-->
 
-                                        <!--<div class="panel-body"-->
-                                             <!--ng-controller="DashboardPendingReviewController as DashCtrl"-->
-                                             <!--ng-init="loadPatientPendingAssignmentReportsList()">-->
-                                            <!--<table datatable="ng"-->
-                                                   <!--dt-options="DashCtrl.dtOptions"-->
-                                                   <!--dt-column-defs="DashCtrl.dtColumnDefs"-->
-                                                   <!--dt-instance="DashCtrl.dtInstance"-->
-                                                   <!--class="table table-striped table-bordered table-hover">-->
-                                                <!--<thead>-->
-                                                <!--<tr>-->
-                                                    <!--<th>Patient Sequence Number</th>-->
-                                                    <!--<th>Molecular Sequence Number</th>-->
-                                                    <!--<th>Assignment Date</th>-->
-                                                    <!--<th>Hours Pending</th>-->
-                                                <!--</tr>-->
-                                                <!--</thead>-->
-                                                <!--<tbody>-->
-                                                <!--<tr ng-repeat="item in pendingAssignmentReportList">-->
-                                                    <!--<td>{{ item.patientSequenceNumber }}</td>-->
-                                                    <!--<td>{{ item.molecularSequenceNumber || '-' }}</td>-->
-                                                    <!--<td>{{ item.dateAssigned | gmt  }}</td>-->
-                                                    <!--<td><span class="label label-primary">{{ item.hoursPending || ' - ' }}</span></td>-->
-                                                <!--</tr>-->
-                                                <!--</tbody>-->
-                                            <!--</table>-->
-                                        <!--</div>-->
-                                    <!--</tab>-->
+                        <!--<div class="panel-body"-->
+                        <!--ng-controller="DashboardPendingReviewController as DashCtrl"-->
+                        <!--ng-init="loadPatientPendingAssignmentReportsList()">-->
+                        <!--<table datatable="ng"-->
+                        <!--dt-options="DashCtrl.dtOptions"-->
+                        <!--dt-column-defs="DashCtrl.dtColumnDefs"-->
+                        <!--dt-instance="DashCtrl.dtInstance"-->
+                        <!--class="table table-striped table-bordered table-hover">-->
+                        <!--<thead>-->
+                        <!--<tr>-->
+                        <!--<th>Patient Sequence Number</th>-->
+                        <!--<th>Molecular Sequence Number</th>-->
+                        <!--<th>Assignment Date</th>-->
+                        <!--<th>Hours Pending</th>-->
+                        <!--</tr>-->
+                        <!--</thead>-->
+                        <!--<tbody>-->
+                        <!--<tr ng-repeat="item in pendingAssignmentReportList">-->
+                        <!--<td>{{ item.patientSequenceNumber }}</td>-->
+                        <!--<td>{{ item.molecularSequenceNumber || '-' }}</td>-->
+                        <!--<td>{{ item.dateAssigned | gmt  }}</td>-->
+                        <!--<td><span class="label label-primary">{{ item.hoursPending || ' - ' }}</span></td>-->
+                        <!--</tr>-->
+                        <!--</tbody>-->
+                        <!--</table>-->
+                        <!--</div>-->
+                        <!--</tab>-->
 
-                                <!--</tabset>-->
+                        <!--</tabset>-->
 
-                        </tab>
+                    </tab>
 
                 </tabset>
             </div>
