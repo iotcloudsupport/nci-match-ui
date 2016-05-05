@@ -1,25 +1,24 @@
-// (function () {
+(function () {
     "use strict";
 
-    // angular.module('filters.matchbox', [])
-    //     .filter('gmt', gmt)
-    //     .filter('status', status)
-    //     .filter('analysisStatus', analysisStatus)
-    //     .filter('assayStatus', assayStatus)
-    //     .filter('concordance', concordance);
-
     angular.module('filters.matchbox', [])
-    .filter('gmt', function() {
+        .filter('gmt', gmt)
+        .filter('status', status)
+        .filter('analysisStatus', analysisStatus)
+        .filter('assayStatus', assayStatus)
+        .filter('concordance', concordance);
+
+    function gmt() {
         return function (date) {
             if (angular.isDefined(date) && angular.isNumber(date)) {
                 return moment.unix(date / 1000).utc().format('LLL') + ' GMT';
             } else {
                 return '-';
             }
-        }
-    })
+        };
+    }
 
-    .filter('concordance', function() {
+    function concordance() {
         return function(text) {
             if (!text || typeof text !== "string")
                 return '';
@@ -32,9 +31,9 @@
                 return '';
             }
         }
-    })
+    }
 
-    .filter('analysisStatus', function() {
+    function analysisStatus() {
         return function (text) {
             if (!text || typeof text !== "string")
                 return '';
@@ -53,10 +52,10 @@
             else {
                 return '';
             }
-        }
-    })
+        };
+    }
 
-    .filter('assayStatus', function() {
+    function assayStatus() {
         return function (text) {
             if (!text || typeof text !== "string")
                 return '';
@@ -72,10 +71,10 @@
             else {
                 return '';
             }
-        }
-    })
+        };
+    }
         
-    .filter('status˛', function() {
+    function status() {
         return function (text) {
             if (!text || typeof text !== "string")
                 return '';
@@ -102,5 +101,5 @@
                 return '';
             }
         };
-    })
-// })();
+    }
+})();
