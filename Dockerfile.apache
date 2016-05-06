@@ -1,0 +1,7 @@
+# Base image 
+FROM httpd:2.4
+
+#COPY dist/ /usr/local/apache2/htdocs/
+COPY  nci-match-ui.tgz /usr/local/apache2/htdocs/
+
+RUN tar -xvf /usr/local/apache2/htdocs/nci-match-ui.tgz

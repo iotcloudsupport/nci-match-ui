@@ -75,7 +75,10 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                     return $ocLazyLoad.load([
                         {
                             serie: true,
-                            files: ['bower_components/datatables/media/js/jquery.dataTables.min.js','bower_components/datatables/media/css/dataTables.bootstrap.min.css']
+                            files: [
+                                'bower_components/datatables/media/js/jquery.dataTables.min.js',
+                                'bower_components/datatables/media/css/dataTables.bootstrap.min.css'
+                            ]
                         },
                         {
                             serie: true,
@@ -84,6 +87,13 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                         {
                             name: 'datatables',
                             files: ['bower_components/angular-datatables/dist/angular-datatables.min.js']
+                        },
+                        {
+                            files: [
+                                'bower_components/dropzone/downloads/css/basic.css',
+                                'bower_components/dropzone/downloads/css/dropzone.css',
+                                'bower_components/dropzone/downloads/dropzone.min.js'
+                            ]
                         }
                     ]);
                 }

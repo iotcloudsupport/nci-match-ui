@@ -19,6 +19,7 @@
         'angular-jwt',
         'angular-flot',
         'ui.router',
-        'ui.bootstrap'
+        'ui.bootstrap',
+        'cgPrompt'
     ]);
 })();
