@@ -19,13 +19,148 @@ angular.module('treatment-arm.matchbox',[])
             DTColumnDefBuilder.newColumnDef(4).withOption('createdCell', createpubmedlinks)
         ];
 
-        function createpubmedlinks(td, cellData,  rowData, row, col) {
-            console.log(td);
-            console.log(cellData);
-            console.log(rowData);
-            console.log(row);
-            console.log(col);
+        $scope.colors = [
+            {name: 'black', shade: 'dark'},
+            {name: 'white', shade: 'light', notAnOption: true},
+            {name: 'red', shade: 'dark'},
+            {name: 'blue', shade: 'dark', notAnOption: true},
+            {name: 'yellow', shade: 'light', notAnOption: false}
+        ];
+        $scope.myColor = $scope.colors[2];
 
+        // It is important that the versions are populated in reverse order, starting with current version
+        $scope.versions = [
+            {
+                name: '2016-03-17',
+                description: 'this is the second version',
+                testInclusions: [
+                    { id: 'inclusion3', description: 'third inclusion'}
+                ],
+                testExclusions: [
+                    { id: 'exclusion33', description: 'exclusion#3'},
+                    { id: 'exclusion44', description: 'exclusion#4'},
+                    { id: 'exclusion55', description: 'exclusion#5'}
+                ],
+                indelsInclusion: [
+                    {
+                        "id": "COSM746",
+                        "gene": "ALK",
+                        "levelOfEvidence": "3",
+                        "chrom": "chr7",
+                        "position": "5522678453",
+                        "reference": "C",
+                        "alternative": "T",
+                        "litRefs": [
+                            {
+                                "litRef": "21266528"
+                            }
+                        ],
+                        "protein": "p.G719A",
+                        "totNumPtsWithVariant": "0",
+                        "ptsWithVariantOnArm": "0",
+                        "pctPtsWithVarOnArmOfTotPtsWithVar": "0%",
+                        "inclusion": false,
+                        "exclusion": true
+                    },
+                    {
+                        "id": "COSM763",
+                        "gene": "ALK",
+                        "levelOfEvidence": "2",
+                        "chrom": "chr7",
+                        "position": "552267845",
+                        "reference": "G",
+                        "alternative": "A",
+                        "litRefs": [
+                            {
+                                "litRef": "17376864"
+                            }
+                        ],
+                        "protein": "p.G719A",
+                        "totNumPtsWithVariant": "2",
+                        "ptsWithVariantOnArm": "1",
+                        "pctPtsWithVarOnArmOfTotPtsWithVar": "20%",
+                        "inclusion": false,
+                        "exclusion": true
+                    },
+                    {
+                        "id": "COSM765",
+                        "gene": "ALK",
+                        "levelOfEvidence": "2",
+                        "chrom": "chr7",
+                        "position": "552267845",
+                        "reference": "G",
+                        "alternative": "A",
+                        "litRefs": [
+                            {
+                                "litRef": "17376864"
+                            }
+                        ],
+                        "protein": "p.G719A",
+                        "totNumPtsWithVariant": "2",
+                        "ptsWithVariantOnArm": "1",
+                        "pctPtsWithVarOnArmOfTotPtsWithVar": "20%",
+                        "inclusion": false,
+                        "exclusion": true
+                    }
+                ],
+                indelsExclusion: []
+            },
+            {
+                name: '2016-02-20',
+                description: 'this is the first version',
+                testInclusions: [
+                    { id: 'inclusion1', description: 'first inclusion'},
+                    { id: 'inclusion2', description: 'second inclusion'}
+                ],
+                testExclusions: [
+                    { id: 'exclusion11', description: 'exclusion#1'},
+                    { id: 'exclusion22', description: 'exclusion#2'}
+                ],
+                indelsInclusion: [],
+                indelsExclusion: [
+                    {
+                        "id": "COSM111112345",
+                        "gene": "EBFRA",
+                        "levelOfEvidence": "3",
+                        "chrom": "chr7",
+                        "position": "5522678453",
+                        "reference": "C",
+                        "alternative": "T",
+                        "litRefs": [
+                            {
+                                "litRef": "19692684"
+                            }
+                        ],
+                        "protein": "p.G719A",
+                        "inclusion": false,
+                        "exclusion": true
+                    },
+                    {
+                        "id": "COSM000012567",
+                        "gene": "EBFRA",
+                        "levelOfEvidence": "2",
+                        "chrom": "chr7",
+                        "position": "552267845",
+                        "reference": "G",
+                        "alternative": "A",
+                        "litRefs": [
+                            {
+                                "litRef": "26051236"
+                            }
+                        ],
+                        "protein": "p.G719A",
+                        "inclusion": false,
+                        "exclusion": true
+                    }
+                ]
+            }
+        ];
+
+        $scope.selectedVersion = $scope.versions[0];
+
+
+
+        function createpubmedlinks(td, cellData,  rowData, row, col) {
             $(td).html('<a onClick="openPubMed()">' + cellData + '</a>');
         };
 
@@ -35,7 +170,9 @@ angular.module('treatment-arm.matchbox',[])
         };
 
         $scope.openGene = function(data) {
+            console.log('openGene');
             $window.open('http://cancer.sanger.ac.uk/cosmic/gene/overview?ln='+data.toLowerCase(), 'cosmic', 'width=500,height=400');
+            console.log('end openGene');
         };
 
         $scope.openId = function(cosmicId) {
