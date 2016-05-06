@@ -359,25 +359,26 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                <tr ng-repeat="item in snvsInclusion">
-                                                                    <td><a ng-click="openId(item.SNV.id)">{{item.SNV.id || '-'}}</a></td>
-                                                                    <td><a ng-click="openGene(item.SNV.gene)">{{item.SNV.gene || '-'}}</a></td>
-                                                                    <td>{{item.SNV.levelOfEvidence || '-'}}</td>
-                                                                    <td>{{item.SNV.chrom || '-'}}</td>
-                                                                    <td>{{item.SNV.position || '-'}}</td>
-                                                                    <td>{{item.SNV.reference || '-'}}</td>
-                                                                    <td>{{item.SNV.alternative || '-'}}</td>
+
+                                                                <tr ng-model="version" ng-repeat="item in selectedVersion.snvsInclusion">
+                                                                    <td><a ng-click="openId(item.id)">{{item.id || '-'}}</a></td>
+                                                                    <td><a ng-click="openGene(item.gene)">{{item.gene || '-'}}</a></td>
+                                                                    <td>{{item.levelOfEvidence || '-'}}</td>
+                                                                    <td>{{item.chrom || '-'}}</td>
+                                                                    <td>{{item.position || '-'}}</td>
+                                                                    <td>{{item.reference || '-'}}</td>
+                                                                    <td>{{item.alternative || '-'}}</td>
                                                                     <td>
                                                                         <table>
-                                                                            <tr ng-repeat="subitem in item.SNV.litRefs">
+                                                                            <tr ng-repeat="subitem in item.litRefs">
                                                                                 <td><a ng-click="openPubMed(subitem.litRef)">{{subitem.litRef || '-'}}</a></td>
                                                                             </tr>
                                                                         </table>
                                                                     </td>
-                                                                    <td>{{item.SNV.protein || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.SNV.totNumPtsWithVariant || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.SNV.ptsWithVariantOnArm || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.SNV.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
+                                                                    <td>{{item.protein || '-'}}</td>
+                                                                    <td style="text-align:right">{{item.totNumPtsWithVariant || '-'}}</td>
+                                                                    <td style="text-align:right">{{item.ptsWithVariantOnArm || '-'}}</td>
+                                                                    <td style="text-align:right">{{item.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
                                                                 </tr>
                                                                 </tbody>
                                                             </table>
@@ -402,22 +403,22 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                <tr ng-repeat="item in snvsExclusion">
-                                                                    <td><a ng-click="openId(item.SNV.id)">{{item.SNV.id || '-'}}</td>
-                                                                    <td><a ng-click="openGene(item.SNV.gene)">{{item.SNV.gene || '-'}}</a></td>
-                                                                    <td>{{item.SNV.levelOfEvidence || '-'}}</td>
-                                                                    <td>{{item.SNV.chrom || '-'}}</td>
-                                                                    <td>{{item.SNV.position || '-'}}</td>
-                                                                    <td>{{item.SNV.reference || '-'}}</td>
-                                                                    <td>{{item.SNV.alternative || '-'}}</td>
+                                                                <tr ng-model="version" ng-repeat="item in selectedVersion.snvsExclusion">
+                                                                    <td><a ng-click="openId(item.id)">{{item.id || '-'}}</td>
+                                                                    <td><a ng-click="openGene(item.gene)">{{item.gene || '-'}}</a></td>
+                                                                    <td>{{item.levelOfEvidence || '-'}}</td>
+                                                                    <td>{{item.chrom || '-'}}</td>
+                                                                    <td>{{item.position || '-'}}</td>
+                                                                    <td>{{item.reference || '-'}}</td>
+                                                                    <td>{{item.alternative || '-'}}</td>
                                                                     <td>
                                                                         <table>
-                                                                            <tr ng-repeat="subitem in item.SNV.litRefs">
+                                                                            <tr ng-repeat="subitem in item.litRefs">
                                                                                 <td><a ng-click="openPubMed(subitem.litRef)">{{subitem.litRef || '-'}}</a></td>
                                                                             </tr>
                                                                         </table>
                                                                     </td>
-                                                                    <td>{{item.SNV.protein || '-'}}</td>
+                                                                    <td>{{item.protein || '-'}}</td>
                                                                 </tr>
                                                                 </tbody>
                                                             </table>
