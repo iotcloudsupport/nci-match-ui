@@ -1,4 +1,4 @@
-(function () {
+(function() {
 
     angular.module('patient.matchbox', [])
         .controller('PatientController', PatientController);
@@ -14,7 +14,7 @@
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(100);
 
-        $scope.patientSequenceNumber;
+        $scope.patientSequenceNumber = '';
 
         $scope.files = [];
 
@@ -81,7 +81,7 @@
                         { treatmentArm: 'EAY131-R', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' },
                         { treatmentArm: 'EAY131-E', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' },
                         { treatmentArm: 'EAY131-A', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' },
-                        { treatmentArm: 'EAY131-V', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' },
+                        { treatmentArm: 'EAY131-V', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' }
                     ];
 
                     $scope.treatmentArms.recordBasedExclusionList = [
@@ -96,14 +96,14 @@
                         { dateTime: '6:00 am', timeLineType: 'analysisReceived', analysis: { msn: 'MSN1234_v1...345', status: 'CONFIRMED' } },
                         { dateTime: 'Sep 1 2015', timeLineType: 'nucleicAcidSendout', sendout: { msn: 'MSN1234', trackingNumber: '978345698734554' } },
                         { dateTime: 'Sep 11 2015', timeLineType: 'specimentReceived', specimen: {} },
-                        { dateTime: 'Sep 11 2015', timeLineType: 'patientRegistration', patientRegistration: {} },
+                        { dateTime: 'Sep 11 2015', timeLineType: 'patientRegistration', patientRegistration: {} }
                     ];
 
                     $scope.assayHistory = [
                         { gene: 'PTEN', orderedDate: 'Sep 14, 2015, 4:07 PM GMT', resultDate: 'Sep 15, 2015, 7:47 PM GMT', result: 'POSITIVE' },
                         { gene: 'MLH1', orderedDate: 'Sep 14, 2015, 4:07 PM GMT', resultDate: 'Sep 15, 2015, 7:47 PM GMT', result: 'POSITIVE' },
                         { gene: 'MSCH2', orderedDate: 'Sep 14, 2015, 4:07 PM GMT', resultDate: 'Sep 15, 2015, 7:47 PM GMT', result: 'POSITIVE' },
-                        { gene: 'RB', orderedDate: 'Sep 14, 2015, 4:07 PM GMT', resultDate: 'Sep 15, 2015, 7:47 PM GMT', result: 'NEGATIVE' },
+                        { gene: 'RB', orderedDate: 'Sep 14, 2015, 4:07 PM GMT', resultDate: 'Sep 15, 2015, 7:47 PM GMT', result: 'NEGATIVE' }
                     ];
 
                     $scope.sendouts = [
@@ -111,15 +111,15 @@
                             msn: 'MSN1234', trackingNumber: '456745758776', destinationDate: 'Sep 14, 2015, 4:07 PM GMT', dnaConcordance: 11.2, dnaVolume: 10, reportedDate: 'Sep 15, 2015, 6:07 PM GMT', comments: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
                             analyses: [
                                 { analysisId: 'MSN1234_v1_23453...jher4', status: 'Confirmed', fileReceivedDate: 'Sep 17, 2015, 2:07 PM GMT', confirmedRejectedDateLabel: 'Confirmed Date', confirmedRejectedDate: 'Sep 19, 2015, 8:10 PM GMT' },
-                                { analysisId: 'MSN1234_v2_2rer53...yher4', status: 'Rejected', fileReceivedDate: 'Sep 17, 2015, 2:07 PM GMT', confirmedRejectedDateLabel: 'Rejected Date', confirmedRejectedDate: 'Sep 19, 2015, 8:10 PM GMT' },
+                                { analysisId: 'MSN1234_v2_2rer53...yher4', status: 'Rejected', fileReceivedDate: 'Sep 17, 2015, 2:07 PM GMT', confirmedRejectedDateLabel: 'Rejected Date', confirmedRejectedDate: 'Sep 19, 2015, 8:10 PM GMT' }
                             ]
                         },
                         {
                             msn: 'MSN5678', trackingNumber: '675867856677', destinationDate: 'Sep 16, 2015, 7:37 PM GMT', dnaConcordance: 10.2, dnaVolume: 9, reportedDate: 'Sep 17, 2015, 10:00 AM GMT',
                             analyses: [
-                                { analysisId: 'MSN5678_v1_676...tyyrt4', status: 'Rejected', fileReceivedDate: 'Sep 18, 2015, 1:08 PM GMT', confirmedRejectedDateLabel: 'Rejected Date', confirmedRejectedDate: 'Sep 20, 2015, 2:10 PM GMT' },
+                                { analysisId: 'MSN5678_v1_676...tyyrt4', status: 'Rejected', fileReceivedDate: 'Sep 18, 2015, 1:08 PM GMT', confirmedRejectedDateLabel: 'Rejected Date', confirmedRejectedDate: 'Sep 20, 2015, 2:10 PM GMT' }
                             ]
-                        },
+                        }
                     ];
 
                     $scope.biopsy = {
@@ -140,7 +140,7 @@
                                 hGVS: 'c.234534>C',
                                 readDepth: '648',
                                 transcript: 'NM_0456345',
-                                protein: 'p.Glu6565Ala',
+                                protein: 'p.Glu6565Ala'
                             },
                             {
                                 confirm: true,
@@ -158,7 +158,7 @@
                                 hGVS: 'c.567>C',
                                 readDepth: '1233',
                                 transcript: 'NM_098434',
-                                protein: 'p.Ser6565Tyr',
+                                protein: 'p.Ser6565Tyr'
                             },
                             {
                                 confirm: false,
@@ -176,8 +176,8 @@
                                 hGVS: 'c.234534>C',
                                 readDepth: '648',
                                 transcript: 'NM_0456345',
-                                protein: 'p.Glu6565Ala',
-                            },
+                                protein: 'p.Glu6565Ala'
+                            }
                         ],
                         indels: [
                             {
@@ -196,8 +196,8 @@
                                 hGVS: 'c.234534>C',
                                 readDepth: '648',
                                 transcript: 'NM_0456345',
-                                protein: 'p.Glu6565Ala',
-                            },
+                                protein: 'p.Glu6565Ala'
+                            }
                         ],
                         copyNumberVariants: [],
                         geneFusions: [],
@@ -205,8 +205,8 @@
                             { title: 'Total Number of aMOIs', count: 3 },
                             { title: 'Total Number of MOIs', count: 3 },
                             { title: 'Total Number of confirmed aMOIs', count: 3 },
-                            { title: 'Total Number of confirmed MOIs', count: 3 },
-                        ],
+                            { title: 'Total Number of confirmed MOIs', count: 3 }
+                        ]
                     }
 
                     $scope.variantReports = {
@@ -218,7 +218,7 @@
                             analysisId: 'MSN12345_V1_kdjf3893_ksjd_34iu34sf',
                             fileReceivedDate: 'Sep 29, 2015 9:00 PM GMT',
                             receivedRejectedDate: 'Sep 30, 2015 10:00 PM GMT',
-                            status: 'PENDING',
+                            status: 'PENDING'
                         },
                         tumorTissueNormal: {
                             molecularSequenceNumber: 'MSN12345',
@@ -229,7 +229,7 @@
                             fileReceivedDate: 'Sep 29, 2015 9:00 PM GMT',
                             receivedRejectedDate: 'Sep 30, 2015 10:00 PM GMT',
                             status: 'PENDING',
-                            showActions: true,
+                            showActions: true
                         },
                         bloodQc: {
                             molecularSequenceNumber: 'MSN67890',
@@ -239,7 +239,7 @@
                             analysisId: 'MSN67890_Ve_kErerj8893_ksjd_34iu34sf',
                             fileReceivedDate: 'Oct 1, 2015 9:00 PM GMT',
                             receivedRejectedDate: 'Oct 2, 2015 10:00 PM GMT',
-                            status: 'REJECTED',
+                            status: 'REJECTED'
                         },
                         bloodNormal: {
                             molecularSequenceNumber: 'MSN67890',
@@ -249,8 +249,8 @@
                             analysisId: 'MSN67890_Ve_kErerj8893_ksjd_34iu34sf',
                             fileReceivedDate: 'Oct 1, 2015 9:00 PM GMT',
                             receivedRejectedDate: 'Oct 2, 2015 10:00 PM GMT',
-                            status: 'REJECTED',
-                        },
+                            status: 'REJECTED'
+                        }
                     };
 
                     $scope.assignmentReport = {
@@ -258,7 +258,7 @@
                             { gene: 'MSH2', result: 'Not Applicable', comment: 'Biopsy received prior to bimarker launch date' },
                             { gene: 'PTENs', result: 'POSITIVE', comment: '-' },
                             { gene: 'MLH1', result: 'Not Applicable', comment: 'Biopsy received prior to bimarker launch date' },
-                            { gene: 'RB', result: 'Not Applicable', comment: 'Biopsy received prior to bimarker launch date' },
+                            { gene: 'RB', result: 'Not Applicable', comment: 'Biopsy received prior to bimarker launch date' }
                         ]
                     };
                 })
@@ -305,7 +305,7 @@
             prompt({
                 title: 'Confirmation Changed',
                 message: 'Please enter a reson for removing the confirmation:',
-                input: true,
+                input: true
                 //label: 'Reason',
                 // value: 'Current name',
                 // values: ['other', 'possible', 'names']
@@ -313,4 +313,4 @@
         }
     }
 
-})();
+}());

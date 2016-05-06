@@ -86,25 +86,25 @@ angular.module('http.matchbox', [])
                                     treatmentArm: 'EAY131-B',
                                     variantReport: 'reportLink',
                                     assignmentReport: 'reportLink',
-                                    statusDate: 'Sep 29, 2015, 9:00 PM',
+                                    statusDate: 'Sep 29, 2015, 9:00 PM'
                                 },
                                 {
                                     status: 'PENDING APPROVAL',
                                     treatmentArm: 'EAY131-B',
                                     variantReport: 'reportLink',
                                     assignmentReport: 'reportLink',
-                                    statusDate: 'Sep 30, 2015, 9:00 PM',
+                                    statusDate: 'Sep 30, 2015, 9:00 PM'
                                 },
                                 {
                                     status: 'ON_TREATMENT_ARM',
                                     treatmentArm: 'EAY131-B',
                                     variantReport: 'reportLink',
                                     assignmentReport: 'reportLink',
-                                    statusDate: 'Oct 1, 2015, 9:00 PM',
+                                    statusDate: 'Oct 1, 2015, 9:00 PM'
                                 }
                             ]
-                        },
-                    ],
+                        }
+                    ]
                 }
                 
                 deferred.resolve(data);
@@ -122,7 +122,7 @@ angular.module('http.matchbox', [])
                         treatmentArm: 'EAY131-A',
                         step: 0,
                         registrationDate: 1441165873572,
-                        diseases: 'Disease 1',
+                        diseases: 'Disease 1'
                     },   
                     {
                         patientSequenceNumber: 100087,
@@ -132,7 +132,7 @@ angular.module('http.matchbox', [])
                         treatmentArm: 'EAY131-B',                        
                         step: 1,
                         registrationDate: 1430165873572,
-                        diseases: 'Disease 3',
+                        diseases: 'Disease 3'
                     },   
                     {
                         patientSequenceNumber: 100099,
@@ -143,13 +143,13 @@ angular.module('http.matchbox', [])
                         step: 2,
                         registrationDate: 1440765873572,
                         offTrialDate: 1440165878572,
-                        diseases: 'Disease 3',
+                        diseases: 'Disease 3'
                     }   
                 ];
                 
                 deferred.resolve(data);
                 return deferred.promise;
-            },
+            }
         };
     })
   ;
