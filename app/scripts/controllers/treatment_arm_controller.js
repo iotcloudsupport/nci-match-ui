@@ -19,15 +19,6 @@ angular.module('treatment-arm.matchbox',[])
             DTColumnDefBuilder.newColumnDef(4).withOption('createdCell', createpubmedlinks)
         ];
 
-        $scope.colors = [
-            {name: 'black', shade: 'dark'},
-            {name: 'white', shade: 'light', notAnOption: true},
-            {name: 'red', shade: 'dark'},
-            {name: 'blue', shade: 'dark', notAnOption: true},
-            {name: 'yellow', shade: 'light', notAnOption: false}
-        ];
-        $scope.myColor = $scope.colors[2];
-
         // It is important that the versions are populated in reverse order, starting with current version
         $scope.versions = [
             {
