@@ -16,7 +16,7 @@
     <div class="col-lg-2"></div>
 </div>
 
-<div class="wrapper wrapper-content p-xl">
+<div ng-controller="TreatmentArmController as TaCtrl" class="wrapper wrapper-content p-xl">
 
     <div class="animated fadeInRight">
         <div class="row">
@@ -28,7 +28,7 @@
                     <div class="ibox-content" style="padding:5px 40px">
                         <div class="row">
                             <div class="col-lg-6">
-                                <div ng-controller="TreatmentArmController">
+                                <div>
                                     <ul class="list-group clear-list m-t">
                                         <li class="list-group-item">
                                             <span class="pull-right"> {{taid}}</span>
@@ -43,7 +43,7 @@
                                             </span> Description
                                         </li>
                                         <li class="list-group-item">
-                                            <span class="pull-right"> 2016-02-20</span>
+                                            <span class="pull-right"> 2016-03-17</span>
                                             <span class="label label-warning" style="margin:0 8px 0 0">
                                             <i class="fa fa-newspaper-o"></i>
                                             </span> Current Version
@@ -72,12 +72,23 @@
                                                 <i class="fa fa-medkit"></i>
                                             </span> Drug
                                         </li>
+
                                     </ul>
+
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <div ng-controller="TreatmentArmController">
+                                <div>
                                     <ul class="list-group clear-list m-t">
+                                        <li class="list-group-item">
+                                            <span class="pull-right">
+                                                <select ng-model="selectedVersion" ng-options="version.name for version in versions"></select>
+                                            </span>
+                                            <span class="label label-info" style="margin:0 8px 0 0">
+                                                <i class="fa fa-medkit"></i>
+                                            </span> Version
+
+                                        </li>
                                         <li class="list-group-item">
                                             <span class="label label-info" style="margin:0 8px 0 0">
                                                 <i class="fa fa-medkit"></i>
@@ -95,6 +106,7 @@
                                                 <tr><td>OPEN</td><td>February 22, 2016 10:10 PM GMT</td></tr>
                                                 </tbody>
                                             </table>
+
                                         </li>
                                     </ul>
                                 </div>
@@ -119,7 +131,7 @@
                                             <div class="ibox-title">
                                                 <h5>Patient Assignment Outcome</h5>
                                             </div>
-                                            <div class="ibox-content" ng-controller="TreatmentArmController">
+                                            <div class="ibox-content">
                                                 <div style="float:left">
                                                     <div id="legendContainer" style="text-align:left;overflow-y:auto"></div>
                                                 </div>
@@ -134,7 +146,7 @@
                                             <div class="ibox-title">
                                                 <h5>Diseases Represented In Assignments To This Treatment Arm</h5>
                                             </div>
-                                            <div class="ibox-content" ng-controller="TreatmentArmController">
+                                            <div class="ibox-content">
                                                 <div style="float:left">
                                                     <div id="diseaseLegendContainer" style="text-align:left;overflow-y:auto"></div>
                                                 </div>
@@ -150,7 +162,7 @@
                                     <div class="ibox-title">
                                         <h5>All Patients Data</h5>
                                     </div>
-                                    <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
+                                    <div class="ibox-content">
                                         <table datatable="ng"
                                                dt-options="TaCtrl.dtOptions"
                                                dt-column-defs="TaCtrl.dtColumnDefs"
@@ -203,7 +215,7 @@
                                                             <div class="ibox-title">
                                                                 <h5>Inclusionary Drugs</h5>
                                                             </div>
-                                                            <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
+                                                            <div class="ibox-content">
                                                                 <table datatable="ng"
                                                                        dt-options="TaCtrl.ddOptions"
                                                                        dt-column-defs="TaCtrl.dtColumnDefs"
@@ -230,7 +242,7 @@
                                                             <div class="ibox-title">
                                                                 <h5>Inclusionary Diseases</h5>
                                                             </div>
-                                                            <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
+                                                            <div class="ibox-content">
                                                                 <table datatable="ng"
                                                                        dt-options="TaCtrl.ddOptions"
                                                                        dt-column-defs="TaCtrl.dtColumnDefs"
@@ -261,7 +273,7 @@
                                                             <div class="ibox-title">
                                                                 <h5>Exclusionary Drugs</h5>
                                                             </div>
-                                                            <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
+                                                            <div class="ibox-content">
                                                                 <table datatable="ng"
                                                                        dt-options="TaCtrl.ddOptions"
                                                                        dt-column-defs="TaCtrl.dtColumnDefs"
@@ -288,7 +300,7 @@
                                                             <div class="ibox-title">
                                                                 <h5>Exclusionary Diseases</h5>
                                                             </div>
-                                                            <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
+                                                            <div class="ibox-content">
                                                                 <table datatable="ng"
                                                                        dt-options="TaCtrl.ddOptions"
                                                                        dt-column-defs="TaCtrl.dtColumnDefs"
@@ -318,7 +330,7 @@
                                         <tab heading="SNV">
                                             <div class="panel-body">
                                                 <div class="ibox float-e-margins">
-                                                    <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
+                                                    <div class="ibox-content">
                                                         <div class="btn-group">
                                                             <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='inclusion' btn-radio="'inclusion'" ng-class="{'active'}">INCLUSION</label>
                                                             <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
@@ -347,25 +359,26 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                <tr ng-repeat="item in snvsInclusion">
-                                                                    <td><a ng-click="openId(item.SNV.id)">{{item.SNV.id || '-'}}</a></td>
-                                                                    <td><a ng-click="openGene(item.SNV.gene)">{{item.SNV.gene || '-'}}</a></td>
-                                                                    <td>{{item.SNV.levelOfEvidence || '-'}}</td>
-                                                                    <td>{{item.SNV.chrom || '-'}}</td>
-                                                                    <td>{{item.SNV.position || '-'}}</td>
-                                                                    <td>{{item.SNV.reference || '-'}}</td>
-                                                                    <td>{{item.SNV.alternative || '-'}}</td>
+
+                                                                <tr ng-model="version" ng-repeat="item in selectedVersion.snvsInclusion">
+                                                                    <td><a ng-click="openId(item.id)">{{item.id || '-'}}</a></td>
+                                                                    <td><a ng-click="openGene(item.gene)">{{item.gene || '-'}}</a></td>
+                                                                    <td>{{item.levelOfEvidence || '-'}}</td>
+                                                                    <td>{{item.chrom || '-'}}</td>
+                                                                    <td>{{item.position || '-'}}</td>
+                                                                    <td>{{item.reference || '-'}}</td>
+                                                                    <td>{{item.alternative || '-'}}</td>
                                                                     <td>
                                                                         <table>
-                                                                            <tr ng-repeat="subitem in item.SNV.litRefs">
+                                                                            <tr ng-repeat="subitem in item.litRefs">
                                                                                 <td><a ng-click="openPubMed(subitem.litRef)">{{subitem.litRef || '-'}}</a></td>
                                                                             </tr>
                                                                         </table>
                                                                     </td>
-                                                                    <td>{{item.SNV.protein || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.SNV.totNumPtsWithVariant || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.SNV.ptsWithVariantOnArm || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.SNV.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
+                                                                    <td>{{item.protein || '-'}}</td>
+                                                                    <td style="text-align:right">{{item.totNumPtsWithVariant || '-'}}</td>
+                                                                    <td style="text-align:right">{{item.ptsWithVariantOnArm || '-'}}</td>
+                                                                    <td style="text-align:right">{{item.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
                                                                 </tr>
                                                                 </tbody>
                                                             </table>
@@ -390,22 +403,22 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                <tr ng-repeat="item in snvsExclusion">
-                                                                    <td><a ng-click="openId(item.SNV.id)">{{item.SNV.id || '-'}}</td>
-                                                                    <td><a ng-click="openGene(item.SNV.gene)">{{item.SNV.gene || '-'}}</a></td>
-                                                                    <td>{{item.SNV.levelOfEvidence || '-'}}</td>
-                                                                    <td>{{item.SNV.chrom || '-'}}</td>
-                                                                    <td>{{item.SNV.position || '-'}}</td>
-                                                                    <td>{{item.SNV.reference || '-'}}</td>
-                                                                    <td>{{item.SNV.alternative || '-'}}</td>
+                                                                <tr ng-model="version" ng-repeat="item in selectedVersion.snvsExclusion">
+                                                                    <td><a ng-click="openId(item.id)">{{item.id || '-'}}</td>
+                                                                    <td><a ng-click="openGene(item.gene)">{{item.gene || '-'}}</a></td>
+                                                                    <td>{{item.levelOfEvidence || '-'}}</td>
+                                                                    <td>{{item.chrom || '-'}}</td>
+                                                                    <td>{{item.position || '-'}}</td>
+                                                                    <td>{{item.reference || '-'}}</td>
+                                                                    <td>{{item.alternative || '-'}}</td>
                                                                     <td>
                                                                         <table>
-                                                                            <tr ng-repeat="subitem in item.SNV.litRefs">
+                                                                            <tr ng-repeat="subitem in item.litRefs">
                                                                                 <td><a ng-click="openPubMed(subitem.litRef)">{{subitem.litRef || '-'}}</a></td>
                                                                             </tr>
                                                                         </table>
                                                                     </td>
-                                                                    <td>{{item.SNV.protein || '-'}}</td>
+                                                                    <td>{{item.protein || '-'}}</td>
                                                                 </tr>
                                                                 </tbody>
                                                             </table>
@@ -417,12 +430,13 @@
                                         <tab heading="Indel">
                                             <div class="panel-body">
                                                 <div class="ibox float-e-margins">
-                                                    <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
+                                                    <div class="ibox-content">
                                                         <div class="btn-group">
                                                             <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
                                                             <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
                                                         </div>
                                                         <br><br>
+
                                                         <div ng-show="TaCtrl.activeChoice == 'inclusion'">
                                                             <table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
@@ -446,25 +460,25 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                <tr ng-repeat="item in indelsInclusion">
-                                                                    <td><a ng-click="openId(item.Indel.id)">{{item.Indel.id || '-'}}</td>
-                                                                    <td><a ng-click="openGene(item.Indel.gene)">{{item.Indel.gene || '-'}}</a></td>
-                                                                    <td>{{item.Indel.levelOfEvidence || '-'}}</td>
-                                                                    <td>{{item.Indel.chrom || '-'}}</td>
-                                                                    <td>{{item.Indel.position || '-'}}</td>
-                                                                    <td>{{item.Indel.reference || '-'}}</td>
-                                                                    <td>{{item.Indel.alternative || '-'}}</td>
+                                                                <tr ng-model="version" ng-repeat="item in selectedVersion.indelsInclusion">
+                                                                    <td><a ng-click="openId(item.id)">{{item.id || '-'}}</a></td>
+                                                                    <td><a ng-click="openGene(item.gene)">{{item.gene || '-'}}</a></td>
+                                                                    <td>{{item.levelOfEvidence || '-'}}</td>
+                                                                    <td>{{item.chrom || '-'}}</td>
+                                                                    <td>{{item.position || '-'}}</td>
+                                                                    <td>{{item.reference || '-'}}</td>
+                                                                    <td>{{item.alternative || '-'}}</td>
                                                                     <td>
                                                                         <table>
-                                                                            <tr ng-repeat="subitem in item.Indel.litRefs">
+                                                                            <tr ng-repeat="subitem in item.litRefs">
                                                                                 <td><a ng-click="openPubMed(subitem.litRef)">{{subitem.litRef || '-'}}</a></td>
                                                                             </tr>
                                                                         </table>
                                                                     </td>
-                                                                    <td>{{item.Indel.protein || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.Indel.totNumPtsWithVariant || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.Indel.ptsWithVariantOnArm || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.Indel.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
+                                                                    <td>{{item.protein || '-'}}</td>
+                                                                    <td style="text-align:right">{{item.totNumPtsWithVariant || '-'}}</td>
+                                                                    <td style="text-align:right">{{item.ptsWithVariantOnArm || '-'}}</td>
+                                                                    <td style="text-align:right">{{item.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
                                                                 </tr>
                                                                 </tbody>
                                                             </table>
@@ -489,22 +503,22 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                <tr ng-repeat="item in indelsExclusion">
-                                                                    <td><a ng-click="openId(item.Indel.id)">{{item.Indel.id || '-'}}</td>
-                                                                    <td><a ng-click="openGene(item.Indel.gene)">{{item.Indel.gene || '-'}}</a></td>
-                                                                    <td>{{item.Indel.levelOfEvidence || '-'}}</td>
-                                                                    <td>{{item.Indel.chrom || '-'}}</td>
-                                                                    <td>{{item.Indel.position || '-'}}</td>
-                                                                    <td>{{item.Indel.reference || '-'}}</td>
-                                                                    <td>{{item.Indel.alternative || '-'}}</td>
+                                                                <tr ng-model="version" ng-repeat="item in selectedVersion.indelsExclusion">
+                                                                    <td><a ng-click="openId(item.id)">{{item.id || '-'}}</a></td>
+                                                                    <td><a ng-click="openGene(item.gene)">{{item.gene || '-'}}</a></td>
+                                                                    <td>{{item.levelOfEvidence || '-'}}</td>
+                                                                    <td>{{item.chrom || '-'}}</td>
+                                                                    <td>{{item.position || '-'}}</td>
+                                                                    <td>{{item.reference || '-'}}</td>
+                                                                    <td>{{item.alternative || '-'}}</td>
                                                                     <td>
                                                                         <table>
-                                                                            <tr ng-repeat="subitem in item.Indel.litRefs">
+                                                                            <tr ng-repeat="subitem in item.litRefs">
                                                                                 <td><a ng-click="openPubMed(subitem.litRef)">{{subitem.litRef || '-'}}</a></td>
                                                                             </tr>
                                                                         </table>
                                                                     </td>
-                                                                    <td>{{item.Indel.protein || '-'}}</td>
+                                                                    <td>{{item.protein || '-'}}</td>
                                                                 </tr>
                                                                 </tbody>
                                                             </table>
@@ -516,7 +530,7 @@
                                         <tab heading="CNV">
                                             <div class="panel-body">
                                                 <div class="ibox float-e-margins">
-                                                    <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
+                                                    <div class="ibox-content">
                                                         <div class="btn-group">
                                                             <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
                                                             <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
@@ -603,7 +617,7 @@
                                         <tab heading="Gene Fusion">
                                             <div class="panel-body">
                                                 <div class="ibox float-e-margins">
-                                                    <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
+                                                    <div class="ibox-content">
                                                         <div class="btn-group">
                                                             <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
                                                             <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
@@ -683,7 +697,7 @@
                                         <tab heading="Non-Hotspot Rules">
                                             <div class="panel-body">
                                                 <div class="ibox float-e-margins">
-                                                    <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
+                                                    <div class="ibox-content">
                                                         <div class="btn-group">
                                                             <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
                                                             <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
@@ -773,7 +787,7 @@
                                         <tab heading="Non-Sequencing Assays">
                                             <div class="panel-body">
                                                 <div class="ibox float-e-margins">
-                                                    <div class="ibox-content" ng-controller="TreatmentArmController as TaCtrl">
+                                                    <div class="ibox-content">
                                                         <div class="btn-group">
                                                             <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
                                                             <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>

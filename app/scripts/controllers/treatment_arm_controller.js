@@ -19,13 +19,315 @@ angular.module('treatment-arm.matchbox',[])
             DTColumnDefBuilder.newColumnDef(4).withOption('createdCell', createpubmedlinks)
         ];
 
-        function createpubmedlinks(td, cellData,  rowData, row, col) {
-            console.log(td);
-            console.log(cellData);
-            console.log(rowData);
-            console.log(row);
-            console.log(col);
+        // It is important that the versions are populated in reverse order, starting with current version
+        $scope.versions = [
+            {
+                name: '2016-03-17',
+                description: 'this is the second version',
+                snvsInclusion: [
+                    {
+                        "id": "COSM1256700",
+                        "gene": "EBFRA",
+                        "levelOfEvidence": "2",
+                        "chrom": "chr7",
+                        "position": "5522678451",
+                        "reference": "G",
+                        "alternative": "A",
+                        "litRefs": [
+                            {
+                                "litRef": "26051236"
+                            }
+                        ],
+                        "protein": "p.G719A",
+                        "totNumPtsWithVariant": "1",
+                        "ptsWithVariantOnArm": "1",
+                        "pctPtsWithVarOnArmOfTotPtsWithVar": "20%",
+                        "inclusion": true,
+                        "exclusion": false
+                    },
+                    {
+                        "id": "COSM125678",
+                        "gene": "EBFRA",
+                        "levelOfEvidence": "2",
+                        "chrom": "chr7",
+                        "position": "5522678455",
+                        "reference": "C",
+                        "alternative": "T",
+                        "litRefs": [
+                            {
+                                "litRef": "26051236"
+                            },
+                            {
+                                "litRef": "19692684"
+                            }
+                        ],
+                        "protein": "p.G719A",
+                        "totNumPtsWithVariant": "0",
+                        "ptsWithVariantOnArm": "0",
+                        "pctPtsWithVarOnArmOfTotPtsWithVar": "0%",
+                        "inclusion": true,
+                        "exclusion": false
+                    },
+                    {
+                        "id": "COSM99995",
+                        "gene": "EBFRA",
+                        "levelOfEvidence": "1",
+                        "chrom": "chr7",
+                        "position": "5522678457",
+                        "reference": "C",
+                        "alternative": "T",
+                        "litRefs": [
+                            {
+                                "litRef": "26051236"
+                            }
+                        ],
+                        "protein": "p.G719A",
+                        "totNumPtsWithVariant": "0",
+                        "ptsWithVariantOnArm": "0",
+                        "pctPtsWithVarOnArmOfTotPtsWithVar": "0%",
+                        "inclusion": true,
+                        "exclusion": false
+                    },
+                    {
+                        "id": "COSM9999000",
+                        "gene": "EBFRA",
+                        "levelOfEvidence": "1",
+                        "chrom": "chr7",
+                        "position": "5522678459",
+                        "reference": "C",
+                        "alternative": "T",
+                        "litRefs": [
+                            {
+                                "litRef": "26051236"
+                            },
+                            {
+                                "litRef": "19692684"
+                            }
+                        ],
+                        "protein": "p.G719A",
+                        "totNumPtsWithVariant": "2",
+                        "ptsWithVariantOnArm": "1",
+                        "pctPtsWithVarOnArmOfTotPtsWithVar": "20%",
+                        "inclusion": true,
+                        "exclusion": false
+                    }
+                ],
+                snvsExclusion: [
+                    {
+                        "id": "COSM746",
+                        "gene": "PIK3CA",
+                        "levelOfEvidence": "3",
+                        "chrom": "chr7",
+                        "position": "5522678453",
+                        "reference": "C",
+                        "alternative": "T",
+                        "litRefs": [
+                            {
+                                "litRef": "21266528"
+                            }
+                        ],
+                        "protein": "p.G719A",
+                        "inclusion": false,
+                        "exclusion": true
+                    },
+                    {
+                        "id": "COSM757",
+                        "gene": "PIK3CA",
+                        "levelOfEvidence": "2",
+                        "chrom": "chr7",
+                        "position": "178927980",
+                        "reference": "G",
+                        "alternative": "A",
+                        "litRefs": [
+                            {
+                                "litRef": "17376864"
+                            },
+                            {
+                                "litRef": "22949682"
+                            }
 
+                        ],
+                        "protein": "p.G719A",
+                        "inclusion": false,
+                        "exclusion": true
+                    }
+                ],
+                indelsInclusion: [
+                    {
+                        "id": "COSM746",
+                        "gene": "ALK",
+                        "levelOfEvidence": "3",
+                        "chrom": "chr7",
+                        "position": "5522678453",
+                        "reference": "C",
+                        "alternative": "T",
+                        "litRefs": [
+                            {
+                                "litRef": "21266528"
+                            }
+                        ],
+                        "protein": "p.G719A",
+                        "totNumPtsWithVariant": "0",
+                        "ptsWithVariantOnArm": "0",
+                        "pctPtsWithVarOnArmOfTotPtsWithVar": "0%",
+                        "inclusion": false,
+                        "exclusion": true
+                    },
+                    {
+                        "id": "COSM763",
+                        "gene": "ALK",
+                        "levelOfEvidence": "2",
+                        "chrom": "chr7",
+                        "position": "552267845",
+                        "reference": "G",
+                        "alternative": "A",
+                        "litRefs": [
+                            {
+                                "litRef": "17376864"
+                            }
+                        ],
+                        "protein": "p.G719A",
+                        "totNumPtsWithVariant": "2",
+                        "ptsWithVariantOnArm": "1",
+                        "pctPtsWithVarOnArmOfTotPtsWithVar": "20%",
+                        "inclusion": false,
+                        "exclusion": true
+                    },
+                    {
+                        "id": "COSM765",
+                        "gene": "ALK",
+                        "levelOfEvidence": "2",
+                        "chrom": "chr7",
+                        "position": "552267845",
+                        "reference": "G",
+                        "alternative": "A",
+                        "litRefs": [
+                            {
+                                "litRef": "17376864"
+                            }
+                        ],
+                        "protein": "p.G719A",
+                        "totNumPtsWithVariant": "2",
+                        "ptsWithVariantOnArm": "1",
+                        "pctPtsWithVarOnArmOfTotPtsWithVar": "20%",
+                        "inclusion": false,
+                        "exclusion": true
+                    }
+                ],
+                indelsExclusion: []
+            },
+            {
+                name: '2016-02-20',
+                description: 'this is the first version',
+                snvsInclusion: [
+                    {
+                        "id": "COSM776",
+                        "gene": "PIK3CA",
+                        "levelOfEvidence": "1",
+                        "chrom": "chr7",
+                        "position": "22120714",
+                        "reference": "C",
+                        "alternative": "T",
+                        "litRefs": [
+                            {
+                                "litRef": "26051236"
+                            }
+                        ],
+                        "protein": "p.G719A",
+                        "totNumPtsWithVariant": "0",
+                        "ptsWithVariantOnArm": "0",
+                        "pctPtsWithVarOnArmOfTotPtsWithVar": "0%",
+                        "inclusion": true,
+                        "exclusion": false
+                    },
+                    {
+                        "id": "COSM776",
+                        "gene": "PIK3CA",
+                        "levelOfEvidence": "1",
+                        "chrom": "chr7",
+                        "position": "5522678459",
+                        "reference": "C",
+                        "alternative": "T",
+                        "litRefs": [
+                            {
+                                "litRef": "17376964"
+                            },
+                            {
+                                "litRef": "17376963"
+                            }
+                        ],
+                        "protein": "p.G719A",
+                        "totNumPtsWithVariant": "2",
+                        "ptsWithVariantOnArm": "1",
+                        "pctPtsWithVarOnArmOfTotPtsWithVar": "20%",
+                        "inclusion": true,
+                        "exclusion": false
+                    }
+                ],
+                snvsExclusion: [
+                    {
+                        "id": "COSM774",
+                        "gene": "PIK3CA",
+                        "levelOfEvidence": "3",
+                        "chrom": "chr7",
+                        "position": "5522678453",
+                        "reference": "C",
+                        "alternative": "T",
+                        "litRefs": [
+                            {
+                                "litRef": "17376866"
+                            }
+                        ],
+                        "protein": "p.G719A",
+                        "inclusion": false,
+                        "exclusion": true
+                    }
+                ],
+                indelsInclusion: [],
+                indelsExclusion: [
+                    {
+                        "id": "COSM111112345",
+                        "gene": "EBFRA",
+                        "levelOfEvidence": "3",
+                        "chrom": "chr7",
+                        "position": "5522678453",
+                        "reference": "C",
+                        "alternative": "T",
+                        "litRefs": [
+                            {
+                                "litRef": "19692684"
+                            }
+                        ],
+                        "protein": "p.G719A",
+                        "inclusion": false,
+                        "exclusion": true
+                    },
+                    {
+                        "id": "COSM000012567",
+                        "gene": "EBFRA",
+                        "levelOfEvidence": "2",
+                        "chrom": "chr7",
+                        "position": "552267845",
+                        "reference": "G",
+                        "alternative": "A",
+                        "litRefs": [
+                            {
+                                "litRef": "26051236"
+                            }
+                        ],
+                        "protein": "p.G719A",
+                        "inclusion": false,
+                        "exclusion": true
+                    }
+                ]
+            }
+        ];
+
+        $scope.selectedVersion = $scope.versions[0];
+
+
+
+        function createpubmedlinks(td, cellData,  rowData, row, col) {
             $(td).html('<a onClick="openPubMed()">' + cellData + '</a>');
         };
 
@@ -210,7 +512,7 @@ angular.module('treatment-arm.matchbox',[])
                 container: '#diseaseLegendContainer'
             }
         };
-
+        /*
         $scope.indelsInclusion = [];
 
         $scope.indelsExclusion =
@@ -259,7 +561,7 @@ angular.module('treatment-arm.matchbox',[])
                         "exclusion": true
                     },
                 }
-            ];
+            ];*/
 
         $scope.snvsInclusion =
             [
