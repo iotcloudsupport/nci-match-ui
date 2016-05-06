@@ -53,11 +53,11 @@
         }
 
         function getVariantReportTypeClass(reportType) {
-            return $scope.variantReportType === reportType ? 'btn-success' : 'btn-default';
+            return $scope.variantReportType === reportType ? 'active' : '';
         }
 
         function getVariantReportModeClass(reportMode) {
-            return $scope.variantReportMode === reportMode ? 'btn-success' : 'btn-default';
+            return $scope.variantReportMode === reportMode ? 'active' : '';
         }
 
         function setVariantReport() {
