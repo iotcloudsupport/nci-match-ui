@@ -33,14 +33,6 @@ angular.module('treatment-arm.matchbox',[])
             {
                 name: '2016-03-17',
                 description: 'this is the second version',
-                testInclusions: [
-                    { id: 'inclusion3', description: 'third inclusion'}
-                ],
-                testExclusions: [
-                    { id: 'exclusion33', description: 'exclusion#3'},
-                    { id: 'exclusion44', description: 'exclusion#4'},
-                    { id: 'exclusion55', description: 'exclusion#5'}
-                ],
                 indelsInclusion: [
                     {
                         "id": "COSM746",
@@ -108,14 +100,6 @@ angular.module('treatment-arm.matchbox',[])
             {
                 name: '2016-02-20',
                 description: 'this is the first version',
-                testInclusions: [
-                    { id: 'inclusion1', description: 'first inclusion'},
-                    { id: 'inclusion2', description: 'second inclusion'}
-                ],
-                testExclusions: [
-                    { id: 'exclusion11', description: 'exclusion#1'},
-                    { id: 'exclusion22', description: 'exclusion#2'}
-                ],
                 indelsInclusion: [],
                 indelsExclusion: [
                     {
