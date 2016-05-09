@@ -52,7 +52,7 @@
                                 <td ng-if="patient.treatmentArm === null">-</td>
                                 <td ng-if="patient.treatmentArm !== null">
                                     <a ui-sref="index.treatment-arm({ treatmentArmId: patient.treatmentArm, treatmentArmVersion: patient.currentTtreatmentArmreatmentArmVersion })">
-                                        <i class="fa fa-medkit"></i> {{ ::patient.treatmentArm || '-' }}
+                                        {{ ::patient.treatmentArm || '-' }}
                                     </a>
                                 </td>
                                 <td>{{ ::patient.registrationDate | gmt }}</td>

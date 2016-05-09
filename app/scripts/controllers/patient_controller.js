@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
     angular.module('patient.matchbox', [])
         .controller('PatientController', PatientController);
@@ -25,13 +25,20 @@
             selectedList: []
         };
 
+        $scope.dropzoneConfig = {
+            url: '/alt_upload_url',
+            parallelUploads: 3,
+            maxFileSize: 30
+        };
+
         $scope.setVariantReportType = setVariantReportType;
         $scope.setVariantReportMode = setVariantReportMode;
         $scope.getVariantReportTypeClass = getVariantReportTypeClass;
         $scope.getVariantReportModeClass = getVariantReportModeClass;
         $scope.confirm = confirm;
         $scope.doConfirm = doConfirm;
-
+        $scope.dzAddedFile = dzAddedFile;
+        $scope.dzError = dzError;
         $scope.loadPatientData = loadPatientData;
 
         function setVariantReportType(reportType) {
@@ -53,11 +60,11 @@
         }
 
         function getVariantReportTypeClass(reportType) {
-            return $scope.variantReportType === reportType ? 'btn-success' : 'btn-default';
+            return $scope.variantReportType === reportType ? 'active' : '';
         }
 
         function getVariantReportModeClass(reportMode) {
-            return $scope.variantReportMode === reportMode ? 'btn-success' : 'btn-default';
+            return $scope.variantReportMode === reportMode ? 'active' : '';
         }
 
         function setVariantReport() {
@@ -253,6 +260,14 @@
                         }
                     };
 
+                    $scope.variantReportOptions = [
+                        { text: 'MSN-000078', value: 'Msn1' },
+                        { text: 'MSN-000079', value: 'Msn2' },
+                        { text: 'MSN-000082', value: 'Msn3' }
+                    ];
+                    
+                    $scope.variantReportOption = { text: 'MSN-000078', value: 'Msn1' };
+
                     $scope.assignmentReport = {
                         assays: [
                             { gene: 'MSH2', result: 'Not Applicable', comment: 'Biopsy received prior to bimarker launch date' },
@@ -261,6 +276,14 @@
                             { gene: 'RB', result: 'Not Applicable', comment: 'Biopsy received prior to bimarker launch date' }
                         ]
                     };
+
+                    $scope.biopsyReport = { text: 'T-15-000078', value: 'Version1' };
+
+                    $scope.biopsyReports = [
+                        { text: 'T-15-000078', value: 'Version1' },
+                        { text: 'T-15-000079', value: 'Version2' },
+                        { text: 'T-15-000082', value: 'Version3' }
+                    ];
                 })
                 .then(function () {
                     $scope.variantReportType = 'tumorTissue';
@@ -268,23 +291,23 @@
                     setVariantReport();
                 });
         }
-        
+
         function doConfirm() {
             $log.debug('doConfirm');
         }
-        
+
         function confirm(index, list, propertyName) {
             var item = list[index];
-            
+
             if (typeof item !== 'object' || !item)
                 return;
-            
+
             if (!(propertyName in item))
                 return;
-            
+
             var previousValue = !!item[propertyName];
             $log.debug('previousValue: ' + previousValue);
-            
+
             function success(name) {
                 $log.debug('Confirmed: ' + name);
                 $log.debug('item[propertyName] before: ' + item[propertyName]);
@@ -292,7 +315,7 @@
                 $log.debug('item[propertyName] after: ' + item[propertyName]);
                 $scope.$apply();
             }
-            
+
             function failure() {
                 $log.debug('Rejected');
                 $log.debug('item[propertyName] before: ' + item[propertyName]);
@@ -300,7 +323,7 @@
                 $log.debug('item[propertyName] after: ' + item[propertyName]);
                 $scope.$apply();
             }
-            
+
             //ask the user for a string
             prompt({
                 title: 'Confirmation Changed',
@@ -311,6 +334,14 @@
                 // values: ['other', 'possible', 'names']
             }).then(success, failure);
         }
+
+        function dzAddedFile(file) {
+            $log.log(file);
+        }
+
+        function dzError(file, errorMessage) {
+            $log.log(errorMessage);
+        }
     }
 
-}());
+} ());
