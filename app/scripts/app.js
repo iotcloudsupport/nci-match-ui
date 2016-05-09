@@ -20,6 +20,7 @@
         'angular-flot',
         'ui.router',
         'ui.bootstrap',
-        'cgPrompt'
+        'cgPrompt',
+        'ngDropzone'
     ]);
 })();

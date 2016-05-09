@@ -25,13 +25,20 @@
             selectedList: []
         };
 
+        $scope.dropzoneConfig = {
+            url : '/alt_upload_url',
+            parallelUploads: 3,
+            maxFileSize: 30
+        };
+        
         $scope.setVariantReportType = setVariantReportType;
         $scope.setVariantReportMode = setVariantReportMode;
         $scope.getVariantReportTypeClass = getVariantReportTypeClass;
         $scope.getVariantReportModeClass = getVariantReportModeClass;
         $scope.confirm = confirm;
         $scope.doConfirm = doConfirm;
-
+        $scope.dzAddedFile = dzAddedFile;
+        $scope.dzError = dzError;
         $scope.loadPatientData = loadPatientData;
 
         function setVariantReportType(reportType) {
@@ -311,7 +318,14 @@
                 // values: ['other', 'possible', 'names']
             }).then(success, failure);
         }
+
+        function dzAddedFile(file) {
+            $log.log(file);
+        }
+
+        function dzError(file, errorMessage) {
+            $log.log(errorMessage);
+        }
     }
 
 }());
-
