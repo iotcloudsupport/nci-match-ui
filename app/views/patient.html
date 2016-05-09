@@ -61,7 +61,7 @@
 
                             <dt>MedDRA Code</dt>
                             <dd>100006190</dd>
-                            
+
                             <dt>Prior Drugs</dt>
                             <dd>Aspirin, Motrin, Vitamin C</dd>
                         </dl>
@@ -86,7 +86,8 @@
                                         <div class="col-xs-4 col-md-4">
                                             <ul class="sortable-list connectList agile-list">
                                                 <li class="warning-element">
-                                                    Variant Report <a>MSN12345</a> <span style="color:orange">PENDING</span>. <strong>Please review.</strong>
+                                                    Variant Report <a>MSN12345</a> <span style="color:orange">PENDING</span>.
+                                                    <strong>Please review.</strong>
                                                     <div class="agile-detail">
                                                         <i class="fa fa-clock-o"></i> 12.10.2015
                                                     </div>
@@ -205,22 +206,33 @@
                 <tab heading="Biopsy">
                     <div class="panel-body">
 
+                        <div class="ibox-title ibox-title-no-line">
+                            <h3>
+                                <div class="row">
+                                    <div class="col-md-2 text-right ng-dropdown-label">
+                                        Biopsy Report Sequence Number
+                                    </div>
+                                    <div class="col-md-10 text-left">
+                                        <div dropdown-select="biopsyReports " dropdown-model="biopsyReport" dropdown-item-label="text">
+                                        </div>
+                                    </div>
+                                </div>
+                            </h3>
+                        </div>
+
                         <div class="ibox float-e-margins">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="header-info-box biopsy-header-box">
-                                        <h4>Biopsy</h4>
+                                        <h4>Speciment</h4>
                                         <dl class="dl-horizontal">
-                                            <dt>Sequence Number</dt>
-                                            <dd>T-15-000078</dd>
-
-                                            <dt>Specimen Collection Date</dt>
+                                            <dt>Collection Date</dt>
                                             <dd>August 26, 2015 2:57 PM GMT</dd>
 
-                                            <dt>Specimen Received Date</dt>
+                                            <dt>Received Date</dt>
                                             <dd>August 26, 2015 2:57 PM GMT</dd>
 
-                                            <dt>Specimen Failure Date</dt>
+                                            <dt>Failure Date</dt>
                                             <dd>-</dd>
                                         </dl>
                                     </div>
@@ -421,7 +433,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="header-info-box variant-report-header-box">
-                                        
+
                                     <dl class="dl-horizontal dl-horizontal-expanded-label">
                                         <dt>Total Variants</dt>
                                         <dd>{{variantReport.totalVariants}}</dd>
@@ -429,7 +441,7 @@
                                         <dt>Cellularity</dt>
                                         <dd>{{variantReport.cellularity}}</dd>
                                     </dl>
-                                    
+
                                     <h4>MOI/aMOI Summary</h4>
 
                                     <dl class="dl-horizontal dl-horizontal-expanded-label">
@@ -487,7 +499,7 @@
                                     <td>{{::variant.transcript}}</td>
                                     <td>{{::variant.protein}}</td>
                                 </tr>
-                                
+
                                 <tr ng-if="!biopsy.singleNucleitideVariants || !biopsy.singleNucleitideVariants.length">
                                     <td colspan="8"><span class="text-muted">No Single Nucleitide Variants</span></td>
                                 </tr>
@@ -539,7 +551,7 @@
                                     <td>{{::variant.transcript}}</td>
                                     <td>{{::variant.protein}}</td>
                                 </tr>
-                                
+
                                 <tr ng-if="!biopsy.indels || !biopsy.indels.length">
                                     <td colspan="8"><span class="text-muted">No Indels</span></td>
                                 </tr>
@@ -576,7 +588,7 @@
                                     <td>{{::variant.ci5percent}}</td>
                                     <td>{{::variant.ci95percent}}</td>
                                 </tr>
-                                
+
                                 <tr ng-if="!biopsy.copyNumberVariants || !biopsy.copyNumberVariants.length">
                                     <td colspan="8"><span class="text-muted">No Copy Number Variants</span></td>
                                 </tr>
@@ -612,7 +624,7 @@
                                     <td>{{::variant.gene1count}}</td>
                                     <td>{{::variant.annotation}}</td>
                                 </tr>
-                                
+
                                 <tr ng-if="!biopsy.geneFusions || !biopsy.geneFusions.length">
                                     <td colspan="8"><span class="text-muted">No Gene Fusions</span></td>
                                 </tr>
@@ -762,7 +774,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        
+
 
                         <div class="ibox-content ibox-title-no-line" ng-if="variantReport.showActions">
                             <div class="row">
@@ -770,7 +782,7 @@
                                     <button class="btn btn-success" title="Approve this Report">APPROVE</button>
                                 </div>
                             </div>
-                        </div>                        
+                        </div>
                     </div>
                 </tab>
 
@@ -786,14 +798,11 @@
                                     <li><a>Document 3</a></li>
                                 </ul>
                             </div>
-                            
-                            <form class="dropzone" method="post" enctype="multipart/form-data" 
-                                ng-dropzone 
-                                dropzone="dropzone" 
-                                dropzone-config="dropzoneConfig"
+
+                            <form class="dropzone" method="post" enctype="multipart/form-data" ng-dropzone dropzone="dropzone" dropzone-config="dropzoneConfig"
                                 event-handlers="{ 'addedfile': dzAddedFile, 'error': dzError }">
                             </form>
-                                                        
+
                             <!--<form action=" " class="dropzone " drop-zone=" " id="file-dropzone">
                                 <button type="submit" class="btn btn-success pull-right"><i class="fa fa-upload"></i>&nbsp;&nbsp;Upload Selected Files</button>
                             </form>-->

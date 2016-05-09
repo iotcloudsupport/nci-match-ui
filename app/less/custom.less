@@ -146,7 +146,7 @@
  }
  
  .biopsy-header-box {
-    height: 152px;
+    height: 132px;
  }
 
 .ibox-tools-with-h3-title {
@@ -196,4 +196,38 @@
     .dl-horizontal-expanded-label dd {
         margin-left: 260px;
     }
+}
+
+// Override angular-dropdowns styles
+.wrap-dd-select {
+    position: relative;
+    width: 200px;
+    margin: 0 auto;
+    padding: 10px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background: #fff;
+    border-radius: 2px;
+    border: 1px solid @border-color;
+    box-shadow: none;
+    cursor: pointer;
+    outline: 0;
+    font-weight: 700;
+    color: inherit;
+    margin-left: 0px;
+}
+
+.wrap-dd-select .dropdown li a {
+    color: inherit;
+    border-bottom: none;
+    cursor: pointer;
+}
+
+.wrap-dd-select:after {
+    border-color: @navy transparent;
+}
+
+.ng-dropdown-label {
+  margin-top: 11px; 
 }

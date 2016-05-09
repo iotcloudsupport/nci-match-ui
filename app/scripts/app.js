@@ -21,6 +21,7 @@
         'ui.router',
         'ui.bootstrap',
         'cgPrompt',
-        'ngDropzone'
+        'ngDropzone',
+        'ngDropdowns'
     ]);
 })();

@@ -268,6 +268,14 @@
                             { gene: 'RB', result: 'Not Applicable', comment: 'Biopsy received prior to bimarker launch date' }
                         ]
                     };
+
+                    $scope.biopsyReport = {text: 'T-15-000078', value: 'Version1'}; 
+                    
+                    $scope.biopsyReports = [
+                        {text: 'T-15-000078', value: 'Version1'},
+                        {text: 'T-15-000079', value: 'Version2'},
+                        {text: 'T-15-000082', value: 'Version3'}
+                    ];
                 })
                 .then(function () {
                     $scope.variantReportType = 'tumorTissue';
