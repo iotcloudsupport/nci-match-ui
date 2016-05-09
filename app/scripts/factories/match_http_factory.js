@@ -52,6 +52,14 @@ angular.module('http.matchbox', [])
             }
         };
     })
+    .factory('irAdminApi', function($http, matchConfig) {
+        return {
+            getAdminHeartBeat: function() {
+                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getIrUploaderAdminObjects');
+            },
+
+        };
+    })
     .factory('matchApiMock', function($http, matchConfig, $q, $log) {
         return {
             getPatientDetailsData: function(patientSequenceNumberParam) {
