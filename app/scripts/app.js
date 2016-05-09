@@ -7,6 +7,7 @@
         'dashboard.matchbox',
         'patients.matchbox',
         'patient.matchbox',
+        'iradmin.matchbox',
         'service.matchbox',
         'treatment-arms.matchbox',
         'treatment-arm.matchbox',
