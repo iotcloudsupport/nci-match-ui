@@ -32,9 +32,9 @@
 
 
 
-                        <div class="panel-body"
-                             ng-controller="DashboardPendingReviewController as DashCtrl"
-                             ng-init="loadPatientVariantReportsList()">
+                        <div class="panel-body" >
+                             <!--ng-controller="IrAdminController"-->
+                             <!--ng-init="loadHeartBeatList()">-->
                             <div class="col-lg-12">
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-title">
@@ -43,8 +43,10 @@
 
                                     </div>
 
-                                    <div class="ibox-content">
+                                    <div class="ibox-content"  ng-controller="IrAdminController" ng-init="loadHeartBeatList()">
                                         <div class="timeline-item">
+
+                                            <!--IP Address	Internal IP Address	Host Name	Location	Status	Last Contact	Data Files-->
 
 
                                             <div class="row">
@@ -54,85 +56,136 @@
                                                     <table class="table">
                                                         <thead>
                                                             <th></th>
+                                                            <th>Host Name</th>
                                                             <th>IP Address</th>
                                                             <th>Internal IP Address</th>
-                                                            <th>Host Name</th>
-                                                            <th>Location</th>
                                                             <th>Status</th>
+                                                            <th>Location</th>
+
                                                             <th>Last Contact</th>
                                                             <th>Data Files</th>
                                                         </thead>
                                                         <tbody>
-                                                        <tr>
-                                                            <td> <i class="fa fa-clock-o fa-2x" style="color:green"></i><small class="text-navy"> 2 hour ago</small></td>
-                                                            <td>129.43.127.133</td>
-                                                            <td>129.43.127.133</td>
-                                                            <td>NCI-MATCH-IR</td>
-                                                            <td>MoCha</td>
-                                                            <td>Lost contact! Last heartbeat was sent 321141 minutes ago</td>
-                                                            <td>September 23, 2015 1:00 PM GMT</td>
 
-                                                            <td>T 7</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td> <i class="fa fa-exclamation-triangle fa-2x" style="color:orange"></i><small class="text-navy"> 4 hour ago</small></td>
-                                                            <td>129.43.127.133</td>
-                                                            <td>129.43.127.133</td>
-                                                            <td>NCI-MATCH-IR</td>
-                                                            <td>MoCha</td>
-                                                            <td>Lost contact! Last heartbeat was sent 321141 minutes ago</td>
-                                                            <td>September 23, 2015 1:00 PM GMT</td>
-
-                                                            <td>T 7</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td> <i class="fa fa-exclamation-triangle fa-2x" style="color:orange"></i><small class="text-navy"> 1 hour ago</small></td>
-                                                            <td>129.43.127.133</td>
-                                                            <td>129.43.127.133</td>
-                                                            <td>NCI-MATCH-IR</td>
-                                                            <td>MoCha</td>
-                                                            <td>Lost contact! Last heartbeat was sent 321141 minutes ago</td>
-                                                            <td>September 23, 2015 1:00 PM GMT</td>
-
-                                                            <td>T 7</td>
-
-                                                        </tr>
-
-                                                        <tr>
+                                                        <tr   ng-repeat="ir in irList">
                                                             <td>
-                                                            <a href="">
-                                                            <i class="fa fa-lock fa-2x danger"></i>
-                                                            </a>
-                                                                <small class="text-navy"> Locked</small>
+                                                                <i class="fa fa-clock-o fa-2x" style="color:green"></i><small class="text-navy"> 2 hour ago</small>
                                                             </td>
-                                                            <td>129.43.127.133</td>
-                                                            <td>129.43.127.133</td>
-                                                            <td>NCI-MATCH-IR</td>
-                                                            <td>N/A</td>
-                                                            <td>Lost contact! Last heartbeat was sent 321141 minutes ago</td>
-                                                            <td>September 23, 2015 1:00 PM GMT</td>
+                                                            <td>{{ ir.hostName }}</td>
+                                                            <td>{{ ir.externalIpAddress }}</td>
+                                                            <td>{{ ir.ipAddress }}</td>
+                                                            <td>{{ ir.status || '-' }}</td>
 
-                                                            <td>T 7</td>
+                                                            <td>{{ ir.location }}</td>
+                                                            <td>{{ ir.lastContactDate }}</td>
+                                                            <td>
+                                                                <a class="btn btn-sm btn-primary" ng-href="{{ ir.dbReportPath }}" type="button">
+                                                                    <i class="fa fa-file-text" aria-hidden="true"></i>
+                                                                    DB REPORT
+                                                                </a>
+                                                                <a class="btn btn-sm btn-success" ng-href="{{ ir.dataFilePath }}" type="button">
+                                                                    <i class="fa fa-file-code-o" aria-hidden="true"></i>
+                                                                    DATA FILE
+                                                                </a>
+                                                                <a class="btn btn-sm btn-warning" ng-href="{{ ir.logFilePath }}" type="button">
+                                                                    <i class="fa fa-file-o" aria-hidden="true"></i>
+                                                                    LOG FILE
+                                                                </a>
+                                                            </td>
                                                         </tr>
+
+
+                                                        <!--DB REPORT-->
+                                                        <!--DATA FILE-->
+                                                        <!--LOG FILE-->
+
+                                                        <!--<div class="panel-body"-->
+                                                             <!--ng-controller="IrAdminController as DashCtrl"-->
+                                                             <!--ng-init="loadHeartBeatList()">-->
+                                                            <!--<table datatable="ng"-->
+                                                                   <!--dt-options="DashCtrl.dtOptions"-->
+                                                                   <!--dt-column-defs="DashCtrl.dtColumnDefs"-->
+                                                                   <!--dt-instance="DashCtrl.dtInstance"-->
+                                                                   <!--class="table table-striped table-bordered table-hover">-->
+                                                                <!--<thead>-->
+                                                                <!--<tr>-->
+                                                                    <!--<th>Patient Sequence Number</th>-->
+                                                                    <!--<th>Eligible Treatment Arm(s)</th>-->
+                                                                    <!--<th>Last Scanned Date</th>-->
+                                                                    <!--<th>Notified ECOG Date</th>-->
+                                                                <!--</tr>-->
+                                                                <!--</thead>-->
+                                                                <!--<tbody>-->
+                                                                <!--<tr ng-repeat="item in irList">-->
+                                                                    <!--<td>{{ item.hostName }}</td>-->
+                                                                    <!--<td>{{ item.ipAddress }}</td>-->
+                                                                    <!--<td>{{ item.status || gmt}}</td>-->
+                                                                    <!--<td>{{ item.lastContactDate || gmt }}</td>-->
+                                                                <!--</tr>-->
+                                                                <!--</tbody>-->
+                                                            <!--</table>-->
+                                                        <!--</div>-->
+
+
+
+                                                        <!--<tr>-->
+                                                            <!--<td> <i class="fa fa-clock-o fa-2x" style="color:green"></i><small class="text-navy"> 2 hour ago</small></td>-->
+                                                            <!--<td>129.43.127.133</td>-->
+                                                            <!--<td>129.43.127.133</td>-->
+                                                            <!--<td>NCIAS-D1227</td>-->
+                                                            <!--<td>MoCha</td>-->
+                                                            <!--<td>Lost contact! Last heartbeat was sent 321141 minutes ago</td>-->
+                                                            <!--<td>September 23, 2015 1:00 PM GMT</td>-->
+
+                                                            <!--<td>T 7</td>-->
+                                                        <!--</tr>-->
+                                                        <!--<tr>-->
+                                                            <!--<td> <i class="fa fa-exclamation-triangle fa-2x" style="color:orange"></i><small class="text-navy"> 4 hour ago</small></td>-->
+                                                            <!--<td>129.43.127.133</td>-->
+                                                            <!--<td>129.43.127.133</td>-->
+                                                            <!--<td>NCI-MATCH-IR</td>-->
+                                                            <!--<td>MoCha</td>-->
+                                                            <!--<td>Lost contact! Last heartbeat was sent 321141 minutes ago</td>-->
+                                                            <!--<td>September 23, 2015 1:00 PM GMT</td>-->
+
+                                                            <!--<td>T 7</td>-->
+                                                        <!--</tr>-->
+                                                        <!--<tr>-->
+                                                            <!--<td> <i class="fa fa-exclamation-triangle fa-2x" style="color:orange"></i><small class="text-navy"> 1 hour ago</small></td>-->
+                                                            <!--<td>129.43.127.133</td>-->
+                                                            <!--<td>129.43.127.133</td>-->
+                                                            <!--<td>NCI-MATCH-IR</td>-->
+                                                            <!--<td>MoCha</td>-->
+                                                            <!--<td>Lost contact! Last heartbeat was sent 321141 minutes ago</td>-->
+                                                            <!--<td>September 23, 2015 1:00 PM GMT</td>-->
+
+                                                            <!--<td>T 7</td>-->
+
+                                                        <!--</tr>-->
+
+                                                        <!--<tr>-->
+                                                            <!--<td>-->
+                                                            <!--<a href="">-->
+                                                            <!--<i class="fa fa-lock fa-2x danger"></i>-->
+                                                            <!--</a>-->
+                                                                <!--<small class="text-navy"> Locked</small>-->
+                                                            <!--</td>-->
+                                                            <!--<td>129.43.127.133</td>-->
+                                                            <!--<td>129.43.127.133</td>-->
+                                                            <!--<td>NCI-MATCH-IR</td>-->
+                                                            <!--<td>N/A</td>-->
+                                                            <!--<td>Lost contact! Last heartbeat was sent 321141 minutes ago</td>-->
+                                                            <!--<td>September 23, 2015 1:00 PM GMT</td>-->
+
+                                                            <!--<td>T 7</td>-->
+                                                        <!--</tr>-->
 
 
                                                         </tbody>
                                                     </table>
-
-
-
-
                                                 </div>
-
-
                                             </div>
-
-
                                         </div>
-
-
-
-
                                     </div>
                                 </div>
                             </div>
@@ -288,14 +341,14 @@
                                 <tab>
                                     <tab-heading>
                                         <i class="fa fa-cubes fa-2x"></i>
-                                        Yale
+                                        MD Anderson
                                     </tab-heading>
                                     <div class="panel-body">
                                         <div class="panel-group" id="accordion">
                                             <div class="panel panel-success">
                                                 <div class="panel-heading">
                                                     <h5 class="panel-title">
-                                                        <a data-toggle="collapse" target="_local" data-parent="#accordion" href="#collapseYaleOne">Positive Control - Yale</a>
+                                                        <a data-toggle="collapse" target="_local" data-parent="#accordion" href="#collapseYaleOne">Positive Control - MD Anderson</a>
                                                     </h5>
                                                 </div>
 
@@ -359,7 +412,7 @@
                                             <div class="panel panel-success">
                                                 <div class="panel-heading">
                                                     <h4 class="panel-title">
-                                                        <a data-toggle="collapse" target="_local" data-parent="#accordion" href="#collapseYaleTwo">No Template Control - Yale</a>
+                                                        <a data-toggle="collapse" target="_local" data-parent="#accordion" href="#collapseYaleTwo">No Template Control - MD Anderson</a>
                                                     </h4>
                                                 </div>
                                                 <div id="collapseYaleTwo" class="panel-collapse collapse">
@@ -421,116 +474,8 @@
                                         </div>
                                     </div>
                                 </tab>
-                                <tab>
-                                    <tab-heading>
-                                        <i class="fa fa-compass fa-2x"></i>
-                                        MGH
-                                    </tab-heading>
-                                    <div class="panel-body">
-                                        <strong>Lorem ipsum dolor sit amet, consectetuer adipiscing</strong>
-
-                                        <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of
-                                            spring which I enjoy with my whole heart. I am alone, and feel the charm of
-                                            existence in this spot, which was created for the bliss of souls like mine.</p>
-
-                                        <p>I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil
-                                            existence, that I neglect my talents. I should be incapable of drawing a single stroke
-                                            at
-                                            the present moment; and yet I feel that I never was a greater artist than now. When.</p>
-                                    </div>
-                                </tab>
-                                <tab>
-                                    <tab-heading>
-                                        <i class="fa fa-leaf fa-2x"></i>
-                                        MD Anderson
-                                    </tab-heading>
-                                    <div class="panel-body">
-                                        <strong>Lorem ipsum dolor sit amet, consectetuer adipiscing</strong>
-
-                                        <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of
-                                            spring which I enjoy with my whole heart. I am alone, and feel the charm of
-                                            existence in this spot, which was created for the bliss of souls like mine.</p>
-
-                                        <p>I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil
-                                            existence, that I neglect my talents. I should be incapable of drawing a single stroke
-                                            at
-                                            the present moment; and yet I feel that I never was a greater artist than now. When.</p>
-                                    </div>
-                                </tab>
                             </tabset>
-
                         </div>
-
-
-                        <!--MoCha-->
-                        <!--Yale-->
-                        <!--MGH-->
-                        <!--MD Anderson-->
-
-                        <!--<tabset>-->
-
-                        <!--<tab heading="MoCha">-->
-
-                        <!--<div class="panel-body"-->
-                        <!--ng-controller="DashboardPendingReviewController as DashCtrl"-->
-                        <!--ng-init="loadPatientPendingAssignmentReportsList()">-->
-                        <!--<table datatable="ng"-->
-                        <!--dt-options="DashCtrl.dtOptions"-->
-                        <!--dt-column-defs="DashCtrl.dtColumnDefs"-->
-                        <!--dt-instance="DashCtrl.dtInstance"-->
-                        <!--class="table table-striped table-bordered table-hover">-->
-                        <!--<thead>-->
-                        <!--<tr>-->
-                        <!--<th>Patient Sequence Number</th>-->
-                        <!--<th>Molecular Sequence Number</th>-->
-                        <!--<th>Assignment Date</th>-->
-                        <!--<th>Hours Pending</th>-->
-                        <!--</tr>-->
-                        <!--</thead>-->
-                        <!--<tbody>-->
-                        <!--<tr ng-repeat="item in pendingAssignmentReportList">-->
-                        <!--<td>{{ item.patientSequenceNumber }}</td>-->
-                        <!--<td>{{ item.molecularSequenceNumber || '-' }}</td>-->
-                        <!--<td>{{ item.dateAssigned | gmt  }}</td>-->
-                        <!--<td><span class="label label-primary">{{ item.hoursPending || ' - ' }}</span></td>-->
-                        <!--</tr>-->
-                        <!--</tbody>-->
-                        <!--</table>-->
-                        <!--</div>-->
-                        <!--</tab>-->
-
-                        <!--<tab heading="Yale">-->
-
-                        <!--<div class="panel-body"-->
-                        <!--ng-controller="DashboardPendingReviewController as DashCtrl"-->
-                        <!--ng-init="loadPatientPendingAssignmentReportsList()">-->
-                        <!--<table datatable="ng"-->
-                        <!--dt-options="DashCtrl.dtOptions"-->
-                        <!--dt-column-defs="DashCtrl.dtColumnDefs"-->
-                        <!--dt-instance="DashCtrl.dtInstance"-->
-                        <!--class="table table-striped table-bordered table-hover">-->
-                        <!--<thead>-->
-                        <!--<tr>-->
-                        <!--<th>Patient Sequence Number</th>-->
-                        <!--<th>Molecular Sequence Number</th>-->
-                        <!--<th>Assignment Date</th>-->
-                        <!--<th>Hours Pending</th>-->
-                        <!--</tr>-->
-                        <!--</thead>-->
-                        <!--<tbody>-->
-                        <!--<tr ng-repeat="item in pendingAssignmentReportList">-->
-                        <!--<td>{{ item.patientSequenceNumber }}</td>-->
-                        <!--<td>{{ item.molecularSequenceNumber || '-' }}</td>-->
-                        <!--<td>{{ item.dateAssigned | gmt  }}</td>-->
-                        <!--<td><span class="label label-primary">{{ item.hoursPending || ' - ' }}</span></td>-->
-                        <!--</tr>-->
-                        <!--</tbody>-->
-                        <!--</table>-->
-                        <!--</div>-->
-                        <!--</tab>-->
-
-                        <!--</tabset>-->
-
                     </tab>
 
                 </tabset>
