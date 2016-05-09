@@ -210,7 +210,7 @@
                             <h3>
                                 <div class="row">
                                     <div class="col-md-2 text-right ng-dropdown-label">
-                                        Biopsy Report Sequence Number
+                                        Biopsy Report
                                     </div>
                                     <div class="col-md-10 text-left">
                                         <div dropdown-select="biopsyReports " dropdown-model="biopsyReport" dropdown-item-label="text">
@@ -395,7 +395,17 @@
                         </div>
 
                         <div class="ibox-title ibox-title-no-line">
-                            <h3>Variant Report {{variantReport.molecularSequenceNumber}}</h3>
+                            <h3>
+                                <div class="row">
+                                    <div class="col-md-2 text-right ng-dropdown-label">
+                                        Variant Report
+                                    </div>
+                                    <div class="col-md-10 text-left">
+                                        <div dropdown-select="variantReportOptions " dropdown-model="variantReportOption" dropdown-item-label="text">
+                                        </div>
+                                    </div>
+                                </div>
+                            </h3>
                         </div>
 
                         <div class="row" ng-if="variantReportMode!=='Qc'">

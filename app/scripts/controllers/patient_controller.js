@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
     angular.module('patient.matchbox', [])
         .controller('PatientController', PatientController);
@@ -26,11 +26,11 @@
         };
 
         $scope.dropzoneConfig = {
-            url : '/alt_upload_url',
+            url: '/alt_upload_url',
             parallelUploads: 3,
             maxFileSize: 30
         };
-        
+
         $scope.setVariantReportType = setVariantReportType;
         $scope.setVariantReportMode = setVariantReportMode;
         $scope.getVariantReportTypeClass = getVariantReportTypeClass;
@@ -260,6 +260,14 @@
                         }
                     };
 
+                    $scope.variantReportOptions = [
+                        { text: 'MSN-000078', value: 'Msn1' },
+                        { text: 'MSN-000079', value: 'Msn2' },
+                        { text: 'MSN-000082', value: 'Msn3' }
+                    ];
+                    
+                    $scope.variantReportOption = { text: 'MSN-000078', value: 'Msn1' };
+
                     $scope.assignmentReport = {
                         assays: [
                             { gene: 'MSH2', result: 'Not Applicable', comment: 'Biopsy received prior to bimarker launch date' },
@@ -269,12 +277,12 @@
                         ]
                     };
 
-                    $scope.biopsyReport = {text: 'T-15-000078', value: 'Version1'}; 
-                    
+                    $scope.biopsyReport = { text: 'T-15-000078', value: 'Version1' };
+
                     $scope.biopsyReports = [
-                        {text: 'T-15-000078', value: 'Version1'},
-                        {text: 'T-15-000079', value: 'Version2'},
-                        {text: 'T-15-000082', value: 'Version3'}
+                        { text: 'T-15-000078', value: 'Version1' },
+                        { text: 'T-15-000079', value: 'Version2' },
+                        { text: 'T-15-000082', value: 'Version3' }
                     ];
                 })
                 .then(function () {
@@ -283,23 +291,23 @@
                     setVariantReport();
                 });
         }
-        
+
         function doConfirm() {
             $log.debug('doConfirm');
         }
-        
+
         function confirm(index, list, propertyName) {
             var item = list[index];
-            
+
             if (typeof item !== 'object' || !item)
                 return;
-            
+
             if (!(propertyName in item))
                 return;
-            
+
             var previousValue = !!item[propertyName];
             $log.debug('previousValue: ' + previousValue);
-            
+
             function success(name) {
                 $log.debug('Confirmed: ' + name);
                 $log.debug('item[propertyName] before: ' + item[propertyName]);
@@ -307,7 +315,7 @@
                 $log.debug('item[propertyName] after: ' + item[propertyName]);
                 $scope.$apply();
             }
-            
+
             function failure() {
                 $log.debug('Rejected');
                 $log.debug('item[propertyName] before: ' + item[propertyName]);
@@ -315,7 +323,7 @@
                 $log.debug('item[propertyName] after: ' + item[propertyName]);
                 $scope.$apply();
             }
-            
+
             //ask the user for a string
             prompt({
                 title: 'Confirmation Changed',
@@ -336,4 +344,4 @@
         }
     }
 
-}());
+} ());
