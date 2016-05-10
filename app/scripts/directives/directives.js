@@ -159,26 +159,49 @@
     }
 
     function checkBoxWithConfirm(prompt) {
-        return {
-            priority: -1,
-            restrict: 'A',
-            scope: true,
-            //templateUrl: 'templates/check_box_with_confirm.html',
-            template: 
-                '<div class="stacked-container">\
+        var controller = ['$scope', function($scope) {
+            //$scope.confirmTitle = 'Confirmation Changed';
+            $scope.confirmMessage = 'Please enter a reson for removing the confirmation:';
+            
+            $scope.success = function (){
+                console.log('controller success');
+            };
+            $scope.failure = function (){
+                console.log('controller failure');                    
+            };
+        }];
+        
+        var tempate = '<div class="stacked-container">\
                     <div class="stacked-front">\
                         <button type="input"></button>\
                     </div>\
                     <div class="stacked-back">\
                             <input type="checkbox" tabindex="-1" ng-model="variant.confirm" />\
                     </div>\
-                </div>',
+                </div>';
+        
+        return {
+            priority: -1,
+            restrict: 'A',
+            //scope: true,
+            //templateUrl: 'templates/check_box_with_confirm.html',
+            template: tempate,
+            controller: controller,
+            //require: '?confirmtitle',
+            scope: {
+              confirmTitle : ''
+            },
             link: function (scope, element, attrs) {
                 var cb = element.find('div.stacked-back').find('input');
                 var btn = element.find('div.stacked-front').find('button');
                 
                 btn.bind('click', function (e) {
-                    console.log('clicked');
+                    //console.log(confirmtitle);
+                    prompt({
+                        title: scope.confirmTitle,
+                        message: scope.confirmMessage,
+                        input: true
+                    }).then(scope.success, scope.failure);
                 });
             }
         }
