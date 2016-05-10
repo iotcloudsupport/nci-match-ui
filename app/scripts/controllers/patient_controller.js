@@ -15,6 +15,9 @@
             .withDisplayLength(100);
 
         $scope.patientSequenceNumber = '';
+        
+        $scope.confirmTitle = 'Confirmation Changed';
+        $scope.confirmMessage = 'Please enter a reason:';
 
         $scope.files = [];
 
