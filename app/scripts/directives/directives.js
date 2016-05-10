@@ -205,15 +205,15 @@
 
         return {
             priority: -1,
-            restrict: 'A',
+            restrict: 'AE',
             template: template,
             controller: controller,
             controllerAs: 'vm',
             scope: {
-                confirmTitle: '@confirmTitle',
-                confirmMessage: '@confirmMessage',
-                isChecked: '@isChecked',
-                setEnteredValue: '@setEnteredValue'
+                confirmTitle: '=',
+                confirmMessage: '=',
+                isChecked: '=',
+                setEnteredValue: '='
             }
         }
     }
