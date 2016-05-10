@@ -1,6 +1,6 @@
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Patient</h2>
+        <h2>IR Admin</h2>
         <ol class="breadcrumb">
             <li>
                 <a ui-sref="index.dashboard">Dashboard</a>
@@ -13,71 +13,53 @@
             </li>
         </ol>
     </div>
-    <div class="col-lg-2">
-
-    </div>
+    <div class="col-lg-2"></div>
 </div>
 
 
 
+
+
+<div class="wrapper wrapper-content p-xl ng-scope">
+
 <div class="col-lg-12">
     <div class="ibox float-e-margins">
-        <div class="ibox-title">
-            <h5>Item(s) Pending Review </h5>
-        </div>
         <div class="ibox-content">
             <div class="tabs-container">
                 <tabset>
-                    <tab heading="Ion Reporters' Statuses">
-
-
-
+                    <tab heading="Statuses">
                         <div class="panel-body" >
                              <!--ng-controller="IrAdminController"-->
                              <!--ng-init="loadHeartBeatList()">-->
                             <div class="col-lg-12">
                                 <div class="ibox float-e-margins">
-                                    <div class="ibox-title">
-                                        <h5>Ion Reporters' Statuses</h5>
-                                        <span class="label label-primary">Currecnt Status</span>
-
-                                    </div>
 
                                     <div class="ibox-content"  ng-controller="IrAdminController" ng-init="loadHeartBeatList()">
-                                        <div class="timeline-item">
-
-                                            <!--IP Address	Internal IP Address	Host Name	Location	Status	Last Contact	Data Files-->
-
-
-                                            <div class="row">
-                                                <div class="col-xs-12 content top-border">
-
-
-                                                    <table class="table">
-                                                        <thead>
-                                                            <th></th>
-                                                            <th>Host Name</th>
-                                                            <th>IP Address</th>
-                                                            <th>Internal IP Address</th>
-                                                            <th>Status</th>
-                                                            <th>Location</th>
-
-                                                            <th>Last Contact</th>
-                                                            <th>Data Files</th>
-                                                        </thead>
-                                                        <tbody>
-
-                                                        <tr   ng-repeat="ir in irList">
+                                        <div class="row">
+                                            <div class="col-xs-12 content top-border">
+                                                <table class="table">
+                                                    <thead>
+                                                        <th></th>
+                                                        <th>Host Name</th>
+                                                        <th>IP Address</th>
+                                                        <th>Internal IP Address</th>
+                                                        <th>Status</th>
+                                                        <th>Location</th>
+                                                        <th>Last Contact</th>
+                                                        <th>Data Files</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="ir in irList">
                                                             <td>
-                                                                <i class="fa fa-clock-o fa-2x" style="color:green"></i><small class="text-navy"> 2 hour ago</small>
+                                                                <i class="{{ ir.timer[0] }}" style="{{ ir.timer[1] }}"></i>
+                                                                <small class="text-navy"> 2 hour ago</small>
                                                             </td>
                                                             <td>{{ ir.hostName }}</td>
                                                             <td>{{ ir.externalIpAddress }}</td>
                                                             <td>{{ ir.ipAddress }}</td>
                                                             <td>{{ ir.status || '-' }}</td>
-
                                                             <td>{{ ir.location }}</td>
-                                                            <td>{{ ir.lastContactDate }}</td>
+                                                            <td>{{ ir.lastContactDate | gmt }}</td>
                                                             <td>
                                                                 <a class="btn btn-sm btn-primary" ng-href="{{ ir.dbReportPath }}" type="button">
                                                                     <i class="fa fa-file-text" aria-hidden="true"></i>
@@ -93,97 +75,8 @@
                                                                 </a>
                                                             </td>
                                                         </tr>
-
-
-                                                        <!--DB REPORT-->
-                                                        <!--DATA FILE-->
-                                                        <!--LOG FILE-->
-
-                                                        <!--<div class="panel-body"-->
-                                                             <!--ng-controller="IrAdminController as DashCtrl"-->
-                                                             <!--ng-init="loadHeartBeatList()">-->
-                                                            <!--<table datatable="ng"-->
-                                                                   <!--dt-options="DashCtrl.dtOptions"-->
-                                                                   <!--dt-column-defs="DashCtrl.dtColumnDefs"-->
-                                                                   <!--dt-instance="DashCtrl.dtInstance"-->
-                                                                   <!--class="table table-striped table-bordered table-hover">-->
-                                                                <!--<thead>-->
-                                                                <!--<tr>-->
-                                                                    <!--<th>Patient Sequence Number</th>-->
-                                                                    <!--<th>Eligible Treatment Arm(s)</th>-->
-                                                                    <!--<th>Last Scanned Date</th>-->
-                                                                    <!--<th>Notified ECOG Date</th>-->
-                                                                <!--</tr>-->
-                                                                <!--</thead>-->
-                                                                <!--<tbody>-->
-                                                                <!--<tr ng-repeat="item in irList">-->
-                                                                    <!--<td>{{ item.hostName }}</td>-->
-                                                                    <!--<td>{{ item.ipAddress }}</td>-->
-                                                                    <!--<td>{{ item.status || gmt}}</td>-->
-                                                                    <!--<td>{{ item.lastContactDate || gmt }}</td>-->
-                                                                <!--</tr>-->
-                                                                <!--</tbody>-->
-                                                            <!--</table>-->
-                                                        <!--</div>-->
-
-
-
-                                                        <!--<tr>-->
-                                                            <!--<td> <i class="fa fa-clock-o fa-2x" style="color:green"></i><small class="text-navy"> 2 hour ago</small></td>-->
-                                                            <!--<td>129.43.127.133</td>-->
-                                                            <!--<td>129.43.127.133</td>-->
-                                                            <!--<td>NCIAS-D1227</td>-->
-                                                            <!--<td>MoCha</td>-->
-                                                            <!--<td>Lost contact! Last heartbeat was sent 321141 minutes ago</td>-->
-                                                            <!--<td>September 23, 2015 1:00 PM GMT</td>-->
-
-                                                            <!--<td>T 7</td>-->
-                                                        <!--</tr>-->
-                                                        <!--<tr>-->
-                                                            <!--<td> <i class="fa fa-exclamation-triangle fa-2x" style="color:orange"></i><small class="text-navy"> 4 hour ago</small></td>-->
-                                                            <!--<td>129.43.127.133</td>-->
-                                                            <!--<td>129.43.127.133</td>-->
-                                                            <!--<td>NCI-MATCH-IR</td>-->
-                                                            <!--<td>MoCha</td>-->
-                                                            <!--<td>Lost contact! Last heartbeat was sent 321141 minutes ago</td>-->
-                                                            <!--<td>September 23, 2015 1:00 PM GMT</td>-->
-
-                                                            <!--<td>T 7</td>-->
-                                                        <!--</tr>-->
-                                                        <!--<tr>-->
-                                                            <!--<td> <i class="fa fa-exclamation-triangle fa-2x" style="color:orange"></i><small class="text-navy"> 1 hour ago</small></td>-->
-                                                            <!--<td>129.43.127.133</td>-->
-                                                            <!--<td>129.43.127.133</td>-->
-                                                            <!--<td>NCI-MATCH-IR</td>-->
-                                                            <!--<td>MoCha</td>-->
-                                                            <!--<td>Lost contact! Last heartbeat was sent 321141 minutes ago</td>-->
-                                                            <!--<td>September 23, 2015 1:00 PM GMT</td>-->
-
-                                                            <!--<td>T 7</td>-->
-
-                                                        <!--</tr>-->
-
-                                                        <!--<tr>-->
-                                                            <!--<td>-->
-                                                            <!--<a href="">-->
-                                                            <!--<i class="fa fa-lock fa-2x danger"></i>-->
-                                                            <!--</a>-->
-                                                                <!--<small class="text-navy"> Locked</small>-->
-                                                            <!--</td>-->
-                                                            <!--<td>129.43.127.133</td>-->
-                                                            <!--<td>129.43.127.133</td>-->
-                                                            <!--<td>NCI-MATCH-IR</td>-->
-                                                            <!--<td>N/A</td>-->
-                                                            <!--<td>Lost contact! Last heartbeat was sent 321141 minutes ago</td>-->
-                                                            <!--<td>September 23, 2015 1:00 PM GMT</td>-->
-
-                                                            <!--<td>T 7</td>-->
-                                                        <!--</tr>-->
-
-
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
@@ -194,11 +87,10 @@
 
 
 
-                    <tab heading="IR Sample Control">
+                    <tab heading="Sample Control">
 
                         <div class="tabs-container">
-
-
+                        <!--MoCha tabs-->
                             <tabset>
                                 <tab>
                                     <tab-heading>
@@ -206,9 +98,8 @@
                                         MoCha
                                     </tab-heading>
                                     <div class="panel-body">
-
                                             <div class="panel-group" id="accordion">
-                                                <div class="panel panel-success">
+                                                <div class="panel panel-default">
                                                     <div class="panel-heading">
                                                         <h5 class="panel-title">
                                                             <a data-toggle="collapse" target="_local" data-parent="#accordion" href="#collapseOne">Positive Control- MoCha</a>
@@ -217,62 +108,57 @@
 
                                                     <div id="collapseOne" class="panel-collapse collapse in">
                                                         <div class="panel-body">
+                                                        <button style="width:300px; margin: 0px 3px 8px 3px"
+                                                                data-dismiss="modal" class="btn btn-primary pull-right"
+                                                                type="button" data="129.43.127.133" id="generateMoCha">
+                                                            <i class="fa fa-cogs fa-2x pull-left"></i> Generate MSN
+                                                        </button>
 
+                                                            <table width="100%" datatable=""
+                                                                   class="table table-striped table-bordered table-hover">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>Rendering engine</th>
+                                                                    <th>Browser</th>
+                                                                    <th>Platform(s)</th>
+                                                                    <th>Engine version</th>
+                                                                    <th>CSS grade</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
 
-                                                            <div class="col-lg-12">
+                                                                    <tr class="gradeA">
+                                                                        <td>SampleControl_Yale_10</td>
+                                                                        <td>September 18, 2015 3:19 PM GMT</td>
+                                                                        <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                        <td class="center">
+                                                                            <a ui-sref="index.ngsample({ sampleId: 1031 })"> SampleControl_MoCha_10 </a>
+                                                                        </td>
+                                                                        <td class="center" style="color:forestgreen">
+                                                                            PASSED
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="gradeX">
+                                                                        <td>SampleControl_Yale_11</td>
+                                                                        <td>September 18, 2015 3:19 PM GMT</td>
+                                                                        <td>September 18, 2015 3:21 PM GMT</td>
+                                                                        <td class="center">
+                                                                            <a ui-sref="index.ngsample({ sampleId: 1031 })"> SampleControl_MoCha_11 </a>
+                                                                        </td>
+                                                                        <td class="center" style="color:red">
+                                                                            FAILED
+                                                                        </td>
+                                                                    </tr>
 
-                                                                <button style="width:300px; margin: 0px 3px 8px 3px"
-                                                                        data-dismiss="modal" class="btn btn-primary pull-right"
-                                                                        type="button" data="129.43.127.133" id="generateMoCha">
-                                                                    <i class="fa fa-cogs fa-2x pull-left"></i> Generate MSN
-                                                                </button>
+                                                                </tbody>
 
-
-                                                                <div class="ibox float-e-margins">
-                                                                    <div class="ibox-content">
-
-                                                                        <table class="table">
-                                                                            <thead>
-                                                                            <tr>
-                                                                                <th>Molecular Sequence Number</th>
-                                                                                <th>Date Created</th>
-                                                                                <th>Date Received</th>
-                                                                                <th>Variant Reports</th>
-                                                                                <th>Status</th>
-                                                                            </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                            <tr>
-                                                                                <td>SampleControl_MoCha_10</td>
-                                                                                <td>September 18, 2015 3:19 PM GMT</td>
-                                                                                <td>September 18, 2015 3:21 PM GMT</td>
-                                                                                <td><a href="#" >SampleControl_MoCha_10</a></td>
-                                                                                <td>PASSED</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>SampleControl_MoCha_11</td>
-                                                                                <td>September 12, 2015 3:19 PM GMT</td>
-                                                                                <td>September 12, 2015 3:21 PM GMT</td>
-                                                                                <td><a href="#" >SampleControl_MoCha_10</a></td>
-                                                                                <td>PASSED</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>SampleControl_MoCha_12</td>
-                                                                                <td>September 15, 2015 3:19 PM GMT</td>
-                                                                                <td>September 15, 2015 3:21 PM GMT</td>
-                                                                                <td><a href="#" >SampleControl_MoCha_10</a></td>
-                                                                                <td>FAILED</td>
-                                                                            </tr>
-                                                                            </tbody>
-                                                                        </table>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                            </table>
                                                         </div>
                                                     </div>
+
                                                 </div>
-                                                <div class="panel panel-success">
+
+                                                <div class="panel panel-default">
                                                     <div class="panel-heading">
                                                         <h4 class="panel-title">
                                                             <a data-toggle="collapse" target="_local" data-parent="#accordion" href="#collapseTwo">No Template Control - MoCha</a>
@@ -290,46 +176,211 @@
                                                                 </button>
 
 
-                                                                <div class="ibox float-e-margins">
+                                                                <div id="collapseOne" class="panel-collapse collapse in">
+                                                                    <div class="panel-body">
+                                                                        <button style="width:300px; margin: 0px 3px 8px 3px"
+                                                                                data-dismiss="modal" class="btn btn-primary pull-right"
+                                                                                type="button" data="129.43.127.133" id="generateMoCha">
+                                                                            <i class="fa fa-cogs fa-2x pull-left"></i> Generate MSN
+                                                                        </button>
 
-                                                                    <div class="ibox-content">
-
-                                                                        <table class="table">
+                                                                        <table width="100%" datatable=""
+                                                                               class="table table-striped table-bordered table-hover">
                                                                             <thead>
                                                                             <tr>
-                                                                                <th>Molecular Sequence Number</th>
-                                                                                <th>Date Created</th>
-                                                                                <th>Date Received</th>
-                                                                                <th>Variant Reports</th>
-                                                                                <th>Status</th>
+                                                                                <th>Rendering engine</th>
+                                                                                <th>Browser</th>
+                                                                                <th>Platform(s)</th>
+                                                                                <th>Engine version</th>
+                                                                                <th>CSS grade</th>
                                                                             </tr>
                                                                             </thead>
                                                                             <tbody>
-                                                                            <tr>
-                                                                                <td>SampleControl_MoCha_10</td>
-                                                                                <td>September 18, 2015 3:19 PM GMT</td>
-                                                                                <td>September 18, 2015 3:21 PM GMT</td>
-                                                                                <td><a href="#" >SampleControl_MoCha_10</a></td>
-                                                                                <td>PASSED</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>SampleControl_MoCha_11</td>
-                                                                                <td>September 12, 2015 3:19 PM GMT</td>
-                                                                                <td>September 12, 2015 3:21 PM GMT</td>
-                                                                                <td><a href="#" >SampleControl_MoCha_10</a></td>
-                                                                                <td>PASSED</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>SampleControl_MoCha_12</td>
-                                                                                <td>September 15, 2015 3:19 PM GMT</td>
-                                                                                <td>September 15, 2015 3:21 PM GMT</td>
-                                                                                <td><a href="#" >SampleControl_MoCha_10</a></td>
-                                                                                <td>FAILED</td>
-                                                                            </tr>
+
+                                                                                <tr class="gradeA">
+                                                                                    <td>NtcControl_MoCha_1</td>
+                                                                                    <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                    <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                    <td class="center">
+                                                                                        <a href="" > NtcControl_MoCha_1 </a>
+                                                                                    </td>
+                                                                                    <td style="color:forestgreen">PASSED</td>
+                                                                                </tr>
+                                                                                <tr class="gradeX">
+                                                                                    <td>NtcControl_MoCha_2</td>
+                                                                                    <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                    <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                    <td class="center">
+
+                                                                                        <a ui-sref="index.ngsample({ sampleId: 1031 })">
+                                                                                            <i class="fa fa-user"></i> NtcControl_MoCha_2
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <td style="color:red">FAILED</td>
+                                                                                </tr>
+                                                                                <tr class="gradeA">
+                                                                                    <td>NtcControl_MoCha_3</td>
+                                                                                    <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                    <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                    <td class="center">
+                                                                                        <a href="" > NtcControl_MoCha_3 </a>
+                                                                                    </td>
+                                                                                    <td style="color:forestgreen">PASSED</td>
+                                                                                </tr>
+                                                                                <tr class="gradeX">
+                                                                                    <td>NtcControl_MoCha_4</td>
+                                                                                    <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                    <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                    <td class="center">
+
+                                                                                        <a ui-sref="index.ngsample({ sampleId: 1031 })">
+                                                                                            <i class="fa fa-user"></i> NtcControl_MoCha_4
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <td style="color:red">FAILED</td>
+                                                                                </tr>
+
+                                                                                <tr class="gradeA">
+                                                                                    <td>NtcControl_MoCha_3</td>
+                                                                                    <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                    <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                    <td class="center">
+                                                                                        <a href="" > NtcControl_MoCha_3 </a>
+                                                                                    </td>
+                                                                                    <td style="color:forestgreen">PASSED</td>
+                                                                                </tr>
+                                                                                <tr class="gradeX">
+                                                                                    <td>NtcControl_MoCha_4</td>
+                                                                                    <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                    <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                    <td class="center">
+
+                                                                                        <a ui-sref="index.ngsample({ sampleId: 1031 })">
+                                                                                            <i class="fa fa-user"></i> NtcControl_MoCha_4
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <td style="color:red">FAILED</td>
+                                                                                </tr>
+
+                                                                                <tr class="gradeA">
+                                                                                    <td>NtcControl_MoCha_3</td>
+                                                                                    <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                    <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                    <td class="center">
+                                                                                        <a href="" > NtcControl_MoCha_3 </a>
+                                                                                    </td>
+                                                                                    <td style="color:forestgreen">PASSED</td>
+                                                                                </tr>
+                                                                                <tr class="gradeX">
+                                                                                    <td>NtcControl_MoCha_4</td>
+                                                                                    <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                    <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                    <td class="center">
+
+                                                                                        <a ui-sref="index.ngsample({ sampleId: 1031 })">
+                                                                                            <i class="fa fa-user"></i> NtcControl_MoCha_4
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <td style="color:red">FAILED</td>
+                                                                                </tr>
+
+                                                                                <tr class="gradeA">
+                                                                                    <td>NtcControl_MoCha_3</td>
+                                                                                    <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                    <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                    <td class="center">
+                                                                                        <a href="" > NtcControl_MoCha_3 </a>
+                                                                                    </td>
+                                                                                    <td style="color:forestgreen">PASSED</td>
+                                                                                </tr>
+                                                                                <tr class="gradeX">
+                                                                                    <td>NtcControl_MoCha_4</td>
+                                                                                    <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                    <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                    <td class="center">
+
+                                                                                        <a ui-sref="index.ngsample({ sampleId: 1031 })">
+                                                                                            <i class="fa fa-user"></i> NtcControl_MoCha_4
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <td style="color:red">FAILED</td>
+                                                                                </tr>
+
+                                                                                <tr class="gradeA">
+                                                                                    <td>NtcControl_MoCha_3</td>
+                                                                                    <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                    <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                    <td class="center">
+                                                                                        <a href="" > NtcControl_MoCha_3 </a>
+                                                                                    </td>
+                                                                                    <td style="color:forestgreen">PASSED</td>
+                                                                                </tr>
+                                                                                <tr class="gradeX">
+                                                                                    <td>NtcControl_MoCha_4</td>
+                                                                                    <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                    <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                    <td class="center">
+
+                                                                                        <a ui-sref="index.ngsample({ sampleId: 1031 })">
+                                                                                            <i class="fa fa-user"></i> NtcControl_MoCha_4
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <td style="color:red">FAILED</td>
+                                                                                </tr>
+
+                                                                                <tr class="gradeA">
+                                                                                    <td>NtcControl_MoCha_3</td>
+                                                                                    <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                    <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                    <td class="center">
+                                                                                        <a href="" > NtcControl_MoCha_3 </a>
+                                                                                    </td>
+                                                                                    <td style="color:forestgreen">PASSED</td>
+                                                                                </tr>
+                                                                                <tr class="gradeX">
+                                                                                    <td>NtcControl_MoCha_4</td>
+                                                                                    <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                    <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                    <td class="center">
+
+                                                                                        <a ui-sref="index.ngsample({ sampleId: 1031 })">
+                                                                                            <i class="fa fa-user"></i> NtcControl_MoCha_4
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <td style="color:red">FAILED</td>
+                                                                                </tr>
+
+                                                                                <tr class="gradeA">
+                                                                                    <td>NtcControl_MoCha_3</td>
+                                                                                    <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                    <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                    <td class="center">
+                                                                                        <a href="" > NtcControl_MoCha_3 </a>
+                                                                                    </td>
+                                                                                    <td style="color:forestgreen">PASSED</td>
+                                                                                </tr>
+                                                                                <tr class="gradeX">
+                                                                                    <td>NtcControl_MoCha_4</td>
+                                                                                    <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                    <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                    <td class="center">
+
+                                                                                        <a ui-sref="index.ngsample({ sampleId: 1031 })">
+                                                                                            <i class="fa fa-user"></i> NtcControl_MoCha_4
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <td style="color:red">FAILED</td>
+                                                                                </tr>
+
                                                                             </tbody>
+
                                                                         </table>
                                                                     </div>
                                                                 </div>
+
+
+
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -345,7 +396,7 @@
                                     </tab-heading>
                                     <div class="panel-body">
                                         <div class="panel-group" id="accordion">
-                                            <div class="panel panel-success">
+                                            <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <h5 class="panel-title">
                                                         <a data-toggle="collapse" target="_local" data-parent="#accordion" href="#collapseYaleOne">Positive Control - MD Anderson</a>
@@ -409,7 +460,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="panel panel-success">
+                                            <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <h4 class="panel-title">
                                                         <a data-toggle="collapse" target="_local" data-parent="#accordion" href="#collapseYaleTwo">No Template Control - MD Anderson</a>
@@ -474,12 +525,16 @@
                                         </div>
                                     </div>
                                 </tab>
+
                             </tabset>
+
                         </div>
+
                     </tab>
 
                 </tabset>
             </div>
+        </div>
         </div>
     </div>
 </div>

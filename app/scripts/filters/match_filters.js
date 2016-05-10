@@ -102,4 +102,23 @@
             }
         };
     }
+
+    function irsample() {
+        return function (text) {
+            if (!text || typeof text !== "string")
+                return '';
+
+            text = text.toUpperCase();
+
+            if (text === 'PASSED') {
+                return 'blue';
+            }
+            else if (text === 'FAILED') {
+                return 'red';
+            }
+            else {
+                return '';
+            }
+        };
+    }
 }());

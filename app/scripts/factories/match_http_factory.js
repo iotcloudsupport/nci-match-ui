@@ -59,6 +59,12 @@ angular.module('http.matchbox', [])
             },
 
         };
+        return {
+            getPosiveSample: function() {
+                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlsBySite');
+            },
+
+        };
     })
     .factory('matchApiMock', function($http, matchConfig, $q, $log) {
         return {

@@ -8,6 +8,7 @@ angular.module('iradmin.matchbox',[])
     this.dtInstance = {};
 
     $scope.irList = [];
+    $scope.sampleList = [];
 
     $scope.loadHeartBeatList = function () {
         irAdminApi
@@ -15,19 +16,15 @@ angular.module('iradmin.matchbox',[])
             .then(function (d) {
 
                 angular.forEach(d.data, function (value,key) {
+                    var timer = ['fa fa-clock-o fa-2x', 'color:green'];
 
-                    var array = [];
+                    if (key === 2) {
+                        timer = ['fa fa-warning fa-2x', 'color:orange'];
+                    }
 
-                    //alert(JSON.stringify(value.hostName))
-
-                    //"dbReportPath" : /local/content/wildfly/standalone-18080/log/iruploader/129-43-127-133/dbreport-1458133264676.json,
-                    //    "dataFilePath" : /local/content/wildfly/standalone-18080/log/iruploader/129-43-127-133/data-1458143402272.txt,
-                    //    "logFilePath" : /local/content/wildfly/standalone-18080/log/iruploader/129-43-127-133/iruploader-1458133264676.log
-
-
-                    //array.push(value.dbReportPath)
-                    var timer = 'fa fa-clock-o fa-2x';
-
+                    if (key === 3) {
+                        timer = ['fa fa-warning fa-2x', 'color:red'];
+                    }
 
                     $scope.irList.push({
                         'timer': timer,
@@ -46,5 +43,40 @@ angular.module('iradmin.matchbox',[])
                     });
                 });
             });
-        }
+        };
+
+
+
+        $scope.loadPositiveSamples = function () {
+            irAdminApi
+                .getPosiveSample()
+                .then(function (d) {
+
+                    alert(JSON.stringify(d.data))
+
+                    angular.forEach(d.data, function (value,key) {
+
+                        //array.push(value.dbReportPath)
+                        var timer = 'fa fa-clock-o fa-2x';
+
+
+                        // $scope.sampleList.push({
+                        //     'timer': timer,
+                        //     'hostName': value.hostName,
+                        //     'ipAddress': value.ipAddress,
+                        //     'externalIpAddress': value.externalIpAddress,
+                        //     'status': value.status,
+                        //     'lastContactDate': value.lastContactDate,
+                        //     'dbReport': value.dbReport,
+                        //     'dataFile': value.dataFile,
+                        //     'logFile': value.logFile,
+                        //     'location': value.location,
+                        //     'dbReportPath': value.dbReportPath,
+                        //     'dataFilePath': value.dataFilePath,
+                        //     'logFilePath': value.logFilePath
+                        // });
+                    });
+                });
+        };
+
     });
