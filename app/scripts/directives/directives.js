@@ -157,25 +157,33 @@
             }
         }
     }
-    
-    function ngConfirmClick(prompt) {
+
+    function checkBoxWithConfirm(prompt) {
         return {
             priority: -1,
             restrict: 'A',
+            scope: true,
+            //templateUrl: 'templates/check_box_with_confirm.html',
+            template: 
+                '<div class="stacked-container">\
+                    <div class="stacked-front">\
+                        <button type="input"></button>\
+                    </div>\
+                    <div class="stacked-back">\
+                            <input type="checkbox" tabindex="-1" ng-model="variant.confirm" />\
+                    </div>\
+                </div>',
             link: function (scope, element, attrs) {
-                element.bind('click', function (e) {
-                    // console.log('prompt'+prompt);
-                    
-                    var message = attrs.ngConfirmClick;
-                    if (message && !confirm(message)) {
-                        e.stopImmediatePropagation();
-                        e.preventDefault();
-                    }
+                var cb = element.find('div.stacked-back').find('input');
+                var btn = element.find('div.stacked-front').find('button');
+                
+                btn.bind('click', function (e) {
+                    console.log('clicked');
                 });
             }
         }
     }
-
+    
     /**
      *
      * Pass all functions into module
@@ -188,6 +196,6 @@
         .directive('dropZone', dropZone)
         .directive('minimalizaSidebar', minimalizaSidebar)
         .directive('collapseToggle', collapseToggle)
-        .directive('ngConfirmClick', ngConfirmClick)
+        .directive('checkBoxWithConfirm', checkBoxWithConfirm)
 
 })();
