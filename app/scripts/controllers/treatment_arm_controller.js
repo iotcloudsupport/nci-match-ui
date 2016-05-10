@@ -28,6 +28,16 @@ angular.module('treatment-arm.matchbox',[])
             currentStatus: 'OPEN',
             drug: 'AZD9291 (781254)'
         };
+        
+        $scope.tooltipContent = {
+            psn: 'Patient Sequence Number',
+            loe: 'Level Of Evidence',
+            chr: 'Chromosome',
+            pos: 'Position',
+            ref: 'Reference',
+            alt: 'Alternative',
+            lit: 'Lit Ref'
+        };
 
         // It is important that the versions are populated in reverse order, starting with current version
         $scope.versions = [
@@ -360,7 +370,7 @@ angular.module('treatment-arm.matchbox',[])
             },
             {
                 name: '2016-02-20',
-                currentStatus: 'CLOSED',
+                versionStatus: 'CLOSED',
                 history: [
                     {status: 'PENDING', date: 'January 2, 2015 4:00AM GMT'},
                     {status: 'READY', date: 'January 9, 2016 10:10PM GMT'},
@@ -643,12 +653,12 @@ angular.module('treatment-arm.matchbox',[])
         };
 
         $scope.openPubMed = function(data) {
-            $window.open("http://www.ncbi.nlm.nih.gov/pubmed/?term="+data, 'lit', "width=600, height=400");
+            $window.open("http://www.ncbi.nlm.nih.gov/pubmed/?term="+data, '_blank');
 
         };
 
         $scope.openGene = function(data) {
-            $window.open('http://cancer.sanger.ac.uk/cosmic/gene/overview?ln='+data.toLowerCase(), 'cosmic', 'width=500,height=400');
+            $window.open('http://cancer.sanger.ac.uk/cosmic/gene/overview?ln='+data.toLowerCase(), '_blank');
         };
 
         $scope.openId = function(cosmicId) {
@@ -662,7 +672,7 @@ angular.module('treatment-arm.matchbox',[])
                     cid = cosmicId.substring(tmp, cosmicId.length);
                     cia = cid.split("COSF");
                     var fid =  cia[1].split(".");
-                    $window.open('http://cancer.sanger.ac.uk/cosmic/fusion/summary?id='+fid[0], 'cosmic', 'width=500,height=400');
+                    $window.open('http://cancer.sanger.ac.uk/cosmic/fusion/summary?id='+fid[0], '_blank');
                 } else {
                     var tmp = cosmicId.indexOf("COSM");
 
@@ -670,7 +680,7 @@ angular.module('treatment-arm.matchbox',[])
                         cid = cosmicId.substring(tmp, cosmicId.length);
                         cia = cid.split("COSM");
                         var fid =  cia[1].split(".");
-                        $window.open("http://cancer.sanger.ac.uk/cosmic/mutation/overview?id="+fid[0], "cosmic", 'width=500,height=400');
+                        $window.open("http://cancer.sanger.ac.uk/cosmic/mutation/overview?id="+fid[0], '_blank');
                     }
                 }
             }
