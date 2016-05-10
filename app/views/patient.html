@@ -492,8 +492,13 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="variant in biopsy.singleNucleitideVariants" style="cursor: auto;" role="row" class="odd">
-                                    <td>
-                                        <div check-box-with-confirm confirm-title="Test Title"></div>
+                                    <td> 
+                                        <div check-box-with-confirm 
+                                            confirm-title="Confirmation Changed"
+                                            confirm-message="Please enter a reason for removing the confirmation:"
+                                            is-checked="{{variant.confirm}}"
+                                            set-entered-value="setEnteredValue">
+                                        </div>
                                     </td>
                                     <td>{{::variant.id}}</td>
                                     <td>{{::variant.aMOI}}</td>

@@ -159,54 +159,65 @@
     }
 
     function checkBoxWithConfirm(prompt) {
-        var controller = ['$scope', function($scope) {
-            //$scope.confirmTitle = 'Confirmation Changed';
-            $scope.confirmMessage = 'Please enter a reson for removing the confirmation:';
-            
-            $scope.success = function (){
-                console.log('controller success');
+        var controller = function (prompt) {
+            var vm = this;
+
+            vm.isChecked = false;
+            vm.confirmTitle = 'Please Confirm';
+            vm.confirmMessage = 'Please enter a reason:';
+            vm.enteredValue = '';
+            vm.setEnteredValue = undefined;
+
+            vm.success = function (value) {
+                console.log('Directive controller success ' + value);
+                vm.isChecked = !vm.isChecked;
+                vm.enteredValue = value;
+                
+                console.log('typeof vm.setEnteredValue = ', typeof vm.setEnteredValue);
+                
+                if (vm.setEnteredValue && typeof vm.setEnteredValue === 'function') {
+                    console.log('Directive.setEnteredValue called with ' + value);
+                    vm.setEnteredValue(value);
+                }
             };
-            $scope.failure = function (){
-                console.log('controller failure');                    
+
+            vm.failure = function () {
+                //console.log('controller failure');
             };
-        }];
-        
-        var tempate = '<div class="stacked-container">\
+
+            vm.confirm = function () {
+                prompt({
+                    title: vm.confirmTitle,
+                    message: vm.confirmMessage,
+                    input: true
+                }).then(vm.success, vm.failure);
+            };            
+        };
+
+        var template = '<div class="stacked-container">\
                     <div class="stacked-front">\
-                        <button type="input"></button>\
+                        <button type="input" ng-click="vm.confirm()"></button>\
                     </div>\
                     <div class="stacked-back">\
-                            <input type="checkbox" tabindex="-1" ng-model="variant.confirm" />\
+                        <input type="checkbox" tabindex="-1" ng-model="vm.isChecked">\
                     </div>\
                 </div>';
-        
+
         return {
             priority: -1,
             restrict: 'A',
-            //scope: true,
-            //templateUrl: 'templates/check_box_with_confirm.html',
-            template: tempate,
+            template: template,
             controller: controller,
-            //require: '?confirmtitle',
+            controllerAs: 'vm',
             scope: {
-              confirmTitle : ''
-            },
-            link: function (scope, element, attrs) {
-                var cb = element.find('div.stacked-back').find('input');
-                var btn = element.find('div.stacked-front').find('button');
-                
-                btn.bind('click', function (e) {
-                    //console.log(confirmtitle);
-                    prompt({
-                        title: scope.confirmTitle,
-                        message: scope.confirmMessage,
-                        input: true
-                    }).then(scope.success, scope.failure);
-                });
+                confirmTitle: '@confirmTitle',
+                confirmMessage: '@confirmMessage',
+                isChecked: '@isChecked',
+                setEnteredValue: '@setEnteredValue'
             }
         }
     }
-    
+
     /**
      *
      * Pass all functions into module
