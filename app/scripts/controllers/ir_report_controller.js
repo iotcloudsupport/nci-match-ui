@@ -53,42 +53,6 @@ angular.module('iradmin.matchbox',[])
                 .getSvgGene()
                 .then(function (d) {
 
-                    // svgGeneChartFactory
-                    //     .d3BoxVersion5(d.data);
-
-
-                    // alert(JSON.stringify(d))
-
-
-
-                    // angular.forEach(d.data, function (value,key) {
-                    //     var timer = ['fa fa-clock-o fa-2x', 'color:green'];
-                    //
-                    //     if (key === 2) {
-                    //         timer = ['fa fa-warning fa-2x', 'color:orange'];
-                    //     }
-                    //
-                    //     if (key === 3) {
-                    //         timer = ['fa fa-warning fa-2x', 'color:red'];
-                    //     }
-                    //
-                    //     $scope.irList.push({
-                    //         'timer': timer,
-                    //         'hostName': value.hostName,
-                    //         'ipAddress': value.ipAddress,
-                    //         'externalIpAddress': value.externalIpAddress,
-                    //         'status': value.status,
-                    //         'lastContactDate': value.lastContactDate,
-                    //         'dbReport': value.dbReport,
-                    //         'dataFile': value.dataFile,
-                    //         'logFile': value.logFile,
-                    //         'location': value.location,
-                    //         'dbReportPath': value.dbReportPath,
-                    //         'dataFilePath': value.dataFilePath,
-                    //         'logFilePath': value.logFilePath
-                    //     });
-                    // });
-
 
 
                 });
