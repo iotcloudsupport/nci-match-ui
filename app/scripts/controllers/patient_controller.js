@@ -86,6 +86,7 @@
                     $scope.assignmentReport = data.assignmentReport;
                     $scope.biopsyReport = data.biopsyReport;
                     $scope.biopsyReports = data.biopsyReports;
+                    $scope.patientDocuments = data.patientDocuments;
                 })
                 .then(function () {
                     $scope.variantReportType = 'tumorTissue';

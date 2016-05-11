@@ -58,7 +58,7 @@
                         ]
                     }
 
-                    data.treatmentArms={};
+                    data.treatmentArms = {};
                     
                     data.treatmentArms.noMatchList = [
                         { treatmentArm: 'EAY131-U', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' },
@@ -265,6 +265,12 @@
                         { text: 'T-15-000078', value: 'Version1' },
                         { text: 'T-15-000079', value: 'Version2' },
                         { text: 'T-15-000082', value: 'Version3' }
+                    ];
+                    
+                    data.patientDocuments = [
+                        {name:'Document 1', uploadedDate:'Oct 2, 1956 10:00 PM GMT', user: 'James Bond'},
+                        {name:'Document 2', uploadedDate:'Aug 5, 1967 10:00 PM GMT', user: 'James Bond'},
+                        {name:'X-File A23FSD34', uploadedDate:'Jan 1, 1996 10:00 PM GMT', user: 'Fox Mulder'}
                     ];
 
                     deferred.resolve(data);
