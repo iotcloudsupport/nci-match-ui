@@ -106,8 +106,13 @@
             $log.debug('User entered un-confirm reason: ' + value);
         }
 
-        function showWarning() {
-
+        function showWarning(title, message) {
+            prompt({
+                title: title,
+                message: message
+            }).then(function(comment) {
+                $log.debug('User agreed after warning');
+            });
         }
  
         function showConfirmation(title, message) {
@@ -115,7 +120,7 @@
                 title: title,
                 message: message,
                 input: true
-            }).then(function(commnet) {
+            }).then(function(comment) {
                 $log.debug('User entered comment: ' + comment);
             });
         }

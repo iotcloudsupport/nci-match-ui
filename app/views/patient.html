@@ -652,10 +652,10 @@
                         <div class="ibox-content ibox-title-no-line" ng-if="variantReport.showActions">
                             <div class="row">
                                 <div class="col-md-6 text-right">
-                                    <button class="btn btn-danger" title="Reject this Report">REJECT</button>
+                                    <button class="btn btn-danger" title="Reject this Report" ng-click="showWarning('Are you sure you want to reject the Variant Report?', 'This will change the report\'s status')">REJECT</button>
                                 </div>
                                 <div class="col-md-6 text-left">
-                                    <button class="btn btn-success" title="Approve this Report" ng-click="showConfirmation('Pleas Confirm Variant Report Approval', 'Enter Comments')">APPROVE</button>
+                                    <button class="btn btn-success" title="Approve this Report" ng-click="showConfirmation('Pleas confirm Variant Report approval', 'Enter comments')">APPROVE</button>
                                 </div>
                             </div>
                         </div>
@@ -794,10 +794,10 @@
                         </table>
 
 
-                        <div class="ibox-content ibox-title-no-line" ng-if="variantReport.showActions">
+                        <div class="ibox-content ibox-title-no-line">
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <button class="btn btn-success" title="Approve this Report">APPROVE</button>
+                                    <button class="btn btn-success" title="Approve this Report" ng-click="showConfirmation('Pleas confirm Assignment Variant Report approval', 'Enter comments')">APPROVE</button>
                                 </div>
                             </div>
                         </div>
