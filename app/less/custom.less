@@ -231,3 +231,33 @@
 .ng-dropdown-label {
   margin-top: 11px; 
 }
+
+.stacked-container {
+  position: relative;
+}
+
+.stacked-front {
+  position: absolute;
+  z-index: 3;
+}
+
+.stacked-front button {
+    color: transparent;
+    background: transparent;
+    border: 2px solid transparent;
+    height: 17px;
+    margin-left: -3px;
+    margin-top: 0px;
+    padding-top: 13px;
+    padding-left: 8px;
+    padding-right: 6px;
+}
+
+.stacked-back {
+  position: absolute;
+  z-index: 2;
+}
+
+.stacked-back input {
+    outline: none;
+}

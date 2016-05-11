@@ -157,21 +157,64 @@
             }
         }
     }
-    
-    function ngConfirmClick(prompt) {
+
+    function checkBoxWithConfirm(prompt) {
+        var controller = function (prompt) {
+            var vm = this;
+
+            vm.ischecked = false;
+            vm.confirmTitle = 'Please Confirm';
+            vm.confirmMessage = 'Please enter a reason:';
+            vm.enteredValue = '';
+            vm.setEnteredValue = undefined;
+
+            vm.success = function (value) {
+                console.log('Directive controller success ' + value);
+                vm.ischecked = !vm.ischecked;
+                vm.enteredValue = value;
+                
+                console.log('typeof vm.setEnteredValue = ', typeof vm.setEnteredValue);
+                
+                if (vm.setEnteredValue && typeof vm.setEnteredValue === 'function') {
+                    console.log('Directive.setEnteredValue called with ' + value);
+                    vm.setEnteredValue(value);
+                }
+            };
+
+            vm.failure = function () {
+                //console.log('controller failure');
+            };
+
+            vm.confirm = function () {
+                prompt({
+                    title: vm.confirmTitle,
+                    message: vm.confirmMessage,
+                    input: true
+                }).then(vm.success, vm.failure);
+            };            
+        };
+
+        var template = '<div class="stacked-container">\
+                    <div class="stacked-front">\
+                        <button type="input" ng-click="vm.confirm()"></button>\
+                    </div>\
+                    <div class="stacked-back">\
+                        <input type="checkbox" tabindex="-1" ng-model="vm.ischecked">\
+                    </div>\
+                </div>';
+
         return {
-            priority: -1,
+            //priority: -1,
             restrict: 'A',
-            link: function (scope, element, attrs) {
-                element.bind('click', function (e) {
-                    // console.log('prompt'+prompt);
-                    
-                    var message = attrs.ngConfirmClick;
-                    if (message && !confirm(message)) {
-                        e.stopImmediatePropagation();
-                        e.preventDefault();
-                    }
-                });
+            template: template,
+            controller: controller,
+            controllerAs: 'vm',
+            bindToController: true,
+            scope: {
+                confirmTitle: '@confirmTitle',
+                confirmMessage: '@confirmMessage',
+                isChecked: '=',
+                setEneredValue: '&'
             }
         }
     }
@@ -188,6 +231,47 @@
         .directive('dropZone', dropZone)
         .directive('minimalizaSidebar', minimalizaSidebar)
         .directive('collapseToggle', collapseToggle)
-        .directive('ngConfirmClick', ngConfirmClick)
+        .directive('checkBoxWithConfirm', checkBoxWithConfirm)
 
 })();
+
+
+(function() {
+
+  var app = angular.module('matchbox');
+
+  app.directive('isolateScopeWithController', function () {
+      
+    var controller = ['$scope', function ($scope) {
+
+          function init() {
+              $scope.items = angular.copy($scope.datasource);
+          }
+
+          init();
+
+          $scope.addItem = function () {
+              $scope.add();
+
+              //Add new customer to directive scope
+              $scope.items.push({
+                  name: 'New Directive Controller Item'
+              });
+          };
+      }],
+        
+      template = '<button ng-click="addItem()">Add Item</button><ul>' +
+                 '<li ng-repeat="item in items">{{ ::item.name }}</li></ul>';
+      
+      return {
+          restrict: 'EA', //Default in 1.3+
+          scope: {
+              datasource: '=',
+              add: '&'
+          },
+          controller: controller,
+          template: template
+      };
+  });
+
+}());

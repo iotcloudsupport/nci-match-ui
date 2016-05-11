@@ -15,7 +15,7 @@
             </ol>
         </div>
     </div>
-
+                                        
     <div class="wrapper" ng-init="loadPatientData()">
 
         <div class="no-horizontal-padding header-box-container animated fadeInRight">
@@ -492,7 +492,14 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="variant in biopsy.singleNucleitideVariants" style="cursor: auto;" role="row" class="odd">
-                                    <td> <input type="checkbox" ng-model="variant.confirm" ng-confirm-click="Are you sure?" ng-click="doConfirm()"></td>
+                                    <td> 
+                                        <div check-box-with-confirm 
+                                            confirm-title="{{confirmTitle}}"
+                                            confirm-message="{{confirmMessage}}"
+                                            is-checked="variant.confirm"
+                                            set-entered-value="setEnteredValue()">
+                                        </div>
+                                    </td>
                                     <td>{{::variant.id}}</td>
                                     <td>{{::variant.aMOI}}</td>
                                     <td>{{::variant.chrom}}</td>
