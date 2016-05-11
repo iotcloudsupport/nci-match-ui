@@ -43,7 +43,7 @@
         $scope.dzAddedFile = dzAddedFile;
         $scope.dzError = dzError;
         $scope.loadPatientData = loadPatientData;
-        $scope.setEnteredValue = setEnteredValue;
+        $scope.setComment = setComment;
 
         function setVariantReportType(reportType) {
             if ($scope.variantReportType === reportType) {
@@ -347,8 +347,8 @@
             $log.debug(errorMessage);
         }
         
-        function setEnteredValue(value) {
-            $log.debug('User enterd un-confirm reason: ' + value);
+        function setComment(value) {
+            $log.debug('User entered un-confirm reason: ' + value);
         }
     }
 
