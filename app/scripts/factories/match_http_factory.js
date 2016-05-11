@@ -53,17 +53,32 @@ angular.module('http.matchbox', [])
         };
     })
     .factory('irAdminApi', function($http, matchConfig) {
+
         return {
             getAdminHeartBeat: function() {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getIrUploaderAdminObjects');
-            },
+            }
 
         };
         return {
             getPosiveSample: function() {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlsBySite');
-            },
+            }
+        };
+    })
+    .factory('svgApi', function($http, matchConfig) {
+        // alert(matchConfig.matchApiBaseUrl + '/common/rs/getGraphInfoFromVCF?patientId=10005&biopsySequenceNumber=T-15-000022&jobName=MSN3111_v1_fc12ad97-2c1e-45e2-8beb-8a77eef4ecf6')
+        // http://localhost:8080/match/common/rs/getGraphInfoFromVCF?patientId=10005&biopsySequenceNumber=T-15-000022&jobName=MSN3111_v1_fc12ad97-2c1e-45e2-8beb-8a77eef4ecf6
+        return {
+            getSvgGene: function() {
 
+                // molecularSequenceNumber=SampleControl_MoCha_10
+                // http://localhost:8080/match/common/rs/getSampleControlGraphInfoFromVCF?molecularSequenceNumber=SampleControl_MoCha_1
+
+                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getGraphInfoFromVCF?patientId=10005&biopsySequenceNumber=T-15-000022&jobName=MSN3111_v1_fc12ad97-2c1e-45e2-8beb-8a77eef4ecf6');
+
+                // return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlGraphInfoFromVCF?molecularSequenceNumber=SampleControl_MoCha_10');
+            }
         };
     })
     .factory('matchApiMock', function($http, matchConfig, $q, $log) {

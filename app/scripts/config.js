@@ -241,9 +241,9 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                 }
             }
         })
-        .state('index.qcsample', {
-            url: "/qcsample",
-            templateUrl: "views/qcsample.html",
+        .state('index.ocsample', {
+            url: "/ocsample",
+            templateUrl: "views/ocsample.html",
             data: { pageTitle: 'IR Sample Quality Control Report', requiresLogin: true },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
