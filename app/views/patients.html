@@ -41,7 +41,7 @@
                             <tr ng-repeat="patient in patientList">
                                 <td>
                                     <a ui-sref="index.patient({ patientSequenceNumber: patient.patientSequenceNumber })">
-                                        <i class="fa fa-user"></i> {{ ::patient.patientSequenceNumber }}
+                                        <i class="fa fa-user"></i> {{patient.patientSequenceNumber}}
                                     </a>
                                 </td>
                                 <td ng-style="{'color':'{{ patient.status | status }}'}">
