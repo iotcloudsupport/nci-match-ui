@@ -8,6 +8,10 @@
         .filter('assayStatus', assayStatus)
         .filter('concordance', concordance);
 
+    function isNotString(text) { 
+        return !text || typeof text !== "string";
+    }
+
     function gmt() {
         return function (date) {
             if (angular.isDefined(date) && angular.isNumber(date)) {
@@ -20,7 +24,7 @@
 
     function concordance() {
         return function(text) {
-            if (!text || typeof text !== "string")
+            if (isNotString(text))
                 return '';
             
             text = text.toUpperCase();
@@ -35,7 +39,7 @@
 
     function analysisStatus() {
         return function (text) {
-            if (!text || typeof text !== "string")
+            if (isNotString(text))
                 return '';
             
             text = text.toUpperCase();
@@ -57,7 +61,7 @@
 
     function assayStatus() {
         return function (text) {
-            if (!text || typeof text !== "string")
+            if (isNotString(text))
                 return '';
             
             text = text.toUpperCase();
@@ -76,7 +80,7 @@
         
     function status() {
         return function (text) {
-            if (!text || typeof text !== "string")
+            if (isNotString(text))
                 return '';
             
             text = text.toUpperCase();
@@ -105,7 +109,7 @@
 
     function irsample() {
         return function (text) {
-            if (!text || typeof text !== "string")
+            if (isNotString(text))
                 return '';
 
             text = text.toUpperCase();
