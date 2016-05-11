@@ -101,36 +101,6 @@
         }
     }
 
-
-    /**
-     * dropZone - Directive for Drag and drop zone file upload plugin
-     */
-    function dropZone() {
-        return function (scope, element, attrs) {
-            element.dropzone({
-                url: "/upload",
-                maxFilesize: 100,
-                paramName: "uploadfile",
-                maxThumbnailFilesize: 5,
-                init: function () {
-                    scope.files.push({ file: 'added' });
-                    this.on('success', function (file, json) {
-                    });
-                    this.on('addedfile', function (file) {
-                        scope.$apply(function () {
-                            alert(file);
-                            scope.files.push({ file: 'added' });
-                        });
-                    });
-                    this.on('drop', function (file) {
-                        alert('file');
-                    });
-                }
-            });
-        }
-    }
-
-
     /**
      * collapseToggle - Directive for collapse toggle elements in right corner of ibox
      */
@@ -185,10 +155,9 @@
             vm.confirm = function () {
                 if (typeof vm.promptOnlyIf !== 'undefined') {
                     // console.log('vm.promptOnlyIf = ' + vm.promptOnlyIf);
+                    // console.log('vm.isChecked = ' + vm.isChecked);
                     
                     var promptIf = !!vm.promptOnlyIf;
-                    
-                    // console.log('vm.isChecked = ' + vm.isChecked);
 
                     if (!!vm.isChecked !== promptIf) {
                         vm.toggle(null);
@@ -214,7 +183,6 @@
                 </div>';
 
         return {
-            //priority: -1,
             restrict: 'A',
             template: template,
             controller: controller,
@@ -239,7 +207,6 @@
         .directive('pageTitle', pageTitle)
         .directive('sideNavigation', sideNavigation)
         .directive('iboxTools', iboxTools)
-        .directive('dropZone', dropZone)
         .directive('minimalizaSidebar', minimalizaSidebar)
         .directive('collapseToggle', collapseToggle)
         .directive('checkBoxWithConfirm', checkBoxWithConfirm)
