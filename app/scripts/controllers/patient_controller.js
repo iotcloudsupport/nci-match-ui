@@ -35,6 +35,8 @@
         $scope.dzError = dzError;
         $scope.loadPatientData = loadPatientData;
         $scope.setComment = setComment;
+        $scope.showWarning = showWarning;
+        $scope.showConfirmation = showConfirmation;
 
         function setVariantReportType(reportType) {
             if ($scope.variantReportType === reportType) {
@@ -103,6 +105,20 @@
         function setComment(value) {
             $log.debug('User entered un-confirm reason: ' + value);
         }
-    }
 
+        function showWarning() {
+
+        }
+ 
+        function showConfirmation(title, message) {
+            prompt({
+                title: title,
+                message: message,
+                input: true
+            }).then(function(commnet) {
+                $log.debug('User entered comment: ' + comment);
+            });
+        }
+    }
+    
 } ());
