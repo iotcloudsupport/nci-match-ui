@@ -15,7 +15,7 @@
             </ol>
         </div>
     </div>
-                                        
+
     <div class="wrapper" ng-init="loadPatientData()">
 
         <div class="no-horizontal-padding header-box-container animated fadeInRight">
@@ -492,14 +492,10 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="variant in biopsy.singleNucleitideVariants" style="cursor: auto;" role="row" class="odd">
-                                    <td> 
-                                        <div check-box-with-confirm 
-                                            confirm-title="{{confirmTitle}}"
-                                            confirm-message="{{confirmMessage}}"
-                                            is-checked="variant.confirm"
-                                            on-comment-entered="setComment()"
-                                            prompt-only-if="true">
-                                        </div>   
+                                    <td>
+                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
+                                            on-comment-entered="setComment()" prompt-only-if="true">
+                                        </div>
                                     </td>
                                     <td>{{::variant.id}}</td>
                                     <td>{{::variant.aMOI}}</td>
@@ -652,10 +648,10 @@
                         <div class="ibox-content ibox-title-no-line" ng-if="variantReport.showActions">
                             <div class="row">
                                 <div class="col-md-6 text-right">
-                                    <button class="btn btn-danger" title="Reject this Report">REJECT</button>
+                                    <button class="btn btn-danger" title="Reject this Report" ng-click="showWarning('Are you sure you want to reject the Variant Report?', 'This will change the report\'s status')">REJECT</button>
                                 </div>
                                 <div class="col-md-6 text-left">
-                                    <button class="btn btn-success" title="Approve this Report">APPROVE</button>
+                                    <button class="btn btn-success" title="Approve this Report" ng-click="showConfirmation('Pleas confirm Variant Report approval', 'Enter comments')">APPROVE</button>
                                 </div>
                             </div>
                         </div>
@@ -794,10 +790,10 @@
                         </table>
 
 
-                        <div class="ibox-content ibox-title-no-line" ng-if="variantReport.showActions">
+                        <div class="ibox-content ibox-title-no-line">
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <button class="btn btn-success" title="Approve this Report">APPROVE</button>
+                                    <button class="btn btn-success" title="Approve this Report" ng-click="showConfirmation('Pleas confirm Assignment Variant Report approval', 'Enter comments')">APPROVE</button>
                                 </div>
                             </div>
                         </div>
@@ -806,25 +802,36 @@
 
                 <tab heading="Documents">
                     <div class="panel-body ">
-                        <div class="ibox-content ">
-                            <div class="list-box ">
-                                <h4>Patient Documents</h4>
 
-                                <ul>
-                                    <li><a>Document 1</a></li>
-                                    <li><a>Document 2</a></li>
-                                    <li><a>Document 3</a></li>
-                                </ul>
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title ibox-title-no-line">
+                                <h3>Patient Documents</h3>
                             </div>
-
-                            <form class="dropzone" method="post" enctype="multipart/form-data" ng-dropzone dropzone="dropzone" dropzone-config="dropzoneConfig"
-                                event-handlers="{ 'addedfile': dzAddedFile, 'error': dzError }">
-                            </form>
-
-                            <!--<form action=" " class="dropzone " drop-zone=" " id="file-dropzone">
-                                <button type="submit" class="btn btn-success pull-right"><i class="fa fa-upload"></i>&nbsp;&nbsp;Upload Selected Files</button>
-                            </form>-->
+                                
+                               Count:  {{ patientDocuments }}
+                                
+                            <table class="table table-hover" role="grid">
+                                <thead>
+                                    <tr>
+                                        <th width="20%" class="label2 sorting_disabled">Document</th>
+                                        <th width="40%" class="label2 sorting_disabled">Uploaded Date</th>
+                                        <th width="20%" class="label2 sorting_disabled">User</th>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody>
+                                    <tr ng-repeat="document in patientDocuments" style="cursor: auto;" role="row" class="odd">
+                                        <td>{{::document.name}}</td>
+                                        <td>{{::document.uploadedDate}}</td>
+                                        <td>{{::document.user}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
+
+                        <form class="dropzone" method="post" enctype="multipart/form-data" ng-dropzone dropzone="dropzone" dropzone-config="dropzoneConfig"
+                            event-handlers="{ 'addedfile': dzAddedFile, 'error': dzError }">
+                        </form>
                     </div>
                 </tab>
             </tabset>

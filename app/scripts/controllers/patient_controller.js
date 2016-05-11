@@ -35,6 +35,8 @@
         $scope.dzError = dzError;
         $scope.loadPatientData = loadPatientData;
         $scope.setComment = setComment;
+        $scope.showWarning = showWarning;
+        $scope.showConfirmation = showConfirmation;
 
         function setVariantReportType(reportType) {
             if ($scope.variantReportType === reportType) {
@@ -84,6 +86,7 @@
                     $scope.assignmentReport = data.assignmentReport;
                     $scope.biopsyReport = data.biopsyReport;
                     $scope.biopsyReports = data.biopsyReports;
+                    $scope.patientDocuments = data.patientDocuments;
                 })
                 .then(function () {
                     $scope.variantReportType = 'tumorTissue';
@@ -103,6 +106,25 @@
         function setComment(value) {
             $log.debug('User entered un-confirm reason: ' + value);
         }
-    }
 
+        function showWarning(title, message) {
+            prompt({
+                title: title,
+                message: message
+            }).then(function(comment) {
+                $log.debug('User agreed after warning');
+            });
+        }
+ 
+        function showConfirmation(title, message) {
+            prompt({
+                title: title,
+                message: message,
+                input: true
+            }).then(function(comment) {
+                $log.debug('User entered comment: ' + comment);
+            });
+        }
+    }
+    
 } ());
