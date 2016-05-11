@@ -1,6 +1,6 @@
 (function () {
 
-    angular.module('http.matchbox', [])
+    angular.module('http.matchbox')
         .factory('matchApiMock', function ($http, matchConfig, $q, $log) {
             return {
                 getPatientDetailsData: function (patientSequenceNumberParam) {
