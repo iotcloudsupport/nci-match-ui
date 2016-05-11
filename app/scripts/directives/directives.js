@@ -211,4 +211,4 @@
         .directive('collapseToggle', collapseToggle)
         .directive('checkBoxWithConfirm', checkBoxWithConfirm)
 
-})();
+}());
