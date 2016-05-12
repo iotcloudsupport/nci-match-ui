@@ -10,7 +10,6 @@ before_script:
   - bower install
 after_success:
   - ls -alth
-  - docker images
   - docker build -t matchbox/nci-match-ui .
   - docker images
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
