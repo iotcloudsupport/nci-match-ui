@@ -1,4 +1,4 @@
-<div ng-controller="PatientController">
+<div ng-controller="PatientController" ng-init="loadPatientData()">
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-10">
             <h2>Patient</h2>
@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <div class="wrapper" ng-init="loadPatientData()">
+    <div class="wrapper">
 
         <div class="no-horizontal-padding header-box-container animated fadeInRight">
             <div class="row">
@@ -473,6 +473,7 @@
                             <thead>
                                 <tr>
                                     <th>Confirm</th>
+                                    <th>Comment</th>
                                     <th>Id</th>
                                     <th>aMOI</th>
                                     <th>Chrom</th>
@@ -493,9 +494,13 @@
                             <tbody>
                                 <tr ng-repeat="variant in biopsy.singleNucleitideVariants" style="cursor: auto;" role="row" class="odd">
                                     <td>
-                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
+                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" 
+                                            confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
                                             on-comment-entered="setComment()" prompt-only-if="true">
                                         </div>
+                                    </td>
+                                    <td>
+                                        <i ng-if="variant.comment" class="fa fa-file-text-o" ng-click="showComment(variant)"></i>
                                     </td>
                                     <td>{{::variant.id}}</td>
                                     <td>{{::variant.aMOI}}</td>
@@ -807,9 +812,9 @@
                             <div class="ibox-title ibox-title-no-line">
                                 <h3>Patient Documents</h3>
                             </div>
-                                
-                               Count:  {{ patientDocuments }}
-                                
+
+                            Count: {{ patientDocuments }}
+
                             <table class="table table-hover" role="grid">
                                 <thead>
                                     <tr>
@@ -818,7 +823,7 @@
                                         <th width="20%" class="label2 sorting_disabled">User</th>
                                     </tr>
                                 </thead>
-                                
+
                                 <tbody>
                                     <tr ng-repeat="document in patientDocuments" style="cursor: auto;" role="row" class="odd">
                                         <td>{{::document.name}}</td>

@@ -10,7 +10,7 @@
         $stateParams,
         $log,
         prompt) {
-
+            
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(100);
 
@@ -37,6 +37,7 @@
         $scope.setComment = setComment;
         $scope.showWarning = showWarning;
         $scope.showConfirmation = showConfirmation;
+        $scope.showComment = showComment;
 
         function setVariantReportType(reportType) {
             if ($scope.variantReportType === reportType) {
@@ -124,6 +125,10 @@
             }).then(function(comment) {
                 $log.debug('User entered comment: ' + comment);
             });
+        }
+        
+        function showComment(variant) {
+            // dialogs.confirm('header', 'msg');
         }
     }
     

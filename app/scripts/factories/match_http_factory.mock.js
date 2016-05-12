@@ -151,6 +151,7 @@
                             },
                             {
                                 confirm: false,
+                                comment: 'Wrong sample',
                                 id: 'COS67878',
                                 aMOI: 'CURRENT',
                                 chrom: 'chr5',
