@@ -464,6 +464,24 @@
 
                         <img src="/img/variant_report.png" ng-if="variantReportMode!=='Qc'" style="width:1200px" />
 
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">I'm a modal!</h3>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <li ng-repeat="item in items">
+                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+            Selected: <b>{{ selected.item }}</b>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+    
                         <!--Single Nucleitide Variant(s)-->
                         <div class="ibox-title ibox-title-no-line">
                             <h3>Single Nucleitide Variant(s)</h3>
@@ -500,7 +518,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <i ng-if="variant.comment" class="fa fa-file-text-o" ng-click="showComment(variant)"></i>
+                                        <a href ng-click="showComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.id}}</td>
                                     <td>{{::variant.aMOI}}</td>

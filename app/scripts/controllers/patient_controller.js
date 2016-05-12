@@ -10,7 +10,7 @@
         $stateParams,
         $log,
         prompt) {
-            
+
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(100);
 
@@ -112,24 +112,40 @@
             prompt({
                 title: title,
                 message: message
-            }).then(function(comment) {
+            }).then(function (comment) {
                 $log.debug('User agreed after warning');
             });
         }
- 
+
         function showConfirmation(title, message) {
             prompt({
                 title: title,
                 message: message,
                 input: true
-            }).then(function(comment) {
+            }).then(function (comment) {
                 $log.debug('User entered comment: ' + comment);
             });
         }
-        
+
         function showComment(variant) {
-            // dialogs.confirm('header', 'msg');
+            var modalInstance = $uibModal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: 'myModalContent.html',
+                controller: 'ModalDialogController',
+                size: size,
+                resolve: {
+                    items: function () {
+                        return $scope.items;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (selectedItem) {
+                $log.info(selectedItem);
+            }, function () {
+                $log.info('Modal dismissed at: ' + new Date());
+            });
         }
     }
-    
+
 } ());
