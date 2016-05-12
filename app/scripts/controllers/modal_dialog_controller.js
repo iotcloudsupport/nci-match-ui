@@ -1,6 +1,6 @@
 (function () {
 
-    angular.module('patient.matchbox', [])
+    angular.module('patient.matchbox')
         .controller('ModalDialogController', ModalDialogController);
 
     function ModalDialogController($scope, $uibModalInstance, items) {

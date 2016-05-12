@@ -136,7 +136,7 @@
                 // size: size,
                 resolve: {
                     items: function () {
-                        return $scope.items;
+                        return ['Item 1', 'Item 2'];
                     }
                 }
             });
