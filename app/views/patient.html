@@ -71,8 +71,8 @@
         </div>
 
         <div class="tabs-container">
-            <tabset>
-                <tab heading="Summary">
+            <uib-tabset>
+                <uib-tab heading="Summary">
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12 center-block">
@@ -201,9 +201,9 @@
                             </div>
                         </div>
                     </div>
-                </tab>
+                </uib-tab>
 
-                <tab heading="Biopsy">
+                <uib-tab heading="Biopsy">
                     <div class="panel-body">
 
                         <div class="ibox-title ibox-title-no-line">
@@ -360,9 +360,9 @@
                             </div>
                         </div>
                     </div>
-                </tab>
+                </uib-tab>
 
-                <tab heading="Variant Report">
+                <uib-tab heading="Variant Report">
                     <div class="panel-body">
 
                         <div class="row">
@@ -674,15 +674,15 @@
                                     <button class="btn btn-danger" title="Reject this Report" ng-click="showWarning('Are you sure you want to reject the Variant Report?', 'This will change the report\'s status')">REJECT</button>
                                 </div>
                                 <div class="col-md-6 text-left">
-                                    <button class="btn btn-success" title="Approve this Report" ng-click="showConfirmation('Pleas confirm Variant Report approval', 'Enter comments')">REJECT</button>
+                                    <button class="btn btn-success" title="Confirm this Report" ng-click="showConfirmation('Pleas confirm Variant Report approval', 'Enter comments')">CONFIRM</button>
                                 </div>
                             </div>
                         </div>
 
                     </div>
-                </tab>
+                </uib-tab>
 
-                <tab heading="Assignment Report">
+                <uib-tab heading="Assignment Report">
                     <div class="panel-body">
 
                         <div class="row button-row">
@@ -816,22 +816,20 @@
                         <div class="ibox-content ibox-title-no-line">
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <button class="btn btn-success" title="Approve this Report" ng-click="showConfirmation('Pleas confirm Assignment Variant Report approval', 'Enter comments')">REJECT</button>
+                                    <button class="btn btn-success" title="Confirm this Report" ng-click="showConfirmation('Pleas confirm Assignment Variant Report approval', 'Enter comments')">CONFIRM</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </tab>
+                </uib-tab>
 
-                <tab heading="Documents">
+                <uib-tab heading="Documents">
                     <div class="panel-body ">
 
                         <div class="ibox float-e-margins">
                             <div class="ibox-title ibox-title-no-line">
                                 <h3>Patient Documents</h3>
                             </div>
-
-                            Count: {{ patientDocuments }}
 
                             <table class="table table-hover" role="grid">
                                 <thead>
@@ -856,8 +854,8 @@
                             event-handlers="{ 'addedfile': dzAddedFile, 'error': dzError }">
                         </form>
                     </div>
-                </tab>
-            </tabset>
+                </uib-tab>
+            </uib-tabset>
         </div>
     </div>
 </div>

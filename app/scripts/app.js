@@ -24,6 +24,7 @@
         'ui.bootstrap',
         'cgPrompt',
         'ngDropzone',
-        'ngDropdowns'
+        'ngDropdowns',
+        'ngAnimate'
     ]);
 })();

@@ -9,7 +9,8 @@
         matchApiMock,
         $stateParams,
         $log,
-        prompt) {
+        prompt,
+        $uibModal) {
 
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(100);
@@ -132,7 +133,7 @@
                 animation: $scope.animationsEnabled,
                 templateUrl: 'myModalContent.html',
                 controller: 'ModalDialogController',
-                size: size,
+                // size: size,
                 resolve: {
                     items: function () {
                         return $scope.items;
