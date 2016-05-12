@@ -1,13 +1,23 @@
+sudo: required
+services: 
+  - docker
 language: node_js
 node_js:
-- 0.12.1
+  - 0.12.1
 before_script:
-- npm install -g bower karma grunt-cli
-- npm install
-- bower install
+  - npm install -g bower karma grunt-cli
+  - npm install
+  - bower install
+after_success:
+  - ls -alth
+  - docker build -t matchbox/nci-match-ui .
+  - docker images
+  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker tag -f matchbox/nci-match-ui matchbox/nci-match-ui:latest
+  - docker images
+  - docker push matchbox/nci-match-ui
 after_script:
-- codeclimate-test-reporter < test/coverage/report-lcov/lcov.info
-- ls -alth
+  - codeclimate-test-reporter < test/coverage/report-lcov/lcov.info
 notifications:
   slack:
     secure: TjBZ1IiNBbjWYJvjCxgtvzzjlomJFor+b2VOAshjWq2iXuryZB1YjGFeI3DuCorLN8KjFazORVLT+div1mEeKuJ2My7pF0qXrNEGgMpAkyCNX4xvVCEGYCVx7vzHGcdMoiT8ojF4aJBnAcyiLbn03f0zina7jDAdkmS0UovjeZ25+24IlSQ8jEg5Ju0e8MD9woMxgiLNqpu+teZiYgLnHOeodVZnRyhUqqQ6FuFsJXKlNvhIrG6oEo3rXB9xtZ4v0yQU0BYW5w/Pa4vbC2unEzoA66gZAWkiaI4nO8jszi84rEU/X8VPYK1IyQPPYvqGI3LZF/a41xgla/TCt0DOzhcgkw7QrQJeZfwj5kxs/YoejDPIsxq4JSBWHgyaGq/n5n1C/nJrEyjRj70PNEyPBnLkivJUZxf3qdC/yVC2iWbo7E2g8Ov7XKfhnHKKnXzjI8XCSFdHr589DSvofKWorJMzu0LzzVbeMyaumdBHfCC2xPH63uLnVT/TIKMu/Dnpr4FibPBhuOlDr1cnyyMuywwB4mJ6Pc8OUElUEMWlOK0zzfTAOeTUWb1IHteVX22Gmre+aUy3VzazGgN1YS7WUygCzYqSZGr3XwUeMiJr9fUy5quxDet4zRx96p3rtnfX6wYFFZ3Bq821dhcHghQf5N0Rt+lgLZfYFWT+b3wtc+w=
