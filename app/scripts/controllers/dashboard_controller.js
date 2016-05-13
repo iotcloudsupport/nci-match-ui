@@ -155,6 +155,7 @@ angular.module('dashboard.matchbox',[])
             .getActivityFeedList()
             .then(function(d) {
                 angular.forEach(d.data, function (value) {
+                    console.log(value);
                     $scope.num = (Math.ceil(Math.random() * 9));
                     $scope.icon = (Math.ceil(Math.random() * 5));
                     $scope.time = value.timestamp;
