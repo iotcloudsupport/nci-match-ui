@@ -112,7 +112,8 @@
         function showWarning(title, message) {
             prompt({
                 title: title,
-                message: message
+                message: message,
+                buttons: [{ label:'OK', primary: true }, { label:'Cancel', cancel: true }]
             }).then(function (comment) {
                 $log.debug('User agreed after warning');
             });
@@ -122,7 +123,8 @@
             prompt({
                 title: title,
                 message: message,
-                input: true
+                input: true,
+                buttons: [{ label:'OK', primary: true }, { label:'Cancel', cancel: true }]
             }).then(function (comment) {
                 $log.debug('User entered comment: ' + comment);
             });
