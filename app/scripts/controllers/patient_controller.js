@@ -19,6 +19,8 @@
 
         $scope.confirmTitle = 'Confirmation Changed';
         $scope.confirmMessage = 'Please enter a reason:';
+        
+        $scope.biopsySampleLabel = 'Latest';
 
         $scope.files = [];
 

@@ -102,9 +102,9 @@
     }
 
     /**
-     * collapseToggle - Directive for collapse toggle elements in right corner of ibox
+     * collapseToggleLeft - Directive for collapse toggle elements in right corner of ibox
      */
-    function collapseToggle($timeout) {
+    function collapseToggleLeft($timeout) {
         return {
             restrict: 'A',
             scope: true,
@@ -214,7 +214,7 @@
         .directive('sideNavigation', sideNavigation)
         .directive('iboxTools', iboxTools)
         .directive('minimalizaSidebar', minimalizaSidebar)
-        .directive('collapseToggle', collapseToggle)
+        .directive('collapseToggleLeft', collapseToggleLeft)
         .directive('checkBoxWithConfirm', checkBoxWithConfirm)
 
 } ());
