@@ -6,9 +6,6 @@ angular.module('treatment-arm.matchbox',[])
             .withOption('paging', false);
 
 
-  /*      this.dtColumnDefs = [];
-        this.dtInstance = {};*/
-
         this.activeChoice = 'inclusion';
 
         /*this.ddOptions = DTOptionsBuilder.newOptions()
@@ -31,7 +28,7 @@ angular.module('treatment-arm.matchbox',[])
             currentStatus: '', //'OPEN',
             drug: 'AZD9291 (781254)'
         };
-            /*
+
         $scope.tooltipContent = {
             psn: 'Patient Sequence Number',
             loe: 'Level Of Evidence',
@@ -40,7 +37,7 @@ angular.module('treatment-arm.matchbox',[])
             ref: 'Reference',
             alt: 'Alternative',
             lit: 'Lit Ref'
-        };*/
+        };
 
         $scope.versions = [];
         /*
