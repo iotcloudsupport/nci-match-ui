@@ -49,7 +49,14 @@ angular.module('http.matchbox', [])
         return {
             getTreatmentArms: function() {
                 return $http.get(matchConfig.treatmentArmApiBaseUrl + '/basicTreatmentArms');
+            },
+            getAllTreatmentArms: function() {
+                return $http.get(matchConfig.treatmentArmApiBaseUrl + '/treatmentArms');
+            },
+            getTreatmentArmDetails: function(taId) {
+                return $http.get(matchConfig.treatmentArmApiBaseUrl + '/treatmentArms/' + taId);
             }
+
         };
     })
     .factory('irAdminApi', function($http, matchConfig) {

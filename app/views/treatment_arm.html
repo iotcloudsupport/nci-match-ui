@@ -1,5 +1,5 @@
 <div class="row wrapper border-bottom white-bg page-heading">
-    <div class="col-lg-10" ng-controller="TreatmentArmController">
+    <div class="col-lg-10" ng-controller="TreatmentArmController" ng-init="loadTreatmentArmDetails(taId)">
         <h2>Treatment Arm</h2>
         <ol class="breadcrumb">
             <li>
@@ -16,7 +16,7 @@
     <div class="col-lg-2"></div>
 </div>
 
-<div ng-controller="TreatmentArmController as TaCtrl" class="wrapper wrapper-content p-xl">
+<div ng-controller="TreatmentArmController as TaCtrl" ng-init="loadTreatmentArmDetails(taid)" class="wrapper wrapper-content p-xl">
 
     <div class="animated fadeInRight">
         <div class="row">
@@ -348,11 +348,14 @@
                                                         </div>
                                                         <br><br>
                                                         <div ng-show="TaCtrl.activeChoice == 'inclusion'">
-                                                            <table datatable="ng"
+                                                            <!--<table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
                                                                    dt-column-defs="TaCtrl.dtColumnDefs"
                                                                    dt-instance="TaCtrl.dtInstance"
-                                                                   class="table table-striped table-bordered table-hover" style="width:100%">
+                                                                   class="table table-striped table-bordered table-hover" style="width:100%">-->
+                                                                <table datatable="ng"
+                                                                       dt-options="TaCtrl.dtOptions"
+                                                                       class="table table-striped table-bordered table-hover" style="width:100%">
                                                                 <thead>
                                                                 <tr>
                                                                     <th>ID</th>
@@ -395,10 +398,13 @@
                                                             </table>
                                                         </div>
                                                         <div ng-show="TaCtrl.activeChoice == 'exclusion'">
-                                                            <table datatable="ng"
+                                                            <!--<table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
                                                                    dt-column-defs="TaCtrl.dtColumnDefs"
                                                                    dt-instance="TaCtrl.dtInstance"
+                                                                   class="table table-striped table-bordered table-hover" style="width:100%">-->
+                                                            <table datatable="ng"
+                                                                   dt-options="TaCtrl.dtOptions"
                                                                    class="table table-striped table-bordered table-hover" style="width:100%">
                                                                 <thead>
                                                                 <tr>
@@ -449,10 +455,13 @@
                                                         <br><br>
 
                                                         <div ng-show="TaCtrl.activeChoice == 'inclusion'">
-                                                            <table datatable="ng"
+                                                            <!--<table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
                                                                    dt-column-defs="TaCtrl.dtColumnDefs"
                                                                    dt-instance="TaCtrl.dtInstance"
+                                                                   class="table table-striped table-bordered table-hover" style="width:100%">-->
+                                                            <table datatable="ng"
+                                                                   dt-options="TaCtrl.dtOptions"
                                                                    class="table table-striped table-bordered table-hover" style="width:100%">
                                                                 <thead>
                                                                 <tr>
@@ -495,10 +504,13 @@
                                                             </table>
                                                         </div>
                                                         <div ng-show="TaCtrl.activeChoice == 'exclusion'">
-                                                            <table datatable="ng"
+                                                            <!--<table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
                                                                    dt-column-defs="TaCtrl.dtColumnDefs"
                                                                    dt-instance="TaCtrl.dtInstance"
+                                                                   class="table table-striped table-bordered table-hover" style="width:100%">-->
+                                                            <table datatable="ng"
+                                                                   dt-options="TaCtrl.dtOptions"
                                                                    class="table table-striped table-bordered table-hover" style="width:100%">
                                                                 <thead>
                                                                 <tr>
@@ -548,10 +560,13 @@
                                                         </div>
                                                         <br><br>
                                                         <div ng-show="TaCtrl.activeChoice == 'inclusion'">
-                                                            <table datatable="ng"
+                                                            <!--<table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
                                                                    dt-column-defs="TaCtrl.dtColumnDefs"
                                                                    dt-instance="TaCtrl.dtInstance"
+                                                                   class="table table-striped table-bordered table-hover" style="width:100%">-->
+                                                            <table datatable="ng"
+                                                                   dt-options="TaCtrl.dtOptions"
                                                                    class="table table-striped table-bordered table-hover" style="width:100%">
                                                                 <thead>
                                                                 <tr>
@@ -588,11 +603,14 @@
                                                             </table>
                                                         </div>
                                                         <div ng-show="TaCtrl.activeChoice == 'exclusion'">
-                                                            <table datatable="ng"
+                                                            <!--<table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
                                                                    dt-column-defs="TaCtrl.dtColumnDefs"
                                                                    dt-instance="TaCtrl.dtInstance"
-                                                                   class="table table-striped table-bordered table-hover" style="width:100%">
+                                                                   class="table table-striped table-bordered table-hover" style="width:100%">-->
+                                                                <table datatable="ng"
+                                                                       dt-options="TaCtrl.dtOptions"
+                                                                       class="table table-striped table-bordered table-hover" style="width:100%">
                                                                 <thead>
                                                                 <tr>
                                                                     <th>Gene</th>
@@ -635,10 +653,13 @@
                                                         </div>
                                                         <br><br>
                                                         <div ng-show="TaCtrl.activeChoice == 'inclusion'">
-                                                            <table datatable="ng"
+                                                            <!--<table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
                                                                    dt-column-defs="TaCtrl.dtColumnDefs"
                                                                    dt-instance="TaCtrl.dtInstance"
+                                                                   class="table table-striped table-bordered table-hover" style="width:100%">-->
+                                                            <table datatable="ng"
+                                                                   dt-options="TaCtrl.dtOptions"
                                                                    class="table table-striped table-bordered table-hover" style="width:100%">
                                                                 <thead>
                                                                 <tr>
@@ -671,10 +692,13 @@
                                                             </table>
                                                         </div>
                                                         <div ng-show="TaCtrl.activeChoice == 'exclusion'">
-                                                            <table datatable="ng"
+                                                            <!--<table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
                                                                    dt-column-defs="TaCtrl.dtColumnDefs"
                                                                    dt-instance="TaCtrl.dtInstance"
+                                                                   class="table table-striped table-bordered table-hover" style="width:100%">-->
+                                                            <table datatable="ng"
+                                                                   dt-options="TaCtrl.dtOptions"
                                                                    class="table table-striped table-bordered table-hover" style="width:100%">
                                                                 <thead>
                                                                 <tr>
@@ -715,10 +739,13 @@
                                                         </div>
                                                         <br><br>
                                                         <div ng-show="TaCtrl.activeChoice == 'inclusion'">
-                                                            <table datatable="ng"
+                                                            <!--<table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
                                                                    dt-column-defs="TaCtrl.dtColumnDefs"
                                                                    dt-instance="TaCtrl.dtInstance"
+                                                                   class="table table-striped table-bordered table-hover" style="width:100%">-->
+                                                            <table datatable="ng"
+                                                                   dt-options="TaCtrl.dtOptions"
                                                                    class="table table-striped table-bordered table-hover" style="width:100%">
                                                                 <thead>
                                                                 <tr>
@@ -754,10 +781,13 @@
                                                         </div>
 
                                                         <div ng-show="TaCtrl.activeChoice == 'exclusion'">
-                                                            <table datatable="ng"
+                                                            <!--<table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
                                                                    dt-column-defs="TaCtrl.dtColumnDefs"
                                                                    dt-instance="TaCtrl.dtInstance"
+                                                                   class="table table-striped table-bordered table-hover" style="width:100%">-->
+                                                            <table datatable="ng"
+                                                                   dt-options="TaCtrl.dtOptions"
                                                                    class="table table-striped table-bordered table-hover" style="width:100%">
                                                                 <thead>
                                                                 <tr>
@@ -805,10 +835,13 @@
                                                         </div>
                                                         <br><br>
                                                         <div ng-show="TaCtrl.activeChoice == 'inclusion'">
-                                                            <table datatable="ng"
+                                                            <!--<table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
                                                                    dt-column-defs="TaCtrl.dtColumnDefs"
                                                                    dt-instance="TaCtrl.dtInstance"
+                                                                   class="table table-striped table-bordered table-hover" style="width:100%">-->
+                                                            <table datatable="ng"
+                                                                   dt-options="TaCtrl.dtOptions"
                                                                    class="table table-striped table-bordered table-hover" style="width:100%">
                                                                 <thead>
                                                                 <tr>
@@ -837,10 +870,13 @@
                                                             </table>
                                                         </div>
                                                         <div ng-show="TaCtrl.activeChoice == 'exclusion'">
-                                                            <table datatable="ng"
+                                                            <!--<table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
                                                                    dt-column-defs="TaCtrl.dtColumnDefs"
                                                                    dt-instance="TaCtrl.dtInstance"
+                                                                   class="table table-striped table-bordered table-hover" style="width:100%">-->
+                                                            <table datatable="ng"
+                                                                   dt-options="TaCtrl.dtOptions"
                                                                    class="table table-striped table-bordered table-hover" style="width:100%">
                                                                 <thead>
                                                                 <tr>

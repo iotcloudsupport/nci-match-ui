@@ -1,34 +1,34 @@
 angular.module('treatment-arm.matchbox',[])
     .controller('TreatmentArmController', function( $scope, $window, DTOptionsBuilder, DTColumnDefBuilder, treatmentArmApi) {
-
         this.dtOptions = DTOptionsBuilder.newOptions()
-            .withOption('paging', false)
             .withOption('info', false);
+        this.dtOptions = DTOptionsBuilder.newOptions()
+            .withOption('paging', false);
 
-        this.dtColumnDefs = [];
-        this.dtInstance = {};
 
         this.activeChoice = 'inclusion';
 
-        this.ddOptions = DTOptionsBuilder.newOptions()
+        /*this.ddOptions = DTOptionsBuilder.newOptions()
             .withOption('paging', false)
             .withOption('info', false)
             .withOption('bFilter', false);
 
         this.altColumnDefs = [
             DTColumnDefBuilder.newColumnDef(4).withOption('createdCell', createpubmedlinks)
-        ];
+        ];*/
+
+        $scope.test = '';
 
         $scope.information = {
-            name: 'EAY131-A',
-            description: 'Dasatinib in DDR2 activating mutations',
+            name: '',
+            description: '',
             currentVersion: '2016-03-17',
-            genes: 'DDR2',
-            patientsAssigned: '0',
-            currentStatus: 'OPEN',
+            genes: '',
+            patientsAssigned: '',
+            currentStatus: '', //'OPEN',
             drug: 'AZD9291 (781254)'
         };
-        
+
         $scope.tooltipContent = {
             psn: 'Patient Sequence Number',
             loe: 'Level Of Evidence',
@@ -39,6 +39,8 @@ angular.module('treatment-arm.matchbox',[])
             lit: 'Lit Ref'
         };
 
+        $scope.versions = [];
+        /*
         // It is important that the versions are populated in reverse order, starting with current version
         $scope.versions = [
             {
@@ -643,11 +645,11 @@ angular.module('treatment-arm.matchbox',[])
                     }
                 ]
             }
-        ];
+        ]; */
 
-        $scope.selectedVersion = $scope.versions[0];
+        //$scope.selectedVersion = $scope.versions[0];
 
-
+/*
         function createpubmedlinks(td, cellData,  rowData, row, col) {
             $(td).html('<a onClick="openPubMed()">' + cellData + '</a>');
         };
@@ -685,7 +687,7 @@ angular.module('treatment-arm.matchbox',[])
                 }
             }
         };
-
+*/
         $scope.pieDataset = [
             {
                 label: "ON_TREATMENT_ARM",
@@ -833,7 +835,7 @@ angular.module('treatment-arm.matchbox',[])
                 container: '#diseaseLegendContainer'
             }
         };
-
+/*
         $scope.patients = [
             {
                 "Patient": {
@@ -880,7 +882,78 @@ angular.module('treatment-arm.matchbox',[])
                     "diseases": "Bone cancer, NOS"
                 }
             }
-        ];
+        ];*/
+
+        $scope.loadTreatmentArmDetails = function(ta) {
+            /*treatmentArmApi
+             .getAllTreatmentArms()
+
+                .then (function (d) {
+                    console.log('allTas');
+                    console.log('d');
+                    console.log(d);
+                    console.log('d.data');
+                    console.log(d.data);
+                    /*
+                    //$scope.information.currentStatus = d.data.treatment_arm_status;
+                    var returnData = [];
+                    returnData.push(d);
+                    console.log(returnData);
+
+                    angular.forEach(d.data, function(value) {
+                        console.log('new for each------------------->');
+                        console.log('value: ')
+                        console.log(value);
+                        //console.log('d.data');
+                        //console.log(d.data);
+
+                        $scope.information.currentStatus = d.data.treatment_arm_status;
+                        $scope.test = "test";
+                        $scope.information.name = d.data.name;
+                        $scope.information.description = d.data.description;
+                        $scope.information.genes = d.data.gene;
+                        $scope.information.patientsAssigned = d.data.num_patients_assigned;
+                        //console.log($scope.test);
+                        var version = {};
+                        version.name = d.data.version;
+                        version.versionStatus = d.data.treatment_arm_status;
+                        //console.log('version');
+                        //console.log(version);
+                        $scope.versions.push(version);
+
+                    });*/
+                //});
+            treatmentArmApi
+            .getTreatmentArmDetails(ta)
+                .then(function (d) {
+                    console.log('taDetails');
+                    console.log('d');
+                    console.log(d);
+                    console.log('d.data');
+                    console.log(d.data);
+
+                    if (d.data != "null") {
+
+
+                            $scope.information.currentStatus = d.data.treatment_arm_status;
+                            $scope.test = "test";
+                            $scope.information.name = d.data.name;
+                            $scope.information.description = d.data.description;
+                            $scope.information.genes = d.data.gene;
+                            $scope.information.patientsAssigned = d.data.num_patients_assigned;
+
+                        var version = {};
+                        version.name = d.data.version;
+                        //console.log('version');
+                        //console.log(version);
+                        $scope.versions.push(version);
+                        //console.log($scope.versions);
+                    }
+                    $scope.test = "test";
+                    $scope.selectedVersion = $scope.versions[0];
+
+                });
+        };
 
 
     });

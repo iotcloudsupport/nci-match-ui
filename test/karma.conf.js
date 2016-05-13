@@ -28,6 +28,12 @@ module.exports = function(config) {
       '../bower_components/angular-mocks/angular-mocks.js',
       '../bower_components/angular-ui-router/release/angular-ui-router.js',
       '../bower_components/moment/moment.js',
+      // flot
+      '../bower_components/flot/jquery.flot.js',
+      '../bower_components/flot.tooltip.pib/js/jquery.flot.tooltip.min.js',
+      '../bower_components/flot/jquery.flot.pie.js',
+      '../bower_components/flot/jquery.flot.resize.js',
+      '../bower_components/angular-flot/angular-flot.js',
       // matchbox custom scripts
       '../app/scripts/**/*.js',
       // matchbox custom script specs

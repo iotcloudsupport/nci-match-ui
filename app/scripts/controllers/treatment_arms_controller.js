@@ -12,9 +12,13 @@ angular.module('treatment-arms.matchbox',[])
             treatmentArmApi
                 .getTreatmentArms()
                 .then(function(d) {
+                    console.log(d);
                     $scope.treatmentArmList = d.data;
+                    console.log(d.data);
+
                     console.log($scope);
                 });
+                
         };
 
 
