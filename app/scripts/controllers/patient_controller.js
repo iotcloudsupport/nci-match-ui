@@ -38,7 +38,7 @@
         $scope.setComment = setComment;
         $scope.showWarning = showWarning;
         $scope.showConfirmation = showConfirmation;
-        $scope.showComment = showComment;
+        $scope.editComment = editComment;
 
         function setVariantReportType(reportType) {
             if ($scope.variantReportType === reportType) {
@@ -128,23 +128,21 @@
             });
         }
 
-        function showComment(variant) {
+        function editComment(variant) {
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
-                templateUrl: 'myModalContent.html',
+                templateUrl: 'commentDialog.html',
                 controller: 'ModalDialogController',
-                // size: size,
                 resolve: {
-                    items: function () {
-                        return ['Item 1', 'Item 2'];
+                    comment: function () {
+                        return variant.comment;
                     }
                 }
             });
 
-            modalInstance.result.then(function (selectedItem) {
-                $log.info(selectedItem);
-            }, function () {
-                $log.info('Modal dismissed at: ' + new Date());
+            modalInstance.result.then(function (comment) {
+                variant.comment = comment;
+                $log.info(comment);
             });
         }
     }

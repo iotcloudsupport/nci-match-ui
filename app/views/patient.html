@@ -464,24 +464,22 @@
 
                         <img src="/img/variant_report.png" ng-if="variantReportMode!=='Qc'" style="width:1200px" />
 
-    <script type="text/ng-template" id="myModalContent.html">
-        <div class="modal-header">
-            <h3 class="modal-title">I'm a modal!</h3>
-        </div>
-        <div class="modal-body">
-            <ul>
-                <li ng-repeat="item in items">
-                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                </li>
-            </ul>
-            Selected: <b>{{ selected.item }}</b>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-        </div>
-    </script>
-    
+                        <script type="text/ng-template" id="commentDialog.html">
+                            <div class="modal-header">
+                                <h3 class="modal-title">Edit Reason</h3>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="comment">Confirmation rejection reason:</label>
+                                    <input type="textarea" name="comment" ng-model="comment" class="form-control">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                                <button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
+                            </div>
+                        </script>
+
                         <!--Single Nucleitide Variant(s)-->
                         <div class="ibox-title ibox-title-no-line">
                             <h3>Single Nucleitide Variant(s)</h3>
@@ -512,13 +510,12 @@
                             <tbody>
                                 <tr ng-repeat="variant in biopsy.singleNucleitideVariants" style="cursor: auto;" role="row" class="odd">
                                     <td>
-                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" 
-                                            confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
+                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
                                             on-comment-entered="setComment()" prompt-only-if="true">
                                         </div>
                                     </td>
                                     <td>
-                                        <a href ng-click="showComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
+                                        <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.id}}</td>
                                     <td>{{::variant.aMOI}}</td>
@@ -594,7 +591,6 @@
                                 </tr>
                             </tbody>
                         </table>
-
 
                         <!--Copy Number Variant(s)-->
                         <div class="ibox-title ibox-title-no-line">
