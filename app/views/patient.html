@@ -220,138 +220,203 @@
                             </h3>
                         </div>
 
-                        <div class="ibox float-e-margins">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="header-info-box biopsy-header-box">
-                                        <h4>Speciment</h4>
-                                        <dl class="dl-horizontal">
-                                            <dt>Collection Date</dt>
-                                            <dd>August 26, 2015 2:57 PM GMT</dd>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="header-info-box biopsy-header-box">
+                                    <h4>Speciment</h4>
+                                    <dl class="dl-horizontal">
+                                        <dt>Collection Date</dt>
+                                        <dd>August 26, 2015 2:57 PM GMT</dd>
 
-                                            <dt>Received Date</dt>
-                                            <dd>August 26, 2015 2:57 PM GMT</dd>
+                                        <dt>Received Date</dt>
+                                        <dd>August 26, 2015 2:57 PM GMT</dd>
 
-                                            <dt>Failure Date</dt>
-                                            <dd>-</dd>
-                                        </dl>
-                                    </div>
+                                        <dt>Failure Date</dt>
+                                        <dd>-</dd>
+                                    </dl>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="header-info-box biopsy-header-box">
-                                        <dl class="dl-horizontal">
-                                            <dt>Pathalogy Status</dt>
-                                            <dd>Agreement on pathalogy</dd>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="header-info-box biopsy-header-box">
+                                    <dl class="dl-horizontal">
+                                        <dt>Pathalogy Status</dt>
+                                        <dd>Agreement on pathalogy</dd>
 
-                                            <dt>Patalogy Received Date</dt>
-                                            <dd>August 26, 2015 2:57 PM GMT</dd>
+                                        <dt>Patalogy Received Date</dt>
+                                        <dd>August 26, 2015 2:57 PM GMT</dd>
 
-                                            <dt>Comment</dt>
-                                            <dd>-</dd>
-                                        </dl>
-                                    </div>
+                                        <dt>Comment</dt>
+                                        <dd>-</dd>
+                                    </dl>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="ibox float-e-margins">
+                        <div class="ibox-title ibox-title-no-line">
+                            <h3>Assay History</h3>
+                        </div>
+
+                        <table class="table table-hover" role="grid">
+                            <thead>
+                                <tr>
+                                    <th width="20%" class="label2 sorting_disabled">Gene</th>
+                                    <th width="40%" class="label2 sorting_disabled">Ordered Date</th>
+                                    <th width="20%" class="label2 sorting_disabled">Result Date</th>
+                                    <th width="20%" class="label2 sorting_disabled">Result</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="assay in assayHistory" style="cursor: auto;" role="row" class="odd">
+                                    <td>{{::assay.gene}}</td>
+                                    <td>{{::assay.orderedDate}}</td>
+                                    <td>{{::assay.resultDate}}</td>
+                                    <td>
+                                        <span ng-style="{'color':'{{ assay.result | assayStatus }}'}">{{::assay.result}}</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="header-info-box biopsy-sample-box">
+                                    <h4>Sample</h4>
+                                    <dl class="dl-horizontal">
+                                        <dt>Molecular Sequence Number</dt>
+                                        <dd>{{::currentSendout.msn}}</dd>
+
+                                        <dt>Site</dt>
+                                        <dd>{{::currentSendout.destinationDate}}</dd>
+
+                                        <dt>Tracking Number</dt>
+                                        <dd>{{::currentSendout.trackingNumber}}</dd>
+
+                                        <dt>DNA Conc</dt>
+                                        <dd>{{::currentSendout.dnaConcordance}}</dd>
+
+                                        <dt>DNA Vol</dt>
+                                        <dd>{{::currentSendout.dnaVolume}}</dd>
+
+                                        <dt>Reported Date</dt>
+                                        <dd>{{::currentSendout.reportedDate}}</dd>
+
+                                        <dt>Comments</dt>
+                                        <dd>
+                                            <div class="text-truncate-200px">{{::currentSendout.comments}}</div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="header-info-box biopsy-sample-box">
+                                    <h4>Analysis</h4>
+                                    <dl class="dl-horizontal">
+                                        <dt>Analysis Id</dt>
+                                        <dd>{{::currentSendout.currentAnalisys.analysisId}}</dd>
+
+                                        <dt>Status</dt>
+                                        <dd ng-style="{'color':'{{ currentSendout.currentAnalisys.status | analysisStatus }}'}">{{::currentSendout.currentAnalisys.status}}</dd>
+
+                                        <dt>File Received Date</dt>
+                                        <dd>{{::currentSendout.currentAnalisys.fileReceivedDate}}</dd>
+
+                                        <dt>{{::currentSendout.currentAnalisys.confirmedRejectedDateLabel}}</dt>
+                                        <dd>{{::currentSendout.currentAnalisys.confirmedRejectedDate}}</dd>
+
+                                        <dt>Files</dt>
+                                        <dd>
+                                            <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
+                                            <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAI</a>
+                                            <a href="#" class="btn btn-xs btn-white file-button-xs">VCF</a>
+                                        </dd>
+                                        <dd>
+                                            <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
+                                            <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
+                                            <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
+                                        </dd>
+
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ibox collapsed">
                             <div class="ibox-title ibox-title-no-line">
-                                <h3>Assay History</h3>
+                                <div collapse-toggle></div>
+                                <h3>Sample History</h3>
                             </div>
+                            <div class="ibox-content">
+                                <table class="table table-hover" role="grid">
+                                    <thead>
+                                        <tr>
+                                            <th width="20%">Molecular Sequence Number</th>
+                                            <th width="15%">Site</th>
+                                            <th width="10%">Tracking Number</th>
+                                            <th width="5%">DNA Conc</th>
+                                            <th width="5%">DNA Vol</th>
+                                            <th width="15%">Reported Date</th>
+                                            <th width="20%">Comments</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat-start="sendout in sendouts" style="cursor: auto;" role="row" class="odd">
+                                            <td>{{::sendout.msn}}</td>
+                                            <td>{{::sendout.destinationDate}}</td>
+                                            <td>{{::sendout.trackingNumber}}</td>
+                                            <td>{{::sendout.dnaConcordance}}</td>
+                                            <td>{{::sendout.dnaVolume}}</td>
+                                            <td>{{::sendout.reportedDate}}</td>
+                                            <td>
+                                                <div class="text-truncate-200px">{{::sendout.comments}}</div>
+                                            </td>
+                                        </tr>
+                                        <tr ng-repeat-end>
+                                            <td colspan="7">
+                                                <ul class="panel-list push-right-40px">
+                                                    <li ng-repeat="analysis in sendout.analyses" class="info-element">
+                                                        <div class="row">
+                                                            <div class="col-md-4 col-sm-6 text-left">
+                                                                <dl class="dl-horizontal-narrow">
+                                                                    <dt>Analysis Id</dt>
+                                                                    <dd><a> {{::analysis.analysisId}} </a></dd>
 
-                            <table class="table table-hover" role="grid">
-                                <thead>
-                                    <tr>
-                                        <th width="20%" class="label2 sorting_disabled">Gene</th>
-                                        <th width="40%" class="label2 sorting_disabled">Ordered Date</th>
-                                        <th width="20%" class="label2 sorting_disabled">Result Date</th>
-                                        <th width="20%" class="label2 sorting_disabled">Result</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="assay in assayHistory" style="cursor: auto;" role="row" class="odd">
-                                        <td>{{::assay.gene}}</td>
-                                        <td>{{::assay.orderedDate}}</td>
-                                        <td>{{::assay.resultDate}}</td>
-                                        <td>
-                                            <span ng-style="{'color':'{{ assay.result | assayStatus }}'}">{{::assay.result}}</span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="ibox float-e-margins">
-                            <table class="table table-hover" role="grid">
-                                <thead>
-                                    <tr>
-                                        <th width="20%">Molecular Sequence Number</th>
-                                        <th width="15%">Site</th>
-                                        <th width="10%">Tracking Number</th>
-                                        <th width="5%">DNA Conc</th>
-                                        <th width="5%">DNA Vol</th>
-                                        <th width="15%">Reported Date</th>
-                                        <th width="20%">Comments</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat-start="sendout in sendouts" style="cursor: auto;" role="row" class="odd">
-                                        <td>{{::sendout.msn}}</td>
-                                        <td>{{::sendout.destinationDate}}</td>
-                                        <td>{{::sendout.trackingNumber}}</td>
-                                        <td>{{::sendout.dnaConcordance}}</td>
-                                        <td>{{::sendout.dnaVolume}}</td>
-                                        <td>{{::sendout.reportedDate}}</td>
-                                        <td>
-                                            <div class="text-truncate-200px">{{::sendout.comments}}</div>
-                                        </td>
-                                    </tr>
-                                    <tr ng-repeat-end>
-                                        <td colspan="7">
-                                            <ul class="panel-list push-right-40px">
-                                                <li ng-repeat="analysis in sendout.analyses" class="info-element">
-                                                    <div class="row">
-                                                        <div class="col-md-4 col-sm-6 text-left">
-                                                            <dl class="dl-horizontal-narrow">
-                                                                <dt>Analysis Id</dt>
-                                                                <dd><a> {{::analysis.analysisId}} </a></dd>
-
-                                                                <dt>Status</dt>
-                                                                <dd ng-style="{'color':'{{ analysis.status | analysisStatus }}'}">{{::analysis.status}}</dd>
-                                                            </dl>
-                                                        </div>
-                                                        <div class="col-md-4 col-sm-6 text-left">
-                                                            <dl class="dl-horizontal-narrow">
-                                                                <dt>File Received Date</dt>
-                                                                <dd>{{::analysis.fileReceivedDate}}</dd>
-
-                                                                <dt>{{::analysis.confirmedRejectedDateLabel}}</dt>
-                                                                <dd>{{::analysis.confirmedRejectedDate}}</dd>
-                                                            </dl>
-                                                        </div>
-                                                        <div class="col-md-4 text-right">
-                                                            <div class="row">
-                                                                <div class="col-md-12 text-right">
-                                                                    <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
-                                                                    <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAI</a>
-                                                                    <a href="#" class="btn btn-xs btn-white file-button-xs">VCF</a>
-                                                                </div>
+                                                                    <dt>Status</dt>
+                                                                    <dd ng-style="{'color':'{{ analysis.status | analysisStatus }}'}">{{::analysis.status}}</dd>
+                                                                </dl>
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="col-md-12 text-right">
-                                                                    <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
-                                                                    <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
-                                                                    <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
+                                                            <div class="col-md-4 col-sm-6 text-left">
+                                                                <dl class="dl-horizontal-narrow">
+                                                                    <dt>File Received Date</dt>
+                                                                    <dd>{{::analysis.fileReceivedDate}}</dd>
+
+                                                                    <dt>{{::analysis.confirmedRejectedDateLabel}}</dt>
+                                                                    <dd>{{::analysis.confirmedRejectedDate}}</dd>
+                                                                </dl>
+                                                            </div>
+                                                            <div class="col-md-4 text-right">
+                                                                <div class="row">
+                                                                    <div class="col-md-12 text-right">
+                                                                        <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
+                                                                        <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAI</a>
+                                                                        <a href="#" class="btn btn-xs btn-white file-button-xs">VCF</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12 text-right">
+                                                                        <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
+                                                                        <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
+                                                                        <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
 
                         <div class="row push-down">
@@ -433,8 +498,8 @@
                                         <dt>File Received Date</dt>
                                         <dd>{{variantReport.fileReceivedDate}}</dd>
 
-                                        <dt ng-show="variantReport.confirmedRejectedDate" >{{variantReport.confirmedRejectedDateLabel}}</dt>
-                                        <dd ng-show="variantReport.confirmedRejectedDate" >{{variantReport.confirmedRejectedDate}}</dd>
+                                        <dt ng-show="variantReport.confirmedRejectedDate">{{variantReport.confirmedRejectedDateLabel}}</dt>
+                                        <dd ng-show="variantReport.confirmedRejectedDate">{{variantReport.confirmedRejectedDate}}</dd>
 
                                         <dt>Status</dt>
                                         <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{variantReport.status}}</dd>

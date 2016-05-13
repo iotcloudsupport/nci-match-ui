@@ -112,6 +112,9 @@
                         ]
                     }
                 ];
+                
+                data.currentSendout = data.sendouts[data.sendouts.length - 1]; 
+                data.currentSendout.currentAnalisys = data.currentSendout.analyses[data.currentSendout.analyses.length - 1];
 
                 data.biopsy = {
                     singleNucleitideVariants: [
