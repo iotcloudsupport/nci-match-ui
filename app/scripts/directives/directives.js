@@ -136,11 +136,7 @@
                 vm.isChecked = !vm.isChecked;
                 vm.comment = comment;
 
-                // console.log('Directive controller isChecked = ' + vm.isChecked);
-                // console.log('vm.onCommentEntered = ', vm.onCommentEntered);
-
                 if (vm.onCommentEntered && typeof vm.onCommentEntered === 'function' && comment !== null) {
-                    // console.log('Directive.onCommentEntered called with ' + comment);
                     try {
                         vm.onCommentEntered(comment);
                     } catch (error) {
@@ -153,9 +149,6 @@
 
             vm.confirm = function () {
                 if (typeof vm.promptOnlyIf !== 'undefined') {
-                    // console.log('vm.promptOnlyIf = ' + vm.promptOnlyIf);
-                    // console.log('vm.isChecked = ' + vm.isChecked);
-
                     var promptIf = !!vm.promptOnlyIf;
 
                     if (!!vm.isChecked !== promptIf) {
@@ -165,18 +158,22 @@
                 }
 
                 var modalInstance = $uibModal.open({
-                    // animation: $scope.animationsEnabled,
                     templateUrl: 'views/common/modal_dialog_with_comment.html',
                     controller: 'ModalDialogWithCommentController',
                     resolve: {
                         comment: function () {
                             return vm.comment;
+                        },
+                        title: function () {
+                            return vm.confirmTitle;
+                        },
+                        message: function () {
+                            return vm.confirmMessage;
                         }
                     }
                 });
 
                 modalInstance.result.then(function (comment) {
-                    $log.info(comment);
                     vm.toggle(comment);
                 });
             };
