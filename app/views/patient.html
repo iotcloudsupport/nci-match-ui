@@ -1,4 +1,4 @@
-<div ng-controller="PatientController">
+<div ng-controller="PatientController" ng-init="loadPatientData()">
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-10">
             <h2>Patient</h2>
@@ -15,8 +15,8 @@
             </ol>
         </div>
     </div>
-                                        
-    <div class="wrapper" ng-init="loadPatientData()">
+
+    <div class="wrapper">
 
         <div class="no-horizontal-padding header-box-container animated fadeInRight">
             <div class="row">
@@ -71,8 +71,8 @@
         </div>
 
         <div class="tabs-container">
-            <tabset>
-                <tab heading="Summary">
+            <uib-tabset>
+                <uib-tab heading="Summary">
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12 center-block">
@@ -201,9 +201,9 @@
                             </div>
                         </div>
                     </div>
-                </tab>
+                </uib-tab>
 
-                <tab heading="Biopsy">
+                <uib-tab heading="Biopsy">
                     <div class="panel-body">
 
                         <div class="ibox-title ibox-title-no-line">
@@ -360,9 +360,9 @@
                             </div>
                         </div>
                     </div>
-                </tab>
+                </uib-tab>
 
-                <tab heading="Variant Report">
+                <uib-tab heading="Variant Report">
                     <div class="panel-body">
 
                         <div class="row">
@@ -464,6 +464,22 @@
 
                         <img src="/img/variant_report.png" ng-if="variantReportMode!=='Qc'" style="width:1200px" />
 
+                        <script type="text/ng-template" id="commentDialog.html">
+                            <div class="modal-header">
+                                <h3 class="modal-title">Edit Reason</h3>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="comment">Confirmation rejection reason:</label>
+                                    <input type="textarea" name="comment" ng-model="comment" class="form-control">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                                <button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
+                            </div>
+                        </script>
+
                         <!--Single Nucleitide Variant(s)-->
                         <div class="ibox-title ibox-title-no-line">
                             <h3>Single Nucleitide Variant(s)</h3>
@@ -473,6 +489,7 @@
                             <thead>
                                 <tr>
                                     <th>Confirm</th>
+                                    <th>Comment</th>
                                     <th>Id</th>
                                     <th>aMOI</th>
                                     <th>Chrom</th>
@@ -492,13 +509,13 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="variant in biopsy.singleNucleitideVariants" style="cursor: auto;" role="row" class="odd">
-                                    <td> 
-                                        <div check-box-with-confirm 
-                                            confirm-title="{{confirmTitle}}"
-                                            confirm-message="{{confirmMessage}}"
-                                            is-checked="variant.confirm"
-                                            set-entered-value="setEnteredValue()">
+                                    <td>
+                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
+                                            on-comment-entered="setComment()" prompt-only-if="true">
                                         </div>
+                                    </td>
+                                    <td>
+                                        <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.id}}</td>
                                     <td>{{::variant.aMOI}}</td>
@@ -575,7 +592,6 @@
                             </tbody>
                         </table>
 
-
                         <!--Copy Number Variant(s)-->
                         <div class="ibox-title ibox-title-no-line">
                             <h3>Copy Number Variant(s)</h3>
@@ -651,18 +667,18 @@
                         <div class="ibox-content ibox-title-no-line" ng-if="variantReport.showActions">
                             <div class="row">
                                 <div class="col-md-6 text-right">
-                                    <button class="btn btn-danger" title="Reject this Report">REJECT</button>
+                                    <button class="btn btn-danger" title="Reject this Report" ng-click="showWarning('Are you sure you want to reject the Variant Report?', 'This will change the report\'s status')">REJECT</button>
                                 </div>
                                 <div class="col-md-6 text-left">
-                                    <button class="btn btn-success" title="Approve this Report">APPROVE</button>
+                                    <button class="btn btn-success" title="Confirm this Report" ng-click="showConfirmation('Pleas confirm Variant Report approval', 'Enter comments')">CONFIRM</button>
                                 </div>
                             </div>
                         </div>
 
                     </div>
-                </tab>
+                </uib-tab>
 
-                <tab heading="Assignment Report">
+                <uib-tab heading="Assignment Report">
                     <div class="panel-body">
 
                         <div class="row button-row">
@@ -793,40 +809,49 @@
                         </table>
 
 
-                        <div class="ibox-content ibox-title-no-line" ng-if="variantReport.showActions">
+                        <div class="ibox-content ibox-title-no-line">
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    <button class="btn btn-success" title="Approve this Report">APPROVE</button>
+                                    <button class="btn btn-success" title="Confirm this Report" ng-click="showConfirmation('Pleas confirm Assignment Variant Report approval', 'Enter comments')">CONFIRM</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </tab>
+                </uib-tab>
 
-                <tab heading="Documents">
+                <uib-tab heading="Documents">
                     <div class="panel-body ">
-                        <div class="ibox-content ">
-                            <div class="list-box ">
-                                <h4>Patient Documents</h4>
 
-                                <ul>
-                                    <li><a>Document 1</a></li>
-                                    <li><a>Document 2</a></li>
-                                    <li><a>Document 3</a></li>
-                                </ul>
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title ibox-title-no-line">
+                                <h3>Patient Documents</h3>
                             </div>
 
-                            <form class="dropzone" method="post" enctype="multipart/form-data" ng-dropzone dropzone="dropzone" dropzone-config="dropzoneConfig"
-                                event-handlers="{ 'addedfile': dzAddedFile, 'error': dzError }">
-                            </form>
+                            <table class="table table-hover" role="grid">
+                                <thead>
+                                    <tr>
+                                        <th width="20%" class="label2 sorting_disabled">Document</th>
+                                        <th width="40%" class="label2 sorting_disabled">Uploaded Date</th>
+                                        <th width="20%" class="label2 sorting_disabled">User</th>
+                                    </tr>
+                                </thead>
 
-                            <!--<form action=" " class="dropzone " drop-zone=" " id="file-dropzone">
-                                <button type="submit" class="btn btn-success pull-right"><i class="fa fa-upload"></i>&nbsp;&nbsp;Upload Selected Files</button>
-                            </form>-->
+                                <tbody>
+                                    <tr ng-repeat="document in patientDocuments" style="cursor: auto;" role="row" class="odd">
+                                        <td>{{::document.name}}</td>
+                                        <td>{{::document.uploadedDate}}</td>
+                                        <td>{{::document.user}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
+
+                        <form class="dropzone" method="post" enctype="multipart/form-data" ng-dropzone dropzone="dropzone" dropzone-config="dropzoneConfig"
+                            event-handlers="{ 'addedfile': dzAddedFile, 'error': dzError }">
+                        </form>
                     </div>
-                </tab>
-            </tabset>
+                </uib-tab>
+            </uib-tabset>
         </div>
     </div>
 </div>

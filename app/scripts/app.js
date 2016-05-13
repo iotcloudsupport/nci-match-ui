@@ -16,6 +16,7 @@
         'filters.matchbox',
         'config.matchbox',
         'http.matchbox',
+        'svg.matchbox',
         'angular-storage',
         'angular-jwt',
         'angular-flot',
@@ -23,6 +24,7 @@
         'ui.bootstrap',
         'cgPrompt',
         'ngDropzone',
-        'ngDropdowns'
+        'ngDropdowns',
+        'ngAnimate'
     ]);
 })();

@@ -26,8 +26,8 @@
     <div class="ibox float-e-margins">
         <div class="ibox-content">
             <div class="tabs-container">
-                <tabset>
-                    <tab heading="Statuses">
+                <uib-tabset>
+                    <uib-tab heading="Statuses">
                         <div class="panel-body" >
                              <!--ng-controller="IrAdminController"-->
                              <!--ng-init="loadHeartBeatList()">-->
@@ -83,20 +83,20 @@
                                 </div>
                             </div>
                         </div>
-                    </tab>
+                    </uib-tab>
 
 
 
-                    <tab heading="Sample Control">
+                    <uib-tab heading="Sample Control">
 
                         <div class="tabs-container">
                         <!--MoCha tabs-->
-                            <tabset>
-                                <tab>
-                                    <tab-heading>
+                            <uib-tabset>
+                                <uib-tab>
+                                    <uib-tab-heading>
                                         <i class="fa fa-puzzle-piece fa-2x"></i>
                                         MoCha
-                                    </tab-heading>
+                                    </uib-tab-heading>
                                     <div class="panel-body">
                                             <div class="panel-group" id="accordion">
                                                 <div class="panel panel-default">
@@ -128,22 +128,24 @@
                                                                 <tbody>
 
                                                                     <tr class="gradeA">
-                                                                        <td>SampleControl_Yale_10</td>
+                                                                        <td>SampleControl_MoCha_10</td>
                                                                         <td>September 18, 2015 3:19 PM GMT</td>
                                                                         <td>ESeptember 18, 2015 3:21 PM GMT</td>
                                                                         <td class="center">
-                                                                            <a ui-sref="index.ngsample({ sampleId: 1031 })"> SampleControl_MoCha_10 </a>
+                                                                            <a ui-sref="index.ngsample({ sampleId: 1031 })"> SampleControl_MoCha_10
+                                                                            </a>
                                                                         </td>
                                                                         <td class="center" style="color:forestgreen">
                                                                             PASSED
                                                                         </td>
                                                                     </tr>
                                                                     <tr class="gradeX">
-                                                                        <td>SampleControl_Yale_11</td>
+                                                                        <td>SampleControl_MoCha_11</td>
                                                                         <td>September 18, 2015 3:19 PM GMT</td>
                                                                         <td>September 18, 2015 3:21 PM GMT</td>
                                                                         <td class="center">
-                                                                            <a ui-sref="index.ngsample({ sampleId: 1031 })"> SampleControl_MoCha_11 </a>
+                                                                            <a ui-sref="index.ngsample({ sampleId: 1031 })"> SampleControl_MoCha_11
+                                                                            </a>
                                                                         </td>
                                                                         <td class="center" style="color:red">
                                                                             FAILED
@@ -388,12 +390,12 @@
                                             </div>
 
                                     </div>
-                                </tab>
-                                <tab>
-                                    <tab-heading>
+                                </uib-tab>
+                                <uib-tab>
+                                    <uib-tab-heading>
                                         <i class="fa fa-cubes fa-2x"></i>
                                         MD Anderson
-                                    </tab-heading>
+                                    </uib-tab-heading>
                                     <div class="panel-body">
                                         <div class="panel-group" id="accordion">
                                             <div class="panel panel-default">
@@ -524,15 +526,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                </tab>
+                                </uib-tab>
 
-                            </tabset>
+                            </uib-tabset>
 
                         </div>
 
-                    </tab>
+                    </uib-tab>
 
-                </tabset>
+                </uib-tabset>
             </div>
         </div>
         </div>

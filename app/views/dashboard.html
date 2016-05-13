@@ -97,8 +97,8 @@
                             </div>
                             <div class="ibox-content">
                                 <div class="tabs-container">
-                                    <tabset>
-                                        <tab heading="Variant Report">
+                                    <uib-tabset>
+                                        <uib-tab heading="Variant Report">
                                             <div class="panel-body"
                                                  ng-controller="DashboardPendingReviewController as DashCtrl"
                                                  ng-init="loadPatientVariantReportsList()">
@@ -131,8 +131,8 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                        </tab>
-                                        <tab heading="Assignment Report">
+                                        </uib-tab>
+                                        <uib-tab heading="Assignment Report">
                                             <div class="panel-body"
                                                  ng-controller="DashboardPendingReviewController as DashCtrl"
                                                  ng-init="loadPatientPendingAssignmentReportsList()">
@@ -159,8 +159,8 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                        </tab>
-                                        <tab heading="Concordance">
+                                        </uib-tab>
+                                        <uib-tab heading="Concordance">
                                             <div class="panel-body"
                                                  ng-controller="DashboardPendingReviewController as DashCtrl"
                                                  ng-init="loadLimboPatientsList()">
@@ -189,8 +189,8 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                        </tab>
-                                        <tab heading="Rejoin Requested">
+                                        </uib-tab>
+                                        <uib-tab heading="Rejoin Requested">
                                             <div class="panel-body"
                                                  ng-controller="DashboardPendingReviewController as DashCtrl"
                                                  ng-init="loadRejoinRequestedPatientsList()">
@@ -217,8 +217,8 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-                                        </tab>
-                                    </tabset>
+                                        </uib-tab>
+                                    </uib-tabset>
                                 </div>
                             </div>
                         </div>

@@ -1,5 +1,7 @@
 angular.module('iradmin.matchbox',[])
-    .controller('IrAdminController', function( $scope, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, irAdminApi) {
+    .controller('IrAdminController',
+        function( $scope, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, irAdminApi, svgApi) {
+
     this.dtOptions = DTOptionsBuilder.newOptions()
         .withDisplayLength(100);
 
@@ -43,6 +45,17 @@ angular.module('iradmin.matchbox',[])
                     });
                 });
             });
+        };
+
+
+        $scope.loadSvgGeneList = function () {
+            svgApi
+                .getSvgGene()
+                .then(function (d) {
+
+
+
+                });
         };
 
 

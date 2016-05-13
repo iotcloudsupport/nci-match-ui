@@ -101,36 +101,6 @@
         }
     }
 
-
-    /**
-     * dropZone - Directive for Drag and drop zone file upload plugin
-     */
-    function dropZone() {
-        return function (scope, element, attrs) {
-            element.dropzone({
-                url: "/upload",
-                maxFilesize: 100,
-                paramName: "uploadfile",
-                maxThumbnailFilesize: 5,
-                init: function () {
-                    scope.files.push({ file: 'added' });
-                    this.on('success', function (file, json) {
-                    });
-                    this.on('addedfile', function (file) {
-                        scope.$apply(function () {
-                            alert(file);
-                            scope.files.push({ file: 'added' });
-                        });
-                    });
-                    this.on('drop', function (file) {
-                        alert('file');
-                    });
-                }
-            });
-        }
-    }
-
-
     /**
      * collapseToggle - Directive for collapse toggle elements in right corner of ibox
      */
@@ -162,36 +132,45 @@
         var controller = function (prompt) {
             var vm = this;
 
-            vm.ischecked = false;
-            vm.confirmTitle = 'Please Confirm';
-            vm.confirmMessage = 'Please enter a reason:';
-            vm.enteredValue = '';
-            vm.setEnteredValue = undefined;
+            vm.toggle = function (comment) {
+                vm.isChecked = !vm.isChecked;
+                vm.comment = comment;
 
-            vm.success = function (value) {
-                console.log('Directive controller success ' + value);
-                vm.ischecked = !vm.ischecked;
-                vm.enteredValue = value;
-                
-                console.log('typeof vm.setEnteredValue = ', typeof vm.setEnteredValue);
-                
-                if (vm.setEnteredValue && typeof vm.setEnteredValue === 'function') {
-                    console.log('Directive.setEnteredValue called with ' + value);
-                    vm.setEnteredValue(value);
+                // console.log('Directive controller isChecked = ' + vm.isChecked);
+                // console.log('vm.onCommentEntered = ', vm.onCommentEntered);
+
+                if (vm.onCommentEntered && typeof vm.onCommentEntered === 'function' && comment !== null) {
+                    // console.log('Directive.onCommentEntered called with ' + comment);
+                    try {
+                        vm.onCommentEntered(comment);                    
+                    } catch(error)
+                    {
+                        if (typeof error === 'object' && 'message' in error && error.message.startsWith('Cannot use \'in\' operator to search for')) {
+                            console.log('Ignored AngularJS error. ' + error);
+                        }
+                    }
                 }
             };
 
-            vm.failure = function () {
-                //console.log('controller failure');
-            };
-
             vm.confirm = function () {
+                if (typeof vm.promptOnlyIf !== 'undefined') {
+                    // console.log('vm.promptOnlyIf = ' + vm.promptOnlyIf);
+                    // console.log('vm.isChecked = ' + vm.isChecked);
+                    
+                    var promptIf = !!vm.promptOnlyIf;
+
+                    if (!!vm.isChecked !== promptIf) {
+                        vm.toggle(null);
+                        return;
+                    }
+                }
+                
                 prompt({
                     title: vm.confirmTitle,
                     message: vm.confirmMessage,
                     input: true
-                }).then(vm.success, vm.failure);
-            };            
+                }).then(vm.toggle);
+            };
         };
 
         var template = '<div class="stacked-container">\
@@ -199,12 +178,11 @@
                         <button type="input" ng-click="vm.confirm()"></button>\
                     </div>\
                     <div class="stacked-back">\
-                        <input type="checkbox" tabindex="-1" ng-model="vm.ischecked">\
+                        <input type="checkbox" tabindex="-1" ng-model="vm.isChecked">\
                     </div>\
                 </div>';
 
         return {
-            //priority: -1,
             restrict: 'A',
             template: template,
             controller: controller,
@@ -214,7 +192,8 @@
                 confirmTitle: '@confirmTitle',
                 confirmMessage: '@confirmMessage',
                 isChecked: '=',
-                setEneredValue: '&'
+                onCommentEntered: '&',
+                promptOnlyIf: '='
             }
         }
     }
@@ -228,50 +207,8 @@
         .directive('pageTitle', pageTitle)
         .directive('sideNavigation', sideNavigation)
         .directive('iboxTools', iboxTools)
-        .directive('dropZone', dropZone)
         .directive('minimalizaSidebar', minimalizaSidebar)
         .directive('collapseToggle', collapseToggle)
         .directive('checkBoxWithConfirm', checkBoxWithConfirm)
-
-})();
-
-
-(function() {
-
-  var app = angular.module('matchbox');
-
-  app.directive('isolateScopeWithController', function () {
-      
-    var controller = ['$scope', function ($scope) {
-
-          function init() {
-              $scope.items = angular.copy($scope.datasource);
-          }
-
-          init();
-
-          $scope.addItem = function () {
-              $scope.add();
-
-              //Add new customer to directive scope
-              $scope.items.push({
-                  name: 'New Directive Controller Item'
-              });
-          };
-      }],
-        
-      template = '<button ng-click="addItem()">Add Item</button><ul>' +
-                 '<li ng-repeat="item in items">{{ ::item.name }}</li></ul>';
-      
-      return {
-          restrict: 'EA', //Default in 1.3+
-          scope: {
-              datasource: '=',
-              add: '&'
-          },
-          controller: controller,
-          template: template
-      };
-  });
 
 }());
