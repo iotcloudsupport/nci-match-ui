@@ -1,6 +1,15 @@
 (function () {
     "use strict";
 
+    angular
+        .module('matchbox')
+        .directive('pageTitle', pageTitle)
+        .directive('sideNavigation', sideNavigation)
+        .directive('iboxTools', iboxTools)
+        .directive('minimalizaSidebar', minimalizaSidebar)
+        .directive('collapseToggleLeft', collapseToggleLeft)
+        .directive('checkBoxWithConfirm', checkBoxWithConfirm);
+        
     /**
      * pageTitle - Directive for set Page title - mata title
      */
@@ -199,22 +208,10 @@
                 confirmMessage: '@confirmMessage',
                 isChecked: '=',
                 onCommentEntered: '&',
-                promptOnlyIf: '='
+                promptOnlyIf: '=',
+                updateObject: '='
             }
         }
     }
-
-    /**
-     *
-     * Pass all functions into module
-     */
-    angular
-        .module('matchbox')
-        .directive('pageTitle', pageTitle)
-        .directive('sideNavigation', sideNavigation)
-        .directive('iboxTools', iboxTools)
-        .directive('minimalizaSidebar', minimalizaSidebar)
-        .directive('collapseToggleLeft', collapseToggleLeft)
-        .directive('checkBoxWithConfirm', checkBoxWithConfirm)
 
 } ());

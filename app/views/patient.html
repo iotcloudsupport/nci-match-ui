@@ -238,11 +238,12 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="header-info-box biopsy-header-box">
+                                    <h4>Pathology</h4>
                                     <dl class="dl-horizontal">
-                                        <dt>Pathalogy Status</dt>
+                                        <dt>Status</dt>
                                         <dd>Agreement on pathalogy</dd>
 
-                                        <dt>Patalogy Received Date</dt>
+                                        <dt>Received Date</dt>
                                         <dd>August 26, 2015 2:57 PM GMT</dd>
 
                                         <dt>Comment</dt>
@@ -560,7 +561,7 @@
                                 <tr ng-repeat="variant in biopsy.singleNucleitideVariants" style="cursor: auto;" role="row" class="odd">
                                     <td ng-if="variantReportMode!=='Qc'">
                                         <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
-                                            on-comment-entered="setComment()" prompt-only-if="true">
+                                            on-comment-entered="setComment(variant)" prompt-only-if="true">
                                         </div>
                                     </td>
                                     <td>

@@ -107,7 +107,7 @@
         function dzError(file, errorMessage) {
             $log.debug(errorMessage);
         }
-
+        
         function setComment(value) {
             $log.debug('User entered un-confirm reason: ' + value);
         }
