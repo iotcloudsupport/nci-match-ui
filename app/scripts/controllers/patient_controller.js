@@ -131,8 +131,8 @@
         function editComment(variant) {
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
-                templateUrl: 'commentDialog.html',
-                controller: 'ModalDialogController',
+                templateUrl: 'views/common/modal_dialog_with_comment.html',
+                controller: 'ModalDialogWithCommentController',
                 resolve: {
                     comment: function () {
                         return variant.comment;
