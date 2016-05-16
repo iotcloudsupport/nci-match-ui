@@ -50,6 +50,21 @@ describe('Controller: Treatment Arm Controller', function () {
                 {
                     name: 'EAY131-A',
                     treatment_arm_status: 'OPEN',
+                    exclusion_drugs: [
+                        {
+                            drugs: [
+                                {drug_id: "750691", name: "Afatinib"}
+                            ]
+                        },
+                        {
+                            drugs:
+                                [
+                                    {drug_id: "781254", name: "Erlotinib"}
+                                ]
+                        }
+
+
+                    ],
                     exclusion_diseases: [
                         {
                             ctep_category: "Non-Small Cell Lung Cancer",
