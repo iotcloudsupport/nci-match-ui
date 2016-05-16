@@ -932,7 +932,7 @@ angular.module('treatment-arm.matchbox',[])
             treatmentArmApi
             .getTreatmentArmDetails(ta)
                 .then(function (d) {
-
+                    console.log(d.data);
                     if (d.data != null) {
 
 
@@ -943,9 +943,28 @@ angular.module('treatment-arm.matchbox',[])
                             $scope.information.genes = d.data.gene;
                             $scope.information.patientsAssigned = d.data.num_patients_assigned;
 
-
+                        var exclusionDrugs = [];
                         var exclusionDiseases = [];
 
+                        angular.forEach(d.data.exclusion_drugs, function(value) {
+                            var exclusionDrug = {};
+                            console.log('each in exclusion drugs array');
+                            console.log(value);
+                            var exclusionDrugId = '';
+                            var exclusionDrugName = '';
+                            angular.forEach(value.drugs, function(value) {
+                                console.log('each in inner array');
+                                console.log(value);
+                                exclusionDrugId = exclusionDrugId + value.drug_id;
+                                exclusionDrugName = exclusionDrugName + value.name;
+
+                            });
+                            exclusionDrug.id = exclusionDrugId;
+                            exclusionDrug.name = exclusionDrugName;
+                            //exclusionDrug.id = value.id;
+                            //exclusionDrug.name = value.name;
+                            exclusionDrugs.push(exclusionDrug);
+                        });
                         angular.forEach(d.data.exclusion_diseases, function(value) {
 
                             var exclusionDisease = {};
@@ -955,9 +974,11 @@ angular.module('treatment-arm.matchbox',[])
                             exclusionDiseases.push(exclusionDisease);
                         });
 
+
                         var version = {};
                         version.name = d.data.version;
                         version.exclusionaryDiseases = exclusionDiseases;
+                        version.exclusionaryDrugs = exclusionDrugs;
                         //console.log('version');
                         //console.log(version);
                         $scope.versions.push(version);
