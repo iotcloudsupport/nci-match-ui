@@ -261,6 +261,11 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                             name: 'datatables',
                             files: ['bower_components/angular-datatables/dist/angular-datatables.min.js']
                         }
+                        // ,
+                        // {
+                        //     name: 'd3BoxVersion5',
+                        //     files: ['../scripts/cnvChart.js']
+                        // }
                     ]);
                 }
             }
