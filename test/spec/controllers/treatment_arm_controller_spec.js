@@ -46,14 +46,41 @@ describe('Controller: Treatment Arm Controller', function () {
 
     it('should populate the treatment details success response', function() {
         httpBackend.when('GET', 'http://server:80/treatmentarmapi/treatmentArms/EAY131-A')
-            .respond([
-                {name: 'MB-S1', currentStatus: 'OPEN'}
-            ]);
+            .respond(
+                {
+                    name: 'EAY131-A',
+                    treatment_arm_status: 'OPEN',
+                    exclusion_drugs: [
+                        {
+                            drugs: [
+                                {drug_id: "750691", name: "Afatinib"}
+                            ]
+                        },
+                        {
+                            drugs:
+                                [
+                                    {drug_id: "781254", name: "Erlotinib"}
+                                ]
+                        }
+
+
+                    ],
+                    exclusion_diseases: [
+                        {
+                            ctep_category: "Non-Small Cell Lung Cancer",
+                            medra_code: "10058354",
+                            short_name: "Bronchioloalveolar carcinoma"
+                        }
+                    ]
+                }
+            );
+
         scope.loadTreatmentArmDetails('EAY131-A');
         //scope.displayTreatmentArmList();
         httpBackend.flush();
 
         expect(scope.test).toBe('test');
+        expect(scope.information.name).toBe('EAY131-A');
         //expect(scope.treatmentArmList.length).toBe(2);
         //expect(scope.treatmentArmList[0].treatmentArmId).toBe('MB-S1');
         //expect(scope.treatmentArmList[1].treatmentArmId).toBe('MB-S2');
@@ -69,7 +96,7 @@ describe('Controller: Treatment Arm Controller', function () {
 
     it('should not populate the treatment arm list on a null', function() {
         httpBackend.when('GET', 'http://server:80/treatmentarmapi/treatmentArms/EAY131-A')
-            .respond("null");
+            .respond(null);
         scope.loadTreatmentArmDetails('EAY131-A');
         httpBackend.flush();
 

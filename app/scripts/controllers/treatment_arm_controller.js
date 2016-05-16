@@ -24,7 +24,7 @@ angular.module('treatment-arm.matchbox',[])
             description: '',
             currentVersion: '2016-03-17',
             genes: '',
-            patientsAssigned: '',
+            patientsAssigned: 0,
             currentStatus: '', //'OPEN',
             drug: 'AZD9291 (781254)'
         };
@@ -38,6 +38,12 @@ angular.module('treatment-arm.matchbox',[])
             alt: 'Alternative',
             lit: 'Lit Ref'
         };
+
+        $scope.drugsDiseases = [
+            {
+
+            }
+        ];
 
         $scope.versions = [];
         /*
@@ -926,13 +932,8 @@ angular.module('treatment-arm.matchbox',[])
             treatmentArmApi
             .getTreatmentArmDetails(ta)
                 .then(function (d) {
-                    console.log('taDetails');
-                    console.log('d');
-                    console.log(d);
-                    console.log('d.data');
                     console.log(d.data);
-
-                    if (d.data != "null") {
+                    if (d.data != null) {
 
 
                             $scope.information.currentStatus = d.data.treatment_arm_status;
@@ -942,15 +943,55 @@ angular.module('treatment-arm.matchbox',[])
                             $scope.information.genes = d.data.gene;
                             $scope.information.patientsAssigned = d.data.num_patients_assigned;
 
+                        var exclusionDrugs = [];
+                        var exclusionDiseases = [];
+
+                        angular.forEach(d.data.exclusion_drugs, function(value) {
+                            var exclusionDrug = {};
+                            console.log('each in exclusion drugs array');
+                            console.log(value);
+                            var exclusionDrugId = '';
+                            var exclusionDrugName = '';
+                            angular.forEach(value.drugs, function(value) {
+                                console.log('each in inner array');
+                                console.log(value);
+                                exclusionDrugId = exclusionDrugId + value.drug_id;
+                                exclusionDrugName = exclusionDrugName + value.name;
+
+                            });
+                            exclusionDrug.id = exclusionDrugId;
+                            exclusionDrug.name = exclusionDrugName;
+                            //exclusionDrug.id = value.id;
+                            //exclusionDrug.name = value.name;
+                            exclusionDrugs.push(exclusionDrug);
+                        });
+                        angular.forEach(d.data.exclusion_diseases, function(value) {
+
+                            var exclusionDisease = {};
+                            exclusionDisease.medraCode = value.medra_code;
+                            exclusionDisease.ctepCategory = value.ctep_category;
+                            exclusionDisease.ctepTerm = value.short_name;
+                            exclusionDiseases.push(exclusionDisease);
+                        });
+
+
                         var version = {};
                         version.name = d.data.version;
+                        version.exclusionaryDiseases = exclusionDiseases;
+                        version.exclusionaryDrugs = exclusionDrugs;
                         //console.log('version');
                         //console.log(version);
                         $scope.versions.push(version);
                         //console.log($scope.versions);
+                        $scope.information.currentVersion = $scope.versions[0].name;
+
+
                     }
                     $scope.test = "test";
                     $scope.selectedVersion = $scope.versions[0];
+
+
+
 
                 });
         };
