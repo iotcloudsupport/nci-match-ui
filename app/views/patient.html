@@ -48,22 +48,22 @@
                     <div class="header-info-box top-main-header-box">
                         <dl class="dl-horizontal">
                             <dt>Disease</dt>
-                            <dd>Invasive Breast Carcinoma</dd>
+                            <dd>{{::patient.disease.name}}</dd>
 
                             <dt>CTEP Category</dt>
-                            <dd>Breast Neoplasm</dd>
+                            <dd>{{::patient.disease.ctepCategory}}</dd>
 
                             <dt>CTEP Sub Category</dt>
-                            <dd>Breast Cancer - Invasive</dd>
+                            <dd>{{::patient.disease.ctepSubCategory}}</dd>
 
                             <dt>CTEP Term</dt>
-                            <dd>Invasive Breast Carcinoma</dd>
+                            <dd>{{::patient.disease.ctepTerm}}</dd>
 
                             <dt>MedDRA Code</dt>
-                            <dd>100006190</dd>
+                            <dd>{{::patient.disease.medDraCode}}</dd>
 
                             <dt>Prior Drugs</dt>
-                            <dd>Aspirin, Motrin, Vitamin C</dd>
+                            <dd>{{::patient.drugs.join(', ')}}</dd>
                         </dl>
                     </div>
                 </div>
@@ -208,7 +208,7 @@
 
                         <div class="ibox-title ibox-title-no-line">
                             <h3>
-                                <span class="drop-down-label">Biopsy Report</span>                                
+                                <span class="drop-down-label">Biopsy</span>                                
                                 <div dropdown-select="biopsyReports " dropdown-model="biopsyReport" dropdown-item-label="text">
                                 </div>
                             </h3>
@@ -217,16 +217,16 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="header-info-box biopsy-header-box">
-                                    <h4>Speciment</h4>
+                                    <h4>Specimen</h4>
                                     <dl class="dl-horizontal">
                                         <dt>Collection Date</dt>
-                                        <dd>August 26, 2015 2:57 PM GMT</dd>
+                                        <dd>{{::biopsy.specimen.collectionDate}}</dd>
 
                                         <dt>Received Date</dt>
-                                        <dd>August 26, 2015 2:57 PM GMT</dd>
+                                        <dd>{{::biopsy.specimen.receivedDate}}</dd>
 
                                         <dt>Failure Date</dt>
-                                        <dd>-</dd>
+                                        <dd>{{::biopsy.specimen.failureDate}}</dd>
                                     </dl>
                                 </div>
                             </div>
@@ -235,13 +235,13 @@
                                     <h4>Pathology</h4>
                                     <dl class="dl-horizontal">
                                         <dt>Status</dt>
-                                        <dd>Agreement on pathalogy</dd>
+                                        <dd>{{::biopsy.pathology.status}}</dd>
 
                                         <dt>Received Date</dt>
-                                        <dd>August 26, 2015 2:57 PM GMT</dd>
+                                        <dd>{{::biopsy.pathology.receivedDate}}</dd>
 
                                         <dt>Comment</dt>
-                                        <dd>-</dd>
+                                        <dd>{{::biopsy.pathology.comment}}</dd>
                                     </dl>
                                 </div>
                             </div>
@@ -467,10 +467,10 @@
                                 <div class="header-info-box  variant-report-header-box">
                                     <dl class="dl-horizontal">
                                         <dt>Biopsy Sequence Number</dt>
-                                        <dd>{{variantReport.biopsySequenceNumber}}</dd>
+                                        <dd>{{::variantReport.biopsySequenceNumber}}</dd>
 
                                         <dt>Analysis Id</dt>
-                                        <dd>{{variantReport.analysisId}}</dd>
+                                        <dd>{{::variantReport.analysisId}}</dd>
 
                                         <dt>Files</dt>
                                         <dd>
@@ -485,7 +485,7 @@
                                         </dd>
 
                                         <dt>File Received Date</dt>
-                                        <dd>{{variantReport.fileReceivedDate}}</dd>
+                                        <dd>{{::variantReport.fileReceivedDate}}</dd>
 
                                         <dt ng-show="variantReport.confirmedRejectedDate">{{variantReport.confirmedRejectedDateLabel}}</dt>
                                         <dd ng-show="variantReport.confirmedRejectedDate">{{variantReport.confirmedRejectedDate}}</dd>
@@ -500,10 +500,10 @@
 
                                     <dl class="dl-horizontal dl-horizontal-expanded-label">
                                         <dt>Total Variants</dt>
-                                        <dd>{{variantReport.totalVariants}}</dd>
+                                        <dd>{{::variantReport.totalVariants}}</dd>
 
                                         <dt>Cellularity</dt>
-                                        <dd>{{variantReport.cellularity}}</dd>
+                                        <dd>{{::variantReport.cellularity}}</dd>
                                     </dl>
 
                                     <h4>MOI/aMOI Summary</h4>
@@ -755,19 +755,16 @@
                                 <div class="header-info-box assignment-header-box">
                                     <dl class="dl-horizontal">
                                         <dt>Biopsy Sequence Number</dt>
-                                        <dd>T-15-000078</dd>
+                                        <dd>{{::assignmentReport.biopsySequenceNumber}}</dd>
 
                                         <dt>Molecular Sequence Number</dt>
-                                        <dd><a>MSN34534</a></dd>
+                                        <dd><a>{{::assignmentReport.molecularSequenceNumber}}</a></dd>
 
                                         <dt>Analysis Id</dt>
-                                        <dd><a>MSN34534_v2_kjdf3-kejrt-3425-mnb34ert34f</a></dd>
-
-                                        <dt>Variant Report</dt>
-                                        <dd><a>Click Here</a></dd>
+                                        <dd><a>{{::assignmentReport.analysisId}}</a></dd>
 
                                         <dt>Variant Report aMOI(s)</dt>
-                                        <dd><a>[COSM12344]</a>, p.S310Y (<a>CISM23423</a>)</dd>
+                                        <dd><a ng-repeat="amoi in assignmentReport.variantReportaMOIs">{{amoi.title}}{{$last ? '' : ', '}}</a></dd>
                                     </dl>
                                 </div>
                             </div>
@@ -776,16 +773,16 @@
                                     <h4>Assignment</h4>
                                     <dl class="dl-horizontal">
                                         <dt>Generated date</dt>
-                                        <dd>Sep 29, 2015 9:00 PM GMT</dd>
+                                        <dd>{{::assignmentReport.generatedDate}}</dd>
 
                                         <dt>Confirmed date</dt>
-                                        <dd>Sep 30, 2015 10:00 PM GMT</dd>
+                                        <dd>{{::assignmentReport.confirmedDate}}</dd>
 
                                         <dt>Sent to COG date</dt>
-                                        <dd>-</dd>
+                                        <dd>{{::assignmentReport.sentToCogDate}}</dd>
 
                                         <dt>Received from COG date</dt>
-                                        <dd>-</dd>
+                                        <dd>{{::assignmentReport.receivedFromCogDate}}</dd>
                                     </dl>
                                 </div>
                             </div>

@@ -19,44 +19,20 @@
                     currentStep: 1,
                     status: 'REGISTRATION',
                     concordance: 'Yes',
-                    diseases: [
-                        { name: 'Invasive breast cancer', medDraCode: 1000961 }
-                    ],
+                    disease: {
+                        name: 'Invasive Breast Carcinoma',
+                        ctepCategory: 'Breast Neoplasm',
+                        ctepSubCategory: 'Breast Cancer - Invasive<',
+                        ctepTerm: 'Invasive Breast Carcinoma',
+                        medDraCode: '1000961'
+                    },
                     treatmentArm: 'EAY131-B',
                     assignment: { id: 123, reason: 'The patient arm match on variant indetifier [ABC, EDF]' },
-                    drugs: ['Drug 1', 'Drug 2', 'Drug 3'],
+                    drugs: ['Aspirin', 'Motrin', 'Vitamin D'],
                     documents: [
                         { url: 'url1', title: 'Document 1' },
                         { url: 'url2', title: 'Document 2' },
                         { url: 'url3', title: 'Document 3' }
-                    ],
-                    steps: [
-                        {
-                            stepNumber: 0,
-                            subSteps: [
-                                {
-                                    status: 'REGISTRATION',
-                                    treatmentArm: 'EAY131-B',
-                                    variantReport: 'reportLink',
-                                    assignmentReport: 'reportLink',
-                                    statusDate: 'Sep 29, 2015, 9:00 PM'
-                                },
-                                {
-                                    status: 'PENDING APPROVAL',
-                                    treatmentArm: 'EAY131-B',
-                                    variantReport: 'reportLink',
-                                    assignmentReport: 'reportLink',
-                                    statusDate: 'Sep 30, 2015, 9:00 PM'
-                                },
-                                {
-                                    status: 'ON_TREATMENT_ARM',
-                                    treatmentArm: 'EAY131-B',
-                                    variantReport: 'reportLink',
-                                    assignmentReport: 'reportLink',
-                                    statusDate: 'Oct 1, 2015, 9:00 PM'
-                                }
-                            ]
-                        }
                     ]
                 }
 
@@ -112,11 +88,22 @@
                         ]
                     }
                 ];
-                
-                data.currentSendout = data.sendouts[data.sendouts.length - 1]; 
+
+                data.currentSendout = data.sendouts[data.sendouts.length - 1];
                 data.currentSendout.currentAnalisys = data.currentSendout.analyses[data.currentSendout.analyses.length - 1];
 
+                data.biopsyReport = { text: 'T-15-000078', value: 'Version1' };
+
+                data.biopsyReports = [
+                    { text: 'T-15-000078', value: 'Version1' },
+                    { text: 'T-15-000079', value: 'Version2' },
+                    { text: 'T-15-000082', value: 'Version3' }
+                ];
+
                 data.biopsy = {
+                    specimen: { collectionDate: 'August 26, 2015 2:57 PM GMT', receivedDate: 'August 26, 2015 2:57 PM GMT', failureDate: '-' },
+                    pathology: { status: 'Agreement on pathalogy', receivedDate: 'August 26, 2015 2:57 PM GMT', comment: '-' },
+
                     singleNucleitideVariants: [
                         {
                             confirm: true,
@@ -255,6 +242,19 @@
                 data.variantReportOption = { text: 'MSN-000078', value: 'Msn1' };
 
                 data.assignmentReport = {
+                    generatedDate: 'Sep 29, 2015 9:00 PM GMT',
+                    confirmedDate: 'Sep 30, 2015 10:00 PM GMT',
+                    sentToCogDate: '-',
+                    receivedFromCogDate: '-',
+                    biopsySequenceNumber: 'T-15-000078',
+                    molecularSequenceNumber: 'MSN34534',
+                    analysisId: 'MSN34534_v2_kjdf3-kejrt-3425-mnb34ert34f',
+                    variantReportaMOIs: [
+                        { title: '[COSM12344]', url: '' },
+                        { title: 'p.S310Y', url: '' },
+                        { title: 'CISM23423', url: '' }
+                    ],
+
                     assays: [
                         { gene: 'MSH2', result: 'Not Applicable', comment: 'Biopsy received prior to bimarker launch date' },
                         { gene: 'PTENs', result: 'POSITIVE', comment: '-' },
@@ -262,14 +262,6 @@
                         { gene: 'RB', result: 'Not Applicable', comment: 'Biopsy received prior to bimarker launch date' }
                     ]
                 };
-
-                data.biopsyReport = { text: 'T-15-000078', value: 'Version1' };
-
-                data.biopsyReports = [
-                    { text: 'T-15-000078', value: 'Version1' },
-                    { text: 'T-15-000079', value: 'Version2' },
-                    { text: 'T-15-000082', value: 'Version3' }
-                ];
 
                 data.patientDocuments = [
                     { name: 'Document 1', uploadedDate: 'Oct 2, 1956 10:00 PM GMT', user: 'James Bond' },
