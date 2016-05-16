@@ -41,6 +41,7 @@
         $scope.showWarning = showWarning;
         $scope.showConfirmation = showConfirmation;
         $scope.editComment = editComment;
+        $scope.confirmVariantReport = confirmVariantReport;
 
         function setVariantReportType(reportType) {
             if ($scope.variantReportType === reportType) {
@@ -148,6 +149,20 @@
             modalInstance.result.then(function (comment) {
                 variant.comment = comment;
                 $log.info(comment);
+            });
+        }
+        
+        function confirmVariantReport() {
+            prompt({
+                title: 'Please confirm Variant Report approval',
+                message: 'Enter comments',
+                input: true,
+                buttons: [{ label:'OK', primary: true }, { label:'Cancel', cancel: true }]
+            }).then(function (comment) {
+                if (!$scope.variantReport) {
+                    $log.error('Current Variant Report is not set');
+                }              
+                $scope.variantReport.status = 'CONFIRMED';
             });
         }
     }
