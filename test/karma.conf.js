@@ -34,6 +34,7 @@ module.exports = function(config) {
       '../bower_components/flot/jquery.flot.pie.js',
       '../bower_components/flot/jquery.flot.resize.js',
       '../bower_components/angular-flot/angular-flot.js',
+      '../bower_components/d3/d3.js',
       // matchbox custom scripts
       '../app/scripts/**/*.js',
       // matchbox custom script specs
