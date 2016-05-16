@@ -142,13 +142,19 @@
                 resolve: {
                     comment: function () {
                         return variant.comment;
-                    }
+                    },
+                    title: function () {
+                        return $scope.confirmTitle;
+                    },
+                    message: function () {
+                        return $scope.confirmMessage;
+                    }                    
                 }
             });
 
             modalInstance.result.then(function (comment) {
                 variant.comment = comment;
-                $log.info(comment);
+                $log.debug(comment);
             });
         }
         
