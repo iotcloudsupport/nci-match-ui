@@ -58,11 +58,6 @@ angular.module('iradmin.matchbox',[])
 
                     $window.d3BoxVersion5(d.data);
 
-                    // var mapd = d.data.mapd;
-                    // var cellularity = d.data.cellularity;
-                    // var tvcVersion = d.data.tvcVersion;
-                    // var screenwidth = $(D3BoxPanel).parent().width();
-                    //
                     // GeneSvg.buildGeneChartVersion5(d.data.parsedVCFGenes,mapd,cellularity,tvcVersion,screenwidth);
                 });
         };
