@@ -9,7 +9,7 @@
         .filter('concordance', concordance);
 
     function isNotString(text) { 
-        return !text || typeof text !== "string";
+        return typeof text !== "string";
     }
 
     function gmt() {
