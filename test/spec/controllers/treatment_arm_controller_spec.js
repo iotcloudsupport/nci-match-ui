@@ -44,6 +44,56 @@ describe('Controller: Treatment Arm Controller', function () {
         httpBackend.verifyNoOutstandingRequest();
     });
 
+    it('should handle a data null response', function() {
+        httpBackend.when('GET', 'http://server:80/treatmentarmapi/treatmentArms/EAY131-A')
+            .respond([
+                {
+                    "data": null
+                }
+            ]);
+        scope.loadTreatmentArmDetails('EAY131-A');
+        httpBackend.flush();
+
+        expect(scope.test).toBe('test');
+    });
+
+    it('should handle an undefined variant report', function() {
+        httpBackend.when('GET', 'http://server:80/treatmentarmapi/treatmentArms/EAY131-A')
+            .respond([
+                {
+                    "data": {
+                        name: 'EAY131-A',
+                        treatment_arm_status: 'OPEN',
+                        exclusion_drugs: [
+                            {
+                                drugs: [
+                                    {drug_id: "750691", name: "Afatinib"}
+                                ]
+                            },
+                            {
+                                drugs:
+                                    [
+                                        {drug_id: "781254", name: "Erlotinib"}
+                                    ]
+                            }
+                        ],
+                        exclusion_diseases: [
+                            {
+                                ctep_category: "Non-Small Cell Lung Cancer",
+                                medra_code: "10058354",
+                                short_name: "Bronchioloalveolar carcinoma"
+                            }
+                        ]
+                    }
+                }
+            ]);
+
+        scope.loadTreatmentArmDetails('EAY131-A');
+        httpBackend.flush();
+
+        expect(scope.test).toBe('test');
+    });
+
     it('should populate the treatment details success response', function() {
         httpBackend.when('GET', 'http://server:80/treatmentarmapi/treatmentArms/EAY131-A')
             .respond([{
@@ -230,7 +280,12 @@ describe('Controller: Treatment Arm Controller', function () {
         scope.setInExclusionType('active');
         scope.setInExclusionType('active');
         console.log(scope.inExclusion);
-    })
+    });
+
+    it('should create the right links', function() {
+        scope.openGene('EGFR');
+        scope.openId('COSM746');
+    });
 
 });
 
