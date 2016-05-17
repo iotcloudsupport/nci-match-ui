@@ -79,12 +79,22 @@
 
                                 </div>
                             </div>
+                            <!--
+                            <h2>
+                                <span class="drop-down-label">Variant Report</span>
+                                <div dropdown-select="variantReportOptions " dropdown-model="variantReportOption" dropdown-item-label="text">
+                                </div>
+                            </h2>
+                            $scope.variantReportOptions = data.variantReportOptions;
+                            $scope.variantReportOption = data.variantReportOption;
+                            -->
                             <div class="col-lg-6">
                                 <div>
                                     <ul class="list-group clear-list m-t">
                                         <li class="list-group-item">
                                             <span class="pull-right">
                                                 <select ng-model="selectedVersion" ng-options="version.name for version in versions"></select>
+                                                <!--<div dropdown-select="versionNames" dropdown-model="selectedVersion" dropdown-item-label="text"></div>-->
                                             </span>
                                             <span class="label label-info" style="margin:0 8px 0 0">
                                                 <i class="fa fa-medkit"></i>
