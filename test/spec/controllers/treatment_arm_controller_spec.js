@@ -94,6 +94,98 @@ describe('Controller: Treatment Arm Controller', function () {
                                 position: "55259588",
                                 reference: "T"
                             }
+                        ],
+                        indels: [
+                            {
+                                alternative: "C",
+                                chromosome: "chr7",
+                                description: "p.K734_E739del",
+                                gene_name: "EGFR",
+                                identifier: "COSM20649",
+                                inclusion: true,
+                                level_of_evidence: "1.0",
+                                position: "55242462",
+                                reference: "CAAGAATTGACA",
+                            },
+                            {
+                                alternative: "C",
+                                chromosome: "chr7",
+                                description: "p.K734_E739del",
+                                gene_name: "EGFR",
+                                identifier: "COSM20649",
+                                inclusion: false,
+                                level_of_evidence: "1.0",
+                                position: "55242462",
+                                reference: "CAAGAATTGACA",
+                            }
+                        ],
+                        copy_number_variants: [
+                            {
+                                alternative: null,
+                                chromosome: null,
+                                description: "PIK3CA amplification",
+                                gene_name: "PIK3CA",
+                                identifier: "PIK3CA",
+                                inclusion: true,
+                                level_of_evidence: "3.0",
+                                position: null,
+                                reference: null
+                            },
+                            {
+                                alternative: null,
+                                chromosome: null,
+                                description: "PIK3CA amplification",
+                                gene_name: "PIK3CA",
+                                identifier: "PIK3CA",
+                                inclusion: false,
+                                level_of_evidence: "3.0",
+                                position: null,
+                                reference: null
+                            }
+                        ],
+                        gene_fusions: [
+                            {
+                                alternative: null,
+                                chromosome: null,
+                                description: "KIAA1569-BRAF.K15B11",
+                                gene_name: "BRAF",
+                                identifier: "KIAA1549-BRAF.K15B11",
+                                inclusion: true,
+                                level_of_evidence: "3.0",
+                                position: null,
+                                reference: null
+                            },
+                            {
+                                alternative: null,
+                                chromosome: null,
+                                description: "KIAA1569-BRAF.K15B11",
+                                gene_name: "BRAF",
+                                identifier: "KIAA1549-BRAF.K15B11",
+                                inclusion: false,
+                                level_of_evidence: "3.0",
+                                position: null,
+                                reference: null
+                            }
+                        ],
+                        non_hotspot_rules: [
+                            {
+                                exon: "20",
+                                function: "nonframeshiftInsertion",
+                                gene: "EGFR",
+                                inclusion: true,
+                                level_of_evidence: "2.0",
+                                oncominevariantclass: null,
+                                protein_match: null
+                            },
+                            {
+                                exon: "20",
+                                function: "nonframeshiftInsertion",
+                                gene: "EGFR",
+                                inclusion: false,
+                                level_of_evidence: "2.0",
+                                oncominevariantclass: null,
+                                protein_match: null
+                            }
                         ]
                     }
                 }
