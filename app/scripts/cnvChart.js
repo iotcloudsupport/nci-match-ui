@@ -33,9 +33,6 @@ function d3BoxVersion5(data) {
 
     var tsg_genes = [];
 
-
-
-
     //Generate gene values for processing
     $.each(data.parsedVCFGenes, function(index, value) {
         var tsg = value.tsgGene;
@@ -58,9 +55,6 @@ function d3BoxVersion5(data) {
         d3data[counter][0] = [genes[counter][0], genes[counter][1]];
         d3data[counter][1] = [0]; //put in a dummy 0 to avoid empty data for non-matched genes
     }
-
-
-
 
     for (var counter = 0; counter < data.parsedVCFGenes.length; counter++){
         var currentGene = data.parsedVCFGenes[counter].gene;
@@ -185,6 +179,17 @@ function d3BoxVersion5(data) {
         .call(chart.width(x.rangeBand()))
         .on("click", function(){
         });
+
+    //Set cnv chart location and render position
+    var svg_height = height + 200;
+    var svg_width = width + 100;
+
+    d3.select("svg#D3Box")
+        //responsive SVG needs these 2 attributes and no width and height attr
+        .attr("viewBox", "0 0 " + svg_width + " " + svg_height)
+        //class to make it responsive
+        .classed("svg-content-responsive", true);
+
 
     //Hover overs
     $.each(genes, function(index, value) {
