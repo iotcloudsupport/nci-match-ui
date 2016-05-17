@@ -46,6 +46,7 @@ angular.module('treatment-arm.matchbox',[])
         ];
 
         $scope.versions = [];
+        $scope.versionNames = [];
 
         $scope.setInExclusionType = setInExclusionType;
         $scope.getInExclusionTypeClass = getInExclusionTypeClass;
@@ -551,7 +552,7 @@ angular.module('treatment-arm.matchbox',[])
             $window.open("http://www.ncbi.nlm.nih.gov/pubmed/?term="+data, '_blank');
 
         };
-
+*/
         $scope.openGene = function(data) {
             $window.open('http://cancer.sanger.ac.uk/cosmic/gene/overview?ln='+data.toLowerCase(), '_blank');
         };
@@ -580,7 +581,7 @@ angular.module('treatment-arm.matchbox',[])
                 }
             }
         };
-*/
+
         $scope.pieDataset = [
             {
                 label: "ON_TREATMENT_ARM",
@@ -1002,7 +1003,7 @@ angular.module('treatment-arm.matchbox',[])
 
 
                             var version = {};
-                            version.name = d.data.version;
+                            version.name = value.data.version;
                             version.exclusionaryDiseases = exclusionDiseases;
                             version.exclusionaryDrugs = exclusionDrugs;
                             version.snvsInclusion = snvsInclusion;
@@ -1019,10 +1020,11 @@ angular.module('treatment-arm.matchbox',[])
                             console.log(version.snvsInclusion);
                             console.log('exclusion');
                             console.log(version.snvsExclusion);
-                            //console.log('version');
-                            //console.log(version);
+                            console.log('version');
+                            console.log(version);
                             $scope.versions.push(version);
-                            //console.log($scope.versions);
+                            $scope.versionNames.push(value.data.version);
+                            console.log($scope.versions);
                             $scope.information.currentVersion = $scope.versions[0].name;
 
 
