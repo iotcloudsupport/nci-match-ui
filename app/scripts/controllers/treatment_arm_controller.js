@@ -5,10 +5,10 @@ angular.module('treatment-arm.matchbox',[])
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withOption('paging', false);
 
-
-        this.activeChoice = 'inclusion';
-
-        /*this.ddOptions = DTOptionsBuilder.newOptions()
+    /*this.dtColumnDefs = [];
+        this.activeChoice = 'inclusion';*/
+        /*
+        this.ddOptions = DTOptionsBuilder.newOptions()
             .withOption('paging', false)
             .withOption('info', false)
             .withOption('bFilter', false);
@@ -22,10 +22,10 @@ angular.module('treatment-arm.matchbox',[])
         $scope.information = {
             name: '',
             description: '',
-            currentVersion: '2016-03-17',
+            currentVersion: '',
             genes: '',
             patientsAssigned: 0,
-            currentStatus: '', //'OPEN',
+            currentStatus: '',
             drug: 'AZD9291 (781254)'
         };
 
@@ -44,6 +44,15 @@ angular.module('treatment-arm.matchbox',[])
 
             }
         ];
+        
+        $scope.versionHistory = {
+            versionStatus: 'OPEN',
+            history: [
+                {status: 'PENDING', date: 'March 02, 2016 4:00AM GMT'},
+                {status: 'READY', date: 'March 09, 2016 10:10PM GMT'},
+                {status: 'OPEN', date: 'March 17, 2016 10:10PM GMT'},
+            ]
+        };
 
         $scope.versions = [];
         $scope.versionNames = [];
