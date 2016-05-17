@@ -102,7 +102,7 @@
 
                                         </li>
                                         <li class="list-group-item">
-                                            <span class="pull-right"> {{selectedVersion.versionStatus}}</span>
+                                            <span class="pull-right"> {{versionHistory.versionStatus}}</span>
                                             <span class="label label-info" style="margin:0 8px 0 0">
                                                 <i class="fa fa-medkit"></i>
                                             </span> Version Status
@@ -122,7 +122,7 @@
                                                 </thead>
                                                 <tbody>
 
-                                                <tr ng-model="version" ng-repeat="item in selectedVersion.history">
+                                                <tr ng-model="version" ng-repeat="item in versionHistory.history">
                                                     <td>{{item.status || '-'}}</td>
                                                     <td>{{item.date || '-'}}</td>
                                                 </tr>
@@ -192,7 +192,7 @@
                                             <thead>
                                             <tr>
                                                 <th>Slot</th>
-                                                <th>PSN <i popover={{tooltipContent.psn}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                <th>PSN <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.psn}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                 <th>TA Version</th>
                                                 <th>Patient Assignment Status Outcome</th>
                                                 <th>Assignment Logic</th>
@@ -385,12 +385,12 @@
                                                                 <tr>
                                                                     <th>ID</th>
                                                                     <th>Gene</th>
-                                                                    <th>LOE <i popover={{tooltipContent.loe}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>CHR <i popover={{tooltipContent.chr}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>POS <i popover={{tooltipContent.pos}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>REF <i popover={{tooltipContent.ref}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>ALT <i popover={{tooltipContent.alt}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>LIT <i popover={{tooltipContent.lit}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>CHR <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.chr}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>POS <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>REF <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.ref}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>ALT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Protein</th>
                                                                     <th>Total # Patients Current And Former With Variant</th>
                                                                     <th>Patients Current And Former With Variant Assigned To This Arm</th>
@@ -436,12 +436,12 @@
                                                                 <tr>
                                                                     <th>ID</th>
                                                                     <th>Gene</th>
-                                                                    <th>LOE <i popover={{tooltipContent.loe}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>CHR <i popover={{tooltipContent.chr}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>POS <i popover={{tooltipContent.pos}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>REF <i popover={{tooltipContent.ref}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>ALT <i popover={{tooltipContent.alt}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>LIT <i popover={{tooltipContent.lit}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>CHR <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.chr}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>POS <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>REF <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.ref}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>ALT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Protein</th>
                                                                 </tr>
                                                                 </thead>
@@ -505,12 +505,12 @@
                                                                 <tr>
                                                                     <th>ID</th>
                                                                     <th>Gene</th>
-                                                                    <th>LOE <i popover={{tooltipContent.loe}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>CHR <i popover={{tooltipContent.chr}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>POS <i popover={{tooltipContent.pos}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>REF <i popover={{tooltipContent.ref}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>ALT <i popover={{tooltipContent.alt}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>LIT <i popover={{tooltipContent.lit}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>CHR <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.chr}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>POS <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>REF <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.ref}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>ALT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Protein</th>
                                                                     <th>Total # Patients Current And Former With Variant</th>
                                                                     <th>Patients Current And Former With Variant Assigned To This Arm</th>
@@ -555,12 +555,12 @@
                                                                 <tr>
                                                                     <th>ID</th>
                                                                     <th>Gene</th>
-                                                                    <th>LOE <i popover={{tooltipContent.loe}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>CHR <i popover={{tooltipContent.chr}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>POS <i popover={{tooltipContent.pos}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>REF <i popover={{tooltipContent.ref}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>ALT <i popover={{tooltipContent.alt}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>LIT <i popover={{tooltipContent.lit}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>CHR <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.chr}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>POS <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>REF <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.ref}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>ALT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Protein</th>
                                                                 </tr>
                                                                 </thead>
@@ -622,10 +622,10 @@
                                                                 <thead>
                                                                 <tr>
                                                                     <th>Gene</th>
-                                                                    <th>LOE <i popover={{tooltipContent.loe}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>CHR <i popover={{tooltipContent.chr}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>POS <i popover={{tooltipContent.pos}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>LIT <i popover={{tooltipContent.lit}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>CHR <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.chr}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>POS <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Protein</th>
                                                                     <th>Total # Patients Current And Former With Copy Number</th>
                                                                     <th>Patients Current And Former With Copy Number Assigned To This Arm</th>
@@ -666,10 +666,10 @@
                                                                 <thead>
                                                                 <tr>
                                                                     <th>Gene</th>
-                                                                    <th>LOE <i popover={{tooltipContent.loe}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>CHR <i popover={{tooltipContent.chr}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>POS <i popover={{tooltipContent.pos}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>LIT <i popover={{tooltipContent.lit}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>CHR <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.chr}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>POS <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Protein</th>
                                                                 </tr>
                                                                 </thead>
@@ -729,8 +729,8 @@
                                                                 <tr>
                                                                     <th>ID</th>
                                                                     <th>Gene</th>
-                                                                    <th>LOE <i popover={{tooltipContent.loe}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>LIT <i popover={{tooltipContent.lit}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Total # Patients Current and Former With Gene Fusion</th>
                                                                     <th>Patients Current And Former With Gene Fusion Assigned To This Arm</th>
                                                                     <th>% Of Patients Current And Former With Gene Fusion On Arm Of Total Patients With Gene Fusion</th>
@@ -769,8 +769,8 @@
                                                                 <tr>
                                                                     <th>ID</th>
                                                                     <th>Gene</th>
-                                                                    <th>LOE <i popover={{tooltipContent.loe}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>LIT <i popover={{tooltipContent.lit}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -828,9 +828,9 @@
                                                                 <tr>
                                                                     <th>Oncomine Variant Class</th>
                                                                     <th>Gene</th>
-                                                                    <th>LOE <i popover={{tooltipContent.loe}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Function</th>
-                                                                    <th>LIT <i popover={{tooltipContent.lit}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>PROTEIN</th>
                                                                     <th>Exon</th>
                                                                     <th>Protein Regex</th>
@@ -870,9 +870,9 @@
                                                                 <tr>
                                                                     <th>Oncomine Variant Class</th>
                                                                     <th>Gene</th>
-                                                                    <th>LOE <i popover={{tooltipContent.loe}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Function</th>
-                                                                    <th>LIT <i popover={{tooltipContent.lit}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>PROTEIN</th>
                                                                     <th>Exon</th>
                                                                     <th>Protein Regex</th>
@@ -938,7 +938,7 @@
                                                                     <th>Gene</th>
                                                                     <th>Result</th>
                                                                     <th>Variant Association</th>
-                                                                    <th>LOE <i popover={{tooltipContent.loe}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Total # Patients Current And Former With Gene</th>
                                                                     <th>Patients Current And Former With Gene Assigned To This Arm</th>
                                                                     <th>% Of Patients Current And Former With Gene On Arm Of Total Patients With Variant</th>
@@ -974,7 +974,7 @@
                                                                     <th>Gene</th>
                                                                     <th>Result</th>
                                                                     <th>Variant Association</th>
-                                                                    <th>LOE <i popover={{tooltipContent.loe}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
