@@ -6,7 +6,8 @@
         .filter('status', status)
         .filter('analysisStatus', analysisStatus)
         .filter('assayStatus', assayStatus)
-        .filter('concordance', concordance);
+        .filter('concordance', concordance)
+        .filter('irsample', irsample);
 
     function isNotString(text) { 
         return typeof text !== "string";
