@@ -46,6 +46,29 @@ angular.module('treatment-arm.matchbox',[])
         ];
 
         $scope.versions = [];
+
+        $scope.setInExclusionType = setInExclusionType;
+        $scope.getInExclusionTypeClass = getInExclusionTypeClass;
+
+        function setInExclusionType(inExclusionType) {
+            if ($scope.inExclusionType === inExclusionType) {
+                return;
+            }
+
+            $scope.inExclusionType = inExclusionType;
+            setInExclusion();
+        }
+
+        function getInExclusionTypeClass(inExclusionType) {
+            return $scope.inExclusionType === inExclusionType ? 'active' : '';
+        }
+
+        function setInExclusion() {
+            //$scope.inExclusion = $scope.variants[$scope.inExclusionType];
+            $scope.inExclusion = $scope.currentVersion;
+        }
+
+
         /*
         // It is important that the versions are populated in reverse order, starting with current version
         $scope.versions = [
@@ -826,8 +849,8 @@ angular.module('treatment-arm.matchbox',[])
             tooltip: true,
             tooltipOpts: {
                 content: function(label, xval, yval) {
-                    console.log(label);
-                    console.log(yval);
+                    //console.log(label);
+                    //console.log(yval);
                     return setupTooltip(label, xval, yval);
                 },
                 shifts: {
@@ -890,109 +913,183 @@ angular.module('treatment-arm.matchbox',[])
             }
         ];*/
 
+
+         /*
+
+
+         function loadPatientData() {
+         matchApiMock
+         .getPatientDetailsData($stateParams.patientSequenceNumber)
+         .then(function (data) {
+         $scope.patientSequenceNumber = $stateParams.patientSequenceNumber;
+
+         $scope.patient = data.patient;
+         $scope.treatmentArms = data.treatmentArms;
+         $scope.timeline = data.timeline;
+         $scope.assayHistory = data.assayHistory;
+         $scope.sendouts = data.sendouts;
+         $scope.biopsy = data.biopsy;
+         $scope.variantReports = data.variantReports;
+         $scope.variantReportOptions = data.variantReportOptions;
+         $scope.variantReportOption = data.variantReportOption;
+         $scope.assignmentReport = data.assignmentReport;
+         $scope.biopsyReport = data.biopsyReport;
+         $scope.biopsyReports = data.biopsyReports;
+         $scope.patientDocuments = data.patientDocuments;
+         })
+         .then(function () {
+         $scope.variantReportType = 'tumorTissue';
+         $scope.variantReportMode = 'Normal';
+         setVariantReport();
+         });
+         }
+         */
+
+
         $scope.loadTreatmentArmDetails = function(ta) {
-            /*treatmentArmApi
-             .getAllTreatmentArms()
-
-                .then (function (d) {
-                    console.log('allTas');
-                    console.log('d');
-                    console.log(d);
-                    console.log('d.data');
-                    console.log(d.data);
-                    /*
-                    //$scope.information.currentStatus = d.data.treatment_arm_status;
-                    var returnData = [];
-                    returnData.push(d);
-                    console.log(returnData);
-
-                    angular.forEach(d.data, function(value) {
-                        console.log('new for each------------------->');
-                        console.log('value: ')
-                        console.log(value);
-                        //console.log('d.data');
-                        //console.log(d.data);
-
-                        $scope.information.currentStatus = d.data.treatment_arm_status;
-                        $scope.test = "test";
-                        $scope.information.name = d.data.name;
-                        $scope.information.description = d.data.description;
-                        $scope.information.genes = d.data.gene;
-                        $scope.information.patientsAssigned = d.data.num_patients_assigned;
-                        //console.log($scope.test);
-                        var version = {};
-                        version.name = d.data.version;
-                        version.versionStatus = d.data.treatment_arm_status;
-                        //console.log('version');
-                        //console.log(version);
-                        $scope.versions.push(version);
-
-                    });*/
-                //});
             treatmentArmApi
             .getTreatmentArmDetails(ta)
                 .then(function (d) {
                     console.log(d.data);
-                    if (d.data != null) {
+                    angular.forEach(d.data, function(value) {
+                        console.log(value);
+                        console.log(value.data);
+                        if (value.data != null) {
 
 
-                            $scope.information.currentStatus = d.data.treatment_arm_status;
+                            $scope.information.currentStatus = value.data.treatment_arm_status;
                             $scope.test = "test";
-                            $scope.information.name = d.data.name;
-                            $scope.information.description = d.data.description;
-                            $scope.information.genes = d.data.gene;
-                            $scope.information.patientsAssigned = d.data.num_patients_assigned;
+                            $scope.information.name = value.data.name;
+                            $scope.information.description = value.data.description;
+                            $scope.information.genes = value.data.gene;
+                            $scope.information.patientsAssigned = value.data.num_patients_assigned;
 
-                        var exclusionDrugs = [];
-                        var exclusionDiseases = [];
-
-                        angular.forEach(d.data.exclusion_drugs, function(value) {
+                            var exclusionDrugs = [];
+                            var exclusionDiseases = [];
                             var exclusionDrug = {};
-                            console.log('each in exclusion drugs array');
-                            console.log(value);
-                            var exclusionDrugId = '';
-                            var exclusionDrugName = '';
-                            angular.forEach(value.drugs, function(value) {
-                                console.log('each in inner array');
-                                console.log(value);
-                                exclusionDrugId = exclusionDrugId + value.drug_id;
-                                exclusionDrugName = exclusionDrugName + value.name;
+
+                            angular.forEach(value.data.exclusion_drugs, function(value) {
+                                var exclusionDrug = {};
+                                angular.forEach(value.drugs, function(value) {
+                                    console.log('each drug');
+                                    console.log(value);
+                                    exclusionDrug.id = value.drug_id;
+                                    exclusionDrug.name = value.name;
+                                    exclusionDrugs.push(exclusionDrug);
+                                });
+
+                                //exclusionDrug.id = value.id;
+                                //exclusionDrug.name = value.name;
 
                             });
-                            exclusionDrug.id = exclusionDrugId;
-                            exclusionDrug.name = exclusionDrugName;
-                            //exclusionDrug.id = value.id;
-                            //exclusionDrug.name = value.name;
-                            exclusionDrugs.push(exclusionDrug);
-                        });
-                        angular.forEach(d.data.exclusion_diseases, function(value) {
+                            console.log(exclusionDrugs);
+                            angular.forEach(value.data.exclusion_diseases, function(value) {
 
-                            var exclusionDisease = {};
-                            exclusionDisease.medraCode = value.medra_code;
-                            exclusionDisease.ctepCategory = value.ctep_category;
-                            exclusionDisease.ctepTerm = value.short_name;
-                            exclusionDiseases.push(exclusionDisease);
-                        });
+                                var exclusionDisease = {};
+                                exclusionDisease.medraCode = value.medra_code;
+                                exclusionDisease.ctepCategory = value.ctep_category;
+                                exclusionDisease.ctepTerm = value.short_name;
+                                exclusionDiseases.push(exclusionDisease);
+                            });
+                            var snvsInclusion = [];
+                            var snvsExclusion = [];
+                            if (value.data.variant_report != undefined) {
+                                angular.forEach(value.data.variant_report.single_nucleotide_variants, function(value) {
+                                    var snv = {};
+                                    snv.id = value.identifier;
+                                    snv.gene = value.gene_name;
+                                    snv.levelOfEvidence = value.level_of_evidence;
+                                    snv.position = value.position;
+                                    snv.alternative = value.alternative;
+                                    snv.chrom = value.chromosome;
+                                    if (value.inclusion == true) {
+                                        snv.inclusion = true;
+                                        snv.exclusion = false;
+                                        snvsInclusion.push(snv);
+                                    } else {
+                                        snv.inclusion = false;
+                                        snv.exclusion = true;
+                                        snvsExclusion.push(snv);
+                                    }
+
+                                });
+                            }
 
 
-                        var version = {};
-                        version.name = d.data.version;
-                        version.exclusionaryDiseases = exclusionDiseases;
-                        version.exclusionaryDrugs = exclusionDrugs;
-                        //console.log('version');
-                        //console.log(version);
-                        $scope.versions.push(version);
-                        //console.log($scope.versions);
-                        $scope.information.currentVersion = $scope.versions[0].name;
+                            /*
+                             snvsInclusion: [
+                             {
+                             "id": "COSM776",
+                             "gene": "PIK3CA",
+                             "levelOfEvidence": "1",
+                             "chrom": "chr7",
+                             "position": "22120714",
+                             "reference": "C",
+                             "alternative": "T",
+                             "litRefs": [
+                             {
+                             "litRef": "26051236"
+                             }
+                             ],
+                             "protein": "p.G719A",
+                             "totNumPtsWithVariant": "0",
+                             "ptsWithVariantOnArm": "0",
+                             "pctPtsWithVarOnArmOfTotPtsWithVar": "0%",
+                             "inclusion": true,
+                             "exclusion": false
+                             },
+                             {
+                             "id": "COSM776",
+                             "gene": "PIK3CA",
+                             "levelOfEvidence": "1",
+                             "chrom": "chr7",
+                             "position": "5522678459",
+                             "reference": "C",
+                             "alternative": "T",
+                             "litRefs": [
+                             {
+                             "litRef": "17376964"
+                             },
+                             {
+                             "litRef": "17376963"
+                             }
+                             ],
+                             "protein": "p.G719A",
+                             "totNumPtsWithVariant": "2",
+                             "ptsWithVariantOnArm": "1",
+                             "pctPtsWithVarOnArmOfTotPtsWithVar": "20%",
+                             "inclusion": true,
+                             "exclusion": false
+                             }
+                             ],
+                             */
+                            var version = {};
+                            version.name = d.data.version;
+                            version.exclusionaryDiseases = exclusionDiseases;
+                            version.exclusionaryDrugs = exclusionDrugs;
+                            version.snvsInclusion = snvsInclusion;
+                            version.snvsExclusion = snvsExclusion;
+                            console.log('inclusion');
+                            console.log(version.snvsInclusion);
+                            console.log('exclusion');
+                            console.log(version.snvsExclusion);
+                            //console.log('version');
+                            //console.log(version);
+                            $scope.versions.push(version);
+                            //console.log($scope.versions);
+                            $scope.information.currentVersion = $scope.versions[0].name;
 
 
-                    }
-                    $scope.test = "test";
-                    $scope.selectedVersion = $scope.versions[0];
+                        }
+                    });
 
+                        $scope.test = "test";
+                        $scope.selectedVersion = $scope.versions[0];
 
-
-
+                })
+                .then (function() {
+                    $scope.inExclusionType = 'inclusion';
+                    setInExclusion();
                 });
         };
 
