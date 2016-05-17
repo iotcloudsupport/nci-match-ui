@@ -79,12 +79,22 @@
 
                                 </div>
                             </div>
+                            <!--
+                            <h2>
+                                <span class="drop-down-label">Variant Report</span>
+                                <div dropdown-select="variantReportOptions " dropdown-model="variantReportOption" dropdown-item-label="text">
+                                </div>
+                            </h2>
+                            $scope.variantReportOptions = data.variantReportOptions;
+                            $scope.variantReportOption = data.variantReportOption;
+                            -->
                             <div class="col-lg-6">
                                 <div>
                                     <ul class="list-group clear-list m-t">
                                         <li class="list-group-item">
                                             <span class="pull-right">
                                                 <select ng-model="selectedVersion" ng-options="version.name for version in versions"></select>
+                                                <!--<div dropdown-select="versionNames" dropdown-model="selectedVersion" dropdown-item-label="text"></div>-->
                                             </span>
                                             <span class="label label-info" style="margin:0 8px 0 0">
                                                 <i class="fa fa-medkit"></i>
@@ -92,7 +102,7 @@
 
                                         </li>
                                         <li class="list-group-item">
-                                            <span class="pull-right"> {{selectedVersion.versionStatus}}</span>
+                                            <span class="pull-right"> {{versionHistory.versionStatus}}</span>
                                             <span class="label label-info" style="margin:0 8px 0 0">
                                                 <i class="fa fa-medkit"></i>
                                             </span> Version Status
@@ -112,7 +122,7 @@
                                                 </thead>
                                                 <tbody>
 
-                                                <tr ng-model="version" ng-repeat="item in selectedVersion.history">
+                                                <tr ng-model="version" ng-repeat="item in versionHistory.history">
                                                     <td>{{item.status || '-'}}</td>
                                                     <td>{{item.date || '-'}}</td>
                                                 </tr>
@@ -182,7 +192,7 @@
                                             <thead>
                                             <tr>
                                                 <th>Slot</th>
-                                                <th>PSN <i popover={{tooltipContent.psn}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                <th>PSN <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.psn}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                 <th>TA Version</th>
                                                 <th>Patient Assignment Status Outcome</th>
                                                 <th>Assignment Logic</th>
@@ -375,12 +385,12 @@
                                                                 <tr>
                                                                     <th>ID</th>
                                                                     <th>Gene</th>
-                                                                    <th>LOE <i popover={{tooltipContent.loe}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>CHR <i popover={{tooltipContent.chr}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>POS <i popover={{tooltipContent.pos}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>REF <i popover={{tooltipContent.ref}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>ALT <i popover={{tooltipContent.alt}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>LIT <i popover={{tooltipContent.lit}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>CHR <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.chr}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>POS <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>REF <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.ref}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>ALT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Protein</th>
                                                                     <th>Total # Patients Current And Former With Variant</th>
                                                                     <th>Patients Current And Former With Variant Assigned To This Arm</th>
@@ -426,12 +436,12 @@
                                                                 <tr>
                                                                     <th>ID</th>
                                                                     <th>Gene</th>
-                                                                    <th>LOE <i popover={{tooltipContent.loe}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>CHR <i popover={{tooltipContent.chr}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>POS <i popover={{tooltipContent.pos}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>REF <i popover={{tooltipContent.ref}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>ALT <i popover={{tooltipContent.alt}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>LIT <i popover={{tooltipContent.lit}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>CHR <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.chr}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>POS <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>REF <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.ref}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>ALT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Protein</th>
                                                                 </tr>
                                                                 </thead>
@@ -464,13 +474,25 @@
                                             <div class="panel-body">
                                                 <div class="ibox float-e-margins">
                                                     <div class="ibox-content">
-                                                        <div class="btn-group">
+                                                        <!--<div class="btn-group">
                                                             <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
                                                             <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
+                                                        </div>-->
+                                                        <div class="btn-group btn-group-margin" data-toggle="buttons">
+                                                            <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('inclusion')" ng-click="setInExclusionType('inclusion')"
+                                                                   title="Switch to Inclusion">
+                                                                <input type="radio" name="inExclusionType" id="option1">INCLUSION
+                                                            </label>
+                                                            <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('exclusion')" ng-click="setInExclusionType('exclusion')"
+                                                                   title="Switch to Exclusion">
+                                                                <input type="radio" name="inExclusionType" id="option2">EXCLUSION
+                                                            </label>
                                                         </div>
+                                                        <!-- <div class="row" ng-if="inExclusionType == 'inclusion'"> -->
                                                         <br><br>
 
-                                                        <div ng-show="TaCtrl.activeChoice == 'inclusion'">
+                                                        <!--<div ng-show="TaCtrl.activeChoice == 'inclusion'">-->
+                                                        <div class="row" ng-if="inExclusionType == 'inclusion'">
                                                             <!--<table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
                                                                    dt-column-defs="TaCtrl.dtColumnDefs"
@@ -483,12 +505,12 @@
                                                                 <tr>
                                                                     <th>ID</th>
                                                                     <th>Gene</th>
-                                                                    <th>LOE <i popover={{tooltipContent.loe}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>CHR <i popover={{tooltipContent.chr}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>POS <i popover={{tooltipContent.pos}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>REF <i popover={{tooltipContent.ref}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>ALT <i popover={{tooltipContent.alt}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>LIT <i popover={{tooltipContent.lit}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>CHR <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.chr}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>POS <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>REF <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.ref}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>ALT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Protein</th>
                                                                     <th>Total # Patients Current And Former With Variant</th>
                                                                     <th>Patients Current And Former With Variant Assigned To This Arm</th>
@@ -519,7 +541,8 @@
                                                                 </tbody>
                                                             </table>
                                                         </div>
-                                                        <div ng-show="TaCtrl.activeChoice == 'exclusion'">
+                                                        <!--<div ng-show="TaCtrl.activeChoice == 'exclusion'">-->
+                                                        <div class="row" ng-if="inExclusionType == 'exclusion'">
                                                             <!--<table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
                                                                    dt-column-defs="TaCtrl.dtColumnDefs"
@@ -532,12 +555,12 @@
                                                                 <tr>
                                                                     <th>ID</th>
                                                                     <th>Gene</th>
-                                                                    <th>LOE <i popover={{tooltipContent.loe}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>CHR <i popover={{tooltipContent.chr}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>POS <i popover={{tooltipContent.pos}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>REF <i popover={{tooltipContent.ref}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>ALT <i popover={{tooltipContent.alt}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>LIT <i popover={{tooltipContent.lit}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>CHR <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.chr}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>POS <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>REF <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.ref}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>ALT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Protein</th>
                                                                 </tr>
                                                                 </thead>
@@ -570,12 +593,24 @@
                                             <div class="panel-body">
                                                 <div class="ibox float-e-margins">
                                                     <div class="ibox-content">
-                                                        <div class="btn-group">
+                                                        <!--<div class="btn-group">
                                                             <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
                                                             <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
+                                                        </div>-->
+                                                        <div class="btn-group btn-group-margin" data-toggle="buttons">
+                                                            <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('inclusion')" ng-click="setInExclusionType('inclusion')"
+                                                                   title="Switch to Inclusion">
+                                                                <input type="radio" name="inExclusionType" id="option1">INCLUSION
+                                                            </label>
+                                                            <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('exclusion')" ng-click="setInExclusionType('exclusion')"
+                                                                   title="Switch to Exclusion">
+                                                                <input type="radio" name="inExclusionType" id="option2">EXCLUSION
+                                                            </label>
                                                         </div>
+                                                        <!-- <div class="row" ng-if="inExclusionType == 'inclusion'"> -->
                                                         <br><br>
-                                                        <div ng-show="TaCtrl.activeChoice == 'inclusion'">
+                                                        <!--<div ng-show="TaCtrl.activeChoice == 'inclusion'">-->
+                                                        <div class="row" ng-if="inExclusionType == 'inclusion'">
                                                             <!--<table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
                                                                    dt-column-defs="TaCtrl.dtColumnDefs"
@@ -587,10 +622,10 @@
                                                                 <thead>
                                                                 <tr>
                                                                     <th>Gene</th>
-                                                                    <th>LOE <i popover={{tooltipContent.loe}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>CHR <i popover={{tooltipContent.chr}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>POS <i popover={{tooltipContent.pos}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>LIT <i popover={{tooltipContent.lit}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>CHR <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.chr}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>POS <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Protein</th>
                                                                     <th>Total # Patients Current And Former With Copy Number</th>
                                                                     <th>Patients Current And Former With Copy Number Assigned To This Arm</th>
@@ -618,7 +653,8 @@
                                                                 </tbody>
                                                             </table>
                                                         </div>
-                                                        <div ng-show="TaCtrl.activeChoice == 'exclusion'">
+                                                        <!--<div ng-show="TaCtrl.activeChoice == 'exclusion'">-->
+                                                        <div class="row" ng-if="inExclusionType == 'exclusion'">
                                                             <!--<table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
                                                                    dt-column-defs="TaCtrl.dtColumnDefs"
@@ -630,10 +666,10 @@
                                                                 <thead>
                                                                 <tr>
                                                                     <th>Gene</th>
-                                                                    <th>LOE <i popover={{tooltipContent.loe}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>CHR <i popover={{tooltipContent.chr}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>POS <i popover={{tooltipContent.pos}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>LIT <i popover={{tooltipContent.lit}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>CHR <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.chr}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>POS <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Protein</th>
                                                                 </tr>
                                                                 </thead>
@@ -663,12 +699,24 @@
                                             <div class="panel-body">
                                                 <div class="ibox float-e-margins">
                                                     <div class="ibox-content">
-                                                        <div class="btn-group">
+                                                        <!--<div class="btn-group">
                                                             <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
                                                             <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
+                                                        </div>-->
+                                                        <div class="btn-group btn-group-margin" data-toggle="buttons">
+                                                            <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('inclusion')" ng-click="setInExclusionType('inclusion')"
+                                                                   title="Switch to Inclusion">
+                                                                <input type="radio" name="inExclusionType" id="option1">INCLUSION
+                                                            </label>
+                                                            <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('exclusion')" ng-click="setInExclusionType('exclusion')"
+                                                                   title="Switch to Exclusion">
+                                                                <input type="radio" name="inExclusionType" id="option2">EXCLUSION
+                                                            </label>
                                                         </div>
+                                                        <!-- <div class="row" ng-if="inExclusionType == 'inclusion'"> -->
                                                         <br><br>
-                                                        <div ng-show="TaCtrl.activeChoice == 'inclusion'">
+                                                        <!--<div ng-show="TaCtrl.activeChoice == 'inclusion'">-->
+                                                        <div class="row" ng-if="inExclusionType == 'inclusion'">
                                                             <!--<table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
                                                                    dt-column-defs="TaCtrl.dtColumnDefs"
@@ -681,8 +729,8 @@
                                                                 <tr>
                                                                     <th>ID</th>
                                                                     <th>Gene</th>
-                                                                    <th>LOE <i popover={{tooltipContent.loe}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>LIT <i popover={{tooltipContent.lit}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Total # Patients Current and Former With Gene Fusion</th>
                                                                     <th>Patients Current And Former With Gene Fusion Assigned To This Arm</th>
                                                                     <th>% Of Patients Current And Former With Gene Fusion On Arm Of Total Patients With Gene Fusion</th>
@@ -707,7 +755,8 @@
                                                                 </tbody>
                                                             </table>
                                                         </div>
-                                                        <div ng-show="TaCtrl.activeChoice == 'exclusion'">
+                                                        <!--<div ng-show="TaCtrl.activeChoice == 'exclusion'">-->
+                                                        <div class="row" ng-if="inExclusionType == 'exclusion'">
                                                             <!--<table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
                                                                    dt-column-defs="TaCtrl.dtColumnDefs"
@@ -720,8 +769,8 @@
                                                                 <tr>
                                                                     <th>ID</th>
                                                                     <th>Gene</th>
-                                                                    <th>LOE <i popover={{tooltipContent.loe}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
-                                                                    <th>LIT <i popover={{tooltipContent.lit}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -749,12 +798,24 @@
                                             <div class="panel-body">
                                                 <div class="ibox float-e-margins">
                                                     <div class="ibox-content">
-                                                        <div class="btn-group">
+                                                        <!--<div class="btn-group">
                                                             <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
                                                             <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
+                                                        </div>-->
+                                                        <div class="btn-group btn-group-margin" data-toggle="buttons">
+                                                            <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('inclusion')" ng-click="setInExclusionType('inclusion')"
+                                                                   title="Switch to Inclusion">
+                                                                <input type="radio" name="inExclusionType" id="option1">INCLUSION
+                                                            </label>
+                                                            <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('exclusion')" ng-click="setInExclusionType('exclusion')"
+                                                                   title="Switch to Exclusion">
+                                                                <input type="radio" name="inExclusionType" id="option2">EXCLUSION
+                                                            </label>
                                                         </div>
+                                                        <!-- <div class="row" ng-if="inExclusionType == 'inclusion'"> -->
                                                         <br><br>
-                                                        <div ng-show="TaCtrl.activeChoice == 'inclusion'">
+                                                        <!--<div ng-show="TaCtrl.activeChoice == 'inclusion'">-->
+                                                        <div class="row" ng-if="inExclusionType == 'inclusion'">
                                                             <!--<table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
                                                                    dt-column-defs="TaCtrl.dtColumnDefs"
@@ -767,9 +828,9 @@
                                                                 <tr>
                                                                     <th>Oncomine Variant Class</th>
                                                                     <th>Gene</th>
-                                                                    <th>LOE <i popover={{tooltipContent.loe}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Function</th>
-                                                                    <th>LIT <i popover={{tooltipContent.lit}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>PROTEIN</th>
                                                                     <th>Exon</th>
                                                                     <th>Protein Regex</th>
@@ -795,8 +856,8 @@
                                                                 </tbody>
                                                             </table>
                                                         </div>
-
-                                                        <div ng-show="TaCtrl.activeChoice == 'exclusion'">
+                                                        <div class="row" ng-if="inExclusionType == 'exclusion'">
+                                                        <!--<div ng-show="TaCtrl.activeChoice == 'exclusion'">-->
                                                             <!--<table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
                                                                    dt-column-defs="TaCtrl.dtColumnDefs"
@@ -809,9 +870,9 @@
                                                                 <tr>
                                                                     <th>Oncomine Variant Class</th>
                                                                     <th>Gene</th>
-                                                                    <th>LOE <i popover={{tooltipContent.loe}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Function</th>
-                                                                    <th>LIT <i popover={{tooltipContent.lit}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>PROTEIN</th>
                                                                     <th>Exon</th>
                                                                     <th>Protein Regex</th>
@@ -845,12 +906,24 @@
                                             <div class="panel-body">
                                                 <div class="ibox float-e-margins">
                                                     <div class="ibox-content">
-                                                        <div class="btn-group">
+                                                        <!--<div class="btn-group">
                                                             <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='inclusion' btn-radio="'inclusion'">INCLUSION</label>
                                                             <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
+                                                        </div>-->
+                                                        <div class="btn-group btn-group-margin" data-toggle="buttons">
+                                                            <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('inclusion')" ng-click="setInExclusionType('inclusion')"
+                                                                   title="Switch to Inclusion">
+                                                                <input type="radio" name="inExclusionType" id="option1">INCLUSION
+                                                            </label>
+                                                            <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('exclusion')" ng-click="setInExclusionType('exclusion')"
+                                                                   title="Switch to Exclusion">
+                                                                <input type="radio" name="inExclusionType" id="option2">EXCLUSION
+                                                            </label>
                                                         </div>
+
                                                         <br><br>
-                                                        <div ng-show="TaCtrl.activeChoice == 'inclusion'">
+                                                        <div class="row" ng-if="inExclusionType == 'inclusion'">
+                                                        <!--<div ng-show="TaCtrl.activeChoice == 'inclusion'">-->
                                                             <!--<table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
                                                                    dt-column-defs="TaCtrl.dtColumnDefs"
@@ -865,7 +938,7 @@
                                                                     <th>Gene</th>
                                                                     <th>Result</th>
                                                                     <th>Variant Association</th>
-                                                                    <th>LOE <i popover={{tooltipContent.loe}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Total # Patients Current And Former With Gene</th>
                                                                     <th>Patients Current And Former With Gene Assigned To This Arm</th>
                                                                     <th>% Of Patients Current And Former With Gene On Arm Of Total Patients With Variant</th>
@@ -885,7 +958,8 @@
                                                                 </tbody>
                                                             </table>
                                                         </div>
-                                                        <div ng-show="TaCtrl.activeChoice == 'exclusion'">
+                                                        <div class="row" ng-if="inExclusionType == 'exclusion'">
+                                                        <!--<div ng-show="TaCtrl.activeChoice == 'exclusion'">-->
                                                             <!--<table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
                                                                    dt-column-defs="TaCtrl.dtColumnDefs"
@@ -900,7 +974,7 @@
                                                                     <th>Gene</th>
                                                                     <th>Result</th>
                                                                     <th>Variant Association</th>
-                                                                    <th>LOE <i popover={{tooltipContent.loe}} data-popover-trigger="mouseenter" class="fa fa-question-circle"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
