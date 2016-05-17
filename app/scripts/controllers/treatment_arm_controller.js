@@ -1,9 +1,20 @@
 angular.module('treatment-arm.matchbox',[])
     .controller('TreatmentArmController', function( $scope, $window, DTOptionsBuilder, DTColumnDefBuilder, treatmentArmApi) {
-        this.dtOptions = DTOptionsBuilder.newOptions()
+        /*this.dtOptions = DTOptionsBuilder.newOptions()
             .withOption('info', false);
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withOption('paging', false);
+         */
+        this.dtOptions = {
+            'info': false,
+            'paging':false
+        }
+        
+        this.ddOptions = {
+            'info': false,
+            'paging': false,
+            'bFilter': false
+        }
 
     /*this.dtColumnDefs = [];
         this.activeChoice = 'inclusion';*/
