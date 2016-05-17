@@ -728,7 +728,7 @@ angular.module('treatment-arm.matchbox',[])
                 container: '#diseaseLegendContainer'
             }
         };
-
+    /*
         $scope.patients = [
             {
                 "Patient": {
@@ -743,7 +743,7 @@ angular.module('treatment-arm.matchbox',[])
                     "dateOffArm": "-",
                     "step": "0",
                     "diseases": "Skin cancer, NOS"
-                },
+                }
             },
             {
                 "Patient": {
@@ -758,7 +758,7 @@ angular.module('treatment-arm.matchbox',[])
                     "dateOffArm": "-",
                     "step": "0",
                     "diseases": "Chondrosarcoma"
-                },
+                }
             },
             {
                 "Patient": {
@@ -775,7 +775,7 @@ angular.module('treatment-arm.matchbox',[])
                     "diseases": "Bone cancer, NOS"
                 }
             }
-        ];
+        ];*/
 
 
          /*
@@ -818,7 +818,7 @@ angular.module('treatment-arm.matchbox',[])
                     angular.forEach(d.data, function(value) {
                         console.log(value);
                         console.log(value.data);
-                        if (value.data != null) {
+                        if (value.data !== null) {
 
 
                             $scope.information.currentStatus = value.data.treatment_arm_status;
@@ -865,7 +865,7 @@ angular.module('treatment-arm.matchbox',[])
                             var geneFusionsExclusion = [];
                             var nhrsInclusion = [];
                             var nhrsExclusion = [];
-                            if (value.data.variant_report != undefined) {
+                            if (value.data.variant_report !== undefined) {
                                 angular.forEach(value.data.variant_report.single_nucleotide_variants, function(value) {
                                     var snv = {};
                                     snv.id = value.identifier;
@@ -883,7 +883,7 @@ angular.module('treatment-arm.matchbox',[])
                                     snv.litRefs = litRefs;
                                     console.log('litrefs');
                                     console.log(litRefs);*/
-                                    if (value.inclusion == true) {
+                                    if (value.inclusion === true) {
                                         snv.inclusion = true;
                                         snv.exclusion = false;
                                         snvsInclusion.push(snv);
@@ -911,7 +911,7 @@ angular.module('treatment-arm.matchbox',[])
                                      indel.litRefs = litRefs;
                                      console.log('litrefs');
                                      console.log(litRefs);*/
-                                    if (value.inclusion == true) {
+                                    if (value.inclusion === true) {
                                         indel.inclusion = true;
                                         indel.exclusion = false;
                                         indelsInclusion.push(indel);
@@ -937,7 +937,7 @@ angular.module('treatment-arm.matchbox',[])
                                      cnv.litRefs = litRefs;
                                      console.log('litrefs');
                                      console.log(litRefs);*/
-                                    if (value.inclusion == true) {
+                                    if (value.inclusion === true) {
                                         cnv.inclusion = true;
                                         cnv.exclusion = false;
                                         cnvsInclusion.push(cnv);
@@ -961,7 +961,7 @@ angular.module('treatment-arm.matchbox',[])
                                      gf.litRefs = litRefs;
                                      console.log('litrefs');
                                      console.log(litRefs);*/
-                                    if (value.inclusion == true) {
+                                    if (value.inclusion === true) {
                                         gf.inclusion = true;
                                         gf.exclusion = false;
                                         geneFusionsInclusion.push(gf);
@@ -987,7 +987,7 @@ angular.module('treatment-arm.matchbox',[])
                                      nhr.litRefs = litRefs;
                                      console.log('litrefs');
                                      console.log(litRefs);*/
-                                    if (value.inclusion == true) {
+                                    if (value.inclusion === true) {
                                         nhr.inclusion = true;
                                         nhr.exclusion = false;
                                         nhrsInclusion.push(nhr);
