@@ -1,6 +1,8 @@
 angular.module('iradmin.matchbox',[])
     .controller('IrAdminController',
-        function( $scope, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, irAdminApi, svgApi) {
+        function( $scope, $http, $window, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, irAdminApi, svgApi) {
+
+            // .controller('MainCtrl', function (Database,Features,$scope,$http) {
 
     this.dtOptions = DTOptionsBuilder.newOptions()
         .withDisplayLength(100);
@@ -11,6 +13,7 @@ angular.module('iradmin.matchbox',[])
 
     $scope.irList = [];
     $scope.sampleList = [];
+            $scope.geneData =[];
 
     $scope.loadHeartBeatList = function () {
         irAdminApi
@@ -53,8 +56,14 @@ angular.module('iradmin.matchbox',[])
                 .getSvgGene()
                 .then(function (d) {
 
+                    $window.d3BoxVersion5(d.data);
 
-
+                    // var mapd = d.data.mapd;
+                    // var cellularity = d.data.cellularity;
+                    // var tvcVersion = d.data.tvcVersion;
+                    // var screenwidth = $(D3BoxPanel).parent().width();
+                    //
+                    // GeneSvg.buildGeneChartVersion5(d.data.parsedVCFGenes,mapd,cellularity,tvcVersion,screenwidth);
                 });
         };
 
@@ -64,8 +73,6 @@ angular.module('iradmin.matchbox',[])
             irAdminApi
                 .getPosiveSample()
                 .then(function (d) {
-
-                    alert(JSON.stringify(d.data))
 
                     angular.forEach(d.data, function (value,key) {
 

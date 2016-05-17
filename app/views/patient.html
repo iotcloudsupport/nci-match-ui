@@ -18,7 +18,7 @@
 
     <div class="wrapper">
 
-        <div class="no-horizontal-padding header-box-container animated fadeInRight">
+        <div class="no-horizontal-padding header-box-container">
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                     <div class="header-info-box top-main-header-box">
@@ -48,22 +48,22 @@
                     <div class="header-info-box top-main-header-box">
                         <dl class="dl-horizontal">
                             <dt>Disease</dt>
-                            <dd>Invasive Breast Carcinoma</dd>
+                            <dd>{{::patient.disease.name}}</dd>
 
                             <dt>CTEP Category</dt>
-                            <dd>Breast Neoplasm</dd>
+                            <dd>{{::patient.disease.ctepCategory}}</dd>
 
                             <dt>CTEP Sub Category</dt>
-                            <dd>Breast Cancer - Invasive</dd>
+                            <dd>{{::patient.disease.ctepSubCategory}}</dd>
 
                             <dt>CTEP Term</dt>
-                            <dd>Invasive Breast Carcinoma</dd>
+                            <dd>{{::patient.disease.ctepTerm}}</dd>
 
                             <dt>MedDRA Code</dt>
-                            <dd>100006190</dd>
+                            <dd>{{::patient.disease.medDraCode}}</dd>
 
                             <dt>Prior Drugs</dt>
-                            <dd>Aspirin, Motrin, Vitamin C</dd>
+                            <dd>{{::patient.drugs.join(', ')}}</dd>
                         </dl>
                     </div>
                 </div>
@@ -207,156 +207,216 @@
                     <div class="panel-body">
 
                         <div class="ibox-title ibox-title-no-line">
-                            <h3>
-                                <div class="row">
-                                    <div class="col-md-2 text-right ng-dropdown-label">
-                                        Biopsy Report
-                                    </div>
-                                    <div class="col-md-10 text-left">
-                                        <div dropdown-select="biopsyReports " dropdown-model="biopsyReport" dropdown-item-label="text">
-                                        </div>
-                                    </div>
+                            <h2>
+                                <span class="drop-down-label">Biopsy</span>                                
+                                <div dropdown-select="biopsyReports " dropdown-model="biopsyReport" dropdown-item-label="text">
                                 </div>
-                            </h3>
+                            </h2>
                         </div>
 
-                        <div class="ibox float-e-margins">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="header-info-box biopsy-header-box">
-                                        <h4>Speciment</h4>
-                                        <dl class="dl-horizontal">
-                                            <dt>Collection Date</dt>
-                                            <dd>August 26, 2015 2:57 PM GMT</dd>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="header-info-box biopsy-header-box">
+                                    <h4>Specimen</h4>
+                                    <dl class="dl-horizontal">
+                                        <dt>Collection Date</dt>
+                                        <dd>{{::biopsy.specimen.collectionDate}}</dd>
 
-                                            <dt>Received Date</dt>
-                                            <dd>August 26, 2015 2:57 PM GMT</dd>
+                                        <dt>Received Date</dt>
+                                        <dd>{{::biopsy.specimen.receivedDate}}</dd>
 
-                                            <dt>Failure Date</dt>
-                                            <dd>-</dd>
-                                        </dl>
-                                    </div>
+                                        <dt>Failure Date</dt>
+                                        <dd>{{::biopsy.specimen.failureDate}}</dd>
+                                    </dl>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="header-info-box biopsy-header-box">
-                                        <dl class="dl-horizontal">
-                                            <dt>Pathalogy Status</dt>
-                                            <dd>Agreement on pathalogy</dd>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="header-info-box biopsy-header-box">
+                                    <h4>Pathology</h4>
+                                    <dl class="dl-horizontal">
+                                        <dt>Status</dt>
+                                        <dd>{{::biopsy.pathology.status}}</dd>
 
-                                            <dt>Patalogy Received Date</dt>
-                                            <dd>August 26, 2015 2:57 PM GMT</dd>
+                                        <dt>Received Date</dt>
+                                        <dd>{{::biopsy.pathology.receivedDate}}</dd>
 
-                                            <dt>Comment</dt>
-                                            <dd>-</dd>
-                                        </dl>
-                                    </div>
+                                        <dt>Comment</dt>
+                                        <dd>{{::biopsy.pathology.comment}}</dd>
+                                    </dl>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="ibox float-e-margins">
+                        <div class="ibox-title ibox-title-no-line">
+                            <h3>Assay History</h3>
+                        </div>
+
+                        <table class="table" role="grid">
+                            <thead>
+                                <tr>
+                                    <th width="20%" class="label2">Gene</th>
+                                    <th width="40%" class="label2">Ordered Date</th>
+                                    <th width="20%" class="label2">Result Date</th>
+                                    <th width="20%" class="label2">Result</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="assay in assayHistory" style="cursor: auto;" role="row" class="odd">
+                                    <td>{{::assay.gene}}</td>
+                                    <td>{{::assay.orderedDate}}</td>
+                                    <td>{{::assay.resultDate}}</td>
+                                    <td>
+                                        <span ng-style="{'color':'{{ assay.result | assayStatus }}'}">{{::assay.result}}</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="ibox-title ibox-title-no-line">
+                            <h3>{{ biopsySampleLabel }} Sample</h3>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="header-info-box biopsy-sample-box">
+                                    <h4>Sample</h4>
+                                    <dl class="dl-horizontal">
+                                        <dt>Molecular Sequence Number</dt>
+                                        <dd>{{::currentSendout.msn}}</dd>
+
+                                        <dt>Site</dt>
+                                        <dd>{{::currentSendout.destinationDate}}</dd>
+
+                                        <dt>Tracking Number</dt>
+                                        <dd>{{::currentSendout.trackingNumber}}</dd>
+
+                                        <dt>DNA Conc</dt>
+                                        <dd>{{::currentSendout.dnaConcordance}}</dd>
+
+                                        <dt>DNA Vol</dt>
+                                        <dd>{{::currentSendout.dnaVolume}}</dd>
+
+                                        <dt>Reported Date</dt>
+                                        <dd>{{::currentSendout.reportedDate}}</dd>
+
+                                        <dt>Comments</dt>
+                                        <dd>
+                                            <div class="text-truncate-200px">{{::currentSendout.comments}}</div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="header-info-box biopsy-sample-box">
+                                    <h4>Analysis</h4>
+                                    <dl class="dl-horizontal">
+                                        <dt>Analysis Id</dt>
+                                        <dd>{{::currentSendout.currentAnalisys.analysisId}}</dd>
+
+                                        <dt>Status</dt>
+                                        <dd ng-style="{'color':'{{ currentSendout.currentAnalisys.status | analysisStatus }}'}">{{::currentSendout.currentAnalisys.status}}</dd>
+
+                                        <dt>File Received Date</dt>
+                                        <dd>{{::currentSendout.currentAnalisys.fileReceivedDate}}</dd>
+
+                                        <dt>{{::currentSendout.currentAnalisys.confirmedRejectedDateLabel}}</dt>
+                                        <dd>{{::currentSendout.currentAnalisys.confirmedRejectedDate}}</dd>
+
+                                        <dt>Files</dt>
+                                        <dd>
+                                            <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
+                                            <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAI</a>
+                                            <a href="#" class="btn btn-xs btn-white file-button-xs">VCF</a>
+                                        </dd>
+                                        <dd>
+                                            <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
+                                            <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
+                                            <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
+                                        </dd>
+                                        <dd>
+                                            <button type="input" class="btn btn-xs btn-success btn-outline">Upload Analysis Files</button>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ibox collapsed">
                             <div class="ibox-title ibox-title-no-line">
-                                <h3>Assay History</h3>
+                                <div collapse-toggle-left></div>
+                                <h3>Sample History</h3>
                             </div>
+                            <div class="ibox-content ibox-content-no-padding ibox-title-no-line">
+                                <table class="table table-hover" role="grid">
+                                    <thead>
+                                        <tr>
+                                            <th width="20%">Molecular Sequence Number</th>
+                                            <th width="15%">Site</th>
+                                            <th width="10%">Tracking Number</th>
+                                            <th width="5%">DNA Conc</th>
+                                            <th width="5%">DNA Vol</th>
+                                            <th width="15%">Reported Date</th>
+                                            <th width="20%">Comments</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat-start="sendout in sendouts" style="cursor: auto;" role="row" class="odd">
+                                            <td>{{::sendout.msn}}</td>
+                                            <td>{{::sendout.destinationDate}}</td>
+                                            <td>{{::sendout.trackingNumber}}</td>
+                                            <td>{{::sendout.dnaConcordance}}</td>
+                                            <td>{{::sendout.dnaVolume}}</td>
+                                            <td>{{::sendout.reportedDate}}</td>
+                                            <td>
+                                                <div class="text-truncate-200px">{{::sendout.comments}}</div>
+                                            </td>
+                                        </tr>
+                                        <tr ng-repeat-end>
+                                            <td colspan="7">
+                                                <ul class="panel-list">
+                                                    <li ng-repeat="analysis in sendout.analyses" class="info-element">
+                                                        <div class="row">
+                                                            <div class="col-md-4 col-sm-6 text-left">
+                                                                <dl class="dl-horizontal-narrow">
+                                                                    <dt>Analysis Id</dt>
+                                                                    <dd><a> {{::analysis.analysisId}} </a></dd>
 
-                            <table class="table table-hover" role="grid">
-                                <thead>
-                                    <tr>
-                                        <th width="20%" class="label2 sorting_disabled">Gene</th>
-                                        <th width="40%" class="label2 sorting_disabled">Ordered Date</th>
-                                        <th width="20%" class="label2 sorting_disabled">Result Date</th>
-                                        <th width="20%" class="label2 sorting_disabled">Result</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="assay in assayHistory" style="cursor: auto;" role="row" class="odd">
-                                        <td>{{::assay.gene}}</td>
-                                        <td>{{::assay.orderedDate}}</td>
-                                        <td>{{::assay.resultDate}}</td>
-                                        <td>
-                                            <span ng-style="{'color':'{{ assay.result | assayStatus }}'}">{{::assay.result}}</span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="ibox float-e-margins">
-                            <table class="table table-hover" role="grid">
-                                <thead>
-                                    <tr>
-                                        <th width="20%">Molecular Sequence Number</th>
-                                        <th width="15%">Site</th>
-                                        <th width="10%">Tracking Number</th>
-                                        <th width="5%">DNA Conc</th>
-                                        <th width="5%">DNA Vol</th>
-                                        <th width="15%">Reported Date</th>
-                                        <th width="20%">Comments</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat-start="sendout in sendouts" style="cursor: auto;" role="row" class="odd">
-                                        <td>{{::sendout.msn}}</td>
-                                        <td>{{::sendout.destinationDate}}</td>
-                                        <td>{{::sendout.trackingNumber}}</td>
-                                        <td>{{::sendout.dnaConcordance}}</td>
-                                        <td>{{::sendout.dnaVolume}}</td>
-                                        <td>{{::sendout.reportedDate}}</td>
-                                        <td>
-                                            <div class="text-truncate-200px">{{::sendout.comments}}</div>
-                                        </td>
-                                    </tr>
-                                    <tr ng-repeat-end>
-                                        <td colspan="7">
-                                            <ul class="panel-list push-right-40px">
-                                                <li ng-repeat="analysis in sendout.analyses" class="info-element">
-                                                    <div class="row">
-                                                        <div class="col-md-4 col-sm-6 text-left">
-                                                            <dl class="dl-horizontal-narrow">
-                                                                <dt>Analysis Id</dt>
-                                                                <dd><a> {{::analysis.analysisId}} </a></dd>
-
-                                                                <dt>Status</dt>
-                                                                <dd ng-style="{'color':'{{ analysis.status | analysisStatus }}'}">{{::analysis.status}}</dd>
-                                                            </dl>
-                                                        </div>
-                                                        <div class="col-md-4 col-sm-6 text-left">
-                                                            <dl class="dl-horizontal-narrow">
-                                                                <dt>File Received Date</dt>
-                                                                <dd>{{::analysis.fileReceivedDate}}</dd>
-
-                                                                <dt>{{::analysis.confirmedRejectedDateLabel}}</dt>
-                                                                <dd>{{::analysis.confirmedRejectedDate}}</dd>
-                                                            </dl>
-                                                        </div>
-                                                        <div class="col-md-4 text-right">
-                                                            <div class="row">
-                                                                <div class="col-md-12 text-right">
-                                                                    <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
-                                                                    <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAI</a>
-                                                                    <a href="#" class="btn btn-xs btn-white file-button-xs">VCF</a>
-                                                                </div>
+                                                                    <dt>Status</dt>
+                                                                    <dd ng-style="{'color':'{{ analysis.status | analysisStatus }}'}">{{::analysis.status}}</dd>
+                                                                </dl>
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="col-md-12 text-right">
-                                                                    <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
-                                                                    <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
-                                                                    <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
+                                                            <div class="col-md-4 col-sm-6 text-left">
+                                                                <dl class="dl-horizontal-narrow">
+                                                                    <dt>File Received Date</dt>
+                                                                    <dd>{{::analysis.fileReceivedDate}}</dd>
+
+                                                                    <dt>{{::analysis.confirmedRejectedDateLabel}}</dt>
+                                                                    <dd>{{::analysis.confirmedRejectedDate}}</dd>
+                                                                </dl>
+                                                            </div>
+                                                            <div class="col-md-4 text-right">
+                                                                <div class="row">
+                                                                    <div class="col-md-12 text-right">
+                                                                        <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
+                                                                        <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAI</a>
+                                                                        <a href="#" class="btn btn-xs btn-white file-button-xs">VCF</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12 text-right">
+                                                                        <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
+                                                                        <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
+                                                                        <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="row push-down">
-                            <div class="col-md-12 pull-left">
-                                <button type="input" class="btn btn-success">Upload Analysis Files</button>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -395,28 +455,22 @@
                         </div>
 
                         <div class="ibox-title ibox-title-no-line">
-                            <h3>
-                                <div class="row">
-                                    <div class="col-md-2 text-right ng-dropdown-label">
-                                        Variant Report
-                                    </div>
-                                    <div class="col-md-10 text-left">
-                                        <div dropdown-select="variantReportOptions " dropdown-model="variantReportOption" dropdown-item-label="text">
-                                        </div>
-                                    </div>
+                            <h2>
+                                <span class="drop-down-label">Variant Report</span>
+                                <div dropdown-select="variantReportOptions " dropdown-model="variantReportOption" dropdown-item-label="text">
                                 </div>
-                            </h3>
+                            </h2>
                         </div>
 
-                        <div class="row" ng-if="variantReportMode!=='Qc'">
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="header-info-box  variant-report-header-box">
                                     <dl class="dl-horizontal">
                                         <dt>Biopsy Sequence Number</dt>
-                                        <dd>{{variantReport.biopsySequenceNumber}}</dd>
+                                        <dd>{{::variantReport.biopsySequenceNumber}}</dd>
 
                                         <dt>Analysis Id</dt>
-                                        <dd>{{variantReport.analysisId}}</dd>
+                                        <dd>{{::variantReport.analysisId}}</dd>
 
                                         <dt>Files</dt>
                                         <dd>
@@ -431,10 +485,10 @@
                                         </dd>
 
                                         <dt>File Received Date</dt>
-                                        <dd>{{variantReport.fileReceivedDate}}</dd>
+                                        <dd>{{::variantReport.fileReceivedDate}}</dd>
 
-                                        <dt>Rejected/Confirmed Date</dt>
-                                        <dd>{{variantReport.receivedRejectedDate}}</dd>
+                                        <dt ng-show="variantReport.confirmedRejectedDate">{{::variantReport.confirmedRejectedDateLabel}}</dt>
+                                        <dd ng-show="variantReport.confirmedRejectedDate">{{::variantReport.confirmedRejectedDate}}</dd>
 
                                         <dt>Status</dt>
                                         <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{variantReport.status}}</dd>
@@ -446,10 +500,10 @@
 
                                     <dl class="dl-horizontal dl-horizontal-expanded-label">
                                         <dt>Total Variants</dt>
-                                        <dd>{{variantReport.totalVariants}}</dd>
+                                        <dd>{{::variantReport.totalVariants}}</dd>
 
                                         <dt>Cellularity</dt>
-                                        <dd>{{variantReport.cellularity}}</dd>
+                                        <dd>{{::variantReport.cellularity}}</dd>
                                     </dl>
 
                                     <h4>MOI/aMOI Summary</h4>
@@ -462,23 +516,7 @@
                             </div>
                         </div>
 
-                        <img src="/img/variant_report.png" ng-if="variantReportMode!=='Qc'" style="width:1200px" />
-
-                        <script type="text/ng-template" id="commentDialog.html">
-                            <div class="modal-header">
-                                <h3 class="modal-title">Edit Reason</h3>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label for="comment">Confirmation rejection reason:</label>
-                                    <input type="textarea" name="comment" ng-model="comment" class="form-control">
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-                                <button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
-                            </div>
-                        </script>
+                        <img src="/img/variant_report.png" style="width:1200px" />
 
                         <!--Single Nucleitide Variant(s)-->
                         <div class="ibox-title ibox-title-no-line">
@@ -488,10 +526,10 @@
                         <table class="table table-hover" role="grid">
                             <thead>
                                 <tr>
-                                    <th>Confirm</th>
+                                    <th ng-if="variantReportMode!=='Qc'">Confirm</th>
                                     <th>Comment</th>
                                     <th>Id</th>
-                                    <th>aMOI</th>
+                                    <th ng-if="variantReportMode!=='Qc'">aMOI</th>
                                     <th>Chrom</th>
                                     <th>Position</th>
                                     <th>Reference</th>
@@ -509,16 +547,16 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="variant in biopsy.singleNucleitideVariants" style="cursor: auto;" role="row" class="odd">
-                                    <td>
+                                    <td ng-if="variantReportMode!=='Qc'">
                                         <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
-                                            on-comment-entered="setComment()" prompt-only-if="true">
+                                            on-comment-entered="setComment(variant)" prompt-only-if="true">
                                         </div>
                                     </td>
                                     <td>
                                         <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.id}}</td>
-                                    <td>{{::variant.aMOI}}</td>
+                                    <td ng-if="variantReportMode!=='Qc'">{{::variant.aMOI}}</td>
                                     <td>{{::variant.chrom}}</td>
                                     <td>{{::variant.position}}</td>
                                     <td>{{::variant.reference}}</td>
@@ -548,9 +586,10 @@
                         <table class="table table-hover" role="grid">
                             <thead>
                                 <tr>
-                                    <th>Confirm</th>
+                                    <th ng-if="variantReportMode!=='Qc'">Confirm</th>
+                                    <th>Comment</th>
                                     <th>Id</th>
-                                    <th>aMOI</th>
+                                    <th ng-if="variantReportMode!=='Qc'">aMOI</th>
                                     <th>Chrom</th>
                                     <th>Position</th>
                                     <th>Reference</th>
@@ -568,9 +607,16 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="variant in biopsy.indels" style="cursor: auto;" role="row" class="odd">
-                                    <td> <input type="checkbox" ng-checked="{{::variant.confirm}}"></td>
+                                    <td ng-if="variantReportMode!=='Qc'">
+                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
+                                            on-comment-entered="setComment()" prompt-only-if="true">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
+                                    </td>
                                     <td>{{::variant.id}}</td>
-                                    <td>{{::variant.aMOI}}</td>
+                                    <td ng-if="variantReportMode!=='Qc'">{{::variant.aMOI}}</td>
                                     <td>{{::variant.chrom}}</td>
                                     <td>{{::variant.position}}</td>
                                     <td>{{::variant.reference}}</td>
@@ -600,9 +646,10 @@
                         <table class="table table-hover" role="grid">
                             <thead>
                                 <tr>
-                                    <th>Confirm</th>
+                                    <th ng-if="variantReportMode!=='Qc'">Confirm</th>
+                                    <th>Comment</th>
                                     <th>Id</th>
-                                    <th>aMOI</th>
+                                    <th ng-if="variantReportMode!=='Qc'">aMOI</th>
                                     <th>Chrom</th>
                                     <th>Raw CN</th>
                                     <th>CN</th>
@@ -612,9 +659,16 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="variant in biopsy.copyNumberVariants" style="cursor: auto;" role="row" class="odd">
-                                    <td> <input type="checkbox" ng-checked="{{::variant.confirm}}"></td>
+                                    <td ng-if="variantReportMode!=='Qc'">
+                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
+                                            on-comment-entered="setComment()" prompt-only-if="true">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
+                                    </td>
                                     <td>{{::variant.id}}</td>
-                                    <td>{{::variant.aMOI}}</td>
+                                    <td ng-if="variantReportMode!=='Qc'">{{::variant.aMOI}}</td>
                                     <td>{{::variant.chrom}}</td>
                                     <td>{{::variant.rawCN}}</td>
                                     <td>{{::variant.cn}}</td>
@@ -636,9 +690,10 @@
                         <table class="table table-hover" role="grid">
                             <thead>
                                 <tr>
-                                    <th>Confirm</th>
+                                    <th ng-if="variantReportMode!=='Qc'">Confirm</th>
+                                    <th>Comment</th>
                                     <th>Id</th>
-                                    <th>aMOI</th>
+                                    <th ng-if="variantReportMode!=='Qc'">aMOI</th>
                                     <th>Gene 2</th>
                                     <th>Gene 2 Count</th>
                                     <th>Gene 1</th>
@@ -648,9 +703,16 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="variant in biopsy.geneFusions" style="cursor: auto;" role="row" class="odd">
-                                    <td> <input type="checkbox" ng-checked="{{::variant.confirm}}"></td>
+                                    <td ng-if="variantReportMode!=='Qc'">
+                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
+                                            on-comment-entered="setComment()" prompt-only-if="true">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
+                                    </td>
                                     <td>{{::variant.id}}</td>
-                                    <td>{{::variant.aMOI}}</td>
+                                    <td ng-if="variantReportMode!=='Qc'">{{::variant.aMOI}}</td>
                                     <td>{{::variant.gene2}}</td>
                                     <td>{{::variant.gene2count}}</td>
                                     <td>{{::variant.gene1}}</td>
@@ -670,7 +732,7 @@
                                     <button class="btn btn-danger" title="Reject this Report" ng-click="showWarning('Are you sure you want to reject the Variant Report?', 'This will change the report\'s status')">REJECT</button>
                                 </div>
                                 <div class="col-md-6 text-left">
-                                    <button class="btn btn-success" title="Confirm this Report" ng-click="showConfirmation('Pleas confirm Variant Report approval', 'Enter comments')">CONFIRM</button>
+                                    <button class="btn btn-success" title="Confirm this Report" ng-click="confirmVariantReport()">CONFIRM</button>
                                 </div>
                             </div>
                         </div>
@@ -679,140 +741,154 @@
                 </uib-tab>
 
                 <uib-tab heading="Assignment Report">
-                    <div class="panel-body">
+                    <div class="panel-body" ng-switch="variantReport.status">
 
-                        <div class="row button-row">
-                            <div class="col-md-12 text-right">
-                                <button class="btn btn-success btn-outline" title="Export Assignment Report to PDF"><i class="fa fa-file-pdf-o"></i>&nbsp;&nbsp;PDF</button>
-                                <button class="btn btn-success btn-outline" title="Export Assignment Report to Excel"><i class="fa fa-file-excel-o"></i>&nbsp;&nbsp;Excel</button>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="header-info-box assignment-header-box">
-                                    <dl class="dl-horizontal">
-                                        <dt>Biopsy Sequence Number</dt>
-                                        <dd>T-15-000078</dd>
-
-                                        <dt>Molecular Sequence Number</dt>
-                                        <dd><a>MSN34534</a></dd>
-
-                                        <dt>Analysis Id</dt>
-                                        <dd><a>MSN34534_v2_kjdf3-kejrt-3425-mnb34ert34f</a></dd>
-
-                                        <dt>Variant Report</dt>
-                                        <dd><a>Click Here</a></dd>
-
-                                        <dt>Variant Report aMOI(s)</dt>
-                                        <dd><a>[COSM12344]</a>, p.S310Y (<a>CISM23423</a>)</dd>
-                                    </dl>
+                        <div ng-switch-when="CONFIRMED">
+                            <div class="row button-row">
+                                <div class="col-md-12 text-right">
+                                    <button class="btn btn-success btn-outline" title="Export Assignment Report to PDF"><i class="fa fa-file-pdf-o"></i>&nbsp;&nbsp;PDF</button>
+                                    <button class="btn btn-success btn-outline" title="Export Assignment Report to Excel"><i class="fa fa-file-excel-o"></i>&nbsp;&nbsp;Excel</button>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="header-info-box assignment-header-box">
-                                    <h4>Assignment</h4>
-                                    <dl class="dl-horizontal">
-                                        <dt>Generated date</dt>
-                                        <dd>Sep 29, 2015 9:00 PM GMT</dd>
 
-                                        <dt>Confirmed date</dt>
-                                        <dd>Sep 30, 2015 10:00 PM GMT</dd>
-
-                                        <dt>Sent to COG date</dt>
-                                        <dd>-</dd>
-
-                                        <dt>Received from COG date</dt>
-                                        <dd>-</dd>
-                                    </dl>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="ibox-title ibox-title-no-line">
-                            <h3>Assay</h3>
-                        </div>
-
-                        <table class="table table-hover" role="grid">
-                            <thead>
-                                <tr>
-                                    <th width="20%">IHC</th>
-                                    <th width="40%">Result</th>
-                                    <th width="40%">Comment</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="assay in assignmentReport.assays" style="cursor: auto; " role="row" class="odd">
-                                    <td>{{::assay.gene}}</td>
-                                    <td><span ng-style="{'color':'{{ assay.result | assayStatus }}'}">{{::assay.result}}</span></td>
-                                    <td>{{::assay.comment}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                        <div class="ibox-title ibox-title-no-line">
-                            <h3>Non Hot Spot Rule(s)</h3>
-                        </div>
-
-                        <table class="table table-hover" role="grid">
-                            <thead>
-                                <tr>
-                                    <th width="20%">Treatment Arm</th>
-                                    <th width="80%">Reason</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="table-subheader ">
-                                    <td colspan="8 ">
-                                        <h5>1 - NO VARIANT MATCH</h5>
-                                    </td>
-                                </tr>
-                                <tr ng-repeat="ta in treatmentArms.noMatchList " style="cursor: auto; " role="row" class="odd">
-                                    <td class="status-blue">
-                                        <a ui-sref="index.treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion: ta.currentTtreatmentArmVersion }) ">
-                                            <i class="fa fa-medkit "></i> {{ ::ta.treatmentArmTitle || '-' }}
-                                        </a>
-                                    </td>
-                                    <td>{{::ta.reason}}</td>
-                                </tr>
-
-                                <tr class="table-subheader ">
-                                    <td colspan="8 ">
-                                        <h5>2 - RECORD BASED EXCLUSION</h5>
-                                    </td>
-                                </tr>
-                                <tr ng-repeat="ta in treatmentArms.recordBasedExclusionList " style="cursor: auto;
-                                                " role="row " class="odd ">
-                                    <td class="status-blue ">
-                                        <a ui-sref="index.treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion:
-                                                ta.treatmentArmVersion }) ">
-                                            <i class="fa fa-medkit "></i> {{ ::ta.treatmentArmTitle || '-' }}
-                                        </a>
-                                    </td>
-                                    <td>{{::ta.reason}}</td>
-                                </tr>
-
-                                <tr class="table-subheader ">
-                                    <td colspan="8 ">
-                                        <h5>3 - SELECTED</h5>
-                                    </td>
-                                </tr>
-                                <tr ng-repeat="ta in treatmentArms.selectedList " style="cursor: auto; " role="row" class="odd">
-                                    <td class="status-blue ">
-                                        <a ui-sref="index.treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion: ta.currentTtreatmentArmVersion }) ">
-                                            <i class="fa fa-medkit "></i> {{ ::ta.treatmentArmTitle || '-' }}
-                                        </a>
-                                    </td>
-                                    <td>{{::ta.reason}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-
-                        <div class="ibox-content ibox-title-no-line">
                             <div class="row">
-                                <div class="col-md-12 text-center">
-                                    <button class="btn btn-success" title="Confirm this Report" ng-click="showConfirmation('Pleas confirm Assignment Variant Report approval', 'Enter comments')">CONFIRM</button>
+                                <div class="col-md-6">
+                                    <div class="header-info-box assignment-header-box">
+                                        <dl class="dl-horizontal">
+                                            <dt>Biopsy Sequence Number</dt>
+                                            <dd>{{::assignmentReport.biopsySequenceNumber}}</dd>
+
+                                            <dt>Molecular Sequence Number</dt>
+                                            <dd><a>{{::assignmentReport.molecularSequenceNumber}}</a></dd>
+
+                                            <dt>Analysis Id</dt>
+                                            <dd><a>{{::assignmentReport.analysisId}}</a></dd>
+
+                                            <dt>Variant Report aMOI(s)</dt>
+                                            <dd><a ng-repeat="amoi in assignmentReport.variantReportaMOIs">{{amoi.title}}{{$last ? '' : ', '}}</a></dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="header-info-box assignment-header-box">
+                                        <h4>Assignment</h4>
+                                        <dl class="dl-horizontal">
+                                            <dt>Generated date</dt>
+                                            <dd>{{::assignmentReport.generatedDate}}</dd>
+
+                                            <dt>Confirmed date</dt>
+                                            <dd>{{::assignmentReport.confirmedDate}}</dd>
+
+                                            <dt>Sent to COG date</dt>
+                                            <dd>{{::assignmentReport.sentToCogDate}}</dd>
+
+                                            <dt>Received from COG date</dt>
+                                            <dd>{{::assignmentReport.receivedFromCogDate}}</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="ibox-title ibox-title-no-line">
+                                <h3>Assay</h3>
+                            </div>
+
+                            <table class="table table-hover" role="grid">
+                                <thead>
+                                    <tr>
+                                        <th width="20%">IHC</th>
+                                        <th width="40%">Result</th>
+                                        <th width="40%">Comment</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="assay in assignmentReport.assays" style="cursor: auto; " role="row" class="odd">
+                                        <td>{{::assay.gene}}</td>
+                                        <td><span ng-style="{'color':'{{ assay.result | assayStatus }}'}">{{::assay.result}}</span></td>
+                                        <td>{{::assay.comment}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="ibox-title ibox-title-no-line">
+                                <h3>Non Hot Spot Rule(s)</h3>
+                            </div>
+
+                            <table class="table table-hover" role="grid">
+                                <thead>
+                                    <tr>
+                                        <th width="20%">Treatment Arm</th>
+                                        <th width="80%">Reason</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="table-subheader ">
+                                        <td colspan="8 ">
+                                            <h5>1 - NO VARIANT MATCH</h5>
+                                        </td>
+                                    </tr>
+                                    <tr ng-repeat="ta in treatmentArms.noMatchList " style="cursor: auto; " role="row" class="odd">
+                                        <td class="status-blue">
+                                            <a ui-sref="index.treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion: ta.currentTtreatmentArmVersion }) ">
+                                                <i class="fa fa-medkit "></i> {{ ::ta.treatmentArmTitle || '-' }}
+                                            </a>
+                                        </td>
+                                        <td>{{::ta.reason}}</td>
+                                    </tr>
+
+                                    <tr class="table-subheader ">
+                                        <td colspan="8 ">
+                                            <h5>2 - RECORD BASED EXCLUSION</h5>
+                                        </td>
+                                    </tr>
+                                    <tr ng-repeat="ta in treatmentArms.recordBasedExclusionList " style="cursor: auto;
+                                                " role="row " class="odd ">
+                                        <td class="status-blue ">
+                                            <a ui-sref="index.treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion:
+                                                ta.treatmentArmVersion }) ">
+                                                <i class="fa fa-medkit "></i> {{ ::ta.treatmentArmTitle || '-' }}
+                                            </a>
+                                        </td>
+                                        <td>{{::ta.reason}}</td>
+                                    </tr>
+
+                                    <tr class="table-subheader ">
+                                        <td colspan="8 ">
+                                            <h5>3 - SELECTED</h5>
+                                        </td>
+                                    </tr>
+                                    <tr ng-repeat="ta in treatmentArms.selectedList " style="cursor: auto; " role="row" class="odd">
+                                        <td class="status-blue ">
+                                            <a ui-sref="index.treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion: ta.currentTtreatmentArmVersion }) ">
+                                                <i class="fa fa-medkit "></i> {{ ::ta.treatmentArmTitle || '-' }}
+                                            </a>
+                                        </td>
+                                        <td>{{::ta.reason}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+                            <div class="ibox-content ibox-title-no-line">
+                                <div class="row">
+                                    <div class="col-md-12 text-center">
+                                        <button class="btn btn-success" title="Confirm this Report" ng-click="showConfirmation('Pleas confirm Assignment Variant Report approval', 'Enter comments')">CONFIRM</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div ng-switch-default>
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <i class="fa fa-info-circle"></i>Assignment Report Not Available
+                                        </div>
+                                        <div class="panel-body">
+                                            <p>The Variant Report is not yet Approved.</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -838,7 +914,7 @@
 
                                 <tbody>
                                     <tr ng-repeat="document in patientDocuments" style="cursor: auto;" role="row" class="odd">
-                                        <td>{{::document.name}}</td>
+                                        <td><a href>{{::document.name}}</a></td>
                                         <td>{{::document.uploadedDate}}</td>
                                         <td>{{::document.user}}</td>
                                     </tr>

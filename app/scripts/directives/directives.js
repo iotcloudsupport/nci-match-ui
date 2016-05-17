@@ -1,6 +1,15 @@
 (function () {
     "use strict";
 
+    angular
+        .module('matchbox')
+        .directive('pageTitle', pageTitle)
+        .directive('sideNavigation', sideNavigation)
+        .directive('iboxTools', iboxTools)
+        .directive('minimalizaSidebar', minimalizaSidebar)
+        .directive('collapseToggleLeft', collapseToggleLeft)
+        .directive('checkBoxWithConfirm', checkBoxWithConfirm);
+        
     /**
      * pageTitle - Directive for set Page title - mata title
      */
@@ -102,13 +111,13 @@
     }
 
     /**
-     * collapseToggle - Directive for collapse toggle elements in right corner of ibox
+     * collapseToggleLeft - Directive for collapse toggle elements in right corner of ibox
      */
-    function collapseToggle($timeout) {
+    function collapseToggleLeft($timeout) {
         return {
             restrict: 'A',
             scope: true,
-            template: '<div class="ibox-tools ibox-tools-with-h3-title dropdown" dropdown><a ng-click="showhide()"> <i class="fa fa-chevron-up"></i></a></div>',
+            template: '<div class="ibox-tools ibox-tools-left-side dropdown" dropdown><a ng-click="showhide()"> <i class="fa fa-chevron-up"></i></a></div>',
             controller: function ($scope, $element) {
                 // Function for collapse ibox
                 $scope.showhide = function () {
@@ -128,23 +137,18 @@
         }
     }
 
-    function checkBoxWithConfirm(prompt) {
-        var controller = function (prompt) {
+    function checkBoxWithConfirm($uibModal) {
+        var controller = function () {
             var vm = this;
 
             vm.toggle = function (comment) {
                 vm.isChecked = !vm.isChecked;
                 vm.comment = comment;
 
-                // console.log('Directive controller isChecked = ' + vm.isChecked);
-                // console.log('vm.onCommentEntered = ', vm.onCommentEntered);
-
                 if (vm.onCommentEntered && typeof vm.onCommentEntered === 'function' && comment !== null) {
-                    // console.log('Directive.onCommentEntered called with ' + comment);
                     try {
-                        vm.onCommentEntered(comment);                    
-                    } catch(error)
-                    {
+                        vm.onCommentEntered(comment);
+                    } catch (error) {
                         if (typeof error === 'object' && 'message' in error && error.message.startsWith('Cannot use \'in\' operator to search for')) {
                             console.log('Ignored AngularJS error. ' + error);
                         }
@@ -154,9 +158,6 @@
 
             vm.confirm = function () {
                 if (typeof vm.promptOnlyIf !== 'undefined') {
-                    // console.log('vm.promptOnlyIf = ' + vm.promptOnlyIf);
-                    // console.log('vm.isChecked = ' + vm.isChecked);
-                    
                     var promptIf = !!vm.promptOnlyIf;
 
                     if (!!vm.isChecked !== promptIf) {
@@ -164,12 +165,26 @@
                         return;
                     }
                 }
-                
-                prompt({
-                    title: vm.confirmTitle,
-                    message: vm.confirmMessage,
-                    input: true
-                }).then(vm.toggle);
+
+                var modalInstance = $uibModal.open({
+                    templateUrl: 'views/common/modal_dialog_with_comment.html',
+                    controller: 'ModalDialogWithCommentController',
+                    resolve: {
+                        comment: function () {
+                            return vm.comment;
+                        },
+                        title: function () {
+                            return vm.confirmTitle;
+                        },
+                        message: function () {
+                            return vm.confirmMessage;
+                        }
+                    }
+                });
+
+                modalInstance.result.then(function (comment) {
+                    vm.toggle(comment);
+                });
             };
         };
 
@@ -193,22 +208,10 @@
                 confirmMessage: '@confirmMessage',
                 isChecked: '=',
                 onCommentEntered: '&',
-                promptOnlyIf: '='
+                promptOnlyIf: '=',
+                updateObject: '='
             }
         }
     }
 
-    /**
-     *
-     * Pass all functions into module
-     */
-    angular
-        .module('matchbox')
-        .directive('pageTitle', pageTitle)
-        .directive('sideNavigation', sideNavigation)
-        .directive('iboxTools', iboxTools)
-        .directive('minimalizaSidebar', minimalizaSidebar)
-        .directive('collapseToggle', collapseToggle)
-        .directive('checkBoxWithConfirm', checkBoxWithConfirm)
-
-}());
+} ());

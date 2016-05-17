@@ -52,10 +52,10 @@
 
 @media (min-width: 768px) {
     .dl-horizontal dt {
-        width: 180px;
+        width: 190px;
     }
     .dl-horizontal dd {
-        margin-left: 200px;
+        margin-left: 210px;
         margin-top: 4px;
         margin-bottom: 4px;
     }
@@ -116,7 +116,6 @@
 
 .table > thead > tr > th, .table-bordered > thead > tr > td {
   background-color: #F5F5F6;
-  //border-bottom-width: 1px;
 }
 
 .list-box {
@@ -125,29 +124,29 @@
 }
 
 .list-box li {
-    list-style-type: none;
-    margin-top: 10px;
+  list-style-type: none;
+  margin-top: 10px;
 }
 
 .list-box h1, h2, h3, h4, h5, h6 {
-    margin-left: 0px;
+  margin-left: 0px;
 }
 
- .top-main-header-box {
-    height: 178px;     
- }
+.top-main-header-box {
+  height: 178px;     
+}
 
 .variant-report-header-box{
-    height: 208px;     
- }
+  height: 208px;     
+}
  
- .assignment-header-box{
-    height: 155px;          
- }
+.assignment-header-box{
+  height: 155px;          
+}
  
- .biopsy-header-box {
-    height: 132px;
- }
+.biopsy-header-box {
+  height: 132px;
+}
 
 .ibox-tools-with-h3-title {
   margin-top: -24px;
@@ -175,11 +174,6 @@
     border: none;
 }
 
-// .no-horizontal-padding {
-//   padding-left: 0px;
-//   padding-right: 0px;
-// }
-
 .header-box-container {
     border-top: 0;
     padding: 34px 0px 16px 0px;
@@ -200,22 +194,12 @@
 
 // Override angular-dropdowns styles
 .wrap-dd-select {
-    position: relative;
-    width: 200px;
-    margin: 0 auto;
-    padding: 10px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-    background: #fff;
+  display: inline-block;
     border-radius: 2px;
     border: 1px solid @border-color;
-    box-shadow: none;
-    cursor: pointer;
-    outline: 0;
-    font-weight: 700;
     color: inherit;
     margin-left: 0px;
+    font-weight: lighter;
 }
 
 .wrap-dd-select .dropdown li a {
@@ -228,8 +212,10 @@
     border-color: @navy transparent;
 }
 
-.ng-dropdown-label {
-  margin-top: 11px; 
+.ibox-title > h2 > .drop-down-label {
+  margin-left: -14px;
+  margin-right: 5px;
+  // font-weight: lighter;
 }
 
 .stacked-container {
@@ -260,4 +246,31 @@
 
 .stacked-back input {
     outline: none;
+}
+
+// Removing unnecessary bootstrap lines 
+.modal-header {
+   border-bottom: none;
+}
+
+.modal-footer {
+   border-top: none;
+}
+
+.biopsy-sample-box {
+    height: 220px;            
+}
+
+.ibox-tools-left-side {
+    margin-top: 3px;
+    margin-right: 10px;
+    float: left;
+}
+
+.ibox-content-no-padding {
+  padding: 0px;
+}
+
+.ibox-title {
+  margin-top: 10px;
 }

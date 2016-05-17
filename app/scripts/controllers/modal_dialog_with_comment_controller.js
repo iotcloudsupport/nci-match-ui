@@ -1,10 +1,12 @@
 (function () {
 
     angular.module('matchbox')
-        .controller('ModalDialogController', ModalDialogController);
+        .controller('ModalDialogWithCommentController', ModalDialogWithCommentController);
 
-    function ModalDialogController($scope, $uibModalInstance, comment) {
+    function ModalDialogWithCommentController($scope, $uibModalInstance, comment, title, message) {
         $scope.comment = comment;
+        $scope.title = title;
+        $scope.message = message;
 
         $scope.ok = function () {
             $uibModalInstance.close($scope.comment);

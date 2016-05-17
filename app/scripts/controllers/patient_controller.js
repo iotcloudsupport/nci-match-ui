@@ -19,6 +19,8 @@
 
         $scope.confirmTitle = 'Confirmation Changed';
         $scope.confirmMessage = 'Please enter a reason:';
+        
+        $scope.biopsySampleLabel = 'Latest';
 
         $scope.files = [];
 
@@ -39,6 +41,7 @@
         $scope.showWarning = showWarning;
         $scope.showConfirmation = showConfirmation;
         $scope.editComment = editComment;
+        $scope.confirmVariantReport = confirmVariantReport;
 
         function setVariantReportType(reportType) {
             if ($scope.variantReportType === reportType) {
@@ -89,6 +92,7 @@
                     $scope.biopsyReport = data.biopsyReport;
                     $scope.biopsyReports = data.biopsyReports;
                     $scope.patientDocuments = data.patientDocuments;
+                    $scope.currentSendout = data.currentSendout;
                 })
                 .then(function () {
                     $scope.variantReportType = 'tumorTissue';
@@ -104,7 +108,7 @@
         function dzError(file, errorMessage) {
             $log.debug(errorMessage);
         }
-
+        
         function setComment(value) {
             $log.debug('User entered un-confirm reason: ' + value);
         }
@@ -112,7 +116,8 @@
         function showWarning(title, message) {
             prompt({
                 title: title,
-                message: message
+                message: message,
+                buttons: [{ label:'OK', primary: true }, { label:'Cancel', cancel: true }]
             }).then(function (comment) {
                 $log.debug('User agreed after warning');
             });
@@ -122,7 +127,8 @@
             prompt({
                 title: title,
                 message: message,
-                input: true
+                input: true,
+                buttons: [{ label:'OK', primary: true }, { label:'Cancel', cancel: true }]
             }).then(function (comment) {
                 $log.debug('User entered comment: ' + comment);
             });
@@ -131,18 +137,38 @@
         function editComment(variant) {
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
-                templateUrl: 'commentDialog.html',
-                controller: 'ModalDialogController',
+                templateUrl: 'views/common/modal_dialog_with_comment.html',
+                controller: 'ModalDialogWithCommentController',
                 resolve: {
                     comment: function () {
                         return variant.comment;
-                    }
+                    },
+                    title: function () {
+                        return $scope.confirmTitle;
+                    },
+                    message: function () {
+                        return $scope.confirmMessage;
+                    }                    
                 }
             });
 
             modalInstance.result.then(function (comment) {
                 variant.comment = comment;
-                $log.info(comment);
+                $log.debug(comment);
+            });
+        }
+        
+        function confirmVariantReport() {
+            prompt({
+                title: 'Please confirm Variant Report approval',
+                message: 'Enter comments',
+                input: true,
+                buttons: [{ label:'OK', primary: true }, { label:'Cancel', cancel: true }]
+            }).then(function (comment) {
+                if (!$scope.variantReport) {
+                    $log.error('Current Variant Report is not set');
+                }              
+                $scope.variantReport.status = 'CONFIRMED';
             });
         }
     }
