@@ -222,6 +222,15 @@ describe('Controller: Treatment Arm Controller', function () {
         //expect(scope.treatmentArmList.length).toBe(0);
     });
 
+    it('should get the inExclusionType', function() {
+        expect(scope.getInExclusionTypeClass('inclusion')).toBe('');
+    });
+
+    it('should set the inExclusionType', function() {
+        scope.setInExclusionType('active');
+        scope.setInExclusionType('active');
+        console.log(scope.inExclusion);
+    })
 
 });
 
