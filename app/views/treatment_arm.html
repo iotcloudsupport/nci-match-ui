@@ -338,17 +338,31 @@
                                                 </div>
                                             </div>
                                         </uib-tab>
+
                                         <uib-tab heading="SNV">
                                             <div class="panel-body">
                                                 <div class="ibox float-e-margins">
                                                     <div class="ibox-content">
                                                         <div class="btn-group">
                                                             <!--<label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='inclusion' btn-radio="'inclusion'" ng-class="{'active'}">INCLUSION</label>-->
-                                                            <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='inclusion' btn-radio="'inclusion'" ng-class="'active'">INCLUSION</label>
-                                                            <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>
+                                                            <!--<label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='inclusion' btn-radio="'inclusion'" ng-class="'active'">INCLUSION</label>
+                                                            <label class="btn btn-outline btn-success" ng-model="TaCtrl.activeChoice" value='exclusion' btn-radio="'exclusion'">EXCLUSION</label>-->
+                                                            <div class="btn-group btn-group-margin" data-toggle="buttons">
+                                                                <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('inclusion')" ng-click="setInExclusionType('inclusion')"
+                                                                       title="Switch to Inclusion">
+                                                                    <input type="radio" name="inExclusionType" id="option1">INCLUSION
+                                                                </label>
+                                                                <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('exclusion')" ng-click="setInExclusionType('exclusion')"
+                                                                       title="Switch to Exclusion">
+                                                                    <input type="radio" name="inExclusionType" id="option2">EXCLUSION
+                                                                </label>
+                                                            </div>
+
                                                         </div>
                                                         <br><br>
-                                                        <div ng-show="TaCtrl.activeChoice == 'inclusion'">
+                                                        <!--<div class="row" ng-if="variantReportMode!=='Qc'">-->
+                                                        <div class="row" ng-if="inExclusionType == 'inclusion'">
+                                                        <!--<div ng-show="TaCtrl.activeChoice == 'inclusion'">-->
                                                             <!--<table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
                                                                    dt-column-defs="TaCtrl.dtColumnDefs"
@@ -398,7 +412,8 @@
                                                                 </tbody>
                                                             </table>
                                                         </div>
-                                                        <div ng-show="TaCtrl.activeChoice == 'exclusion'">
+                                                        <div class="row" ng-if="inExclusionType == 'exclusion'">
+                                                        <!--<div ng-show="TaCtrl.activeChoice == 'exclusion'">-->
                                                             <!--<table datatable="ng"
                                                                    dt-options="TaCtrl.dtOptions"
                                                                    dt-column-defs="TaCtrl.dtColumnDefs"
