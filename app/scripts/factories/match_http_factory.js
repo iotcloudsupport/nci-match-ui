@@ -75,8 +75,8 @@ angular.module('http.matchbox', [])
     })
     .factory('svgApi', function($http, matchConfig) {
         return {
-            getSvgGene: function() {
-                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlGraphInfoFromVCF?molecularSequenceNumber=SampleControl_MoCha_10');
+            getSvgGene: function(id) {
+                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlGraphInfoFromVCF?molecularSequenceNumber=' + id);
                 // return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getGraphInfoFromVCF?patientId=10005&biopsySequenceNumber=T-15-000022&jobName=MSN3111_v1_fc12ad97-2c1e-45e2-8beb-8a77eef4ecf6');
             }
         };

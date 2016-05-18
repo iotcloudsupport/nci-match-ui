@@ -8,6 +8,8 @@
         'patients.matchbox',
         'patient.matchbox',
         'iradmin.matchbox',
+        'irsample.matchbox',
+        'qcsample.matchbox',
         'service.matchbox',
         'treatment-arms.matchbox',
         'treatment-arm.matchbox',

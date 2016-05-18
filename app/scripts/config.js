@@ -220,9 +220,12 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
             }
         })
         .state('index.ngsample', {
-            url: "/ngsample",
+            url: "/ngsample:sampleId",
             templateUrl: "views/ngsample.html",
             data: { pageTitle: 'IR Sample Control Variant Report', requiresLogin: true },
+            controller: function($scope, $stateParams) {
+                $scope.sid = $stateParams.sampleId;
+            },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -243,9 +246,12 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
             }
         })
         .state('index.ocsample', {
-            url: "/ocsample",
+            url: "/ocsample:sampleId",
             templateUrl: "views/ocsample.html",
             data: { pageTitle: 'IR Sample Quality Control Report', requiresLogin: true },
+            controller: function($scope, $stateParams) {
+                $scope.sid = $stateParams.sampleId;
+            },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -261,11 +267,6 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                             name: 'datatables',
                             files: ['bower_components/angular-datatables/dist/angular-datatables.min.js']
                         }
-                        // ,
-                        // {
-                        //     name: 'd3BoxVersion5',
-                        //     files: ['../scripts/cnvChart.js']
-                        // }
                     ]);
                 }
             }

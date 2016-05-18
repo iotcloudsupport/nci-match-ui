@@ -1,6 +1,62 @@
 angular.module('iradmin.matchbox',[])
     .controller('IrAdminController',
-        function( $scope, $http, $window, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, irAdminApi, svgApi) {
+        function( $scope, $http, $window, $stateParams, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, irAdminApi, svgApi) {
+
+            // $scope.setSamplePositiveControlClass = setSamplePositiveControlClass;
+            $scope.setSampleNegControlClass = setSampleNegControlClass;
+            $scope.getSamplePositiveControlClass = getSamplePositiveControlClass;
+            $scope.getSampleNegControlClass = getSampleNegControlClass;
+
+
+            // function setSamplePositiveControlClass(reportType) {
+            //     alert("dang")
+            //     if ($scope.SamplePositiveControlClass === reportType) {
+            //         return;
+            //     }
+            //
+            //     $scope.SamplePositiveControlClass = reportType;
+            //     setVariantReport();
+            // }
+
+
+            this.tab = 1;
+            this.selectTab = function(setTab){
+                this.tab = setTab;
+            }
+            this.isSelected = function(checkTab){
+                return this.tab === checkTab;
+            }
+
+
+            $scope.setPositiveControl = function(){
+                alert("Yo");
+            };
+
+            $scope.setNoTemplateControl = function(){
+                alert("Yo");
+            };
+
+
+            function setSampleNegControlClass(reportMode) {
+                if ($scope.SampleNegControlClass === reportMode) {
+                    return;
+                }
+
+                $scope.SampleNegControlClass = reportMode;
+                setVariantReport();
+            }
+
+
+
+            function getSamplePositiveControlClass(reportType) {
+
+                alert("pop")
+                return $scope.positiveReport === reportType ? 'active' : '';
+            }
+
+            function getSampleNegControlClass(reportMode) {
+                return $scope.negReport === reportMode ? 'active' : '';
+            }
 
             // .controller('MainCtrl', function (Database,Features,$scope,$http) {
 
@@ -10,7 +66,7 @@ angular.module('iradmin.matchbox',[])
     this.dtColumnDefs = [];
 
     this.dtInstance = {};
-
+3
     $scope.irList = [];
     $scope.sampleList = [];
             $scope.geneData =[];
@@ -51,20 +107,23 @@ angular.module('iradmin.matchbox',[])
         };
 
 
-        $scope.loadSvgGeneList = function () {
-            svgApi
-                .getSvgGene()
-                .then(function (d) {
-
-                    $window.d3BoxVersion5(d.data);
-
-                    // GeneSvg.buildGeneChartVersion5(d.data.parsedVCFGenes,mapd,cellularity,tvcVersion,screenwidth);
-                });
-        };
+        // $scope.loadSvgGeneList = function () {
+        //     svgApi
+        //         .getSvgGene()
+        //         .then(function (d) {
+        //
+        //             $window.d3BoxVersion5(d.data);
+        //
+        //             // GeneSvg.buildGeneChartVersion5(d.data.parsedVCFGenes,mapd,cellularity,tvcVersion,screenwidth);
+        //         });
+        // };
 
 
 
         $scope.loadPositiveSamples = function () {
+
+            alert("pop"+ $stateParams)
+
             irAdminApi
                 .getPosiveSample()
                 .then(function (d) {
@@ -94,4 +153,19 @@ angular.module('iradmin.matchbox',[])
                 });
         };
 
+
     });
+
+    // .controller('DemoController', function ($scope) {
+    //     init();
+    //     function init() {
+    //
+    //         $scope.newItemType = 'bill';
+    //         $scope.change = function () {
+    //
+    //             alert("pop")
+    //
+    //             console.log($scope.newItemType)
+    //         };
+    //     }
+    // });

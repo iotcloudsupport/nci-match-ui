@@ -34,9 +34,9 @@
                                     <ul class="list-group clear-list m-t">
 
                                         <li class="list-group-item">
-                                        <div class="alert alert-info">
+                                        <div class="alert alert-info" ng-controller="SampleController" ng-init="loadSamplesList()">
 
-                                            <a ui-sref="index.ocsample({ sampleId: 1031 })" class="btn btn-success">
+                                            <a ui-sref="index.ocsample({ sampleId:sampleId })" class="btn btn-success">
                                                 <i class="fa fa-bar-chart"></i>&nbsp;&nbsp;
                                                 <span class="bold">Quality Control Report</span>
                                             </a>
@@ -204,10 +204,14 @@
                             </div>
 
 
+
+
                             <div class="col-lg-12">
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-content">
                                         <div class="tabs-container">
+
+
                                             <uib-tabset>
                                                 <uib-tab heading="Positive Controls ">
 
