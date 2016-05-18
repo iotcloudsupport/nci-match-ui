@@ -1,5 +1,6 @@
 describe('Controller: Patient Details Controller', function () {
-
+    'use strict'
+    
     beforeEach(module('config.matchbox', 'http.matchbox', 'patient.matchbox'));
 
     var patientsCtrl,
@@ -9,7 +10,7 @@ describe('Controller: Patient Details Controller', function () {
     beforeEach(inject(function ($routeParams, $controller, $rootScope, _matchApi_, $stateParams, $httpBackend) {
         scope = $rootScope.$new();
         httpBackend = $httpBackend;
-        $routeParams.patientSequenceNumber = "10356";
+        $routeParams.patientSequenceNumber = "100065";
         patientsCtrl = $controller('PatientController', {
             $scope: scope,
             //$routeParams: {patientSequenceNumber: 'patientSequenceNumber'},
@@ -26,6 +27,28 @@ describe('Controller: Patient Details Controller', function () {
             matchApi: _matchApi_
         });
     }));
+    
+    describe('Header', function(){
+        it ('should have correct Patient Sequence Number', function(){
+            expect(scope.patientSequenceNumber).toBe('100065');           
+        });
+    });
+    
+    describe('Summary Tab', function(){
+        
+    });
+    
+    describe('Biopsy Tab', function(){
+        
+    });
+    
+    describe('Assignment Report Tab', function(){
+        
+    });
+    
+    describe('Documents Tab', function(){
+        
+    });
 
     //afterEach(function () {
     //    httpBackend.verifyNoOutstandingExpectation();
