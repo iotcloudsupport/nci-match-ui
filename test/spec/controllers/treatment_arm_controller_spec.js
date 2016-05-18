@@ -25,12 +25,8 @@ describe('Controller: Treatment Arm Controller', function () {
             DTOptionsBuilder: {
                 newOptions: function () {
                     return {
-                        withOption: function (paging) {
-                            // This is a mock function of the DTOptionsBuilder
-                        },
-                        withOption: function (info) {
-                            // This is a mock function of the DTOptionsBuilder
-                        }
+                        withOption: function (paging) {},
+                        withOption: function (info) {}
                     };
                 }
             },
@@ -130,6 +126,10 @@ describe('Controller: Treatment Arm Controller', function () {
                                 identifier: "COSM6224",
                                 inclusion: true,
                                 level_of_evidence: "1.0",
+                                public_med_ids: [
+                                  "20573926",
+                                    "1969284"
+                                ],
                                 position: "55259515",
                                 reference: "T"
                             },
@@ -162,7 +162,18 @@ describe('Controller: Treatment Arm Controller', function () {
                                 chromosome: "chr7",
                                 description: "p.K734_E739del",
                                 gene_name: "EGFR",
-                                identifier: "COSM20649",
+                                identifier: "COSF20649",
+                                inclusion: false,
+                                level_of_evidence: "1.0",
+                                position: "55242462",
+                                reference: "CAAGAATTGACA",
+                            },
+                            {
+                                alternative: "C",
+                                chromosome: "chr7",
+                                description: "p.K734_E739del",
+                                gene_name: "EGFR",
+                                identifier: "20649",
                                 inclusion: false,
                                 level_of_evidence: "1.0",
                                 position: "55242462",
@@ -285,6 +296,7 @@ describe('Controller: Treatment Arm Controller', function () {
         scope.openGene('EGFR');
         scope.openId('COSM746');
     });
+
 
 });
 
