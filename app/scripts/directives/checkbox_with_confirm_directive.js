@@ -35,7 +35,7 @@
                 }
 
                 var modalInstance = $uibModal.open({
-                    templateUrl: 'views/common/modal_dialog_with_comment.html',
+                    templateUrl: 'views/templates/modal_dialog_with_comment.html',
                     controller: 'ModalDialogWithCommentController',
                     resolve: {
                         comment: function () {
