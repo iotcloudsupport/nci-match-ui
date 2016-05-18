@@ -8,7 +8,7 @@
         .directive('iboxTools', iboxTools)
         .directive('minimalizaSidebar', minimalizaSidebar)
         .directive('collapseToggleLeft', collapseToggleLeft);
-        
+
     /**
      * pageTitle - Directive for set Page title - mata title
      */
@@ -44,6 +44,38 @@
         }
     }
 
+    function findIboxControls($element) {
+        var ibox = $element.closest('div.ibox');
+        var icon = $element.find('i:first');
+        var content = ibox.find('div.ibox-content');
+        return { ibox: ibox, icon: icon, content: content };
+    }
+
+    /**
+     * collapseToggleLeft - Directive for collapse toggle elements in right corner of ibox
+     */
+    function collapseToggleLeft($timeout) {
+        return {
+            restrict: 'A',
+            scope: true,
+            template: '<div class="ibox-tools ibox-tools-left-side dropdown" dropdown><a ng-click="showhide()"> <i class="fa fa-chevron-up"></i></a></div>',
+            controller: function ($scope, $element) {
+                // Function for collapse ibox
+                $scope.showhide = function () {
+                    var controls = findIboxControls($element);
+                    controls.content.slideToggle(200);
+                    // Toggle icon from up to down
+                    controls.icon.toggleClass('fa-chevron-up').toggleClass('fa-chevron-down');
+                    controls.ibox.toggleClass('').toggleClass('border-bottom');
+                    $timeout(function () {
+                        controls.ibox.resize();
+                        controls.ibox.find('[id^=map-]').resize();
+                    }, 50);
+                }
+            }
+        }
+    }
+
     /**
      * iboxTools - Directive for iBox tools elements in right corner of ibox
      */
@@ -51,27 +83,27 @@
         return {
             restrict: 'A',
             scope: true,
-            templateUrl: 'views/common/ibox_tools.html',
+            templateUrl: 'views/templates/ibox_tools.html',
             controller: function ($scope, $element) {
+                
                 // Function for collapse ibox
                 $scope.showhide = function () {
-                    var ibox = $element.closest('div.ibox');
-                    var icon = $element.find('i:first');
-                    var content = ibox.find('div.ibox-content');
+                    var content = findIboxControls($element);
                     content.slideToggle(200);
                     // Toggle icon from up to down
-                    icon.toggleClass('fa-chevron-up').toggleClass('fa-chevron-down');
-                    ibox.toggleClass('').toggleClass('border-bottom');
+                    controls.icon.toggleClass('fa-chevron-up').toggleClass('fa-chevron-down');
+                    controls.ibox.toggleClass('').toggleClass('border-bottom');
                     $timeout(function () {
-                        ibox.resize();
-                        ibox.find('[id^=map-]').resize();
+                        controls.ibox.resize();
+                        controls.ibox.find('[id^=map-]').resize();
                     }, 50);
-                },
-                    // Function for close ibox
-                    $scope.closebox = function () {
-                        var ibox = $element.closest('div.ibox');
-                        ibox.remove();
-                    }
+                }
+                
+                // Function for close ibox
+                $scope.closebox = function () {
+                    var ibox = $element.closest('div.ibox');
+                    controls.ibox.remove();
+                }
             }
         }
     }
@@ -104,33 +136,6 @@
                         // Remove all inline style from jquery fadeIn function to reset menu state
                         $('#side-menu').removeAttr('style');
                     }
-                }
-            }
-        }
-    }
-
-    /**
-     * collapseToggleLeft - Directive for collapse toggle elements in right corner of ibox
-     */
-    function collapseToggleLeft($timeout) {
-        return {
-            restrict: 'A',
-            scope: true,
-            template: '<div class="ibox-tools ibox-tools-left-side dropdown" dropdown><a ng-click="showhide()"> <i class="fa fa-chevron-up"></i></a></div>',
-            controller: function ($scope, $element) {
-                // Function for collapse ibox
-                $scope.showhide = function () {
-                    var ibox = $element.closest('div.ibox');
-                    var icon = $element.find('i:first');
-                    var content = ibox.find('div.ibox-content');
-                    content.slideToggle(200);
-                    // Toggle icon from up to down
-                    icon.toggleClass('fa-chevron-up').toggleClass('fa-chevron-down');
-                    ibox.toggleClass('').toggleClass('border-bottom');
-                    $timeout(function () {
-                        ibox.resize();
-                        ibox.find('[id^=map-]').resize();
-                    }, 50);
                 }
             }
         }
