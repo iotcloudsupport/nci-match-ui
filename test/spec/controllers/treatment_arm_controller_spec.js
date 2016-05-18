@@ -279,7 +279,6 @@ describe('Controller: Treatment Arm Controller', function () {
     it('should set the inExclusionType', function() {
         scope.setInExclusionType('active');
         scope.setInExclusionType('active');
-        console.log(scope.inExclusion);
     });
 
     it('should create the right links', function() {
