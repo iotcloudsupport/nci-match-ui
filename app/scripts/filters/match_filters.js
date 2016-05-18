@@ -9,8 +9,21 @@
         .filter('concordance', concordance)
         .filter('irsample', irsample);
 
-    function isNotString(text) { 
+    function isNotString(text) {
         return typeof text !== "string";
+    }
+
+    function colorFilter(value, map) {
+        if (isNotString(value))
+            return '';
+
+        value = value.toUpperCase();
+
+        if (value in map) {
+            return map[value];
+        } else {
+            return '';
+        }
     }
 
     function gmt() {
@@ -24,106 +37,42 @@
     }
 
     function concordance() {
-        return function(text) {
-            if (isNotString(text))
-                return '';
-            
-            text = text.toUpperCase();
-            
-            if (text === 'YES') {
-                return 'green';
-            } else {
-                return '';
-            }
+        return function (text) {
+            return colorFilter(text, { 'YES': 'green' });
         }
     }
 
     function analysisStatus() {
         return function (text) {
-            if (isNotString(text))
-                return '';
-            
-            text = text.toUpperCase();
-            
-            if (text === 'CONFIRMED') {
-                return 'green';
-            }
-            if (text === 'PENDING') {
-                return 'orange';
-            }
-            else if (text === 'REJECTED') {
-                return 'red';
-            }
-            else {
-                return '';
-            }
+            return colorFilter(text, { 'CONFIRMED': 'green', 'PENDING': 'orange', 'REJECTED': 'red' });
         };
     }
 
     function assayStatus() {
         return function (text) {
-            if (isNotString(text))
-                return '';
-            
-            text = text.toUpperCase();
-            
-            if (text === 'POSITIVE') {
-                return 'green';
-            }
-            else if (text === 'NEGATIVE') {
-                return 'red';
-            }
-            else {
-                return '';
-            }
+            return colorFilter(text, { 'POSITIVE': 'green', 'NEGATIVE': 'red' });
         };
     }
-        
+
     function status() {
         return function (text) {
-            if (isNotString(text))
-                return '';
-            
-            text = text.toUpperCase();
-                        
-            if (text === 'REGISTRATION') {
-                return 'blue';
-            }
-            else if (text === 'PENDING_APPROVAL' ||
-                text === 'REJOIN_REQUESTED') {
-                return 'purple';
-            }
-            else if (text === 'OFF_TRIAL_NO_TA_AVAILABLE' ||
-                text === 'OFF_TRIAL_NOT_CONSENTED' ||
-                text === 'OFF_TRIAL' ||
-                text === 'OFF_TRIAL_DECEASED') {
-                return 'red';
-            }
-            else if (text === 'ON_TREATMENT_ARM') {
-                return 'green';
-            }
-            else {
-                return '';
-            }
+            return colorFilter(text,
+                {
+                    'REGISTRATION': 'blue',
+                    'PENDING_APPROVAL': 'purple',
+                    'REJOIN_REQUESTED': 'purple',
+                    'OFF_TRIAL_NO_TA_AVAILABLE': 'red',
+                    'OFF_TRIAL_NOT_CONSENTED': 'red',
+                    'OFF_TRIAL': 'red',
+                    'OFF_TRIAL_DECEASED': 'red',
+                    'ON_TREATMENT_ARM': 'green'
+                });
         };
     }
 
     function irsample() {
         return function (text) {
-            if (isNotString(text))
-                return '';
-
-            text = text.toUpperCase();
-
-            if (text === 'PASSED') {
-                return 'blue';
-            }
-            else if (text === 'FAILED') {
-                return 'red';
-            }
-            else {
-                return '';
-            }
+            return colorFilter(text, { 'PASSED': 'blue', 'FAILED': 'red' });
         };
     }
-}());
+} ());
