@@ -1,10 +1,6 @@
 angular.module('treatment-arm.matchbox',[])
     .controller('TreatmentArmController', function( $scope, $window, DTOptionsBuilder, DTColumnDefBuilder, treatmentArmApi) {
-        /*this.dtOptions = DTOptionsBuilder.newOptions()
-            .withOption('info', false);
-        this.dtOptions = DTOptionsBuilder.newOptions()
-            .withOption('paging', false);
-         */
+
         this.dtOptions = {
             'info': false,
             'paging':false
@@ -24,8 +20,6 @@ angular.module('treatment-arm.matchbox',[])
             .withOption('info', false)
             .withOption('bFilter', false);
 
-        this.altColumnDefs = [
-            DTColumnDefBuilder.newColumnDef(4).withOption('createdCell', createpubmedlinks)
         ];*/
 
         $scope.test = '';
@@ -61,7 +55,7 @@ angular.module('treatment-arm.matchbox',[])
             history: [
                 {status: 'PENDING', date: 'March 02, 2016 4:00AM GMT'},
                 {status: 'READY', date: 'March 09, 2016 10:10PM GMT'},
-                {status: 'OPEN', date: 'March 17, 2016 10:10PM GMT'},
+                {status: 'OPEN', date: 'March 17, 2016 10:10PM GMT'}
             ]
         };
 
@@ -135,128 +129,15 @@ angular.module('treatment-arm.matchbox',[])
                         "medraCode": "10025032"
                     }
                 ],
-                snvsInclusion: [
-                    {
-                        "id": "COSM9999000",
-                        "gene": "EBFRA",
-                        "levelOfEvidence": "1",
-                        "chrom": "chr7",
-                        "position": "5522678459",
-                        "reference": "C",
-                        "alternative": "T",
-                        "litRefs": [
-                            {
-                                "litRef": "26051236"
-                            },
-                            {
-                                "litRef": "19692684"
-                            }
-                        ],
-                        "protein": "p.G719A",
-                        "totNumPtsWithVariant": "2",
-                        "ptsWithVariantOnArm": "1",
-                        "pctPtsWithVarOnArmOfTotPtsWithVar": "20%",
-                        "inclusion": true,
-                        "exclusion": false
-                    }
-                ],
-                snvsExclusion: [
-                    {
-                        "id": "COSM746",
-                        "gene": "PIK3CA",
-                        "levelOfEvidence": "3",
-                        "chrom": "chr7",
-                        "position": "5522678453",
-                        "reference": "C",
-                        "alternative": "T",
-                        "litRefs": [
-                            {
-                                "litRef": "21266528"
-                            }
-                        ],
-                        "protein": "p.G719A",
-                        "inclusion": false,
-                        "exclusion": true
-                    }
-                ],
-                indelsInclusion: [
-                    {
-                        "id": "COSM746",
-                        "gene": "ALK",
-                        "levelOfEvidence": "3",
-                        "chrom": "chr7",
-                        "position": "5522678453",
-                        "reference": "C",
-                        "alternative": "T",
-                        "litRefs": [
-                            {
-                                "litRef": "21266528"
-                            }
-                        ],
-                        "protein": "p.G719A",
-                        "totNumPtsWithVariant": "0",
-                        "ptsWithVariantOnArm": "0",
-                        "pctPtsWithVarOnArmOfTotPtsWithVar": "0%",
-                        "inclusion": false,
-                        "exclusion": true
-                    }
-                ],
+                snvsInclusion: [],
+                snvsExclusion: [],
+                indelsInclusion: [],
                 indelsExclusion: [],
-                cnvsInclusion: [
-                    {
-                        "gene": "ERBB2",
-                        "levelOfEvidence": "1",
-                        "chrom": "chr17",
-                        "position": "37856492",
-                        "litRefs": [
-                            {
-                                "litRef": "19692684"
-                            }
-                        ],
-                        "protein": "ERBB2 Amplification",
-                        "totNumPtsWithVariant": "0",
-                        "ptsWithVariantOnArm": "0",
-                        "pctPtsWithVarOnArmOfTotPtsWithVar": "-",
-                        "inclusion": true,
-                        "exclusion": false
-                    }
-                ],
-                cnvsExclusion: [
-                    {
-                        "gene": "ERBB661",
-                        "levelOfEvidence": "1",
-                        "chrom": "chr17",
-                        "position": "3785648800",
-                        "litRefs": [
-                            {
-                                "litRef": "26051236"
-                            }
-                        ],
-                        "protein": "ERBB661 Amplification",
-                        "inclusion": false,
-                        "exclusion": true
-                    }
-                ],
+                cnvsInclusion: [],
+                cnvsExclusion: [],
                 geneFusionsInclusion: [],
                 geneFusionsExclusion: [],
-                nhrsInclusion: [
-                    {
-                        "oncomineVariantClass": "-",
-                        "gene": "EGFR",
-                        "levelOfEvidence" : "1",
-                        "function": "nonframeshiftinsertion",
-                        "litRefs": [
-                            {
-                                "litRef": "26051236"
-                            }
-                        ],
-                        "variantDescription": "-",
-                        "exon": "19",
-                        "proteinRegex": "-",
-                        "inclusion": true,
-                        "exclusion": false
-                    }
-                ],
+                nhrsInclusion: [],
                 nhrsExclusion: [],
                 nonSequencingAssaysInclusion: [
                     {
@@ -339,177 +220,14 @@ angular.module('treatment-arm.matchbox',[])
                         "medraCode": "10025032"
                     }
                 ],
-                snvsInclusion: [
-                    {
-                        "id": "COSM776",
-                        "gene": "PIK3CA",
-                        "levelOfEvidence": "1",
-                        "chrom": "chr7",
-                        "position": "22120714",
-                        "reference": "C",
-                        "alternative": "T",
-                        "litRefs": [
-                            {
-                                "litRef": "26051236"
-                            }
-                        ],
-                        "protein": "p.G719A",
-                        "totNumPtsWithVariant": "0",
-                        "ptsWithVariantOnArm": "0",
-                        "pctPtsWithVarOnArmOfTotPtsWithVar": "0%",
-                        "inclusion": true,
-                        "exclusion": false
-                    },
-                    {
-                        "id": "COSM776",
-                        "gene": "PIK3CA",
-                        "levelOfEvidence": "1",
-                        "chrom": "chr7",
-                        "position": "5522678459",
-                        "reference": "C",
-                        "alternative": "T",
-                        "litRefs": [
-                            {
-                                "litRef": "17376964"
-                            },
-                            {
-                                "litRef": "17376963"
-                            }
-                        ],
-                        "protein": "p.G719A",
-                        "totNumPtsWithVariant": "2",
-                        "ptsWithVariantOnArm": "1",
-                        "pctPtsWithVarOnArmOfTotPtsWithVar": "20%",
-                        "inclusion": true,
-                        "exclusion": false
-                    }
-                ],
-                snvsExclusion: [
-                    {
-                        "id": "COSM774",
-                        "gene": "PIK3CA",
-                        "levelOfEvidence": "3",
-                        "chrom": "chr7",
-                        "position": "5522678453",
-                        "reference": "C",
-                        "alternative": "T",
-                        "litRefs": [
-                            {
-                                "litRef": "17376866"
-                            }
-                        ],
-                        "protein": "p.G719A",
-                        "inclusion": false,
-                        "exclusion": true
-                    }
-                ],
+                snvsInclusion: [],
+                snvsExclusion: [],
                 indelsInclusion: [],
-                indelsExclusion: [
-                    {
-                        "id": "COSM111112345",
-                        "gene": "EBFRA",
-                        "levelOfEvidence": "3",
-                        "chrom": "chr7",
-                        "position": "5522678453",
-                        "reference": "C",
-                        "alternative": "T",
-                        "litRefs": [
-                            {
-                                "litRef": "19692684"
-                            }
-                        ],
-                        "protein": "p.G719A",
-                        "inclusion": false,
-                        "exclusion": true
-                    },
-                    {
-                        "id": "COSM000012567",
-                        "gene": "EBFRA",
-                        "levelOfEvidence": "2",
-                        "chrom": "chr7",
-                        "position": "552267845",
-                        "reference": "G",
-                        "alternative": "A",
-                        "litRefs": [
-                            {
-                                "litRef": "26051236"
-                            }
-                        ],
-                        "protein": "p.G719A",
-                        "inclusion": false,
-                        "exclusion": true
-                    }
-                ],
+                indelsExclusion: [],
                 cnvsInclusion: [],
                 cnvsExclusion: [],
-                geneFusionsInclusion: [
-                    {
-                        "id": "EML4-ALK.E13A20.COSF1062",
-                        "gene": "ALK",
-                        "levelOfEvidence": "1",
-                        "litRefs": [
-                            {
-                                "litRef": "23724913"
-                            }
-                        ],
-                        "totNumPtsWithVariant": "0",
-                        "ptsWithVariantOnArm": "0",
-                        "pctPtsWithVarOnArmOfTotPtsWithVar": "-",
-                        "inclusion": true,
-                        "exclusion": false
-
-                    },
-                    {
-                        "id": "EML4-ALK.E13A20.COSF1065",
-                        "gene": "ALK",
-                        "levelOfEvidence": "1",
-                        "litRefs": [
-                            {
-                                "litRef": "26051236"
-                            },
-                            {
-                                "litRef": "19692684"
-                            }
-                        ],
-                        "totNumPtsWithVariant": "0",
-                        "ptsWithVariantOnArm": "0",
-                        "pctPtsWithVarOnArmOfTotPtsWithVar": "-",
-                        "inclusion": true,
-                        "exclusion": false
-                    },
-                    {
-                        "id": "EML4-ALK.E13A20.COSF1762",
-                        "gene": "ALK",
-                        "levelOfEvidence": "1",
-                        "litRefs": [
-                            {
-                                "litRef": "26051236"
-                            },
-                            {
-                                "litRef": "19692684"
-                            }
-                        ],
-                        "totNumPtsWithVariant": "0",
-                        "ptsWithVariantOnArm": "0",
-                        "pctPtsWithVarOnArmOfTotPtsWithVar": "-",
-                        "inclusion": true,
-                        "exclusion": false
-                    }
-                ],
-                geneFusionsExclusion: [
-                    {
-                        "id": "EML4-ALK.EBA17",
-                        "gene": "ALK",
-                        "levelOfEvidence": "1",
-                        "litRefs": [
-                            {
-                                "litRef": "234566"
-                            }
-                        ],
-                        "inclusion": false,
-                        "exclusion": true
-                    }
-                ],
+                geneFusionsInclusion: [],
+                geneFusionsExclusion: [],
                 nhrsInclusion: [
                     {
                         "oncomineVariantClass": "-",
@@ -583,19 +301,19 @@ angular.module('treatment-arm.matchbox',[])
 
             if (cosmicId !== undefined && cosmicId !== null) {
                 var tmp = cosmicId.indexOf("COSF");
-
+                var fid = '';
                 if(tmp > 0) {
                     cid = cosmicId.substring(tmp, cosmicId.length);
                     cia = cid.split("COSF");
-                    var fid =  cia[1].split(".");
+                    fid =  cia[1].split(".");
                     $window.open('http://cancer.sanger.ac.uk/cosmic/fusion/summary?id='+fid[0], '_blank');
                 } else {
-                    var tmp = cosmicId.indexOf("COSM");
+                    tmp = cosmicId.indexOf("COSM");
 
-                    if(tmp != -1) {
+                    if(tmp !== -1) {
                         cid = cosmicId.substring(tmp, cosmicId.length);
                         cia = cid.split("COSM");
-                        var fid =  cia[1].split(".");
+                        fid =  cia[1].split(".");
                         $window.open("http://cancer.sanger.ac.uk/cosmic/mutation/overview?id="+fid[0], '_blank');
                     }
                 }
@@ -734,8 +452,6 @@ angular.module('treatment-arm.matchbox',[])
             tooltip: true,
             tooltipOpts: {
                 content: function(label, xval, yval) {
-                    //console.log(label);
-                    //console.log(yval);
                     return setupTooltip(label, xval, yval);
                 },
                 shifts: {
@@ -798,39 +514,6 @@ angular.module('treatment-arm.matchbox',[])
             }
         ];*/
 
-
-         /*
-
-
-         function loadPatientData() {
-         matchApiMock
-         .getPatientDetailsData($stateParams.patientSequenceNumber)
-         .then(function (data) {
-         $scope.patientSequenceNumber = $stateParams.patientSequenceNumber;
-
-         $scope.patient = data.patient;
-         $scope.treatmentArms = data.treatmentArms;
-         $scope.timeline = data.timeline;
-         $scope.assayHistory = data.assayHistory;
-         $scope.sendouts = data.sendouts;
-         $scope.biopsy = data.biopsy;
-         $scope.variantReports = data.variantReports;
-         $scope.variantReportOptions = data.variantReportOptions;
-         $scope.variantReportOption = data.variantReportOption;
-         $scope.assignmentReport = data.assignmentReport;
-         $scope.biopsyReport = data.biopsyReport;
-         $scope.biopsyReports = data.biopsyReports;
-         $scope.patientDocuments = data.patientDocuments;
-         })
-         .then(function () {
-         $scope.variantReportType = 'tumorTissue';
-         $scope.variantReportMode = 'Normal';
-         setVariantReport();
-         });
-         }
-         */
-
-
         $scope.loadTreatmentArmDetails = function(ta) {
             treatmentArmApi
             .getTreatmentArmDetails(ta)
@@ -856,8 +539,6 @@ angular.module('treatment-arm.matchbox',[])
                             angular.forEach(value.data.exclusion_drugs, function(value) {
                                 var exclusionDrug = {};
                                 angular.forEach(value.drugs, function(value) {
-                                    console.log('each drug');
-                                    console.log(value);
                                     exclusionDrug.id = value.drug_id;
                                     exclusionDrug.name = value.name;
                                     exclusionDrugs.push(exclusionDrug);
@@ -867,7 +548,6 @@ angular.module('treatment-arm.matchbox',[])
                                 //exclusionDrug.name = value.name;
 
                             });
-                            console.log(exclusionDrugs);
                             angular.forEach(value.data.exclusion_diseases, function(value) {
 
                                 var exclusionDisease = {};
@@ -1036,15 +716,8 @@ angular.module('treatment-arm.matchbox',[])
                             version.geneFusionsExclusion = geneFusionsExclusion;
                             version.nhrsInclusion = nhrsInclusion;
                             version.nhrsExclusion = nhrsExclusion;
-                            console.log('inclusion');
-                            console.log(version.snvsInclusion);
-                            console.log('exclusion');
-                            console.log(version.snvsExclusion);
-                            console.log('version');
-                            console.log(version);
                             $scope.versions.push(version);
                             $scope.versionNames.push(value.data.version);
-                            console.log($scope.versions);
                             $scope.information.currentVersion = $scope.versions[0].name;
 
 
