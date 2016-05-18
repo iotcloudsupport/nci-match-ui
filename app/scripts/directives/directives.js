@@ -5,8 +5,7 @@
         .module('matchbox')
         .directive('pageTitle', pageTitle)
         .directive('sideNavigation', sideNavigation)
-        .directive('iboxTools', iboxTools)
-        .directive('minimalizaSidebar', minimalizaSidebar)
+Í        .directive('minimalizaSidebar', minimalizaSidebar)
         .directive('collapseToggleLeft', collapseToggleLeft);
 
     /**
@@ -44,13 +43,6 @@
         }
     }
 
-    function findIboxControls($element) {
-        var ibox = $element.closest('div.ibox');
-        var icon = $element.find('i:first');
-        var content = ibox.find('div.ibox-content');
-        return { ibox: ibox, icon: icon, content: content };
-    }
-
     /**
      * collapseToggleLeft - Directive for collapse toggle elements in right corner of ibox
      */
@@ -62,47 +54,17 @@
             controller: function ($scope, $element) {
                 // Function for collapse ibox
                 $scope.showhide = function () {
-                    var controls = findIboxControls($element);
-                    controls.content.slideToggle(200);
-                    // Toggle icon from up to down
-                    controls.icon.toggleClass('fa-chevron-up').toggleClass('fa-chevron-down');
-                    controls.ibox.toggleClass('').toggleClass('border-bottom');
-                    $timeout(function () {
-                        controls.ibox.resize();
-                        controls.ibox.find('[id^=map-]').resize();
-                    }, 50);
-                }
-            }
-        }
-    }
-
-    /**
-     * iboxTools - Directive for iBox tools elements in right corner of ibox
-     */
-    function iboxTools($timeout) {
-        return {
-            restrict: 'A',
-            scope: true,
-            templateUrl: 'views/templates/ibox_tools.html',
-            controller: function ($scope, $element) {
-                
-                // Function for collapse ibox
-                $scope.showhide = function () {
-                    var content = findIboxControls($element);
+                    var ibox = $element.closest('div.ibox');
+                    var icon = $element.find('i:first');
+                    var content = ibox.find('div.ibox-content');
                     content.slideToggle(200);
                     // Toggle icon from up to down
-                    controls.icon.toggleClass('fa-chevron-up').toggleClass('fa-chevron-down');
-                    controls.ibox.toggleClass('').toggleClass('border-bottom');
+                    icon.toggleClass('fa-chevron-up').toggleClass('fa-chevron-down');
+                    ibox.toggleClass('').toggleClass('border-bottom');
                     $timeout(function () {
-                        controls.ibox.resize();
-                        controls.ibox.find('[id^=map-]').resize();
+                        ibox.resize();
+                        ibox.find('[id^=map-]').resize();
                     }, 50);
-                }
-                
-                // Function for close ibox
-                $scope.closebox = function () {
-                    var ibox = $element.closest('div.ibox');
-                    controls.ibox.remove();
                 }
             }
         }
