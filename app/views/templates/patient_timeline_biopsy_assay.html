@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-xs-5 col-md-4 date" title="Biopsy Assay Event">
+        <i class="fa fa-flask fa-2x"></i> {{::timelineEvent.dateTime}}
+        <br/>
+        <small class="text-navy">{{::timelineEvent.fromNow}}</small>
+    </div>
+    <div class="col-xs-7 col-md-8 content no-top-border">
+        <p class="m-b-xs"><strong>Assay for {{::timelineEvent.gene}}  {{::timelineEvent.status}}</strong></p>
+        <p>Biopsy Sequence Number <span class="timeline-value"><a>{{::timelineEvent.biopsySequenceNumber}}</a></span>, Tracking Number <span class="timeline-value"><a>{{::timelineEvent.trackingNumber}}</a></span></p>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-xs-5 col-md-4 date" title="Assignment Event">
+        <i class="fa fa-medkit fa-2x"></i> {{::timelineEvent.dateTime}}
+        <br/>
+        <small class="text-navy">{{::timelineEvent.fromNow}}</small>
+    </div>
+    <div class="col-xs-7 col-md-8 content no-top-border">
+        <p class="m-b-xs"><strong>Assignment Status {{::timelineEvent.status}}</strong></p>
+        <p>Biopsy Sequence Number <span class="timeline-value"><a>{{::timelineEvent.biopsySequenceNumber}}</a></span>, Analys ID <span class="timeline-value"><a>{{::timelineEvent.analysisId}}</a></span></p>
+    </div>
+</div>

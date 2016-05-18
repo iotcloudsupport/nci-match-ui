@@ -60,10 +60,13 @@
                 ];
 
                 data.timeline = [
-                    { dateTime: '6:00 am', timeLineType: 'analysisReceived', analysis: { msn: 'MSN1234_v1...345', status: 'CONFIRMED' } },
-                    { dateTime: 'Sep 1 2015', timeLineType: 'nucleicAcidSendout', sendout: { msn: 'MSN1234', trackingNumber: '978345698734554' } },
-                    { dateTime: 'Sep 11 2015', timeLineType: 'specimentReceived', specimen: {} },
-                    { dateTime: 'Sep 11 2015', timeLineType: 'patientRegistration', patientRegistration: {} }
+                    { type: 'assignment', dateTime: 'Sep 17, 2015, 10:00 AM GMT', fromNow: '12 days ago', status: 'Pending', biopsySequenceNumber: 'B-987456', molecularSequenceNumber: 'MSN-1245', analysisId: 'A-T-5678'},
+                    { type: 'biopsy.pathology', dateTime: 'Sep 17, 2015, 10:00 AM GMT', fromNow: '2 days ago', status: 'Confirmed', comment: 'Agreement on pathology' },
+                    { type: 'biopsy.variantReport', dateTime: 'Sep 17, 2015, 10:00 AM GMT', fromNow: '4 hours ago', status: 'Pending', molecularSequenceNumber: 'MSN-1245', analysisId: 'A-T-5678', location: 'MGH', totalMoiCount: 1, totalAmoiCount: 0 },
+                    { type: 'biopsy.assay', dateTime: 'Sep 17, 2015, 10:00 AM GMT', fromNow: '2 hours ago', gene: 'MLH1', status: 'Ordered', biopsySequenceNumber: 'B-987456', trackingNumber: 'ZT2329875234985' },
+                    { type: 'patient', dateTime: 'Sep 17, 2015, 10:00 AM GMT', fromNow: '14 days ago', status: 'Registration', location: 'MGH', step: '2.0' },
+                    { type: 'user', dateTime: '10:00 AM GMT', fromNow: '20 says ago', status:'upload.patientdocument', user: 'Rick', details:'File "Biopsy Result" uploaded', fileUrl: 'http://blah.com/biopsy_result_1234.dat' },
+                    { type: 'system', dateTime: 'Sep 17, 2015, 10:00 AM GMT', fromNow: '2 says ago', status: 'Error', details: 'Unable to process patient biopsy message. Please contact techincal support.' }
                 ];
 
                 data.assayHistory = [
@@ -102,7 +105,7 @@
 
                 data.biopsy = {
                     specimen: { collectionDate: 'August 26, 2015 2:57 PM GMT', receivedDate: 'August 26, 2015 2:57 PM GMT', failureDate: '-' },
-                    pathology: { status: 'Agreement on pathalogy', receivedDate: 'August 26, 2015 2:57 PM GMT', comment: '-' },
+                    pathology: { status: 'Agreement on pathology', receivedDate: 'August 26, 2015 2:57 PM GMT', comment: '-' },
 
                     singleNucleitideVariants: [
                         {
