@@ -5,7 +5,7 @@
         .module('matchbox')
         .directive('pageTitle', pageTitle)
         .directive('sideNavigation', sideNavigation)
-Í        .directive('minimalizaSidebar', minimalizaSidebar)
+        .directive('minimalizaSidebar', minimalizaSidebar)
         .directive('collapseToggleLeft', collapseToggleLeft);
 
     /**
@@ -25,7 +25,7 @@
                 };
                 $rootScope.$on('$stateChangeStart', listener);
             }
-        }
+        };
     }
 
     /**
@@ -40,7 +40,7 @@
                     element.metisMenu();
                 });
             }
-        }
+        };
     }
 
     /**
@@ -65,9 +65,9 @@
                         ibox.resize();
                         ibox.find('[id^=map-]').resize();
                     }, 50);
-                }
+                };
             }
-        }
+        };
     }
 
     /**
@@ -98,9 +98,9 @@
                         // Remove all inline style from jquery fadeIn function to reset menu state
                         $('#side-menu').removeAttr('style');
                     }
-                }
+                };
             }
-        }
+        };
     }
 
 } ());
