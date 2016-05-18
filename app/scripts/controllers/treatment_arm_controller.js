@@ -281,16 +281,11 @@ angular.module('treatment-arm.matchbox',[])
 
         //$scope.selectedVersion = $scope.versions[0];
 
-/*
-        function createpubmedlinks(td, cellData,  rowData, row, col) {
-            $(td).html('<a onClick="openPubMed()">' + cellData + '</a>');
-        };
-
         $scope.openPubMed = function(data) {
             $window.open("http://www.ncbi.nlm.nih.gov/pubmed/?term="+data, '_blank');
 
         };
-*/
+
         $scope.openGene = function(data) {
             $window.open('http://cancer.sanger.ac.uk/cosmic/gene/overview?ln='+data.toLowerCase(), '_blank');
         };
@@ -514,6 +509,14 @@ angular.module('treatment-arm.matchbox',[])
             }
         ];*/
 
+        function setupLit(pubmed_ids) {
+            var litRefs = [];
+            angular.forEach(pubmed_ids, function(value) {
+                litRefs.push({"litRef": value});
+            });
+            return litRefs;
+        }
+
         $scope.loadTreatmentArmDetails = function(ta) {
             treatmentArmApi
             .getTreatmentArmDetails(ta)
@@ -577,13 +580,7 @@ angular.module('treatment-arm.matchbox',[])
                                     snv.chrom = value.chromosome;
                                     snv.protein = value.description;
                                     snv.reference = value.reference;
-                                    /*var litRefs = [];
-                                    angular.forEach(value.public_med_ids, function(value) {
-                                        litRefs.push({"litRef": value});
-                                    });
-                                    snv.litRefs = litRefs;
-                                    console.log('litrefs');
-                                    console.log(litRefs);*/
+                                    snv.litRefs = setupLit(value.public_med_ids);
                                     if (value.inclusion === true) {
                                         snv.inclusion = true;
                                         snv.exclusion = false;
@@ -605,13 +602,7 @@ angular.module('treatment-arm.matchbox',[])
                                     indel.chrom = value.chromosome; //
                                     indel.protein = value.description; //
                                     indel.reference = value.reference;
-                                    /*var litRefs = [];
-                                     angular.forEach(value.public_med_ids, function(value) {
-                                     litRefs.push({"litRef": value});
-                                     });
-                                     indel.litRefs = litRefs;
-                                     console.log('litrefs');
-                                     console.log(litRefs);*/
+                                    indel.litRefs = setupLit(value.public_med_ids);
                                     if (value.inclusion === true) {
                                         indel.inclusion = true;
                                         indel.exclusion = false;
@@ -630,14 +621,7 @@ angular.module('treatment-arm.matchbox',[])
                                     cnv.chrom = value.chromosome; //
                                     cnv.position = value.position;
                                     cnv.protein = value.description; //
-
-                                    /*var litRefs = [];
-                                     angular.forEach(value.public_med_ids, function(value) {
-                                     litRefs.push({"litRef": value});
-                                     });
-                                     cnv.litRefs = litRefs;
-                                     console.log('litrefs');
-                                     console.log(litRefs);*/
+                                    cnv.litRefs = setupLit(value.public_med_ids);
                                     if (value.inclusion === true) {
                                         cnv.inclusion = true;
                                         cnv.exclusion = false;
@@ -654,14 +638,8 @@ angular.module('treatment-arm.matchbox',[])
                                     gf.id = value.identifier;
                                     gf.gene = value.gene_name;
                                     gf.levelOfEvidence = value.level_of_evidence;
+                                    gf.litRefs = setupLit(value.public_med_ids);
 
-                                    /*var litRefs = [];
-                                     angular.forEach(value.public_med_ids, function(value) {
-                                     litRefs.push({"litRef": value});
-                                     });
-                                     gf.litRefs = litRefs;
-                                     console.log('litrefs');
-                                     console.log(litRefs);*/
                                     if (value.inclusion === true) {
                                         gf.inclusion = true;
                                         gf.exclusion = false;
@@ -681,13 +659,7 @@ angular.module('treatment-arm.matchbox',[])
                                     nhr.levelOfEvidence = value.level_of_evidence;
                                     nhr.oncomineVariantClass = value.oncominevariantclass; //
                                     nhr.proteinRegex = value.protein_match; //
-                                    /*var litRefs = [];
-                                     angular.forEach(value.public_med_ids, function(value) {
-                                     litRefs.push({"litRef": value});
-                                     });
-                                     nhr.litRefs = litRefs;
-                                     console.log('litrefs');
-                                     console.log(litRefs);*/
+                                    nhr.litRefs = setupLit(value.public_med_ids);
                                     if (value.inclusion === true) {
                                         nhr.inclusion = true;
                                         nhr.exclusion = false;
