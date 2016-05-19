@@ -5,7 +5,6 @@
 
     function PatientController($scope,
         DTOptionsBuilder,
-        DTColumnDefBuilder,
         matchApiMock,
         $stateParams,
         $log,
