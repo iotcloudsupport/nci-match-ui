@@ -38,8 +38,8 @@ module.exports = function(config) {
       // matchbox custom scripts
       '../app/scripts/**/*.js',
       // matchbox custom script specs
-      // 'spec/filters/*.js',
-      // 'spec/factories/*.js',
+      'spec/filters/*.js',
+      'spec/factories/*.js',
       'spec/controllers/*.js'
     ],
 

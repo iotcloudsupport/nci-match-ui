@@ -30,7 +30,7 @@ describe('Controller: Patient Details Controller', function () {
     
     describe('Header', function(){
         xit ('should have correct Patient Sequence Number', function(){
-            expect(scope.patientSequenceNumber).toBe('100065');           
+            expect(scope.patientSequenceNumber).toBe('100065');
         });
     });
     
