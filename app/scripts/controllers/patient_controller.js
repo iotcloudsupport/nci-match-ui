@@ -101,11 +101,11 @@
         }
 
         function dzAddedFile(file) {
-            $log.debug(file);
+            // $log.debug(file);
         }
 
         function dzError(file, errorMessage) {
-            $log.debug(errorMessage);
+            // $log.debug(errorMessage);
         }
         
         function setComment(value) {

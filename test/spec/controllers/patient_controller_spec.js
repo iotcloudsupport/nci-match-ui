@@ -443,10 +443,20 @@ describe('Controller: Patient Details Controller', function () {
     beforeEach(module('config.matchbox', 'http.matchbox', 'patient.matchbox'));
 
     var $scope;
+    var matchApiMock;
+    var ctrl;
+    var $stateParams;
+    var $log;
+    var $q;
 
-    beforeEach(inject(function(_$controller_, _matchApiMock_) {
-        $scope = getTestData();
-        _$controller_('PatientController', {
+    beforeEach(inject(function(_$rootScope_, _$controller_, _matchApiMock_, _$log_, _$q_) {
+        $scope = _$rootScope_.$new();
+        matchApiMock = _matchApiMock_;
+        $stateParams = {patientSequenceNumber: 100065};
+        // $stateParams.patientSequenceNumber = 100065;
+        $log = _$log_;
+        $q = _$q_;
+        ctrl = _$controller_('PatientController', {
             $scope: $scope,
             DTOptionsBuilder: {
                 newOptions: function () {
@@ -457,13 +467,46 @@ describe('Controller: Patient Details Controller', function () {
                     };
                 }
             },
-            matchApiMock: _matchApiMock_,
-            $stateParams: null,
-            $log: null,
+            matchApiMock: matchApiMock,
+            $stateParams: $stateParams,
+            $log: $log,
             prompt: null,
             $uibModal: null
         });
     }));
+
+    describe('General', function () {
+        it ('shoud call api load method', function () {
+            spyOn(matchApiMock, 'getPatientDetailsData').and.callFake(function() {
+                var deferred = $q.defer();
+
+                var data = getTestData();
+
+                $scope.patientSequenceNumber = $stateParams.patientSequenceNumber;
+
+                $scope.patient = data.patient;
+                $scope.treatmentArms = data.treatmentArms;
+                $scope.timeline = data.timeline;
+                $scope.assayHistory = data.assayHistory;
+                $scope.sendouts = data.sendouts;
+                $scope.biopsy = data.biopsy;
+                $scope.variantReports = data.variantReports;
+                $scope.variantReportOptions = data.variantReportOptions;
+                $scope.variantReportOption = data.variantReportOption;
+                $scope.assignmentReport = data.assignmentReport;
+                $scope.biopsyReport = data.biopsyReport;
+                $scope.biopsyReports = data.biopsyReports;
+                $scope.patientDocuments = data.patientDocuments;
+                $scope.currentSendout = data.currentSendout;
+
+                deferred.resolve(data);
+                return deferred.promise;
+            });
+            dump($scope);
+            $scope.loadPatientData();
+            expect(matchApiMock.getPatientDetailsData).toHaveBeenCalled();
+        });
+    });
 
     describe('Header', function () {
         it('should have correct Patient Sequence Number', function () {
