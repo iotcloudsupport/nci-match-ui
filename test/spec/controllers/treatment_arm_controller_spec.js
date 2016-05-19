@@ -92,8 +92,7 @@ describe('Controller: Treatment Arm Controller', function () {
 
     it('should populate the treatment details success response', function() {
         httpBackend.when('GET', 'http://server:80/treatmentarmapi/treatmentArms/EAY131-A')
-            .respond([{
-                "data": {
+            .respond([ {
                     name: 'EAY131-A',
                     treatment_arm_status: 'OPEN',
                     exclusion_drugs: [
@@ -250,7 +249,7 @@ describe('Controller: Treatment Arm Controller', function () {
                         ]
                     }
                 }
-            }
+           
 
             ]
 
