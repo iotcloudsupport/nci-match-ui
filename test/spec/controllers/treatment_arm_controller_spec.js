@@ -249,7 +249,7 @@ describe('Controller: Treatment Arm Controller', function () {
                         ]
                     }
                 }
-           
+
 
             ]
 
@@ -294,6 +294,7 @@ describe('Controller: Treatment Arm Controller', function () {
     it('should create the right links', function() {
         scope.openGene('EGFR');
         scope.openId('COSM746');
+        scope.openPubMed('2109606');
     });
 
 

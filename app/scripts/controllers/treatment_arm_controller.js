@@ -461,7 +461,7 @@ angular.module('treatment-arm.matchbox',[])
             }
         };
 
-        $scope.patients = [
+        /*$scope.patients = [
             {
                 "Patient": {
                     "slot": "-",
@@ -507,7 +507,7 @@ angular.module('treatment-arm.matchbox',[])
                     "diseases": "Bone cancer, NOS"
                 }
             }
-        ];
+        ];*/
 
         function setupLit(pubmed_ids) {
             var litRefs = [];
@@ -516,9 +516,32 @@ angular.module('treatment-arm.matchbox',[])
             });
             return litRefs;
         }
+
+        function setupGeneLoe(variant, retData) {
+            variant.gene = retData.gene_name;
+            variant.levelOfEvidence = retData.level_of_evidence;
+            return variant;
+        }
+
+        function setInclusion(variant, inclusionVal) {
+            if (inclusionVal === true) {
+                variant.inclusion = true;
+                variant.exclusion = false;
+                return true;
+            } else {
+                variant.inclusion = false;
+                variant.exclusion = true;
+                return false;
+            }
+        }
         
         function setHeight() {
-            $("#left-info-box").css("height", $("#right-info-box").height());
+            if ($("#left-info-box").height() < $("#right-info-box").height()) {
+                $("#left-info-box").css("height", $("#right-info-box").height());
+            } else {
+                $("#right-info-box").css("height", $("#left-info-box").height());
+            }
+
         }
 
         $scope.loadTreatmentArmDetails = function(ta) {
@@ -574,21 +597,16 @@ angular.module('treatment-arm.matchbox',[])
                                 angular.forEach(value.variant_report.single_nucleotide_variants, function(value) {
                                     var snv = {};
                                     snv.id = value.identifier;
-                                    snv.gene = value.gene_name;
-                                    snv.levelOfEvidence = value.level_of_evidence;
+                                    snv = setupGeneLoe(snv, value);
                                     snv.position = value.position;
                                     snv.alternative = value.alternative;
                                     snv.chrom = value.chromosome;
                                     snv.protein = value.description;
                                     snv.reference = value.reference;
                                     snv.litRefs = setupLit(value.public_med_ids);
-                                    if (value.inclusion === true) {
-                                        snv.inclusion = true;
-                                        snv.exclusion = false;
+                                    if (setInclusion(snv, value.inclusion) === true) {
                                         snvsInclusion.push(snv);
                                     } else {
-                                        snv.inclusion = false;
-                                        snv.exclusion = true;
                                         snvsExclusion.push(snv);
                                     }
 
@@ -596,81 +614,56 @@ angular.module('treatment-arm.matchbox',[])
                                 angular.forEach(value.variant_report.indels, function(value) {
                                     var indel = {};
                                     indel.id = value.identifier;
-                                    indel.gene = value.gene_name;
-                                    indel.levelOfEvidence = value.level_of_evidence;
+                                    indel = setupGeneLoe(indel, value);
                                     indel.position = value.position;
                                     indel.alternative = value.alternative; //
                                     indel.chrom = value.chromosome; //
                                     indel.protein = value.description; //
                                     indel.reference = value.reference;
                                     indel.litRefs = setupLit(value.public_med_ids);
-                                    if (value.inclusion === true) {
-                                        indel.inclusion = true;
-                                        indel.exclusion = false;
+                                    if (setInclusion(indel, value.inclusion) === true) {
                                         indelsInclusion.push(indel);
                                     } else {
-                                        indel.inclusion = false;
-                                        indel.exclusion = true;
                                         indelsExclusion.push(indel);
                                     }
-
                                 });
                                 angular.forEach(value.variant_report.copy_number_variants, function(value) {
                                     var cnv = {};
-                                    cnv.gene = value.gene_name;
-                                    cnv.levelOfEvidence = value.level_of_evidence;
+                                    cnv = setupGeneLoe(cnv, value);
                                     cnv.chrom = value.chromosome; //
                                     cnv.position = value.position;
                                     cnv.protein = value.description; //
                                     cnv.litRefs = setupLit(value.public_med_ids);
-                                    if (value.inclusion === true) {
-                                        cnv.inclusion = true;
-                                        cnv.exclusion = false;
+                                    if (setInclusion(cnv, value.inclusion) === true) {
                                         cnvsInclusion.push(cnv);
                                     } else {
-                                        cnv.inclusion = false;
-                                        cnv.exclusion = true;
                                         cnvsExclusion.push(cnv);
                                     }
-
                                 });
                                 angular.forEach(value.variant_report.gene_fusions, function(value) {
                                     var gf = {};
                                     gf.id = value.identifier;
-                                    gf.gene = value.gene_name;
-                                    gf.levelOfEvidence = value.level_of_evidence;
+                                    gf = setupGeneLoe(gf, value);
                                     gf.litRefs = setupLit(value.public_med_ids);
-
-                                    if (value.inclusion === true) {
-                                        gf.inclusion = true;
-                                        gf.exclusion = false;
+                                    if (setInclusion(gf, value.inclusion) === true) {
                                         geneFusionsInclusion.push(gf);
                                     } else {
-                                        gf.inclusion = false;
-                                        gf.exclusion = true;
                                         geneFusionsExclusion.push(gf);
                                     }
-
                                 });
                                 angular.forEach(value.variant_report.non_hotspot_rules, function(value) {
                                     var nhr = {};
                                     nhr.exon = value.exon;
-                                    nhr.gene = value.gene;
                                     nhr.function = value.function;
-                                    nhr.levelOfEvidence = value.level_of_evidence;
+                                    nhr = setupGeneLoe(nhr, value);
                                     nhr.oncomineVariantClass = value.oncominevariantclass; //
                                     nhr.proteinRegex = value.protein_match; //
                                     nhr.litRefs = setupLit(value.public_med_ids);
-                                    if (value.inclusion === true) {
-                                        nhr.inclusion = true;
-                                        nhr.exclusion = false;
+                                    if (setInclusion(nhr, value.inclusion) === true) {
                                         nhrsInclusion.push(nhr);
                                     } else {
-                                        nhr.inclusion = false;
-                                        nhr.exclusion = true;
                                         nhrsExclusion.push(nhr);
                                     }
-
                                 });
                             }
 
