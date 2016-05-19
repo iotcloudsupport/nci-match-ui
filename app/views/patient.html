@@ -4,10 +4,10 @@
             <h2>Patient</h2>
             <ol class="breadcrumb">
                 <li>
-                    <a ui-sref="index.dashboard">Dashboard</a>
+                    <a ui-sref="dashboard">Dashboard</a>
                 </li>
                 <li>
-                    <a ui-sref="index.patients">Patients</a>
+                    <a ui-sref="patients">Patients</a>
                 </li>
                 <li class="active">
                     <strong>Patient {{ ::patientSequenceNumber }}</strong>
@@ -740,7 +740,7 @@
                                     </tr>
                                     <tr ng-repeat="ta in treatmentArms.noMatchList " style="cursor: auto; " role="row" class="odd">
                                         <td class="status-blue">
-                                            <a ui-sref="index.treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion: ta.currentTtreatmentArmVersion }) ">
+                                            <a ui-sref="treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion: ta.currentTtreatmentArmVersion }) ">
                                                 <i class="fa fa-medkit "></i> {{ ::ta.treatmentArmTitle || '-' }}
                                             </a>
                                         </td>
@@ -755,7 +755,7 @@
                                     <tr ng-repeat="ta in treatmentArms.recordBasedExclusionList " style="cursor: auto;
                                                 " role="row " class="odd ">
                                         <td class="status-blue ">
-                                            <a ui-sref="index.treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion:
+                                            <a ui-sref="treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion:
                                                 ta.treatmentArmVersion }) ">
                                                 <i class="fa fa-medkit "></i> {{ ::ta.treatmentArmTitle || '-' }}
                                             </a>
@@ -770,7 +770,7 @@
                                     </tr>
                                     <tr ng-repeat="ta in treatmentArms.selectedList " style="cursor: auto; " role="row" class="odd">
                                         <td class="status-blue ">
-                                            <a ui-sref="index.treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion: ta.currentTtreatmentArmVersion }) ">
+                                            <a ui-sref="treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion: ta.currentTtreatmentArmVersion }) ">
                                                 <i class="fa fa-medkit "></i> {{ ::ta.treatmentArmTitle || '-' }}
                                             </a>
                                         </td>

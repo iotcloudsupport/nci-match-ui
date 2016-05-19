@@ -3,7 +3,7 @@
         <h2>Patients</h2>
         <ol class="breadcrumb">
             <li>
-                <a ui-sref="index.dashboard">Dashboard</a>
+                <a ui-sref="dashboard">Dashboard</a>
             </li>
             <li class="active">
                 <strong>Patients</strong>
@@ -40,7 +40,7 @@
                             <tbody>
                             <tr ng-repeat="patient in patientList">
                                 <td>
-                                    <a ui-sref="index.patient({ patientSequenceNumber: patient.patientSequenceNumber })">
+                                    <a ui-sref="patient({ patientSequenceNumber: patient.patientSequenceNumber })">
                                         <i class="fa fa-user"></i> {{::patient.patientSequenceNumber }}
                                     </a>
                                 </td>
@@ -51,7 +51,7 @@
                                 <td>{{ ::patient.diseases || '-' }}</td>
                                 <td ng-if="patient.treatmentArm === null">-</td>
                                 <td ng-if="patient.treatmentArm !== null">
-                                    <a ui-sref="index.treatment-arm({ treatmentArmId: patient.treatmentArm, treatmentArmVersion: patient.currentTtreatmentArmreatmentArmVersion })">
+                                    <a ui-sref="treatment-arm({ treatmentArmId: patient.treatmentArm, treatmentArmVersion: patient.currentTtreatmentArmreatmentArmVersion })">
                                         {{ ::patient.treatmentArm || '-' }}
                                     </a>
                                 </td>

@@ -1,5 +1,5 @@
 function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authProvider, $httpProvider, jwtInterceptorProvider) {
-    $urlRouterProvider.otherwise("/index/dashboard");
+    $urlRouterProvider.otherwise("dashboard");
 
     $ocLazyLoadProvider.config({
         // Set to true if you want to see what and when is dynamically loaded
@@ -9,10 +9,10 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
     $stateProvider
         .state('index', {
             abstract: true,
-            url: "/index",
-            templateUrl: "views/common/content.html",
+            url: "/",
+            templateUrl: "views/common/content.html"
         })
-        .state('index.dashboard', {
+        .state('dashboard', {
             url: "/dashboard",
             templateUrl: "views/dashboard.html",
             data: { pageTitle: 'Dashboard', requiresLogin: true },
@@ -42,7 +42,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                 }
             }
         })
-        .state('index.patients', {
+        .state('patients', {
             url: "/patients",
             templateUrl: "views/patients.html",
             data: { pageTitle: 'Patients', requiresLogin: true },
@@ -65,7 +65,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                 }
             }
         })
-        .state('index.patient', {
+        .state('patient', {
             url: "/patient/:patientSequenceNumber",
             templateUrl: "views/patient.html",
             data: { pageTitle: 'Patient', requiresLogin: true },
@@ -99,7 +99,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                 }
             }
         })
-        .state('index.treatment-arms', {
+        .state('treatment-arms', {
             url: "/treatment-arms",
             templateUrl: "views/treatment_arms.html",
             data: { pageTitle: 'Treatment Arms', requiresLogin: true },
@@ -122,7 +122,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                 }
             }
         })
-        .state('index.treatment-arm', {
+        .state('treatment-arm', {
             url: "/treatment-arm/:treatmentArmId",
             //url: "/treatment-arm/:treatmentArmId/:treatmentArmVersion",
             templateUrl: "views/treatment_arm.html",
@@ -150,7 +150,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                 }
             }
         })
-        .state('index.specimen-tracking', {
+        .state('specimen-tracking', {
             url: "/specimen-tracking",
             templateUrl: "views/specimen_tracking.html",
             data: { pageTitle: 'Specimen Tracking', requiresLogin: true },
@@ -173,7 +173,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                 }
             }
         })
-        .state('index.reports', {
+        .state('reports', {
             url: "/reports",
             templateUrl: "views/reports.html",
             data: { pageTitle: 'Reports', requiresLogin: true },
@@ -196,7 +196,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                 }
             }
         })
-        .state('index.iradmin', {
+        .state('iradmin', {
             url: "/iradmin",
             templateUrl: "views/iradmin.html",
             data: { pageTitle: 'IR Admin', requiresLogin: true },
@@ -219,7 +219,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                 }
             }
         })
-        .state('index.ngsample', {
+        .state('ngsample', {
             url: "/ngsample/:sampleId",
             templateUrl: "views/ngsample.html",
             data: { pageTitle: 'IR Sample Control Variant Report', requiresLogin: true },
@@ -245,7 +245,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                 }
             }
         })
-        .state('index.ocsample', {
+        .state('ocsample', {
             url: "/ocsample/:sampleId",
             templateUrl: "views/ocsample.html",
             data: { pageTitle: 'IR Sample Quality Control Report', requiresLogin: true },
@@ -274,7 +274,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
         .state('auth', {
             abstract: true,
             url: "/auth",
-            templateUrl: "views/common/auth_content.html",
+            templateUrl: "views/common/auth_content.html"
         })
         .state('auth.login', {
             url: "/login",
