@@ -29,7 +29,7 @@ angular.module('treatment-arm.matchbox',[])
             description: '',
             currentVersion: '',
             genes: '',
-            patientsAssigned: 0,
+            patientsAssigned: 3,
             currentStatus: '',
             drug: 'AZD9291 (781254)'
         };
@@ -460,7 +460,7 @@ angular.module('treatment-arm.matchbox',[])
                 container: '#diseaseLegendContainer'
             }
         };
-    /*
+
         $scope.patients = [
             {
                 "Patient": {
@@ -507,7 +507,7 @@ angular.module('treatment-arm.matchbox',[])
                     "diseases": "Bone cancer, NOS"
                 }
             }
-        ];*/
+        ];
 
         function setupLit(pubmed_ids) {
             var litRefs = [];
@@ -515,6 +515,10 @@ angular.module('treatment-arm.matchbox',[])
                 litRefs.push({"litRef": value});
             });
             return litRefs;
+        }
+        
+        function setHeight() {
+            $("#left-info-box").css("height", $("#right-info-box").height());
         }
 
         $scope.loadTreatmentArmDetails = function(ta) {
@@ -524,22 +528,19 @@ angular.module('treatment-arm.matchbox',[])
                     console.log(d.data);
                     angular.forEach(d.data, function(value) {
                         console.log(value);
-                        console.log(value.data);
-                        if (value.data !== null) {
-
-
-                            $scope.information.currentStatus = value.data.treatment_arm_status;
+                        if (value !== [] && value !== null && value !== undefined) {
+                            $scope.information.currentStatus = value.treatment_arm_status;
                             $scope.test = "test";
-                            $scope.information.name = value.data.name;
-                            $scope.information.description = value.data.description;
-                            $scope.information.genes = value.data.gene;
-                            $scope.information.patientsAssigned = value.data.num_patients_assigned;
+                            $scope.information.name = value.name;
+                            $scope.information.description = value.description;
+                            $scope.information.genes = value.gene;
+                            //$scope.information.patientsAssigned = value.num_patients_assigned;
 
                             var exclusionDrugs = [];
                             var exclusionDiseases = [];
                             var exclusionDrug = {};
 
-                            angular.forEach(value.data.exclusion_drugs, function(value) {
+                            angular.forEach(value.exclusion_drugs, function(value) {
                                 var exclusionDrug = {};
                                 angular.forEach(value.drugs, function(value) {
                                     exclusionDrug.id = value.drug_id;
@@ -551,7 +552,7 @@ angular.module('treatment-arm.matchbox',[])
                                 //exclusionDrug.name = value.name;
 
                             });
-                            angular.forEach(value.data.exclusion_diseases, function(value) {
+                            angular.forEach(value.exclusion_diseases, function(value) {
 
                                 var exclusionDisease = {};
                                 exclusionDisease.medraCode = value.medra_code;
@@ -569,8 +570,8 @@ angular.module('treatment-arm.matchbox',[])
                             var geneFusionsExclusion = [];
                             var nhrsInclusion = [];
                             var nhrsExclusion = [];
-                            if (value.data.variant_report !== undefined) {
-                                angular.forEach(value.data.variant_report.single_nucleotide_variants, function(value) {
+                            if (value.variant_report !== undefined) {
+                                angular.forEach(value.variant_report.single_nucleotide_variants, function(value) {
                                     var snv = {};
                                     snv.id = value.identifier;
                                     snv.gene = value.gene_name;
@@ -592,7 +593,7 @@ angular.module('treatment-arm.matchbox',[])
                                     }
 
                                 });
-                                angular.forEach(value.data.variant_report.indels, function(value) {
+                                angular.forEach(value.variant_report.indels, function(value) {
                                     var indel = {};
                                     indel.id = value.identifier;
                                     indel.gene = value.gene_name;
@@ -614,7 +615,7 @@ angular.module('treatment-arm.matchbox',[])
                                     }
 
                                 });
-                                angular.forEach(value.data.variant_report.copy_number_variants, function(value) {
+                                angular.forEach(value.variant_report.copy_number_variants, function(value) {
                                     var cnv = {};
                                     cnv.gene = value.gene_name;
                                     cnv.levelOfEvidence = value.level_of_evidence;
@@ -633,7 +634,7 @@ angular.module('treatment-arm.matchbox',[])
                                     }
 
                                 });
-                                angular.forEach(value.data.variant_report.gene_fusions, function(value) {
+                                angular.forEach(value.variant_report.gene_fusions, function(value) {
                                     var gf = {};
                                     gf.id = value.identifier;
                                     gf.gene = value.gene_name;
@@ -651,7 +652,7 @@ angular.module('treatment-arm.matchbox',[])
                                     }
 
                                 });
-                                angular.forEach(value.data.variant_report.non_hotspot_rules, function(value) {
+                                angular.forEach(value.variant_report.non_hotspot_rules, function(value) {
                                     var nhr = {};
                                     nhr.exon = value.exon;
                                     nhr.gene = value.gene;
@@ -675,7 +676,7 @@ angular.module('treatment-arm.matchbox',[])
 
 
                             var version = {};
-                            version.name = value.data.version;
+                            version.name = value.version;
                             version.exclusionaryDiseases = exclusionDiseases;
                             version.exclusionaryDrugs = exclusionDrugs;
                             version.snvsInclusion = snvsInclusion;
@@ -689,11 +690,13 @@ angular.module('treatment-arm.matchbox',[])
                             version.nhrsInclusion = nhrsInclusion;
                             version.nhrsExclusion = nhrsExclusion;
                             $scope.versions.push(version);
-                            $scope.versionNames.push(value.data.version);
+                            $scope.versionNames.push(value.version);
                             $scope.information.currentVersion = $scope.versions[0].name;
 
 
+
                         }
+
                     });
 
                         $scope.test = "test";
@@ -701,6 +704,7 @@ angular.module('treatment-arm.matchbox',[])
 
                 })
                 .then (function() {
+                    setHeight();
                     $scope.inExclusionType = 'inclusion';
                     setInExclusion();
                 });
