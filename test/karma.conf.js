@@ -46,7 +46,7 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
-      '../app/scripts/factories/match_http_factory.mock.js'
+      // '../app/scripts/factories/match_http_factory.mock.js'
     ],
 
 

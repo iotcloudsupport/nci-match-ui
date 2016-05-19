@@ -443,11 +443,9 @@ describe('Controller: Patient Details Controller', function () {
     beforeEach(module('config.matchbox', 'http.matchbox', 'patient.matchbox'));
 
     var $scope;
-    var $timeout;
 
-    beforeEach(inject(function(_$controller_, _$timeout_) {
+    beforeEach(inject(function(_$controller_, _matchApiMock_) {
         $scope = getTestData();
-        $timeout = _$timeout_;
         _$controller_('PatientController', {
             $scope: $scope,
             DTOptionsBuilder: {
@@ -459,7 +457,7 @@ describe('Controller: Patient Details Controller', function () {
                     };
                 }
             },
-            matchApiMock: null,
+            matchApiMock: _matchApiMock_,
             $stateParams: null,
             $log: null,
             prompt: null,
