@@ -440,7 +440,11 @@ describe('Controller: Patient Details Controller', function () {
         return data;
     }
 
-    beforeEach(module('config.matchbox', 'http.matchbox', 'patient.matchbox'));
+    beforeEach(module(
+        'config.matchbox',
+        'patient.matchbox',
+        'http.matchbox'));
+
 
     var $scope;
     var matchApiMock;
@@ -449,20 +453,22 @@ describe('Controller: Patient Details Controller', function () {
     var $log;
     var $q;
 
-    beforeEach(inject(function(_$rootScope_, _$controller_, _matchApiMock_, _$log_, _$q_) {
+    beforeEach(inject(function (_$rootScope_, _$controller_, _matchApiMock_, _$log_, _$q_) {
         $scope = _$rootScope_.$new();
         matchApiMock = _matchApiMock_;
         $stateParams = {patientSequenceNumber: 100065};
-        // $stateParams.patientSequenceNumber = 100065;
         $log = _$log_;
         $q = _$q_;
+
+        $scope = getTestData();
+        matchApiMock = _matchApiMock_;
         ctrl = _$controller_('PatientController', {
             $scope: $scope,
             DTOptionsBuilder: {
                 newOptions: function () {
                     return {
                         withDisplayLength: function (length) {
-                            // This is a mock function of the DTOptionsBuilder
+                            return 100;
                         }
                     };
                 }
@@ -473,11 +479,12 @@ describe('Controller: Patient Details Controller', function () {
             prompt: null,
             $uibModal: null
         });
+
     }));
 
     describe('General', function () {
-        it ('shoud call api load method', function () {
-            spyOn(matchApiMock, 'getPatientDetailsData').and.callFake(function() {
+        it('shoud call api load method', function () {
+            spyOn(matchApiMock, 'getPatientDetailsData').and.callFake(function () {
                 var deferred = $q.defer();
 
                 var data = getTestData();
@@ -502,14 +509,29 @@ describe('Controller: Patient Details Controller', function () {
                 deferred.resolve(data);
                 return deferred.promise;
             });
-            dump($scope);
+
             $scope.loadPatientData();
             expect(matchApiMock.getPatientDetailsData).toHaveBeenCalled();
         });
+
+        it('should have dtOptions defined', function () {
+            expect(ctrl.dtOptions).toBeDefined();
+        });
+
+
+        // it ('loadPatientDate should invoke api', function () {
+        //     spyOn(ctrl, 'loadPatientData').and.callFake(function() {
+        //         var deferred = $q.defer();
+        //         deferred.resolve(results);
+        //         return deferred.promise;
+        //     });
+        //
+        // });
     });
 
     describe('Header', function () {
         it('should have correct Patient Sequence Number', function () {
+
             expect($scope.patient.patientSequenceNumber).toBe(100065);
         });
 
