@@ -1,8 +1,8 @@
 angular.module('patients.matchbox',[])
     .controller('PatientsController', function($scope,
                                                DTOptionsBuilder,
-                                               DTColumnDefBuilder,
                                                matchApiMock) {
+        
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(100);
 

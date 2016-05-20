@@ -39,10 +39,11 @@ module.exports = function(config) {
       // matchbox custom scripts
       '../app/scripts/**/*.js',
       // matchbox custom script specs
-      // 'spec/filters/*.js',
-      // 'spec/factories/*.js',
-      // 'spec/controllers/*.js'
-      'spec/controllers/patient_controller_spec.js'
+      'spec/filters/*.js',
+      'spec/factories/*.js',
+      'spec/controllers/*.js'
+      // 'spec/controllers/patient_controller_spec.js',
+      // 'spec/controllers/patients_controller_spec.js'
     ],
 
 

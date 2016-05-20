@@ -454,12 +454,9 @@ describe('Controller: Patient Details Controller', function () {
     var $q;
 
     beforeEach(inject(function (_$rootScope_, _$controller_, _matchApiMock_, _$log_, _$q_) {
-        $scope = _$rootScope_.$new();
-        matchApiMock = _matchApiMock_;
         $stateParams = {patientSequenceNumber: 100065};
         $log = _$log_;
         $q = _$q_;
-
         $scope = getTestData();
         matchApiMock = _matchApiMock_;
         ctrl = _$controller_('PatientController', {
@@ -483,7 +480,7 @@ describe('Controller: Patient Details Controller', function () {
     }));
 
     describe('General', function () {
-        it('shoud call api load method', function () {
+        it('should call api load method', function () {
             spyOn(matchApiMock, 'getPatientDetailsData').and.callFake(function () {
                 var deferred = $q.defer();
 
@@ -502,7 +499,7 @@ describe('Controller: Patient Details Controller', function () {
                 $scope.variantReportOption = data.variantReportOption;
                 $scope.assignmentReport = data.assignmentReport;
                 $scope.biopsyReport = data.biopsyReport;
-                $scope.biopsyReports = data.biopsyReports;
+                $scope.biopsyReports = data.biopsyReports;1
                 $scope.patientDocuments = data.patientDocuments;
                 $scope.currentSendout = data.currentSendout;
 
@@ -521,7 +518,6 @@ describe('Controller: Patient Details Controller', function () {
 
     describe('Header', function () {
         it('should have correct Patient Sequence Number', function () {
-
             expect($scope.patient.patientSequenceNumber).toBe(100065);
         });
 
