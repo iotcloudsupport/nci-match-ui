@@ -295,21 +295,21 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
     $httpProvider.interceptors.push('jwtInterceptor');
 }
 
-angular
-    .module('matchbox')
+angular.module('matchbox')
     .config(config)
     .run(function($rootScope, $state, auth, store, jwtHelper, $location) {
         $rootScope.$state = $state;
         $rootScope.$on('$locationChangeStart', function() {
             var token = store.get('token');
-
             if (token) {
+                $rootScope.showHeader = true; //Open the headers
                 if (!jwtHelper.isTokenExpired(token)) {
                     if (!auth.isAuthenticated) {
                         auth.authenticate(store.get('profile'), token);
                     }
                 }
             } else {
+                $rootScope.showHeader = false; //Close the headers
                 $location.path('/auth/login');
             }
         });
