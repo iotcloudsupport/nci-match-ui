@@ -517,16 +517,6 @@ describe('Controller: Patient Details Controller', function () {
         it('should have dtOptions defined', function () {
             expect(ctrl.dtOptions).toBeDefined();
         });
-
-
-        // it ('loadPatientDate should invoke api', function () {
-        //     spyOn(ctrl, 'loadPatientData').and.callFake(function() {
-        //         var deferred = $q.defer();
-        //         deferred.resolve(results);
-        //         return deferred.promise;
-        //     });
-        //
-        // });
     });
 
     describe('Header', function () {
