@@ -109,7 +109,7 @@
         }
         
         function setComment(value) {
-            $log.debug('User entered un-confirm reason: ' + value);
+            //$log.debug('User entered un-confirm reason: ' + value);
         }
 
         function showWarning(title, message) {
