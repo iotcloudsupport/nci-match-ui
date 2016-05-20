@@ -535,6 +535,46 @@ describe('Controller: Patient Details Controller', function () {
     });
 
     describe('Biopsy Tab', function () {
+        it('should not change report type when the same value is supplied', function () {
+            $scope.loadPatientData();
+
+            var previousValue = $scope.variantReportType;
+            $scope.setVariantReportType(previousValue);
+            expect($scope.variantReportType).toEqual(previousValue);
+            expect($scope.getVariantReportTypeClass(previousValue)).toEqual('active');
+        });
+
+        it('should not change report type to a different value', function () {
+            $scope.loadPatientData();
+
+            var previousValue = $scope.variantReportType;
+            var newValue = 'blood';
+            $scope.setVariantReportType(newValue);
+            expect($scope.variantReportType).toEqual(newValue);
+            expect($scope.getVariantReportTypeClass(previousValue)).toEqual('');
+        });
+
+        it('should not change report mode when the same value is supplied', function () {
+            $scope.loadPatientData();
+
+            var previousValue = $scope.variantReportMode;
+            $scope.setVariantReportMode(previousValue);
+            expect($scope.variantReportMode).toEqual(previousValue);
+            expect($scope.getVariantReportModeClass(previousValue)).toEqual('active');
+        });
+
+        it('should not change report mode to a different value', function () {
+            $scope.loadPatientData();
+
+            var previousValue = $scope.variantReportMode;
+            var newValue = 'qc';
+            $scope.setVariantReportMode(newValue);
+            expect($scope.variantReportMode).toEqual(newValue);
+            expect($scope.getVariantReportModeClass(previousValue)).toEqual('');
+        });
+    });
+
+    describe('Variant Report Tab', function () {
 
     });
 

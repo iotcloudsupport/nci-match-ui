@@ -42,8 +42,8 @@ module.exports = function(config) {
       'spec/filters/*.js',
       'spec/factories/*.js',
       'spec/controllers/*.js'
-      // 'spec/controllers/patient_controller_spec.js',
       // 'spec/controllers/patients_controller_spec.js'
+      // 'spec/controllers/patient_controller_spec.js'
     ],
 
 
