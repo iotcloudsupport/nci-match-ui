@@ -290,26 +290,22 @@ angular.module('treatment-arm.matchbox',[])
             $window.open('http://cancer.sanger.ac.uk/cosmic/gene/overview?ln='+data.toLowerCase(), '_blank');
         };
 
-        $scope.openId = function(cosmicId) {
-            var cid = "";
-            var cia = [];
+        function parseCosmicAndOpenLink(cosmicId, tmp, splitString, linkString) {
+            var cid = cosmicId.substring(tmp, cosmicId.length);
+            var cia = cid.split(splitString);
+            var fid =  cia[1].split(".");
+            $window.open(linkString + fid[0], '_blank');
+        }
 
+        $scope.openId = function(cosmicId) {
             if (cosmicId !== undefined && cosmicId !== null) {
                 var tmp = cosmicId.indexOf("COSF");
-                var fid = '';
                 if(tmp > 0) {
-                    cid = cosmicId.substring(tmp, cosmicId.length);
-                    cia = cid.split("COSF");
-                    fid =  cia[1].split(".");
-                    $window.open('http://cancer.sanger.ac.uk/cosmic/fusion/summary?id='+fid[0], '_blank');
+                    parseCosmicAndOpenLink(cosmicId, tmp, "COSF", 'http://cancer.sanger.ac.uk/cosmic/fusion/summary?id=');
                 } else {
                     tmp = cosmicId.indexOf("COSM");
-
                     if(tmp !== -1) {
-                        cid = cosmicId.substring(tmp, cosmicId.length);
-                        cia = cid.split("COSM");
-                        fid =  cia[1].split(".");
-                        $window.open("http://cancer.sanger.ac.uk/cosmic/mutation/overview?id="+fid[0], '_blank');
+                        parseCosmicAndOpenLink(cosmicId, tmp, "COSM", 'http://cancer.sanger.ac.uk/cosmic/mutation/overview?id=');
                     }
                 }
             }
@@ -409,57 +405,37 @@ angular.module('treatment-arm.matchbox',[])
             return label + "<br>------------------------------------------<br>Patients: " + yval;
         }
 
-        $scope.pieOptions = {
-            series: {
-                pie: {
-                    show: true
+        function setupPieChartOptions(htmlContainer) {
+            return {
+                series: {
+                    pie: {
+                        show: true
+                    }
+                },
+                grid: {
+                    hoverable: true
+                },
+                tooltip: true,
+                tooltipOpts: {
+                    content: function(label, xval, yval) {
+                        return setupTooltip(label, xval, yval);
+                    },
+                    shifts: {
+                        x: 20,
+                        y: 0
+                    },
+                    defaultTheme: true
+                },
+                legend: {
+                    show: true,
+                    container: htmlContainer
                 }
-            },
-            grid: {
-                hoverable: true
-            },
-            tooltip: true,
-            tooltipOpts: {
-                content: function(label, xval, yval) {
-                    return setupTooltip(label, xval, yval);
-                },
-                shifts: {
-                    x: 20,
-                    y: 0
-                },
-                defaultTheme: true
-            },
-            legend: {
-                show: true,
-                container: '#legendContainer'
-            }
-        };
+            };
+        }
 
-        $scope.diseasePieOptions = {
-            series: {
-                pie: {
-                    show: true
-                }
-            },
-            grid: {
-                hoverable: true
-            },
-            tooltip: true,
-            tooltipOpts: {
-                content: function(label, xval, yval) {
-                    return setupTooltip(label, xval, yval);
-                },
-                shifts: {
-                    x: 20,
-                    y: 0
-                },
-                defaultTheme: true
-            },
-            legend: {
-                show: true,
-                container: '#diseaseLegendContainer'
-            }
-        };
+        $scope.pieOptions = setupPieChartOptions('#legendContainer');
+
+        $scope.diseasePieOptions = setupPieChartOptions('#diseaseLegendContainer');
 
         /*$scope.patients = [
             {
@@ -541,7 +517,18 @@ angular.module('treatment-arm.matchbox',[])
             } else {
                 $("#right-info-box").css("height", $("#left-info-box").height());
             }
-
+        }
+        
+        function setupSnvIndel(variant, value) {
+            variant.id = value.identifier;
+            variant = setupGeneLoe(variant, value);
+            variant.position = value.position;
+            variant.alternative = value.alternative;
+            variant.chrom = value.chromosome;
+            variant.protein = value.description;
+            variant.reference = value.reference;
+            variant.litRefs = setupLit(value.public_med_ids);
+            return variant;
         }
 
         $scope.loadTreatmentArmDetails = function(ta) {
@@ -558,10 +545,8 @@ angular.module('treatment-arm.matchbox',[])
                             $scope.information.description = value.description;
                             $scope.information.genes = value.gene;
                             //$scope.information.patientsAssigned = value.num_patients_assigned;
-
                             var exclusionDrugs = [];
                             var exclusionDiseases = [];
-                            var exclusionDrug = {};
 
                             angular.forEach(value.exclusion_drugs, function(value) {
                                 var exclusionDrug = {};
@@ -570,10 +555,8 @@ angular.module('treatment-arm.matchbox',[])
                                     exclusionDrug.name = value.name;
                                     exclusionDrugs.push(exclusionDrug);
                                 });
-
                                 //exclusionDrug.id = value.id;
                                 //exclusionDrug.name = value.name;
-
                             });
                             angular.forEach(value.exclusion_diseases, function(value) {
 
@@ -596,14 +579,7 @@ angular.module('treatment-arm.matchbox',[])
                             if (value.variant_report !== undefined) {
                                 angular.forEach(value.variant_report.single_nucleotide_variants, function(value) {
                                     var snv = {};
-                                    snv.id = value.identifier;
-                                    snv = setupGeneLoe(snv, value);
-                                    snv.position = value.position;
-                                    snv.alternative = value.alternative;
-                                    snv.chrom = value.chromosome;
-                                    snv.protein = value.description;
-                                    snv.reference = value.reference;
-                                    snv.litRefs = setupLit(value.public_med_ids);
+                                    snv = setupSnvIndel(snv, value);
                                     if (setInclusion(snv, value.inclusion) === true) {
                                         snvsInclusion.push(snv);
                                     } else {
@@ -613,14 +589,7 @@ angular.module('treatment-arm.matchbox',[])
                                 });
                                 angular.forEach(value.variant_report.indels, function(value) {
                                     var indel = {};
-                                    indel.id = value.identifier;
-                                    indel = setupGeneLoe(indel, value);
-                                    indel.position = value.position;
-                                    indel.alternative = value.alternative; //
-                                    indel.chrom = value.chromosome; //
-                                    indel.protein = value.description; //
-                                    indel.reference = value.reference;
-                                    indel.litRefs = setupLit(value.public_med_ids);
+                                    indel = setupSnvIndel(indel, value);
                                     if (setInclusion(indel, value.inclusion) === true) {
                                         indelsInclusion.push(indel);
                                     } else {
