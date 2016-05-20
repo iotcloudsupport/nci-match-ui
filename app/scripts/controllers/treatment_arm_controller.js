@@ -290,26 +290,22 @@ angular.module('treatment-arm.matchbox',[])
             $window.open('http://cancer.sanger.ac.uk/cosmic/gene/overview?ln='+data.toLowerCase(), '_blank');
         };
 
-        $scope.openId = function(cosmicId) {
-            var cid = "";
-            var cia = [];
+        function parseCosmicAndOpenLink(cosmicId, tmp, splitString) {
+            var cid = cosmicId.substring(tmp, cosmicId.length);
+            var cia = cid.split(splitString);
+            var fid =  cia[1].split(".");
+            $window.open('http://cancer.sanger.ac.uk/cosmic/fusion/summary?id='+fid[0], '_blank');
+        }
 
+        $scope.openId = function(cosmicId) {
             if (cosmicId !== undefined && cosmicId !== null) {
                 var tmp = cosmicId.indexOf("COSF");
-                var fid = '';
                 if(tmp > 0) {
-                    cid = cosmicId.substring(tmp, cosmicId.length);
-                    cia = cid.split("COSF");
-                    fid =  cia[1].split(".");
-                    $window.open('http://cancer.sanger.ac.uk/cosmic/fusion/summary?id='+fid[0], '_blank');
+                    parseCosmicAndOpenLink(cosmicId, tmp, "COSF");
                 } else {
                     tmp = cosmicId.indexOf("COSM");
-
                     if(tmp !== -1) {
-                        cid = cosmicId.substring(tmp, cosmicId.length);
-                        cia = cid.split("COSM");
-                        fid =  cia[1].split(".");
-                        $window.open("http://cancer.sanger.ac.uk/cosmic/mutation/overview?id="+fid[0], '_blank');
+                        parseCosmicAndOpenLink(cosmicId, tmp, "COSM");
                     }
                 }
             }
@@ -409,57 +405,37 @@ angular.module('treatment-arm.matchbox',[])
             return label + "<br>------------------------------------------<br>Patients: " + yval;
         }
 
-        $scope.pieOptions = {
-            series: {
-                pie: {
-                    show: true
+        function setupPieChartOptions(htmlContainer) {
+            return {
+                series: {
+                    pie: {
+                        show: true
+                    }
+                },
+                grid: {
+                    hoverable: true
+                },
+                tooltip: true,
+                tooltipOpts: {
+                    content: function(label, xval, yval) {
+                        return setupTooltip(label, xval, yval);
+                    },
+                    shifts: {
+                        x: 20,
+                        y: 0
+                    },
+                    defaultTheme: true
+                },
+                legend: {
+                    show: true,
+                    container: htmlContainer
                 }
-            },
-            grid: {
-                hoverable: true
-            },
-            tooltip: true,
-            tooltipOpts: {
-                content: function(label, xval, yval) {
-                    return setupTooltip(label, xval, yval);
-                },
-                shifts: {
-                    x: 20,
-                    y: 0
-                },
-                defaultTheme: true
-            },
-            legend: {
-                show: true,
-                container: '#legendContainer'
-            }
-        };
+            };
+        }
 
-        $scope.diseasePieOptions = {
-            series: {
-                pie: {
-                    show: true
-                }
-            },
-            grid: {
-                hoverable: true
-            },
-            tooltip: true,
-            tooltipOpts: {
-                content: function(label, xval, yval) {
-                    return setupTooltip(label, xval, yval);
-                },
-                shifts: {
-                    x: 20,
-                    y: 0
-                },
-                defaultTheme: true
-            },
-            legend: {
-                show: true,
-                container: '#diseaseLegendContainer'
-            }
-        };
+        $scope.pieOptions = setupPieChartOptions('#legendContainer');
+
+        $scope.diseasePieOptions = setupPieChartOptions('#diseaseLegendContainer');
 
         /*$scope.patients = [
             {
