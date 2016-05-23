@@ -4,23 +4,13 @@ angular.module('treatment-arm.matchbox',[])
         this.dtOptions = {
             'info': false,
             'paging':false
-        }
+        };
         
         this.ddOptions = {
             'info': false,
             'paging': false,
             'bFilter': false
-        }
-
-    /*this.dtColumnDefs = [];
-        this.activeChoice = 'inclusion';*/
-        /*
-        this.ddOptions = DTOptionsBuilder.newOptions()
-            .withOption('paging', false)
-            .withOption('info', false)
-            .withOption('bFilter', false);
-
-        ];*/
+        };
 
         $scope.test = '';
 
@@ -56,6 +46,16 @@ angular.module('treatment-arm.matchbox',[])
                 {status: 'PENDING', date: 'March 02, 2016 4:00AM GMT'},
                 {status: 'READY', date: 'March 09, 2016 10:10PM GMT'},
                 {status: 'OPEN', date: 'March 17, 2016 10:10PM GMT'}
+            ]
+        };
+        
+        $scope.versionHistoryClosed = {
+            versionStatus: 'CLOSED',
+            history: [
+                {status: 'PENDING', date: 'December 02, 2016 4:00AM GMT'},
+                {status: 'READY', date: 'December 09, 2016 10:10PM GMT'},
+                {status: 'OPEN', date: 'December 20, 2015 10:10PM GMT'},
+                {status: 'CLOSED', date: 'February 20, 2016 9:00PM GMT'}
             ]
         };
 
@@ -437,7 +437,7 @@ angular.module('treatment-arm.matchbox',[])
 
         $scope.diseasePieOptions = setupPieChartOptions('#diseaseLegendContainer');
 
-        /*$scope.patients = [
+        $scope.patients = [
             {
                 "Patient": {
                     "slot": "-",
@@ -483,7 +483,7 @@ angular.module('treatment-arm.matchbox',[])
                     "diseases": "Bone cancer, NOS"
                 }
             }
-        ];*/
+        ];
 
         function setupLit(pubmed_ids) {
             var litRefs = [];
@@ -514,8 +514,6 @@ angular.module('treatment-arm.matchbox',[])
         function setHeight() {
             if ($("#left-info-box").height() < $("#right-info-box").height()) {
                 $("#left-info-box").css("height", $("#right-info-box").height());
-            } else {
-                $("#right-info-box").css("height", $("#left-info-box").height());
             }
         }
         
@@ -530,6 +528,8 @@ angular.module('treatment-arm.matchbox',[])
             variant.litRefs = setupLit(value.public_med_ids);
             return variant;
         }
+        
+        $scope.extraVersion = {};
 
         $scope.loadTreatmentArmDetails = function(ta) {
             treatmentArmApi
@@ -636,7 +636,6 @@ angular.module('treatment-arm.matchbox',[])
                                 });
                             }
 
-
                             var version = {};
                             version.name = value.version;
                             version.exclusionaryDiseases = exclusionDiseases;
@@ -651,26 +650,41 @@ angular.module('treatment-arm.matchbox',[])
                             version.geneFusionsExclusion = geneFusionsExclusion;
                             version.nhrsInclusion = nhrsInclusion;
                             version.nhrsExclusion = nhrsExclusion;
+                            version.versionHistory = $scope.versionHistory;
                             $scope.versions.push(version);
-                            $scope.versionNames.push(value.version);
+                            $scope.versionNames.push({ "text": value.version});
+                            $scope.activeVersion = { "text": $scope.versions[0].name};
                             $scope.information.currentVersion = $scope.versions[0].name;
 
-
-
+                            var nextVersion = {};
+                            nextVersion.name = '2015-12-20';
+                            nextVersion.exclusionaryDiseases = exclusionDiseases;
+                            nextVersion.exclusionaryDrugs = exclusionDrugs;
+                            nextVersion.snvsInclusion = snvsInclusion;
+                            nextVersion.snvsExclusion = snvsExclusion;
+                            nextVersion.indelsInclusion = indelsInclusion;
+                            nextVersion.indelsExclusion = indelsExclusion;
+                            nextVersion.cnvsInclusion = cnvsInclusion;
+                            nextVersion.cnvsExclusion = cnvsExclusion;
+                            nextVersion.geneFusionsInclusion = geneFusionsInclusion;
+                            nextVersion.geneFusionsExclusion = geneFusionsExclusion;
+                            nextVersion.nhrsInclusion = nhrsInclusion;
+                            nextVersion.nhrsExclusion = nhrsExclusion;
+                            nextVersion.versionHistory = $scope.versionHistoryClosed;
+                            $scope.versions.push(nextVersion);
+                            $scope.versionNames.push({ "text": nextVersion.name});
                         }
 
                     });
-
-                        $scope.test = "test";
-                        $scope.selectedVersion = $scope.versions[0];
-
+                        
+                    $scope.test = "test";
+                    $scope.selectedVersion = $scope.versions[0];
                 })
                 .then (function() {
-                    setHeight();
                     $scope.inExclusionType = 'inclusion';
                     setInExclusion();
+                    setHeight();
                 });
         };
-
 
     });
