@@ -1,5 +1,5 @@
-angular.module('irsample.matchbox',[])
-    .controller('SampleController', function($scope, $http, $window, $stateParams, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, irAdminApi, svgApi) {
+angular.module('irsample.matchbox',['ui.router'])
+    .controller('SampleController', function($scope, $http, $window, $stateParams, matchConfig, DTOptionsBuilder) {
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(100);
 
@@ -11,10 +11,5 @@ angular.module('irsample.matchbox',[])
 
         $scope.loadSamplesList = function () {
             $scope.sampleId = $stateParams.sampleId;
-            // matchApiMock
-            //     .getPatientListData()
-            //     .then(function (d) {
-            //         $scope.patientList = d;
-            //     });
         };
     });
