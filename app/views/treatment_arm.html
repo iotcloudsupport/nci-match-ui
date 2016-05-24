@@ -54,18 +54,16 @@
                         <dt>Version</dt>
                         <dd><select ng-model="selectedVersion" ng-options="version.name for version in versions"></select></dd>
 
-                        <!--<dt><h4><span class="drop-down-label">Version</span></h4></dt>
+                        <dt><h4><span class="drop-down-label">Version</span></h4></dt>
                         <dd>
                             <div dropdown-select="versionNames" dropdown-model="activeVersion" dropdown-item-label="text">
                             </div>
-                        </dd>-->
-
-                        <!--
+                        </dd>
                         <dt><h4><span class="drop-down-label">Version</span></h4></dt>
                         <dd>
-                            <div dropdown-select="versions.version.name" dropdown-model="selectedVersion" dropdown-item-label="name">
+                            <div dropdown-select="versions.name" dropdown-model="selectedVersion" dropdown-item-label="name">
                             </div>
-                        </dd> -->
+                        </dd>
 
                         <!--<dt>Version Status</dt>
                         <dd>{{selectedVersion.versionHistory.versionStatus}}</dd>-->
@@ -307,7 +305,7 @@
                             <uib-tab heading="SNV / MNV">
                                 <div class="panel-body">
                                     <div class="ibox float-e-margins">
-                                        <div class="ibox-content">
+                                        <div class="ibox-content" style="border-top-width: 0px">
                                             <div class="btn-group">
                                                 <div class="btn-group btn-group-margin" data-toggle="buttons">
                                                     <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('inclusion')" ng-click="setInExclusionType('inclusion')"
@@ -410,7 +408,7 @@
                             <uib-tab heading="Indel">
                                 <div class="panel-body">
                                     <div class="ibox float-e-margins">
-                                        <div class="ibox-content">
+                                        <div class="ibox-content" style="border-top-width: 0px">
                                             <div class="btn-group btn-group-margin" data-toggle="buttons">
                                                 <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('inclusion')" ng-click="setInExclusionType('inclusion')"
                                                        title="Switch to Inclusion">
@@ -511,7 +509,7 @@
                             <uib-tab heading="CNV">
                                 <div class="panel-body">
                                     <div class="ibox float-e-margins">
-                                        <div class="ibox-content">
+                                        <div class="ibox-content" style="border-top-width: 0px">
                                             <div class="btn-group btn-group-margin" data-toggle="buttons">
                                                 <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('inclusion')" ng-click="setInExclusionType('inclusion')"
                                                        title="Switch to Inclusion">
@@ -600,7 +598,7 @@
                             <uib-tab heading="Gene Fusion">
                                 <div class="panel-body">
                                     <div class="ibox float-e-margins">
-                                        <div class="ibox-content">
+                                        <div class="ibox-content" style="border-top-width: 0px">
                                             <div class="btn-group btn-group-margin" data-toggle="buttons">
                                                 <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('inclusion')" ng-click="setInExclusionType('inclusion')"
                                                        title="Switch to Inclusion">
@@ -681,7 +679,7 @@
                             <uib-tab heading="Non-Hotspot Rules">
                                 <div class="panel-body">
                                     <div class="ibox float-e-margins">
-                                        <div class="ibox-content">
+                                        <div class="ibox-content" style="border-top-width: 0px">
                                             <div class="btn-group btn-group-margin" data-toggle="buttons">
                                                 <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('inclusion')" ng-click="setInExclusionType('inclusion')"
                                                        title="Switch to Inclusion">
@@ -772,7 +770,7 @@
                             <uib-tab heading="Non-Sequencing Assays">
                                 <div class="panel-body">
                                     <div class="ibox float-e-margins">
-                                        <div class="ibox-content">
+                                        <div class="ibox-content" style="border-top-width: 0px">
                                             <div class="btn-group btn-group-margin" data-toggle="buttons">
                                                 <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('inclusion')" ng-click="setInExclusionType('inclusion')"
                                                        title="Switch to Inclusion">
