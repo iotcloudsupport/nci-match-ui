@@ -21,8 +21,8 @@
     <div class="no-horizontal-padding header-box-container">
         <div class="row">
             <div class="col-lg-6 col-md-6">
-                <div class="header-info-box">
-                    <dl id="left-info-box" class="dl-horizontal">
+                <div id="left-info-box" class="header-info-box">
+                    <dl class="dl-horizontal">
                         <dt>Name</dt>
                         <dd>{{taid}}</dd>
 
@@ -32,7 +32,7 @@
                         <dt>Current Version</dt>
                         <dd>{{information.currentVersion}}</dd>
 
-                        <dt>Current Status</dt>
+                        <dt>Status</dt>
                         <dd>{{information.currentStatus}}</dd>
 
                         <dt>Gene(s)</dt>
@@ -43,18 +43,32 @@
 
                         <dt>Drug</dt>
                         <dd>{{information.drug}}</dd>
+
                     </dl>
                 </div>
             </div>
 
             <div class="col-lg-6 col-md-6">
-                <div class="header-info-box">
-                    <dl id="right-info-box" class="dl-horizontal">
+                <div id="right-info-box" class="header-info-box">
+                    <dl class="dl-horizontal">
                         <dt>Version</dt>
                         <dd><select ng-model="selectedVersion" ng-options="version.name for version in versions"></select></dd>
 
-                        <dt>Version Status</dt>
-                        <dd>{{versionHistory.versionStatus}}</dd>
+                        <!--<dt><h4><span class="drop-down-label">Version</span></h4></dt>
+                        <dd>
+                            <div dropdown-select="versionNames" dropdown-model="activeVersion" dropdown-item-label="text">
+                            </div>
+                        </dd>-->
+
+                        <!--
+                        <dt><h4><span class="drop-down-label">Version</span></h4></dt>
+                        <dd>
+                            <div dropdown-select="versions.version.name" dropdown-model="selectedVersion" dropdown-item-label="name">
+                            </div>
+                        </dd> -->
+
+                        <!--<dt>Version Status</dt>
+                        <dd>{{selectedVersion.versionHistory.versionStatus}}</dd>-->
 
 
                         <dt>History</dt>
@@ -70,14 +84,13 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr ng-model="version" ng-repeat="item in versionHistory.history">
+                                <tr ng-model="version" ng-repeat="item in selectedVersion.versionHistory.history">
                                     <td>{{item.status || '-'}}</td>
                                     <td>{{item.date || '-'}}</td>
                                 </tr>
                                 </tbody>
                             </table>
                         </dd>
-
                     </dl>
                 </div>
             </div>
@@ -291,7 +304,7 @@
                                 </div>
                             </uib-tab>
 
-                            <uib-tab heading="SNV">
+                            <uib-tab heading="SNV / MNV">
                                 <div class="panel-body">
                                     <div class="ibox float-e-margins">
                                         <div class="ibox-content">
@@ -323,9 +336,9 @@
                                                             <th>ALT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>Protein</th>
-                                                            <th>Total # Patients Current And Former With Variant</th>
-                                                            <th>Patients Current And Former With Variant Assigned To This Arm</th>
-                                                            <th>% Of Patients Current And Former With Variant On Arm Of Total Patients With Variant</th>
+                                                            <th>Total # Of Patients With Variant</th>
+                                                            <th>Patients With Variant Who Were Assigned To This Arm</th>
+                                                            <th>% Of Patients With Variant On Arm Of Total Patients With Variant</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -424,9 +437,9 @@
                                                             <th>ALT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>Protein</th>
-                                                            <th>Total # Patients Current And Former With Variant</th>
-                                                            <th>Patients Current And Former With Variant Assigned To This Arm</th>
-                                                            <th>% Of Patients Current And Former With Variant On Arm Of Total Patients With Variant</th>
+                                                            <th>Total # Patients With Variant</th>
+                                                            <th>Patients With This Variant Who Were Assigned To This Arm</th>
+                                                            <th>% Of Patients With Variant On Arm Of Total Patients With Variant</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -522,9 +535,9 @@
                                                             <th>POS <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>Protein</th>
-                                                            <th>Total # Patients Current And Former With Copy Number</th>
-                                                            <th>Patients Current And Former With Copy Number Assigned To This Arm</th>
-                                                            <th>% Of Patients Current And Former With Copy Number On Arm Of Total Patients With Variant</th>
+                                                            <th>Total # Patients With Copy Number</th>
+                                                            <th>Patients With This Copy Number Who Were Assigned To This Arm</th>
+                                                            <th>% Of Patients With Copy Number On Arm Of Total Patients With Variant</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -609,9 +622,9 @@
                                                             <th>Gene</th>
                                                             <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                            <th>Total # Patients Current and Former With Gene Fusion</th>
-                                                            <th>Patients Current And Former With Gene Fusion Assigned To This Arm</th>
-                                                            <th>% Of Patients Current And Former With Gene Fusion On Arm Of Total Patients With Gene Fusion</th>
+                                                            <th>Total # Patients With Gene Fusion</th>
+                                                            <th>Patients With This Gene Fusion Who Were Assigned To This Arm</th>
+                                                            <th>% Of Patients With Gene Fusion On Arm Of Total Patients With Gene Fusion</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -783,9 +796,9 @@
                                                             <th>Result</th>
                                                             <th>Variant Association</th>
                                                             <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                            <th>Total # Patients Current And Former With Gene</th>
-                                                            <th>Patients Current And Former With Gene Assigned To This Arm</th>
-                                                            <th>% Of Patients Current And Former With Gene On Arm Of Total Patients With Variant</th>
+                                                            <th>Total # Patients With Gene</th>
+                                                            <th>Patients With This Gene Who Were Assigned To This Arm</th>
+                                                            <th>% Of Patients With Gene On Arm Of Total Patients With Gene</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>

@@ -1,3 +1,5 @@
+<div class="row">
+
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
         <h2>IR Admin</h2>
@@ -5,9 +7,6 @@
             <li>
                 <a ui-sref="dashboard">Dashboard</a>
             </li>
-            <!--<li>-->
-            <!--<a ui-sref="patients">Patients</a>-->
-            <!--</li>-->
             <li class="active">
                 <strong>IR Admin</strong>
             </li>
@@ -20,549 +19,719 @@
 
 
 
-<div class="wrapper wrapper-content p-xl ng-scope">
+<div class="wrapper">
 
-<div class="col-lg-12">
-    <div class="ibox float-e-margins">
-        <div class="ibox-content">
-            <div class="tabs-container">
-                <uib-tabset>
-                    <uib-tab heading="Statuses">
-                        <div class="panel-body" >
-                             <!--ng-controller="IrAdminController"-->
-                             <!--ng-init="loadHeartBeatList()">-->
-                            <div class="col-lg-12">
-                                <div class="ibox float-e-margins">
+    <div class="no-horizontal-padding header-box-container">
 
-                                    <div class="ibox-content"  ng-controller="IrAdminController" ng-init="loadHeartBeatList()">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div class="tabs-container">
 
-                                        <div class="row">
-                                            <div class="col-xs-12 content top-border">
-                                                <table class="table">
-                                                    <thead>
-                                                        <th></th>
-                                                        <th>Host Name</th>
-                                                        <th>IP Address</th>
-                                                        <th>Internal IP Address</th>
-                                                        <th>Status</th>
-                                                        <th>Location</th>
-                                                        <th>Last Contact</th>
-                                                        <th>Data Files</th>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr ng-repeat="ir in irList">
-                                                            <td>
-                                                                <i class="{{ ir.timer[0] }}" style="{{ ir.timer[1] }}"></i>
-                                                                <small class="text-navy"> 2 hour ago</small>
-                                                            </td>
-                                                            <td>{{ ir.hostName }}</td>
-                                                            <td>{{ ir.externalIpAddress }}</td>
-                                                            <td>{{ ir.ipAddress }}</td>
-                                                            <td>{{ ir.status || '-' }}</td>
-                                                            <td>{{ ir.location }}</td>
-                                                            <td>{{ ir.lastContactDate | gmt }}</td>
-                                                            <td>
-                                                                <a class="btn btn-sm btn-primary" ng-href="{{ ir.dbReportPath }}" type="button">
-                                                                    <i class="fa fa-file-text" aria-hidden="true"></i>
-                                                                    DB REPORT
-                                                                </a>
-                                                                <a class="btn btn-sm btn-success" ng-href="{{ ir.dataFilePath }}" type="button">
-                                                                    <i class="fa fa-file-code-o" aria-hidden="true"></i>
-                                                                    DATA FILE
-                                                                </a>
-                                                                <a class="btn btn-sm btn-warning" ng-href="{{ ir.logFilePath }}" type="button">
-                                                                    <i class="fa fa-file-o" aria-hidden="true"></i>
-                                                                    LOG FILE
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                        <uib-tabset>
+
+                            <uib-tab heading="Statuses">
+                                <div class="panel-body" >
+                                    <div class="col-lg-12">
+                                        <div class="ibox float-e-margins">
+                                            <div class="col-lg-12" ng-controller="IrAdminController" ng-init="loadHeartBeatList()">
+                                                <div class="ibox float-e-margins">
+                                                    <div class="ibox-title">
+                                                        <h5>Timeline</h5>
+                                                        <span class="label label-primary">Current Status</span>
+                                                        <div ibox-tools></div>
+                                                    </div>
+
+                                                    <div class="ibox-content inspinia-timeline" ng-repeat="ir in irList">
+
+                                                        <div class="timeline-item">
+                                                            <div class="row">
+                                                                <div class="col-xs-3 date">
+                                                                    <i class="fa fa-briefcase"></i>
+                                                                    <i class="{{ ir.timer[0] }}" style="{{ ir.timer[1] }}"></i>
+                                                                    <br/>
+                                                                    <a class="ng-binding"> {{ ir.hostName }} </a>
+                                                                    </br>
+                                                                    <small class="text-navy"> {{ ir.time }} </small>
+
+                                                                </div>
+                                                                <div class="col-xs-9 content no-top-border">
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-4 col-sm-6 text-left">
+                                                                            <dl class="dl-horizontal-narrow">
+
+                                                                                <dt>IP Address</dt>
+                                                                                <dd ng-style="{'color':'green'}" class="ng-binding" style="color: rgb(0, 128, 0);">{{ ir.externalIpAddress }}</dd>
+
+                                                                                <dt>Internal IP Address</dt>
+                                                                                <dd ng-style="{'color':'green'}" class="ng-binding" style="color: rgb(0, 128, 0);">{{ ir.ipAddress }}</dd>
+
+                                                                            </dl>
+                                                                        </div>
+                                                                        <div class="col-md-4 col-sm-6 text-left">
+                                                                            <dl class="dl-horizontal-narrow">
+                                                                                <dt>Location</dt>
+                                                                                <dd ng-style="{'color':'green'}" class="ng-binding" style="color: rgb(0, 128, 0);">{{ ir.location }}</dd>
+
+                                                                                <dt class="ng-binding">Status</dt>
+                                                                                <dd ng-style="{'color':'green'}" class="ng-binding" style="color: rgb(0, 128, 0);">{{ ir.lastContactDate | gmt}}</dd>
+                                                                            </dl>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </uib-tab>
+                            </uib-tab>
+
+                            <uib-tab heading="Sample Control">
+
+                                <div class="tabs-container">
+                                <!--MoCha tabs-->
+                                    <uib-tabset>
+
+                                        <uib-tab>
+                                            <uib-tab-heading>
+                                                <i class="fa fa-puzzle-piece fa-2x"></i>
+                                                MoCha
+                                            </uib-tab-heading>
+
+                                            <div class="panel-body" ng-controller="IrAdminController">
+
+                                                <div class="container-fluid">
+                                                <div class="col-sm-12 col-md-12 sidebar">
+
+                                                    <div class="btn-group btn-group-margin" data-toggle="buttons">
+                                                        <div class="btn btn-outline btn-success"
+                                                             ng-click="item = 1"
+                                                             title="Positive Control- MoCha">
+                                                            <input type="radio" name="positiveReport" id="option1"/>Positive Control- MoCha
+                                                        </div>
+                                                        <div class="btn btn-outline btn-success"
+                                                             ng-class="getSampleNegControlClass('blood')"
+                                                             ng-click="item = 2"
+                                                             title="No Template Control - MoCha">
+                                                            <input type="radio" name="negReport" id="option2"/>No Template Control - MoCha
+                                                        </div>
+                                                    </div>
 
 
+                                                    <button style="width:300px; margin: 0px 3px 8px 3px"
+                                                            data-dismiss="modal" class="btn btn-primary pull-right"
+                                                            type="button" data="129.43.127.133" id="generateMoCha">
+                                                        Generate MSN
+                                                    </button>
 
-                    <uib-tab heading="Sample Control">
+                                                    <!-- Tab panes -->
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane active" id="option1" ng-class="{active:item == 1}" >
 
-                        <div class="tabs-container">
-                        <!--MoCha tabs-->
-                            <uib-tabset>
 
-                                <uib-tab>
-                                    <uib-tab-heading>
-                                        <i class="fa fa-puzzle-piece fa-2x"></i>
-                                        MoCha
-                                    </uib-tab-heading>
-                                    <div class="panel-body" ng-controller="IrAdminController">
+                                                            <div class="col-lg-12">
+                                                                <div class="panel panel-default">
+                                                                    <div class="panel-heading">
+                                                                        Positive Control- MoCha
+                                                                    </div>
+                                                                    <div class="panel-body">
 
-                                        <div class="container-fluid">
-                                        <div class="col-sm-12 col-md-12 sidebar">
 
-                                            <div class="btn-group btn-group-margin" data-toggle="buttons">
-                                                <div class="btn btn-outline btn-success"
-                                                     ng-click="item = 1"
-                                                     title="Positive Control- MoCha">
-                                                    <input type="radio" name="positiveReport" id="option1"/>Positive Control- MoCha
+                                                                        <table width="100%" class="table">
+                                                                            <thead>
+                                                                            <tr>
+                                                                                <th>Sample Id</th>
+                                                                                <th>Generated Date</th>
+                                                                                <th>Rendered Report</th>
+                                                                                <th>Sample Report Link</th>
+                                                                                <th>Status</th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody>
+
+                                                                            <tr class="gradeA">
+                                                                                <td>SampleControl_MoCha_10</td>
+                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                <td class="center">
+
+                                                                                    <a ui-sref="ngsample({ sampleId: 'SampleControl_MoCha_10'})">
+                                                                                        SampleControl_MoCha_10
+                                                                                    </a>
+
+                                                                                </td>
+                                                                                <td class="center" style="color:forestgreen">
+                                                                                    PASSED
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="gradeX">
+                                                                                <td>SampleControl_MoCha_11</td>
+                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                <td class="center">
+                                                                                    <a ui-sref="sampleId({ sampleId: SampleControl_MoCha_11 })"> SampleControl_MoCha_11
+                                                                                    </a>
+                                                                                </td>
+                                                                                <td class="center" style="color:red">
+                                                                                    FAILED
+                                                                                </td>
+                                                                            </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="tab-pane" id="option2" ng-class="{active:item == 2}">
+
+
+                                                                            <div class="col-lg-12">
+                                                                                <div class="panel panel-default">
+                                                                                    <div class="panel-heading">
+                                                                                        No Template Control - MoCha
+                                                                                    </div>
+                                                                                    <div class="panel-body">
+
+                                                                                        <table width="100%" datatable=""
+                                                                                               class="table table-striped table-bordered table-hover">
+                                                                                            <thead>
+                                                                                            <tr>
+                                                                                                <th>Sample Id</th>
+                                                                                                <th>Generated Date</th>
+                                                                                                <th>Rendered Report</th>
+                                                                                                <th>Sample Report Link</th>
+                                                                                                <th>Status</th>
+                                                                                            </tr>
+                                                                                            </thead>
+                                                                                            <tbody>
+
+                                                                                            <tr class="gradeA">
+                                                                                                <td>NtcControl_MoCha_1</td>
+                                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                                <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                                <td class="center">
+                                                                                                    <a href="" > NtcControl_MoCha_1 </a>
+                                                                                                </td>
+                                                                                                <td style="color:forestgreen">PASSED</td>
+                                                                                            </tr>
+                                                                                            <tr class="gradeX">
+                                                                                                <td>NtcControl_MoCha_2</td>
+                                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                                <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                                <td class="center">
+
+                                                                                                    <a ui-sref="ngsample({ sampleId: 1031 })">
+                                                                                                        <i class="fa fa-user"></i> NtcControl_MoCha_2
+                                                                                                    </a>
+                                                                                                </td>
+                                                                                                <td style="color:red">FAILED</td>
+                                                                                            </tr>
+                                                                                            <tr class="gradeA">
+                                                                                                <td>NtcControl_MoCha_3</td>
+                                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                                <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                                <td class="center">
+                                                                                                    <a href="" > NtcControl_MoCha_3 </a>
+                                                                                                </td>
+                                                                                                <td style="color:forestgreen">PASSED</td>
+                                                                                            </tr>
+                                                                                            <tr class="gradeX">
+                                                                                                <td>NtcControl_MoCha_4</td>
+                                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                                <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                                <td class="center">
+
+                                                                                                    <a ui-sref="ngsample({ sampleId: 1031 })">
+                                                                                                        <i class="fa fa-user"></i> NtcControl_MoCha_4
+                                                                                                    </a>
+                                                                                                </td>
+                                                                                                <td style="color:red">FAILED</td>
+                                                                                            </tr>
+
+                                                                                            <tr class="gradeA">
+                                                                                                <td>NtcControl_MoCha_3</td>
+                                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                                <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                                <td class="center">
+                                                                                                    <a href="" > NtcControl_MoCha_3 </a>
+                                                                                                </td>
+                                                                                                <td style="color:forestgreen">PASSED</td>
+                                                                                            </tr>
+                                                                                            <tr class="gradeX">
+                                                                                                <td>NtcControl_MoCha_4</td>
+                                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                                <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                                <td class="center">
+
+                                                                                                    <a ui-sref="ngsample({ sampleId: 1031 })">
+                                                                                                        <i class="fa fa-user"></i> NtcControl_MoCha_4
+                                                                                                    </a>
+                                                                                                </td>
+                                                                                                <td style="color:red">FAILED</td>
+                                                                                            </tr>
+
+                                                                                            <tr class="gradeA">
+                                                                                                <td>NtcControl_MoCha_3</td>
+                                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                                <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                                <td class="center">
+                                                                                                    <a href="" > NtcControl_MoCha_3 </a>
+                                                                                                </td>
+                                                                                                <td style="color:forestgreen">PASSED</td>
+                                                                                            </tr>
+                                                                                            <tr class="gradeX">
+                                                                                                <td>NtcControl_MoCha_4</td>
+                                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                                <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                                <td class="center">
+
+                                                                                                    <a ui-sref="ngsample({ sampleId: 1031 })">
+                                                                                                        <i class="fa fa-user"></i> NtcControl_MoCha_4
+                                                                                                    </a>
+                                                                                                </td>
+                                                                                                <td style="color:red">FAILED</td>
+                                                                                            </tr>
+
+                                                                                            <tr class="gradeA">
+                                                                                                <td>NtcControl_MoCha_3</td>
+                                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                                <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                                <td class="center">
+                                                                                                    <a href="" > NtcControl_MoCha_3 </a>
+                                                                                                </td>
+                                                                                                <td style="color:forestgreen">PASSED</td>
+                                                                                            </tr>
+                                                                                            <tr class="gradeX">
+                                                                                                <td>NtcControl_MoCha_4</td>
+                                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                                <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                                <td class="center">
+
+                                                                                                    <a ui-sref="ngsample({ sampleId: 1031 })">
+                                                                                                        <i class="fa fa-user"></i> NtcControl_MoCha_4
+                                                                                                    </a>
+                                                                                                </td>
+                                                                                                <td style="color:red">FAILED</td>
+                                                                                            </tr>
+
+                                                                                            <tr class="gradeA">
+                                                                                                <td>NtcControl_MoCha_3</td>
+                                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                                <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                                <td class="center">
+                                                                                                    <a href="" > NtcControl_MoCha_3 </a>
+                                                                                                </td>
+                                                                                                <td style="color:forestgreen">PASSED</td>
+                                                                                            </tr>
+                                                                                            <tr class="gradeX">
+                                                                                                <td>NtcControl_MoCha_4</td>
+                                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                                <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                                <td class="center">
+
+                                                                                                    <a ui-sref="ngsample({ sampleId: 1031 })">
+                                                                                                        <i class="fa fa-user"></i> NtcControl_MoCha_4
+                                                                                                    </a>
+                                                                                                </td>
+                                                                                                <td style="color:red">FAILED</td>
+                                                                                            </tr>
+
+                                                                                            <tr class="gradeA">
+                                                                                                <td>NtcControl_MoCha_3</td>
+                                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                                <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                                <td class="center">
+                                                                                                    <a href="" > NtcControl_MoCha_3 </a>
+                                                                                                </td>
+                                                                                                <td style="color:forestgreen">PASSED</td>
+                                                                                            </tr>
+                                                                                            <tr class="gradeX">
+                                                                                                <td>NtcControl_MoCha_4</td>
+                                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                                <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                                <td class="center">
+
+                                                                                                    <a ui-sref="ngsample({ sampleId: 1031 })">
+                                                                                                        <i class="fa fa-user"></i> NtcControl_MoCha_4
+                                                                                                    </a>
+                                                                                                </td>
+                                                                                                <td style="color:red">FAILED</td>
+                                                                                            </tr>
+
+                                                                                            <tr class="gradeA">
+                                                                                                <td>NtcControl_MoCha_3</td>
+                                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                                <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                                <td class="center">
+                                                                                                    <a href="" > NtcControl_MoCha_3 </a>
+                                                                                                </td>
+                                                                                                <td style="color:forestgreen">PASSED</td>
+                                                                                            </tr>
+                                                                                            <tr class="gradeX">
+                                                                                                <td>NtcControl_MoCha_4</td>
+                                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                                <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                                <td class="center">
+
+                                                                                                    <a ui-sref="ngsample({ sampleId: 1031 })">
+                                                                                                        <i class="fa fa-user"></i> NtcControl_MoCha_4
+                                                                                                    </a>
+                                                                                                </td>
+                                                                                                <td style="color:red">FAILED</td>
+                                                                                            </tr>
+
+                                                                                            </tbody>
+
+                                                                                        </table>
+
+
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+
                                                 </div>
-                                                <div class="btn btn-outline btn-success"
-                                                     ng-class="getSampleNegControlClass('blood')"
-                                                     ng-click="item = 2"
-                                                     title="No Template Control - MoCha">
-                                                    <input type="radio" name="negReport" id="option2"/>No Template Control - MoCha
-                                                </div>
+
                                             </div>
 
 
-                                            <button style="width:300px; margin: 0px 3px 8px 3px"
-                                                    data-dismiss="modal" class="btn btn-primary pull-right"
-                                                    type="button" data="129.43.127.133" id="generateMoCha">
-                                                Generate MSN
-                                            </button>
-
-                                            <!-- Tab panes -->
-                                            <div class="tab-content">
-                                                <div class="tab-pane active" id="option1" ng-class="{active:item == 1}" >
+                                            </div>
+                                        </uib-tab>
 
 
-                                                    <div class="col-lg-12">
-                                                        <div class="panel panel-default">
-                                                            <div class="panel-heading">
-                                                                Positive Control- MoCha
-                                                            </div>
-                                                            <div class="panel-body">
+                                        <uib-tab>
+                                            <uib-tab-heading>
+                                                <i class="fa fa-cubes fa-2x"></i>
+                                                MD Anderson
+                                            </uib-tab-heading>
 
+                                            <div class="panel-body">
 
-                                                                <table width="100%" class="table">
-                                                                    <thead>
-                                                                    <tr>
-                                                                        <th>Rendering engine</th>
-                                                                        <th>Browser</th>
-                                                                        <th>Platform(s)</th>
-                                                                        <th>Engine version</th>
-                                                                        <th>CSS grade</th>
-                                                                    </tr>
-                                                                    </thead>
-                                                                    <tbody>
+                                            <div class="container-fluid">
+                                                <div class="col-sm-12 col-md-12 sidebar">
 
-                                                                    <tr class="gradeA">
-                                                                        <td>SampleControl_MoCha_10</td>
-                                                                        <td>September 18, 2015 3:19 PM GMT</td>
-                                                                        <td>ESeptember 18, 2015 3:21 PM GMT</td>
-                                                                        <td class="center">
-
-                                                                            <a ui-sref="ngsample({ sampleId: 'SampleControl_MoCha_10'})">
-                                                                                SampleControl_MoCha_10
-                                                                            </a>
-
-                                                                        </td>
-                                                                        <td class="center" style="color:forestgreen">
-                                                                            PASSED
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr class="gradeX">
-                                                                        <td>SampleControl_MoCha_11</td>
-                                                                        <td>September 18, 2015 3:19 PM GMT</td>
-                                                                        <td>September 18, 2015 3:21 PM GMT</td>
-                                                                        <td class="center">
-                                                                            <a ui-sref="sampleId({ sampleId: SampleControl_MoCha_11 })"> SampleControl_MoCha_11
-                                                                            </a>
-                                                                        </td>
-                                                                        <td class="center" style="color:red">
-                                                                            FAILED
-                                                                        </td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
+                                                    <div class="btn-group btn-group-margin" data-toggle="buttons">
+                                                        <div class="btn btn-outline btn-success"
+                                                             ng-click="item = 1"
+                                                             title="Positive Control- MoCha">
+                                                            <input type="radio" name="positiveReport" id="option1"/>Positive Control- MoCha
+                                                        </div>
+                                                        <div class="btn btn-outline btn-success"
+                                                             ng-class="getSampleNegControlClass('blood')"
+                                                             ng-click="item = 2"
+                                                             title="No Template Control - MoCha">
+                                                            <input type="radio" name="negReport" id="option2"/>No Template Control - MoCha
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="tab-pane" id="option2" ng-class="{active:item == 2}">
 
 
-                                                                    <div class="col-lg-12">
-                                                                        <div class="panel panel-default">
-                                                                            <div class="panel-heading">
-                                                                                No Template Control - MoCha
-                                                                            </div>
-                                                                            <div class="panel-body">
-
-                                                                                <table width="100%" datatable=""
-                                                                                       class="table table-striped table-bordered table-hover">
-                                                                                    <thead>
-                                                                                    <tr>
-                                                                                        <th>Rendering engine</th>
-                                                                                        <th>Browser</th>
-                                                                                        <th>Platform(s)</th>
-                                                                                        <th>Engine version</th>
-                                                                                        <th>CSS grade</th>
-                                                                                    </tr>
-                                                                                    </thead>
-                                                                                    <tbody>
-
-                                                                                    <tr class="gradeA">
-                                                                                        <td>NtcControl_MoCha_1</td>
-                                                                                        <td>September 18, 2015 3:19 PM GMT</td>
-                                                                                        <td>ESeptember 18, 2015 3:21 PM GMT</td>
-                                                                                        <td class="center">
-                                                                                            <a href="" > NtcControl_MoCha_1 </a>
-                                                                                        </td>
-                                                                                        <td style="color:forestgreen">PASSED</td>
-                                                                                    </tr>
-                                                                                    <tr class="gradeX">
-                                                                                        <td>NtcControl_MoCha_2</td>
-                                                                                        <td>September 18, 2015 3:19 PM GMT</td>
-                                                                                        <td>September 18, 2015 3:21 PM GMT</td>
-                                                                                        <td class="center">
-
-                                                                                            <a ui-sref="ngsample({ sampleId: 1031 })">
-                                                                                                <i class="fa fa-user"></i> NtcControl_MoCha_2
-                                                                                            </a>
-                                                                                        </td>
-                                                                                        <td style="color:red">FAILED</td>
-                                                                                    </tr>
-                                                                                    <tr class="gradeA">
-                                                                                        <td>NtcControl_MoCha_3</td>
-                                                                                        <td>September 18, 2015 3:19 PM GMT</td>
-                                                                                        <td>ESeptember 18, 2015 3:21 PM GMT</td>
-                                                                                        <td class="center">
-                                                                                            <a href="" > NtcControl_MoCha_3 </a>
-                                                                                        </td>
-                                                                                        <td style="color:forestgreen">PASSED</td>
-                                                                                    </tr>
-                                                                                    <tr class="gradeX">
-                                                                                        <td>NtcControl_MoCha_4</td>
-                                                                                        <td>September 18, 2015 3:19 PM GMT</td>
-                                                                                        <td>September 18, 2015 3:21 PM GMT</td>
-                                                                                        <td class="center">
-
-                                                                                            <a ui-sref="ngsample({ sampleId: 1031 })">
-                                                                                                <i class="fa fa-user"></i> NtcControl_MoCha_4
-                                                                                            </a>
-                                                                                        </td>
-                                                                                        <td style="color:red">FAILED</td>
-                                                                                    </tr>
-
-                                                                                    <tr class="gradeA">
-                                                                                        <td>NtcControl_MoCha_3</td>
-                                                                                        <td>September 18, 2015 3:19 PM GMT</td>
-                                                                                        <td>ESeptember 18, 2015 3:21 PM GMT</td>
-                                                                                        <td class="center">
-                                                                                            <a href="" > NtcControl_MoCha_3 </a>
-                                                                                        </td>
-                                                                                        <td style="color:forestgreen">PASSED</td>
-                                                                                    </tr>
-                                                                                    <tr class="gradeX">
-                                                                                        <td>NtcControl_MoCha_4</td>
-                                                                                        <td>September 18, 2015 3:19 PM GMT</td>
-                                                                                        <td>September 18, 2015 3:21 PM GMT</td>
-                                                                                        <td class="center">
-
-                                                                                            <a ui-sref="ngsample({ sampleId: 1031 })">
-                                                                                                <i class="fa fa-user"></i> NtcControl_MoCha_4
-                                                                                            </a>
-                                                                                        </td>
-                                                                                        <td style="color:red">FAILED</td>
-                                                                                    </tr>
-
-                                                                                    <tr class="gradeA">
-                                                                                        <td>NtcControl_MoCha_3</td>
-                                                                                        <td>September 18, 2015 3:19 PM GMT</td>
-                                                                                        <td>ESeptember 18, 2015 3:21 PM GMT</td>
-                                                                                        <td class="center">
-                                                                                            <a href="" > NtcControl_MoCha_3 </a>
-                                                                                        </td>
-                                                                                        <td style="color:forestgreen">PASSED</td>
-                                                                                    </tr>
-                                                                                    <tr class="gradeX">
-                                                                                        <td>NtcControl_MoCha_4</td>
-                                                                                        <td>September 18, 2015 3:19 PM GMT</td>
-                                                                                        <td>September 18, 2015 3:21 PM GMT</td>
-                                                                                        <td class="center">
-
-                                                                                            <a ui-sref="ngsample({ sampleId: 1031 })">
-                                                                                                <i class="fa fa-user"></i> NtcControl_MoCha_4
-                                                                                            </a>
-                                                                                        </td>
-                                                                                        <td style="color:red">FAILED</td>
-                                                                                    </tr>
-
-                                                                                    <tr class="gradeA">
-                                                                                        <td>NtcControl_MoCha_3</td>
-                                                                                        <td>September 18, 2015 3:19 PM GMT</td>
-                                                                                        <td>ESeptember 18, 2015 3:21 PM GMT</td>
-                                                                                        <td class="center">
-                                                                                            <a href="" > NtcControl_MoCha_3 </a>
-                                                                                        </td>
-                                                                                        <td style="color:forestgreen">PASSED</td>
-                                                                                    </tr>
-                                                                                    <tr class="gradeX">
-                                                                                        <td>NtcControl_MoCha_4</td>
-                                                                                        <td>September 18, 2015 3:19 PM GMT</td>
-                                                                                        <td>September 18, 2015 3:21 PM GMT</td>
-                                                                                        <td class="center">
-
-                                                                                            <a ui-sref="ngsample({ sampleId: 1031 })">
-                                                                                                <i class="fa fa-user"></i> NtcControl_MoCha_4
-                                                                                            </a>
-                                                                                        </td>
-                                                                                        <td style="color:red">FAILED</td>
-                                                                                    </tr>
-
-                                                                                    <tr class="gradeA">
-                                                                                        <td>NtcControl_MoCha_3</td>
-                                                                                        <td>September 18, 2015 3:19 PM GMT</td>
-                                                                                        <td>ESeptember 18, 2015 3:21 PM GMT</td>
-                                                                                        <td class="center">
-                                                                                            <a href="" > NtcControl_MoCha_3 </a>
-                                                                                        </td>
-                                                                                        <td style="color:forestgreen">PASSED</td>
-                                                                                    </tr>
-                                                                                    <tr class="gradeX">
-                                                                                        <td>NtcControl_MoCha_4</td>
-                                                                                        <td>September 18, 2015 3:19 PM GMT</td>
-                                                                                        <td>September 18, 2015 3:21 PM GMT</td>
-                                                                                        <td class="center">
-
-                                                                                            <a ui-sref="ngsample({ sampleId: 1031 })">
-                                                                                                <i class="fa fa-user"></i> NtcControl_MoCha_4
-                                                                                            </a>
-                                                                                        </td>
-                                                                                        <td style="color:red">FAILED</td>
-                                                                                    </tr>
-
-                                                                                    <tr class="gradeA">
-                                                                                        <td>NtcControl_MoCha_3</td>
-                                                                                        <td>September 18, 2015 3:19 PM GMT</td>
-                                                                                        <td>ESeptember 18, 2015 3:21 PM GMT</td>
-                                                                                        <td class="center">
-                                                                                            <a href="" > NtcControl_MoCha_3 </a>
-                                                                                        </td>
-                                                                                        <td style="color:forestgreen">PASSED</td>
-                                                                                    </tr>
-                                                                                    <tr class="gradeX">
-                                                                                        <td>NtcControl_MoCha_4</td>
-                                                                                        <td>September 18, 2015 3:19 PM GMT</td>
-                                                                                        <td>September 18, 2015 3:21 PM GMT</td>
-                                                                                        <td class="center">
-
-                                                                                            <a ui-sref="ngsample({ sampleId: 1031 })">
-                                                                                                <i class="fa fa-user"></i> NtcControl_MoCha_4
-                                                                                            </a>
-                                                                                        </td>
-                                                                                        <td style="color:red">FAILED</td>
-                                                                                    </tr>
-
-                                                                                    <tr class="gradeA">
-                                                                                        <td>NtcControl_MoCha_3</td>
-                                                                                        <td>September 18, 2015 3:19 PM GMT</td>
-                                                                                        <td>ESeptember 18, 2015 3:21 PM GMT</td>
-                                                                                        <td class="center">
-                                                                                            <a href="" > NtcControl_MoCha_3 </a>
-                                                                                        </td>
-                                                                                        <td style="color:forestgreen">PASSED</td>
-                                                                                    </tr>
-                                                                                    <tr class="gradeX">
-                                                                                        <td>NtcControl_MoCha_4</td>
-                                                                                        <td>September 18, 2015 3:19 PM GMT</td>
-                                                                                        <td>September 18, 2015 3:21 PM GMT</td>
-                                                                                        <td class="center">
-
-                                                                                            <a ui-sref="ngsample({ sampleId: 1031 })">
-                                                                                                <i class="fa fa-user"></i> NtcControl_MoCha_4
-                                                                                            </a>
-                                                                                        </td>
-                                                                                        <td style="color:red">FAILED</td>
-                                                                                    </tr>
-
-                                                                                    </tbody>
-
-                                                                                </table>
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane active" id="option1" ng-class="{active:item == 1}" >
 
 
-                                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="panel panel-default">
+                                                                    <div class="panel-heading">
+                                                                        Positive Control- MDAnderson
+                                                                    </div>
+                                                                    <div class="panel-body">
 
-                                                                        </div>
+
+                                                                        <table width="100%" class="table">
+                                                                            <thead>
+                                                                            <tr>
+                                                                                <th>Sample Id</th>
+                                                                                <th>Generated Date</th>
+                                                                                <th>Rendered Report</th>
+                                                                                <th>Sample Report Link</th>
+                                                                                <th>Status</th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody>
+
+                                                                            <tr class="gradeA">
+                                                                                <td>SampleControl_MDAnderson_10</td>
+                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                <td class="center">
+
+                                                                                    <a ui-sref="ngsample({ sampleId: 'SampleControl_MDAnderson_10'})">
+                                                                                        SampleControl_MDAnderson_10
+                                                                                    </a>
+
+                                                                                </td>
+                                                                                <td class="center" style="color:forestgreen">
+                                                                                    PASSED
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr class="gradeX">
+                                                                                <td>SampleControl_MDAnderson_11</td>
+                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                <td class="center">
+                                                                                    <a ui-sref="sampleId({ sampleId: SampleControl_MDAnderson_11 })"> SampleControl_MDAnderson_11
+                                                                                    </a>
+                                                                                </td>
+                                                                                <td class="center" style="color:red">
+                                                                                    FAILED
+                                                                                </td>
+                                                                            </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="tab-pane" id="option2" ng-class="{active:item == 2}">
+
+
+                                                            <div class="col-lg-12">
+                                                                <div class="panel panel-default">
+                                                                    <div class="panel-heading">
+                                                                        No Template Control - MDAnderson
+                                                                    </div>
+                                                                    <div class="panel-body">
+
+                                                                        <table width="100%" datatable=""
+                                                                               class="table table-striped table-bordered table-hover">
+                                                                            <thead>
+                                                                            <tr>
+                                                                                <th>Sample Id</th>
+                                                                                <th>Generated Date</th>
+                                                                                <th>Rendered Report</th>
+                                                                                <th>Sample Report Link</th>
+                                                                                <th>Status</th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody>
+
+                                                                            <tr class="gradeA">
+                                                                                <td>NtcControl_MDAnderson_1</td>
+                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                <td class="center">
+                                                                                    <a href="" > NtcControl_MDAnderson_1 </a>
+                                                                                </td>
+                                                                                <td style="color:forestgreen">PASSED</td>
+                                                                            </tr>
+                                                                            <tr class="gradeX">
+                                                                                <td>NtcControl_MDAnderson_2</td>
+                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                <td class="center">
+
+                                                                                    <a ui-sref="ngsample({ sampleId: 1031 })">
+                                                                                        <i class="fa fa-user"></i> NtcControl_MDAnderson_2
+                                                                                    </a>
+                                                                                </td>
+                                                                                <td style="color:red">FAILED</td>
+                                                                            </tr>
+                                                                            <tr class="gradeA">
+                                                                                <td>NtcControl_MDAnderson_3</td>
+                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                <td class="center">
+                                                                                    <a href="" > NtcControl_MDAnderson_3 </a>
+                                                                                </td>
+                                                                                <td style="color:forestgreen">PASSED</td>
+                                                                            </tr>
+                                                                            <tr class="gradeX">
+                                                                                <td>NtcControl_MDAnderson_4</td>
+                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                <td class="center">
+
+                                                                                    <a ui-sref="ngsample({ sampleId: 1031 })">
+                                                                                        <i class="fa fa-user"></i> NtcControl_MDAnderson_4
+                                                                                    </a>
+                                                                                </td>
+                                                                                <td style="color:red">FAILED</td>
+                                                                            </tr>
+
+                                                                            <tr class="gradeA">
+                                                                                <td>NtcControl_MDAnderson_3</td>
+                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                <td class="center">
+                                                                                    <a href="" > NtcControl_MDAnderson_3 </a>
+                                                                                </td>
+                                                                                <td style="color:forestgreen">PASSED</td>
+                                                                            </tr>
+                                                                            <tr class="gradeX">
+                                                                                <td>NtcControl_MDAnderson_4</td>
+                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                <td class="center">
+
+                                                                                    <a ui-sref="ngsample({ sampleId: 1031 })">
+                                                                                        <i class="fa fa-user"></i> NtcControl_MDAnderson_4
+                                                                                    </a>
+                                                                                </td>
+                                                                                <td style="color:red">FAILED</td>
+                                                                            </tr>
+
+                                                                            <tr class="gradeA">
+                                                                                <td>NtcControl_MDAnderson_3</td>
+                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                <td class="center">
+                                                                                    <a href="" > NtcControl_MDAnderson_3 </a>
+                                                                                </td>
+                                                                                <td style="color:forestgreen">PASSED</td>
+                                                                            </tr>
+                                                                            <tr class="gradeX">
+                                                                                <td>NtcControl_MDAnderson_4</td>
+                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                <td class="center">
+
+                                                                                    <a ui-sref="ngsample({ sampleId: 1031 })">
+                                                                                        <i class="fa fa-user"></i> NtcControl_MDAnderson_4
+                                                                                    </a>
+                                                                                </td>
+                                                                                <td style="color:red">FAILED</td>
+                                                                            </tr>
+
+                                                                            <tr class="gradeA">
+                                                                                <td>NtcControl_MDAnderson_3</td>
+                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                <td class="center">
+                                                                                    <a href="" > NtcControl_MDAnderson_3 </a>
+                                                                                </td>
+                                                                                <td style="color:forestgreen">PASSED</td>
+                                                                            </tr>
+                                                                            <tr class="gradeX">
+                                                                                <td>NtcControl_MDAnderson_4</td>
+                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                <td class="center">
+
+                                                                                    <a ui-sref="ngsample({ sampleId: 1031 })">
+                                                                                        <i class="fa fa-user"></i> NtcControl_MDAnderson_4
+                                                                                    </a>
+                                                                                </td>
+                                                                                <td style="color:red">FAILED</td>
+                                                                            </tr>
+
+                                                                            <tr class="gradeA">
+                                                                                <td>NtcControl_MDAnderson_3</td>
+                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                <td class="center">
+                                                                                    <a href="" > NtcControl_MDAnderson_3 </a>
+                                                                                </td>
+                                                                                <td style="color:forestgreen">PASSED</td>
+                                                                            </tr>
+                                                                            <tr class="gradeX">
+                                                                                <td>NtcControl_MDAnderson_4</td>
+                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                <td class="center">
+
+                                                                                    <a ui-sref="ngsample({ sampleId: 1031 })">
+                                                                                        <i class="fa fa-user"></i> NtcControl_MDAnderson_4
+                                                                                    </a>
+                                                                                </td>
+                                                                                <td style="color:red">FAILED</td>
+                                                                            </tr>
+
+                                                                            <tr class="gradeA">
+                                                                                <td>NtcControl_MDAnderson_3</td>
+                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                <td class="center">
+                                                                                    <a href="" > NtcControl_MDAnderson_3 </a>
+                                                                                </td>
+                                                                                <td style="color:forestgreen">PASSED</td>
+                                                                            </tr>
+                                                                            <tr class="gradeX">
+                                                                                <td>NtcControl_MDAnderson_4</td>
+                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                <td class="center">
+
+                                                                                    <a ui-sref="ngsample({ sampleId: 1031 })">
+                                                                                        <i class="fa fa-user"></i> NtcControl_MDAnderson_4
+                                                                                    </a>
+                                                                                </td>
+                                                                                <td style="color:red">FAILED</td>
+                                                                            </tr>
+
+                                                                            <tr class="gradeA">
+                                                                                <td>NtcControl_MDAnderson_3</td>
+                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                <td>ESeptember 18, 2015 3:21 PM GMT</td>
+                                                                                <td class="center">
+                                                                                    <a href="" > NtcControl_MDAnderson_3 </a>
+                                                                                </td>
+                                                                                <td style="color:forestgreen">PASSED</td>
+                                                                            </tr>
+                                                                            <tr class="gradeX">
+                                                                                <td>NtcControl_MDAnderson_4</td>
+                                                                                <td>September 18, 2015 3:19 PM GMT</td>
+                                                                                <td>September 18, 2015 3:21 PM GMT</td>
+                                                                                <td class="center">
+
+                                                                                    <a ui-sref="ngsample({ sampleId: 1031 })">
+                                                                                        <i class="fa fa-user"></i> NtcControl_MDAnderson_4
+                                                                                    </a>
+                                                                                </td>
+                                                                                <td style="color:red">FAILED</td>
+                                                                            </tr>
+
+                                                                            </tbody>
+
+                                                                        </table>
+
+
                                                                     </div>
 
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-
-                                    </div>
-                                </uib-tab>
-                                <uib-tab>
-                                    <uib-tab-heading>
-                                        <i class="fa fa-cubes fa-2x"></i>
-                                        MD Anderson
-                                    </uib-tab-heading>
-                                    <div class="panel-body">
-                                        <div class="panel-group" id="accordion">
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <h5 class="panel-title">
-                                                        <a data-toggle="collapse" target="_local" data-parent="#accordion" href="#collapseYaleOne">Positive Control - MD Anderson</a>
-                                                    </h5>
-                                                </div>
-
-                                                <div id="collapseYaleOne" class="panel-collapse collapse in">
-                                                    <div class="panel-body">
-
-
-                                                        <div class="col-lg-12">
-
-                                                            <button style="width:300px; margin: 0px 3px 8px 3px"
-                                                                    data-dismiss="modal" class="btn btn-primary pull-right"
-                                                                    type="button" data="129.43.127.133" id="generateMoCha">
-                                                                <i class="fa fa-cogs fa-2x pull-left"></i> Generate MSN
-                                                            </button>
-
-
-                                                            <div class="ibox float-e-margins">
-                                                                <div class="ibox-content">
-
-                                                                    <table class="table">
-                                                                        <thead>
-                                                                        <tr>
-                                                                            <th>Molecular Sequence Number</th>
-                                                                            <th>Date Created</th>
-                                                                            <th>Date Received</th>
-                                                                            <th>Variant Reports</th>
-                                                                            <th>Status</th>
-                                                                        </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                        <tr>
-                                                                            <td>SampleControl_Yale_10</td>
-                                                                            <td>September 18, 2015 3:19 PM GMT</td>
-                                                                            <td>September 18, 2015 3:21 PM GMT</td>
-
-                                                                            <td class="center">
-                                                                                <a ui-sref="ngsample({ sampleId: 'SampleControl_MDACC_6'})">
-                                                                                    SampleControl_MDACC_6
-                                                                                </a>
-                                                                            </td>
-
-                                                                            <td>PASSED</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>SampleControl_Yale_11</td>
-                                                                            <td>September 12, 2015 3:19 PM GMT</td>
-                                                                            <td>September 12, 2015 3:21 PM GMT</td>
-                                                                            <td class="center">
-                                                                                <a ui-sref="ngsample({ sampleId: 1031 })"> SampleControl_MDACC_7
-                                                                                </a>
-                                                                            </td>
-                                                                            <td>PASSED</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>SampleControl_Yale_12</td>
-                                                                            <td>September 15, 2015 3:19 PM GMT</td>
-                                                                            <td>September 15, 2015 3:21 PM GMT</td>
-                                                                            <td class="center">
-                                                                                <a ui-sref="ngsample({ sampleId: 1031 })"> SampleControl_MDACC_8
-                                                                                </a>
-                                                                            </td>
-                                                                            <td>FAILED</td>
-                                                                        </tr>
-                                                                        </tbody>
-                                                                    </table>
-
                                                                 </div>
                                                             </div>
+
+
                                                         </div>
                                                     </div>
-                                                </div>
+
                                             </div>
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <h4 class="panel-title">
-                                                        <a data-toggle="collapse" target="_local" data-parent="#accordion" href="#collapseYaleTwo">No Template Control - MD Anderson</a>
-                                                    </h4>
-                                                </div>
-                                                <div id="collapseYaleTwo" class="panel-collapse collapse">
-                                                    <div class="panel-body">
 
-                                                        <div class="col-lg-12">
-
-                                                            <button style="width:300px; margin: 0px 3px 8px 3px"
-                                                                    data-dismiss="modal" class="btn btn-primary pull-right"
-                                                                    type="button" data="129.43.127.133" id="generateMoCha">
-                                                                <i class="fa fa-cogs fa-2x pull-left"></i> Generate MSN
-                                                            </button>
-
-
-                                                            <div class="ibox float-e-margins">
-
-                                                                <div class="ibox-content">
-
-                                                                    <table class="table">
-                                                                        <thead>
-                                                                        <tr>
-                                                                            <th>Molecular Sequence Number</th>
-                                                                            <th>Date Created</th>
-                                                                            <th>Date Received</th>
-                                                                            <th>Variant Reports</th>
-                                                                            <th>Status</th>
-                                                                        </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                        <tr>
-                                                                            <td>SampleControl_MoCha_10</td>
-                                                                            <td>September 18, 2015 3:19 PM GMT</td>
-                                                                            <td>September 18, 2015 3:21 PM GMT</td>
-                                                                            <td><a href="#" >SampleControl_MoCha_10</a></td>
-                                                                            <td>PASSED</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>SampleControl_MoCha_11</td>
-                                                                            <td>September 12, 2015 3:19 PM GMT</td>
-                                                                            <td>September 12, 2015 3:21 PM GMT</td>
-                                                                            <td><a href="#" >SampleControl_MoCha_10</a></td>
-                                                                            <td>PASSED</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>SampleControl_MoCha_12</td>
-                                                                            <td>September 15, 2015 3:19 PM GMT</td>
-                                                                            <td>September 15, 2015 3:21 PM GMT</td>
-                                                                            <td><a href="#" >SampleControl_MoCha_10</a></td>
-                                                                            <td>FAILED</td>
-                                                                        </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </uib-tab>
 
-                            </uib-tabset>
+                                            </div>
 
-                        </div>
+                                        </uib-tab>
 
-                    </uib-tab>
+                                    </uib-tabset>
 
+                                </div>
 
+                            </uib-tab>
 
-                </uib-tabset>
+                        </uib-tabset>
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
+
     </div>
+
+</div>
+
 </div>
 
 
