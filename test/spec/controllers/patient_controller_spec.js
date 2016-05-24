@@ -452,15 +452,11 @@ describe('Controller: Patient Details Controller', function () {
     var $log;
     var $q;
     var prompt;
-
-    beforeEach(inject(function (_matchApiMock_, _$q_) {
-        var deferred = _$q_.defer();
-        var testData = getTestData();
-        deferred.resolve(testData);
-        spyOn(_matchApiMock_, 'loadPatient').and.returnValue(deferred.promise);
-    }));
+    var testData = getTestData();
+    var deferred;
 
     beforeEach(inject(function (_$rootScope_, _$controller_, _matchApiMock_, _$log_, _$q_) {
+        deferred = _$q_.defer();
         $stateParams = {patientSequenceNumber: 100065};
         $log = _$log_;
         $q = _$q_;
@@ -485,20 +481,16 @@ describe('Controller: Patient Details Controller', function () {
             $uibModal: null
         });
 
+        deferred.resolve(testData);
+        spyOn(_matchApiMock_, 'loadPatient').and.returnValue(deferred.promise);
+        spyOn($scope, 'setupScope');
         $scope.loadPatientData();
         $scope.$apply();
-
     }));
 
     describe('General', function () {
-        it('should call api load method, setupScope and setupVerianceReport', function () {
-            spyOn($scope, 'setupScope');
-
-            $scope.loadPatientData();
-            $scope.$apply();
-
+        it('should call api load method', function () {
             expect(matchApiMock.loadPatient).toHaveBeenCalled();
-            // expect($scope.setupScope).toHaveBeenCalled();
         });
 
         it('should have dtOptions defined', function () {
