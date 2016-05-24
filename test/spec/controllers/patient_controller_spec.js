@@ -443,7 +443,9 @@ describe('Controller: Patient Details Controller', function () {
     beforeEach(module(
         'config.matchbox',
         'patient.matchbox',
-        'http.matchbox'));
+        'http.matchbox',
+        'ui.bootstrap',
+        'cgPrompt'));
 
     var $scope;
     var matchApiMock;
@@ -451,17 +453,18 @@ describe('Controller: Patient Details Controller', function () {
     var $stateParams;
     var $log;
     var $q;
-    var prompt;
     var testData = getTestData();
     var deferred;
+    var prompt;
 
-    beforeEach(inject(function (_$rootScope_, _$controller_, _matchApiMock_, _$log_, _$q_) {
+    beforeEach(inject(function (_$rootScope_, _$controller_, _matchApiMock_, _$log_, _$q_, _prompt_) {
         deferred = _$q_.defer();
         $stateParams = {patientSequenceNumber: 100065};
         $log = _$log_;
         $q = _$q_;
         matchApiMock = _matchApiMock_;
         $scope = _$rootScope_.$new();
+        prompt = _prompt_;
 
         ctrl = _$controller_('PatientController', {
             $scope: $scope,
@@ -477,15 +480,14 @@ describe('Controller: Patient Details Controller', function () {
             matchApiMock: matchApiMock,
             $stateParams: $stateParams,
             $log: $log,
-            prompt: null,
+            prompt: prompt,
             $uibModal: null
         });
 
         deferred.resolve(testData);
         spyOn(_matchApiMock_, 'loadPatient').and.returnValue(deferred.promise);
-        spyOn($scope, 'setupScope');
         $scope.loadPatientData();
-        $scope.$apply();
+        $scope.$apply(); // This forces Angular to resolve promises
     }));
 
     describe('General', function () {
@@ -497,22 +499,16 @@ describe('Controller: Patient Details Controller', function () {
             expect(ctrl.dtOptions).toBeDefined();
         });
 
-        xit ('should call warning dialog and log when user agreed', function () {
-            spyOn($scope, 'prompt').and.callFake(function () {
-                var deferred = $q.defer();
-                deferred.resolve('User Agreed');
-                return deferred.promise;
-            });
-
-            spyOn($log, 'debug');
-
+        it('should call warning dialog and log when user agreed', function () {
+            var testValue = 'User Agreed';
+            deferred.resolve(testValue);
+            spyOn($scope, 'showPrompt').and.returnValue(deferred.promise);
             $scope.showWarning('Test Title', 'Test Message');
-
-            expect($scope.callPrompt).toHaveBeenCalled();
-            expect($log.debug).toHaveBeenCalledWith('User Agreed');
+            $scope.$apply();
+            //expect($scope.warningResult).toBe(true);
         });
 
-        xit ('should call warning dialog and log when user disagreed', function () {
+        xit('should call warning dialog and log when user disagreed', function () {
 
         });
     });
