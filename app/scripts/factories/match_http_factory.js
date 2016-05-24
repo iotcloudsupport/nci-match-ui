@@ -62,18 +62,13 @@ angular.module('http.matchbox', [])
     .factory('irAdminApi', function($http, matchConfig) {
 
         return {
-            getAdminHeartBeat: function() {
+            loadHeartBeatList: function() {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getIrUploaderAdminObjects');
             },
             getPosiveSampleControls: function() {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlsBySite');
             }
         };
-        // return {
-        //     getPosiveSampleControls: function() {
-        //         return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlsBySite');
-        //     }
-        // };
     })
     .factory('svgApi', function($http, matchConfig) {
         return {
