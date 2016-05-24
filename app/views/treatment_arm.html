@@ -29,11 +29,22 @@
                         <dt>Description</dt>
                         <dd>{{information.description}}</dd>
 
-                        <dt>Current Version</dt>
-                        <dd>{{information.currentVersion}}</dd>
-
                         <dt>Status</dt>
                         <dd>{{information.currentStatus}}</dd>
+
+                        <dt><span class="drop-down-label">Version</span></dt>
+                        <dd>
+                            <div dropdown-select="versions" dropdown-model="selectedVersion" dropdown-item-label="text">
+                            </div>
+                        </dd>
+
+                    </dl>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6">
+                <div id="right-info-box" class="header-info-box" style="height:174px">
+                    <dl class="dl-horizontal">
 
                         <dt>Gene(s)</dt>
                         <dd>{{information.genes}}</dd>
@@ -44,51 +55,6 @@
                         <dt>Drug</dt>
                         <dd>{{information.drug}}</dd>
 
-                    </dl>
-                </div>
-            </div>
-
-            <div class="col-lg-6 col-md-6">
-                <div id="right-info-box" class="header-info-box">
-                    <dl class="dl-horizontal">
-                        <dt>Version</dt>
-                        <dd><select ng-model="selectedVersion" ng-options="version.name for version in versions"></select></dd>
-
-                        <dt><h4><span class="drop-down-label">Version</span></h4></dt>
-                        <dd>
-                            <div dropdown-select="versionNames" dropdown-model="activeVersion" dropdown-item-label="text">
-                            </div>
-                        </dd>
-                        <dt><h4><span class="drop-down-label">Version</span></h4></dt>
-                        <dd>
-                            <div dropdown-select="versions.name" dropdown-model="selectedVersion" dropdown-item-label="name">
-                            </div>
-                        </dd>
-
-                        <!--<dt>Version Status</dt>
-                        <dd>{{selectedVersion.versionHistory.versionStatus}}</dd>-->
-
-
-                        <dt>History</dt>
-                        <dd>
-                            <table class="table table-bordered table-hover">
-                                <thead>
-                                <tr>
-                                    <th colspan="2" style="text-align:center"></th>
-                                </tr>
-                                <tr>
-                                    <th>Status</th>
-                                    <th>Date</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr ng-model="version" ng-repeat="item in selectedVersion.versionHistory.history">
-                                    <td>{{item.status || '-'}}</td>
-                                    <td>{{item.date || '-'}}</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </dd>
                     </dl>
                 </div>
             </div>
@@ -843,6 +809,27 @@
                             </uib-tab>
                         </uib-tabset>
                     </div>
+                </div>
+            </uib-tab>
+            <uib-tab heading="History">
+                <div class="panel-body">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th colspan="2" style="text-align:center">History</th>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <th>Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-model="version" ng-repeat="item in selectedVersion.versionHistory.history">
+                            <td>{{item.status || '-'}}</td>
+                            <td>{{item.date || '-'}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </uib-tab>
         </uib-tabset>
