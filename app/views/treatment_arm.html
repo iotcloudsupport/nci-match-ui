@@ -118,6 +118,7 @@
                                     <th>Variant Report</th>
                                     <th>Date Selected</th>
                                     <th>Date On Arm</th>
+                                    <th>Time On Arm</th>
                                     <th>Date Of Arm</th>
                                     <th>Step</th>
                                     <th>Disease</th>
@@ -133,6 +134,7 @@
                                     <td>{{item.Patient.variantReport || '-'}}</td>
                                     <td>{{item.Patient.dateSelected || '-'}}</td>
                                     <td>{{item.Patient.dateOnArm || '-'}}</td>
+                                    <td>{{item.Patient.timeOnArm || '-'}}</td>
                                     <td>{{item.Patient.dateOffArm || '-'}}</td>
                                     <td>{{item.Patient.step || '-'}}</td>
                                     <td>{{item.Patient.diseases || '-'}}</td>
@@ -671,6 +673,9 @@
                                                             <th>Protein Regex</th>
                                                             <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>Total # Patients With Gene</th>
+                                                            <th>Patients With This Gene Who Were Assigned To This Arm</th>
+                                                            <th>% Of Patients With Gene On Arm Of Total Patients With Gene</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -689,6 +694,9 @@
                                                                     </tr>
                                                                 </table>
                                                             </td>
+                                                            <td style="text-align:right">{{item.totNumPtsWithVariant || '-'}}</td>
+                                                            <td style="text-align:right">{{item.ptsWithVariantOnArm || '-'}}</td>
+                                                            <td style="text-align:right">{{item.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
