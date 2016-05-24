@@ -8,7 +8,8 @@ angular.module('config.matchbox', [])
                 'reportApiBaseUrl': urlPrefix + ':9292',//9292
                 'treatmentArmApiBaseUrl': urlPrefix + ':10235',//':4569',
                 'workflowApiBaseUrl' : urlPrefix + ':4570',
-                'activityFeedApiBaseUrl' : urlPrefix + ':9898'//9898
+                'activityFeedApiBaseUrl' : urlPrefix + ':9898', //9898,
+                'patientApiBaseUrl' : urlPrefix + ':3000'//9898
             };
         }
         return {
@@ -17,6 +18,7 @@ angular.module('config.matchbox', [])
             'reportApiBaseUrl': urlPrefix + ':' + $location.port() + '/reportapi',
             'treatmentArmApiBaseUrl': urlPrefix + ':' + $location.port() + '/treatmentarmapi',
             'workflowApiBaseUrl' : urlPrefix + ':' + $location.port() + '/matchapi',
-            'activityFeedApiBaseUrl' : urlPrefix + ':' + $location.port() + '/newsFeed/1'
+            'activityFeedApiBaseUrl' : urlPrefix + ':' + $location.port() + '/newsFeed/1',
+            'patientApiBaseUrl' : urlPrefix + ':' + $location.port() + '/patientapi'
         };
     });

@@ -1,71 +1,86 @@
-angular.module('http.matchbox', [])
-    .factory('workflowApi', function($http, matchConfig) {
+(function () {
+    "use strict";
+
+    angular.module('http.matchbox', [])
+        .factory('workflowApi', workflowApi)
+        .factory('matchApi', matchApi)
+        .factory('reportApi', reportApi)
+        .factory('treatmentArmApi', treatmentArmApi)
+        .factory('irAdminApi', irAdminApi)
+        .factory('svgApi', svgApi)
+        .factory('patientApi', patientApi);
+
+    function workflowApi($http, matchConfig) {
         return {
-            getDashboardStatistcs: function() {
+            getDashboardStatistcs: function () {
                 return $http.get(matchConfig.workflowApiBaseUrl + '/dashboardStatistics');
             },
-            getRejoinRequested: function() {
+            getRejoinRequested: function () {
                 return $http.get(matchConfig.workflowApiBaseUrl + '/rejoinRequested');
             }
         };
-    })
-    .factory('matchApi', function($http, matchConfig) {
+    }
+
+    function matchApi($http, matchConfig) {
         // Note: Legacy API that will be replaced in the future.
         return {
-            getBasicPatientsData: function() {
+            getBasicPatientsData: function () {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getBasicPatientsData');
             },
-            getPatientDetailsData: function(psn) {
+            getPatientDetailsData: function (psn) {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getPatientDetails?patientSequenceNumber=' + psn);
             },
-            getBasicTreatmentArms: function() {
+            getBasicTreatmentArms: function () {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getBasicTreatmentArms');
             },
-            getPatientSpecimentTrackingSummary: function() {
+            getPatientSpecimentTrackingSummary: function () {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/patientSpecimenTrackingSummary');
             },
-            getPatientVariantReports: function() {
+            getPatientVariantReports: function () {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getPatientsWithPendingVariantReport');
             },
-            getPatientPendingAssignmentReports: function() {
+            getPatientPendingAssignmentReports: function () {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getPatientsWithPendingAssignmentReport');
             }
         };
-    })
-    .factory('reportApi', function($http, matchConfig) {
+    }
+
+    function reportApi($http, matchConfig) {
         return {
-            getPatientInLimboReports: function() {
+            getPatientInLimboReports: function () {
                 return $http.get(matchConfig.reportApiBaseUrl + '/limboPatient');
             },
-            getReportList: function() {
+            getReportList: function () {
                 return $http.get(matchConfig.reportApiBaseUrl + '/reportList');
             },
-            getActivityFeedList: function() {
+            getActivityFeedList: function () {
                 return $http.get(matchConfig.reportApiBaseUrl + '/reportList');
             }
         };
-    })
-    .factory('treatmentArmApi', function($http, matchConfig) {
+    }
+
+    function treatmentArmApi($http, matchConfig) {
         return {
-            getTreatmentArms: function() {
+            getTreatmentArms: function () {
                 return $http.get(matchConfig.treatmentArmApiBaseUrl + '/basicTreatmentArms');
             },
-            getAllTreatmentArms: function() {
+            getAllTreatmentArms: function () {
                 return $http.get(matchConfig.treatmentArmApiBaseUrl + '/treatmentArms');
             },
-            getTreatmentArmDetails: function(taId) {
+            getTreatmentArmDetails: function (taId) {
                 return $http.get(matchConfig.treatmentArmApiBaseUrl + '/treatmentArms/' + taId);
             }
 
         };
-    })
-    .factory('irAdminApi', function($http, matchConfig) {
+    }
+
+    function irAdminApi($http, matchConfig) {
 
         return {
-            getAdminHeartBeat: function() {
+            getAdminHeartBeat: function () {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getIrUploaderAdminObjects');
             },
-            getPosiveSampleControls: function() {
+            getPosiveSampleControls: function () {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlsBySite');
             }
         };
@@ -74,12 +89,29 @@ angular.module('http.matchbox', [])
         //         return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlsBySite');
         //     }
         // };
-    })
-    .factory('svgApi', function($http, matchConfig) {
+    }
+
+    function svgApi($http, matchConfig) {
         return {
-            getSvgGene: function(id) {
+            getSvgGene: function (id) {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlGraphInfoFromVCF?molecularSequenceNumber=' + id);
                 // return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getGraphInfoFromVCF?patientId=10005&biopsySequenceNumber=T-15-000022&jobName=MSN3111_v1_fc12ad97-2c1e-45e2-8beb-8a77eef4ecf6');
             }
         };
-    });
+    }
+
+    function patientApi($http, matchConfig) {
+        return {
+            loadPatient: loadPatient,
+            loadPatientList: loadPatientList
+        }
+
+        function loadPatient(id) {
+            return $http.get(matchConfig.patientApiBaseUrl + '/patients/' + id);
+        }
+
+        function loadPatientList() {
+            return $http.get(matchConfig.patientApiBaseUrl + '/patients');
+        }
+    }
+} ());
