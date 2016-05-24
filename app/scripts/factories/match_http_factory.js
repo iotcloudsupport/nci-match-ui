@@ -77,18 +77,13 @@
     function irAdminApi($http, matchConfig) {
 
         return {
-            getAdminHeartBeat: function () {
+            loadHeartBeatList: function() {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getIrUploaderAdminObjects');
             },
             getPosiveSampleControls: function () {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlsBySite');
             }
         };
-        // return {
-        //     getPosiveSampleControls: function() {
-        //         return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlsBySite');
-        //     }
-        // };
     }
 
     function svgApi($http, matchConfig) {
