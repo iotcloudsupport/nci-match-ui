@@ -60,7 +60,6 @@ angular.module('treatment-arm.matchbox',[])
         };
 
         $scope.versions = [];
-        $scope.versionNames = [];
 
         $scope.setInExclusionType = setInExclusionType;
         $scope.getInExclusionTypeClass = getInExclusionTypeClass;
@@ -511,12 +510,6 @@ angular.module('treatment-arm.matchbox',[])
             }
         }
         
-        function setHeight() {
-            if ($("#left-info-box").height() < $("#right-info-box").height()) {
-                $("#left-info-box").css("height", $("#right-info-box").height());
-            }
-        }
-        
         function setupSnvIndel(variant, value) {
             variant.id = value.identifier;
             variant = setupGeneLoe(variant, value);
@@ -637,7 +630,7 @@ angular.module('treatment-arm.matchbox',[])
                             }
 
                             var version = {};
-                            version.name = value.version;
+                            version.text = value.version;
                             version.exclusionaryDiseases = exclusionDiseases;
                             version.exclusionaryDrugs = exclusionDrugs;
                             version.snvsInclusion = snvsInclusion;
@@ -652,12 +645,10 @@ angular.module('treatment-arm.matchbox',[])
                             version.nhrsExclusion = nhrsExclusion;
                             version.versionHistory = $scope.versionHistory;
                             $scope.versions.push(version);
-                            $scope.versionNames.push({ "text": value.version});
-                            $scope.activeVersion = { "text": $scope.versions[0].name};
                             $scope.information.currentVersion = $scope.versions[0].name;
 
                             var nextVersion = {};
-                            nextVersion.name = '2015-12-20';
+                            nextVersion.text = '2015-12-20';
                             nextVersion.exclusionaryDiseases = exclusionDiseases;
                             nextVersion.exclusionaryDrugs = exclusionDrugs;
                             nextVersion.snvsInclusion = snvsInclusion;
@@ -672,7 +663,6 @@ angular.module('treatment-arm.matchbox',[])
                             nextVersion.nhrsExclusion = nhrsExclusion;
                             nextVersion.versionHistory = $scope.versionHistoryClosed;
                             $scope.versions.push(nextVersion);
-                            $scope.versionNames.push({ "text": nextVersion.name});
                         }
 
                     });
@@ -683,7 +673,6 @@ angular.module('treatment-arm.matchbox',[])
                 .then (function() {
                     $scope.inExclusionType = 'inclusion';
                     setInExclusion();
-                    setHeight();
                 });
         };
 
