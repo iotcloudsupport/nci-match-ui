@@ -456,6 +456,20 @@ describe('Controller: Patient Details Controller', function () {
     var testData = getTestData();
     var deferred;
     var prompt;
+    //
+    // beforeEach(function() {
+    //     module(function($provide) {
+    //         $provide.value('$scope', {
+    //             showPrompt: function() {
+    //                 return {
+    //                     then: function(callback) {
+    //                         return callback(data);
+    //                     }
+    //                 }
+    //             }
+    //         });
+    //     });
+    // });
 
     beforeEach(inject(function (_$rootScope_, _$controller_, _matchApiMock_, _$log_, _$q_, _prompt_) {
         deferred = _$q_.defer();
@@ -500,16 +514,24 @@ describe('Controller: Patient Details Controller', function () {
         });
 
         it('should call warning dialog and log when user agreed', function () {
-            var testValue = 'User Agreed';
-            deferred.resolve(testValue);
-            spyOn($scope, 'showPrompt').and.returnValue(deferred.promise);
+            deferred.resolve(true);
+
+            spyOn($scope, 'showPrompt').and.returnValue(deferred.promise).and.callThrough();
+
             $scope.showWarning('Test Title', 'Test Message');
             $scope.$apply();
+
+            //expect($scope.showPrompt).toHaveBeenCalled();
             //expect($scope.warningResult).toBe(true);
         });
 
-        xit('should call warning dialog and log when user disagreed', function () {
-
+        it('should call warning dialog and log when user disagreed', function () {
+            var testValue = 'User Agreed';
+            deferred.resolve(testValue);
+            spyOn($scope, 'showPrompt').and.returnValue(deferred.promise).and.callThrough();
+            $scope.showWarning('Test Title', 'Test Message');
+            $scope.$apply();
+            expect($scope.warningResult).toBe(false);
         });
     });
 
