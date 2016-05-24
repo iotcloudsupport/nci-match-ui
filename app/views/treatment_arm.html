@@ -118,7 +118,7 @@
                                     <th>Variant Report</th>
                                     <th>Date Selected</th>
                                     <th>Date On Arm</th>
-                                    <th>Date Of Next Status</th>
+                                    <th>Date Of Arm</th>
                                     <th>Step</th>
                                     <th>Disease</th>
                                 </tr>
@@ -293,13 +293,13 @@
                                                         <tr>
                                                             <th>ID</th>
                                                             <th>Gene</th>
-                                                            <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>CHR <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.chr}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>POS <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>REF <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.ref}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>ALT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                            <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>Protein</th>
+                                                            <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>Total # Of Patients With Variant</th>
                                                             <th>Patients With Variant Who Were Assigned To This Arm</th>
                                                             <th>% Of Patients With Variant On Arm Of Total Patients With Variant</th>
@@ -309,11 +309,12 @@
                                                         <tr ng-model="version" ng-repeat="item in selectedVersion.snvsInclusion">
                                                             <td><a ng-click="openId(item.id)">{{item.id || '-'}}</a></td>
                                                             <td><a ng-click="openGene(item.gene)">{{item.gene || '-'}}</a></td>
-                                                            <td>{{item.levelOfEvidence || '-'}}</td>
                                                             <td>{{item.chrom || '-'}}</td>
                                                             <td>{{item.position || '-'}}</td>
                                                             <td>{{item.reference || '-'}}</td>
                                                             <td>{{item.alternative || '-'}}</td>
+                                                            <td>{{item.protein || '-'}}</td>
+                                                            <td>{{item.levelOfEvidence || '-'}}</td>
                                                             <td>
                                                                 <table>
                                                                     <tr ng-repeat="subitem in item.litRefs">
@@ -321,7 +322,6 @@
                                                                     </tr>
                                                                 </table>
                                                             </td>
-                                                            <td>{{item.protein || '-'}}</td>
                                                             <td style="text-align:right">{{item.totNumPtsWithVariant || '-'}}</td>
                                                             <td style="text-align:right">{{item.ptsWithVariantOnArm || '-'}}</td>
                                                             <td style="text-align:right">{{item.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
@@ -337,24 +337,25 @@
                                                         <tr>
                                                             <th>ID</th>
                                                             <th>Gene</th>
-                                                            <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>CHR <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.chr}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>POS <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>REF <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.ref}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>ALT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                            <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>Protein</th>
+                                                            <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr ng-model="version" ng-repeat="item in selectedVersion.snvsExclusion">
                                                             <td><a ng-click="openId(item.id)">{{item.id || '-'}}</td>
                                                             <td><a ng-click="openGene(item.gene)">{{item.gene || '-'}}</a></td>
-                                                            <td>{{item.levelOfEvidence || '-'}}</td>
                                                             <td>{{item.chrom || '-'}}</td>
                                                             <td>{{item.position || '-'}}</td>
                                                             <td>{{item.reference || '-'}}</td>
                                                             <td>{{item.alternative || '-'}}</td>
+                                                            <td>{{item.protein || '-'}}</td>
+                                                            <td>{{item.levelOfEvidence || '-'}}</td>
                                                             <td>
                                                                 <table>
                                                                     <tr ng-repeat="subitem in item.litRefs">
@@ -362,7 +363,6 @@
                                                                     </tr>
                                                                 </table>
                                                             </td>
-                                                            <td>{{item.protein || '-'}}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -394,13 +394,13 @@
                                                         <tr>
                                                             <th>ID</th>
                                                             <th>Gene</th>
-                                                            <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>CHR <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.chr}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>POS <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>REF <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.ref}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>ALT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                            <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>Protein</th>
+                                                            <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>Total # Patients With Variant</th>
                                                             <th>Patients With This Variant Who Were Assigned To This Arm</th>
                                                             <th>% Of Patients With Variant On Arm Of Total Patients With Variant</th>
@@ -410,11 +410,12 @@
                                                         <tr ng-model="version" ng-repeat="item in selectedVersion.indelsInclusion">
                                                             <td><a ng-click="openId(item.id)">{{item.id || '-'}}</a></td>
                                                             <td><a ng-click="openGene(item.gene)">{{item.gene || '-'}}</a></td>
-                                                            <td>{{item.levelOfEvidence || '-'}}</td>
                                                             <td>{{item.chrom || '-'}}</td>
                                                             <td>{{item.position || '-'}}</td>
                                                             <td>{{item.reference || '-'}}</td>
                                                             <td>{{item.alternative || '-'}}</td>
+                                                            <td>{{item.protein || '-'}}</td>
+                                                            <td>{{item.levelOfEvidence || '-'}}</td>
                                                             <td>
                                                                 <table>
                                                                     <tr ng-repeat="subitem in item.litRefs">
@@ -422,7 +423,6 @@
                                                                     </tr>
                                                                 </table>
                                                             </td>
-                                                            <td>{{item.protein || '-'}}</td>
                                                             <td style="text-align:right">{{item.totNumPtsWithVariant || '-'}}</td>
                                                             <td style="text-align:right">{{item.ptsWithVariantOnArm || '-'}}</td>
                                                             <td style="text-align:right">{{item.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
@@ -438,24 +438,25 @@
                                                         <tr>
                                                             <th>ID</th>
                                                             <th>Gene</th>
-                                                            <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>CHR <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.chr}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>POS <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>REF <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.ref}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>ALT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                            <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>Protein</th>
+                                                            <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr ng-model="version" ng-repeat="item in selectedVersion.indelsExclusion">
                                                             <td><a ng-click="openId(item.id)">{{item.id || '-'}}</a></td>
                                                             <td><a ng-click="openGene(item.gene)">{{item.gene || '-'}}</a></td>
-                                                            <td>{{item.levelOfEvidence || '-'}}</td>
                                                             <td>{{item.chrom || '-'}}</td>
                                                             <td>{{item.position || '-'}}</td>
                                                             <td>{{item.reference || '-'}}</td>
                                                             <td>{{item.alternative || '-'}}</td>
+                                                            <td>{{item.protein || '-'}}</td>
+                                                            <td>{{item.levelOfEvidence || '-'}}</td>
                                                             <td>
                                                                 <table>
                                                                     <tr ng-repeat="subitem in item.litRefs">
@@ -463,7 +464,6 @@
                                                                     </tr>
                                                                 </table>
                                                             </td>
-                                                            <td>{{item.protein || '-'}}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -494,11 +494,11 @@
                                                     <thead>
                                                         <tr>
                                                             <th>Gene</th>
-                                                            <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>CHR <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.chr}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>POS <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                            <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>Protein</th>
+                                                            <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>Total # Patients With Copy Number</th>
                                                             <th>Patients With This Copy Number Who Were Assigned To This Arm</th>
                                                             <th>% Of Patients With Copy Number On Arm Of Total Patients With Variant</th>
@@ -507,9 +507,10 @@
                                                     <tbody>
                                                         <tr ng-repeat="item in selectedVersion.cnvsInclusion">
                                                             <td><a ng-click="openGene(item.gene)">{{item.gene || '-'}}</a></td>
-                                                            <td>{{item.levelOfEvidence || '-'}}</td>
                                                             <td>{{item.chrom || '-'}}</td>
                                                             <td>{{item.position || '-'}}</td>
+                                                            <td>{{item.protein || '-'}}</td>
+                                                            <td>{{item.levelOfEvidence || '-'}}</td>
                                                             <td>
                                                                 <table>
                                                                     <tr ng-repeat="subitem in item.litRefs">
@@ -517,7 +518,6 @@
                                                                     </tr>
                                                                 </table>
                                                             </td>
-                                                            <td>{{item.protein || '-'}}</td>
                                                             <td style="text-align:right">{{item.totNumPtsWithVariant || '-'}}</td>
                                                             <td style="text-align:right">{{item.ptsWithVariantOnArm || '-'}}</td>
                                                             <td style="text-align:right">{{item.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
@@ -532,19 +532,20 @@
                                                     <thead>
                                                         <tr>
                                                             <th>Gene</th>
-                                                            <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>CHR <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.chr}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>POS <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                            <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>Protein</th>
+                                                            <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr ng-repeat="item in selectedVersion.cnvsExclusion">
                                                             <td><a ng-click="openGene(item.gene)">{{item.gene || '-'}}</a></td>
-                                                            <td>{{item.levelOfEvidence || '-'}}</td>
                                                             <td>{{item.chrom || '-'}}</td>
                                                             <td>{{item.position || '-'}}</td>
+                                                            <td>{{item.protein || '-'}}</td>
+                                                            <td>{{item.levelOfEvidence || '-'}}</td>
                                                             <td>
                                                                 <table>
                                                                     <tr ng-repeat="subitem in item.litRefs">
@@ -552,7 +553,6 @@
                                                                     </tr>
                                                                 </table>
                                                             </td>
-                                                            <td>{{item.protein || '-'}}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -665,30 +665,30 @@
                                                         <tr>
                                                             <th>Oncomine Variant Class</th>
                                                             <th>Gene</th>
-                                                            <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>Function</th>
-                                                            <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>PROTEIN</th>
                                                             <th>Exon</th>
                                                             <th>Protein Regex</th>
+                                                            <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr ng-repeat="item in selectedVersion.nhrsInclusion">
                                                             <td>{{item.oncomineVariantClass || '-'}}</td>
                                                             <td><a ng-click="openGene(item.gene)">{{item.gene || '-'}}</a></td>
-                                                            <td>{{item.levelOfEvidence || '-'}}</td>
                                                             <td>{{item.function || '-'}}</td>
-                                                            <td>
-                                                                <table>
-                                                                        <tr ng-repeat="subitem in item.litRefs">
-                                                                            <td><a ng-click="openPubMed(subitem.litRef)">{{subitem.litRef || '-'}}</a></td>
-                                                                        </tr>
-                                                                </table>
-                                                            </td>
                                                             <td>{{item.variantDescription || '-'}}</td>
                                                             <td>{{item.exon || '-'}}</td>
                                                             <td>{{item.proteinRegex || '-'}}</td>
+                                                            <td>{{item.levelOfEvidence || '-'}}</td>
+                                                            <td>
+                                                                <table>
+                                                                    <tr ng-repeat="subitem in item.litRefs">
+                                                                        <td><a ng-click="openPubMed(subitem.litRef)">{{subitem.litRef || '-'}}</a></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -701,20 +701,23 @@
                                                         <tr>
                                                             <th>Oncomine Variant Class</th>
                                                             <th>Gene</th>
-                                                            <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>Function</th>
-                                                            <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>PROTEIN</th>
                                                             <th>Exon</th>
                                                             <th>Protein Regex</th>
+                                                            <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr ng-repeat="item in selectedVersion.nhrsExclusion">
                                                             <td>{{item.oncomineVariantClass || '-'}}</td>
                                                             <td><a ng-click="openGene(item.gene)">{{item.gene || '-'}}</a></td>
-                                                            <td>{{item.levelOfEvidence || '-'}}</td>
                                                             <td>{{item.function || '-'}}</td>
+                                                            <td>{{item.variantDescription || '-'}}</td>
+                                                            <td>{{item.exon || '-'}}</td>
+                                                            <td>{{item.proteinRegex || '-'}}</td>
+                                                            <td>{{item.levelOfEvidence || '-'}}</td>
                                                             <td>
                                                                 <table>
                                                                     <tr ng-repeat="subitem in item.litRefs">
@@ -722,9 +725,6 @@
                                                                     </tr>
                                                                 </table>
                                                             </td>
-                                                            <td>{{item.variantDescription || '-'}}</td>
-                                                            <td>{{item.exon || '-'}}</td>
-                                                            <td>{{item.proteinRegex || '-'}}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
