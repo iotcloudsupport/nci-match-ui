@@ -1,16 +1,9 @@
 angular.module('iradmin.matchbox',[])
     .controller('IrAdminController',
-        function( $scope, $http, $window, DTOptionsBuilder, DTColumnDefBuilder, irAdminApi) {
+        function( $scope, $http, DTOptionsBuilder, irAdminApi) {
 
-            $scope.dtOptions = DTOptionsBuilder.newOptions()
-                .withPaginationType('full_numbers')
-                .withDisplayLength(5)
-                .withOption("bAutoWidth", false)
-                .withOption("paging", true);
-
-            $scope.dtColumnDefs = [
-                DTColumnDefBuilder.newColumnDef(0)
-            ];
+        $scope.dtOptions = DTOptionsBuilder.newOptions()
+             .withDisplayLength(5);
 
         this.dtInstance = {};
 
@@ -64,7 +57,7 @@ angular.module('iradmin.matchbox',[])
 
         $scope.loadHeartBeatList = function () {
             irAdminApi
-                .getAdminHeartBeat()
+                .loadHeartBeatList()
                 .then(function (d) {
 
                     angular.forEach(d.data, function (value,key) {
