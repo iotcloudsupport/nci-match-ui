@@ -454,12 +454,10 @@ describe('Controller: Patient Details Controller', function () {
     var prompt;
 
     beforeEach(inject(function (_matchApiMock_, _$q_) {
-        spyOn(_matchApiMock_, 'loadPatient').and.callFake(function () {
-            var deferred = _$q_.defer();
-            var data = getTestData();
-            deferred.resolve(data);
-            return deferred.promise;
-        });
+        var deferred = _$q_.defer();
+        var testData = getTestData();
+        deferred.resolve(testData);
+        spyOn(_matchApiMock_, 'loadPatient').and.returnValue(deferred.promise);
     }));
 
     beforeEach(inject(function (_$rootScope_, _$controller_, _matchApiMock_, _$log_, _$q_) {
@@ -467,7 +465,8 @@ describe('Controller: Patient Details Controller', function () {
         $log = _$log_;
         $q = _$q_;
         matchApiMock = _matchApiMock_;
-        $scope = {};
+        $scope = _$rootScope_.$new();
+
         ctrl = _$controller_('PatientController', {
             $scope: $scope,
             DTOptionsBuilder: {
@@ -487,26 +486,19 @@ describe('Controller: Patient Details Controller', function () {
         });
 
         $scope.loadPatientData();
+        $scope.$apply();
+
     }));
 
     describe('General', function () {
-        it('should call api load method', function () {
-            // spyOn(matchApiMock, 'getPatientDetailsData').and.callFake(function () {
-            //     var deferred = $q.defer();
-            //
-            //     var data = getTestData();
-            //
-            //     deferred.resolve(data);
-            //     return deferred.promise;
-            // });
-
+        it('should call api load method, setupScope and setupVerianceReport', function () {
             spyOn($scope, 'setupScope');
 
             $scope.loadPatientData();
+            $scope.$apply();
 
             expect(matchApiMock.loadPatient).toHaveBeenCalled();
-
-            //expect($scope.setupScope).toHaveBeenCalled();
+            // expect($scope.setupScope).toHaveBeenCalled();
         });
 
         it('should have dtOptions defined', function () {
@@ -534,9 +526,6 @@ describe('Controller: Patient Details Controller', function () {
     });
 
     describe('Header', function () {
-        dump('$scope');
-        dump($scope);
-
         it('should have correct Patient Sequence Number', function () {
             expect($scope.patient.patientSequenceNumber).toBe(100065);
         });
@@ -547,17 +536,15 @@ describe('Controller: Patient Details Controller', function () {
         });
     });
 
-    xdescribe('Summary Tab', function () {
+    describe('Summary Tab', function () {
         it('should have timeline items', function () {
             expect($scope.timeline).toBeDefined();
             expect($scope.timeline.length).toBeGreaterThan(0);
         });
     });
 
-    xdescribe('Biopsy Tab', function () {
+    describe('Biopsy Tab', function () {
         it('should not change report type when the same value is supplied', function () {
-            $scope.loadPatientData();
-
             var previousValue = $scope.variantReportType;
             $scope.setVariantReportType(previousValue);
             expect($scope.variantReportType).toEqual(previousValue);
@@ -565,8 +552,6 @@ describe('Controller: Patient Details Controller', function () {
         });
 
         it('should not change report type to a different value', function () {
-            $scope.loadPatientData();
-
             var previousValue = $scope.variantReportType;
             var newValue = 'blood';
             $scope.setVariantReportType(newValue);
@@ -575,8 +560,6 @@ describe('Controller: Patient Details Controller', function () {
         });
 
         it('should not change report mode when the same value is supplied', function () {
-            $scope.loadPatientData();
-
             var previousValue = $scope.variantReportMode;
             $scope.setVariantReportMode(previousValue);
             expect($scope.variantReportMode).toEqual(previousValue);
@@ -584,8 +567,6 @@ describe('Controller: Patient Details Controller', function () {
         });
 
         it('should not change report mode to a different value', function () {
-            $scope.loadPatientData();
-
             var previousValue = $scope.variantReportMode;
             var newValue = 'qc';
             $scope.setVariantReportMode(newValue);
