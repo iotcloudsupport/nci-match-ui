@@ -64,14 +64,16 @@ angular.module('http.matchbox', [])
         return {
             getAdminHeartBeat: function() {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getIrUploaderAdminObjects');
-            }
-
-        };
-        return {
-            getPosiveSample: function() {
+            },
+            getPosiveSampleControls: function() {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlsBySite');
             }
         };
+        // return {
+        //     getPosiveSampleControls: function() {
+        //         return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlsBySite');
+        //     }
+        // };
     })
     .factory('svgApi', function($http, matchConfig) {
         return {
