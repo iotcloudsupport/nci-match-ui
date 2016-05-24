@@ -3,8 +3,8 @@
     angular.module('http.matchbox')
         .factory('matchApiMock', function ($http, matchConfig, $q, $log) {
             return {
-                getPatientDetailsData: loadPatient,
-                getPatientListData: loadPatientList
+                loadPatient: loadPatient,
+                loadPatientList: loadPatientList
             }
 
             function loadPatient() {

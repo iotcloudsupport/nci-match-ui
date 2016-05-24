@@ -85,7 +85,7 @@ describe('Controller: Patients Controller', function () {
     });
 
     it('should call api load method and have the list populated', function () {
-        spyOn(matchApiMock, 'getPatientListData').and.callFake(function () {
+        spyOn(matchApiMock, 'loadPatientList').and.callFake(function () {
             var deferred = $q.defer();
 
             var data = getTestData();
@@ -97,7 +97,8 @@ describe('Controller: Patients Controller', function () {
         });
 
         $scope.loadPatientList();
-        expect(matchApiMock.getPatientListData).toHaveBeenCalled();
+
+        expect(matchApiMock.loadPatientList).toHaveBeenCalled();
         expect($scope.patientList.length).toBeGreaterThan(0);
     });
 

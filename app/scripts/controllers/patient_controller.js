@@ -41,6 +41,8 @@
         $scope.showConfirmation = showConfirmation;
         $scope.editComment = editComment;
         $scope.confirmVariantReport = confirmVariantReport;
+        $scope.setupScope = setupScope;
+        $scope.setupVariantReport = setupVariantReport;
 
         function setVariantReportType(reportType) {
             if ($scope.variantReportType === reportType) {
@@ -74,30 +76,34 @@
 
         function loadPatientData() {
             matchApiMock
-                .getPatientDetailsData($stateParams.patientSequenceNumber)
-                .then(function (data) {
-                    $scope.patientSequenceNumber = $stateParams.patientSequenceNumber;
+                .loadPatient()
+                .then(setupScope)
+                .then(setupVariantReport);
+        }
 
-                    $scope.patient = data.patient;
-                    $scope.treatmentArms = data.treatmentArms;
-                    $scope.timeline = data.timeline;
-                    $scope.assayHistory = data.assayHistory;
-                    $scope.sendouts = data.sendouts;
-                    $scope.biopsy = data.biopsy;
-                    $scope.variantReports = data.variantReports;
-                    $scope.variantReportOptions = data.variantReportOptions;
-                    $scope.variantReportOption = data.variantReportOption;
-                    $scope.assignmentReport = data.assignmentReport;
-                    $scope.biopsyReport = data.biopsyReport;
-                    $scope.biopsyReports = data.biopsyReports;
-                    $scope.patientDocuments = data.patientDocuments;
-                    $scope.currentSendout = data.currentSendout;
-                })
-                .then(function () {
-                    $scope.variantReportType = 'tumorTissue';
-                    $scope.variantReportMode = 'Normal';
-                    setVariantReport();
-                });
+        function setupScope(data){
+            $scope.patientSequenceNumber = $stateParams.patientSequenceNumber;
+
+            $scope.patient = data.patient;
+            $scope.treatmentArms = data.treatmentArms;
+            $scope.timeline = data.timeline;
+            $scope.assayHistory = data.assayHistory;
+            $scope.sendouts = data.sendouts;
+            $scope.biopsy = data.biopsy;
+            $scope.variantReports = data.variantReports;
+            $scope.variantReportOptions = data.variantReportOptions;
+            $scope.variantReportOption = data.variantReportOption;
+            $scope.assignmentReport = data.assignmentReport;
+            $scope.biopsyReport = data.biopsyReport;
+            $scope.biopsyReports = data.biopsyReports;
+            $scope.patientDocuments = data.patientDocuments;
+            $scope.currentSendout = data.currentSendout;
+        }
+
+        function setupVariantReport() {
+            $scope.variantReportType = 'tumorTissue';
+            $scope.variantReportMode = 'Normal';
+            setVariantReport();
         }
 
         function dzAddedFile(file) {

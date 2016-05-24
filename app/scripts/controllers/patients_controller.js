@@ -14,7 +14,7 @@ angular.module('patients.matchbox',[])
 
         $scope.loadPatientList = function () {
             matchApiMock
-                .getPatientListData()
+                .loadPatientList()
                 .then(function (d) {
                     $scope.patientList = d;
                 });
