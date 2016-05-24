@@ -15,6 +15,7 @@
             .withDisplayLength(100);
 
         $scope.patientSequenceNumber = '';
+        $scope.warningResult = false;
 
         $scope.confirmTitle = 'Confirmation Changed';
         $scope.confirmMessage = 'Please enter a reason:';
@@ -43,6 +44,7 @@
         $scope.confirmVariantReport = confirmVariantReport;
         $scope.setupScope = setupScope;
         $scope.setupVariantReport = setupVariantReport;
+        $scope.showPrompt = showPrompt;
 
         function setVariantReportType(reportType) {
             if ($scope.variantReportType === reportType) {
@@ -118,18 +120,24 @@
             //$log.debug('User entered un-confirm reason: ' + value);
         }
 
+        function showPrompt(options) {
+            return prompt(options);
+        }
+
         function showWarning(title, message) {
-            prompt({
+            $scope.warningResult = false;
+            showPrompt({
                 title: title,
                 message: message,
                 buttons: [{ label:'OK', primary: true }, { label:'Cancel', cancel: true }]
-            }).then(function (comment) {
+            }).then(function () {
+                $scope.warningResult = true;
                 $log.debug('User agreed after warning');
             });
         }
 
         function showConfirmation(title, message) {
-            prompt({
+            showPrompt({
                 title: title,
                 message: message,
                 input: true,
@@ -164,7 +172,7 @@
         }
         
         function confirmVariantReport() {
-            prompt({
+            showPrompt({
                 title: 'Please confirm Variant Report approval',
                 message: 'Enter comments',
                 input: true,
