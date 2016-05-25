@@ -84,6 +84,54 @@ describe('Controller: Ir Report Controller', function () {
         return data;
     }
 
+    function getMDACCampleControlTestData() {
+
+        var data = [
+            {
+                molecularSequenceNumber: "SampleControl_MDACC_2",
+                dateCreated: '1452022286103',
+                dateReceived: null,
+                site: "MDACC",
+                siteIpAddress: "119.33.127.133",
+                positiveControlVersion: 0,
+                positiveControlDateLoaded: null,
+                status: null,
+                comment: null,
+                passed: false,
+                nextGenerationSequence: null
+            },
+            {
+                molecularSequenceNumber: "SampleControl_MDACC_11",
+                dateCreated: '1452022386103',
+                dateReceived: null,
+                site: "MDACC",
+                siteIpAddress: "129.43.887.03",
+                positiveControlVersion: 0,
+                positiveControlDateLoaded: null,
+                status: null,
+                comment: null,
+                passed: false,
+                nextGenerationSequence: null
+            },
+            {
+                molecularSequenceNumber: "SampleControl_MDACC_21",
+                dateCreated: '1452022386103',
+                dateReceived: null,
+                site: "MDACC",
+                siteIpAddress: "159.43.127.003",
+                positiveControlVersion: 0,
+                positiveControlDateLoaded: null,
+                status: null,
+                comment: null,
+                passed: false,
+                nextGenerationSequence: null
+            }
+        ];
+
+        return data;
+    }
+
+
     beforeEach(module('config.matchbox', 'http.matchbox', 'iradmin.matchbox'));
     var $scope;
     var irAdminApi;
@@ -93,11 +141,13 @@ describe('Controller: Ir Report Controller', function () {
     var deferred;
     var testHeartBeatData;
     var testSampleControlData;
+    var testMDACCampleControlTestData;
     var $log;
 
     beforeEach(inject(function (_$rootScope_, $controller, $httpBackend, _irAdminApi_, _$log_, _$q_, _$http_) {  //$scope, $http, $window, DTOptionsBuilder, DTColumnDefBuilder, irAdminApi
         testHeartBeatData = getHeartBeatTestData();
         testSampleControlData = getSampleControlTestData();
+        testMDACCampleControlTestData = getMDACCampleControlTestData();
         deferred = _$q_.defer();
         $log = _$log_;
         $q = _$q_;
@@ -143,7 +193,7 @@ describe('Controller: Ir Report Controller', function () {
         expect($scope.irList.length).toBeLessThan(200);
     });
 
-    it('should call api load method and have the Sample Control list populated', function () {
+    it('should call api load method and have the Sample Control MoCha list populated', function () {
         deferred.resolve(testSampleControlData);
 
         spyOn(irAdminApi, 'loadSampleControlsList').and.returnValue(deferred.promise);
@@ -152,6 +202,18 @@ describe('Controller: Ir Report Controller', function () {
         $scope.$apply();
 
         expect(irAdminApi.loadSampleControlsList).toHaveBeenCalled();
-        expect($scope.irList.length).toBeLessThan(200);
+        expect($scope.positiveListMocha.length).toBeLessThan(200);
+    });
+
+    it('should call api load method and have the Sample Control MD Anderson list populated', function () {
+        deferred.resolve(testMDACCampleControlTestData);
+
+        spyOn(irAdminApi, 'loadSampleControlsList').and.returnValue(deferred.promise);
+
+        $scope.loadSampleControlsList();
+        $scope.$apply();
+
+        expect(irAdminApi.loadSampleControlsList).toHaveBeenCalled();
+        expect($scope.positiveListMDCC.length).toBeLessThan(200);
     });
 });
