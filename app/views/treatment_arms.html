@@ -40,7 +40,7 @@
                                     <td>{{ treatmentArm.former_patients }}</td>
                                     <td>{{ treatmentArm.not_enrolled_patients }}</td>
                                     <td>{{ treatmentArm.pending_patients }}</td>
-                                    <td>{{ treatmentArm.treatment_arm_status }}</td>
+                                    <td ng-style="{'color':'{{ treatmentArm.treatment_arm_status | taStatus }}'}">{{ treatmentArm.treatment_arm_status }}</td>
                                     <td>{{ treatmentArm.date_opened }}</td>
                                     <td>-</td>
                                 </tr>

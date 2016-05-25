@@ -7,7 +7,8 @@
         .filter('analysisStatus', analysisStatus)
         .filter('assayStatus', assayStatus)
         .filter('concordance', concordance)
-        .filter('irsample', irsample);
+        .filter('irsample', irsample)
+        .filter('taStatus', taStatus);
 
     function isNotString(text) {
         return typeof text !== "string";
@@ -73,6 +74,12 @@
     function irsample() {
         return function (text) {
             return colorFilter(text, { 'PASSED': 'blue', 'FAILED': 'red' });
+        };
+    }
+
+    function taStatus() {
+        return function(text) {
+            return colorFilter(text, {'PENDING': 'orange', 'READY': 'blue', 'OPEN':'green', 'CLOSED': 'red', default: 'purple'});
         };
     }
 } ());
