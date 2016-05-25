@@ -621,8 +621,6 @@ angular.module('treatment-arm.matchbox',[])
                             version.exclusionaryDiseases = exclusionDiseases;
                             version.exclusionaryDrugs = exclusionDrugs;
                             version.snvsInclusion = $scope.snvsInclusion;
-                            console.log('snvs');
-                            console.log(version.snvsInclusion);
                             version.snvsExclusion = $scope.snvsExclusion;
                             version.indelsInclusion = $scope.indelsInclusion;
                             version.indelsExclusion = $scope.indelsExclusion;
@@ -663,8 +661,6 @@ angular.module('treatment-arm.matchbox',[])
                 .then (function() {
                     $scope.inExclusionType = 'inclusion';
                     setInExclusion();
-                    console.log('versions');
-                    console.log($scope.versions);
                 });
         };
 
