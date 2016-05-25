@@ -232,7 +232,8 @@
                         totalVariants: 3,
                         cellularity: 1.1,
                         analysisId: 'MSN67890_Ve_kErerj8893_ksjd_34iu34sf',
-                        fileReceivedDate: 'Oct 1, 2015 9:00 PM GMT'
+                        fileReceivedDate: 'Oct 1, 2015 9:00 PM GMT',
+                        showActions: true
                     }
                 };
 

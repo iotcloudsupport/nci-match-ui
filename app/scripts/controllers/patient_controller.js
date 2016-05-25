@@ -42,6 +42,7 @@
         $scope.showConfirmation = showConfirmation;
         $scope.editComment = editComment;
         $scope.confirmVariantReport = confirmVariantReport;
+        $scope.rejectVariantReport = rejectVariantReport;
         $scope.setupScope = setupScope;
         $scope.setupVariantReport = setupVariantReport;
         $scope.showPrompt = showPrompt;
@@ -148,6 +149,8 @@
         }
 
         function editComment(variant) {
+            $log('Variant = ' + variant);
+            
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
                 templateUrl: 'views/templates/modal_dialog_with_comment.html',
@@ -173,15 +176,30 @@
         
         function confirmVariantReport() {
             showPrompt({
-                title: 'Please confirm Variant Report approval',
-                message: 'Enter comments',
+                title: 'Confirm Variant Report',
+                message: 'Are you sure you want to confirm the Variant Report',
+                buttons: [{ label:'OK', primary: true }, { label:'Cancel', cancel: true }]
+            }).then(function (comment) {
+                if (!$scope.variantReport) {
+                    $log.error('Current Variant Report is not set');
+                } else {
+                    $scope.variantReport.status = 'CONFIRMED';
+                }              
+            });
+        }
+        
+        function rejectVariantReport() {
+            showPrompt({
+                title: 'Reject Variant Report',
+                message: 'Are you sure you want to reject the Variant Report? Please enter reason:',
                 input: true,
                 buttons: [{ label:'OK', primary: true }, { label:'Cancel', cancel: true }]
             }).then(function (comment) {
                 if (!$scope.variantReport) {
                     $log.error('Current Variant Report is not set');
-                }              
-                $scope.variantReport.status = 'CONFIRMED';
+                } else {                    
+                    $scope.variantReport.status = 'RECTED';
+                }       
             });
         }
     }

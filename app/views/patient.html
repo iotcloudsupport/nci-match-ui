@@ -212,7 +212,11 @@
 
                                         <dt>Comments</dt>
                                         <dd>
-                                            <div class="text-truncate-200px">{{::currentSendout.comments}}</div>
+                                            <div class="text-truncate-200px">{{:: currentSendout.comments ? currentSendout.comments : "-"}}</div>
+                                        </dd>
+                                        
+                                        <dd>
+                                            <button type="input" class="btn btn-xs btn-success btn-outline">Upload Analysis Files</button>
                                         </dd>
                                     </dl>
                                 </div>
@@ -243,9 +247,6 @@
                                             <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
                                             <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
                                             <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
-                                        </dd>
-                                        <dd>
-                                            <button type="input" class="btn btn-xs btn-success btn-outline">Upload Analysis Files</button>
                                         </dd>
                                     </dl>
                                 </div>
@@ -640,7 +641,7 @@
                         <div class="ibox-content ibox-title-no-line" ng-if="variantReport.showActions">
                             <div class="row">
                                 <div class="col-md-6 text-right">
-                                    <button class="btn btn-danger" title="Reject this Report" ng-click="showWarning('Are you sure you want to reject the Variant Report?', 'This will change the report\'s status')">REJECT</button>
+                                    <button class="btn btn-danger" title="Reject this Report" ng-click="rejectVariantReport()">REJECT</button>
                                 </div>
                                 <div class="col-md-6 text-left">
                                     <button class="btn btn-success" title="Confirm this Report" ng-click="confirmVariantReport()">CONFIRM</button>
