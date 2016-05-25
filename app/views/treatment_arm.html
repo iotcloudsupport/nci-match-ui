@@ -346,6 +346,8 @@
                                                             <th>Protein</th>
                                                             <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>Total # Of Patients With Variant</th>
+                                                            <th>Patients With Variant Who Were Excluded From This Arm</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -365,6 +367,8 @@
                                                                     </tr>
                                                                 </table>
                                                             </td>
+                                                            <td style="text-align:right">{{item.totNumPtsWithVariant || '-'}}</td>
+                                                            <td style="text-align:right">{{item.ptsWithVariantOnArm || '-'}}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -447,6 +451,8 @@
                                                             <th>Protein</th>
                                                             <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>Total # Patients With Variant</th>
+                                                            <th>Patients With This Variant Who Were Excluded This Arm</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -466,6 +472,8 @@
                                                                     </tr>
                                                                 </table>
                                                             </td>
+                                                            <td style="text-align:right">{{item.totNumPtsWithVariant || '-'}}</td>
+                                                            <td style="text-align:right">{{item.ptsWithVariantOnArm || '-'}}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -539,6 +547,8 @@
                                                             <th>Protein</th>
                                                             <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>Total # Patients With Copy Number</th>
+                                                            <th>Patients With This Copy Number Who Were Excluded From This Arm</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -555,6 +565,8 @@
                                                                     </tr>
                                                                 </table>
                                                             </td>
+                                                            <td style="text-align:right">{{item.totNumPtsWithVariant || '-'}}</td>
+                                                            <td style="text-align:right">{{item.ptsWithVariantOnArm || '-'}}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -622,6 +634,8 @@
                                                             <th>Gene</th>
                                                             <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>Total # Patients With Gene Fusion</th>
+                                                            <th>Patients With This Gene Fusion Who Were Excluded From This Arm</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -636,6 +650,8 @@
                                                                     </tr>
                                                                 </table>
                                                             </td>
+                                                            <td style="text-align:right">{{item.totNumPtsWithVariant || '-'}}</td>
+                                                            <td style="text-align:right">{{item.ptsWithVariantOnArm || '-'}}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -715,6 +731,8 @@
                                                             <th>Protein Regex</th>
                                                             <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>LIT <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>Total # Patients With Gene</th>
+                                                            <th>Patients With This Gene Who Were Excluded From This Arm</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -733,6 +751,8 @@
                                                                     </tr>
                                                                 </table>
                                                             </td>
+                                                            <td style="text-align:right">{{item.totNumPtsWithVariant || '-'}}</td>
+                                                            <td style="text-align:right">{{item.ptsWithVariantOnArm || '-'}}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -798,6 +818,8 @@
                                                             <th>Result</th>
                                                             <th>Variant Association</th>
                                                             <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>Total # Patients With Gene</th>
+                                                            <th>Patients With This Gene Who Were Excluded From This Arm</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -807,6 +829,8 @@
                                                             <td>{{item.result || '-'}}</td>
                                                             <td>{{item.variantAssociation || '-'}}</td>
                                                             <td>{{item.levelOfEvidence || '-'}}</td>
+                                                            <td style="text-align:right">{{item.totNumPtsWithGene || '-'}}</td>
+                                                            <td style="text-align:right">{{item.ptsWithGeneOnArm || '-'}}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
