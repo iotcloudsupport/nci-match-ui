@@ -1,8 +1,10 @@
 angular.module('treatment-arms.matchbox',[])
     .controller('TreatmentArmsController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, treatmentArmApi ) {
 
-        this.dtOptions = DTOptionsBuilder.newOptions()
-            .withDisplayLength(25);
+        this.dtOptions = {
+            'info': false,
+            'paging': false
+        };
         this.dtColumnDefs = [];
         this.dtInstance = {};
 
