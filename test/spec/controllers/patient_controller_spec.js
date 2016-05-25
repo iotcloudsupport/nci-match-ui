@@ -536,7 +536,7 @@ describe('Controller: Patient Details Controller', function () {
     });
 
     describe('Header', function () {
-        it('should have correct Patient Sequence Number', function () {
+        it('should have correct Patient Id', function () {
             expect($scope.patient.patientSequenceNumber).toBe(100065);
         });
 
