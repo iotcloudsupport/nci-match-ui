@@ -74,7 +74,7 @@ describe('Controller: Ir Sample Controller', function () {
         $stateParams = _$stateParams_;
         $log = _$log_;
         $q = _$q_;
-        irSampleVariantApi: _irSampleVariantApi_;
+        irSampleVariantApi = _irSampleVariantApi_;
         $scope = _$rootScope_.$new();
 
         reportsCtrl = $controller('SampleController', {
@@ -107,16 +107,16 @@ describe('Controller: Ir Sample Controller', function () {
         });
     });
 
-    // it('should call api load method and have the Variant Positive Controls list populated', function () {
-    //     deferred.resolve(testVariantReportData);
-    //
-    //     spyOn(irSampleVariantApi, 'loadVariantReportList').and.returnValue(deferred.promise);
-    //
-    //     $scope.loadVariantReportList();
-    //     $scope.$apply();
-    //
-    //     expect(irSampleVariantApi.loadVariantReportList).toHaveBeenCalled();
-    //     // expect($scope.irList.length).toBeLessThan(200);
-    // });
+    it('should call api load method and have the Variant Positive Controls list populated', function () {
+        deferred.resolve(testVariantReportData);
+
+        spyOn(irSampleVariantApi, 'loadVariantReportList').and.returnValue(deferred.promise);
+
+        $scope.loadVariantReportList();
+        $scope.$apply();
+
+        expect(irSampleVariantApi.loadVariantReportList).toHaveBeenCalled();
+        // expect($scope.irList.length).toBeLessThan(200);
+    });
 
 });
