@@ -79,8 +79,6 @@
 
     function taStatus() {
         return function(text) {
-            console.log('in taStatus');
-            console.log(text);
             return colorFilter(text, {'PENDING': 'orange', 'READY': 'blue', 'OPEN':'green', 'CLOSED': 'red', default: 'purple'});
         };
     }
