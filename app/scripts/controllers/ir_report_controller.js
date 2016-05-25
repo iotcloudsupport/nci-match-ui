@@ -14,47 +14,6 @@ angular.module('iradmin.matchbox',[])
         $scope.negativeListMocha = [];
         $scope.negativeListMDCC = [];
 
-
-        $scope.setSampleType = setSampleType;
-        $scope.setVariantReportMode = setVariantReportMode;
-        $scope.getSampleTypeClass = getSampleTypeClass;
-        $scope.getVariantReportModeClass = getVariantReportModeClass;
-
-
-        function setSampleType(reportType) {
-
-            alert(reportType)
-
-            if ($scope.SampleType === reportType) {
-                return;
-            }
-
-            $scope.SampleType = reportType;
-            setVariantReport();
-        }
-
-        function setVariantReportMode(reportMode) {
-            if ($scope.variantReportMode === reportMode) {
-                return;
-            }
-
-            $scope.variantReportMode = reportMode;
-            setVariantReport();
-        }
-
-        function getSampleTypeClass(reportType) {
-            return $scope.SampleType === reportType ? 'active' : '';
-        }
-
-        function getVariantReportModeClass(reportMode) {
-            return $scope.variantReportMode === reportMode ? 'active' : '';
-        }
-
-        function setVariantReport() {
-            $scope.variantReport = $scope.variantReports[$scope.SampleType + '' + $scope.variantReportMode];
-        }
-
-
         $scope.loadHeartBeatList = function () {
             irAdminApi
                 .loadHeartBeatList()
