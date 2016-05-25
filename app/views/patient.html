@@ -418,9 +418,9 @@
                                         <dd>{{::variantReport.cellularity}}</dd>
                                     </dl>
 
-                                    <h4>MOI/aMOI Summary</h4>
+                                    <h4 ng-if="variantReportMode!=='Qc'">MOI/aMOI Summary</h4>
 
-                                    <dl class="dl-horizontal dl-horizontal-expanded-label">
+                                    <dl class="dl-horizontal dl-horizontal-expanded-label" ng-if="variantReportMode!=='Qc'">
                                         <dt ng-repeat-start="summary in biopsy.moiSummary">{{::summary.title}}</dt>
                                         <dd ng-repeat-end>{{::summary.count}}</dd>
                                     </dl>
@@ -439,7 +439,7 @@
                             <thead>
                                 <tr>
                                     <th ng-if="variantReportMode!=='Qc'">Confirm</th>
-                                    <th>Comment</th>
+                                    <th ng-if="variantReportMode!=='Qc'">Comment</th>
                                     <th>Id</th>
                                     <th ng-if="variantReportMode!=='Qc'">aMOI</th>
                                     <th>Chrom</th>
@@ -464,7 +464,7 @@
                                             on-comment-entered="setComment(variant)" prompt-only-if="true">
                                         </div>
                                     </td>
-                                    <td>
+                                    <td ng-if="variantReportMode!=='Qc'">
                                         <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.id}}</td>
@@ -499,7 +499,7 @@
                             <thead>
                                 <tr>
                                     <th ng-if="variantReportMode!=='Qc'">Confirm</th>
-                                    <th>Comment</th>
+                                    <th ng-if="variantReportMode!=='Qc'">Comment</th>
                                     <th>Id</th>
                                     <th ng-if="variantReportMode!=='Qc'">aMOI</th>
                                     <th>Chrom</th>
@@ -524,7 +524,7 @@
                                             on-comment-entered="setComment()" prompt-only-if="true">
                                         </div>
                                     </td>
-                                    <td>
+                                    <td ng-if="variantReportMode!=='Qc'">
                                         <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.id}}</td>
@@ -559,7 +559,7 @@
                             <thead>
                                 <tr>
                                     <th ng-if="variantReportMode!=='Qc'">Confirm</th>
-                                    <th>Comment</th>
+                                    <th ng-if="variantReportMode!=='Qc'">Comment</th>
                                     <th>Id</th>
                                     <th ng-if="variantReportMode!=='Qc'">aMOI</th>
                                     <th>Chrom</th>
@@ -576,7 +576,7 @@
                                             on-comment-entered="setComment()" prompt-only-if="true">
                                         </div>
                                     </td>
-                                    <td>
+                                    <td ng-if="variantReportMode!=='Qc'">
                                         <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.id}}</td>
@@ -603,7 +603,7 @@
                             <thead>
                                 <tr>
                                     <th ng-if="variantReportMode!=='Qc'">Confirm</th>
-                                    <th>Comment</th>
+                                    <th ng-if="variantReportMode!=='Qc'">Comment</th>
                                     <th>Id</th>
                                     <th ng-if="variantReportMode!=='Qc'">aMOI</th>
                                     <th>Gene 2</th>
@@ -620,7 +620,7 @@
                                             on-comment-entered="setComment()" prompt-only-if="true">
                                         </div>
                                     </td>
-                                    <td>
+                                    <td ng-if="variantReportMode!=='Qc'">
                                         <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.id}}</td>
