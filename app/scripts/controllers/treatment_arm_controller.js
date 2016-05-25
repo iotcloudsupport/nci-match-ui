@@ -436,7 +436,7 @@ angular.module('treatment-arm.matchbox',[])
 
         $scope.diseasePieOptions = setupPieChartOptions('#diseaseLegendContainer');
 
-        /*$scope.patients = [
+        $scope.patients = [
             {
                 "Patient": {
                     "slot": "-",
@@ -482,7 +482,7 @@ angular.module('treatment-arm.matchbox',[])
                     "diseases": "Bone cancer, NOS"
                 }
             }
-        ];*/
+        ];
 
         function setupLit(pubmed_ids) {
             var litRefs = [];
