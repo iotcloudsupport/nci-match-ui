@@ -12,11 +12,15 @@ angular.module('patients.matchbox',[])
 
         $scope.patientList = [];
 
+        $scope.setupScope = setupScope;
+
         $scope.loadPatientList = function () {
             matchApiMock
-                .getPatientListData()
-                .then(function (d) {
-                    $scope.patientList = d;
-                });
+                .loadPatientList()
+                .then(setupScope);
         };
+
+        function setupScope(data){
+            $scope.patientList = data;
+        }
     });

@@ -19,15 +19,17 @@ module.exports = function(config) {
       '../bower_components/jquery/dist/jquery.js',
       '../bower_components/angular/angular.js',
       '../bower_components/bootstrap/dist/js/bootstrap.js',
-      '../bower_components/angular-animate/angular-animate.js',
+      '../bower_components/angular-animate/angular-animate.min.js',
       '../bower_components/angular-cookies/angular-cookies.js',
       '../bower_components/angular-resource/angular-resource.js',
       '../bower_components/angular-sanitize/angular-sanitize.js',
       '../bower_components/angular-touch/angular-touch.js',
       '../bower_components/jquery-ui/jquery-ui.js',
       '../bower_components/angular-mocks/angular-mocks.js',
+      '../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
       // '../bower_components/angular-ui-router/release/angular-ui-router.js',
       '../bower_components/angular-ui-router/release/angular-ui-router.min.js',
+      '../bower_components/angular-prompt/dist/angular-prompt.min.js',
       '../bower_components/moment/moment.js',
       // flot
       '../bower_components/flot/jquery.flot.js',
@@ -42,7 +44,7 @@ module.exports = function(config) {
       'spec/filters/*.js',
       'spec/factories/*.js',
       'spec/controllers/*.js'
-      // 'spec/controllers/patients_controller_spec.js'
+      // 'spec/controllers/patients_controller_spec.js',
       // 'spec/controllers/patient_controller_spec.js'
     ],
 

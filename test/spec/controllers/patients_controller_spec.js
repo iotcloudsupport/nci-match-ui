@@ -52,11 +52,15 @@ describe('Controller: Patients Controller', function () {
     var $stateParams;
     var $log;
     var $q;
+    var deferred;
+    var testData;
 
     beforeEach(inject(function (_$rootScope_, _$controller_, _matchApiMock_, _$log_, _$q_) {
+        testData = getTestData();
+        deferred = _$q_.defer();
         $log = _$log_;
         $q = _$q_;
-        $scope = {};
+        $scope = _$rootScope_.$new();
         matchApiMock = _matchApiMock_;
         ctrl = _$controller_('PatientsController', {
             $scope: $scope,
@@ -85,19 +89,14 @@ describe('Controller: Patients Controller', function () {
     });
 
     it('should call api load method and have the list populated', function () {
-        spyOn(matchApiMock, 'getPatientListData').and.callFake(function () {
-            var deferred = $q.defer();
+        deferred.resolve(testData);
 
-            var data = getTestData();
-
-            $scope.patientList = data
-
-            deferred.resolve(data);
-            return deferred.promise;
-        });
+        spyOn(matchApiMock, 'loadPatientList').and.returnValue(deferred.promise);
 
         $scope.loadPatientList();
-        expect(matchApiMock.getPatientListData).toHaveBeenCalled();
+        $scope.$apply();
+
+        expect(matchApiMock.loadPatientList).toHaveBeenCalled();
         expect($scope.patientList.length).toBeGreaterThan(0);
     });
 

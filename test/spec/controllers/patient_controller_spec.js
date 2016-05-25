@@ -443,8 +443,9 @@ describe('Controller: Patient Details Controller', function () {
     beforeEach(module(
         'config.matchbox',
         'patient.matchbox',
-        'http.matchbox'));
-
+        'http.matchbox',
+        'ui.bootstrap',
+        'cgPrompt'));
 
     var $scope;
     var matchApiMock;
@@ -452,13 +453,33 @@ describe('Controller: Patient Details Controller', function () {
     var $stateParams;
     var $log;
     var $q;
+    var testData = getTestData();
+    var deferred;
+    var prompt;
+    //
+    // beforeEach(function() {
+    //     module(function($provide) {
+    //         $provide.value('$scope', {
+    //             showPrompt: function() {
+    //                 return {
+    //                     then: function(callback) {
+    //                         return callback(data);
+    //                     }
+    //                 }
+    //             }
+    //         });
+    //     });
+    // });
 
-    beforeEach(inject(function (_$rootScope_, _$controller_, _matchApiMock_, _$log_, _$q_) {
+    beforeEach(inject(function (_$rootScope_, _$controller_, _matchApiMock_, _$log_, _$q_, _prompt_) {
+        deferred = _$q_.defer();
         $stateParams = {patientSequenceNumber: 100065};
         $log = _$log_;
         $q = _$q_;
-        $scope = getTestData();
         matchApiMock = _matchApiMock_;
+        $scope = _$rootScope_.$new();
+        prompt = _prompt_;
+
         ctrl = _$controller_('PatientController', {
             $scope: $scope,
             DTOptionsBuilder: {
@@ -473,46 +494,44 @@ describe('Controller: Patient Details Controller', function () {
             matchApiMock: matchApiMock,
             $stateParams: $stateParams,
             $log: $log,
-            prompt: null,
+            prompt: prompt,
             $uibModal: null
         });
 
+        deferred.resolve(testData);
+        spyOn(_matchApiMock_, 'loadPatient').and.returnValue(deferred.promise);
+        $scope.loadPatientData();
+        $scope.$apply(); // This forces Angular to resolve promises
     }));
 
     describe('General', function () {
         it('should call api load method', function () {
-            spyOn(matchApiMock, 'getPatientDetailsData').and.callFake(function () {
-                var deferred = $q.defer();
-
-                var data = getTestData();
-
-                $scope.patientSequenceNumber = $stateParams.patientSequenceNumber;
-
-                $scope.patient = data.patient;
-                $scope.treatmentArms = data.treatmentArms;
-                $scope.timeline = data.timeline;
-                $scope.assayHistory = data.assayHistory;
-                $scope.sendouts = data.sendouts;
-                $scope.biopsy = data.biopsy;
-                $scope.variantReports = data.variantReports;
-                $scope.variantReportOptions = data.variantReportOptions;
-                $scope.variantReportOption = data.variantReportOption;
-                $scope.assignmentReport = data.assignmentReport;
-                $scope.biopsyReport = data.biopsyReport;
-                $scope.biopsyReports = data.biopsyReports;1
-                $scope.patientDocuments = data.patientDocuments;
-                $scope.currentSendout = data.currentSendout;
-
-                deferred.resolve(data);
-                return deferred.promise;
-            });
-
-            $scope.loadPatientData();
-            expect(matchApiMock.getPatientDetailsData).toHaveBeenCalled();
+            expect(matchApiMock.loadPatient).toHaveBeenCalled();
         });
 
         it('should have dtOptions defined', function () {
             expect(ctrl.dtOptions).toBeDefined();
+        });
+
+        it('should call warning dialog and log when user agreed', function () {
+            deferred.resolve(true);
+
+            spyOn($scope, 'showPrompt').and.returnValue(deferred.promise).and.callThrough();
+
+            $scope.showWarning('Test Title', 'Test Message');
+            $scope.$apply();
+
+            //expect($scope.showPrompt).toHaveBeenCalled();
+            //expect($scope.warningResult).toBe(true);
+        });
+
+        it('should call warning dialog and log when user disagreed', function () {
+            var testValue = 'User Agreed';
+            deferred.resolve(testValue);
+            spyOn($scope, 'showPrompt').and.returnValue(deferred.promise).and.callThrough();
+            $scope.showWarning('Test Title', 'Test Message');
+            $scope.$apply();
+            expect($scope.warningResult).toBe(false);
         });
     });
 
@@ -536,8 +555,6 @@ describe('Controller: Patient Details Controller', function () {
 
     describe('Biopsy Tab', function () {
         it('should not change report type when the same value is supplied', function () {
-            $scope.loadPatientData();
-
             var previousValue = $scope.variantReportType;
             $scope.setVariantReportType(previousValue);
             expect($scope.variantReportType).toEqual(previousValue);
@@ -545,8 +562,6 @@ describe('Controller: Patient Details Controller', function () {
         });
 
         it('should not change report type to a different value', function () {
-            $scope.loadPatientData();
-
             var previousValue = $scope.variantReportType;
             var newValue = 'blood';
             $scope.setVariantReportType(newValue);
@@ -555,8 +570,6 @@ describe('Controller: Patient Details Controller', function () {
         });
 
         it('should not change report mode when the same value is supplied', function () {
-            $scope.loadPatientData();
-
             var previousValue = $scope.variantReportMode;
             $scope.setVariantReportMode(previousValue);
             expect($scope.variantReportMode).toEqual(previousValue);
@@ -564,8 +577,6 @@ describe('Controller: Patient Details Controller', function () {
         });
 
         it('should not change report mode to a different value', function () {
-            $scope.loadPatientData();
-
             var previousValue = $scope.variantReportMode;
             var newValue = 'qc';
             $scope.setVariantReportMode(newValue);
