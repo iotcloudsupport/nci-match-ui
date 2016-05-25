@@ -7,6 +7,7 @@
         .factory('reportApi', reportApi)
         .factory('treatmentArmApi', treatmentArmApi)
         .factory('irAdminApi', irAdminApi)
+        .factory('irSampleVariantApi', irSampleVariantApi)
         .factory('svgApi', svgApi)
         .factory('patientApi', patientApi);
 
@@ -84,14 +85,26 @@
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlsBySite');
             }
         };
-        
+
     }
 
-    function svgApi($http, matchConfig) {
+    function irSampleVariantApi($http, $stateParams, matchConfig) {
+
         return {
-            getSvgGene: function (id) {
+            loadVariantReportList: function() {
+                var id = $stateParams.sampleId;
+                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getVariantReportForSampleControl?molecularSequenceNumber=' + id);
+            }
+        };
+
+    }
+
+
+    function svgApi($http, $stateParams, matchConfig) {
+        return {
+            getSvgGene: function () {
+                var id = $stateParams.sampleId;
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlGraphInfoFromVCF?molecularSequenceNumber=' + id);
-                // return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getGraphInfoFromVCF?patientId=10005&biopsySequenceNumber=T-15-000022&jobName=MSN3111_v1_fc12ad97-2c1e-45e2-8beb-8a77eef4ecf6');
             }
         };
     }
