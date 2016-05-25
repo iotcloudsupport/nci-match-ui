@@ -38,12 +38,17 @@
                             </div>
                         </dd>
 
+                        <dt></dt>
+                        <dd ng-style="selectedVersion.latest === 'This is the latest version.' && {'color':'green'} ||
+                                        selectedVersion.latest === 'This is not the latest version.' && {'color': 'red'}">{{selectedVersion.latest}}
+                        </dd>
+
                     </dl>
                 </div>
             </div>
 
             <div class="col-lg-6 col-md-6">
-                <div id="right-info-box" class="header-info-box" style="height:174px">
+                <div id="right-info-box" class="header-info-box" style="height:197px">
                     <dl class="dl-horizontal">
 
                         <dt>Gene(s)</dt>
@@ -121,7 +126,7 @@
                                 <thead>
                                 <tr>
                                     <th>Slot</th>
-                                    <th>PSN <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.psn}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                    <th>Patient Id</th>
                                     <th>TA Version</th>
                                     <th>Patient Assignment Status Outcome</th>
                                     <th>Assignment Logic</th>

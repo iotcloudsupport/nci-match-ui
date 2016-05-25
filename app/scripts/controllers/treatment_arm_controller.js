@@ -436,7 +436,7 @@ angular.module('treatment-arm.matchbox',[])
 
         $scope.diseasePieOptions = setupPieChartOptions('#diseaseLegendContainer');
 
-        $scope.patients = [
+        /*$scope.patients = [
             {
                 "Patient": {
                     "slot": "-",
@@ -482,7 +482,7 @@ angular.module('treatment-arm.matchbox',[])
                     "diseases": "Bone cancer, NOS"
                 }
             }
-        ];
+        ];*/
 
         function setupLit(pubmed_ids) {
             var litRefs = [];
@@ -617,6 +617,7 @@ angular.module('treatment-arm.matchbox',[])
                             
                             var version = {};
                             version.text = value.version;
+                            version.latest = 'This is the latest version.';
                             version.exclusionaryDiseases = exclusionDiseases;
                             version.exclusionaryDrugs = exclusionDrugs;
                             version.snvsInclusion = $scope.snvsInclusion;
@@ -635,6 +636,7 @@ angular.module('treatment-arm.matchbox',[])
 
                             var nextVersion = {};
                             nextVersion.text = '2015-12-20';
+                            nextVersion.latest = 'This is not the latest version.';
                             nextVersion.exclusionaryDiseases = exclusionDiseases;
                             nextVersion.exclusionaryDrugs = exclusionDrugs;
                             nextVersion.snvsInclusion = $scope.snvsInclusion;
@@ -655,7 +657,6 @@ angular.module('treatment-arm.matchbox',[])
                         
                     $scope.test = "test";
                     $scope.selectedVersion = $scope.versions[0];
-
                 })
                 .then (function() {
                     $scope.inExclusionType = 'inclusion';
