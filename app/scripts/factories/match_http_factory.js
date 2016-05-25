@@ -80,10 +80,11 @@
             loadHeartBeatList: function() {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getIrUploaderAdminObjects');
             },
-            getPosiveSampleControls: function () {
+            loadSampleControlsList: function() {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlsBySite');
             }
         };
+        
     }
 
     function svgApi($http, matchConfig) {
