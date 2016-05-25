@@ -178,6 +178,22 @@ describe('Controller: Ir Report Controller', function () {
         it('should have empty list until load is called', function () {
             expect($scope.irList).toBeDefined();
             expect($scope.irList.length).toBe(0);
+
+            expect($scope.positiveListMocha).toBeDefined();
+            expect($scope.positiveListMocha.length).toBe(0);
+
+            expect($scope.positiveListMDCC).toBeDefined();
+            expect($scope.positiveListMDCC.length).toBe(0);
+
+            expect($scope.positiveListMocha).toBeDefined();
+            expect($scope.positiveListMocha.length).toBe(0);
+
+            expect($scope.negativeListMocha).toBeDefined();
+            expect($scope.negativeListMocha.length).toBe(0);
+
+            expect($scope.negativeListMDCC).toBeDefined();
+            expect($scope.negativeListMDCC.length).toBe(0);
+
         });
     });
 
