@@ -30,7 +30,7 @@
                         <dd>{{information.description}}</dd>
 
                         <dt>Status</dt>
-                        <dd>{{information.currentStatus}}</dd>
+                        <dd ng-style="{'color':'{{ information.currentStatus | taStatus }}'}">{{information.currentStatus}}</dd>
 
                         <dt><span class="drop-down-label">Version</span></dt>
                         <dd>
@@ -139,7 +139,7 @@
                                     <td>{{item.Patient.slot || '-'}}</td>
                                     <td>{{item.Patient.patientSequenceNumber || '-'}}</td>
                                     <td>{{item.Patient.treatmentArmVersion || '-'}}</td>
-                                    <td>{{item.Patient.patientAssignmentStatusOutcome || '-'}}</td>
+                                    <td ng-style="{'color':'{{ item.Patient.patientAssignmentStatusOutcome | status }}'}">{{item.Patient.patientAssignmentStatusOutcome || '-'}}</td>
                                     <td>{{item.Patient.assignmentLogic || '-'}}</td>
                                     <td>{{item.Patient.variantReport || '-'}}</td>
                                     <td>{{item.Patient.dateSelected || '-'}}</td>
@@ -854,7 +854,7 @@
                 </div>
             </uib-tab>
             <uib-tab heading="History">
-                <div class="panel-body">
+                <!--<div class="panel-body">
                     <table class="table table-bordered table-hover">
                         <thead>
                         <tr>
@@ -869,6 +869,42 @@
                         <tr ng-model="version" ng-repeat="item in selectedVersion.versionHistory.history">
                             <td>{{item.status || '-'}}</td>
                             <td>{{item.date || '-'}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>-->
+                <div class="panel-body">
+                    <table class="table table-hover" role="gridk">
+                        <thead>
+                            <tr>
+                                <th>Version</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>{{selectedVersion.text || '-'}}</td>
+                        </tr>
+                        <tr ng-repeat-end>
+                            <td colspan="7">
+                                <ul class="panel-list">
+                                    <li ng-repeat="item in selectedVersion.versionHistory.history" class="info-element">
+                                        <div class="row">
+                                            <div class="col-md-4 col-sm-6 text-left">
+                                                <dl class="dl-horizontal-narrow">
+                                                    <dt>Status</dt>
+                                                    <dd ng-style="{'color':'{{ item.status | taStatus }}'}"> {{item.status}}</dd>
+                                                </dl>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6 text-left">
+                                                <dl class="dl-horizontal-narrow">
+                                                    <dt>Date</dt>
+                                                    <dd>{{item.date}}</dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
