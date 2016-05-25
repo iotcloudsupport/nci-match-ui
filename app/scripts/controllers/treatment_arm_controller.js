@@ -25,7 +25,7 @@ angular.module('treatment-arm.matchbox',[])
         };
 
         $scope.tooltipContent = {
-            psn: 'Patient Sequence Number',
+            psn: 'Patient Id',
             loe: 'Level Of Evidence',
             chr: 'Chromosome',
             pos: 'Position',
