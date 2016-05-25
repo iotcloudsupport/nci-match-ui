@@ -498,7 +498,7 @@ angular.module('treatment-arm.matchbox',[])
             return variant;
         }
 
-        function setInclusion(variant, inclusionVal) {
+        function isInclusion(variant, inclusionVal) {
             if (inclusionVal === true) {
                 variant.inclusion = true;
                 variant.exclusion = false;
@@ -510,6 +510,14 @@ angular.module('treatment-arm.matchbox',[])
             }
         }
 
+        $scope.setInclusionExclusion = function(variantName, variant) {
+            if (isInclusion(variant, variant.inclusion) === true) {
+                $scope[ variantName + 'sInclusion' ].push(variant);
+            } else {
+                $scope[ variantName + 'sExclusion' ].push(variant);
+            }
+        };
+
         $scope.setupSnvIndel = function(variantName, variant, value) {
             variant.id = value.identifier;
             variant = setupGeneLoe(variant, value);
@@ -519,17 +527,19 @@ angular.module('treatment-arm.matchbox',[])
             variant.protein = value.description;
             variant.reference = value.reference;
             variant.litRefs = setupLit(value.public_med_ids);
-            if (setInclusion(variant, value.inclusion) === true) {
-                $scope[ variantName + 'sInclusion' ].push(variant);
-            } else {
-                $scope[ variantName + 'sExclusion' ].push(variant);
-            }
+            $scope.setInclusionExclusion(variantName, value);
         };
 
         $scope.snvsInclusion = [];
         $scope.snvsExclusion = [];
         $scope.indelsInclusion = [];
         $scope.indelsExclusion = [];
+        $scope.cnvsInclusion = [];
+        $scope.cnvsExclusion = [];
+        $scope.gfsInclusion = [];
+        $scope.gfsExclusion = [];
+        $scope.nhrsInclusion = [];
+        $scope.nhrsExclusion = [];
 
         $scope.extraVersion = {};
 
@@ -568,13 +578,7 @@ angular.module('treatment-arm.matchbox',[])
                                 exclusionDisease.ctepTerm = value.short_name;
                                 exclusionDiseases.push(exclusionDisease);
                             });
-                            
-                            var cnvsInclusion = [];
-                            var cnvsExclusion = [];
-                            var geneFusionsInclusion = [];
-                            var geneFusionsExclusion = [];
-                            var nhrsInclusion = [];
-                            var nhrsExclusion = [];
+
                             if (value.variant_report !== undefined) {
                                 angular.forEach(value.variant_report.single_nucleotide_variants, function(value) {
                                     var snv = {};
@@ -591,22 +595,14 @@ angular.module('treatment-arm.matchbox',[])
                                     cnv.position = value.position;
                                     cnv.protein = value.description; //
                                     cnv.litRefs = setupLit(value.public_med_ids);
-                                    if (setInclusion(cnv, value.inclusion) === true) {
-                                        cnvsInclusion.push(cnv);
-                                    } else {
-                                        cnvsExclusion.push(cnv);
-                                    }
+                                    $scope.setInclusionExclusion('cnv', value);
                                 });
                                 angular.forEach(value.variant_report.gene_fusions, function(value) {
                                     var gf = {};
                                     gf.id = value.identifier;
                                     gf = setupGeneLoe(gf, value);
                                     gf.litRefs = setupLit(value.public_med_ids);
-                                    if (setInclusion(gf, value.inclusion) === true) {
-                                        geneFusionsInclusion.push(gf);
-                                    } else {
-                                        geneFusionsExclusion.push(gf);
-                                    }
+                                    $scope.setInclusionExclusion('gf', value);
                                 });
                                 angular.forEach(value.variant_report.non_hotspot_rules, function(value) {
                                     var nhr = {};
@@ -616,11 +612,7 @@ angular.module('treatment-arm.matchbox',[])
                                     nhr.oncomineVariantClass = value.oncominevariantclass; //
                                     nhr.proteinRegex = value.protein_match; //
                                     nhr.litRefs = setupLit(value.public_med_ids);
-                                    if (setInclusion(nhr, value.inclusion) === true) {
-                                        nhrsInclusion.push(nhr);
-                                    } else {
-                                        nhrsExclusion.push(nhr);
-                                    }
+                                    $scope.setInclusionExclusion('nhr', value);
                                 });
                             }
                             
@@ -632,12 +624,12 @@ angular.module('treatment-arm.matchbox',[])
                             version.snvsExclusion = $scope.snvsExclusion;
                             version.indelsInclusion = $scope.indelsInclusion;
                             version.indelsExclusion = $scope.indelsExclusion;
-                            version.cnvsInclusion = cnvsInclusion;
-                            version.cnvsExclusion = cnvsExclusion;
-                            version.geneFusionsInclusion = geneFusionsInclusion;
-                            version.geneFusionsExclusion = geneFusionsExclusion;
-                            version.nhrsInclusion = nhrsInclusion;
-                            version.nhrsExclusion = nhrsExclusion;
+                            version.cnvsInclusion = $scope.cnvsInclusion;
+                            version.cnvsExclusion = $scope.cnvsExclusion;
+                            version.geneFusionsInclusion = $scope.gfsInclusion;
+                            version.geneFusionsExclusion = $scope.gfsExclusion;
+                            version.nhrsInclusion = $scope.nhrsInclusion;
+                            version.nhrsExclusion = $scope.nhrsExclusion;
                             version.versionHistory = $scope.versionHistory;
                             $scope.versions.push(version);
                             $scope.information.currentVersion = $scope.versions[0].name;
@@ -650,12 +642,12 @@ angular.module('treatment-arm.matchbox',[])
                             nextVersion.snvsExclusion = $scope.snvsExclusion;
                             nextVersion.indelsInclusion = $scope.indelsInclusion;
                             nextVersion.indelsExclusion = $scope.indelsExclusion;
-                            nextVersion.cnvsInclusion = cnvsInclusion;
-                            nextVersion.cnvsExclusion = cnvsExclusion;
-                            nextVersion.geneFusionsInclusion = geneFusionsInclusion;
-                            nextVersion.geneFusionsExclusion = geneFusionsExclusion;
-                            nextVersion.nhrsInclusion = nhrsInclusion;
-                            nextVersion.nhrsExclusion = nhrsExclusion;
+                            nextVersion.cnvsInclusion = $scope.cnvsInclusion;
+                            nextVersion.cnvsExclusion = $scope.cnvsExclusion;
+                            nextVersion.geneFusionsInclusion = $scope.gfsInclusion;
+                            nextVersion.geneFusionsExclusion = $scope.gfsExclusion;
+                            nextVersion.nhrsInclusion = $scope.nhrsInclusion;
+                            nextVersion.nhrsExclusion = $scope.nhrsExclusion;
                             nextVersion.versionHistory = $scope.versionHistoryClosed;
                             $scope.versions.push(nextVersion);
                         }
