@@ -97,7 +97,7 @@ angular.module('iradmin.matchbox',[])
 
             $scope.loadSampleControlsList = function () {
                 irAdminApi
-                    .getPosiveSampleControls()
+                    .loadSampleControlsList()
                     .then(function (d) {
 
                         angular.forEach(d.data, function (value,key) {

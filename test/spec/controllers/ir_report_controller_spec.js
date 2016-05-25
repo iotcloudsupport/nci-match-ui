@@ -37,20 +37,6 @@ describe('Controller: Ir Report Controller', function () {
         return data;
     }
 
-    // "id": "MoCha_15",
-    //     "molecularSequenceNumber": "SampleControl_MoCha_15",
-    //     "dateCreated": 1452022386103,
-    //     "dateReceived": null,
-    //     "site": "MoCha",
-    //     "siteIpAddress": "129.43.127.133",
-    //     "positiveControlVersion": 0,
-    //     "positiveControlDateLoaded": null,
-    //     "status": null,
-    //     "comment": null,
-    //     "passed": false,
-    //     "nextGenerationSequence": null
-
-
     function getSampleControlTestData() {
 
         var data = [
