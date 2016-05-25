@@ -518,7 +518,8 @@ angular.module('treatment-arm.matchbox',[])
             }
         };
 
-        $scope.setupSnvIndel = function(variantName, variant, value) {
+        $scope.setupSnvIndel = function(variantName, value) {
+            var variant = {};
             variant.id = value.identifier;
             variant = setupGeneLoe(variant, value);
             variant.position = value.position;
@@ -581,12 +582,10 @@ angular.module('treatment-arm.matchbox',[])
 
                             if (value.variant_report !== undefined) {
                                 angular.forEach(value.variant_report.single_nucleotide_variants, function(value) {
-                                    var snv = {};
-                                    $scope.setupSnvIndel('snv', snv, value);
+                                    $scope.setupSnvIndel('snv', value);
                                 });
                                 angular.forEach(value.variant_report.indels, function(value) {
-                                    var indel = {};
-                                    $scope.setupSnvIndel('indel', indel, value);
+                                    $scope.setupSnvIndel('indel', value);
                                 });
                                 angular.forEach(value.variant_report.copy_number_variants, function(value) {
                                     var cnv = {};
