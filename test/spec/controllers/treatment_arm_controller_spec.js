@@ -40,7 +40,7 @@ describe('Controller: Treatment Arm Controller', function () {
     }));
 
     function getElement() {
-        var element = angular.element("<div id='diseasePieChartContainer' style='height:300px'></div>");
+        var element = angular.element("<div><div id='diseasePieChartContainer' style='height:300px'></div><div id='patientPieChartContainer' style='height:300px'></div></div>");
         compile(element)(scope);
         document.body.appendChild(element[0]);
 
