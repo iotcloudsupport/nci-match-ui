@@ -44,14 +44,14 @@ module.exports = function(config) {
       'spec/filters/*.js',
       'spec/factories/*.js',
       'spec/controllers/*.js'
-      // 'spec/controllers/patients_controller_spec.js',
+      // 'spec/controllers/ir_sample_controller_spec.js',
       // 'spec/controllers/patient_controller_spec.js'
     ],
 
 
     // list of files to exclude
     exclude: [
-      'spec/controllers/ir_qc_controller_spec.js',
+      'spec/controllers/ir_qc_controller_spec.js'
       // 'spec/controllers/ir_sample_controller_spec.js'
       // '../app/scripts/factories/match_http_factory.mock.js'
     ],

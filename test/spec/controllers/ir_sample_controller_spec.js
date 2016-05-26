@@ -50,6 +50,48 @@ describe('Controller: Ir Sample Controller', function () {
     }
 
 
+    function getNegativeVariantsTestData() {
+
+        var data = [
+            {
+                publicMedIds: 'SNV',
+                position: 'PIK3CA',
+                geneName: 'chr3',
+                variantType:'Indel',
+                reference: 'G',
+                alternative: 'C',
+                hgvs: 'hgvs',
+                protein: 'Lys111Asn',
+                function: ''
+            },
+            {
+                publicMedIds: 'SNV',
+                position: 'PRR3CA',
+                geneName: 'chr2',
+                variantType:'Indel',
+                reference: 'C',
+                alternative: 'T',
+                hgvs: 'hgvs',
+                protein: 'Lys881Asn',
+                function: ''
+            },
+            {
+                publicMedIds: 'SNV',
+                position: 'PCA',
+                geneName: 'chr13',
+                variantType:'Indel',
+                reference: '9X',
+                alternative: 'T',
+                hgvs: 'hgvs',
+                protein: 'Lio558sn',
+                function: ''
+            }
+        ];
+
+        return data;
+    }
+
+
     beforeEach(module('config.matchbox', 'http.matchbox', 'irsample.matchbox'));
 
     var $scope;
@@ -60,21 +102,16 @@ describe('Controller: Ir Sample Controller', function () {
     var $q;
     var deferred;
     var testVariantReportData  = getVariantReportData();
+    var testNegativeVariantsData  = getNegativeVariantsTestData();
     var $log;
     var prompt;
-
-    // ctrl = $controller('AddController', {
-    //     $scope: scope,
-    //     $routeParams: {id: '...'}
-    // });
-
 
     beforeEach(inject(function (_$rootScope_, $controller, $httpBackend, _$stateParams_, _irSampleVariantApi_, _$log_, _$q_, _$http_) {  //$scope, $http, $window, $stateParams, irSampleVariantApi, DTOptionsBuilder
         deferred = _$q_.defer();
         $stateParams = _$stateParams_;
         $log = _$log_;
         $q = _$q_;
-        irSampleVariantApi: _irSampleVariantApi_;
+        irSampleVariantApi = _irSampleVariantApi_;
         $scope = _$rootScope_.$new();
 
         reportsCtrl = $controller('SampleController', {
@@ -104,19 +141,43 @@ describe('Controller: Ir Sample Controller', function () {
         it('should have empty list until load is called', function () {
             expect($scope.positiveControlList).toBeDefined();
             expect($scope.positiveControlList.length).toBe(0);
+
+            expect($scope.negativeVariantsList).toBeDefined();
+            expect($scope.negativeVariantsList.length).toBe(0);
+
         });
     });
 
-    // it('should call api load method and have the Variant Positive Controls list populated', function () {
-    //     deferred.resolve(testVariantReportData);
-    //
-    //     spyOn(irSampleVariantApi, 'loadVariantReportList').and.returnValue(deferred.promise);
-    //
-    //     $scope.loadVariantReportList();
-    //     $scope.$apply();
-    //
-    //     expect(irSampleVariantApi.loadVariantReportList).toHaveBeenCalled();
-    //     // expect($scope.irList.length).toBeLessThan(200);
-    // });
+    describe('General', function () {
+        it('should have empty list until load is called', function () {
+            expect($scope.positiveControlList).toBeDefined();
+            expect($scope.positiveControlList.length).toBe(0);
+        });
+    });
+
+
+    it('should call api load method and have the Variant Positive Controls list populated', function () {
+        deferred.resolve(testVariantReportData);
+
+        spyOn(irSampleVariantApi, 'loadVariantReportList').and.returnValue(deferred.promise);
+
+        $scope.loadVariantReportList();
+        $scope.$apply();
+
+        expect(irSampleVariantApi.loadVariantReportList).toHaveBeenCalled();
+        expect($scope.positiveControlList.length).toBeLessThan(200);
+    });
+
+    it('should call api load method and have the Variant Positive Controls list populated', function () {
+        deferred.resolve(testNegativeVariantsData);
+
+        spyOn(irSampleVariantApi, 'loadVariantReportList').and.returnValue(deferred.promise);
+
+        $scope.loadVariantReportList();
+        $scope.$apply();
+
+        expect(irSampleVariantApi.loadVariantReportList).toHaveBeenCalled();
+        expect($scope.negativeVariantsList.length).toBeLessThan(200);
+    });
 
 });
