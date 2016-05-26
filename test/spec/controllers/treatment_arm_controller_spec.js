@@ -13,10 +13,14 @@ describe('Controller: Treatment Arm Controller', function () {
                                 $rootScope,
                                 _treatmentArmApi_,
                                 $httpBackend,
-                                $window) {
+                                $window,
+                                _$compile_,
+                                $document) {
         scope = $rootScope.$new();
         httpBackend = $httpBackend;
         window = $window;
+        compile = _$compile_;
+        document = $document;
 
 
         treatmentArmCtrl = $controller('TreatmentArmController', {
@@ -35,6 +39,14 @@ describe('Controller: Treatment Arm Controller', function () {
         });
     }));
 
+    function getElement() {
+        var element = angular.element("<div><div id='diseasePieChartContainer' style='height:300px'></div><div id='patientPieChartContainer' style='height:300px'></div></div>");
+        compile(element)(scope);
+        document.body.appendChild(element[0]);
+
+        return element;
+    }
+
     afterEach(function () {
         httpBackend.verifyNoOutstandingExpectation();
         httpBackend.verifyNoOutstandingRequest();
@@ -47,6 +59,7 @@ describe('Controller: Treatment Arm Controller', function () {
                     "data": null
                 }
             ]);
+        getElement();
         scope.loadTreatmentArmDetails('EAY131-A');
         httpBackend.flush();
 

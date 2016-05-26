@@ -25,7 +25,7 @@ angular.module('treatment-arm.matchbox',[])
         };
 
         $scope.tooltipContent = {
-            psn: 'Patient Id',
+            psn: 'Patient ID',
             loe: 'Level Of Evidence',
             chr: 'Chromosome',
             pos: 'Position',
@@ -309,6 +309,11 @@ angular.module('treatment-arm.matchbox',[])
                 }
             }
         };
+
+        function changeHeight() {
+            document.getElementById("diseasePieChartContainer").style["height"] = window.innerWidth/3.2 + "px";
+            document.getElementById("patientPieChartContainer").style["height"] = window.innerWidth/3.2 + "px";
+        }
 
         $scope.pieDataset = [
             {
@@ -661,6 +666,12 @@ angular.module('treatment-arm.matchbox',[])
                 .then (function() {
                     $scope.inExclusionType = 'inclusion';
                     setInExclusion();
+                    changeHeight();
+                    $(window).on("resize.doResize", function() {
+                        $scope.$apply(function() {
+                            changeHeight();
+                        });
+                    });
                 });
         };
 
