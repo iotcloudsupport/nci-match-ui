@@ -312,6 +312,7 @@ angular.module('treatment-arm.matchbox',[])
 
         function changeHeight() {
             document.getElementById("diseasePieChartContainer").style["height"] = window.innerWidth/3.2 + "px";
+            document.getElementById("patientPieChartContainer").style["height"] = window.innerWidth/3.2 + "px";
         }
 
         $scope.pieDataset = [
