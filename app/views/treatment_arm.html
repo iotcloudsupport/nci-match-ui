@@ -90,8 +90,8 @@
                                     <div style="float:left">
                                         <div id="legendContainer" style="text-align:left;overflow-y:auto"></div>
                                     </div>
-                                    <div class="flot-chart" style="height:360px;padding:40px 0px 20px 100px">
-                                        <flot dataset="pieDataset" options="pieOptions" height="300px"></flot>
+                                    <div id="patientPieChartContainer" class="flot-chart" style="height:360px;padding:40px 0px 20px 100px">
+                                        <flot id="patientPieChart" dataset="pieDataset" options="pieOptions" height="100%"></flot>
                                     </div>
                                 </div>
                             </div>
@@ -105,7 +105,7 @@
                                     <div style="float:left">
                                         <div id="diseaseLegendContainer" style="text-align:left;overflow-y:auto"></div>
                                     </div>
-                                    <div id="diseasePieChartContainer" class="flot-chart" style="height:460px;padding:40px 0px 20px 100px">
+                                    <div id="diseasePieChartContainer" class="flot-chart" style="height:360px;padding:40px 0px 20px 100px">
                                         <flot id="diseasePieChart" dataset="diseasePieDataset" options="diseasePieOptions" height="100%"></flot>
                                     </div>
                                 </div>
