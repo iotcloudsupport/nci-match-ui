@@ -124,7 +124,19 @@ describe('Controller: Ir Report Controller', function () {
         ];
 
         return data;
-    };
+    }
+
+    function getPositiveTokensData() {
+
+        var data = [
+            {
+                ipAddress : '112.55.66.99',
+                confirmation : '123456'
+            }
+        ];
+
+        return data;
+    }
 
     beforeEach(module('config.matchbox', 'http.matchbox', 'iradmin.matchbox'));
     var $scope;
@@ -136,21 +148,30 @@ describe('Controller: Ir Report Controller', function () {
     var testHeartBeatData;
     var testSampleControlData;
     var testMDACCampleControlTestData;
+    var testPositiveTokensData;
     var $log;
+    var prompt;
+    var $filter;
+    var $uibModal;
 
-    beforeEach(inject(function (_$rootScope_, $controller, $httpBackend, _irAdminApi_, _$log_, _$q_, _$http_) {  //$scope, $http, $window, DTOptionsBuilder, DTColumnDefBuilder, irAdminApi
+    beforeEach(inject(function (_$rootScope_, $controller, $httpBackend, _irAdminApi_, _$log_, _$q_, _$http_, _prompt_, _$filter_) {  //$scope, $http, $window, DTOptionsBuilder, DTColumnDefBuilder, irAdminApi
         testHeartBeatData = getHeartBeatTestData();
         testSampleControlData = getMoChaSampleControlTestData();
         testMDACCampleControlTestData = getMDACCampleControlTestData();
+        testPositiveTokensData = getPositiveTokensData();
         deferred = _$q_.defer();
         $log = _$log_;
         $q = _$q_;
-        httpBackend = $httpBackend;
         $scope = _$rootScope_.$new();
+        prompt = _prompt_;
+        $filter = _$filter_;
+        httpBackend = $httpBackend;
+
         irAdminApi = _irAdminApi_;
         reportsCtrl = $controller('IrAdminController', {
-            $scope: $scope,
             $http: _$http_,
+            $filter: _$filter_,
+            prompt: prompt,
             DTOptionsBuilder: {
                 newOptions: function () {
                     return {
@@ -160,7 +181,9 @@ describe('Controller: Ir Report Controller', function () {
                     };
                 }
             },
-            irAdminApi: _irAdminApi_
+            irAdminApi: irAdminApi,
+            $scope: $scope,
+            $uibModal: null
         });
     }));
 
@@ -188,7 +211,23 @@ describe('Controller: Ir Report Controller', function () {
             expect($scope.negativeListMDCC).toBeDefined();
             expect($scope.negativeListMDCC.length).toBe(0);
 
+            expect($scope.tokenIpAddress).toBeDefined();
+            expect($scope.tokenIpAddress.length).toBe(0);
+
         });
+    });
+
+    //Promt
+    it('should call warning dialog and log when user agreed', function () {
+        deferred.resolve(true);
+
+        spyOn($scope, 'showPrompt').and.returnValue(deferred.promise).and.callThrough();
+
+        $scope.showSuccess('Success Title', 'Success Message');
+        $scope.$apply();
+
+        //expect($scope.showPrompt).toHaveBeenCalled();
+        //expect($scope.warningResult).toBe(true);
     });
 
     it('should call api load method and have the Heartbeat list populated', function () {
@@ -225,5 +264,17 @@ describe('Controller: Ir Report Controller', function () {
 
         expect(irAdminApi.loadSampleControlsList).toHaveBeenCalled();
         expect($scope.positiveListMDCC.length).toBeLessThan(200);
+    });
+
+    it('should call api load method and have the Tokens for new Sample Isd identification list populated', function () {
+        deferred.resolve(testPositiveTokensData);
+
+        spyOn(irAdminApi, 'generatePositiveControlToken').and.returnValue(deferred.promise);
+
+        $scope.generatePositiveControlToken();
+        $scope.$apply();
+
+        expect(irAdminApi.generatePositiveControlToken).toHaveBeenCalled();
+        expect($scope.tokenIpAddress.length).toBeLessThan(200);
     });
 });

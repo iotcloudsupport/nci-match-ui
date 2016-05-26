@@ -83,6 +83,15 @@
             },
             loadSampleControlsList: function() {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlsBySite');
+            },
+            generatePositiveControlToken: function(array) {
+                return $http({
+                    url: matchConfig.matchApiBaseUrl + '/common/rs/generateMolecularSequenceNumberForSampleControl?ipAddress=' + array.ipAddress + '&confirmation=' + array.confirmation,
+                    method: "POST"
+                });
+            },
+            generateNegativeControlToken: function() {
+                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlsBySite');
             }
         };
 
