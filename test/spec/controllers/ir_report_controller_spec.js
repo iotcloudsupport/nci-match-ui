@@ -37,7 +37,7 @@ describe('Controller: Ir Report Controller', function () {
         return data;
     }
 
-    function getSampleControlTestData() {
+    function getMoChaSampleControlTestData() {
 
         var data = [
             {
@@ -88,49 +88,43 @@ describe('Controller: Ir Report Controller', function () {
 
         var data = [
             {
-                molecularSequenceNumber: "SampleControl_MDACC_2",
-                dateCreated: '1452022286103',
-                dateReceived: null,
-                site: "MDACC",
-                siteIpAddress: "119.33.127.133",
-                positiveControlVersion: 0,
-                positiveControlDateLoaded: null,
-                status: null,
-                comment: null,
-                passed: false,
-                nextGenerationSequence: null
-            },
-            {
-                molecularSequenceNumber: "SampleControl_MDACC_11",
-                dateCreated: '1452022386103',
-                dateReceived: null,
-                site: "MDACC",
-                siteIpAddress: "129.43.887.03",
-                positiveControlVersion: 0,
-                positiveControlDateLoaded: null,
-                status: null,
-                comment: null,
-                passed: false,
-                nextGenerationSequence: null
-            },
-            {
-                molecularSequenceNumber: "SampleControl_MDACC_21",
-                dateCreated: '1452022386103',
-                dateReceived: null,
-                site: "MDACC",
-                siteIpAddress: "159.43.127.003",
-                positiveControlVersion: 0,
-                positiveControlDateLoaded: null,
-                status: null,
-                comment: null,
-                passed: false,
-                nextGenerationSequence: null
+                type : 'id',
+                publicMedIds : '',
+                geneName : '',
+                chromosome : 'chr9',
+                position : '98209594',
+                identifier : '.',
+                reference : '-',
+                alternative : 'A',
+                filter : 'PASS',
+                description : '',
+                protein : 'p.Tyr1316fs',
+                transcript : 'NM_000264.3',
+                hgvs : 'c.3944_3945insT',
+                location : 'exonic',
+                readDepth : '387',
+                rare : 'false',
+                alleleFrequency : '0.687339',
+                flowAlternativeAlleleObservationCount : '266',
+                flowReferenceAlleleObservations : '121',
+                referenceAlleleObservations : '389',
+                alternativeAlleleObservationCount : '32',
+                variantClass : '',
+                levelOfEvidence : '',
+                inclusion : 'true',
+                armSpecific : 'false',
+                gene : 'PTCH1',
+                oncominevariantclass : 'Deleterious',
+                exon : '23',
+                function : 'frameshiftInsertion',
+                proteinMatch : '',
+                confirmed : 'false',
+                matchingId : ''
             }
         ];
 
         return data;
-    }
-
+    };
 
     beforeEach(module('config.matchbox', 'http.matchbox', 'iradmin.matchbox'));
     var $scope;
@@ -146,7 +140,7 @@ describe('Controller: Ir Report Controller', function () {
 
     beforeEach(inject(function (_$rootScope_, $controller, $httpBackend, _irAdminApi_, _$log_, _$q_, _$http_) {  //$scope, $http, $window, DTOptionsBuilder, DTColumnDefBuilder, irAdminApi
         testHeartBeatData = getHeartBeatTestData();
-        testSampleControlData = getSampleControlTestData();
+        testSampleControlData = getMoChaSampleControlTestData();
         testMDACCampleControlTestData = getMDACCampleControlTestData();
         deferred = _$q_.defer();
         $log = _$log_;
