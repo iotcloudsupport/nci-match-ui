@@ -310,6 +310,10 @@ angular.module('treatment-arm.matchbox',[])
             }
         };
 
+        function changeHeight() {
+            document.getElementById("diseasePieChartContainer").style["height"] = window.innerWidth/3.2 + "px";
+        }
+
         $scope.pieDataset = [
             {
                 label: "ON_TREATMENT_ARM",
@@ -661,6 +665,12 @@ angular.module('treatment-arm.matchbox',[])
                 .then (function() {
                     $scope.inExclusionType = 'inclusion';
                     setInExclusion();
+                    changeHeight();
+                    $(window).on("resize.doResize", function() {
+                        $scope.$apply(function() {
+                            changeHeight();
+                        });
+                    });
                 });
         };
 
