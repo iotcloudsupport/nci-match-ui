@@ -7,8 +7,6 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
 
         this.dtInstance = {};
 
-        $scope.showPrompt = showPrompt;
-        $scope.showSuccess = showSuccess;
         $scope.irList = [];
         $scope.positiveListMocha = [];
         $scope.positiveListMDCC = [];
@@ -16,21 +14,11 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
         $scope.negativeListMDCC = [];
         $scope.tokenIpAddress = [];
 
-        function showPrompt(options) {
-            return prompt(options);
-        }
-
-        function showSuccess(title, message) {
-            prompt({
-                "title": title,
-                "message": message
-            }).then(function(result){
-                // console.log(result);
-            });
-        }
-
         //Populate Data
-        function populateData(d){
+
+            $scope.populateData = function(d) {
+
+        // function populateData(d){
 
             angular.forEach(d.data, function (value,key) {
 
@@ -166,7 +154,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
                 irAdminApi
                     .loadSampleControlsList()
                     .then(function (d) {
-                        populateData(d);
+                        $scope.populateData(d);
                     });
             };
             //Genrate Postive Token

@@ -2,6 +2,25 @@ describe('Controller: Ir Report Controller', function () {
 
     'use strict'
 
+    var mockPositivesets = {
+        "positivesets": [
+            { 'sampleSite': 'MoCha_1',
+                'sampleId': 'MoCha_1',
+                'sampleMsn': 'SampleControl_MoCha_1',
+                'dateCreated': 'null',
+                'dateReceived': '1464699137050',
+                'status': 'null'
+            },
+            { 'sampleSite': 'MoCha_2',
+                'sampleId': 'MoCha_2',
+                'sampleMsn': 'SampleControl_MoCha_2',
+                'dateCreated': 'null',
+                'dateReceived': '1464699137050',
+                'status': 'null'
+            }
+        ]
+    };
+
     function getHeartBeatTestData() {
 
         var data = [
@@ -217,6 +236,60 @@ describe('Controller: Ir Report Controller', function () {
         });
     });
 
+    // describe('appCtrl', function(){
+    //     var appCtrl, $scope;
+    //
+    //     beforeEach(function() { // executed before each 'it' is run
+    //         module('app'); // load the module
+    //
+    //         inject(function($controller, $rootScope) { // inject controller for testing
+    //             $scope = $rootScope.$new();
+    //             appCtrl = $controller('IrAdminController', {
+    //                 $scope: $scope
+    //             });
+    //         });
+    //     });
+    //
+    //     it('should have appCtrl controller toBeDefined', function() {
+    //         expect(appCtrl).toBeDefined();
+    //     });
+    //
+    //     it('should init counter value', function() {
+    //         expect($scope.count).toBeDefined();
+    //         expect($scope.count).toBe(5);
+    //
+    //     });
+    //
+    //     it('should change counter value', function() {
+    //         $scope.incrementCount();
+    //         expect($scope.count).toBe(6);
+    //     });
+    //
+    // });
+
+    // describe('$scope.populateData', function() {
+    //     it('sets the strength to "strong" if the password length is >8 chars', function() {
+    //         var $scope = {};
+    //         var controller = $controller('IrAdminController', { $scope: $scope });
+    //
+    //
+    //         // / you can loop through arrays of test cases like this
+    //         for (var i in $scope.positiveListMocha) {
+    //             // var valid = LoginService.isValidEmail($scope.positiveListMocha[i]);
+    //             expect($scope.positiveListMocha[i]).toBeTruthy();
+    //             expect($scope.positiveListMocha[i]).toBe("'sampleSite': 'MoCha_1A'");
+    //             // expect($scope.positiveListMocha[0]).toBe('MoCha_1');
+    //         }
+    //
+    //         // expect($scope.positiveListMocha[0].sampleSite).toBe('MoCha_1');
+    //
+    //
+    //         // $scope.password = 'longerthaneightchars';
+    //         // $scope.grade();
+    //         expect($scope.strength).toEqual('strong');
+    //     });
+    // });
+
     //Promt
     it('should call dialog and enter PIN', function () {
         deferred.resolve(true);
@@ -249,8 +322,30 @@ describe('Controller: Ir Report Controller', function () {
         $scope.$apply();
 
         expect(irAdminApi.loadSampleControlsList).toHaveBeenCalled();
-        expect($scope.positiveListMocha.length).toBeLessThan(200);
+        // expect($scope.positiveListMocha.length).toBeLessThan(200);
+
+
     });
+
+    it('should call api load method and have the Populate Data MoCha list Executed', function () {
+        deferred.resolve(testSampleControlData);
+
+        spyOn(irAdminApi, 'loadSampleControlsList').and.returnValue(deferred.promise);
+
+        $scope.populateData(mockPositivesets);
+        $scope.$apply();
+
+        expect($scope.positiveListMocha.length).toBeLessThan(200);
+
+
+    });
+
+
+    // it('verifies each object has a Sample Identification', function () {
+    //     for (var i = 0; i < $scope.positiveListMocha.length; i++) {
+    //         expect($scope.positiveListMocha[i]).toBe('SampleControl_MoCha_1A');
+    //     }
+    // });
 
     it('should call api load method and have the Sample Control MD Anderson list populated', function () {
         deferred.resolve(testMDACCampleControlTestData);
