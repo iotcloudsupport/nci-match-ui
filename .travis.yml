@@ -13,7 +13,7 @@ before_script:
   - npm install
   - bower install
 after_success:
-  # - ls -alth
+  - ls -alth
   - docker build -t matchbox/nci-match-ui .
   - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   - docker tag -f matchbox/nci-match-ui matchbox/nci-match-ui:latest
