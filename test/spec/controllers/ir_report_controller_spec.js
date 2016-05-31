@@ -218,16 +218,14 @@ describe('Controller: Ir Report Controller', function () {
     });
 
     //Promt
-    it('should call warning dialog and log when user agreed', function () {
+    it('should call dialog and enter PIN', function () {
         deferred.resolve(true);
 
-        spyOn($scope, 'showPrompt').and.returnValue(deferred.promise).and.callThrough();
+        spyOn($scope, 'showConfirmation').and.returnValue(deferred.promise).and.callThrough();
 
-        $scope.showSuccess('Success Title', 'Success Message');
+        $scope.showConfirmation('Do you want to continue?', 'Warning! Once this action has been submitted it cannot be undone. Please enter your site pin to confirm.');
         $scope.$apply();
 
-        //expect($scope.showPrompt).toHaveBeenCalled();
-        //expect($scope.warningResult).toBe(true);
     });
 
     it('should call api load method and have the Heartbeat list populated', function () {

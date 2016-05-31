@@ -1,4 +1,4 @@
-angular.module('iradmin.matchbox',['ui.bootstrap','cgPrompt'])
+angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
     .controller('IrAdminController',
         function( $scope, $http, DTOptionsBuilder, irAdminApi, prompt, $uibModal, $filter) {
 
@@ -29,8 +29,75 @@ angular.module('iradmin.matchbox',['ui.bootstrap','cgPrompt'])
             });
         }
 
-        $scope.reloadData = function() {
-            $scope.dtInstance.renderer.rerender();
+        //Populate Data
+        function populateData(d){
+
+            angular.forEach(d.data, function (value,key) {
+
+                if(value.siteName !== 'Unknown'){
+                    $scope.tokenIpAddress.push({
+                        'siteName': value.siteName,
+                        'siteIpAddress': value.siteIpAddress
+                    });
+                }
+
+                var positivesets = value.sampleControls;
+                var negativesets = value.ntcControls;
+
+                //Positive sets
+                angular.forEach(positivesets, function (v,k) {
+
+                    if(v.site === 'MoCha'){
+
+                        $scope.positiveListMocha.push({
+                            'sampleSite': v.site,
+                            'sampleId': v.id,
+                            'sampleMsn': v.molecularSequenceNumber,
+                            'dateCreated': v.dateCreated,
+                            'dateReceived': v.dateReceived,
+                            'status': v.status
+                        });
+                    }
+                    else if(v.site === 'MDACC') {
+
+                        $scope.positiveListMDCC.push({
+                            'sampleSite': v.site,
+                            'sampleId': v.id,
+                            'sampleMsn': v.molecularSequenceNumber,
+                            'dateCreated': v.dateCreated,
+                            'dateReceived': v.dateReceived,
+                            'status': v.status
+                        });
+                    }
+                });
+
+                //Negative sets
+                angular.forEach(negativesets, function (v,k) {
+
+                    if(v.site === 'MoCha'){
+
+                        $scope.negativeListMocha.push({
+                            'sampleSite': v.site,
+                            'sampleId': v.id,
+                            'sampleMsn': v.molecularSequenceNumber,
+                            'dateCreated': v.dateCreated,
+                            'dateReceived': v.dateReceived,
+                            'status': v.status
+                        });
+                    }
+                    else if(v.site === 'MDACC') {
+
+                        $scope.negativeListMDCC.push({
+                            'sampleSite': v.site,
+                            'sampleId': v.id,
+                            'sampleMsn': v.molecularSequenceNumber,
+                            'dateCreated': v.dateCreated,
+                            'dateReceived': v.dateReceived,
+                            'status': v.status
+                        });
+                    }
+                });
+            });
         }
 
         $scope.showConfirmation = function (id) {
@@ -47,13 +114,13 @@ angular.module('iradmin.matchbox',['ui.bootstrap','cgPrompt'])
             items.ipAddress = d[0].siteIpAddress;
             irAdminApi
                 .generatePositiveControlToken(items)
-                .then(function (d) {},
+                .then(function (d) {
+                        // populateData(d);
+                },
                 function(response) { // optional
-                    // alert("Response --" + JSON.stringify(response));
                 });
         });
 
-            // $scope.reloadData();
         };
 
         $scope.loadHeartBeatList = function () {
@@ -95,78 +162,11 @@ angular.module('iradmin.matchbox',['ui.bootstrap','cgPrompt'])
                 });
             };
 
-
             $scope.loadSampleControlsList = function () {
                 irAdminApi
                     .loadSampleControlsList()
                     .then(function (d) {
-
-                            angular.forEach(d.data, function (value,key) {
-
-                            if(value.siteName !== 'Unknown'){
-                                $scope.tokenIpAddress.push({
-                                    'siteName': value.siteName,
-                                    'siteIpAddress': value.siteIpAddress
-                                });
-                            }
-
-                            var positivesets = value.sampleControls;
-                            var negativesets = value.ntcControls;
-
-                            //Positive sets
-                            angular.forEach(positivesets, function (v,k) {
-
-                                if(v.site === 'MoCha'){
-
-                                    $scope.positiveListMocha.push({
-                                        'sampleSite': v.site,
-                                        'sampleId': v.id,
-                                        'sampleMsn': v.molecularSequenceNumber,
-                                        'dateCreated': v.dateCreated,
-                                        'dateReceived': v.dateReceived,
-                                        'status': v.status
-                                    });
-                                }
-                                else if(v.site === 'MDACC') {
-
-                                    $scope.positiveListMDCC.push({
-                                        'sampleSite': v.site,
-                                        'sampleId': v.id,
-                                        'sampleMsn': v.molecularSequenceNumber,
-                                        'dateCreated': v.dateCreated,
-                                        'dateReceived': v.dateReceived,
-                                        'status': v.status
-                                    });
-                                }
-                            });
-
-                            //Negative sets
-                            angular.forEach(negativesets, function (v,k) {
-
-                                if(v.site === 'MoCha'){
-
-                                    $scope.negativeListMocha.push({
-                                        'sampleSite': v.site,
-                                        'sampleId': v.id,
-                                        'sampleMsn': v.molecularSequenceNumber,
-                                        'dateCreated': v.dateCreated,
-                                        'dateReceived': v.dateReceived,
-                                        'status': v.status
-                                    });
-                                }
-                                else if(v.site === 'MDACC') {
-
-                                    $scope.negativeListMDCC.push({
-                                        'sampleSite': v.site,
-                                        'sampleId': v.id,
-                                        'sampleMsn': v.molecularSequenceNumber,
-                                        'dateCreated': v.dateCreated,
-                                        'dateReceived': v.dateReceived,
-                                        'status': v.status
-                                    });
-                                }
-                            });
-                        });
+                        populateData(d);
                     });
             };
             //Genrate Postive Token
