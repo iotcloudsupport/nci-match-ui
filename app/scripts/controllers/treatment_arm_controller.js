@@ -12,6 +12,10 @@ angular.module('treatment-arm.matchbox',[])
             'bFilter': false
         };
 
+        /*
+        To get the zero records message, add to above type: 'oLanguage': {"sEmptyTable": "There are no SNV inclusions"}
+         */
+
         $scope.test = '';
 
         $scope.information = {
