@@ -15,18 +15,11 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
         $scope.tokenIpAddress = [];
 
         //Populate Data
-
-            $scope.populateData = function(d) {
-
-        // function populateData(d){
-
+        $scope.populateData = function(d) {
             angular.forEach(d.data, function (value,key) {
 
-                if(value.siteName !== 'Unknown'){
-                    $scope.tokenIpAddress.push({
-                        'siteName': value.siteName,
-                        'siteIpAddress': value.siteIpAddress
-                    });
+                if(value.siteName !== 'Unknown') {
+                    $scope.tokenIpAddress.push({ 'siteName': value.siteName, 'siteIpAddress': value.siteIpAddress });
                 }
 
                 var positivesets = value.sampleControls;
@@ -86,7 +79,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
                     }
                 });
             });
-        }
+        };
 
         $scope.showConfirmation = function (id) {
         prompt({
@@ -102,13 +95,24 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
             items.ipAddress = d[0].siteIpAddress;
             irAdminApi
                 .generatePositiveControlToken(items)
-                .then(function (d) {
-                        // populateData(d);
-                },
+                .then(
+                    function () {
+                        irAdminApi
+                            .loadSampleControlsList()
+                            .then(function (d) {
+                                //Clean tables
+                                $scope.positiveListMocha = [];
+                                $scope.positiveListMDCC = [];
+                                $scope.negativeListMocha = [];
+                                $scope.negativeListMDCC = [];
+                                $scope.tokenIpAddress = [];
+
+                                $scope.populateData(d);
+                            });
+                    },
                 function(response) { // optional
                 });
-        });
-
+            });
         };
 
         $scope.loadHeartBeatList = function () {
@@ -161,11 +165,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
             $scope.generatePositiveControlToken = function (items) {
                 irAdminApi
                     .generatePositiveControlToken(items)
-                    .then(function (d) {
-                    },
-                    function(response) { // optional
-                    });
-
+                    .then(function (d) {},
+                    function(response) {});
             };
-
     });

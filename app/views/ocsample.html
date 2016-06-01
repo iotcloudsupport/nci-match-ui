@@ -10,7 +10,7 @@
                     <a ui-sref="dashboard">Dashboard</a>
                 </li>
                 <li class="active">
-                    <a ui-sref="iradmin"> IR Admin</a>
+                    <a ui-sref="iradmin"> IR Reporters</a>
                 </li>
                 <li class="active">
                     <strong>IR Sample Quality Control Report </strong>
@@ -21,11 +21,11 @@
     </div>
 
 
-<div class="wrapper">
+<div class="wrapper" ng-controller="SampleController">
     <div class="animated fadeInRight">
                     <div class="no-horizontal-padding header-box-container">
 
-                        <div class="row flex">
+                        <div class="row equal-height-panels">
 
                             <div class="col-lg-6 col-md-6">
                                 <div class="panel panel-default">
@@ -36,7 +36,7 @@
                                             <dd>1155</dd>
 
                                             <dt>Analysis ID</dt>
-                                            <dd>MoCha_job10</dd>
+                                            <dd>{{sampleId}}</dd>
 
                                             <dt>Total Variants</dt>
                                             <dd>18</dd>
@@ -63,7 +63,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6 col-md-6" ng-controller="SampleController"  ng-init="loadSamplesList()">
+                            <div class="col-lg-6 col-md-6" ng-init="loadSamplesList()">
                                 <div class="panel panel-default">
                                     <div class="panel-body">
                                         <dl class="dl-horizontal">
@@ -87,14 +87,14 @@
                             <div class="col-lg-12 col-md-6">
                                 <div class="panel panel-default">
                                     <div class="panel-body">
-                            <!--Cnv Chart-->
-                            <div ng-controller="QcSampleController" ng-init="loadSvgGeneList()" >
-                                <div class="svg-container" responsive=true   >
-                                    <div id="D3BoxPanel">
-                                        <svg id="D3Box" version="1.1" preserveAspectRatio="xMinYMin meet" class="svg-content"></svg>
-                                    </div>
-                                </div>
-                            </div>
+                                        <!--Cnv Chart-->
+                                        <div ng-controller="QcSampleController" ng-init="loadSvgGeneList()" >
+                                            <div class="svg-container" responsive=true   >
+                                                <div id="D3BoxPanel">
+                                                    <svg id="D3Box" version="1.1" preserveAspectRatio="xMinYMin meet" class="svg-content"></svg>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         </div>
                                 </div>
