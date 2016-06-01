@@ -552,6 +552,14 @@ angular.module('treatment-arm.matchbox',[])
         $scope.nhrsExclusion = [];
 
         $scope.extraVersion = {};
+        
+        $scope.loadPatientsForTa = function(ta) {
+          treatmentArmApi
+              .getPatientsForTa(ta)
+              .then(function (d) {
+                  console.log(d.data);
+              });
+        };
 
         $scope.loadTreatmentArmDetails = function(ta) {
             treatmentArmApi
