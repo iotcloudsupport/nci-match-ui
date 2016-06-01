@@ -323,6 +323,7 @@ describe('Controller: Ir Report Controller', function () {
         $scope.populateData(mockPositivesets);
 
         expect($scope.populateData.length).toBe(1);
+        // expect($scope.populateData.sampleControls.length).toBe(1);
 
     });
 

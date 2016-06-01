@@ -51,8 +51,8 @@ module.exports = function(config) {
 
     // list of files to exclude
     exclude: [
-      'spec/controllers/ir_qc_controller_spec.js'
-      // 'spec/controllers/ir_sample_controller_spec.js'
+      'spec/controllers/ir_qc_controller_spec.js',
+      'spec/controllers/ir_sample_controller_spec.js'
       // '../app/scripts/factories/match_http_factory.mock.js'
     ],
 
