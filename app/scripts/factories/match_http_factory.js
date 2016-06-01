@@ -70,6 +70,9 @@
             },
             getTreatmentArmDetails: function (taId) {
                 return $http.get(matchConfig.treatmentArmApiBaseUrl + '/treatmentArms/' + taId);
+            },
+            getPatientsForTa: function(taId) {
+                return $http.get(matchConfig.treatmentArmApiBaseUrl + '/patientsOnTreatmentArm/' + taId);
             }
 
         };
