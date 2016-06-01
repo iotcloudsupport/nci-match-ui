@@ -278,6 +278,15 @@ describe('Controller: Treatment Arm Controller', function () {
         //expect(scope.treatmentArmList[1].treatmentArmId).toBe('MB-S2');
     });
 
+    it('should return a data object from a call to the patient list service', function() {
+        httpBackend.when('GET', 'http://server:80/treatmentarmapi/patientsOnTreatmentArm/EAY131-A').respond(
+            []
+        );
+        scope.loadPatientsForTa('EAY131-A');
+        httpBackend.flush();
+
+    })
+
     it('should not populate the treatment arm list on an error response', function() {
         httpBackend.when('GET', 'http://server:80/treatmentarmapi/treatmentArms/EAY131-A').respond(500);
         scope.loadTreatmentArmDetails('EAY131-A');
