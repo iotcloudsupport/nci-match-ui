@@ -1,251 +1,226 @@
 <div class="row">
 
-<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="row wrapper border-bottom white-bg page-heading">
 
-        <div class="col-lg-10">
-            <h2>IR Sample Control Variant Report</h2>
+            <div class="col-lg-10">
+                <h2>IR Sample Control Variant Report</h2>
 
-            <ol class="breadcrumb">
-                <li>
-                    <a ui-sref="dashboard">Dashboard</a>
-                </li>
-                <li class="active">
-                    <a ui-sref="iradmin"> IR Reporters</a>
-                </li>
-                <li class="active">
-                    <strong>IR Sample Control Variant Report</strong>
-                </li>
-            </ol>
-        </div>
-</div>
-
-
-
-<div class="wrapper" ng-controller="SampleController">
-    <div class="animated fadeInRight" >
+                <ol class="breadcrumb">
+                    <li>
+                        <a ui-sref="dashboard">Dashboard</a>
+                    </li>
+                    <li class="active">
+                        <a ui-sref="iradmin"> IR Reporters</a>
+                    </li>
+                    <li class="active">
+                        <strong>IR Sample Control Variant Report</strong>
+                    </li>
+                </ol>
+            </div>
+    </div>
 
 
+
+    <div class="wrapper" ng-controller="SampleController">
+
+        <div class="animated fadeInRight" >
             <div class="no-horizontal-padding header-box-container">
 
-                <!--<div class="row row-eq-height">-->
+                <div class="row equal-height-panels">
 
-                    <div class="row equal-height-panels">
-                            <div class="col-lg-4 col-md-6">
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <dl class="dl-horizontal">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <dl class="dl-horizontal">
 
-                                        <dt>Molecular Sequence Number</dt>
-                                        <dd>1155</dd>
+                                    <dt>Molecular Sequence Number</dt>
+                                    <dd>1155</dd>
 
-                                        <dt>Analysis ID</dt>
-                                        <dd>{{sampleId}}</dd>
+                                    <dt>Analysis ID</dt>
+                                    <dd>{{sampleId}}</dd>
 
-                                        <dt>Total Variants</dt>
-                                        <dd>18</dd>
+                                    <dt>Total Variants</dt>
+                                    <dd>18</dd>
 
-                                        <dt>MAPD</dt>
-                                        <dd> - </dd>
+                                    <dt>MAPD</dt>
+                                    <dd> - </dd>
 
-                                        <dt> Cellularity</dt>
-                                        <dd> - </dd>
+                                    <dt> Cellularity</dt>
+                                    <dd> - </dd>
 
-                                        <dt>Positive Control</dt>
-                                        <dd>1</dd>
+                                    <dt>Positive Control</dt>
+                                    <dd>1</dd>
 
-                                        <dt>Positive Control Loaded Date</dt>
-                                        <dd>July 31, 2015 3:57 PM GMT </dd>
+                                    <dt>Positive Control Loaded Date</dt>
+                                    <dd>July 31, 2015 3:57 PM GMT </dd>
 
-                                        <dt>PFile Received Date</dt>
-                                        <dd>September 18, 2015 3:21 PM GMT </dd>
+                                    <dt>PFile Received Date</dt>
+                                    <dd>September 18, 2015 3:21 PM GMT </dd>
 
-                                        <dt>Torrent Variant Caller Version</dt>
-                                        <dd>tvc 4.4-8  </dd>
-                                        </dl>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6"  ng-init="loadSamplesList()">
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <dl class="dl-horizontal">
-                                            <dt>Quality Control Report</dt>
-                                            <dd>
-                                                <a ui-sref="ocsample({ sampleId:sampleId })" class="btn btn-xs btn-success file-button-xl">
-                                                    <i class="fa fa-bar-chart"></i>&nbsp;&nbsp;
-                                                    <span class="bold">Quality Control Report</span>
-                                                </a>
-                                            </dd>
-
-                                            <dt>Files</dt>
-                                            <dd>
-                                                <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
-                                                <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAI</a>
-                                                <a href="#" class="btn btn-xs btn-white file-button-xs">VCF</a>
-                                            </dd>
-                                            <dd>
-                                                <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
-                                                <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
-                                                <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
-                                            </dd>
-                                        </dl>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6" >
-                                <div class="panel panel-default">
-                                    <div class="panel-body">
-                                        <h4>Positive Controls Legend</h4>
-                                        <table class="table">
-                                            <thead>
-                                            <tr>
-                                                <th>Variant Type</th>
-                                                <th>Matching Criteria</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr class="warning">
-                                                <td>Indel</td>
-                                                <td>Chromosone, Position, Reference and Alternative.</td>
-                                            </tr>
-                                            <tr class="warning">
-                                                <td>SNV</td>
-                                                <td>Chromosone, Position, Reference and Alternative.</td>
-                                            </tr>
-                                            <tr class="warning">
-                                                <td>CNV</td>
-                                                <td>Gene</td>
-                                            </tr>
-                                            <tr class="warning">
-                                                <td>Fusion</td>
-                                                <td>HGVS</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-        </div>
-
-
-        <!--<div class="row row-eq-height">-->
-            <!--<div class="col-xs-12 col-sm-4 panel" style="background-color: red">-->
-                <!--some content-->
-            <!--</div>-->
-            <!--<div class="col-xs-6 col-sm-4 panel" style="background-color: yellow">-->
-                <!--kittenz-->
-                <!--<img src="http://placekitten.com/100/100">-->
-            <!--</div>-->
-            <!--<div class="col-xs-6 col-sm-4 panel" style="background-color: blue">-->
-                <!--some more content-->
-            <!--</div>-->
-        <!--</div>-->
-
-
-        <div ng-controller="SampleController" ng-init="loadVariantReportList()">
-
-        <uib-tabset>
-            <uib-tab heading="Positive Controls">
-                <div class="panel-body" >
-                    <div class="ibox float-e-margins">
-                        <div class="col-lg-12" >
-                            <div class="ibox float-e-margins">
-                                <div class="ibox-content">
-                                    <div >
-                                        <table datatable="ng" dt-options="dtOptions"
-                                               dt-column-defs="dtColumnDefs"
-                                               dt-instance="dtInstance"
-                                               class="table table-striped table-bordered table-hover" width="100%">
-                                            <thead>
-                                            <tr>
-                                                <th >Present ID</th>
-                                                <th >Chromosome</th>
-                                                <th >Position</th>
-                                                <th >Gene</th>
-                                                <th >Variant Type</th>
-
-                                                <th >Reference </th>
-                                                <th >Alternative</th>
-                                                <th >HGVS</th>
-                                                <th >Protein</th>
-                                                <th >Function</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr ng-repeat="sample in positiveControlList">
-                                                <td>{{sample.identifier}}</td>
-                                                <td>{{sample.chromosome}}</td>
-                                                <td>{{sample.position}}</td>
-                                                <td>{{sample.geneName}}</td>
-                                                <td>{{sample.variantType}}</td>
-                                                <td>{{sample.reference}}</td>
-                                                <td>{{sample.alternative}}</td>
-                                                <td>{{sample.protein}}</td>
-                                                <td>{{sample.purpose}}</td>
-                                                <td>{{sample.function}}</td>
-
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                    <dt>Torrent Variant Caller Version</dt>
+                                    <dd>tvc 4.4-8  </dd>
+                                    </dl>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                </uib-tab>
+                        <div class="col-lg-4 col-md-6"  ng-init="loadSamplesList()">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <dl class="dl-horizontal">
+                                        <dt>Quality Control Report</dt>
+                                        <dd>
+                                            <a ui-sref="ocsample({ sampleId:sampleId })" class="btn btn-xs btn-success file-button-xl">
+                                                <i class="fa fa-bar-chart"></i>&nbsp;&nbsp;
+                                                <span class="bold">Quality Control Report</span>
+                                            </a>
+                                        </dd>
 
-                <uib-tab heading="Negative Controls">
-                    <div class="panel-body" >
+                                        <dt>Files</dt>
+                                        <dd>
+                                            <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
+                                            <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAI</a>
+                                            <a href="#" class="btn btn-xs btn-white file-button-xs">VCF</a>
+                                        </dd>
+                                        <dd>
+                                            <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
+                                            <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
+                                            <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
 
-                        <div class="ibox float-e-margins">
-                            <div class="ibox-content">
-                                <div >
-
-                                    <table datatable="ng" dt-options="dtOptions"
-                                           dt-column-defs="dtColumnDefs"
-                                           dt-instance="dtInstance"
-                                           class="table table-striped table-bordered table-hover" width="100%">
+                        <div class="col-lg-4 col-md-6" >
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <h4>Positive Controls Legend</h4>
+                                    <table class="table">
                                         <thead>
                                         <tr>
-                                            <th > ID</th>
-                                            <th >Position</th>
-                                            <th >Gene</th>
-                                            <th >Variant Type</th>
-
-                                            <th >Reference </th>
-                                            <th >Alternative</th>
-                                            <th >HGVS</th>
-                                            <th >Protein</th>
-                                            <th >Function</th>
+                                            <th>Variant Type</th>
+                                            <th>Matching Criteria</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr ng-repeat="sample in negativeVariantsList">
-                                            <td>{{sample.publicMedIds}}</td>
-                                            <td>{{sample.position}}</td>
-                                            <td>{{sample.geneName}}</td>
-                                            <td>{{sample.variantType}}</td>
-                                            <td>{{sample.reference}}</td>
-                                            <td>{{sample.alternative}}</td>
-                                            <td>{{sample.hgvs}}</td>
-                                            <td>{{sample.protein}}</td>
-                                            <td>{{sample.function}}</td>
-
+                                        <tr class="warning">
+                                            <td>Indel</td>
+                                            <td>Chromosone, Position, Reference and Alternative.</td>
+                                        </tr>
+                                        <tr class="warning">
+                                            <td>SNV</td>
+                                            <td>Chromosone, Position, Reference and Alternative.</td>
+                                        </tr>
+                                        <tr class="warning">
+                                            <td>CNV</td>
+                                            <td>Gene</td>
+                                        </tr>
+                                        <tr class="warning">
+                                            <td>Fusion</td>
+                                            <td>HGVS</td>
                                         </tr>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
+                </div>
+
+                <div ng-controller="SampleController" ng-init="loadVariantReportList()">
+
+                    <div class="col-lg-16" >
+                        <div class="ibox float-e-margins">
+                            <div class="col-lg-16" >
+                                    <div class="ibox-content">
+                                            <div class="ibox-title ibox-title-no-line">
+                                                <h3>Positive Controls</h3>
+                                            </div>
+                                            <table class="table" role="grid">
+                                                <thead>
+                                                <tr>
+                                                    <th >Present ID</th>
+                                                    <th >Chromosome</th>
+                                                    <th >Position</th>
+                                                    <th >Gene</th>
+                                                    <th >Variant Type</th>
+
+                                                    <th >Reference </th>
+                                                    <th >Alternative</th>
+                                                    <th >HGVS</th>
+                                                    <th >Protein</th>
+                                                    <th >Function</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr ng-repeat="sample in positiveControlList">
+                                                    <td>{{sample.identifier}}</td>
+                                                    <td>{{sample.chromosome}}</td>
+                                                    <td>{{sample.position}}</td>
+                                                    <td>{{sample.geneName}}</td>
+                                                    <td>{{sample.variantType}}</td>
+                                                    <td>{{sample.reference}}</td>
+                                                    <td>{{sample.alternative}}</td>
+                                                    <td>{{sample.protein}}</td>
+                                                    <td>{{sample.purpose}}</td>
+                                                    <td>{{sample.function}}</td>
+
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                    </div>
+                            </div>
+                        </div>
                     </div>
-                </uib-tab>
-            </uib-tabset>
+
+                    <div class="col-lg-16" >
+                        <div class="ibox float-e-margins">
+                            <div class="col-lg-16" >
+                                    <div class="ibox-content">
+                                            <div class="ibox-title ibox-title-no-line">
+                                                <h3>False Positive Variants</h3>
+                                            </div>
+                                            <table class="table" role="grid">
+                                                <thead>
+                                                <tr>
+                                                    <th > ID</th>
+                                                    <th >Position</th>
+                                                    <th >Gene</th>
+                                                    <th >Variant Type</th>
+
+                                                    <th >Reference </th>
+                                                    <th >Alternative</th>
+                                                    <th >HGVS</th>
+                                                    <th >Protein</th>
+                                                    <th >Function</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr ng-repeat="sample in negativeVariantsList">
+                                                    <td>{{sample.publicMedIds}}</td>
+                                                    <td>{{sample.position}}</td>
+                                                    <td>{{sample.geneName}}</td>
+                                                    <td>{{sample.variantType}}</td>
+                                                    <td>{{sample.reference}}</td>
+                                                    <td>{{sample.alternative}}</td>
+                                                    <td>{{sample.hgvs}}</td>
+                                                    <td>{{sample.protein}}</td>
+                                                    <td>{{sample.function}}</td>
+
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
         </div>
+
+
         </div>
+
     </div>
 </div>
