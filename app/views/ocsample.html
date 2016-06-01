@@ -21,7 +21,7 @@
     </div>
 
 
-<div class="wrapper">
+<div class="wrapper" ng-controller="SampleController">
     <div class="animated fadeInRight">
                     <div class="no-horizontal-padding header-box-container">
 
@@ -36,7 +36,7 @@
                                             <dd>1155</dd>
 
                                             <dt>Analysis ID</dt>
-                                            <dd>MoCha_job10</dd>
+                                            <dd>{{sampleId}}</dd>
 
                                             <dt>Total Variants</dt>
                                             <dd>18</dd>
@@ -63,7 +63,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-6 col-md-6" ng-controller="SampleController"  ng-init="loadSamplesList()">
+                            <div class="col-lg-6 col-md-6" ng-init="loadSamplesList()">
                                 <div class="panel panel-default">
                                     <div class="panel-body">
                                         <dl class="dl-horizontal">
