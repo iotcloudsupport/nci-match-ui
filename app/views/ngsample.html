@@ -23,74 +23,126 @@
 
 <div class="wrapper">
     <div class="animated fadeInRight">
+
+
             <div class="no-horizontal-padding header-box-container">
-                <div class="row flex">
-                    <div class="col-lg-6 col-md-6">
-                <div class="panel panel-default">
-                <div class="panel-body">
-                    <dl class="dl-horizontal">
 
-                    <dt>Molecular Sequence Number</dt>
-                    <dd>1155</dd>
+                <!--<div class="row row-eq-height">-->
 
-                    <dt>Analysis ID</dt>
-                    <dd>MoCha_job10</dd>
+                    <div class="row equal-height-panels">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <dl class="dl-horizontal">
 
-                    <dt>Total Variants</dt>
-                    <dd>18</dd>
+                                        <dt>Molecular Sequence Number</dt>
+                                        <dd>1155</dd>
 
-                    <dt>MAPD</dt>
-                    <dd> - </dd>
+                                        <dt>Analysis ID</dt>
+                                        <dd>MoCha_job10</dd>
 
-                    <dt> Cellularity</dt>
-                    <dd> - </dd>
+                                        <dt>Total Variants</dt>
+                                        <dd>18</dd>
 
-                    <dt>Positive Control</dt>
-                    <dd>1</dd>
+                                        <dt>MAPD</dt>
+                                        <dd> - </dd>
 
-                    <dt>Positive Control Loaded Date</dt>
-                    <dd>July 31, 2015 3:57 PM GMT </dd>
+                                        <dt> Cellularity</dt>
+                                        <dd> - </dd>
 
-                    <dt>PFile Received Date</dt>
-                    <dd>September 18, 2015 3:21 PM GMT </dd>
+                                        <dt>Positive Control</dt>
+                                        <dd>1</dd>
 
-                    <dt>Torrent Variant Caller Version</dt>
-                    <dd>tvc 4.4-8  </dd>
-                    </dl>
-                </div>
-                </div>
-                </div>
-                    <div class="col-lg-6 col-md-6" ng-controller="SampleController"  ng-init="loadSamplesList()">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <dl class="dl-horizontal">
-                            <dt>Quality Control Report</dt>
-                            <dd>
-                                <a ui-sref="ocsample({ sampleId:sampleId })" class="btn btn-xs btn-success file-button-xl">
-                                    <i class="fa fa-bar-chart"></i>&nbsp;&nbsp;
-                                    <span class="bold">Quality Control Report</span>
-                                </a>
-                            </dd>
+                                        <dt>Positive Control Loaded Date</dt>
+                                        <dd>July 31, 2015 3:57 PM GMT </dd>
 
-                            <dt>Files</dt>
-                            <dd>
-                                <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
-                                <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAI</a>
-                                <a href="#" class="btn btn-xs btn-white file-button-xs">VCF</a>
-                            </dd>
-                            <dd>
-                                <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
-                                <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
-                                <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
-                            </dd>
-                        </dl>
+                                        <dt>PFile Received Date</dt>
+                                        <dd>September 18, 2015 3:21 PM GMT </dd>
+
+                                        <dt>Torrent Variant Caller Version</dt>
+                                        <dd>tvc 4.4-8  </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6" ng-controller="SampleController"  ng-init="loadSamplesList()">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <dl class="dl-horizontal">
+                                            <dt>Quality Control Report</dt>
+                                            <dd>
+                                                <a ui-sref="ocsample({ sampleId:sampleId })" class="btn btn-xs btn-success file-button-xl">
+                                                    <i class="fa fa-bar-chart"></i>&nbsp;&nbsp;
+                                                    <span class="bold">Quality Control Report</span>
+                                                </a>
+                                            </dd>
+
+                                            <dt>Files</dt>
+                                            <dd>
+                                                <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
+                                                <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAI</a>
+                                                <a href="#" class="btn btn-xs btn-white file-button-xs">VCF</a>
+                                            </dd>
+                                            <dd>
+                                                <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
+                                                <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
+                                                <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
+                                            </dd>
+                                        </dl>
+
+                                        <div class="panel-body">
+                                            <h4>Positive Controls Legend</h4>
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>Variant Type</th>
+                                                    <th>Matching Criteria</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr class="warning">
+                                                    <td>Indel</td>
+                                                    <td>Chromosone, Position, Reference and Alternative.</td>
+                                                </tr>
+                                                <tr class="warning">
+                                                    <td>SNV</td>
+                                                    <td>Chromosone, Position, Reference and Alternative.</td>
+                                                </tr>
+                                                <tr class="warning">
+                                                    <td>CNV</td>
+                                                    <td>Gene</td>
+                                                </tr>
+                                                <tr class="warning">
+                                                    <td>Fusion</td>
+                                                    <td>HGVS</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
                     </div>
-                </div>
-            </div>
             </div>
         </div>
 
-        <div ng-controller="SampleController" ng-init="loadVariantReport()">
+
+        <!--<div class="row row-eq-height">-->
+            <!--<div class="col-xs-12 col-sm-4 panel" style="background-color: red">-->
+                <!--some content-->
+            <!--</div>-->
+            <!--<div class="col-xs-6 col-sm-4 panel" style="background-color: yellow">-->
+                <!--kittenz-->
+                <!--<img src="http://placekitten.com/100/100">-->
+            <!--</div>-->
+            <!--<div class="col-xs-6 col-sm-4 panel" style="background-color: blue">-->
+                <!--some more content-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+        <div ng-controller="SampleController" ng-init="loadVariantReportList()">
 
         <uib-tabset>
             <uib-tab heading="Positive Controls">

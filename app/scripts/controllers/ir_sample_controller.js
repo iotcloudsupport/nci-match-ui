@@ -1,5 +1,9 @@
 angular.module('irsample.matchbox',['ui.router'])
-    .controller('SampleController', function( $scope, $http, $stateParams, DTOptionsBuilder, irSampleVariantApi) {
+    .controller('SampleController', function( $scope, $http, $stateParams, DTOptionsBuilder, irSampleVariantApi, prompt) {
+
+        angular.element(document).ready(function () {
+            $('.equal-height-panels .panel').matchHeight();
+        });
 
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(5);
@@ -8,12 +12,27 @@ angular.module('irsample.matchbox',['ui.router'])
 
         this.dtInstance = {};
 
+        function showPrompt(options) {
+            return prompt(options);
+        }
+
         $scope.positiveControlList = [];
         $scope.negativeVariantsList = [];
 
         $scope.loadSamplesList = function () {
             $scope.sampleId = $stateParams.sampleId;
         };
+
+        $scope.showConfirmation = function () {
+                showPrompt({
+                    title: title,
+                    message: message,
+                    input: true,
+                    buttons: [{ label:'OK', primary: true }, { label:'Cancel', cancel: true }]
+                }).then(function (comment) {
+                    $log.debug('User entered comment: ' + comment);
+                });
+            };
 
         $scope.loadVariantReportList = function () {
             irSampleVariantApi
