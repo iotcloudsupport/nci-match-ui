@@ -2,13 +2,13 @@
 
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>IR Admin</h2>
+        <h2>IR Reporters</h2>
         <ol class="breadcrumb">
             <li>
                 <a ui-sref="dashboard">Dashboard</a>
             </li>
             <li class="active">
-                <strong>IR Admin</strong>
+                <strong>IR Reporters</strong>
             </li>
         </ol>
     </div>
@@ -99,14 +99,14 @@
                                         <div class="row">
                                             <div class="col-md-8 text-left">
                                                 <div class="btn-group btn-group-margin" data-toggle="buttons">
-                                                    <label class="btn btn-outline btn-success"
+                                                    <label class="btn btn-outline btn-success active"
                                                            ng-click="showsection=false"
-                                                           title="Switch to Tumor Tussue Report">
+                                                           title="Switch to MoCha">
                                                         <input type="radio" name="SampleType" id="s1">MoCha
                                                     </label>
                                                     <label class="btn btn-outline btn-success"
                                                            ng-click="showsection=true"
-                                                           title="Switch to Blood Report">
+                                                           title="Switch to MD Anderson">
                                                         <input type="radio" name="SampleType" id="s2">MD Anderson
                                                     </label>
                                                 </div>
@@ -123,7 +123,6 @@
                                                         type="button" ng-click="showConfirmation('MoCha')">
                                                     Generate MSN
                                                 </button>
-
 
                                                 <div class="row">
                                                     <div class="col-xs-3">
@@ -170,6 +169,13 @@
                                                         </div>
                                                     </div>
 
+                                                <!--Negative MoCha-->
+                                                <button style="width:300px; margin: 0px 3px 8px 3px"
+                                                        data-dismiss="modal" class="btn btn-primary pull-right"
+                                                        type="button" ng-click="showConfirmation('MoCha')">
+                                                    Generate MSN
+                                                </button>
+
                                                 <div class="row">
                                                     <div class="col-xs-3">
                                                         <h3>Negative Sample Controls - MoCha</h3>
@@ -214,6 +220,8 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                <!--Negative MoCha-->
+
                                             </div>
                                         </div>
                                             <!--MoCha Sets-->
@@ -224,10 +232,9 @@
 
                                                 <button style="width:300px; margin: 0px 3px 8px 3px"
                                                         data-dismiss="modal" class="btn btn-primary pull-right"
-                                                        type="button" data="129.43.127.133" id="generateMoCha">
+                                                        type="button" ng-click="showConfirmation('MDACC')">
                                                     Generate MSN
                                                 </button>
-
 
                                                 <div class="row">
                                                     <div class="col-xs-3">
@@ -274,6 +281,14 @@
                                                     </div>
                                                 </div>
 
+                                                <button style="width:300px; margin: 0px 3px 8px 3px"
+                                                        data-dismiss="modal" class="btn btn-primary pull-right"
+                                                        type="button" ng-click="showConfirmation('MDCC')">
+                                                    Generate MSN
+                                                </button>
+
+
+                                                <!--Negative MD Anderson-->
                                                 <div class="row">
                                                     <div class="col-xs-3">
                                                         <h3>Negative Sample Controls - MD Anderson</h3>
@@ -318,6 +333,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <!--Negative MD Anderson-->
+
                                             </div>
                                         </div>
                                             <!--MDCC Sets-->
