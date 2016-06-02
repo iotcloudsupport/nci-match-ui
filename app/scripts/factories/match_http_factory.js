@@ -48,9 +48,6 @@
 
     function reportApi($http, matchConfig) {
         return {
-            /*getPatientInLimboReports: function () {
-                return $http.get(matchConfig.reportApiBaseUrl + '/limboPatient');
-            },*/
             getReportList: function () {
                 return $http.get(matchConfig.reportApiBaseUrl + '/reportList');
             },
