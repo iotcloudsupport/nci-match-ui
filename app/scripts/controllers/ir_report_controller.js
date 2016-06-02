@@ -119,7 +119,6 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
             irAdminApi
                 .loadHeartBeatList()
                 .then(function (d) {
-
                     angular.forEach(d.data, function (value,key) {
                         var timer = ['fa fa-clock-o fa-2x', 'color:green'];
                         var time = "On time";
@@ -133,23 +132,32 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
                             timer = ['fa fa-warning fa-2x', 'color:red'];
                             time = "8.5 hours ago";
                         }
+                        // var dbreport = "https://matchbox.nci.nih.gov:8443/match/common/rs/getIrUploaderFile/dbReport?ipAddress="+value.externalIpAddress;
+                        // var datafile = "https://matchbox.nci.nih.gov:8443/match/common/rs/getIrUploaderFile/dataFile?ipAddress="+value.externalIpAddress;
+                        // var logfile = "https://matchbox.nci.nih.gov:8443/match/common/rs/getIrUploaderFile/logFile?ipAddress="+value.externalIpAddress;
 
-                        $scope.irList.push({
-                            'timer': timer,
-                            'time': time,
-                            'hostName': value.hostName,
-                            'ipAddress': value.ipAddress,
-                            'externalIpAddress': value.externalIpAddress,
-                            'status': value.status,
-                            'lastContactDate': value.lastContactDate,
-                            'dbReport': value.dbReport,
-                            'dataFile': value.dataFile,
-                            'logFile': value.logFile,
-                            'location': value.location,
-                            'dbReportPath': value.dbReportPath,
-                            'dataFilePath': value.dataFilePath,
-                            'logFilePath': value.logFilePath
-                        });
+                        var dbreport = "https://matchbox.nci.nih.gov:8443/match/common/rs/getIrUploaderFile/dbReport?ipAddress=129.43.127.133";
+                        var datafile = "https://matchbox.nci.nih.gov:8443/match/common/rs/getIrUploaderFile/dataFile?ipAddress=129.43.127.133";
+                        var logfile = "https://matchbox.nci.nih.gov:8443/match/common/rs/getIrUploaderFile/logFile?ipAddress=129.43.127.133";
+
+                        if(value.location !== "Yale" ||  alue.location !== "MGH") {
+                            $scope.irList.push({
+                                'timer': timer,
+                                'time': time,
+                                'hostName': value.hostName,
+                                'ipAddress': value.ipAddress,
+                                'externalIpAddress': value.externalIpAddress,
+                                'status': value.status,
+                                'lastContactDate': value.lastContactDate,
+                                'dbReport': value.dbReport,
+                                'dataFile': value.dataFile,
+                                'logFile': value.logFile,
+                                'location': value.location,
+                                'dbReportPath': dbreport,
+                                'dataFilePath': datafile,
+                                'logFilePath': logfile
+                            });
+                        }
                     });
                 });
             };

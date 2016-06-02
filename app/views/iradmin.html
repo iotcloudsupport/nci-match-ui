@@ -19,7 +19,7 @@
 
 
 
-<div class="wrapper">
+<div class="wrapper" ng-controller="IrAdminController" >
 
     <div class="no-horizontal-padding header-box-container">
 
@@ -30,17 +30,12 @@
 
                         <uib-tabset>
 
-                            <uib-tab heading="Statuses">
+                            <uib-tab heading="Heartbeat">
                                 <div class="panel-body" >
                                     <div class="col-lg-12">
                                         <div class="ibox float-e-margins">
-                                            <div class="col-lg-12" ng-controller="IrAdminController" ng-init="loadHeartBeatList()">
+                                            <div class="col-lg-12" ng-init="loadHeartBeatList()">
                                                 <div class="ibox float-e-margins">
-                                                    <div class="ibox-title">
-                                                        <h5>Heartbeat Timeline</h5>
-                                                        <span class="label label-primary">Current Status</span>
-                                                        <div ibox-tools></div>
-                                                    </div>
 
                                                     <div class="ibox-content inspinia-timeline" ng-repeat="ir in irList">
 
@@ -72,11 +67,26 @@
                                                                         <div class="col-md-4 col-sm-6 text-left">
                                                                             <dl class="dl-horizontal-narrow">
                                                                                 <dt>Location</dt>
-                                                                                <dd ng-style="{'color':'green'}" class="ng-binding" style="color: rgb(0, 128, 0);">{{ ir.location }}</dd>
+                                                                                <dd ng-style="{'color':'green'}" class="ng-binding" style="color: rgb(0, 128, 0);">{{ ir.location  || '-'  }}</dd>
 
                                                                                 <dt class="ng-binding">Status</dt>
                                                                                 <dd ng-style="{'color':'green'}" class="ng-binding" style="color: rgb(0, 128, 0);">{{ ir.lastContactDate | gmt}}</dd>
                                                                             </dl>
+                                                                        </div>
+
+
+                                                                        <div class="col-md-4 col-sm-6 text-left">
+
+                                                                            <dt>Files</dt>
+                                                                            <dd>
+
+                                                                                <!--href="https://matchbox.nci.nih.gov:8443/match/common/rs/getIrUploaderFile/dbReport?ipAddress=129.43.127.133"-->
+
+                                                                                <a target='_blank' href="{{ ir.dbReportPath }}" class="btn btn-xs btn-white file-button-xs">DB REPORT</a>
+                                                                                <a target='_blank' href="{{ ir.dataFilePath }}" class="btn btn-xs btn-white file-button-xs">DATA FILE</a>
+                                                                                <a target='_blank' href="{{ ir.logFilePath }}" class="btn btn-xs btn-white file-button-xs">LOG FILE</a>
+                                                                            </dd>
+
                                                                         </div>
 
                                                                     </div>

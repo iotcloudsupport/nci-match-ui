@@ -199,7 +199,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
         .state('iradmin', {
             url: "/iradmin",
             templateUrl: "views/iradmin.html",
-            data: { pageTitle: 'IR Admin', requiresLogin: true },
+            data: { pageTitle: 'IR Reporters', requiresLogin: true },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
