@@ -192,7 +192,7 @@ describe('Controller: dashboard Controller', function () {
     });
 
 
-    it('should populate the dashboard Patient In Limbo Reports list with  on a success response', function() {
+    /*it('should populate the dashboard Patient In Limbo Reports list with  on a success response', function() {
         httpBackend.when('GET', 'http://server:80/reportapi/limboPatient')
             .respond([
                 {
@@ -225,7 +225,7 @@ describe('Controller: dashboard Controller', function () {
         httpBackend.flush();
 
         expect(scope.concordancePatientList.length).toBe(0);
-    });
+    });*/
 
     it('should populate the aMOI donut chart on a success response', function() {
         scope.loadChartjsDonutChart();
