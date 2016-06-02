@@ -52,7 +52,7 @@ angular.module('dashboard.matchbox',[])
                 });
         }
 
-        $scope.loadLimboPatientsList = function() {
+        /*$scope.loadLimboPatientsList = function() {
             reportApi
                 .getPatientInLimboReports()
                 .then(function(d) {
@@ -80,7 +80,7 @@ angular.module('dashboard.matchbox',[])
                         $scope.concordancePatientList.push(concordanceTemplate);
                     });
                 });
-        };
+        };*/
 
         $scope.loadRejoinRequestedPatientsList = function() {
             workflowApi
