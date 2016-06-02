@@ -108,6 +108,23 @@
 
     }
 
+    //Sample Quality Control Reports
+    function irSampleQualityApi($http, $stateParams, matchConfig) {
+
+        return {
+            loadSampleQualityReportList: function() {
+                var id = $stateParams.sampleId;
+                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlOCPControlSummary?molecularSequenceNumber=' + id);
+            },
+            loadSampleQualityUnfilteredReportList: function() {
+                var id = $stateParams.sampleId;
+
+                // alert(id)
+                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlUnfilteredVariantReport?molecularSequenceNumber=' + id);
+            }
+        };
+    }
+
 
     function svgApi($http, $stateParams, matchConfig) {
         return {
