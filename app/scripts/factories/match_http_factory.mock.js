@@ -28,12 +28,7 @@
                     },
                     treatmentArm: 'EAY131-B',
                     assignment: { id: 123, reason: 'The patient arm match on variant indetifier [ABC, EDF]' },
-                    drugs: ['Aspirin', 'Motrin', 'Vitamin D'],
-                    documents: [
-                        { url: 'url1', title: 'Document 1' },
-                        { url: 'url2', title: 'Document 2' },
-                        { url: 'url3', title: 'Document 3' }
-                    ]
+                    drugs: ['Aspirin', 'Motrin', 'Vitamin D']
                 }
 
                 data.treatmentArms = {};
