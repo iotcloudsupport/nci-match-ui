@@ -52,58 +52,6 @@ angular.module('dashboard.matchbox',[])
                 });
         }
 
-        /*$scope.loadLimboPatientsList = function() {
-            reportApi
-                .getPatientInLimboReports()
-                .then(function(d) {
-                    angular.forEach(d.data, function (value) {
-                        var patientSequenceNumber = value.psn;
-                        var biopsySequenceNumber = value.bsn;
-                        var molecularSequenceNumber = value.msn;
-                        var jobName = value.job_name;
-                        var currentPatientStatus = value.currentPatientStatus;
-
-                        var variantReportLink =  "patientId=" + patientSequenceNumber +
-                            "&biopsySequenceNumber=" + biopsySequenceNumber +
-                            "&molecularSequenceNumber=" + molecularSequenceNumber +
-                            "&jobName=" + jobName +
-                            "&status=" + currentPatientStatus + "'";
-
-                        var concordanceTemplate = {
-                            'psn': patientSequenceNumber,
-                            'msn': molecularSequenceNumber,
-                            'variantReport': variantReportLink,
-                            'concordance': value.concordance,
-                            'date_verified': value.date_verified
-                        };
-
-                        $scope.concordancePatientList.push(concordanceTemplate);
-                    });
-                });
-        };*/
-
-        $scope.loadRejoinRequestedPatientsList = function() {
-            workflowApi
-                .getRejoinRequested()
-                .then(function(d) {
-                    angular.forEach(d.data, function(value) {
-                        patientSequenceNumber = value.patientSequenceNumber;
-                        latestTrigger = value.patientRejoinTriggers[value.patientRejoinTriggers.length - 1];
-                        if (! angular.isDefined(latestTrigger.dateRejoined)) {
-                            treatmentArmList = [];
-                            angular.forEach(latestTrigger.eligibleArms, function(eligibleArm) {
-                                treatmentArmList.push(eligibleArm.treatmentArmId + ' (' + eligibleArm.treatmentArmVersion + ')')
-                            });
-                            $scope.rejoinRequestedPatientList.push({
-                                'patientSequenceNumber': patientSequenceNumber,
-                                'treatmentArm': treatmentArmList.join(', '),
-                                'dateScanned': latestTrigger.dateScanned,
-                                'dateSentToECOG': latestTrigger.dateSentToECOG
-                            });
-                        }
-                    });
-                });
-        };
     })
     .controller('DashboardActivityFeedController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, reportApi ) {
         this.dtOptions = DTOptionsBuilder.newOptions()
