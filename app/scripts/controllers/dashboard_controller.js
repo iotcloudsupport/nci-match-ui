@@ -7,6 +7,8 @@ angular.module('dashboard.matchbox',[])
         $scope.numberOfPatientsWithTreatment = '?';
         $scope.numberOfPendingVariantReports = '?';
         $scope.numberOfPendingAssignmentReports = '?';
+        $scope.numberOfPendingTissueVariantReports = '?';
+        $scope.numberOfPendingBloodVariantReports = '?';
 
         $scope.loadDashboardStatistics = function() {
             workflowApi
@@ -17,6 +19,8 @@ angular.module('dashboard.matchbox',[])
                     $scope.numberOfPatientsWithTreatment = d.data.number_of_patients_with_treatment;
                     $scope.numberOfPendingVariantReports = d.data.number_of_pending_variant_reports;
                     $scope.numberOfPendingAssignmentReports = d.data.number_of_pending_assignment_reports;
+                    $scope.numberOfPendingTissueVariantReports = d.data.number_of_pending_tissue_variant_reports;
+                    $scope.numberOfPendingBloodVariantReports = d.data.number_of_pending_blood_variant_reports;
                 });
         };
     })
