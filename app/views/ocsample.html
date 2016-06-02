@@ -1,4 +1,4 @@
-<div class="row">
+<div ng-controller="QcSampleController">
 
     <div class="row wrapper border-bottom white-bg page-heading">
 
@@ -21,7 +21,7 @@
     </div>
 
 
-<div class="wrapper" ng-controller="QcSampleController">
+<div class="wrapper">
 
     <div class="animated fadeInRight">
 
@@ -75,19 +75,29 @@
 
                                         <div class="header-info-box top-main-header-box" style="border:none" >
 
-                                            <dl class="dl-horizontal">
-                                                <dt>Files</dt>
-                                                <dd>
-                                                    <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
-                                                    <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAI</a>
-                                                    <a href="#" class="btn btn-xs btn-white file-button-xs">VCF</a>
-                                                </dd>
-                                                <dd>
-                                                    <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
-                                                    <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
-                                                    <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
-                                                </dd>
-                                            </dl>
+                                            <dl class="dl-horizontal  pull-left">
+                                            <dt>Files</dt>
+                                            <dd>
+                                                <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
+                                                <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAI</a>
+                                                <a href="#" class="btn btn-xs btn-white file-button-xs">VCF</a>
+                                            </dd>
+                                            <dd>
+                                                <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
+                                                <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
+                                                <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
+                                            </dd>
+                                        </dl>
+
+                                        <!--<dl class="dl-horizontal">-->
+                                            <!--<dt>Files</dt>-->
+                                            <!--<dt><a class="report-link" href ng-click="openCosmicGene(&quot;LRP1&quot;)">LRP1</a></dt><dd id="LRP1" width="15%">8668</dd >-->
+                                            <!--<dt><a class="report-link" href ng-click="openCosmicGene(&quot;TBP&quot;)">TBP</a></dt><dd id="v5TBP" width="15%">708413</dd >-->
+                                            <!--<dt><a class="report-link" href ng-click="openCosmicGene(&quot;MYC&quot;)">MYC</a></dt><dd id="v5MYC" width="15%">75577</dd >-->
+                                            <!--<dt><a class="report-link" href ng-click="openCosmicGene(&quot;HMBS&quot;)">HMBS</a></dt><dd id="v5HMBS" width="15%">164227</dd >-->
+                                            <!--<dt><a class="report-link" href ng-click="openCosmicGene(&quot;ITGB7&quot;)">ITGB7</a></dt><dd id="v5ITGB7" width="15%">1028</dd >-->
+                                            <!--<td class="label2">SUM</td> <dd id="v5sum" width="15%">957913</dd >-->
+                                        <!--</dl>-->
 
 
 
