@@ -39,8 +39,12 @@ angular.module('irsample.matchbox',['ui.router'])
                 .loadVariantReportList()
                 .then(function (d) {
                     angular.forEach(d, function (value,key) {
+
                         //Positive Controls
                         angular.forEach(value.positiveControls, function (v,k) {
+
+                            var hasMatchingVariant = v.hasMatchingVariant;
+
                          var pc = v.positiveControl;
                             $scope.positiveControlList.push({
 
@@ -54,7 +58,8 @@ angular.module('irsample.matchbox',['ui.router'])
                                 'protein':pc.protein,
                                 'dna':pc.dna,
                                 'purpose':pc.purpose,
-                                'function':pc.function
+                                'function':pc.function,
+                                'hasMatchingVariant': hasMatchingVariant
 
                             });
                         });

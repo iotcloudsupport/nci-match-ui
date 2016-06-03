@@ -180,7 +180,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr ng-repeat="sample in positiveControlList">
+                                                <tr ng-style="{'background-color':'{{ sample.hasMatchingVariant | irsample }}'}" ng-repeat="sample in positiveControlList">
                                                     <td>{{sample.identifier}}</td>
                                                     <td>{{sample.chromosome}}</td>
                                                     <td>{{sample.position}}</td>

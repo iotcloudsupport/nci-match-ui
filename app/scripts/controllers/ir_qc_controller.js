@@ -24,6 +24,18 @@ angular.module('qcsample.matchbox',[])
 
         };
 
+        $scope.openCosmicId = function (id) {
+
+            $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + id.toLowerCase(), "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=300, left=300, width=600, height=400");
+
+        };
+
+        $scope.openCosmicFusionId = function (id) {
+
+            $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + id.toLowerCase(), "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=300, left=300, width=600, height=400");
+
+        };
+
         $scope.loadSvgGeneList = function (id) {
             svgApi
                 .getSvgGene($stateParams.sampleId)

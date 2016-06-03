@@ -16,6 +16,10 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
 
         //Populate Data
         $scope.populateData = function(d) {
+
+
+            // alert(JSON.stringify(d.data))
+
             angular.forEach(d.data, function (value,key) {
 
                 if(value.siteName !== 'Unknown') {
@@ -25,10 +29,12 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
                 var positivesets = value.sampleControls;
                 var negativesets = value.ntcControls;
 
+                // alert(JSON.stringify(negativesets))
+
                 //Positive sets
                 angular.forEach(positivesets, function (v,k) {
 
-                    if(v.site === 'MoCha'){
+                    if(v.site === 'MoCha') {
 
                         $scope.positiveListMocha.push({
                             'sampleSite': v.site,
