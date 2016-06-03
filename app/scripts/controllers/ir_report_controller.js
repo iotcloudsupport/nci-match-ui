@@ -140,7 +140,10 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
                         var datafile = "https://matchbox.nci.nih.gov:8443/match/common/rs/getIrUploaderFile/dataFile?ipAddress=129.43.127.133";
                         var logfile = "https://matchbox.nci.nih.gov:8443/match/common/rs/getIrUploaderFile/logFile?ipAddress=129.43.127.133";
 
-                        if(value.location !== "Yale" ||  alue.location !== "MGH") {
+                        if(value.location !== "Yale" &&  value.location !== "MGH") {
+
+                            // alert(value.location)
+
                             $scope.irList.push({
                                 'timer': timer,
                                 'time': time,

@@ -7,6 +7,8 @@ angular.module('dashboard.matchbox',[])
         $scope.numberOfPatientsWithTreatment = '?';
         $scope.numberOfPendingVariantReports = '?';
         $scope.numberOfPendingAssignmentReports = '?';
+        $scope.numberOfPendingTissueVariantReports = '?';
+        $scope.numberOfPendingBloodVariantReports = '?';
 
         $scope.loadDashboardStatistics = function() {
             workflowApi
@@ -17,6 +19,8 @@ angular.module('dashboard.matchbox',[])
                     $scope.numberOfPatientsWithTreatment = d.data.number_of_patients_with_treatment;
                     $scope.numberOfPendingVariantReports = d.data.number_of_pending_variant_reports;
                     $scope.numberOfPendingAssignmentReports = d.data.number_of_pending_assignment_reports;
+                    $scope.numberOfPendingTissueVariantReports = d.data.number_of_pending_tissue_variant_reports;
+                    $scope.numberOfPendingBloodVariantReports = d.data.number_of_pending_blood_variant_reports;
                 });
         };
     })
@@ -52,58 +56,6 @@ angular.module('dashboard.matchbox',[])
                 });
         }
 
-        $scope.loadLimboPatientsList = function() {
-            reportApi
-                .getPatientInLimboReports()
-                .then(function(d) {
-                    angular.forEach(d.data, function (value) {
-                        var patientSequenceNumber = value.psn;
-                        var biopsySequenceNumber = value.bsn;
-                        var molecularSequenceNumber = value.msn;
-                        var jobName = value.job_name;
-                        var currentPatientStatus = value.currentPatientStatus;
-
-                        var variantReportLink =  "patientId=" + patientSequenceNumber +
-                            "&biopsySequenceNumber=" + biopsySequenceNumber +
-                            "&molecularSequenceNumber=" + molecularSequenceNumber +
-                            "&jobName=" + jobName +
-                            "&status=" + currentPatientStatus + "'";
-
-                        var concordanceTemplate = {
-                            'psn': patientSequenceNumber,
-                            'msn': molecularSequenceNumber,
-                            'variantReport': variantReportLink,
-                            'concordance': value.concordance,
-                            'date_verified': value.date_verified
-                        };
-
-                        $scope.concordancePatientList.push(concordanceTemplate);
-                    });
-                });
-        };
-
-        $scope.loadRejoinRequestedPatientsList = function() {
-            workflowApi
-                .getRejoinRequested()
-                .then(function(d) {
-                    angular.forEach(d.data, function(value) {
-                        patientSequenceNumber = value.patientSequenceNumber;
-                        latestTrigger = value.patientRejoinTriggers[value.patientRejoinTriggers.length - 1];
-                        if (! angular.isDefined(latestTrigger.dateRejoined)) {
-                            treatmentArmList = [];
-                            angular.forEach(latestTrigger.eligibleArms, function(eligibleArm) {
-                                treatmentArmList.push(eligibleArm.treatmentArmId + ' (' + eligibleArm.treatmentArmVersion + ')')
-                            });
-                            $scope.rejoinRequestedPatientList.push({
-                                'patientSequenceNumber': patientSequenceNumber,
-                                'treatmentArm': treatmentArmList.join(', '),
-                                'dateScanned': latestTrigger.dateScanned,
-                                'dateSentToECOG': latestTrigger.dateSentToECOG
-                            });
-                        }
-                    });
-                });
-        };
     })
     .controller('DashboardActivityFeedController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, reportApi ) {
         this.dtOptions = DTOptionsBuilder.newOptions()

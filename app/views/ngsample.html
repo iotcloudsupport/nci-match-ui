@@ -1,4 +1,4 @@
-<div class="row">
+<div  ng-controller="SampleController">
 
     <div class="row wrapper border-bottom white-bg page-heading">
 
@@ -21,45 +21,53 @@
 
 
 
-    <div class="wrapper" ng-controller="SampleController">
+    <div class="wrapper">
 
         <div class="animated fadeInRight" >
+
             <div class="no-horizontal-padding header-box-container">
 
                 <div class="row equal-height-panels">
 
-                        <div class="col-lg-4 col-md-6">
+                        <div class="col-lg-4 col-md-8">
                             <div class="panel panel-default">
                                 <div class="panel-body">
-                                    <dl class="dl-horizontal">
 
-                                    <dt>Molecular Sequence Number</dt>
-                                    <dd>1155</dd>
 
-                                    <dt>Analysis ID</dt>
-                                    <dd>{{sampleId}}</dd>
+                                    <div class="header-info-box top-main-header-box" style="border:none" >
 
-                                    <dt>Total Variants</dt>
-                                    <dd>18</dd>
+                                        <dl class="dl-horizontal">
 
-                                    <dt>MAPD</dt>
-                                    <dd> - </dd>
+                                            <dt>Molecular Sequence Number</dt>
+                                            <dd>1155</dd>
 
-                                    <dt> Cellularity</dt>
-                                    <dd> - </dd>
+                                            <dt>Analysis ID</dt>
+                                            <dd>{{sampleId}}</dd>
 
-                                    <dt>Positive Control</dt>
-                                    <dd>1</dd>
+                                            <dt>Total Variants</dt>
+                                            <dd>18</dd>
 
-                                    <dt>Positive Control Loaded Date</dt>
-                                    <dd>July 31, 2015 3:57 PM GMT </dd>
+                                            <dt>MAPD</dt>
+                                            <dd> - </dd>
 
-                                    <dt>PFile Received Date</dt>
-                                    <dd>September 18, 2015 3:21 PM GMT </dd>
+                                            <dt> Cellularity</dt>
+                                            <dd> - </dd>
 
-                                    <dt>Torrent Variant Caller Version</dt>
-                                    <dd>tvc 4.4-8  </dd>
-                                    </dl>
+                                            <dt>Positive Control</dt>
+                                            <dd>1</dd>
+
+                                            <dt>Positive Control Loaded Date</dt>
+                                            <dd>July 31, 2015 3:57 PM GMT </dd>
+
+                                            <dt>PFile Received Date</dt>
+                                            <dd>September 18, 2015 3:21 PM GMT </dd>
+
+                                            <dt style="width: 200px;text-align: left">Torrent Variant Caller Version</dt>
+                                            <dd>tvc 4.4-8 </dd>
+
+                                        </dl>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -67,6 +75,9 @@
                         <div class="col-lg-4 col-md-6"  ng-init="loadSamplesList()">
                             <div class="panel panel-default">
                                 <div class="panel-body">
+
+                                    <div class="header-info-box top-main-header-box" style="border:none" >
+
                                     <dl class="dl-horizontal">
                                         <dt>Quality Control Report</dt>
                                         <dd>
@@ -100,6 +111,9 @@
                                             <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
                                         </dd>
                                     </dl>
+
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -137,6 +151,7 @@
                                 </div>
                             </div>
                         </div>
+
                 </div>
 
                 <div ng-controller="SampleController" ng-init="loadVariantReportList()">
@@ -229,7 +244,7 @@
 
                 </div>
 
-        </div>
+            </div>
 
 
         </div>
