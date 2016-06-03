@@ -42,6 +42,12 @@
             },
             getPatientPendingAssignmentReports: function () {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getPatientsWithPendingAssignmentReport');
+            },
+            getTissueVariantReports: function() {
+                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getPatientsWithPendingVariantReport'); //need switch to tissue variant reports
+            },
+            getBloodVariantReports: function() {
+                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getPatientsWithPendingVariantReport'); //need switch to blood variant reports
             }
         };
     }
