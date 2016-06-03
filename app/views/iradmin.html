@@ -48,7 +48,8 @@
                                                         <div class="col-xs-9 content no-top-border">
 
                                                             <div class="row">
-                                                                <div class="col-md-4 col-sm-6 text-left">
+
+                                                                <div class="col-md-3 col-sm-6 text-left">
                                                                     <dl class="dl-horizontal-narrow">
 
                                                                         <dt>IP Address</dt>
@@ -59,7 +60,7 @@
 
                                                                     </dl>
                                                                 </div>
-                                                                <div class="col-md-4 col-sm-6 text-left">
+                                                                <div class="col-md-3 col-sm-6 text-left">
                                                                     <dl class="dl-horizontal-narrow">
                                                                         <dt>Location</dt>
                                                                         <dd ng-style="{'color':'green'}" class="ng-binding" style="color: rgb(0, 128, 0);">{{ ir.location  || '-'  }}</dd>
@@ -70,19 +71,18 @@
                                                                 </div>
 
 
-                                                                <div class="col-md-4 col-sm-6 text-left">
-
+                                                                <div class="col-md-5 col-sm-6 text-left">
+                                                                    <dl class="dl-horizontal-narrow">
                                                                     <dt>Files</dt>
                                                                     <dd>
-
-                                                                        <!--href="https://matchbox.nci.nih.gov:8443/match/common/rs/getIrUploaderFile/dbReport?ipAddress=129.43.127.133"-->
-
                                                                         <a target='_blank' href="{{ ir.dbReportPath }}" class="btn btn-xs btn-white file-button-xs">DB REPORT</a>
                                                                         <a target='_blank' href="{{ ir.dataFilePath }}" class="btn btn-xs btn-white file-button-xs">DATA FILE</a>
                                                                         <a target='_blank' href="{{ ir.logFilePath }}" class="btn btn-xs btn-white file-button-xs">LOG FILE</a>
                                                                     </dd>
+                                                                        </dl>
 
                                                                 </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
