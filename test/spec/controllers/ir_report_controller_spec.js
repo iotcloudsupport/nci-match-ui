@@ -242,9 +242,9 @@ describe('Controller: Ir Report Controller', function () {
     it('should call dialog and enter PIN', function () {
         deferred.resolve(true);
 
-        spyOn($scope, 'showConfirmation').and.returnValue(deferred.promise).and.callThrough();
+        spyOn($scope, 'showPositiveControlConfirmation').and.returnValue(deferred.promise).and.callThrough();
 
-        $scope.showConfirmation('Do you want to continue?', 'Warning! Once this action has been submitted it cannot be undone. Please enter your site pin to confirm.');
+        $scope.showPositiveControlConfirmation('Do you want to continue?', 'Warning! Once this action has been submitted it cannot be undone. Please enter your site pin to confirm.');
         $scope.$apply();
 
     });

@@ -81,7 +81,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
             });
         };
 
-        $scope.showConfirmation = function (id) {
+        $scope.showPositiveControlConfirmation = function (id) {
         prompt({
             "title": "Do you want to continue?",
             "message": "Warning! Once this action has been submitted it cannot be undone. Please enter your site pin to confirm. ",
@@ -112,6 +112,41 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
                     },
                 function(response) { // optional
                 });
+            });
+        };
+
+
+        $scope.showNoTemplateControlConfirmation = function (id) {
+            prompt({
+                "title": "Do you want to continue?",
+                "message": "Warning! Once this action has been submitted it cannot be undone. Please enter your site pin to confirm. ",
+                "input": true,
+                "label": "PIN",
+                "value": ""
+            }).then(function(result){
+                var items = {};
+                var d = $filter('filter')($scope.tokenIpAddress, id);
+                items.confirmation = result;
+                items.ipAddress = d[0].siteIpAddress;
+                irAdminApi
+                    .generateNoTemplateControlToken(items)
+                    .then(
+                        function () {
+                            irAdminApi
+                                .loadSampleControlsList()
+                                .then(function (d) {
+                                    //Clean tables
+                                    $scope.positiveListMocha = [];
+                                    $scope.positiveListMDCC = [];
+                                    $scope.negativeListMocha = [];
+                                    $scope.negativeListMDCC = [];
+                                    $scope.tokenIpAddress = [];
+
+                                    $scope.populateData(d);
+                                });
+                        },
+                        function(response) { // optional
+                        });
             });
         };
 
@@ -178,5 +213,13 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
                     .generatePositiveControlToken(items)
                     .then(function (d) {},
                     function(response) {});
+            };
+
+            //Genrate No Template Token
+            $scope.generateNoTemplateControlToken = function (items) {
+                irAdminApi
+                    .generateNoTemplateControlToken(items)
+                    .then(function (d) {},
+                        function(response) {});
             };
     });

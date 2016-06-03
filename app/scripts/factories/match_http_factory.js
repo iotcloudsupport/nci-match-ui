@@ -96,8 +96,11 @@
                     method: "POST"
                 });
             },
-            generateNegativeControlToken: function() {
-                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlsBySite');
+            generateNoTemplateControlToken: function(array) {
+                return $http({
+                    url: matchConfig.matchApiBaseUrl + '/common/rs/generateMolecularSequenceNumberForNtc?ipAddress=' + array.ipAddress + '&confirmation=' + array.confirmation,
+                    method: "POST"
+                });
             }
         };
 
