@@ -42,6 +42,12 @@
             },
             getPatientPendingAssignmentReports: function () {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getPatientsWithPendingAssignmentReport');
+            },
+            getTissueVariantReports: function() {
+                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getPatientsWithPendingVariantReport'); //need switch to tissue variant reports
+            },
+            getBloodVariantReports: function() {
+                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getPatientsWithPendingVariantReport'); //need switch to blood variant reports
             }
         };
     }
@@ -90,8 +96,11 @@
                     method: "POST"
                 });
             },
-            generateNegativeControlToken: function() {
-                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlsBySite');
+            generateNoTemplateControlToken: function(array) {
+                return $http({
+                    url: matchConfig.matchApiBaseUrl + '/common/rs/generateMolecularSequenceNumberForNtc?ipAddress=' + array.ipAddress + '&confirmation=' + array.confirmation,
+                    method: "POST"
+                });
             }
         };
 

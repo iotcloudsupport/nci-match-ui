@@ -11,6 +11,7 @@ describe('Controller: dashboard Controller', function () {
                                 $rootScope,
                                 _matchApi_,
                                 _reportApi_,
+                                _workflowApi_,
                                 $httpBackend) {
         scope = $rootScope.$new();
         httpBackend = $httpBackend;
@@ -44,7 +45,7 @@ describe('Controller: dashboard Controller', function () {
         chartjsDonut = $controller('DashboardChartJsDonutController', {
             $scope: scope
         });
-
+        
         //Controller
         $controller('DashboardActivityFeedController', {
             $scope: scope,
@@ -190,7 +191,122 @@ describe('Controller: dashboard Controller', function () {
         httpBackend.verifyNoOutstandingExpectation();
         httpBackend.verifyNoOutstandingRequest();
     });
-    
+
+    it('should populate the dashboard Tissue Variant Reports list with  on a success response', function() {
+        httpBackend.when('GET', 'http://server:80/match/common/rs/getPatientsWithPendingVariantReport')
+            .respond([
+                {
+                    "patientSequenceNumber":"10375",
+                    "biopsySequenceNumber":"N-15-00005",
+                    "currentPatientStatus":"REGISTRATION",
+                    "specimenReceivedDate":1449922209071,
+                    "molecularSequenceNumber":"10375_1000_N-15-00005",
+                    "jobName":"testjob6",
+                    "ngsStatus":"PENDING",
+                    "ngsDateReceived":1446758737780,
+                    "daysPending":38,
+                    "location":"Boston"
+                },
+                {
+                    "patientSequenceNumber":"10376",
+                    "biopsySequenceNumber":"N-15-00006",
+                    "currentPatientStatus":"REGISTRATION",
+                    "specimenReceivedDate":1449922209078,
+                    "molecularSequenceNumber":"10376-15-00005",
+                    "jobName":"testjob3",
+                    "ngsStatus":"PENDING",
+                    "ngsDateReceived":1446758737780,
+                    "daysPending":18,
+                    "location":"Boston"
+                },
+                {
+                    "patientSequenceNumber":"10377",
+                    "biopsySequenceNumber":"N-15-00007",
+                    "currentPatientStatus":"REGISTRATION",
+                    "specimenReceivedDate":1449922205071,
+                    "molecularSequenceNumber":"10377-15-00005",
+                    "jobName":"testjob8",
+                    "ngsStatus":"PENDING",
+                    "ngsDateReceived":1446758737780,
+                    "daysPending":5,
+                    "location":"Boston"
+                }
+            ]);
+        scope.loadTissueVariantReportsList();
+        httpBackend.flush();
+
+        expect(scope.pendingTissueVariantReportsList.length).toBe(3);
+        expect(scope.pendingTissueVariantReportsList[0].patientSequenceNumber).toBe('10375');
+        expect(scope.pendingTissueVariantReportsList[1].biopsySequenceNumber).toBe('N-15-00006');
+        expect(scope.pendingTissueVariantReportsList[2].jobName).toBe('testjob8');
+    });
+
+    it('should not populate the Tissue Variant Reports list on an error response', function() {
+        httpBackend.when('GET', 'http://server:80/match/common/rs/getPatientsWithPendingVariantReport').respond(500);
+        scope.loadTissueVariantReportsList();
+        httpBackend.flush();
+
+        expect(scope.pendingTissueVariantReportsList.length).toBe(0);
+    });
+
+    it('should populate the dashboard Blood Variant Reports list with  on a success response', function() {
+        httpBackend.when('GET', 'http://server:80/match/common/rs/getPatientsWithPendingVariantReport')
+            .respond([
+                {
+                    "patientSequenceNumber":"10375",
+                    "biopsySequenceNumber":"N-15-00005",
+                    "currentPatientStatus":"REGISTRATION",
+                    "specimenReceivedDate":1449922209071,
+                    "molecularSequenceNumber":"10375_1000_N-15-00005",
+                    "jobName":"testjob6",
+                    "ngsStatus":"PENDING",
+                    "ngsDateReceived":1446758737780,
+                    "daysPending":38,
+                    "location":"Boston"
+                },
+                {
+                    "patientSequenceNumber":"10376",
+                    "biopsySequenceNumber":"N-15-00006",
+                    "currentPatientStatus":"REGISTRATION",
+                    "specimenReceivedDate":1449922209078,
+                    "molecularSequenceNumber":"10376-15-00005",
+                    "jobName":"testjob3",
+                    "ngsStatus":"PENDING",
+                    "ngsDateReceived":1446758737780,
+                    "daysPending":18,
+                    "location":"Boston"
+                },
+                {
+                    "patientSequenceNumber":"10377",
+                    "biopsySequenceNumber":"N-15-00007",
+                    "currentPatientStatus":"REGISTRATION",
+                    "specimenReceivedDate":1449922205071,
+                    "molecularSequenceNumber":"10377-15-00005",
+                    "jobName":"testjob8",
+                    "ngsStatus":"PENDING",
+                    "ngsDateReceived":1446758737780,
+                    "daysPending":5,
+                    "location":"Boston"
+                }
+            ]);
+        scope.loadBloodVariantReportsList();
+        httpBackend.flush();
+
+        expect(scope.pendingBloodVariantReportsList.length).toBe(3);
+        expect(scope.pendingBloodVariantReportsList[0].patientSequenceNumber).toBe('10375');
+        expect(scope.pendingBloodVariantReportsList[1].biopsySequenceNumber).toBe('N-15-00006');
+        expect(scope.pendingBloodVariantReportsList[2].jobName).toBe('testjob8');
+    });
+
+    it('should not populate the Blood Variant Reports list on an error response', function() {
+        httpBackend.when('GET', 'http://server:80/match/common/rs/getPatientsWithPendingVariantReport').respond(500);
+        scope.loadBloodVariantReportsList();
+        httpBackend.flush();
+
+        expect(scope.pendingBloodVariantReportsList.length).toBe(0);
+    });
+
+
 
     it('should populate the aMOI donut chart on a success response', function() {
         scope.loadChartjsDonutChart();

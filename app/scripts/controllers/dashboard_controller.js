@@ -37,8 +37,8 @@ angular.module('dashboard.matchbox',[])
 
         $scope.pendingVariantReportList = [];
         $scope.pendingAssignmentReportList = [];
-        $scope.concordancePatientList = [];
-        $scope.rejoinRequestedPatientList = [];
+        $scope.pendingTissueVariantReportsList = [];
+        $scope.pendingBloodVariantReportsList = [];
 
         $scope.loadPatientVariantReportsList = function() {
             matchApi
@@ -53,6 +53,22 @@ angular.module('dashboard.matchbox',[])
                 .getPatientPendingAssignmentReports()
                 .then(function(d) {
                     $scope.pendingAssignmentReportList = d.data;
+                });
+        }
+        
+        $scope.loadTissueVariantReportsList = function() {
+            matchApi
+                .getTissueVariantReports()
+                .then(function(d) {
+                    $scope.pendingTissueVariantReportsList = d.data;
+                });
+        }
+        
+        $scope.loadBloodVariantReportsList = function() {
+            matchApi
+                .getBloodVariantReports()
+                .then(function(d) {
+                    $scope.pendingBloodVariantReportsList = d.data;
                 });
         }
 
@@ -182,7 +198,7 @@ angular.module('dashboard.matchbox',[])
             animationEasing: "easeOutBounce",
             animateRotate: true,
             animateScale: false,
-            responsive: true,
+            responsive: true
         };
 
         $scope.setCanvasHeight = function() {
