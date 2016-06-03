@@ -1,6 +1,6 @@
 <div class="row border-bottom white-bg dashboard-header animated fadeInRight">
 
-    <div class="col-sm-3" ng-controller="DashboardStatisticsController" ng-init="loadDashboardStatistics()">
+    <div class="col-sm-3" ng-controller="DashboardStatisticsController as dashboardStats" ng-init="loadDashboardStatistics()">
         <h2>Welcome {{ name }}</h2>
         <small>Last updated on {{ lastUpdated | gmt }}.</small>
         <ul class="list-group clear-list m-t">
@@ -168,7 +168,74 @@
                                                 </table>
                                             </div>
                                         </uib-tab>
-
+                                        <uib-tab heading="Tissue Variant Report">
+                                            <div class="panel-body"
+                                                 ng-controller="DashboardPendingReviewController as DashCtrl"
+                                                 ng-init="loadTissueVariantReportsList()">
+                                                <table datatable="ng"
+                                                       dt-options="DashCtrl.dtOptions"
+                                                       dt-column-defs="DashCtrl.dtColumnDefs"
+                                                       dt-instance="DashCtrl.dtInstance"
+                                                       class="table table-striped table-bordered table-hover">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Patient ID</th>
+                                                        <th>Molecular Sequence Number</th>
+                                                        <th>Analysis ID</th>
+                                                        <th>Lab</th>
+                                                        <th>Specimen Received Date</th>
+                                                        <th>Variant Report Received Date</th>
+                                                        <th>Days Pending</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr ng-repeat="item in pendingVariantReportList">
+                                                        <td>{{ item.patientSequenceNumber || '-' }}</td>
+                                                        <td>{{ item.molecularSequenceNumber || '-' }}</td>
+                                                        <td>{{ item.jobName || '-' }}</td>
+                                                        <td>{{ item.location || '-' }}</td>
+                                                        <td>{{ item.specimenReceivedDate | gmt }}</td>
+                                                        <td>{{ item.ngsDateReceived | gmt }}</td>
+                                                        <td><span class="label label-primary">{{ item.daysPending || '-' }}</span></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </uib-tab>
+                                        <uib-tab heading="Blood Variant Report">
+                                            <div class="panel-body"
+                                                 ng-controller="DashboardPendingReviewController as DashCtrl"
+                                                 ng-init="loadBloodVariantReportsList()">
+                                                <table datatable="ng"
+                                                       dt-options="DashCtrl.dtOptions"
+                                                       dt-column-defs="DashCtrl.dtColumnDefs"
+                                                       dt-instance="DashCtrl.dtInstance"
+                                                       class="table table-striped table-bordered table-hover">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Patient ID</th>
+                                                        <th>Molecular Sequence Number</th>
+                                                        <th>Analysis ID</th>
+                                                        <th>Lab</th>
+                                                        <th>Specimen Received Date</th>
+                                                        <th>Variant Report Received Date</th>
+                                                        <th>Days Pending</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr ng-repeat="item in pendingVariantReportList">
+                                                        <td>{{ item.patientSequenceNumber || '-' }}</td>
+                                                        <td>{{ item.molecularSequenceNumber || '-' }}</td>
+                                                        <td>{{ item.jobName || '-' }}</td>
+                                                        <td>{{ item.location || '-' }}</td>
+                                                        <td>{{ item.specimenReceivedDate | gmt }}</td>
+                                                        <td>{{ item.ngsDateReceived | gmt }}</td>
+                                                        <td><span class="label label-primary">{{ item.daysPending || '-' }}</span></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </uib-tab>
                                     </uib-tabset>
                                 </div>
                             </div>
