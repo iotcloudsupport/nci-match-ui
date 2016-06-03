@@ -739,7 +739,7 @@
                                             <h5>1 - NO VARIANT MATCH</h5>
                                         </td>
                                     </tr>
-                                    <tr ng-repeat="ta in treatmentArms.noMatchList " style="cursor: auto; " role="row" class="odd">
+                                    <tr ng-repeat="ta in assignmentReport.treatmentArms.noMatchList " style="cursor: auto; " role="row" class="odd">
                                         <td class="status-blue">
                                             <a ui-sref="treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion: ta.currentTtreatmentArmVersion }) ">
                                                 <i class="fa fa-medkit "></i> {{ ::ta.treatmentArmTitle || '-' }}
@@ -753,7 +753,7 @@
                                             <h5>2 - RECORD BASED EXCLUSION</h5>
                                         </td>
                                     </tr>
-                                    <tr ng-repeat="ta in treatmentArms.recordBasedExclusionList " style="cursor: auto;
+                                    <tr ng-repeat="ta in assignmentReport.treatmentArms.recordBasedExclusionList " style="cursor: auto;
                                                 " role="row " class="odd ">
                                         <td class="status-blue ">
                                             <a ui-sref="treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion:
@@ -769,7 +769,7 @@
                                             <h5>3 - SELECTED</h5>
                                         </td>
                                     </tr>
-                                    <tr ng-repeat="ta in treatmentArms.selectedList " style="cursor: auto; " role="row" class="odd">
+                                    <tr ng-repeat="ta in assignmentReport.treatmentArms.selectedList " style="cursor: auto; " role="row" class="odd">
                                         <td class="status-blue ">
                                             <a ui-sref="treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion: ta.currentTtreatmentArmVersion }) ">
                                                 <i class="fa fa-medkit "></i> {{ ::ta.treatmentArmTitle || '-' }}
