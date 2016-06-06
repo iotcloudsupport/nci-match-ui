@@ -13,6 +13,9 @@
                     <a ui-sref="iradmin"> IR Reporters</a>
                 </li>
                 <li class="active">
+                    <a ui-sref="ngsample({ sampleId: sid})">IR Sample Control Variant Report ({{sid}})</a>
+                </li>
+                <li class="active">
                     <strong>IR Sample Quality Control Report </strong>
                 </li>
             </ol>
@@ -40,7 +43,7 @@
                                                 <dd>1155</dd>
 
                                                 <dt>Analysis ID</dt>
-                                                <dd>{{sampleId}}</dd>
+                                                <dd>{{sid}}</dd>
 
                                                 <dt>Total Variants</dt>
                                                 <dd>18</dd>
