@@ -58,7 +58,7 @@ angular.module('irsample.matchbox',['ui.router'])
                                 'hgvs':pc.dna,
                                 'purpose':pc.purpose,
                                 'function':pc.function,
-                                'hasMatchingVariant': hasMatchingVariant
+                                'hasMatchingVariant': hasMatchingVariant.toString()
                             });
                         });
                         //Negative Variants

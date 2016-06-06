@@ -121,7 +121,12 @@
                         <div class="col-lg-4 col-md-6" >
                             <div class="panel panel-default">
                                 <div class="panel-body">
-                                    <h4>Positive Controls Legend</h4>
+                                    <!--<h4>Positive Controls Legend</h4>-->
+
+                                    <div class="ibox-title ibox-title-no-line pull">
+                                        <h3>Positive Controls Legend</h3>
+                                    </div>
+
                                     <table class="table">
                                         <thead>
                                         <tr>
@@ -160,9 +165,11 @@
                         <div class="ibox float-e-margins">
                             <div class="col-lg-16" >
                                     <div class="ibox-content">
-                                            <div class="ibox-title ibox-title-no-line">
+
+                                            <div class="ibox-title ibox-title-no-line pull">
                                                 <h3>Positive Controls</h3>
                                             </div>
+
                                             <table class="table" role="grid">
                                                 <thead>
                                                 <tr>
@@ -204,9 +211,10 @@
                         <div class="ibox float-e-margins">
                             <div class="col-lg-16" >
                                     <div class="ibox-content">
-                                            <div class="ibox-title ibox-title-no-line">
+                                            <div class="ibox-title ibox-title-no-line pull">
                                                 <h3>False Positive Variants</h3>
                                             </div>
+
                                             <table class="table" role="grid">
                                                 <thead>
                                                 <tr>
@@ -214,7 +222,6 @@
                                                     <th >Position</th>
                                                     <th >Gene</th>
                                                     <th >Variant Type</th>
-
                                                     <th >Reference </th>
                                                     <th >Alternative</th>
                                                     <th >HGVS</th>
@@ -233,7 +240,6 @@
                                                     <td>{{sample.hgvs || '-' }}</td>
                                                     <td>{{sample.protein || '-' }}</td>
                                                     <td>{{sample.function || '-' }}</td>
-
                                                 </tr>
                                                 </tbody>
                                             </table>
