@@ -42,10 +42,10 @@ describe('Controller: dashboard Controller', function () {
         });
 
         //Controller
-        chartjsDonut = $controller('DashboardChartJsDonutController', {
+        chartjsDonut = $controller('DashboardTreatmentArmAccrualChartController', {
             $scope: scope
         });
-        
+
         //Controller
         $controller('DashboardActivityFeedController', {
             $scope: scope,
@@ -118,6 +118,7 @@ describe('Controller: dashboard Controller', function () {
                     "location":"Boston"
                 }
             ]);
+        
         scope.loadPatientVariantReportsList();
         httpBackend.flush();
 
