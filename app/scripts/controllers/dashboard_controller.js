@@ -82,7 +82,7 @@ angular.module('dashboard.matchbox',[])
         this.dtColumnDefs = [];
         this.dtInstance = {};
 
-        $scope.activityList = [];
+        $scope.now = new Date();
 
         $scope.icons = [
             'fa fa-heartbeat fa-4x',
@@ -118,7 +118,89 @@ angular.module('dashboard.matchbox',[])
             'btn-priority'
         ];
 
+        $scope.activityList = [];
+
+        $scope.activityListData = [
+            {
+                "pic": 'fa fa-envelope fa-4x',
+                "status": 'btn-success',
+                "messages": $scope.message,
+                "time": 1421165969643,
+                "age": '3m',
+                "actor": $scope.actor,
+                "displayName": $scope.message[2],
+                "description": "Delayed DB configuration"
+            },
+            {
+                "pic": 'fa fa-envelope fa-4x',
+                "status": 'btn-danger',
+                "messages": $scope.message,
+                "time": 1421165969643,
+                "age": '5m',
+                "actor": $scope.actor,
+                "displayName": $scope.message[1],
+                "description": "Delayed DB configuration"
+            },
+            {
+                "pic": 'fa fa-envelope fa-4x',
+                "status": 'btn-success',
+                "messages": $scope.message,
+                "time": 1421165969643,
+                "age": '5m',
+                "actor": $scope.actor,
+                "displayName": $scope.message[2],
+                "description": "Delayed DB configuration"
+            },
+            {
+                "pic": 'fa fa-envelope fa-4x',
+                "status": 'btn-danger',
+                "messages": $scope.message,
+                "time": 1421165969643,
+                "age": '18m',
+                "actor": $scope.actor,
+                "displayName": $scope.message[1],
+                "description": "Delayed DB configuration"
+            },
+            {
+                "pic": 'fa fa-envelope fa-4x',
+                "status": 'btn-success',
+                "messages": $scope.message,
+                "time": 1421165969643,
+                "age": '5h',
+                "actor": $scope.actor,
+                "displayName": $scope.message[2],
+                "description": "Delayed DB configuration"
+            },
+            {
+                "pic": 'fa fa-envelope fa-4x',
+                "status": 'btn-danger',
+                "messages": $scope.message,
+                "time": 1421165969643,
+                "age": '6d',
+                "actor": $scope.actor,
+                "displayName": $scope.message[1],
+                "description": "Delayed DB configuration"
+            },
+            {
+                "pic": $scope.icons[2],
+                "status": $scope.status[3],
+                "messages": $scope.message,
+                "time": 1421165768643,
+                "age": '1y',
+                "actor": $scope.actor,
+                "displayName": $scope.message[0],
+                "description": "Delayed DB configuration"
+            }
+        ];
+
         $scope.loadActivityList = function() {
+            var listSize = $scope.activityList.length;
+            for (var i=0; i<5 && i< $scope.activityListData.length; i++) {
+                $scope.activityList.push($scope.activityListData[listSize + i]);
+            }
+        };
+
+        /*$scope.loadActivityList = function() {
             reportApi
             .getActivityFeedList()
             .then(function(d) {
@@ -146,9 +228,22 @@ angular.module('dashboard.matchbox',[])
                     }
                 });
             });
-        };
+        };*/
     })
-    .controller('DashboardTreatmentArmAccrualController', function( $scope ) {
+
+    .controller('DashboardTreatmentArmAccrualChartController', function( $scope, reportApi ) {
+        this.donutOptions = {
+            segmentShowStroke: true,
+            segmentStrokeColor: "#fff",
+            segmentStrokeWidth: 2,
+            percentageInnerCutout: 45, // This is 0 for Pie charts
+            animationSteps: 100,
+            animationEasing: "easeOutBounce",
+            animateRotate: true,
+            animateScale: false,
+            responsive: true
+        };
+
         this.barOptions = {
             scaleBeginAtZero: true,
             scaleShowGridLines: true,
@@ -159,16 +254,13 @@ angular.module('dashboard.matchbox',[])
             barValueSpacing: 5,
             barDatasetSpacing: 1
         };
-
-        $scope.setCanvasHeight = function() {
-            // Need a better way to set the height of the canvas
-            var ctx = $('#treatmentArmAccrualCanvas')[0].getContext('2d');
-            ctx.canvas.height = 100;
+        
+        $scope.setCanvasHeight = function(elementName, heightVal) {
+            var ctx = $(elementName)[0].getContext('2d');
+            ctx.canvas.height = heightVal;
         }
 
-        $scope.loadTreatmentArmAccrual = function() {
-            // TODO: Invoke the backend rest service and populate
-            // the armNames and armValues variable.
+        $scope.loadTreatmentArmAccrual = function() { 
 
             armNames = ['EAY131-Q', 'EAY131-B', 'EAY131-H', 'EAY131-U', 'EAY131-E'];
             armValues = [6, 3, 2, 2, 1];
@@ -186,25 +278,6 @@ angular.module('dashboard.matchbox',[])
                     }
                 ]
             };
-        }
-    })
-    .controller('DashboardChartJsDonutController', function( $scope, reportApi ) {
-        this.donutOptions = {
-            segmentShowStroke: true,
-            segmentStrokeColor: "#fff",
-            segmentStrokeWidth: 2,
-            percentageInnerCutout: 45, // This is 0 for Pie charts
-            animationSteps: 100,
-            animationEasing: "easeOutBounce",
-            animateRotate: true,
-            animateScale: false,
-            responsive: true
-        };
-
-        $scope.setCanvasHeight = function() {
-            // Need a better way to set the height of the canvas
-            var ctx = $('#amoiCanvas')[0].getContext('2d');
-            ctx.canvas.height = 200;
         }
 
         $scope.loadChartjsDonutChart = function() {
