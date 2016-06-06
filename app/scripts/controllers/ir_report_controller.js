@@ -45,7 +45,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
                             'sampleMsn': v.molecularSequenceNumber,
                             'dateCreated': v.dateCreated,
                             'dateReceived': v.dateReceived,
-                            'status': v.passed
+                            'status': v.status
                         });
                     }
                     else if(v.site === 'MDACC') {
