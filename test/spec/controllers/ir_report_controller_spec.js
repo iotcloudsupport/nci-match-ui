@@ -196,6 +196,9 @@ describe('Controller: Ir Report Controller', function () {
                     return {
                         withDisplayLength: function (length) {
                             return 5;
+                        },
+                        withOption: function (lengthChange) {
+                            return false;
                         }
                     };
                 }

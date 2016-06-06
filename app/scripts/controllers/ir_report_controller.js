@@ -3,7 +3,9 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
         function( $scope, $http, DTOptionsBuilder, irAdminApi, prompt, $uibModal, $filter) {
 
         $scope.dtOptions = DTOptionsBuilder.newOptions()
-            .withDisplayLength(5)
+            .withDisplayLength(5);
+
+        $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withOption('lengthChange', false);
 
         this.dtInstance = {};
