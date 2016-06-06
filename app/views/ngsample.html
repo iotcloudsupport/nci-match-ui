@@ -181,16 +181,16 @@
                                                 </thead>
                                                 <tbody>
                                                 <tr ng-style="{'background-color':'{{ sample.hasMatchingVariant | irsample }}'}" ng-repeat="sample in positiveControlList">
-                                                    <td>{{sample.identifier}}</td>
-                                                    <td>{{sample.chromosome}}</td>
-                                                    <td>{{sample.position}}</td>
-                                                    <td>{{sample.geneName}}</td>
-                                                    <td>{{sample.variantType}}</td>
-                                                    <td>{{sample.reference}}</td>
-                                                    <td>{{sample.alternative}}</td>
-                                                    <td>{{sample.protein}}</td>
-                                                    <td>{{sample.purpose}}</td>
-                                                    <td>{{sample.function}}</td>
+                                                    <td>{{sample.identifier || '-' }}</td>
+                                                    <td>{{sample.chromosome || '-' }}</td>
+                                                    <td>{{sample.position || '-' }}</td>
+                                                    <td>{{sample.geneName || '-' }}</td>
+                                                    <td>{{sample.variantType || '-' }}</td>
+                                                    <td>{{sample.reference || '-' }}</td>
+                                                    <td>{{sample.alternative || '-' }}</td>
+                                                    <td>{{sample.hgvs || '-' }}</td>
+                                                    <td>{{sample.protein || '-' }}</td>
+                                                    <td>{{sample.function || '-' }}</td>
 
                                                 </tr>
                                                 </tbody>
@@ -224,15 +224,15 @@
                                                 </thead>
                                                 <tbody>
                                                 <tr ng-repeat="sample in negativeVariantsList">
-                                                    <td>{{sample.publicMedIds}}</td>
-                                                    <td>{{sample.position}}</td>
-                                                    <td>{{sample.geneName}}</td>
-                                                    <td>{{sample.variantType}}</td>
-                                                    <td>{{sample.reference}}</td>
-                                                    <td>{{sample.alternative}}</td>
-                                                    <td>{{sample.hgvs}}</td>
-                                                    <td>{{sample.protein}}</td>
-                                                    <td>{{sample.function}}</td>
+                                                    <td>{{sample.publicMedIds || '-' }}</td>
+                                                    <td>{{sample.position || '-' }}</td>
+                                                    <td>{{sample.geneName || '-' }}</td>
+                                                    <td>{{sample.variantType || '-' }}</td>
+                                                    <td>{{sample.reference || '-' }}</td>
+                                                    <td>{{sample.alternative || '-' }}</td>
+                                                    <td>{{sample.hgvs || '-' }}</td>
+                                                    <td>{{sample.protein || '-' }}</td>
+                                                    <td>{{sample.function || '-' }}</td>
 
                                                 </tr>
                                                 </tbody>

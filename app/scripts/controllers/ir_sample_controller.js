@@ -42,10 +42,9 @@ angular.module('irsample.matchbox',['ui.router'])
 
                         //Positive Controls
                         angular.forEach(value.positiveControls, function (v,k) {
-
                             var hasMatchingVariant = v.hasMatchingVariant;
+                            var pc = v.positiveControl;
 
-                         var pc = v.positiveControl;
                             $scope.positiveControlList.push({
 
                                 'variantType':pc.variantType,
@@ -56,16 +55,14 @@ angular.module('irsample.matchbox',['ui.router'])
                                 'reference':pc.reference,
                                 'alternative':pc.alternative,
                                 'protein':pc.protein,
-                                'dna':pc.dna,
+                                'hgvs':pc.dna,
                                 'purpose':pc.purpose,
                                 'function':pc.function,
                                 'hasMatchingVariant': hasMatchingVariant
-
                             });
                         });
                         //Negative Variants
                             angular.forEach(value.negativeVariants, function (v,k) {
-                                // var pc = v.positiveControl;
                                 $scope.negativeVariantsList.push({
                                     'publicMedIds': v.publicMedIds,
                                     'position': v.position,
