@@ -28,36 +28,8 @@
                     },
                     treatmentArm: 'EAY131-B',
                     assignment: { id: 123, reason: 'The patient arm match on variant indetifier [ABC, EDF]' },
-                    drugs: ['Aspirin', 'Motrin', 'Vitamin D'],
-                    documents: [
-                        { url: 'url1', title: 'Document 1' },
-                        { url: 'url2', title: 'Document 2' },
-                        { url: 'url3', title: 'Document 3' }
-                    ]
+                    drugs: ['Aspirin', 'Motrin', 'Vitamin D']
                 }
-
-                data.treatmentArms = {};
-
-                data.treatmentArms.noMatchList = [
-                    { treatmentArm: 'EAY131-U', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' },
-                    { treatmentArm: 'EAY131-F', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' },
-                    { treatmentArm: 'EAY131-F', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' },
-                    { treatmentArm: 'EAY131-F', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' },
-                    { treatmentArm: 'EAY131-G', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' },
-                    { treatmentArm: 'EAY131-H', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' },
-                    { treatmentArm: 'EAY131-R', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' },
-                    { treatmentArm: 'EAY131-E', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' },
-                    { treatmentArm: 'EAY131-A', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' },
-                    { treatmentArm: 'EAY131-V', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' }
-                ];
-
-                data.treatmentArms.recordBasedExclusionList = [
-                    { treatmentArm: 'EAY131-Q', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient excluded from this arm because of invasive breast carcinoma.' }
-                ];
-
-                data.treatmentArms.selectedList = [
-                    { treatmentArm: 'EAY131-B', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient and treatment match on variand identifier [ABSF, DEDF].' }
-                ];
 
                 data.timeline = [
                     { type: 'assignment', dateTime: 'Sep 17, 2015, 10:00 AM GMT', fromNow: '12 days ago', status: 'Pending', biopsySequenceNumber: 'B-987456', molecularSequenceNumber: 'MSN-1245', analysisId: 'A-T-5678'},
@@ -253,6 +225,7 @@
                     biopsySequenceNumber: 'T-15-000078',
                     molecularSequenceNumber: 'MSN34534',
                     analysisId: 'MSN34534_v2_kjdf3-kejrt-3425-mnb34ert34f',
+                    
                     variantReportaMOIs: [
                         { title: '[COSM12344]', url: '' },
                         { title: 'p.S310Y', url: '' },
@@ -264,7 +237,28 @@
                         { gene: 'PTENs', result: 'POSITIVE', comment: '-' },
                         { gene: 'MLH1', result: 'Not Applicable', comment: 'Biopsy received prior to bimarker launch date' },
                         { gene: 'RB', result: 'Not Applicable', comment: 'Biopsy received prior to bimarker launch date' }
-                    ]
+                    ],
+                    
+                    treatmentArms: {
+                        noMatchList: [
+                            { treatmentArm: 'EAY131-U', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' },
+                            { treatmentArm: 'EAY131-F', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' },
+                            { treatmentArm: 'EAY131-F', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' },
+                            { treatmentArm: 'EAY131-F', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' },
+                            { treatmentArm: 'EAY131-G', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' },
+                            { treatmentArm: 'EAY131-H', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' },
+                            { treatmentArm: 'EAY131-R', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' },
+                            { treatmentArm: 'EAY131-E', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' },
+                            { treatmentArm: 'EAY131-A', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' },
+                            { treatmentArm: 'EAY131-V', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient contains no matching variant.' }
+                        ],
+                        recordBasedExclusionList: [
+                            { treatmentArm: 'EAY131-Q', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient excluded from this arm because of invasive breast carcinoma.' }
+                        ],
+                        selectedList: [
+                            { treatmentArm: 'EAY131-B', treatmentArmVersion: '2015-08-06', treatmentArmTitle: 'EAY131-U (2015-08-06)', reason: 'The patient and treatment match on variand identifier [ABSF, DEDF].' }
+                        ]
+                    }
                 };
 
                 data.patientDocuments = [

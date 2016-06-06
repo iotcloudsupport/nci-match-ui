@@ -15,8 +15,9 @@
     }
 
     function colorFilter(value, map) {
-        if (isNotString(value))
+        if (isNotString(value)) {
             return '';
+        }
 
         value = value.toUpperCase();
 
@@ -73,7 +74,7 @@
 
     function irsample() {
         return function (text) {
-            return colorFilter(text, { 'PASSED': 'blue', 'FAILED': 'red' });
+            return colorFilter(text, { 'PASSED': 'green', 'FAILED': 'red', 'TRUE': '#C3FDB8' });
         };
     }
 

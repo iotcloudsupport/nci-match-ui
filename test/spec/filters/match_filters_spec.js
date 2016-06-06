@@ -310,12 +310,12 @@ describe('Filter', function () {
             expect(underTest('fake_value')).toEqual('');
         });
                
-        it('should return "blue" for PASSED', function () {
-            expect(underTest('PASSED')).toEqual('blue');
+        it('should return "green" for PASSED', function () {
+            expect(underTest('PASSED')).toEqual('green');
         });
         
-        it('should return "blue" for passed', function () {
-            expect(underTest('passed')).toEqual('blue');
+        it('should return "green" for passed', function () {
+            expect(underTest('passed')).toEqual('green');
         });
                 
         it('should return "red" for FAILED', function () {
