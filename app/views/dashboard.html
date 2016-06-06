@@ -35,7 +35,7 @@
         </ul>
     </div>
 
-    <div class="col-sm-6" ng-controller="DashboardTreatmentArmAccrualController as chart" ng-init="setCanvasHeight();loadTreatmentArmAccrual();">
+    <div class="col-sm-6" ng-controller="DashboardTreatmentArmAccrualChartController as chart" ng-init="setCanvasHeight('#treatmentArmAccrualCanvas', 100);loadTreatmentArmAccrual();">
         <div class="statistic-box">
             <div class="text-center">
                 <h4>Top 5 Treatment Arm Accrual</h4>
@@ -44,7 +44,7 @@
         </div>
     </div>
 
-    <div class="col-sm-3" ng-controller="DashboardChartJsDonutController as chartjsDonut" ng-init="setCanvasHeight();loadChartjsDonutChart();">
+    <div class="col-sm-3" ng-controller="DashboardTreatmentArmAccrualChartController as chartjsDonut" ng-init="setCanvasHeight('#amoiCanvas', 200);loadChartjsDonutChart();">
         <div class="statistic-box">
             <div class="text-center">
                 <h4>Sequenced & Confirmed Patients with aMOI(s)</h4>
@@ -68,12 +68,11 @@
                             <div class="ibox-title">
                                 <h5>Activity Feed</h5>
                                 <div class="ibox-tools">
-                                    <span class="label label-warning-light">10 Messages</span>
+                                    <span class="label label-warning-light">{{activityListData.length}} messages</span>
                                 </div>
                             </div>
                             <div class="ibox-content">
                                 <div>
-
                                     <div class="feed-activity-list">
 
                                         <div class="feed-element" ng-repeat="activity in activityList">
@@ -83,7 +82,7 @@
                                                     </span>
                                             </a>
                                             <div class="media-body ">
-                                                <small class="pull-right">5m ago</small>
+                                                <small class="pull-right">{{activity.age }} ago</small>
                                                 <strong> {{ activity.displayName }} </strong>  <br>
                                                 <small class="text-muted">Today {{ activity.time | date:'yyyy-MM-dd HH:mm:ss' }} </small>
                                             </div>
