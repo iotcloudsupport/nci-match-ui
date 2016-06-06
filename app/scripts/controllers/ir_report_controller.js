@@ -3,7 +3,8 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
         function( $scope, $http, DTOptionsBuilder, irAdminApi, prompt, $uibModal, $filter) {
 
         $scope.dtOptions = DTOptionsBuilder.newOptions()
-             .withDisplayLength(5);
+            .withDisplayLength(5)
+            .withOption('lengthChange', false);
 
         this.dtInstance = {};
 
@@ -42,7 +43,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
                             'sampleMsn': v.molecularSequenceNumber,
                             'dateCreated': v.dateCreated,
                             'dateReceived': v.dateReceived,
-                            'status': v.status
+                            'status': v.passed
                         });
                     }
                     else if(v.site === 'MDACC') {
@@ -60,9 +61,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
 
                 //Negative sets
                 angular.forEach(negativesets, function (v,k) {
-
                     if(v.site === 'MoCha'){
-
                         $scope.negativeListMocha.push({
                             'sampleSite': v.site,
                             'sampleId': v.id,
@@ -84,6 +83,9 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
                         });
                     }
                 });
+
+
+
             });
         };
 
