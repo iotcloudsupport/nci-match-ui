@@ -23,153 +23,138 @@
 
     <div class="wrapper">
 
-        <div class="animated fadeInRight" >
 
             <div class="no-horizontal-padding header-box-container">
 
-                <div class="row equal-height-panels">
+                <div class="row">
 
-                        <div class="col-lg-4 col-md-8">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
+                    <div class="row equal-height-panels">
+
+                            <div class="col-lg-6 col-md-6">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
 
 
-                                    <div class="header-info-box top-main-header-box" style="border:none" >
+                                        <div class="header-info-box top-main-header-box" style="border:none" >
 
+
+                                            <dl class="dl-horizontal">
+
+                                                <dt>Molecular Sequence Number</dt>
+                                                <dd>1155</dd>
+
+                                                <dt>Analysis ID</dt>
+                                                <dd>{{sampleId}}</dd>
+
+                                                <dt>Total Variants</dt>
+                                                <dd>18</dd>
+
+                                                <dt>MAPD</dt>
+                                                <dd> - </dd>
+
+                                                <dt> Cellularity</dt>
+                                                <dd> - </dd>
+
+                                                <dt>Positive Control</dt>
+                                                <dd>1</dd>
+
+                                                <dt>Positive Control Loaded Date</dt>
+                                                <dd>July 31, 2015 3:57 PM GMT </dd>
+
+                                                <dt>PFile Received Date</dt>
+                                                <dd>September 18, 2015 3:21 PM GMT </dd>
+
+                                                <dt style="width: 200px;text-align: left">Torrent Variant Caller Version</dt>
+                                                <dd>tvc 4.4-8 </dd>
+
+                                                <dt>Files</dt>
+                                                <dd>
+                                                    <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_087_rawlib.bam?molecularSequenceNumber={{sampleId}}"
+                                                       class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
+                                                    <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_087_rawlib.bam.bai?molecularSequenceNumber={{sampleId}}"
+                                                       class="btn btn-xs btn-white file-button-xs">DNA BAI</a>
+                                                    <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/SampleControl_MoCha_1_v1_all-matched.vcf?molecularSequenceNumber={{sampleId}}"
+                                                       class="btn btn-xs btn-white file-button-xs">VCF</a>
+
+                                                    <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_088_rawlib.bam.bai?molecularSequenceNumber={{sampleId}}"
+                                                       class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
+                                                    <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_088_rawlib.bam?molecularSequenceNumber={{sampleId}}"
+                                                       class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
+                                                    <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
+                                                </dd>
+
+
+                                            </dl>
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6" ng-init="loadSamplesList()">
+
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
                                         <dl class="dl-horizontal">
-
-                                            <dt>Molecular Sequence Number</dt>
-                                            <dd>1155</dd>
-
-                                            <dt>Analysis ID</dt>
-                                            <dd>{{sampleId}}</dd>
-
-                                            <dt>Total Variants</dt>
-                                            <dd>18</dd>
-
-                                            <dt>MAPD</dt>
-                                            <dd> - </dd>
-
-                                            <dt> Cellularity</dt>
-                                            <dd> - </dd>
-
-                                            <dt>Positive Control</dt>
-                                            <dd>1</dd>
-
-                                            <dt>Positive Control Loaded Date</dt>
-                                            <dd>July 31, 2015 3:57 PM GMT </dd>
-
-                                            <dt>PFile Received Date</dt>
-                                            <dd>September 18, 2015 3:21 PM GMT </dd>
-
-                                            <dt style="width: 200px;text-align: left">Torrent Variant Caller Version</dt>
-                                            <dd>tvc 4.4-8 </dd>
+                                            <dt>Quality Control Report</dt>
+                                            <dd>
+                                                <a ui-sref="ocsample({ sampleId:sampleId })" class="btn btn-xs btn-success file-button-xl">
+                                                    <i class="fa fa-bar-chart"></i>&nbsp;&nbsp;
+                                                    <span class="bold">Quality Control Report</span>
+                                                </a>
+                                            </dd>
 
                                         </dl>
+                                        <!--<h4>Positive Controls Legend</h4>-->
 
+                                        <div class="ibox-title ibox-title-no-line pull">
+                                            <h3>Positive Controls Legend</h3>
+                                        </div>
+
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th>Variant Type</th>
+                                                <th>Matching Criteria</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr class="warning">
+                                                <td>Indel</td>
+                                                <td>Chromosone, Position, Reference and Alternative.</td>
+                                            </tr>
+                                            <tr class="warning">
+                                                <td>SNV</td>
+                                                <td>Chromosone, Position, Reference and Alternative.</td>
+                                            </tr>
+                                            <tr class="warning">
+                                                <td>CNV</td>
+                                                <td>Gene</td>
+                                            </tr>
+                                            <tr class="warning">
+                                                <td>Fusion</td>
+                                                <td>HGVS</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
+
                             </div>
-                        </div>
 
-                        <div class="col-lg-4 col-md-6"  ng-init="loadSamplesList()">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
+                    </div>
 
-                                    <div class="header-info-box top-main-header-box" style="border:none" >
+                    <div ng-controller="SampleController" ng-init="loadVariantReportList()">
 
-                                    <dl class="dl-horizontal">
-                                        <dt>Quality Control Report</dt>
-                                        <dd>
-                                            <a ui-sref="ocsample({ sampleId:sampleId })" class="btn btn-xs btn-success file-button-xl">
-                                                <i class="fa fa-bar-chart"></i>&nbsp;&nbsp;
-                                                <span class="bold">Quality Control Report</span>
-                                            </a>
-                                        </dd>
-
-                                        <!--https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_087_rawlib.bam?molecularSequenceNumber=SampleControl_MoCha_11'-->
-                                        <!--https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_087_rawlib.bam.bai?molecularSequenceNumber=SampleControl_MoCha_11-->
-                                        <!--https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/SampleControl_MoCha_1_v1_all-matched.vcf?molecularSequenceNumber=SampleControl_MoCha_11-->
-                                        <!--https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/SampleControl_MoCha_1_v1_all-matched.vcf?molecularSequenceNumber=SampleControl_MoCha_11-->
-                                        <!--window.location.href='https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_088_rawlib.bam.bai?molecularSequenceNumber=SampleControl_MoCha_11-->
-                                        <!--https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_088_rawlib.bam?molecularSequenceNumber=-->
-
-                                        <dt>Files</dt>
-                                        <dd>
-                                            <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_087_rawlib.bam?molecularSequenceNumber={{sampleId}}"
-                                               class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
-                                            <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_087_rawlib.bam.bai?molecularSequenceNumber={{sampleId}}"
-                                               class="btn btn-xs btn-white file-button-xs">DNA BAI</a>
-                                            <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/SampleControl_MoCha_1_v1_all-matched.vcf?molecularSequenceNumber={{sampleId}}"
-                                               class="btn btn-xs btn-white file-button-xs">VCF</a>
-                                        </dd>
-                                        <dd>
-                                            <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_088_rawlib.bam.bai?molecularSequenceNumber={{sampleId}}"
-                                               class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
-                                            <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_088_rawlib.bam?molecularSequenceNumber={{sampleId}}"
-                                               class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
-                                            <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
-                                        </dd>
-                                    </dl>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6" >
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <!--<h4>Positive Controls Legend</h4>-->
-
-                                    <div class="ibox-title ibox-title-no-line pull">
-                                        <h3>Positive Controls Legend</h3>
-                                    </div>
-
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <th>Variant Type</th>
-                                            <th>Matching Criteria</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr class="warning">
-                                            <td>Indel</td>
-                                            <td>Chromosone, Position, Reference and Alternative.</td>
-                                        </tr>
-                                        <tr class="warning">
-                                            <td>SNV</td>
-                                            <td>Chromosone, Position, Reference and Alternative.</td>
-                                        </tr>
-                                        <tr class="warning">
-                                            <td>CNV</td>
-                                            <td>Gene</td>
-                                        </tr>
-                                        <tr class="warning">
-                                            <td>Fusion</td>
-                                            <td>HGVS</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-
-                </div>
-
-                <div ng-controller="SampleController" ng-init="loadVariantReportList()">
-
-                    <div class="col-lg-16" >
-                        <div class="ibox float-e-margins">
-                            <div class="col-lg-16" >
+                        <div class="col-lg-16" >
+                            <div class="ibox float-e-margins">
+                                <div class="col-lg-16" >
                                     <div class="ibox-content">
-
                                             <div class="ibox-title ibox-title-no-line pull">
                                                 <h3>Positive Controls</h3>
                                             </div>
-
                                             <table class="table" role="grid">
                                                 <thead>
                                                 <tr>
@@ -198,62 +183,60 @@
                                                     <td>{{sample.hgvs || '-' }}</td>
                                                     <td>{{sample.protein || '-' }}</td>
                                                     <td>{{sample.function || '-' }}</td>
-
                                                 </tr>
                                                 </tbody>
                                             </table>
                                     </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-16" >
-                        <div class="ibox float-e-margins">
-                            <div class="col-lg-16" >
-                                    <div class="ibox-content">
-                                            <div class="ibox-title ibox-title-no-line pull">
-                                                <h3>False Positive Variants</h3>
+                        <div class="col-lg-16" >
+                            <div class="ibox float-e-margins">
+                                <div class="col-lg-16" >
+                                        <div class="ibox-content">
+                                                <div class="ibox-title ibox-title-no-line pull">
+                                                    <h3>False Positive Variants</h3>
+                                                </div>
+
+                                                <table class="table" role="grid">
+                                                    <thead>
+                                                    <tr>
+                                                        <th > ID</th>
+                                                        <th >Position</th>
+                                                        <th >Gene</th>
+                                                        <th >Variant Type</th>
+                                                        <th >Reference </th>
+                                                        <th >Alternative</th>
+                                                        <th >HGVS</th>
+                                                        <th >Protein</th>
+                                                        <th >Function</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr ng-repeat="sample in negativeVariantsList">
+                                                        <td>{{sample.publicMedIds || '-' }}</td>
+                                                        <td>{{sample.position || '-' }}</td>
+                                                        <td>{{sample.geneName || '-' }}</td>
+                                                        <td>{{sample.variantType || '-' }}</td>
+                                                        <td>{{sample.reference || '-' }}</td>
+                                                        <td>{{sample.alternative || '-' }}</td>
+                                                        <td>{{sample.hgvs || '-' }}</td>
+                                                        <td>{{sample.protein || '-' }}</td>
+                                                        <td>{{sample.function || '-' }}</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
-
-                                            <table class="table" role="grid">
-                                                <thead>
-                                                <tr>
-                                                    <th > ID</th>
-                                                    <th >Position</th>
-                                                    <th >Gene</th>
-                                                    <th >Variant Type</th>
-                                                    <th >Reference </th>
-                                                    <th >Alternative</th>
-                                                    <th >HGVS</th>
-                                                    <th >Protein</th>
-                                                    <th >Function</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr ng-repeat="sample in negativeVariantsList">
-                                                    <td>{{sample.publicMedIds || '-' }}</td>
-                                                    <td>{{sample.position || '-' }}</td>
-                                                    <td>{{sample.geneName || '-' }}</td>
-                                                    <td>{{sample.variantType || '-' }}</td>
-                                                    <td>{{sample.reference || '-' }}</td>
-                                                    <td>{{sample.alternative || '-' }}</td>
-                                                    <td>{{sample.hgvs || '-' }}</td>
-                                                    <td>{{sample.protein || '-' }}</td>
-                                                    <td>{{sample.function || '-' }}</td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
+                                        </div>
                                     </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
 
                 </div>
 
             </div>
 
-
-        </div>
 
     </div>
 </div>
