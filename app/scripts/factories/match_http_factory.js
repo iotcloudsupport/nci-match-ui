@@ -8,6 +8,7 @@
         .factory('treatmentArmApi', treatmentArmApi)
         .factory('irAdminApi', irAdminApi)
         .factory('irSampleVariantApi', irSampleVariantApi)
+        .factory('irNtcQualityApi', irNtcQualityApi)
         .factory('svgApi', svgApi)
         .factory('patientApi', patientApi);
 
@@ -133,6 +134,22 @@
             }
         };
     }
+
+    //Ntc Quality Control Reports
+    function irNtcQualityApi($http, $stateParams, matchConfig) {
+        return {
+            // loadSampleQualityReportList: function() {
+            //     var id = $stateParams.sampleId;
+            //     return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlOCPControlSummary?molecularSequenceNumber=' + id);
+            // },
+            loadNtcUnfilteredReportList: function() {
+                // http://localhost:8080/match/common/rs/getVariantReportForNtcControl?molecularSequenceNumber=NtcControl_MoCha_3
+                var id = $stateParams.sampleId;
+                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getVariantReportForNtcControl?molecularSequenceNumber=' + id);
+            }
+        };
+    }
+
 
 
     function svgApi($http, $stateParams, matchConfig) {

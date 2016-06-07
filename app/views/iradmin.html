@@ -195,8 +195,8 @@
                                                 <tr ng-repeat="sample in negativeListMocha">
                                                     <td>{{sample.sampleMsn}}</td>
                                                     <td>
-                                                        <a ng-if="!sample.status"> - </a>
-                                                        <a ng-if="sample.status" ui-sref="ngsample({ sampleId: sample.sampleMsn})">
+                                                        <a ng-if="!sample.dateReceived"> - </a>
+                                                        <a ng-if="sample.dateReceived" ui-sref="ntcsample({ sampleId: sample.sampleMsn})">
                                                             {{ sample.sampleMsn || '-' }}
                                                         </a>
                                                     </td>
