@@ -121,7 +121,7 @@ angular.module('dashboard.matchbox',[])
         $scope.activityList = [];
 
         $scope.activityListData = [
-            {
+            /*{
                 "pic": $scope.icons[5],
                 "status": $scope.status[1],
                 "time": 1421175969643,
@@ -208,28 +208,28 @@ angular.module('dashboard.matchbox',[])
                 "age": '1y',
                 "displayName": $scope.message[0],
                 "description": "Delayed DB configuration 11"
-            }
+            }*/
         ];
+
+        function setupActivityList(listSize, entryMax) {
+            for (var i = 0; i < entryMax; i++) {
+                $scope.activityList.push($scope.activityListData[listSize + i]);
+            }
+        }
 
         $scope.loadActivityList = function() {
             var listSize = $scope.activityList.length;
             var listSizeDifference = $scope.activityListData.length - listSize;
             var i;
             if (listSizeDifference > 5) {
-                for (i = 0; i < 5; i++) {
-                    $scope.activityList.push($scope.activityListData[listSize + i]);
-                }
+                setupActivityList(listSize, 5);
                 //make button active
             } else {
                 // button greyed out
                 if (listSizeDifference === 5) {
-                    for (i = 0; i < 5; i++) {
-                        $scope.activityList.push($scope.activityListData[listSize + i]);
-                    }
+                    setupActivityList(listSize, 5);
                 } else {
-                    for (i = 0; i < listSizeDifference; i++) {
-                        $scope.activityList.push($scope.activityListData[listSize + i]);
-                    }
+                    setupActivityList(listSize, listSizeDifference);
                 }
             }
         };
