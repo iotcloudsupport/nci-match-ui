@@ -61,6 +61,8 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
                     }
                 });
 
+
+
                 //Negative sets
                 angular.forEach(negativesets, function (v,k) {
                     if(v.site === 'MoCha'){
@@ -70,7 +72,8 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
                             'sampleMsn': v.molecularSequenceNumber,
                             'dateCreated': v.dateCreated,
                             'dateReceived': v.dateReceived,
-                            'status': v.status
+                            'status': v.status,
+                            'passed': v.passed
                         });
                     }
                     else if(v.site === 'MDACC') {
@@ -81,9 +84,13 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
                             'sampleMsn': v.molecularSequenceNumber,
                             'dateCreated': v.dateCreated,
                             'dateReceived': v.dateReceived,
-                            'status': v.status
+                            'status': v.status,
+                            'passed': v.passed
                         });
                     }
+
+                    // alert(JSON.stringify( $scope.negativeListMDCC))
+
                 });
 
 

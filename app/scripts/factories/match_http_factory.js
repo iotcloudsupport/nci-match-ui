@@ -157,6 +157,10 @@
             getSvgGene: function () {
                 var id = $stateParams.sampleId;
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getSampleControlGraphInfoFromVCF?molecularSequenceNumber=' + id);
+            },
+            getSvgNtc: function () {
+                var id = $stateParams.sampleId;
+                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getNtcControlGraphInfoFromVCF?molecularSequenceNumber=' + id);
             }
         };
     }

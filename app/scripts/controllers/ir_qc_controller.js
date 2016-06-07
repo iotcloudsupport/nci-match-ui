@@ -35,80 +35,20 @@ angular.module('qcsample.matchbox',[])
             $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + id.toLowerCase(), "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=300, left=300, width=600, height=400");
 
         };
-
-        $scope.loadSvgGeneList = function (id) {
+        //Svg for samples
+        $scope.loadSvgGeneList = function () {
             svgApi
                 .getSvgGene($stateParams.sampleId)
                 .then(function (d) {
                     $window.d3BoxVersion5(d.data);
                 });
         };
-
-
-        // $scope.loadSampleQualityReportList = function () {
-        //     irSampleQualityApi
-        //         .loadSampleQualityReportList()
-        //         .then(function (d) {
-        //             // alert(JSON.stringify(d))
-        //         });
-        // };
-
-
-        // $scope.loadSampleQualityUnfilteredReportList = function () {
-        //     irSampleQualityApi
-        //         .loadSampleQualityUnfilteredReportList()
-        //         .then(function (d) {
-        //             angular.forEach(d, function (value,key) {
-        //
-        //                 angular.forEach(value.singleNucleotideVariants, function (v,k) {
-        //                 $scope.singleNucleotideVariants.push({
-        //
-        //                     'publicMedIds':v.publicMedIds,
-        //                     'chromosome':v.chromosome,
-        //                     'position':v.position,
-        //                     'reference':v.reference,
-        //                     'alternative':v.alternative,
-        //                     'filters':v.filter,
-        //                     'alleleFrequency':v.alleleFrequency,
-        //                     'geneName':v.geneName,
-        //                     'oncominevariantclass':v.oncominevariantclass,
-        //                     'exon':v.exon,
-        //                     'function':v.function,
-        //                     'hgvs':v.hgvs,
-        //                     'readDepth':v.readDepth,
-        //                     'transcript':v.transcript,
-        //                     'protein':v.protein
-        //                     });
-        //                 });
-        //
-        //
-        //                 // alert(JSON.stringify(value.indels))
-        //
-        //                 angular.forEach(value.indels, function (v,k) {
-        //                     $scope.indels.push({
-        //
-        //                         'publicMedIds':v.publicMedIds,
-        //                         'chromosome':v.chromosome,
-        //                         'position':v.position,
-        //                         'reference':v.reference,
-        //                         'alternative':v.alternative,
-        //                         'filters':v.filter,
-        //                         'alleleFrequency':v.alleleFrequency,
-        //                         'geneName':v.geneName,
-        //                         'oncominevariantclass':v.oncominevariantclass,
-        //                         'exon':v.exon,
-        //                         'function':v.function,
-        //                         'hgvs':v.hgvs,
-        //                         'readDepth':v.readDepth,
-        //                         'transcript':v.transcript,
-        //                         'protein':v.protein
-        //                     });
-        //                 });
-        //
-        //                 // alert(JSON.stringify($scope.singleNucleotideVariants))
-        //             });
-        //
-        //         });
-        // };
-
+        //Svg for ntc
+        $scope.loadSvgNtcList = function () {
+            svgApi
+                .getSvgNtc()
+                .then(function (d) {
+                    $window.d3BoxVersion5(d.data);
+                });
+        };
     });
