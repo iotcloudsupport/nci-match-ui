@@ -122,81 +122,115 @@ angular.module('dashboard.matchbox',[])
 
         $scope.activityListData = [
             {
-                "pic": 'fa fa-envelope fa-4x',
-                "status": 'btn-success',
-                "messages": $scope.message,
-                "time": 1421165969643,
+                "pic": $scope.icons[5],
+                "status": $scope.status[1],
+                "time": 1421175969643,
                 "age": '3m',
-                "actor": $scope.actor,
                 "displayName": $scope.message[2],
-                "description": "Delayed DB configuration"
+                "description": "Delayed DB configuration 1"
             },
             {
-                "pic": 'fa fa-envelope fa-4x',
-                "status": 'btn-danger',
-                "messages": $scope.message,
-                "time": 1421165969643,
+                "pic": $scope.icons[0],
+                "status": $scope.status[0],
+                "time": 1421171969643,
                 "age": '5m',
-                "actor": $scope.actor,
                 "displayName": $scope.message[1],
-                "description": "Delayed DB configuration"
+                "description": "Delayed DB configuration 2"
             },
             {
-                "pic": 'fa fa-envelope fa-4x',
-                "status": 'btn-success',
-                "messages": $scope.message,
-                "time": 1421165969643,
+                "pic": $scope.icons[4],
+                "status": $scope.status[2],
+                "time": 1421169969643,
                 "age": '5m',
-                "actor": $scope.actor,
                 "displayName": $scope.message[2],
-                "description": "Delayed DB configuration"
+                "description": "Delayed DB configuration 3"
             },
             {
-                "pic": 'fa fa-envelope fa-4x',
-                "status": 'btn-danger',
-                "messages": $scope.message,
+                "pic": $scope.icons[3],
+                "status": $scope.status[4],
                 "time": 1421165969643,
                 "age": '18m',
-                "actor": $scope.actor,
                 "displayName": $scope.message[1],
-                "description": "Delayed DB configuration"
+                "description": "Delayed DB configuration 4"
             },
             {
-                "pic": 'fa fa-envelope fa-4x',
-                "status": 'btn-success',
-                "messages": $scope.message,
-                "time": 1421165969643,
+                "pic": $scope.icons[1],
+                "status": $scope.status[3],
+                "time": 1421162969643,
                 "age": '5h',
-                "actor": $scope.actor,
                 "displayName": $scope.message[2],
-                "description": "Delayed DB configuration"
-            },
-            {
-                "pic": 'fa fa-envelope fa-4x',
-                "status": 'btn-danger',
-                "messages": $scope.message,
-                "time": 1421165969643,
-                "age": '6d',
-                "actor": $scope.actor,
-                "displayName": $scope.message[1],
-                "description": "Delayed DB configuration"
+                "description": "Delayed DB configuration 5"
             },
             {
                 "pic": $scope.icons[2],
+                "status": $scope.status[1],
+                "time": 1421160969643,
+                "age": '6d',
+                "displayName": $scope.message[1],
+                "description": "Delayed DB configuration 6"
+            },
+            {
+                "pic": $scope.icons[4],
                 "status": $scope.status[3],
-                "messages": $scope.message,
-                "time": 1421165768643,
+                "time": 1421155768643,
                 "age": '1y',
-                "actor": $scope.actor,
                 "displayName": $scope.message[0],
-                "description": "Delayed DB configuration"
+                "description": "Delayed DB configuration 7"
+            },
+            {
+                "pic": $scope.icons[5],
+                "status": $scope.status[3],
+                "time": 1421162969643,
+                "age": '5h',
+                "displayName": $scope.message[2],
+                "description": "Delayed DB configuration 8"
+            },
+            {
+                "pic": $scope.icons[6],
+                "status": $scope.status[1],
+                "time": 1421160969643,
+                "age": '6d',
+                "displayName": $scope.message[1],
+                "description": "Delayed DB configuration 9"
+            },
+            {
+                "pic": $scope.icons[5],
+                "status": $scope.status[3],
+                "time": 1421155768643,
+                "age": '1y',
+                "displayName": $scope.message[0],
+                "description": "Delayed DB configuration 10"
+            },
+            {
+                "pic": $scope.icons[4],
+                "status": $scope.status[3],
+                "time": 1421155768643,
+                "age": '1y',
+                "displayName": $scope.message[0],
+                "description": "Delayed DB configuration 11"
             }
         ];
 
         $scope.loadActivityList = function() {
             var listSize = $scope.activityList.length;
-            for (var i=0; i<5 && i< $scope.activityListData.length; i++) {
-                $scope.activityList.push($scope.activityListData[listSize + i]);
+            var listSizeDifference = $scope.activityListData.length - listSize;
+            var i;
+            if (listSizeDifference > 5) {
+                for (i = 0; i < 5; i++) {
+                    $scope.activityList.push($scope.activityListData[listSize + i]);
+                }
+                //make button active
+            } else {
+                // button greyed out
+                if (listSizeDifference === 5) {
+                    for (i = 0; i < 5; i++) {
+                        $scope.activityList.push($scope.activityListData[listSize + i]);
+                    }
+                } else {
+                    for (i = 0; i < listSizeDifference; i++) {
+                        $scope.activityList.push($scope.activityListData[listSize + i]);
+                    }
+                }
             }
         };
 
@@ -260,7 +294,7 @@ angular.module('dashboard.matchbox',[])
             ctx.canvas.height = heightVal;
         }
 
-        $scope.loadTreatmentArmAccrual = function() { 
+        $scope.loadTreatmentArmAccrual = function() {
 
             armNames = ['EAY131-Q', 'EAY131-B', 'EAY131-H', 'EAY131-U', 'EAY131-E'];
             armValues = [6, 3, 2, 2, 1];
