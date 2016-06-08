@@ -47,6 +47,12 @@ describe('Controller: dashboard Controller', function () {
         });
 
         //Controller
+        stats = $controller('DashboardStatisticsController', {
+            $scope: scope,
+            workflowApi: _workflowApi_
+        });
+
+        //Controller
         $controller('DashboardActivityFeedController', {
             $scope: scope,
             DTOptionsBuilder: {
@@ -315,6 +321,32 @@ describe('Controller: dashboard Controller', function () {
         expect(scope.donutData.length).toBe(6);
         expect(scope.donutData[0].value).toBe(4);
         expect(scope.donutData[5].label).toBe('5+ aMOI');
+    });
+
+    it('should populate the TA Accrual shart on a success response', function() {
+        scope.loadTreatmentArmAccrual();
+
+        expect(scope.barData.datasets[0].label).toBe("Accrual Dataset");
+
+    });
+
+    it('should populate the dashboard statistics on a success response', function() {
+        httpBackend.when('GET', 'http://server:80/matchapi/dashboardStatistics').respond(
+            {
+                "number_of_patients" : 5,
+                "number_of_screened_patients" : 3,
+                "number_of_patients_with_treatment" : 2
+            }
+        );
+        scope.loadDashboardStatistics();
+        httpBackend.flush();
+
+        expect(scope.numberOfPatients).toBe(5);
+    });
+
+    it('should populate the activity list on a success response', function() {
+        scope.loadActivityList();
+        expect(scope.activityList.length).toBe(0);
     });
 
 });
