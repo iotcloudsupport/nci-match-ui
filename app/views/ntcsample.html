@@ -21,7 +21,7 @@
 
 
 
-    <div class="wrapper" >
+    <div class="wrapper" ng-controller="NtcController"  >
 
 
         <div class="no-horizontal-padding header-box-container">
@@ -87,346 +87,248 @@
                                                 <span class="bold">Quality Control Report</span>
                                             </a>
                                         </dd>
-
-
                                     </dl>
-
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
 
-                <div ng-controller="NtcController"  ng-init="loadNtcUnfilteredReportList()">
+                <div class="col-lg-14">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content">
 
-                    <uib-tabset>
+                            <div class="tabs-container" ng-init="loadNtcUnfilteredReportList()">
 
-                        <uib-tab heading="Single Nucleotide Variant(s) ">
+                                <uib-tabset>
 
-                            <div class="col-lg-16" >
-                                <div class="ibox float-e-margins">
-                                    <div class="col-lg-16" >
-                                        <div class="ibox-content">
+                                    <uib-tab heading="Single Nucleotide Variant(s) ">
 
+                                        <div class="col-lg-16" >
+                                            <div class="ibox float-e-margins">
                                                 <div class="col-lg-16" >
-                                                    <div class="ibox float-e-margins">
-                                                        <div class="col-lg-16" >
-                                                            <div class="ibox-content">
-                                                                <div class="ibox-title ibox-title-no-line pull">
-                                                                    <h3>Single Nucleotide Variant(s)</h3>
-                                                                </div>
-
-                                                                <table class="table" role="grid">
-                                                                    <thead>
-                                                                    <tr>
-                                                                        <th >Id</th>
-                                                                        <th >Chrom</th>
-                                                                        <th >Position</th>
-                                                                        <th >Reference </th>
-                                                                        <th >Alternative</th>
-                                                                        <th >Allele Freq</th>
-                                                                        <th >Func Gene</th>
-                                                                        <th >Variant Type</th>
-                                                                        <th >Oncomine Variant Class</th>
-                                                                        <th >Function</th>
-                                                                        <th >HGVS</th>
-                                                                        <th >Read Depth</th>
-                                                                        <th >Transcript</th>
-                                                                        <th >Protein</th>
-                                                                    </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                    <tr ng-repeat="sample in singleNucleotideVariantsList">
-                                                                        <td>{{sample.identifier || '-' }}</td>
-                                                                        <td>{{sample.chromosome || '-' }}</td>
-                                                                        <td>{{sample.position || '-' }}</td>
-                                                                        <td>{{sample.reference || '-' }}</td>
-                                                                        <td>{{sample.alternative || '-' }}</td>
-                                                                        <td>{{sample.alleleFrequency || '-' }}</td>
-                                                                        <td>{{sample.geneName || '-' }}</td>
-                                                                        <td>{{sample.type || '-' }}</td>
-                                                                        <td>{{sample.oncominevariantclass || '-' }}</td>
-                                                                        <td>{{sample.function || '-' }}</td>
-                                                                        <td>{{sample.hgvs || '-' }}</td>
-                                                                        <td>{{sample.readDepth || '-' }}</td>
-                                                                        <td>{{sample.transcript || '-' }}</td>
-                                                                        <td>{{sample.protein || '-' }}</td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table>
-
-                                                            </div>
+                                                    <div class="ibox-content">
+                                                        <div class="ibox-title ibox-title-no-line pull">
+                                                            <h3>Single Nucleotide Variant(s)</h3>
                                                         </div>
-                                                    </div>
-                                                </div>
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </uib-tab>
-
-                        <uib-tab heading="Indel(s) " >
-
-
-                            <div class="col-lg-16" >
-                                <div class="ibox float-e-margins">
-                                    <div class="col-lg-16" >
-                                        <div class="ibox-content">
-
-                                                <div class="col-lg-16" >
-                                                    <div class="ibox float-e-margins">
-                                                        <div class="col-lg-16" >
-                                                            <div class="ibox-content">
-                                                                <div class="ibox-title ibox-title-no-line pull">
-                                                                    <h3>Indel(s)</h3>
-                                                                </div>
-
-                                                                <table class="table" role="grid">
-                                                                    <thead>
-                                                                    <tr>
-                                                                        <th >Id</th>
-                                                                        <th >Chrom</th>
-                                                                        <th >Position</th>
-                                                                        <th >Reference </th>
-                                                                        <th >Alternative</th>
-                                                                        <th >Allele Freq</th>
-                                                                        <th >Func Gene</th>
-                                                                        <th >Variant Type</th>
-                                                                        <th >Oncomine Variant Class</th>
-                                                                        <th >Function</th>
-                                                                        <th >HGVS</th>
-                                                                        <th >Read Depth</th>
-                                                                        <th >Transcript</th>
-                                                                        <th >Protein</th>
-                                                                    </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                    <tr ng-repeat="sample in indelsList">
-                                                                        <td>{{sample.identifier || '-' }}</td>
-                                                                        <td>{{sample.chromosome || '-' }}</td>
-                                                                        <td>{{sample.position || '-' }}</td>
-                                                                        <td>{{sample.reference || '-' }}</td>
-                                                                        <td>{{sample.alternative || '-' }}</td>
-                                                                        <td>{{sample.alleleFrequency || '-' }}</td>
-                                                                        <td>{{sample.geneName || '-' }}</td>
-                                                                        <td>{{sample.type || '-' }}</td>
-                                                                        <td>{{sample.oncominevariantclass || '-' }}</td>
-                                                                        <td>{{sample.function || '-' }}</td>
-                                                                        <td>{{sample.hgvs || '-' }}</td>
-                                                                        <td>{{sample.readDepth || '-' }}</td>
-                                                                        <td>{{sample.transcript || '-' }}</td>
-                                                                        <td>{{sample.protein || '-' }}</td>
-                                                                    </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                                <!--<table class="table" role="grid">-->
-                                                                    <!--<thead>-->
-                                                                    <!--<tr>-->
-                                                                        <!--<th > ID</th>-->
-                                                                        <!--<th >Position</th>-->
-                                                                        <!--<th >Gene</th>-->
-                                                                        <!--<th >Variant Type</th>-->
-                                                                        <!--<th >Reference </th>-->
-                                                                        <!--<th >Alternative</th>-->
-                                                                        <!--<th >HGVS</th>-->
-                                                                        <!--<th >Protein</th>-->
-                                                                        <!--<th >Function</th>-->
-                                                                    <!--</tr>-->
-                                                                    <!--</thead>-->
-                                                                    <!--<tbody>-->
-                                                                    <!--<tr ng-repeat="sample in negativeVariantsList">-->
-                                                                        <!--<td>{{sample.publicMedIds || '-' }}</td>-->
-                                                                        <!--<td>{{sample.position || '-' }}</td>-->
-                                                                        <!--<td>{{sample.geneName || '-' }}</td>-->
-                                                                        <!--<td>{{sample.variantType || '-' }}</td>-->
-                                                                        <!--<td>{{sample.reference || '-' }}</td>-->
-                                                                        <!--<td>{{sample.alternative || '-' }}</td>-->
-                                                                        <!--<td>{{sample.hgvs || '-' }}</td>-->
-                                                                        <!--<td>{{sample.protein || '-' }}</td>-->
-                                                                        <!--<td>{{sample.function || '-' }}</td>-->
-                                                                    <!--</tr>-->
-                                                                    <!--</tbody>-->
-                                                                <!--</table>-->
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </uib-tab>
-
-                        <uib-tab heading="Copy Number Variant(s) " >
-
-
-                            <div class="col-lg-16" >
-                                <div class="ibox float-e-margins">
-                                    <div class="col-lg-16" >
-                                        <div class="ibox-content">
-
-                                            <div class="col-lg-16" >
-                                                <div class="ibox float-e-margins">
-                                                    <div class="col-lg-16" >
-                                                        <div class="ibox-content">
-                                                            <div class="ibox-title ibox-title-no-line pull">
-                                                                <h3>Copy Number Variant(s)</h3>
-                                                            </div>
-
-                                                            <table class="table" role="grid">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th >Id</th>
-                                                                    <th >Chrom</th>
-                                                                    <th >Position</th>
-                                                                    <th >Reference </th>
-                                                                    <th >Alternative</th>
-                                                                    <th >Allele Freq</th>
-                                                                    <th >Func Gene</th>
-                                                                    <th >Variant Type</th>
-                                                                    <th >Oncomine Variant Class</th>
-                                                                    <th >Function</th>
-                                                                    <th >HGVS</th>
-                                                                    <th >Read Depth</th>
-                                                                    <th >Transcript</th>
-                                                                    <th >Protein</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                <tr ng-repeat="sample in copyNumberVariantsList">
-                                                                    <td>{{sample.identifier || '-' }}</td>
-                                                                    <td>{{sample.chromosome || '-' }}</td>
-                                                                    <td>{{sample.position || '-' }}</td>
-                                                                    <td>{{sample.reference || '-' }}</td>
-                                                                    <td>{{sample.alternative || '-' }}</td>
-                                                                    <td>{{sample.alleleFrequency || '-' }}</td>
-                                                                    <td>{{sample.geneName || '-' }}</td>
-                                                                    <td>{{sample.type || '-' }}</td>
-                                                                    <td>{{sample.oncominevariantclass || '-' }}</td>
-                                                                    <td>{{sample.function || '-' }}</td>
-                                                                    <td>{{sample.hgvs || '-' }}</td>
-                                                                    <td>{{sample.readDepth || '-' }}</td>
-                                                                    <td>{{sample.transcript || '-' }}</td>
-                                                                    <td>{{sample.protein || '-' }}</td>
-                                                                </tr>
-                                                                </tbody>
-                                                            </table>
-                                                            <!--<table class="table" role="grid">-->
-                                                            <!--<thead>-->
-                                                            <!--<tr>-->
-                                                            <!--<th > ID</th>-->
-                                                            <!--<th >Position</th>-->
-                                                            <!--<th >Gene</th>-->
-                                                            <!--<th >Variant Type</th>-->
-                                                            <!--<th >Reference </th>-->
-                                                            <!--<th >Alternative</th>-->
-                                                            <!--<th >HGVS</th>-->
-                                                            <!--<th >Protein</th>-->
-                                                            <!--<th >Function</th>-->
-                                                            <!--</tr>-->
-                                                            <!--</thead>-->
-                                                            <!--<tbody>-->
-                                                            <!--<tr ng-repeat="sample in negativeVariantsList">-->
-                                                            <!--<td>{{sample.publicMedIds || '-' }}</td>-->
-                                                            <!--<td>{{sample.position || '-' }}</td>-->
-                                                            <!--<td>{{sample.geneName || '-' }}</td>-->
-                                                            <!--<td>{{sample.variantType || '-' }}</td>-->
-                                                            <!--<td>{{sample.reference || '-' }}</td>-->
-                                                            <!--<td>{{sample.alternative || '-' }}</td>-->
-                                                            <!--<td>{{sample.hgvs || '-' }}</td>-->
-                                                            <!--<td>{{sample.protein || '-' }}</td>-->
-                                                            <!--<td>{{sample.function || '-' }}</td>-->
-                                                            <!--</tr>-->
-                                                            <!--</tbody>-->
-                                                            <!--</table>-->
-
-                                                        </div>
+                                                        <table class="table" role="grid">
+                                                            <thead>
+                                                            <tr>
+                                                                <th >Id</th>
+                                                                <th >Chrom</th>
+                                                                <th >Position</th>
+                                                                <th >Reference </th>
+                                                                <th >Alternative</th>
+                                                                <th >Allele Freq</th>
+                                                                <th >Func Gene</th>
+                                                                <th >Variant Type</th>
+                                                                <th >Oncomine Variant Class</th>
+                                                                <th >Function</th>
+                                                                <th >HGVS</th>
+                                                                <th >Read Depth</th>
+                                                                <th >Transcript</th>
+                                                                <th >Protein</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr ng-repeat="sample in singleNucleotideVariantsList">
+                                                                <td>
+                                                                    <a class="report-link" href ng-click="openCosmicId( sample.identifier )">
+                                                                    {{sample.identifier || '-' }}
+                                                                    </a>
+                                                                </td>
+                                                                <td>{{sample.chromosome || '-' }}</td>
+                                                                <td>{{sample.position || '-' }}</td>
+                                                                <td>{{sample.reference || '-' }}</td>
+                                                                <td>{{sample.alternative || '-' }}</td>
+                                                                <td>{{sample.alleleFrequency || '-' }}</td>
+                                                                <td>{{sample.geneName || '-' }}</td>
+                                                                <td>{{sample.type || '-' }}</td>
+                                                                <td>{{sample.oncominevariantclass || '-' }}</td>
+                                                                <td>{{sample.function || '-' }}</td>
+                                                                <td>{{sample.hgvs || '-' }}</td>
+                                                                <td>{{sample.readDepth || '-' }}</td>
+                                                                <td>{{sample.transcript || '-' }}</td>
+                                                                <td>{{sample.protein || '-' }}</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                        </uib-tab>
+                                    </uib-tab>
 
-                        <uib-tab heading="Gene Fusion(s) " >
+                                    <uib-tab heading="Indel(s) " >
 
 
-                            <div class="col-lg-16" >
-                                <div class="ibox float-e-margins">
-                                    <div class="col-lg-16" >
-                                        <div class="ibox-content">
-
-                                            <div class="col-lg-16" >
-                                                <div class="ibox float-e-margins">
-                                                    <div class="col-lg-16" >
-                                                        <div class="ibox-content">
-                                                            <div class="ibox-title ibox-title-no-line pull">
-                                                                <h3>Gene Fusion(s)</h3>
-                                                            </div>
-
-                                                            <table class="table" role="grid">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th >Id</th>
-                                                                    <th >Driver Gene</th>
-                                                                    <th >Driver Count</th>
-                                                                    <th >Partner Gene </th>
-                                                                    <th >Annotation</th>
-
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                <tr ng-repeat="sample in geneFusionsList">
-
-                                                                    <td>{{sample.identifier || '-' }}</td>
-                                                                    <td>{{sample.geneName || '-' }}</td>
-                                                                    <td>{{sample.gene || '-' }}</td>
-                                                                    <td>{{sample.flowAlternativeAlleleObservationCount || '-' }}</td>
-                                                                    <td>{{sample.alternativeAlleleObservationCount || '-' }}</td>
-
-                                                                    <!--Original-->
-                                                                    <!--<td>{{sample.identifier || '-' }}</td>-->
-                                                                    <!--<td>{{sample.driverGene || '-' }}</td>-->
-                                                                    <!--<td>{{sample.partnerGene || '-' }}</td>-->
-                                                                    <!--<td>{{sample.driverReadCount || '-' }}</td>-->
-                                                                    <!--<td>{{sample.partnerReadCount || '-' }}</td>-->
-
-                                                                </tr>
-                                                                </tbody>
-                                                            </table>
-
-
-
+                                        <div class="col-lg-16" >
+                                            <div class="ibox float-e-margins">
+                                                <div class="col-lg-16" >
+                                                    <div class="ibox-content">
+                                                        <div class="ibox-title ibox-title-no-line pull">
+                                                            <h3>Indel(s)</h3>
                                                         </div>
+
+                                                        <table class="table" role="grid">
+                                                            <thead>
+                                                            <tr>
+                                                                <th >Id</th>
+                                                                <th >Chrom</th>
+                                                                <th >Position</th>
+                                                                <th >Reference </th>
+                                                                <th >Alternative</th>
+                                                                <th >Allele Freq</th>
+                                                                <th >Func Gene</th>
+                                                                <th >Variant Type</th>
+                                                                <th >Oncomine Variant Class</th>
+                                                                <th >Function</th>
+                                                                <th >HGVS</th>
+                                                                <th >Read Depth</th>
+                                                                <th >Transcript</th>
+                                                                <th >Protein</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr ng-repeat="sample in indelsList">
+                                                                <td>{{sample.identifier || '-' }}</td>
+                                                                <td>{{sample.chromosome || '-' }}</td>
+                                                                <td>{{sample.position || '-' }}</td>
+                                                                <td>{{sample.reference || '-' }}</td>
+                                                                <td>{{sample.alternative || '-' }}</td>
+                                                                <td>{{sample.alleleFrequency || '-' }}</td>
+                                                                <td>{{sample.geneName || '-' }}</td>
+                                                                <td>{{sample.type || '-' }}</td>
+                                                                <td>{{sample.oncominevariantclass || '-' }}</td>
+                                                                <td>{{sample.function || '-' }}</td>
+                                                                <td>{{sample.hgvs || '-' }}</td>
+                                                                <td>{{sample.readDepth || '-' }}</td>
+                                                                <td>{{sample.transcript || '-' }}</td>
+                                                                <td>{{sample.protein || '-' }}</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
-                                    </div>
-                                </div>
+
+                                    </uib-tab>
+
+                                    <uib-tab heading="Copy Number Variant(s) " >
+
+
+                                        <div class="col-lg-16" >
+                                            <div class="ibox float-e-margins">
+                                                <div class="col-lg-16" >
+                                                    <div class="ibox-content">
+                                                        <div class="ibox-title ibox-title-no-line pull">
+                                                            <h3>Copy Number Variant(s)</h3>
+                                                        </div>
+
+                                                        <table class="table" role="grid">
+                                                            <thead>
+                                                            <tr>
+                                                                <th >Id</th>
+                                                                <th >Chrom</th>
+                                                                <th >Position</th>
+                                                                <th >Reference </th>
+                                                                <th >Alternative</th>
+                                                                <th >Allele Freq</th>
+                                                                <th >Func Gene</th>
+                                                                <th >Variant Type</th>
+                                                                <th >Oncomine Variant Class</th>
+                                                                <th >Function</th>
+                                                                <th >HGVS</th>
+                                                                <th >Read Depth</th>
+                                                                <th >Transcript</th>
+                                                                <th >Protein</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr ng-repeat="sample in copyNumberVariantsList">
+                                                                <td>{{sample.identifier || '-' }}</td>
+                                                                <td>{{sample.chromosome || '-' }}</td>
+                                                                <td>{{sample.position || '-' }}</td>
+                                                                <td>{{sample.reference || '-' }}</td>
+                                                                <td>{{sample.alternative || '-' }}</td>
+                                                                <td>{{sample.alleleFrequency || '-' }}</td>
+                                                                <td>{{sample.geneName || '-' }}</td>
+                                                                <td>{{sample.type || '-' }}</td>
+                                                                <td>{{sample.oncominevariantclass || '-' }}</td>
+                                                                <td>{{sample.function || '-' }}</td>
+                                                                <td>{{sample.hgvs || '-' }}</td>
+                                                                <td>{{sample.readDepth || '-' }}</td>
+                                                                <td>{{sample.transcript || '-' }}</td>
+                                                                <td>{{sample.protein || '-' }}</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </uib-tab>
+
+                                    <uib-tab heading="Gene Fusion(s) " >
+
+
+                                        <div class="col-lg-16" >
+                                            <div class="ibox float-e-margins">
+                                                <div class="col-lg-16" >
+                                                    <div class="ibox-content">
+                                                        <div class="ibox-title ibox-title-no-line pull">
+                                                            <h3>Gene Fusion(s)</h3>
+                                                        </div>
+
+                                                        <table class="table" role="grid">
+                                                            <thead>
+                                                            <tr>
+                                                                <th >Id</th>
+                                                                <th >Driver Gene</th>
+                                                                <th >Driver Count</th>
+                                                                <th >Partner Gene </th>
+                                                                <th >Annotation</th>
+
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr ng-repeat="sample in geneFusionsList">
+
+                                                                <td>{{sample.identifier || '-' }}</td>
+                                                                <td>{{sample.geneName || '-' }}</td>
+                                                                <td>{{sample.gene || '-' }}</td>
+                                                                <td>{{sample.flowAlternativeAlleleObservationCount || '-' }}</td>
+                                                                <td>{{sample.alternativeAlleleObservationCount || '-' }}</td>
+
+                                                                <!--Original-->
+                                                                <!--<td>{{sample.identifier || '-' }}</td>-->
+                                                                <!--<td>{{sample.driverGene || '-' }}</td>-->
+                                                                <!--<td>{{sample.partnerGene || '-' }}</td>-->
+                                                                <!--<td>{{sample.driverReadCount || '-' }}</td>-->
+                                                                <!--<td>{{sample.partnerReadCount || '-' }}</td>-->
+
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </uib-tab>
+
+                                    </uib-tabset>
+
                             </div>
 
-                        </uib-tab>
-
-                        </uib-tabset>
-
+                        </div>
+                    </div>
                 </div>
-
             </div>
-
         </div>
 
 
