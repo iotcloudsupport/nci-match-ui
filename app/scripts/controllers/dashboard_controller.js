@@ -303,7 +303,7 @@ angular.module('dashboard.matchbox',[])
                 labels: armNames,
                 datasets: [
                     {
-                        label: "Accural Dataset",
+                        label: "Accrual Dataset",
                         fillColor: "rgba(151,187,205,0.5)",
                         strokeColor: "rgba(220,220,220,0.8)",
                         highlightFill: "rgba(220,220,220,0.75)",
