@@ -133,7 +133,11 @@
                                                             </thead>
                                                             <tbody>
                                                             <tr ng-repeat="sample in singleNucleotideVariantsList">
-                                                                <td>{{sample.identifier || '-' }}</td>
+                                                                <td>
+                                                                    <a class="report-link" href ng-click="openCosmicId( sample.identifier )">
+                                                                    {{sample.identifier || '-' }}
+                                                                    </a>
+                                                                </td>
                                                                 <td>{{sample.chromosome || '-' }}</td>
                                                                 <td>{{sample.position || '-' }}</td>
                                                                 <td>{{sample.reference || '-' }}</td>
