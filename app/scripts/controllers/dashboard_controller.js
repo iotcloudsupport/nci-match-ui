@@ -1,7 +1,10 @@
 angular.module('dashboard.matchbox',[])
-    .controller('DashboardStatisticsController', function( $scope, workflowApi ) {
+    .controller('DashboardStatisticsController', function( $scope, workflowApi ) { //store
         $scope.lastUpdated = (new Date()).getTime();
         $scope.name = 'MATCHBox User';
+        //$scope.name = setName();
+
+        //console.log(store.get('profile'));
         $scope.numberOfPatients = '?';
         $scope.numberOfScreenedPatients = '?';
         $scope.numberOfPatientsWithTreatment = '?';
@@ -9,6 +12,18 @@ angular.module('dashboard.matchbox',[])
         $scope.numberOfPendingAssignmentReports = '?';
         $scope.numberOfPendingTissueVariantReports = '?';
         $scope.numberOfPendingBloodVariantReports = '?';
+
+        /*function setName() {
+            if (store.get('profile').nickname !== null) {
+                return store.get('profile').nickname;
+            } else {
+                if (store.get('profile').email !== null) {
+                    return store.get('profile').email;
+                } else {
+                    return 'MATCHBox User';
+                }
+            }
+        }*/
 
         $scope.loadDashboardStatistics = function() {
             workflowApi
@@ -23,6 +38,14 @@ angular.module('dashboard.matchbox',[])
                     $scope.numberOfPendingBloodVariantReports = d.data.number_of_pending_blood_variant_reports;
                 });
         };
+
+        $scope.numberOfPatients = 45;
+        $scope.numberOfScreenedPatients = 17;
+        $scope.numberOfPatientsWithTreatment = 2;
+        $scope.numberOfPendingVariantReports = 5;
+        $scope.numberOfPendingAssignmentReports = 1;
+        $scope.numberOfPendingTissueVariantReports = 1;
+        $scope.numberOfPendingBloodVariantReports = 1;
     })
     .controller('DashboardPendingReviewController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, workflowApi, reportApi ) {
         this.dtOptions = DTOptionsBuilder.newOptions()
@@ -37,8 +60,8 @@ angular.module('dashboard.matchbox',[])
 
         $scope.pendingVariantReportList = [];
         $scope.pendingAssignmentReportList = [];
-        $scope.pendingTissueVariantReportsList = [];
-        $scope.pendingBloodVariantReportsList = [];
+        $scope.pendingTissueVariantReportList = [];
+        $scope.pendingBloodVariantReportList = [];
 
         $scope.loadPatientVariantReportsList = function() {
             matchApi
@@ -46,6 +69,55 @@ angular.module('dashboard.matchbox',[])
                 .then(function(d) {
                     $scope.pendingVariantReportList = d.data;
                 });
+
+                /*$scope.pendingVariantReportList = [
+                {
+                    "patientSequenceNumber" : "0009991",
+                    "molecularSequenceNumber": "N-16-0009991",
+                    "jobName": "T0009991",
+                    "location": "1",
+                    "specimenReceivedDate": "01 June 2016 7:51PM GMT",
+                    "ngsDateReceived": "02 June 2016  10:09AM GMT",
+                    "daysPending": 7
+                },
+                {
+                    "patientSequenceNumber" : "0009993",
+                    "molecularSequenceNumber": "N-16-0009993",
+                    "jobName": "T0009993",
+                    "location": "1",
+                    "specimenReceivedDate": "01 June 2016 7:53PM GMT",
+                    "ngsDateReceived": "02 June 2016  10:09PM GMT",
+                    "daysPending": 7
+                },
+                {
+                    "patientSequenceNumber" : "0009995",
+                    "molecularSequenceNumber": "N-16-0009995",
+                    "jobName": "T0009995",
+                    "location": "1",
+                    "specimenReceivedDate": "01 June 2016 8:51PM GMT",
+                    "ngsDateReceived": "03 June 2016  10:09AM GMT",
+                    "daysPending": 6
+                },
+                {
+                    "patientSequenceNumber" : "0009996",
+                    "molecularSequenceNumber": "N-16-0009996",
+                    "jobName": "T0009996",
+                    "location": "1",
+                    "specimenReceivedDate": "02 June 2016 7:51PM GMT",
+                    "ngsDateReceived": "04 June 2016  10:09AM GMT",
+                    "daysPending": 5
+                },
+                {
+                    "patientSequenceNumber" : "0009997",
+                    "molecularSequenceNumber": "N-16-0009997",
+                    "jobName": "T0009997",
+                    "location": "1",
+                    "specimenReceivedDate": "03 June 2016 7:51PM GMT",
+                    "ngsDateReceived": "05 June 2016  10:09AM GMT",
+                    "daysPending": 4
+                }
+            ];*/
+
         }
 
         $scope.loadPatientPendingAssignmentReportsList = function() {
@@ -54,7 +126,15 @@ angular.module('dashboard.matchbox',[])
                 .then(function(d) {
                     $scope.pendingAssignmentReportList = d.data;
                 });
-        }
+            /*$scope.pendingAssignmentReportList = [
+                {
+                    "patientSequenceNumber": "00099001",
+                    "molecularSequenceNumber": "N-16-00099001",
+                    "dateAssigned": "10 June 2016  10:34AM GMT",
+                    "hoursPending": 2
+                }
+            ];*/
+        };
         
         $scope.loadTissueVariantReportsList = function() {
             matchApi
@@ -62,7 +142,18 @@ angular.module('dashboard.matchbox',[])
                 .then(function(d) {
                     $scope.pendingTissueVariantReportsList = d.data;
                 });
-        }
+            /*$scope.pendingTissueVariantReportList = [
+                {
+                    "patientSequenceNumber" : "0009901",
+                    "molecularSequenceNumber": "N-16-0009901",
+                    "jobName": "T0009901",
+                    "location": "1",
+                    "specimenReceivedDate": "01 June 2016 7:51PM GMT",
+                    "ngsDateReceived": "02 June 2016  10:09AM GMT",
+                    "daysPending": 7
+                }
+            ];*/
+        };
         
         $scope.loadBloodVariantReportsList = function() {
             matchApi
@@ -70,6 +161,17 @@ angular.module('dashboard.matchbox',[])
                 .then(function(d) {
                     $scope.pendingBloodVariantReportsList = d.data;
                 });
+            /*$scope.pendingBloodVariantReportList = [
+                {
+                    "patientSequenceNumber" : "0009907",
+                    "molecularSequenceNumber": "N-16-0009907",
+                    "jobName": "T0009907",
+                    "location": "1",
+                    "specimenReceivedDate": "03 June 2016 7:51PM GMT",
+                    "ngsDateReceived": "05 June 2016  10:09AM GMT",
+                    "daysPending": 4
+                }
+            ];*/
         }
 
     })
@@ -98,9 +200,9 @@ angular.module('dashboard.matchbox',[])
         ];
 
         $scope.message = [
-            'Working progress ..',
-            'System rerun',
-            'DB issue ..',
+            'Patient Registration', //'Working progress ..',
+            'Specimen Received', //'System rerun',
+            'Specimen Failure', //'DB issue ..',
             'Mail expected',
             'Users be aware',
             'Car broke down',
@@ -122,24 +224,24 @@ angular.module('dashboard.matchbox',[])
 
         $scope.activityListData = [
             /*{
-                "pic": $scope.icons[5],
+                "pic": $scope.icons[4],
                 "status": $scope.status[1],
                 "time": 1421175969643,
                 "age": '3m',
-                "displayName": $scope.message[2],
+                "displayName": $scope.message[0],
                 "description": "Delayed DB configuration 1"
             },
             {
-                "pic": $scope.icons[0],
-                "status": $scope.status[0],
+                "pic": $scope.icons[3],
+                "status": $scope.status[4],
                 "time": 1421171969643,
                 "age": '5m',
                 "displayName": $scope.message[1],
                 "description": "Delayed DB configuration 2"
             },
             {
-                "pic": $scope.icons[4],
-                "status": $scope.status[2],
+                "pic": $scope.icons[1],
+                "status": $scope.status[0],
                 "time": 1421169969643,
                 "age": '5m',
                 "displayName": $scope.message[2],
@@ -147,7 +249,7 @@ angular.module('dashboard.matchbox',[])
             },
             {
                 "pic": $scope.icons[3],
-                "status": $scope.status[4],
+                "status": $scope.status[1],
                 "time": 1421165969643,
                 "age": '18m',
                 "displayName": $scope.message[1],
@@ -155,15 +257,15 @@ angular.module('dashboard.matchbox',[])
             },
             {
                 "pic": $scope.icons[1],
-                "status": $scope.status[3],
+                "status": $scope.status[0],
                 "time": 1421162969643,
                 "age": '5h',
                 "displayName": $scope.message[2],
                 "description": "Delayed DB configuration 5"
             },
             {
-                "pic": $scope.icons[2],
-                "status": $scope.status[1],
+                "pic": $scope.icons[3],
+                "status": $scope.status[4],
                 "time": 1421160969643,
                 "age": '6d',
                 "displayName": $scope.message[1],
@@ -178,23 +280,23 @@ angular.module('dashboard.matchbox',[])
                 "description": "Delayed DB configuration 7"
             },
             {
-                "pic": $scope.icons[5],
-                "status": $scope.status[3],
+                "pic": $scope.icons[1],
+                "status": $scope.status[0],
                 "time": 1421162969643,
                 "age": '5h',
                 "displayName": $scope.message[2],
                 "description": "Delayed DB configuration 8"
             },
             {
-                "pic": $scope.icons[6],
-                "status": $scope.status[1],
+                "pic": $scope.icons[3],
+                "status": $scope.status[4],
                 "time": 1421160969643,
                 "age": '6d',
                 "displayName": $scope.message[1],
                 "description": "Delayed DB configuration 9"
             },
             {
-                "pic": $scope.icons[5],
+                "pic": $scope.icons[4],
                 "status": $scope.status[3],
                 "time": 1421155768643,
                 "age": '1y',
@@ -304,9 +406,9 @@ angular.module('dashboard.matchbox',[])
                 datasets: [
                     {
                         label: "Accrual Dataset",
-                        fillColor: "rgba(151,187,205,0.5)",
+                        fillColor: "#1c84c6",
                         strokeColor: "rgba(220,220,220,0.8)",
-                        highlightFill: "rgba(220,220,220,0.75)",
+                        highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
                         highlightStroke: "rgba(220,220,220,1)",
                         data: armValues
                     }
@@ -334,7 +436,7 @@ angular.module('dashboard.matchbox',[])
             },
             {
                 value: aMoiValues[2],
-                color: "#ab0102",
+                color: "#18a689", //"#ab0102",
                 highlight: aMoiHighlight,
                 label: aMoiLabels[2]
             },
