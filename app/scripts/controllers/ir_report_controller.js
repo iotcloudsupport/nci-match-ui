@@ -1,6 +1,6 @@
 angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
     .controller('IrAdminController',
-        function( $scope, $http, DTOptionsBuilder, irAdminApi, prompt, $uibModal, $filter) {
+        function( $scope, $http, $window, DTOptionsBuilder, irAdminApi, prompt, $uibModal, $filter) {
 
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(5);
@@ -11,6 +11,10 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
         this.dtInstance = {};
 
         $scope.irList = [];
+
+            $scope.moChaList = [];
+            $scope.MDList = [];
+            
         $scope.positiveListMocha = [];
         $scope.positiveListMDCC = [];
         $scope.negativeListMocha = [];
@@ -217,6 +221,56 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
                 });
             };
 
+            $scope.loadHeartMoChaBeatList = function () {
+                irAdminApi
+                    .loadHeartBeatList()
+                    .then(function (d) {
+                        angular.forEach(d.data, function (value,key) {
+                            var timer = ['fa fa-clock-o fa-2x', 'color:green'];
+                            var time = "On time";
+
+                            if (key === 2) {
+                                timer = ['fa fa-warning fa-2x', 'color:orange'];
+                                time = "1.5 hours ago";
+                            }
+
+                            if (key === 3) {
+                                timer = ['fa fa-warning fa-2x', 'color:red'];
+                                time = "8.5 hours ago";
+                            }
+                            // var dbreport = "https://matchbox.nci.nih.gov:8443/match/common/rs/getIrUploaderFile/dbReport?ipAddress="+value.externalIpAddress;
+                            // var datafile = "https://matchbox.nci.nih.gov:8443/match/common/rs/getIrUploaderFile/dataFile?ipAddress="+value.externalIpAddress;
+                            // var logfile = "https://matchbox.nci.nih.gov:8443/match/common/rs/getIrUploaderFile/logFile?ipAddress="+value.externalIpAddress;
+
+                            var dbreport = "https://matchbox.nci.nih.gov:8443/match/common/rs/getIrUploaderFile/dbReport?ipAddress=129.43.127.133";
+                            var datafile = "https://matchbox.nci.nih.gov:8443/match/common/rs/getIrUploaderFile/dataFile?ipAddress=129.43.127.133";
+                            var logfile = "https://matchbox.nci.nih.gov:8443/match/common/rs/getIrUploaderFile/logFile?ipAddress=129.43.127.133";
+
+                            if(value.location === "MoCha") {
+
+                                // alert(value.location)
+
+                                $scope.moChaList.push({
+                                    'timer': timer,
+                                    'time': time,
+                                    'hostName': value.hostName,
+                                    'ipAddress': value.ipAddress,
+                                    'externalIpAddress': value.externalIpAddress,
+                                    'status': value.status,
+                                    'lastContactDate': value.lastContactDate,
+                                    'dbReport': value.dbReport,
+                                    'dataFile': value.dataFile,
+                                    'logFile': value.logFile,
+                                    'location': value.location,
+                                    'dbReportPath': dbreport,
+                                    'dataFilePath': datafile,
+                                    'logFilePath': logfile
+                                });
+                            }
+                        });
+                    });
+            };
+
             $scope.loadSampleControlsList = function () {
                 irAdminApi
                     .loadSampleControlsList()
@@ -238,5 +292,20 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
                     .generateNoTemplateControlToken(items)
                     .then(function (d) {},
                         function(response) {});
+            };
+
+            //Svg for samples
+            $scope.loadScatterPlot = function () {
+
+                // svgApi
+                //     .getSvgGene('SampleControl_MoCha_2')
+                //     .then(function (d) {
+                //
+                //         alert(JSON.stringify(d.data))
+
+                        $window.histogramPlot();
+                $window.circosPlot();
+                        // $window.d3BoxVersion5(d.data);
+
             };
     });
