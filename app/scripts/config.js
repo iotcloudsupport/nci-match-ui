@@ -197,7 +197,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
             }
         })
         .state('iradmin', {
-            url: "/iradmin",
+            url: "/iradmin/:branch",
             templateUrl: "views/iradmin.html",
             data: { pageTitle: 'IR Reporters', requiresLogin: true },
             resolve: {
@@ -297,6 +297,32 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                 }
             }
         })
+        .state('ntc_quality_control', {
+            url: "/ntc_quality_control/:sampleId",
+            templateUrl: "views/ntc_quality_control.html",
+            data: { pageTitle: 'IR NTC Quality Control Report', requiresLogin: true },
+            controller: function($scope, $stateParams) {
+                $scope.sid = $stateParams.sampleId;
+            },
+            resolve: {
+                loadPlugin: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([
+                        {
+                            serie: true,
+                            files: ['bower_components/datatables/media/js/jquery.dataTables.min.js','bower_components/datatables/media/css/dataTables.bootstrap.min.css']
+                        },
+                        {
+                            serie: true,
+                            files: ['bower_components/datatables/media/js/dataTables.bootstrap.min.js']
+                        },
+                        {
+                            name: 'datatables',
+                            files: ['bower_components/angular-datatables/dist/angular-datatables.min.js']
+                        }
+                    ]);
+                }
+            }
+        })
         .state('auth', {
             abstract: true,
             url: "/auth",
@@ -307,6 +333,12 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
             templateUrl: "views/login.html",
             data: { pageTitle: 'Login' }
         })
+
+    // authProvider.init({
+    //     domain: 'ncimatch.auth0.com',
+    //     clientID: 'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH',
+    //     loginUrl: 'auth.login'
+    // });
 
     authProvider.init({
         domain: 'ncimatch.auth0.com',
@@ -322,11 +354,19 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
 }
 
 angular.module('matchbox')
+
+    // .constant('MONGOLAB_CONFIG', {
+    //     baseUrl: '/databases/',
+    //     dbName: 'ascrum'
+    // })
     .config(config)
     .run(function($rootScope, $state, auth, store, jwtHelper, $location) {
         $rootScope.$state = $state;
         $rootScope.$on('$locationChangeStart', function() {
             var token = store.get('token');
+
+            // alert(token)
+
             if (token) {
                 $rootScope.showHeader = true; //Open the headers
                 if (!jwtHelper.isTokenExpired(token)) {

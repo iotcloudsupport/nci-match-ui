@@ -11,6 +11,8 @@ var mouseOver = function(d){
 // *** Version 5 *** //
 function d3BoxVersion5(data) {
 
+    // alert(JSON.stringify(data))
+
     var genes = [];
     var previous = 0;
     var chromosomes = [];
