@@ -8,12 +8,11 @@ angular.module('dashboard.matchbox',[])
         $scope.numberOfPatients = '?';
         $scope.numberOfScreenedPatients = '?';
         $scope.numberOfPatientsWithTreatment = '?';
-        $scope.numberOfPendingVariantReports = '?';
         $scope.numberOfPendingAssignmentReports = '?';
         $scope.numberOfPendingTissueVariantReports = '?';
         $scope.numberOfPendingBloodVariantReports = '?';
 
-        /*function setName() {
+        function setName() {
             if (store.get('profile').nickname !== null) {
                 return store.get('profile').nickname;
             } else {
@@ -23,7 +22,7 @@ angular.module('dashboard.matchbox',[])
                     return 'MATCHBox User';
                 }
             }
-        }*/
+        }
 
         $scope.loadDashboardStatistics = function() {
             workflowApi
@@ -32,7 +31,6 @@ angular.module('dashboard.matchbox',[])
                     $scope.numberOfPatients = d.data.number_of_patients;
                     $scope.numberOfScreenedPatients = d.data.number_of_screened_patients;
                     $scope.numberOfPatientsWithTreatment = d.data.number_of_patients_with_treatment;
-                    $scope.numberOfPendingVariantReports = d.data.number_of_pending_variant_reports;
                     $scope.numberOfPendingAssignmentReports = d.data.number_of_pending_assignment_reports;
                     $scope.numberOfPendingTissueVariantReports = d.data.number_of_pending_tissue_variant_reports;
                     $scope.numberOfPendingBloodVariantReports = d.data.number_of_pending_blood_variant_reports;
@@ -137,12 +135,12 @@ angular.module('dashboard.matchbox',[])
         };
         
         $scope.loadTissueVariantReportsList = function() {
-            matchApi
+            /*matchApi
                 .getTissueVariantReports()
                 .then(function(d) {
                     $scope.pendingTissueVariantReportsList = d.data;
-                });
-            /*$scope.pendingTissueVariantReportList = [
+                });*/
+            $scope.pendingTissueVariantReportList = [
                 {
                     "patientSequenceNumber" : "0009901",
                     "molecularSequenceNumber": "N-16-0009901",
@@ -152,7 +150,7 @@ angular.module('dashboard.matchbox',[])
                     "ngsDateReceived": "02 June 2016  10:09AM GMT",
                     "daysPending": 7
                 }
-            ];*/
+            ];
         };
         
         $scope.loadBloodVariantReportsList = function() {
