@@ -10,8 +10,8 @@
     ],
     "current_step_number": "1.0",
     "current_assignment": {
-        "generated_date": "2016-05-09T22:06:33+00 =\\u003e00",
-        "confirmed_date": "2016-05-09T22:06:33+00 =\\u003e00",
+        "generated_date": "2016-05-09T22:06:33+00 : 00",
+        "confirmed_date": "2016-05-09T22:06:33+00 : 00",
         "sent_to_cog_date": "-",
         "received_from_cog_date": "-",
         "biopsy_sequence_number": "T-15-000078",
@@ -151,21 +151,22 @@
         "list": [
             {
                 "name": "Document 1",
-                "uploadedDate": "2016-05-09T22:06:33+00:00",
+                "uploaded_date": "2016-05-09T22:06:33+00:00",
                 "user": "James Bond"
             },
             {
                 "name": "Document 2",
-                "uploadedDate": "2016-05-09T22:06:33+00:00",
+                "uploaded_date": "2016-05-09T22:06:33+00:00",
                 "user": "James Bond"
             },
             {
                 "name": "X-File A23FSD34",
-                "uploadedDate": "2016-05-09T22:06:33+00:00",
+                "uploaded_date": "2016-05-09T22:06:33+00:00",
                 "user": "Fox Mulder"
             }
         ]
     },
+    "message": "Some message",
     "timeline": [
         {
             "patient_id": "PAT123",
@@ -190,60 +191,47 @@
             }
         }
     ],
-    "biopsy_selectors": [
-        {
-            "text": "TYPE1",
-            "biopsy_sequence_number": "MSN123451"
-        },
-        {
-            "text": "TYPE2",
-            "biopsy_sequence_number": "MSN123452"
-        }
-    ],
-    "biopsy": {
-        "patient_id": "PAT123",
-        "biopsy_sequence_number": "MSN123452",
-        "biopsy_received_date": "2016-05-09T22:06:33+00:00",
-        "cg_collected_date": "2016-06-09T22:06:33+00:00",
-        "cg_id": "GID0982",
-        "study_id": "APEC16212",
-        "type": "TYPE2"
-    },
     "variant_report_selectors": [
         {
-            "text": "GID0981",
+            "text": "SPEC0981",
             "variant_report_received_date": "2016-05-09T22:06:33.000+00:00"
         },
         {
-            "text": "GID0982",
+            "text": "SPEC0982",
             "variant_report_received_date": "2016-05-09T22:06:33.000+00:00"
         }
     ],
     "variant_report": {
-        "cg_id": "GID0982",
+        "specimen_id": "SPEC0982",
         "variant_report_received_date": "2016-05-09T22:06:33.000+00:00",
-        "patient_id": "PAT123",
-        "molecular_id": "MSN123",
-        "analysis_id": "AN123",
+        "patient_id": "PAT1232",
+        "sample_id": "SAM1232",
+        "analysis_id": "SAM1232",
         "status": "PENDING",
-        "confirmed_date": "2016-05-09T22:06:33.000+00:00",
-        "rejected_date": "2016-06-09T22:06:33.000+00:00",
-        "dna_bam_file_path": "http:\\\\\\\\blah.com\\\\dna_bam.data",
-        "dna_bai_file_path": "http:\\\\\\\\blah.com\\\\dna_bai.data",
-        "rna_bam_file_path": "http:\\\\\\\\blah.com\\\\rna_bam.data",
-        "rna_bai_file_path": "http:\\\\\\\\blah.com\\\\rna_bai.data",
-        "vcf_path": "http:\\\\\\\\blah.com\\\\vcf.data",
+        "status_date": "2016-05-09T22:06:33.000+00:00",
+        "dna_bam_file_path": "http:\\\\blah.com\\dna_bam.data",
+        "dna_bai_file_path": "http:\\\\blah.com\\dna_bai.data",
+        "rna_bam_file_path": "http:\\\\blah.com\\rna_bam.data",
+        "rna_bai_file_path": "http:\\\\blah.com\\rna_bai.data",
+        "vcf_path": "http:\\\\blah.com\\vcf.data",
+        "total_variants": 8,
+        "cellularity": 7,
+        "total_mois": 4,
+        "total_amois": 2,
+        "total_confirmed_mois": 3,
+        "total_confirmed_amois": 1,
         "variants": {
             "single_nucleitide_variants": [
                 {
-                    "molecular_id_analysis_id": "MSN123AN123",
+                    "msn_analysis_id": "MSN123AN123",
                     "variant_id": "COSM1231",
                     "patient_id": "PAT123",
-                    "cg_id": "GID0981",
+                    "specimen_id": "SPEC0981",
+                    "sample_id": "SAM0981",
+                    "analysis_id": "ANZ98761",
                     "variant_type": "single_nucleitide_variants",
                     "status": "CONFIRMED",
-                    "confirmed_date": "",
-                    "rejected_date": "2016-06-09T22:06:33+00:00",
+                    "status_date": "2016-06-09T22:06:33+00:00",
                     "comment": "Don't need this",
                     "gene_name": "gene",
                     "chromosome": "chr3",
@@ -256,7 +244,7 @@
                     "filter": "flt",
                     "protein": "p.Glu6565Ala",
                     "transcript": "NM_0456345",
-                    "hgvs": "c.234534\\u003eC",
+                    "hgvs": "c.234534>C",
                     "read_depth": "648",
                     "rare": "?",
                     "allele_frequency": "0.0344",
@@ -267,14 +255,15 @@
                     "arm_specific": "arm spec"
                 },
                 {
-                    "molecular_id_analysis_id": "MSN123AN123",
+                    "msn_analysis_id": "MSN123AN123",
                     "variant_id": "COSM1232",
                     "patient_id": "PAT123",
-                    "cg_id": "GID0981",
+                    "specimen_id": "SPEC0982",
+                    "sample_id": "SAM0982",
+                    "analysis_id": "ANZ98762",
                     "variant_type": "single_nucleitide_variants",
                     "status": "CONFIRMED",
-                    "confirmed_date": "",
-                    "rejected_date": "2016-06-09T22:06:33+00:00",
+                    "status_date": "2016-06-09T22:06:33+00:00",
                     "comment": "Don't need this",
                     "gene_name": "gene",
                     "chromosome": "chr3",
@@ -287,7 +276,7 @@
                     "filter": "flt",
                     "protein": "p.Glu6565Ala",
                     "transcript": "NM_0456345",
-                    "hgvs": "c.234534\\u003eC",
+                    "hgvs": "c.234534>C",
                     "read_depth": "648",
                     "rare": "?",
                     "allele_frequency": "0.0344",
@@ -299,13 +288,13 @@
                 }
             ],
             "indels": [],
-            "copyNumberVariants": [],
-            "geneFusions": []
+            "copy_number_variants": [],
+            "gene_fusions": []
         }
     },
     "assignment_report": {
-        "generated_date": "2016-05-09T22:06:33+00 =\\u003e00",
-        "confirmed_date": "2016-05-09T22:06:33+00 =\\u003e00",
+        "generated_date": "2016-05-09T22:06:33+00 : 00",
+        "confirmed_date": "2016-05-09T22:06:33+00 : 00",
         "sent_to_cog_date": "-",
         "received_from_cog_date": "-",
         "biopsy_sequence_number": "T-15-000078",
@@ -430,19 +419,19 @@
     },
     "specimen_selectors": [
         {
-            "text": "GID0981",
-            "cg_collected_date": "2016-06-09T22:06:33.000+00:00"
+            "text": "SPEC0981",
+            "collected_date": "2016-06-09T22:06:33.000+00:00"
         },
         {
-            "text": "GID0982",
-            "cg_collected_date": "2016-06-09T22:06:33.000+00:00"
+            "text": "SPEC0982",
+            "collected_date": "2016-06-09T22:06:33.000+00:00"
         }
     ],
     "specimen": {
         "patient_id": "PAT123",
-        "cg_collected_date": "2016-06-09T22:06:33+00:00",
-        "cg_id": "GID0982",
-        "cg_received_date": "2016-06-09T22:06:33+00:00",
+        "collected_date": "2016-06-09T22:06:33+00:00",
+        "specimen_id": "SPEC0982",
+        "failed_date": "2016-06-09T22:06:33+00:00",
         "study_id": "APEC1621",
         "type": "TUMOR",
         "pathology_status": "Agreed on pathology",
@@ -475,8 +464,8 @@
                 "result": "NEGATIVE"
             }
         ],
-        "assignments": null,
-        "nucleic_acid_sendouts": [
+        "assignments": "",
+        "specimen_shipments": [
             {
                 "analyses": [
                     {
@@ -515,9 +504,9 @@
     "specimen_history": [
         {
             "patient_id": "PAT123",
-            "cg_collected_date": "2016-06-09T22:06:33+00:00",
-            "cg_id": "GID0981",
-            "cg_received_date": "2016-06-09T22:06:33+00:00",
+            "collected_date": "2016-06-09T22:06:33+00:00",
+            "specimen_id": "SPEC0981",
+            "failed_date": "2016-06-09T22:06:33+00:00",
             "study_id": "APEC1621",
             "type": "TUMOR",
             "pathology_status": "Agreed on pathology",
@@ -550,8 +539,8 @@
                     "result": "NEGATIVE"
                 }
             ],
-            "assignments": null,
-            "nucleic_acid_sendouts": [
+            "assignments": "",
+            "specimen_shipments": [
                 {
                     "analyses": [
                         {
@@ -589,9 +578,9 @@
         },
         {
             "patient_id": "PAT123",
-            "cg_collected_date": "2016-06-09T22:06:33+00:00",
-            "cg_id": "GID0982",
-            "cg_received_date": "2016-06-09T22:06:33+00:00",
+            "collected_date": "2016-06-09T22:06:33+00:00",
+            "specimen_id": "SPEC0982",
+            "failed_date": "2016-06-09T22:06:33+00:00",
             "study_id": "APEC1621",
             "type": "TUMOR",
             "pathology_status": "Agreed on pathology",
@@ -624,8 +613,8 @@
                     "result": "NEGATIVE"
                 }
             ],
-            "assignments": null,
-            "nucleic_acid_sendouts": [
+            "assignments": "",
+            "specimen_shipments": [
                 {
                     "analyses": [
                         {

@@ -24,14 +24,18 @@
         <div class="row border-bottom white-bg dashboard-header animated fadeInRight">
 
                         <div class="ibox-content" ng-controller="IrAdminController"  ng-init="loadScatterPlot()">
+                            <h2>{{branch}} </h2>
 
-                            <div class="col-lg-12">
+
+
+                            <div class="col-lg-12 pull-left">
+
                                 <div class="ibox float-e-margins">
-                                    <h2>MoCha </h2>
 
-                                        <div class="col-sm-9">
 
-                                            <div class="col-sm-6">
+                                        <div class="col-xs-12 cols-height">
+
+                                            <div class="col-xs-6 cols-height cols-bottom">
 
                                                 <div class="text-center">
                                                     <h4>Histogram</h4>
@@ -40,435 +44,540 @@
                                                     <svg id="scatterBox" version="1.1"  width="100%" height="300" preserveAspectRatio="xMinYMin meet" class="svg-content"></svg>
                                                 </div>
 
+
+                                                <!--HEART BEAT-->
+                                                <div class="col-lg-6">
+                                                    <div class="ibox float-e-margins" ng-init="loadHeartMoChaBeatList()">
+                                                        <div class="ibox-title">
+                                                            <span class="label label-warning pull-right">MoCha</span>
+                                                            <h5>HeartBeat Record</h5>
+                                                        </div>
+                                                        <div class="ibox-content" >
+                                                            <dl class="dl-horizontal-narrow" ng-repeat="ir in moChaList">
+
+                                                                <dt>IP Address</dt>
+                                                                <dd ng-style="{'color':'green'}" class="ng-binding" style="color: rgb(0, 128, 0);">{{ ir.externalIpAddress }}</dd>
+
+                                                                <dt>Internal IP Address</dt>
+                                                                <dd ng-style="{'color':'green'}" class="ng-binding" style="color: rgb(0, 128, 0);">{{ ir.ipAddress }}</dd>
+
+                                                            </dl>
+
+                                                            <div class="stat-percent font-bold text-success">
+
+                                                                98%  <i class="fa fa-clock-o fa-2x" style=";color:green;"></i>
+
+                                                            </div>
+                                                            <small>Rate of Connection</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--HEART BEAT-->
+
+
                                             </div>
 
-                                            <div class="col-sm-3">
+                                            <div class="col-xs-1 col-height col-top pull-left">
+
+                                                <div class="ibox float-e-margins">
+
+                                                    <!--<div class="ibox-content">-->
+                                                        <div class="row">
+                                                            <div class="ibox float-e-margins">
+                                                                <div class="ibox-title">
+                                                                    <span class="label label-success pull-right">Monthly</span>
+                                                                    <h6>Positive Control</h6>
+                                                                </div>
+                                                                <div class="ibox-content">
+                                                                    <h5 class="no-margins">88</h5>
+
+                                                                    <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>
+                                                                    <small>Total Patients</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <!--</div>-->
+
+                                                    <!--<div class="ibox-content">-->
+                                                        <div class="row">
+                                                            <div class="ibox float-e-margins">
+                                                                <div class="ibox-title">
+                                                                    <span class="label label-info pull-right">Monthly</span>
+                                                                    <h6>No Template Control</h6>
+                                                                </div>
+                                                                <div class="ibox-content">
+                                                                    <h5 class="no-margins">42</h5>
+
+                                                                    <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
+                                                                    <small>New orders</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <!--</div>-->
+
+                                                    <!--<div class="ibox-content">-->
+                                                        <div class="row">
+                                                            <div class="ibox float-e-margins">
+                                                                <div class="ibox-title">
+                                                                    <span class="label label-info pull-right">Monthly</span>
+                                                                    <h6>Sample generations</h6>
+                                                                </div>
+                                                                <div class="ibox-content">
+                                                                    <h5 class="no-margins">102</h5>
+
+                                                                    <div class="stat-percent font-bold text-info">75% <i class="fa fa-level-up"></i></div>
+                                                                    <small>Success Rate</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    <!--</div>-->
+
+
+
+                                                </div>
+
+
+                                            </div>
+
+                                            <div class="col-xs-3">
+
+                                                <div class="text-center">
+                                                    <h4>Sections of Indels</h4>
+                                                </div>
+                                                <div id="pie">
+                                                    <svg id="pieBox" version="1.1" width="100%" height="220" preserveAspectRatio="xMinYMin meet" class="svg-content"></svg>
+                                                </div>
 
                                                 <div class="text-center">
                                                     <h4>Gene Mapping Circos</h4>
                                                 </div>
                                                 <div id="circos">
-                                                    <svg id="circosBox" version="1.1"  width="100%" height="300" preserveAspectRatio="xMinYMin meet" class="svg-content"></svg>
+                                                    <svg id="circosBox" version="1.1" width="100%" height="250" preserveAspectRatio="xMinYMin meet" class="svg-content"></svg>
                                                 </div>
+
                                             </div>
 
-
                                         </div>
 
-                                        <!--<div class="col-sm-2">-->
 
-                                            <!--<div class="statistic-box pull-left">-->
-
-                                                <!--<div class="text-center">-->
-                                                    <!--<h4>Gene Mapping Circos</h4>-->
-                                                <!--</div>-->
-                                                <!--<div id="circos">-->
-                                                    <!--<svg id="circosBox" version="1.1"  width="100%" height="300" preserveAspectRatio="xMinYMin meet" class="svg-content"></svg>-->
-                                                <!--</div>-->
-                                            <!--</div>-->
-
-                                        <!--</div>-->
                                 </div>
                             </div>
-
-                            <div class="col-lg-2">
-                                <div class="ibox float-e-margins">
-                                    <div class="ibox-title">
-                                        <span class="label label-success pull-right">Monthly</span>
-                                        <h5>Positive Control</h5>
-                                    </div>
-                                    <div class="ibox-content">
-                                        <h1 class="no-margins">88</h1>
-
-                                        <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>
-                                        <small>Total Patients</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="ibox float-e-margins">
-                                    <div class="ibox-title">
-                                        <span class="label label-info pull-right">Monthly</span>
-                                        <h5>No Template Control</h5>
-                                    </div>
-                                    <div class="ibox-content">
-                                        <h1 class="no-margins">42</h1>
-
-                                        <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
-                                        <small>New orders</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2">
-                                <div class="ibox float-e-margins" ng-init="loadHeartMoChaBeatList()">
-                                    <div class="ibox-title">
-                                        <span class="label label-warning pull-right">MoCha</span>
-                                        <h5>HeartBeat Record</h5>
-                                    </div>
-                                    <div class="ibox-content" >
-                                        <dl class="dl-horizontal-narrow" ng-repeat="ir in moChaList">
-
-                                            <dt>IP Address</dt>
-                                            <dd ng-style="{'color':'green'}" class="ng-binding" style="color: rgb(0, 128, 0);">{{ ir.externalIpAddress }}</dd>
-
-                                            <dt>Internal IP Address</dt>
-                                            <dd ng-style="{'color':'green'}" class="ng-binding" style="color: rgb(0, 128, 0);">{{ ir.ipAddress }}</dd>
-
-                                        </dl>
-
-                                        <div class="stat-percent font-bold text-success">
-
-                                            98%  <i class="fa fa-clock-o fa-2x" style=";color:green;"></i>
-
-                                        </div>
-                                        <small>Rate of Connection</small>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
 
 
-            <div class="col-lg-3">
-<!---->
-            </div>
-                            <!--<div class="col-lg-2">-->
-                                <!--<div class="ibox float-e-margins">-->
-                                    <!--<div class="ibox-title">-->
-                                        <!--<span class="label label-info pull-right">Monthly</span>-->
-                                        <!--<h5>No Template Control</h5>-->
-                                    <!--</div>-->
-                                    <!--<div class="ibox-content">-->
-                                        <!--<h1 class="no-margins">42</h1>-->
+                            <div class="col-lg-3">
 
-                                        <!--<div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>-->
-                                        <!--<small>New orders</small>-->
+                            </div>
+
+                    </div>
+            </div>
+
+
+        <!--MSN GENERATOR-->
+        <div class="wrapper" >
+
+            <div class="no-horizontal-padding header-box-container">
+
+                <div class="tabs-container">
+
+                    <div ng-controller="IrAdminController" ng-init="loadSampleControlsList()">
+
+                <a ng-click="showPositiveControlConfirmation('MoCha')" class="btn btn-xs btn-primary file-button-xl pull-right">
+                <!--<i class="fa fa-bar-chart"></i>&nbsp;&nbsp;-->
+                <span class="bold">Generate MSN</span>
+                </a>
+
+                <div class="row">
+                <div class="col-xs-3">
+                    <h6>Positive Sample Controls - MoCha</h6>
+                </div>
+                </div>
+
+                <table
+                    class="table table-hover" role="grid" width="100%">
+                <thead>
+                <tr>
+                    <th >Molecular Sequence Number</th>
+                    <th >Variant Reports</th>
+                    <th >Date Created</th>
+                    <th >Date Received</th>
+                    <th >Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="sample in positiveList">
+                    <td>{{sample.sampleMsn}}</td>
+                    <td >
+                        <a ng-if="!sample.status"> - </a>
+                        <a ng-if="sample.status" ui-sref="ngsample({ sampleId: sample.sampleMsn})">
+                            {{ sample.sampleMsn || '-' }}
+                        </a>
+                    </td>
+                    <td>{{sample.dateCreated | gmt }}</td>
+                    <td>{{sample.dateReceived | gmt }}</td>
+                    <td ng-style="{'color':'{{ sample.status | irsample }}'}">
+                        {{sample.status}}
+                    </td>
+                </tr>
+                </tbody>
+                </table>
+
+                <a ng-click="showNoTemplateControlConfirmation('MoCha')" class="btn btn-xs btn-primary file-button-xl pull-right">
+                <!--<i class="fa fa-bar-chart"></i>&nbsp;&nbsp;-->
+                <span class="bold">Generate MSN</span>
+                </a>
+
+                <div class="row">
+                <div class="col-xs-3">
+                    <h6>No Template Control - MoCha</h6>
+                </div>
+                </div>
+
+                <table class="table table-hover" role="grid" width="100%"
+                   datatable="ng" dt-options="dtOptions"
+                   dt-column-defs="dtColumnDefs"
+                   dt-instance="dtInstance">
+
+                <thead>
+                <tr>
+                    <th >Molecular Sequence Number</th>
+                    <th >Variant Reports</th>
+                    <th >Date Created</th>
+                    <th >Date Received</th>
+                    <th >Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="sample in negativeList">
+                    <td>{{sample.sampleMsn}}</td>
+                    <td>
+                        <a ng-if="!sample.dateReceived"> - </a>
+                        <a ng-if="sample.dateReceived" ui-sref="ntcsample({ sampleId: sample.sampleMsn})">
+                            {{ sample.sampleMsn || '-' }}
+                        </a>
+                    </td>
+                    <td>{{sample.dateCreated | gmt }}</td>
+                    <td>{{sample.dateReceived | gmt }}</td>
+                    <td ng-style="{'color':'{{ sample.status | irsample }}'}">
+                        {{sample.status}}
+                    </td>
+                </tr>
+                </tbody>
+                </table>
+
+                </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+    <!--<div class="wrapper" >-->
+
+
+        <!--<div class="no-horizontal-padding header-box-container">-->
+
+            <!--<div class="tabs-container">-->
+
+                <!--<uib-tabset>-->
+
+                    <!--<uib-tab heading="Heartbeat">-->
+                        <!--<div class="panel-body" >-->
+                            <!--<div class="col-lg-12">-->
+                                <!--<div class="ibox float-e-margins">-->
+                                    <!--<div class="col-lg-12" ng-init="loadHeartBeatList()">-->
+                                        <!--<div class="ibox float-e-margins">-->
+
+                                            <!--<div class="ibox-content inspinia-timeline" ng-repeat="ir in irList">-->
+
+                                                <!--<div class="timeline-item">-->
+                                                    <!--<div class="row">-->
+                                                        <!--<div class="col-xs-3 date">-->
+                                                            <!--<i class="fa fa-briefcase"></i>-->
+                                                            <!--<i class="{{ ir.timer[0] }}" style="{{ ir.timer[1] }}"></i>-->
+                                                            <!--<br/>-->
+                                                            <!--<a class="ng-binding"> {{ ir.hostName }} </a>-->
+                                                            <!--</br>-->
+                                                            <!--<small class="text-navy"> {{ ir.time }} </small>-->
+
+                                                        <!--</div>-->
+                                                        <!--<div class="col-xs-9 content no-top-border">-->
+
+                                                            <!--<div class="row">-->
+
+                                                                <!--<div class="col-md-3 col-sm-6 text-left">-->
+                                                                    <!--<dl class="dl-horizontal-narrow">-->
+
+                                                                        <!--<dt>IP Address</dt>-->
+                                                                        <!--<dd ng-style="{'color':'green'}" class="ng-binding" style="color: rgb(0, 128, 0);">{{ ir.externalIpAddress }}</dd>-->
+
+                                                                        <!--<dt>Internal IP Address</dt>-->
+                                                                        <!--<dd ng-style="{'color':'green'}" class="ng-binding" style="color: rgb(0, 128, 0);">{{ ir.ipAddress }}</dd>-->
+
+                                                                    <!--</dl>-->
+                                                                <!--</div>-->
+                                                                <!--<div class="col-md-3 col-sm-6 text-left">-->
+                                                                    <!--<dl class="dl-horizontal-narrow">-->
+                                                                        <!--<dt>Location</dt>-->
+                                                                        <!--<dd ng-style="{'color':'green'}" class="ng-binding" style="color: rgb(0, 128, 0);">{{ ir.location  || '-'  }}</dd>-->
+
+                                                                        <!--<dt class="ng-binding">Status</dt>-->
+                                                                        <!--<dd ng-style="{'color':'green'}" class="ng-binding" style="color: rgb(0, 128, 0);">{{ ir.lastContactDate | gmt}}</dd>-->
+                                                                    <!--</dl>-->
+                                                                <!--</div>-->
+
+
+                                                                <!--<div class="col-md-5 col-sm-6 text-left">-->
+                                                                    <!--<dl class="dl-horizontal-narrow">-->
+                                                                    <!--<dt>Files</dt>-->
+                                                                    <!--<dd>-->
+                                                                        <!--<a target='_blank' href="{{ ir.dbReportPath }}" class="btn btn-xs btn-white file-button-xs">DB REPORT</a>-->
+                                                                        <!--<a target='_blank' href="{{ ir.dataFilePath }}" class="btn btn-xs btn-white file-button-xs">DATA FILE</a>-->
+                                                                        <!--<a target='_blank' href="{{ ir.logFilePath }}" class="btn btn-xs btn-white file-button-xs">LOG FILE</a>-->
+                                                                    <!--</dd>-->
+                                                                        <!--</dl>-->
+
+                                                                <!--</div>-->
+
+                                                            <!--</div>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
                                     <!--</div>-->
                                 <!--</div>-->
                             <!--</div>-->
-
-        </div>
-
-                        <!--<div class="ibox-content" ng-controller="IrAdminController"  ng-init="loadScatterPlot()">-->
-
-                            <!--<div id="scatter">-->
-                                <!--<svg id="scatterBox" version="1.1"  width="100%" height="500" preserveAspectRatio="xMinYMin meet" class="svg-content"></svg>-->
-                            <!--</div>-->
-
-                            <!--<div id="circos">-->
-                                <!--<svg id="circosBox" version="1.1"  width="100%" height="500" preserveAspectRatio="xMinYMin meet" class="svg-content"></svg>-->
-                            <!--</div>-->
-
                         <!--</div>-->
+                    <!--</uib-tab>-->
+
+                    <!--<uib-tab heading="Sample Control">-->
+
+                        <!--<div class="panel-body" ng-controller="IrAdminController" >-->
+                            <!--<div ng-app="">-->
+                                <!--<div class="row">-->
+                                    <!--<div class="col-md-8 text-left">-->
+                                        <!--<div class="btn-group btn-group-margin" data-toggle="buttons">-->
+                                            <!--<label class="btn btn-outline btn-success active"-->
+                                                   <!--ng-click="showsection=false"-->
+                                                   <!--title="Switch to MoCha">-->
+                                                <!--<input type="radio" name="SampleType" id="s1">MoCha-->
+                                            <!--</label>-->
+                                            <!--<label class="btn btn-outline btn-success"-->
+                                                   <!--ng-click="showsection=true"-->
+                                                   <!--title="Switch to MD Anderson">-->
+                                                <!--<input type="radio" name="SampleType" id="s2">MD Anderson-->
+                                            <!--</label>-->
+                                        <!--</div>-->
+
+                                    <!--</div>-->
+                                <!--</div>-->
+
+                                    <!--&lt;!&ndash;MoCha Sets&ndash;&gt;-->
+                                <!--<div class="ibox-title ibox-title-no-line" ng-hide="showsection">-->
+
+                                    <!--<div ng-controller="IrAdminController" ng-init="loadSampleControlsList()">-->
 
 
-        </div>
+                                                <!--<button style="width:300px; margin: 0px 3px 8px 3px"-->
+                                                        <!--data-dismiss="modal" class="btn btn-primary pull-right"-->
+                                                        <!--type="button" ng-click="showPositiveControlConfirmation('MoCha')">-->
+                                                    <!--Generate MSN-->
+                                                <!--</button>-->
 
+                                                <!--<div class="row">-->
+                                                    <!--<div class="col-xs-3">-->
+                                                        <!--<h3>Positive Sample Controls - MoCha</h3>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
 
+                                                <!--<table datatable="ng" dt-options="dtOptions"-->
+                                                       <!--dt-column-defs="dtColumnDefs"-->
+                                                       <!--dt-instance="dtInstance"-->
+                                                       <!--class="table table-hover" role="grid" width="100%">-->
+                                                    <!--<thead>-->
+                                                    <!--<tr>-->
+                                                        <!--<th >Molecular Sequence Number</th>-->
+                                                        <!--<th >Variant Reports</th>-->
+                                                        <!--<th >Date Created</th>-->
+                                                        <!--<th >Date Received</th>-->
+                                                        <!--<th >Status</th>-->
+                                                    <!--</tr>-->
+                                                    <!--</thead>-->
+                                                    <!--<tbody>-->
+                                                    <!--<tr ng-repeat="sample in positiveListMocha">-->
+                                                        <!--<td>{{sample.sampleMsn}}</td>-->
+                                                        <!--<td >-->
+                                                            <!--<a ng-if="!sample.status"> - </a>-->
+                                                            <!--<a ng-if="sample.status" ui-sref="ngsample({ sampleId: sample.sampleMsn})">-->
+                                                                <!--{{ sample.sampleMsn || '-' }}-->
+                                                            <!--</a>-->
+                                                        <!--</td>-->
+                                                        <!--<td>{{sample.dateCreated | gmt }}</td>-->
+                                                        <!--<td>{{sample.dateReceived | gmt }}</td>-->
+                                                        <!--<td ng-style="{'color':'{{ sample.status | irsample }}'}">-->
+                                                            <!--{{sample.status}}-->
+                                                        <!--</td>-->
+                                                    <!--</tr>-->
+                                                    <!--</tbody>-->
+                                                <!--</table>-->
 
+                                        <!--&lt;!&ndash;Negative MoCha&ndash;&gt;-->
+                                        <!--<button style="width:300px; margin: 0px 3px 8px 3px"-->
+                                                <!--data-dismiss="modal" class="btn btn-primary pull-right"-->
+                                                <!--type="button" ng-click="showNoTemplateControlConfirmation('MoCha')">-->
+                                            <!--Generate MSN-->
+                                        <!--</button>-->
 
+                                        <!--<div class="row">-->
+                                            <!--<div class="col-xs-3">-->
+                                                <!--<h3>No Template Control - MoCha</h3>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
 
-    <div class="wrapper" >
+                                            <!--<table datatable="ng" dt-options="dtOptions"-->
+                                                   <!--dt-column-defs="dtColumnDefs"-->
+                                                   <!--dt-instance="dtInstance"-->
+                                                   <!--class="table table-hover" role="grid" width="100%">-->
+                                                <!--<thead>-->
+                                                <!--<tr>-->
+                                                    <!--<th >Molecular Sequence Number</th>-->
+                                                    <!--<th >Variant Reports</th>-->
+                                                    <!--<th >Date Created</th>-->
+                                                    <!--<th >Date Received</th>-->
+                                                    <!--<th >Status</th>-->
+                                                <!--</tr>-->
+                                                <!--</thead>-->
+                                                <!--<tbody>-->
+                                                <!--<tr ng-repeat="sample in negativeListMocha">-->
+                                                    <!--<td>{{sample.sampleMsn}}</td>-->
+                                                    <!--<td>-->
+                                                        <!--<a ng-if="!sample.dateReceived"> - </a>-->
+                                                        <!--<a ng-if="sample.dateReceived" ui-sref="ntcsample({ sampleId: sample.sampleMsn})">-->
+                                                            <!--{{ sample.sampleMsn || '-' }}-->
+                                                        <!--</a>-->
+                                                    <!--</td>-->
+                                                    <!--<td>{{sample.dateCreated | gmt }}</td>-->
+                                                    <!--<td>{{sample.dateReceived | gmt }}</td>-->
+                                                    <!--<td ng-style="{'color':'{{ sample.status | irsample }}'}">-->
+                                                        <!--{{sample.status}}-->
+                                                    <!--</td>-->
+                                                <!--</tr>-->
+                                                <!--</tbody>-->
+                                            <!--</table>-->
+                                    <!--</div>-->
 
+                                <!--</div>-->
+                                    <!--&lt;!&ndash;MoCha Sets&ndash;&gt;-->
 
-        <div class="no-horizontal-padding header-box-container">
+                                    <!--&lt;!&ndash;MDCC Sets&ndash;&gt;-->
+                                <!--<div class="ibox-title ibox-title-no-line" ng-show="showsection">-->
+                                    <!--<div ng-controller="IrAdminController" ng-init="loadSampleControlsList()">-->
 
-            <div class="tabs-container">
+                                        <!--<button style="width:300px; margin: 0px 3px 8px 3px"-->
+                                                <!--data-dismiss="modal" class="btn btn-primary pull-right"-->
+                                                <!--type="button" ng-click="showPositiveControlConfirmation('MDACC')">-->
+                                            <!--Generate MSN-->
+                                        <!--</button>-->
 
-                <uib-tabset>
+                                        <!--<div class="row">-->
+                                            <!--<div class="col-xs-3">-->
+                                                <!--<h3>Positive Sample Controls - MD Anderson</h3>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
 
-                    <uib-tab heading="Heartbeat">
-                        <div class="panel-body" >
-                            <div class="col-lg-12">
-                                <div class="ibox float-e-margins">
-                                    <div class="col-lg-12" ng-init="loadHeartBeatList()">
-                                        <div class="ibox float-e-margins">
+                                            <!--<table datatable="ng" dt-options="dtOptions"-->
+                                                   <!--dt-column-defs="dtColumnDefs"-->
+                                                   <!--dt-instance="dtInstance"-->
+                                                   <!--class="table table-hover" role="grid" width="100%">-->
+                                                <!--<thead>-->
+                                                <!--<tr>-->
+                                                    <!--<th >Molecular Sequence Number</th>-->
+                                                    <!--<th >Variant Reports</th>-->
+                                                    <!--<th >Date Created</th>-->
+                                                    <!--<th >Date Received</th>-->
+                                                    <!--<th >Status</th>-->
+                                                <!--</tr>-->
+                                                <!--</thead>-->
+                                                <!--<tbody>-->
+                                                <!--<tr ng-repeat="sample in positiveListMDCC">-->
+                                                    <!--<td>{{sample.sampleMsn}}</td>-->
+                                                    <!--<td>-->
+                                                        <!--<a ng-if="!sample.status"> - </a>-->
+                                                        <!--<a ng-if="sample.status" ui-sref="ngsample({ sampleId: sample.sampleMsn})">-->
+                                                            <!--{{ sample.sampleMsn || '-' }}-->
+                                                        <!--</a>-->
+                                                    <!--</td>-->
+                                                    <!--<td>{{sample.dateCreated | gmt }}</td>-->
+                                                    <!--<td>{{sample.dateReceived | gmt }}</td>-->
+                                                    <!--<td ng-style="{'color':'{{ sample.status | irsample }}'}">-->
+                                                        <!--{{sample.status}}-->
+                                                    <!--</td>-->
+                                                <!--</tr>-->
+                                                <!--</tbody>-->
+                                            <!--</table>-->
 
-                                            <div class="ibox-content inspinia-timeline" ng-repeat="ir in irList">
+                                        <!--<button style="width:300px; margin: 0px 3px 8px 3px"-->
+                                                <!--data-dismiss="modal" class="btn btn-primary pull-right"-->
+                                                <!--type="button" ng-click="showNoTemplateControlConfirmation('MDACC')">-->
+                                            <!--Generate MSN-->
+                                        <!--</button>-->
 
-                                                <div class="timeline-item">
-                                                    <div class="row">
-                                                        <div class="col-xs-3 date">
-                                                            <i class="fa fa-briefcase"></i>
-                                                            <i class="{{ ir.timer[0] }}" style="{{ ir.timer[1] }}"></i>
-                                                            <br/>
-                                                            <a class="ng-binding"> {{ ir.hostName }} </a>
-                                                            </br>
-                                                            <small class="text-navy"> {{ ir.time }} </small>
+                                        <!--&lt;!&ndash;Negative MD Anderson&ndash;&gt;-->
+                                        <!--<div class="row">-->
+                                            <!--<div class="col-xs-3">-->
+                                                <!--<h3>No Template Control - MD Anderson</h3>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
 
-                                                        </div>
-                                                        <div class="col-xs-9 content no-top-border">
+                                            <!--<table datatable="ng" dt-options="dtOptions"-->
+                                                   <!--dt-column-defs="dtColumnDefs"-->
+                                                   <!--dt-instance="dtInstance"-->
+                                                   <!--class="table table-hover" role="grid" width="100%">-->
+                                                <!--<thead>-->
+                                                <!--<tr>-->
+                                                    <!--<th >Molecular Sequence Number</th>-->
+                                                    <!--<th >Variant Reports</th>-->
+                                                    <!--<th >Date Created</th>-->
+                                                    <!--<th >Date Received</th>-->
+                                                    <!--<th >Status</th>-->
+                                                <!--</tr>-->
+                                                <!--</thead>-->
+                                                <!--<tbody>-->
+                                                <!--<tr ng-repeat="sample in negativeListMDCC">-->
+                                                    <!--<td>{{sample.sampleMsn}}</td>-->
+                                                    <!--<td>-->
+                                                        <!--<a ng-if="!sample.dateReceived"> - </a>-->
+                                                        <!--<a ng-if="sample.dateReceived" ui-sref="ntcsample({ sampleId: sample.sampleMsn})">-->
+                                                            <!--{{ sample.sampleMsn || '-' }}-->
+                                                        <!--</a>-->
+                                                    <!--</td>-->
+                                                    <!--<td>{{sample.dateCreated | gmt }}</td>-->
+                                                    <!--<td>{{sample.dateReceived | gmt }}</td>-->
+                                                    <!--<td ng-style="{'color':'{{ sample.status | irsample }}'}">-->
+                                                        <!--{{sample.status}}-->
+                                                    <!--</td>-->
+                                                <!--</tr>-->
+                                                <!--</tbody>-->
+                                            <!--</table>-->
 
-                                                            <div class="row">
+                                        <!--&lt;!&ndash;Negative MD Anderson&ndash;&gt;-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                    <!--&lt;!&ndash;MDCC Sets&ndash;&gt;-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</uib-tab>-->
 
-                                                                <div class="col-md-3 col-sm-6 text-left">
-                                                                    <dl class="dl-horizontal-narrow">
+                <!--</uib-tabset>-->
 
-                                                                        <dt>IP Address</dt>
-                                                                        <dd ng-style="{'color':'green'}" class="ng-binding" style="color: rgb(0, 128, 0);">{{ ir.externalIpAddress }}</dd>
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
 
-                                                                        <dt>Internal IP Address</dt>
-                                                                        <dd ng-style="{'color':'green'}" class="ng-binding" style="color: rgb(0, 128, 0);">{{ ir.ipAddress }}</dd>
-
-                                                                    </dl>
-                                                                </div>
-                                                                <div class="col-md-3 col-sm-6 text-left">
-                                                                    <dl class="dl-horizontal-narrow">
-                                                                        <dt>Location</dt>
-                                                                        <dd ng-style="{'color':'green'}" class="ng-binding" style="color: rgb(0, 128, 0);">{{ ir.location  || '-'  }}</dd>
-
-                                                                        <dt class="ng-binding">Status</dt>
-                                                                        <dd ng-style="{'color':'green'}" class="ng-binding" style="color: rgb(0, 128, 0);">{{ ir.lastContactDate | gmt}}</dd>
-                                                                    </dl>
-                                                                </div>
-
-
-                                                                <div class="col-md-5 col-sm-6 text-left">
-                                                                    <dl class="dl-horizontal-narrow">
-                                                                    <dt>Files</dt>
-                                                                    <dd>
-                                                                        <a target='_blank' href="{{ ir.dbReportPath }}" class="btn btn-xs btn-white file-button-xs">DB REPORT</a>
-                                                                        <a target='_blank' href="{{ ir.dataFilePath }}" class="btn btn-xs btn-white file-button-xs">DATA FILE</a>
-                                                                        <a target='_blank' href="{{ ir.logFilePath }}" class="btn btn-xs btn-white file-button-xs">LOG FILE</a>
-                                                                    </dd>
-                                                                        </dl>
-
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </uib-tab>
-
-                    <uib-tab heading="Sample Control">
-
-                        <div class="panel-body" ng-controller="IrAdminController" >
-                            <div ng-app="">
-                                <div class="row">
-                                    <div class="col-md-8 text-left">
-                                        <div class="btn-group btn-group-margin" data-toggle="buttons">
-                                            <label class="btn btn-outline btn-success active"
-                                                   ng-click="showsection=false"
-                                                   title="Switch to MoCha">
-                                                <input type="radio" name="SampleType" id="s1">MoCha
-                                            </label>
-                                            <label class="btn btn-outline btn-success"
-                                                   ng-click="showsection=true"
-                                                   title="Switch to MD Anderson">
-                                                <input type="radio" name="SampleType" id="s2">MD Anderson
-                                            </label>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                    <!--MoCha Sets-->
-                                <div class="ibox-title ibox-title-no-line" ng-hide="showsection">
-
-                                    <div ng-controller="IrAdminController" ng-init="loadSampleControlsList()">
-
-
-                                        <button style="width:300px; margin: 0px 3px 8px 3px"
-                                                data-dismiss="modal" class="btn btn-primary pull-right"
-                                                type="button" ng-click="showPositiveControlConfirmation('MoCha')">
-                                            Generate MSN
-                                        </button>
-
-                                        <div class="row">
-                                            <div class="col-xs-3">
-                                                <h3>Positive Sample Controls - MoCha</h3>
-                                            </div>
-                                        </div>
-
-                                                <table datatable="ng" dt-options="dtOptions"
-                                                       dt-column-defs="dtColumnDefs"
-                                                       dt-instance="dtInstance"
-                                                       class="table table-hover" role="grid" width="100%">
-                                                    <thead>
-                                                    <tr>
-                                                        <th >Molecular Sequence Number</th>
-                                                        <th >Variant Reports</th>
-                                                        <th >Date Created</th>
-                                                        <th >Date Received</th>
-                                                        <th >Status</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr ng-repeat="sample in positiveListMocha">
-                                                        <td>{{sample.sampleMsn}}</td>
-                                                        <td >
-                                                            <a ng-if="!sample.status"> - </a>
-                                                            <a ng-if="sample.status" ui-sref="ngsample({ sampleId: sample.sampleMsn})">
-                                                                {{ sample.sampleMsn || '-' }}
-                                                            </a>
-                                                        </td>
-                                                        <td>{{sample.dateCreated | gmt }}</td>
-                                                        <td>{{sample.dateReceived | gmt }}</td>
-                                                        <td ng-style="{'color':'{{ sample.status | irsample }}'}">
-                                                            {{sample.status}}
-                                                        </td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-
-                                        <!--Negative MoCha-->
-                                        <button style="width:300px; margin: 0px 3px 8px 3px"
-                                                data-dismiss="modal" class="btn btn-primary pull-right"
-                                                type="button" ng-click="showNoTemplateControlConfirmation('MoCha')">
-                                            Generate MSN
-                                        </button>
-
-                                        <div class="row">
-                                            <div class="col-xs-3">
-                                                <h3>No Template Control - MoCha</h3>
-                                            </div>
-                                        </div>
-
-                                            <table datatable="ng" dt-options="dtOptions"
-                                                   dt-column-defs="dtColumnDefs"
-                                                   dt-instance="dtInstance"
-                                                   class="table table-hover" role="grid" width="100%">
-                                                <thead>
-                                                <tr>
-                                                    <th >Molecular Sequence Number</th>
-                                                    <th >Variant Reports</th>
-                                                    <th >Date Created</th>
-                                                    <th >Date Received</th>
-                                                    <th >Status</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr ng-repeat="sample in negativeListMocha">
-                                                    <td>{{sample.sampleMsn}}</td>
-                                                    <td>
-                                                        <a ng-if="!sample.dateReceived"> - </a>
-                                                        <a ng-if="sample.dateReceived" ui-sref="ntcsample({ sampleId: sample.sampleMsn})">
-                                                            {{ sample.sampleMsn || '-' }}
-                                                        </a>
-                                                    </td>
-                                                    <td>{{sample.dateCreated | gmt }}</td>
-                                                    <td>{{sample.dateReceived | gmt }}</td>
-                                                    <td ng-style="{'color':'{{ sample.status | irsample }}'}">
-                                                        {{sample.status}}
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                    </div>
-
-                                </div>
-                                    <!--MoCha Sets-->
-
-                                    <!--MDCC Sets-->
-                                <div class="ibox-title ibox-title-no-line" ng-show="showsection">
-                                    <div ng-controller="IrAdminController" ng-init="loadSampleControlsList()">
-
-                                        <button style="width:300px; margin: 0px 3px 8px 3px"
-                                                data-dismiss="modal" class="btn btn-primary pull-right"
-                                                type="button" ng-click="showPositiveControlConfirmation('MDACC')">
-                                            Generate MSN
-                                        </button>
-
-                                        <div class="row">
-                                            <div class="col-xs-3">
-                                                <h3>Positive Sample Controls - MD Anderson</h3>
-                                            </div>
-                                        </div>
-
-                                            <table datatable="ng" dt-options="dtOptions"
-                                                   dt-column-defs="dtColumnDefs"
-                                                   dt-instance="dtInstance"
-                                                   class="table table-hover" role="grid" width="100%">
-                                                <thead>
-                                                <tr>
-                                                    <th >Molecular Sequence Number</th>
-                                                    <th >Variant Reports</th>
-                                                    <th >Date Created</th>
-                                                    <th >Date Received</th>
-                                                    <th >Status</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr ng-repeat="sample in positiveListMDCC">
-                                                    <td>{{sample.sampleMsn}}</td>
-                                                    <td>
-                                                        <a ng-if="!sample.status"> - </a>
-                                                        <a ng-if="sample.status" ui-sref="ngsample({ sampleId: sample.sampleMsn})">
-                                                            {{ sample.sampleMsn || '-' }}
-                                                        </a>
-                                                    </td>
-                                                    <td>{{sample.dateCreated | gmt }}</td>
-                                                    <td>{{sample.dateReceived | gmt }}</td>
-                                                    <td ng-style="{'color':'{{ sample.status | irsample }}'}">
-                                                        {{sample.status}}
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-
-                                        <button style="width:300px; margin: 0px 3px 8px 3px"
-                                                data-dismiss="modal" class="btn btn-primary pull-right"
-                                                type="button" ng-click="showNoTemplateControlConfirmation('MDACC')">
-                                            Generate MSN
-                                        </button>
-
-                                        <!--Negative MD Anderson-->
-                                        <div class="row">
-                                            <div class="col-xs-3">
-                                                <h3>No Template Control - MD Anderson</h3>
-                                            </div>
-                                        </div>
-
-                                            <table datatable="ng" dt-options="dtOptions"
-                                                   dt-column-defs="dtColumnDefs"
-                                                   dt-instance="dtInstance"
-                                                   class="table table-hover" role="grid" width="100%">
-                                                <thead>
-                                                <tr>
-                                                    <th >Molecular Sequence Number</th>
-                                                    <th >Variant Reports</th>
-                                                    <th >Date Created</th>
-                                                    <th >Date Received</th>
-                                                    <th >Status</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr ng-repeat="sample in negativeListMDCC">
-                                                    <td>{{sample.sampleMsn}}</td>
-                                                    <td>
-                                                        <a ng-if="!sample.dateReceived"> - </a>
-                                                        <a ng-if="sample.dateReceived" ui-sref="ntcsample({ sampleId: sample.sampleMsn})">
-                                                            {{ sample.sampleMsn || '-' }}
-                                                        </a>
-                                                    </td>
-                                                    <td>{{sample.dateCreated | gmt }}</td>
-                                                    <td>{{sample.dateReceived | gmt }}</td>
-                                                    <td ng-style="{'color':'{{ sample.status | irsample }}'}">
-                                                        {{sample.status}}
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-
-                                        <!--Negative MD Anderson-->
-                                    </div>
-                                </div>
-                                    <!--MDCC Sets-->
-                            </div>
-                        </div>
-                    </uib-tab>
-
-                </uib-tabset>
-
-            </div>
-        </div>
-    </div>
 
 </div>

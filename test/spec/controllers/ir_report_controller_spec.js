@@ -172,12 +172,14 @@ describe('Controller: Ir Report Controller', function () {
     var prompt;
     var $filter;
     var $uibModal;
+    var $stateParams;
 
-    beforeEach(inject(function (_$rootScope_, $controller, $httpBackend, _irAdminApi_, _$log_, _$q_, _$http_, _prompt_, _$filter_) {  //$scope, $http, $window, DTOptionsBuilder, DTColumnDefBuilder, irAdminApi
+    beforeEach(inject(function (_$rootScope_, $controller, $httpBackend, _$stateParams_, _irAdminApi_, _$log_, _$q_, _$http_, _prompt_, _$filter_) {  //$scope, $http, $window, DTOptionsBuilder, DTColumnDefBuilder, irAdminApi
         testHeartBeatData = getHeartBeatTestData();
         testSampleControlData = getMoChaSampleControlTestData();
         testMDACCampleControlTestData = getMDACCampleControlTestData();
         testPositiveTokensData = getPositiveTokensData();
+        $stateParams = _$stateParams_;
         deferred = _$q_.defer();
         $log = _$log_;
         $q = _$q_;
@@ -188,6 +190,7 @@ describe('Controller: Ir Report Controller', function () {
 
         irAdminApi = _irAdminApi_;
         reportsCtrl = $controller('IrAdminController', {
+            $stateParams: {sampleId: 'mocha'},
             $http: _$http_,
             $filter: _$filter_,
             prompt: prompt,

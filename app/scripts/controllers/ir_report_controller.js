@@ -1,6 +1,6 @@
-angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
+angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
     .controller('IrAdminController',
-        function( $scope, $http, $window, DTOptionsBuilder, irAdminApi, prompt, $uibModal, $filter) {
+        function( $scope, $http, $window, $stateParams, DTOptionsBuilder, irAdminApi, prompt, $uibModal, $filter) {
 
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(5);
@@ -21,10 +21,16 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
         $scope.negativeListMDCC = [];
         $scope.tokenIpAddress = [];
 
+        $scope.positiveList = [];
+        $scope.negativeList = [];
+            $scope.branch = $stateParams.branch;
+
         //Populate Data
         $scope.populateData = function(d) {
 
 
+
+            // $stateParams.sampleId
             // alert(JSON.stringify(d.data))
 
             angular.forEach(d.data, function (value,key) {
@@ -40,10 +46,12 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
 
                 //Positive sets
                 angular.forEach(positivesets, function (v,k) {
+                    
+                    var site = v.site.toLowerCase();
 
-                    if(v.site === 'MoCha') {
+                    if(site === $scope.branch) {
 
-                        $scope.positiveListMocha.push({
+                        $scope.positiveList.push({
                             'sampleSite': v.site,
                             'sampleId': v.id,
                             'sampleMsn': v.molecularSequenceNumber,
@@ -52,37 +60,28 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
                             'status': v.status
                         });
                     }
-                    else if(v.site === 'MDACC') {
-
-                        $scope.positiveListMDCC.push({
-                            'sampleSite': v.site,
-                            'sampleId': v.id,
-                            'sampleMsn': v.molecularSequenceNumber,
-                            'dateCreated': v.dateCreated,
-                            'dateReceived': v.dateReceived,
-                            'status': v.status
-                        });
-                    }
+                    // else if(v.site === 'MDACC') {
+                    //
+                    //     $scope.positiveListMDCC.push({
+                    //         'sampleSite': v.site,
+                    //         'sampleId': v.id,
+                    //         'sampleMsn': v.molecularSequenceNumber,
+                    //         'dateCreated': v.dateCreated,
+                    //         'dateReceived': v.dateReceived,
+                    //         'status': v.status
+                    //     });
+                    // }
                 });
 
 
 
                 //Negative sets
                 angular.forEach(negativesets, function (v,k) {
-                    if(v.site === 'MoCha'){
-                        $scope.negativeListMocha.push({
-                            'sampleSite': v.site,
-                            'sampleId': v.id,
-                            'sampleMsn': v.molecularSequenceNumber,
-                            'dateCreated': v.dateCreated,
-                            'dateReceived': v.dateReceived,
-                            'status': v.status,
-                            'passed': v.passed
-                        });
-                    }
-                    else if(v.site === 'MDACC') {
 
-                        $scope.negativeListMDCC.push({
+                    var site = v.site.toLowerCase();
+
+                    if(site === $scope.branch) {
+                        $scope.negativeList.push({
                             'sampleSite': v.site,
                             'sampleId': v.id,
                             'sampleMsn': v.molecularSequenceNumber,
@@ -92,6 +91,18 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
                             'passed': v.passed
                         });
                     }
+                    // else if(v.site === 'MDACC') {
+                    //
+                    //     $scope.negativeListMDCC.push({
+                    //         'sampleSite': v.site,
+                    //         'sampleId': v.id,
+                    //         'sampleMsn': v.molecularSequenceNumber,
+                    //         'dateCreated': v.dateCreated,
+                    //         'dateReceived': v.dateReceived,
+                    //         'status': v.status,
+                    //         'passed': v.passed
+                    //     });
+                    // }
 
                     // alert(JSON.stringify( $scope.negativeListMDCC))
 
@@ -271,7 +282,15 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
                     });
             };
 
-            $scope.loadSampleControlsList = function () {
+            $scope.loadSampleControlsList = function (id) {
+                irAdminApi
+                    .loadSampleControlsList()
+                    .then(function (d) {
+                        $scope.populateData(d);
+                    });
+            };
+            $scope.loadSampleMDACCControlsList = function () {
+
                 irAdminApi
                     .loadSampleControlsList()
                     .then(function (d) {
@@ -305,6 +324,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt'])
 
                         $window.histogramPlot();
                 $window.circosPlot();
+                $window.piePlot();
                         // $window.d3BoxVersion5(d.data);
 
             };
