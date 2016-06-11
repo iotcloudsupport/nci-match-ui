@@ -32,8 +32,9 @@
     "grunt-string-replace": "~1.0.0",
     "grunt-svgmin": "~0.4.0",
     "grunt-usemin": "^2.4.0",
-    "jshint-stylish": "^1.0.0",
     "jasmine-core": "^2.3.4",
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^1.0.0",
     "karma": "^0.13.16",
     "karma-chrome-launcher": "^0.2.2",
     "karma-coverage": "^0.5.3",
@@ -42,7 +43,9 @@
     "karma-junit-reporter": "^0.3.8",
     "karma-phantomjs-launcher": "^1.0.0",
     "load-grunt-tasks": "^0.6.0",
-    "time-grunt": "^1.0.0"
+    "time-grunt": "^1.0.0",
+    "tslint": "^3.11.0",
+    "typescript": "^1.8.10"
   },
   "scripts": {
     "test": "grunt"

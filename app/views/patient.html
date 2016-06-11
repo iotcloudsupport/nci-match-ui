@@ -24,22 +24,22 @@
                     <div class="header-info-box top-main-header-box">
                         <dl class="dl-horizontal">
                             <dt>Patient ID</dt>
-                            <dd>{{::patient.patientSequenceNumber}}</dd>
+                            <dd>{{::patient_id}}</dd>
 
                             <dt>Patient</dt>
-                            <dd>{{::patient.gender}}, {{::patient.ethnicity}}</dd>
+                            <dd>{{::gender}}, {{::ethnicity}}</dd>
 
                             <dt>Last Rejoin Scan Date</dt>
-                            <dd>{{::patient.lastRejoinScanDate ? patient.lastRejoinScanDate : '-'}}</dd>
+                            <dd>{{ [TBD] }}</dd>
 
                             <dt>Status</dt>
-                            <dd ng-style="{'color':'{{ patient.status | status }}'}">{{::patient.status}}</dd>
+                            <dd ng-style="{'color':'{{ patient.status | current_status }}'}">{{::current_status}}</dd>
 
                             <dt> Current Step</dt>
-                            <dd>{{::patient.currentStep}}</dd>
+                            <dd>{{::current_step_number}}</dd>
 
                             <dt>Treatment Arm</dt>
-                            <dd><a>{{::patient.treatmentArm}}</a></dd>
+                            <dd><a>{{::current_assignment ? current_assignment.treatment_arm}}</a></dd>
                         </dl>
                     </div>
                 </div>
@@ -48,22 +48,22 @@
                     <div class="header-info-box top-main-header-box">
                         <dl class="dl-horizontal">
                             <dt>Disease</dt>
-                            <dd>{{::patient.disease.name}}</dd>
+                            <dd>{{::disease.name}}</dd>
 
                             <dt>CTEP Category</dt>
-                            <dd>{{::patient.disease.ctepCategory}}</dd>
+                            <dd>{{::disease.ctep_category}}</dd>
 
                             <dt>CTEP Sub Category</dt>
-                            <dd>{{::patient.disease.ctepSubCategory}}</dd>
+                            <dd>{{::disease.ctep_sub_category}}</dd>
 
                             <dt>CTEP Term</dt>
-                            <dd>{{::patient.disease.ctepTerm}}</dd>
+                            <dd>{{::disease.ctep_term}}</dd>
 
                             <dt>MedDRA Code</dt>
-                            <dd>{{::patient.disease.medDraCode}}</dd>
+                            <dd>{{::disease.med_dra_code}}</dd>
 
                             <dt>Prior Drugs</dt>
-                            <dd>{{::patient.drugs.join(', ')}}</dd>
+                            <dd>{{::patient.prior_drugs.join(', ')}}</dd>
                         </dl>
                     </div>
                 </div>
