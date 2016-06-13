@@ -56,67 +56,9 @@ angular.module('dashboard.matchbox',[])
         this.dtColumnDefs = [];
         this.dtInstance = {};
 
-        $scope.pendingVariantReportList = [];
         $scope.pendingAssignmentReportList = [];
         $scope.pendingTissueVariantReportList = [];
         $scope.pendingBloodVariantReportList = [];
-
-        $scope.loadPatientVariantReportsList = function() {
-            matchApi
-                .getPatientVariantReports()
-                .then(function(d) {
-                    $scope.pendingVariantReportList = d.data;
-                });
-
-                /*$scope.pendingVariantReportList = [
-                {
-                    "patientSequenceNumber" : "0009991",
-                    "molecularSequenceNumber": "N-16-0009991",
-                    "jobName": "T0009991",
-                    "location": "1",
-                    "specimenReceivedDate": "01 June 2016 7:51PM GMT",
-                    "ngsDateReceived": "02 June 2016  10:09AM GMT",
-                    "daysPending": 7
-                },
-                {
-                    "patientSequenceNumber" : "0009993",
-                    "molecularSequenceNumber": "N-16-0009993",
-                    "jobName": "T0009993",
-                    "location": "1",
-                    "specimenReceivedDate": "01 June 2016 7:53PM GMT",
-                    "ngsDateReceived": "02 June 2016  10:09PM GMT",
-                    "daysPending": 7
-                },
-                {
-                    "patientSequenceNumber" : "0009995",
-                    "molecularSequenceNumber": "N-16-0009995",
-                    "jobName": "T0009995",
-                    "location": "1",
-                    "specimenReceivedDate": "01 June 2016 8:51PM GMT",
-                    "ngsDateReceived": "03 June 2016  10:09AM GMT",
-                    "daysPending": 6
-                },
-                {
-                    "patientSequenceNumber" : "0009996",
-                    "molecularSequenceNumber": "N-16-0009996",
-                    "jobName": "T0009996",
-                    "location": "1",
-                    "specimenReceivedDate": "02 June 2016 7:51PM GMT",
-                    "ngsDateReceived": "04 June 2016  10:09AM GMT",
-                    "daysPending": 5
-                },
-                {
-                    "patientSequenceNumber" : "0009997",
-                    "molecularSequenceNumber": "N-16-0009997",
-                    "jobName": "T0009997",
-                    "location": "1",
-                    "specimenReceivedDate": "03 June 2016 7:51PM GMT",
-                    "ngsDateReceived": "05 June 2016  10:09AM GMT",
-                    "daysPending": 4
-                }
-            ];*/
-
-        }
 
         $scope.loadPatientPendingAssignmentReportsList = function() {
             matchApi
