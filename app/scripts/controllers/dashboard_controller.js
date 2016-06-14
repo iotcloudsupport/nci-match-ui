@@ -66,52 +66,22 @@ angular.module('dashboard.matchbox',[])
                 .then(function(d) {
                     $scope.pendingAssignmentReportList = d.data;
                 });
-            /*$scope.pendingAssignmentReportList = [
-                {
-                    "patientSequenceNumber": "00099001",
-                    "molecularSequenceNumber": "N-16-00099001",
-                    "dateAssigned": "10 June 2016  10:34AM GMT",
-                    "hoursPending": 2
-                }
-            ];*/
         };
         
         $scope.loadTissueVariantReportsList = function() {
-            /*matchApi
+            matchApi
                 .getTissueVariantReports()
                 .then(function(d) {
-                    $scope.pendingTissueVariantReportsList = d.data;
-                });*/
-            $scope.pendingTissueVariantReportList = [
-                {
-                    "patientSequenceNumber" : "0009901",
-                    "molecularSequenceNumber": "N-16-0009901",
-                    "jobName": "T0009901",
-                    "location": "1",
-                    "specimenReceivedDate": "01 June 2016 7:51PM GMT",
-                    "ngsDateReceived": "02 June 2016  10:09AM GMT",
-                    "daysPending": 7
-                }
-            ];
+                    $scope.pendingTissueVariantReportList = d.data;
+                });
         };
         
         $scope.loadBloodVariantReportsList = function() {
             matchApi
                 .getBloodVariantReports()
                 .then(function(d) {
-                    $scope.pendingBloodVariantReportsList = d.data;
+                    $scope.pendingBloodVariantReportList = d.data;
                 });
-            /*$scope.pendingBloodVariantReportList = [
-                {
-                    "patientSequenceNumber" : "0009907",
-                    "molecularSequenceNumber": "N-16-0009907",
-                    "jobName": "T0009907",
-                    "location": "1",
-                    "specimenReceivedDate": "03 June 2016 7:51PM GMT",
-                    "ngsDateReceived": "05 June 2016  10:09AM GMT",
-                    "daysPending": 4
-                }
-            ];*/
         }
 
     })
