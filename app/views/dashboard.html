@@ -127,8 +127,8 @@
                                                         <td>{{ item.molecularSequenceNumber || '-' }}</td>
                                                         <td>{{ item.jobName || '-' }}</td>
                                                         <td>{{ item.location || '-' }}</td>
-                                                        <td>{{ item.specimenReceivedDate }}</td>
-                                                        <td>{{ item.ngsDateReceived }}</td>
+                                                        <td>{{ item.specimenReceivedDate | gmt }}</td>
+                                                        <td>{{ item.ngsDateReceived | gmt }}</td>
                                                         <td><span class="label label-primary">{{ item.daysPending || '-' }}</span></td>
                                                     </tr>
                                                     </tbody>
@@ -158,11 +158,11 @@
                                                     <tbody>
                                                     <tr ng-repeat="item in pendingBloodVariantReportList">
                                                         <td>{{ item.patientSequenceNumber || '-' }}</td>
-                                                        <td>{{ item.molecularSequenceNumber || '-' }}</td>
+                                                        <td>{{ item.biopsySequenceNumber || '-' }}</td>
                                                         <td>{{ item.jobName || '-' }}</td>
                                                         <td>{{ item.location || '-' }}</td>
-                                                        <td>{{ item.specimenReceivedDate }}</td>
-                                                        <td>{{ item.ngsDateReceived }}</td>
+                                                        <td>{{ item.specimenReceivedDate | gmt }}</td>
+                                                        <td>{{ item.ngsDateReceived | gmt }}</td>
                                                         <td><span class="label label-primary">{{ item.daysPending || '-' }}</span></td>
                                                     </tr>
                                                     </tbody>
@@ -182,6 +182,7 @@
                                                     <tr>
                                                         <th>Patient ID</th>
                                                         <th>Molecular ID</th>
+                                                        <th>Analysis ID</th>
                                                         <th>Assignment Date</th>
                                                         <th>Hours Pending</th>
                                                     </tr>
@@ -190,7 +191,8 @@
                                                     <tr ng-repeat="item in pendingAssignmentReportList">
                                                         <td>{{ item.patientSequenceNumber }}</td>
                                                         <td>{{ item.molecularSequenceNumber || '-' }}</td>
-                                                        <td>{{ item.dateAssigned  }}</td>
+                                                        <td>{{ item.jobName || '-' }}</td>
+                                                        <td>{{ item.dateAssigned | gmt }}</td>
                                                         <td><span class="label label-primary">{{ item.hoursPending || ' - ' }}</span></td>
                                                     </tr>
                                                     </tbody>

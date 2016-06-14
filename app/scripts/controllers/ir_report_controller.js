@@ -2,6 +2,10 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
     .controller('IrAdminController',
         function( $scope, $http, $window, $stateParams, DTOptionsBuilder, irAdminApi, prompt, $uibModal, $filter) {
 
+        angular.element(document).ready(function () {
+            $('.equal-height-panels .panel').matchHeight();
+        });
+
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(5);
 
@@ -11,47 +15,63 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         this.dtInstance = {};
 
         $scope.irList = [];
-
-            $scope.moChaList = [];
-            $scope.MDList = [];
-            
+        $scope.moChaList = [];
+        $scope.MDList = [];
         $scope.positiveListMocha = [];
         $scope.positiveListMDCC = [];
         $scope.negativeListMocha = [];
         $scope.negativeListMDCC = [];
         $scope.tokenIpAddress = [];
-
         $scope.positiveList = [];
         $scope.negativeList = [];
-            $scope.branch = $stateParams.branch;
+        $scope.branch = $stateParams.branch;
+        $scope.siteName = [];
+        $scope.site = 'undefined';
+
+
+        $scope.changedValue = function(site) {
+            // alert(JSON.stringify(site.siteName))
+            $scope.site = site.siteName;
+
+
+            // alert(JSON.stringify($scope.positiveList))
+            // alert(JSON.stringify($scope.irList))
+            // alert(JSON.stringify($scope.moChaList))
+            // $scope.loadSampleControlsList();
+        }
 
         //Populate Data
         $scope.populateData = function(d) {
 
 
-
-            // $stateParams.sampleId
-            // alert(JSON.stringify(d.data))
-
             angular.forEach(d.data, function (value,key) {
 
-                if(value.siteName !== 'Unknown') {
+                // if($scope.site !== 'undefined'){
+                //
+                //
+                //     alert("$scope.site-->"+$scope.site)
+                //
+                // }
+                if(value.siteName !== 'Unknown' && (value.siteName === 'MoCha'  || value.siteName === 'MDACC')) {
+                    $scope.siteName.push(value.siteName);
+                    $scope.site = value.siteName;
                     $scope.tokenIpAddress.push({ 'siteName': value.siteName, 'siteIpAddress': value.siteIpAddress });
                 }
 
                 var positivesets = value.sampleControls;
                 var negativesets = value.ntcControls;
 
+
+
+
                 // alert(JSON.stringify(negativesets))
 
                 //Positive sets
                 angular.forEach(positivesets, function (v,k) {
-                    
-                    var site = v.site.toLowerCase();
 
-                    if(site === $scope.branch) {
+                    if(v.site === 'MoCha') {
 
-                        $scope.positiveList.push({
+                        $scope.positiveListMocha.push({
                             'sampleSite': v.site,
                             'sampleId': v.id,
                             'sampleMsn': v.molecularSequenceNumber,
@@ -60,40 +80,26 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                             'status': v.status
                         });
                     }
-                    // else if(v.site === 'MDACC') {
-                    //
-                    //     $scope.positiveListMDCC.push({
-                    //         'sampleSite': v.site,
-                    //         'sampleId': v.id,
-                    //         'sampleMsn': v.molecularSequenceNumber,
-                    //         'dateCreated': v.dateCreated,
-                    //         'dateReceived': v.dateReceived,
-                    //         'status': v.status
-                    //     });
-                    // }
-                });
+                    else if(v.site === 'MDACC') {
 
-
-
-                //Negative sets
-                angular.forEach(negativesets, function (v,k) {
-
-                    var site = v.site.toLowerCase();
-
-                    if(site === $scope.branch) {
-                        $scope.negativeList.push({
+                        $scope.positiveListMDCC.push({
                             'sampleSite': v.site,
                             'sampleId': v.id,
                             'sampleMsn': v.molecularSequenceNumber,
                             'dateCreated': v.dateCreated,
                             'dateReceived': v.dateReceived,
-                            'status': v.status,
-                            'passed': v.passed
+                            'status': v.status
                         });
                     }
-                    // else if(v.site === 'MDACC') {
+                });
+
+                //Negative sets
+                angular.forEach(negativesets, function (v,k) {
+
+                    // var site = v.site.toLowerCase();
                     //
-                    //     $scope.negativeListMDCC.push({
+                    // if(site === $scope.branch) {
+                    //     $scope.negativeList.push({
                     //         'sampleSite': v.site,
                     //         'sampleId': v.id,
                     //         'sampleMsn': v.molecularSequenceNumber,
@@ -104,16 +110,49 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     //     });
                     // }
 
-                    // alert(JSON.stringify( $scope.negativeListMDCC))
+
+                    // $scope.positiveListMocha = [];
+                    // $scope.positiveListMDCC = [];
+                    // $scope.negativeListMocha = [];
+                    // $scope.negativeListMDCC = [];
+
+                    if(v.site === 'MoCha') {
+
+                        $scope.negativeListMocha.push({
+                            'sampleSite': v.site,
+                            'sampleId': v.id,
+                            'sampleMsn': v.molecularSequenceNumber,
+                            'dateCreated': v.dateCreated,
+                            'dateReceived': v.dateReceived,
+                            'status': v.status
+                        });
+                    }
+                    else if(v.site === 'MDACC') {
+
+                        $scope.negativeListMDCC.push({
+                            'sampleSite': v.site,
+                            'sampleId': v.id,
+                            'sampleMsn': v.molecularSequenceNumber,
+                            'dateCreated': v.dateCreated,
+                            'dateReceived': v.dateReceived,
+                            'status': v.status
+                        });
+                    }
+
 
                 });
 
+                // alert(JSON.stringify($scope.positiveListMDCC))
+                // alert(JSON.stringify($scope.negativeListMDCC))
 
 
             });
         };
 
         $scope.showPositiveControlConfirmation = function (id) {
+
+            alert(JSON.stringify(positiveListMDCC))
+
         prompt({
             "title": "Do you want to continue?",
             "message": "Warning! Once this action has been submitted it cannot be undone. Please enter your site pin to confirm. ",
@@ -282,21 +321,25 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     });
             };
 
-            $scope.loadSampleControlsList = function (id) {
+            $scope.loadSampleControlsList = function () {
                 irAdminApi
                     .loadSampleControlsList()
                     .then(function (d) {
                         $scope.populateData(d);
                     });
             };
+
+
             $scope.loadSampleMDACCControlsList = function () {
 
                 irAdminApi
                     .loadSampleControlsList()
                     .then(function (d) {
                         $scope.populateData(d);
+
                     });
             };
+
             //Genrate Postive Token
             $scope.generatePositiveControlToken = function (items) {
                 irAdminApi
@@ -322,7 +365,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 //
                 //         alert(JSON.stringify(d.data))
 
-                        $window.histogramPlot();
+                $window.histogramPlot();
                 $window.circosPlot();
                 $window.piePlot();
                         // $window.d3BoxVersion5(d.data);
