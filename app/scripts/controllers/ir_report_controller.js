@@ -2,9 +2,9 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
     .controller('IrAdminController',
         function( $scope, $http, $window, $stateParams, DTOptionsBuilder, irAdminApi, prompt, $uibModal, $filter) {
 
-        angular.element(document).ready(function () {
-            $('.equal-height-panels .panel').matchHeight();
-        });
+        // angular.element(document).ready(function () {
+        //     $('.equal-height-panels .panel').matchHeight();
+        // });
 
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(5);
@@ -45,13 +45,6 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
 
             angular.forEach(d.data, function (value,key) {
-
-                // if($scope.site !== 'undefined'){
-                //
-                //
-                //     alert("$scope.site-->"+$scope.site)
-                //
-                // }
                 if(value.siteName !== 'Unknown' && (value.siteName === 'MoCha'  || value.siteName === 'MDACC')) {
                     $scope.siteName.push(value.siteName);
                     $scope.site = value.siteName;
@@ -60,11 +53,6 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
                 var positivesets = value.sampleControls;
                 var negativesets = value.ntcControls;
-
-
-
-
-                // alert(JSON.stringify(negativesets))
 
                 //Positive sets
                 angular.forEach(positivesets, function (v,k) {
@@ -95,26 +83,6 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
                 //Negative sets
                 angular.forEach(negativesets, function (v,k) {
-
-                    // var site = v.site.toLowerCase();
-                    //
-                    // if(site === $scope.branch) {
-                    //     $scope.negativeList.push({
-                    //         'sampleSite': v.site,
-                    //         'sampleId': v.id,
-                    //         'sampleMsn': v.molecularSequenceNumber,
-                    //         'dateCreated': v.dateCreated,
-                    //         'dateReceived': v.dateReceived,
-                    //         'status': v.status,
-                    //         'passed': v.passed
-                    //     });
-                    // }
-
-
-                    // $scope.positiveListMocha = [];
-                    // $scope.positiveListMDCC = [];
-                    // $scope.negativeListMocha = [];
-                    // $scope.negativeListMDCC = [];
 
                     if(v.site === 'MoCha') {
 
@@ -151,7 +119,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
         $scope.showPositiveControlConfirmation = function (id) {
 
-            alert(JSON.stringify(positiveListMDCC))
+            // alert(JSON.stringify(positiveListMDCC))
 
         prompt({
             "title": "Do you want to continue?",
