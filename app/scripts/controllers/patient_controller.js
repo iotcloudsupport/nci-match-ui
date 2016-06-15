@@ -14,7 +14,7 @@
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(100);
 
-        $scope.patientSequenceNumber = '';
+        $scope.patient_id = '';
         $scope.warningResult = false;
 
         $scope.confirmTitle = 'Confirmation Changed';
@@ -30,6 +30,7 @@
             maxFileSize: 30
         };
 
+        $scope.getCurrentAssignment = getCurrentAssignment;
         $scope.setVariantReportType = setVariantReportType;
         $scope.setVariantReportMode = setVariantReportMode;
         $scope.getVariantReportTypeClass = getVariantReportTypeClass;
@@ -46,6 +47,14 @@
         $scope.setupScope = setupScope;
         $scope.setupVariantReport = setupVariantReport;
         $scope.showPrompt = showPrompt;
+
+        function getCurrentAssignment() {
+            return $scope.data && 
+                $scope.data.current_assignment &&
+                $scope.data.current_assignment.treatment_arms &&
+                $scope.data.current_assignment.treatment_arms.selected &&
+                $scope.data.current_assignment.treatment_arms.selected.length ? $scope.data.current_assignment.treatment_arms.selected[0].treatment_arm : "Not Selected";
+        }
 
         function setVariantReportType(reportType) {
             if ($scope.variantReportType === reportType) {
@@ -74,7 +83,11 @@
         }
 
         function setVariantReport() {
-            $scope.variantReport = $scope.variantReports[$scope.variantReportType + '' + $scope.variantReportMode];
+            var selected = $scope.variantReportType + '' + $scope.variantReportMode;
+            if ($scope.variantReports && selected in $scope.variantReports)
+                $scope.variantReport = $scope.variantReports[$scope.variantReportType + '' + $scope.variantReportMode];
+            else
+                $scope.variantReport = {};
         }
 
         function loadPatientData() {
@@ -85,22 +98,25 @@
         }
 
         function setupScope(data){
-            $scope.patientSequenceNumber = $stateParams.patientSequenceNumber;
+            $scope.patient_id = $stateParams.patient_id;
+            var scopeData = {};
+            angular.copy(data, scopeData);
+            $scope.data = scopeData;
 
-            $scope.patient = data.patient;
-            $scope.treatmentArms = data.treatmentArms;
-            $scope.timeline = data.timeline;
-            $scope.assayHistory = data.assayHistory;
-            $scope.sendouts = data.sendouts;
-            $scope.biopsy = data.biopsy;
-            $scope.variantReports = data.variantReports;
-            $scope.variantReportOptions = data.variantReportOptions;
-            $scope.variantReportOption = data.variantReportOption;
-            $scope.assignmentReport = data.assignmentReport;
-            $scope.biopsyReport = data.biopsyReport;
-            $scope.biopsyReports = data.biopsyReports;
-            $scope.patientDocuments = data.patientDocuments;
-            $scope.currentSendout = data.currentSendout;
+            // $scope.patient = data.patient;
+            // $scope.treatmentArms = data.treatmentArms;
+            // $scope.timeline = data.timeline;
+            // $scope.assayHistory = data.assayHistory;
+            // $scope.sendouts = data.sendouts;
+            // $scope.biopsy = data.biopsy;
+            // $scope.variantReports = data.variantReports;
+            // $scope.variantReportOptions = data.variantReportOptions;
+            // $scope.variantReportOption = data.variantReportOption;
+            // $scope.assignmentReport = data.assignmentReport;
+            // $scope.biopsyReport = data.biopsyReport;
+            // $scope.biopsyReports = data.biopsyReports;
+            // $scope.patientDocuments = data.patientDocuments;
+            // $scope.currentSendout = data.currentSendout;
         }
 
         function setupVariantReport() {
