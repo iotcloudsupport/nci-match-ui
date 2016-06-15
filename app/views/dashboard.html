@@ -122,14 +122,18 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr ng-repeat="item in pendingTissueVariantReportList">
-                                                        <td>{{ item.patientSequenceNumber || '-' }}</td>
-                                                        <td>{{ item.molecularSequenceNumber || '-' }}</td>
-                                                        <td>{{ item.jobName || '-' }}</td>
-                                                        <td>{{ item.location || '-' }}</td>
-                                                        <td>{{ item.specimenReceivedDate | gmt }}</td>
-                                                        <td>{{ item.ngsDateReceived | gmt }}</td>
-                                                        <td><span class="label label-primary">{{ item.daysPending || '-' }}</span></td>
+                                                    <tr ng-repeat="patient in pendingTissueVariantReportList">
+                                                        <td>
+                                                            <a ui-sref="patient({ patientSequenceNumber: patient.patientSequenceNumber })">
+                                                                <i class="fa fa-user"></i> {{::patient.patientSequenceNumber || '-' }}
+                                                            </a>
+                                                        </td>
+                                                        <td>{{ patient.molecularSequenceNumber || '-' }}</td>
+                                                        <td>{{ patient.jobName || '-' }}</td>
+                                                        <td>{{ patient.location || '-' }}</td>
+                                                        <td>{{ patient.specimenReceivedDate | gmt }}</td>
+                                                        <td>{{ patient.ngsDateReceived | gmt }}</td>
+                                                        <td><span class="label label-primary">{{ patient.daysPending || '-' }}</span></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -156,14 +160,18 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr ng-repeat="item in pendingBloodVariantReportList">
-                                                        <td>{{ item.patientSequenceNumber || '-' }}</td>
-                                                        <td>{{ item.biopsySequenceNumber || '-' }}</td>
-                                                        <td>{{ item.jobName || '-' }}</td>
-                                                        <td>{{ item.location || '-' }}</td>
-                                                        <td>{{ item.specimenReceivedDate | gmt }}</td>
-                                                        <td>{{ item.ngsDateReceived | gmt }}</td>
-                                                        <td><span class="label label-primary">{{ item.daysPending || '-' }}</span></td>
+                                                    <tr ng-repeat="patient in pendingBloodVariantReportList">
+                                                        <td>
+                                                            <a ui-sref="patient({ patientSequenceNumber: patient.patientSequenceNumber })">
+                                                                <i class="fa fa-user"></i> {{::patient.patientSequenceNumber || '-' }}
+                                                            </a>
+                                                        </td>
+                                                        <td>{{ patient.biopsySequenceNumber || '-' }}</td>
+                                                        <td>{{ patient.jobName || '-' }}</td>
+                                                        <td>{{ patient.location || '-' }}</td>
+                                                        <td>{{ patient.specimenReceivedDate | gmt }}</td>
+                                                        <td>{{ patient.ngsDateReceived | gmt }}</td>
+                                                        <td><span class="label label-primary">{{ patient.daysPending || '-' }}</span></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -188,12 +196,16 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr ng-repeat="item in pendingAssignmentReportList">
-                                                        <td>{{ item.patientSequenceNumber }}</td>
-                                                        <td>{{ item.molecularSequenceNumber || '-' }}</td>
-                                                        <td>{{ item.jobName || '-' }}</td>
-                                                        <td>{{ item.dateAssigned | gmt }}</td>
-                                                        <td><span class="label label-primary">{{ item.hoursPending || ' - ' }}</span></td>
+                                                    <tr ng-repeat="patient in pendingAssignmentReportList">
+                                                        <td>
+                                                            <a ui-sref="patient({ patientSequenceNumber: patient.patientSequenceNumber })">
+                                                                <i class="fa fa-user"></i> {{::patient.patientSequenceNumber || '-' }}
+                                                            </a>
+                                                        </td>
+                                                        <td>{{ patient.molecularSequenceNumber || '-' }}</td>
+                                                        <td>{{ patient.jobName || '-' }}</td>
+                                                        <td>{{ patient.dateAssigned | gmt }}</td>
+                                                        <td><span class="label label-primary">{{ patient.hoursPending || ' - ' }}</span></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>

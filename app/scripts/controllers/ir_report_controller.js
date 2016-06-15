@@ -40,6 +40,24 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             // $scope.loadSampleControlsList();
         }
 
+
+        // $scope.selectItem = function(d) {
+        //     alert("pop")
+        //     // alert(JSON.stringify(site.siteName))
+        //     // $scope.site = site.siteName;
+        //
+        //
+        //     // alert(JSON.stringify($scope.positiveList))
+        //     // alert(JSON.stringify($scope.irList))
+        //     // alert(JSON.stringify($scope.moChaList))
+        //     // $scope.loadSampleControlsList();
+        // }
+
+            // $scope.selectedItem = function() {
+            //     alert("pop")
+            //     // $scope.selected = index;
+            // };
+
         //Populate Data
         $scope.populateData = function(d) {
 

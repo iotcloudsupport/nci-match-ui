@@ -14,9 +14,12 @@ function histogramPlot(){
         yGroupMax = d3.max(layers, function(layer) { return d3.max(layer, function(d) { return d.y; }); }),
         yStackMax = d3.max(layers, function(layer) { return d3.max(layer, function(d) { return d.y0 + d.y; }); });
 
-    var margin = {top: 40, right: 10, bottom: 20, left: 10},
-        width = 800 - margin.left - margin.right,
-        height = 300 - margin.top - margin.bottom;
+    var margin = {top: 150, right: 0, bottom: 30, left: 30},
+        width = 900 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
+
+    var svg_height = height + 200;
+    var svg_width = width + 100;
 
     var x = d3.scale.ordinal()
         .domain(d3.range(m))
@@ -35,6 +38,13 @@ function histogramPlot(){
         .tickSize(0)
         .tickPadding(6)
         .orient("bottom");
+
+    //Render the svg box to correct browser changes
+    d3.select("svg#scatterBox")
+        //responsive SVG needs these 2 attributes and no width and height attr
+        .attr("viewBox", "0 0 " + svg_width + " " + svg_height)
+        //class to make it responsive
+        .classed("svg-content-responsive", true);
 
     var svg = d3.select("#scatterBox")
         .append("svg")
@@ -125,6 +135,123 @@ function histogramPlot(){
     }
 
 }
+
+
+function piePlot(){
+
+
+    var w = 350;
+    var h = 350;
+    var r = h/2;
+    var color = d3.scale.category20c();
+
+    var svg_height = h + 20;
+    var svg_width = w + 20;
+
+    var data = [
+        {"label":"Category A", "value":20},
+        {"label":"Category B", "value":50},
+        {"label":"Category C", "value":30},
+        {"label":"Category A", "value":20},
+        {"label":"Category B", "value":50},
+        {"label":"Category C", "value":30},
+        {"label":"Category A", "value":20},
+        {"label":"Category B", "value":50},
+        {"label":"Category C", "value":15}];
+
+    //Render the svg box to correct browser changes
+    d3.select("svg#pieBox")
+        //responsive SVG needs these 2 attributes and no width and height attr
+        .attr("viewBox", "0 0 " + svg_width + " " + svg_height)
+        //class to make it responsive
+        .classed("svg-content-responsive", true);
+
+    var vis = d3.select('#pieBox')
+        .append("svg:svg")
+        .data([data])
+        .attr("width", w)
+        .attr("height", h)
+        .append("svg:g")
+        .attr("transform", "translate(" + r + "," + r + ")")
+        .attr("viewBox", "0 0 300 300");
+
+    var pie = d3.layout.pie()
+        .value(function(d){return d.value;});
+
+// declare an arc generator function
+    var arc = d3.svg.arc().outerRadius(r);
+    var arcOver = d3.svg.arc()
+        .outerRadius(r + 2);
+
+// select paths, use arc generator to draw
+    var arcs = vis.selectAll("g.slice")
+        .data(pie)
+        .enter()
+        .append("svg:g")
+        .attr("class", "slice");
+
+    arcs.append("svg:path")
+        .attr("fill", function(d, i){
+            return color(i);
+        })
+        .attr("d", function (d) {
+            // log the result of the arc generator to show how cool it is :)
+            console.log(arc(d));
+            return arc(d);
+        })
+        .on("mouseenter", function(d) {
+            d3.select(this)
+                .attr("stroke","white")
+                .transition()
+                .duration(1000)
+                .attr("d", arcOver)
+                .attr("stroke-width",6);
+        })
+        .on("mouseleave", function(d) {
+            d3.select(this).transition()
+                .attr("d", arc)
+                .attr("stroke","none");
+        });
+
+    //// when the input range changes update the circle
+    // d3.select("#pieBox").on("mouseover", function() {
+    //
+    //     alert("pop")
+    //     // if($.inArray(mainid, tsg_genes) !== -1){
+    //     //     label = '<span class="label label-danger">'+mainid+'</span>';
+    //     // }
+    //     // else{
+    //     //     label = '<span class="label label-success">'+mainid+'</span>';
+    //     // }
+    //     var dir = 'top';
+    //     var locY = d3.select(this).select("rect").attr("y");
+    //     var t = d3.transform(d3.select(this).attr("transform"));
+    //     var locX = t.translate[0];
+    //
+    //     $(this).popover({
+    //         trigger: 'hover',
+    //         html: 'true',
+    //         title: function(){
+    //             return label;
+    //         },
+    //         placement: dir,
+    //         container: 'body',
+    //         content: function(){
+    //             return  '<ul class="list-group">' +
+    //                 '<li class="list-group-item" style="width:100%;">TEST</li>'
+    //                 // '<li class="list-group-item" style="width:100%;">' + cn + '</li>' +
+    //                 // '<li class="list-group-item" style="width:100%;">CI 5%: ' + ci05 + '</li>' +
+    //                 // '<li class="list-group-item" style="width:100%;">CI 95%: ' + ci95 + '</li>' +
+    //
+    //
+    //                 '</ul>';
+    //         }
+    //     });
+    //     $(this).popover("show");
+    // });
+
+}
+
 
 function circosPlot(){
 
@@ -222,111 +349,7 @@ function circosPlot(){
 }
 
 
-function piePlot(){
 
-
-    var w = 250;
-    var h = 250;
-    var r = h/2;
-    var color = d3.scale.category20c();
-
-    var data = [
-        {"label":"Category A", "value":20},
-        {"label":"Category B", "value":50},
-        {"label":"Category C", "value":30},
-        {"label":"Category A", "value":20},
-        {"label":"Category B", "value":50},
-        {"label":"Category C", "value":30},
-        {"label":"Category A", "value":20},
-        {"label":"Category B", "value":50},
-        {"label":"Category C", "value":15}];
-
-
-    var vis = d3.select('#pieBox')
-        .append("svg:svg")
-        .data([data])
-        .attr("width", w)
-        .attr("height", h)
-        .append("svg:g")
-        .attr("transform", "translate(" + r + "," + r + ")")
-        .attr("viewBox", "0 0 300 300");
-
-    var pie = d3.layout.pie()
-        .value(function(d){return d.value;});
-
-// declare an arc generator function
-    var arc = d3.svg.arc().outerRadius(r);
-    var arcOver = d3.svg.arc()
-        .outerRadius(r + 2);
-
-// select paths, use arc generator to draw
-    var arcs = vis.selectAll("g.slice")
-        .data(pie)
-        .enter()
-        .append("svg:g")
-        .attr("class", "slice");
-
-    arcs.append("svg:path")
-        .attr("fill", function(d, i){
-            return color(i);
-        })
-        .attr("d", function (d) {
-            // log the result of the arc generator to show how cool it is :)
-            console.log(arc(d));
-            return arc(d);
-        })
-        .on("mouseenter", function(d) {
-            d3.select(this)
-                .attr("stroke","white")
-                .transition()
-                .duration(1000)
-                .attr("d", arcOver)
-                .attr("stroke-width",6);
-        })
-        .on("mouseleave", function(d) {
-            d3.select(this).transition()
-                .attr("d", arc)
-                .attr("stroke","none");
-        });
-
-    //// when the input range changes update the circle
-    // d3.select("#pieBox").on("mouseover", function() {
-    //
-    //     alert("pop")
-    //     // if($.inArray(mainid, tsg_genes) !== -1){
-    //     //     label = '<span class="label label-danger">'+mainid+'</span>';
-    //     // }
-    //     // else{
-    //     //     label = '<span class="label label-success">'+mainid+'</span>';
-    //     // }
-    //     var dir = 'top';
-    //     var locY = d3.select(this).select("rect").attr("y");
-    //     var t = d3.transform(d3.select(this).attr("transform"));
-    //     var locX = t.translate[0];
-    //
-    //     $(this).popover({
-    //         trigger: 'hover',
-    //         html: 'true',
-    //         title: function(){
-    //             return label;
-    //         },
-    //         placement: dir,
-    //         container: 'body',
-    //         content: function(){
-    //             return  '<ul class="list-group">' +
-    //                 '<li class="list-group-item" style="width:100%;">TEST</li>'
-    //                 // '<li class="list-group-item" style="width:100%;">' + cn + '</li>' +
-    //                 // '<li class="list-group-item" style="width:100%;">CI 5%: ' + ci05 + '</li>' +
-    //                 // '<li class="list-group-item" style="width:100%;">CI 95%: ' + ci95 + '</li>' +
-    //
-    //
-    //                 '</ul>';
-    //         }
-    //     });
-    //     $(this).popover("show");
-    // });
-
-}
 
 
 // function piePlot2(){
