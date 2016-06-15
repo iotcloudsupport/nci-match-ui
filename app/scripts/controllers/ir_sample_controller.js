@@ -1,5 +1,5 @@
 angular.module('irsample.matchbox',['ui.router'])
-    .controller('SampleController', function( $scope, $http, $stateParams, DTOptionsBuilder, irSampleVariantApi, prompt) {
+    .controller('SampleController', function( $scope, $http, $window, $stateParams, DTOptionsBuilder, irSampleVariantApi, prompt) {
 
         angular.element(document).ready(function () {
             $('.equal-height-panels .panel').matchHeight();
@@ -62,20 +62,38 @@ angular.module('irsample.matchbox',['ui.router'])
                             });
                         });
                         //Negative Variants
-                            angular.forEach(value.negativeVariants, function (v,k) {
-                                $scope.negativeVariantsList.push({
-                                    'publicMedIds': v.publicMedIds,
-                                    'position': v.position,
-                                    'geneName': v.geneName,
-                                    'variantType':'Indel',
-                                    'reference': v.reference,
-                                    'alternative': v.alternative,
-                                    'hgvs': v.hgvs,
-                                    'protein': v.protein,
-                                    'function': v.function
-                                });
+                        angular.forEach(value.negativeVariants, function (v,k) {
+                            $scope.negativeVariantsList.push({
+                                'publicMedIds': v.publicMedIds,
+                                'position': v.position,
+                                'geneName': v.geneName,
+                                'variantType':'Indel',
+                                'reference': v.reference,
+                                'alternative': v.alternative,
+                                'hgvs': v.hgvs,
+                                'protein': v.protein,
+                                'function': v.function
                             });
                         });
                     });
-                };
+                });
+            };
+
+
+        //Svg for samples
+        $scope.loadScatterPlot = function () {
+
+            // svgApi
+            //     .getSvgGene('SampleControl_MoCha_2')
+            //     .then(function (d) {
+            //
+            //         alert(JSON.stringify($scope.positiveControlList))
+
+            $window.samplePlot($scope.positiveControlList);
+            $window.circosPlot();
+            $window.piePlot();
+            // $window.d3BoxVersion5(d.data);
+
+        };
+
     });
