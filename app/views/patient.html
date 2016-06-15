@@ -104,8 +104,8 @@
                                     </div>
 
                                     <div class="ibox-content inspinia-timeline">
-                                        <div class="timeline-item" ng-repeat="timelineEvent in timeline">
-                                            <patient-timeline timeline-event="timelineEvent" type="timelineEvent.type"></patient-timeline>
+                                        <div class="timeline-item" ng-repeat="timelineEvent in data.timeline">
+                                            <patient-timeline timeline-event="timelineEvent" type="timelineEvent.event_type"></patient-timeline>
                                         </div>
                                     </div>
                                 </div>
@@ -173,11 +173,11 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="assay in assayHistory" style="cursor: auto;" role="row" class="odd">
-                                    <td>{{::data.assay.gene}}</td>
-                                    <td>{{::data.assay.orderedDate}}</td>
-                                    <td>{{::data.assay.resultDate}}</td>
+                                    <td>{{::assay.gene}}</td>
+                                    <td>{{::assay.orderedDate}}</td>
+                                    <td>{{::assay.resultDate}}</td>
                                     <td>
-                                        <span ng-style="{'color':'{{ assay.result | assayStatus }}'}">{{::data.assay.result}}</span>
+                                        <span ng-style="{'color':'{{ assay.result | assayStatus }}'}">{{::assay.result}}</span>
                                     </td>
                                 </tr>
                             </tbody>
@@ -226,7 +226,7 @@
                                     <h4>Analysis</h4>
                                     <dl class="dl-horizontal">
                                         <dt>Analysis ID</dt>
-                                        <dd>{{::data.currentSendout.currentAnalisys.analysisId}}</dd>
+                                        <dd>{{::data.currentSendout.currentAnalisys.analysis_id}}</dd>
 
                                         <dt>Status</dt>
                                         <dd ng-style="{'color':'{{ currentSendout.currentAnalisys.status | analysisStatus }}'}">{{::data.currentSendout.currentAnalisys.status}}</dd>
@@ -291,7 +291,7 @@
                                                             <div class="col-md-4 col-sm-6 text-left">
                                                                 <dl class="dl-horizontal-narrow">
                                                                     <dt>Analysis ID</dt>
-                                                                    <dd><a> {{::data.analysis.analysisId}} </a></dd>
+                                                                    <dd><a> {{::data.analysis.analysis_id}} </a></dd>
 
                                                                     <dt>Status</dt>
                                                                     <dd ng-style="{'color':'{{ analysis.status | analysisStatus }}'}">{{::data.analysis.status}}</dd>
@@ -379,10 +379,10 @@
                                 <div class="header-info-box  variant-report-header-box">
                                     <dl class="dl-horizontal">
                                         <dt>Biopsy Sequence Number</dt>
-                                        <dd>{{::data.variantReport.biopsySequenceNumber}}</dd>
+                                        <dd>{{::data.variantReport.biopsy_sequence_number}}</dd>
 
                                         <dt>Analysis ID</dt>
-                                        <dd>{{::data.variantReport.analysisId}}</dd>
+                                        <dd>{{::data.variantReport.analysis_id}}</dd>
 
                                         <dt>Files</dt>
                                         <dd>
@@ -668,16 +668,16 @@
                                     <div class="header-info-box assignment-header-box">
                                         <dl class="dl-horizontal">
                                             <dt>Biopsy Sequence Number</dt>
-                                            <dd>{{::data.assignmentReport.biopsySequenceNumber}}</dd>
+                                            <dd>{{::data.assignment_report.biopsy_sequence_number}}</dd>
 
                                             <dt>Molecular Sequence Number</dt>
-                                            <dd><a>{{::data.assignmentReport.molecularSequenceNumber}}</a></dd>
+                                            <dd><a>{{::data.assignment_report.molecular_sequence_number}}</a></dd>
 
                                             <dt>Analysis ID</dt>
-                                            <dd><a>{{::data.assignmentReport.analysisId}}</a></dd>
+                                            <dd><a>{{::data.assignment_report.analysis_id}}</a></dd>
 
                                             <dt>Variant Report aMOI(s)</dt>
-                                            <dd><a ng-repeat="amoi in assignmentReport.variantReportaMOIs">{{amoi.title}}{{$last ? '' : ', '}}</a></dd>
+                                            <dd><a ng-repeat="amoi in data.assignment_report.variant_report_amois">{{amoi.title}}{{$last ? '' : ', '}}</a></dd>
                                         </dl>
                                     </div>
                                 </div>
@@ -686,16 +686,16 @@
                                         <h4>Assignment</h4>
                                         <dl class="dl-horizontal">
                                             <dt>Generated date</dt>
-                                            <dd>{{::data.assignmentReport.generatedDate}}</dd>
+                                            <dd>{{::data.assignment_report.generated_date}}</dd>
 
                                             <dt>Confirmed date</dt>
-                                            <dd>{{::data.assignmentReport.confirmedDate}}</dd>
+                                            <dd>{{::data.assignment_report.confirmed_date}}</dd>
 
                                             <dt>Sent to COG date</dt>
-                                            <dd>{{::data.assignmentReport.sentToCogDate}}</dd>
+                                            <dd>{{::data.assignment_report.sent_to_cog_date}}</dd>
 
                                             <dt>Received from COG date</dt>
-                                            <dd>{{::data.assignmentReport.receivedFromCogDate}}</dd>
+                                            <dd>{{::data.assignment_report.received_from_cog_date}}</dd>
                                         </dl>
                                     </div>
                                 </div>
@@ -714,10 +714,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="assay in assignmentReport.assays" style="cursor: auto; " role="row" class="odd">
-                                        <td>{{::data.assay.gene}}</td>
-                                        <td><span ng-style="{'color':'{{ assay.result | assayStatus }}'}">{{::data.assay.result}}</span></td>
-                                        <td>{{::data.assay.comment}}</td>
+                                    <tr ng-repeat="assay in data.assignment_report.assays" style="cursor: auto; " role="row" class="odd">
+                                        <td>{{::assay.gene}}</td>
+                                        <td><span ng-style="{'color':'{{ assay.result | assayStatus }}'}">{{::assay.result}}</span></td>
+                                        <td>{{::assay.comment}}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -739,7 +739,7 @@
                                             <h5>1 - NO VARIANT MATCH</h5>
                                         </td>
                                     </tr>
-                                    <tr ng-repeat="ta in assignmentReport.treatmentArms.noMatchList " style="cursor: auto; " role="row" class="odd">
+                                    <tr ng-repeat="ta in data.assignment_report.treatmentArms.noMatchList " style="cursor: auto; " role="row" class="odd">
                                         <td class="status-blue">
                                             <a ui-sref="treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion: ta.currentTtreatmentArmVersion }) ">
                                                 <i class="fa fa-medkit "></i> {{ ::data.ta.treatmentArmTitle || '-' }}
@@ -753,7 +753,7 @@
                                             <h5>2 - RECORD BASED EXCLUSION</h5>
                                         </td>
                                     </tr>
-                                    <tr ng-repeat="ta in assignmentReport.treatmentArms.recordBasedExclusionList " style="cursor: auto;
+                                    <tr ng-repeat="ta in data.assignment_report.treatmentArms.recordBasedExclusionList " style="cursor: auto;
                                                 " role="row " class="odd ">
                                         <td class="status-blue ">
                                             <a ui-sref="treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion:
@@ -769,7 +769,7 @@
                                             <h5>3 - SELECTED</h5>
                                         </td>
                                     </tr>
-                                    <tr ng-repeat="ta in assignmentReport.treatmentArms.selectedList " style="cursor: auto; " role="row" class="odd">
+                                    <tr ng-repeat="ta in data.assignment_report.treatmentArms.selectedList " style="cursor: auto; " role="row" class="odd">
                                         <td class="status-blue ">
                                             <a ui-sref="treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion: ta.currentTtreatmentArmVersion }) ">
                                                 <i class="fa fa-medkit "></i> {{ ::data.ta.treatmentArmTitle || '-' }}
@@ -825,10 +825,10 @@
                                 </thead>
 
                                 <tbody>
-                                    <tr ng-repeat="document in patientDocuments" style="cursor: auto;" role="row" class="odd">
-                                        <td><a href>{{::data.document.name}}</a></td>
-                                        <td>{{::data.document.uploadedDate}}</td>
-                                        <td>{{::data.document.user}}</td>
+                                    <tr ng-repeat="document in data.documents.list" style="cursor: auto;" role="row" class="odd">
+                                        <td><a href>{{::document.name}}</a></td>
+                                        <td>{{::document.uploaded_date}}</td>
+                                        <td>{{::document.user}}</td>
                                     </tr>
                                 </tbody>
                             </table>
