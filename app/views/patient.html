@@ -114,12 +114,12 @@
                     </div>
                 </uib-tab>
 
-                <uib-tab heading="Biopsy">
+                <uib-tab heading="Surgical Event">
                     <div class="panel-body">
 
                         <div class="ibox-title ibox-title-no-line">
                             <h2>
-                                <span class="drop-down-label">Biopsy</span>                                
+                                <span class="drop-down-label">Surgical Event</span>                                
                                 <div dropdown-select="biopsyReports " dropdown-model="biopsyReport" dropdown-item-label="text">
                                 </div>
                             </h2>
@@ -130,14 +130,20 @@
                                 <div class="header-info-box biopsy-header-box">
                                     <h4>Specimen</h4>
                                     <dl class="dl-horizontal">
+                                        <dt>Surgical Event ID</dt>
+                                        <dd>{{::data.specimen.surgical_event_id}}</dd>
+
+                                        <dt>Type</dt>
+                                        <dd>{{::data.specimen.type}}</dd>
+
                                         <dt>Collection Date</dt>
-                                        <dd>{{::data.biopsy.specimen.collectionDate}}</dd>
+                                        <dd>{{::data.specimen.collected_date}}</dd>
 
                                         <dt>Received Date</dt>
-                                        <dd>{{::data.biopsy.specimen.receivedDate}}</dd>
+                                        <dd>{{"TBD?"}}</dd>
 
                                         <dt>Failure Date</dt>
-                                        <dd>{{::data.biopsy.specimen.failureDate}}</dd>
+                                        <dd>{{::data.specimen.failed_date}}</dd>
                                     </dl>
                                 </div>
                             </div>
@@ -146,13 +152,13 @@
                                     <h4>Pathology</h4>
                                     <dl class="dl-horizontal">
                                         <dt>Status</dt>
-                                        <dd>{{::data.biopsy.pathology.status}}</dd>
+                                        <dd>{{::data.specimen.pathology_status}}</dd>
 
                                         <dt>Received Date</dt>
-                                        <dd>{{::data.biopsy.pathology.receivedDate}}</dd>
+                                        <dd>{{::data.specimen.pathology_status_date}}</dd>
 
                                         <dt>Comment</dt>
-                                        <dd>{{::data.biopsy.pathology.comment}}</dd>
+                                        <dd>{{"TBD?"}}</dd>
                                     </dl>
                                 </div>
                             </div>
@@ -172,10 +178,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="assay in assayHistory" style="cursor: auto;" role="row" class="odd">
+                                <tr ng-repeat="assay in data.specimen.assays" style="cursor: auto;" role="row" class="odd">
                                     <td>{{::assay.gene}}</td>
-                                    <td>{{::assay.orderedDate}}</td>
-                                    <td>{{::assay.resultDate}}</td>
+                                    <td>{{::assay.ordered_date}}</td>
+                                    <td>{{::assay.result_date}}</td>
                                     <td>
                                         <span ng-style="{'color':'{{ assay.result | assayStatus }}'}">{{::assay.result}}</span>
                                     </td>
@@ -232,7 +238,7 @@
                                         <dd ng-style="{'color':'{{ currentSendout.currentAnalisys.status | analysisStatus }}'}">{{::data.currentSendout.currentAnalisys.status}}</dd>
 
                                         <dt>File Received Date</dt>
-                                        <dd>{{::data.currentSendout.currentAnalisys.fileReceivedDate}}</dd>
+                                        <dd>{{::data.currentSendout.currentAnalisys.fileReceived_date}}</dd>
 
                                         <dt>{{::data.currentSendout.currentAnalisys.confirmedRejectedDateLabel}}</dt>
                                         <dd>{{::data.currentSendout.currentAnalisys.confirmedRejectedDate}}</dd>
@@ -300,7 +306,7 @@
                                                             <div class="col-md-4 col-sm-6 text-left">
                                                                 <dl class="dl-horizontal-narrow">
                                                                     <dt>File Received Date</dt>
-                                                                    <dd>{{::data.analysis.fileReceivedDate}}</dd>
+                                                                    <dd>{{::data.analysis.fileReceived_date}}</dd>
 
                                                                     <dt>{{::data.analysis.confirmedRejectedDateLabel}}</dt>
                                                                     <dd>{{::data.analysis.confirmedRejectedDate}}</dd>
@@ -397,7 +403,7 @@
                                         </dd>
 
                                         <dt>File Received Date</dt>
-                                        <dd>{{::data.variantReport.fileReceivedDate}}</dd>
+                                        <dd>{{::data.variantReport.fileReceived_date}}</dd>
 
                                         <dt ng-show="variantReport.confirmedRejectedDate">{{::data.variantReport.confirmedRejectedDateLabel}}</dt>
                                         <dd ng-show="variantReport.confirmedRejectedDate">{{::data.variantReport.confirmedRejectedDate}}</dd>
@@ -705,7 +711,7 @@
                                         </dd>
 
                                         <dt>File Received Date</dt>
-                                        <dd>{{::variantReport.fileReceivedDate}}</dd>-->
+                                        <dd>{{::variantReport.fileReceived_date}}</dd>-->
 
                                         <!--<dt ng-show="variantReport.confirmedRejectedDate">{{::variantReport.confirmedRejectedDateLabel}}</dt>
                                         <dd ng-show="variantReport.confirmedRejectedDate">{{::variantReport.confirmedRejectedDate}}</dd>-->
