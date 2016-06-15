@@ -652,6 +652,262 @@
                     </div>
                 </uib-tab>
 
+                <uib-tab heading="Blood Variant Report">
+                    <div class="panel-body">
+
+                        <div class="row">
+                            <div class="col-md-8 text-left">
+                                <div class="btn-group btn-group-margin" data-toggle="buttons">
+                                    <label class="btn btn-outline btn-success" ng-class="getVariantReportModeClass('Normal')" ng-click="setVariantReportMode('Normal')"
+                                        title="Show Normal Report">
+                                        <input type="radio" name="variantReportMode" id="option3">Normal
+                                    </label>
+                                    <label class="btn btn-outline btn-success" ng-class="getVariantReportModeClass('Qc')" ng-click="setVariantReportMode('Qc')"
+                                        title="Show to QC Report">
+                                        <input type="radio" name="variantReportMode" id="option4">QC Report
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <button class="btn btn-outline btn-success" title="Export Variant Report to PDF"><i class="fa fa-file-pdf-o"></i>&nbsp;&nbsp;PDF</button>
+                                <button class="btn btn-outline btn-success" title="Export Variant Report to Excel"><i class="fa fa-file-excel-o"></i>&nbsp;&nbsp;Excel</button>
+                            </div>
+                        </div>
+
+                        <div class="ibox-title ibox-title-no-line">
+                            <h2>
+                                <span class="drop-down-label">Variant Report</span>
+                                <div dropdown-select="variantReportOptions " dropdown-model="variantReportOption" dropdown-item-label="text">
+                                </div>
+                            </h2>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="header-info-box  variant-report-header-box">
+                                    <dl class="dl-horizontal">
+                                        <dt>Biopsy Sequence Number</dt>
+                                        <dd>{{::variantReport.biopsySequenceNumber}}</dd>
+
+                                        <dt>Analysis ID</dt>
+                                        <dd>{{::variantReport.analysisId}}</dd>
+
+                                        <!--<dt>Files</dt>
+                                        <dd>
+                                            <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
+                                            <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAI</a>
+                                            <a href="#" class="btn btn-xs btn-white file-button-xs">VCF</a>
+                                        </dd>
+                                        <dd>
+                                            <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
+                                            <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
+                                            <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
+                                        </dd>
+
+                                        <dt>File Received Date</dt>
+                                        <dd>{{::variantReport.fileReceivedDate}}</dd>-->
+
+                                        <!--<dt ng-show="variantReport.confirmedRejectedDate">{{::variantReport.confirmedRejectedDateLabel}}</dt>
+                                        <dd ng-show="variantReport.confirmedRejectedDate">{{::variantReport.confirmedRejectedDate}}</dd>-->
+
+                                        <dt>Status</dt>
+                                        <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{variantReport.status}}</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <!--<div class="header-info-box variant-report-header-box">
+
+                                    <dl class="dl-horizontal dl-horizontal-expanded-label">
+                                        <dt>Total Variants</dt>
+                                        <dd>{{::variantReport.totalVariants}}</dd>
+
+                                        <dt>Cellularity</dt>
+                                        <dd>{{::variantReport.cellularity}}</dd>
+                                    </dl>
+
+                                    <h4 ng-if="variantReportMode!=='Qc'">MOI/aMOI Summary</h4>
+
+                                    <dl class="dl-horizontal dl-horizontal-expanded-label" ng-if="variantReportMode!=='Qc'">
+                                        <dt ng-repeat-start="summary in biopsy.moiSummary">{{::summary.title}}</dt>
+                                        <dd ng-repeat-end>{{::summary.count}}</dd>
+                                    </dl>
+                                </div>-->
+                            </div>
+                        </div>
+
+                        <img src="/img/variant_report.png" style="width:1200px" />
+
+                        <!--Single Nucleitide Variant(s)-->
+                        <div class="ibox-title ibox-title-no-line">
+                            <h3>Single Nucleitide Variant(s)</h3>
+                        </div>
+
+                        <table class="table table-hover" role="grid">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th ng-if="variantReportMode!=='Qc'">aMOI</th>
+                                    <th>Chrom</th>
+                                    <th>Position</th>
+                                    <th>Reference</th>
+                                    <th>Alternative</th>
+                                    <th>Allele Freq</th>
+                                    <th>Func Gene</th>
+                                    <th>Oncomine Variant Class</th>
+                                    <th>Exon</th>
+                                    <th>Function</th>
+                                    <th>HGVS</th>
+                                    <th>Read Depth</th>
+                                    <th>Transcript</th>
+                                    <th>Protein</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="variant in biopsy.singleNucleitideVariants" style="cursor: auto;" role="row" class="odd">
+                                    <td>{{::variant.id}}</td>
+                                    <td ng-if="variantReportMode!=='Qc'">{{::variant.aMOI}}</td>
+                                    <td>{{::variant.chrom}}</td>
+                                    <td>{{::variant.position}}</td>
+                                    <td>{{::variant.reference}}</td>
+                                    <td>{{::variant.alternative}}</td>
+                                    <td>{{::variant.alleleFreq}}</td>
+                                    <td>{{::variant.funcGene}}</td>
+                                    <td>{{::variant.oncomineVariantClass}}</td>
+                                    <td>{{::variant.exon}}</td>
+                                    <td>{{::variant.funct}}</td>
+                                    <td>{{::variant.hGVS}}</td>
+                                    <td>{{::variant.readDepth}}</td>
+                                    <td>{{::variant.transcript}}</td>
+                                    <td>{{::variant.protein}}</td>
+                                </tr>
+
+                                <tr ng-if="!biopsy.singleNucleitideVariants || !biopsy.singleNucleitideVariants.length">
+                                    <td colspan="8"><span class="text-muted">No Single Nucleitide Variants</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!--Indels-->
+                        <div class="ibox-title ibox-title-no-line">
+                            <h3>Indel(s)</h3>
+                        </div>
+
+                        <table class="table table-hover" role="grid">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th ng-if="variantReportMode!=='Qc'">aMOI</th>
+                                    <th>Chrom</th>
+                                    <th>Position</th>
+                                    <th>Reference</th>
+                                    <th>Alternative</th>
+                                    <th>Allele Freq</th>
+                                    <th>Func Gene</th>
+                                    <th>Oncomine Variant Class</th>
+                                    <th>Exon</th>
+                                    <th>Function</th>
+                                    <th>HGVS</th>
+                                    <th>Read Depth</th>
+                                    <th>Transcript</th>
+                                    <th>Protein</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="variant in biopsy.indels" style="cursor: auto;" role="row" class="odd">
+                                    <td>{{::variant.id}}</td>
+                                    <td ng-if="variantReportMode!=='Qc'">{{::variant.aMOI}}</td>
+                                    <td>{{::variant.chrom}}</td>
+                                    <td>{{::variant.position}}</td>
+                                    <td>{{::variant.reference}}</td>
+                                    <td>{{::variant.alternative}}</td>
+                                    <td>{{::variant.alleleFreq}}</td>
+                                    <td>{{::variant.funcGene}}</td>
+                                    <td>{{::variant.oncomineVariantClass}}</td>
+                                    <td>{{::variant.exon}}</td>
+                                    <td>{{::variant.funct}}</td>
+                                    <td>{{::variant.hGVS}}</td>
+                                    <td>{{::variant.readDepth}}</td>
+                                    <td>{{::variant.transcript}}</td>
+                                    <td>{{::variant.protein}}</td>
+                                </tr>
+
+                                <tr ng-if="!biopsy.indels || !biopsy.indels.length">
+                                    <td colspan="8"><span class="text-muted">No Indels</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!--Copy Number Variant(s)-->
+                        <div class="ibox-title ibox-title-no-line">
+                            <h3>Copy Number Variant(s)</h3>
+                        </div>
+
+                        <table class="table table-hover" role="grid">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th ng-if="variantReportMode!=='Qc'">aMOI</th>
+                                    <th>Chrom</th>
+                                    <th>Raw CN</th>
+                                    <th>CN</th>
+                                    <th>CI 5%</th>
+                                    <th>CI 95%</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="variant in biopsy.copyNumberVariants" style="cursor: auto;" role="row" class="odd">
+                                    <td>{{::variant.id}}</td>
+                                    <td ng-if="variantReportMode!=='Qc'">{{::variant.aMOI}}</td>
+                                    <td>{{::variant.chrom}}</td>
+                                    <td>{{::variant.rawCN}}</td>
+                                    <td>{{::variant.cn}}</td>
+                                    <td>{{::variant.ci5percent}}</td>
+                                    <td>{{::variant.ci95percent}}</td>
+                                </tr>
+
+                                <tr ng-if="!biopsy.copyNumberVariants || !biopsy.copyNumberVariants.length">
+                                    <td colspan="8"><span class="text-muted">No Copy Number Variants</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!--Gene Fusion(s)-->
+                        <div class="ibox-title ibox-title-no-line">
+                            <h3>Gene Fusion(s)</h3>
+                        </div>
+
+                        <table class="table table-hover" role="grid">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th ng-if="variantReportMode!=='Qc'">aMOI</th>
+                                    <th>Gene 2</th>
+                                    <th>Gene 2 Count</th>
+                                    <th>Gene 1</th>
+                                    <th>Gene 1 Count</th>
+                                    <th>Annotation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="variant in biopsy.geneFusions" style="cursor: auto;" role="row" class="odd">
+                                    <td>{{::variant.id}}</td>
+                                    <td ng-if="variantReportMode!=='Qc'">{{::variant.aMOI}}</td>
+                                    <td>{{::variant.gene2}}</td>
+                                    <td>{{::variant.gene2count}}</td>
+                                    <td>{{::variant.gene1}}</td>
+                                    <td>{{::variant.gene1count}}</td>
+                                    <td>{{::variant.annotation}}</td>
+                                </tr>
+
+                                <tr ng-if="!biopsy.geneFusions || !biopsy.geneFusions.length">
+                                    <td colspan="8"><span class="text-muted">No Gene Fusions</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </uib-tab>
+
                 <uib-tab heading="Assignment Report">
                     <div class="panel-body" ng-switch="variantReport.status">
 
