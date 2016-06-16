@@ -414,8 +414,8 @@
                                         <dt>Status</dt>
                                         <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{::data.variant_report.status}}</dd>
 
-                                        <dt>{{::data.variant_report.status}} Date</dt>
-                                        <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{::data.variant_report.status}}</dd>
+                                        <dt>{{::data.variant_report.status | titlecase}} Date</dt>
+                                        <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{::data.variant_report.status_date}}</dd>
                                     </dl>
                                 </div>
                             </div>
@@ -734,8 +734,8 @@
                                         <dt>Status</dt>
                                         <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{::data.variant_report.status}}</dd>
 
-                                        <dt>{{::data.variant_report.status}} Date</dt>
-                                        <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{::data.variant_report.status}}</dd>
+                                        <dt>{{::data.variant_report.status | titlecase }} Date</dt>
+                                        <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{::data.variant_report.status_date}}</dd>
                                     </dl>
                                 </div>
                             </div>
