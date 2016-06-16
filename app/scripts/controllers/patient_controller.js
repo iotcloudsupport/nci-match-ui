@@ -19,12 +19,15 @@
 
         $scope.confirmTitle = 'Confirmation Changed';
         $scope.confirmMessage = 'Please enter a reason:';
-        
-        $scope.biopsySampleLabel = 'Latest';
+
+        $scope.surgicalEventLabel = 'Latest';
+        $scope.surgicalEventSelectorList = [];
+        $scope.surgicalEventSelector = {};
 
         $scope.files = [];
 
         $scope.currentSpecimen = {};
+        $scope.currentAnalisys = {};
 
         $scope.dropzoneConfig = {
             url: '/alt_upload_url',
@@ -51,7 +54,7 @@
         $scope.showPrompt = showPrompt;
 
         function getCurrentAssignment() {
-            return $scope.data && 
+            return $scope.data &&
                 $scope.data.current_assignment &&
                 $scope.data.current_assignment.treatment_arms &&
                 $scope.data.current_assignment.treatment_arms.selected &&
@@ -96,33 +99,56 @@
             matchApiMock
                 .loadPatient()
                 .then(setupScope)
+                .then(setupSurgicalEventSelectorList)
                 .then(setupVariantReport);
         }
 
-        function setupScope(data){
+        function setupScope(data) {
             $scope.patient_id = $stateParams.patient_id;
             var scopeData = {};
             angular.copy(data, scopeData);
             $scope.data = scopeData;
 
             if ($scope.data.specimen && $scope.data.specimen.specimen_shipments) {
-                $scope.data.currentSpecimen = $scope.data.specimen.specimen_shipments[$scope.data.specimen.specimen_shipments.length - 1];
+                $scope.currentSpecimen = $scope.data.specimen.specimen_shipments[$scope.data.specimen.specimen_shipments.length - 1];
+            } else {
+                $log.error('The web service didn\'t send Specimen Shipment');
             }
 
-            // $scope.patient = data.patient;
-            // $scope.treatmentArms = data.treatmentArms;
-            // $scope.timeline = data.timeline;
-            // $scope.assayHistory = data.assayHistory;
-            // $scope.sendouts = data.sendouts;
-            // $scope.biopsy = data.biopsy;
-            // $scope.variantReports = data.variantReports;
-            // $scope.variantReportOptions = data.variantReportOptions;
-            // $scope.variantReportOption = data.variantReportOption;
-            // $scope.assignmentReport = data.assignmentReport;
-            // $scope.biopsyReport = data.biopsyReport;
-            // $scope.biopsyReports = data.biopsyReports;
-            // $scope.patientDocuments = data.patientDocuments;
-            // $scope.currentSendout = data.currentSendout;
+            if ($scope.currentSpecimen && $scope.currentSpecimen.analyses) {
+                $scope.currentAnalisys = $scope.currentSpecimen.analyses[$scope.currentSpecimen.analyses.length - 1];
+            } else {
+                $log.error('The web service didn\'t send Secimen Analyses');
+            }
+
+        }
+
+        function setupSurgicalEventSelectorList() {
+            for (var i = 0; i < $scope.data.specimen_history.length; i++) {
+                var surgicalEvent = $scope.data.specimen_history[i];
+
+                for (var j = 0; j < surgicalEvent.specimen_shipments.length; j++) {
+                    var shipment = surgicalEvent.specimen_shipments[i];
+
+                    for (var k = 0; k < shipment.analyses.length; k++) {
+                        var analysis = shipment.analyses[k];
+
+                        var item = {
+                            text: 'Event ' + surgicalEvent.surgical_event_id + ', Shipment ' + (j + 1) + ', Analysis ' + analysis.analysis_id,
+                            value: {
+                                event_index: i,
+                                shipment_index: j,
+                                analysis_index: k,
+                                surgical_event_id: shipment.surgical_event_id,
+                                analysis_id: analysis.analysis_id
+                            }
+                        }
+
+                        $scope.surgicalEventSelectorList.push(item);
+                        $log.debug(item);
+                    }
+                }
+            }
         }
 
         function setupVariantReport() {
@@ -138,7 +164,7 @@
         function dzError(file, errorMessage) {
             // $log.debug(errorMessage);
         }
-        
+
         function setComment(value) {
             //$log.debug('User entered un-confirm reason: ' + value);
         }
@@ -152,7 +178,7 @@
             showPrompt({
                 title: title,
                 message: message,
-                buttons: [{ label:'OK', primary: true }, { label:'Cancel', cancel: true }]
+                buttons: [{ label: 'OK', primary: true }, { label: 'Cancel', cancel: true }]
             }).then(function () {
                 $scope.warningResult = true;
                 $log.debug('User agreed after warning');
@@ -164,7 +190,7 @@
                 title: title,
                 message: message,
                 input: true,
-                buttons: [{ label:'OK', primary: true }, { label:'Cancel', cancel: true }]
+                buttons: [{ label: 'OK', primary: true }, { label: 'Cancel', cancel: true }]
             }).then(function (comment) {
                 $log.debug('User entered comment: ' + comment);
             });
@@ -172,7 +198,7 @@
 
         function editComment(variant) {
             $log('Variant = ' + variant);
-            
+
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
                 templateUrl: 'views/templates/modal_dialog_with_comment.html',
@@ -186,7 +212,7 @@
                     },
                     message: function () {
                         return $scope.confirmMessage;
-                    }                    
+                    }
                 }
             });
 
@@ -195,33 +221,33 @@
                 $log.debug(comment);
             });
         }
-        
+
         function confirmVariantReport() {
             showPrompt({
                 title: 'Confirm Variant Report',
                 message: 'Are you sure you want to confirm the Variant Report',
-                buttons: [{ label:'OK', primary: true }, { label:'Cancel', cancel: true }]
+                buttons: [{ label: 'OK', primary: true }, { label: 'Cancel', cancel: true }]
             }).then(function (comment) {
                 if (!$scope.variantReport) {
                     $log.error('Current Variant Report is not set');
                 } else {
                     $scope.variantReport.status = 'CONFIRMED';
-                }              
+                }
             });
         }
-        
+
         function rejectVariantReport() {
             showPrompt({
                 title: 'Reject Variant Report',
                 message: 'Are you sure you want to reject the Variant Report? Please enter reason:',
                 input: true,
-                buttons: [{ label:'OK', primary: true }, { label:'Cancel', cancel: true }]
+                buttons: [{ label: 'OK', primary: true }, { label: 'Cancel', cancel: true }]
             }).then(function (comment) {
                 if (!$scope.variantReport) {
                     $log.error('Current Variant Report is not set');
-                } else {                    
+                } else {
                     $scope.variantReport.status = 'RECTED';
-                }       
+                }
             });
         }
     }

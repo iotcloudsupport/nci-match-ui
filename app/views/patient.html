@@ -30,7 +30,7 @@
                             <dd>{{::data.gender}}, {{::data.ethnicity}}</dd>
 
                             <dt>Last Rejoin Scan Date</dt>
-                            <dd>{{ "TBD?" }}</dd>
+                            <dd class="missing-requirement-or-design">{{ "[ TBD? ]" }}</dd>
 
                             <dt>Status</dt>
                             <dd ng-style="{'color':'{{ data.current_status | status }}'}">{{::data.current_status}}</dd>
@@ -120,7 +120,7 @@
                         <div class="ibox-title ibox-title-no-line">
                             <h2>
                                 <span class="drop-down-label">Surgical Event</span>                                
-                                <div dropdown-select="biopsyReports " dropdown-model="biopsyReport" dropdown-item-label="text">
+                                <div dropdown-select="surgicalEventSelectorList " dropdown-model="surgicalEventSelector" dropdown-item-label="text">
                                 </div>
                             </h2>
                         </div>
@@ -140,7 +140,7 @@
                                         <dd>{{::data.specimen.collected_date}}</dd>
 
                                         <dt>Received Date</dt>
-                                        <dd>{{"TBD?"}}</dd>
+                                        <dd class="missing-requirement-or-design">{{"[ TBD? ]"}}</dd>
 
                                         <dt>Failure Date</dt>
                                         <dd>{{::data.specimen.failed_date}}</dd>
@@ -158,7 +158,7 @@
                                         <dd>{{::data.specimen.pathology_status_date}}</dd>
 
                                         <dt>Comment</dt>
-                                        <dd>{{"TBD?"}}</dd>
+                                        <dd class="missing-requirement-or-design">{{"[ TBD? ]"}}</dd>
                                     </dl>
                                 </div>
                             </div>
@@ -190,7 +190,7 @@
                         </table>
 
                         <div class="ibox-title ibox-title-no-line">
-                            <h3>{{ biopsySampleLabel }} Analysis</h3>
+                            <h3>{{ surgicalEventLabel }} Analysis</h3>
                         </div>
 
                         <div class="row">
@@ -202,23 +202,23 @@
                                         <dd>{{::currentSpecimen.msn}}</dd>
 
                                         <dt>Site</dt>
-                                        <dd>{{"TBD?"}}</dd>
+                                        <dd class="missing-requirement-or-design">{{"[ TBD? ]"}}</dd>
 
                                         <dt>Tracking Number</dt>
-                                        <dd>{{"TBD?"}}</dd>
+                                        <dd>{{::currentSpecimen.tracking_number}}</dd>
 
                                         <dt>DNA Conc</dt>
-                                        <dd>{{"TBD?"}}</dd>
+                                        <dd>{{::currentSpecimen.dna_concordance}}</dd>
 
                                         <dt>DNA Vol</dt>
-                                        <dd>{{"TBD?"}}</dd>
+                                        <dd>{{::currentSpecimen.dna_volume}}</dd>
 
                                         <dt>Reported Date</dt>
-                                        <dd>{{"TBD?"}}</dd>
+                                        <dd>{{::currentSpecimen.reported_date}}</dd>
 
                                         <dt>Comments</dt>
                                         <dd>
-                                            <div class="text-truncate-200px">{{"TBD?"}}</div>
+                                            <div class="text-truncate-200px">{{::currentSpecimen.reported_date}}</div>
                                         </dd>
                                         
                                         <dd>
@@ -232,16 +232,16 @@
                                     <h4>Analysis</h4>
                                     <dl class="dl-horizontal">
                                         <dt>Analysis ID</dt>
-                                        <dd>{{::currentSpecimen.currentAnalisys.analysis_id}}</dd>
+                                        <dd>{{::currentAnalisys.analysis_id}}</dd>
 
                                         <dt>Status</dt>
-                                        <dd ng-style="{'color':'{{ currentSpecimen.currentAnalisys.status | analysisStatus }}'}">{{::currentSpecimen.currentAnalisys.status}}</dd>
+                                        <dd ng-style="{'color':'{{ currentAnalisys.status | analysisStatus }}'}">{{::currentAnalisys.status}}</dd>
 
                                         <dt>File Received Date</dt>
-                                        <dd>{{::currentSpecimen.currentAnalisys.fileReceived_date}}</dd>
+                                        <dd>{{::currentAnalisys.file_received_date}}</dd>
 
-                                        <dt>{{::currentSpecimen.currentAnalisys.confirmedRejectedDateLabel}}</dt>
-                                        <dd>{{::currentSpecimen.currentAnalisys.confirmedRejectedDate}}</dd>
+                                        <dt>{{::currentAnalisys.status}} Date</dt>
+                                        <dd>{{::currentAnalisys.status_date}}</dd>
 
                                         <dt>Files</dt>
                                         <dd>
