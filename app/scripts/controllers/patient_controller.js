@@ -24,6 +24,8 @@
 
         $scope.files = [];
 
+        $scope.currentSpecimen = {};
+
         $scope.dropzoneConfig = {
             url: '/alt_upload_url',
             parallelUploads: 3,
@@ -102,6 +104,10 @@
             var scopeData = {};
             angular.copy(data, scopeData);
             $scope.data = scopeData;
+
+            if (scopeData.specimen && scopeData.specimen.specimen_shipments) {
+                $scope.currentSpecimen = scopeData.specimen.specimen_shipments[scopeData.specimen.specimen_shipments.length - 1];
+            }
 
             // $scope.patient = data.patient;
             // $scope.treatmentArms = data.treatmentArms;

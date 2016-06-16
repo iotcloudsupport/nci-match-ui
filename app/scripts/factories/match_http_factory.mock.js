@@ -439,7 +439,7 @@
                             "patient_id": "PAT123",
                             "event_date": "2016-05-09T22:06:33+00:00",
                             "event_name": "Event Name 1",
-                            "event_type": "TYPE1",
+                            "event_type": "assignment",
                             "event_message": "Message 1",
                             "event_data": {
                                 "status": "Pending",
@@ -450,11 +450,12 @@
                             "patient_id": "PAT123",
                             "event_date": "2016-05-09T22:06:33+00:00",
                             "event_name": "Event Name 2",
-                            "event_type": "TYPE2",
-                            "event_message": "Message 2",
+                            "event_type": "patient",
+                            "event_message": "Patient Registered",
                             "event_data": {
                                 "status": "Pending",
-                                "biopsy_sequence_number": "B-987456"
+                                "biopsy_sequence_number": "B-987456",
+                                "location": "GHU"
                             }
                         }
                     ],
