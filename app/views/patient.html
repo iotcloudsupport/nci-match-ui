@@ -278,21 +278,21 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr ng-repeat-start="sendout in sendouts" style="cursor: auto;" role="row" class="odd">
-                                            <td>{{::data.sendout.msn}}</td>
-                                            <td>{{::data.sendout.destinationDate}}</td>
-                                            <td>{{::data.sendout.trackingNumber}}</td>
-                                            <td>{{::data.sendout.dnaConcordance}}</td>
-                                            <td>{{::data.sendout.dnaVolume}}</td>
-                                            <td>{{::data.sendout.reportedDate}}</td>
+                                        <tr ng-repeat-start="shipment in data.specimen.specimen_shipments" style="cursor: auto;" role="row" class="odd">
+                                            <td>{{::shipment.msn}}</td>
+                                            <td>{{::shipment.destinationDate}}</td>
+                                            <td>{{::shipment.trackingNumber}}</td>
+                                            <td>{{::shipment.dnaConcordance}}</td>
+                                            <td>{{::shipment.dnaVolume}}</td>
+                                            <td>{{::shipment.reportedDate}}</td>
                                             <td>
-                                                <div class="text-truncate-200px">{{::data.sendout.comments}}</div>
+                                                <div class="text-truncate-200px">{{::shipment.comments}}</div>
                                             </td>
                                         </tr>
                                         <tr ng-repeat-end>
                                             <td colspan="7">
                                                 <ul class="panel-list">
-                                                    <li ng-repeat="analysis in sendout.analyses" class="info-element">
+                                                    <li ng-repeat="analysis in shipment.analyses" class="info-element">
                                                         <div class="row">
                                                             <div class="col-md-4 col-sm-6 text-left">
                                                                 <dl class="dl-horizontal-narrow">

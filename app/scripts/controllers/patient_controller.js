@@ -105,8 +105,8 @@
             angular.copy(data, scopeData);
             $scope.data = scopeData;
 
-            if (scopeData.specimen && scopeData.specimen.specimen_shipments) {
-                $scope.currentSpecimen = scopeData.specimen.specimen_shipments[scopeData.specimen.specimen_shipments.length - 1];
+            if ($scope.data.specimen && $scope.data.specimen.specimen_shipments) {
+                $scope.data.currentSpecimen = $scope.data.specimen.specimen_shipments[$scope.data.specimen.specimen_shipments.length - 1];
             }
 
             // $scope.patient = data.patient;
