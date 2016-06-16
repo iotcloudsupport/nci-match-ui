@@ -292,7 +292,7 @@ describe('Controller: dashboard Controller', function () {
 
     it('should populate the activity list on a success response', function() {
         scope.loadActivityList();
-        expect(scope.activityList.length).toBe(0);
+        expect(scope.activityList.length).toBe(10);
     });
 
 });
