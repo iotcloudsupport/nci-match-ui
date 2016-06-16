@@ -133,7 +133,7 @@ angular.module('dashboard.matchbox',[])
         $scope.activityList = [];
 
         $scope.activityListData = [
-            /*{
+            {
                 "pic": $scope.icons[4],
                 "status": $scope.status[1],
                 "time": 1421175969643,
@@ -220,7 +220,7 @@ angular.module('dashboard.matchbox',[])
                 "age": '1y',
                 "displayName": $scope.message[0],
                 "description": "Delayed DB configuration 11"
-            }*/
+            }
         ];
 
         function setupActivityList(listSize, entryMax) {
@@ -229,7 +229,7 @@ angular.module('dashboard.matchbox',[])
             }
         }
 
-        $scope.loadActivityList = function() {
+        /*$scope.loadActivityList = function() {
             var listSize = $scope.activityList.length;
             var listSizeDifference = $scope.activityListData.length - listSize;
             var i;
@@ -244,6 +244,13 @@ angular.module('dashboard.matchbox',[])
                     setupActivityList(listSize, listSizeDifference);
                 }
             }
+        };*/
+
+        $scope.loadActivityList = function() {
+            var listSize = $scope.activityList.length;
+            setupActivityList(listSize, 10);
+            console.log($scope.activityList.length);
+            console.log($scope.activityListData.length);
         };
 
         /*$scope.loadActivityList = function() {
