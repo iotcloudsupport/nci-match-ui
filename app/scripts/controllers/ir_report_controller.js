@@ -10,7 +10,10 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             .withDisplayLength(5);
 
         $scope.dtOptions = DTOptionsBuilder.newOptions()
-            .withOption('lengthChange', false);
+            .withOption('bLengthChange', false);
+
+        $scope.dtOptions = DTOptionsBuilder.newOptions()
+            .withOption('searching', false);
 
         this.dtInstance = {};
 
