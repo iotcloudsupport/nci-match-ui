@@ -280,11 +280,11 @@
                                     <tbody>
                                         <tr ng-repeat-start="shipment in data.specimen.specimen_shipments" style="cursor: auto;" role="row" class="odd">
                                             <td>{{::shipment.msn}}</td>
-                                            <td>{{::shipment.destinationDate}}</td>
-                                            <td>{{::shipment.trackingNumber}}</td>
-                                            <td>{{::shipment.dnaConcordance}}</td>
-                                            <td>{{::shipment.dnaVolume}}</td>
-                                            <td>{{::shipment.reportedDate}}</td>
+                                            <td>{{::shipment.destination_date}}</td>
+                                            <td>{{::shipment.tracking_number}}</td>
+                                            <td>{{::shipment.dna_concordance}}</td>
+                                            <td>{{::shipment.dna_volume}}</td>
+                                            <td>{{::shipment.reported_date}}</td>
                                             <td>
                                                 <div class="text-truncate-200px">{{::shipment.comments}}</div>
                                             </td>
@@ -297,19 +297,19 @@
                                                             <div class="col-md-4 col-sm-6 text-left">
                                                                 <dl class="dl-horizontal-narrow">
                                                                     <dt>Analysis ID</dt>
-                                                                    <dd><a> {{::data.analysis.analysis_id}} </a></dd>
+                                                                    <dd><a> {{::analysis.analysis_id}} </a></dd>
 
                                                                     <dt>Status</dt>
-                                                                    <dd ng-style="{'color':'{{ analysis.status | analysisStatus }}'}">{{::data.analysis.status}}</dd>
+                                                                    <dd ng-style="{'color':'{{ analysis.status | analysisStatus }}'}">{{::analysis.status}}</dd>
                                                                 </dl>
                                                             </div>
                                                             <div class="col-md-4 col-sm-6 text-left">
                                                                 <dl class="dl-horizontal-narrow">
                                                                     <dt>File Received Date</dt>
-                                                                    <dd>{{::data.analysis.fileReceived_date}}</dd>
+                                                                    <dd>{{::analysis.file_received_date}}</dd>
 
-                                                                    <dt>{{::data.analysis.confirmedRejectedDateLabel}}</dt>
-                                                                    <dd>{{::data.analysis.confirmedRejectedDate}}</dd>
+                                                                    <dt>{{::analysis.status}} Date</dt>
+                                                                    <dd>{{::analysis.status_date}}</dd>
                                                                 </dl>
                                                             </div>
                                                             <div class="col-md-4 text-right">
