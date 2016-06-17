@@ -1,10 +1,9 @@
 angular.module('dashboard.matchbox',[])
-    .controller('DashboardStatisticsController', function( $scope, workflowApi ) { //store
+    .controller('DashboardStatisticsController', function( $scope, workflowApi, store ) { //store
         $scope.lastUpdated = (new Date()).getTime();
         $scope.name = 'MATCHBox User';
-        //$scope.name = setName();
+        $scope.name = setName();
 
-        //console.log(store.get('profile'));
         $scope.numberOfPatients = '?';
         $scope.numberOfScreenedPatients = '?';
         $scope.numberOfPatientsWithTreatment = '?';
@@ -13,6 +12,8 @@ angular.module('dashboard.matchbox',[])
         $scope.numberOfPendingBloodVariantReports = '?';
 
         function setName() {
+            if (store === undefined)
+                return 'MATCHBox User';
             if (store.get('profile').nickname !== null) {
                 return store.get('profile').nickname;
             } else {
@@ -249,8 +250,6 @@ angular.module('dashboard.matchbox',[])
         $scope.loadActivityList = function() {
             var listSize = $scope.activityList.length;
             setupActivityList(listSize, 10);
-            console.log($scope.activityList.length);
-            console.log($scope.activityListData.length);
         };
 
         /*$scope.loadActivityList = function() {
