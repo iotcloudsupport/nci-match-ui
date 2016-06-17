@@ -7,6 +7,15 @@ describe('Controller: dashboard Controller', function () {
         httpBackend,
         scope;
 
+    var mockStore = {
+        profile: {
+            email: 'matchbox.user@matchbox.app'
+        },
+        get: function() {
+            return this.profile;
+        }
+    };
+
     beforeEach(inject(function ($controller,
                                 $rootScope,
                                 _matchApi_,
@@ -50,7 +59,8 @@ describe('Controller: dashboard Controller', function () {
                 }
             },
             matchApi: _matchApi_,
-            reportApi: _reportApi_
+            reportApi: _reportApi_,
+            store: mockStore
         });
 
         //Controller
@@ -61,8 +71,8 @@ describe('Controller: dashboard Controller', function () {
         //Controller
         stats = $controller('DashboardStatisticsController', {
             $scope: scope,
-            workflowApi: _workflowApi_//,
-            //store: store
+            workflowApi: _workflowApi_,
+            store: mockStore
         });
 
         //Controller
