@@ -1,10 +1,9 @@
 angular.module('dashboard.matchbox',[])
-    .controller('DashboardStatisticsController', function( $scope, workflowApi ) { //store
+    .controller('DashboardStatisticsController', function( $scope, workflowApi, store ) { //store
         $scope.lastUpdated = (new Date()).getTime();
         $scope.name = 'MATCHBox User';
-        //$scope.name = setName();
+        $scope.name = setName();
 
-        //console.log(store.get('profile'));
         $scope.numberOfPatients = '?';
         $scope.numberOfScreenedPatients = '?';
         $scope.numberOfPatientsWithTreatment = '?';
@@ -13,6 +12,8 @@ angular.module('dashboard.matchbox',[])
         $scope.numberOfPendingBloodVariantReports = '?';
 
         function setName() {
+            if (store === undefined)
+                return 'MATCHBox User';
             if (store.get('profile').nickname !== null) {
                 return store.get('profile').nickname;
             } else {
@@ -102,24 +103,16 @@ angular.module('dashboard.matchbox',[])
             'fa fa-database fa-4x',
             'fa fa-envelope fa-4x',
             'fa fa-users fa-4x',
-            'fa fa-car fa-4x',
             'fa fa-thumbs-up fa-4x',
-            'fa fa-life-ring fa-4x',
-            'fa fa-anchor fa-4x',
             'fa fa-exclamation-triangle fa-4x'
         ];
 
         $scope.message = [
-            'Patient Registration', //'Working progress ..',
-            'Specimen Received', //'System rerun',
-            'Specimen Failure', //'DB issue ..',
+            'Patient Registration',
+            'Specimen Received',
+            'Specimen Failure',
             'Mail expected',
-            'Users be aware',
-            'Car broke down',
-            'Great work',
-            'Support needed',
-            'Solid ground',
-            'Watch out'
+            'Users be aware'
         ];
 
         $scope.status = [
@@ -136,90 +129,90 @@ angular.module('dashboard.matchbox',[])
             {
                 "pic": $scope.icons[4],
                 "status": $scope.status[1],
+                "patientId": '1000099',
                 "time": 1421175969643,
                 "age": '3m',
-                "displayName": $scope.message[0],
-                "description": "Delayed DB configuration 1"
+                "displayName": $scope.message[0]
             },
             {
                 "pic": $scope.icons[3],
                 "status": $scope.status[4],
+                "patientId": '1000065',
                 "time": 1421171969643,
                 "age": '5m',
-                "displayName": $scope.message[1],
-                "description": "Delayed DB configuration 2"
+                "displayName": $scope.message[1]
             },
             {
                 "pic": $scope.icons[1],
                 "status": $scope.status[0],
+                "patientId": '1000065',
                 "time": 1421169969643,
                 "age": '5m',
-                "displayName": $scope.message[2],
-                "description": "Delayed DB configuration 3"
+                "displayName": $scope.message[2]
             },
             {
                 "pic": $scope.icons[3],
                 "status": $scope.status[1],
+                "patientId": '1000087',
                 "time": 1421165969643,
                 "age": '18m',
-                "displayName": $scope.message[1],
-                "description": "Delayed DB configuration 4"
+                "displayName": $scope.message[1]
             },
             {
                 "pic": $scope.icons[1],
                 "status": $scope.status[0],
+                "patientId": '1000065',
                 "time": 1421162969643,
                 "age": '5h',
-                "displayName": $scope.message[2],
-                "description": "Delayed DB configuration 5"
+                "displayName": $scope.message[2]
             },
             {
                 "pic": $scope.icons[3],
                 "status": $scope.status[4],
+                "patientId": '1000065',
                 "time": 1421160969643,
                 "age": '6d',
-                "displayName": $scope.message[1],
-                "description": "Delayed DB configuration 6"
+                "displayName": $scope.message[1]
             },
             {
                 "pic": $scope.icons[4],
                 "status": $scope.status[3],
+                "patientId": '1000087',
                 "time": 1421155768643,
                 "age": '1y',
-                "displayName": $scope.message[0],
-                "description": "Delayed DB configuration 7"
+                "displayName": $scope.message[0]
             },
             {
                 "pic": $scope.icons[1],
                 "status": $scope.status[0],
+                "patientId": '1000087',
                 "time": 1421162969643,
                 "age": '5h',
-                "displayName": $scope.message[2],
-                "description": "Delayed DB configuration 8"
+                "displayName": $scope.message[2]
             },
             {
                 "pic": $scope.icons[3],
                 "status": $scope.status[4],
+                "patientId": '1000065',
                 "time": 1421160969643,
                 "age": '6d',
-                "displayName": $scope.message[1],
-                "description": "Delayed DB configuration 9"
+                "displayName": $scope.message[1]
             },
             {
                 "pic": $scope.icons[4],
                 "status": $scope.status[3],
+                "patientId": '1000065',
                 "time": 1421155768643,
                 "age": '1y',
-                "displayName": $scope.message[0],
-                "description": "Delayed DB configuration 10"
+                "displayName": $scope.message[0]
             },
             {
                 "pic": $scope.icons[4],
                 "status": $scope.status[3],
+                "patientId": '1000065',
                 "time": 1421155768643,
                 "age": '1y',
-                "displayName": $scope.message[0],
-                "description": "Delayed DB configuration 11"
+                "displayName": $scope.message[0]
             }
         ];
 
@@ -249,8 +242,6 @@ angular.module('dashboard.matchbox',[])
         $scope.loadActivityList = function() {
             var listSize = $scope.activityList.length;
             setupActivityList(listSize, 10);
-            console.log($scope.activityList.length);
-            console.log($scope.activityListData.length);
         };
 
         /*$scope.loadActivityList = function() {
