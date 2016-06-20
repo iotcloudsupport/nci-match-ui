@@ -567,6 +567,7 @@ angular.module('treatment-arm.matchbox',[])
                 .then(function (d) {
                     console.log(d.data);
                     angular.forEach(d.data, function(value) {
+                        console.log('value');
                         console.log(value);
                         if (value !== [] && value !== null && value !== undefined) {
                             $scope.information.currentStatus = value.treatment_arm_status;
@@ -577,6 +578,7 @@ angular.module('treatment-arm.matchbox',[])
                             //$scope.information.patientsAssigned = value.num_patients_assigned;
                             var exclusionDrugs = [];
                             var exclusionDiseases = [];
+                            var inclusionDrugs = [];
 
                             angular.forEach(value.exclusion_drugs, function(value) {
                                 var exclusionDrug = {};
@@ -595,6 +597,16 @@ angular.module('treatment-arm.matchbox',[])
                                 exclusionDisease.ctepCategory = value.ctep_category;
                                 exclusionDisease.ctepTerm = value.short_name;
                                 exclusionDiseases.push(exclusionDisease);
+                            });
+                            console.log('treatment arm drugs');
+                            console.log(value.treatment_arm_drugs);
+                            angular.forEach(value.treatment_arm_drugs, function(value) {
+                                console.log('ta drug');
+                                console.log(value);
+                                var inclusionDrug = {};
+                                inclusionDrug.id = value.drug_id;
+                                inclusionDrug.name = value.name;
+                                inclusionDrugs.push(inclusionDrug);
                             });
 
                             if (value.variant_report !== undefined) {
@@ -637,6 +649,7 @@ angular.module('treatment-arm.matchbox',[])
                             version.latest = 'This is the latest version.';
                             version.exclusionaryDiseases = exclusionDiseases;
                             version.exclusionaryDrugs = exclusionDrugs;
+                            version.inclusionaryDrugs = inclusionDrugs;
                             version.snvsInclusion = $scope.snvsInclusion;
                             version.snvsExclusion = $scope.snvsExclusion;
                             version.indelsInclusion = $scope.indelsInclusion;
@@ -656,6 +669,7 @@ angular.module('treatment-arm.matchbox',[])
                             nextVersion.latest = 'This is not the latest version.';
                             nextVersion.exclusionaryDiseases = exclusionDiseases;
                             nextVersion.exclusionaryDrugs = exclusionDrugs;
+                            nextVersion.inclusionaryDrugs = inclusionDrugs;
                             nextVersion.snvsInclusion = $scope.snvsInclusion;
                             nextVersion.snvsExclusion = $scope.snvsExclusion;
                             nextVersion.indelsInclusion = $scope.indelsInclusion;
