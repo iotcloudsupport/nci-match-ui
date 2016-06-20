@@ -40,23 +40,23 @@
                             <tbody>
                             <tr ng-repeat="patient in patientList">
                                 <td>
-                                    <a ui-sref="patient({ patientSequenceNumber: patient.patientSequenceNumber })">
-                                        <i class="fa fa-user"></i> {{::patient.patientSequenceNumber }}
+                                    <a ui-sref="patient({ patient_id: patient.patient_id })">
+                                        <i class="fa fa-user"></i> {{::patient.patient_id }}
                                     </a>
                                 </td>
-                                <td ng-style="{'color':'{{ patient.status | status }}'}">
-                                    {{ ::patient.status }}
+                                <td ng-style="{'color':'{{ patient.current_status | status }}'}">
+                                    {{ ::patient.current_status }}
                                 </td>
-                                <td>{{ ::patient.step }}</td>
-                                <td>{{ ::patient.diseases || '-' }}</td>
-                                <td ng-if="patient.treatmentArm === null">-</td>
-                                <td ng-if="patient.treatmentArm !== null">
-                                    <a ui-sref="treatment-arm({ treatmentArmId: patient.treatmentArm, treatmentArmVersion: patient.currentTtreatmentArmreatmentArmVersion })">
-                                        {{ ::patient.treatmentArm || '-' }}
+                                <td>{{ ::patient.current_step_number }}</td>
+                                <td>{{ ::patient.disease || '-' }}</td>
+                                <td ng-if="patient.treatment_arm === null">-</td>
+                                <td ng-if="patient.treatment_arm !== null">
+                                    <a ui-sref="treatment-arm({ treatment_arm_id: patient.treatment_arm, treatment_arm_version: patient.treatment_arm_version })">
+                                        {{ ::patient.treatment_arm || '-' }}
                                     </a>
                                 </td>
-                                <td>{{ ::patient.registrationDate | gmt }}</td>
-                                <td>{{ ::patient.offTrialDate | gmt }}</td>
+                                <td>{{ ::patient.registration_date | gmt }}</td>
+                                <td>{{ ::patient.off_trial_date | gmt }}</td>
                             </tr>
                             </tbody>
                         </table>

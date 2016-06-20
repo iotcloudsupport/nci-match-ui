@@ -1,8 +1,12 @@
-angular.module('patients.matchbox',[])
-    .controller('PatientsController', function($scope,
-                                               DTOptionsBuilder,
-                                               matchApiMock) {
-        
+(function () {
+
+    angular.module('patients.matchbox', [])
+        .controller('PatientsController', PatientsController);
+
+    function PatientsController($scope,
+        DTOptionsBuilder,
+        patientApi) {
+
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(100);
 
@@ -15,12 +19,14 @@ angular.module('patients.matchbox',[])
         $scope.setupScope = setupScope;
 
         $scope.loadPatientList = function () {
-            matchApiMock
+            patientApi
                 .loadPatientList()
                 .then(setupScope);
         };
 
-        function setupScope(data){
+        function setupScope(data) {
             $scope.patientList = data;
         }
-    });
+    }
+
+} ());

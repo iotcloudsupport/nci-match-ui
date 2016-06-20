@@ -5,7 +5,7 @@
 
     function PatientController($scope,
         DTOptionsBuilder,
-        matchApiMock,
+        patientApi,
         $stateParams,
         $log,
         prompt,
@@ -96,7 +96,7 @@
         }
 
         function loadPatientData() {
-            matchApiMock
+            patientApi
                 .loadPatient()
                 .then(setupScope)
                 .then(setupSurgicalEventSelectorList)
@@ -124,6 +124,11 @@
         }
 
         function setupSurgicalEventSelectorList() {
+            if (!$scope.data.specimen_history) {
+                $log.error('The web service didn\'t send Secimen History');
+                return;
+            }
+
             for (var i = 0; i < $scope.data.specimen_history.length; i++) {
                 var surgicalEvent = $scope.data.specimen_history[i];
 

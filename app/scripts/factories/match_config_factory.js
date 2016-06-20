@@ -9,7 +9,7 @@ angular.module('config.matchbox', [])
                 'treatmentArmApiBaseUrl': urlPrefix + ':10235',//':4569',
                 'workflowApiBaseUrl' : urlPrefix + ':4570',
                 'activityFeedApiBaseUrl' : urlPrefix + ':9898', //9898,
-                'patientApiBaseUrl' : urlPrefix + ':3000'//9898
+                'patientApiBaseUrl' : urlPrefix + ':10240'//9898
             };
         }
         return {
