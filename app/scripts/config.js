@@ -1,5 +1,7 @@
-function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authProvider, $httpProvider, jwtInterceptorProvider) {
+function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authProvider, $httpProvider, jwtInterceptorProvider, ENV) {
     $urlRouterProvider.otherwise("dashboard");
+
+
 
     $ocLazyLoadProvider.config({
         // Set to true if you want to see what and when is dynamically loaded
@@ -214,6 +216,13 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                         {
                             name: 'datatables',
                             files: ['bower_components/angular-datatables/dist/angular-datatables.min.js']
+                        },
+                        {
+                            files: ['bower_components/chartjs/Chart.min.js']
+                        },
+                        {
+                            name: 'angles',
+                            files: ['bower_components/angles/angles.js']
                         }
                     ]);
                 }
@@ -334,6 +343,10 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
             data: { pageTitle: 'Login' }
         })
 
+    // process.env.NODE_ENV = 'dev';
+    // process.env.AUTH0_CLIENT_ID='ncimatch.auth0.com';
+    // process.env.AUTH0_CLIENT_SECRET='uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH';
+
     // authProvider.init({
     //     domain: 'ncimatch.auth0.com',
     //     clientID: 'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH',
@@ -341,9 +354,9 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
     // });
 
     authProvider.init({
-        domain: 'ncimatch.auth0.com',
-        clientID: 'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH',
-        loginUrl: 'auth.login'
+        domain: ENV.domain,
+        clientID: ENV.clientID,
+        loginUrl: ENV.loginUrl
     });
 
     jwtInterceptorProvider.tokenGetter = function(store) {
@@ -354,18 +367,16 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
 }
 
 angular.module('matchbox')
-
-    // .constant('MONGOLAB_CONFIG', {
-    //     baseUrl: '/databases/',
-    //     dbName: 'ascrum'
-    // })
     .config(config)
-    .run(function($rootScope, $state, auth, store, jwtHelper, $location) {
+    .run(function($rootScope, $state, auth, store, jwtHelper, $location, ENV) {
+
         $rootScope.$state = $state;
         $rootScope.$on('$locationChangeStart', function() {
             var token = store.get('token');
 
-            // alert(token)
+            // alert("ENV.clientID-->" + ENV.clientID + " --- " +  ENV.domain)
+
+            // alert("TOKEN-->" + token)
 
             if (token) {
                 $rootScope.showHeader = true; //Open the headers
