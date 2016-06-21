@@ -27,28 +27,28 @@ module.exports = function (grunt) {
         testDir: 'app/tar',
         readDir: 'app/env',
 
-        // exec: {
-        //         echo_grunt_version: {
-        //             cmd: function () {
-        //                 return 'echo ' + this.version;
-        //             }
-        //         },
-        //
-        //         // echo_auth: {
-        //         //
-        //         //     cmd: function () {
-        //         //
-        //         //         var LOG_USER = "$LOGNAME";
-        //         //         var DB_PASSWORD = "password";
-        //         //         var SESSION_ID = "$TERM_SESSION_ID";
-        //         //
-        //         //          var SETUP = `echo "${LOG_USER}"`;
-        //         //
-        //         //         return SETUP;
-        //         //     }
-        //         // }
-        //
-        // },
+        exec: {
+                echo_grunt_version: {
+                    cmd: function () {
+                        return 'echo ' + this.version;
+                    }
+                },
+
+                echo_auth: {
+
+                    cmd: function () {
+
+                        var LOG_USER = "$AUTH0_CLIENT_ID";
+                        var DB_PASSWORD = "password";
+                        var SESSION_ID = "$TERM_SESSION_ID";
+
+                         var SETUP = 'echo $AUTH0_CLIENT_ID';
+
+                        return SETUP;
+                    }
+                }
+
+        },
 
         //SET ENVIRONMENTS
         ngconstant: {
@@ -70,7 +70,10 @@ module.exports = function (grunt) {
                         'name': 'development',
                         'domain': 'ncimatch.auth0.com',
                         'clientID': 'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH',
-                        'loginUrl': 'auth.login'
+                        'loginUrl': 'auth.login',
+                        'AUTH0_CLIENT_ID': 'ncimatch.auth0.com',
+                        'AUTH0_CLIENT_SECRET': 'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH',
+                        'AUTH0_DOMAIN_SECRET': 'tYcn_AsnGAzJfdT5tCO6kejgIS7S_5dI1'
                     }
                 }
             },
@@ -311,7 +314,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', ['shell']);
 
-    // grunt.loadNpmTasks('grunt-exec');
+    grunt.loadNpmTasks('grunt-exec');
 
     grunt.registerTask('default', 'replace');
 
@@ -354,54 +357,73 @@ module.exports = function (grunt) {
     });
 
 
-    // grunt.registerTask('tar', 'exec:echo_auth');
+    grunt.registerTask('tar', 'exec:echo_auth');
 
     // process.env.NODE_ENV = 'dev';
     // process.env.AUTH0_CLIENT_ID='ncimatch.auth0.com';
     // process.env.AUTH0_CLIENT_SECRET='uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH';
 
     //SHELL CONFIGURATION
-    // grunt.registerTask('tar', function () {
-    //
-    //     var LOG_USER = "$LOGNAME";
-    //     var DB_PASSWORD = "password";
-    //     var SESSION_ID = "$TERM_SESSION_ID";
-    //
-    //     var exec = require('child_process').exec,child,done = grunt.task.current.async();
-    //
-    //         child = exec('echo "$TERM_SESSION_ID"',
-    //             function(error, stdout, stderr){
-    //                 // grunt.log.writeln('0 --- stdout ---> : ' + stdout + "  ----- " + (stdout.trim() === 'hendrikssonm'));
-    //
-    //                 if(stdout.trim() === 'AE30D709-4D0F-4431-90B3-9342EF67DBEA'){
-    //                     grunt.log.writeln('1 --- INIT ---> : ' + stdout);
-    //
-    //                     grunt.task.run([
-    //                             'clean:server',
-    //                             'ngconstant:development', // DEVELOPPMENT ADD THIS
-    //                             'copy:styles',
-    //                             'connect:livereload',
-    //                             'watch'
-    //                         ]);
-    //
-    //                 }
-    //                 else{
-    //                     grunt.log.writeln('stderr: ' + stderr);
-    //
-    //                     grunt.task.run([
-    //                             'clean:server',
-    //                             'ngconstant:production', // PROD ADD THIS
-    //                             'copy:styles',
-    //                             'connect:livereload',
-    //                             'watch'
-    //                         ]);
-    //
-    //                 }
-    //
-    //                 done(error); // Technique recommended on #grunt IRC channel. Tell Grunt asych function is finished. Pass error for logging; if operation completes successfully error will be null
-    //             }
-    //     );
-    // });
+    grunt.registerTask('default', function () {
+
+        // var LOG_USER = "$LOGNAME";
+        // var DB_PASSWORD = "password";
+        // var SESSION_ID = "$TERM_SESSION_ID";
+        // var AUTH0_CLIENT_ID = "$AUTH0_CLIENT_ID";
+
+        var exec = require('child_process').exec,child,done = grunt.task.current.async();
+
+        child = exec('echo "$AUTH0_CLIENT_ID"',
+                function(error, stdout, stderr){
+
+                    grunt.log.writeln('SHELL ENV VARIABLE ---> : ' + stdout + " Error 1: " + stderr + "Error 2:" + error );
+
+                    //AUTH0_CLIENT_ID
+                    if(stdout.trim() === 'ncimatch.auth0.com'){///usr/local/bin/
+
+                        // if(stdout.trim() === ':/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin'){///usr/local/bin/
+                        grunt.log.writeln('TAR file for Grunt started. ENV: ' + stdout);
+                        grunt.task.run([
+                            'buildtest'
+                        ]);
+                    }
+
+                    // else if(stdout.trim() === 'FD8C3B30-DDEE-495B-9BF0-9DD5D34ACBDA'){
+                    //     grunt.log.writeln('1 --- INIT ---> : ' + stdout);
+                    //
+                    //     grunt.task.run([
+                    //             'clean:server',
+                    //             'ngconstant:development', // DEVELOPPMENT ADD THIS
+                    //             'copy:styles',
+                    //             'connect:livereload',
+                    //             'watch'
+                    //         ]);
+                    //
+                    // }
+                    // else{
+                    //     grunt.log.writeln('stderr: ' + stderr);
+                    //
+                    //     grunt.task.run([
+                    //             'clean:server',
+                    //             'ngconstant:production', // PROD ADD THIS
+                    //             'copy:styles',
+                    //             'connect:livereload',
+                    //             'watch'
+                    //         ]);
+                    //
+                    // }
+
+                    // Technique recommended on #grunt IRC channel. Tell Grunt asych function is finished. Pass error for logging; if operation completes successfully error will be null
+                    done(error);
+                    // done("Error in TAR file buildup: " + error);
+                }
+        );
+        // 'buildtest'
+
+
+
+
+    });
 
 
     // Run build version of app
@@ -413,6 +435,22 @@ module.exports = function (grunt) {
     // Run the unit tests
     grunt.registerTask('test', [
         'karma'
+    ]);
+
+    // Build version for production
+    grunt.registerTask('buildtest', [
+        'clean:dist',
+        'less',
+        'useminPrepare',
+        'concat',
+        'copy:dist',
+        'cssmin',
+        'uglify',
+        'filerev',
+        'usemin',
+        'htmlmin',
+        'ngconstant:development',
+        'compress:dist'
     ]);
 
     // Build version for production
@@ -431,7 +469,7 @@ module.exports = function (grunt) {
     ]);
 
     // Run the unit tests, build it, and compress it.
-    grunt.registerTask('default', [
+    grunt.registerTask('default_org', [
         'test',
         'build'
     ]);
