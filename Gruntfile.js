@@ -384,11 +384,6 @@ module.exports = function (grunt) {
     //SHELL CONFIGURATION
     grunt.registerTask('default', function () {
 
-        // var LOG_USER = "$LOGNAME";
-        // var DB_PASSWORD = "password";
-        // var SESSION_ID = "$TERM_SESSION_ID";
-        // var AUTH0_CLIENT_ID = "$AUTH0_CLIENT_ID";
-
         var exec = require('child_process').exec,child,done = grunt.task.current.async();
 
         child = exec('echo "$AUTH0_CLIENT_ID"',
@@ -412,12 +407,7 @@ module.exports = function (grunt) {
                 }
         );
         // 'buildtest'
-
-
-
-
     });
-
 
     // Run build version of app
     grunt.registerTask('server', [
