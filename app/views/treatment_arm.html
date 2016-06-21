@@ -170,7 +170,7 @@
                                         <div class="col-lg-6">
                                             <div class="ibox float-e-margins">
                                                 <div class="ibox-title">
-                                                    <h5>Inclusionary Drugs</h5>
+                                                    <h5>Exclusionary Diseases</h5>
                                                 </div>
                                                 <div class="ibox-content">
                                                     <table datatable="ng"
@@ -179,21 +179,24 @@
                                                            dt-instance="TaCtrl.dtInstance"
                                                            class="table table-striped table-bordered table-hover" style="width:100%">
                                                         <thead>
-                                                            <tr>
-                                                                <th>ID</th>
-                                                                <th>Description</th>
-                                                            </tr>
+                                                        <tr>
+                                                            <th>CTEP Category</th>
+                                                            <th>CTEP Term</th>
+                                                            <th>MEDRA Code</th>
+                                                        </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr ng-repeat="item in selectedVersion.inclusionaryDrugs">
-                                                                <td>{{item.id || '-'}}</td>
-                                                                <td>{{item.name || '-'}}</td>
-                                                            </tr>
+                                                        <tr ng-repeat="item in selectedVersion.exclusionaryDiseases">
+                                                            <td>{{item.ctepCategory || '-'}}</td>
+                                                            <td>{{item.ctepTerm || '-'}}</td>
+                                                            <td>{{item.medraCode || '-'}}</td>
+                                                        </tr>
                                                         </tbody>
                                                     </table>
                                                 </div>
                                             </div>
                                         </div>
+
                                         <div class="col-lg-6">
                                             <div class="ibox float-e-margins">
                                                 <div class="ibox-title">
@@ -252,10 +255,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6">
+                                        <!--<div class="col-lg-6">
                                             <div class="ibox float-e-margins">
                                                 <div class="ibox-title">
-                                                    <h5>Exclusionary Diseases</h5>
+                                                    <h5>Inclusionary Drugs</h5>
                                                 </div>
                                                 <div class="ibox-content">
                                                     <table datatable="ng"
@@ -265,22 +268,20 @@
                                                            class="table table-striped table-bordered table-hover" style="width:100%">
                                                         <thead>
                                                             <tr>
-                                                                <th>CTEP Category</th>
-                                                                <th>CTEP Term</th>
-                                                                <th>MEDRA Code</th>
+                                                                <th>ID</th>
+                                                                <th>Description</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr ng-repeat="item in selectedVersion.exclusionaryDiseases">
-                                                                <td>{{item.ctepCategory || '-'}}</td>
-                                                                <td>{{item.ctepTerm || '-'}}</td>
-                                                                <td>{{item.medraCode || '-'}}</td>
+                                                            <tr ng-repeat="item in selectedVersion.inclusionaryDrugs">
+                                                                <td>{{item.id || '-'}}</td>
+                                                                <td>{{item.name || '-'}}</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                 </div>
                             </uib-tab>
