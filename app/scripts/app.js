@@ -27,6 +27,7 @@
         'cgPrompt',
         'ngDropzone',
         'ngDropdowns',
-        'ngAnimate'
+        'ngAnimate',
+        'login_config'
     ]);
 })();
