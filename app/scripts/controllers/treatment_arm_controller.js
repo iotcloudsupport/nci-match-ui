@@ -582,11 +582,11 @@ angular.module('treatment-arm.matchbox',[])
 
                             angular.forEach(value.exclusion_drugs, function(value) {
                                 var exclusionDrug = {};
-                                angular.forEach(value.drugs, function(value) {
+                                //angular.forEach(value.drugs, function(value) {
                                     exclusionDrug.id = value.drug_id;
                                     exclusionDrug.name = value.name;
                                     exclusionDrugs.push(exclusionDrug);
-                                });
+                                //});
                                 //exclusionDrug.id = value.id;
                                 //exclusionDrug.name = value.name;
                             });
