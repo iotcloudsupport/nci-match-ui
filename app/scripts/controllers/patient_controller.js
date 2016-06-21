@@ -97,7 +97,7 @@
 
         function loadPatientData() {
             patientApi
-                .loadPatient()
+                .loadPatient($stateParams.patient_id)
                 .then(setupScope)
                 .then(setupSurgicalEventSelectorList)
                 .then(setupVariantReport);
