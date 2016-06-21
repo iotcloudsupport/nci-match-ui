@@ -25,7 +25,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
 
         testDir: 'app/tar',
-        readDir: 'app/env',
+        readDir: 'app/scripts/env',
 
         exec: {
                 echo_grunt_version: {
@@ -61,7 +61,7 @@ module.exports = function (grunt) {
             // Environment targets
             development: {
                 options: {
-                    dest: 'app/env/login_config.js'
+                    dest: 'app/scripts/env/login_config.js'
                     // wrap: true
                     // dest: 'login_config.js'
                 },
@@ -74,6 +74,24 @@ module.exports = function (grunt) {
                         'AUTH0_CLIENT_ID': 'ncimatch.auth0.com',
                         'AUTH0_CLIENT_SECRET': 'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH',
                         'AUTH0_DOMAIN_SECRET': 'tYcn_AsnGAzJfdT5tCO6kejgIS7S_5dI1'
+                    },
+                    PRO: {
+                        'name': 'production',
+                        'domain': 'ncimatch.auth0.com_prod',
+                        'clientID': 'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH_prod',
+                        'loginUrl': 'auth.login_prod',
+                        'AUTH0_CLIENT_ID': 'ncimatch.auth0.com_prod',
+                        'AUTH0_CLIENT_SECRET': 'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH_prod',
+                        'AUTH0_DOMAIN_SECRET': 'tYcn_AsnGAzJfdT5tCO6kejgIS7S_5dI1_prod'
+                    },
+                    UT: {
+                        'name': 'test',
+                        'domain': 'ncimatch.auth0.com_test',
+                        'clientID': 'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH_test',
+                        'loginUrl': 'auth.login_test',
+                        'AUTH0_CLIENT_ID': 'ncimatch.auth0.com_test',
+                        'AUTH0_CLIENT_SECRET': 'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH_test',
+                        'AUTH0_DOMAIN_SECRET': 'tYcn_AsnGAzJfdT5tCO6kejgIS7S_5dI1_test'
                     }
                 }
             },
@@ -357,7 +375,7 @@ module.exports = function (grunt) {
     });
 
 
-    grunt.registerTask('tar', 'exec:echo_auth');
+    // grunt.registerTask('tar', 'exec:echo_auth');
 
     // process.env.NODE_ENV = 'dev';
     // process.env.AUTH0_CLIENT_ID='ncimatch.auth0.com';
@@ -374,44 +392,19 @@ module.exports = function (grunt) {
         var exec = require('child_process').exec,child,done = grunt.task.current.async();
 
         child = exec('echo "$AUTH0_CLIENT_ID"',
+
                 function(error, stdout, stderr){
 
-                    grunt.log.writeln('SHELL ENV VARIABLE ---> : ' + stdout + " Error 1: " + stderr + "Error 2:" + error );
+                    grunt.log.writeln('SHELL ENV VARIABLE ---> : ' + stdout + " Error 1: " + stderr + "Error 2: " + error );
 
                     //AUTH0_CLIENT_ID
                     if(stdout.trim() === 'ncimatch.auth0.com'){///usr/local/bin/
 
-                        // if(stdout.trim() === ':/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin'){///usr/local/bin/
                         grunt.log.writeln('TAR file for Grunt started. ENV: ' + stdout);
                         grunt.task.run([
                             'buildtest'
                         ]);
                     }
-
-                    // else if(stdout.trim() === 'FD8C3B30-DDEE-495B-9BF0-9DD5D34ACBDA'){
-                    //     grunt.log.writeln('1 --- INIT ---> : ' + stdout);
-                    //
-                    //     grunt.task.run([
-                    //             'clean:server',
-                    //             'ngconstant:development', // DEVELOPPMENT ADD THIS
-                    //             'copy:styles',
-                    //             'connect:livereload',
-                    //             'watch'
-                    //         ]);
-                    //
-                    // }
-                    // else{
-                    //     grunt.log.writeln('stderr: ' + stderr);
-                    //
-                    //     grunt.task.run([
-                    //             'clean:server',
-                    //             'ngconstant:production', // PROD ADD THIS
-                    //             'copy:styles',
-                    //             'connect:livereload',
-                    //             'watch'
-                    //         ]);
-                    //
-                    // }
 
                     // Technique recommended on #grunt IRC channel. Tell Grunt asych function is finished. Pass error for logging; if operation completes successfully error will be null
                     done(error);
