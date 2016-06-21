@@ -710,7 +710,7 @@
                     }
                 ];
 
-                deferred.resolve(data);
+                deferred.resolve({data: data});
                 return deferred.promise;
             }
         });

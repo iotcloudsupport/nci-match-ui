@@ -5,7 +5,8 @@
 
     function PatientsController($scope,
         DTOptionsBuilder,
-        patientApi) {
+        patientApi,
+        $log) {
 
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(100);
@@ -16,7 +17,7 @@
 
         $scope.patientList = [];
 
-        $scope.setupScope = setupScope;
+        // $scope.setupScope = setupScope;
 
         $scope.loadPatientList = function () {
             patientApi
@@ -25,7 +26,8 @@
         };
 
         function setupScope(data) {
-            $scope.patientList = data;
+            $scope.patientList = data.data;
+            $log.debug($scope.patientList);
         }
     }
 
