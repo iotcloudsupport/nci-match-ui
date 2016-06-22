@@ -12,7 +12,6 @@ angular.module('treatment-arm.matchbox',[])
             'bFilter': false
         };
 
-
         /*
         To get the zero records message, add to above type: 'oLanguage': {"sEmptyTable": "There are no SNV inclusions"}
          */
@@ -562,6 +561,15 @@ angular.module('treatment-arm.matchbox',[])
               });
         };
 
+        function setTADrug(drugsArray) {
+            var drugString = '';
+            drugString = drugsArray[0].name + ' (' + drugsArray[0].drug_id + ')';
+            if (drugsArray.length > 1) {
+                drugString = drugString + ', ' + drugsArray[1].name + ' (' + drugsArray[1].drug_id + ')';
+            }
+            return drugString;
+        }
+
         $scope.loadTreatmentArmDetails = function(ta) {
             treatmentArmApi
             .getTreatmentArmDetails(ta)
@@ -579,7 +587,6 @@ angular.module('treatment-arm.matchbox',[])
                             //$scope.information.patientsAssigned = value.num_patients_assigned;
                             var exclusionDrugs = [];
                             var exclusionDiseases = [];
-                            var inclusionDrugs = [];
 
                             var nonSequencingAssays = [];
 
@@ -605,8 +612,10 @@ angular.module('treatment-arm.matchbox',[])
                                 var inclusionDrug = {};
                                 inclusionDrug.id = value.drug_id;
                                 inclusionDrug.name = value.name;
-                                inclusionDrugs.push(inclusionDrug);
                             });
+
+                            var treatmentArmDrug = setTADrug(value.treatment_arm_drugs);
+                            $scope.information.drug = treatmentArmDrug;
 
                             angular.forEach(value.pten_results, function(value) {
                                var nonSequencingAssay = {};
@@ -658,7 +667,7 @@ angular.module('treatment-arm.matchbox',[])
                             version.latest = 'This is the latest version.';
                             version.exclusionaryDiseases = exclusionDiseases;
                             version.exclusionaryDrugs = exclusionDrugs;
-                            version.inclusionaryDrugs = inclusionDrugs;
+                            //version.inclusionaryDrugs = inclusionDrugs;
                             version.snvsInclusion = $scope.snvsInclusion;
                             version.snvsExclusion = $scope.snvsExclusion;
                             version.indelsInclusion = $scope.indelsInclusion;
@@ -674,7 +683,7 @@ angular.module('treatment-arm.matchbox',[])
                             $scope.versions.push(version);
                             $scope.information.currentVersion = $scope.versions[0].name;
 
-                            var nextVersion = {};
+                            /*var nextVersion = {};
                             nextVersion.text = '2015-12-20';
                             nextVersion.latest = 'This is not the latest version.';
                             nextVersion.exclusionaryDiseases = exclusionDiseases;
@@ -692,7 +701,7 @@ angular.module('treatment-arm.matchbox',[])
                             nextVersion.nhrsExclusion = $scope.nhrsExclusion;
                             nextVersion.nonSequencingAssays = nonSequencingAssays;
                             nextVersion.versionHistory = $scope.versionHistoryClosed;
-                            $scope.versions.push(nextVersion);
+                            $scope.versions.push(nextVersion);*/
                         }
 
                     });
