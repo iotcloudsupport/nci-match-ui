@@ -104,9 +104,17 @@
         }
 
         function setupScope(data) {
+            if (!data || !data.data || !Array.isArray(data.data)) {
+                $log.error('The web service didn\'t send patient data');
+            }
+
+            if (data.data.length === 0) {
+                $log.error('The web service couldnt find patient data patient_id = ' + $stateParams.patient_id);
+            }
+
             $scope.patient_id = $stateParams.patient_id;
             var scopeData = {};
-            angular.copy(data, scopeData);
+            angular.copy(data.data[0].data, scopeData);
             $scope.data = scopeData;
 
             if ($scope.data.specimen && $scope.data.specimen.specimen_shipments) {
