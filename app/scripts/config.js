@@ -1,4 +1,4 @@
-function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authProvider, $httpProvider, jwtInterceptorProvider, ENV) {
+function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authProvider, $httpProvider, jwtInterceptorProvider, ENV, PRO, UT) {
     $urlRouterProvider.otherwise("dashboard");
 
 
@@ -343,10 +343,6 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
             data: { pageTitle: 'Login' }
         })
 
-    // process.env.NODE_ENV = 'dev';
-    // process.env.AUTH0_CLIENT_ID='ncimatch.auth0.com';
-    // process.env.AUTH0_CLIENT_SECRET='uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH';
-
     // authProvider.init({
     //     domain: 'ncimatch.auth0.com',
     //     clientID: 'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH',
@@ -354,8 +350,8 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
     // });
 
     authProvider.init({
-        domain: ENV.domain,
-        clientID: ENV.clientID,
+        domain: ENV.AUTH0_CLIENT_ID,
+        clientID: ENV.AUTH0_CLIENT_SECRET,
         loginUrl: ENV.loginUrl
     });
 
