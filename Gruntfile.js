@@ -17,9 +17,6 @@ module.exports = function (grunt) {
     };
 
     var SETUP = "";
-    // process.env.NODE_ENV = 'dev';
-    // process.env.AUTH0_CLIENT_ID='ncimatch.auth0.com';
-    // process.env.AUTH0_CLIENT_SECRET='uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH';
 
     // Grunt configuration
     grunt.initConfig({
@@ -68,30 +65,22 @@ module.exports = function (grunt) {
                 constants: {
                     ENV: {
                         'name': 'development',
-                        'domain': 'ncimatch.auth0.com',
-                        'clientID': 'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH',
-                        'loginUrl': 'auth.login',
                         'AUTH0_CLIENT_ID': 'ncimatch.auth0.com',
                         'AUTH0_CLIENT_SECRET': 'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH',
-                        'AUTH0_DOMAIN_SECRET': 'tYcn_AsnGAzJfdT5tCO6kejgIS7S_5dI1'
+                        'loginUrl': 'auth.login'
                     },
                     PRO: {
                         'name': 'production',
-                        'domain': 'ncimatch.auth0.com_prod',
-                        'clientID': 'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH_prod',
-                        'loginUrl': 'auth.login_prod',
                         'AUTH0_CLIENT_ID': 'ncimatch.auth0.com_prod',
                         'AUTH0_CLIENT_SECRET': 'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH_prod',
-                        'AUTH0_DOMAIN_SECRET': 'tYcn_AsnGAzJfdT5tCO6kejgIS7S_5dI1_prod'
+                        'loginUrl': 'auth.login_prod'
+
                     },
                     UT: {
                         'name': 'test',
-                        'domain': 'ncimatch.auth0.com_test',
-                        'clientID': 'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH_test',
-                        'loginUrl': 'auth.login_test',
                         'AUTH0_CLIENT_ID': 'ncimatch.auth0.com_test',
                         'AUTH0_CLIENT_SECRET': 'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH_test',
-                        'AUTH0_DOMAIN_SECRET': 'tYcn_AsnGAzJfdT5tCO6kejgIS7S_5dI1_test'
+                        'loginUrl': 'auth.login_test'
                     }
                 }
             },
@@ -326,24 +315,12 @@ module.exports = function (grunt) {
         }
     });
 
-    // grunt.loadNpmTasks('grunt-env');
+    grunt.loadNpmTasks('grunt-env');
     grunt.loadNpmTasks('grunt-ng-constant');
     grunt.loadNpmTasks('grunt-contrib-clean');
-
     grunt.registerTask('default', ['shell']);
-
     grunt.loadNpmTasks('grunt-exec');
-
     grunt.registerTask('default', 'replace');
-
-    // Run live version of app
-    // grunt.registerTask('live', [
-    //     'clean:server',
-    //     'copy:styles',
-    //     'connect:livereload',
-    //     'watch',
-    //     'replace:development' // ADD THIS
-    // ]);
 
     grunt.registerTask('live', function (target) {
         if (target === 'dist') {
@@ -359,7 +336,6 @@ module.exports = function (grunt) {
         ]);
     });
 
-
     grunt.registerTask('prod', function (target) {
         if (target === 'dist') {
             return grunt.task.run(['build', 'connect:dist:keepalive']);
@@ -374,13 +350,6 @@ module.exports = function (grunt) {
         ]);
     });
 
-
-    // grunt.registerTask('tar', 'exec:echo_auth');
-
-    // process.env.NODE_ENV = 'dev';
-    // process.env.AUTH0_CLIENT_ID='ncimatch.auth0.com';
-    // process.env.AUTH0_CLIENT_SECRET='uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH';
-
     //SHELL CONFIGURATION
     grunt.registerTask('default', function () {
 
@@ -388,25 +357,24 @@ module.exports = function (grunt) {
 
         child = exec('echo "$AUTH0_CLIENT_ID"',
 
-                function(error, stdout, stderr){
+            function(error, stdout, stderr){
 
-                    grunt.log.writeln('SHELL ENV VARIABLE ---> : ' + stdout + " Error 1: " + stderr + "Error 2: " + error );
+                grunt.log.writeln('SET FOR SHELL ENV VARIABLE: ' + stdout + " Error 1: " + stderr + "Error 2: " + error );
 
-                    //AUTH0_CLIENT_ID
-                    if(stdout.trim() === 'ncimatch.auth0.com'){///usr/local/bin/
+                //AUTH0_CLIENT_ID
+                if(stdout.trim() === 'ncimatch.auth0.com'){///usr/local/bin/
 
-                        grunt.log.writeln('TAR file for Grunt started. ENV: ' + stdout);
-                        grunt.task.run([
-                            'buildtest'
-                        ]);
-                    }
-
-                    // Technique recommended on #grunt IRC channel. Tell Grunt asych function is finished. Pass error for logging; if operation completes successfully error will be null
-                    done(error);
-                    // done("Error in TAR file buildup: " + error);
+                    grunt.log.writeln('TAR file for Grunt started. ENV: ' + stdout);
+                    grunt.task.run([
+                        'buildtest'
+                    ]);
                 }
+
+                // Technique recommended on #grunt IRC channel. Tell Grunt asych function is finished. Pass error for logging; if operation completes successfully error will be null
+                done(error);
+                // done("Error in TAR file buildup: " + error);
+            }
         );
-        // 'buildtest'
     });
 
     // Run build version of app
