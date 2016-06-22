@@ -614,7 +614,10 @@ angular.module('treatment-arm.matchbox',[])
                                 inclusionDrug.name = value.name;
                             });
 
-                            var treatmentArmDrug = setTADrug(value.treatment_arm_drugs);
+                            var treatmentArmDrug = '';
+                            if (value.treatment_arm_drugs !== null && value.treatment_arm_drugs !== undefined) {
+                                treatmentArmDrug = setTADrug(value.treatment_arm_drugs);
+                            }
                             $scope.information.drug = treatmentArmDrug;
 
                             angular.forEach(value.pten_results, function(value) {
