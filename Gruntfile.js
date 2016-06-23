@@ -395,7 +395,7 @@ module.exports = function (grunt) {
 
         var exec = require('child_process').exec,child,done = grunt.task.current.async();
 
-        child = exec('echo "$AUTH0_CLIENT_ID"',
+        child = exec('echo "$AUTH0_DOMAIN"',
 
             function(error, stdout, stderr){
 
@@ -409,7 +409,6 @@ module.exports = function (grunt) {
                         'buildtest'
                     ]);
                 }
-
                 // Technique recommended on #grunt IRC channel. Tell Grunt asych function is finished. Pass error for logging; if operation completes successfully error will be null
                 done(error);
                 // done("Error in TAR file buildup: " + error);

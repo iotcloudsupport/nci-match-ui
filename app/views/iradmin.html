@@ -17,13 +17,14 @@
     <div class="wrapper">
 
     <div class="no-horizontal-padding header-box-container">
+
         <div class="row border-bottom white-bg dashboard-header animated fadeInRight">
 
             <div class="wrapper">
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
 
-                        <div class="panel-default"  ng-init="loadScatterPlot()">
+                        <div class="panel-default" >
 
                             <div class="col-lg-12 pull-left">
 
@@ -32,7 +33,10 @@
                                 <!--SELECT SITE-->
                                 <div class="ibox-title ibox-title-no-line" ng-init="loadSampleControlsList()">
                                     <h2>
-                                        <div  data-ng-model="tokenIpAddress" dropdown-select="tokenIpAddress" dropdown-item-label="siteName">
+                                        <div data-ng-model="tokenIpAddress"
+                                             dropdown-select="tokenIpAddress"
+                                             dropdown-model="tokenIpAddress"
+                                             dropdown-item-label="siteName">
                                         </div>
 
                                     </h2>
@@ -45,28 +49,16 @@
                                             <!--PIE CHART-->
                                             <div class="col-xs-2 cols-height cols-bottom">
 
-                                                <!--<div class="panel" id="D3BoxPanel">-->
-                                                        <!--<svg id="pieBox" version="1.1" preserveAspectRatio="xMinYMin meet" class="svg-content"></svg>-->
-                                                <!--</div>-->
-
-
-                                                <!--<div class="col-sm-3" ng-init="loadPieChart();">-->
                                                     <div class="panel" ng-init="loadPieChart(branch);">
                                                         <canvas id="amoiCanvas" piechart
                                                                 ng-attr-data="pieData" responsive=true width="600" height="600"
                                                                 style="width: 603px; height: 601px; border-bottom: thin dimgrey solid; border-top: thin dimgrey solid;"></canvas>
                                                     </div>
-                                                <!--</div>-->
-
-
-
-
-
 
                                                 <div class="tabs-container">
                                                     <div >
 
-                                                        <table class="table table-hover" role="grid" width="100%">
+                                                        <table class="table" role="grid" style="font-size: 10px" width="100%">
                                                             <thead>
                                                             <tr style="font-size: smaller">
                                                                 <th >Positive Control</th>
@@ -86,41 +78,16 @@
                                              </div>
                                             <!--PIE CHART-->
 
-                                            <!--HISTOGRAM CHART-->
-                                            <!--<div class="col-xs-7 cols-height cols-bottom">-->
-
-                                                <!--&lt;!&ndash;<div class="panel panel-default" id="D3BoxPanel">&ndash;&gt;-->
-                                                <!--<div class="panel" id="D3BoxPanel">-->
-                                                    <!--<svg id="scatterBox" version="1.1" preserveAspectRatio="xMinYMin meet" class="svg-content"></svg>-->
-                                                <!--</div>-->
-
-                                            <!--</div>-->
-
-
-
-
                                             <div class="col-sm-7" >
                                                 <div class="statistic-box">
                                                     <div class="text-center">
                                                         <h4>Sample Control Breakup </h4>
                                                     </div>
 
-                                                    <!--<canvas id="irSampleCanvas"-->
-                                                            <!--height="500"-->
-                                                            <!--width="500"-->
-                                                            <!--class="chart chart-bar"-->
-                                                            <!--chart-data="dataChart"-->
-                                                            <!--chart-labels="labels"-->
-                                                            <!--chart-click="onClick"-->
-                                                            <!--chart-options="options">-->
-                                                    <!--</canvas>-->
-
-
                                                     <canvas id="irSampleCanvas" barchart options="chart.barOptions" ng-attr-data="barData"
                                                             responsive=true width="500" height="200"  style="width: 503px; height: 201px;"></canvas>
                                                 </div>
                                             </div>
-
                                             <!--HISTOGRAM CHART-->
 
 
@@ -147,9 +114,6 @@
                                                         </table>
                                                     </div>
                                                 </div>
-
-
-
 
                                                 <!--SPOT TAGS-->
                                                 <div class="tabs-container">
@@ -199,7 +163,8 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+
+                        </div>
 
                     </div>
                 </div>
@@ -217,99 +182,97 @@
                         <!--MOCHA GENERATOR-->
                         <div class="wrapper" ng-if="branch === 'mocha'">
 
-                        <div class="no-horizontal-padding header-box-container">
-                        <div class="tabs-container">
-                            <div >
+                            <div class="no-horizontal-padding header-box-container">
+                                <div class="row equal-height-panels">
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-6">
+                                            <a ng-click="showPositiveControlConfirmation('MoCha')" class="btn btn-xs btn-primary file-button-xl pull-right">
+                                                <span class="bold">Generate MSN</span>
+                                            </a>
 
-                                <a ng-click="showPositiveControlConfirmation('MoCha')" class="btn btn-xs btn-primary file-button-xl pull-right">
-                                    <!--<i class="fa fa-bar-chart"></i>&nbsp;&nbsp;-->
-                                    <span class="bold">Generate MSN</span>
-                                </a>
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    <h6>Positive Sample Controls - {{branch}}</h6>
+                                                </div>
+                                            </div>
 
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <h6>Positive Sample Controls - {{branch}}</h6>
+                                            <table class="table table-hover" role="grid" width="100%"
+                                                   datatable="ng" dt-options="dtOptions"
+                                                   dt-column-defs="dtColumnDefs"
+                                                   dt-instance="dtInstance">
+                                                <thead>
+                                                <tr>
+                                                    <th >Molecular Sequence Number</th>
+                                                    <th >Variant Reports</th>
+                                                    <th >Date Created</th>
+                                                    <th >Date Received</th>
+                                                    <th >Status</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr ng-repeat="sample in positiveListMocha">
+                                                    <td>{{sample.sampleSite}}</td>
+                                                    <td >
+                                                        <a ng-if="!sample.sampleId"> - </a>
+                                                        <a ng-if="sample.sampleId" ui-sref="ngsample({ sampleId: sample.sampleMsn})">
+                                                            {{ sample.sampleMsn || '-' }}
+                                                        </a>
+                                                    </td>
+                                                    <td>{{sample.dateCreated | gmt }}</td>
+                                                    <td>{{sample.dateReceived | gmt }}</td>
+                                                    <td ng-style="{'color':'{{ sample.status | irsample }}'}">
+                                                        {{sample.status}}
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <a ng-click="showNoTemplateControlConfirmation('MoCha')" class="btn btn-xs btn-primary file-button-xl pull-right">
+                                                <span class="bold">Generate MSN</span>
+                                            </a>
+
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    <h6>No Template Control - {{branch}}</h6>
+                                                </div>
+                                            </div>
+                                            <table class="table table-hover" role="grid" width="100%"
+                                                   datatable="ng" dt-options="dtOptions"
+                                                   dt-column-defs="dtColumnDefs"
+                                                   dt-instance="dtInstance">
+
+                                                <thead>
+                                                <tr>
+                                                    <th >Molecular Sequence Number</th>
+                                                    <th >Variant Reports</th>
+                                                    <th >Date Created</th>
+                                                    <th >Date Received</th>
+                                                    <th >Status</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr ng-repeat="sample in negativeListMocha">
+                                                    <td>{{sample.sampleMsn}}</td>
+                                                    <td>
+                                                        <a ng-if="!sample.dateReceived"> - </a>
+                                                        <a ng-if="sample.dateReceived" ui-sref="ntcsample({ sampleId: sample.sampleMsn})">
+                                                            {{ sample.sampleMsn || '-' }}
+                                                        </a>
+                                                    </td>
+                                                    <td>{{sample.dateCreated | gmt }}</td>
+                                                    <td>{{sample.dateReceived | gmt }}</td>
+                                                    <td ng-style="{'color':'{{ sample.status | irsample }}'}">
+                                                        {{sample.status}}
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
-
-                                <table class="table table-hover" role="grid" width="100%"
-                                       datatable="ng" dt-options="dtOptions"
-                                       dt-column-defs="dtColumnDefs"
-                                       dt-instance="dtInstance">
-                                    <thead>
-                                    <tr>
-                                        <th >Molecular Sequence Number</th>
-                                        <th >Variant Reports</th>
-                                        <th >Date Created</th>
-                                        <th >Date Received</th>
-                                        <th >Status</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr ng-repeat="sample in positiveListMocha">
-                                        <td>{{sample.sampleSite}}</td>
-                                        <td >
-                                            <a ng-if="!sample.sampleId"> - </a>
-                                            <a ng-if="sample.sampleId" ui-sref="ngsample({ sampleId: sample.sampleMsn})">
-                                                {{ sample.sampleMsn || '-' }}
-                                            </a>
-                                        </td>
-                                        <td>{{sample.dateCreated | gmt }}</td>
-                                        <td>{{sample.dateReceived | gmt }}</td>
-                                        <td ng-style="{'color':'{{ sample.status | irsample }}'}">
-                                            {{sample.status}}
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-
-                                <!--[{"sampleSite":"MDACC","sampleId":"MDACC_1","sampleMsn":"SampleControl_MDACC_1","dateCreated":1465391653151,"dateReceived":1465391697916,"status":"PASSED"}]-->
-
-                                <a ng-click="showNoTemplateControlConfirmation('MoCha')" class="btn btn-xs btn-primary file-button-xl pull-right">
-                                    <!--<i class="fa fa-bar-chart"></i>&nbsp;&nbsp;-->
-                                    <span class="bold">Generate MSN</span>
-                                </a>
-
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <h6>No Template Control - {{branch}}</h6>
-                                    </div>
-                                </div>
-
-                                <table class="table table-hover" role="grid" width="100%"
-                                       datatable="ng" dt-options="dtOptions"
-                                       dt-column-defs="dtColumnDefs"
-                                       dt-instance="dtInstance">
-
-                                    <thead>
-                                    <tr>
-                                        <th >Molecular Sequence Number</th>
-                                        <th >Variant Reports</th>
-                                        <th >Date Created</th>
-                                        <th >Date Received</th>
-                                        <th >Status</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr ng-repeat="sample in negativeListMocha">
-                                        <td>{{sample.sampleMsn}}</td>
-                                        <td>
-                                            <a ng-if="!sample.dateReceived"> - </a>
-                                            <a ng-if="sample.dateReceived" ui-sref="ntcsample({ sampleId: sample.sampleMsn})">
-                                                {{ sample.sampleMsn || '-' }}
-                                            </a>
-                                        </td>
-                                        <td>{{sample.dateCreated | gmt }}</td>
-                                        <td>{{sample.dateReceived | gmt }}</td>
-                                        <td ng-style="{'color':'{{ sample.status | irsample }}'}">
-                                            {{sample.status}}
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
                             </div>
-                        </div>
-                        </div>
 
                         </div>
 
@@ -318,95 +281,99 @@
                         <div class="wrapper" ng-if="branch === 'mdacc'">
 
                             <div class="no-horizontal-padding header-box-container">
-                            <div class="tabs-container">
-                                <div >
-
-                                    <a ng-click="showPositiveControlConfirmation('MoCha')" class="btn btn-xs btn-primary file-button-xl pull-right">
-                                    <!--<i class="fa fa-bar-chart"></i>&nbsp;&nbsp;-->
-                                    <span class="bold">Generate MSN</span>
-                                    </a>
-
-                                    <div class="row">
-                                    <div class="col-xs-3">
-                                        <h6>Positive Sample Controls - MD Anderson</h6>
-                                    </div>
-                                    </div>
-
-                                    <table
-                                        class="table table-hover" role="grid" width="100%">
-                                    <thead>
-                                    <tr>
-                                        <th >Molecular Sequence Number</th>
-                                        <th >Variant Reports</th>
-                                        <th >Date Created</th>
-                                        <th >Date Received</th>
-                                        <th >Status</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr ng-repeat="sample in positiveListMDCC">
-                                        <td>{{sample.sampleSite}}</td>
-                                        <td >
-                                            <a ng-if="!sample.sampleId"> - </a>
-                                            <a ng-if="sample.sampleId" ui-sref="ngsample({ sampleId: sample.sampleMsn})">
-                                                {{ sample.sampleMsn || '-' }}
+                                <div class="row equal-height-panels">
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-6">
+                                            <a ng-click="showPositiveControlConfirmation('MoCha')" class="btn btn-xs btn-primary file-button-xl pull-right">
+                                            <!--<i class="fa fa-bar-chart"></i>&nbsp;&nbsp;-->
+                                            <span class="bold">Generate MSN</span>
                                             </a>
-                                        </td>
-                                        <td>{{sample.dateCreated | gmt }}</td>
-                                        <td>{{sample.dateReceived | gmt }}</td>
-                                        <td ng-style="{'color':'{{ sample.status | irsample }}'}">
-                                            {{sample.status}}
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                    </table>
 
-                                    <!--[{"sampleSite":"MDACC","sampleId":"MDACC_1","sampleMsn":"SampleControl_MDACC_1","dateCreated":1465391653151,"dateReceived":1465391697916,"status":"PASSED"}]-->
+                                            <div class="row">
+                                            <div class="col-xs-3">
+                                                <h6>Positive Sample Controls - {{branch}}</h6>
+                                            </div>
+                                            </div>
 
-                                    <a ng-click="showNoTemplateControlConfirmation('MoCha')" class="btn btn-xs btn-primary file-button-xl pull-right">
-                                    <!--<i class="fa fa-bar-chart"></i>&nbsp;&nbsp;-->
-                                    <span class="bold">Generate MSN</span>
-                                    </a>
+                                            <table class="table table-hover" role="grid" width="100%"
+                                                    datatable="ng" dt-options="dtOptions"
+                                                    dt-column-defs="dtColumnDefs"
+                                                    dt-instance="dtInstance">
+                                            <thead>
+                                            <tr>
+                                                <th >Molecular Sequence Number</th>
+                                                <th >Variant Reports</th>
+                                                <th >Date Created</th>
+                                                <th >Date Received</th>
+                                                <th >Status</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr ng-repeat="sample in positiveListMDCC">
+                                                <td>{{sample.sampleSite}}</td>
+                                                <td >
+                                                    <a ng-if="!sample.sampleId"> - </a>
+                                                    <a ng-if="sample.sampleId" ui-sref="ngsample({ sampleId: sample.sampleMsn})">
+                                                        {{ sample.sampleMsn || '-' }}
+                                                    </a>
+                                                </td>
+                                                <td>{{sample.dateCreated | gmt }}</td>
+                                                <td>{{sample.dateReceived | gmt }}</td>
+                                                <td ng-style="{'color':'{{ sample.status | irsample }}'}">
+                                                    {{sample.status}}
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                            </table>
+                                        </div>
 
-                                    <div class="row">
-                                    <div class="col-xs-3">
-                                        <h6>No Template Control - MD Anderson</h6>
-                                    </div>
-                                    </div>
-
-                                    <table class="table table-hover" role="grid" width="100%"
-                                       datatable="ng" dt-options="dtOptions"
-                                       dt-column-defs="dtColumnDefs"
-                                       dt-instance="dtInstance">
-
-                                    <thead>
-                                    <tr>
-                                        <th >Molecular Sequence Number</th>
-                                        <th >Variant Reports</th>
-                                        <th >Date Created</th>
-                                        <th >Date Received</th>
-                                        <th >Status</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr ng-repeat="sample in negativeListMDCC">
-                                        <td>{{sample.sampleMsn}}</td>
-                                        <td>
-                                            <a ng-if="!sample.dateReceived"> - </a>
-                                            <a ng-if="sample.dateReceived" ui-sref="ntcsample({ sampleId: sample.sampleMsn})">
-                                                {{ sample.sampleMsn || '-' }}
+                                        <!--[{"sampleSite":"MDACC","sampleId":"MDACC_1","sampleMsn":"SampleControl_MDACC_1","dateCreated":1465391653151,"dateReceived":1465391697916,"status":"PASSED"}]-->
+                                        <div class="col-lg-6">
+                                            <a ng-click="showNoTemplateControlConfirmation('MoCha')" class="btn btn-xs btn-primary file-button-xl pull-right">
+                                            <!--<i class="fa fa-bar-chart"></i>&nbsp;&nbsp;-->
+                                            <span class="bold">Generate MSN</span>
                                             </a>
-                                        </td>
-                                        <td>{{sample.dateCreated | gmt }}</td>
-                                        <td>{{sample.dateReceived | gmt }}</td>
-                                        <td ng-style="{'color':'{{ sample.status | irsample }}'}">
-                                            {{sample.status}}
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                    </table>
+
+                                            <div class="row">
+                                            <div class="col-xs-3">
+                                                <h6>No Template Control - {{branch}}</h6>
+                                            </div>
+                                            </div>
+
+                                            <table class="table table-hover" role="grid" width="100%"
+                                               datatable="ng" dt-options="dtOptions"
+                                               dt-column-defs="dtColumnDefs"
+                                               dt-instance="dtInstance">
+
+                                            <thead>
+                                            <tr>
+                                                <th >Molecular Sequence Number</th>
+                                                <th >Variant Reports</th>
+                                                <th >Date Created</th>
+                                                <th >Date Received</th>
+                                                <th >Status</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr ng-repeat="sample in negativeListMDCC">
+                                                <td>{{sample.sampleMsn}}</td>
+                                                <td>
+                                                    <a ng-if="!sample.dateReceived"> - </a>
+                                                    <a ng-if="sample.dateReceived" ui-sref="ntcsample({ sampleId: sample.sampleMsn})">
+                                                        {{ sample.sampleMsn || '-' }}
+                                                    </a>
+                                                </td>
+                                                <td>{{sample.dateCreated | gmt }}</td>
+                                                <td>{{sample.dateReceived | gmt }}</td>
+                                                <td ng-style="{'color':'{{ sample.status | irsample }}'}">
+                                                    {{sample.status}}
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
                             </div>
 
                         </div>

@@ -68,7 +68,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
             }
         })
         .state('patient', {
-            url: "/patient/:patientSequenceNumber",
+            url: "/patient/:patient_id",
             templateUrl: "views/patient.html",
             data: { pageTitle: 'Patient', requiresLogin: true },
             controller: 'PatientController',

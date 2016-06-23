@@ -103,6 +103,7 @@ function d3BoxVersion5(data) {
     } else {
         height = 700 - margin.top - margin.bottom;
     }
+    
     var line1 = (height - (height/max)) + margin.top;
     var line2 = (height - ((height/max)*2)) + margin.top;
     var line7 = (height - ((height/max)*rank)) + margin.top;
