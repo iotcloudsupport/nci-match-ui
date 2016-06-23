@@ -2,9 +2,9 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
     .controller('IrAdminController',
         function( $scope, $http, $window, $stateParams, DTOptionsBuilder, irAdminApi, prompt, $uibModal, $filter) {
 
-        // angular.element(document).ready(function () {
-        //     $('.equal-height-panels .panel').matchHeight();
-        // });
+        angular.element(document).ready(function () {
+            $('.equal-height-panels .panel').matchHeight();
+        });
 
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(5);
@@ -446,7 +446,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     series: [5, 3, 4]
                 }
 
-                this.pieData = prepareData
+                this.pieData = prepareData;
 
                 pieNames = [
                     'EAY131-QQQ'
@@ -488,7 +488,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     datasets: [
                         {
                             label: "Accrual Dataset",
-                            fillColor: "#1c84c6",
+                            fillColor: "Indigo",
                             strokeColor: "rgba(220,220,220,0.8)",
                             highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
                             highlightStroke: "rgba(220,220,220,1)",
