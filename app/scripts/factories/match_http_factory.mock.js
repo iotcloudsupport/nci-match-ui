@@ -9,7 +9,7 @@
 
             function loadPatient(id) {
                 $log.info('Loading patient ' + id);
-                return $http.get('data/patient_PAT123.json');
+                return $http.get('data/patient_' + id + '.json');
             }
 
             function loadPatientList() {
