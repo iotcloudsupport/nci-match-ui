@@ -409,7 +409,6 @@ module.exports = function (grunt) {
                         'buildtest'
                     ]);
                 }
-
                 // Technique recommended on #grunt IRC channel. Tell Grunt asych function is finished. Pass error for logging; if operation completes successfully error will be null
                 done(error);
                 // done("Error in TAR file buildup: " + error);
