@@ -61,28 +61,116 @@ angular.module('dashboard.matchbox',[])
         $scope.pendingTissueVariantReportList = [];
         $scope.pendingBloodVariantReportList = [];
 
+        $scope.pendingTissueVariantReportsMockData = [
+            {
+                'patient_id': '1000099',
+                'molecular_id': 'MSN-1245',
+                'analysis_id': 'A-T-5678',
+                'clia_lab': 'MoCha',
+                'specimen_received_date': 1421162969643,
+                'variant_report_received_date': 1421162969643,
+                'days_pending': '3'
+
+            },
+            {
+                'patient_id': '1000087',
+                'molecular_id': 'MSN-12345',
+                'analysis_id': 'A-T-5682',
+                'clia_lab': 'MDA',
+                'specimen_received_date': 1421163069643,
+                'variant_report_received_date': 1421163269643,
+                'days_pending': '3'
+
+            }
+        ];
+
+        $scope.pendingBloodVariantReportsMockData = [
+            {
+                'patient_id': '1000099',
+                'molecular_id': 'MSN-1245',
+                'analysis_id': 'A-T-5678',
+                'clia_lab': 'MoCha',
+                'specimen_received_date': 1421162969643,
+                'variant_report_received_date': 1421162969643,
+                'days_pending': '3'
+
+            },
+            {
+                'patient_id': '1000087',
+                'molecular_id': 'MSN-12345',
+                'analysis_id': 'A-T-5682',
+                'clia_lab': 'MDA',
+                'specimen_received_date': 1421163069643,
+                'variant_report_received_date': 1421163269643,
+                'days_pending': '3'
+
+            }
+        ];
+
+        $scope.pendingAssignmentReportsMockData = [
+            {
+                'patient_id': '1000065',
+                'molecular_id': 'MSN-124577',
+                'analysis_id': 'A-T-5690',
+                'assignment_date': 1423162969643,
+                'hours_pending': '3'
+
+            }
+        ];
+
         $scope.loadPatientPendingAssignmentReportsList = function() {
-            matchApi
+            /*matchApi
                 .getPatientPendingAssignmentReports()
                 .then(function(d) {
                     $scope.pendingAssignmentReportList = d.data;
-                });
+                });*/
+            angular.forEach($scope.pendingAssignmentReportsMockData, function(value) {
+                var assignmentReport = {};
+                assignmentReport.patient_id = value.patient_id;
+                assignmentReport.molecular_id = value.molecular_id;
+                assignmentReport.analysis_id = value.analysis_id;
+                assignmentReport.assignment_date = value.assignment_date;
+                assignmentReport.hours_pending = value.hours_pending;
+                $scope.pendingAssignmentReportList.push(assignmentReport);
+            });
         };
         
         $scope.loadTissueVariantReportsList = function() {
-            matchApi
+            /*matchApi
                 .getTissueVariantReports()
                 .then(function(d) {
                     $scope.pendingTissueVariantReportList = d.data;
-                });
+                });*/
+            angular.forEach($scope.pendingTissueVariantReportsMockData, function(value) {
+                var tissueReport = {};
+                tissueReport.patient_id = value.patient_id;
+                tissueReport.molecular_id = value.molecular_id;
+                tissueReport.analysis_id = value.analysis_id;
+                tissueReport.clia_lab = value.clia_lab;
+                tissueReport.specimen_received_date = value.specimen_received_date;
+                tissueReport.variant_report_received_date = value.variant_report_received_date;
+                tissueReport.days_pending = value.days_pending;
+                $scope.pendingTissueVariantReportList.push(tissueReport);
+            });
         };
         
         $scope.loadBloodVariantReportsList = function() {
-            matchApi
+            /*matchApi
                 .getBloodVariantReports()
                 .then(function(d) {
                     $scope.pendingBloodVariantReportList = d.data;
-                });
+                });*/
+            angular.forEach($scope.pendingBloodVariantReportsMockData, function(value) {
+                var bloodReport = {};
+                bloodReport.patient_id = value.patient_id;
+                bloodReport.molecular_id = value.molecular_id;
+                bloodReport.analysis_id = value.analysis_id;
+                bloodReport.clia_lab = value.clia_lab;
+                bloodReport.specimen_received_date = value.specimen_received_date;
+                bloodReport.variant_report_received_date = value.variant_report_received_date;
+                bloodReport.days_pending = value.days_pending;
+                $scope.pendingBloodVariantReportList.push(bloodReport);
+            });
         }
 
     })
