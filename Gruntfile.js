@@ -395,7 +395,7 @@ module.exports = function (grunt) {
 
         var exec = require('child_process').exec,child,done = grunt.task.current.async();
 
-        child = exec('echo "$AUTH0_CLIENT_ID"',
+        child = exec('echo "$AUTH0_DOMAIN"',
 
             function(error, stdout, stderr){
 
