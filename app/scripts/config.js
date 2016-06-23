@@ -350,12 +350,6 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
             data: { pageTitle: 'Login' }
         })
 
-    // authProvider.init({
-    //     domain: 'ncimatch.auth0.com',
-    //     clientID: 'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH',
-    //     loginUrl: 'auth.login'
-    // });
-
     authProvider.init({
         domain: ENV.AUTH0_DOMAIN,
         clientID: ENV.AUTH0_CLIENT_ID,
@@ -376,11 +370,6 @@ angular.module('matchbox')
         $rootScope.$state = $state;
         $rootScope.$on('$locationChangeStart', function() {
             var token = store.get('token');
-
-            // alert("ENV.clientID-->" + ENV.clientID + " --- " +  ENV.domain)
-
-            // alert("TOKEN-->" + token)
-
             if (token) {
                 $rootScope.showHeader = true; //Open the headers
                 if (!jwtHelper.isTokenExpired(token)) {
