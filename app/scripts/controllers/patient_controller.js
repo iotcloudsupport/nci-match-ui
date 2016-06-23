@@ -9,7 +9,8 @@
         $stateParams,
         $log,
         prompt,
-        $uibModal) {
+        $uibModal, 
+        $state) {
 
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(100);
@@ -98,14 +99,20 @@
         function loadPatientData() {
             matchApiMock
                 .loadPatient($stateParams.patient_id)
-                .then(setupScope)
-                .then(setupSurgicalEventSelectorList)
-                .then(setupVariantReport);
+                .then(setupScope, handleError);
+        }
+
+        function handleError(e) {
+            $log.error(e);
+            $log.info('Error while retriving data from the service. Transferring back to patient list');
+            $state.transitionTo('patients')
+            return;
         }
 
         function setupScope(data) {
             if (!data || !data.data) {
-                $log.error('The web service didn\'t send patient data');
+                $log.error('The web service didn\'t send patient data. Transferring back to patient list');
+                $state.transitionTo('patients')
             }
 
             $scope.patient_id = $stateParams.patient_id;
@@ -125,6 +132,8 @@
                 $log.error('The web service didn\'t send Secimen Analyses');
             }
 
+            setupSurgicalEventSelectorList();
+            setupVariantReport();
         }
 
         function setupSurgicalEventSelectorList() {
