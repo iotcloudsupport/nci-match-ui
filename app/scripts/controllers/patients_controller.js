@@ -5,7 +5,7 @@
 
     function PatientsController($scope,
         DTOptionsBuilder,
-        patientApi,
+        matchApiMock,
         $log) {
 
         this.dtOptions = DTOptionsBuilder.newOptions()
@@ -20,7 +20,7 @@
         // $scope.setupScope = setupScope;
 
         $scope.loadPatientList = function () {
-            patientApi
+            matchApiMock
                 .loadPatientList()
                 .then(setupScope);
         };

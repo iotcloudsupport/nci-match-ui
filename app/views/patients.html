@@ -48,15 +48,15 @@
                                     {{ ::patient.current_status }}
                                 </td>
                                 <td>{{ ::patient.current_step_number }}</td>
-                                <td>{{ ::patient.disease || '-' }}</td>
+                                <td>{{ ::patient.disease_name || '-' }}</td>
                                 <td ng-if="patient.treatment_arm === null">-</td>
                                 <td ng-if="patient.treatment_arm !== null">
                                     <a ui-sref="treatment-arm({ treatment_arm_id: patient.treatment_arm, treatment_arm_version: patient.treatment_arm_version })">
                                         {{ ::patient.treatment_arm || '-' }}
                                     </a>
                                 </td>
-                                <td>{{ ::patient.registration_date | gmt }}</td>
-                                <td>{{ ::patient.off_trial_date | gmt }}</td>
+                                <td>{{ ::patient.registration_date }}</td>
+                                <td>{{ ::patient.off_trial_date }}</td>
                             </tr>
                             </tbody>
                         </table>

@@ -20,7 +20,7 @@
                         "WHITE",
                         "HAWAIIAN"
                     ],
-                    "current_step_number": "1.0",
+                    "current_current_step_number": "1.0",
                     "current_assignment": {
                         "generated_date": "2016-05-09T22:06:33+00 : 00",
                         "confirmed_date": "2016-05-09T22:06:33+00 : 00",
@@ -146,7 +146,7 @@
                             ]
                         }
                     },
-                    "current_status": "REGISTRATION",
+                    "current_current_status": "REGISTRATION",
                     "disease": {
                         "name": "Invasive Breast Carcinoma",
                         "ctep_category": "Breast Neoplasm",
@@ -187,7 +187,7 @@
                             "event_type": "assignment",
                             "event_message": "Message 1",
                             "event_data": {
-                                "status": "Pending",
+                                "current_status": "Pending",
                                 "biopsy_sequence_number": "B-987456"
                             }
                         },
@@ -198,7 +198,7 @@
                             "event_type": "patient",
                             "event_message": "Patient Registered",
                             "event_data": {
-                                "status": "Pending",
+                                "current_status": "Pending",
                                 "biopsy_sequence_number": "B-987456",
                                 "location": "GHU"
                             }
@@ -220,8 +220,8 @@
                         "patient_id": "PAT1232",
                         "molecular_id": "MOL1232",
                         "analysis_id": "SAM1232",
-                        "status": "PENDING",
-                        "status_date": "2016-05-09T22:06:33.000+00:00",
+                        "current_status": "PENDING",
+                        "current_status_date": "2016-05-09T22:06:33.000+00:00",
                         "dna_bam_file_path": "http:\\\\blah.com\\dna_bam.data",
                         "dna_bai_file_path": "http:\\\\blah.com\\dna_bai.data",
                         "rna_bam_file_path": "http:\\\\blah.com\\rna_bam.data",
@@ -243,8 +243,8 @@
                                     "molecular_id": "MOL0981",
                                     "analysis_id": "ANZ98761",
                                     "variant_id": "VAR98761",
-                                    "status": "CONFIRMED",
-                                    "status_date": "2016-06-09T22:06:33+00:00",
+                                    "current_status": "CONFIRMED",
+                                    "current_status_date": "2016-06-09T22:06:33+00:00",
                                     "comment": "Don't need this",
                                     "gene_name": "gene",
                                     "chromosome": "chr3",
@@ -275,8 +275,8 @@
                                     "molecular_id": "MOL0982",
                                     "analysis_id": "ANZ98762",
                                     "variant_id": "VAR98762",
-                                    "status": "CONFIRMED",
-                                    "status_date": "2016-06-09T22:06:33+00:00",
+                                    "current_status": "CONFIRMED",
+                                    "current_status_date": "2016-06-09T22:06:33+00:00",
                                     "comment": "Don't need this",
                                     "gene_name": "gene",
                                     "chromosome": "chr3",
@@ -447,8 +447,8 @@
                         "failed_date": "2016-06-09T22:06:33+00:00",
                         "study_id": "APEC1621",
                         "type": "TUMOR",
-                        "pathology_status": "Agreed on pathology",
-                        "pathology_status_date": "2016-06-09T22:06:33+00:00",
+                        "pathology_current_status": "Agreed on pathology",
+                        "pathology_current_status_date": "2016-06-09T22:06:33+00:00",
                         "variant_report_confirmed_date": "2016-06-09T22:06:33+00:00",
                         "assays": [
                             {
@@ -482,9 +482,9 @@
                                 "analyses": [
                                     {
                                         "analysis_id": "MSN5678_v1_676...tyyrt4",
-                                        "status": "Rejected",
+                                        "current_status": "Rejected",
                                         "file_received_date": "Sep 18, 2015, 1:08 PM GMT",
-                                        "status_date": "2016-06-09T22:06:33+00:00"
+                                        "current_status_date": "2016-06-09T22:06:33+00:00"
                                     }
                                 ]
                             },
@@ -499,15 +499,15 @@
                                 "analyses": [
                                     {
                                         "analysis_id": "MSN1234_v1_23453...jher4",
-                                        "status": "Confirmed",
+                                        "current_status": "Confirmed",
                                         "file_received_date": "2016-06-09T22:06:33+00:00",
-                                        "status_date": "2016-06-09T22:06:33+00:00"
+                                        "current_status_date": "2016-06-09T22:06:33+00:00"
                                     },
                                     {
                                         "analysis_id": "MSN1234_v2_2rer53...yher4",
-                                        "status": "Rejected",
+                                        "current_status": "Rejected",
                                         "file_received_date": "2016-09-09T22:06:33+00:00",
-                                        "status_date": "2016-06-09T22:06:33+00:00"
+                                        "current_status_date": "2016-06-09T22:06:33+00:00"
                                     }
                                 ]
                             }
@@ -521,8 +521,8 @@
                             "failed_date": "2016-06-09T22:06:33+00:00",
                             "study_id": "APEC1621",
                             "type": "TUMOR",
-                            "pathology_status": "Agreed on pathology",
-                            "pathology_status_date": "2016-06-09T22:06:33+00:00",
+                            "pathology_current_status": "Agreed on pathology",
+                            "pathology_current_status_date": "2016-06-09T22:06:33+00:00",
                             "variant_report_confirmed_date": "2016-06-09T22:06:33+00:00",
                             "assays": [
                                 {
@@ -556,9 +556,9 @@
                                     "analyses": [
                                         {
                                             "analysis_id": "MSN5678_v1_676...tyyrt4",
-                                            "status": "Rejected",
+                                            "current_status": "Rejected",
                                             "file_received_date": "Sep 18, 2015, 1:08 PM GMT",
-                                            "status_date": "2016-06-09T22:06:33+00:00"
+                                            "current_status_date": "2016-06-09T22:06:33+00:00"
                                         }
                                     ]
                                 },
@@ -573,15 +573,15 @@
                                     "analyses": [
                                         {
                                             "analysis_id": "MSN1234_v1_23453...jher4",
-                                            "status": "Confirmed",
+                                            "current_status": "Confirmed",
                                             "file_received_date": "2016-06-09T22:06:33+00:00",
-                                            "status_date": "2016-06-09T22:06:33+00:00"
+                                            "current_status_date": "2016-06-09T22:06:33+00:00"
                                         },
                                         {
                                             "analysis_id": "MSN1234_v2_2rer53...yher4",
-                                            "status": "Rejected",
+                                            "current_status": "Rejected",
                                             "file_received_date": "2016-09-09T22:06:33+00:00",
-                                            "status_date": "2016-06-09T22:06:33+00:00"
+                                            "current_status_date": "2016-06-09T22:06:33+00:00"
                                         }
                                     ]
                                 }
@@ -594,8 +594,8 @@
                             "failed_date": "2016-06-09T22:06:33+00:00",
                             "study_id": "APEC1621",
                             "type": "TUMOR",
-                            "pathology_status": "Agreed on pathology",
-                            "pathology_status_date": "2016-06-09T22:06:33+00:00",
+                            "pathology_current_status": "Agreed on pathology",
+                            "pathology_current_status_date": "2016-06-09T22:06:33+00:00",
                             "variant_report_confirmed_date": "2016-06-09T22:06:33+00:00",
                             "assays": [
                                 {
@@ -629,9 +629,9 @@
                                     "analyses": [
                                         {
                                             "analysis_id": "MSN5678_v1_676...tyyrt4",
-                                            "status": "Rejected",
+                                            "current_status": "Rejected",
                                             "file_received_date": "Sep 18, 2015, 1:08 PM GMT",
-                                            "status_date": "2016-06-09T22:06:33+00:00"
+                                            "current_status_date": "2016-06-09T22:06:33+00:00"
                                         }
                                     ]
                                 },
@@ -646,15 +646,15 @@
                                     "analyses": [
                                         {
                                             "analysis_id": "MSN1234_v1_23453...jher4",
-                                            "status": "Confirmed",
+                                            "current_status": "Confirmed",
                                             "file_received_date": "2016-06-09T22:06:33+00:00",
-                                            "status_date": "2016-06-09T22:06:33+00:00"
+                                            "current_status_date": "2016-06-09T22:06:33+00:00"
                                         },
                                         {
                                             "analysis_id": "MSN1234_v2_2rer53...yher4",
-                                            "status": "Rejected",
+                                            "current_status": "Rejected",
                                             "file_received_date": "2016-09-09T22:06:33+00:00",
-                                            "status_date": "2016-06-09T22:06:33+00:00"
+                                            "current_status_date": "2016-06-09T22:06:33+00:00"
                                         }
                                     ]
                                 }
@@ -678,35 +678,35 @@
 
                 var data = [
                     {
-                        "patientSequenceNumber": "100065",
+                        "patient_id": "100065",
                         "gender": "Male",
                         "ethnicity": "White",
-                        "status": "REGISTRATION",
-                        "treatmentArm": "EAY131-A",
-                        "step": "0",
-                        "registrationDate": "1441165873572",
-                        "diseases": "Disease 1"
+                        "current_status": "REGISTRATION",
+                        "treatment_arm": "EAY131-A",
+                        "current_step_number": "0",
+                        "registration_date": "2016-05-09T22:06:33.000+00:00",
+                        "disease_name": "Disease 1"
                     },
                     {
-                        "patientSequenceNumber": "100087",
+                        "patient_id": "100087",
                         "gender": "Female",
                         "ethnicity": "White",
-                        "status": "PENDING",
-                        "treatmentArm": "EAY131-B",
-                        "step": "1",
-                        "registrationDate": "1430165873572",
-                        "diseases": "Disease 3"
+                        "current_status": "PENDING",
+                        "treatment_arm": "EAY131-B",
+                        "current_step_number": "1",
+                        "registration_date": "2016-05-09T22:06:33.000+00:00",
+                        "disease_name": "Disease 3"
                     },
                     {
-                        "patientSequenceNumber": "100099",
+                        "patient_id": "100099",
                         "gender": "Male",
                         "ethnicity": "Hispanic",
-                        "status": "ON_TREATMENT_ARM",
-                        "treatmentArm": "EAY131-C",
-                        "step": "2",
-                        "registrationDate": "1440765873572",
-                        "offTrialDate": "1440165878572",
-                        "diseases": "Disease 3"
+                        "current_status": "ON_TREATMENT_ARM",
+                        "treatment_arm": "EAY131-C",
+                        "current_step_number": "2",
+                        "registration_date": "2016-05-09T22:06:33.000+00:00",
+                        "off_trial_date": "2016-05-09T22:06:33.000+00:00",
+                        "disease_name": "Disease 3"
                     }
                 ];
 

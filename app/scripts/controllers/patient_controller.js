@@ -5,7 +5,7 @@
 
     function PatientController($scope,
         DTOptionsBuilder,
-        patientApi,
+        matchApiMock,
         $stateParams,
         $log,
         prompt,
@@ -96,7 +96,7 @@
         }
 
         function loadPatientData() {
-            patientApi
+            matchApiMock
                 .loadPatient($stateParams.patient_id)
                 .then(setupScope)
                 .then(setupSurgicalEventSelectorList)
