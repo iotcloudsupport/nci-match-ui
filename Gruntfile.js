@@ -65,21 +65,21 @@ module.exports = function (grunt) {
                 constants: {
                     ENV: {
                         'name': 'development',
-                        'AUTH0_CLIENT_ID': 'ncimatch.auth0.com',
-                        'AUTH0_CLIENT_SECRET': 'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH',
+                        'AUTH0_DOMAIN': 'ncimatch.auth0.com',
+                        'AUTH0_CLIENT_ID': 'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH',
                         'loginUrl': 'auth.login'
                     },
                     PRO: {
                         'name': 'production',
-                        'AUTH0_CLIENT_ID': 'ncimatch.auth0.com_prod',
-                        'AUTH0_CLIENT_SECRET': 'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH_prod',
+                        'AUTH0_DOMAIN': 'ncimatch.auth0.com_prod',
+                        'AUTH0_CLIENT_ID': 'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH_prod',
                         'loginUrl': 'auth.login_prod'
 
                     },
                     UT: {
                         'name': 'test',
-                        'AUTH0_CLIENT_ID': 'ncimatch.auth0.com_test',
-                        'AUTH0_CLIENT_SECRET': 'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH_test',
+                        'AUTH0_DOMAIN': 'ncimatch.auth0.com_test',
+                        'AUTH0_CLIENT_ID': 'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH_test',
                         'loginUrl': 'auth.login_test'
                     }
                 }
@@ -97,6 +97,43 @@ module.exports = function (grunt) {
                     }
                 }
             }
+        },
+        spawn: {
+            echo: {
+                command: "echo",
+                commandArgs: ["{0}"],
+                directory: "./tests",
+                pattern: "**/*.js",
+                useQuotes: true,
+                quoteDelimiter: "\"",
+                groupFiles: true,
+                fileDelimiter: " ",
+                ignore: ["notNeededFile.js"]
+            },
+            list: {
+                command: "ls",
+                commandArgs: ["-la", "{0}"],
+                directory: "./tests"
+            },
+            shelltest: {
+                command: "mocha",
+                commandArgs: ["--reporter", "spec", "{0}"],
+                directory: "./tests",
+                pattern: "**/*.js"
+            },
+            webstart: {
+                command: 'node',
+                commandArgs: ['{0}'],
+                directory: './',
+                groupFiles: true,
+                passThrough: false,
+                pattern: 'www',
+                opts: {
+                    stdio: 'inherit',
+                    cwd: __dirname + '/'
+                }
+            }
+            // *** - grunt-spawn: WebStart for Express {End}
         },
 
         // Project settings
@@ -315,12 +352,15 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.loadNpmTasks('grunt-env');
+    // grunt.loadNpmTasks('grunt-env');
     grunt.loadNpmTasks('grunt-ng-constant');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.registerTask('default', ['shell']);
     grunt.loadNpmTasks('grunt-exec');
     grunt.registerTask('default', 'replace');
+
+    grunt.loadNpmTasks('grunt-spawn');
+    grunt.registerTask("shelltest", ["spawn:shelltest"]);
 
     grunt.registerTask('live', function (target) {
         if (target === 'dist') {
