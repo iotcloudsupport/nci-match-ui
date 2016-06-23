@@ -111,8 +111,8 @@ angular.module('dashboard.matchbox',[])
             'Patient Registration',
             'Specimen Received',
             'Specimen Failure',
-            'Mail expected',
-            'Users be aware'
+            'New Treatment Arm',
+            'Treatment Arm Open'
         ];
 
         $scope.status = [
@@ -128,16 +128,33 @@ angular.module('dashboard.matchbox',[])
         $scope.activityListData = [
             {
                 "pic": $scope.icons[4],
-                "status": $scope.status[1],
+                "status": $scope.status[3],
                 "patientId": '1000099',
+                "treatmentArmId": '',
+                "molecularId": '',
+                "biopsySequenceNumber": '',
                 "time": 1421175969643,
                 "age": '3m',
                 "displayName": $scope.message[0]
             },
             {
+                "pic": $scope.icons[2],
+                "status": $scope.status[2],
+                "patientId": '',
+                "treatmentArmId": 'EAY131-A',
+                "molecularId": '',
+                "biopsySequenceNumber": '',
+                "time": 1421175969643,
+                "age": '3m',
+                "displayName": $scope.message[4]
+            },
+            {
                 "pic": $scope.icons[3],
                 "status": $scope.status[4],
                 "patientId": '1000065',
+                "treatmentArmId": '',
+                "molecularId": '',
+                "biopsySequenceNumber": '',
                 "time": 1421171969643,
                 "age": '5m',
                 "displayName": $scope.message[1]
@@ -146,14 +163,20 @@ angular.module('dashboard.matchbox',[])
                 "pic": $scope.icons[1],
                 "status": $scope.status[0],
                 "patientId": '1000065',
+                "treatmentArmId": '',
+                "molecularId": '',
+                "biopsySequenceNumber": '',
                 "time": 1421169969643,
                 "age": '5m',
                 "displayName": $scope.message[2]
             },
             {
                 "pic": $scope.icons[3],
-                "status": $scope.status[1],
+                "status": $scope.status[4],
                 "patientId": '1000087',
+                "treatmentArmId": '',
+                "molecularId": '',
+                "biopsySequenceNumber": '',
                 "time": 1421165969643,
                 "age": '18m',
                 "displayName": $scope.message[1]
@@ -162,14 +185,31 @@ angular.module('dashboard.matchbox',[])
                 "pic": $scope.icons[1],
                 "status": $scope.status[0],
                 "patientId": '1000065',
+                "treatmentArmId": '',
+                "molecularId": '',
+                "biopsySequenceNumber": '',
                 "time": 1421162969643,
                 "age": '5h',
                 "displayName": $scope.message[2]
             },
             {
+                "pic": $scope.icons[2],
+                "status": $scope.status[2],
+                "patientId": '',
+                "treatmentArmId": 'EAY131-A',
+                "molecularId": '',
+                "biopsySequenceNumber": '',
+                "time": 1421162969643,
+                "age": '5h',
+                "displayName": $scope.message[3]
+            },
+            {
                 "pic": $scope.icons[3],
                 "status": $scope.status[4],
                 "patientId": '1000065',
+                "treatmentArmId": '',
+                "molecularId": '',
+                "biopsySequenceNumber": '',
                 "time": 1421160969643,
                 "age": '6d',
                 "displayName": $scope.message[1]
@@ -178,6 +218,9 @@ angular.module('dashboard.matchbox',[])
                 "pic": $scope.icons[4],
                 "status": $scope.status[3],
                 "patientId": '1000087',
+                "treatmentArmId": '',
+                "molecularId": '',
+                "biopsySequenceNumber": '',
                 "time": 1421155768643,
                 "age": '1y',
                 "displayName": $scope.message[0]
@@ -186,6 +229,9 @@ angular.module('dashboard.matchbox',[])
                 "pic": $scope.icons[1],
                 "status": $scope.status[0],
                 "patientId": '1000087',
+                "treatmentArmId": '',
+                "molecularId": '',
+                "biopsySequenceNumber": '',
                 "time": 1421162969643,
                 "age": '5h',
                 "displayName": $scope.message[2]
@@ -194,6 +240,9 @@ angular.module('dashboard.matchbox',[])
                 "pic": $scope.icons[3],
                 "status": $scope.status[4],
                 "patientId": '1000065',
+                "treatmentArmId": '',
+                "molecularId": '',
+                "biopsySequenceNumber": '',
                 "time": 1421160969643,
                 "age": '6d',
                 "displayName": $scope.message[1]
@@ -202,6 +251,9 @@ angular.module('dashboard.matchbox',[])
                 "pic": $scope.icons[4],
                 "status": $scope.status[3],
                 "patientId": '1000065',
+                "treatmentArmId": '',
+                "molecularId": '',
+                "biopsySequenceNumber": '',
                 "time": 1421155768643,
                 "age": '1y',
                 "displayName": $scope.message[0]
@@ -210,6 +262,9 @@ angular.module('dashboard.matchbox',[])
                 "pic": $scope.icons[4],
                 "status": $scope.status[3],
                 "patientId": '1000065',
+                "treatmentArmId": '',
+                "molecularId": '',
+                "biopsySequenceNumber": '',
                 "time": 1421155768643,
                 "age": '1y',
                 "displayName": $scope.message[0]

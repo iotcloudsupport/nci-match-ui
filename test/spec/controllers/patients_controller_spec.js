@@ -4,39 +4,42 @@ describe('Controller: Patients Controller', function () {
 
     function getTestData() {
 
-        var data = [
-            {
-                patientSequenceNumber: 100065,
-                gender: 'Male',
-                ethnicity: 'White',
-                status: 'REGISTRATION',
-                treatmentArm: 'EAY131-A',
-                step: 0,
-                registrationDate: 1441165873572,
-                diseases: 'Disease 1'
-            },
-            {
-                patientSequenceNumber: 100087,
-                gender: 'Female',
-                ethnicity: 'White',
-                status: 'PENDING',
-                treatmentArm: 'EAY131-B',
-                step: 1,
-                registrationDate: 1430165873572,
-                diseases: 'Disease 3'
-            },
-            {
-                patientSequenceNumber: 100099,
-                gender: 'Male',
-                ethnicity: 'Hispanic',
-                status: 'ON_TREATMENT_ARM',
-                treatmentArm: 'EAY131-C',
-                step: 2,
-                registrationDate: 1440765873572,
-                offTrialDate: 1440165878572,
-                diseases: 'Disease 3'
-            }
-        ];
+        var data = {
+            data:
+            [
+                {
+                    "patient_id": "100065",
+                    "gender": "Male",
+                    "ethnicity": "White",
+                    "current_status": "REGISTRATION",
+                    "treatment_arm": "EAY131-A",
+                    "current_step_number": "0",
+                    "registration_date": "2016-05-09T22:06:33.000+00:00",
+                    "disease_name": "Disease 1"
+                },
+                {
+                    "patient_id": "100087",
+                    "gender": "Female",
+                    "ethnicity": "White",
+                    "current_status": "PENDING",
+                    "treatment_arm": "EAY131-B",
+                    "current_step_number": "1",
+                    "registration_date": "2016-05-09T22:06:33.000+00:00",
+                    "disease_name": "Disease 3"
+                },
+                {
+                    "patient_id": "100099",
+                    "gender": "Male",
+                    "ethnicity": "Hispanic",
+                    "current_status": "ON_TREATMENT_ARM",
+                    "treatment_arm": "EAY131-C",
+                    "current_step_number": "2",
+                    "registration_date": "2016-05-09T22:06:33.000+00:00",
+                    "off_trial_date": "2016-05-09T22:06:33.000+00:00",
+                    "disease_name": "Disease 3"
+                }
+            ]
+        };
 
         return data;
     }

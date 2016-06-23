@@ -68,7 +68,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
             }
         })
         .state('patient', {
-            url: "/patient/:patientSequenceNumber",
+            url: "/patient/:patient_id",
             templateUrl: "views/patient.html",
             data: { pageTitle: 'Patient', requiresLogin: true },
             controller: 'PatientController',
@@ -249,6 +249,13 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                         {
                             name: 'datatables',
                             files: ['bower_components/angular-datatables/dist/angular-datatables.min.js']
+                        },
+                        {
+                            files: ['bower_components/chartjs/Chart.min.js']
+                        },
+                        {
+                            name: 'angles',
+                            files: ['bower_components/angles/angles.js']
                         }
                     ]);
                 }
@@ -350,8 +357,8 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
     // });
 
     authProvider.init({
-        domain: ENV.AUTH0_CLIENT_ID,
-        clientID: ENV.AUTH0_CLIENT_SECRET,
+        domain: ENV.AUTH0_DOMAIN,
+        clientID: ENV.AUTH0_CLIENT_ID,
         loginUrl: ENV.loginUrl
     });
 

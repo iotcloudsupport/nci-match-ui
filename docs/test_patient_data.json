@@ -172,7 +172,7 @@
             "patient_id": "PAT123",
             "event_date": "2016-05-09T22:06:33+00:00",
             "event_name": "Event Name 1",
-            "event_type": "TYPE1",
+            "event_type": "assignment",
             "event_message": "Message 1",
             "event_data": {
                 "status": "Pending",
@@ -183,29 +183,30 @@
             "patient_id": "PAT123",
             "event_date": "2016-05-09T22:06:33+00:00",
             "event_name": "Event Name 2",
-            "event_type": "TYPE2",
-            "event_message": "Message 2",
+            "event_type": "patient",
+            "event_message": "Patient Registered",
             "event_data": {
                 "status": "Pending",
-                "biopsy_sequence_number": "B-987456"
+                "biopsy_sequence_number": "B-987456",
+                "location": "GHU"
             }
         }
     ],
     "variant_report_selectors": [
         {
-            "text": "SPEC0981",
+            "text": "SUREVT0981",
             "variant_report_received_date": "2016-05-09T22:06:33.000+00:00"
         },
         {
-            "text": "SPEC0982",
+            "text": "SUREVT0982",
             "variant_report_received_date": "2016-05-09T22:06:33.000+00:00"
         }
     ],
     "variant_report": {
-        "specimen_id": "SPEC0982",
+        "surgical_event_id": "SUREVT0982",
         "variant_report_received_date": "2016-05-09T22:06:33.000+00:00",
         "patient_id": "PAT1232",
-        "sample_id": "SAM1232",
+        "molecular_id": "MOL1232",
         "analysis_id": "SAM1232",
         "status": "PENDING",
         "status_date": "2016-05-09T22:06:33.000+00:00",
@@ -223,13 +224,13 @@
         "variants": {
             "single_nucleitide_variants": [
                 {
-                    "msn_analysis_id": "MSN123AN123",
-                    "variant_id": "COSM1231",
-                    "patient_id": "PAT123",
-                    "specimen_id": "SPEC0981",
-                    "sample_id": "SAM0981",
-                    "analysis_id": "ANZ98761",
+                    "molecular_id_analysis_id": "MSNANL123AN123",
                     "variant_type": "single_nucleitide_variants",
+                    "patient_id": "PAT123",
+                    "surgical_event_id": "SUREVT0981",
+                    "molecular_id": "MOL0981",
+                    "analysis_id": "ANZ98761",
+                    "variant_id": "VAR98761",
                     "status": "CONFIRMED",
                     "status_date": "2016-06-09T22:06:33+00:00",
                     "comment": "Don't need this",
@@ -255,13 +256,13 @@
                     "arm_specific": "arm spec"
                 },
                 {
-                    "msn_analysis_id": "MSN123AN123",
-                    "variant_id": "COSM1232",
-                    "patient_id": "PAT123",
-                    "specimen_id": "SPEC0982",
-                    "sample_id": "SAM0982",
-                    "analysis_id": "ANZ98762",
+                    "molecular_id_analysis_id": "MSNANL123AN123",
                     "variant_type": "single_nucleitide_variants",
+                    "patient_id": "PAT123",
+                    "surgical_event_id": "SUREVT0982",
+                    "molecular_id": "MOL0982",
+                    "analysis_id": "ANZ98762",
+                    "variant_id": "VAR98762",
                     "status": "CONFIRMED",
                     "status_date": "2016-06-09T22:06:33+00:00",
                     "comment": "Don't need this",
@@ -419,24 +420,23 @@
     },
     "specimen_selectors": [
         {
-            "text": "SPEC0981",
+            "text": "SUREVT0981",
             "collected_date": "2016-06-09T22:06:33.000+00:00"
         },
         {
-            "text": "SPEC0982",
+            "text": "SUREVT0982",
             "collected_date": "2016-06-09T22:06:33.000+00:00"
         }
     ],
     "specimen": {
         "patient_id": "PAT123",
         "collected_date": "2016-06-09T22:06:33+00:00",
-        "specimen_id": "SPEC0982",
+        "surgical_event_id": "SUREVT0982",
         "failed_date": "2016-06-09T22:06:33+00:00",
         "study_id": "APEC1621",
         "type": "TUMOR",
         "pathology_status": "Agreed on pathology",
         "pathology_status_date": "2016-06-09T22:06:33+00:00",
-        "disease_status": "Deseased",
         "variant_report_confirmed_date": "2016-06-09T22:06:33+00:00",
         "assays": [
             {
@@ -505,13 +505,12 @@
         {
             "patient_id": "PAT123",
             "collected_date": "2016-06-09T22:06:33+00:00",
-            "specimen_id": "SPEC0981",
+            "surgical_event_id": "SUREVT0981",
             "failed_date": "2016-06-09T22:06:33+00:00",
             "study_id": "APEC1621",
             "type": "TUMOR",
             "pathology_status": "Agreed on pathology",
             "pathology_status_date": "2016-06-09T22:06:33+00:00",
-            "disease_status": "Deseased",
             "variant_report_confirmed_date": "2016-06-09T22:06:33+00:00",
             "assays": [
                 {
@@ -579,13 +578,12 @@
         {
             "patient_id": "PAT123",
             "collected_date": "2016-06-09T22:06:33+00:00",
-            "specimen_id": "SPEC0982",
+            "surgical_event_id": "SUREVT0982",
             "failed_date": "2016-06-09T22:06:33+00:00",
             "study_id": "APEC1621",
             "type": "TUMOR",
             "pathology_status": "Agreed on pathology",
             "pathology_status_date": "2016-06-09T22:06:33+00:00",
-            "disease_status": "Deseased",
             "variant_report_confirmed_date": "2016-06-09T22:06:33+00:00",
             "assays": [
                 {

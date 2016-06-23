@@ -83,6 +83,9 @@
                                                 <a ui-sref="patient({ patientSequenceNumber: activity.patientId })">
                                                         <i class="fa fa-user"></i> {{::activity.patientId || '-' }}
                                                 </a><br>
+                                                <a style="font:bold">
+                                                   {{activity.otherIds}}
+                                                </a>
 
                                                 <small class="text-muted">{{ activity.time | date:'yyyy-MM-dd HH:mm:ss' }} </small>
                                             </div>
