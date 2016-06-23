@@ -154,7 +154,7 @@
                         }
 
                         $scope.surgicalEventSelectorList.push(item);
-                        $log.debug(item);
+                        // $log.debug(item);
                     }
                 }
             }

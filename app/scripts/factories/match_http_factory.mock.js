@@ -683,7 +683,7 @@
                         "ethnicity": "White",
                         "current_status": "REGISTRATION",
                         "treatment_arm": "EAY131-A",
-                        "current_step_number": "0",
+                        "current_step_number": "1.0",
                         "registration_date": "2016-05-09T22:06:33.000+00:00",
                         "disease_name": "Disease 1"
                     },
@@ -693,7 +693,7 @@
                         "ethnicity": "White",
                         "current_status": "PENDING",
                         "treatment_arm": "EAY131-B",
-                        "current_step_number": "1",
+                        "current_step_number": "1.1",
                         "registration_date": "2016-05-09T22:06:33.000+00:00",
                         "disease_name": "Disease 3"
                     },
@@ -703,7 +703,7 @@
                         "ethnicity": "Hispanic",
                         "current_status": "ON_TREATMENT_ARM",
                         "treatment_arm": "EAY131-C",
-                        "current_step_number": "2",
+                        "current_step_number": "2.0",
                         "registration_date": "2016-05-09T22:06:33.000+00:00",
                         "off_trial_date": "2016-05-09T22:06:33.000+00:00",
                         "disease_name": "Disease 3"

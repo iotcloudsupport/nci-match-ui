@@ -334,10 +334,10 @@ describe('Filter', function () {
             var result;
 
             result = underTest('i am a test');
-            expect(result).toEqual('I Am A Test');
+            expect(result).toEqual('I Am a Test');
 
             result = underTest('I AM A TEST');
-            expect(result).toEqual('I Am A Test');
+            expect(result).toEqual('I Am a Test');
 
             result = underTest('');
             expect(result).toEqual('');
