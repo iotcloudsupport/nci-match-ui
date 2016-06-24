@@ -462,8 +462,11 @@
                                     <th ng-if="variantReportMode!=='Qc'">aMOI</th>
                                     <th>Chrom</th>
                                     <th>Position</th>
-                                    <th>Reference</th>
-                                    <th>Alternative</th>
+                                    <th>CDS Ref</th>
+                                    <th>CDS Alt</th>
+                                    <th>OCP Ref</th>
+                                    <th>OCP Alt</th>
+                                    <th>Stand</th>
                                     <th>Allele Freq</th>
                                     <th>Func Gene</th>
                                     <th>Oncomine Variant Class</th>
@@ -473,11 +476,6 @@
                                     <th>Read Depth</th>
                                     <th>Transcript</th>
                                     <th>Protein</th>
-                                    <th>CDS Ref</th>
-                                    <th>CDS Alt</th>
-                                    <th>OCP Ref</th>
-                                    <th>OCP Alt</th>
-                                    <th>Stand</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -494,8 +492,11 @@
                                     <td ng-if="variantReportMode!=='Qc'">{{::variant.aMOI}}</td>
                                     <td>{{::variant.chrom}}</td>
                                     <td>{{::variant.position}}</td>
-                                    <td>{{::variant.reference}}</td>
-                                    <td>{{::variant.alternative}}</td>
+                                    <td>{{::variant.cds_ref}}</td>
+                                    <td>{{::variant.cds_alt}}</td>
+                                    <td>{{::variant.ocp_ref}}</td>
+                                    <td>{{::variant.ocp_alt}}</td>
+                                    <td>{{::variant.stand}}</td>
                                     <td>{{::variant.alleleFreq}}</td>
                                     <td>{{::variant.funcGene}}</td>
                                     <td>{{::variant.oncomineVariantClass}}</td>
@@ -505,11 +506,6 @@
                                     <td>{{::variant.readDepth}}</td>
                                     <td>{{::variant.transcript}}</td>
                                     <td>{{::variant.protein}}</td>
-                                    <td>{{::variant.cds_ref}}</td>
-                                    <td>{{::variant.cds_alt}}</td>
-                                    <td>{{::variant.ocp_ref}}</td>
-                                    <td>{{::variant.ocp_alt}}</td>
-                                    <td>{{::variant.stand}}</td>
                                 </tr>
 
                                 <tr ng-if="!data.variant_report.variants.single_nucleitide_variants || !data.variant_report.variants.single_nucleitide_variants.length">
@@ -532,8 +528,11 @@
                                     <th ng-if="variantReportMode!=='Qc'">aMOI</th>
                                     <th>Chrom</th>
                                     <th>Position</th>
-                                    <th>Reference</th>
-                                    <th>Alternative</th>
+                                    <th>CDS Ref</th>
+                                    <th>CDS Alt</th>
+                                    <th>OCP Ref</th>
+                                    <th>OCP Alt</th>
+                                    <th>Stand</th>
                                     <th>Allele Freq</th>
                                     <th>Func Gene</th>
                                     <th>Oncomine Variant Class</th>
@@ -543,11 +542,6 @@
                                     <th>Read Depth</th>
                                     <th>Transcript</th>
                                     <th>Protein</th>
-                                    <th>CDS Ref</th>
-                                    <th>CDS Alt</th>
-                                    <th>OCP Ref</th>
-                                    <th>OCP Alt</th>
-                                    <th>Stand</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -564,8 +558,11 @@
                                     <td ng-if="variantReportMode!=='Qc'">{{::variant.aMOI}}</td>
                                     <td>{{::variant.chrom}}</td>
                                     <td>{{::variant.position}}</td>
-                                    <td>{{::variant.reference}}</td>
-                                    <td>{{::variant.alternative}}</td>
+                                    <td>{{::variant.cds_ref}}</td>
+                                    <td>{{::variant.cds_alt}}</td>
+                                    <td>{{::variant.ocp_ref}}</td>
+                                    <td>{{::variant.ocp_alt}}</td>
+                                    <td>{{::variant.stand}}</td>
                                     <td>{{::variant.alleleFreq}}</td>
                                     <td>{{::variant.funcGene}}</td>
                                     <td>{{::variant.oncomineVariantClass}}</td>
@@ -575,11 +572,6 @@
                                     <td>{{::variant.readDepth}}</td>
                                     <td>{{::variant.transcript}}</td>
                                     <td>{{::variant.protein}}</td>
-                                    <td>{{::variant.cds_ref}}</td>
-                                    <td>{{::variant.cds_alt}}</td>
-                                    <td>{{::variant.ocp_ref}}</td>
-                                    <td>{{::variant.ocp_alt}}</td>
-                                    <td>{{::variant.stand}}</td>
                                 </tr>
 
                                 <tr ng-if="!data.variant_report.variants.indels || !data.variant_report.variants.indels.length">
@@ -802,8 +794,11 @@
                                     <th ng-if="variantReportMode!=='Qc'">aMOI</th>
                                     <th>Chrom</th>
                                     <th>Position</th>
-                                    <th>Reference</th>
-                                    <th>Alternative</th>
+                                    <th>CDS Ref</th>
+                                    <th>CDS Alt</th>
+                                    <th>OCP Ref</th>
+                                    <th>OCP Alt</th>
+                                    <th>Stand</th>
                                     <th>Allele Freq</th>
                                     <th>Func Gene</th>
                                     <th>Oncomine Variant Class</th>
@@ -813,11 +808,6 @@
                                     <th>Read Depth</th>
                                     <th>Transcript</th>
                                     <th>Protein</th>
-                                    <th>CDS Ref</th>
-                                    <th>CDS Alt</th>
-                                    <th>OCP Ref</th>
-                                    <th>OCP Alt</th>
-                                    <th>Stand</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -834,8 +824,11 @@
                                     <td ng-if="variantReportMode!=='Qc'">{{::variant.aMOI}}</td>
                                     <td>{{::variant.chrom}}</td>
                                     <td>{{::variant.position}}</td>
-                                    <td>{{::variant.reference}}</td>
-                                    <td>{{::variant.alternative}}</td>
+                                    <td>{{::variant.cds_ref}}</td>
+                                    <td>{{::variant.cds_alt}}</td>
+                                    <td>{{::variant.ocp_ref}}</td>
+                                    <td>{{::variant.ocp_alt}}</td>
+                                    <td>{{::variant.stand}}</td>
                                     <td>{{::variant.alleleFreq}}</td>
                                     <td>{{::variant.funcGene}}</td>
                                     <td>{{::variant.oncomineVariantClass}}</td>
@@ -845,11 +838,6 @@
                                     <td>{{::variant.readDepth}}</td>
                                     <td>{{::variant.transcript}}</td>
                                     <td>{{::variant.protein}}</td>
-                                    <td>{{::variant.cds_ref}}</td>
-                                    <td>{{::variant.cds_alt}}</td>
-                                    <td>{{::variant.ocp_ref}}</td>
-                                    <td>{{::variant.ocp_alt}}</td>
-                                    <td>{{::variant.stand}}</td>
                                 </tr>
 
                                 <tr ng-if="!data.variant_report.variants.single_nucleitide_variants || !data.variant_report.variants.single_nucleitide_variants.length">
@@ -872,8 +860,11 @@
                                     <th ng-if="variantReportMode!=='Qc'">aMOI</th>
                                     <th>Chrom</th>
                                     <th>Position</th>
-                                    <th>Reference</th>
-                                    <th>Alternative</th>
+                                    <th>CDS Ref</th>
+                                    <th>CDS Alt</th>
+                                    <th>OCP Ref</th>
+                                    <th>OCP Alt</th>
+                                    <th>Stand</th>
                                     <th>Allele Freq</th>
                                     <th>Func Gene</th>
                                     <th>Oncomine Variant Class</th>
@@ -883,11 +874,6 @@
                                     <th>Read Depth</th>
                                     <th>Transcript</th>
                                     <th>Protein</th>
-                                    <th>CDS Ref</th>
-                                    <th>CDS Alt</th>
-                                    <th>OCP Ref</th>
-                                    <th>OCP Alt</th>
-                                    <th>Stand</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -904,8 +890,11 @@
                                     <td ng-if="variantReportMode!=='Qc'">{{::variant.aMOI}}</td>
                                     <td>{{::variant.chrom}}</td>
                                     <td>{{::variant.position}}</td>
-                                    <td>{{::variant.reference}}</td>
-                                    <td>{{::variant.alternative}}</td>
+                                    <td>{{::variant.cds_ref}}</td>
+                                    <td>{{::variant.cds_alt}}</td>
+                                    <td>{{::variant.ocp_ref}}</td>
+                                    <td>{{::variant.ocp_alt}}</td>
+                                    <td>{{::variant.stand}}</td>
                                     <td>{{::variant.alleleFreq}}</td>
                                     <td>{{::variant.funcGene}}</td>
                                     <td>{{::variant.oncomineVariantClass}}</td>
@@ -915,11 +904,6 @@
                                     <td>{{::variant.readDepth}}</td>
                                     <td>{{::variant.transcript}}</td>
                                     <td>{{::variant.protein}}</td>
-                                    <td>{{::variant.cds_ref}}</td>
-                                    <td>{{::variant.cds_alt}}</td>
-                                    <td>{{::variant.ocp_ref}}</td>
-                                    <td>{{::variant.ocp_alt}}</td>
-                                    <td>{{::variant.stand}}</td>
                                 </tr>
 
                                 <tr ng-if="!data.variant_report.variants.indels || !data.variant_report.variants.indels.length">
