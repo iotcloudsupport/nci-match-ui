@@ -1,5 +1,5 @@
 angular.module('dashboard.matchbox',[])
-    .controller('DashboardStatisticsController', function( $scope, workflowApi, store ) { //store
+    .controller('DashboardStatisticsController', function( $scope, workflowApi, store ) {
         $scope.lastUpdated = (new Date()).getTime();
         $scope.name = 'MATCHBox User';
         $scope.name = setName();
@@ -12,17 +12,16 @@ angular.module('dashboard.matchbox',[])
         $scope.numberOfPendingBloodVariantReports = '?';
 
         function setName() {
-            if (store === undefined)
-                return 'MATCHBox User';
-            if (store.get('profile').nickname !== null) {
-                return store.get('profile').nickname;
+            var name;
+            var profile = store.get('profile');
+            if (profile.user_metadata && profile.user_metadata.firstName) {
+                name = profile.user_metadata.firstName;
+            } else if (profile.email) {
+                name = profile.email;
             } else {
-                if (store.get('profile').email !== null) {
-                    return store.get('profile').email;
-                } else {
-                    return 'MATCHBox User';
-                }
+                name = 'MATCHBox User'
             }
+            return name;
         }
 
         $scope.loadDashboardStatistics = function() {

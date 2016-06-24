@@ -221,6 +221,12 @@ module.exports = function (grunt) {
                     '.tmp/styles/{,*/}*.css',
                     '<%= inspinia.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
+            },
+            data: {
+                files: ['<%= inspinia.app %>/data/{,*/}*.json'],
+                options: {
+                    livereload: '<%= connect.options.livereload %>'
+                }
             }
         },
         // If you want to turn on uglify you will need write your angular code with string-injection based syntax
