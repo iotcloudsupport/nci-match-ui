@@ -36,7 +36,7 @@ angular.module('specimen-tracking.matchbox',[])
                                 var biopsyTemplate = {
                                     'patientSequenceNumber': patientSequenceNumber,
                                     'biopsySeqenuceNumber': value.biopsySequenceNumber,
-                                    'molecularSequenceNumber': '-',
+                                    'molecular_id': '-',
                                     'lab': '-',
                                     'trackingNumber': '-',
                                     'specimenReceivedDate': value.specimenReceivedDate,
@@ -50,7 +50,7 @@ angular.module('specimen-tracking.matchbox',[])
                                 if (angular.isDefined(value.samples) && angular.isArray(value.samples)) {
                                     angular.forEach(value.samples, function (value, key) {
                                         biopsyWithSample = angular.copy(biopsyTemplate);
-                                        biopsyWithSample.molecularSequenceNumber = value.molecularSequenceNumber;
+                                        biopsyWithSample.molecular_id = value.molecularSequenceNumber;
                                         biopsyWithSample.lab = value.lab;
                                         biopsyWithSample.trackingNumber = value.trackingNumber;
                                         biopsyWithSample.nucleicAcidSendoutDate = value.dnaShippedDate;

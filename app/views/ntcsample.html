@@ -13,7 +13,7 @@
                     <a ui-sref="iradmin"> IR Reporters</a>
                 </li>
                 <li class="active">
-                    <strong>IR NTC Control Variant Report</strong>
+                    <strong>IR NTC Control Variant Report ({{sid}})</strong>
                 </li>
             </ol>
         </div>
@@ -21,78 +21,153 @@
 
 
 
-    <div class="wrapper" ng-controller="NtcController"  >
+    <div class="wrapper" ng-controller="NtcController">
 
 
         <div class="no-horizontal-padding header-box-container">
 
             <div class="row">
 
-                <div class="row equal-height-panels">
+                <!--CHARTS-->
+                <div class="row border-bottom white-bg dashboard-header animated fadeInRight">
 
-                    <div class="col-lg-12 col-md-6">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
+                    <div class="wrapper">
+                        <div class="col-lg-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-content">
+
+                                    <!--{{branch}}-->
+
+                                    <div class="panel-default"  ng-init="loadSampleBreakups()">
+
+                                        <div class="col-lg-12 pull-left">
+
+                                            <div class="ibox float-e-margins">
+                                                <div class="col-xs-12 cols-height">
+
+                                                    <!--PIE CHART-->
+                                                    <div class="col-xs-2 cols-height cols-bottom">
+
+                                                        <div class="panel" ng-init="loadPieChart();">
+                                                            <canvas id="pieCanvas" piechart
+                                                                    ng-attr-data="pieData" responsive=true width="600" height="600"
+                                                                    style="width: 603px; height: 601px; border-bottom: thin dimgrey solid; border-top: thin dimgrey solid;"></canvas>
+                                                        </div>
 
 
-                                <div class="header-info-box top-main-header-box" style="border:none" >
+                                                        <div class="tabs-container">
+                                                            <div >
+
+                                                                <table class="table" role="grid" style="font-size: 10px" width="100%">
+                                                                    <thead>
+                                                                    <tr style="font-size: smaller">
+                                                                        <th >Positive Control</th>
+                                                                        <th >No Template Control</th>
+                                                                        <th >No Template Control</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <td>88 <div class="stat-percent font-bold text-success"> 98% <i class="fa fa-bolt"></i></div></td>
+                                                                    <td>42 <div class="stat-percent font-bold text-info"> 20% <i class="fa fa-level-up"></i></div></td>
+                                                                    <td>12 <div class="stat-percent font-bold text-info"> 20% <i class="fa fa-level-up"></i></div></td>
+                                                                    </tbody>
+                                                                </table>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--PIE CHART-->
+
+                                                    <!--HISTOGRAM CHART-->
+                                                    <div class="col-xs-7 cols-height cols-bottom" >
+                                                        <canvas id="mainSampleCanvas" barchart options="chart.barOptions" ng-attr-data="barData"
+                                                                responsive=true width="500" height="200"  style="width: 503px; height: 201px;"></canvas>
+                                                    </div>
+                                                    <!--HISTOGRAM CHART-->
+
+                                                    <!--SPOT TABS-->
+                                                    <div class="col-xs-3">
+
+                                                        <div class="header-info-box top-main-header-box" style="border:none" >
+
+                                                            <dl class="dl-horizontal">
+
+                                                                <dt>Molecular Sequence Number</dt>
+                                                                <dd>{{sid}}</dd>
+
+                                                                <dt>Analysis ID</dt>
+                                                                <dd>Ntc-Job3</dd>
+
+                                                                <dt>Total Variants</dt>
+                                                                <dd>18</dd>
+
+                                                                <dt>MAPD</dt>
+                                                                <dd> 0.258 </dd>
+
+                                                                <dt> Cellularity</dt>
+                                                                <dd> 1.00102 </dd>
+
+                                                                <dt style="width: 200px;text-align: left">Torrent Variant Caller Version</dt>
+                                                                <dd>tvc 4.4-8 </dd>
+
+                                                                <dt>Status</dt>
+                                                                <dd>PASSED</dd>
+
+                                                                <dt>Comment</dt>
+                                                                <dd>Testing passing a failed NTC Sample Control.</dd>
+
+                                                                <dt>Files</dt>
+                                                                <dd>
+                                                                    <table><tr><td>
+                                                                        <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_087_rawlib.bam?molecularSequenceNumber={{sampleId}}"
+                                                                           class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
+                                                                    </td><td>
+                                                                        <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_087_rawlib.bam.bai?molecularSequenceNumber={{sampleId}}"
+                                                                           class="btn btn-xs btn-white file-button-xs">DNA BAI</a>
+                                                                    </td><td>
+                                                                        <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/SampleControl_MoCha_1_v1_all-matched.vcf?molecularSequenceNumber={{sampleId}}"
+                                                                           class="btn btn-xs btn-white file-button-xs">VCF</a>
+                                                                    </td></tr><tr><td>
+                                                                        <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_088_rawlib.bam.bai?molecularSequenceNumber={{sampleId}}"
+                                                                           class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
+                                                                    </td><td>
+                                                                        <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_088_rawlib.bam?molecularSequenceNumber={{sampleId}}"
+                                                                           class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
+                                                                    </td><td>
+                                                                        <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
+                                                                    </td></tr></table>
+                                                                </dd>
+
+                                                                <dt>Quality Control Report</dt>
+                                                                <dd>
+                                                                    <a ui-sref="ntc_quality_control({ sampleId:sid })" class="btn btn-xs btn-success file-button-xl">
+                                                                        <i class="fa fa-bar-chart"></i>&nbsp;&nbsp;
+                                                                        <span class="bold">Quality Control Report</span>
+                                                                    </a>
+                                                                </dd>
+                                                            </dl>
 
 
-                                    <dl class="dl-horizontal">
+                                                        </div>
+                                                    </div>
+                                                    <!--SPOT TABS-->
 
-                                        <dt>Molecular Sequence Number</dt>
-                                        <dd>{{sid}}</dd>
+                                                </div>
+                                            </div>
 
-                                        <dt>Analysis ID</dt>
-                                        <dd>Ntc-Job3</dd>
+                                        </div>
 
-                                        <dt>Total Variants</dt>
-                                        <dd>18</dd>
-
-                                        <dt>MAPD</dt>
-                                        <dd> 0.258 </dd>
-
-                                        <dt> Cellularity</dt>
-                                        <dd> 1.00102 </dd>
-
-                                        <dt style="width: 200px;text-align: left">Torrent Variant Caller Version</dt>
-                                        <dd>tvc 4.4-8 </dd>
-
-                                        <dt>Status</dt>
-                                        <dd>PASSED</dd>
-
-                                        <dt>Comment</dt>
-                                        <dd>Testing passing a failed NTC Sample Control.</dd>
-
-                                        <dt>Files</dt>
-                                        <dd>
-                                            <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_087_rawlib.bam?molecularSequenceNumber={{sid}}"
-                                               class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
-                                            <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_087_rawlib.bam.bai?molecularSequenceNumber={{sid}}"
-                                               class="btn btn-xs btn-white file-button-xs">DNA BAI</a>
-                                            <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/SampleControl_MoCha_1_v1_all-matched.vcf?molecularSequenceNumber={{sampleId}}"
-                                               class="btn btn-xs btn-white file-button-xs">VCF</a>
-
-                                            <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_088_rawlib.bam.bai?molecularSequenceNumber={{sid}}"
-                                               class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
-                                            <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_088_rawlib.bam?molecularSequenceNumber={{sid}}"
-                                               class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
-                                            <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
-                                        </dd>
-
-                                        <dt>Quality Control Report</dt>
-                                        <dd>
-                                            <a ui-sref="ntc_quality_control({ sampleId:sid })" class="btn btn-xs btn-success file-button-xl">
-                                                <i class="fa fa-bar-chart"></i>&nbsp;&nbsp;
-                                                <span class="bold">Quality Control Report</span>
-                                            </a>
-                                        </dd>
-                                    </dl>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
+                <!--CHARTS-->
+
+
+
 
                 <div class="col-lg-14">
                     <div class="ibox float-e-margins">

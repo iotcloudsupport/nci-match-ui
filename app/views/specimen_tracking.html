@@ -22,19 +22,12 @@
                     </div>
                     <div class="ibox-content">
                         <div class="row">
-                            <div class="col-md-3">
-                                <h1 class="no-margins">{{ sites.mgh.count }}</h1>
-                                <div class="font-bold text-success">{{ sites.mgh.percent | number:0 }}% <small>Massachusetts General Hospital</small></div>
-                            </div>
-                            <div class="col-md-3">
-                                <h1 class="no-margins">{{ sites.yale.count }}</h1>
-                                <div class="font-bold text-success">{{ sites.yale.percent | number:0 }}% <small>Yale</small></div>
-                            </div>
-                            <div class="col-md-3">
+
+                            <div class="col-md-6">
                                 <h1 class="no-margins">{{ sites.mocha.count }}</h1>
                                 <div class="font-bold text-success">{{ sites.mocha.percent | number:0 }}% <small>MoCha</small></div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-6">
                                 <h1 class="no-margins">{{ sites.mda.count }}</h1>
                                 <div class="font-bold text-success">{{ sites.mda.percent | number:0 }}% <small>MD Anderson Cancer Center</small></div>
                             </div>
@@ -53,7 +46,7 @@
                             <tr>
                                 <th>Biopsy Sequence Number</th>
                                 <th>Patient ID</th>
-                                <th>Molecular Sequence Number</th>
+                                <th>Molecular ID</th>
                                 <th>Lab</th>
                                 <th>Tracking Number</th>
                                 <th>Specimen Received Date</th>
@@ -68,7 +61,7 @@
                             <tr ng-repeat="specimenTrackingItem in specimenTrackingList">
                                 <td>{{ specimenTrackingItem.biopsySeqenuceNumber }}</td>
                                 <td>{{ specimenTrackingItem.patientSequenceNumber }}</td>
-                                <td>{{ specimenTrackingItem.molecularSequenceNumber }}</td>
+                                <td>{{ specimenTrackingItem.molecular_id }}</td>
                                 <td>{{ specimenTrackingItem.lab }}</td>
                                 <td>{{ specimenTrackingItem.trackingNumber }}</td>
                                 <td>{{ specimenTrackingItem.specimenReceivedDate | gmt }}</td>

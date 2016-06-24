@@ -80,13 +80,12 @@
                                             <div class="media-body ">
                                                 <small class="pull-right">{{activity.age }} ago</small>
                                                 <strong> {{ activity.displayName }} </strong>  <br>
-                                                <a ui-sref="patient({ patientSequenceNumber: activity.patientId })">
-                                                        <i class="fa fa-user"></i> {{::activity.patientId || '-' }}
-                                                </a><br>
-                                                <a style="font:bold">
-                                                   {{activity.otherIds}}
+                                                <a ng-if="activity.patientId !== ''" ui-sref="patient({ patientSequenceNumber: activity.patientId })">
+                                                        <i class="fa fa-user"></i> {{::activity.patientId}}<br>
                                                 </a>
-
+                                                <a ng-if="activity.treatmentArmId !== ''">{{activity.treatmentArmId}}<br></a>
+                                                <a ng-if="activity.molecularId !== ''">{{activity.molecularId}}<br></a>
+                                                <a ng-if="activity.biopsySequenceNumber !== ''">{{activity.biopsySequenceNumber}}<br></a>
                                                 <small class="text-muted">{{ activity.time | date:'yyyy-MM-dd HH:mm:ss' }} </small>
                                             </div>
                                         </div>
@@ -202,7 +201,7 @@
                                                     <tr ng-repeat="patient in pendingAssignmentReportList">
                                                         <td>
                                                             <a ui-sref="patient({ patientSequenceNumber: patient.patientSequenceNumber })">
-                                                                <i class="fa fa-user"></i> {{::patient.patient_id || '-' }}
+                                                                <i class="fa fa-user"></i> {{::patient.patient_id }}
                                                             </a>
                                                         </td>
                                                         <td><a>{{ patient.molecular_id || '-' }}</a></td>
