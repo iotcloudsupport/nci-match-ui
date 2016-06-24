@@ -53,6 +53,8 @@
         $scope.setupScope = setupScope;
         $scope.setupVariantReport = setupVariantReport;
         $scope.showPrompt = showPrompt;
+        $scope.getFileButtonClass = getFileButtonClass;
+        $scope.getAllFilesButtonClass = getAllFilesButtonClass;
 
         function getCurrentAssignment() {
             return $scope.data &&
@@ -267,6 +269,26 @@
                     $scope.variantReport.status = 'RECTED';
                 }
             });
+        }
+
+        function getFileButtonClass(filePath) {
+            return filePath ? 'btn-success' : 'btn-default btn-outline-default  disabled';
+        }
+
+        function getAllFilesButtonClass(obj) {
+            var defaultValue = 'btn-default btn-default btn-outline-default  disabled';
+            try {
+                if (obj) {
+                    for (var i=0; i < arguments.length; i++) {
+                        if (arguments[i] in obj && obj[arguments[i]]) {
+                            return 'btn-success'
+                        }
+                    }
+                }
+                return defaultValue;
+            } catch(error) {
+                return defaultValue;
+            }
         }
     }
 

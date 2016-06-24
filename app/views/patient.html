@@ -245,14 +245,14 @@
 
                                         <dt>Files</dt>
                                         <dd>
-                                            <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
-                                            <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAI</a>
-                                            <a href="#" class="btn btn-xs btn-white file-button-xs">VCF</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentAnalisys.dna_bam_file_path)">DNA BAM</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentAnalisys.dna_bai_file_path)">DNA BAI</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentAnalisys.vcf_path)">VCF</a>
                                         </dd>
                                         <dd>
-                                            <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
-                                            <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
-                                            <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentAnalisys.rna_bam_file_path)">RNA BAM</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentAnalisys.rna_bai_file_path)">RNA BAI</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(currentAnalisys, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
                                         </dd>
                                     </dl>
                                 </div>
@@ -262,7 +262,7 @@
                         <div class="ibox collapsed">
                             <div class="ibox-title ibox-title-no-line">
                                 <div collapse-toggle-left></div>
-                                <h3>Analysis History</h3>
+                                <h3>Specimen History</h3>
                             </div>
                             <div class="ibox-content ibox-content-no-padding ibox-title-no-line">
                                 <table class="table table-hover" role="grid">
@@ -315,16 +315,16 @@
                                                             <div class="col-md-4 text-right">
                                                                 <div class="row">
                                                                     <div class="col-md-12 text-right">
-                                                                        <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
-                                                                        <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAI</a>
-                                                                        <a href="#" class="btn btn-xs btn-white file-button-xs">VCF</a>
+                                                                        <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.dna_bam_file_path)">DNA BAM</a>
+                                                                        <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.dna_bai_file_path)">DNA BAI</a>
+                                                                        <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.vcf_path)">VCF</a>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-md-12 text-right">
-                                                                        <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
-                                                                        <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
-                                                                        <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
+                                                                        <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.rna_bam_file_path)">RNA BAM</a>
+                                                                        <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.rna_bai_file_path)">RNA BAI</a>
+                                                                        <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(analisys, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -395,14 +395,14 @@
 
                                         <dt>Files</dt>
                                         <dd>
-                                            <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
-                                            <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAI</a>
-                                            <a href="#" class="btn btn-xs btn-white file-button-xs">VCF</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(data.variant_report.dna_bam_file_path)">DNA BAM</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(data.variant_report.dna_bai_file_path)">DNA BAI</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(data.variant_report.vcf_path)">VCF</a>
                                         </dd>
                                         <dd>
-                                            <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
-                                            <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
-                                            <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(data.variant_report.rna_bam_file_path)">RNA BAM</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(data.variant_report.rna_bai_file_path)">RNA BAI</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(data.variant_report, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
                                         </dd>
 
                                         <dt>File Received Date</dt>
@@ -473,6 +473,11 @@
                                     <th>Read Depth</th>
                                     <th>Transcript</th>
                                     <th>Protein</th>
+                                    <th>CDS Ref</th>
+                                    <th>CDS Alt</th>
+                                    <th>OCP Ref</th>
+                                    <th>OCP Alt</th>
+                                    <th>Stand</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -500,6 +505,11 @@
                                     <td>{{::variant.readDepth}}</td>
                                     <td>{{::variant.transcript}}</td>
                                     <td>{{::variant.protein}}</td>
+                                    <td>{{::variant.cds_ref}}</td>
+                                    <td>{{::variant.cds_alt}}</td>
+                                    <td>{{::variant.ocp_ref}}</td>
+                                    <td>{{::variant.ocp_alt}}</td>
+                                    <td>{{::variant.stand}}</td>
                                 </tr>
 
                                 <tr ng-if="!data.variant_report.variants.single_nucleitide_variants || !data.variant_report.variants.single_nucleitide_variants.length">
@@ -533,6 +543,11 @@
                                     <th>Read Depth</th>
                                     <th>Transcript</th>
                                     <th>Protein</th>
+                                    <th>CDS Ref</th>
+                                    <th>CDS Alt</th>
+                                    <th>OCP Ref</th>
+                                    <th>OCP Alt</th>
+                                    <th>Stand</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -560,6 +575,11 @@
                                     <td>{{::variant.readDepth}}</td>
                                     <td>{{::variant.transcript}}</td>
                                     <td>{{::variant.protein}}</td>
+                                    <td>{{::variant.cds_ref}}</td>
+                                    <td>{{::variant.cds_alt}}</td>
+                                    <td>{{::variant.ocp_ref}}</td>
+                                    <td>{{::variant.ocp_alt}}</td>
+                                    <td>{{::variant.stand}}</td>
                                 </tr>
 
                                 <tr ng-if="!data.variant_report.variants.indels || !data.variant_report.variants.indels.length">
@@ -715,14 +735,14 @@
 
                                         <dt>Files</dt>
                                         <dd>
-                                            <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
-                                            <a href="#" class="btn btn-xs btn-white file-button-xs">DNA BAI</a>
-                                            <a href="#" class="btn btn-xs btn-white file-button-xs">VCF</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(data.variant_report.dna_bam_file_path)">DNA BAM</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(data.variant_report.dna_bai_file_path)">DNA BAI</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(data.variant_report.vcf_path)">VCF</a>
                                         </dd>
                                         <dd>
-                                            <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
-                                            <a href="#" class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
-                                            <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(data.variant_report.rna_bam_file_path)">RNA BAM</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(data.variant_report.rna_bai_file_path)">RNA BAI</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(data.variant_report, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
                                         </dd>
 
                                         <dt>File Received Date</dt>
@@ -793,6 +813,11 @@
                                     <th>Read Depth</th>
                                     <th>Transcript</th>
                                     <th>Protein</th>
+                                    <th>CDS Ref</th>
+                                    <th>CDS Alt</th>
+                                    <th>OCP Ref</th>
+                                    <th>OCP Alt</th>
+                                    <th>Stand</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -820,6 +845,11 @@
                                     <td>{{::variant.readDepth}}</td>
                                     <td>{{::variant.transcript}}</td>
                                     <td>{{::variant.protein}}</td>
+                                    <td>{{::variant.cds_ref}}</td>
+                                    <td>{{::variant.cds_alt}}</td>
+                                    <td>{{::variant.ocp_ref}}</td>
+                                    <td>{{::variant.ocp_alt}}</td>
+                                    <td>{{::variant.stand}}</td>
                                 </tr>
 
                                 <tr ng-if="!data.variant_report.variants.single_nucleitide_variants || !data.variant_report.variants.single_nucleitide_variants.length">
@@ -853,6 +883,11 @@
                                     <th>Read Depth</th>
                                     <th>Transcript</th>
                                     <th>Protein</th>
+                                    <th>CDS Ref</th>
+                                    <th>CDS Alt</th>
+                                    <th>OCP Ref</th>
+                                    <th>OCP Alt</th>
+                                    <th>Stand</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -880,6 +915,11 @@
                                     <td>{{::variant.readDepth}}</td>
                                     <td>{{::variant.transcript}}</td>
                                     <td>{{::variant.protein}}</td>
+                                    <td>{{::variant.cds_ref}}</td>
+                                    <td>{{::variant.cds_alt}}</td>
+                                    <td>{{::variant.ocp_ref}}</td>
+                                    <td>{{::variant.ocp_alt}}</td>
+                                    <td>{{::variant.stand}}</td>
                                 </tr>
 
                                 <tr ng-if="!data.variant_report.variants.indels || !data.variant_report.variants.indels.length">
