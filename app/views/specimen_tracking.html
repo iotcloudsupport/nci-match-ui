@@ -46,7 +46,7 @@
                             <tr>
                                 <th>Biopsy Sequence Number</th>
                                 <th>Patient ID</th>
-                                <th>Molecular Sequence Number</th>
+                                <th>Molecular ID</th>
                                 <th>Lab</th>
                                 <th>Tracking Number</th>
                                 <th>Specimen Received Date</th>
@@ -61,7 +61,7 @@
                             <tr ng-repeat="specimenTrackingItem in specimenTrackingList">
                                 <td>{{ specimenTrackingItem.biopsySeqenuceNumber }}</td>
                                 <td>{{ specimenTrackingItem.patientSequenceNumber }}</td>
-                                <td>{{ specimenTrackingItem.molecularSequenceNumber }}</td>
+                                <td>{{ specimenTrackingItem.molecular_id }}</td>
                                 <td>{{ specimenTrackingItem.lab }}</td>
                                 <td>{{ specimenTrackingItem.trackingNumber }}</td>
                                 <td>{{ specimenTrackingItem.specimenReceivedDate | gmt }}</td>
