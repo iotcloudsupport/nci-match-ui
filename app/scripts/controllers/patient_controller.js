@@ -36,6 +36,8 @@
         $scope.currentAnalisys = {};
         $scope.currentTreatmentArm = 'Not Selected';
 
+        $scope.variantReports = [];
+
         $scope.dropzoneConfig = {
             url: '/alt_upload_url',
             parallelUploads: 3,
@@ -56,7 +58,6 @@
         $scope.confirmVariantReport = confirmVariantReport;
         $scope.rejectVariantReport = rejectVariantReport;
         $scope.setupScope = setupScope;
-        $scope.setupVariantReport = setupVariantReport;
         $scope.showPrompt = showPrompt;
         $scope.getFileButtonClass = getFileButtonClass;
         $scope.getAllFilesButtonClass = getAllFilesButtonClass;
@@ -174,8 +175,22 @@
         }
 
         function setupVariantReport() {
-            $scope.variantReportType = 'tumorTissue';
-            $scope.variantReportMode = 'Normal';
+            $scope.variantReports = [];
+
+            for (var i = 0; i < $scope.data.variant_reports.length; i++) {
+                $scope.data.variant_reports[i].variant_report_mode = 'NORMAL';
+                $scope.variantReports['' + $scope.data.variant_reports[i].variant_report_type + $scope.data.variant_reports[i].variant_report_mode] = $scope.data.variant_reports[i];
+
+                //TODO:RZ this is for demo only, remove after QC reports are implemented
+                var qcReport = {};
+                angular.copy($scope.data.variant_reports[i], qcReport);
+                qcReport.variant_report_mode = 'QC';
+
+                $scope.variantReports['' + qcReport.variant_report_type + qcReport.variant_report_mode] = qcReport;
+            }
+
+            $scope.variantReportType = 'TISSUE';
+            $scope.variantReportMode = 'NORMAL';
             setVariantReport();
         }
 
