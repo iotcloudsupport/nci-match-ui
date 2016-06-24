@@ -30,15 +30,11 @@
             <div class="no-horizontal-padding header-box-container">
 
                 <div class="row">
-
-                        <div class="row border-bottom white-bg dashboard-header animated fadeInRight">
-
-                            <div class="wrapper">
-
-                                <div class="col-xs-12">
-                                    <div class="ibox float-e-margins">
-
-                                        <div class="panel-default" >
+                    <div class="row border-bottom white-bg dashboard-header animated fadeInRight">
+                        <div class="wrapper">
+                            <div class="col-xs-12">
+                                <div class="ibox float-e-margins">
+                                    <div class="panel-default" >
 
 
                                             <!--PIE CHART-->
@@ -76,7 +72,7 @@
                                                     </tbody>
                                                 </table>
 
-                                                <dl class="dl-horizontal">
+                                                <dl class="dl-horizontal" style="font-size: 10px">
 
                                                     <dt>Molecular Sequence Number</dt>
                                                     <dd>{{sampleId}}</dd>
@@ -136,14 +132,15 @@
                                                 <!--Cnv Chart-->
                                                 <div ng-init="loadSvgGeneList()" >
                                                     <div class="svg-container" responsive=true   >
-
                                                         <div id="D3BoxPanel">
                                                             <svg id="D3Box" version="1.1" preserveAspectRatio="xMinYMin meet" class="svg-content"></svg>
                                                         </div>
-
                                                     </div>
                                                 </div>
+
                                             </div>
+                                            <!--SCATTER TABLE-->
+
                                         </div>
                                     </div>
                                 </div>
