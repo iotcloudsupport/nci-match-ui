@@ -240,8 +240,8 @@ angular.module('dashboard.matchbox',[])
                 "status": $scope.status[4],
                 "patientId": '1000065',
                 "treatmentArmId": '',
-                "molecularId": '',
-                "biopsySequenceNumber": '',
+                "molecularId": 'MSN-12349',
+                "biopsySequenceNumber": 'A-T-111',
                 "time": 1421171969643,
                 "age": '5m',
                 "displayName": $scope.message[1]
@@ -251,8 +251,8 @@ angular.module('dashboard.matchbox',[])
                 "status": $scope.status[0],
                 "patientId": '1000065',
                 "treatmentArmId": '',
-                "molecularId": '',
-                "biopsySequenceNumber": '',
+                "molecularId": 'MSN-12349',
+                "biopsySequenceNumber": 'A-T-109',
                 "time": 1421169969643,
                 "age": '5m',
                 "displayName": $scope.message[2]
@@ -262,8 +262,8 @@ angular.module('dashboard.matchbox',[])
                 "status": $scope.status[4],
                 "patientId": '1000087',
                 "treatmentArmId": '',
-                "molecularId": '',
-                "biopsySequenceNumber": '',
+                "molecularId": 'MSN-12349',
+                "biopsySequenceNumber": 'A-T-108',
                 "time": 1421165969643,
                 "age": '18m',
                 "displayName": $scope.message[1]
@@ -273,8 +273,8 @@ angular.module('dashboard.matchbox',[])
                 "status": $scope.status[0],
                 "patientId": '1000065',
                 "treatmentArmId": '',
-                "molecularId": '',
-                "biopsySequenceNumber": '',
+                "molecularId": 'MSN-12340',
+                "biopsySequenceNumber": 'A-T-105',
                 "time": 1421162969643,
                 "age": '5h',
                 "displayName": $scope.message[2]
@@ -295,8 +295,8 @@ angular.module('dashboard.matchbox',[])
                 "status": $scope.status[4],
                 "patientId": '1000065',
                 "treatmentArmId": '',
-                "molecularId": '',
-                "biopsySequenceNumber": '',
+                "molecularId": 'MSN-12340',
+                "biopsySequenceNumber": 'A-T-105',
                 "time": 1421160969643,
                 "age": '6d',
                 "displayName": $scope.message[1]
@@ -317,8 +317,8 @@ angular.module('dashboard.matchbox',[])
                 "status": $scope.status[0],
                 "patientId": '1000087',
                 "treatmentArmId": '',
-                "molecularId": '',
-                "biopsySequenceNumber": '',
+                "molecularId": 'MSN-12330',
+                "biopsySequenceNumber": 'A-T-101',
                 "time": 1421162969643,
                 "age": '5h',
                 "displayName": $scope.message[2]
@@ -328,8 +328,8 @@ angular.module('dashboard.matchbox',[])
                 "status": $scope.status[4],
                 "patientId": '1000065',
                 "treatmentArmId": '',
-                "molecularId": '',
-                "biopsySequenceNumber": '',
+                "molecularId": 'MSN-12330',
+                "biopsySequenceNumber": 'A-T-101',
                 "time": 1421160969643,
                 "age": '6d',
                 "displayName": $scope.message[1]
@@ -361,7 +361,10 @@ angular.module('dashboard.matchbox',[])
         function setupActivityList(listSize, entryMax) {
             for (var i = 0; i < entryMax; i++) {
                 $scope.activityList.push($scope.activityListData[listSize + i]);
+                console.log($scope.activityList);
+                
             }
+            console.log($scope.activityList);
         }
 
         /*$scope.loadActivityList = function() {
