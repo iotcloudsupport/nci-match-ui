@@ -19,6 +19,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
         $scope.irList = [];
         $scope.moChaList = [];
+        $scope.mdAccList = [];
         $scope.MDList = [];
         $scope.positiveListMocha = [];
         $scope.positiveListMDCC = [];
@@ -33,6 +34,29 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             $scope.barData = {};
 
 
+            $scope.setSampleType = setSampleType;
+
+
+            function setSampleType(reportType) {
+
+                if(reportType === 'MoCha'){
+                    $scope.branch = 'mocha';
+                }
+                else if(reportType === 'MDAC'){
+                    $scope.branch = 'mdacc';
+                }
+
+                if ($scope.SampleType === reportType) {
+                    return;
+                }
+
+                $scope.SampleType = reportType;
+                // setVariantReport();
+            }
+
+            // $scope.getMDACC = getMDACC;
+            // $scope.getMOCHA = getMOCHA;
+
         this.barOptions = {
             scaleBeginAtZero: true,
             scaleShowGridLines: true,
@@ -44,39 +68,10 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             barDatasetSpacing: 1
         };
 
-
-
-
-
-
         $scope.changedValue = function(site) {
-            // alert(JSON.stringify(site.siteName))
             $scope.site = site.siteName;
 
-
-            // alert(JSON.stringify($scope.positiveList))
-            // alert(JSON.stringify($scope.irList))
-            // alert(JSON.stringify($scope.moChaList))
-            // $scope.loadSampleControlsList();
-        }
-
-
-        // $scope.selectItem = function(d) {
-        //     alert("pop")
-        //     // alert(JSON.stringify(site.siteName))
-        //     // $scope.site = site.siteName;
-        //
-        //
-        //     // alert(JSON.stringify($scope.positiveList))
-        //     // alert(JSON.stringify($scope.irList))
-        //     // alert(JSON.stringify($scope.moChaList))
-        //     // $scope.loadSampleControlsList();
-        // }
-
-            // $scope.selectedItem = function() {
-            //     alert("pop")
-            //     // $scope.selected = index;
-            // };
+        };
 
         //Populate Data
         $scope.populateData = function(d) {
@@ -156,8 +151,6 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         };
 
         $scope.showPositiveControlConfirmation = function (id) {
-
-            // alert(JSON.stringify(positiveListMDCC))
 
         prompt({
             "title": "Do you want to continue?",
@@ -323,6 +316,27 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                                     'logFilePath': logfile
                                 });
                             }
+                            else if(value.location === "MDACC") {
+
+                                // alert(value.location)
+
+                                $scope.mdAccList.push({
+                                    'timer': timer,
+                                    'time': time,
+                                    'hostName': value.hostName,
+                                    'ipAddress': value.ipAddress,
+                                    'externalIpAddress': value.externalIpAddress,
+                                    'status': value.status,
+                                    'lastContactDate': value.lastContactDate,
+                                    'dbReport': value.dbReport,
+                                    'dataFile': value.dataFile,
+                                    'logFile': value.logFile,
+                                    'location': value.location,
+                                    'dbReportPath': dbreport,
+                                    'dataFilePath': datafile,
+                                    'logFilePath': logfile
+                                });
+                            }
                         });
                     });
             };
@@ -463,25 +477,41 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                             strokeColor: "rgba(220,220,220,0.8)",
                             highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
                             highlightStroke: "rgba(220,220,220,1)",
+                            segmentShowStroke : false,
+                            animateScale : true,
                             data: prepareData
                         }
                     ]
                 };
 
+                    armNames = [
+                        'EAY131-QQQ'
+                        , 'EAY131-BEEE'
+                        , 'EAY131-HRRR'
+                        , 'EAY131-U'
+                        , 'EAY131-E'
+                        , 'EAY131-D'
+                        , 'EAY131-F'
+                        , 'EAY131-G'
+                        , 'EAY131-T'
+                        , 'EAY131-Q'
+                    ];
+                    armValues = [6, 3, 2, 2, 1, 1, 2, 3, 1, 1];
 
-                armNames = [
-                    'EAY131-QQQ'
-                    , 'EAY131-BEEE'
-                    , 'EAY131-HRRR'
-                    , 'EAY131-U'
-                    , 'EAY131-E'
-                    , 'EAY131-D'
-                    , 'EAY131-F'
-                    , 'EAY131-G'
-                    , 'EAY131-T'
-                    , 'EAY131-Q'
-                ];
-                armValues = [6, 3, 2, 2, 1,1,2,3,1,1];
+                    mdaccNames = [
+                        'EAY131-QQQ'
+                        , 'EAY131-BEEE'
+                        , 'EAY131-HRRR'
+                        , 'EAY131-U'
+                        , 'EAY131-E'
+                        , 'EAY131-D'
+                        , 'EAY131-F'
+                        , 'EAY131-G'
+                        , 'EAY131-T'
+                        , 'EAY131-Q'
+                    ];
+                    mdaccValues = [1, 8, 3, 1, 1, 1, 9, 1, 1, 6];
+
 
                 $scope.barData = {
                     labels: armNames,
@@ -493,6 +523,20 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                             highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
                             highlightStroke: "rgba(220,220,220,1)",
                             data: armValues
+                        }
+                    ]
+                };
+
+                $scope.barDataMDACC = {
+                    labels: mdaccNames,
+                    datasets: [
+                        {
+                            label: "Accrual Dataset",
+                            fillColor: "Indigo",
+                            strokeColor: "rgba(220,220,220,0.8)",
+                            highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
+                            highlightStroke: "rgba(220,220,220,1)",
+                            data: mdaccValues
                         }
                     ]
                 };

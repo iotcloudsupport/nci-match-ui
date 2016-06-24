@@ -28,66 +28,119 @@
 
                             <div class="col-lg-12 pull-left">
 
-                                <!--[{"text":"MSN-000078","value":"Msn1"},{"text":"MSN-000079","value":"Msn2"},{"text":"MSN-000082","value":"Msn3"}]-->
 
-                                <!--SELECT SITE-->
-                                <div class="ibox-title ibox-title-no-line" ng-init="loadSampleControlsList()">
-                                    <h2>
-                                        <div data-ng-model="tokenIpAddress"
-                                             dropdown-select="tokenIpAddress"
-                                             dropdown-model="tokenIpAddress"
-                                             dropdown-item-label="siteName">
-                                        </div>
-
-                                    </h2>
-                                </div>
                                 <!--SELECT SITE-->
 
                                 <div class="ibox float-e-margins">
-                                        <div class="col-xs-12 cols-height" ng-init="loadSampleBreakups();">
+                                        <div class="col-xs-12 cols-height" ng-init="loadSampleBreakups();loadHeartMoChaBeatList()">
+
+
+
+                                            <div class="btn-group btn-group-margin" data-toggle="buttons" >
+                                            <label class="btn btn-outline btn-success" ng-class = "{'active' : (branch=='mocha')}" ng-click="setSampleType('MoCha')"
+                                            title="Switch to Tumor Tussue Report">
+                                            <input type="radio" name="SampleType">MoCha
+                                            </label>
+                                            <label class="btn btn-outline btn-success" ng-class = "{'active' : (branch=='mdacc')}" ng-click="setSampleType('MDAC')"
+                                            title="Switch to Blood Report">
+                                            <input type="radio" name="SampleType">MD Andersson
+                                            </label>
+                                            </div>
+
 
                                             <!--PIE CHART-->
-                                            <div class="col-xs-2 cols-height cols-bottom">
+                                            <div ng-if="branch == 'mocha'" >
+                                                <div class="col-xs-2 cols-height cols-bottom">
+
+                                                        <div class="panel" ng-init="loadPieChart(branch);">
+                                                            <canvas id="amoiCanvas" piechart
+                                                                    ng-attr-data="pieData" responsive=true width="600" height="600"
+                                                                    style="width: 603px; height: 601px; border-bottom: thin dimgrey solid; border-top: thin dimgrey solid;">
+                                                            </canvas>
+                                                        </div>
+
+                                                    <div class="tabs-container">
+                                                        <div >
+
+                                                            <table class="table" role="grid" style="font-size: 10px" width="100%">
+                                                                <thead>
+                                                                <tr style="font-size: smaller">
+                                                                    <th >Positive Control</th>
+                                                                    <th >No Template Control</th>
+                                                                    <th >No Template Control</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <td>88 <div class="stat-percent font-bold text-success"> 98% <i class="fa fa-bolt"></i></div></td>
+                                                                <td>42 <div class="stat-percent font-bold text-info"> 20% <i class="fa fa-level-up"></i></div></td>
+                                                                <td>12 <div class="stat-percent font-bold text-info"> 20% <i class="fa fa-level-up"></i></div></td>
+                                                                </tbody>
+                                                            </table>
+
+                                                        </div>
+                                                    </div>
+                                                 </div>
+                                                <!--PIE CHART-->
+
+                                                <div class="col-sm-7">
+                                                    <div class="statistic-box">
+                                                        <div class="text-center">
+                                                            <h4>Sample Control Breakup </h4>
+                                                        </div>
+
+                                                        <canvas id="irSampleCanvas" barchart options="chart.barOptions" ng-attr-data="barData"
+                                                                responsive=true width="500" height="200"  style="width: 503px; height: 201px;"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--HISTOGRAM CHART-->
+
+
+                                            <!--PIE CHART-->
+                                            <div ng-if="branch == 'mdacc'">
+                                                <div class="col-xs-2 cols-height cols-bottom">
 
                                                     <div class="panel" ng-init="loadPieChart(branch);">
                                                         <canvas id="amoiCanvas" piechart
                                                                 ng-attr-data="pieData" responsive=true width="600" height="600"
-                                                                style="width: 603px; height: 601px; border-bottom: thin dimgrey solid; border-top: thin dimgrey solid;"></canvas>
+                                                                style="width: 603px; height: 601px; border-bottom: thin dimgrey solid; border-top: thin dimgrey solid;">
+                                                        </canvas>
                                                     </div>
 
-                                                <div class="tabs-container">
-                                                    <div >
+                                                    <div class="tabs-container">
+                                                        <div >
 
-                                                        <table class="table" role="grid" style="font-size: 10px" width="100%">
-                                                            <thead>
-                                                            <tr style="font-size: smaller">
-                                                                <th >Positive Control</th>
-                                                                <th >No Template Control</th>
-                                                                <th >No Template Control</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <td>88 <div class="stat-percent font-bold text-success"> 98% <i class="fa fa-bolt"></i></div></td>
-                                                            <td>42 <div class="stat-percent font-bold text-info"> 20% <i class="fa fa-level-up"></i></div></td>
-                                                            <td>12 <div class="stat-percent font-bold text-info"> 20% <i class="fa fa-level-up"></i></div></td>
-                                                            </tbody>
-                                                        </table>
+                                                            <table class="table" role="grid" style="font-size: 10px" width="100%">
+                                                                <thead>
+                                                                <tr style="font-size: smaller">
+                                                                    <th >Positive Control</th>
+                                                                    <th >No Template Control</th>
+                                                                    <th >No Template Control</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <td>88 <div class="stat-percent font-bold text-success"> 98% <i class="fa fa-bolt"></i></div></td>
+                                                                <td>42 <div class="stat-percent font-bold text-info"> 20% <i class="fa fa-level-up"></i></div></td>
+                                                                <td>12 <div class="stat-percent font-bold text-info"> 20% <i class="fa fa-level-up"></i></div></td>
+                                                                </tbody>
+                                                            </table>
 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--PIE CHART-->
+
+                                                <div class="col-sm-7">
+                                                    <div class="statistic-box">
+                                                        <div class="text-center">
+                                                            <h4>Sample Control Breakup </h4>
+                                                        </div>
+
+                                                        <canvas id="irSampleCanvas" barchart options="chart.barOptions" ng-attr-data="barDataMDACC"
+                                                                responsive=true width="500" height="200"  style="width: 503px; height: 201px;"></canvas>
                                                     </div>
                                                 </div>
                                              </div>
-                                            <!--PIE CHART-->
-
-                                            <div class="col-sm-7" >
-                                                <div class="statistic-box">
-                                                    <div class="text-center">
-                                                        <h4>Sample Control Breakup </h4>
-                                                    </div>
-
-                                                    <canvas id="irSampleCanvas" barchart options="chart.barOptions" ng-attr-data="barData"
-                                                            responsive=true width="500" height="200"  style="width: 503px; height: 201px;"></canvas>
-                                                </div>
-                                            </div>
                                             <!--HISTOGRAM CHART-->
 
 
@@ -98,9 +151,9 @@
                                                     <i class="fa fa-clock-o fa-2x" style=";color:green;font-size: small"> Heartbeat</i>
                                                     <span class="label label-warning pull-right">{{branch}}</span>
 
-                                                    <div ng-init="loadHeartMoChaBeatList()" >
+                                                    <div >
 
-                                                        <table class="table table-hover" role="grid" width="100%">
+                                                        <table class="table table-hover" role="grid" width="100%" ng-if="branch == 'mocha'">
                                                             <thead>
                                                             <tr style="font-size: smaller">
                                                                 <th >IP Address</th>
@@ -112,6 +165,21 @@
                                                             <td>42 <div class="stat-percent font-bold text-info"> {{ ir.ipAddress }} <i class="fa fa-level-up"></i></div></td>
                                                             </tbody>
                                                         </table>
+
+
+                                                        <table class="table table-hover" role="grid" width="100%" ng-if="branch == 'mdacc'">
+                                                            <thead>
+                                                            <tr style="font-size: smaller">
+                                                                <th >IP Address</th>
+                                                                <th >Internal IP Address</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody ng-repeat="ir in mdAccList">
+                                                            <td>88 <div class="stat-percent font-bold text-success"> {{ ir.externalIpAddress }} <i class="fa fa-bolt"></i></div></td>
+                                                            <td>42 <div class="stat-percent font-bold text-info"> {{ ir.ipAddress }} <i class="fa fa-level-up"></i></div></td>
+                                                            </tbody>
+                                                        </table>
+
                                                     </div>
                                                 </div>
 
@@ -172,7 +240,9 @@
 
         </div>
 
-    <div class="animated fadeInRight">
+
+
+    <div class="animated fadeInRight" ng-init="loadSampleControlsList()">
         <div class="row">
             <div class="col-lg-12">
                 <div class="wrapper wrapper-content">
@@ -284,7 +354,7 @@
                                 <div class="row equal-height-panels">
                                     <div class="col-lg-12">
                                         <div class="col-lg-6">
-                                            <a ng-click="showPositiveControlConfirmation('MoCha')" class="btn btn-xs btn-primary file-button-xl pull-right">
+                                            <a ng-click="showPositiveControlConfirmation('MDACC')" class="btn btn-xs btn-primary file-button-xl pull-right">
                                             <!--<i class="fa fa-bar-chart"></i>&nbsp;&nbsp;-->
                                             <span class="bold">Generate MSN</span>
                                             </a>
@@ -329,7 +399,7 @@
 
                                         <!--[{"sampleSite":"MDACC","sampleId":"MDACC_1","sampleMsn":"SampleControl_MDACC_1","dateCreated":1465391653151,"dateReceived":1465391697916,"status":"PASSED"}]-->
                                         <div class="col-lg-6">
-                                            <a ng-click="showNoTemplateControlConfirmation('MoCha')" class="btn btn-xs btn-primary file-button-xl pull-right">
+                                            <a ng-click="showNoTemplateControlConfirmation('MDACC')" class="btn btn-xs btn-primary file-button-xl pull-right">
                                             <!--<i class="fa fa-bar-chart"></i>&nbsp;&nbsp;-->
                                             <span class="bold">Generate MSN</span>
                                             </a>
