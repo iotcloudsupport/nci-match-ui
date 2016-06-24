@@ -11,9 +11,14 @@
         prompt,
         $uibModal, 
         $state) {
+        
+        var vm = this;
 
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(100);
+
+        vm.enabledFileButtonClass = 'btn-success';
+        vm.disabledFileButtonClass = 'btn-default btn-outline-default disabled';
 
         $scope.patient_id = '';
         $scope.warningResult = false;
@@ -29,6 +34,7 @@
 
         $scope.currentSpecimen = {};
         $scope.currentAnalisys = {};
+        $scope.currentTreatmentArm = 'Not Selected';
 
         $scope.dropzoneConfig = {
             url: '/alt_upload_url',
@@ -36,7 +42,6 @@
             maxFileSize: 30
         };
 
-        $scope.getCurrentAssignment = getCurrentAssignment;
         $scope.setVariantReportType = setVariantReportType;
         $scope.setVariantReportMode = setVariantReportMode;
         $scope.getVariantReportTypeClass = getVariantReportTypeClass;
@@ -55,14 +60,6 @@
         $scope.showPrompt = showPrompt;
         $scope.getFileButtonClass = getFileButtonClass;
         $scope.getAllFilesButtonClass = getAllFilesButtonClass;
-
-        function getCurrentAssignment() {
-            return $scope.data &&
-                $scope.data.current_assignment &&
-                $scope.data.current_assignment.treatment_arms &&
-                $scope.data.current_assignment.treatment_arms.selected &&
-                $scope.data.current_assignment.treatment_arms.selected.length ? $scope.data.current_assignment.treatment_arms.selected[0].treatment_arm : "Not Selected";
-        }
 
         function setVariantReportType(reportType) {
             if ($scope.variantReportType === reportType) {
@@ -92,10 +89,14 @@
 
         function setVariantReport() {
             var selected = $scope.variantReportType + '' + $scope.variantReportMode;
-            if ($scope.variantReports && selected in $scope.variantReports)
+            if ($scope.variantReports && selected in $scope.variantReports) {
                 $scope.variantReport = $scope.variantReports[$scope.variantReportType + '' + $scope.variantReportMode];
-            else
+            } else {
                 $scope.variantReport = {};
+            }
+            
+            $log.debug('$scope.variantReport');
+            $log.debug($scope.variantReport);
         }
 
         function loadPatientData() {
@@ -136,6 +137,7 @@
 
             setupSurgicalEventSelectorList();
             setupVariantReport();
+            setupCurrentTreatmentArm();
         }
 
         function setupSurgicalEventSelectorList() {
@@ -175,6 +177,14 @@
             $scope.variantReportType = 'tumorTissue';
             $scope.variantReportMode = 'Normal';
             setVariantReport();
+        }
+
+        function setupCurrentTreatmentArm() {
+            $scope.currentTreatmentArm = $scope.data &&
+                $scope.data.current_assignment &&
+                $scope.data.current_assignment.treatment_arms &&
+                $scope.data.current_assignment.treatment_arms.selected &&
+                $scope.data.current_assignment.treatment_arms.selected.length ? $scope.data.current_assignment.treatment_arms.selected[0].treatment_arm : "Not Selected";
         }
 
         function dzAddedFile(file) {
@@ -272,22 +282,23 @@
         }
 
         function getFileButtonClass(filePath) {
-            return filePath ? 'btn-success' : 'btn-default btn-outline-default  disabled';
+            return filePath ? vm.enabledFileButtonClass : vm.disabledFileButtonClass;
         }
 
         function getAllFilesButtonClass(obj) {
-            var defaultValue = 'btn-default btn-default btn-outline-default  disabled';
             try {
                 if (obj) {
                     for (var i=0; i < arguments.length; i++) {
                         if (arguments[i] in obj && obj[arguments[i]]) {
-                            return 'btn-success'
+                            return vm.enabledFileButtonClass;
                         }
                     }
+                } else {
+                    $log.debug('getAllFilesButtonClass no obj');
                 }
-                return defaultValue;
+                return vm.disabledFileButtonClass;
             } catch(error) {
-                return defaultValue;
+                return vm.disabledFileButtonClass;
             }
         }
     }
