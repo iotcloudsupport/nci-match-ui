@@ -68,10 +68,6 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             barDatasetSpacing: 1
         };
 
-        $scope.changedValue = function(site) {
-            $scope.site = site.siteName;
-
-        };
 
         //Populate Data
         $scope.populateData = function(d) {
