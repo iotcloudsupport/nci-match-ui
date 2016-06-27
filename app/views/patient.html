@@ -120,8 +120,10 @@
                         <div class="row content-select-list">
                             <div class="col-md-12">
                                 <h4>
-                                    <div dropdown-select="surgicalEventOptions" dropdown-model="surgicalEventOption" dropdown-item-label="text">
-                                    </div>
+                                    <div dropdown-select="surgicalEventOptions" 
+                                        dropdown-model="surgicalEventOption" 
+                                        dropdown-item-label="text" 
+                                        dropdown-onchange="onSurgicalEventSelected(selected)" ></div>
                                 </h4>
                             </div>
                         </div>
@@ -376,7 +378,10 @@
                         <div class="row content-select-list">
                             <div class="col-md-12">
                                 <h4>
-                                <div dropdown-select="variantReportOptions " dropdown-model="variantReportOption" dropdown-item-label="text"></div>
+                                <div dropdown-select="variantReportOptions " 
+                                    dropdown-model="variantReportOption" 
+                                    dropdown-item-label="text"
+                                    dropdown-onchange="onVariantReportSelected(selected)"></div>
                                 </h4>
                             </div>
                         </div>
@@ -716,7 +721,10 @@
                         <div class="row content-select-list">
                             <div class="col-md-12">
                                 <h4>
-                                    <div dropdown-select="bloodVariantReportOptions " dropdown-model="bloodVariantReportOption" dropdown-item-label="text"></div>
+                                    <div dropdown-select="bloodVariantReportOptions " 
+                                        dropdown-model="bloodVariantReportOption" 
+                                        dropdown-item-label="text"
+                                        dropdown-onchange="onVariantReportSelected(selected)"></div>
                                 </h4>
                             </div>
                         </div>

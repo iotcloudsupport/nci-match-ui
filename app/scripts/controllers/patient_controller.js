@@ -70,6 +70,9 @@
         $scope.getAllFilesButtonClass = getAllFilesButtonClass;
         $scope.loadVariantReportChart = loadVariantReportChart;
         $scope.loadBloodVariantReportChart = loadBloodVariantReportChart;
+        $scope.onSurgicalEventSelected = onSurgicalEventSelected;
+        $scope.onBloodVariantReportSelected = onBloodVariantReportSelected;
+        $scope.onVariantReportSelected = onVariantReportSelected;
 
         function setVariantReportType(reportType) {
             if ($scope.variantReportType === reportType) {
@@ -258,8 +261,7 @@
         function findSurgicalEventOption(surgical_event_id, analysis_id) {
             for (var i = 0; i < $scope.surgicalEventOptions.length; i++) {
                 var surgicalEvent = $scope.surgicalEventOptions[i];
-                if (surgicalEvent.value.surgical_event_id === surgical_event_id && surgicalEvent.value.analysis_id === analysis_id)
-                {
+                if (surgicalEvent.value.surgical_event_id === surgical_event_id && surgicalEvent.value.analysis_id === analysis_id) {
                     return surgicalEvent;
                 }
             }
@@ -395,6 +397,18 @@
 
         function loadBloodVariantReportChart() {
             $window.d3BoxVersion5Mock();
+        }
+
+        function onSurgicalEventSelected(selected) {
+            $log.debug(selected);
+        }
+
+        function onVariantReportSelected(selected) {
+            $log.debug(selected);
+        }
+
+        function onBloodVariantReportSelected(selected) {
+            $log.debug(selected);
         }
     }
 
