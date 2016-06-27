@@ -447,7 +447,15 @@
                             </div>
                         </div>
 
-                        <img src="/img/variant_report.png" style="width:1200px" />
+                        <div ng-init="loadVariantReportChart()" >
+                            <div class="svg-container" responsive="true">
+                                <div id="D3BoxPanel">
+                                    <svg id="D3Box" version="1.1" preserveaspectratio="xMinYMin meet" class="svg-content"></svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--<img src="/img/variant_report.png" style="width:1200px" />-->
 
                         <!--Single Nucleitide Variant(s)-->
                         <div class="ibox-title ibox-title-no-line">

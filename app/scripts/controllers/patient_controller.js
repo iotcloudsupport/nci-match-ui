@@ -10,7 +10,8 @@
         $log,
         prompt,
         $uibModal,
-        $state) {
+        $state,
+        $window) {
 
         var vm = this;
 
@@ -67,6 +68,8 @@
         $scope.showPrompt = showPrompt;
         $scope.getFileButtonClass = getFileButtonClass;
         $scope.getAllFilesButtonClass = getAllFilesButtonClass;
+        $scope.loadVariantReportChart = loadVariantReportChart;
+        $scope.loadBloodVariantReportChart = loadBloodVariantReportChart;
 
         function setVariantReportType(reportType) {
             if ($scope.variantReportType === reportType) {
@@ -384,6 +387,14 @@
             } catch (error) {
                 return vm.disabledFileButtonClass;
             }
+        }
+
+        function loadVariantReportChart() {
+            $window.d3BoxVersion5Mock();
+        }
+
+        function loadBloodVariantReportChart() {
+            $window.d3BoxVersion5Mock();
         }
     }
 
