@@ -10,7 +10,7 @@ var mouseOver = function(d){
 
 function d3BoxVersion5Mock() {
 
-    var url ="scripts/cnvChart.json";
+    var url ="data/cnvChart.json";
 
     $.ajax({
 
