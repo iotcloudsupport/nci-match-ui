@@ -9,12 +9,12 @@
         <p>Variant Report Status: <span ng-style="{'color':'{{ timelineEvent.status | analysisStatus }}'}">{{::timelineEvent.event_data.status}}</span></p>
         <body>
             <p>
-                Surgical Event Id: <span class="timeline-value"><a>{{::timelineEvent.event_data.surgical_event_id}}</a></span>
+                Surgical Event ID: <span class="timeline-value"><a>{{::timelineEvent.event_data.surgical_event_id}}</a></span>
                 Collected Date: <span class="timeline-value">{{::timelineEvent.event_data.collected_datetime | utc}}</span>
                 Received Date: <span class="timeline-value">{{::timelineEvent.event_data.received_datetime | utc}}</span>
-                Molecular Id: <span class="timeline-value"><a>{{::timelineEvent.event_data.molecular_id}}</a></span>
-                Molecular DNA Id: <span class="timeline-value"><a>{{::timelineEvent.event_data.molecular_dna_id}}</a></span>
-                Molecular CDNA Id: <span class="timeline-value"><a>{{::timelineEvent.event_data.molecular_cdna_id}}</a></span>
+                Molecular ID: <span class="timeline-value"><a>{{::timelineEvent.event_data.molecular_id}}</a></span>
+                Molecular DNA ID: <span class="timeline-value"><a>{{::timelineEvent.event_data.molecular_dna_id}}</a></span>
+                Molecular CDNA ID: <span class="timeline-value"><a>{{::timelineEvent.event_data.molecular_cdna_id}}</a></span>
                 Carrier: <span class="timeline-value">{{::timelineEvent.event_data.carrier}}</span>
                 Tracking Number: <span class="timeline-value"><a>{{::timelineEvent.event_data.tracking_id}}</a></span>
             </p>
