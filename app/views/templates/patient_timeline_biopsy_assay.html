@@ -8,7 +8,7 @@
         <p class="m-b-xs"><strong>Event: {{::timelineEvent.event_message}} for {{::timelineEvent.event_data.biomarker}}</strong></p>
         <body>
             <p>Status: <span class="timeline-value">{{::timelineEvent.event_data.status}}</span>,
-                 Order Date: <span class="timeline-value">{{::timelineEvent.event_data.ordered_date}}</span></p>
+                 Order Date: <span class="timeline-value">{{::timelineEvent.event_data.ordered_date | utc}}</span></p>
         </body>
     </div>
 </div>

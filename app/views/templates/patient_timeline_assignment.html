@@ -12,7 +12,7 @@
                 Status: <span class="timeline-value">{{::timelineEvent.event_data.status}}</span>,
                 Step: <span class="timeline-value">{{::timelineEvent.event_data.step}}</span>,
                 Stratum ID: <span class="timeline-value">{{::timelineEvent.event_data.stratum_id}}</span>,
-                Assignment Date: <span class="timeline-value">{{::timelineEvent.event_data.assignment_date}}</span>
+                Assignment Date: <span class="timeline-value">{{::timelineEvent.event_data.assignment_date | utc}}</span>
             </p>
         </body>
     </div>
