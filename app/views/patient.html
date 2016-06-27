@@ -30,7 +30,7 @@
                             <dd>{{::data.gender}}, {{::data.ethnicity}}</dd>
 
                             <dt>Last Rejoin Scan Date</dt>
-                            <dd class="missing-requirement-or-design">{{ "[ TBD? ]" }}</dd>
+                            <dd>{{ data.last_rejoin_scan_date | utc }}</dd>
 
                             <dt>Status</dt>
                             <dd ng-style="{'color':'{{ data.current_status | status }}'}">{{::data.current_status}}</dd>
