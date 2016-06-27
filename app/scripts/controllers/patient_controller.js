@@ -169,7 +169,7 @@
                                 event_index: i,
                                 shipment_index: j,
                                 analysis_index: k,
-                                surgical_event_id: shipment.surgical_event_id,
+                                surgical_event_id: surgicalEvent.surgical_event_id,
                                 analysis_id: analysis.analysis_id
                             }
                         }
@@ -179,7 +179,6 @@
                         }
 
                         $scope.surgicalEventOptions.push(item);
-                        // $log.debug(item);
                     }
                 }
             }
@@ -254,11 +253,11 @@
         }
 
         function findSurgicalEventOption(surgical_event_id, analysis_id) {
-            for (var i = 0; i < $scope.data.specimen_history.length; i++) {
-                var speciment = $scope.data.specimen_history[i];
-                if (speciment.surgical_event_id === surgical_event_id && speciment.analysis_id === analysis_id)
+            for (var i = 0; i < $scope.surgicalEventOptions.length; i++) {
+                var surgicalEvent = $scope.surgicalEventOptions[i];
+                if (surgicalEvent.value.surgical_event_id === surgical_event_id && surgicalEvent.value.analysis_id === analysis_id)
                 {
-                    return shipment;
+                    return surgicalEvent;
                 }
             }
             return null;

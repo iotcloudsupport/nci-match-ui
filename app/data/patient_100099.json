@@ -16,7 +16,7 @@
         "received_from_cog_date": "-",
         "biopsy_sequence_number": "T-15-000078",
         "molecular_sequence_number": "MSN34534",
-        "analysis_id": "MSN34534_v2_kjdf3-kejrt-3425-mnb34ert34f",
+        "analysis_id": "SAM1232",
         "variant_report_amois": [
             {
                 "title": "[COSM12344]",
@@ -231,7 +231,7 @@
                       "patient_id": "PAT123",
                       "surgical_event_id": "SUREVT0981",
                       "molecular_id": "MOL0981",
-                      "analysis_id": "ANZ98761",
+                      "analysis_id": "SAM1232",
                       "variant_id": "VAR98761",
                       "status": "CONFIRMED",
                       "status_date": "2016-06-09T22:06:33+00:00",
@@ -266,7 +266,7 @@
                       "patient_id": "PAT123",
                       "surgical_event_id": "SUREVT0982",
                       "molecular_id": "MOL0982",
-                      "analysis_id": "ANZ98762",
+                      "analysis_id": "SAM1232",
                       "variant_id": "VAR98762",
                       "status": "CONFIRMED",
                       "status_date": "2016-06-09T22:06:33+00:00",
@@ -307,7 +307,7 @@
           "variant_report_type": "BLOOD",
           "patient_id": "PAT1232",
           "molecular_id": "MOL1232",
-          "analysis_id": "SAM1232",
+          "analysis_id": "SAM1233",
           "status": "PENDING",
           "status_date": "2016-05-09T22:06:33.000+00:00",
           "dna_bam_file_path": "http:\\\\blah.com\\dna_bam.data",
@@ -329,7 +329,7 @@
                       "patient_id": "PAT123",
                       "surgical_event_id": "SUREVT0981",
                       "molecular_id": "MOL0981",
-                      "analysis_id": "ANZ98761",
+                      "analysis_id": "SAM1233",
                       "variant_id": "VAR98761",
                       "status": "CONFIRMED",
                       "status_date": "2016-06-09T22:06:33+00:00",
@@ -364,7 +364,7 @@
                       "patient_id": "PAT123",
                       "surgical_event_id": "SUREVT0982",
                       "molecular_id": "MOL0982",
-                      "analysis_id": "ANZ98762",
+                      "analysis_id": "SAM1233",
                       "variant_id": "VAR98762",
                       "status": "CONFIRMED",
                       "status_date": "2016-06-09T22:06:33+00:00",
@@ -407,7 +407,7 @@
         "received_from_cog_date": "-",
         "biopsy_sequence_number": "T-15-000078",
         "molecular_sequence_number": "MSN34534",
-        "analysis_id": "MSN34534_v2_kjdf3-kejrt-3425-mnb34ert34f",
+        "analysis_id": "SAM1232",
         "variant_report_amois": [
             {
                 "title": "[COSM12344]",
@@ -576,7 +576,7 @@
             {
                 "analyses": [
                     {
-                        "analysis_id": "MSN5678_v1_676...tyyrt4",
+                        "analysis_id": "SAM1232",
                         "status": "Rejected",
                         "file_received_date": "Sep 18, 2015, 1:08 PM GMT",
                         "status_date": "2016-06-09T22:06:33+00:00"
@@ -593,13 +593,13 @@
                 "comments": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
                 "analyses": [
                     {
-                        "analysis_id": "MSN1234_v1_23453...jher4",
+                        "analysis_id": "SAM1232",
                         "status": "Confirmed",
                         "file_received_date": "2016-06-09T22:06:33+00:00",
                         "status_date": "2016-06-09T22:06:33+00:00"
                     },
                     {
-                        "analysis_id": "MSN1234_v2_2rer53...yher4",
+                        "analysis_id": "SAM1232",
                         "status": "Rejected",
                         "file_received_date": "2016-09-09T22:06:33+00:00",
                         "status_date": "2016-06-09T22:06:33+00:00"
@@ -650,7 +650,7 @@
                 {
                     "analyses": [
                         {
-                            "analysis_id": "MSN5678_v1_676...tyyrt4",
+                            "analysis_id": "SAM1232",
                             "status": "Rejected",
                             "file_received_date": "Sep 18, 2015, 1:08 PM GMT",
                             "status_date": "2016-06-09T22:06:33+00:00"
@@ -667,13 +667,13 @@
                     "comments": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
                     "analyses": [
                         {
-                            "analysis_id": "MSN1234_v1_23453...jher4",
+                            "analysis_id": "SAM1232",
                             "status": "Confirmed",
                             "file_received_date": "2016-06-09T22:06:33+00:00",
                             "status_date": "2016-06-09T22:06:33+00:00"
                         },
                         {
-                            "analysis_id": "MSN1234_v2_2rer53...yher4",
+                            "analysis_id": "SAM1232",
                             "status": "Rejected",
                             "file_received_date": "2016-09-09T22:06:33+00:00",
                             "status_date": "2016-06-09T22:06:33+00:00"
@@ -723,7 +723,7 @@
                 {
                     "analyses": [
                         {
-                            "analysis_id": "MSN5678_v1_676...tyyrt4",
+                            "analysis_id": "SAM1232",
                             "status": "Rejected",
                             "file_received_date": "Sep 18, 2015, 1:08 PM GMT",
                             "status_date": "2016-06-09T22:06:33+00:00"
@@ -740,13 +740,13 @@
                     "comments": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
                     "analyses": [
                         {
-                            "analysis_id": "MSN1234_v1_23453...jher4",
+                            "analysis_id": "SAM1232",
                             "status": "Confirmed",
                             "file_received_date": "2016-06-09T22:06:33+00:00",
                             "status_date": "2016-06-09T22:06:33+00:00"
                         },
                         {
-                            "analysis_id": "MSN1234_v2_2rer53...yher4",
+                            "analysis_id": "SAM1232",
                             "status": "Rejected",
                             "file_received_date": "2016-09-09T22:06:33+00:00",
                             "status_date": "2016-06-09T22:06:33+00:00"
