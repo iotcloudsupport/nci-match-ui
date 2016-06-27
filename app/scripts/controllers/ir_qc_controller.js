@@ -75,6 +75,17 @@ angular.module('qcsample.matchbox',[])
                 .getSvgNtc()
                 .then(function (d) {
                     $window.d3BoxVersion5(d.data);
+                    // $window.d3BoxVersion5Mock();
+                });
+        };
+
+        //Svg for ntc  MOCK
+        $scope.loadSvgNtcMockList = function () {
+            svgApi
+                .getSvgNtc()
+                .then(function (d) {
+                    // $window.d3BoxVersion5(d.data);
+                    $window.d3BoxVersion5Mock();
                 });
         };
 
