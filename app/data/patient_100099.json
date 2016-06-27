@@ -539,6 +539,7 @@
     "specimen": {
         "patient_id": "PAT123",
         "collected_date": "2016-06-09T22:06:33+00:00",
+        "received_date": "2016-06-09T22:06:33+00:00",
         "surgical_event_id": "SUREVT0982",
         "failed_date": "2016-06-09T22:06:33+00:00",
         "study_id": "APEC1621",
@@ -546,6 +547,7 @@
         "pathology_status": "Agreed on pathology",
         "pathology_status_date": "2016-06-09T22:06:33+00:00",
         "variant_report_confirmed_date": "2016-06-09T22:06:33+00:00",
+        "comments" : "-",
         "assays": [
             {
                 "gene": "PTEN",
