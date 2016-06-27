@@ -5,7 +5,12 @@
         <small class="text-navy">{{::timelineEvent.fromNow}}</small>
     </div>
     <div class="col-xs-7 col-md-8 content no-top-border">
-        <p class="m-b-xs"><strong>Status: {{::timelineEvent.status}}. Step: {{::timelineEvent.step}}</strong></p>
-        <p>Location <a href target="_blank">{{::timelineEvent.location}}</a></p>
+        <p class="m-b-xs"><strong>{{::timelineEvent.event_message}}.</strong></p>
+        <body>
+            <p>
+                <strong>Step: {{::timelineEvent.event_data.step}}</strong>,
+                Location: <a href target="_blank">{{::timelineEvent.event_data.location}}</a>
+            </p>
+        </body>
     </div>
 </div>

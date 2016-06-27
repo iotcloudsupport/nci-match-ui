@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-xs-5 col-md-4 date" title="Biopsy Variant Report Event">
+        <i class="fa fa-bar-chart fa-2x"></i> {{::timelineEvent.dateTime}}
+        <br/>
+        <small class="text-navy">{{::timelineEvent.fromNow}}</small>
+    </div>
+    <div class="col-xs-7 col-md-8 content no-top-border">
+        <p class="m-b-xs"><strong>{{::timelineEvent.event_message}}.</strong></p>
+        <p>Variant Report Status: <span ng-style="{'color':'{{ timelineEvent.status | analysisStatus }}'}">{{::timelineEvent.event_data.status}}</span></p>
+        <body>
+            <p>
+                Surgical Event Id: <span class="timeline-value"><a>{{::timelineEvent.event_data.surgical_event_id}}</a></span>
+                Collected Date: <span class="timeline-value">{{::timelineEvent.event_data.collected_datetime}}</span>
+                Received Date: <span class="timeline-value">{{::timelineEvent.event_data.received_datetime}}</span>
+            </p>
+        </body>
+    </div>
+</div>

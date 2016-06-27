@@ -5,10 +5,11 @@
         <small class="text-navy">{{::timelineEvent.fromNow}}</small>
     </div>
     <div class="col-xs-7 col-md-8 content no-top-border">
-        <p class="m-b-xs"><strong>Event: {{::timelineEvent.event_message}} for {{::timelineEvent.event_data.biomarker}}</strong></p>
+        <p class="m-b-xs"><strong>{{::timelineEvent.event_message}} for {{::timelineEvent.event_data.biomarker}}.</strong></p>
         <body>
             <p>Status: <span class="timeline-value">{{::timelineEvent.event_data.status}}</span>,
-                 Order Date: <span class="timeline-value">{{::timelineEvent.event_data.ordered_date}}</span></p>
+                 Results:  <span class="timeline-value">{{::timelineEvent.event_data.result}}</span>
+                 Report Date: <span class="timeline-value">{{::timelineEvent.event_data.reported_date}}</span></p>
         </body>
     </div>
 </div>
