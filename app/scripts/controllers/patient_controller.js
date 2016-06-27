@@ -96,8 +96,8 @@
                 $scope.variantReport = {};
             }
             
-            $log.debug('$scope.variantReport');
-            $log.debug($scope.variantReport);
+            // $log.debug('$scope.variantReport');
+            // $log.debug($scope.variantReport);
         }
 
         function loadPatientData() {
@@ -309,7 +309,7 @@
                         }
                     }
                 } else {
-                    $log.debug('getAllFilesButtonClass no obj');
+                    //$log.debug('getAllFilesButtonClass no obj');
                 }
                 return vm.disabledFileButtonClass;
             } catch(error) {

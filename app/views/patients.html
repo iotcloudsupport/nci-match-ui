@@ -55,8 +55,8 @@
                                         {{ ::patient.treatment_arm || '-' }}
                                     </a>
                                 </td>
-                                <td>{{ ::patient.registration_date }}</td>
-                                <td>{{ ::patient.off_trial_date }}</td>
+                                <td>{{ patient.registration_date | utc }}</td>
+                                <td>{{ patient.off_trial_date | utc }}</td>
                             </tr>
                             </tbody>
                         </table>

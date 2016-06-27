@@ -137,13 +137,13 @@
                                         <dd>{{::data.specimen.type}}</dd>
 
                                         <dt>Collection Date</dt>
-                                        <dd>{{::data.specimen.collected_date}}</dd>
+                                        <dd>{{data.specimen.collected_date | utc}}</dd>
 
                                         <dt>Received Date</dt>
                                         <dd class="missing-requirement-or-design">{{"[ TBD? ]"}}</dd>
 
                                         <dt>Failure Date</dt>
-                                        <dd>{{::data.specimen.failed_date}}</dd>
+                                        <dd>{{data.specimen.failed_date | utc}}</dd>
                                     </dl>
                                 </div>
                             </div>
@@ -155,7 +155,7 @@
                                         <dd>{{::data.specimen.pathology_status}}</dd>
 
                                         <dt>Received Date</dt>
-                                        <dd>{{::data.specimen.pathology_status_date}}</dd>
+                                        <dd>{{data.specimen.pathology_status_date | utc}}</dd>
 
                                         <dt>Comment</dt>
                                         <dd class="missing-requirement-or-design">{{"[ TBD? ]"}}</dd>
@@ -180,8 +180,8 @@
                             <tbody>
                                 <tr ng-repeat="assay in data.specimen.assays" style="cursor: auto;" role="row" class="odd">
                                     <td>{{::assay.gene}}</td>
-                                    <td>{{::assay.ordered_date}}</td>
-                                    <td>{{::assay.result_date}}</td>
+                                    <td>{{assay.ordered_date | utc}}</td>
+                                    <td>{{assay.result_date | utc}}</td>
                                     <td>
                                         <span ng-style="{'color':'{{ assay.result | assayStatus }}'}">{{::assay.result}}</span>
                                     </td>
@@ -214,7 +214,7 @@
                                         <dd>{{::currentSpecimen.dna_volume}}</dd>
 
                                         <dt>Reported Date</dt>
-                                        <dd>{{::currentSpecimen.reported_date}}</dd>
+                                        <dd>{{currentSpecimen.reported_date | utc}}</dd>
 
                                         <dt>Comments</dt>
                                         <dd>
@@ -238,10 +238,10 @@
                                         <dd ng-style="{'color':'{{ currentAnalisys.status | analysisStatus }}'}">{{::currentAnalisys.status}}</dd>
 
                                         <dt>File Received Date</dt>
-                                        <dd>{{::currentAnalisys.file_received_date}}</dd>
+                                        <dd>{{currentAnalisys.file_received_date | utc}}</dd>
 
                                         <dt>{{::currentAnalisys.status}} Date</dt>
-                                        <dd>{{::currentAnalisys.status_date}}</dd>
+                                        <dd>{{currentAnalisys.status_date | utc}}</dd>
 
                                         <dt>Files</dt>
                                         <dd>
@@ -280,11 +280,11 @@
                                     <tbody>
                                         <tr ng-repeat-start="shipment in data.specimen.specimen_shipments" style="cursor: auto;" role="row" class="odd">
                                             <td>{{::shipment.msn}}</td>
-                                            <td>{{::shipment.destination_date}}</td>
+                                            <td>{{shipment.destination_date | utc}}</td>
                                             <td>{{::shipment.tracking_number}}</td>
                                             <td>{{::shipment.dna_concordance}}</td>
                                             <td>{{::shipment.dna_volume}}</td>
-                                            <td>{{::shipment.reported_date}}</td>
+                                            <td>{{shipment.reported_date | utc}}</td>
                                             <td>
                                                 <div class="text-truncate-200px">{{::shipment.comments}}</div>
                                             </td>
@@ -306,10 +306,10 @@
                                                             <div class="col-md-4 col-sm-6 text-left">
                                                                 <dl class="dl-horizontal-narrow">
                                                                     <dt>File Received Date</dt>
-                                                                    <dd>{{::analysis.file_received_date}}</dd>
+                                                                    <dd>{{analysis.file_received_date | utc}}</dd>
 
                                                                     <dt>{{::analysis.status}} Date</dt>
-                                                                    <dd>{{::analysis.status_date}}</dd>
+                                                                    <dd>{{analysis.status_date | utc}}</dd>
                                                                 </dl>
                                                             </div>
                                                             <div class="col-md-4 text-right">
@@ -373,11 +373,11 @@
                         </div>
 
                         <div class="ibox-title ibox-title-no-line">
-                            <h2>
+                            <h4>
                                 <span class="drop-down-label">Variant Report</span>
                                 <div dropdown-select="variantReportOptions " dropdown-model="variantReportOption" dropdown-item-label="text">
                                 </div>
-                            </h2>
+                            </h4>
                         </div>
 
                         <div class="row">
@@ -406,16 +406,16 @@
                                         </dd>
 
                                         <dt>File Received Date</dt>
-                                        <dd>{{::data.variant_report.variant_report_received_date}}</dd>
+                                        <dd>{{data.variant_report.variant_report_received_date | utc}}</dd>
 
                                         <dt ng-show="variantReport.confirmedRejectedDate">{{::data.variant_report.confirmedRejectedDateLabel}}</dt>
-                                        <dd ng-show="variantReport.confirmedRejectedDate">{{::data.variant_report.confirmedRejectedDate}}</dd>
+                                        <dd ng-show="variantReport.confirmedRejectedDate">{{data.variant_report.confirmedRejectedDate | utc}}</dd>
 
                                         <dt>Status</dt>
                                         <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{::data.variant_report.status}}</dd>
 
                                         <dt>{{::data.variant_report.status | titlecase}} Date</dt>
-                                        <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{::data.variant_report.status_date}}</dd>
+                                        <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{data.variant_report.status_date  | utc}}</dd>
                                     </dl>
                                 </div>
                             </div>
@@ -705,11 +705,11 @@
                         </div>
 
                         <div class="ibox-title ibox-title-no-line">
-                            <h2>
+                            <h4>
                                 <span class="drop-down-label">Variant Report</span>
                                 <div dropdown-select="variantReportOptions " dropdown-model="variantReportOption" dropdown-item-label="text">
                                 </div>
-                            </h2>
+                            </h4>
                         </div>
 
                         <div class="row">
@@ -738,16 +738,16 @@
                                         </dd>
 
                                         <dt>File Received Date</dt>
-                                        <dd>{{::data.variant_report.variant_report_received_date}}</dd>
+                                        <dd>{{data.variant_report.variant_report_received_date | utc}}</dd>
 
                                         <dt ng-show="variantReport.confirmedRejectedDate">{{::data.variant_report.confirmedRejectedDateLabel}}</dt>
-                                        <dd ng-show="variantReport.confirmedRejectedDate">{{::data.variant_report.confirmedRejectedDate}}</dd>
+                                        <dd ng-show="variantReport.confirmedRejectedDate">{{data.variant_report.confirmedRejectedDate | utc}}</dd>
 
                                         <dt>Status</dt>
                                         <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{::data.variant_report.status}}</dd>
 
                                         <dt>{{::data.variant_report.status | titlecase }} Date</dt>
-                                        <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{::data.variant_report.status_date}}</dd>
+                                        <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{data.variant_report.status_date  | utc}}</dd>
                                     </dl>
                                 </div>
                             </div>
@@ -1047,16 +1047,16 @@
                                         <h4>Assignment</h4>
                                         <dl class="dl-horizontal">
                                             <dt>Generated date</dt>
-                                            <dd>{{::data.assignment_report.generated_date}}</dd>
+                                            <dd>{{data.assignment_report.generated_date | utc}}</dd>
 
                                             <dt>Confirmed date</dt>
-                                            <dd>{{::data.assignment_report.confirmed_date}}</dd>
+                                            <dd>{{data.assignment_report.confirmed_date | utc}}</dd>
 
                                             <dt>Sent to COG date</dt>
-                                            <dd>{{::data.assignment_report.sent_to_cog_date}}</dd>
+                                            <dd>{{data.assignment_report.sent_to_cog_date | utc}}</dd>
 
                                             <dt>Received from COG date</dt>
-                                            <dd>{{::data.assignment_report.received_from_cog_date}}</dd>
+                                            <dd>{{data.assignment_report.received_from_cog_date | utc}}</dd>
                                         </dl>
                                     </div>
                                 </div>
@@ -1188,7 +1188,7 @@
                                 <tbody>
                                     <tr ng-repeat="document in data.documents.list" style="cursor: auto;" role="row" class="odd">
                                         <td><a href>{{::document.name}}</a></td>
-                                        <td>{{::document.uploaded_date}}</td>
+                                        <td>{{document.uploaded_date | utc}}</td>
                                         <td>{{::document.user}}</td>
                                     </tr>
                                 </tbody>
