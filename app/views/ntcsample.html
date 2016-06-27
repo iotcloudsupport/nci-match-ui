@@ -173,11 +173,11 @@
                     <div class="ibox float-e-margins">
                         <div class="ibox-content">
 
-                            <div class="tabs-container" ng-init="loadNtcUnfilteredReportList()">
+                            <div class="tabs-container" ng-init="loadNtcUnfilteredReportList();loadSnvCharts()">
 
                                 <uib-tabset>
 
-                                    <uib-tab heading="Single Nucleotide Variant(s) ">
+                                    <uib-tab heading="Single Nucleotide Variant(s) " ng-click="loadSnvCharts()">
 
                                         <div class="col-lg-16" >
                                             <div class="ibox float-e-margins">
@@ -236,7 +236,7 @@
 
                                     </uib-tab>
 
-                                    <uib-tab heading="Indel(s) " >
+                                    <uib-tab heading="Indel(s) " ng-click="loadIndelCharts()">
 
 
                                         <div class="col-lg-16" >
@@ -292,7 +292,7 @@
 
                                     </uib-tab>
 
-                                    <uib-tab heading="Copy Number Variant(s) " >
+                                    <uib-tab heading="Copy Number Variant(s) " ng-click="loadCnvCharts()">
 
 
                                         <div class="col-lg-16" >

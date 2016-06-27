@@ -20,6 +20,12 @@ angular.module('irntc.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         $scope.armNames = [];
         $scope.armValues = [];
 
+        $scope.indelNames = [];
+        $scope.indelValues = [];
+
+        $scope.cnvNames = [];
+        $scope.cnvValues = [];
+
         //Mocks
         $scope.singleNucleotideVariantsList = [{"type":"snv","metadata":{"id":"38781871-ebc3-4df7-b4d3-c89c124363c2","comment":null},"publicMedIds":null,"geneName":"","chromosome":"chr3","position":"178916946","identifier":"COSM12580","reference":"G","alternative":"C","filter":"PASS","description":null,"protein":"p.Lys111Asn","transcript":"NM_006218.2","hgvs":"c.333G>C","location":"exonic","readDepth":1403,"rare":false,"alleleFrequency":0.138275,"flowAlternativeAlleleObservationCount":"194","flowReferenceAlleleObservations":"1209","referenceAlleleObservations":1405,"alternativeAlleleObservationCount":0,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"PIK3CA","oncominevariantclass":"Hotspot","exon":"2","function":"missense","proteinMatch":null,"confirmed":false,"matchingId":"COSM12580"},{"type":"snv","metadata":{"id":"cb33b736-1101-4c22-8b21-66c4bad7f7ca","comment":null},"publicMedIds":null,"geneName":"","chromosome":"chr13","position":"32968850","identifier":".","reference":"C","alternative":"A","filter":"PASS","description":null,"protein":"p.Ser3094Ter","transcript":"NM_000059.3","hgvs":"c.9281C>A","location":"exonic","readDepth":1432,"rare":false,"alleleFrequency":0.244413,"flowAlternativeAlleleObservationCount":"350","flowReferenceAlleleObservations":"1082","referenceAlleleObservations":1079,"alternativeAlleleObservationCount":350,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"BRCA2","oncominevariantclass":"Deleterious","exon":"25","function":"nonsense","proteinMatch":null,"confirmed":false,"matchingId":"."},{"type":"snv","metadata":{"id":"2dae6bbe-caf5-4d2a-8f81-35ba9f85f0e8","comment":null},"publicMedIds":null,"geneName":"","chromosome":"chr7","position":"140453136","identifier":"COSM476","reference":"A","alternative":"T","filter":"PASS","description":null,"protein":"p.Val600Glu","transcript":"NM_004333.4","hgvs":"c.1799T>A","location":"exonic","readDepth":1866,"rare":false,"alleleFrequency":0.237406,"flowAlternativeAlleleObservationCount":"443","flowReferenceAlleleObservations":"1423","referenceAlleleObservations":1875,"alternativeAlleleObservationCount":0,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"BRAF","oncominevariantclass":"Hotspot","exon":"15","function":"missense","proteinMatch":null,"confirmed":false,"matchingId":"COSM476"}];
         $scope.indelsList = [{"type":"id","metadata":{"id":"f89e170d-f64e-4d9a-be7f-eb38497ed8ec","comment":null},"publicMedIds":null,"geneName":"","chromosome":"chr13","position":"48916816","identifier":".","reference":"ACTT","alternative":"-","filter":"PASS","description":null,"protein":"p.Thr116fs","transcript":"NM_000321.2","hgvs":"c.346_349delACTT","location":"exonic","readDepth":1187,"rare":false,"alleleFrequency":0.221567,"flowAlternativeAlleleObservationCount":"263","flowReferenceAlleleObservations":"924","referenceAlleleObservations":898,"alternativeAlleleObservationCount":261,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"RB1","oncominevariantclass":"Deleterious","exon":"3","function":"frameshiftDeletion","proteinMatch":null,"confirmed":false,"matchingId":"."},{"type":"id","metadata":{"id":"3c4d6ebe-b92f-4359-8f61-1ee7886e3aee","comment":null},"publicMedIds":null,"geneName":"","chromosome":"chr17","position":"7574003","identifier":".","reference":"G","alternative":"-","filter":"PASS","description":null,"protein":"p.Arg342fs","transcript":"NM_000546.5","hgvs":"c.1024_1024delC","location":"exonic","readDepth":1261,"rare":false,"alleleFrequency":0.171293,"flowAlternativeAlleleObservationCount":"216","flowReferenceAlleleObservations":"1045","referenceAlleleObservations":1037,"alternativeAlleleObservationCount":215,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"TP53","oncominevariantclass":"Deleterious","exon":"10","function":"frameshiftDeletion","proteinMatch":null,"confirmed":false,"matchingId":"."},{"type":"id","metadata":{"id":"bc315edc-8267-4ff5-b4b2-5ce79732093e","comment":null},"publicMedIds":null,"geneName":"","chromosome":"chr10","position":"89717716","identifier":".","reference":"-","alternative":"A","filter":"PASS","description":null,"protein":"p.Pro248fs","transcript":"NM_000314.4","hgvs":"c.740_741insA","location":"exonic","readDepth":1239,"rare":false,"alleleFrequency":0.230831,"flowAlternativeAlleleObservationCount":"286","flowReferenceAlleleObservations":"953","referenceAlleleObservations":951,"alternativeAlleleObservationCount":284,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"PTEN","oncominevariantclass":"Deleterious","exon":"7","function":"frameshiftInsertion","proteinMatch":null,"confirmed":false,"matchingId":"."}]
@@ -76,6 +82,53 @@ angular.module('irntc.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 });
         };
 
+        //SNV
+        $scope.loadSnvCharts = function() {
+            $scope.barData = {
+                labels: $scope.armNames,
+                datasets: [
+                    {
+                        label: "Accrual Dataset",
+                        fillColor: "Indigo",
+                        strokeColor: "rgba(220,220,220,0.8)",
+                        highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
+                        highlightStroke: "rgba(220,220,220,1)",
+                        data: $scope.armValues
+                    }
+                ]
+            };
+        }
+        $scope.loadIndelCharts = function() {
+            $scope.barData = {
+                labels: $scope.indelNames,
+                datasets: [
+                    {
+                        label: "Accrual Dataset",
+                        fillColor: "Indigo",
+                        strokeColor: "rgba(220,220,220,0.8)",
+                        highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
+                        highlightStroke: "rgba(220,220,220,1)",
+                        data: $scope.indelValues
+                    }
+                ]
+            };
+        }
+        $scope.loadCnvCharts = function() {
+            $scope.barData = {
+                labels: $scope.cnvNames,
+                datasets: [
+                    {
+                        label: "Accrual Dataset",
+                        fillColor: "Indigo",
+                        strokeColor: "rgba(220,220,220,0.8)",
+                        highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
+                        highlightStroke: "rgba(220,220,220,1)",
+                        data: $scope.cnvValues
+                    }
+                ]
+            };
+        }
+
         var posts = undefined;
         $scope.loadNtcUnfilteredReportList = function () {
             irNtcQualityApi
@@ -83,25 +136,37 @@ angular.module('irntc.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 .then(function (d) {
                     posts = d.data;
 
-                    // alert(JSON.stringify(d.data))
-
-
-                    // $scope.armValues.push(posts.position);
-
-                    // $scope.singleNucleotideVariantsList = posts.singleNucleotideVariants;
-                    // $scope.indelsList = posts.indels;
-                    // $scope.copyNumberVariantsList = posts.copyNumberVariants;
-                    // $scope.geneFusionsList = posts.geneFusions;
-                    // alert(posts.indels[0].position)
-
-                    $scope.armNames.push(posts.singleNucleotideVariants[0].chromosome);
+                    $scope.armNames.push("Chrom");
                     $scope.armValues.push(posts.singleNucleotideVariants[0].position);
-                    $scope.armNames.push(posts.indels[0].chromosome);
+                    $scope.armNames.push("Position");
                     $scope.armValues.push(posts.indels[0].position);
-                    $scope.armNames.push(posts.copyNumberVariants[0].chromosome);
-                    $scope.armValues.push(posts.copyNumberVariants[0].position);
-                    $scope.armNames.push(posts.geneFusions[0].chromosome);
-                    $scope.armValues.push(posts.geneFusions[0].position);
+                    // $scope.armNames.push(posts.copyNumberVariants[0].chromosome);
+                    // $scope.armValues.push(posts.copyNumberVariants[0].position);
+                    // $scope.armNames.push(posts.geneFusions[0].chromosome);
+                    // $scope.armValues.push(posts.geneFusions[0].position);
+
+
+                    $scope.indelNames.push("Read Depth");
+                    $scope.indelNames.push("Aller Freq");
+                    $scope.indelNames.push("Aller Obs");
+                    $scope.indelNames.push("Ref Obs");
+                    $scope.indelNames.push("Ref All Obs");
+                    $scope.indelNames.push("Alt Obs");
+                    $scope.indelValues.push(posts.indels[0].readDepth);
+                    $scope.indelValues.push(posts.indels[0].alleleFrequency);
+                    $scope.indelValues.push(posts.indels[0].flowAlternativeAlleleObservationCount);
+                    $scope.indelValues.push(posts.indels[0].flowReferenceAlleleObservations);
+                    $scope.indelValues.push(posts.indels[0].referenceAlleleObservations);
+                    $scope.indelValues.push(posts.indels[0].alternativeAlleleObservationCount);
+
+
+                    $scope.cnvNames.push("Chrome");
+                    $scope.cnvNames.push("Position");
+                    $scope.cnvValues.push(41);
+                    $scope.cnvValues.push(21);
+
+
+
 
                 });
             };
@@ -155,19 +220,7 @@ angular.module('irntc.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
 
 
-            $scope.barData = {
-                labels: $scope.armNames,
-                datasets: [
-                    {
-                        label: "Accrual Dataset",
-                        fillColor: "Indigo",
-                        strokeColor: "rgba(220,220,220,0.8)",
-                        highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
-                        highlightStroke: "rgba(220,220,220,1)",
-                        data: $scope.armValues
-                    }
-                ]
-            };
+
 
 
             // alert(JSON.stringify($scope.barData))
