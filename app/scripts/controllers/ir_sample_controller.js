@@ -1,4 +1,4 @@
-angular.module('irsample.matchbox',['ui.router'])
+angular.module('irsample.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
     .controller('SampleController', function( $scope, $http, $window, $stateParams, DTOptionsBuilder, irSampleVariantApi, prompt) {
 
         angular.element(document).ready(function () {
