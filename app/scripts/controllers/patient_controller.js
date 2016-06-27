@@ -217,30 +217,51 @@
                 if (variantReport.variant_report_type === 'TISSUE') {
                     var surgicalEventOption = findSurgicalEventOption(variantReport.surgical_event_id, variantReport.analysis_id);
                     if (surgicalEventOption) {
-                        var item = {
-                            text: 'Variant Report Analysis ' + analysis.analysis_id + 'Surgical Event ' + variantReport.surgical_event_id,
+                        var variantReportItem = {
+                            text: 'Variant Report Analysis ID ' + variantReport.analysis_id + ' | Surgical Event ' + variantReport.surgical_event_id,
                             value: {
-                                event_index: i,
-                                shipment_index: j,
-                                analysis_index: k,
                                 surgical_event_id: variantReport.surgical_event_id,
                                 analysis_id: variantReport.analysis_id
                             }
                         }
 
                         if (!$scope.variantReportOption) {
-                            $scope.variantReportOption = item;
+                            $scope.variantReportOption = variantReportItem;
                         }
 
-                        $scope.variantReportOptions.push(item);
+                        $scope.variantReportOptions.push(variantReportItem);
+                    } else {
+                        $log.error('Unable to find Surgical Event by ' + variantReport.surgical_event_id + ' and ' + variantReport.analysis_id);
                     }
                 } else if (variantReport.variant_report_type === 'BLOOD') {
+                    var bloodVariantReportItem = {
+                        text: 'Variant Report Analysis ID ' + variantReport.analysis_id,
+                        value: {
+                            analysis_id: variantReport.analysis_id
+                        }
+                    }
 
+                    if (!$scope.bloodVariantReportOption) {
+                        $scope.bloodVariantReportOption = bloodVariantReportItem;
+                    }
+
+                    $scope.bloodVariantReportOptions.push(bloodVariantReportItem);
                 }
                 else {
                     $log.error('Invalid Variant Report type ' + variantReport.variant_report_type);
                 }
             }
+        }
+
+        function findSurgicalEventOption(surgical_event_id, analysis_id) {
+            for (var i = 0; i < $scope.data.specimen_history.length; i++) {
+                var speciment = $scope.data.specimen_history[i];
+                if (speciment.surgical_event_id === surgical_event_id && speciment.analysis_id === analysis_id)
+                {
+                    return shipment;
+                }
+            }
+            return null;
         }
 
         function setupCurrentTreatmentArm() {
