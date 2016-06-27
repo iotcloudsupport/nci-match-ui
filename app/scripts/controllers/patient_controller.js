@@ -28,7 +28,7 @@
 
         $scope.surgicalEventLabel = 'Latest';
         $scope.surgicalEventSelectorList = [];
-        $scope.surgicalEventSelector = {};
+        $scope.surgicalEventSelector = null;
 
         $scope.files = [];
 
@@ -157,7 +157,7 @@
                         var analysis = shipment.analyses[k];
 
                         var item = {
-                            text: 'Event ' + surgicalEvent.surgical_event_id + ', Shipment ' + (j + 1) + ', Analysis ' + analysis.analysis_id,
+                            text: 'Surgical Event ' + surgicalEvent.surgical_event_id + ' | Shipment ' + (j + 1) + ' | Analysis ' + analysis.analysis_id,
                             value: {
                                 event_index: i,
                                 shipment_index: j,
@@ -165,6 +165,10 @@
                                 surgical_event_id: shipment.surgical_event_id,
                                 analysis_id: analysis.analysis_id
                             }
+                        }
+
+                        if (!$scope.surgicalEventSelector) {
+                            $scope.surgicalEventSelector = item; 
                         }
 
                         $scope.surgicalEventSelectorList.push(item);

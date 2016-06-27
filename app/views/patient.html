@@ -117,12 +117,13 @@
                 <uib-tab heading="Surgical Event">
                     <div class="panel-body">
 
-                        <div class="ibox-title ibox-title-no-line">
-                            <h4>
-                                <span class="drop-down-label">Surgical Event</span>                                
-                                <div dropdown-select="surgicalEventSelectorList " dropdown-model="surgicalEventSelector" dropdown-item-label="text">
-                                </div>
-                            </h4>
+                        <div class="row content-select-list">
+                            <div class="col-md-12">
+                                <h4>
+                                    <div dropdown-select="surgicalEventSelectorList " dropdown-model="surgicalEventSelector" dropdown-item-label="text">
+                                    </div>
+                                </h4>
+                            </div>
                         </div>
 
                         <div class="row">
@@ -198,7 +199,7 @@
                                 <div class="header-info-box biopsy-sample-box">
                                     <h4>Sample</h4>
                                     <dl class="dl-horizontal">
-                                        <dt>Molecular Sequence Number</dt>
+                                        <dt>Molecular ID</dt>
                                         <dd>{{::currentSpecimen.msn}}</dd>
 
                                         <dt>Site</dt>
@@ -218,7 +219,7 @@
 
                                         <dt>Comments</dt>
                                         <dd>
-                                            <div class="text-truncate-200px">{{::currentSpecimen.reported_date}}</div>
+                                            <div class="text-truncate-200px">{{::currentSpecimen.comments}}</div>
                                         </dd>
                                         
                                         <dd>
@@ -268,7 +269,7 @@
                                 <table class="table table-hover" role="grid">
                                     <thead>
                                         <tr>
-                                            <th width="20%">Molecular Sequence Number</th>
+                                            <th width="20%">Molecular ID</th>
                                             <th width="15%">Site</th>
                                             <th width="10%">Tracking Number</th>
                                             <th width="5%">DNA Conc</th>
@@ -343,7 +344,7 @@
                 <uib-tab heading="Variant Report">
                     <div class="panel-body">
 
-                        <div class="row">
+                        <div class="row toolbar-row">
                             <div class="col-md-8 text-left">
                                 <div class="btn-group btn-group-margin" data-toggle="buttons">
                                     <label class="btn btn-outline btn-success" ng-class="getVariantReportTypeClass('TISSUE')" ng-click="setVariantReportType('TISSUE')"
@@ -372,12 +373,12 @@
                             </div>
                         </div>
 
-                        <div class="ibox-title ibox-title-no-line">
-                            <h4>
-                                <span class="drop-down-label">Variant Report</span>
-                                <div dropdown-select="variantReportOptions " dropdown-model="variantReportOption" dropdown-item-label="text">
-                                </div>
-                            </h4>
+                        <div class="row content-select-list">
+                            <div class="col-md-12">
+                                <h4>
+                                <div dropdown-select="variantReportOptions " dropdown-model="variantReportOption" dropdown-item-label="text"></div>
+                                </h4>
+                            </div>
                         </div>
 
                         <div class="row">
@@ -685,7 +686,7 @@
                 <uib-tab heading="Blood Variant Report">
                     <div class="panel-body">
 
-                        <div class="row">
+                        <div class="row toolbar-row">
                             <div class="col-md-8 text-left">
                                 <div class="btn-group btn-group-margin" data-toggle="buttons">
                                     <label class="btn btn-outline btn-success" ng-class="getVariantReportModeClass('NORMAL')" ng-click="setVariantReportMode('NORMAL')"
@@ -704,21 +705,18 @@
                             </div>
                         </div>
 
-                        <div class="ibox-title ibox-title-no-line">
-                            <h4>
-                                <span class="drop-down-label">Variant Report</span>
-                                <div dropdown-select="variantReportOptions " dropdown-model="variantReportOption" dropdown-item-label="text">
-                                </div>
-                            </h4>
+                        <div class="row content-select-list">
+                            <div class="col-md-12">
+                                <h4>
+                                <div dropdown-select="variantReportOptions " dropdown-model="variantReportOption" dropdown-item-label="text"></div>
+                                </h4>
+                            </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="header-info-box  variant-report-header-box">
                                     <dl class="dl-horizontal">
-                                        <dt>Surgical Event ID</dt>
-                                        <dd>{{::data.variant_report.surgical_event_id}}</dd>
-
                                         <dt>Analysis ID</dt>
                                         <dd>{{::data.variant_report.analysis_id}}</dd>
 
@@ -760,19 +758,6 @@
 
                                         <dt>Cellularity</dt>
                                         <dd>{{::data.variant_report.cellularity}}</dd>
-                                    </dl>
-
-                                    <h4 ng-if="variantReportMode!=='Qc'">MOI/aMOI Summary</h4>
-
-                                    <dl class="dl-horizontal dl-horizontal-expanded-label" ng-if="variantReportMode!=='Qc'">
-                                        <dt>Total MOIs</dt>
-                                        <dd>{{::data.variant_report.total_mois}}</dd>
-                                        <dt>Total aMOIs</dt>
-                                        <dd>{{::data.variant_report.total_amois}}</dd>
-                                        <dt>Total Confirmed MOIs</dt>
-                                        <dd>{{::data.variant_report.total_confirmed_mois}}</dd>
-                                        <dt>Total Confirmed aMOIs</dt>
-                                        <dd>{{::data.variant_report.total_confirmed_amois}}</dd>
                                     </dl>
                                 </div>
                             </div>
@@ -1031,7 +1016,7 @@
                                             <dt>Biopsy Sequence Number</dt>
                                             <dd>{{::data.assignment_report.biopsy_sequence_number}}</dd>
 
-                                            <dt>Molecular Sequence Number</dt>
+                                            <dt>Molecular ID</dt>
                                             <dd><a>{{::data.assignment_report.molecular_sequence_number}}</a></dd>
 
                                             <dt>Analysis ID</dt>
