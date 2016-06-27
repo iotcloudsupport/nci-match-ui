@@ -9,9 +9,9 @@
         $stateParams,
         $log,
         prompt,
-        $uibModal, 
+        $uibModal,
         $state) {
-        
+
         var vm = this;
 
         this.dtOptions = DTOptionsBuilder.newOptions()
@@ -27,8 +27,8 @@
         $scope.confirmMessage = 'Please enter a reason:';
 
         $scope.surgicalEventLabel = 'Latest';
-        $scope.surgicalEventSelectorList = [];
-        $scope.surgicalEventSelector = null;
+        $scope.surgicalEventOptions = [];
+        $scope.surgicalEventOption = null;
 
         $scope.files = [];
 
@@ -37,6 +37,12 @@
         $scope.currentTreatmentArm = 'Not Selected';
 
         $scope.variantReports = [];
+
+        $scope.variantReportOptions = [];
+        $scope.variantReportOption = null;
+
+        $scope.bloodVariantReportOptions = [];
+        $scope.bloodVariantReportOption = null;
 
         $scope.dropzoneConfig = {
             url: '/alt_upload_url',
@@ -95,7 +101,7 @@
             } else {
                 $scope.variantReport = {};
             }
-            
+
             // $log.debug('$scope.variantReport');
             // $log.debug($scope.variantReport);
         }
@@ -136,12 +142,13 @@
                 $log.error('The web service didn\'t send Secimen Analyses');
             }
 
-            setupSurgicalEventSelectorList();
-            setupVariantReport();
+            setupSurgicalEventOptions();
+            setupVariantReports();
+            setupVariantReportOptions();
             setupCurrentTreatmentArm();
         }
 
-        function setupSurgicalEventSelectorList() {
+        function setupSurgicalEventOptions() {
             if (!$scope.data.specimen_history) {
                 $log.error('The web service didn\'t send Secimen History');
                 return;
@@ -167,18 +174,18 @@
                             }
                         }
 
-                        if (!$scope.surgicalEventSelector) {
-                            $scope.surgicalEventSelector = item; 
+                        if (!$scope.surgicalEventOption) {
+                            $scope.surgicalEventOption = item;
                         }
 
-                        $scope.surgicalEventSelectorList.push(item);
+                        $scope.surgicalEventOptions.push(item);
                         // $log.debug(item);
                     }
                 }
             }
         }
 
-        function setupVariantReport() {
+        function setupVariantReports() {
             $scope.variantReports = [];
 
             for (var i = 0; i < $scope.data.variant_reports.length; i++) {
@@ -196,6 +203,44 @@
             $scope.variantReportType = 'TISSUE';
             $scope.variantReportMode = 'NORMAL';
             setVariantReport();
+        }
+
+        function setupVariantReportOptions() {
+            if (!$scope.data.variant_reports && !$scope.data.variant_reports.length) {
+                $log.error('The web service didn\'t send Variant Reports');
+                return;
+            }
+
+            for (var i = 0; i < $scope.data.variant_reports.length; i++) {
+                var variantReport = $scope.data.variant_reports[i];
+
+                if (variantReport.variant_report_type === 'TISSUE') {
+                    var surgicalEventOption = findSurgicalEventOption(variantReport.surgical_event_id, variantReport.analysis_id);
+                    if (surgicalEventOption) {
+                        var item = {
+                            text: 'Variant Report Analysis ' + analysis.analysis_id + 'Surgical Event ' + variantReport.surgical_event_id,
+                            value: {
+                                event_index: i,
+                                shipment_index: j,
+                                analysis_index: k,
+                                surgical_event_id: variantReport.surgical_event_id,
+                                analysis_id: variantReport.analysis_id
+                            }
+                        }
+
+                        if (!$scope.variantReportOption) {
+                            $scope.variantReportOption = item;
+                        }
+
+                        $scope.variantReportOptions.push(item);
+                    }
+                } else if (variantReport.variant_report_type === 'BLOOD') {
+
+                }
+                else {
+                    $log.error('Invalid Variant Report type ' + variantReport.variant_report_type);
+                }
+            }
         }
 
         function setupCurrentTreatmentArm() {
@@ -307,7 +352,7 @@
         function getAllFilesButtonClass(obj) {
             try {
                 if (obj) {
-                    for (var i=0; i < arguments.length; i++) {
+                    for (var i = 0; i < arguments.length; i++) {
                         if (arguments[i] in obj && obj[arguments[i]]) {
                             return vm.enabledFileButtonClass;
                         }
@@ -316,7 +361,7 @@
                     //$log.debug('getAllFilesButtonClass no obj');
                 }
                 return vm.disabledFileButtonClass;
-            } catch(error) {
+            } catch (error) {
                 return vm.disabledFileButtonClass;
             }
         }
