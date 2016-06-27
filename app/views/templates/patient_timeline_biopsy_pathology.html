@@ -5,7 +5,7 @@
         <small class="text-navy">{{::timelineEvent.fromNow}}</small>
     </div>
     <div class="col-xs-7 col-md-8 content no-top-border">
-        <p class="m-b-xs"><strong>Biopsy Pathology Status: <span ng-style="{'color':'{{ timelineEvent.status | analysisStatus }}'}">{{::timelineEvent.status}}</span></strong></p>
-        <p>{{::timelineEvent.comment}}</p>
+        <p class="m-b-xs"><strong>Pathology Status: <span ng-style="{'color':'{{ timelineEvent.event_data.status | analysisStatus }}'}">{{::timelineEvent.event_data.status}}</span></strong></p>
+        <p>Report Date: <span class="timeline-value">{{::timelineEvent.event_data.reported_date | utc}}</span></p>
     </div>
 </div>

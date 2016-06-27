@@ -5,7 +5,12 @@
         <small class="text-navy">{{::timelineEvent.fromNow}}</small>
     </div>
     <div class="col-xs-7 col-md-8 content no-top-border">
-        <p class="m-b-xs"><strong>{{::timelineEvent.status}}</strong></p>
-        <p>{{::timelineEvent.details}}</p>
+        <p class="m-b-xs"><strong>{{::timelineEvent.event_message}}.</strong></p>
+        <body>
+            <p>
+                <span class="timeline-value">{{::timelineEvent.event_data.event_message}}</span>
+                Status: <span class="timeline-value">{{::timelineEvent.event_data.status}}</span>
+            </p>
+        </body>
     </div>
 </div>
