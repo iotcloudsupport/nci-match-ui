@@ -391,37 +391,37 @@
                                 <div class="header-info-box  variant-report-header-box">
                                     <dl class="dl-horizontal">
                                         <dt>Surgical Event ID</dt>
-                                        <dd>{{::data.variant_report.surgical_event_id}}</dd>
+                                        <dd>{{::currentVariantReport.surgical_event_id}}</dd>
 
                                         <dt>Analysis ID</dt>
-                                        <dd>{{::data.variant_report.analysis_id}}</dd>
+                                        <dd>{{::currentVariantReport.analysis_id}}</dd>
 
                                         <dt>Molecular ID</dt>
-                                        <dd>{{::data.variant_report.molecular_id}}</dd>
+                                        <dd>{{::currentVariantReport.molecular_id}}</dd>
 
                                         <dt>Files</dt>
                                         <dd>
-                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(data.variant_report.dna_bam_file_path)">DNA BAM</a>
-                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(data.variant_report.dna_bai_file_path)">DNA BAI</a>
-                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(data.variant_report.vcf_path)">VCF</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.dna_bam_file_path)">DNA BAM</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.dna_bai_file_path)">DNA BAI</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.vcf_path)">VCF</a>
                                         </dd>
                                         <dd>
-                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(data.variant_report.rna_bam_file_path)">RNA BAM</a>
-                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(data.variant_report.rna_bai_file_path)">RNA BAI</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.rna_bam_file_path)">RNA BAM</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.rna_bai_file_path)">RNA BAI</a>
                                             <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(data.variant_report, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
                                         </dd>
 
                                         <dt>File Received Date</dt>
-                                        <dd>{{data.variant_report.variant_report_received_date | utc}}</dd>
+                                        <dd>{{currentVariantReport.variant_report_received_date | utc}}</dd>
 
-                                        <dt ng-show="variantReport.confirmedRejectedDate">{{::data.variant_report.confirmedRejectedDateLabel}}</dt>
-                                        <dd ng-show="variantReport.confirmedRejectedDate">{{data.variant_report.confirmedRejectedDate | utc}}</dd>
+                                        <dt ng-show="variantReport.confirmedRejectedDate">{{::currentVariantReport.confirmedRejectedDateLabel}}</dt>
+                                        <dd ng-show="variantReport.confirmedRejectedDate">{{currentVariantReport.confirmedRejectedDate | utc}}</dd>
 
                                         <dt>Status</dt>
-                                        <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{::data.variant_report.status}}</dd>
+                                        <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{::currentVariantReport.status}}</dd>
 
-                                        <dt>{{::data.variant_report.status | titlecase}} Date</dt>
-                                        <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{data.variant_report.status_date  | utc}}</dd>
+                                        <dt>{{::currentVariantReport.status | titlecase}} Date</dt>
+                                        <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{currentVariantReport.status_date  | utc}}</dd>
                                     </dl>
                                 </div>
                             </div>
@@ -430,23 +430,23 @@
 
                                     <dl class="dl-horizontal dl-horizontal-expanded-label">
                                         <dt>Total Variants</dt>
-                                        <dd>{{::data.variant_report.total_variants}}</dd>
+                                        <dd>{{::currentVariantReport.total_variants}}</dd>
 
                                         <dt>Cellularity</dt>
-                                        <dd>{{::data.variant_report.cellularity}}</dd>
+                                        <dd>{{::currentVariantReport.cellularity}}</dd>
                                     </dl>
 
                                     <h4 ng-if="variantReportMode!=='Qc'">MOI/aMOI Summary</h4>
 
                                     <dl class="dl-horizontal dl-horizontal-expanded-label" ng-if="variantReportMode!=='Qc'">
                                         <dt>Total MOIs</dt>
-                                        <dd>{{::data.variant_report.total_mois}}</dd>
+                                        <dd>{{::currentVariantReport.total_mois}}</dd>
                                         <dt>Total aMOIs</dt>
-                                        <dd>{{::data.variant_report.total_amois}}</dd>
+                                        <dd>{{::currentVariantReport.total_amois}}</dd>
                                         <dt>Total Confirmed MOIs</dt>
-                                        <dd>{{::data.variant_report.total_confirmed_mois}}</dd>
+                                        <dd>{{::currentVariantReport.total_confirmed_mois}}</dd>
                                         <dt>Total Confirmed aMOIs</dt>
-                                        <dd>{{::data.variant_report.total_confirmed_amois}}</dd>
+                                        <dd>{{::currentVariantReport.total_confirmed_amois}}</dd>
                                     </dl>
                                 </div>
                             </div>
@@ -493,7 +493,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="variant in data.variant_report.variants.single_nucleitide_variants" style="cursor: auto;" role="row" class="odd">
+                                <tr ng-repeat="variant in currentVariantReport.variants.single_nucleitide_variants" style="cursor: auto;" role="row" class="odd">
                                     <td ng-if="variantReportMode!=='Qc'">
                                         <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
                                             on-comment-entered="setComment(variant)" prompt-only-if="true">
@@ -522,7 +522,7 @@
                                     <td>{{::variant.protein}}</td>
                                 </tr>
 
-                                <tr ng-if="!data.variant_report.variants.single_nucleitide_variants || !data.variant_report.variants.single_nucleitide_variants.length">
+                                <tr ng-if="!currentVariantReport.variants.single_nucleitide_variants || !currentVariantReport.variants.single_nucleitide_variants.length">
                                     <td colspan="8"><span class="text-muted">No Single Nucleitide Variants</span></td>
                                 </tr>
                             </tbody>
@@ -559,7 +559,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="variant in data.variant_report.variants.indels" style="cursor: auto;" role="row" class="odd">
+                                <tr ng-repeat="variant in currentVariantReport.variants.indels" style="cursor: auto;" role="row" class="odd">
                                     <td ng-if="variantReportMode!=='Qc'">
                                         <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
                                             on-comment-entered="setComment()" prompt-only-if="true">
@@ -588,7 +588,7 @@
                                     <td>{{::variant.protein}}</td>
                                 </tr>
 
-                                <tr ng-if="!data.variant_report.variants.indels || !data.variant_report.variants.indels.length">
+                                <tr ng-if="!currentVariantReport.variants.indels || !currentVariantReport.variants.indels.length">
                                     <td colspan="8"><span class="text-muted">No Indels</span></td>
                                 </tr>
                             </tbody>
@@ -614,7 +614,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="variant in data.variant_report.variants.copy_number_variants" style="cursor: auto;" role="row" class="odd">
+                                <tr ng-repeat="variant in currentVariantReport.variants.copy_number_variants" style="cursor: auto;" role="row" class="odd">
                                     <td ng-if="variantReportMode!=='Qc'">
                                         <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
                                             on-comment-entered="setComment()" prompt-only-if="true">
@@ -632,7 +632,7 @@
                                     <td>{{::variant.ci95percent}}</td>
                                 </tr>
 
-                                <tr ng-if="!data.variant_report.variants.copy_number_variants || !data.variant_report.variants.copy_number_variants.length">
+                                <tr ng-if="!currentVariantReport.variants.copy_number_variants || !currentVariantReport.variants.copy_number_variants.length">
                                     <td colspan="8"><span class="text-muted">No Copy Number Variants</span></td>
                                 </tr>
                             </tbody>
@@ -658,7 +658,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="variant in data.variant_report.variants.gene_fusions" style="cursor: auto;" role="row" class="odd">
+                                <tr ng-repeat="variant in currentVariantReport.variants.gene_fusions" style="cursor: auto;" role="row" class="odd">
                                     <td ng-if="variantReportMode!=='Qc'">
                                         <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
                                             on-comment-entered="setComment()" prompt-only-if="true">
@@ -676,7 +676,7 @@
                                     <td>{{::variant.annotation}}</td>
                                 </tr>
 
-                                <tr ng-if="!data.variant_report.variants.gene_fusions || !data.variant_report.variants.gene_fusions.length">
+                                <tr ng-if="!currentVariantReport.variants.gene_fusions || !currentVariantReport.variants.gene_fusions.length">
                                     <td colspan="8"><span class="text-muted">No Gene Fusions</span></td>
                                 </tr>
                             </tbody>
@@ -734,34 +734,34 @@
                                 <div class="header-info-box  variant-report-header-box">
                                     <dl class="dl-horizontal">
                                         <dt>Analysis ID</dt>
-                                        <dd>{{::data.variant_report.analysis_id}}</dd>
+                                        <dd>{{::currentVariantReport.analysis_id}}</dd>
 
                                         <dt>Molecular ID</dt>
-                                        <dd>{{::data.variant_report.molecular_id}}</dd>
+                                        <dd>{{::currentVariantReport.molecular_id}}</dd>
 
                                         <dt>Files</dt>
                                         <dd>
-                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(data.variant_report.dna_bam_file_path)">DNA BAM</a>
-                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(data.variant_report.dna_bai_file_path)">DNA BAI</a>
-                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(data.variant_report.vcf_path)">VCF</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.dna_bam_file_path)">DNA BAM</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.dna_bai_file_path)">DNA BAI</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.vcf_path)">VCF</a>
                                         </dd>
                                         <dd>
-                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(data.variant_report.rna_bam_file_path)">RNA BAM</a>
-                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(data.variant_report.rna_bai_file_path)">RNA BAI</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.rna_bam_file_path)">RNA BAM</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.rna_bai_file_path)">RNA BAI</a>
                                             <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(data.variant_report, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
                                         </dd>
 
                                         <dt>File Received Date</dt>
-                                        <dd>{{data.variant_report.variant_report_received_date | utc}}</dd>
+                                        <dd>{{currentVariantReport.variant_report_received_date | utc}}</dd>
 
-                                        <dt ng-show="variantReport.confirmedRejectedDate">{{::data.variant_report.confirmedRejectedDateLabel}}</dt>
-                                        <dd ng-show="variantReport.confirmedRejectedDate">{{data.variant_report.confirmedRejectedDate | utc}}</dd>
+                                        <dt ng-show="variantReport.confirmedRejectedDate">{{::currentVariantReport.confirmedRejectedDateLabel}}</dt>
+                                        <dd ng-show="variantReport.confirmedRejectedDate">{{currentVariantReport.confirmedRejectedDate | utc}}</dd>
 
                                         <dt>Status</dt>
-                                        <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{::data.variant_report.status}}</dd>
+                                        <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{::currentVariantReport.status}}</dd>
 
-                                        <dt>{{::data.variant_report.status | titlecase }} Date</dt>
-                                        <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{data.variant_report.status_date  | utc}}</dd>
+                                        <dt>{{::currentVariantReport.status | titlecase }} Date</dt>
+                                        <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{currentVariantReport.status_date  | utc}}</dd>
                                     </dl>
                                 </div>
                             </div>
@@ -770,10 +770,10 @@
 
                                     <dl class="dl-horizontal dl-horizontal-expanded-label">
                                         <dt>Total Variants</dt>
-                                        <dd>{{::data.variant_report.total_variants}}</dd>
+                                        <dd>{{::currentVariantReport.total_variants}}</dd>
 
                                         <dt>Cellularity</dt>
-                                        <dd>{{::data.variant_report.cellularity}}</dd>
+                                        <dd>{{::currentVariantReport.cellularity}}</dd>
                                     </dl>
                                 </div>
                             </div>
@@ -812,7 +812,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="variant in data.variant_report.variants.single_nucleitide_variants" style="cursor: auto;" role="row" class="odd">
+                                <tr ng-repeat="variant in currentVariantReport.variants.single_nucleitide_variants" style="cursor: auto;" role="row" class="odd">
                                     <td ng-if="variantReportMode!=='Qc'">
                                         <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
                                             on-comment-entered="setComment(variant)" prompt-only-if="true">
@@ -841,7 +841,7 @@
                                     <td>{{::variant.protein}}</td>
                                 </tr>
 
-                                <tr ng-if="!data.variant_report.variants.single_nucleitide_variants || !data.variant_report.variants.single_nucleitide_variants.length">
+                                <tr ng-if="!currentVariantReport.variants.single_nucleitide_variants || !currentVariantReport.variants.single_nucleitide_variants.length">
                                     <td colspan="8"><span class="text-muted">No Single Nucleitide Variants</span></td>
                                 </tr>
                             </tbody>
@@ -878,7 +878,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="variant in data.variant_report.variants.indels" style="cursor: auto;" role="row" class="odd">
+                                <tr ng-repeat="variant in currentVariantReport.variants.indels" style="cursor: auto;" role="row" class="odd">
                                     <td ng-if="variantReportMode!=='Qc'">
                                         <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
                                             on-comment-entered="setComment()" prompt-only-if="true">
@@ -907,7 +907,7 @@
                                     <td>{{::variant.protein}}</td>
                                 </tr>
 
-                                <tr ng-if="!data.variant_report.variants.indels || !data.variant_report.variants.indels.length">
+                                <tr ng-if="!currentVariantReport.variants.indels || !currentVariantReport.variants.indels.length">
                                     <td colspan="8"><span class="text-muted">No Indels</span></td>
                                 </tr>
                             </tbody>
@@ -933,7 +933,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="variant in data.variant_report.variants.copy_number_variants" style="cursor: auto;" role="row" class="odd">
+                                <tr ng-repeat="variant in currentVariantReport.variants.copy_number_variants" style="cursor: auto;" role="row" class="odd">
                                     <td ng-if="variantReportMode!=='Qc'">
                                         <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
                                             on-comment-entered="setComment()" prompt-only-if="true">
@@ -951,7 +951,7 @@
                                     <td>{{::variant.ci95percent}}</td>
                                 </tr>
 
-                                <tr ng-if="!data.variant_report.variants.copy_number_variants || !data.variant_report.variants.copy_number_variants.length">
+                                <tr ng-if="!currentVariantReport.variants.copy_number_variants || !currentVariantReport.variants.copy_number_variants.length">
                                     <td colspan="8"><span class="text-muted">No Copy Number Variants</span></td>
                                 </tr>
                             </tbody>
@@ -977,7 +977,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="variant in data.variant_report.variants.gene_fusions" style="cursor: auto;" role="row" class="odd">
+                                <tr ng-repeat="variant in currentVariantReport.variants.gene_fusions" style="cursor: auto;" role="row" class="odd">
                                     <td ng-if="variantReportMode!=='Qc'">
                                         <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
                                             on-comment-entered="setComment()" prompt-only-if="true">
@@ -995,7 +995,7 @@
                                     <td>{{::variant.annotation}}</td>
                                 </tr>
 
-                                <tr ng-if="!data.variant_report.variants.gene_fusions || !data.variant_report.variants.gene_fusions.length">
+                                <tr ng-if="!currentVariantReport.variants.gene_fusions || !currentVariantReport.variants.gene_fusions.length">
                                     <td colspan="8"><span class="text-muted">No Gene Fusions</span></td>
                                 </tr>
                             </tbody>

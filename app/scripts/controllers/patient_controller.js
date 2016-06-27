@@ -33,8 +33,10 @@
 
         $scope.files = [];
 
-        $scope.currentSpecimen = {};
-        $scope.currentAnalisys = {};
+        $scope.currentSurgicalEvent = null;
+        $scope.currentAnalisys = null;
+        $scope.currentVariantReport = null;
+
         $scope.currentTreatmentArm = 'Not Selected';
 
         $scope.variantReports = [];
@@ -136,17 +138,17 @@
             angular.copy(data.data, scopeData);
             $scope.data = scopeData;
 
-            if ($scope.data.specimen && $scope.data.specimen.specimen_shipments) {
-                $scope.currentSpecimen = $scope.data.specimen.specimen_shipments[$scope.data.specimen.specimen_shipments.length - 1];
-            } else {
-                $log.error('The web service didn\'t send Specimen Shipment');
-            }
+            // if ($scope.data.specimen && $scope.data.specimen.specimen_shipments) {
+            //     $scope.currentSpecimen = $scope.data.specimen.specimen_shipments[$scope.data.specimen.specimen_shipments.length - 1];
+            // } else {
+            //     $log.error('The web service didn\'t send Specimen Shipment');
+            // }
 
-            if ($scope.currentSpecimen && $scope.currentSpecimen.analyses) {
-                $scope.currentAnalisys = $scope.currentSpecimen.analyses[$scope.currentSpecimen.analyses.length - 1];
-            } else {
-                $log.error('The web service didn\'t send Secimen Analyses');
-            }
+            // if ($scope.currentSpecimen && $scope.currentSpecimen.analyses) {
+            //     $scope.currentAnalisys = $scope.currentSpecimen.analyses[$scope.currentSpecimen.analyses.length - 1];
+            // } else {
+            //     $log.error('The web service didn\'t send Secimen Analyses');
+            // }
 
             setupSurgicalEventOptions();
             setupVariantReports();
@@ -182,6 +184,7 @@
 
                         if (!$scope.surgicalEventOption) {
                             $scope.surgicalEventOption = item;
+                            selectSurgicalEvent(item);
                         }
 
                         $scope.surgicalEventOptions.push(item);
@@ -232,6 +235,7 @@
 
                         if (!$scope.variantReportOption) {
                             $scope.variantReportOption = variantReportItem;
+                            selectVariantReport(variantReportItem);
                         }
 
                         $scope.variantReportOptions.push(variantReportItem);
@@ -258,11 +262,21 @@
             }
         }
 
+        function findVariantReportOption(surgical_event_id, analysis_id) {
+            for (var i = 0; i < $scope.variantReportOptions.length; i++) {
+                var item = $scope.variantReportOptions[i];
+                if (item.value.surgical_event_id === surgical_event_id && item.value.analysis_id === analysis_id) {
+                    return item;
+                }
+            }
+            return null;
+        }
+
         function findSurgicalEventOption(surgical_event_id, analysis_id) {
             for (var i = 0; i < $scope.surgicalEventOptions.length; i++) {
-                var surgicalEvent = $scope.surgicalEventOptions[i];
-                if (surgicalEvent.value.surgical_event_id === surgical_event_id && surgicalEvent.value.analysis_id === analysis_id) {
-                    return surgicalEvent;
+                var item = $scope.surgicalEventOptions[i];
+                if (item.value.surgical_event_id === surgical_event_id && item.value.analysis_id === analysis_id) {
+                    return item;
                 }
             }
             return null;
@@ -401,10 +415,63 @@
 
         function onSurgicalEventSelected(selected) {
             $log.debug(selected);
+            var variantReportItem = findVariantReportOption(selected.value.surgical_event_id, selected.value.analysis_id);
+            if (variantReportItem) {
+                $log.debug(selected);
+                $scope.variantReportOption = variantReportItem;
+                selectSurgicalEvent(selected);
+                selectVariantReport(variantReportItem);
+            } else {
+                $log.error('Unable to find Variant Report by ' + selected.value.surgical_event_id + ', ' + selected.value.analysis_id);
+            }
         }
 
         function onVariantReportSelected(selected) {
             $log.debug(selected);
+            var surgicalEventItem = findSurgicalEventOption(selected.value.surgical_event_id, selected.value.analysis_id);
+            if (surgicalEventItem) {
+                $log.debug(selected);
+                $scope.surgicalEventOption = surgicalEventItem;
+                selectSurgicalEvent(surgicalEventItem);
+                selectVariantReport(selected);
+            } else {
+                $log.error('Unable to find Variant Report by ' + selected.value.surgical_event_id + ', ' + selected.value.analysis_id);
+            }
+        }
+
+        function selectSurgicalEvent(option) {
+            for (var i = 0; i < $scope.data.specimen_history.length; i++) {
+                var surgicalEvent = $scope.data.specimen_history[i];
+
+                if (surgicalEvent.surgical_event_id !== option.value.surgical_event_id) {
+                    continue;
+                }
+
+                for (var j = 0; j < surgicalEvent.specimen_shipments.length; j++) {
+                    var shipment = surgicalEvent.specimen_shipments[i];
+
+                    for (var k = 0; k < shipment.analyses.length; k++) {
+                        var analysis = shipment.analyses[k];
+
+                        if (analysis.analysis_id === option.value.analysis_id) {
+                            $scope.currentSurgicalEvent = surgicalEvent;
+                            $scope.currentAnalisys = analysis;
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+
+        function selectVariantReport(option) {
+            for (var i = 0; i < $scope.data.variant_reports.length; i++) {
+                var variantReport = $scope.data.variant_reports[i];
+
+                if (variantReport.surgical_event_id === option.value.surgical_event_id) {
+                    $scope.currentVariantReport = variantReport;
+                    return;
+                }
+            }
         }
 
         function onBloodVariantReportSelected(selected) {
