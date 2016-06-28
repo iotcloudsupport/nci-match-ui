@@ -149,7 +149,7 @@
   "timeline": [
     {
       "patient_id": "PAT123",
-      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_date": "2016-06-29T22:06:33+00:00",
       "event_name": "Event Name 1",
       "event_type": "patient",
       "event_message": "Patient Pending Approval",
@@ -162,7 +162,7 @@
     },
     {
       "patient_id": "PAT123",
-      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_date": "2016-06-28T22:06:33+00:00",
       "event_name": "Event Name 1",
       "event_type": "patient",
       "event_message": "Patient Pending Confirmation",
@@ -175,7 +175,7 @@
     },
     {
       "patient_id": "PAT123",
-      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_date": "2016-06-22T22:06:33+00:00",
       "event_name": "Event Name 1",
       "event_type": "system",
       "event_message": "Receiving Rule Assignment",
@@ -186,7 +186,7 @@
     },
     {
       "patient_id": "PAT123",
-      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_date": "2016-06-19T22:06:33+00:00",
       "event_name": "Event Name 1",
       "event_type": "system",
       "event_message": "Awaiting Treatment Arms Status",
@@ -197,7 +197,7 @@
     },
     {
       "patient_id": "PAT123",
-      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_date": "2016-06-18T22:06:33+00:00",
       "event_name": "Event Name 1",
       "event_type": "system",
       "event_message": "Awaiting Patient Data",
@@ -208,7 +208,7 @@
     },
     {
       "patient_id": "PAT123",
-      "event_date": "2016-05-11T22:06:33+00:00",
+      "event_date": "2016-06-16T22:06:33+00:00",
       "event_name": "Event Name 2",
       "event_type": "biopsy.variantReportReceived",
       "event_message": "Tissue Variant Report",
@@ -223,7 +223,7 @@
     },
     {
       "patient_id": "PAT123",
-      "event_date": "2016-05-11T22:06:33+00:00",
+      "event_date": "2016-06-15T22:06:33+00:00",
       "event_name": "Event Name 2",
       "event_type": "biopsy.variantReportReceived",
       "event_message": "Tissue Variant Report",
@@ -238,7 +238,7 @@
     },
     {
       "patient_id": "PAT123",
-      "event_date": "2016-05-12T22:04:33+00:00",
+      "event_date": "2016-06-02T22:04:33+00:00",
       "event_name": "Event Name 5",
       "event_type": "biopsy.assay_received",
       "event_message": "Assay Received",
@@ -253,7 +253,7 @@
     },
     {
       "patient_id": "PAT123",
-      "event_date": "2016-05-12T22:04:33+00:00",
+      "event_date": "2016-05-30T22:04:33+00:00",
       "event_name": "Event Name 5",
       "event_type": "biopsy.pathology",
       "event_message": "PATHOLOGY_CONFIRMATION",
@@ -265,7 +265,7 @@
     },
     {
       "patient_id": "PAT123",
-      "event_date": "2016-05-11T22:08:33+00:00",
+      "event_date": "2016-05-26T22:08:33+00:00",
       "event_name": "Event Name 4",
       "event_type": "biopsy.assay_order",
       "event_message": "Assay Order",
@@ -279,7 +279,7 @@
     },
     {
       "patient_id": "PAT123",
-      "event_date": "2016-05-11T22:06:33+00:00",
+      "event_date": "2016-05-25T22:06:33+00:00",
       "event_name": "Event Name 3",
       "event_type": "biopsy.variantReportShipped",
       "event_message": "Tissue Nucleic Acid Shipped",
@@ -297,7 +297,7 @@
     },
     {
       "patient_id": "PAT123",
-      "event_date": "2016-05-11T22:06:33+00:00",
+      "event_date": "2016-05-20T22:06:33+00:00",
       "event_name": "Event Name 2",
       "event_type": "biopsy.variantReportReceived",
       "event_message": "Tissue Specimen Received",

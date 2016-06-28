@@ -1,0 +1,1178 @@
+{
+    "patient_id": "100025",
+    "registration_date": "2016-05-09T22:06:33.000+00:00",
+    "last_rejoin_scan_date": "2016-05-09T22:06:33+00:00",
+    "study_id": "APEC1621",
+    "gender": "MALE",
+    "ethnicity": "WHITE",
+    "races": [
+        "WHITE",
+        "HAWAIIAN"
+    ],
+    "current_step_number": "1.0",
+    "current_assignment": {
+        "generated_date": "2016-05-09T22:06:33+00:00",
+        "confirmed_date": "2016-05-09T22:06:33+00:00",
+        "sent_to_cog_date": "-",
+        "received_from_cog_date": "-",
+        "biopsy_sequence_number": "T-15-000078",
+        "molecular_sequence_number": "MSN34534",
+        "analysis_id": "SAM1232",
+        "variant_report_amois": [
+            {
+                "title": "[COSM12344]",
+                "url": ""
+            },
+            {
+                "title": "p.S310Y",
+                "url": ""
+            },
+            {
+                "title": "CISM23423",
+                "url": ""
+            }
+        ],
+        "assays": [
+            {
+                "gene": "MSH2",
+                "result": "Not Applicable",
+                "comment": "Biopsy received prior to bimarker launch date"
+            },
+            {
+                "gene": "PTENs",
+                "result": "POSITIVE",
+                "comment": "-"
+            },
+            {
+                "gene": "MLH1",
+                "result": "Not Applicable",
+                "comment": "Biopsy received prior to bimarker launch date"
+            },
+            {
+                "gene": "RB",
+                "result": "Not Applicable",
+                "comment": "Biopsy received prior to bimarker launch date"
+            }
+        ],
+        "treatment_arms": {
+            "no_match": [
+                {
+                    "treatment_arm": "APEC1621-U",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-F",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-F",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-F",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-G",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-H",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-R",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-E",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-A",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-V",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                }
+            ],
+            "record_based_exclusion": [
+                {
+                    "treatment_arm": "APEC1621-Q",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient excluded from this arm because of invasive breast carcinoma."
+                }
+            ],
+            "selected": [
+                {
+                    "treatment_arm": "APEC1621-B",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient and treatment match on variand identifier [ABSF, DEDF]."
+                }
+            ]
+        }
+    },
+    "current_status": "PENDING_CONFIRMATION",
+    "disease": {
+        "name": "Invasive Breast Cancer",
+        "ctep_category": "Breast Neoplasm",
+        "ctep_sub_category": "Breast Cancer - Invasive",
+        "ctep_term": "Invasive Breast Carcinoma",
+        "med_dra_code": "1000961"
+    },
+    "prior_drugs": [
+        "Aspirin",
+        "Motrin",
+        "Vitamin C"
+    ],
+    "documents": {
+        "list": [
+            {
+                "name": "Document 1",
+                "uploaded_date": "2016-05-09T22:06:33+00:00",
+                "user": "James Bond"
+            },
+            {
+                "name": "Document 2",
+                "uploaded_date": "2016-05-09T22:06:33+00:00",
+                "user": "James Bond"
+            },
+            {
+                "name": "X-File A23FSD34",
+                "uploaded_date": "2016-05-09T22:06:33+00:00",
+                "user": "Fox Mulder"
+            }
+        ]
+    },
+    "message": "Some message",
+    "timeline": [
+        {
+            "patient_id": "100025",
+            "event_date": "2016-05-09T22:06:33+00:00",
+            "event_name": "Event Name 1",
+            "event_type": "patient",
+            "event_message": "Patient Pending Confirmation",
+            "event_data": {
+                "step": "1.0",
+                "status": "PENDING",
+                "biopsy_sequence_number": "B-987456",
+                "location": "GHU"
+            }
+        },
+        {
+            "patient_id": "100025",
+            "event_date": "2016-05-09T22:06:33+00:00",
+            "event_name": "Event Name 1",
+            "event_type": "system",
+            "event_message": "Receiving Rule Assignment",
+            "event_data": {
+                "step": "1.0",
+                "status": "COMPLETE"
+            }
+        },
+        {
+            "patient_id": "100025",
+            "event_date": "2016-05-09T22:06:33+00:00",
+            "event_name": "Event Name 1",
+            "event_type": "system",
+            "event_message": "Awaiting Treatment Arms Status",
+            "event_data": {
+                "step": "1.0",
+                "status": "COMPLETE"
+            }
+        },
+        {
+            "patient_id": "100025",
+            "event_date": "2016-05-09T22:06:33+00:00",
+            "event_name": "Event Name 1",
+            "event_type": "system",
+            "event_message": "Awaiting Patient Data",
+            "event_data": {
+                "step": "1.0",
+                "status": "COMPLETE"
+            }
+        },
+        {
+            "patient_id": "100025",
+            "event_date": "2016-05-11T22:06:33+00:00",
+            "event_name": "Event Name 2",
+            "event_type": "biopsy.variantReportReceived",
+            "event_message": "Tissue Variant Report",
+            "event_data": {
+                "surgical_event_id": "COSM1234",
+                "collected_datetime": "2016-05-09T22:06:33+00:00",
+                "received_datetime": "2016-05-13T22:08:33+00:00",
+                "step": "1.0",
+                "status": "CONFIRMED",
+                "biopsy_sequence_number": "B-987456"
+            }
+        },
+        {
+            "patient_id": "100025",
+            "event_date": "2016-05-11T22:06:33+00:00",
+            "event_name": "Event Name 2",
+            "event_type": "biopsy.variantReportReceived",
+            "event_message": "Tissue Variant Report",
+            "event_data": {
+                "surgical_event_id": "COSM1234",
+                "collected_datetime": "2016-05-09T22:06:33+00:00",
+                "received_datetime": "2016-05-13T22:08:33+00:00",
+                "step": "1.0",
+                "status": "RECEIVED",
+                "biopsy_sequence_number": "B-987456"
+            }
+        },
+        {
+            "patient_id": "100025",
+            "event_date": "2016-05-12T22:04:33+00:00",
+            "event_name": "Event Name 5",
+            "event_type": "biopsy.assay_received",
+            "event_message": "Assay Received",
+            "event_data": {
+                "biomarker": "ICCPTEN",
+                "step": "1.0",
+                "status": "RECEIVED",
+                "result" : "POSITIVE",
+                "biopsy_sequence_number": "B-987456",
+                "reported_date": "2016-05-12T22:04:33+00:00"
+            }
+        },
+        {
+            "patient_id": "100025",
+            "event_date": "2016-05-12T22:04:33+00:00",
+            "event_name": "Event Name 5",
+            "event_type": "biopsy.pathology",
+            "event_message": "PATHOLOGY_CONFIRMATION",
+            "event_data": {
+                "status": "Y",
+                "biopsy_sequence_number": "B-987456",
+                "reported_date": "2016-05-12T22:04:33+00:00"
+            }
+        },
+        {
+            "patient_id": "100025",
+            "event_date": "2016-05-11T22:08:33+00:00",
+            "event_name": "Event Name 4",
+            "event_type": "biopsy.assay_order",
+            "event_message": "Assay Order",
+            "event_data": {
+                "biomarker": "ICCPTEN",
+                "step": "1.0",
+                "status": "ORDER",
+                "biopsy_sequence_number": "B-987456",
+                "ordered_date": "2016-05-11T22:07:33+00:00"
+            }
+        },
+        {
+            "patient_id": "100025",
+            "event_date": "2016-05-11T22:06:33+00:00",
+            "event_name": "Event Name 3",
+            "event_type": "biopsy.variantReportShipped",
+            "event_message": "Tissue Nucleic Acid Shipped",
+            "event_data": {
+                "surgical_event_id": "COSM1234",
+                "molecular_id" : "1234",
+                "molecular_dna_id" : "DNA1234",
+                "molecular_cdna_id" : "CDNA1234",
+                "carrier": "Federal Express",
+                "tracking_id": "1203454512316546",
+                "step": "1.0",
+                "status": "PENDING",
+                "biopsy_sequence_number": "B-987456"
+            }
+        },
+        {
+            "patient_id": "100025",
+            "event_date": "2016-05-11T22:06:33+00:00",
+            "event_name": "Event Name 2",
+            "event_type": "biopsy.variantReportReceived",
+            "event_message": "Tissue Specimen Received",
+            "event_data": {
+                "surgical_event_id": "COSM1234",
+                "collected_datetime": "2016-05-09T22:06:33+00:00",
+                "received_datetime": "2016-05-11T22:08:33+00:00",
+                "step": "1.0",
+                "status": "PENDING",
+                "biopsy_sequence_number": "B-987456"
+            }
+        },
+        {
+            "patient_id": "100025",
+            "event_date": "2016-05-09T22:06:33+00:00",
+            "event_name": "Event Name 1",
+            "event_type": "patient",
+            "event_message": "Patient Registered",
+            "event_data": {
+                "step": "1.0",
+                "status": "PENDING",
+                "biopsy_sequence_number": "B-987456",
+                "location": "GHU"
+            }
+        }
+    ],
+    "variant_report_selectors": [
+        {
+            "text": "SUREVT0981",
+            "variant_report_received_date": "2016-05-09T22:06:33.000+00:00"
+        },
+        {
+            "text": "SUREVT0982",
+            "variant_report_received_date": "2016-05-09T22:06:33.000+00:00"
+        }
+    ],
+    "variant_reports":[
+      {
+          "surgical_event_id": "SUREVT001",
+          "variant_report_received_date": "2016-01-13T22:06:33+00:00",
+          "variant_report_type": "TISSUE",
+          "patient_id": "100025",
+          "molecular_id": "MOL1232",
+          "analysis_id": "SAM001_01",
+          "status": "REJECTED",
+          "status_date": "2016-01-13T23:06:33+00:00",
+          "dna_bam_file_path": "http:\\\\blah.com\\dna_bam.data",
+          "dna_bai_file_path": "http:\\\\blah.com\\dna_bai.data",
+          "rna_bam_file_path": "http:\\\\blah.com\\rna_bam.data",
+          "rna_bai_file_path": "http:\\\\blah.com\\rna_bai.data",
+          "vcf_path": "http:\\\\blah.com\\vcf.data",
+          "total_variants": 8,
+          "cellularity": 7,
+          "total_mois": 4,
+          "total_amois": 2,
+          "total_confirmed_mois": 3,
+          "total_confirmed_amois": 1,
+          "variants": {
+              "single_nucleitide_variants": [
+                  {
+                      "confirm": "true",
+                      "molecular_id_analysis_id": "MSNANL123AN123",
+                      "variant_type": "single_nucleitide_variants",
+                      "patient_id": "100025",
+                      "surgical_event_id": "SUREVT001",
+                      "molecular_id": "MOL0981",
+                      "analysis_id": "SAM001_01",
+                      "variant_id": "VAR001_01_01",
+                      "status": "REJECTED",
+                      "status_date": "2016-01-13T23:06:33+00:00",
+                      "comment": "Don't need this",
+                      "gene_name": "gene",
+                      "chromosome": "chr3",
+                      "position": "12345",
+                      "oncomine_variant_class": "Hotspot",
+                      "exon": "10",
+                      "function": "missense",
+                      "cds_ref": "A",
+                      "cds_alt": "C",
+                      "ocp_ref": "A",
+                      "ocp_alt": "C",
+                      "strand": "S",
+                      "filter": "flt",
+                      "protein": "p.Glu6565Ala",
+                      "transcript": "NM_0456345",
+                      "hgvs": "c.234534>C",
+                      "read_depth": "648",
+                      "rare": "?",
+                      "allele_frequency": "0.0344",
+                      "flow_alternative_observation": "alt obs",
+                      "flow_reference_allele_observation": "alt allele",
+                      "reference_allele_observation": "ref allele",
+                      "inclusion": "inlc",
+                      "arm_specific": "arm spec"
+                  },
+                  {
+                      "confirm": "true",
+                      "molecular_id_analysis_id": "MSNANL123AN123",
+                      "variant_type": "single_nucleitide_variants",
+                      "patient_id": "100025",
+                      "surgical_event_id": "SUREVT001",
+                      "molecular_id": "MOL0982",
+                      "analysis_id": "SAM001_01",
+                      "variant_id": "VAR001_01_02",
+                      "status": "CONFIRMED",
+                      "status_date": "2016-01-13T23:06:33+00:00",
+                      "comment": "",
+                      "gene_name": "gene",
+                      "chromosome": "chr3",
+                      "position": "12345",
+                      "oncomine_variant_class": "Hotspot",
+                      "exon": "10",
+                      "function": "missense",
+                      "cds_ref": "A",
+                      "cds_alt": "C",
+                      "ocp_ref": "A",
+                      "ocp_alt": "C",
+                      "strand": "S",
+                      "filter": "flt",
+                      "protein": "p.Glu6565Ala",
+                      "transcript": "NM_0456345",
+                      "hgvs": "c.234534>C",
+                      "read_depth": "648",
+                      "rare": "?",
+                      "allele_frequency": "0.0344",
+                      "flow_alternative_observation": "alt obs",
+                      "flow_reference_allele_observation": "alt allele",
+                      "reference_allele_observation": "ref allele",
+                      "inclusion": "inlc",
+                      "arm_specific": "arm spec"
+                  }
+              ],
+              "indels": [],
+              "copy_number_variants": [],
+              "gene_fusions": []
+          }
+      },
+      {
+          "surgical_event_id": "SUREVT001",
+          "variant_report_received_date": "2016-01-14T22:06:33+00:00",
+          "variant_report_type": "TISSUE",
+          "patient_id": "100025",
+          "molecular_id": "MOL1232",
+          "analysis_id": "SAM001_02",
+          "status": "CONFIRMED",
+          "status_date": "2016-01-14T23:06:33+00:00",
+          "dna_bam_file_path": "http:\\\\blah.com\\dna_bam.data",
+          "dna_bai_file_path": "http:\\\\blah.com\\dna_bai.data",
+          "rna_bam_file_path": "http:\\\\blah.com\\rna_bam.data",
+          "rna_bai_file_path": "http:\\\\blah.com\\rna_bai.data",
+          "vcf_path": "http:\\\\blah.com\\vcf.data",
+          "total_variants": 8,
+          "cellularity": 7,
+          "total_mois": 4,
+          "total_amois": 2,
+          "total_confirmed_mois": 3,
+          "total_confirmed_amois": 1,
+          "variants": {
+              "single_nucleitide_variants": [],
+              "indels":[
+                  {
+                      "confirm": "true",
+                      "molecular_id_analysis_id": "MSNANL123AN123",
+                      "variant_type": "indels",
+                      "patient_id": "100025",
+                      "surgical_event_id": "SUREVT001",
+                      "molecular_id": "MOL0982",
+                      "analysis_id": "SAM001_02",
+                      "variant_id": "VAR001_02_01",
+                      "status": "CONFIRMED",
+                      "status_date": "2016-01-14T23:06:33+00:00",
+                      "publicMedIds": [
+
+                      ],
+                      "gene": "DNMT3A",
+                      "function": "",
+                      "exon": "19",
+                      "oncominevariantclass": "",
+                      "chromosome": "chr2",
+                      "position": "25463297",
+                      "identifier": "COSM99742",
+                      "reference": "AAAG",
+                      "alternative": "A",
+                      "description": null,
+                      "readDepth": null,
+                      "rare": false,
+                      "alleleFrequency": 0,
+                      "inclusion": "inlc"
+                  }
+              ],
+              "copy_number_variants": [],
+              "gene_fusions": []
+          }
+      },
+      {
+          "surgical_event_id": "SUREVT001",
+          "variant_report_received_date": "2016-01-19T22:06:33+00:00",
+          "variant_report_type": "TISSUE",
+          "patient_id": "100025",
+          "molecular_id": "MOL1232",
+          "analysis_id": "SAM001_03",
+          "status": "PENDING",
+          "status_date": "2016-01-19T23:06:33+00:00",
+          "dna_bam_file_path": "http:\\\\blah.com\\dna_bam.data",
+          "dna_bai_file_path": "http:\\\\blah.com\\dna_bai.data",
+          "rna_bam_file_path": "http:\\\\blah.com\\rna_bam.data",
+          "rna_bai_file_path": "http:\\\\blah.com\\rna_bai.data",
+          "vcf_path": "http:\\\\blah.com\\vcf.data",
+          "total_variants": 8,
+          "cellularity": 7,
+          "total_mois": 4,
+          "total_amois": 2,
+          "total_confirmed_mois": 3,
+          "total_confirmed_amois": 1,
+          "variants": {
+              "single_nucleitide_variants": [],
+              "indels":[],
+              "copy_number_variants": [
+                  {
+                      "confirm": "true",
+                      "molecular_id_analysis_id": "MSNANL123AN123",
+                      "variant_type": "copy_number_variants",
+                      "patient_id": "100025",
+                      "surgical_event_id": "SUREVT001",
+                      "molecular_id": "MOL0982",
+                      "analysis_id": "SAM001_03",
+                      "variant_id": "VAR001_03_01",
+                      "status": "PENDING",
+                      "status_date": "2016-01-19T23:06:33+00:00",
+                      "publicMedIds": [
+
+                      ],
+                      "gene": "FGFR2",
+                      "identifier": "FGFR2",
+                      "type": "cnv",
+                      "description": "FGFR1/2/3/4 Amplification and activating mutations",
+                      "dbSnpId": null,
+                      "chromosome": null,
+                      "position": 0,
+                      "alternative": "GDUM",
+                      "reference": "GDUM",
+                      "readDepth": 500,
+                      "alleleFrequency": 0.25,
+                      "inclusion": "inlc"
+                  }
+              ],
+              "gene_fusions": []
+          }
+      },
+      {
+          "surgical_event_id": "SUREVT002",
+          "variant_report_received_date": "2016-02-13T22:06:33+00:00",
+          "variant_report_type": "TISSUE",
+          "patient_id": "100025",
+          "molecular_id": "MOL1232",
+          "analysis_id": "SAM002_01",
+          "status": "REJECTED",
+          "status_date": "2016-02-13T23:06:33+00:00",
+          "dna_bam_file_path": "http:\\\\blah.com\\dna_bam.data",
+          "dna_bai_file_path": "http:\\\\blah.com\\dna_bai.data",
+          "rna_bam_file_path": "http:\\\\blah.com\\rna_bam.data",
+          "rna_bai_file_path": "http:\\\\blah.com\\rna_bai.data",
+          "vcf_path": "http:\\\\blah.com\\vcf.data",
+          "total_variants": 8,
+          "cellularity": 7,
+          "total_mois": 4,
+          "total_amois": 2,
+          "total_confirmed_mois": 3,
+          "total_confirmed_amois": 1,
+          "variants": {
+              "single_nucleitide_variants": [],
+              "indels":[],
+              "copy_number_variants": [],
+              "gene_fusions": [
+                  {
+                      "confirm": "true",
+                      "molecular_id_analysis_id": "MSNANL123AN123",
+                      "variant_type": "gene_fusions",
+                      "patient_id": "100025",
+                      "surgical_event_id": "SUREVT002",
+                      "molecular_id": "MOL0982",
+                      "analysis_id": "SAM002_01",
+                      "variant_id": "VAR002_01_01",
+                      "status": "REJECTED",
+                      "status_date": "2016-02-13T23:06:33+00:00",
+                      "gene": "FGFR3",
+                      "chromosome": null,
+                      "position": 0,
+                      "type": "gf",
+                      "identifier": "FGFR3-TACC3.F18T7.NGS",
+                      "reference": "GDUM",
+                      "alternative": "GDUM",
+                      "readDepth": 500,
+                      "rare": false,
+                      "alleleFrequency": 0.25
+                  }
+              ]
+          }
+      },
+      {
+          "surgical_event_id": "SUREVT002",
+          "variant_report_received_date": "2016-02-14T22:06:33+00:0",
+          "variant_report_type": "BLOOD",
+          "patient_id": "100025",
+          "molecular_id": "MOL1232",
+          "analysis_id": "SAM002_02",
+          "status": "REJECTED",
+          "status_date": "2016-02-14T23:06:33+00:00",
+          "dna_bam_file_path": "http:\\\\blah.com\\dna_bam.data",
+          "dna_bai_file_path": "http:\\\\blah.com\\dna_bai.data",
+          "rna_bam_file_path": "http:\\\\blah.com\\rna_bam.data",
+          "rna_bai_file_path": "http:\\\\blah.com\\rna_bai.data",
+          "vcf_path": "http:\\\\blah.com\\vcf.data",
+          "total_variants": 8,
+          "cellularity": 7,
+          "total_mois": 4,
+          "total_amois": 2,
+          "total_confirmed_mois": 3,
+          "total_confirmed_amois": 1,
+          "variants": {
+              "single_nucleitide_variants": [],
+              "indels":[],
+              "copy_number_variants": [
+                  {
+                      "confirm": "true",
+                      "molecular_id_analysis_id": "MSNANL123AN123",
+                      "variant_type": "copy_number_variants",
+                      "patient_id": "100025",
+                      "surgical_event_id": "SUREVT002",
+                      "molecular_id": "MOL0982",
+                      "analysis_id": "SAM002_02",
+                      "variant_id": "VAR002_02_01",
+                      "status": "REJECTED",
+                      "status_date": "2016-02-14T23:06:33+00:00",
+                      "publicMedIds": [
+
+                      ],
+                      "gene": "FGFR2",
+                      "identifier": "FGFR2",
+                      "type": "cnv",
+                      "description": "FGFR1/2/3/4 Amplification and activating mutations",
+                      "dbSnpId": null,
+                      "chromosome": null,
+                      "position": 0,
+                      "alternative": "GDUM",
+                      "reference": "GDUM",
+                      "readDepth": 500,
+                      "alleleFrequency": 0.25,
+                      "inclusion": "inlc"
+                  }
+              ],
+              "gene_fusions": []
+          }
+      },
+      {
+          "surgical_event_id": "SUREVT002",
+          "variant_report_received_date": "2016-02-19T22:06:33+00:00",
+          "variant_report_type": "TISSUE",
+          "patient_id": "100025",
+          "molecular_id": "MOL1232",
+          "analysis_id": "SAM002_03",
+          "status": "CONFIRMED",
+          "status_date": "2016-02-19T23:06:33+00:00",
+          "dna_bam_file_path": "http:\\\\blah.com\\dna_bam.data",
+          "dna_bai_file_path": "http:\\\\blah.com\\dna_bai.data",
+          "rna_bam_file_path": "http:\\\\blah.com\\rna_bam.data",
+          "rna_bai_file_path": "http:\\\\blah.com\\rna_bai.data",
+          "vcf_path": "http:\\\\blah.com\\vcf.data",
+          "total_variants": 8,
+          "cellularity": 7,
+          "total_mois": 4,
+          "total_amois": 2,
+          "total_confirmed_mois": 3,
+          "total_confirmed_amois": 1,
+          "variants": {
+              "single_nucleitide_variants": [],
+              "indels":[
+                  {
+                      "confirm": "true",
+                      "molecular_id_analysis_id": "MSNANL123AN123",
+                      "variant_type": "indels",
+                      "patient_id": "100025",
+                      "surgical_event_id": "SUREVT002",
+                      "molecular_id": "MOL0982",
+                      "analysis_id": "SAM002_03",
+                      "variant_id": "VAR002_03_01",
+                      "status": "CONFIRMED",
+                      "status_date": "2016-02-19T23:06:33+00:00",
+                      "publicMedIds": [
+
+                      ],
+                      "gene": "DNMT3A",
+                      "function": "",
+                      "exon": "19",
+                      "oncominevariantclass": "",
+                      "chromosome": "chr2",
+                      "position": "25463297",
+                      "identifier": "COSM99742",
+                      "reference": "AAAG",
+                      "alternative": "A",
+                      "description": null,
+                      "readDepth": null,
+                      "rare": false,
+                      "alleleFrequency": 0,
+                      "inclusion": "inlc"
+                  }
+              ],
+              "copy_number_variants": [],
+              "gene_fusions": []
+          }
+      },
+      {
+          "surgical_event_id": "SUREVT002",
+          "variant_report_received_date": "2016-02-19T22:06:33+00:00",
+          "variant_report_type": "BLOOD",
+          "patient_id": "100025",
+          "molecular_id": "MOL1232",
+          "analysis_id": "SAM002_04",
+          "status": "CONFIRMED",
+          "status_date": "2016-02-19T23:06:33+00:00",
+          "dna_bam_file_path": "http:\\\\blah.com\\dna_bam.data",
+          "dna_bai_file_path": "http:\\\\blah.com\\dna_bai.data",
+          "rna_bam_file_path": "http:\\\\blah.com\\rna_bam.data",
+          "rna_bai_file_path": "http:\\\\blah.com\\rna_bai.data",
+          "vcf_path": "http:\\\\blah.com\\vcf.data",
+          "total_variants": 8,
+          "cellularity": 7,
+          "total_mois": 4,
+          "total_amois": 2,
+          "total_confirmed_mois": 3,
+          "total_confirmed_amois": 1,
+          "variants": {
+              "single_nucleitide_variants": [
+                  {
+                      "confirm": "true",
+                      "molecular_id_analysis_id": "MSNANL123AN123",
+                      "variant_type": "single_nucleitide_variants",
+                      "patient_id": "100025",
+                      "surgical_event_id": "SUREVT002",
+                      "molecular_id": "MOL0981",
+                      "analysis_id": "SAM002_04",
+                      "variant_id": "VAR002_04_01",
+                      "status": "CONFIRMED",
+                      "status_date": "2016-02-19T23:06:33+00:00",
+                      "comment": "",
+                      "gene_name": "gene",
+                      "chromosome": "chr3",
+                      "position": "12345",
+                      "oncomine_variant_class": "Hotspot",
+                      "exon": "10",
+                      "function": "missense",
+                      "cds_ref": "A",
+                      "cds_alt": "C",
+                      "ocp_ref": "A",
+                      "ocp_alt": "C",
+                      "strand": "S",
+                      "filter": "flt",
+                      "protein": "p.Glu6565Ala",
+                      "transcript": "NM_0456345",
+                      "hgvs": "c.234534>C",
+                      "read_depth": "648",
+                      "rare": "?",
+                      "allele_frequency": "0.0344",
+                      "flow_alternative_observation": "alt obs",
+                      "flow_reference_allele_observation": "alt allele",
+                      "reference_allele_observation": "ref allele",
+                      "inclusion": "inlc",
+                      "arm_specific": "arm spec"
+                  },
+                  {
+                      "confirm": "true",
+                      "molecular_id_analysis_id": "MSNANL123AN123",
+                      "variant_type": "single_nucleitide_variants",
+                      "patient_id": "100025",
+                      "surgical_event_id": "SUREVT002",
+                      "molecular_id": "MOL0982",
+                      "analysis_id": "SAM002_04",
+                      "variant_id": "VAR002_04_02",
+                      "status": "CONFIRMED",
+                      "status_date": "2016-02-19T23:06:33+00:00",
+                      "comment": "",
+                      "gene_name": "gene",
+                      "chromosome": "chr3",
+                      "position": "12345",
+                      "oncomine_variant_class": "Hotspot",
+                      "exon": "10",
+                      "function": "missense",
+                      "cds_ref": "A",
+                      "cds_alt": "C",
+                      "ocp_ref": "A",
+                      "ocp_alt": "C",
+                      "strand": "S",
+                      "filter": "flt",
+                      "protein": "p.Glu6565Ala",
+                      "transcript": "NM_0456345",
+                      "hgvs": "c.234534>C",
+                      "read_depth": "648",
+                      "rare": "?",
+                      "allele_frequency": "0.0344",
+                      "flow_alternative_observation": "alt obs",
+                      "flow_reference_allele_observation": "alt allele",
+                      "reference_allele_observation": "ref allele",
+                      "inclusion": "inlc",
+                      "arm_specific": "arm spec"
+                  }
+              ],
+              "indels": [],
+              "copy_number_variants": [],
+              "gene_fusions": []
+          }
+      }
+    ],
+    "assignment_report": {
+        "generated_date": "2016-05-09T22:06:33+00:00",
+        "confirmed_date": "2016-05-09T22:06:33+00:00",
+        "sent_to_cog_date": "-",
+        "received_from_cog_date": "-",
+        "biopsy_sequence_number": "T-15-000078",
+        "molecular_sequence_number": "MSN34534",
+        "analysis_id": "SAM1232",
+        "variant_report_amois": [
+            {
+                "title": "[COSM12344]",
+                "url": ""
+            },
+            {
+                "title": "p.S310Y",
+                "url": ""
+            },
+            {
+                "title": "CISM23423",
+                "url": ""
+            }
+        ],
+        "assays": [
+            {
+                "gene": "MSH2",
+                "result": "Not Applicable",
+                "comment": "Biopsy received prior to bimarker launch date"
+            },
+            {
+                "gene": "PTENs",
+                "result": "POSITIVE",
+                "comment": "-"
+            },
+            {
+                "gene": "MLH1",
+                "result": "Not Applicable",
+                "comment": "Biopsy received prior to bimarker launch date"
+            },
+            {
+                "gene": "RB",
+                "result": "Not Applicable",
+                "comment": "Biopsy received prior to bimarker launch date"
+            }
+        ],
+        "treatment_arms": {
+            "no_match": [
+                {
+                    "treatment_arm": "APEC1621-U",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-F",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-F",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-F",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-G",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-H",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-R",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-E",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-A",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-V",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                }
+            ],
+            "record_based_exclusion": [
+                {
+                    "treatment_arm": "APEC1621-Q",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient excluded from this arm because of invasive breast carcinoma."
+                }
+            ],
+            "selected": [
+                {
+                    "treatment_arm": "APEC1621-B",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient and treatment match on variand identifier [ABSF, DEDF]."
+                }
+            ]
+        }
+    },
+    "specimen_selectors": [
+        {
+            "text": "SUREVT0981",
+            "collected_date": "2016-06-09T22:06:33.000+00:00"
+        },
+        {
+            "text": "SUREVT0982",
+            "collected_date": "2016-06-09T22:06:33.000+00:00"
+        }
+    ],
+    "specimen": {
+        "patient_id": "100025",
+        "collected_date": "2016-03-09T09:06:33+00:00",
+        "surgical_event_id": "SUREVT002",
+        "failed_date": "",
+        "study_id": "APEC1621",
+        "type": "TUMOR",
+        "pathology_status": "Agreed on pathology",
+        "pathology_status_date": "2016-03-09T12:06:33+00:00",
+        "variant_report_confirmed_date": "2016-03-09T15:06:33+00:00",
+        "assays": [
+            {
+                "gene": "PTEN",
+                "ordered_date": "2016-02-09T22:06:33+00:00",
+                "result_date": "2016-02-15T22:06:33+00:00T",
+                "result": "POSITIVE"
+            },
+            {
+                "gene": "MLH1",
+                "ordered_date": "2016-02-09T22:06:33+00:00",
+                "result_date": "2016-02-14T22:06:33+00:00T",
+                "result": "POSITIVE"
+            },
+            {
+                "gene": "MSCH2",
+                "ordered_date": "2016-02-09T22:06:33+00:00",
+                "result_date": "2016-02-14T22:06:33+00:00T",
+                "result": "POSITIVE"
+            },
+            {
+                "gene": "RB",
+                "ordered_date": "2016-02-09T22:06:33+00:00",
+                "result_date": "2016-02-14T22:06:33+00:00T",
+                "result": "NEGATIVE"
+            }
+        ],
+        "assignments": "",
+        "specimen_shipments": [
+            {
+                "analyses": [
+                    {
+                        "analysis_id": "SAM002_04",
+                        "status": "Confirmed",
+                        "file_received_date": "2016-02-19T22:06:33+00:00",
+                        "status_date": "2016-02-19T23:06:33+00:00"
+                    },
+                    {
+                        "analysis_id": "SAM002_03",
+                        "status": "Confirmed",
+                        "file_received_date": "2016-02-19T22:06:33+00:00",
+                        "status_date": "2016-02-19T23:06:33+00:00"
+                    }
+                ]
+            },
+            {
+                "molecular_id": "MSN5678",
+                "tracking_number": "675867856678",
+                "destination_date": "2016-02-16T22:06:33+00:00",
+                "dna_concordance": 10.2,
+                "dna_volume": 9,
+                "reported_date": "2016-02-15T22:06:33+00:00",
+                "comments": "Initial shipment",
+                "analyses": [
+                    {
+                        "analysis_id": "SAM002_02",
+                        "status": "Rejected",
+                        "file_received_date": "2016-02-14T22:06:33+00:00",
+                        "status_date": "2016-02-14T23:06:33+00:00"
+                    },
+                    {
+                        "analysis_id": "SAM002_01",
+                        "status": "Rejected",
+                        "file_received_date": "2016-02-13T22:06:33+00:00",
+                        "status_date": "2016-02-13T23:06:33+00:00"
+                    }
+                ]
+            }
+        ]
+    },
+    "specimen_history": [
+        {
+            "patient_id": "100025",
+            "collected_date": "2016-02-09T09:06:33+00:00",
+            "surgical_event_id": "SUREVT001",
+            "failed_date": "2016-02-09T22:06:33+00:00",
+            "study_id": "APEC1621",
+            "type": "TUMOR",
+            "pathology_status": "Agreed on pathology",
+            "pathology_status_date": "2016-02-09T12:06:33+00:00",
+            "variant_report_confirmed_date": "2016-02-09T15:06:33+00:00",
+            "assays": [
+                {
+                    "gene": "PTEN",
+                    "ordered_date": "2016-01-09T22:06:33+00:00",
+                    "result_date": "2016-01-15T22:06:33+00:00T",
+                    "result": "POSITIVE"
+                },
+                {
+                    "gene": "MLH1",
+                    "ordered_date": "2016-01-09T22:06:33+00:00",
+                    "result_date": "2016-01-14T22:06:33+00:00T",
+                    "result": "POSITIVE"
+                }
+            ],
+            "assignments": "",
+            "specimen_shipments": [
+                {
+                    "analyses": [
+                        {
+                            "analysis_id": "SAM001_03",
+                            "status": "Rejected",
+                            "file_received_date": "2016-01-19T22:06:33+00:00",
+                            "status_date": "2016-01-19T23:06:33+00:00"
+                        }
+                    ]
+                },
+                {
+                    "molecular_id": "MSN5678",
+                    "tracking_number": "675867856677",
+                    "destination_date": "2016-01-16T22:06:33+00:00",
+                    "dna_concordance": 10.2,
+                    "dna_volume": 9,
+                    "reported_date": "2016-01-15T22:06:33+00:00",
+                    "comments": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                    "analyses": [
+                        {
+                            "analysis_id": "SAM001_02",
+                            "status": "Confirmed",
+                            "file_received_date": "2016-01-14T22:06:33+00:00",
+                            "status_date": "2016-01-14T23:06:33+00:00"
+                        },
+                        {
+                            "analysis_id": "SAM001_01",
+                            "status": "Rejected",
+                            "file_received_date": "2016-01-13T22:06:33+00:00",
+                            "status_date": "2016-01-13T23:06:33+00:00"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "patient_id": "100025",
+            "collected_date": "2016-03-09T09:06:33+00:00",
+            "surgical_event_id": "SUREVT002",
+            "failed_date": "",
+            "study_id": "APEC1621",
+            "type": "TUMOR",
+            "pathology_status": "Agreed on pathology",
+            "pathology_status_date": "2016-03-09T12:06:33+00:00",
+            "variant_report_confirmed_date": "2016-03-09T15:06:33+00:00",
+            "assays": [
+                {
+                    "gene": "PTEN",
+                    "ordered_date": "2016-02-09T22:06:33+00:00",
+                    "result_date": "2016-02-15T22:06:33+00:00T",
+                    "result": "POSITIVE"
+                },
+                {
+                    "gene": "MLH1",
+                    "ordered_date": "2016-02-09T22:06:33+00:00",
+                    "result_date": "2016-02-14T22:06:33+00:00T",
+                    "result": "POSITIVE"
+                },
+                {
+                    "gene": "MSCH2",
+                    "ordered_date": "2016-02-09T22:06:33+00:00",
+                    "result_date": "2016-02-14T22:06:33+00:00T",
+                    "result": "POSITIVE"
+                },
+                {
+                    "gene": "RB",
+                    "ordered_date": "2016-02-09T22:06:33+00:00",
+                    "result_date": "2016-02-14T22:06:33+00:00T",
+                    "result": "NEGATIVE"
+                }
+            ],
+            "assignments": "",
+            "specimen_shipments": [
+                {
+                    "analyses": [
+                        {
+                            "analysis_id": "SAM002_04",
+                            "status": "Confirmed",
+                            "file_received_date": "2016-02-19T22:06:33+00:00",
+                            "status_date": "2016-02-19T23:06:33+00:00"
+                        },
+                        {
+                            "analysis_id": "SAM002_03",
+                            "status": "Confirmed",
+                            "file_received_date": "2016-02-19T22:06:33+00:00",
+                            "status_date": "2016-02-19T23:06:33+00:00"
+                        }
+                    ]
+                },
+                {
+                    "molecular_id": "MSN5678",
+                    "tracking_number": "675867856678",
+                    "destination_date": "2016-02-16T22:06:33+00:00",
+                    "dna_concordance": 10.2,
+                    "dna_volume": 9,
+                    "reported_date": "2016-02-15T22:06:33+00:00",
+                    "comments": "Initial shipment",
+                    "analyses": [
+                        {
+                            "analysis_id": "SAM002_02",
+                            "status": "Rejected",
+                            "file_received_date": "2016-02-14T22:06:33+00:00",
+                            "status_date": "2016-02-14T23:06:33+00:00"
+                        },
+                        {
+                            "analysis_id": "SAM002_01",
+                            "status": "Rejected",
+                            "file_received_date": "2016-02-13T22:06:33+00:00",
+                            "status_date": "2016-02-13T23:06:33+00:00"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
