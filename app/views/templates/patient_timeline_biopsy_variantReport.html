@@ -2,7 +2,7 @@
     <div class="col-xs-5 col-md-4 date" title="Biopsy Variant Report Event">
         <i class="fa fa-bar-chart fa-2x"></i> {{::timelineEvent.dateTime}}
         <br/>
-        <small class="text-navy">{{::timelineEvent.fromNow}}</small>
+        <small class="text-navy">{{::timelineEvent.from_now}}</small>
     </div>
     <div class="col-xs-7 col-md-8 content no-top-border">
         <p class="m-b-xs"><strong>Variant Report Status: <span ng-style="{'color':'{{ timelineEvent.status | analysisStatus }}'}">{{::timelineEvent.status}}</span></strong></p>
