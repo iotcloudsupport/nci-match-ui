@@ -196,7 +196,7 @@
             $scope.variantReports = [];
 
             for (var i = 0; i < $scope.data.variant_reports.length; i++) {
-                $scope.data.variant_reports[i].variant_report_mode = 'NORMAL';
+                $scope.data.variant_reports[i].variant_report_mode = 'FILTERED';
                 $scope.variantReports['' + $scope.data.variant_reports[i].variant_report_type + $scope.data.variant_reports[i].variant_report_mode] = $scope.data.variant_reports[i];
 
                 //TODO:RZ this is for demo only, remove after QC reports are implemented
@@ -208,7 +208,7 @@
             }
 
             $scope.variantReportType = 'TISSUE';
-            $scope.variantReportMode = 'NORMAL';
+            $scope.variantReportMode = 'FILTERED';
             setVariantReport();
         }
 
