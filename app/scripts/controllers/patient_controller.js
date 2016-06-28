@@ -329,7 +329,7 @@
         }
 
         function editComment(variant) {
-            $log('Variant = ' + variant);
+            $log.debug('Variant = ' + variant);
 
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
