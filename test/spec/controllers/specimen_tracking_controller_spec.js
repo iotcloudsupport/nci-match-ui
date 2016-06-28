@@ -40,7 +40,7 @@ describe('Controller: Specimen Tracking Controller', function () {
         expect(scope.specimenTrackingList.length).toBe(1);
         expect(scope.specimenTrackingList[0].patientSequenceNumber).toBe('10368');
         expect(scope.specimenTrackingList[0].biopsySeqenuceNumber).toBe('N-15-00005');
-        expect(scope.specimenTrackingList[0].molecularSequenceNumber).toBe('10368_1000_N-15-00005');
+        expect(scope.specimenTrackingList[0].molecular_id).toBe('10368_1000_N-15-00005');
         expect(scope.specimenTrackingList[0].lab).toBe('MGH');
         expect(scope.specimenTrackingList[0].trackingNumber).toBe('987654321');
     });
