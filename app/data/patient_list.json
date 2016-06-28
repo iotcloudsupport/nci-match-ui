@@ -7,7 +7,7 @@
         "treatment_arm": "APEC1621-A",
         "current_step_number": "1.0",
         "registration_date": "2016-05-09T22:06:33.000+00:00",
-        "disease_name": "Disease 1"
+        "disease_name": "Invasive Breast Carcinoma"
     },
     {
         "patient_id": "100087",
@@ -17,7 +17,7 @@
         "treatment_arm": "APEC1621-B",
         "current_step_number": "1.0",
         "registration_date": "2016-05-09T22:06:33.000+00:00",
-        "disease_name": "Disease 3"
+        "disease_name": "Breast Cancer"
     },
     {
         "patient_id": "100099",
@@ -27,8 +27,7 @@
         "treatment_arm": "APEC1621-C",
         "current_step_number": "2.0",
         "registration_date": "2016-05-09T22:06:33.000+00:00",
-        "off_trial_date": "2016-05-09T22:06:33.000+00:00",
-        "disease_name": "Disease 3"
+        "disease_name": "Non-Small Cell Lung Cancer"
     },
     {
         "patient_id": "100136",
@@ -38,8 +37,7 @@
         "treatment_arm": "APEC1621-Y",
         "current_step_number": "1.1",
         "registration_date": "2016-05-09T22:06:33.000+00:00",
-        "off_trial_date": "2016-05-09T22:06:33.000+00:00",
-        "disease_name": "Disease 3"
+        "disease_name": "Mantle cell lymphoma"
     },
     {
         "patient_id": "100100",
@@ -50,7 +48,7 @@
         "current_step_number": "3.0",
         "registration_date": "2016-05-09T22:06:33.000+00:00",
         "off_trial_date": "2016-05-09T22:06:33.000+00:00",
-        "disease_name": "Disease 3"
+        "disease_name": "Myeloma, NOS"
     },
     {
         "patient_id": "100101",
@@ -58,9 +56,19 @@
         "ethnicity": "Hispanic",
         "current_status": "OFF_STUDY",
         "treatment_arm": "APEC1621-Y",
-        "current_step_number": "3.0",
+        "current_step_number": "2.0",
         "registration_date": "2016-05-09T22:06:33.000+00:00",
         "off_trial_date": "2016-05-09T22:06:33.000+00:00",
-        "disease_name": "Disease 3"
+        "disease_name": "Solitary plasmacytoma"
+    },
+    {
+        "patient_id": "100088",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "PENDING_APPROVAL",
+        "treatment_arm": "APEC1621-H1",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Adenocarcinoma - stomach"
     }
 ]

@@ -135,9 +135,9 @@
             ]
         }
     },
-    "current_status": "REGISTRATION",
+    "current_status": "PENDING_CONFIRMATION",
     "disease": {
-        "name": "Invasive Breast Carcinoma",
+        "name": "Invasive Breast Cancer",
         "ctep_category": "Breast Neoplasm",
         "ctep_sub_category": "Breast Cancer - Invasive",
         "ctep_term": "Invasive Breast Carcinoma",
@@ -169,35 +169,6 @@
     },
     "message": "Some message",
     "timeline": [
-        {
-            "patient_id": "PAT123",
-            "event_date": "2016-05-09T22:06:33+00:00",
-            "event_name": "Event Name 1",
-            "event_type": "assignment",
-            "event_message": "Patient Assignment",
-            "event_data": {
-                "step": "1.1",
-                "status": "ON_TREATMENT_ARM",
-                "message": "",
-                "stratum_id": "12",
-                "biopsy_sequence_number": "B-987456",
-                "treatment_arm_id": "APEC1621-Y",
-                "assignment_date" : "2016-05-10T22:05:33+00:00"
-            }
-        },
-        {
-            "patient_id": "PAT123",
-            "event_date": "2016-05-09T22:06:33+00:00",
-            "event_name": "Event Name 1",
-            "event_type": "patient",
-            "event_message": "Patient Pending Approval",
-            "event_data": {
-                "step": "1.0",
-                "status": "PENDING",
-                "biopsy_sequence_number": "B-987456",
-                "location": "GHU"
-            }
-        },
         {
             "patient_id": "PAT123",
             "event_date": "2016-05-09T22:06:33+00:00",
