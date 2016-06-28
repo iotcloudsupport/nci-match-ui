@@ -69,13 +69,27 @@ angular.module('qcsample.matchbox',[])
                     $window.d3BoxVersion5(d.data);
                 });
         };
+        $scope.loadSvgGeneMockList = function () {
+                    $window.d3BoxVersion5Mock();
+        };
         //Svg for ntc
         $scope.loadSvgNtcList = function () {
             svgApi
                 .getSvgNtc()
                 .then(function (d) {
                     $window.d3BoxVersion5(d.data);
+                    // $window.d3BoxVersion5Mock();
                 });
+        };
+
+        //Svg for ntc  MOCK
+        $scope.loadSvgNtcMockList = function () {
+            // svgApi
+            //     .getSvgNtc()
+            //     .then(function (d) {
+                    // $window.d3BoxVersion5(d.data);
+                    $window.d3BoxVersion5Mock();
+                // });
         };
 
 

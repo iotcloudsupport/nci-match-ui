@@ -676,8 +676,9 @@ describe('Controller: Patient Details Controller', function () {
     var testData = getTestData();
     var deferred;
     var prompt;
+    var $state;
 
-    beforeEach(inject(function (_$rootScope_, _$controller_, _matchApiMock_, _$log_, _$q_, _prompt_) {
+    beforeEach(inject(function (_$rootScope_, _$controller_, _matchApiMock_, _$log_, _$q_, _prompt_, _$uibModal_, _$state_) {
         deferred = _$q_.defer();
         $stateParams = { patient_id: 100065 };
         $log = _$log_;
@@ -685,6 +686,7 @@ describe('Controller: Patient Details Controller', function () {
         matchApiMock = _matchApiMock_;
         $scope = _$rootScope_.$new();
         prompt = _prompt_;
+        $state = _$state_;
 
         ctrl = _$controller_('PatientController', {
             $scope: $scope,
@@ -701,7 +703,8 @@ describe('Controller: Patient Details Controller', function () {
             $stateParams: $stateParams,
             $log: $log,
             prompt: prompt,
-            $uibModal: null
+            $uibModal: null,
+            $state: $state 
         });
 
         deferred.resolve(testData);

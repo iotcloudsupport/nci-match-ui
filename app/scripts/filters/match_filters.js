@@ -9,6 +9,7 @@
         .filter('concordance', concordance)
         .filter('irsample', irsample)
         .filter('taStatus', taStatus)
+        .filter('utc', utc)
         .filter('titlecase', titlecase);
 
     function isNotString(text) {
@@ -33,6 +34,16 @@
         return function (date) {
             if (angular.isDefined(date) && angular.isNumber(date)) {
                 return moment.unix(date / 1000).utc().format('LLL') + ' GMT';
+            } else {
+                return '-';
+            }
+        };
+    }
+
+    function utc() {
+        return function (date) {
+            if (angular.isDefined(date)) {
+                return moment.utc(date).utc().format('LLL') + ' GMT';
             } else {
                 return '-';
             }

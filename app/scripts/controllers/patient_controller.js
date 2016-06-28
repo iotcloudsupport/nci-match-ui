@@ -9,10 +9,16 @@
         $stateParams,
         $log,
         prompt,
-        $uibModal) {
+        $uibModal,
+        $state) {
+
+        var vm = this;
 
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(100);
+
+        vm.enabledFileButtonClass = 'btn-success';
+        vm.disabledFileButtonClass = 'btn-default btn-outline-default disabled';
 
         $scope.patient_id = '';
         $scope.warningResult = false;
@@ -21,13 +27,22 @@
         $scope.confirmMessage = 'Please enter a reason:';
 
         $scope.surgicalEventLabel = 'Latest';
-        $scope.surgicalEventSelectorList = [];
-        $scope.surgicalEventSelector = {};
+        $scope.surgicalEventOptions = [];
+        $scope.surgicalEventOption = null;
 
         $scope.files = [];
 
         $scope.currentSpecimen = {};
         $scope.currentAnalisys = {};
+        $scope.currentTreatmentArm = 'Not Selected';
+
+        $scope.variantReports = [];
+
+        $scope.variantReportOptions = [];
+        $scope.variantReportOption = null;
+
+        $scope.bloodVariantReportOptions = [];
+        $scope.bloodVariantReportOption = null;
 
         $scope.dropzoneConfig = {
             url: '/alt_upload_url',
@@ -35,7 +50,6 @@
             maxFileSize: 30
         };
 
-        $scope.getCurrentAssignment = getCurrentAssignment;
         $scope.setVariantReportType = setVariantReportType;
         $scope.setVariantReportMode = setVariantReportMode;
         $scope.getVariantReportTypeClass = getVariantReportTypeClass;
@@ -50,16 +64,9 @@
         $scope.confirmVariantReport = confirmVariantReport;
         $scope.rejectVariantReport = rejectVariantReport;
         $scope.setupScope = setupScope;
-        $scope.setupVariantReport = setupVariantReport;
         $scope.showPrompt = showPrompt;
-
-        function getCurrentAssignment() {
-            return $scope.data &&
-                $scope.data.current_assignment &&
-                $scope.data.current_assignment.treatment_arms &&
-                $scope.data.current_assignment.treatment_arms.selected &&
-                $scope.data.current_assignment.treatment_arms.selected.length ? $scope.data.current_assignment.treatment_arms.selected[0].treatment_arm : "Not Selected";
-        }
+        $scope.getFileButtonClass = getFileButtonClass;
+        $scope.getAllFilesButtonClass = getAllFilesButtonClass;
 
         function setVariantReportType(reportType) {
             if ($scope.variantReportType === reportType) {
@@ -89,23 +96,33 @@
 
         function setVariantReport() {
             var selected = $scope.variantReportType + '' + $scope.variantReportMode;
-            if ($scope.variantReports && selected in $scope.variantReports)
+            if ($scope.variantReports && selected in $scope.variantReports) {
                 $scope.variantReport = $scope.variantReports[$scope.variantReportType + '' + $scope.variantReportMode];
-            else
+            } else {
                 $scope.variantReport = {};
+            }
+
+            // $log.debug('$scope.variantReport');
+            // $log.debug($scope.variantReport);
         }
 
         function loadPatientData() {
             matchApiMock
                 .loadPatient($stateParams.patient_id)
-                .then(setupScope)
-                .then(setupSurgicalEventSelectorList)
-                .then(setupVariantReport);
+                .then(setupScope, handleError);
+        }
+
+        function handleError(e) {
+            $log.error(e);
+            $log.info('Error while retriving data from the service. Transferring back to patient list');
+            $state.transitionTo('patients')
+            return;
         }
 
         function setupScope(data) {
             if (!data || !data.data) {
-                $log.error('The web service didn\'t send patient data');
+                $log.error('The web service didn\'t send patient data. Transferring back to patient list');
+                $state.transitionTo('patients')
             }
 
             $scope.patient_id = $stateParams.patient_id;
@@ -125,9 +142,13 @@
                 $log.error('The web service didn\'t send Secimen Analyses');
             }
 
+            setupSurgicalEventOptions();
+            setupVariantReports();
+            setupVariantReportOptions();
+            setupCurrentTreatmentArm();
         }
 
-        function setupSurgicalEventSelectorList() {
+        function setupSurgicalEventOptions() {
             if (!$scope.data.specimen_history) {
                 $log.error('The web service didn\'t send Secimen History');
                 return;
@@ -143,27 +164,111 @@
                         var analysis = shipment.analyses[k];
 
                         var item = {
-                            text: 'Event ' + surgicalEvent.surgical_event_id + ', Shipment ' + (j + 1) + ', Analysis ' + analysis.analysis_id,
+                            text: 'Surgical Event ' + surgicalEvent.surgical_event_id + ' | Shipment ' + (j + 1) + ' | Analysis ' + analysis.analysis_id,
                             value: {
                                 event_index: i,
                                 shipment_index: j,
                                 analysis_index: k,
-                                surgical_event_id: shipment.surgical_event_id,
+                                surgical_event_id: surgicalEvent.surgical_event_id,
                                 analysis_id: analysis.analysis_id
                             }
                         }
 
-                        $scope.surgicalEventSelectorList.push(item);
-                        // $log.debug(item);
+                        if (!$scope.surgicalEventOption) {
+                            $scope.surgicalEventOption = item;
+                        }
+
+                        $scope.surgicalEventOptions.push(item);
                     }
                 }
             }
         }
 
-        function setupVariantReport() {
-            $scope.variantReportType = 'tumorTissue';
-            $scope.variantReportMode = 'Normal';
+        function setupVariantReports() {
+            $scope.variantReports = [];
+
+            for (var i = 0; i < $scope.data.variant_reports.length; i++) {
+                $scope.data.variant_reports[i].variant_report_mode = 'NORMAL';
+                $scope.variantReports['' + $scope.data.variant_reports[i].variant_report_type + $scope.data.variant_reports[i].variant_report_mode] = $scope.data.variant_reports[i];
+
+                //TODO:RZ this is for demo only, remove after QC reports are implemented
+                var qcReport = {};
+                angular.copy($scope.data.variant_reports[i], qcReport);
+                qcReport.variant_report_mode = 'QC';
+
+                $scope.variantReports['' + qcReport.variant_report_type + qcReport.variant_report_mode] = qcReport;
+            }
+
+            $scope.variantReportType = 'TISSUE';
+            $scope.variantReportMode = 'NORMAL';
             setVariantReport();
+        }
+
+        function setupVariantReportOptions() {
+            if (!$scope.data.variant_reports && !$scope.data.variant_reports.length) {
+                $log.error('The web service didn\'t send Variant Reports');
+                return;
+            }
+
+            for (var i = 0; i < $scope.data.variant_reports.length; i++) {
+                var variantReport = $scope.data.variant_reports[i];
+
+                if (variantReport.variant_report_type === 'TISSUE') {
+                    var surgicalEventOption = findSurgicalEventOption(variantReport.surgical_event_id, variantReport.analysis_id);
+                    if (surgicalEventOption) {
+                        var variantReportItem = {
+                            text: 'Variant Report Analysis ID ' + variantReport.analysis_id + ' | Surgical Event ' + variantReport.surgical_event_id,
+                            value: {
+                                surgical_event_id: variantReport.surgical_event_id,
+                                analysis_id: variantReport.analysis_id
+                            }
+                        }
+
+                        if (!$scope.variantReportOption) {
+                            $scope.variantReportOption = variantReportItem;
+                        }
+
+                        $scope.variantReportOptions.push(variantReportItem);
+                    } else {
+                        $log.error('Unable to find Surgical Event by ' + variantReport.surgical_event_id + ' and ' + variantReport.analysis_id);
+                    }
+                } else if (variantReport.variant_report_type === 'BLOOD') {
+                    var bloodVariantReportItem = {
+                        text: 'Variant Report Analysis ID ' + variantReport.analysis_id,
+                        value: {
+                            analysis_id: variantReport.analysis_id
+                        }
+                    }
+
+                    if (!$scope.bloodVariantReportOption) {
+                        $scope.bloodVariantReportOption = bloodVariantReportItem;
+                    }
+
+                    $scope.bloodVariantReportOptions.push(bloodVariantReportItem);
+                }
+                else {
+                    $log.error('Invalid Variant Report type ' + variantReport.variant_report_type);
+                }
+            }
+        }
+
+        function findSurgicalEventOption(surgical_event_id, analysis_id) {
+            for (var i = 0; i < $scope.surgicalEventOptions.length; i++) {
+                var surgicalEvent = $scope.surgicalEventOptions[i];
+                if (surgicalEvent.value.surgical_event_id === surgical_event_id && surgicalEvent.value.analysis_id === analysis_id)
+                {
+                    return surgicalEvent;
+                }
+            }
+            return null;
+        }
+
+        function setupCurrentTreatmentArm() {
+            $scope.currentTreatmentArm = $scope.data &&
+                $scope.data.current_assignment &&
+                $scope.data.current_assignment.treatment_arms &&
+                $scope.data.current_assignment.treatment_arms.selected &&
+                $scope.data.current_assignment.treatment_arms.selected.length ? $scope.data.current_assignment.treatment_arms.selected[0].treatment_arm : "Not Selected";
         }
 
         function dzAddedFile(file) {
@@ -258,6 +363,27 @@
                     $scope.variantReport.status = 'RECTED';
                 }
             });
+        }
+
+        function getFileButtonClass(filePath) {
+            return filePath ? vm.enabledFileButtonClass : vm.disabledFileButtonClass;
+        }
+
+        function getAllFilesButtonClass(obj) {
+            try {
+                if (obj) {
+                    for (var i = 0; i < arguments.length; i++) {
+                        if (arguments[i] in obj && obj[arguments[i]]) {
+                            return vm.enabledFileButtonClass;
+                        }
+                    }
+                } else {
+                    //$log.debug('getAllFilesButtonClass no obj');
+                }
+                return vm.disabledFileButtonClass;
+            } catch (error) {
+                return vm.disabledFileButtonClass;
+            }
         }
     }
 

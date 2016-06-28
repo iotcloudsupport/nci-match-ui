@@ -31,7 +31,10 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         $scope.branch = $stateParams.branch;
         $scope.siteName = [];
         $scope.site = 'undefined';
-            $scope.barData = {};
+        $scope.barData = {};
+
+
+        $scope.mockListMDCC = [{"sampleSite":"MDACC","sampleId":"MDACC_1","sampleMsn":"NtcControl_MDACC_1","dateCreated":1466776298978,"dateReceived":1466776367227,"status":null}];
 
 
             $scope.setSampleType = setSampleType;
@@ -481,32 +484,38 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 };
 
                     armNames = [
-                        'EAY131-QQQ'
-                        , 'EAY131-BEEE'
-                        , 'EAY131-HRRR'
-                        , 'EAY131-U'
-                        , 'EAY131-E'
-                        , 'EAY131-D'
-                        , 'EAY131-F'
-                        , 'EAY131-G'
-                        , 'EAY131-T'
-                        , 'EAY131-Q'
+                        'Pos. Snv'
+                        , 'Pos. Indels'
+                        , 'Pos. Cnv'
+                        , 'Chrom Values'
+                        , 'Allele Freq'
+                        , 'Protein'
+                        , 'Funk Gene'
+                        , 'Variant Type/Snv'
+                        , 'Variant Type/Id'
+                        , 'Read Depth Snv'
+                        , 'Read Depth Indel'
+                        , 'Transcript Snv'
+                        , 'Transcript Indel'
                     ];
-                    armValues = [6, 3, 2, 2, 1, 1, 2, 3, 1, 1];
+                    armValues = [6, 3, 15, 2, 1, 11, 2, 3, 1, 23, 24, 16, 22];
 
                     mdaccNames = [
-                        'EAY131-QQQ'
-                        , 'EAY131-BEEE'
-                        , 'EAY131-HRRR'
-                        , 'EAY131-U'
-                        , 'EAY131-E'
-                        , 'EAY131-D'
-                        , 'EAY131-F'
-                        , 'EAY131-G'
-                        , 'EAY131-T'
-                        , 'EAY131-Q'
+                        'Pos. Snv'
+                        , 'Pos. Indels'
+                        , 'Pos. Cnv'
+                        , 'Chrom Values'
+                        , 'Allele Freq'
+                        , 'Protein'
+                        , 'Funk Gene'
+                        , 'Variant Type/Snv'
+                        , 'Variant Type/Id'
+                        , 'Read Depth Snv'
+                        , 'Read Depth Indel'
+                        , 'Transcript Snv'
+                        , 'Transcript Indel'
                     ];
-                    mdaccValues = [1, 8, 3, 1, 1, 1, 9, 1, 1, 6];
+                    mdaccValues = [1, 8, 3, 8, 1, 1, 9, 1, 1, 31, 28, 12, 31];
 
 
                 $scope.barData = {
