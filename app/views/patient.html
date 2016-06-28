@@ -499,7 +499,7 @@
                                         </div>
                                     </td>
                                     <td ng-if="variantReportMode!=='QC'">
-                                        <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
+                                        <a ng-if="variant.comment" href ng-click="editComment(variant)"> <i class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.variant_id}}</td>
                                     <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}</td>
