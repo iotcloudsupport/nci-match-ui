@@ -255,48 +255,103 @@
                             <div class="no-horizontal-padding header-box-container">
                                 <div class="row equal-height-panels">
                                     <div class="col-lg-12">
+
+
                                         <div class="col-lg-6">
                                             <a ng-click="showPositiveControlConfirmation('MoCha')" class="btn btn-xs btn-primary file-button-xl pull-right">
                                                 <span class="bold">Generate MSN</span>
                                             </a>
 
                                             <div class="row">
+
                                                 <div class="col-xs-3">
                                                     <h6>Positive Sample Controls - {{branch}}</h6>
                                                 </div>
                                             </div>
 
-                                            <table class="table table-hover" role="grid" width="100%"
-                                                   datatable="ng" dt-options="dtOptions"
-                                                   dt-column-defs="dtColumnDefs"
-                                                   dt-instance="dtInstance">
+                                            <!--<table class="table table-hover" role="grid" width="100%"-->
+                                                   <!--datatable="ng" dt-options="dtOptions"-->
+                                                   <!--dt-column-defs="dtColumnDefs"-->
+                                                   <!--dt-instance="dtInstance">-->
+                                                <!--<thead>-->
+                                                <!--<tr>-->
+                                                    <!--<th >Molecular ID</th>-->
+                                                    <!--<th >Variant Reports</th>-->
+                                                    <!--<th >Date Created</th>-->
+                                                    <!--<th >Date Received</th>-->
+                                                    <!--<th >Status</th>-->
+                                                <!--</tr>-->
+                                                <!--</thead>-->
+                                                <!--<tbody>-->
+                                                <!--<tr ng-repeat="sample in positiveListMocha">-->
+                                                    <!--<td>{{sample.sampleSite}}</td>-->
+                                                    <!--<td >-->
+                                                        <!--<a ng-if="!sample.sampleId"> - </a>-->
+                                                        <!--<a ng-if="sample.sampleId" ui-sref="ngsample({ sampleId: sample.sampleMsn})">-->
+                                                            <!--{{ sample.sampleMsn || '-' }}-->
+                                                        <!--</a>-->
+                                                    <!--</td>-->
+                                                    <!--<td>{{sample.dateCreated | gmt }}</td>-->
+                                                    <!--<td>{{sample.dateReceived | gmt }}</td>-->
+                                                    <!--<td ng-style="{'color':'{{ sample.status | irsample }}'}">-->
+                                                        <!--{{sample.status}}-->
+                                                    <!--</td>-->
+                                                <!--</tr>-->
+                                                <!--</tbody>-->
+                                            <!--</table>-->
+
+
+                                            <table width="100%" dt-instance="dtInstance" dt-column-defs="dtColumnDefs" dt-options="dtOptions" datatable="ng" role="grid" class="table table-hover ng-isolate-scope dataTable no-footer" style="display: table; width: 100%;" id="DataTables_Table_4" aria-describedby="DataTables_Table_4_info">
                                                 <thead>
-                                                <tr>
-                                                    <th >Molecular ID</th>
-                                                    <th >Variant Reports</th>
-                                                    <th >Date Created</th>
-                                                    <th >Date Received</th>
-                                                    <th >Status</th>
-                                                </tr>
+                                                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 93px;" aria-sort="ascending" aria-label="Molecular ID: activate to sort column descending">Molecular ID</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 145px;" aria-label="Variant Reports: activate to sort column ascending">Variant Reports</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 160px;" aria-label="Date Created: activate to sort column ascending">Date Created</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 160px;" aria-label="Date Received: activate to sort column ascending">Date Received</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 49px;" aria-label="Status: activate to sort column ascending">Status</th></tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr ng-repeat="sample in positiveListMocha">
-                                                    <td>{{sample.sampleSite}}</td>
-                                                    <td >
-                                                        <a ng-if="!sample.sampleId"> - </a>
-                                                        <a ng-if="sample.sampleId" ui-sref="ngsample({ sampleId: sample.sampleMsn})">
-                                                            {{ sample.sampleMsn || '-' }}
-                                                        </a>
+                                                <!-- ngRepeat: sample in positiveListMocha --><!-- end ngRepeat: sample in positiveListMocha --><!-- end ngRepeat: sample in positiveListMocha --><!-- end ngRepeat: sample in positiveListMocha -->
+                                                <tr class="ng-scope odd" style="" role="row">
+                                                    <td class="ng-binding sorting_1">MoCha</td>
+                                                    <td>
+                                                        <!-- ngIf: sample.sampleId --><a class="ng-scope"> - </a>
+                                                    </a><!-- end ngIf: sample.sampleId -->
                                                     </td>
-                                                    <td>{{sample.dateCreated | gmt }}</td>
-                                                    <td>{{sample.dateReceived | gmt }}</td>
-                                                    <td ng-style="{'color':'{{ sample.status | irsample }}'}">
-                                                        {{sample.status}}
+                                                    <td class="ng-binding">June 27, 2016 5:16 PM GMT</td>
+                                                    <td class="ng-binding">-</td>
+                                                    <td ng-style="{'color':''}" class="ng-binding">
+
                                                     </td>
                                                 </tr>
-                                                </tbody>
+                                                <tr class="ng-scope even" role="row">
+                                                    <td class="ng-binding sorting_1">MoCha</td>
+                                                    <td>
+                                                        <!-- ngIf: !sample.sampleId -->
+                                                        <!-- ngIf: sample.sampleId --><a class="ng-binding ng-scope" href="#/ngsample/SampleControl_MoCha_3">
+                                                        SampleControl_MoCha_3
+                                                    </a><!-- end ngIf: sample.sampleId -->
+                                                    </td>
+                                                    <td class="ng-binding">June 27, 2016 8:31 PM GMT</td>
+                                                    <td class="ng-binding">June 27, 2016 9:31 PM GMT</td>
+                                                    <td ng-style="{'color':'red'}" class="ng-binding" style="color: rgb(0, 128, 0);">
+                                                        FAILED
+                                                    </td>
+                                                </tr>
+                                                <tr class="ng-scope odd" role="row">
+                                                    <td class="ng-binding sorting_1">MoCha</td>
+                                                    <td>
+                                                        <!-- ngIf: !sample.sampleId -->
+                                                        <!-- ngIf: sample.sampleId --><a class="ng-binding ng-scope" href="#/ngsample/SampleControl_MoCha_2">
+                                                        SampleControl_MoCha_2
+                                                    </a><!-- end ngIf: sample.sampleId -->
+                                                    </td>
+                                                    <td class="ng-binding">June 27, 2016 7:13 PM GMT</td>
+                                                    <td class="ng-binding">June 27, 2016 7:14 PM GMT</td>
+                                                    <td ng-style="{'color':'green'}" class="ng-binding" style="color: rgb(0, 128, 0);">
+                                                        PASSED
+                                                    </td>
+                                                </tr></tbody>
                                             </table>
+
                                         </div>
+
+
 
                                         <div class="col-lg-6">
                                             <a ng-click="showNoTemplateControlConfirmation('MoCha')" class="btn btn-xs btn-primary file-button-xl pull-right">
@@ -308,37 +363,84 @@
                                                     <h6>No Template Control - {{branch}}</h6>
                                                 </div>
                                             </div>
-                                            <table class="table table-hover" role="grid" width="100%"
-                                                   datatable="ng" dt-options="dtOptions"
-                                                   dt-column-defs="dtColumnDefs"
-                                                   dt-instance="dtInstance">
+
+                                            <!--<table class="table table-hover" role="grid" width="100%"-->
+                                                   <!--datatable="ng" dt-options="dtOptions"-->
+                                                   <!--dt-column-defs="dtColumnDefs"-->
+                                                   <!--dt-instance="dtInstance">-->
+
+                                                <!--<thead>-->
+                                                <!--<tr>-->
+                                                    <!--<th >Molecular ID</th>-->
+                                                    <!--<th >Variant Reports</th>-->
+                                                    <!--<th >Date Created</th>-->
+                                                    <!--<th >Date Received</th>-->
+                                                    <!--<th >Status</th>-->
+                                                <!--</tr>-->
+                                                <!--</thead>-->
+                                                <!--<tbody>-->
+                                                <!--<tr ng-repeat="sample in negativeListMocha">-->
+                                                    <!--<td>{{sample.sampleMsn}}</td>-->
+                                                    <!--<td>-->
+                                                        <!--<a ng-if="!sample.dateReceived"> - </a>-->
+                                                        <!--<a ng-if="sample.dateReceived" ui-sref="ntcsample({ sampleId: sample.sampleMsn})">-->
+                                                            <!--{{ sample.sampleMsn || '-' }}-->
+                                                        <!--</a>-->
+                                                    <!--</td>-->
+                                                    <!--<td>{{sample.dateCreated | gmt }}</td>-->
+                                                    <!--<td>{{sample.dateReceived | gmt }}</td>-->
+                                                    <!--<td ng-style="{'color':'{{ sample.status | irsample }}'}">-->
+                                                        <!--{{sample.status}}-->
+                                                    <!--</td>-->
+                                                <!--</tr>-->
+                                                <!--</tbody>-->
+                                            <!--</table>-->
+
+                                            <table width="100%" dt-instance="dtInstance" dt-column-defs="dtColumnDefs" dt-options="dtOptions" datatable="ng" role="grid" class="table table-hover ng-isolate-scope dataTable no-footer" style="display: table; width: 100%;" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
 
                                                 <thead>
-                                                <tr>
-                                                    <th >Molecular ID</th>
-                                                    <th >Variant Reports</th>
-                                                    <th >Date Created</th>
-                                                    <th >Date Received</th>
-                                                    <th >Status</th>
-                                                </tr>
+                                                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 119px;" aria-sort="ascending" aria-label="Molecular ID: activate to sort column descending">Molecular ID</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 119px;" aria-label="Variant Reports: activate to sort column ascending">Variant Reports</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 160px;" aria-label="Date Created: activate to sort column ascending">Date Created</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 160px;" aria-label="Date Received: activate to sort column ascending">Date Received</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 49px;" aria-label="Status: activate to sort column ascending">Status</th></tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr ng-repeat="sample in negativeListMocha">
-                                                    <td>{{sample.sampleMsn}}</td>
+                                                <!-- ngRepeat: sample in negativeListMocha --><!-- end ngRepeat: sample in negativeListMocha --><!-- end ngRepeat: sample in negativeListMocha --><!-- end ngRepeat: sample in negativeListMocha -->
+                                                <tr class="ng-scope odd" role="row">
+                                                    <td class="ng-binding sorting_1">NtcControl_MoCha_1</td>
                                                     <td>
-                                                        <a ng-if="!sample.dateReceived"> - </a>
-                                                        <a ng-if="sample.dateReceived" ui-sref="ntcsample({ sampleId: sample.sampleMsn})">
-                                                            {{ sample.sampleMsn || '-' }}
-                                                        </a>
+                                                        <!-- ngIf: !sample.dateReceived -->
+                                                        <!-- ngIf: sample.dateReceived --><a class="ng-binding ng-scope" href="#/ntcsample/NtcControl_MoCha_1">
+                                                        NtcControl_MoCha_1
+                                                    </a><!-- end ngIf: sample.dateReceived -->
                                                     </td>
-                                                    <td>{{sample.dateCreated | gmt }}</td>
-                                                    <td>{{sample.dateReceived | gmt }}</td>
-                                                    <td ng-style="{'color':'{{ sample.status | irsample }}'}">
-                                                        {{sample.status}}
+                                                    <td class="ng-binding">June 27, 2016 1:44 PM GMT</td>
+                                                    <td class="ng-binding">June 27, 2016 1:46 PM GMT</td>
+                                                    <td ng-style="{'color':'green'}" class="ng-binding" style="color: rgb(0, 128, 0);">
+                                                        PASSED
                                                     </td>
-                                                </tr>
-                                                </tbody>
+                                                </tr><tr class="ng-scope even" style="" role="row">
+                                                    <td class="ng-binding sorting_1">NtcControl_MoCha_2</td>
+                                                    <td>
+                                                        <!-- ngIf: !sample.dateReceived --><a class="ng-scope"> - </a><!-- end ngIf: !sample.dateReceived -->
+                                                        <!-- ngIf: sample.dateReceived -->
+                                                    </td>
+                                                    <td class="ng-binding">June 27, 2016 6:25 PM GMT</td>
+                                                    <td class="ng-binding">-</td>
+                                                    <td ng-style="{'color':''}" class="ng-binding">
+
+                                                    </td>
+                                                </tr><tr class="ng-scope odd" role="row">
+                                                    <td class="ng-binding sorting_1">NtcControl_MoCha_3</td>
+                                                    <td>
+                                                        <!-- ngIf: !sample.dateReceived --><a class="ng-scope"> - </a><!-- end ngIf: !sample.dateReceived -->
+                                                        <!-- ngIf: sample.dateReceived -->
+                                                    </td>
+                                                    <td class="ng-binding">June 27, 2016 8:31 PM GMT</td>
+                                                    <td class="ng-binding">-</td>
+                                                    <td ng-style="{'color':''}" class="ng-binding">
+
+                                                    </td>
+                                                </tr></tbody>
                                             </table>
+
                                         </div>
                                     </div>
                                 </div>
@@ -360,9 +462,11 @@
                                             </a>
 
                                             <div class="row">
+
                                             <div class="col-xs-3">
                                                 <h6>Positive Sample Controls - {{branch}}</h6>
                                             </div>
+
                                             </div>
 
                                             <table class="table table-hover" role="grid" width="100%"
