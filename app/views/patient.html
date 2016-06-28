@@ -408,7 +408,7 @@
                                         <dd>
                                             <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.rna_bam_file_path)">RNA BAM</a>
                                             <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.rna_bai_file_path)">RNA BAI</a>
-                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(data.variant_report, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(currentVariantReport, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
                                         </dd>
 
                                         <dt>File Received Date</dt>
@@ -452,14 +452,14 @@
                             </div>
                         </div>
 
-                        <div ng-init="loadVariantReportChart()" >
+                        <!--<div ng-init="loadVariantReportChart()" >
                             <div class="svg-container" responsive="true">
                                 <div id="D3BoxPanel">
                                     <svg id="D3Box" version="1.1" preserveAspectRatio="xMinYMin meet" class="svg-content"></svg>
                                 </div>
                             </div>
-                        </div>
-                        <!--<img src="/img/variant_report.png" style="width:1200px" />-->
+                        </div>-->
+                        <img src="/img/variant_report.png" style="width:1200px" />
 
                         <!--Single Nucleitide Variant(s)-->
                         <div class="ibox-title ibox-title-no-line">
@@ -747,7 +747,7 @@
                                         <dd>
                                             <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.rna_bam_file_path)">RNA BAM</a>
                                             <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.rna_bai_file_path)">RNA BAI</a>
-                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(data.variant_report, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(currentVariantReport, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
                                         </dd>
 
                                         <dt>File Received Date</dt>
