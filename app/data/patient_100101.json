@@ -152,6 +152,103 @@
       "event_date": "2016-05-09T22:06:33+00:00",
       "event_name": "Event Name 1",
       "event_type": "patient",
+      "event_message": "Off Study",
+      "event_data": {
+        "step": "2.0",
+        "status": "OFF_STUDY",
+        "message": "",
+        "stratum_id": "12",
+        "biopsy_sequence_number": "B-987456",
+        "location": "GHU"
+      }
+    },
+    {
+      "patient_id": "PAT123",
+      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_name": "Event Name 1",
+      "event_type": "patient",
+      "event_message": "No Ped Match Ta Available",
+      "event_data": {
+        "step": "2.0",
+        "status": "NO_PED_MATCH_TA_AVAILABLE",
+        "message": "",
+        "stratum_id": "12",
+        "biopsy_sequence_number": "B-987456",
+        "location": "GHU"
+      }
+    },
+    {
+      "patient_id": "PAT123",
+      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_name": "Event Name 1",
+      "event_type": "patient",
+      "event_message": "Compassionate Care",
+      "event_data": {
+        "step": "2.0",
+        "status": "COMPASSIONATE_CARE",
+        "message": "",
+        "stratum_id": "12",
+        "biopsy_sequence_number": "B-987456",
+        "location": "GHU"
+      }
+    },
+    {
+      "patient_id": "PAT123",
+      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_name": "Event Name 1",
+      "event_type": "system",
+      "event_message": "Receiving Rule Assignment",
+      "event_data": {
+        "step": "2.0",
+        "status": "COMPLETE"
+      }
+    },
+    {
+      "patient_id": "PAT123",
+      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_name": "Event Name 1",
+      "event_type": "system",
+      "event_message": "Awaiting Treatment Arms Status",
+      "event_data": {
+        "step": "2.0",
+        "status": "COMPLETE"
+      }
+    },
+    {
+      "patient_id": "PAT123",
+      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_name": "Event Name 1",
+      "event_type": "patient",
+      "event_message": "Patient Progression",
+      "event_data": {
+        "step": "2.0",
+        "status": "PROGRESSION",
+        "message": "",
+        "stratum_id": "12",
+        "biopsy_sequence_number": "B-987456"
+      }
+    },
+    {
+      "patient_id": "PAT123",
+      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_name": "Event Name 1",
+      "event_type": "assignment",
+      "event_message": "Patient Assignment",
+      "event_data": {
+        "step": "1.1",
+        "status": "ON_TREATMENT_ARM",
+        "message": "",
+        "stratum_id": "12",
+        "biopsy_sequence_number": "B-987456",
+        "treatment_arm_id": "APEC1621-Y",
+        "assignment_date" : "2016-05-10T22:05:33+00:00"
+      }
+    },
+    {
+      "patient_id": "PAT123",
+      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_name": "Event Name 1",
+      "event_type": "patient",
       "event_message": "Patient Pending Approval",
       "event_data": {
         "step": "1.0",
