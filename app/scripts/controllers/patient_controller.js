@@ -241,7 +241,11 @@
                         $scope.bloodVariantReportOption = bloodVariantReportItem;
                     }
 
-                    $scope.bloodVariantReportOptions.push(bloodVariantReportItem);
+                    if (!$scope.currentBloodVariantReport) {
+                        $scope.currentBloodVariantReport = variantReport;
+                    }
+
+                    $scope.bloodVariantReportOptions.push(variantReport);
                 }
                 else {
                     $log.error('Invalid Variant Report type ' + variantReport.variant_report_type);
@@ -453,7 +457,6 @@
 
         function onBloodVariantReportSelected(selected) {
             $log.debug(selected);
-            $scope.currentBloodVariantReport = selected;
         }
 
         function showVariantReportActions(variantReport) {
