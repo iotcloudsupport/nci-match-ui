@@ -502,7 +502,7 @@
                                         <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.variant_id}}</td>
-                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}</td>
+                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}<sup>({{::variant.inclusion}})</sup></td>
                                     <td>{{::variant.chromosome}}</td>
                                     <td>{{::variant.position}}</td>
                                     <td>{{::variant.cds_ref}}</td>
@@ -568,7 +568,7 @@
                                         <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.identifier}}</td>
-                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}</td>
+                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}<sup>({{::variant.inclusion}})</sup></td>
                                     <td>{{::variant.chromosome}}</td>
                                     <td>{{::variant.position}}</td>
                                     <td>{{::variant.cds_ref}}</td>
@@ -623,7 +623,7 @@
                                         <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.identifier}}</td>
-                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}</td>
+                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}<sup>({{::variant.inclusion}})</sup></td>
                                     <td>{{::variant.chromosome}}</td>
                                     <td>{{::variant.rawCopyNumber}}</td>
                                     <td>{{::variant.copyNumber}}</td>
@@ -667,7 +667,7 @@
                                         <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.identifier}}</td>
-                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}</td>
+                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}<sup>({{::variant.inclusion}})</sup></td>
                                     <td>{{::variant.gene2}}</td>
                                     <td>{{::variant.gene2count}}</td>
                                     <td>{{::variant.gene}}</td>
@@ -821,7 +821,7 @@
                                         <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.id}}</td>
-                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}</td>
+                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}<sup>({{::variant.inclusion}})</sup></td>
                                     <td>{{::variant.chrom}}</td>
                                     <td>{{::variant.position}}</td>
                                     <td>{{::variant.cds_ref}}</td>
@@ -887,7 +887,7 @@
                                         <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.id}}</td>
-                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}</td>
+                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}<sup>({{::variant.inclusion}})</sup></td>
                                     <td>{{::variant.chrom}}</td>
                                     <td>{{::variant.position}}</td>
                                     <td>{{::variant.cds_ref}}</td>
@@ -942,7 +942,7 @@
                                         <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.id}}</td>
-                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}</td>
+                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}<sup>({{::variant.inclusion}})</sup></td>
                                     <td>{{::variant.chrom}}</td>
                                     <td>{{::variant.rawCN}}</td>
                                     <td>{{::variant.cn}}</td>
@@ -986,7 +986,7 @@
                                         <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.id}}</td>
-                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}</td>
+                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}<sup>({{::variant.inclusion}})</sup></td>
                                     <td>{{::variant.gene2}}</td>
                                     <td>{{::variant.gene2count}}</td>
                                     <td>{{::variant.gene1}}</td>
