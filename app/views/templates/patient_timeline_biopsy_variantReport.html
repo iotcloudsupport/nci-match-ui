@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-5 col-md-4 date" title="Biopsy Variant Report Event">
-        <i class="fa fa-bar-chart fa-2x"></i> {{::timelineEvent.dateTime}}
+        <i class="fa fa-bar-chart fa-2x"></i> {{::timelineEvent.event_date | utc}}
         <br/>
         <small class="text-navy">{{::timelineEvent.from_now}}</small>
     </div>

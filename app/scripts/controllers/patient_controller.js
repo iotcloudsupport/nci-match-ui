@@ -136,22 +136,22 @@
             angular.copy(data.data, scopeData);
             $scope.data = scopeData;
 
-            // if ($scope.data.specimen && $scope.data.specimen.specimen_shipments) {
-            //     $scope.currentSpecimen = $scope.data.specimen.specimen_shipments[$scope.data.specimen.specimen_shipments.length - 1];
-            // } else {
-            //     $log.error('The web service didn\'t send Specimen Shipment');
-            // }
-
-            // if ($scope.currentSpecimen && $scope.currentSpecimen.analyses) {
-            //     $scope.currentAnalisys = $scope.currentSpecimen.analyses[$scope.currentSpecimen.analyses.length - 1];
-            // } else {
-            //     $log.error('The web service didn\'t send Secimen Analyses');
-            // }
-
+            setupTimeline();
             setupSurgicalEventOptions();
             setupVariantReports();
             setupVariantReportOptions();
             setupCurrentTreatmentArm();
+        }
+
+        function setupTimeline() {
+            var now = moment();
+
+            for (var i = 0; i < $scope.data.timeline.length; i++) {
+                var timelineEvent = $scope.data.timeline[i];
+                var eventDateMoment = moment(timelineEvent.event_date);
+                var diff = eventDateMoment.diff(now,"DD/MM/YYYY HH:mm:ss");
+                timelineEvent.from_now = moment.duration(diff).humanize(true);
+            }            
         }
 
         function setupSurgicalEventOptions() {
