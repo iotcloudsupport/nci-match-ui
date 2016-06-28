@@ -720,13 +720,13 @@
       },
       {
           "surgical_event_id": "SUREVT002",
-          "variant_report_received_date": "2016-02-19T22:06:33+00:00",
+          "variant_report_received_date": "2016-02-19T22:45:02+00:00",
           "variant_report_type": "BLOOD",
           "patient_id": "100025",
           "molecular_id": "MOL1232",
           "analysis_id": "SAM002_04",
           "status": "CONFIRMED",
-          "status_date": "2016-02-19T23:06:33+00:00",
+          "status_date": "016-02-19T23:52:24+00:00",
           "dna_bam_file_path": "http:\\\\blah.com\\dna_bam.data",
           "dna_bai_file_path": "http:\\\\blah.com\\dna_bai.data",
           "rna_bam_file_path": "http:\\\\blah.com\\rna_bam.data",
@@ -750,7 +750,7 @@
                       "analysis_id": "SAM002_04",
                       "variant_id": "VAR002_04_01",
                       "status": "CONFIRMED",
-                      "status_date": "2016-02-19T23:06:33+00:00",
+                      "status_date": "2016-02-19T23:52:24+00:00",
                       "comment": "",
                       "gene_name": "gene",
                       "chromosome": "chr3",
@@ -786,7 +786,7 @@
                       "analysis_id": "SAM002_04",
                       "variant_id": "VAR002_04_02",
                       "status": "CONFIRMED",
-                      "status_date": "2016-02-19T23:06:33+00:00",
+                      "status_date": "2016-02-19T23:52:24+00:00",
                       "comment": "",
                       "gene_name": "gene",
                       "chromosome": "chr3",
@@ -997,8 +997,8 @@
                     {
                         "analysis_id": "SAM002_04",
                         "status": "Confirmed",
-                        "file_received_date": "2016-02-19T22:06:33+00:00",
-                        "status_date": "2016-02-19T23:06:33+00:00"
+                        "file_received_date": "2016-02-19T22:45:02+00:00",
+                        "status_date": "2016-02-19T23:52:24+00:00"
                     },
                     {
                         "analysis_id": "SAM002_03",
@@ -1138,8 +1138,8 @@
                         {
                             "analysis_id": "SAM002_04",
                             "status": "Confirmed",
-                            "file_received_date": "2016-02-19T22:06:33+00:00",
-                            "status_date": "2016-02-19T23:06:33+00:00"
+                            "file_received_date": "2016-02-19T22:45:02+00:00",
+                            "status_date": "2016-02-19T23:52:24+00:00"
                         },
                         {
                             "analysis_id": "SAM002_03",
