@@ -163,31 +163,20 @@
             for (var i = 0; i < $scope.data.specimen_history.length; i++) {
                 var surgicalEvent = $scope.data.specimen_history[i];
 
-                for (var j = 0; j < surgicalEvent.specimen_shipments.length; j++) {
-                    var shipment = surgicalEvent.specimen_shipments[i];
-
-                    for (var k = 0; k < shipment.analyses.length; k++) {
-                        var analysis = shipment.analyses[k];
-
-                        var item = {
-                            text: 'Surgical Event ' + surgicalEvent.surgical_event_id + ' | Shipment ' + (j + 1) + ' | Analysis ' + analysis.analysis_id,
-                            value: {
-                                event_index: i,
-                                shipment_index: j,
-                                analysis_index: k,
-                                surgical_event_id: surgicalEvent.surgical_event_id,
-                                analysis_id: analysis.analysis_id
-                            }
-                        }
-
-                        if (!$scope.surgicalEventOption) {
-                            $scope.surgicalEventOption = item;
-                            selectSurgicalEvent(item);
-                        }
-
-                        $scope.surgicalEventOptions.push(item);
+                var item = {
+                    text: 'Surgical Event ' + surgicalEvent.surgical_event_id,
+                    value: {
+                        event_index: i,
+                        surgical_event_id: surgicalEvent.surgical_event_id
                     }
                 }
+
+                if (!$scope.surgicalEventOption) {
+                    $scope.surgicalEventOption = item;
+                    selectSurgicalEvent(item);
+                }
+
+                $scope.surgicalEventOptions.push(item);
             }
         }
 
@@ -220,8 +209,8 @@
             for (var i = 0; i < $scope.data.variant_reports.length; i++) {
                 var variantReport = $scope.data.variant_reports[i];
 
-                if (variantReport.variant_report_type === 'TISSUE') {
-                    var surgicalEventOption = findSurgicalEventOption(variantReport.surgical_event_id, variantReport.analysis_id);
+                if (variantReport.surgical_event_id) {
+                    var surgicalEventOption = findSurgicalEventOption(variantReport.surgical_event_id);
                     if (surgicalEventOption) {
                         var variantReportItem = {
                             text: 'Variant Report Analysis ID ' + variantReport.analysis_id + ' | Surgical Event ' + variantReport.surgical_event_id,
@@ -238,7 +227,7 @@
 
                         $scope.variantReportOptions.push(variantReportItem);
                     } else {
-                        $log.error('Unable to find Surgical Event by ' + variantReport.surgical_event_id + ' and ' + variantReport.analysis_id);
+                        $log.error('Unable to find Surgical Event by ' + variantReport.surgical_event_id);
                     }
                 } else if (variantReport.variant_report_type === 'BLOOD') {
                     var bloodVariantReportItem = {
@@ -260,20 +249,20 @@
             }
         }
 
-        function findVariantReportOption(surgical_event_id, analysis_id) {
+        function findVariantReportOption(surgical_event_id) {
             for (var i = 0; i < $scope.variantReportOptions.length; i++) {
                 var item = $scope.variantReportOptions[i];
-                if (item.value.surgical_event_id === surgical_event_id && item.value.analysis_id === analysis_id) {
+                if (item.value.surgical_event_id === surgical_event_id) {
                     return item;
                 }
             }
             return null;
         }
 
-        function findSurgicalEventOption(surgical_event_id, analysis_id) {
+        function findSurgicalEventOption(surgical_event_id) {
             for (var i = 0; i < $scope.surgicalEventOptions.length; i++) {
                 var item = $scope.surgicalEventOptions[i];
-                if (item.value.surgical_event_id === surgical_event_id && item.value.analysis_id === analysis_id) {
+                if (item.value.surgical_event_id === surgical_event_id) {
                     return item;
                 }
             }
@@ -410,7 +399,7 @@
 
         function onSurgicalEventSelected(selected) {
             $log.debug(selected);
-            var variantReportItem = findVariantReportOption(selected.value.surgical_event_id, selected.value.analysis_id);
+            var variantReportItem = findVariantReportOption(selected.value.surgical_event_id);
             if (variantReportItem) {
                 $log.debug(selected);
                 $scope.variantReportOption = variantReportItem;
@@ -423,35 +412,32 @@
 
         function onVariantReportSelected(selected) {
             $log.debug(selected);
-            var surgicalEventItem = findSurgicalEventOption(selected.value.surgical_event_id, selected.value.analysis_id);
+            var surgicalEventItem = findSurgicalEventOption(selected.value.surgical_event_id);
             if (surgicalEventItem) {
                 $log.debug(selected);
                 $scope.surgicalEventOption = surgicalEventItem;
                 selectSurgicalEvent(surgicalEventItem);
                 selectVariantReport(selected);
             } else {
-                $log.error('Unable to find Variant Report by ' + selected.value.surgical_event_id + ', ' + selected.value.analysis_id);
+                $log.error('Unable to find Surgical Event by ' + selected.value.surgical_event_id);
             }
         }
 
         function selectSurgicalEvent(option) {
+            $scope.currentSurgicalEvent = null;
+            $scope.currentAnalisys = null;
+
             for (var i = 0; i < $scope.data.specimen_history.length; i++) {
                 var surgicalEvent = $scope.data.specimen_history[i];
 
-                if (surgicalEvent.surgical_event_id !== option.value.surgical_event_id) {
-                    continue;
-                }
+                if (surgicalEvent.surgical_event_id === option.value.surgical_event_id) {
+                    $scope.currentSurgicalEvent = surgicalEvent;
 
-                for (var j = 0; j < surgicalEvent.specimen_shipments.length; j++) {
-                    var shipment = surgicalEvent.specimen_shipments[i];
-
-                    for (var k = 0; k < shipment.analyses.length; k++) {
-                        var analysis = shipment.analyses[k];
-
-                        if (analysis.analysis_id === option.value.analysis_id) {
-                            $scope.currentSurgicalEvent = surgicalEvent;
+                    if (surgicalEvent.specimen_shipments && surgicalEvent.specimen_shipments.length) {
+                        var shipment = surgicalEvent.specimen_shipments[0];
+                        if (shipment.analyses && shipment.analyses.length) {
+                            var analysis = shipment.analyses[0];
                             $scope.currentAnalisys = analysis;
-                            return;
                         }
                     }
                 }
