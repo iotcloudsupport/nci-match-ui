@@ -349,12 +349,12 @@
       "rna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
       "rna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
       "vcf_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
-      "total_variants": 8,
-      "cellularity": 7,
-      "total_mois": 4,
-      "total_amois": 2,
-      "total_confirmed_mois": 3,
-      "total_confirmed_amois": 1,
+      "total_variants": 7,
+      "cellularity": 6,
+      "total_mois": 7,
+      "total_amois": 6,
+      "total_confirmed_mois": 7,
+      "total_confirmed_amois": 6,
       "variants": {
         "single_nucleitide_variants": [
           {
@@ -579,12 +579,12 @@
       }
     },
     {
-      "surgical_event_id": "SUREVT0982",
+      "surgical_event_id": "SUREVT100",
       "variant_report_received_date": "2016-05-09T22:06:33.000+00:00",
       "variant_report_type": "BLOOD",
       "patient_id": "PAT1232",
       "molecular_id": "MOL1232",
-      "analysis_id": "SAM1232",
+      "analysis_id": "SAM101",
       "status": "PENDING",
       "status_date": "2016-05-09T22:06:33.000+00:00",
       "dna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
@@ -592,12 +592,12 @@
       "rna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
       "rna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
       "vcf_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
-      "total_variants": 8,
-      "cellularity": 7,
-      "total_mois": 4,
-      "total_amois": 2,
-      "total_confirmed_mois": 3,
-      "total_confirmed_amois": 1,
+      "total_variants": 2,
+      "cellularity": 2,
+      "total_mois": 2,
+      "total_amois": 1,
+      "total_confirmed_mois": 0,
+      "total_confirmed_amois": 0,
       "variants": {
         "single_nucleitide_variants": [
           {
@@ -674,6 +674,62 @@
         ],
         "indels": [],
         "copy_number_variants": [],
+        "gene_fusions": []
+      }
+    },
+    {
+      "surgical_event_id": "SUREVT101",
+      "variant_report_received_date": "2016-05-09T22:06:33.000+00:00",
+      "variant_report_type": "TISSUE",
+      "patient_id": "PAT1232",
+      "molecular_id": "MOL101",
+      "analysis_id": "SAM1232",
+      "status": "CONFIRMED",
+      "status_date": "2016-05-09T22:06:33.000+00:00",
+      "dna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "dna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "rna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "rna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "vcf_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "total_variants": 1,
+      "cellularity": 1,
+      "total_mois": 1,
+      "total_amois": 1,
+      "total_confirmed_mois": 1,
+      "total_confirmed_amois": 1,
+      "variants": {
+        "single_nucleitide_variants": [],
+        "indels": [],
+        "copy_number_variants": [
+          {
+            "refCopyNumber" : 8.1,
+            "rawCopyNumber" : 2.1,
+            "copyNumber" : 8.1,
+            "confidenceInterval95percent" : 2.46082,
+            "confidenceInterval5percent" : 1.79208,
+            "confirmed" : true,
+            "aMOI" : "PRIOR",
+            "gene" : "MYCL",
+            "exon" : "",
+            "function" : "",
+            "metadata" : {
+              "_id" : "4213853e-1afc-4950-9908-752267d04851"
+            },
+            "geneName" : "",
+            "chromosome" : "chr1",
+            "position" : "40361592",
+            "identifier" : "MYCL",
+            "reference" : "A",
+            "alternative" : "<CNV>",
+            "filter" : "PASS",
+            "hgvs" : "",
+            "rare" : false,
+            "flowAlternativeAlleleObservationCount" : "",
+            "flowReferenceAlleleObservations" : "",
+            "inclusion" : "E",
+            "armSpecific" : false
+          }
+        ],
         "gene_fusions": []
       }
     }
