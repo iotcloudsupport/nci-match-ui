@@ -367,6 +367,7 @@
           "variants": {
               "single_nucleitide_variants": [
                   {
+                      "confirm": "false",
                       "molecular_id_analysis_id": "MSNANL123AN123",
                       "variant_type": "single_nucleitide_variants",
                       "patient_id": "PAT123",
@@ -402,6 +403,7 @@
                       "arm_specific": "arm spec"
                   },
                   {
+                      "confirm": "true",
                       "molecular_id_analysis_id": "MSNANL123AN123",
                       "variant_type": "single_nucleitide_variants",
                       "patient_id": "PAT123",
@@ -411,7 +413,7 @@
                       "variant_id": "VAR98762",
                       "status": "CONFIRMED",
                       "status_date": "2016-06-09T22:06:33+00:00",
-                      "comment": "Don't need this",
+                      "comment": "",
                       "gene_name": "gene",
                       "chromosome": "chr3",
                       "position": "12345",
@@ -465,6 +467,7 @@
           "variants": {
               "single_nucleitide_variants": [
                   {
+                      "confirm": "false",
                       "molecular_id_analysis_id": "MSNANL123AN123",
                       "variant_type": "single_nucleitide_variants",
                       "patient_id": "PAT123",
@@ -500,6 +503,7 @@
                       "arm_specific": "arm spec"
                   },
                   {
+                      "confirm": "true",
                       "molecular_id_analysis_id": "MSNANL123AN123",
                       "variant_type": "single_nucleitide_variants",
                       "patient_id": "PAT123",
@@ -509,7 +513,7 @@
                       "variant_id": "VAR98762",
                       "status": "CONFIRMED",
                       "status_date": "2016-06-09T22:06:33+00:00",
-                      "comment": "Don't need this",
+                      "comment": "",
                       "gene_name": "gene",
                       "chromosome": "chr3",
                       "position": "12345",

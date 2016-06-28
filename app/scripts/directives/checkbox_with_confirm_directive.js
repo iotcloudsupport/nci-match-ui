@@ -9,19 +9,14 @@
         var controller = function () {
             var vm = this;
 
+            vm.$onInit = function() {
+                console.log('$onInit');
+                console.log(vm);
+            }
+
             vm.toggle = function (comment) {
                 vm.isChecked = !vm.isChecked;
                 vm.comment = comment;
-
-                if (vm.onCommentEntered && typeof vm.onCommentEntered === 'function' && comment !== null) {
-                    try {
-                        vm.onCommentEntered(comment);
-                    } catch (error) {
-                        if (typeof error === 'object' && 'message' in error && error.message.startsWith('Cannot use \'in\' operator to search for')) {
-                            console.log('Ignored AngularJS error. ' + error);
-                        }
-                    }
-                }
             };
 
             vm.confirm = function () {
@@ -61,24 +56,24 @@
                         <button type="input" ng-click="vm.confirm()"></button>\
                     </div>\
                     <div class="stacked-back">\
-                        <input type="checkbox" tabindex="-1" ng-model="vm.isChecked">\
+                        <input type="checkbox" tabindex="-1" ng-checked="vm.isChecked">\
                     </div>\
                 </div>';
 
         return {
+            bindToController: {
+                confirmTitle: '@confirmTitle',
+                confirmMessage: '@confirmMessage',
+                isChecked: '=',
+                reason: '=',
+                promptOnlyIf: '=',
+                comment: '='
+            },
             restrict: 'A',
             template: template,
             controller: controller,
             controllerAs: 'vm',
-            bindToController: true,
-            scope: {
-                confirmTitle: '@confirmTitle',
-                confirmMessage: '@confirmMessage',
-                isChecked: '=',
-                onCommentEntered: '&',
-                promptOnlyIf: '=',
-                updateObject: '='
-            }
+            scope: {}
         }
     }
 

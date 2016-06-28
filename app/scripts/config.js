@@ -350,6 +350,9 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
             data: { pageTitle: 'Login' }
         })
 
+    console.log(ENV.AUTH0_DOMAIN);
+    console.log(ENV.AUTH0_CLIENT_ID);
+    console.log(ENV.loginUrl);
     authProvider.init({
         domain: ENV.AUTH0_DOMAIN,
         clientID: ENV.AUTH0_CLIENT_ID,
