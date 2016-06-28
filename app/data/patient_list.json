@@ -4,7 +4,195 @@
         "gender": "Male",
         "ethnicity": "White",
         "current_status": "REGISTRATION",
-        "treatment_arm": "APEC1621-A",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100066",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "REGISTRATION_ERROR",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100067",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "TISSUE_SPECIMEN_RECEIVED",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100068",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "TISSUE_SPECIMEN_FAILURE",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100069",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "TISSUE_NUCLEIC_ACID_SHIPPED",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100070",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "TISSUE_SLIDE_SPECIMEN_SHIPPED",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100071",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "ORDER_X_IHC",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100072",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "PATHOLOGY_REVIEW",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100073",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "RESULT_X_IHC",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100074",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "COMPLETED_MDA_DATA_SET",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100075",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "TISSUE_VARIANT_REPORT_RECEIVED",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100076",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "TISSUE_VARIANT_REPORT_CONFIRMED",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100077",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "TISSUE_VARIANT_REPORT_REJECTED",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100078",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "TISSUE_NUCLEIC_ACID_FAILURE",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100079",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "RUNNING_RULES",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100080",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "AWAITING_PATIENT_DATA",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100081",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "AWAITING_TREATMENT_ARMS_STATUS",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100082",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "RETRIEVING_RULES_ASSIGNMENT",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100083",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "COMPASSIONATE_CARE",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100084",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "PENDING_INFORMATICS_REVIEW",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100085",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "NOT_ELIGIBLE",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100086",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "TREATMENT_ARM_SUSPENDED",
         "current_step_number": "1.0",
         "registration_date": "2016-05-09T22:06:33.000+00:00",
         "disease_name": "Invasive Breast Carcinoma"
@@ -13,18 +201,79 @@
         "patient_id": "100087",
         "gender": "Female",
         "ethnicity": "White",
-        "current_status": "PENDING_CONFIRMATION",
-        "treatment_arm": "APEC1621-B",
+        "current_status": "TREATMENT_ARM_CLOSED",
         "current_step_number": "1.0",
         "registration_date": "2016-05-09T22:06:33.000+00:00",
         "disease_name": "Breast Cancer"
+    },
+    {
+        "patient_id": "100088",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "PENDING_APPROVAL",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Adenocarcinoma - stomach"
+    },
+    {
+        "patient_id": "100089",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "BLOOD_SPECIMEN_RECEIVED",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100090",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "BLOOD_NECLEIC_ACID_SHIPPED",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100091",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "BLOOD_VARIANT_REPORT_RECEIVED",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100092",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "BLOOD_VARIANT_REPORT_CONFIRMED",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100093",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "BLOOD_VARIANT_REPORT_REJECTED",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
+    },
+    {
+        "patient_id": "100094",
+        "gender": "Male",
+        "ethnicity": "White",
+        "current_status": "BLOOD_NUCLEIC_ACID_FAILURE",
+        "current_step_number": "1.0",
+        "registration_date": "2016-05-09T22:06:33.000+00:00",
+        "disease_name": "Invasive Breast Carcinoma"
     },
     {
         "patient_id": "100099",
         "gender": "Male",
         "ethnicity": "Hispanic",
         "current_status": "PROGRESSION",
-        "treatment_arm": "APEC1621-C",
         "current_step_number": "2.0",
         "registration_date": "2016-05-09T22:06:33.000+00:00",
         "disease_name": "Non-Small Cell Lung Cancer"
@@ -45,7 +294,7 @@
         "ethnicity": "Hispanic",
         "current_status": "OFF_TRIAL",
         "treatment_arm": "APEC1621-Y",
-        "current_step_number": "3.0",
+        "current_step_number": "4.0",
         "registration_date": "2016-05-09T22:06:33.000+00:00",
         "off_trial_date": "2016-05-09T22:06:33.000+00:00",
         "disease_name": "Myeloma, NOS"
@@ -62,21 +311,10 @@
         "disease_name": "Solitary plasmacytoma"
     },
     {
-        "patient_id": "100088",
-        "gender": "Male",
-        "ethnicity": "White",
-        "current_status": "PENDING_APPROVAL",
-        "treatment_arm": "APEC1621-H1",
-        "current_step_number": "1.0",
-        "registration_date": "2016-05-09T22:06:33.000+00:00",
-        "disease_name": "Adenocarcinoma - stomach"
-    },
-    {
         "patient_id": "100102",
         "gender": "Male",
         "ethnicity": "White",
         "current_status": "TOXICITY",
-        "treatment_arm": "APEC1621-L",
         "current_step_number": "2.0",
         "registration_date": "2016-05-09T22:06:33.000+00:00",
         "disease_name": "Adenocarcinoma - stomach"
@@ -97,7 +335,6 @@
         "gender": "Male",
         "ethnicity": "White",
         "current_status": "REGIMENT_COMPLETED",
-        "treatment_arm": "APEC1621-P",
         "current_step_number": "1.1",
         "registration_date": "2016-05-09T22:06:33.000+00:00",
         "disease_name": "Adenocarcinoma - stomach"
@@ -107,7 +344,6 @@
         "gender": "Male",
         "ethnicity": "White",
         "current_status": "NO_PED_MATCH_AVAILABLE",
-        "treatment_arm": "APEC1621-T",
         "current_step_number": "1.0",
         "registration_date": "2016-05-09T22:06:33.000+00:00",
         "off_trial_date": "2016-05-09T22:06:33.000+00:00",

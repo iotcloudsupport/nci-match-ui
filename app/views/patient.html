@@ -59,7 +59,7 @@
                             <dt>CTEP Term</dt>
                             <dd>{{::data.disease.ctep_term}}</dd>
 
-                            <dt>Disease Code</dt>
+                            <dt>MedDRA Code</dt>
                             <dd>{{::data.disease.med_dra_code}}</dd>
 
                             <dt>Prior Drugs</dt>
@@ -408,7 +408,7 @@
                                         <dd>
                                             <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.rna_bam_file_path)">RNA BAM</a>
                                             <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.rna_bai_file_path)">RNA BAI</a>
-                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(data.variant_report, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(currentVariantReport, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
                                         </dd>
 
                                         <dt>File Received Date</dt>
@@ -494,29 +494,29 @@
                             <tbody>
                                 <tr ng-repeat="variant in currentVariantReport.variants.single_nucleitide_variants" style="cursor: auto;" role="row" class="odd">
                                     <td ng-if="variantReportMode!=='QC'">
-                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
-                                            on-comment-entered="setComment()" prompt-only-if="true" entity="variant">
+                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
+                                            on-comment-entered="setComment(variant)" prompt-only-if="true">
                                         </div>
                                     </td>
                                     <td ng-if="variantReportMode!=='QC'">
-                                        <a ng-if="variant.comment" href ng-click="editComment(variant)"> <i class="fa fa-file-text-o"></i></a>
+                                        <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
-                                    <td>{{::variant.id}}</td>
+                                    <td>{{::variant.variant_id}}</td>
                                     <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}</td>
-                                    <td>{{::variant.chrom}}</td>
+                                    <td>{{::variant.chromosome}}</td>
                                     <td>{{::variant.position}}</td>
                                     <td>{{::variant.cds_ref}}</td>
                                     <td>{{::variant.cds_alt}}</td>
                                     <td>{{::variant.ocp_ref}}</td>
                                     <td>{{::variant.ocp_alt}}</td>
                                     <td>{{::variant.strand}}</td>
-                                    <td>{{::variant.alleleFreq}}</td>
+                                    <td>{{::variant.allele_frequency}}</td>
                                     <td>{{::variant.funcGene}}</td>
-                                    <td>{{::variant.oncomineVariantClass}}</td>
+                                    <td>{{::variant.oncomine_variant_class}}</td>
                                     <td>{{::variant.exon}}</td>
-                                    <td>{{::variant.funct}}</td>
-                                    <td>{{::variant.hGVS}}</td>
-                                    <td>{{::variant.readDepth}}</td>
+                                    <td>{{::variant.function}}</td>
+                                    <td>{{::variant.hgvs}}</td>
+                                    <td>{{::variant.read_depth}}</td>
                                     <td>{{::variant.transcript}}</td>
                                     <td>{{::variant.protein}}</td>
                                 </tr>
@@ -560,16 +560,16 @@
                             <tbody>
                                 <tr ng-repeat="variant in currentVariantReport.variants.indels" style="cursor: auto;" role="row" class="odd">
                                     <td ng-if="variantReportMode!=='QC'">
-                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
+                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
                                             on-comment-entered="setComment()" prompt-only-if="true">
                                         </div>
                                     </td>
                                     <td ng-if="variantReportMode!=='QC'">
                                         <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
-                                    <td>{{::variant.id}}</td>
+                                    <td>{{::variant.identifier}}</td>
                                     <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}</td>
-                                    <td>{{::variant.chrom}}</td>
+                                    <td>{{::variant.chromosome}}</td>
                                     <td>{{::variant.position}}</td>
                                     <td>{{::variant.cds_ref}}</td>
                                     <td>{{::variant.cds_alt}}</td>
@@ -578,10 +578,10 @@
                                     <td>{{::variant.strand}}</td>
                                     <td>{{::variant.alleleFreq}}</td>
                                     <td>{{::variant.funcGene}}</td>
-                                    <td>{{::variant.oncomineVariantClass}}</td>
+                                    <td>{{::variant.oncominevariantclass}}</td>
                                     <td>{{::variant.exon}}</td>
-                                    <td>{{::variant.funct}}</td>
-                                    <td>{{::variant.hGVS}}</td>
+                                    <td>{{::variant.function}}</td>
+                                    <td>{{::variant.hgvs}}</td>
                                     <td>{{::variant.readDepth}}</td>
                                     <td>{{::variant.transcript}}</td>
                                     <td>{{::variant.protein}}</td>
@@ -615,20 +615,20 @@
                             <tbody>
                                 <tr ng-repeat="variant in currentVariantReport.variants.copy_number_variants" style="cursor: auto;" role="row" class="odd">
                                     <td ng-if="variantReportMode!=='QC'">
-                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
+                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
                                             on-comment-entered="setComment()" prompt-only-if="true">
                                         </div>
                                     </td>
                                     <td ng-if="variantReportMode!=='QC'">
                                         <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
-                                    <td>{{::variant.id}}</td>
+                                    <td>{{::variant.identifier}}</td>
                                     <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}</td>
-                                    <td>{{::variant.chrom}}</td>
-                                    <td>{{::variant.rawCN}}</td>
-                                    <td>{{::variant.cn}}</td>
-                                    <td>{{::variant.ci5percent}}</td>
-                                    <td>{{::variant.ci95percent}}</td>
+                                    <td>{{::variant.chromosome}}</td>
+                                    <td>{{::variant.rawCopyNumber}}</td>
+                                    <td>{{::variant.copyNumber}}</td>
+                                    <td>{{::variant.confidenceInterval5percent}}</td>
+                                    <td>{{::variant.confidenceInterval95percent}}</td>
                                 </tr>
 
                                 <tr ng-if="!currentVariantReport.variants.copy_number_variants || !currentVariantReport.variants.copy_number_variants.length">
@@ -659,18 +659,18 @@
                             <tbody>
                                 <tr ng-repeat="variant in currentVariantReport.variants.gene_fusions" style="cursor: auto;" role="row" class="odd">
                                     <td ng-if="variantReportMode!=='QC'">
-                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
+                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
                                             on-comment-entered="setComment()" prompt-only-if="true">
                                         </div>
                                     </td>
                                     <td ng-if="variantReportMode!=='QC'">
                                         <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
-                                    <td>{{::variant.id}}</td>
+                                    <td>{{::variant.identifier}}</td>
                                     <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}</td>
                                     <td>{{::variant.gene2}}</td>
                                     <td>{{::variant.gene2count}}</td>
-                                    <td>{{::variant.gene1}}</td>
+                                    <td>{{::variant.gene}}</td>
                                     <td>{{::variant.gene1count}}</td>
                                     <td>{{::variant.annotation}}</td>
                                 </tr>
@@ -747,7 +747,7 @@
                                         <dd>
                                             <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.rna_bam_file_path)">RNA BAM</a>
                                             <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.rna_bai_file_path)">RNA BAI</a>
-                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(data.variant_report, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
+                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(currentVariantReport, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
                                         </dd>
 
                                         <dt>File Received Date</dt>
@@ -813,7 +813,7 @@
                             <tbody>
                                 <tr ng-repeat="variant in currentVariantReport.variants.single_nucleitide_variants" style="cursor: auto;" role="row" class="odd">
                                     <td ng-if="variantReportMode!=='QC'">
-                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
+                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
                                             on-comment-entered="setComment(variant)" prompt-only-if="true">
                                         </div>
                                     </td>
@@ -879,7 +879,7 @@
                             <tbody>
                                 <tr ng-repeat="variant in currentVariantReport.variants.indels" style="cursor: auto;" role="row" class="odd">
                                     <td ng-if="variantReportMode!=='QC'">
-                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
+                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
                                             on-comment-entered="setComment()" prompt-only-if="true">
                                         </div>
                                     </td>
@@ -934,7 +934,7 @@
                             <tbody>
                                 <tr ng-repeat="variant in currentVariantReport.variants.copy_number_variants" style="cursor: auto;" role="row" class="odd">
                                     <td ng-if="variantReportMode!=='QC'">
-                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
+                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
                                             on-comment-entered="setComment()" prompt-only-if="true">
                                         </div>
                                     </td>
@@ -978,7 +978,7 @@
                             <tbody>
                                 <tr ng-repeat="variant in currentVariantReport.variants.gene_fusions" style="cursor: auto;" role="row" class="odd">
                                     <td ng-if="variantReportMode!=='QC'">
-                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
+                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
                                             on-comment-entered="setComment()" prompt-only-if="true">
                                         </div>
                                     </td>

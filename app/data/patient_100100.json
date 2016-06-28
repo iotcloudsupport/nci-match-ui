@@ -9,7 +9,7 @@
     "WHITE",
     "HAWAIIAN"
   ],
-  "current_step_number": "3.0",
+  "current_step_number": "4.0",
   "current_assignment": {
     "generated_date": "2016-05-09T22:06:33+00:00",
     "sent_to_cog_date": "-",
@@ -358,9 +358,11 @@
       "variants": {
         "single_nucleitide_variants": [
           {
+            "confirmed" : true,
             "molecular_id_analysis_id": "MSNANL123AN123",
             "variant_type": "single_nucleitide_variants",
             "patient_id": "PAT123",
+            "aMOI": "CURRENT",
             "surgical_event_id": "SUREVT0981",
             "molecular_id": "MOL0981",
             "analysis_id": "ANZ98761",
@@ -393,9 +395,11 @@
             "arm_specific": "arm spec"
           },
           {
+            "confirmed" : true,
             "molecular_id_analysis_id": "MSNANL123AN123",
             "variant_type": "single_nucleitide_variants",
             "patient_id": "PAT123",
+            "aMOI" : "PRESENT",
             "surgical_event_id": "SUREVT0982",
             "molecular_id": "MOL0982",
             "analysis_id": "ANZ98762",
@@ -428,9 +432,148 @@
             "arm_specific": "arm spec"
           }
         ],
-        "indels": [],
-        "copy_number_variants": [],
-        "gene_fusions": []
+        "indels": [
+          {
+            "confirmed" : false,
+            "gene" : "CTNNB1",
+            "comment": "",
+            "oncominevariantclass" : "Hotspot",
+            "exon" : "3",
+            "function" : "nonframeshiftDeletion",
+            "metadata" : {
+              "_id" : "a55c92d6-8080-44fa-be02-6553549000ac"
+            },
+            "geneName" : "",
+            "chromosome" : "chr3",
+            "position" : "41266134",
+            "identifier" : "COSM6128",
+            "ocp_ref" : "CTT",
+            "ocp_alt" : "-",
+            "filter" : "PASS",
+            "protein" : "p.Ser45del",
+            "transcript" : "NM_001904.3",
+            "hgvs" : "c.131_133delCTT",
+            "location" : "exonic",
+            "readDepth" : 1450,
+            "rare" : false,
+            "alleleFreq" : 0.433844,
+            "flowAlternativeAlleleObservationCount" : "623",
+            "flowReferenceAlleleObservations" : "813",
+            "referenceAlleleObservations" : 1450,
+            "alternativeAlleleObservationCount" : 0,
+            "inclusion" : true,
+            "armSpecific" : false
+          },
+          {
+            "confirmed" : false,
+            "gene" : "EGFR",
+            "oncominevariantclass" : "Hotspot",
+            "exon" : "19",
+            "function" : "nonframeshiftDeletion",
+            "metadata" : {
+              "_id" : "017d6838-fcfe-410b-8537-ce2d012aa1ea"
+            },
+            "geneName" : "",
+            "chromosome" : "chr7",
+            "position" : "41266133",
+            "identifier" : ".",
+            "cds_ref" : "C",
+            "cds_alt" : "T",
+            "filter" : "PASS",
+            "hgvs" : "",
+            "location" : "exonic",
+            "readDepth" : 1450,
+            "rare" : false,
+            "alleleFreq" : 0.433844,
+            "flowAlternativeAlleleObservationCount" : "623",
+            "flowReferenceAlleleObservations" : "813",
+            "referenceAlleleObservations" : 1450,
+            "alternativeAlleleObservationCount" : 0,
+            "inclusion" : true,
+            "armSpecific" : false
+          }
+        ],
+        "copy_number_variants": [
+          {
+            "refCopyNumber" : 8.1,
+            "rawCopyNumber" : 2.1,
+            "copyNumber" : 8.1,
+            "confidenceInterval95percent" : 2.46082,
+            "confidenceInterval5percent" : 1.79208,
+            "confirmed" : true,
+            "gene" : "MYCL",
+            "exon" : "",
+            "function" : "",
+            "metadata" : {
+              "_id" : "4213853e-1afc-4950-9908-752267d04851"
+            },
+            "geneName" : "",
+            "chromosome" : "chr1",
+            "position" : "40361592",
+            "identifier" : "MYCL",
+            "reference" : "A",
+            "alternative" : "<CNV>",
+            "filter" : "PASS",
+            "hgvs" : "",
+            "rare" : false,
+            "flowAlternativeAlleleObservationCount" : "",
+            "flowReferenceAlleleObservations" : "",
+            "inclusion" : true,
+            "armSpecific" : false
+          }
+        ],
+        "gene_fusions": [
+          {
+            "confirmed" : true,
+            "gene" : "ALK",
+            "oncominevariantclass" : "Fusion",
+            "exon" : "20",
+            "function" : "",
+            "metadata" : {
+              "_id" : "354a721e-81c2-4773-937c-ad1e3936b3c3"
+            },
+            "geneName" : "ALK",
+            "chromosome" : "chr2",
+            "position" : "29446394",
+            "identifier" : "TPM3-ALK.T7A20_1",
+            "reference" : "A",
+            "alternative" : "[chr1:154142875[A",
+            "filter" : "PASS",
+            "hgvs" : "",
+            "location" : "",
+            "readDepth" : 1001,
+            "rare" : false,
+            "flowAlternativeAlleleObservationCount" : "",
+            "flowReferenceAlleleObservations" : "",
+            "inclusion" : true,
+            "armSpecific" : false
+          },
+          {
+            "confirmed" : true,
+            "gene" : "TPM3",
+            "oncominevariantclass" : "Fusion",
+            "exon" : "12",
+            "function" : "",
+            "metadata" : {
+              "_id" : "aa8b08f6-6c98-4d3a-ba0c-c387f817cf2c"
+            },
+            "geneName" : "TPM3",
+            "chromosome" : "chr2",
+            "position" : "29446394",
+            "identifier" : "TPM3-ALK.T7A20_2",
+            "reference" : "C",
+            "alternative" : "[chr1:154142875[A",
+            "filter" : "PASS",
+            "hgvs" : "",
+            "location" : "",
+            "readDepth" : 1001,
+            "rare" : false,
+            "flowAlternativeAlleleObservationCount" : "",
+            "flowReferenceAlleleObservations" : "",
+            "inclusion" : true,
+            "armSpecific" : false
+          }
+        ]
       }
     },
     {
@@ -675,7 +818,7 @@
     "failed_date": "2016-06-09T22:06:33+00:00",
     "study_id": "APEC1621",
     "type": "TUMOR",
-    "pathology_status": "Agreed on pathology",
+    "pathology_status": "Y",
     "pathology_status_date": "2016-06-09T22:06:33+00:00",
     "variant_report_confirmed_date": "2016-06-09T22:06:33+00:00",
     "comments" : "-",
@@ -683,25 +826,25 @@
       {
         "gene": "PTEN",
         "ordered_date": "2016-06-09T22:06:33+00:00",
-        "result_date": "2016-07-09T22:06:33+00:00T",
+        "result_date": "2016-07-09T22:06:33+00:00",
         "result": "POSITIVE"
       },
       {
         "gene": "MLH1",
         "ordered_date": "2016-06-09T22:06:33+00:00",
-        "result_date": "2016-07-09T22:06:33+00:00T",
+        "result_date": "2016-07-09T22:06:33+00:00",
         "result": "POSITIVE"
       },
       {
         "gene": "MSCH2",
         "ordered_date": "2016-06-09T22:06:33+00:00",
-        "result_date": "2016-07-09T22:06:33+00:00T",
+        "result_date": "2016-07-09T22:06:33+00:00",
         "result": "POSITIVE"
       },
       {
         "gene": "RB",
         "ordered_date": "2016-06-09T22:06:33+00:00",
-        "result_date": "2016-07-09T22:06:33+00:00T",
+        "result_date": "2016-07-09T22:06:33+00:00",
         "result": "NEGATIVE"
       }
     ],
