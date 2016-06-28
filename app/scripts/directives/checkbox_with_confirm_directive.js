@@ -9,13 +9,18 @@
         var controller = function () {
             var vm = this;
 
+            vm.$onInit = function() {
+                console.log('$onInit');
+                console.log(vm);
+            }
+
             vm.toggle = function (comment) {
                 vm.isChecked = !vm.isChecked;
                 vm.comment = comment;
 
                 if (vm.onCommentEntered && typeof vm.onCommentEntered === 'function' && comment !== null) {
                     try {
-                        vm.onCommentEntered(comment);
+                        vm.onCommentEntered(comment, vm.entity);
                     } catch (error) {
                         if (typeof error === 'object' && 'message' in error && error.message.startsWith('Cannot use \'in\' operator to search for')) {
                             console.log('Ignored AngularJS error. ' + error);
@@ -61,24 +66,26 @@
                         <button type="input" ng-click="vm.confirm()"></button>\
                     </div>\
                     <div class="stacked-back">\
-                        <input type="checkbox" tabindex="-1" ng-model="vm.isChecked">\
+                        <input type="checkbox" tabindex="-1" ng-checked="vm.isChecked" ng-true-value="true" ng-true-value="false">\
                     </div>\
                 </div>';
 
-        return {
-            restrict: 'A',
-            template: template,
-            controller: controller,
-            controllerAs: 'vm',
-            bindToController: true,
-            scope: {
+        var bindings = {
                 confirmTitle: '@confirmTitle',
                 confirmMessage: '@confirmMessage',
                 isChecked: '=',
                 onCommentEntered: '&',
                 promptOnlyIf: '=',
-                updateObject: '='
-            }
+                entity: '='
+            };
+
+        return {
+            bindToController: bindings,
+            restrict: 'A',
+            template: template,
+            controller: controller,
+            controllerAs: 'vm',
+            scope: {}
         }
     }
 

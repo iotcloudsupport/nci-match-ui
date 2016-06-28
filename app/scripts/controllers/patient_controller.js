@@ -297,8 +297,36 @@
             // $log.debug(errorMessage);
         }
 
-        function setComment(value) {
-            //$log.debug('User entered un-confirm reason: ' + value);
+        function setComment(value, variant) {
+            $log.debug('Variant = ' + variant);
+            $log.debug('User entered un-confirm reason: ' + value);
+        }
+
+        function editComment(variant) {
+            $log.debug('Variant = ' + variant);
+
+            var modalInstance = $uibModal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: 'views/templates/modal_dialog_with_comment.html',
+                controller: 'ModalDialogWithCommentController',
+                resolve: {
+                    comment: function () {
+                        return variant.comment;
+                    },
+                    title: function () {
+                        return $scope.confirmTitle;
+                    },
+                    message: function () {
+                        return $scope.confirmMessage;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (comment) {
+                variant.comment = comment;
+                $log.debug('comment');
+                $log.debug(comment);
+            });
         }
 
         function showPrompt(options) {
@@ -325,32 +353,6 @@
                 buttons: [{ label: 'OK', primary: true }, { label: 'Cancel', cancel: true }]
             }).then(function (comment) {
                 $log.debug('User entered comment: ' + comment);
-            });
-        }
-
-        function editComment(variant) {
-            $log.debug('Variant = ' + variant);
-
-            var modalInstance = $uibModal.open({
-                animation: $scope.animationsEnabled,
-                templateUrl: 'views/templates/modal_dialog_with_comment.html',
-                controller: 'ModalDialogWithCommentController',
-                resolve: {
-                    comment: function () {
-                        return variant.comment;
-                    },
-                    title: function () {
-                        return $scope.confirmTitle;
-                    },
-                    message: function () {
-                        return $scope.confirmMessage;
-                    }
-                }
-            });
-
-            modalInstance.result.then(function (comment) {
-                variant.comment = comment;
-                $log.debug(comment);
             });
         }
 
