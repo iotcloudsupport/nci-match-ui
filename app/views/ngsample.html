@@ -10,7 +10,8 @@
                         <a ui-sref="dashboard">Dashboard</a>
                     </li>
                     <li class="active">
-                        <a ui-sref="iradmin"> IR Reporters</a>
+                        <!--<a ui-sref="iradmin"> IR Reporters</a>-->
+                        <a ui-sref="iradmin({ branch: branch})">IR Reporters ({{branch}})</a>
                     </li>
                     <li class="active">
                         <strong>IR Sample Control Variant Report</strong>
@@ -35,8 +36,6 @@
                             <div class="col-lg-12">
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-content">
-
-                                        --->{{branch}}
 
                                         <div class="panel-default"  ng-init="loadSampleBreakups()">
 
