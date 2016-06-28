@@ -20,10 +20,10 @@ angular.module('treatment-arm.matchbox',[])
 
         $scope.information = {
             name: 'EAY131-A',
-            description: 'Dasatinib in DDR2 activating mutations',
+            description: 'Afatinib in DDR2 activating mutations',
             currentVersion: '2016-03-17',
             genes: 'DDR2',
-            patientsAssigned: '0',
+            patientsAssigned: '3',
             currentStatus: 'OPEN',
             drug: 'AZD9291 (781254)'
         };
@@ -136,17 +136,15 @@ angular.module('treatment-arm.matchbox',[])
                     {
                         "identifier": "COSM1256700",
                         "gene_name": "EBFRA",
-                        "levelOfEvidence": "2",
+                        "level_of_evidence": "2",
                         "chromosome": "chr7",
                         "position": "5522678451",
                         "reference": "G",
                         "alternative": "A",
-                        "litRefs": [
-                            {
-                                "litRef": "26051236"
-                            }
+                        "public_med_ids": [
+                           "26051236"
                         ],
-                        "protein": "p.G719A",
+                        "description": "p.G719A",
                         "totNumPtsWithVariant": "1",
                         "ptsWithVariantOnArm": "1",
                         "pctPtsWithVarOnArmOfTotPtsWithVar": "20%",
@@ -156,20 +154,16 @@ angular.module('treatment-arm.matchbox',[])
                     {
                         "identifier": "COSM125678",
                         "gene_name": "EBFRA",
-                        "levelOfEvidence": "2",
+                        "level_of_evidence": "2",
                         "chromosome": "chr7",
                         "position": "5522678455",
                         "reference": "C",
                         "alternative": "T",
-                        "litRefs": [
-                            {
-                                "litRef": "26051236"
-                            },
-                            {
-                                "litRef": "19692684"
-                            }
+                        "public_med_ids": [
+                           "26051236",
+                           "19692684"
                         ],
-                        "protein": "p.G719A",
+                        "description": "p.G719A",
                         "totNumPtsWithVariant": "0",
                         "ptsWithVariantOnArm": "0",
                         "pctPtsWithVarOnArmOfTotPtsWithVar": "0%",
@@ -179,17 +173,15 @@ angular.module('treatment-arm.matchbox',[])
                     {
                         "identifier": "COSM99995",
                         "gene_name": "EBFRA",
-                        "levelOfEvidence": "1",
+                        "level_of_evidence": "1",
                         "chromosome": "chr7",
                         "position": "5522678457",
                         "reference": "C",
                         "alternative": "T",
-                        "litRefs": [
-                            {
-                                "litRef": "26051236"
-                            }
+                        "public_med_ids": [
+                            "26051236"
                         ],
-                        "protein": "p.G719A",
+                        "description": "p.G719A",
                         "totNumPtsWithVariant": "0",
                         "ptsWithVariantOnArm": "0",
                         "pctPtsWithVarOnArmOfTotPtsWithVar": "0%",
@@ -199,20 +191,16 @@ angular.module('treatment-arm.matchbox',[])
                     {
                         "identifier": "COSM9999000",
                         "gene_name": "EBFRA",
-                        "levelOfEvidence": "1",
+                        "level_of_evidence": "1",
                         "chromosome": "chr7",
                         "position": "5522678459",
                         "reference": "C",
                         "alternative": "T",
-                        "litRefs": [
-                            {
-                                "litRef": "26051236"
-                            },
-                            {
-                                "litRef": "19692684"
-                            }
+                        "public_med_ids": [
+                            "26051236",
+                            "19692684"
                         ],
-                        "protein": "p.G719A",
+                        "description": "p.G719A",
                         "totNumPtsWithVariant": "2",
                         "ptsWithVariantOnArm": "1",
                         "pctPtsWithVarOnArmOfTotPtsWithVar": "20%",
@@ -224,38 +212,31 @@ angular.module('treatment-arm.matchbox',[])
                     {
                         "identifier": "COSM746",
                         "gene_name": "PIK3CA",
-                        "levelOfEvidence": "3",
+                        "level_of_evidence": "3",
                         "chromosome": "chr7",
                         "position": "5522678453",
                         "reference": "C",
                         "alternative": "T",
-                        "litRefs": [
-                            {
-                                "litRef": "21266528"
-                            }
+                        "public_med_ids": [
+                            "21266528"
                         ],
-                        "protein": "p.G719A",
+                        "description": "p.G719A",
                         "inclusion": false,
                         "exclusion": true
                     },
                     {
                         "identifier": "COSM757",
                         "gene_name": "PIK3CA",
-                        "levelOfEvidence": "2",
+                        "level_of_evidence": "2",
                         "chromosome": "chr7",
                         "position": "178927980",
                         "reference": "G",
                         "alternative": "A",
-                        "litRefs": [
-                            {
-                                "litRef": "17376864"
-                            },
-                            {
-                                "litRef": "22949682"
-                            }
-
+                        "public_med_ids": [
+                            "17376864",
+                            "22949682"
                         ],
-                        "protein": "p.G719A",
+                        "description": "p.G719A",
                         "inclusion": false,
                         "exclusion": true
                     }
@@ -264,17 +245,15 @@ angular.module('treatment-arm.matchbox',[])
                     {
                         "identifier": "COSM746",
                         "gene_name": "ALK",
-                        "levelOfEvidence": "3",
+                        "level_of_evidence": "3",
                         "chromosome": "chr7",
                         "position": "5522678453",
                         "reference": "C",
                         "alternative": "T",
-                        "litRefs": [
-                            {
-                                "litRef": "21266528"
-                            }
+                        "public_med_ids": [
+                            "21266528"
                         ],
-                        "protein": "p.G719A",
+                        "description": "p.G719A",
                         "totNumPtsWithVariant": "0",
                         "ptsWithVariantOnArm": "0",
                         "pctPtsWithVarOnArmOfTotPtsWithVar": "0%",
@@ -284,17 +263,15 @@ angular.module('treatment-arm.matchbox',[])
                     {
                         "identifier": "COSM763",
                         "gene_name": "ALK",
-                        "levelOfEvidence": "2",
+                        "level_of_evidence": "2",
                         "chromosome": "chr7",
                         "position": "552267845",
                         "reference": "G",
                         "alternative": "A",
-                        "litRefs": [
-                            {
-                                "litRef": "17376864"
-                            }
+                        "public_med_ids": [
+                            "17376864"
                         ],
-                        "protein": "p.G719A",
+                        "description": "p.G719A",
                         "totNumPtsWithVariant": "2",
                         "ptsWithVariantOnArm": "1",
                         "pctPtsWithVarOnArmOfTotPtsWithVar": "20%",
@@ -304,17 +281,15 @@ angular.module('treatment-arm.matchbox',[])
                     {
                         "identifier": "COSM765",
                         "gene_name": "ALK",
-                        "levelOfEvidence": "2",
+                        "level_of_evidence": "2",
                         "chromosome": "chr7",
                         "position": "552267845",
                         "reference": "G",
                         "alternative": "A",
-                        "litRefs": [
-                            {
-                                "litRef": "17376864"
-                            }
+                        "public_med_ids": [
+                            "17376864"
                         ],
-                        "protein": "p.G719A",
+                        "description": "p.G719A",
                         "totNumPtsWithVariant": "2",
                         "ptsWithVariantOnArm": "1",
                         "pctPtsWithVarOnArmOfTotPtsWithVar": "20%",
@@ -326,15 +301,13 @@ angular.module('treatment-arm.matchbox',[])
                 cnvsInclusion: [
                     {
                         "gene_name": "ERBB2",
-                        "levelOfEvidence": "1",
+                        "level_of_evidence": "1",
                         "chromosome": "chr17",
                         "position": "37856492",
-                        "litRefs": [
-                            {
-                                "litRef": "19692684"
-                            }
+                        "public_med_ids": [
+                            "19692684"
                         ],
-                        "protein": "ERBB2 Amplification",
+                        "description": "ERBB2 Amplification",
                         "totNumPtsWithVariant": "0",
                         "ptsWithVariantOnArm": "0",
                         "pctPtsWithVarOnArmOfTotPtsWithVar": "-",
@@ -345,15 +318,13 @@ angular.module('treatment-arm.matchbox',[])
                 cnvsExclusion: [
                     {
                         "gene_name": "ERBB661",
-                        "levelOfEvidence": "1",
+                        "level_of_evidence": "1",
                         "chromosome": "chr17",
                         "position": "3785648800",
-                        "litRefs": [
-                            {
-                                "litRef": "26051236"
-                            }
+                        "public_med_ids": [
+                            "26051236"
                         ],
-                        "protein": "ERBB661 Amplification",
+                        "description": "ERBB661 Amplification",
                         "inclusion": false,
                         "exclusion": true
                     }
@@ -364,16 +335,14 @@ angular.module('treatment-arm.matchbox',[])
                     {
                         "oncomineVariantClass": "-",
                         "gene_name": "EGFR",
-                        "levelOfEvidence" : "1",
+                        "level_of_evidence" : "1",
                         "function": "nonframeshiftinsertion",
-                        "litRefs": [
-                            {
-                                "litRef": "26051236"
-                            }
+                        "public_med_ids": [
+                            "26051236"
                         ],
                         "variantDescription": "-",
                         "exon": "19",
-                        "proteinRegex": "-",
+                        "descriptionRegex": "-",
                         "inclusion": true,
                         "exclusion": false
                     }
@@ -385,7 +354,7 @@ angular.module('treatment-arm.matchbox',[])
                         "gene_name": "EBFRA",
                         "result": "POSITIVE",
                         "variantAssociation": "PRESENT",
-                        "levelOfEvidence": "1",
+                        "level_of_evidence": "1",
                         "totNumPtsWithGene": "0",
                         "ptsWithGeneOnArm": "0",
                         "pctPtsWithGeneOnArmOfTotPtsWithGene": "0%",
@@ -397,7 +366,7 @@ angular.module('treatment-arm.matchbox',[])
                         "gene_name": "ABBC",
                         "result": "POSITIVE",
                         "variantAssociation": "ABSENT",
-                        "levelOfEvidence": "1",
+                        "level_of_evidence": "1",
                         "totNumPtsWithGene": "0",
                         "ptsWithGeneOnArm": "0",
                         "pctPtsWithGeneOnArmOfTotPtsWithGene": "0%",
@@ -411,7 +380,7 @@ angular.module('treatment-arm.matchbox',[])
                         "gene_name": "ALK",
                         "result": "NEGATIVE",
                         "variantAssociation": "EMPTY",
-                        "levelOfEvidence": "1",
+                        "level_of_evidence": "1",
                         "inclusion": false,
                         "exclusion": true
                     }
@@ -464,17 +433,17 @@ angular.module('treatment-arm.matchbox',[])
                     {
                         "id": "COSM776",
                         "gene_name": "PIK3CA",
-                        "levelOfEvidence": "1",
+                        "level_of_evidence": "1",
                         "chromosome": "chr7",
                         "position": "22120714",
                         "reference": "C",
                         "alternative": "T",
-                        "litRefs": [
+                        "public_med_ids": [
                             {
                                 "litRef": "26051236"
                             }
                         ],
-                        "protein": "p.G719A",
+                        "description": "p.G719A",
                         "totNumPtsWithVariant": "0",
                         "ptsWithVariantOnArm": "0",
                         "pctPtsWithVarOnArmOfTotPtsWithVar": "0%",
@@ -484,12 +453,12 @@ angular.module('treatment-arm.matchbox',[])
                     {
                         "id": "COSM776",
                         "gene_name": "PIK3CA",
-                        "levelOfEvidence": "1",
+                        "level_of_evidence": "1",
                         "chromosome": "chr7",
                         "position": "5522678459",
                         "reference": "C",
                         "alternative": "T",
-                        "litRefs": [
+                        "public_med_ids": [
                             {
                                 "litRef": "17376964"
                             },
@@ -497,7 +466,7 @@ angular.module('treatment-arm.matchbox',[])
                                 "litRef": "17376963"
                             }
                         ],
-                        "protein": "p.G719A",
+                        "description": "p.G719A",
                         "totNumPtsWithVariant": "2",
                         "ptsWithVariantOnArm": "1",
                         "pctPtsWithVarOnArmOfTotPtsWithVar": "20%",
@@ -509,17 +478,17 @@ angular.module('treatment-arm.matchbox',[])
                     {
                         "id": "COSM774",
                         "gene_name": "PIK3CA",
-                        "levelOfEvidence": "3",
+                        "level_of_evidence": "3",
                         "chromosome": "chr7",
                         "position": "5522678453",
                         "reference": "C",
                         "alternative": "T",
-                        "litRefs": [
+                        "public_med_ids": [
                             {
                                 "litRef": "17376866"
                             }
                         ],
-                        "protein": "p.G719A",
+                        "description": "p.G719A",
                         "inclusion": false,
                         "exclusion": true
                     }
@@ -529,34 +498,34 @@ angular.module('treatment-arm.matchbox',[])
                     {
                         "id": "COSM111112345",
                         "gene_name": "EBFRA",
-                        "levelOfEvidence": "3",
+                        "level_of_evidence": "3",
                         "chromosome": "chr7",
                         "position": "5522678453",
                         "reference": "C",
                         "alternative": "T",
-                        "litRefs": [
+                        "public_med_ids": [
                             {
                                 "litRef": "19692684"
                             }
                         ],
-                        "protein": "p.G719A",
+                        "description": "p.G719A",
                         "inclusion": false,
                         "exclusion": true
                     },
                     {
                         "id": "COSM000012567",
                         "gene_name": "EBFRA",
-                        "levelOfEvidence": "2",
+                        "level_of_evidence": "2",
                         "chromosome": "chr7",
                         "position": "552267845",
                         "reference": "G",
                         "alternative": "A",
-                        "litRefs": [
+                        "public_med_ids": [
                             {
                                 "litRef": "26051236"
                             }
                         ],
-                        "protein": "p.G719A",
+                        "description": "p.G719A",
                         "inclusion": false,
                         "exclusion": true
                     }
@@ -567,8 +536,8 @@ angular.module('treatment-arm.matchbox',[])
                     {
                         "id": "EML4-ALK.E13A20.COSF1062",
                         "gene_name": "ALK",
-                        "levelOfEvidence": "1",
-                        "litRefs": [
+                        "level_of_evidence": "1",
+                        "public_med_ids": [
                             {
                                 "litRef": "23724913"
                             }
@@ -583,8 +552,8 @@ angular.module('treatment-arm.matchbox',[])
                     {
                         "id": "EML4-ALK.E13A20.COSF1065",
                         "gene_name": "ALK",
-                        "levelOfEvidence": "1",
-                        "litRefs": [
+                        "level_of_evidence": "1",
+                        "public_med_ids": [
                             {
                                 "litRef": "26051236"
                             },
@@ -601,8 +570,8 @@ angular.module('treatment-arm.matchbox',[])
                     {
                         "id": "EML4-ALK.E13A20.COSF1762",
                         "gene_name": "ALK",
-                        "levelOfEvidence": "1",
-                        "litRefs": [
+                        "level_of_evidence": "1",
+                        "public_med_ids": [
                             {
                                 "litRef": "26051236"
                             },
@@ -621,8 +590,8 @@ angular.module('treatment-arm.matchbox',[])
                     {
                         "id": "EML4-ALK.EBA17",
                         "gene_name": "ALK",
-                        "levelOfEvidence": "1",
-                        "litRefs": [
+                        "level_of_evidence": "1",
+                        "public_med_ids": [
                             {
                                 "litRef": "234566"
                             }
@@ -635,9 +604,9 @@ angular.module('treatment-arm.matchbox',[])
                     {
                         "oncomineVariantClass": "-",
                         "gene_name": "EGFR",
-                        "levelOfEvidence" : "1",
+                        "level_of_evidence" : "1",
                         "function": "nonframeshiftinsertion",
-                        "litRefs": [
+                        "public_med_ids": [
                             {
                                 "litRef": "26051236"
                             },
@@ -660,7 +629,7 @@ angular.module('treatment-arm.matchbox',[])
                         "gene_name": "EBFRA",
                         "result": "POSITIVE",
                         "variantAssociation": "PRESENT",
-                        "levelOfEvidence": "1",
+                        "level_of_evidence": "1",
                         "totNumPtsWithGene": "0",
                         "ptsWithGeneOnArm": "0",
                         "pctPtsWithGeneOnArmOfTotPtsWithGene": "0%",
@@ -672,7 +641,7 @@ angular.module('treatment-arm.matchbox',[])
                         "gene_name": "ABBC",
                         "result": "POSITIVE",
                         "variantAssociation": "ABSENT",
-                        "levelOfEvidence": "1",
+                        "level_of_evidence": "1",
                         "totNumPtsWithGene": "0",
                         "ptsWithGeneOnArm": "0",
                         "pctPtsWithGeneOnArmOfTotPtsWithGene": "0%",
@@ -686,7 +655,7 @@ angular.module('treatment-arm.matchbox',[])
                         "gene_name": "ALK",
                         "result": "NEGATIVE",
                         "variantAssociation": "EMPTY",
-                        "levelOfEvidence": "1",
+                        "level_of_evidence": "1",
                         "inclusion": false,
                         "exclusion": true
                     }
@@ -908,7 +877,8 @@ angular.module('treatment-arm.matchbox',[])
         function setupLit(pubmed_ids) {
             var litRefs = [];
             angular.forEach(pubmed_ids, function(value) {
-                litRefs.push({"litRef": value});
+                //litRefs.push({"litRef": value});
+                litRefs.push(value);
             });
             return litRefs;
         }
