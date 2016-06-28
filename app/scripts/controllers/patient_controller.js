@@ -36,6 +36,7 @@
         $scope.currentSurgicalEvent = null;
         $scope.currentAnalisys = null;
         $scope.currentVariantReport = null;
+        $scope.currentBloodVariantReport = null;
 
         $scope.currentTreatmentArm = 'Not Selected';
 
@@ -75,6 +76,7 @@
         $scope.onSurgicalEventSelected = onSurgicalEventSelected;
         $scope.onBloodVariantReportSelected = onBloodVariantReportSelected;
         $scope.onVariantReportSelected = onVariantReportSelected;
+        $scope.showVariantReportActions = showVariantReportActions;
 
         function setVariantReportType(reportType) {
             if ($scope.variantReportType === reportType) {
@@ -105,13 +107,10 @@
         function setVariantReport() {
             var selected = $scope.variantReportType + '' + $scope.variantReportMode;
             if ($scope.variantReports && selected in $scope.variantReports) {
-                $scope.variantReport = $scope.variantReports[$scope.variantReportType + '' + $scope.variantReportMode];
+                $scope.currentVariantReport = $scope.variantReports[$scope.variantReportType + '' + $scope.variantReportMode];
             } else {
-                $scope.variantReport = {};
+                $scope.currentVariantReport = null;
             }
-
-            // $log.debug('$scope.variantReport');
-            // $log.debug($scope.variantReport);
         }
 
         function loadPatientData() {
@@ -361,10 +360,10 @@
                 message: 'Are you sure you want to confirm the Variant Report',
                 buttons: [{ label: 'OK', primary: true }, { label: 'Cancel', cancel: true }]
             }).then(function (comment) {
-                if (!$scope.variantReport) {
+                if (!$scope.currentVariantReport) {
                     $log.error('Current Variant Report is not set');
                 } else {
-                    $scope.variantReport.status = 'CONFIRMED';
+                    $scope.currentVariantReport.status = 'CONFIRMED';
                 }
             });
         }
@@ -376,10 +375,10 @@
                 input: true,
                 buttons: [{ label: 'OK', primary: true }, { label: 'Cancel', cancel: true }]
             }).then(function (comment) {
-                if (!$scope.variantReport) {
+                if (!$scope.currentVariantReport) {
                     $log.error('Current Variant Report is not set');
                 } else {
-                    $scope.variantReport.status = 'RECTED';
+                    $scope.currentVariantReport.status = 'RECTED';
                 }
             });
         }
@@ -476,6 +475,11 @@
 
         function onBloodVariantReportSelected(selected) {
             $log.debug(selected);
+            $scope.currentBloodVariantReport = selected;
+        }
+
+        function showVariantReportActions(variantReport) {
+            return variantReport && variantReport.status && variantReport.status === 'PENDING';
         }
     }
 
