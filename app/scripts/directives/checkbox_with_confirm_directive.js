@@ -17,16 +17,6 @@
             vm.toggle = function (comment) {
                 vm.isChecked = !vm.isChecked;
                 vm.comment = comment;
-
-                if (vm.onCommentEntered && typeof vm.onCommentEntered === 'function' && comment !== null) {
-                    try {
-                        vm.onCommentEntered(comment, vm.entity);
-                    } catch (error) {
-                        if (typeof error === 'object' && 'message' in error && error.message.startsWith('Cannot use \'in\' operator to search for')) {
-                            console.log('Ignored AngularJS error. ' + error);
-                        }
-                    }
-                }
             };
 
             vm.confirm = function () {
@@ -66,21 +56,19 @@
                         <button type="input" ng-click="vm.confirm()"></button>\
                     </div>\
                     <div class="stacked-back">\
-                        <input type="checkbox" tabindex="-1" ng-checked="vm.isChecked" ng-true-value="true" ng-true-value="false">\
+                        <input type="checkbox" tabindex="-1" ng-checked="vm.isChecked">\
                     </div>\
                 </div>';
 
-        var bindings = {
+        return {
+            bindToController: {
                 confirmTitle: '@confirmTitle',
                 confirmMessage: '@confirmMessage',
                 isChecked: '=',
-                onCommentEntered: '&',
+                reason: '=',
                 promptOnlyIf: '=',
-                entity: '='
-            };
-
-        return {
-            bindToController: bindings,
+                comment: '='
+            },
             restrict: 'A',
             template: template,
             controller: controller,

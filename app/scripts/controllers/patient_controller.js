@@ -61,7 +61,6 @@
         $scope.dzAddedFile = dzAddedFile;
         $scope.dzError = dzError;
         $scope.loadPatientData = loadPatientData;
-        $scope.setComment = setComment;
         $scope.showWarning = showWarning;
         $scope.showConfirmation = showConfirmation;
         $scope.editComment = editComment;
@@ -295,11 +294,6 @@
 
         function dzError(file, errorMessage) {
             // $log.debug(errorMessage);
-        }
-
-        function setComment(value, variant) {
-            $log.debug('Variant = ' + variant);
-            $log.debug('User entered un-confirm reason: ' + value);
         }
 
         function editComment(variant) {
