@@ -249,16 +249,6 @@
             }
         }
 
-        function findVariantReportOption(surgical_event_id) {
-            for (var i = 0; i < $scope.variantReportOptions.length; i++) {
-                var item = $scope.variantReportOptions[i];
-                if (item.value.surgical_event_id === surgical_event_id) {
-                    return item;
-                }
-            }
-            return null;
-        }
-
         function findSurgicalEventOption(surgical_event_id) {
             for (var i = 0; i < $scope.surgicalEventOptions.length; i++) {
                 var item = $scope.surgicalEventOptions[i];
@@ -399,7 +389,10 @@
 
         function onSurgicalEventSelected(selected) {
             $log.debug(selected);
-            var variantReportItem = findVariantReportOption(selected.value.surgical_event_id);
+
+            var bySurgicalEvent = function(x) { return x.value.surgical_event_id === selected.value.surgical_event_id};
+            var variantReportItem = $scope.variantReportOptions.find(bySurgicalEvent);
+
             if (variantReportItem) {
                 $log.debug(selected);
                 $scope.variantReportOption = variantReportItem;
@@ -412,7 +405,10 @@
 
         function onVariantReportSelected(selected) {
             $log.debug(selected);
-            var surgicalEventItem = findSurgicalEventOption(selected.value.surgical_event_id);
+
+            var bySurgicalEvent = function(x) { return x.value.surgical_event_id === selected.value.surgical_event_id};
+            var surgicalEventItem = $scope.surgicalEventOptions.find(bySurgicalEvent);
+
             if (surgicalEventItem) {
                 $log.debug(selected);
                 $scope.surgicalEventOption = surgicalEventItem;
