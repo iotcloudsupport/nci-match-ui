@@ -10,7 +10,7 @@
                     <a ui-sref="dashboard">Dashboard</a>
                 </li>
                 <li class="active">
-                    <a ui-sref="iradmin"> IR Reporters</a>
+                    <a ui-sref="iradmin({ branch: branch})">IR Reporters ({{branch}})</a>
                 </li>
                 <li class="active">
                     <a ui-sref="ntcsample({ sampleId: sid})">IIR NTC Control Variant Report ({{sid}})</a>
@@ -73,10 +73,10 @@
                                                     <dl class="dl-horizontal" style="font-size: 10px">
 
                                                         <dt>Molecular ID</dt>
-                                                        <dd>1155</dd>
+                                                        <dd>{{sid}}</dd>
 
                                                         <dt>Analysis ID</dt>
-                                                        <dd>{{sid}}</dd>
+                                                        <dd>analyses_1155</dd>
 
                                                         <dt>Total Variants</dt>
                                                         <dd>18</dd>
