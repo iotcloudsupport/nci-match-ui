@@ -93,11 +93,13 @@ angular.module('treatment-arm.matchbox',[])
             {
                 name: '2016-03-17',
                 versionStatus: 'OPEN',
-                history: [
-                    {status: 'PENDING', date: 'March 02, 2016 4:00AM GMT'},
-                    {status: 'READY', date: 'March 09, 2016 10:10PM GMT'},
-                    {status: 'OPEN', date: 'March 17, 2016 10:10PM GMT'},
-                ],
+                versionHistory: {
+                    history: [
+                        {status: 'PENDING', date: 'March 02, 2016 4:00AM GMT'},
+                        {status: 'READY', date: 'March 09, 2016 10:10PM GMT'},
+                        {status: 'OPEN', date: 'March 17, 2016 10:10PM GMT'},
+                    ]
+                },
                 inclusionaryDrugs: [
                     {
                         "id": "750691",
@@ -389,12 +391,14 @@ angular.module('treatment-arm.matchbox',[])
             {
                 name: '2016-02-20',
                 versionStatus: 'CLOSED',
-                history: [
-                    {status: 'PENDING', date: 'January 2, 2015 4:00AM GMT'},
-                    {status: 'READY', date: 'January 9, 2016 10:10PM GMT'},
-                    {status: 'OPEN', date: 'February 20, 2016 10:10PM GMT'},
-                    {status: 'CLOSED', date: 'Febrary 28, 2016 9:15AM GMT'}
-                ],
+                versionHistory: {
+                    history: [
+                        {status: 'PENDING', date: 'January 2, 2015 4:00AM GMT'},
+                        {status: 'READY', date: 'January 9, 2016 10:10PM GMT'},
+                        {status: 'OPEN', date: 'February 20, 2016 10:10PM GMT'},
+                        {status: 'CLOSED', date: 'Febrary 28, 2016 9:15AM GMT'}
+                    ]
+                },
                 inclusionaryDrugs: [
                     {
                         "id": "750691",
