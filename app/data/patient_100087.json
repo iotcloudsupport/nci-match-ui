@@ -1,7 +1,7 @@
 {
     "patient_id": "100087",
     "registration_date": "2016-05-09T22:06:33.000+00:00",
-    "last_rejoin_scan_date": "2016-05-09T22:06:33+00 : 00",
+    "last_rejoin_scan_date": "2016-05-09T22:06:33+00:00",
     "study_id": "APEC1621",
     "gender": "MALE",
     "ethnicity": "WHITE",
@@ -11,8 +11,8 @@
     ],
     "current_step_number": "1.0",
     "current_assignment": {
-        "generated_date": "2016-05-09T22:06:33+00 : 00",
-        "confirmed_date": "2016-05-09T22:06:33+00 : 00",
+        "generated_date": "2016-05-09T22:06:33+00:00",
+        "confirmed_date": "2016-05-09T22:06:33+00:00",
         "sent_to_cog_date": "-",
         "received_from_cog_date": "-",
         "biopsy_sequence_number": "T-15-000078",
@@ -57,87 +57,87 @@
         "treatment_arms": {
             "no_match": [
                 {
-                    "treatment_arm": "EAY131-U",
+                    "treatment_arm": "APEC1621-U",
                     "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_title": "EAY131-U (2015-08-06)",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient contains no matching variant."
                 },
                 {
-                    "treatment_arm": "EAY131-F",
+                    "treatment_arm": "APEC1621-F",
                     "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_title": "EAY131-U (2015-08-06)",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient contains no matching variant."
                 },
                 {
-                    "treatment_arm": "EAY131-F",
+                    "treatment_arm": "APEC1621-F",
                     "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_title": "EAY131-U (2015-08-06)",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient contains no matching variant."
                 },
                 {
-                    "treatment_arm": "EAY131-F",
+                    "treatment_arm": "APEC1621-F",
                     "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_title": "EAY131-U (2015-08-06)",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient contains no matching variant."
                 },
                 {
-                    "treatment_arm": "EAY131-G",
+                    "treatment_arm": "APEC1621-G",
                     "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_title": "EAY131-U (2015-08-06)",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient contains no matching variant."
                 },
                 {
-                    "treatment_arm": "EAY131-H",
+                    "treatment_arm": "APEC1621-H",
                     "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_title": "EAY131-U (2015-08-06)",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient contains no matching variant."
                 },
                 {
-                    "treatment_arm": "EAY131-R",
+                    "treatment_arm": "APEC1621-R",
                     "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_title": "EAY131-U (2015-08-06)",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient contains no matching variant."
                 },
                 {
-                    "treatment_arm": "EAY131-E",
+                    "treatment_arm": "APEC1621-E",
                     "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_title": "EAY131-U (2015-08-06)",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient contains no matching variant."
                 },
                 {
-                    "treatment_arm": "EAY131-A",
+                    "treatment_arm": "APEC1621-A",
                     "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_title": "EAY131-U (2015-08-06)",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient contains no matching variant."
                 },
                 {
-                    "treatment_arm": "EAY131-V",
+                    "treatment_arm": "APEC1621-V",
                     "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_title": "EAY131-U (2015-08-06)",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient contains no matching variant."
                 }
             ],
             "record_based_exclusion": [
                 {
-                    "treatment_arm": "EAY131-Q",
+                    "treatment_arm": "APEC1621-Q",
                     "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_title": "EAY131-U (2015-08-06)",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient excluded from this arm because of invasive breast carcinoma."
                 }
             ],
             "selected": [
                 {
-                    "treatment_arm": "EAY131-B",
+                    "treatment_arm": "APEC1621-B",
                     "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_title": "EAY131-U (2015-08-06)",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient and treatment match on variand identifier [ABSF, DEDF]."
                 }
             ]
         }
     },
-    "current_status": "REGISTRATION",
+    "current_status": "PENDING_CONFIRMATION",
     "disease": {
-        "name": "Invasive Breast Carcinoma",
+        "name": "Invasive Breast Cancer",
         "ctep_category": "Breast Neoplasm",
         "ctep_sub_category": "Breast Cancer - Invasive",
         "ctep_term": "Invasive Breast Carcinoma",
@@ -173,21 +173,161 @@
             "patient_id": "PAT123",
             "event_date": "2016-05-09T22:06:33+00:00",
             "event_name": "Event Name 1",
-            "event_type": "assignment",
-            "event_message": "Message 1",
+            "event_type": "patient",
+            "event_message": "Patient Pending Confirmation",
             "event_data": {
-                "status": "Pending",
+                "step": "1.0",
+                "status": "PENDING",
+                "biopsy_sequence_number": "B-987456",
+                "location": "GHU"
+            }
+        },
+        {
+            "patient_id": "PAT123",
+            "event_date": "2016-05-09T22:06:33+00:00",
+            "event_name": "Event Name 1",
+            "event_type": "system",
+            "event_message": "Receiving Rule Assignment",
+            "event_data": {
+                "step": "1.0",
+                "status": "COMPLETE"
+            }
+        },
+        {
+            "patient_id": "PAT123",
+            "event_date": "2016-05-09T22:06:33+00:00",
+            "event_name": "Event Name 1",
+            "event_type": "system",
+            "event_message": "Awaiting Treatment Arms Status",
+            "event_data": {
+                "step": "1.0",
+                "status": "COMPLETE"
+            }
+        },
+        {
+            "patient_id": "PAT123",
+            "event_date": "2016-05-09T22:06:33+00:00",
+            "event_name": "Event Name 1",
+            "event_type": "system",
+            "event_message": "Awaiting Patient Data",
+            "event_data": {
+                "step": "1.0",
+                "status": "COMPLETE"
+            }
+        },
+        {
+            "patient_id": "PAT123",
+            "event_date": "2016-05-11T22:06:33+00:00",
+            "event_name": "Event Name 2",
+            "event_type": "biopsy.variantReportReceived",
+            "event_message": "Tissue Variant Report",
+            "event_data": {
+                "surgical_event_id": "COSM1234",
+                "collected_datetime": "2016-05-09T22:06:33+00:00",
+                "received_datetime": "2016-05-13T22:08:33+00:00",
+                "step": "1.0",
+                "status": "CONFIRMED",
+                "biopsy_sequence_number": "B-987456"
+            }
+        },
+        {
+            "patient_id": "PAT123",
+            "event_date": "2016-05-11T22:06:33+00:00",
+            "event_name": "Event Name 2",
+            "event_type": "biopsy.variantReportReceived",
+            "event_message": "Tissue Variant Report",
+            "event_data": {
+                "surgical_event_id": "COSM1234",
+                "collected_datetime": "2016-05-09T22:06:33+00:00",
+                "received_datetime": "2016-05-13T22:08:33+00:00",
+                "step": "1.0",
+                "status": "RECEIVED",
+                "biopsy_sequence_number": "B-987456"
+            }
+        },
+        {
+            "patient_id": "PAT123",
+            "event_date": "2016-05-12T22:04:33+00:00",
+            "event_name": "Event Name 5",
+            "event_type": "biopsy.assay_received",
+            "event_message": "Assay Received",
+            "event_data": {
+                "biomarker": "ICCPTEN",
+                "step": "1.0",
+                "status": "RECEIVED",
+                "result" : "POSITIVE",
+                "biopsy_sequence_number": "B-987456",
+                "reported_date": "2016-05-12T22:04:33+00:00"
+            }
+        },
+        {
+            "patient_id": "PAT123",
+            "event_date": "2016-05-12T22:04:33+00:00",
+            "event_name": "Event Name 5",
+            "event_type": "biopsy.pathology",
+            "event_message": "PATHOLOGY_CONFIRMATION",
+            "event_data": {
+                "status": "Y",
+                "biopsy_sequence_number": "B-987456",
+                "reported_date": "2016-05-12T22:04:33+00:00"
+            }
+        },
+        {
+            "patient_id": "PAT123",
+            "event_date": "2016-05-11T22:08:33+00:00",
+            "event_name": "Event Name 4",
+            "event_type": "biopsy.assay_order",
+            "event_message": "Assay Order",
+            "event_data": {
+                "biomarker": "ICCPTEN",
+                "step": "1.0",
+                "status": "ORDER",
+                "biopsy_sequence_number": "B-987456",
+                "ordered_date": "2016-05-11T22:07:33+00:00"
+            }
+        },
+        {
+            "patient_id": "PAT123",
+            "event_date": "2016-05-11T22:06:33+00:00",
+            "event_name": "Event Name 3",
+            "event_type": "biopsy.variantReportShipped",
+            "event_message": "Tissue Nucleic Acid Shipped",
+            "event_data": {
+                "surgical_event_id": "COSM1234",
+                "molecular_id" : "1234",
+                "molecular_dna_id" : "DNA1234",
+                "molecular_cdna_id" : "CDNA1234",
+                "carrier": "Federal Express",
+                "tracking_id": "1203454512316546",
+                "step": "1.0",
+                "status": "PENDING",
+                "biopsy_sequence_number": "B-987456"
+            }
+        },
+        {
+            "patient_id": "PAT123",
+            "event_date": "2016-05-11T22:06:33+00:00",
+            "event_name": "Event Name 2",
+            "event_type": "biopsy.variantReportReceived",
+            "event_message": "Tissue Specimen Received",
+            "event_data": {
+                "surgical_event_id": "COSM1234",
+                "collected_datetime": "2016-05-09T22:06:33+00:00",
+                "received_datetime": "2016-05-11T22:08:33+00:00",
+                "step": "1.0",
+                "status": "PENDING",
                 "biopsy_sequence_number": "B-987456"
             }
         },
         {
             "patient_id": "PAT123",
             "event_date": "2016-05-09T22:06:33+00:00",
-            "event_name": "Event Name 2",
+            "event_name": "Event Name 1",
             "event_type": "patient",
             "event_message": "Patient Registered",
             "event_data": {
-                "status": "Pending",
+                "step": "1.0",
+                "status": "PENDING",
                 "biopsy_sequence_number": "B-987456",
                 "location": "GHU"
             }
@@ -247,7 +387,7 @@
                       "cds_alt": "C",
                       "ocp_ref": "A",
                       "ocp_alt": "C",
-                      "stand": "S",
+                      "strand": "S",
                       "filter": "flt",
                       "protein": "p.Glu6565Ala",
                       "transcript": "NM_0456345",
@@ -282,7 +422,7 @@
                       "cds_alt": "C",
                       "ocp_ref": "A",
                       "ocp_alt": "C",
-                      "stand": "S",
+                      "strand": "S",
                       "filter": "flt",
                       "protein": "p.Glu6565Ala",
                       "transcript": "NM_0456345",
@@ -345,7 +485,7 @@
                       "cds_alt": "C",
                       "ocp_ref": "A",
                       "ocp_alt": "C",
-                      "stand": "S",
+                      "strand": "S",
                       "filter": "flt",
                       "protein": "p.Glu6565Ala",
                       "transcript": "NM_0456345",
@@ -380,7 +520,7 @@
                       "cds_alt": "C",
                       "ocp_ref": "A",
                       "ocp_alt": "C",
-                      "stand": "S",
+                      "strand": "S",
                       "filter": "flt",
                       "protein": "p.Glu6565Ala",
                       "transcript": "NM_0456345",
@@ -402,8 +542,8 @@
       }
     ],
     "assignment_report": {
-        "generated_date": "2016-05-09T22:06:33+00 : 00",
-        "confirmed_date": "2016-05-09T22:06:33+00 : 00",
+        "generated_date": "2016-05-09T22:06:33+00:00",
+        "confirmed_date": "2016-05-09T22:06:33+00:00",
         "sent_to_cog_date": "-",
         "received_from_cog_date": "-",
         "biopsy_sequence_number": "T-15-000078",
@@ -448,79 +588,79 @@
         "treatment_arms": {
             "no_match": [
                 {
-                    "treatment_arm": "EAY131-U",
+                    "treatment_arm": "APEC1621-U",
                     "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_title": "EAY131-U (2015-08-06)",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient contains no matching variant."
                 },
                 {
-                    "treatment_arm": "EAY131-F",
+                    "treatment_arm": "APEC1621-F",
                     "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_title": "EAY131-U (2015-08-06)",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient contains no matching variant."
                 },
                 {
-                    "treatment_arm": "EAY131-F",
+                    "treatment_arm": "APEC1621-F",
                     "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_title": "EAY131-U (2015-08-06)",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient contains no matching variant."
                 },
                 {
-                    "treatment_arm": "EAY131-F",
+                    "treatment_arm": "APEC1621-F",
                     "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_title": "EAY131-U (2015-08-06)",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient contains no matching variant."
                 },
                 {
-                    "treatment_arm": "EAY131-G",
+                    "treatment_arm": "APEC1621-G",
                     "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_title": "EAY131-U (2015-08-06)",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient contains no matching variant."
                 },
                 {
-                    "treatment_arm": "EAY131-H",
+                    "treatment_arm": "APEC1621-H",
                     "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_title": "EAY131-U (2015-08-06)",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient contains no matching variant."
                 },
                 {
-                    "treatment_arm": "EAY131-R",
+                    "treatment_arm": "APEC1621-R",
                     "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_title": "EAY131-U (2015-08-06)",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient contains no matching variant."
                 },
                 {
-                    "treatment_arm": "EAY131-E",
+                    "treatment_arm": "APEC1621-E",
                     "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_title": "EAY131-U (2015-08-06)",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient contains no matching variant."
                 },
                 {
-                    "treatment_arm": "EAY131-A",
+                    "treatment_arm": "APEC1621-A",
                     "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_title": "EAY131-U (2015-08-06)",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient contains no matching variant."
                 },
                 {
-                    "treatment_arm": "EAY131-V",
+                    "treatment_arm": "APEC1621-V",
                     "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_title": "EAY131-U (2015-08-06)",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient contains no matching variant."
                 }
             ],
             "record_based_exclusion": [
                 {
-                    "treatment_arm": "EAY131-Q",
+                    "treatment_arm": "APEC1621-Q",
                     "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_title": "EAY131-U (2015-08-06)",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient excluded from this arm because of invasive breast carcinoma."
                 }
             ],
             "selected": [
                 {
-                    "treatment_arm": "EAY131-B",
+                    "treatment_arm": "APEC1621-B",
                     "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_title": "EAY131-U (2015-08-06)",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient and treatment match on variand identifier [ABSF, DEDF]."
                 }
             ]

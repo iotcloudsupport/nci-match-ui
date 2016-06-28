@@ -11,12 +11,20 @@ angular.module('qcsample.matchbox',[])
 
         this.dtInstance = {};
 
+        $scope.sampleId=$stateParams.sampleId;
         $scope.samplesList = [];
-
         $scope.singleNucleotideVariants = [];
         $scope.indels = [];
         $scope.copyNumberVariants = [];
         $scope.geneFusions = [];
+        $scope.branch = "";
+
+        if($scope.sampleId.indexOf('MoCha') >= 0) {
+            $scope.branch = 'mocha';
+        }
+        else{
+            $scope.branch = 'mdacc';
+        }
 
 
         // $scope.openCosmicGene = function (id) {

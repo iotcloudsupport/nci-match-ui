@@ -34,6 +34,17 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         $scope.barData = {};
 
 
+            $scope.moChaList.push({
+                'ipAddress': '88 129.43.127.133',
+                'externalIpAddress': '42 129.43.127.133',
+            });
+
+            $scope.mdAccList.push({
+                'ipAddress': '129.41.452.133',
+                'externalIpAddress': '129.43.443.133',
+            });
+
+
         $scope.mockListMDCC = [{"sampleSite":"MDACC","sampleId":"MDACC_1","sampleMsn":"NtcControl_MDACC_1","dateCreated":1466776298978,"dateReceived":1466776367227,"status":null}];
 
 
@@ -298,43 +309,43 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
                                 // alert(value.location)
 
-                                $scope.moChaList.push({
-                                    'timer': timer,
-                                    'time': time,
-                                    'hostName': value.hostName,
-                                    'ipAddress': value.ipAddress,
-                                    'externalIpAddress': value.externalIpAddress,
-                                    'status': value.status,
-                                    'lastContactDate': value.lastContactDate,
-                                    'dbReport': value.dbReport,
-                                    'dataFile': value.dataFile,
-                                    'logFile': value.logFile,
-                                    'location': value.location,
-                                    'dbReportPath': dbreport,
-                                    'dataFilePath': datafile,
-                                    'logFilePath': logfile
-                                });
+                                // $scope.moChaList.push({
+                                //     'timer': timer,
+                                //     'time': time,
+                                //     'hostName': value.hostName,
+                                //     'ipAddress': value.ipAddress,
+                                //     'externalIpAddress': value.externalIpAddress,
+                                //     'status': value.status,
+                                //     'lastContactDate': value.lastContactDate,
+                                //     'dbReport': value.dbReport,
+                                //     'dataFile': value.dataFile,
+                                //     'logFile': value.logFile,
+                                //     'location': value.location,
+                                //     'dbReportPath': dbreport,
+                                //     'dataFilePath': datafile,
+                                //     'logFilePath': logfile
+                                // });
                             }
                             else if(value.location === "MDACC") {
 
                                 // alert(value.location)
 
-                                $scope.mdAccList.push({
-                                    'timer': timer,
-                                    'time': time,
-                                    'hostName': value.hostName,
-                                    'ipAddress': value.ipAddress,
-                                    'externalIpAddress': value.externalIpAddress,
-                                    'status': value.status,
-                                    'lastContactDate': value.lastContactDate,
-                                    'dbReport': value.dbReport,
-                                    'dataFile': value.dataFile,
-                                    'logFile': value.logFile,
-                                    'location': value.location,
-                                    'dbReportPath': dbreport,
-                                    'dataFilePath': datafile,
-                                    'logFilePath': logfile
-                                });
+                                // $scope.mdAccList.push({
+                                //     'timer': timer,
+                                //     'time': time,
+                                //     'hostName': value.hostName,
+                                //     'ipAddress': value.ipAddress,
+                                //     'externalIpAddress': value.externalIpAddress,
+                                //     'status': value.status,
+                                //     'lastContactDate': value.lastContactDate,
+                                //     'dbReport': value.dbReport,
+                                //     'dataFile': value.dataFile,
+                                //     'logFile': value.logFile,
+                                //     'location': value.location,
+                                //     'dbReportPath': dbreport,
+                                //     'dataFilePath': datafile,
+                                //     'logFilePath': logfile
+                                // });
                             }
                         });
                     });

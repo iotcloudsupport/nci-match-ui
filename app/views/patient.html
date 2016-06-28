@@ -359,9 +359,9 @@
                                     </label>
                                 </div>
                                 <div class="btn-group btn-group-margin" data-toggle="buttons">
-                                    <label class="btn btn-outline btn-success" ng-class="getVariantReportModeClass('NORMAL')" ng-click="setVariantReportMode('NORMAL')"
-                                        title="Show Normal Report">
-                                        <input type="radio" name="variantReportMode" id="option3">Normal
+                                    <label class="btn btn-outline btn-success" ng-class="getVariantReportModeClass('FILTERED')" ng-click="setVariantReportMode('FILTERED')"
+                                        title="Show Filtered Report">
+                                        <input type="radio" name="variantReportMode" id="option3">Filtered
                                     </label>
                                     <label class="btn btn-outline btn-success" ng-class="getVariantReportModeClass('QC')" ng-click="setVariantReportMode('QC')"
                                         title="Show to QC Report">
@@ -436,9 +436,9 @@
                                         <dd>{{::currentVariantReport.cellularity}}</dd>
                                     </dl>
 
-                                    <h4 ng-if="variantReportMode!=='Qc'">MOI/aMOI Summary</h4>
+                                    <h4 ng-if="variantReportMode!=='QC'">MOI/aMOI Summary</h4>
 
-                                    <dl class="dl-horizontal dl-horizontal-expanded-label" ng-if="variantReportMode!=='Qc'">
+                                    <dl class="dl-horizontal dl-horizontal-expanded-label" ng-if="variantReportMode!=='QC'">
                                         <dt>Total MOIs</dt>
                                         <dd>{{::currentVariantReport.total_mois}}</dd>
                                         <dt>Total aMOIs</dt>
@@ -455,11 +455,10 @@
                         <div ng-init="loadVariantReportChart()" >
                             <div class="svg-container" responsive="true">
                                 <div id="D3BoxPanel">
-                                    <svg id="D3Box" version="1.1" preserveaspectratio="xMinYMin meet" class="svg-content"></svg>
+                                    <svg id="D3Box" version="1.1" preserveAspectRatio="xMinYMin meet" class="svg-content"></svg>
                                 </div>
                             </div>
                         </div>
-
                         <!--<img src="/img/variant_report.png" style="width:1200px" />-->
 
                         <!--Single Nucleitide Variant(s)-->
@@ -470,17 +469,17 @@
                         <table class="table table-hover" role="grid">
                             <thead>
                                 <tr>
-                                    <th ng-if="variantReportMode!=='Qc'">Confirm</th>
-                                    <th ng-if="variantReportMode!=='Qc'">Comment</th>
+                                    <th ng-if="variantReportMode!=='QC'">Confirm</th>
+                                    <th ng-if="variantReportMode!=='QC'">Comment</th>
                                     <th>ID</th>
-                                    <th ng-if="variantReportMode!=='Qc'">aMOI</th>
+                                    <th ng-if="variantReportMode!=='QC'">aMOI</th>
                                     <th>Chrom</th>
                                     <th>Position</th>
                                     <th>CDS Ref</th>
                                     <th>CDS Alt</th>
                                     <th>OCP Ref</th>
                                     <th>OCP Alt</th>
-                                    <th>Stand</th>
+                                    <th>Strand</th>
                                     <th>Allele Freq</th>
                                     <th>Func Gene</th>
                                     <th>Oncomine Variant Class</th>
@@ -494,23 +493,23 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="variant in currentVariantReport.variants.single_nucleitide_variants" style="cursor: auto;" role="row" class="odd">
-                                    <td ng-if="variantReportMode!=='Qc'">
+                                    <td ng-if="variantReportMode!=='QC'">
                                         <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
                                             on-comment-entered="setComment(variant)" prompt-only-if="true">
                                         </div>
                                     </td>
-                                    <td ng-if="variantReportMode!=='Qc'">
+                                    <td ng-if="variantReportMode!=='QC'">
                                         <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.id}}</td>
-                                    <td ng-if="variantReportMode!=='Qc'">{{::variant.aMOI}}</td>
+                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}</td>
                                     <td>{{::variant.chrom}}</td>
                                     <td>{{::variant.position}}</td>
                                     <td>{{::variant.cds_ref}}</td>
                                     <td>{{::variant.cds_alt}}</td>
                                     <td>{{::variant.ocp_ref}}</td>
                                     <td>{{::variant.ocp_alt}}</td>
-                                    <td>{{::variant.stand}}</td>
+                                    <td>{{::variant.strand}}</td>
                                     <td>{{::variant.alleleFreq}}</td>
                                     <td>{{::variant.funcGene}}</td>
                                     <td>{{::variant.oncomineVariantClass}}</td>
@@ -536,17 +535,17 @@
                         <table class="table table-hover" role="grid">
                             <thead>
                                 <tr>
-                                    <th ng-if="variantReportMode!=='Qc'">Confirm</th>
-                                    <th ng-if="variantReportMode!=='Qc'">Comment</th>
+                                    <th ng-if="variantReportMode!=='QC'">Confirm</th>
+                                    <th ng-if="variantReportMode!=='QC'">Comment</th>
                                     <th>ID</th>
-                                    <th ng-if="variantReportMode!=='Qc'">aMOI</th>
+                                    <th ng-if="variantReportMode!=='QC'">aMOI</th>
                                     <th>Chrom</th>
                                     <th>Position</th>
                                     <th>CDS Ref</th>
                                     <th>CDS Alt</th>
                                     <th>OCP Ref</th>
                                     <th>OCP Alt</th>
-                                    <th>Stand</th>
+                                    <th>Strand</th>
                                     <th>Allele Freq</th>
                                     <th>Func Gene</th>
                                     <th>Oncomine Variant Class</th>
@@ -560,23 +559,23 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="variant in currentVariantReport.variants.indels" style="cursor: auto;" role="row" class="odd">
-                                    <td ng-if="variantReportMode!=='Qc'">
+                                    <td ng-if="variantReportMode!=='QC'">
                                         <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
                                             on-comment-entered="setComment()" prompt-only-if="true">
                                         </div>
                                     </td>
-                                    <td ng-if="variantReportMode!=='Qc'">
+                                    <td ng-if="variantReportMode!=='QC'">
                                         <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.id}}</td>
-                                    <td ng-if="variantReportMode!=='Qc'">{{::variant.aMOI}}</td>
+                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}</td>
                                     <td>{{::variant.chrom}}</td>
                                     <td>{{::variant.position}}</td>
                                     <td>{{::variant.cds_ref}}</td>
                                     <td>{{::variant.cds_alt}}</td>
                                     <td>{{::variant.ocp_ref}}</td>
                                     <td>{{::variant.ocp_alt}}</td>
-                                    <td>{{::variant.stand}}</td>
+                                    <td>{{::variant.strand}}</td>
                                     <td>{{::variant.alleleFreq}}</td>
                                     <td>{{::variant.funcGene}}</td>
                                     <td>{{::variant.oncomineVariantClass}}</td>
@@ -602,10 +601,10 @@
                         <table class="table table-hover" role="grid">
                             <thead>
                                 <tr>
-                                    <th ng-if="variantReportMode!=='Qc'">Confirm</th>
-                                    <th ng-if="variantReportMode!=='Qc'">Comment</th>
+                                    <th ng-if="variantReportMode!=='QC'">Confirm</th>
+                                    <th ng-if="variantReportMode!=='QC'">Comment</th>
                                     <th>ID</th>
-                                    <th ng-if="variantReportMode!=='Qc'">aMOI</th>
+                                    <th ng-if="variantReportMode!=='QC'">aMOI</th>
                                     <th>Chrom</th>
                                     <th>Raw CN</th>
                                     <th>CN</th>
@@ -615,16 +614,16 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="variant in currentVariantReport.variants.copy_number_variants" style="cursor: auto;" role="row" class="odd">
-                                    <td ng-if="variantReportMode!=='Qc'">
+                                    <td ng-if="variantReportMode!=='QC'">
                                         <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
                                             on-comment-entered="setComment()" prompt-only-if="true">
                                         </div>
                                     </td>
-                                    <td ng-if="variantReportMode!=='Qc'">
+                                    <td ng-if="variantReportMode!=='QC'">
                                         <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.id}}</td>
-                                    <td ng-if="variantReportMode!=='Qc'">{{::variant.aMOI}}</td>
+                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}</td>
                                     <td>{{::variant.chrom}}</td>
                                     <td>{{::variant.rawCN}}</td>
                                     <td>{{::variant.cn}}</td>
@@ -646,10 +645,10 @@
                         <table class="table table-hover" role="grid">
                             <thead>
                                 <tr>
-                                    <th ng-if="variantReportMode!=='Qc'">Confirm</th>
-                                    <th ng-if="variantReportMode!=='Qc'">Comment</th>
+                                    <th ng-if="variantReportMode!=='QC'">Confirm</th>
+                                    <th ng-if="variantReportMode!=='QC'">Comment</th>
                                     <th>ID</th>
-                                    <th ng-if="variantReportMode!=='Qc'">aMOI</th>
+                                    <th ng-if="variantReportMode!=='QC'">aMOI</th>
                                     <th>Gene 2</th>
                                     <th>Gene 2 Count</th>
                                     <th>Gene 1</th>
@@ -659,16 +658,16 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="variant in currentVariantReport.variants.gene_fusions" style="cursor: auto;" role="row" class="odd">
-                                    <td ng-if="variantReportMode!=='Qc'">
+                                    <td ng-if="variantReportMode!=='QC'">
                                         <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
                                             on-comment-entered="setComment()" prompt-only-if="true">
                                         </div>
                                     </td>
-                                    <td ng-if="variantReportMode!=='Qc'">
+                                    <td ng-if="variantReportMode!=='QC'">
                                         <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.id}}</td>
-                                    <td ng-if="variantReportMode!=='Qc'">{{::variant.aMOI}}</td>
+                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}</td>
                                     <td>{{::variant.gene2}}</td>
                                     <td>{{::variant.gene2count}}</td>
                                     <td>{{::variant.gene1}}</td>
@@ -682,7 +681,7 @@
                             </tbody>
                         </table>
 
-                        <div class="ibox-content ibox-title-no-line" ng-if="variantReport.showActions">
+                        <div class="ibox-content ibox-title-no-line" ng-if="showVariantReportActions(currentVariantReport)">
                             <div class="row">
                                 <div class="col-md-6 text-right">
                                     <button class="btn btn-danger" title="Reject this Report" ng-click="rejectVariantReport()">REJECT</button>
@@ -702,9 +701,9 @@
                         <div class="row toolbar-row">
                             <div class="col-md-8 text-left">
                                 <div class="btn-group btn-group-margin" data-toggle="buttons">
-                                    <label class="btn btn-outline btn-success" ng-class="getVariantReportModeClass('NORMAL')" ng-click="setVariantReportMode('NORMAL')"
-                                        title="Show Normal Report">
-                                        <input type="radio" name="variantReportMode" id="option3">Normal
+                                    <label class="btn btn-outline btn-success" ng-class="getVariantReportModeClass('FILTERED')" ng-click="setVariantReportMode('FILTERED')"
+                                        title="Show Filtered Report">
+                                        <input type="radio" name="variantReportMode" id="option3">Filtered
                                     </label>
                                     <label class="btn btn-outline btn-success" ng-class="getVariantReportModeClass('QC')" ng-click="setVariantReportMode('QC')"
                                         title="Show to QC Report">
@@ -789,17 +788,17 @@
                         <table class="table table-hover" role="grid">
                             <thead>
                                 <tr>
-                                    <th ng-if="variantReportMode!=='Qc'">Confirm</th>
-                                    <th ng-if="variantReportMode!=='Qc'">Comment</th>
+                                    <th ng-if="variantReportMode!=='QC'">Confirm</th>
+                                    <th ng-if="variantReportMode!=='QC'">Comment</th>
                                     <th>ID</th>
-                                    <th ng-if="variantReportMode!=='Qc'">aMOI</th>
+                                    <th ng-if="variantReportMode!=='QC'">aMOI</th>
                                     <th>Chrom</th>
                                     <th>Position</th>
                                     <th>CDS Ref</th>
                                     <th>CDS Alt</th>
                                     <th>OCP Ref</th>
                                     <th>OCP Alt</th>
-                                    <th>Stand</th>
+                                    <th>Strand</th>
                                     <th>Allele Freq</th>
                                     <th>Func Gene</th>
                                     <th>Oncomine Variant Class</th>
@@ -813,23 +812,23 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="variant in currentVariantReport.variants.single_nucleitide_variants" style="cursor: auto;" role="row" class="odd">
-                                    <td ng-if="variantReportMode!=='Qc'">
+                                    <td ng-if="variantReportMode!=='QC'">
                                         <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
                                             on-comment-entered="setComment(variant)" prompt-only-if="true">
                                         </div>
                                     </td>
-                                    <td ng-if="variantReportMode!=='Qc'">
+                                    <td ng-if="variantReportMode!=='QC'">
                                         <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.id}}</td>
-                                    <td ng-if="variantReportMode!=='Qc'">{{::variant.aMOI}}</td>
+                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}</td>
                                     <td>{{::variant.chrom}}</td>
                                     <td>{{::variant.position}}</td>
                                     <td>{{::variant.cds_ref}}</td>
                                     <td>{{::variant.cds_alt}}</td>
                                     <td>{{::variant.ocp_ref}}</td>
                                     <td>{{::variant.ocp_alt}}</td>
-                                    <td>{{::variant.stand}}</td>
+                                    <td>{{::variant.strand}}</td>
                                     <td>{{::variant.alleleFreq}}</td>
                                     <td>{{::variant.funcGene}}</td>
                                     <td>{{::variant.oncomineVariantClass}}</td>
@@ -855,17 +854,17 @@
                         <table class="table table-hover" role="grid">
                             <thead>
                                 <tr>
-                                    <th ng-if="variantReportMode!=='Qc'">Confirm</th>
-                                    <th ng-if="variantReportMode!=='Qc'">Comment</th>
+                                    <th ng-if="variantReportMode!=='QC'">Confirm</th>
+                                    <th ng-if="variantReportMode!=='QC'">Comment</th>
                                     <th>ID</th>
-                                    <th ng-if="variantReportMode!=='Qc'">aMOI</th>
+                                    <th ng-if="variantReportMode!=='QC'">aMOI</th>
                                     <th>Chrom</th>
                                     <th>Position</th>
                                     <th>CDS Ref</th>
                                     <th>CDS Alt</th>
                                     <th>OCP Ref</th>
                                     <th>OCP Alt</th>
-                                    <th>Stand</th>
+                                    <th>Strand</th>
                                     <th>Allele Freq</th>
                                     <th>Func Gene</th>
                                     <th>Oncomine Variant Class</th>
@@ -879,23 +878,23 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="variant in currentVariantReport.variants.indels" style="cursor: auto;" role="row" class="odd">
-                                    <td ng-if="variantReportMode!=='Qc'">
+                                    <td ng-if="variantReportMode!=='QC'">
                                         <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
                                             on-comment-entered="setComment()" prompt-only-if="true">
                                         </div>
                                     </td>
-                                    <td ng-if="variantReportMode!=='Qc'">
+                                    <td ng-if="variantReportMode!=='QC'">
                                         <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.id}}</td>
-                                    <td ng-if="variantReportMode!=='Qc'">{{::variant.aMOI}}</td>
+                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}</td>
                                     <td>{{::variant.chrom}}</td>
                                     <td>{{::variant.position}}</td>
                                     <td>{{::variant.cds_ref}}</td>
                                     <td>{{::variant.cds_alt}}</td>
                                     <td>{{::variant.ocp_ref}}</td>
                                     <td>{{::variant.ocp_alt}}</td>
-                                    <td>{{::variant.stand}}</td>
+                                    <td>{{::variant.strand}}</td>
                                     <td>{{::variant.alleleFreq}}</td>
                                     <td>{{::variant.funcGene}}</td>
                                     <td>{{::variant.oncomineVariantClass}}</td>
@@ -921,10 +920,10 @@
                         <table class="table table-hover" role="grid">
                             <thead>
                                 <tr>
-                                    <th ng-if="variantReportMode!=='Qc'">Confirm</th>
-                                    <th ng-if="variantReportMode!=='Qc'">Comment</th>
+                                    <th ng-if="variantReportMode!=='QC'">Confirm</th>
+                                    <th ng-if="variantReportMode!=='QC'">Comment</th>
                                     <th>ID</th>
-                                    <th ng-if="variantReportMode!=='Qc'">aMOI</th>
+                                    <th ng-if="variantReportMode!=='QC'">aMOI</th>
                                     <th>Chrom</th>
                                     <th>Raw CN</th>
                                     <th>CN</th>
@@ -934,16 +933,16 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="variant in currentVariantReport.variants.copy_number_variants" style="cursor: auto;" role="row" class="odd">
-                                    <td ng-if="variantReportMode!=='Qc'">
+                                    <td ng-if="variantReportMode!=='QC'">
                                         <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
                                             on-comment-entered="setComment()" prompt-only-if="true">
                                         </div>
                                     </td>
-                                    <td ng-if="variantReportMode!=='Qc'">
+                                    <td ng-if="variantReportMode!=='QC'">
                                         <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.id}}</td>
-                                    <td ng-if="variantReportMode!=='Qc'">{{::variant.aMOI}}</td>
+                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}</td>
                                     <td>{{::variant.chrom}}</td>
                                     <td>{{::variant.rawCN}}</td>
                                     <td>{{::variant.cn}}</td>
@@ -965,10 +964,10 @@
                         <table class="table table-hover" role="grid">
                             <thead>
                                 <tr>
-                                    <th ng-if="variantReportMode!=='Qc'">Confirm</th>
-                                    <th ng-if="variantReportMode!=='Qc'">Comment</th>
+                                    <th ng-if="variantReportMode!=='QC'">Confirm</th>
+                                    <th ng-if="variantReportMode!=='QC'">Comment</th>
                                     <th>ID</th>
-                                    <th ng-if="variantReportMode!=='Qc'">aMOI</th>
+                                    <th ng-if="variantReportMode!=='QC'">aMOI</th>
                                     <th>Gene 2</th>
                                     <th>Gene 2 Count</th>
                                     <th>Gene 1</th>
@@ -978,16 +977,16 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="variant in currentVariantReport.variants.gene_fusions" style="cursor: auto;" role="row" class="odd">
-                                    <td ng-if="variantReportMode!=='Qc'">
+                                    <td ng-if="variantReportMode!=='QC'">
                                         <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirm"
                                             on-comment-entered="setComment()" prompt-only-if="true">
                                         </div>
                                     </td>
-                                    <td ng-if="variantReportMode!=='Qc'">
+                                    <td ng-if="variantReportMode!=='QC'">
                                         <a href ng-click="editComment(variant)"> <i ng-if="variant.comment" class="fa fa-file-text-o"></i></a>
                                     </td>
                                     <td>{{::variant.id}}</td>
-                                    <td ng-if="variantReportMode!=='Qc'">{{::variant.aMOI}}</td>
+                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}</td>
                                     <td>{{::variant.gene2}}</td>
                                     <td>{{::variant.gene2count}}</td>
                                     <td>{{::variant.gene1}}</td>
@@ -1001,7 +1000,7 @@
                             </tbody>
                         </table>
 
-                        <div class="ibox-content ibox-title-no-line" ng-if="variantReport.showActions">
+                        <div class="ibox-content ibox-title-no-line" ng-if="showVariantReportActions(bloodVariantReport)">
                             <div class="row">
                                 <div class="col-md-6 text-right">
                                     <button class="btn btn-danger" title="Reject this Report" ng-click="rejectVariantReport()">REJECT</button>
@@ -1015,7 +1014,7 @@
                 </uib-tab>
 
                 <uib-tab heading="Assignment Report">
-                    <div class="panel-body" ng-switch="variantReport.status">
+                    <div class="panel-body" ng-switch="currentVariantReport.status">
 
                         <div ng-switch-when="CONFIRMED">
                             <div class="row button-row">
