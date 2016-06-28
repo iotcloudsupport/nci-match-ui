@@ -74,11 +74,17 @@
                 {
                     'REGISTRATION': 'blue',
                     'PENDING_APPROVAL': 'purple',
+                    'PENDING_CONFIRMATION' : 'purple',
+                    'PROGRESSION' : 'purple',
                     'REJOIN_REQUESTED': 'purple',
                     'OFF_TRIAL_NO_TA_AVAILABLE': 'red',
-                    'OFF_TRIAL_NOT_CONSENTED': 'red',
+                    'OFF_STUDY_NOT_CONSENTED': 'red',
+                    'TOXICITY' : 'orange',
                     'OFF_TRIAL': 'red',
+                    'OFF_STUDY' : 'red',
                     'OFF_TRIAL_DECEASED': 'red',
+                    'NO_PED_MATCH_AVAILABLE': 'red',
+                    'REGIMENT_COMPLETED': 'orange',
                     'ON_TREATMENT_ARM': 'green'
                 });
         };

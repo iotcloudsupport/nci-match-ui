@@ -17,14 +17,53 @@ angular.module('irntc.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         $scope.copyNumberVariantsList = [];
         $scope.geneFusionsList = [];
         $scope.barData = {};
+
+        //MOCS
         $scope.armNames = [];
         $scope.armValues = [];
-
         $scope.indelNames = [];
         $scope.indelValues = [];
-
         $scope.cnvNames = [];
         $scope.cnvValues = [];
+        $scope.geneNames = [];
+        $scope.geneValues = [];
+
+        $scope.armNames.push("Chrom");
+        $scope.armValues.push(233);
+        $scope.armNames.push("Position");
+        $scope.armValues.push(445);
+        $scope.armNames.push("Allele Freq ");
+        $scope.armValues.push(112);
+        $scope.armNames.push("Read Depth");
+        $scope.armValues.push(1077);
+
+
+        $scope.indelNames.push("Read Depth");
+        $scope.indelNames.push("Aller Freq");
+        $scope.indelNames.push("Aller Obs");
+        $scope.indelNames.push("Ref Obs");
+        $scope.indelNames.push("Ref All Obs");
+        $scope.indelNames.push("Alt Obs");
+        $scope.indelValues.push(334);
+        $scope.indelValues.push(555);
+        $scope.indelValues.push(122);
+        $scope.indelValues.push(988);
+        $scope.indelValues.push(443);
+        $scope.indelValues.push(88);
+
+        $scope.cnvNames.push("Chrom");
+        $scope.cnvValues.push(12);
+        $scope.cnvNames.push("Position");
+        $scope.cnvValues.push(22);
+        $scope.cnvNames.push("Allele Freq ");
+        $scope.cnvValues.push(32);
+        $scope.cnvNames.push("Read Depth");
+        $scope.cnvValues.push(23);
+
+        $scope.geneNames.push("Driver Gene");
+        $scope.geneValues.push(12);
+        $scope.geneNames.push("Driver Count");
+        $scope.geneValues.push(8);
 
         //Mocks
         $scope.singleNucleotideVariantsList = [{"type":"snv","metadata":{"id":"38781871-ebc3-4df7-b4d3-c89c124363c2","comment":null},"publicMedIds":null,"geneName":"","chromosome":"chr3","position":"178916946","identifier":"COSM12580","reference":"G","alternative":"C","filter":"PASS","description":null,"protein":"p.Lys111Asn","transcript":"NM_006218.2","hgvs":"c.333G>C","location":"exonic","readDepth":1403,"rare":false,"alleleFrequency":0.138275,"flowAlternativeAlleleObservationCount":"194","flowReferenceAlleleObservations":"1209","referenceAlleleObservations":1405,"alternativeAlleleObservationCount":0,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"PIK3CA","oncominevariantclass":"Hotspot","exon":"2","function":"missense","proteinMatch":null,"confirmed":false,"matchingId":"COSM12580"},{"type":"snv","metadata":{"id":"cb33b736-1101-4c22-8b21-66c4bad7f7ca","comment":null},"publicMedIds":null,"geneName":"","chromosome":"chr13","position":"32968850","identifier":".","reference":"C","alternative":"A","filter":"PASS","description":null,"protein":"p.Ser3094Ter","transcript":"NM_000059.3","hgvs":"c.9281C>A","location":"exonic","readDepth":1432,"rare":false,"alleleFrequency":0.244413,"flowAlternativeAlleleObservationCount":"350","flowReferenceAlleleObservations":"1082","referenceAlleleObservations":1079,"alternativeAlleleObservationCount":350,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"BRCA2","oncominevariantclass":"Deleterious","exon":"25","function":"nonsense","proteinMatch":null,"confirmed":false,"matchingId":"."},{"type":"snv","metadata":{"id":"2dae6bbe-caf5-4d2a-8f81-35ba9f85f0e8","comment":null},"publicMedIds":null,"geneName":"","chromosome":"chr7","position":"140453136","identifier":"COSM476","reference":"A","alternative":"T","filter":"PASS","description":null,"protein":"p.Val600Glu","transcript":"NM_004333.4","hgvs":"c.1799T>A","location":"exonic","readDepth":1866,"rare":false,"alleleFrequency":0.237406,"flowAlternativeAlleleObservationCount":"443","flowReferenceAlleleObservations":"1423","referenceAlleleObservations":1875,"alternativeAlleleObservationCount":0,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"BRAF","oncominevariantclass":"Hotspot","exon":"15","function":"missense","proteinMatch":null,"confirmed":false,"matchingId":"COSM476"}];
@@ -128,6 +167,21 @@ angular.module('irntc.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 ]
             };
         }
+        $scope.loadGeneCharts = function() {
+            $scope.barData = {
+                labels: $scope.geneNames,
+                datasets: [
+                    {
+                        label: "Accrual Dataset",
+                        fillColor: "Indigo",
+                        strokeColor: "rgba(220,220,220,0.8)",
+                        highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
+                        highlightStroke: "rgba(220,220,220,1)",
+                        data: $scope.geneValues
+                    }
+                ]
+            };
+        }
 
         var posts = undefined;
         $scope.loadNtcUnfilteredReportList = function () {
@@ -136,34 +190,21 @@ angular.module('irntc.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 .then(function (d) {
                     posts = d.data;
 
-                    $scope.armNames.push("Chrom");
-                    $scope.armValues.push(posts.singleNucleotideVariants[0].position);
-                    $scope.armNames.push("Position");
-                    $scope.armValues.push(posts.indels[0].position);
+                    // $scope.armNames.push("Chrom");
+                    // $scope.armValues.push(posts.singleNucleotideVariants[0].position);
+                    //
+                    // $scope.armNames.push("Position");
+                    // $scope.armValues.push(posts.indels[0].position);
                     // $scope.armNames.push(posts.copyNumberVariants[0].chromosome);
                     // $scope.armValues.push(posts.copyNumberVariants[0].position);
                     // $scope.armNames.push(posts.geneFusions[0].chromosome);
                     // $scope.armValues.push(posts.geneFusions[0].position);
 
 
-                    $scope.indelNames.push("Read Depth");
-                    $scope.indelNames.push("Aller Freq");
-                    $scope.indelNames.push("Aller Obs");
-                    $scope.indelNames.push("Ref Obs");
-                    $scope.indelNames.push("Ref All Obs");
-                    $scope.indelNames.push("Alt Obs");
-                    $scope.indelValues.push(posts.indels[0].readDepth);
-                    $scope.indelValues.push(posts.indels[0].alleleFrequency);
-                    $scope.indelValues.push(posts.indels[0].flowAlternativeAlleleObservationCount);
-                    $scope.indelValues.push(posts.indels[0].flowReferenceAlleleObservations);
-                    $scope.indelValues.push(posts.indels[0].referenceAlleleObservations);
-                    $scope.indelValues.push(posts.indels[0].alternativeAlleleObservationCount);
 
 
-                    $scope.cnvNames.push("Chrome");
-                    $scope.cnvNames.push("Position");
-                    $scope.cnvValues.push(41);
-                    $scope.cnvValues.push(21);
+
+
 
 
 
