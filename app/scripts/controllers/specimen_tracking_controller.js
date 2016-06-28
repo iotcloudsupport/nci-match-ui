@@ -25,6 +25,69 @@ angular.module('specimen-tracking.matchbox',[])
             }
         }
 
+        $scope.pieDataset = [
+            {
+                label: "SUCCESSES",
+                data: 5,
+                color: "#f8ac59",
+                psns: "215re, 203re, 312re"
+            },
+            {
+                label: "FAILURES",
+                data: 2,
+                color: "#707070",
+                psns: "205re, 206re"
+            }
+        ];
+
+        $scope.pieDataset2 = [
+            {
+                label: "MDA",
+                data: 12,
+                color: "#1ab394",
+                psns: "215re, 203re, 312re"
+            },
+            {
+                label: "Mocha",
+                data: 15,
+                color: "#1c84c6",
+                psns: "205re, 206re"
+            }
+        ];
+
+        //mda mocha "#1ab394" "#1c84c6"
+        function setupPieChartOptions(htmlContainer) {
+            return {
+                series: {
+                    pie: {
+                        show: true
+                    }
+                },
+                grid: {
+                    hoverable: true
+                },
+                tooltip: true,
+                tooltipOpts: {
+                    content: function(label, xval, yval) {
+                        return setupTooltip(label, xval, yval);
+                    },
+                    shifts: {
+                        x: 20,
+                        y: 0
+                    },
+                    defaultTheme: true
+                },
+                legend: {
+                    show: true,
+                    container: htmlContainer
+                }
+            };
+        }
+
+        $scope.pieOptions = setupPieChartOptions('#legendContainer');
+
+        $scope.pieOptions2 = setupPieChartOptions('#legendContainer2');
+
         $scope.loadSpecimenTrackingList = function() {
             matchApi
                 .getPatientSpecimentTrackingSummary()
