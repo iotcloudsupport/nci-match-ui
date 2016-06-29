@@ -31,7 +31,37 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         $scope.branch = $stateParams.branch;
         $scope.siteName = [];
         $scope.site = 'undefined';
+            $scope.positives = 'undefined';
         $scope.barData = {};
+
+            
+            $scope.positiveControlList = [];
+            $scope.positiveControlList = [{"variantType":"SNV","geneName":"PIK3CA","chromosome":"chr3","position":"178916946","identifier":"COSM12580","reference":"G","alternative":"C","protein":"p.Lys111Asn","hgvs":"c.333G>C","purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"SNV","geneName":"BRAF","chromosome":"chr7","position":"140453136","identifier":"COSM476","reference":"A","alternative":"T","protein":"p.V600E","hgvs":"c.1799T>A","purpose":"Substitution","function":"missense","hasMatchingVariant":"true"},{"variantType":"SNV","geneName":"BRCA2","chromosome":"chr13","position":"32968850","identifier":".","reference":"C","alternative":"A","protein":"p.Ser3094Ter","hgvs":"c.9281C>A","purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"Indel","geneName":"PTEN","chromosome":"chr10","position":"89717716","identifier":".","reference":"-","alternative":"A","protein":"p.Pro248fs","hgvs":"c.741_742insA","purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"Indels","purpose":"CNV","function":null,"hasMatchingVariant":"true"},{"variantType":"CNV","geneName":"RPS6KB1","chromosome":"chr17","position":null,"identifier":null,"reference":null,"alternative":null,"protein":null,"hgvs":null,"purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"CNV","geneName":"ZNF217","chromosome":"chr20","position":null,"identifier":null,"reference":null,"alternative":null,"protein":null,"hgvs":null,"purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"Fusion","geneName":"ALK","chromosome":null,"position":null,"identifier":"AB374361","reference":null,"alternative":"EML4-ALK.E6aA20","protein":null,"hgvs":"EML4-ALK","purpose":"Fusion","function":null,"hasMatchingVariant":"true"},{"variantType":"Fusion","geneName":"ALK","chromosome":null,"position":null,"identifier":"AB374362","reference":null,"alternative":"EML4-ALK.E6bA20","protein":null,"hgvs":"EML4-ALK","purpose":"Fusion","function":null,"hasMatchingVariant":"true"}];
+
+            $scope.negativeVariantsList = [];
+            $scope.negativeVariantsList.push({
+                'publicMedIds': '',
+                'position': '7578373',
+                'geneName': "",
+                'variantType':'Indel',
+                'reference':'G',
+                'alternative': 'C',
+                'hgvs': 'c.557A',
+                'protein': 'p.Asp186Gly',
+                'function': 'missense'
+            });
+
+
+            // <td>.</td>
+            // <td>chr17</td>
+            // <td>7578373</td>
+            // <td>
+            // <td>SNV</td>
+            // <td>T</td>
+            // <td>C</td>
+            // <td>c.557A>G</td>
+            // <td>p.Asp186Gly</td>
+            // <td>missense</td>
 
 
             $scope.moChaList.push({
@@ -55,6 +85,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
                 if(reportType === 'MoCha'){
                     $scope.branch = 'mocha';
+                    $scope.positives = "undefined";
                 }
                 else if(reportType === 'MDAC'){
                     $scope.branch = 'mdacc';
@@ -349,6 +380,12 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                             }
                         });
                     });
+            };
+
+
+            $scope.openPositives = function() {
+                $scope.positives = 'mocha';
+
             };
 
             $scope.loadSampleControlsList = function () {
