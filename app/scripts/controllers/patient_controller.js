@@ -90,14 +90,11 @@
 
         function setActiveTab(tab) {
             $scope.activeTab = tab;
-//$log.debug($scope.activeTab);
-            //$scope.$apply();
         }
 
         function isActiveTab(tab) {
             $log.debug($scope.activeTab);
             return $scope.activeTab === tab;
-            //$scope.$apply();
         }
 
         function setVariantReportType(reportType) {
