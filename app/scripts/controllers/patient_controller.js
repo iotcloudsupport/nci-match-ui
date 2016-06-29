@@ -13,6 +13,12 @@
         $state,
         $window) {
 
+        $scope.d3data = [
+            { name: "Greg", score: 98 },
+            { name: "Ari", score: 96 },
+            { name: "Loser", score: 48 }
+        ];
+
         var vm = this;
 
         this.dtOptions = DTOptionsBuilder.newOptions()
@@ -20,6 +26,8 @@
 
         vm.enabledFileButtonClass = 'btn-success';
         vm.disabledFileButtonClass = 'btn-default btn-outline-default disabled';
+
+        $scope.activeTab = 'summary';
 
         $scope.patient_id = '';
         $scope.warningResult = false;
@@ -77,6 +85,20 @@
         $scope.onBloodVariantReportSelected = onBloodVariantReportSelected;
         $scope.onVariantReportSelected = onVariantReportSelected;
         $scope.showVariantReportActions = showVariantReportActions;
+        $scope.setActiveTab = setActiveTab;
+        $scope.isActiveTab = isActiveTab;
+
+        function setActiveTab(tab) {
+            $scope.activeTab = tab;
+//$log.debug($scope.activeTab);
+            //$scope.$apply();
+        }
+
+        function isActiveTab(tab) {
+            $log.debug($scope.activeTab);
+            return $scope.activeTab === tab;
+            //$scope.$apply();
+        }
 
         function setVariantReportType(reportType) {
             if ($scope.variantReportType === reportType) {
@@ -150,9 +172,9 @@
             for (var i = 0; i < $scope.data.timeline.length; i++) {
                 var timelineEvent = $scope.data.timeline[i];
                 var eventDateMoment = moment(timelineEvent.event_date);
-                var diff = eventDateMoment.diff(now,"DD/MM/YYYY HH:mm:ss");
+                var diff = eventDateMoment.diff(now, "DD/MM/YYYY HH:mm:ss");
                 timelineEvent.from_now = moment.duration(diff).humanize(true);
-            }            
+            }
         }
 
         function setupSurgicalEventOptions() {
@@ -397,7 +419,7 @@
         function onSurgicalEventSelected(selected) {
             $log.debug(selected);
 
-            var bySurgicalEvent = function(x) { return x.value.surgical_event_id === selected.value.surgical_event_id};
+            var bySurgicalEvent = function (x) { return x.value.surgical_event_id === selected.value.surgical_event_id };
             var variantReportItem = $scope.variantReportOptions.find(bySurgicalEvent);
 
             if (variantReportItem) {
@@ -413,7 +435,7 @@
         function onVariantReportSelected(selected) {
             $log.debug(selected);
 
-            var bySurgicalEvent = function(x) { return x.value.surgical_event_id === selected.value.surgical_event_id};
+            var bySurgicalEvent = function (x) { return x.value.surgical_event_id === selected.value.surgical_event_id };
             var surgicalEventItem = $scope.surgicalEventOptions.find(bySurgicalEvent);
 
             if (surgicalEventItem) {

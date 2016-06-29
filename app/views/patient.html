@@ -72,7 +72,7 @@
 
         <div class="tabs-container">
             <uib-tabset>
-                <uib-tab heading="Summary">
+                <uib-tab heading="Summary" select="setActiveTab('summary')">
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12 center-block">
@@ -114,7 +114,7 @@
                     </div>
                 </uib-tab>
 
-                <uib-tab heading="Surgical Event">
+                <uib-tab heading="Surgical Event" select="setActiveTab('surgical_event')">
                     <div class="panel-body">
 
                         <div class="row content-select-list">
@@ -188,76 +188,6 @@
                                 </tr>
                             </tbody>
                         </table>
-
-                        <div class="ibox-title ibox-title-no-line">
-                            <h3>{{ surgicalEventLabel }} Analysis</h3>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="header-info-box biopsy-sample-box">
-                                    <h4>Sample</h4>
-                                    <dl class="dl-horizontal">
-                                        <dt>Molecular ID</dt>
-                                        <dd>{{::currentSpecimen.molecular_id}}</dd>
-
-                                        <dt>Site</dt>
-                                        <dd>{{::currentSpecimen.site}}</dd>
-
-                                        <dt>Tracking Number</dt>
-                                        <dd>{{::currentSpecimen.tracking_number}}</dd>
-
-                                        <dt>DNA Conc</dt>
-                                        <dd>{{::currentSpecimen.dna_concordance}}</dd>
-
-                                        <dt>DNA Vol</dt>
-                                        <dd>{{::currentSpecimen.dna_volume}}</dd>
-
-                                        <dt>Reported Date</dt>
-                                        <dd>{{currentSpecimen.reported_date | utc}}</dd>
-
-                                        <dt>Comments</dt>
-                                        <dd>
-                                            <div class="text-truncate-200px">{{::currentSpecimen.comments}}</div>
-                                        </dd>
-
-                                        <dd>
-                                            <button type="input" class="btn btn-xs btn-success btn-outline">Upload Analysis Files</button>
-                                        </dd>
-                                    </dl>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="header-info-box biopsy-sample-box">
-                                    <h4>Analysis</h4>
-                                    <dl class="dl-horizontal">
-                                        <dt>Analysis ID</dt>
-                                        <dd>{{::currentAnalisys.analysis_id}}</dd>
-
-                                        <dt>Status</dt>
-                                        <dd ng-style="{'color':'{{ currentAnalisys.status | analysisStatus }}'}">{{::currentAnalisys.status}}</dd>
-
-                                        <dt>File Received Date</dt>
-                                        <dd>{{currentAnalisys.file_received_date | utc}}</dd>
-
-                                        <dt>{{::currentAnalisys.status}} Date</dt>
-                                        <dd>{{currentAnalisys.status_date | utc}}</dd>
-
-                                        <dt>Files</dt>
-                                        <dd>
-                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentAnalisys.dna_bam_file_path)">DNA BAM</a>
-                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentAnalisys.dna_bai_file_path)">DNA BAI</a>
-                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentAnalisys.vcf_path)">VCF</a>
-                                        </dd>
-                                        <dd>
-                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentAnalisys.rna_bam_file_path)">RNA BAM</a>
-                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentAnalisys.rna_bai_file_path)">RNA BAI</a>
-                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(currentAnalisys, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
-                                        </dd>
-                                    </dl>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="ibox collapsed">
                             <div class="ibox-title ibox-title-no-line">
@@ -340,7 +270,7 @@
                     </div>
                 </uib-tab>
 
-                <uib-tab heading="Variant Report">
+                <uib-tab heading="Tissue Variant Report" select="setActiveTab('tissue_variant_report')">
                     <div class="panel-body">
 
                         <div class="row toolbar-row">
@@ -453,7 +383,9 @@
                                 </div>
                             </div>
                         </div>-->
-                        <img src="/img/variant_report.png" style="width:1200px" />
+                        <img ng-if="isActiveTab('tissue_variant_report')" src="/img/variant_report.png" style="width:1200px" />
+
+                        <div ng-if="activeTab=='tissue_variant_report'" d3-cnv-chart="" bar-height="20" bar-padding="3" data="d3data"></div>
 
                         <!--Single Nucleitide Variant(s)-->
                         <div class="ibox-title ibox-title-no-line">
@@ -689,7 +621,7 @@
                     </div>
                 </uib-tab>
 
-                <uib-tab heading="Blood Variant Report">
+                <uib-tab heading="Blood Variant Report" select="setActiveTab('blood_variant_report')">
                     <div class="panel-body">
                         <div ng-if="currentBloodVariantReport">
                             <div class="row toolbar-row">
@@ -1022,7 +954,7 @@
                     </div>
                 </uib-tab>
 
-                <uib-tab heading="Assignment Report">
+                <uib-tab heading="Assignment Report" select="setActiveTab('assignment_report')">
                     <div class="panel-body" ng-switch="currentVariantReport.status">
 
                         <div ng-switch-when="CONFIRMED">
@@ -1177,7 +1109,7 @@
                     </div>
                 </uib-tab>
 
-                <uib-tab heading="Documents">
+                <uib-tab heading="Documents" select="setActiveTab('documents')">
                     <div class="panel-body ">
 
                         <div class="ibox float-e-margins">

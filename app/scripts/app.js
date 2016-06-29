@@ -28,6 +28,7 @@
         'ngDropzone',
         'ngDropdowns',
         'ngAnimate',
-        'login_config'
+        'login_config',
+        'd3'
     ]);
 })();
