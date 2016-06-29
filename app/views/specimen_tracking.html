@@ -154,6 +154,8 @@
                                     <th>Collected Date</th>
                                     <th>Received Date</th>
                                     <th>Type</th>
+                                    <th>Shipped Date</th>
+                                    <th>Site</th>
                                     <th>Pathology Status</th>
                                     <th>Pathology Status Date</th>
 
@@ -166,55 +168,44 @@
                                     <td>{{ specimenTrackingItem.collected_date | gmt }}</td>
                                     <td>{{ specimenTrackingItem.received_date | gmt }}</td>
                                     <td>{{ specimenTrackingItem.type }}</td>
+                                    <td>{{ specimenTrackingItem.shipped_date | gmt }}</td>
+                                    <td>{{ specimenTrackingItem.site }}</td>
                                     <td>{{ specimenTrackingItem.pathology_status }}</td>
                                     <td>{{ specimenTrackingItem.pathology_status_date | gmt }}</td>
                                 </tr>
                                 <tr ng-repeat-end>
-                                    <td colspan="7">
+                                    <td colspan="9">
                                         <ul class="panel-list">
                                             <li ng-repeat="assayItem in specimenTrackingItem.assays" class="info-element">
                                                 <div class="row">
-                                                    <div class="col-md-4 col-sm-6 text-left">
+                                                    <div class="col-md-3 col-sm-6 text-left">
                                                         <dl class="dl-horizontal-narrow">
-                                                            <!--<dt>Surgical Event ID</dt>
-                                                            <dd><a> {{::assayItem.surgical_event_id}} </a></dd>-->
-
                                                             <dt>IHC</dt>
                                                             <dd ng-style="{'color':'{{ analysis.status | analysisStatus }}'}">{{::assayItem.ihc}}</dd>
                                                         </dl>
                                                     </div>
-                                                    <div class="col-md-4 col-sm-6 text-left">
+                                                    <div class="col-md-3 col-sm-6 text-left">
                                                         <dl class="dl-horizontal-narrow">
                                                             <dt>Assay Order Date</dt>
                                                             <dd>{{assayItem.assay_order_date | utc}}</dd>
 
                                                         </dl>
                                                     </div>
-                                                    <div class="col-md-4 text-right">
+                                                    <div class="col-md-3 col-sm-6 text-left">
                                                         <dl class="dl-horizontal-narrow">
+                                                            <dt>Assay Result Date</dt>
+                                                            <dd>{{assayItem.assay_result_date | utc}}</dd>
 
-
-                                                            <dt>{{::assayItem.result_information}} Result</dt>
-                                                            <dd>{{assayItem.assay_result_date | utc}} Assay Result Date</dd>
                                                         </dl>
-
                                                     </div>
-                                                    <!--<div class="col-md-4 text-right">
-                                                        <div class="row">
-                                                            <div class="col-md-12 text-right">
-                                                                <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.dna_bam_file_path)">DNA BAM</a>
-                                                                <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.dna_bai_file_path)">DNA BAI</a>
-                                                                <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.vcf_path)">VCF</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-12 text-right">
-                                                                <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.rna_bam_file_path)">RNA BAM</a>
-                                                                <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.rna_bai_file_path)">RNA BAI</a>
-                                                                <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(analisys, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
-                                                            </div>
-                                                        </div>
-                                                    </div>-->
+                                                    <div class="col-md-3 col-sm-6 text-left">
+                                                        <dl class="dl-horizontal-narrow">
+                                                            <dt>Result Information</dt>
+                                                            <dd>{{assayItem.result_information}}</dd>
+
+                                                        </dl>
+                                                    </div>
+
                                                 </div>
                                             </li>
                                         </ul>
