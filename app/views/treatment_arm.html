@@ -138,7 +138,7 @@
                                 <tbody>
                                 <tr ng-repeat="item in patients">
                                     <td>{{item.Patient.slot || '-'}}</td>
-                                    <td>{{item.Patient.patientSequenceNumber || '-'}}</td>
+                                    <td><a ui-sref="patient({ patient_id: item.Patient.patientSequenceNumber })"><i class="fa fa-user"></i> {{item.Patient.patientSequenceNumber || '-'}}</td>
                                     <td>{{item.Patient.treatmentArmVersion || '-'}}</td>
                                     <td ng-style="{'color':'{{ item.Patient.patientAssignmentStatusOutcome | status }}'}">{{item.Patient.patientAssignmentStatusOutcome || '-'}}</td>
                                     <td>{{item.Patient.assignmentLogic || '-'}}</td>

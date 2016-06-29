@@ -80,7 +80,7 @@
                                             <div class="media-body ">
                                                 <small class="pull-right">{{activity.age }} ago</small>
                                                 <strong> {{ activity.displayName }} </strong>  <br>
-                                                <a ng-if="activity.patientId !== ''" ui-sref="patient({ patientSequenceNumber: activity.patientId })">
+                                                <a ng-if="activity.patientId !== ''" ui-sref="patient({ patient_id: activity.patientId })">
                                                         <i class="fa fa-user"></i> {{::activity.patientId}}<br>
                                                 </a>
                                                 <a ng-if="activity.treatmentArmId !== ''">{{activity.treatmentArmId}}<br></a>
@@ -126,7 +126,7 @@
                                                     <tbody>
                                                     <tr ng-repeat="patient in pendingTissueVariantReportList">
                                                         <td>
-                                                            <a ui-sref="patient({ patientSequenceNumber: patient.patientSequenceNumber })">
+                                                            <a ui-sref="patient({ patient_id: patient.patient_id })">
                                                                 <i class="fa fa-user"></i> {{::patient.patient_id || '-' }}
                                                             </a>
                                                         </td>
@@ -164,7 +164,7 @@
                                                     <tbody>
                                                     <tr ng-repeat="patient in pendingBloodVariantReportList">
                                                         <td>
-                                                            <a ui-sref="patient({ patientSequenceNumber: patient.patientSequenceNumber })">
+                                                            <a ui-sref="patient({ patient_id: patient.patient_id })">
                                                                 <i class="fa fa-user"></i> {{::patient.patient_id || '-' }}
                                                             </a>
                                                         </td>
