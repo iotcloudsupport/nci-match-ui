@@ -125,7 +125,7 @@
 
     function taStatus() {
         return function (text) {
-            return colorFilter(text, { 'PENDING': 'orange', 'READY': 'blue', 'OPEN': 'green', 'CLOSED': 'red', default: 'purple' });
+            return colorFilter(text, { 'SUSPENDED': 'blue', 'OPEN': 'green', 'CLOSED': 'red', default: 'purple' });
         };
     }
 
