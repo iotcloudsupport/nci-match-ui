@@ -83,9 +83,9 @@
                                                 <a ng-if="activity.patientId !== ''" ui-sref="patient({ patient_id: activity.patientId })">
                                                         <i class="fa fa-user"></i> {{::activity.patientId}}<br>
                                                 </a>
-                                                <a ng-if="activity.treatmentArmId !== ''">{{activity.treatmentArmId}}<br></a>
-                                                <a ng-if="activity.molecularId !== ''">{{activity.molecularId}}<br></a>
-                                                <a ng-if="activity.biopsySequenceNumber !== ''">{{activity.biopsySequenceNumber}}<br></a>
+                                                <a ng-if="activity.treatmentArmId !== ''" ui-sref="treatment-arm({ treatmentArmId: activity.treatmentArmId })">{{activity.treatmentArmId}}<br></a>
+                                                <a ng-if="activity.molecularId !== ''" ui-sref="patient({ patient_id: activity.patientId })">{{activity.molecularId}}<br></a>
+                                                <a ng-if="activity.biopsySequenceNumber !== ''" ui-sref="patient({ patient_id: activity.patientId })">{{activity.biopsySequenceNumber}}<br></a>
                                                 <small class="text-muted">{{ activity.time | date:'yyyy-MM-dd HH:mm:ss' }} </small>
                                             </div>
                                         </div>
@@ -130,8 +130,8 @@
                                                                 <i class="fa fa-user"></i> {{::patient.patient_id || '-' }}
                                                             </a>
                                                         </td>
-                                                        <td><a>{{ patient.molecular_id || '-' }}</a></td>
-                                                        <td><a>{{ patient.analysis_id || '-' }}</a></td>
+                                                        <td><a ui-sref="patient({ patient_id: patient.patient_id })">{{ patient.molecular_id || '-' }}</a></td>
+                                                        <td><a ui-sref="patient({ patient_id: patient.patient_id })">{{ patient.analysis_id || '-' }}</a></td>
                                                         <td>{{ patient.clia_lab || '-' }}</td>
                                                         <td>{{ patient.specimen_received_date | gmt }}</td>
                                                         <td>{{ patient.variant_report_received_date | gmt }}</td>
@@ -168,8 +168,8 @@
                                                                 <i class="fa fa-user"></i> {{::patient.patient_id || '-' }}
                                                             </a>
                                                         </td>
-                                                        <td><a>{{ patient.molecular_id || '-' }}</a></td>
-                                                        <td><a>{{ patient.analysis_id || '-' }}</a></td>
+                                                        <td><a ui-sref="patient({ patient_id: patient.patient_id })">{{ patient.molecular_id || '-' }}</a></td>
+                                                        <td><a ui-sref="patient({ patient_id: patient.patient_id })">{{ patient.analysis_id || '-' }}</a></td>
                                                         <td>{{ patient.clia_lab || '-' }}</td>
                                                         <td>{{ patient.specimen_received_date | gmt }}</td>
                                                         <td>{{ patient.variant_report_received_date | gmt }}</td>
@@ -204,8 +204,8 @@
                                                                 <i class="fa fa-user"></i> {{::patient.patient_id }}
                                                             </a>
                                                         </td>
-                                                        <td><a>{{ patient.molecular_id || '-' }}</a></td>
-                                                        <td><a>{{ patient.analysis_id || '-' }}</a></td>
+                                                        <td><a ui-sref="patient({ patient_id: patient.patient_id })">{{ patient.molecular_id || '-' }}</a></td>
+                                                        <td><a ui-sref="patient({ patient_id: patient.patient_id })">{{ patient.analysis_id || '-' }}</a></td>
                                                         <td>{{ patient.assignment_date | gmt }}</td>
                                                         <td><span class="label label-primary">{{ patient.hours_pending || ' - ' }}</span></td>
                                                     </tr>
