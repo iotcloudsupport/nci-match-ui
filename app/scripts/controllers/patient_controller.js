@@ -13,12 +13,6 @@
         $state,
         $window) {
 
-        $scope.d3data = [
-            { name: "Greg", score: 98 },
-            { name: "Ari", score: 96 },
-            { name: "Loser", score: 48 }
-        ];
-
         var vm = this;
 
         this.dtOptions = DTOptionsBuilder.newOptions()
@@ -86,15 +80,9 @@
         $scope.onVariantReportSelected = onVariantReportSelected;
         $scope.showVariantReportActions = showVariantReportActions;
         $scope.setActiveTab = setActiveTab;
-        $scope.isActiveTab = isActiveTab;
 
         function setActiveTab(tab) {
             $scope.activeTab = tab;
-        }
-
-        function isActiveTab(tab) {
-            $log.debug($scope.activeTab);
-            return $scope.activeTab === tab;
         }
 
         function setVariantReportType(reportType) {
