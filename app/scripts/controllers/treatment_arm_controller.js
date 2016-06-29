@@ -19,7 +19,7 @@ angular.module('treatment-arm.matchbox',[])
         $scope.test = '';
 
         $scope.information = {
-            name: 'EAY131-A',
+            name: 'APEC1621-A',
             description: 'Afatinib in DDR2 activating mutations',
             currentVersion: '2016-03-17',
             genes: 'DDR2',
@@ -47,8 +47,6 @@ angular.module('treatment-arm.matchbox',[])
         $scope.versionHistory = {
             versionStatus: 'OPEN',
             history: [
-                {status: 'PENDING', date: 'March 02, 2016 4:00AM GMT'},
-                {status: 'READY', date: 'March 09, 2016 10:10PM GMT'},
                 {status: 'OPEN', date: 'March 17, 2016 10:10PM GMT'}
             ]
         };
@@ -56,9 +54,8 @@ angular.module('treatment-arm.matchbox',[])
         $scope.versionHistoryClosed = {
             versionStatus: 'CLOSED',
             history: [
-                {status: 'PENDING', date: 'December 02, 2016 4:00AM GMT'},
-                {status: 'READY', date: 'December 09, 2016 10:10PM GMT'},
-                {status: 'OPEN', date: 'December 20, 2015 10:10PM GMT'},
+                {status: 'OPEN', date: 'December 02, 2016 4:00AM GMT'},
+                {status: 'SUSPENDED', date: 'December 20, 2015 10:10PM GMT'},
                 {status: 'CLOSED', date: 'February 20, 2016 9:00PM GMT'}
             ]
         };
@@ -92,11 +89,11 @@ angular.module('treatment-arm.matchbox',[])
         $scope.versions = [
             {
                 name: '2016-03-17',
+                text: '2016-03-17',
+                latest: 'This is the latest version.',
                 versionStatus: 'OPEN',
                 versionHistory: {
                     history: [
-                        {status: 'PENDING', date: 'March 02, 2016 4:00AM GMT'},
-                        {status: 'READY', date: 'March 09, 2016 10:10PM GMT'},
                         {status: 'OPEN', date: 'March 17, 2016 10:10PM GMT'},
                     ]
                 },
@@ -390,12 +387,13 @@ angular.module('treatment-arm.matchbox',[])
             },
             {
                 name: '2016-02-20',
+                text: '2016-02-20',
+                latest: 'This is not the latest version.',
                 versionStatus: 'CLOSED',
                 versionHistory: {
                     history: [
-                        {status: 'PENDING', date: 'January 2, 2015 4:00AM GMT'},
-                        {status: 'READY', date: 'January 9, 2016 10:10PM GMT'},
-                        {status: 'OPEN', date: 'February 20, 2016 10:10PM GMT'},
+                        {status: 'OPEN', date: 'January 9, 2016 10:10PM GMT'},
+                        {status: 'SUSPENDED', date: 'February 20, 2016 10:10PM GMT'},
                         {status: 'CLOSED', date: 'Febrary 28, 2016 9:15AM GMT'}
                     ]
                 },
@@ -943,7 +941,7 @@ angular.module('treatment-arm.matchbox',[])
           treatmentArmApi
               .getPatientsForTa(ta)
               .then(function (d) {
-                  console.log(d.data);
+                  //console.log(d.data);
               });
         };
 
@@ -960,7 +958,7 @@ angular.module('treatment-arm.matchbox',[])
             treatmentArmApi
             .getTreatmentArmDetails(ta)
                 .then(function (d) {
-                    console.log(d.data);
+                    //console.log(d.data);
                     /*angular.forEach(d.data, function(value) {
                         console.log('value');
                         console.log(value);
@@ -1097,7 +1095,7 @@ angular.module('treatment-arm.matchbox',[])
                         
                     $scope.test = "test";
                     $scope.selectedVersion = $scope.versions[0];
-                    console.log($scope.selectedVersion);
+                    //console.log($scope.selectedVersion);
                 })
                 .then (function() {
                     $scope.inExclusionType = 'inclusion';

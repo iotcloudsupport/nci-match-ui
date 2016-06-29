@@ -29,7 +29,7 @@ describe('Controller: Specimen Tracking Controller', function () {
         httpBackend.verifyNoOutstandingRequest();
     });
 
-    it('should populate the specimen tracking list with 1 entry on a success response', function() {
+    /*it('should populate the specimen tracking list with 1 entry on a success response', function() {
         httpBackend.when('GET', 'http://server:80/match/common/rs/patientSpecimenTrackingSummary')
             .respond([
                 {"patientSequenceNumber":"10368","biopsies":[{"biopsySequenceNumber":"N-15-00005","specimenReceivedDate":1449922209071,"specimenFailureDate":null,"ptenOrderDate":1449940269071,"ptenResultDate":1449940329071,"pathologyReviewdate":1449922389071,"samples":[{"molecularSequenceNumber":"10368_1000_N-15-00005","lab":"MGH","dnaShippedDate":1449927199419,"trackingNumber":"987654321"}]}]}
@@ -75,6 +75,6 @@ describe('Controller: Specimen Tracking Controller', function () {
         expect(scope.sites.mda.percent).toBe(60);
         expect(scope.sites.mocha.count).toBe(0);
         expect(scope.sites.mocha.percent).toBe(0);
-    });
+    });*/
 
 });

@@ -5,7 +5,58 @@ angular.module('specimen-tracking.matchbox',[])
         this.dtColumnDefs = [];
         this.dtInstance = {};
 
-        $scope.specimenTrackingList = [];
+        //$scope.specimenTrackingList = [];
+
+        $scope.specimenTrackingList = [
+            {
+                "patient_id": "110001",
+                "collected_date": 1519735694848,
+                "received_date": 1519735777810,
+                "failed_date": "",
+                "surgical_event_id": "125",
+                "type": "111",
+                "pathology_status": "positive",
+                "pathology_status_date": 1511235777810,
+                "variant_report_confirmed_date": "",
+                "assays": [
+                    {
+                        "surgical_event_id": "125",
+                        "ihc": "PTEN",
+                        "assay_order_date": 15112345678,
+                        "assay_reult_date": 15112355728,
+                        "result_information": "---"
+                    },
+                    {
+                        "surgical_event_id": "125",
+                        "ihc": "PTEN",
+                        "assay_order_date": 15112345678,
+                        "assay_reult_date": 15112355728,
+                        "result_information": "---"
+                    }
+                ]
+            },
+            {
+                "patient_id": "111023",
+                "collected_date": 1511235694848,
+                "received_date": 1511235777810,
+                "failed_date": "",
+                "surgical_event_id": "125",
+                "type": "111",
+                "pathology_status": "positive",
+                "pathology_status_date": 1511235777810,
+                "variant_report_confirmed_date": "",
+                "assays": [
+                    {
+                        "surgical_event_id": "125",
+                        "ihc": "PTEN",
+                        "assay_order_date": 15112345678,
+                        "assay_reult_date": 15112355728,
+                        "result_information": "---"
+                    }
+                ]
+            }
+        ];
+
         $scope.sites = {
             'mgh': {
                 'count': 0,
@@ -16,12 +67,12 @@ angular.module('specimen-tracking.matchbox',[])
                 'percent': 0
             },
             'mda': {
-                'count': 0,
-                'percent': 0
+                'count': 45,
+                'percent': 45
             },
             'mocha': {
-                'count': 0,
-                'percent': 0
+                'count': 55,
+                'percent': 55
             }
         }
 

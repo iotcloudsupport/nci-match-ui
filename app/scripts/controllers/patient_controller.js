@@ -35,6 +35,7 @@
 
         $scope.currentSurgicalEvent = null;
         $scope.currentAnalisys = null;
+        $scope.currentShipment = null;
         $scope.currentVariantReport = null;
         $scope.currentBloodVariantReport = null;
 
@@ -178,6 +179,8 @@
 
                 $scope.surgicalEventOptions.push(item);
             }
+
+            selectSurgicalEvent($scope.surgicalEventOptions[$scope.surgicalEventOptions.length - 1]);
         }
 
         function setupVariantReports() {
@@ -426,6 +429,7 @@
         function selectSurgicalEvent(option) {
             $scope.currentSurgicalEvent = null;
             $scope.currentAnalisys = null;
+            $scope.currentShipment = null;
 
             for (var i = 0; i < $scope.data.specimen_history.length; i++) {
                 var surgicalEvent = $scope.data.specimen_history[i];
@@ -439,6 +443,10 @@
                             var analysis = shipment.analyses[0];
                             $scope.currentAnalisys = analysis;
                         }
+                    }
+
+                    if (surgicalEvent.specimen_shipments && surgicalEvent.specimen_shipments.length) {
+                        $scope.currentShipment = surgicalEvent.specimen_shipments[surgicalEvent.specimen_shipments.length - 1];
                     }
                 }
             }

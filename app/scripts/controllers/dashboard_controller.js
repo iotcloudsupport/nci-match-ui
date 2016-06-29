@@ -228,7 +228,7 @@ angular.module('dashboard.matchbox',[])
                 "pic": $scope.icons[2],
                 "status": $scope.status[2],
                 "patientId": '',
-                "treatmentArmId": 'EAY131-A',
+                "treatmentArmId": 'APEC1621-A',
                 "molecularId": '',
                 "biopsySequenceNumber": '',
                 "time": 1421175969643,
@@ -283,7 +283,7 @@ angular.module('dashboard.matchbox',[])
                 "pic": $scope.icons[2],
                 "status": $scope.status[2],
                 "patientId": '',
-                "treatmentArmId": 'EAY131-A',
+                "treatmentArmId": 'APEC1621-A',
                 "molecularId": '',
                 "biopsySequenceNumber": '',
                 "time": 1421162969643,
@@ -361,10 +361,10 @@ angular.module('dashboard.matchbox',[])
         function setupActivityList(listSize, entryMax) {
             for (var i = 0; i < entryMax; i++) {
                 $scope.activityList.push($scope.activityListData[listSize + i]);
-                console.log($scope.activityList);
+                //console.log($scope.activityList);
                 
             }
-            console.log($scope.activityList);
+            //console.log($scope.activityList);
         }
 
         /*$scope.loadActivityList = function() {
@@ -451,7 +451,7 @@ angular.module('dashboard.matchbox',[])
 
         $scope.loadTreatmentArmAccrual = function() {
 
-            armNames = ['EAY131-Q', 'EAY131-B', 'EAY131-H', 'EAY131-U', 'EAY131-E'];
+            armNames = ['APEC1621-Q', 'APEC1621-B', 'APEC1621-H', 'APEC1621-U', 'APEC1621-E'];
             armValues = [6, 3, 2, 2, 1];
 
             $scope.barData = {

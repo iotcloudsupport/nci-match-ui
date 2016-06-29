@@ -34,7 +34,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="treatmentArm in treatmentArmList">
+                                <!--<tr ng-repeat="treatmentArm in treatmentArmList">
                                     <td><a ui-sref="treatment-arm({ treatmentArmId: treatmentArm.name, treatmentArmVersion: 'v1' })">{{ treatmentArm.name }}</a></td>
                                     <td>{{ treatmentArm.current_patients }}</td>
                                     <td>{{ treatmentArm.former_patients }}</td>
@@ -43,27 +43,37 @@
                                     <td ng-style="{'color':'{{ treatmentArm.treatment_arm_status | taStatus }}'}">{{ treatmentArm.treatment_arm_status }}</td>
                                     <td>{{ treatmentArm.date_opened }}</td>
                                     <td>-</td>
-                                </tr>
-                                <!--<tr>
-                                    <td><a ui-sref="index.treatment-arm({ treatmentArmId: 'EAY131-A', treatmentArmVersion: 'v1' })">EAY131-A</a></td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
+                                </tr>-->
+                                <tr>
+                                    <td><a ui-sref="treatment-arm({ treatmentArmId: 'APEC1621-A', treatmentArmVersion: 'v1' })">APEC1621-A</a></td>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>1</td>
+                                    <td>1</td>
                                     <td>OPEN</td>
-                                    <td>-</td>
+                                    <td>June 01, 2016 4:35PM GMT</td>
                                     <td>-</td>
                                 </tr>
                                 <tr>
-                                    <td><a ui-sref="index.treatment-arm({ treatmentArmId: 'EAY131-B', treatmentArmVersion: 'v1' })">EAY131-B</a></td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>OPEN</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                </tr>-->
+                                    <td><a ui-sref="index.treatment-arm({ treatmentArmId: 'APEC1621-B', treatmentArmVersion: 'v1' })">APEC1621-B</a></td>
+                                    <td>0</td>
+                                    <td>3</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>SUSPENDED</td>
+                                    <td>June 01, 2016 4:35PM GMT</td>
+                                    <td>June 12, 2016 6:15PM GMT</td>
+                                </tr>
+                                <tr>
+                                    <td><a ui-sref="index.treatment-arm({ treatmentArmId: 'APEC1621-C', treatmentArmVersion: 'v1' })">APEC1621-C</a></td>
+                                    <td>0</td>
+                                    <td>3</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>CLOSED</td>
+                                    <td>June 01, 2016 4:35PM GMT</td>
+                                    <td>June 21, 2016 7:06AM GMT</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

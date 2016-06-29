@@ -178,7 +178,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="assay in data.specimen.assays" style="cursor: auto;" role="row" class="odd">
+                                <tr ng-repeat="assay in currentSurgicalEvent.assays" style="cursor: auto;" role="row" class="odd">
                                     <td>{{::assay.gene}}</td>
                                     <td>{{assay.ordered_date | utc}}</td>
                                     <td>{{assay.result_date | utc}}</td>
@@ -190,7 +190,7 @@
                         </table>
 
                         <div class="ibox-title ibox-title-no-line">
-                            <h3>{{ surgicalEventLabel }} Analysis</h3>
+                            <h3>Analysis</h3>
                         </div>
 
                         <div class="row">
@@ -199,26 +199,26 @@
                                     <h4>Sample</h4>
                                     <dl class="dl-horizontal">
                                         <dt>Molecular ID</dt>
-                                        <dd>{{::currentSpecimen.molecular_id}}</dd>
+                                        <dd>{{::currentShipment.molecular_id}}</dd>
 
                                         <dt>Site</dt>
-                                        <dd>{{::currentSpecimen.site}}</dd>
+                                        <dd>{{::currentShipment.site}}</dd>
 
                                         <dt>Tracking Number</dt>
-                                        <dd>{{::currentSpecimen.tracking_number}}</dd>
+                                        <dd>{{::currentShipment.tracking_number}}</dd>
 
                                         <dt>DNA Conc</dt>
-                                        <dd>{{::currentSpecimen.dna_concordance}}</dd>
+                                        <dd>{{::currentShipment.dna_concordance}}</dd>
 
                                         <dt>DNA Vol</dt>
-                                        <dd>{{::currentSpecimen.dna_volume}}</dd>
+                                        <dd>{{::currentShipment.dna_volume}}</dd>
 
                                         <dt>Reported Date</dt>
-                                        <dd>{{currentSpecimen.reported_date | utc}}</dd>
+                                        <dd>{{currentShipment.reported_date | utc}}</dd>
 
                                         <dt>Comments</dt>
                                         <dd>
-                                            <div class="text-truncate-200px">{{::currentSpecimen.comments}}</div>
+                                            <div class="text-truncate-200px">{{::currentShipment.comments}}</div>
                                         </dd>
 
                                         <dd>
@@ -278,7 +278,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr ng-repeat-start="shipment in data.specimen.specimen_shipments" style="cursor: auto;" role="row" class="odd">
+                                        <tr ng-repeat-start="shipment in currentSurgicalEvent.specimen_shipments" style="cursor: auto;" role="row" class="odd">
                                             <td>{{::shipment.surgical_event_id}}</td>
                                             <td>{{shipment.destination_date | utc}}</td>
                                             <td>{{::shipment.tracking_number}}</td>
@@ -1006,7 +1006,7 @@
 
                         <div ng-if="!currentBloodVariantReport">
                             <div class="row">
-                                <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
+                                <div class="col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4">
                                     <div class="panel panel-primary">
                                         <div class="panel-heading">
                                             <i class="fa fa-info-circle"></i>Blood Variant Report Not Available
@@ -1162,7 +1162,7 @@
 
                         <div ng-switch-default>
                             <div class="row">
-                                <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
+                                <div class="col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4">
                                     <div class="panel panel-primary">
                                         <div class="panel-heading">
                                             <i class="fa fa-info-circle"></i>Assignment Report Not Available
