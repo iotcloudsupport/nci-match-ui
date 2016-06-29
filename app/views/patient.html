@@ -190,7 +190,7 @@
                         </table>
 
                         <div class="ibox-title ibox-title-no-line">
-                            <h3>{{ surgicalEventLabel }} Analysis</h3>
+                            <h3>Analysis</h3>
                         </div>
 
                         <div class="row">
@@ -199,26 +199,26 @@
                                     <h4>Sample</h4>
                                     <dl class="dl-horizontal">
                                         <dt>Molecular ID</dt>
-                                        <dd>{{::currentSpecimen.molecular_id}}</dd>
+                                        <dd>{{::currentShipment.molecular_id}}</dd>
 
                                         <dt>Site</dt>
-                                        <dd>{{::currentSpecimen.site}}</dd>
+                                        <dd>{{::currentShipment.site}}</dd>
 
                                         <dt>Tracking Number</dt>
-                                        <dd>{{::currentSpecimen.tracking_number}}</dd>
+                                        <dd>{{::currentShipment.tracking_number}}</dd>
 
                                         <dt>DNA Conc</dt>
-                                        <dd>{{::currentSpecimen.dna_concordance}}</dd>
+                                        <dd>{{::currentShipment.dna_concordance}}</dd>
 
                                         <dt>DNA Vol</dt>
-                                        <dd>{{::currentSpecimen.dna_volume}}</dd>
+                                        <dd>{{::currentShipment.dna_volume}}</dd>
 
                                         <dt>Reported Date</dt>
-                                        <dd>{{currentSpecimen.reported_date | utc}}</dd>
+                                        <dd>{{currentShipment.reported_date | utc}}</dd>
 
                                         <dt>Comments</dt>
                                         <dd>
-                                            <div class="text-truncate-200px">{{::currentSpecimen.comments}}</div>
+                                            <div class="text-truncate-200px">{{::currentShipment.comments}}</div>
                                         </dd>
 
                                         <dd>
