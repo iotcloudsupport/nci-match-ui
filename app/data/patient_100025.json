@@ -993,6 +993,13 @@
         "assignments": "",
         "specimen_shipments": [
             {
+                "molecular_id": "MSN5678",
+                "tracking_number": "675867856685",
+                "destination_date": "2016-02-19T23:16:53+00:00",
+                "dna_concordance": 10.2,
+                "dna_volume": 9,
+                "reported_date": "2016-02-19T13:25:04+00:00",
+                "comments": "Second shipment",
                 "analyses": [
                     {
                         "analysis_id": "SAM002_04",
@@ -1134,6 +1141,13 @@
             "assignments": "",
             "specimen_shipments": [
                 {
+                    "molecular_id": "MSN5678",
+                    "tracking_number": "675867856685",
+                    "destination_date": "2016-02-19T23:16:53+00:00",
+                    "dna_concordance": 10.2,
+                    "dna_volume": 9,
+                    "reported_date": "2016-02-19T13:25:04+00:00",
+                    "comments": "Second shipment",
                     "analyses": [
                         {
                             "analysis_id": "SAM002_04",
