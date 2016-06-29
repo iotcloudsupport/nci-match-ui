@@ -149,7 +149,7 @@
   "timeline": [
     {
       "patient_id": "PAT123",
-      "event_date": "2016-08-09T22:06:33+00:00",
+      "event_date": "2016-06-29T14:45:33+00:00",
       "event_name": "Event Name 1",
       "event_type": "assignment",
       "event_message": "Patient Assignment",
@@ -160,12 +160,12 @@
         "stratum_id": "1235",
         "biopsy_sequence_number": "B-987456",
         "treatment_arm_id": "APEC1621-Y",
-        "assignment_date" : "2016-05-14T22:05:33+00:00"
+        "assignment_date" : "2016-06-29T14:45:33+00:00"
       }
     },
     {
       "patient_id": "PAT123",
-      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_date": "2016-06-29T14:44:33+00:00",
       "event_name": "Event Name 1",
       "event_type": "patient",
       "event_message": "Patient Pending Approval",
@@ -178,7 +178,7 @@
     },
     {
       "patient_id": "PAT123",
-      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_date": "2016-06-29T14:44:32+00:00",
       "event_name": "Event Name 1",
       "event_type": "patient",
       "event_message": "Patient Pending Confirmation",
@@ -191,7 +191,7 @@
     },
     {
       "patient_id": "PAT123",
-      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_date": "2016-06-29T14:44:31+00:00",
       "event_name": "Event Name 1",
       "event_type": "system",
       "event_message": "Receiving Rule Assignment",
@@ -202,7 +202,7 @@
     },
     {
       "patient_id": "PAT123",
-      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_date": "2016-06-29T14:44:28+00:00",
       "event_name": "Event Name 1",
       "event_type": "system",
       "event_message": "Awaiting Treatment Arms Status",
@@ -213,7 +213,7 @@
     },
     {
       "patient_id": "PAT123",
-      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_date": "2016-06-29T14:44:27+00:00",
       "event_name": "Event Name 1",
       "event_type": "system",
       "event_message": "Awaiting Treatment Arms Status",
@@ -224,7 +224,7 @@
     },
     {
       "patient_id": "PAT123",
-      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_date": "2016-06-29T14:30:32+00:00",
       "event_name": "Event Name 1",
       "event_type": "patient",
       "event_message": "Patient Progression",
