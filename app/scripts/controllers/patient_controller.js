@@ -179,6 +179,8 @@
 
                 $scope.surgicalEventOptions.push(item);
             }
+
+            selectSurgicalEvent($scope.surgicalEventOptions[$scope.surgicalEventOptions.length - 1]);
         }
 
         function setupVariantReports() {
