@@ -9,11 +9,6 @@
         var controller = function () {
             var vm = this;
 
-            vm.$onInit = function() {
-                console.log('$onInit');
-                console.log(vm);
-            }
-
             vm.toggle = function (comment) {
                 vm.isChecked = !vm.isChecked;
                 vm.comment = comment;
