@@ -53,25 +53,25 @@ describe('Controller: Treatment Arm Controller', function () {
     });
 
     it('should handle a data null response', function() {
-        httpBackend.when('GET', 'http://server:80/treatmentarmapi/treatmentArms/EAY131-A')
+        httpBackend.when('GET', 'http://server:80/treatmentarmapi/treatmentArms/APEC1621-A')
             .respond([
                 {
                     "data": null
                 }
             ]);
         getElement();
-        scope.loadTreatmentArmDetails('EAY131-A');
+        scope.loadTreatmentArmDetails('APEC1621-A');
         httpBackend.flush();
 
         expect(scope.test).toBe('test');
     });
 
     it('should handle an undefined variant report', function() {
-        httpBackend.when('GET', 'http://server:80/treatmentarmapi/treatmentArms/EAY131-A')
+        httpBackend.when('GET', 'http://server:80/treatmentarmapi/treatmentArms/APEC1621-A')
             .respond([
                 {
                     "data": {
-                        name: 'EAY131-A',
+                        name: 'APEC1621-A',
                         treatment_arm_status: 'OPEN',
                         exclusion_drugs: [
                             {
@@ -97,16 +97,16 @@ describe('Controller: Treatment Arm Controller', function () {
                 }
             ]);
 
-        scope.loadTreatmentArmDetails('EAY131-A');
+        scope.loadTreatmentArmDetails('APEC1621-A');
         httpBackend.flush();
 
         expect(scope.test).toBe('test');
     });
 
     it('should populate the treatment details success response', function() {
-        httpBackend.when('GET', 'http://server:80/treatmentarmapi/treatmentArms/EAY131-A')
+        httpBackend.when('GET', 'http://server:80/treatmentarmapi/treatmentArms/APEC1621-A')
             .respond([ {
-                    name: 'EAY131-A',
+                    name: 'APEC1621-A',
                     treatment_arm_status: 'OPEN',
                     exclusion_drugs: [
                         {
@@ -268,37 +268,37 @@ describe('Controller: Treatment Arm Controller', function () {
 
             );
 
-        scope.loadTreatmentArmDetails('EAY131-A');
+        scope.loadTreatmentArmDetails('APEC1621-A');
         httpBackend.flush();
 
         expect(scope.test).toBe('test');
-        expect(scope.information.name).toBe('EAY131-A');
+        expect(scope.information.name).toBe('APEC1621-A');
         //expect(scope.treatmentArmList.length).toBe(2);
         //expect(scope.treatmentArmList[0].treatmentArmId).toBe('MB-S1');
         //expect(scope.treatmentArmList[1].treatmentArmId).toBe('MB-S2');
     });
 
     it('should return a data object from a call to the patient list service', function() {
-        httpBackend.when('GET', 'http://server:80/treatmentarmapi/patientsOnTreatmentArm/EAY131-A').respond(
+        httpBackend.when('GET', 'http://server:80/treatmentarmapi/patientsOnTreatmentArm/APEC1621-A').respond(
             []
         );
-        scope.loadPatientsForTa('EAY131-A');
+        scope.loadPatientsForTa('APEC1621-A');
         httpBackend.flush();
 
     })
 
     it('should not populate the treatment arm list on an error response', function() {
-        httpBackend.when('GET', 'http://server:80/treatmentarmapi/treatmentArms/EAY131-A').respond(500);
-        scope.loadTreatmentArmDetails('EAY131-A');
+        httpBackend.when('GET', 'http://server:80/treatmentarmapi/treatmentArms/APEC1621-A').respond(500);
+        scope.loadTreatmentArmDetails('APEC1621-A');
         httpBackend.flush();
 
         //expect(scope.treatmentArmList.length).toBe(0);
     });
 
     it('should not populate the treatment arm list on a null', function() {
-        httpBackend.when('GET', 'http://server:80/treatmentarmapi/treatmentArms/EAY131-A')
+        httpBackend.when('GET', 'http://server:80/treatmentarmapi/treatmentArms/APEC1621-A')
             .respond(null);
-        scope.loadTreatmentArmDetails('EAY131-A');
+        scope.loadTreatmentArmDetails('APEC1621-A');
         httpBackend.flush();
 
         //expect(scope.treatmentArmList.length).toBe(0);

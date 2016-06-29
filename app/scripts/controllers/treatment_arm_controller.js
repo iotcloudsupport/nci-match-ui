@@ -19,7 +19,7 @@ angular.module('treatment-arm.matchbox',[])
         $scope.test = '';
 
         $scope.information = {
-            name: 'EAY131-A',
+            name: 'APEC1621-A',
             description: 'Afatinib in DDR2 activating mutations',
             currentVersion: '2016-03-17',
             genes: 'DDR2',
@@ -47,8 +47,6 @@ angular.module('treatment-arm.matchbox',[])
         $scope.versionHistory = {
             versionStatus: 'OPEN',
             history: [
-                {status: 'PENDING', date: 'March 02, 2016 4:00AM GMT'},
-                {status: 'READY', date: 'March 09, 2016 10:10PM GMT'},
                 {status: 'OPEN', date: 'March 17, 2016 10:10PM GMT'}
             ]
         };
@@ -56,9 +54,8 @@ angular.module('treatment-arm.matchbox',[])
         $scope.versionHistoryClosed = {
             versionStatus: 'CLOSED',
             history: [
-                {status: 'PENDING', date: 'December 02, 2016 4:00AM GMT'},
-                {status: 'READY', date: 'December 09, 2016 10:10PM GMT'},
-                {status: 'OPEN', date: 'December 20, 2015 10:10PM GMT'},
+                {status: 'OPEN', date: 'December 02, 2016 4:00AM GMT'},
+                {status: 'SUSPENDED', date: 'December 20, 2015 10:10PM GMT'},
                 {status: 'CLOSED', date: 'February 20, 2016 9:00PM GMT'}
             ]
         };

@@ -32,6 +32,7 @@
                                 <h1 class="no-margins">{{ sites.mda.count }}</h1>
                                 <div class="font-bold text-success">{{ sites.mda.percent | number:0 }}% <small>MD Anderson Cancer Center</small></div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -41,8 +42,8 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <!--<h5>Patient Assignment Outcome</h5>-->
+                    <!--<div class="ibox-title">
+                        <!--<h5>Patient Assignment Outcome</h5>
                     </div>
                     <div class="ibox-content">
                         <div style="float:left">
@@ -51,7 +52,7 @@
                         <div id="patientPieChartContainer" class="flot-chart" style="height:360px;padding:40px 0px 20px 100px">
                             <flot id="patientPieChart" dataset="pieDataset" options="pieOptions" height="100%"></flot>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
 
@@ -72,7 +73,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <!--<div class="row">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
@@ -88,9 +89,6 @@
                                 <th>Pathology Status</th>
                                 <th>Pathology Status Date</th>
                                 <th>Variant Report Confirmed Date</th>
-                                <!--<th>Assays</th>
-                                <th>Assignments</th>
-                                <th>Specimen Shipments</th>-->
                             </tr>
                             </thead>
                             <tbody>
@@ -104,26 +102,15 @@
                                 <td>{{ specimenTrackingItem.pathology_status }}</td>
                                 <td>{{ specimenTrackingItem.pathology_status_date | gmt }}</td>
                                 <td>{{ specimenTrackingItem.variant_report_confirmed_date | gmt }}</td>
-                                <!--<td>{{ specimenTrackingItem.patientSequenceNumber }}</td>
-                                <td>{{ specimenTrackingItem.biopsySeqenuceNumber }}</td>
-                                <td>{{ specimenTrackingItem.molecular_id }}</td>
-                                <td>{{ specimenTrackingItem.lab }}</td>
-                                <td>{{ specimenTrackingItem.trackingNumber }}</td>
-                                <td>{{ specimenTrackingItem.specimenReceivedDate | gmt }}</td>
-                                <td>{{ specimenTrackingItem.specimenFailureDate | gmt }}</td>
-                                <td>{{ specimenTrackingItem.ptenOrderDate | gmt }}</td>
-                                <td>{{ specimenTrackingItem.ptenResultDate | gmt }}</td>
-                                <td>{{ specimenTrackingItem.pathologyReviewDate | gmt }}</td>
-                                <td>{{ specimenTrackingItem.nucleicAcidSendoutDate | gmt }}</td>-->
                             </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
-        <div class="row">
+        <!--<div class="row">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content">
@@ -147,6 +134,95 @@
                             </tr>
                             </tbody>
                         </table>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content">
+
+                            <table class="table table-hover" role="grid">
+                                <thead>
+                                <tr>
+                                    <th>Surgical Event ID</th>
+                                    <th>Patient ID</th>
+                                    <th>Collected Date</th>
+                                    <th>Received Date</th>
+                                    <th>Type</th>
+                                    <th>Pathology Status</th>
+                                    <th>Pathology Status Date</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat-start="specimenTrackingItem in specimenTrackingList">
+                                    <td>{{ specimenTrackingItem.surgical_event_id }}</td>
+                                    <td>{{ specimenTrackingItem.patient_id }}</td>
+                                    <td>{{ specimenTrackingItem.collected_date | gmt }}</td>
+                                    <td>{{ specimenTrackingItem.received_date | gmt }}</td>
+                                    <td>{{ specimenTrackingItem.type }}</td>
+                                    <td>{{ specimenTrackingItem.pathology_status }}</td>
+                                    <td>{{ specimenTrackingItem.pathology_status_date | gmt }}</td>
+                                </tr>
+                                <tr ng-repeat-end>
+                                    <td colspan="7">
+                                        <ul class="panel-list">
+                                            <li ng-repeat="assayItem in specimenTrackingItem.assays" class="info-element">
+                                                <div class="row">
+                                                    <div class="col-md-4 col-sm-6 text-left">
+                                                        <dl class="dl-horizontal-narrow">
+                                                            <!--<dt>Surgical Event ID</dt>
+                                                            <dd><a> {{::assayItem.surgical_event_id}} </a></dd>-->
+
+                                                            <dt>IHC</dt>
+                                                            <dd ng-style="{'color':'{{ analysis.status | analysisStatus }}'}">{{::assayItem.ihc}}</dd>
+                                                        </dl>
+                                                    </div>
+                                                    <div class="col-md-4 col-sm-6 text-left">
+                                                        <dl class="dl-horizontal-narrow">
+                                                            <dt>Assay Order Date</dt>
+                                                            <dd>{{assayItem.assay_order_date | utc}}</dd>
+
+                                                        </dl>
+                                                    </div>
+                                                    <div class="col-md-4 text-right">
+                                                        <dl class="dl-horizontal-narrow">
+
+
+                                                            <dt>{{::assayItem.result_information}} Result</dt>
+                                                            <dd>{{assayItem.assay_result_date | utc}} Assay Result Date</dd>
+                                                        </dl>
+
+                                                    </div>
+                                                    <!--<div class="col-md-4 text-right">
+                                                        <div class="row">
+                                                            <div class="col-md-12 text-right">
+                                                                <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.dna_bam_file_path)">DNA BAM</a>
+                                                                <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.dna_bai_file_path)">DNA BAI</a>
+                                                                <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.vcf_path)">VCF</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12 text-right">
+                                                                <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.rna_bam_file_path)">RNA BAM</a>
+                                                                <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.rna_bai_file_path)">RNA BAI</a>
+                                                                <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(analisys, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>-->
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
                     </div>
                 </div>
             </div>
