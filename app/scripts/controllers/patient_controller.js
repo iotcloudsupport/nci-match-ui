@@ -461,6 +461,7 @@
                     return;
                 }
             }
+            $log.error('Variant report is not found for ' + option.value.surgical_event_id);
         }
 
         function onBloodVariantReportSelected(selected) {
