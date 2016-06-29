@@ -832,7 +832,7 @@ angular.module('treatment-arm.matchbox',[])
             {
                 "Patient": {
                     "slot": "-",
-                    "patientSequenceNumber": "103re",
+                    "patientSequenceNumber": "100065",
                     "treatmentArmVersion": "2015-08-05",
                     "patientAssignmentStatusOutcome": "OFF_TRIAL",
                     "assignmentLogic": "Assignment Details",
@@ -847,7 +847,7 @@ angular.module('treatment-arm.matchbox',[])
             {
                 "Patient": {
                     "slot": "-",
-                    "patientSequenceNumber": "105re",
+                    "patientSequenceNumber": "100099",
                     "treatmentArmVersion": "2015-01-01",
                     "patientAssignmentStatusOutcome": "NOT_ELIGIBLE",
                     "assignmentLogic": "Assignment Details",
@@ -862,7 +862,7 @@ angular.module('treatment-arm.matchbox',[])
             {
                 "Patient": {
                     "slot": "1",
-                    "patientSequenceNumber": "114re",
+                    "patientSequenceNumber": "100136",
                     "treatmentArmVersion": "2015-08-05",
                     "patientAssignmentStatusOutcome": "ON_TREATMENT_ARM",
                     "assignmentLogic": "Assignment Details",
