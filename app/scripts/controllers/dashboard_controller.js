@@ -361,10 +361,10 @@ angular.module('dashboard.matchbox',[])
         function setupActivityList(listSize, entryMax) {
             for (var i = 0; i < entryMax; i++) {
                 $scope.activityList.push($scope.activityListData[listSize + i]);
-                console.log($scope.activityList);
+                //console.log($scope.activityList);
                 
             }
-            console.log($scope.activityList);
+            //console.log($scope.activityList);
         }
 
         /*$scope.loadActivityList = function() {

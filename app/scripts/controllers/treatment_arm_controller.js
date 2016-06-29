@@ -941,7 +941,7 @@ angular.module('treatment-arm.matchbox',[])
           treatmentArmApi
               .getPatientsForTa(ta)
               .then(function (d) {
-                  console.log(d.data);
+                  //console.log(d.data);
               });
         };
 
@@ -958,7 +958,7 @@ angular.module('treatment-arm.matchbox',[])
             treatmentArmApi
             .getTreatmentArmDetails(ta)
                 .then(function (d) {
-                    console.log(d.data);
+                    //console.log(d.data);
                     /*angular.forEach(d.data, function(value) {
                         console.log('value');
                         console.log(value);
@@ -1095,7 +1095,7 @@ angular.module('treatment-arm.matchbox',[])
                         
                     $scope.test = "test";
                     $scope.selectedVersion = $scope.versions[0];
-                    console.log($scope.selectedVersion);
+                    //console.log($scope.selectedVersion);
                 })
                 .then (function() {
                     $scope.inExclusionType = 'inclusion';
