@@ -178,7 +178,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="assay in data.specimen.assays" style="cursor: auto;" role="row" class="odd">
+                                <tr ng-repeat="assay in currentSurgicalEvent.assays" style="cursor: auto;" role="row" class="odd">
                                     <td>{{::assay.gene}}</td>
                                     <td>{{assay.ordered_date | utc}}</td>
                                     <td>{{assay.result_date | utc}}</td>
@@ -278,7 +278,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr ng-repeat-start="shipment in data.specimen.specimen_shipments" style="cursor: auto;" role="row" class="odd">
+                                        <tr ng-repeat-start="shipment in currentSurgicalEvent.specimen_shipments" style="cursor: auto;" role="row" class="odd">
                                             <td>{{::shipment.surgical_event_id}}</td>
                                             <td>{{shipment.destination_date | utc}}</td>
                                             <td>{{::shipment.tracking_number}}</td>
@@ -1006,7 +1006,7 @@
 
                         <div ng-if="!currentBloodVariantReport">
                             <div class="row">
-                                <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
+                                <div class="col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4">
                                     <div class="panel panel-primary">
                                         <div class="panel-heading">
                                             <i class="fa fa-info-circle"></i>Blood Variant Report Not Available
@@ -1162,7 +1162,7 @@
 
                         <div ng-switch-default>
                             <div class="row">
-                                <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
+                                <div class="col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4">
                                     <div class="panel panel-primary">
                                         <div class="panel-heading">
                                             <i class="fa fa-info-circle"></i>Assignment Report Not Available
