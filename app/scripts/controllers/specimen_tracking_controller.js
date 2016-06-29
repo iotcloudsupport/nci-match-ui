@@ -9,13 +9,15 @@ angular.module('specimen-tracking.matchbox',[])
 
         $scope.specimenTrackingList = [
             {
-                "patient_id": "110001",
+                "patient_id": "100099",
                 "collected_date": 1519735694848,
                 "received_date": 1519735777810,
                 "failed_date": "",
                 "surgical_event_id": "125",
-                "type": "111",
-                "pathology_status": "positive",
+                "type": "SLIDE",
+                "shipped_date": 151983588910,
+                "site": "MDA",
+                "pathology_status": "POSITIVE",
                 "pathology_status_date": 1511235777810,
                 "variant_report_confirmed_date": "",
                 "assays": [
@@ -23,26 +25,58 @@ angular.module('specimen-tracking.matchbox',[])
                         "surgical_event_id": "125",
                         "ihc": "PTEN",
                         "assay_order_date": 15112345678,
-                        "assay_reult_date": 15112355728,
-                        "result_information": "---"
+                        "assay_result_date": 15112355728,
+                        "result_information": "POSITIVE"
                     },
                     {
                         "surgical_event_id": "125",
-                        "ihc": "PTEN",
+                        "ihc": "MSH2",
                         "assay_order_date": 15112345678,
-                        "assay_reult_date": 15112355728,
-                        "result_information": "---"
+                        "assay_result_date": 15112355728,
+                        "result_information": ""
                     }
                 ]
             },
             {
-                "patient_id": "111023",
+                "patient_id": "100065",
                 "collected_date": 1511235694848,
                 "received_date": 1511235777810,
                 "failed_date": "",
                 "surgical_event_id": "125",
-                "type": "111",
-                "pathology_status": "positive",
+                "type": "BLOOD",
+                "shipped_date": 151983588910,
+                "site": "MDA",
+                "pathology_status": "POSITIVE",
+                "pathology_status_date": 1511235777810,
+                "variant_report_confirmed_date": "",
+                "assays": [
+                ]
+            },
+            {
+                "patient_id": "100136",
+                "collected_date": 1511235694848,
+                "received_date": 1511235777810,
+                "failed_date": "",
+                "surgical_event_id": "125",
+                "type": "TISSUE",
+                "shipped_date": 151983588910,
+                "site": "MoCha",
+                "pathology_status": "POSITIVE",
+                "pathology_status_date": 1511235777810,
+                "variant_report_confirmed_date": "",
+                "assays": [
+                ]
+            },
+            {
+                "patient_id": "100136",
+                "collected_date": 1519735694848,
+                "received_date": 1519735777810,
+                "failed_date": "",
+                "surgical_event_id": "125",
+                "type": "SLIDE",
+                "shipped_date": 151983588910,
+                "site": "MDA",
+                "pathology_status": "POSITIVE",
                 "pathology_status_date": 1511235777810,
                 "variant_report_confirmed_date": "",
                 "assays": [
@@ -50,8 +84,23 @@ angular.module('specimen-tracking.matchbox',[])
                         "surgical_event_id": "125",
                         "ihc": "PTEN",
                         "assay_order_date": 15112345678,
-                        "assay_reult_date": 15112355728,
-                        "result_information": "---"
+                        "assay_result_date": 15112355728,
+                        "result_information": "POSITIVE"
+                    },
+                    {
+                        "surgical_event_id": "125",
+                        "ihc": "MSH2",
+                        "assay_order_date": 15112345678,
+                        "assay_result_date": 15112355728,
+                        "result_information": ""
+                    },
+                    ,
+                    {
+                        "surgical_event_id": "125",
+                        "ihc": "MLH1",
+                        "assay_order_date": 15112345678,
+                        "assay_result_date": 15112355728,
+                        "result_information": ""
                     }
                 ]
             }
