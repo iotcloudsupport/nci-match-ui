@@ -144,11 +144,24 @@
             angular.copy(data.data, scopeData);
             $scope.data = scopeData;
 
+            __addMockData();
+
             setupTimeline();
             setupSurgicalEventOptions();
             setupVariantReports();
             setupVariantReportOptions();
             setupCurrentTreatmentArm();
+        }
+
+        function __addMockData() {
+            $scope.data.ta_history = [
+                {
+                    'title':'TA1', 
+                    'step': 'Step 2.0', 
+                    'assignment_reason': 'The patient and treatment match on variand identifier [ABSF, DEDF].', 
+                    'assignment_date':'2016-06-25T14:46:10+34:00'
+                }
+            ];
         }
 
         function setupTimeline() {
