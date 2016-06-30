@@ -110,7 +110,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr ng-repeat="ta in data.ta_history" style="cursor: auto; " role="row" class="odd">
-                                                        <td><a href="#">{{ta.title}}</a></td>
+                                                        <td><treatment-arm-title ta="ta"></treatment-arm-title>
                                                         <td>{{ta.step}}</td>
                                                         <td>{{ta.assignment_reason}}</td>
                                                         <td>{{ta.assignment_date | utc}}</td>
@@ -215,76 +215,6 @@
                                     </tr>
                                 </tbody>
                             </table>
-
-                            <!--<div class="ibox-title ibox-title-no-line">
-                            <h3>Analysis</h3>
-                        </div>-->
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="header-info-box biopsy-sample-box">
-                                        <h4>Sample</h4>
-                                        <dl class="dl-horizontal">
-                                            <dt>Molecular ID</dt>
-                                            <dd>{{currentShipment.molecular_id}}</dd>
-
-                                            <dt>Site</dt>
-                                            <dd>{{currentShipment.site}}</dd>
-
-                                            <dt>Tracking Number</dt>
-                                            <dd>{{currentShipment.tracking_number}}</dd>
-
-                                            <dt>DNA Conc</dt>
-                                            <dd>{{currentShipment.dna_concordance}}</dd>
-
-                                            <dt>DNA Vol</dt>
-                                            <dd>{{currentShipment.dna_volume}}</dd>
-
-                                            <dt>Reported Date</dt>
-                                            <dd>{{currentShipment.reported_date | utc}}</dd>
-
-                                            <dt>Comments</dt>
-                                            <dd>
-                                                <div class="text-truncate-200px">{{currentShipment.comments}}</div>
-                                            </dd>
-
-                                            <dd>
-                                                <button type="input" class="btn btn-xs btn-success btn-outline">Upload Analysis Files</button>
-                                            </dd>
-                                        </dl>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="header-info-box biopsy-sample-box">
-                                        <h4>Analysis</h4>
-                                        <dl class="dl-horizontal">
-                                            <dt>Analysis ID</dt>
-                                            <dd>{{currentAnalisys.analysis_id}}</dd>
-
-                                            <dt>Status</dt>
-                                            <dd ng-style="{'color':'{{ currentAnalisys.status | analysisStatus }}'}">{{currentAnalisys.status}}</dd>
-
-                                            <dt>File Received Date</dt>
-                                            <dd>{{currentAnalisys.file_received_date | utc}}</dd>
-
-                                            <dt>{{currentAnalisys.status}} Date</dt>
-                                            <dd>{{currentAnalisys.status_date | utc}}</dd>
-
-                                            <dt>Files</dt>
-                                            <dd>
-                                                <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentAnalisys.dna_bam_file_path)">DNA BAM</a>
-                                                <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentAnalisys.dna_bai_file_path)">DNA BAI</a>
-                                                <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentAnalisys.vcf_path)">VCF</a>
-                                            </dd>
-                                            <dd>
-                                                <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentAnalisys.rna_bam_file_path)">RNA BAM</a>
-                                                <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentAnalisys.rna_bai_file_path)">RNA BAI</a>
-                                                <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(currentAnalisys, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
-                                            </dd>
-                                        </dl>
-                                    </div>
-                                </div>
-                            </div>
 
                             <div class="ibox collapsed">
                                 <div class="ibox-title ibox-title-no-line">

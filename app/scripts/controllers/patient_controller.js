@@ -144,7 +144,7 @@
             angular.copy(data.data, scopeData);
             $scope.data = scopeData;
 
-            __addMockData();
+            __addMockData(); //TODO:RZ remove after we have the data
 
             setupTimeline();
             setupSurgicalEventOptions();
@@ -156,7 +156,10 @@
         function __addMockData() {
             $scope.data.ta_history = [
                 {
-                    'title':'TA1', 
+                    'name':'APEC1621-A', 
+                    'version':'2015-08-06', 
+                    'stratum':'A', 
+                    'title':'APEC1621-A (2015-08-06)', 
                     'step': 'Step 2.0', 
                     'assignment_reason': 'The patient and treatment match on variand identifier [ABSF, DEDF].', 
                     'assignment_date':'2016-06-25T14:46:10+34:00'
