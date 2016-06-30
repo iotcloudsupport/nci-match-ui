@@ -65,15 +65,15 @@
                                                             <table class="table" role="grid" style="font-size: 10px" width="100%">
                                                                 <thead>
                                                                 <tr style="font-size: smaller">
-                                                                    <td >Positive Control</td>
-                                                                    <td >No Template Control</td>
-                                                                    <td >No Template Control</td>
+                                                                    <td >Positive Control Success Status</td>
+                                                                    <td >Positive Control Failed Status</td>
+                                                                    <td >Not Generated</td>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                <td>88 <div class="stat-percent font-bold text-success"> 98% <i class="fa fa-bolt"></i></div></td>
-                                                                <td>42 <div class="stat-percent font-bold text-info"> 20% <i class="fa fa-level-up"></i></div></td>
-                                                                <td>12 <div class="stat-percent font-bold text-info"> 20% <i class="fa fa-level-up"></i></div></td>
+                                                                <td><div class="stat-percent font-bold text-success"> 75% </i></div></td>
+                                                                <td><div class="stat-percent font-bold text-info"> 15% </i></div></td>
+                                                                <td><div class="stat-percent font-bold text-info"> 10% </i></div></td>
                                                                 </tbody>
                                                             </table>
 
@@ -113,15 +113,15 @@
                                                             <table class="table" role="grid" style="font-size: 10px" width="100%">
                                                                 <thead>
                                                                 <tr style="font-size: smaller">
-                                                                    <td >Positive Control</td>
-                                                                    <td >No Template Control</td>
-                                                                    <td >No Template Control</td>
+                                                                    <td >Positive Control Success Status</td>
+                                                                    <td >Positive Control Failed Status</td>
+                                                                    <td >Not Generated</td>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                <td>88 <div class="stat-percent font-bold text-success"> 98% <i class="fa fa-bolt"></i></div></td>
-                                                                <td>42 <div class="stat-percent font-bold text-info"> 20% <i class="fa fa-level-up"></i></div></td>
-                                                                <td>12 <div class="stat-percent font-bold text-info"> 20% <i class="fa fa-level-up"></i></div></td>
+                                                                <td><div class="stat-percent font-bold text-success"> 67% </i></div></td>
+                                                                <td><div class="stat-percent font-bold text-info"> 25% </i></div></td>
+                                                                <td><div class="stat-percent font-bold text-info"> 8% </i></div></td>
                                                                 </tbody>
                                                             </table>
 
@@ -151,9 +151,9 @@
                                                     <i class="fa fa-clock-o fa-2x" style=";color:green;"> </i> <b>Heartbeat</b>
                                                     <span class="label label-warning pull-right">{{branch}}</span>
 
-                                                    <div >
+                                                    <div ng-if="branch == 'mocha'">
 
-                                                        <table class="table table-hover" role="grid" width="100%" ng-if="branch == 'mocha'">
+                                                        <table class="table table-hover" role="grid" width="100%" >
                                                             <thead>
                                                             <tr style="font-size: smaller">
                                                                 <td >IP Address</td>
@@ -170,66 +170,122 @@
                                                             </tbody>
                                                         </table>
 
+                                                        <!--SPOT TAGS-->
+                                                        <div class="tabs-container">
+                                                            <div >
+                                                                <i class="fa fa-filter fa-2x" style=";color:purple;font-size: small"> </i> <b>Positive Sample Controls Breakup</b>
+                                                                <table class="table table-hover" role="grid" width="100%">
+                                                                    <thead>
+                                                                    <tr style="font-size: smaller">
+                                                                        <td >Matching Variants</td>
+                                                                        <td >Non Matching Variants</td>
+                                                                        <td >False Positive Variants</td>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <td> <div class="stat-percent font-bold text-success"> 91% </i></div></td>
+                                                                    <td> <div class="stat-percent font-bold text-success"> 9% </i></div></td>
+                                                                    <td> <div class="stat-percent font-bold text-success"> 0.5% </i></div></td>
+                                                                    </tbody>
+                                                                </table>
 
-                                                        <table class="table table-hover" role="grid" width="100%" ng-if="branch == 'mdacc'">
+                                                            </div>
+                                                        </div>
+                                                        <!--SPOT TAGS-->
+
+                                                        <!--SPOT TAGS-->
+                                                        <div class="tabs-container">
+                                                            <div >
+                                                                <i class="fa fa-flag fa-2x" style=";color:darkred;font-size: small"> </i> <b>No Template Controls Breakup</b>
+                                                                <table class="table table-hover" role="grid" width="100%">
+                                                                    <thead>
+                                                                    <tr style="font-size: smaller">
+                                                                        <td >Generated Molecular Sequences</td>
+                                                                        <td >IR Reported Sequences</td>
+                                                                        <td >Failed Generated</td>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <td>1020 <div class="stat-percent font-bold text-success"> 74% <i class="fa fa-bolt"></i></div></td>
+                                                                    <td>1001 <div class="stat-percent font-bold text-info"> 98% <i class="fa fa-level-up"></i></div></td>
+                                                                    <td>54 <div class="stat-percent font-bold text-info"> 11% <i class="fa fa-level-up"></i></div></td>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
+                                                        </div>
+
+                                                    <div ng-if="branch == 'mdacc'">
+
+                                                        <table class="table table-hover" role="grid" width="100%" >
                                                             <thead>
                                                             <tr style="font-size: smaller">
                                                                 <td >IP Address</td>
                                                                 <td >Internal IP Address</td>
+                                                                <td >Host</td>
+                                                                <td >Status</td>
                                                             </tr>
                                                             </thead>
                                                             <tbody ng-repeat="ir in mdAccList">
-                                                            <td>88 <div class="stat-percent font-bold text-success"> {{ ir.externalIpAddress }} <i class="fa fa-bolt"></i></div></td>
-                                                            <td>42 <div class="stat-percent font-bold text-info"> {{ ir.ipAddress }} <i class="fa fa-level-up"></i></div></td>
+                                                            <td> <div class="stat-percent font-bold text-info"> {{ ir.externalIpAddress }} </div></td>
+                                                            <td> <div class="stat-percent font-bold text-info"> {{ ir.ipAddress }} </div></td>
+                                                            <td> <div class="stat-percent font-bold text-info"> {{ ir.host }} </div></td>
+                                                            <td> <div ng-style="{'color':'{{ ir.status | irsample }}'}"> {{ ir.status }} </div></td>
                                                             </tbody>
                                                         </table>
 
-                                                    </div>
-                                                </div>
 
-                                                <!--SPOT TAGS-->
-                                                <div class="tabs-container">
-                                                    <div >
-                                                        <i class="fa fa-filter fa-2x" style=";color:purple;font-size: small"> </i> <b>Sample Controls</b>
-                                                        <table class="table table-hover" role="grid" width="100%">
-                                                            <thead>
-                                                                <tr style="font-size: smaller">
-                                                                    <td >Positive Control</td>
-                                                                    <td >No Template Control</td>
-                                                                    <td >No Template Control</td>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <td>88 <div class="stat-percent font-bold text-success"> 98% <i class="fa fa-bolt"></i></div></td>
-                                                            <td>42 <div class="stat-percent font-bold text-info"> 20% <i class="fa fa-level-up"></i></div></td>
-                                                            <td>12 <div class="stat-percent font-bold text-info"> 20% <i class="fa fa-level-up"></i></div></td>
-                                                            </tbody>
-                                                            </table>
+                                                        <!--SPOT TAGS-->
+                                                        <div class="tabs-container">
+                                                            <div >
+                                                                <i class="fa fa-filter fa-2x" style=";color:purple;font-size: small"> </i> <b>Positive Sample Controls Breakup</b>
+                                                                <table class="table table-hover" role="grid" width="100%">
+                                                                    <thead>
+                                                                    <tr style="font-size: smaller">
+                                                                        <td >Matching Variants</td>
+                                                                        <td >Non Matching Variants</td>
+                                                                        <td >False Positive Variants</td>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <td> <div class="stat-percent font-bold text-success"> 71% </i></div></td>
+                                                                    <td> <div class="stat-percent font-bold text-success"> 29% </i></div></td>
+                                                                    <td> <div class="stat-percent font-bold text-success"> 3.5% </i></div></td>
+                                                                    </tbody>
+                                                                </table>
 
+                                                            </div>
                                                         </div>
-                                                </div>
-                                                <!--SPOT TAGS-->
+                                                        <!--SPOT TAGS-->
 
-                                                <!--SPOT TAGS-->
-                                                <div class="tabs-container">
-                                                    <div >
-                                                        <i class="fa fa-flag fa-2x" style=";color:darkred;font-size: small"> </i> <b>MSN Completed</b>
-                                                        <table class="table table-hover" role="grid" width="100%">
-                                                            <thead>
-                                                            <tr style="font-size: smaller">
-                                                                <td >Generated Molecular Sequences</td>
-                                                                <td >IR Reported Sequences</td>
-                                                                <td >Failed Generated</td>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <td>1020 <div class="stat-percent font-bold text-success"> 74% <i class="fa fa-bolt"></i></div></td>
-                                                            <td>1001 <div class="stat-percent font-bold text-info"> 98% <i class="fa fa-level-up"></i></div></td>
-                                                            <td>54 <div class="stat-percent font-bold text-info"> 11% <i class="fa fa-level-up"></i></div></td>
-                                                            </tbody>
-                                                        </table>
+                                                        <!--SPOT TAGS-->
+                                                        <div class="tabs-container">
+                                                            <div >
+                                                                <i class="fa fa-flag fa-2x" style=";color:darkred;font-size: small"> </i> <b>No Template Controls Breakup</b>
+                                                                <table class="table table-hover" role="grid" width="100%">
+                                                                    <thead>
+                                                                    <tr style="font-size: smaller">
+                                                                        <td >Generated Molecular Sequences</td>
+                                                                        <td >IR Reported Sequences</td>
+                                                                        <td >Failed Generated</td>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <td>1020 <div class="stat-percent font-bold text-success"> 74% <i class="fa fa-bolt"></i></div></td>
+                                                                    <td>1001 <div class="stat-percent font-bold text-info"> 98% <i class="fa fa-level-up"></i></div></td>
+                                                                    <td>54 <div class="stat-percent font-bold text-info"> 11% <i class="fa fa-level-up"></i></div></td>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
                                                     </div>
                                                 </div>
+
+
+
+
                                             </div>
 
                                         </div>
