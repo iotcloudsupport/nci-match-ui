@@ -1588,6 +1588,7 @@
           "surgical_event_id" : "SUREVT100",
           "molecular_id": "MSN8765",
           "site" : "MDA",
+          "specimen_type" : "TISSUE",
           "tracking_number": "675867855577",
           "destination_date": "2016-06-09T22:06:33+00:00",
           "dna_concordance": 0,
@@ -1598,6 +1599,8 @@
             {
               "analysis_id": "MSN1234_v2_2rer53...yher4",
               "status": "Rejected",
+              "comment": "Broken container",
+              "comment_user": "Sarah Connor",
               "file_received_date": "2016-09-09T22:06:33+00:00",
               "status_date": "2016-06-09T22:06:33+00:00"
             }
@@ -1607,6 +1610,7 @@
           "surgical_event_id" : "SUREVT100",
           "molecular_id": "MSN4321",
           "site" : "MoCha",
+          "specimen_type" : "BLOOD",
           "tracking_number": "675867855577",
           "destination_date": "2016-06-09T22:06:33+00:00",
           "dna_concordance": 12,

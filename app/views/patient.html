@@ -79,74 +79,54 @@
             <uib-tabset>
                 <uib-tab heading="Summary" select="setActiveTab('summary')">
                     <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-12 center-block">
-                                <div class="ibox float-e-margins">
-                                    <div class="row">
-                                        <div class="col-xs-4 col-md-4">
-                                            <h3>Actions Needed</h3>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
-                                            <ul class="sortable-list connectList agile-list">
-                                                <li class="warning-element">
-                                                    Variant Report <a>molecular_id12345</a> <span style="color:orange">PENDING</span>.
-                                                    <strong>Please review.</strong>
-                                                    <div class="agile-detail">
-                                                        <i class="fa fa-clock-o"></i> 12.10.2015
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+            
+                        <div class="ibox-title ibox-title-no-line">
+                            <h3>Actions Needed</h3>
+                        </div>
 
-                                <div class="ibox float-e-margins">
-                                    <div class="row">
-                                        <div class="col-xs-4 col-md-4">
-                                            <h3>Treatment Arm History</h3>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <table class="table table-hover" role="grid">
-                                                <thead>
-                                                    <tr>
-                                                        <th width="20%">Treatmennt Arm</th>
-                                                        <th width="10%">Step</th>
-                                                        <th width="50%">Assignment Reason</th>
-                                                        <th width="20%">Date Assigned</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr ng-repeat="ta in data.ta_history" style="cursor: auto; " role="row" class="odd">
-                                                        <td><treatment-arm-title ta="ta"></treatment-arm-title></td>
-                                                        <td>{{ta.step}}</td>
-                                                        <td>{{ta.assignment_reason}}</td>
-                                                        <td>{{ta.assignment_date | utc}}</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
+                        <ul class="sortable-list connectList agile-list">
+                            <li class="warning-element">
+                                Variant Report <a>molecular_id12345</a> <span style="color:orange">PENDING</span>.
+                                <strong>Please review.</strong>
+                                <div class="agile-detail">
+                                    <i class="fa fa-clock-o"></i> 12.10.2015
                                 </div>
+                            </li>
+                        </ul>
+            
+                        <div class="ibox-title ibox-title-no-line">
+                            <h3>Treatment Arm History</h3>
+                        </div>
 
-                                <div class="ibox float-e-margins">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <h3>Patient Timeline</h3>
-                                        </div>
-                                    </div>
+                        <table class="table table-hover" role="grid">
+                            <thead>
+                                <tr>
+                                    <th width="20%">Treatmennt Arm</th>
+                                    <th width="10%">Step</th>
+                                    <th width="50%">Assignment Reason</th>
+                                    <th width="20%">Date Assigned</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="ta in data.ta_history" style="cursor: auto; " role="row" class="odd">
+                                    <td><treatment-arm-title ta="ta"></treatment-arm-title></td>
+                                    <td>{{ta.step}}</td>
+                                    <td>{{ta.assignment_reason}}</td>
+                                    <td>{{ta.assignment_date | utc}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+            
+                        <div class="ibox-title ibox-title-no-line">
+                            <h3>Patient Timeline</h3>
+                        </div>
 
-                                    <div class="ibox-content inspinia-timeline">
-                                        <div class="timeline-item" ng-repeat="timelineEvent in data.timeline">
-                                            <patient-timeline timeline-event="timelineEvent" type="timelineEvent.event_type"></patient-timeline>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="ibox-content inspinia-timeline">
+                            <div class="timeline-item" ng-repeat="timelineEvent in data.timeline">
+                                <patient-timeline timeline-event="timelineEvent" type="timelineEvent.event_type"></patient-timeline>
                             </div>
                         </div>
+
                     </div>
                 </uib-tab>
 
@@ -229,11 +209,13 @@
                             <div class="ibox-title ibox-title-no-line">
                                 <h3>Specimen History</h3>
                             </div>
+
                             <div class="ibox-content ibox-content-no-padding ibox-title-no-line">
                                 <table class="table table-hover" role="grid">
                                     <thead>
                                         <tr>
                                             <th width="20%">Molecular ID</th>
+                                            <th width="15%">Type</th>
                                             <th width="15%">Site</th>
                                             <th width="10%">Tracking Number</th>
                                             <th width="5%">DNA Conc</th>
@@ -245,6 +227,7 @@
                                     <tbody>
                                         <tr ng-repeat-start="shipment in currentSurgicalEvent.specimen_shipments" style="cursor: auto;" role="row" class="odd">
                                             <td>{{shipment.surgical_event_id}}</td>
+                                            <td>{{shipment.specimen_type | titlecase}}</td>
                                             <td>{{shipment.site}}</td>
                                             <td>{{shipment.tracking_number}}</td>
                                             <td>{{shipment.dna_concordance}}</td>
@@ -319,21 +302,21 @@
                     </div>
                 </uib-tab>
 
-                <uib-tab heading="Variant Report" select="setActiveTab('tissue_variant_report')">
+                <uib-tab heading="Tissue Variant Report" select="setActiveTab('tissue_variant_report')">
                     <div class="panel-body">
                         <div ng-if="currentVariantReport">
 
                             <div class="row toolbar-row">
                                 <div class="col-md-8 text-left">
                                     <div class="btn-group btn-group-margin" data-toggle="buttons">
-                                        <label class="btn btn-outline btn-success" ng-class="getVariantReportTypeClass('TISSUE')" ng-click="setVariantReportType('TISSUE')"
+                                        <!--<label class="btn btn-outline btn-success" ng-class="getVariantReportTypeClass('TISSUE')" ng-click="setVariantReportType('TISSUE')"
                                             title="Switch to Tissue Report">
                                             <input type="radio" name="variantReportType" id="option1">Tissue
-                                        </label>
-                                        <label class="btn btn-outline btn-success" ng-class="getVariantReportTypeClass('BLOOD')" ng-click="setVariantReportType('BLOOD')"
+                                        </label>-->
+                                        <!--<label class="btn btn-outline btn-success" ng-class="getVariantReportTypeClass('BLOOD')" ng-click="setVariantReportType('BLOOD')"
                                             title="Switch to Blood Report">
                                             <input type="radio" name="variantReportType" id="option2">Blood
-                                        </label>
+                                        </label>-->
                                     </div>
                                     <div class="btn-group btn-group-margin" data-toggle="buttons">
                                         <label class="btn btn-outline btn-success" ng-class="getVariantReportModeClass('FILTERED')" ng-click="setVariantReportMode('FILTERED')"
