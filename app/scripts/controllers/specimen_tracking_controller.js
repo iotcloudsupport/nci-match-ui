@@ -9,6 +9,7 @@ angular.module('specimen-tracking.matchbox',[])
 
         $scope.specimenTrackingList = [
             {
+                "molecular_id": "MSN234240",
                 "patient_id": "100099",
                 "collected_date": 1519735694848,
                 "received_date": 1519735777810,
@@ -17,7 +18,8 @@ angular.module('specimen-tracking.matchbox',[])
                 "type": "SLIDE",
                 "shipped_date": 151983588910,
                 "site": "MDA",
-                "pathology_status": "POSITIVE",
+                "fedex_tracking": "120932177598",
+                "pathology_status": "Y",
                 "pathology_status_date": 1511235777810,
                 "variant_report_confirmed_date": "",
                 "assays": [
@@ -38,6 +40,7 @@ angular.module('specimen-tracking.matchbox',[])
                 ]
             },
             {
+                "molecular_id": "MSN223641",
                 "patient_id": "100065",
                 "collected_date": 1511235694848,
                 "received_date": 1511235777810,
@@ -46,13 +49,15 @@ angular.module('specimen-tracking.matchbox',[])
                 "type": "BLOOD",
                 "shipped_date": 151983588910,
                 "site": "MDA",
-                "pathology_status": "POSITIVE",
+                "fedex_tracking": "120932173498",
+                "pathology_status": "Y",
                 "pathology_status_date": 1511235777810,
                 "variant_report_confirmed_date": "",
                 "assays": [
                 ]
             },
             {
+                "molecular_id": "MSN234242",
                 "patient_id": "100136",
                 "collected_date": 1511235694848,
                 "received_date": 1511235777810,
@@ -61,13 +66,15 @@ angular.module('specimen-tracking.matchbox',[])
                 "type": "TISSUE",
                 "shipped_date": 151983588910,
                 "site": "MoCha",
-                "pathology_status": "POSITIVE",
+                "fedex_tracking": "127732177598",
+                "pathology_status": "Y",
                 "pathology_status_date": 1511235777810,
                 "variant_report_confirmed_date": "",
                 "assays": [
                 ]
             },
             {
+                "molecular_id": "MSN233643",
                 "patient_id": "100136",
                 "collected_date": 1519735694848,
                 "received_date": 1519735777810,
@@ -76,7 +83,8 @@ angular.module('specimen-tracking.matchbox',[])
                 "type": "SLIDE",
                 "shipped_date": 151983588910,
                 "site": "MDA",
-                "pathology_status": "POSITIVE",
+                "fedex_tracking": "120932119598",
+                "pathology_status": "Y",
                 "pathology_status_date": 1511235777810,
                 "variant_report_confirmed_date": "",
                 "assays": [

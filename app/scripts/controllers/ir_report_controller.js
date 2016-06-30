@@ -116,9 +116,9 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             // );
 
             $scope.mdAccList.push(
-            {'ipAddress': '12 129.43.127.133', 'externalIpAddress': '3 129.43.127.133', 'host': 'NCI-MATCH-IR', 'status': 'connected'},
-            {'ipAddress': '56 129.43.127.133', 'externalIpAddress': '1 129.43.127.133', 'host': 'NCI-MATCH-IR', 'status': 'connected'},
-            {'ipAddress': '12 129.43.127.133', 'externalIpAddress': '42 129.43.127.133', 'host': 'NCI-MATCH-IR', 'status': 'connected'}
+            {'ipAddress': '12 129.43.127.133', 'externalIpAddress': '3 129.43.127.133', 'host': 'ip-D15889', 'status': 'CONNECTED'},
+            {'ipAddress': '56 129.43.127.133', 'externalIpAddress': '1 129.43.127.133', 'host': 'NCIAS-D1427', 'status': 'CONNECTED'},
+            {'ipAddress': '12 129.43.127.133', 'externalIpAddress': '42 129.43.127.133', 'host': 'NCIAS-D1227', 'status': 'WAITING'}
             );
 
 
@@ -518,12 +518,14 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
             $scope.loadPieChart = function(site) {
 
-                aMoiLabels = ['0 Sample Ng', '1 Sample Pos', '2 Patient', '3 aMOI', '4 Drug', '5+ Gene'];
+
+
+                aMoiLabels = ['Positive Control Failed', 'Positive Control Success', 'Not Generated'];
                 if(site==='mocha') {
-                    aMoiValues = [4, 35, 45, 9, 6, 21]; //[4, 10, 14, 6, 10, 16]; //[45, 21, 4, 35, 9, 6];
+                    aMoiValues = [10, 15, 75]; //[4, 10, 14, 6, 10, 16]; //[45, 21, 4, 35, 9, 6];
                 }
                 else{
-                    aMoiValues = [1, 45, 15, 1, 8, 61];
+                    aMoiValues = [8, 25, 67];
                 }
                 aMoiHighlight = "#000088"; //"#dedede";
 
@@ -545,25 +547,25 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                         color: "#18a689", //"#ab0102",
                         highlight: aMoiHighlight,
                         label: aMoiLabels[2]
-                    },
-                    {
-                        value: aMoiValues[3],
-                        color: "#f8ac59",
-                        highlight: aMoiHighlight,
-                        label: aMoiLabels[3]
-                    },
-                    {
-                        value: aMoiValues[4],
-                        color: "#707070",
-                        highlight: aMoiHighlight,
-                        label: aMoiLabels[4]
-                    },
-                    {
-                        value: aMoiValues[5],
-                        color: "#cfcfcf",
-                        highlight: aMoiHighlight,
-                        label: aMoiLabels[5]
                     }
+                    // {
+                    //     value: aMoiValues[3],
+                    //     color: "#f8ac59",
+                    //     highlight: aMoiHighlight,
+                    //     label: aMoiLabels[3]
+                    // },
+                    // {
+                    //     value: aMoiValues[4],
+                    //     color: "#707070",
+                    //     highlight: aMoiHighlight,
+                    //     label: aMoiLabels[4]
+                    // },
+                    // {
+                    //     value: aMoiValues[5],
+                    //     color: "#cfcfcf",
+                    //     highlight: aMoiHighlight,
+                    //     label: aMoiLabels[5]
+                    // }
                 ];
             }
 
