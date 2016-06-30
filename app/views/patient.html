@@ -402,58 +402,58 @@
 
                                     <table class="table table-hover" role="grid">
                                         <thead>
-                                            <tr>
-                                                <th width="20%">Treatment Arm</th>
-                                                <th width="80%">Reason</th>
-                                            </tr>
+                                        <tr>
+                                            <th width="20%">Treatment Arm</th>
+                                            <th width="80%">Reason</th>
+                                        </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="table-subheader ">
-                                                <td colspan="8 ">
-                                                    <h5>1 - NO VARIANT MATCH</h5>
-                                                </td>
-                                            </tr>
-                                            <tr ng-repeat="ta in data.assignment_report.treatmentArms.noMatchList " style="cursor: auto; " role="row" class="odd">
-                                                <td class="status-blue">
-                                                    <a ui-sref="treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion: ta.currentTtreatmentArmVersion }) ">
-                                                        <i class="fa fa-medkit "></i> {{ ::data.ta.treatmentArmTitle || '-'
-                                                        }}
-                                                    </a>
-                                                </td>
-                                                <td>{{data.ta.reason}}</td>
-                                            </tr>
+                                        <tr class="table-subheader ">
+                                            <td colspan="8 ">
+                                                <h5>1 - NO VARIANT MATCH</h5>
+                                            </td>
+                                        </tr>
+                                        <tr ng-repeat="ta in data.assignment_report.treatment_arms.no_match " style="cursor: auto; " role="row" class="odd">
+                                            <td class="status-blue">
+                                                <a ui-sref="treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion: ta.currentTtreatmentArmVersion }) ">
+                                                    <i class="fa fa-medkit "></i> {{ ::ta.treatment_arm_title || '-'
+                                                    }}
+                                                </a>
+                                            </td>
+                                            <td>{{data.ta.reason}}</td>
+                                        </tr>
 
-                                            <tr class="table-subheader ">
-                                                <td colspan="8 ">
-                                                    <h5>2 - RECORD BASED EXCLUSION</h5>
-                                                </td>
-                                            </tr>
-                                            <tr ng-repeat="ta in data.assignment_report.treatmentArms.recordBasedExclusionList " style="cursor: auto;
+                                        <tr class="table-subheader ">
+                                            <td colspan="8 ">
+                                                <h5>2 - RECORD BASED EXCLUSION</h5>
+                                            </td>
+                                        </tr>
+                                        <tr ng-repeat="ta in data.assignment_report.treatment_arms.record_based_exclusion " style="cursor: auto;
                                                 " role="row " class="odd ">
-                                                <td class="status-blue ">
-                                                    <a ui-sref="treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion:
+                                            <td class="status-blue ">
+                                                <a ui-sref="treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion:
                                                 ta.treatmentArmVersion }) ">
-                                                        <i class="fa fa-medkit "></i> {{ ::data.ta.treatmentArmTitle || '-'
-                                                        }}
-                                                    </a>
-                                                </td>
-                                                <td>{{data.ta.reason}}</td>
-                                            </tr>
+                                                    <i class="fa fa-medkit "></i> {{ ::ta.treatment_arm_title || '-'
+                                                    }}
+                                                </a>
+                                            </td>
+                                            <td>{{data.ta.reason}}</td>
+                                        </tr>
 
-                                            <tr class="table-subheader ">
-                                                <td colspan="8 ">
-                                                    <h5>3 - SELECTED</h5>
-                                                </td>
-                                            </tr>
-                                            <tr ng-repeat="ta in data.assignment_report.treatmentArms.selectedList " style="cursor: auto; " role="row" class="odd">
-                                                <td class="status-blue ">
-                                                    <a ui-sref="treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion: ta.currentTtreatmentArmVersion }) ">
-                                                        <i class="fa fa-medkit "></i> {{ ::data.ta.treatmentArmTitle || '-'
-                                                        }}
-                                                    </a>
-                                                </td>
-                                                <td>{{data.ta.reason}}</td>
-                                            </tr>
+                                        <tr class="table-subheader ">
+                                            <td colspan="8 ">
+                                                <h5>3 - SELECTED</h5>
+                                            </td>
+                                        </tr>
+                                        <tr ng-repeat="ta in data.assignment_report.treatment_arms.selected " style="cursor: auto; " role="row" class="odd">
+                                            <td class="status-blue ">
+                                                <a ui-sref="treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion: ta.currentTtreatmentArmVersion }) ">
+                                                    <i class="fa fa-medkit "></i> {{ ::ta.treatment_arm_title || '-'
+                                                    }}
+                                                </a>
+                                            </td>
+                                            <td>{{data.ta.reason}}</td>
+                                        </tr>
                                         </tbody>
                                     </table>
 
