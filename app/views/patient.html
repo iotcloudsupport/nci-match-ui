@@ -66,7 +66,7 @@
 
         <div class="tabs-container">
             <uib-tabset>
-                <uib-tab heading="Summary">
+                <uib-tab heading="Summary" select="setActiveTab('summary')">
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-12 center-block">
@@ -108,7 +108,7 @@
                     </div>
                 </uib-tab>
 
-                <uib-tab heading="Surgical Event">
+                <uib-tab heading="Surgical Event" select="setActiveTab('surgical_event')">
                     <div class="panel-body">
                         <div ng-if="currentSurgicalEvent">
 
@@ -352,7 +352,7 @@
                     </div>
                 </uib-tab>
 
-                <uib-tab heading="Variant Report">
+                <uib-tab heading="Variant Report" select="setActiveTab('tissue_variant_report')">
                     <div class="panel-body">
                         <div ng-if="currentVariantReport">
 
@@ -459,90 +459,83 @@
                                 </div>
                             </div>
 
-                            <!--<div ng-init="loadVariantReportChart()" >
-                            <div class="svg-container" responsive="true">
-                                <div id="D3BoxPanel">
-                                    <svg id="D3Box" version="1.1" preserveAspectRatio="xMinYMin meet" class="svg-content"></svg>
-                                </div>
-                            </div>
-                        </div>-->
-                            <img src="/img/variant_report.png" style="width:1200px" />
+                            <div ng-if="activeTab=='tissue_variant_report'" d3-cnv-chart=""></div>
 
                             <!--Single Nucleitide Variant(s)-->
                             <div class="ibox-title ibox-title-no-line">
                                 <h3>Single Nucleitide Variant(s)</h3>
                             </div>
 
-                        <!--Single Nucleitide Variant(s)-->
-                        <div class="ibox-title ibox-title-no-line">
-                            <h3>SNVs, MNVs, Indels</h3>
-                        </div>
+                            <!--Single Nucleitide Variant(s)-->
+                            <div class="ibox-title ibox-title-no-line">
+                                <h3>SNVs, MNVs, Indels</h3>
+                            </div>
 
-                        <table class="table table-hover" role="grid">
-                            <thead>
-                                <tr>
-                                    <th ng-if="variantReportMode!=='QC'">Confirm</th>
-                                    <th ng-if="variantReportMode!=='QC'">Comment</th>
-                                    <th>ID</th>
-                                    <th ng-if="variantReportMode!=='QC'">aMOI</th>
-                                    <th>Chrom</th>
-                                    <th>Position</th>
-                                    <th>CDS Ref</th>
-                                    <th>CDS Alt</th>
-                                    <th>OCP Ref</th>
-                                    <th>OCP Alt</th>
-                                    <th>Strand</th>
-                                    <th>Allele Freq</th>
-                                    <th>Func Gene</th>
-                                    <th>Oncomine Variant Class</th>
-                                    <th>Exon</th>
-                                    <th>Function</th>
-                                    <th>HGVS</th>
-                                    <th>Read Depth</th>
-                                    <th>Transcript</th>
-                                    <th>Protein</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="variant in currentVariantReport.variants.single_nucleitide_variants" style="cursor: auto;" role="row" class="odd">
-                                    <td ng-if="variantReportMode!=='QC'">
-                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
-                                            comment="variant.comment" prompt-only-if="true">
-                                        </div>
-                                    </td>
-                                    <td ng-if="variantReportMode!=='QC'">
-                                        <a ng-if="variant.comment" href ng-click="editComment(variant)"> <i class="fa fa-file-text-o"></i></a>
-                                    </td>
-                                    <td>{{::variant.variant_id}}</td>
-                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}<sup>({{::variant.inclusion}})</sup></td>
-                                    <td>{{::variant.chromosome}}</td>
-                                    <td>{{::variant.position}}</td>
-                                    <td>{{::variant.cds_ref}}</td>
-                                    <td>{{::variant.cds_alt}}</td>
-                                    <td>{{::variant.ocp_ref}}</td>
-                                    <td>{{::variant.ocp_alt}}</td>
-                                    <td>{{::variant.strand}}</td>
-                                    <td>{{::variant.allele_frequency}}</td>
-                                    <td>{{::variant.funcGene}}</td>
-                                    <td>{{::variant.oncomine_variant_class}}</td>
-                                    <td>{{::variant.exon}}</td>
-                                    <td>{{::variant.function}}</td>
-                                    <td>{{::variant.hgvs}}</td>
-                                    <td>{{::variant.read_depth}}</td>
-                                    <td>{{::variant.transcript}}</td>
-                                    <td>{{::variant.protein}}</td>
-                                </tr>
+                            <table class="table table-hover" role="grid">
+                                <thead>
+                                    <tr>
+                                        <th ng-if="variantReportMode!=='QC'">Confirm</th>
+                                        <th ng-if="variantReportMode!=='QC'">Comment</th>
+                                        <th>ID</th>
+                                        <th ng-if="variantReportMode!=='QC'">aMOI</th>
+                                        <th>Chrom</th>
+                                        <th>Position</th>
+                                        <th>CDS Ref</th>
+                                        <th>CDS Alt</th>
+                                        <th>OCP Ref</th>
+                                        <th>OCP Alt</th>
+                                        <th>Strand</th>
+                                        <th>Allele Freq</th>
+                                        <th>Func Gene</th>
+                                        <th>Oncomine Variant Class</th>
+                                        <th>Exon</th>
+                                        <th>Function</th>
+                                        <th>HGVS</th>
+                                        <th>Read Depth</th>
+                                        <th>Transcript</th>
+                                        <th>Protein</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="variant in currentVariantReport.variants.single_nucleitide_variants" style="cursor: auto;" role="row" class="odd">
+                                        <td ng-if="variantReportMode!=='QC'">
+                                            <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
+                                                comment="variant.comment" prompt-only-if="true">
+                                            </div>
+                                        </td>
+                                        <td ng-if="variantReportMode!=='QC'">
+                                            <a ng-if="variant.comment" href ng-click="editComment(variant)"> <i class="fa fa-file-text-o"></i></a>
+                                        </td>
+                                        <td>{{::variant.variant_id}}</td>
+                                        <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}<sup>({{::variant.inclusion}})</sup></td>
+                                        <td>{{::variant.chromosome}}</td>
+                                        <td>{{::variant.position}}</td>
+                                        <td>{{::variant.cds_ref}}</td>
+                                        <td>{{::variant.cds_alt}}</td>
+                                        <td>{{::variant.ocp_ref}}</td>
+                                        <td>{{::variant.ocp_alt}}</td>
+                                        <td>{{::variant.strand}}</td>
+                                        <td>{{::variant.allele_frequency}}</td>
+                                        <td>{{::variant.funcGene}}</td>
+                                        <td>{{::variant.oncomine_variant_class}}</td>
+                                        <td>{{::variant.exon}}</td>
+                                        <td>{{::variant.function}}</td>
+                                        <td>{{::variant.hgvs}}</td>
+                                        <td>{{::variant.read_depth}}</td>
+                                        <td>{{::variant.transcript}}</td>
+                                        <td>{{::variant.protein}}</td>
+                                    </tr>
 
-                                <tr ng-if="!currentVariantReport.variants.single_nucleitide_variants || !currentVariantReport.variants.single_nucleitide_variants.length">
-                                    <td colspan="8"><span class="text-muted">No Single Nucleitide Variants</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                    <tr ng-if="!currentVariantReport.variants.single_nucleitide_variants || !currentVariantReport.variants.single_nucleitide_variants.length">
+                                        <td colspan="8"><span class="text-muted">No Single Nucleitide Variants</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-                        <!--Copy Number Variant(s)-->
-                        <div class="ibox-title ibox-title-no-line">
-                            <h3>Copy Number Variant(s)</h3>
-                        </div>
+                            <!--Copy Number Variant(s)-->
+                            <div class="ibox-title ibox-title-no-line">
+                                <h3>Copy Number Variant(s)</h3>
+                            </div>
 
                             <table class="table table-hover" role="grid">
                                 <thead>
@@ -723,7 +716,7 @@
                     </div>
                 </uib-tab>
 
-                <uib-tab heading="Blood Variant Report">
+                <uib-tab heading="Blood Variant Report" select="setActiveTab('blood_variant_report')">
                     <div class="panel-body">
                         <div ng-if="currentBloodVariantReport">
                             <div class="row toolbar-row">
@@ -803,7 +796,7 @@
                                 </div>
                             </div>
 
-                            <img src="/img/variant_report.png" style="width:1200px" />
+                            <div ng-if="activeTab=='blood_variant_report'" d3-cnv-chart=""></div>
 
                             <!--Single Nucleitide Variant(s)-->
                             <div class="ibox-title ibox-title-no-line">
@@ -991,7 +984,7 @@
                     </div>
                 </uib-tab>
 
-                <uib-tab heading="Assignment Report">
+                <uib-tab heading="Assignment Report" select="setActiveTab('assignment_report')">
                     <div class="panel-body" ng-switch="currentVariantReport.status">
 
                         <div ng-switch-when="CONFIRMED">
@@ -1146,7 +1139,7 @@
                     </div>
                 </uib-tab>
 
-                <uib-tab heading="Documents">
+                <uib-tab heading="Documents" select="setActiveTab('documents')">
                     <div class="panel-body ">
 
                         <div class="ibox float-e-margins">
