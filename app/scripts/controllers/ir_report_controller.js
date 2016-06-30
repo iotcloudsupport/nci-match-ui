@@ -103,21 +103,23 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             $scope.geneFusionsList = [{"type":"gf","metadata":{"id":"aea26ca8-0cf5-4248-bb09-bb29283677b5","comment":null},"publicMedIds":null,"geneName":"EML4","chromosome":"chr2","position":"42491871","identifier":"EML4-ALK.E6aA20.AB374361_1","reference":"G","alternative":"G]chr2:29446394]","filter":"PASS","description":null,"protein":null,"transcript":null,"hgvs":"","location":"","readDepth":73149,"rare":false,"alleleFrequency":null,"flowAlternativeAlleleObservationCount":"","flowReferenceAlleleObservations":"","referenceAlleleObservations":null,"alternativeAlleleObservationCount":null,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"EML4","oncominevariantclass":"Fusion","exon":"6","function":"","proteinMatch":null,"confirmed":false,"fusionIdentity":null,"matchingId":"EML4-ALK.E6aA20.AB374361_1"},{"type":"gf","metadata":{"id":"33f7c8eb-81c9-47af-a3ef-7d9b00b13046","comment":null},"publicMedIds":null,"geneName":"ALK","chromosome":"chr2","position":"29446394","identifier":"EML4-ALK.E6aA20.AB374361_2","reference":"A","alternative":"]chr2:42491871]A","filter":"PASS","description":null,"protein":null,"transcript":null,"hgvs":"","location":"","readDepth":73149,"rare":false,"alleleFrequency":null,"flowAlternativeAlleleObservationCount":"","flowReferenceAlleleObservations":"","referenceAlleleObservations":null,"alternativeAlleleObservationCount":null,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"ALK","oncominevariantclass":"Fusion","exon":"20","function":"","proteinMatch":null,"confirmed":false,"fusionIdentity":null,"matchingId":"EML4-ALK.E6aA20.AB374361_2"},{"type":"gf","metadata":{"id":"89fcff5c-69ee-41e7-a362-73a9e8fa4905","comment":null},"publicMedIds":null,"geneName":"EML4","chromosome":"chr2","position":"42492091","identifier":"EML4-ALK.E6bA20.AB374362_1","reference":"G","alternative":"G]chr2:29446394]","filter":"PASS","description":null,"protein":null,"transcript":null,"hgvs":"","location":"","readDepth":16372,"rare":false,"alleleFrequency":null,"flowAlternativeAlleleObservationCount":"","flowReferenceAlleleObservations":"","referenceAlleleObservations":null,"alternativeAlleleObservationCount":null,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"EML4","oncominevariantclass":"Fusion","exon":"6","function":"","proteinMatch":null,"confirmed":false,"fusionIdentity":null,"matchingId":"EML4-ALK.E6bA20.AB374362_1"},{"type":"gf","metadata":{"id":"2d87fd81-2fb7-434f-94e2-dd49be243a5a","comment":null},"publicMedIds":null,"geneName":"ALK","chromosome":"chr2","position":"29446394","identifier":"EML4-ALK.E6bA20.AB374362_2","reference":"A","alternative":"]chr2:42492091]A","filter":"PASS","description":null,"protein":null,"transcript":null,"hgvs":"","location":"","readDepth":16372,"rare":false,"alleleFrequency":null,"flowAlternativeAlleleObservationCount":"","flowReferenceAlleleObservations":"","referenceAlleleObservations":null,"alternativeAlleleObservationCount":null,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"ALK","oncominevariantclass":"Fusion","exon":"20","function":"","proteinMatch":null,"confirmed":false,"fusionIdentity":null,"matchingId":"EML4-ALK.E6bA20.AB374362_2"}]
 
 
+            $scope.moChaList.push(
+                {'ipAddress': '12 129.43.127.133', 'externalIpAddress': '3 129.43.127.133', 'host': 'NCI-MATCH-IR', 'status': 'CONNECTED'},
+                {'ipAddress': '56 129.43.127.133', 'externalIpAddress': '1 129.43.127.133', 'host': 'NCIAS', 'status': 'WAITING'},
+                {'ipAddress': '12 129.43.127.133', 'externalIpAddress': '42 129.43.127.133', 'host': 'ip-172-31-24-10', 'status': 'FAILING'}
+            );
 
+            // $scope.moChaList.push(
+            // {'ipAddress': '12 129.43.127.133', 'externalIpAddress': '3 129.43.127.133'},
+            // {'ipAddress': '56 129.43.127.133', 'externalIpAddress': '1 129.43.127.133'},
+            // {'ipAddress': '12 129.43.127.133', 'externalIpAddress': '42 129.43.127.133'}
+            // );
 
-            $scope.moChaList.push({
-                'ipAddress': '12 129.43.127.133',
-                'externalIpAddress': '3 129.43.127.133',
-                'ipAddress': '56 129.43.127.133',
-                'externalIpAddress': '1 129.43.127.133',
-                'ipAddress': '12 129.43.127.133',
-                'externalIpAddress': '42 129.43.127.133',
-            });
-
-            $scope.mdAccList.push({
-                'ipAddress': '129.41.452.133',
-                'externalIpAddress': '129.43.443.133',
-            });
+            $scope.mdAccList.push(
+            {'ipAddress': '12 129.43.127.133', 'externalIpAddress': '3 129.43.127.133', 'host': 'NCI-MATCH-IR', 'status': 'connected'},
+            {'ipAddress': '56 129.43.127.133', 'externalIpAddress': '1 129.43.127.133', 'host': 'NCI-MATCH-IR', 'status': 'connected'},
+            {'ipAddress': '12 129.43.127.133', 'externalIpAddress': '42 129.43.127.133', 'host': 'NCI-MATCH-IR', 'status': 'connected'}
+            );
 
 
         $scope.mockListMDCC = [{"sampleSite":"MDACC","sampleId":"MDACC_1","sampleMsn":"NtcControl_MDACC_1","dateCreated":1466776298978,"dateReceived":1466776367227,"status":null}];
