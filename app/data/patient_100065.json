@@ -18,9 +18,15 @@
         "med_dra_code": "1000961"
     },
     "prior_drugs": [
-        "Aspirin",
-        "Motrin",
-        "Vitamin C"
+        {
+            "name" : "Aspirin"
+        },
+        {
+            "name" : "Motrin"
+        },
+        {
+            "name" : "Vitamin C"
+        }
     ],
     "message": "Some message",
     "timeline": [
