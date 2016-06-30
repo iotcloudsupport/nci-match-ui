@@ -554,6 +554,30 @@
                                                 <dd>{{currentVariantReport.cellularity}}</dd>
                                             </dl>
 
+                                            <dl class="dl-horizontal dl-horizontal-expanded-label" ng-if="variantReportMode=='QC'">
+                                                <dt>Oncomine Control Panel Summary</dt>
+                                                <dd class="row">
+                                                    <table class="table" role="grid" width="100">
+                                                        <thead>
+                                                        <td><a>LMNA</a></td>
+                                                        <td><a>TBP</a></td>
+                                                        <td><a>MYC</a></td>
+                                                        <td><a>HMBS</a></td>
+                                                        <td><a>ITGBY</a></td>
+                                                        <td>SUM</td>
+                                                        </thead>
+                                                        <tbody class="priordrug-item" ng-repeat="oncomine in data.oncomine_report" style="font-size: smaller">
+                                                        <td>{{::oncomine.lmna}}</td>
+                                                        <td>{{::oncomine.tbp}}</td>
+                                                        <td>{{::oncomine.myc}}</td>
+                                                        <td>{{::oncomine.hmbs}}</td>
+                                                        <td>{{::oncomine.itgby}}</td>
+                                                        <td>{{::oncomine.sum}}</td>
+                                                        </tbody>
+                                                    </table>
+                                                </dd>
+                                            </dl>
+
                                             <h4 ng-if="variantReportMode!=='QC'">MOI/aMOI Summary</h4>
 
                                             <dl class="dl-horizontal dl-horizontal-expanded-label" ng-if="variantReportMode!=='QC'">
