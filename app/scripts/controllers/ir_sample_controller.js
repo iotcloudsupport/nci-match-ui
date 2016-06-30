@@ -105,6 +105,7 @@ angular.module('irsample.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                         });
                         //Negative Variants
                         angular.forEach(value.negativeVariants, function (v,k) {
+                            
                             $scope.negativeVariantsList.push({
                                 'publicMedIds': v.publicMedIds,
                                 'position': v.position,
