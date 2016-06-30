@@ -42,6 +42,10 @@
 
     function utc() {
         return function (date) {
+            if (date==='-') {
+                return date;
+            }
+
             if (angular.isDefined(date)) {
                 return moment.utc(date).utc().format('LLL') + ' GMT';
             } else {

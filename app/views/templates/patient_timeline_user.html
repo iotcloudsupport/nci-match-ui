@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-xs-5 col-md-4 date" title="User Event">
-        <i class="fa fa-user-md fa-2x"></i> {{::timelineEvent.event_date | utc}}
+        <i class="fa fa-user-md fa-2x"></i> <small>{{::timelineEvent.event_date | utc}}</small>
         <br/>
         <small class="text-navy">{{::timelineEvent.from_now}}</small>
     </div>
-    <div class="col-xs-7 col-md-8 content no-top-border">
+    <div class="col-xs-7 col-md-8 content" ng-class="{'no-top-border' : (isStepChanging)}">
         <p class="m-b-xs"><strong>{{::timelineEvent.user}}: {{::timelineEvent.details}}</strong></p>
         <p>Download <a href="{{::timelineEvent.fileUrl}}" target="_blank">file</a></p>
     </div>

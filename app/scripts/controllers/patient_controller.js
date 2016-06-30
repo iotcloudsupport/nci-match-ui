@@ -40,6 +40,7 @@
         $scope.currentShipment = null;
         $scope.currentVariantReport = null;
         $scope.currentBloodVariantReport = null;
+        $scope.currentAssignmentReport = null;
 
         $scope.currentTreatmentArm = null;
 
@@ -50,6 +51,9 @@
 
         $scope.bloodVariantReportOptions = [];
         $scope.bloodVariantReportOption = null;
+
+        $scope.assignmentReportOptions = [];
+        $scope.assignmentReportOption = null;
 
         $scope.dropzoneConfig = {
             url: '/alt_upload_url',
@@ -78,6 +82,7 @@
         $scope.onSurgicalEventSelected = onSurgicalEventSelected;
         $scope.onBloodVariantReportSelected = onBloodVariantReportSelected;
         $scope.onVariantReportSelected = onVariantReportSelected;
+        $scope.onAssignmentReportSelected = onAssignmentReportSelected;
         $scope.showVariantReportActions = showVariantReportActions;
         $scope.showAssignmentReportActions = showAssignmentReportActions;
         $scope.setActiveTab = setActiveTab;
@@ -145,27 +150,12 @@
             angular.copy(data.data, scopeData);
             $scope.data = scopeData;
 
-            __addMockData(); //TODO:RZ remove after we have the data
-
+            setupCurrentTreatmentArm();
             setupTimeline();
             setupSurgicalEventOptions();
             setupVariantReports();
             setupVariantReportOptions();
-            setupCurrentTreatmentArm();
-        }
-
-        function __addMockData() {
-            // $scope.data.ta_history = [
-            //     {
-            //         'name':'APEC1621-A', 
-            //         'version':'2015-08-06', 
-            //         'stratum':'s124', 
-            //         'title':'APEC1621-A (2015-08-06)', 
-            //         'step': 'Step 2.0', 
-            //         'assignment_reason': 'The patient and treatment match on variand identifier [ABSF, DEDF].', 
-            //         'assignment_date':'2016-06-25T14:46:10+34:00'
-            //     }
-            // ];
+            setupAssignmentReportOptions();
         }
 
         function setupTimeline() {
@@ -231,6 +221,25 @@
             $scope.variantReportMode = 'FILTERED';
 
             setVariantReport();
+        }
+
+        function setupAssignmentReportOptions() {
+            $scope.assignmentReportOptions = [];
+
+            var currentAssignment = $scope.data.current_assignment;
+
+            $scope.assignmentReportOption = {
+                text: $scope.currentTreatmentArm.name + 
+                    ' | ' + currentAssignment.biopsy_sequence_number + 
+                    ' | ' + currentAssignment.molecular_sequence_number + 
+                    ' | ' + currentAssignment.received_from_cog_date,
+                value: {
+                    molecular_sequence_number: currentAssignment.molecular_sequence_number,
+                    assignmemnt_reason: $scope.currentTreatmentArm.reason
+                }
+            };
+
+            $scope.assignmentReportOptions.push($scope.assignmentReportOption);
         }
 
         function setupVariantReportOptions() {
@@ -306,7 +315,8 @@
                 $scope.currentTreatmentArm = {
                     name : selected.treatment_arm, 
                     version : selected.treatment_arm_version, 
-                    stratum : selected.treatment_arm_stratum 
+                    stratum : selected.treatment_arm_stratum,
+                    reason: selected.reason
                 }
             }
         }
@@ -461,6 +471,12 @@
             } else {
                 $log.error('Unable to find Surgical Event by ' + selected.value.surgical_event_id);
             }
+        }
+
+        function onAssignmentReportSelected(selected) {
+            $log.debug(selected);
+            // TODO:RZ add
+            // $scope.currentAssignmentReport = null;            
         }
 
         function selectSurgicalEvent(option) {
