@@ -190,8 +190,8 @@
             "event_name": "Event Name 1",
             "event_type": "assignment",
             "event_message": "Patient Assignment",
+            "step": "1.1",
             "event_data": {
-                "step": "1.1",
                 "status": "ON_TREATMENT_ARM",
                 "message": "",
                 "stratum_id": "STR2",
@@ -206,8 +206,8 @@
             "event_name": "Event Name 1",
             "event_type": "patient",
             "event_message": "Patient Pending Approval",
+            "step": "1.0",
             "event_data": {
-                "step": "1.0",
                 "rebiopsy" : "-",
                 "status": "PENDING",
                 "biopsy_sequence_number": "B-987456",
@@ -220,8 +220,8 @@
             "event_name": "Event Name 1",
             "event_type": "patient",
             "event_message": "Patient Pending Confirmation",
+            "step": "1.0",
             "event_data": {
-                "step": "1.0",
                 "status": "PENDING",
                 "biopsy_sequence_number": "B-987456",
                 "location": "GHU"
@@ -233,8 +233,8 @@
             "event_name": "Event Name 1",
             "event_type": "system",
             "event_message": "Receiving Rule Assignment",
+            "step": "1.0",
             "event_data": {
-                "step": "1.0",
                 "status": "COMPLETE"
             }
         },
@@ -244,8 +244,8 @@
             "event_name": "Event Name 1",
             "event_type": "system",
             "event_message": "Awaiting Treatment Arms Status",
+            "step": "1.0",
             "event_data": {
-                "step": "1.0",
                 "status": "COMPLETE"
             }
         },
@@ -255,8 +255,8 @@
             "event_name": "Event Name 1",
             "event_type": "system",
             "event_message": "Awaiting Patient Data",
+            "step": "1.0",
             "event_data": {
-                "step": "1.0",
                 "status": "COMPLETE"
             }
         },
@@ -266,11 +266,11 @@
             "event_name": "Event Name 2",
             "event_type": "biopsy.variantReportReceived",
             "event_message": "Tissue Variant Report",
+            "step": "1.0",
             "event_data": {
                 "surgical_event_id": "COSM1234",
                 "collected_datetime": "2016-05-09T22:06:33+00:00",
                 "received_datetime": "2016-05-13T22:08:33+00:00",
-                "step": "1.0",
                 "status": "CONFIRMED",
                 "biopsy_sequence_number": "B-987456"
             }
@@ -281,11 +281,11 @@
             "event_name": "Event Name 2",
             "event_type": "biopsy.variantReportReceived",
             "event_message": "Tissue Variant Report",
+            "step": "1.0",
             "event_data": {
                 "surgical_event_id": "COSM1234",
                 "collected_datetime": "2016-05-09T22:06:33+00:00",
                 "received_datetime": "2016-05-13T22:08:33+00:00",
-                "step": "1.0",
                 "status": "RECEIVED",
                 "biopsy_sequence_number": "B-987456"
             }
@@ -296,9 +296,9 @@
             "event_name": "Event Name 5",
             "event_type": "biopsy.assay_received",
             "event_message": "Assay Received",
+            "step": "1.0",
             "event_data": {
                 "biomarker": "ICCPTEN",
-                "step": "1.0",
                 "status": "RECEIVED",
                 "result" : "POSITIVE",
                 "biopsy_sequence_number": "B-987456",
@@ -311,8 +311,8 @@
             "event_name": "Event Name 5",
             "event_type": "biopsy.pathology",
             "event_message": "PATHOLOGY_CONFIRMATION",
+            "step": "1.0",
             "event_data": {
-                "status": "Y",
                 "biopsy_sequence_number": "B-987456",
                 "reported_date": "2016-05-12T22:04:33+00:00"
             }
@@ -323,9 +323,9 @@
             "event_name": "Event Name 4",
             "event_type": "biopsy.assay_order",
             "event_message": "Assay Order",
+            "step": "1.0",
             "event_data": {
                 "biomarker": "ICCPTEN",
-                "step": "1.0",
                 "status": "ORDER",
                 "biopsy_sequence_number": "B-987456",
                 "ordered_date": "2016-05-11T22:07:33+00:00"
@@ -337,6 +337,7 @@
             "event_name": "Event Name 3",
             "event_type": "biopsy.variantReportShipped",
             "event_message": "Tissue Nucleic Acid Shipped",
+            "step": "1.0",
             "event_data": {
                 "surgical_event_id": "COSM1234",
                 "molecular_id" : "1234",
@@ -344,7 +345,6 @@
                 "molecular_cdna_id" : "CDNA1234",
                 "carrier": "Federal Express",
                 "tracking_id": "1203454512316546",
-                "step": "1.0",
                 "status": "PENDING",
                 "biopsy_sequence_number": "B-987456"
             }
@@ -355,11 +355,11 @@
             "event_name": "Event Name 2",
             "event_type": "biopsy.variantReportReceived",
             "event_message": "Tissue Specimen Received",
+            "step": "1.0",
             "event_data": {
                 "surgical_event_id": "COSM1234",
                 "collected_datetime": "2016-05-09T22:06:33+00:00",
                 "received_datetime": "2016-05-11T22:08:33+00:00",
-                "step": "1.0",
                 "status": "PENDING",
                 "biopsy_sequence_number": "B-987456"
             }
@@ -370,8 +370,8 @@
             "event_name": "Event Name 1",
             "event_type": "patient",
             "event_message": "Patient Registered",
+            "step": "1.0",
             "event_data": {
-                "step": "1.0",
                 "status": "PENDING",
                 "biopsy_sequence_number": "B-987456",
                 "location": "GHU"
