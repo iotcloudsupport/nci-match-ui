@@ -9,9 +9,20 @@
         "WHITE",
         "HAWAIIAN"
     ],
-    "current_step_number": "1.0",
+    "current_step_number": "1.1",
+    "ta_history": [
+        {
+            "name":"APEC1621-U",
+            "version":"2015-08-06",
+            "stratum":"U",
+            "title":"APEC1621-U (2015-08-06)",
+            "step": "Step 1.1",
+            "assignment_reason": "The patient and treatment match on variand identifier [ABSF, DEDF].",
+            "assignment_date":"2016-05-09T22:06:33+00:00"
+        }
+    ],
     "current_assignment": {
-        "generated_date": "2016-05-09T22:06:33+00:00",
+        "generated_date": "2016-05-08T12:03:12+00:00",
         "confirmed_date": "2016-05-09T22:06:33+00:00",
         "sent_to_cog_date": "-",
         "received_from_cog_date": "-",
@@ -127,7 +138,7 @@
             ],
             "selected": [
                 {
-                    "treatment_arm": "APEC1621-B",
+                    "treatment_arm": "APEC1621-U",
                     "treatment_arm_version": "2015-08-06",
                     "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient and treatment match on variand identifier [ABSF, DEDF]."

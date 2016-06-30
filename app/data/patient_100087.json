@@ -9,7 +9,27 @@
         "WHITE",
         "HAWAIIAN"
     ],
-    "current_step_number": "1.0",
+    "current_step_number": "3.0",
+    "ta_history": [
+        {
+            "name":"APEC1621-U",
+            "version":"2015-08-06",
+            "stratum":"U",
+            "title":"APEC1621-U (2015-08-06)",
+            "step": "Step 2.1",
+            "assignment_reason": "The patient and treatment match on variand identifier [COSM12344].",
+            "assignment_date":"2016-05-09T22:06:33+00:00"
+        },
+        {
+            "name":"APEC1621-A",
+            "version":"2015-08-06",
+            "stratum":"A",
+            "title":"APEC1621-A (2015-08-06)",
+            "step": "Step 1.1",
+            "assignment_reason": "The patient and treatment arm match on variant identifier [COSM14062].",
+            "assignment_date":"2016-02-15T10:32:41+00:00"
+        }
+    ],
     "current_assignment": {
         "generated_date": "2016-05-09T22:06:33+00:00",
         "confirmed_date": "2016-05-09T22:06:33+00:00",
