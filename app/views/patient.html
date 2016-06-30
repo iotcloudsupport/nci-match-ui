@@ -245,7 +245,7 @@
                                     <tbody>
                                         <tr ng-repeat-start="shipment in currentSurgicalEvent.specimen_shipments" style="cursor: auto;" role="row" class="odd">
                                             <td>{{shipment.surgical_event_id}}</td>
-                                            <td>{{shipment.destination_date | utc}}</td>
+                                            <td>{{shipment.site}}</td>
                                             <td>{{shipment.tracking_number}}</td>
                                             <td>{{shipment.dna_concordance}}</td>
                                             <td>{{shipment.dna_volume}}</td>
