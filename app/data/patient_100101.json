@@ -12,13 +12,13 @@
   "current_step_number": "2.0",
   "ta_history": [
     {
-      "name":"APEC1621-U",
+      "name":"APEC1621-Y",
       "version":"2015-04-26",
-      "stratum":"U",
-      "title":"APEC1621-U (2015-04-26)",
+      "stratum":"Y",
+      "title":"APEC1621-Y (2015-04-26)",
       "step": "Step 1.1",
       "assignment_reason": "The patient and treatment match on variand identifier [ABSF, DEDF].",
-      "assignment_date":"2015-11-25T15:37:43+00:00"
+      "assignment_date":"2016-05-10T22:05:33+00:00"
     }
   ],
   "current_assignment": {
@@ -159,7 +159,7 @@
   "message": "Some message",
   "timeline": [
     {
-      "patient_id": "PAT123",
+      "patient_id": "100101",
       "event_date": "2016-05-09T22:06:33+00:00",
       "event_name": "Event Name 1",
       "event_type": "patient",
@@ -174,7 +174,7 @@
       }
     },
     {
-      "patient_id": "PAT123",
+      "patient_id": "100101",
       "event_date": "2016-05-09T22:06:33+00:00",
       "event_name": "Event Name 1",
       "event_type": "patient",
@@ -189,7 +189,7 @@
       }
     },
     {
-      "patient_id": "PAT123",
+      "patient_id": "100101",
       "event_date": "2016-05-09T22:06:33+00:00",
       "event_name": "Event Name 1",
       "event_type": "patient",
@@ -204,7 +204,7 @@
       }
     },
     {
-      "patient_id": "PAT123",
+      "patient_id": "100101",
       "event_date": "2016-05-09T22:06:33+00:00",
       "event_name": "Event Name 1",
       "event_type": "system",
@@ -215,7 +215,7 @@
       }
     },
     {
-      "patient_id": "PAT123",
+      "patient_id": "100101",
       "event_date": "2016-05-09T22:06:33+00:00",
       "event_name": "Event Name 1",
       "event_type": "system",
@@ -226,7 +226,7 @@
       }
     },
     {
-      "patient_id": "PAT123",
+      "patient_id": "100101",
       "event_date": "2016-05-09T22:06:33+00:00",
       "event_name": "Event Name 1",
       "event_type": "patient",
@@ -240,7 +240,7 @@
       }
     },
     {
-      "patient_id": "PAT123",
+      "patient_id": "100101",
       "event_date": "2016-05-09T22:06:33+00:00",
       "event_name": "Event Name 1",
       "event_type": "assignment",
@@ -249,14 +249,14 @@
         "step": "1.1",
         "status": "ON_TREATMENT_ARM",
         "message": "",
-        "stratum_id": "12",
+        "stratum_id": "Y",
         "biopsy_sequence_number": "B-987456",
         "treatment_arm_id": "APEC1621-Y",
         "assignment_date" : "2016-05-10T22:05:33+00:00"
       }
     },
     {
-      "patient_id": "PAT123",
+      "patient_id": "100101",
       "event_date": "2016-05-09T22:06:33+00:00",
       "event_name": "Event Name 1",
       "event_type": "patient",
@@ -269,7 +269,7 @@
       }
     },
     {
-      "patient_id": "PAT123",
+      "patient_id": "100101",
       "event_date": "2016-05-09T22:06:33+00:00",
       "event_name": "Event Name 1",
       "event_type": "patient",
@@ -282,7 +282,7 @@
       }
     },
     {
-      "patient_id": "PAT123",
+      "patient_id": "100101",
       "event_date": "2016-05-09T22:06:33+00:00",
       "event_name": "Event Name 1",
       "event_type": "system",
@@ -293,7 +293,7 @@
       }
     },
     {
-      "patient_id": "PAT123",
+      "patient_id": "100101",
       "event_date": "2016-05-09T22:06:33+00:00",
       "event_name": "Event Name 1",
       "event_type": "system",
@@ -304,7 +304,7 @@
       }
     },
     {
-      "patient_id": "PAT123",
+      "patient_id": "100101",
       "event_date": "2016-05-09T22:06:33+00:00",
       "event_name": "Event Name 1",
       "event_type": "system",
@@ -315,7 +315,7 @@
       }
     },
     {
-      "patient_id": "PAT123",
+      "patient_id": "100101",
       "event_date": "2016-05-11T22:06:33+00:00",
       "event_name": "Event Name 2",
       "event_type": "biopsy.variantReportReceived",
@@ -330,7 +330,7 @@
       }
     },
     {
-      "patient_id": "PAT123",
+      "patient_id": "100101",
       "event_date": "2016-05-11T22:06:33+00:00",
       "event_name": "Event Name 2",
       "event_type": "biopsy.variantReportReceived",
@@ -345,7 +345,7 @@
       }
     },
     {
-      "patient_id": "PAT123",
+      "patient_id": "100101",
       "event_date": "2016-05-12T22:04:33+00:00",
       "event_name": "Event Name 5",
       "event_type": "biopsy.assay_received",
@@ -360,7 +360,7 @@
       }
     },
     {
-      "patient_id": "PAT123",
+      "patient_id": "100101",
       "event_date": "2016-05-12T22:04:33+00:00",
       "event_name": "Event Name 5",
       "event_type": "biopsy.pathology",
@@ -372,7 +372,7 @@
       }
     },
     {
-      "patient_id": "PAT123",
+      "patient_id": "100101",
       "event_date": "2016-05-11T22:08:33+00:00",
       "event_name": "Event Name 4",
       "event_type": "biopsy.assay_order",
@@ -386,7 +386,7 @@
       }
     },
     {
-      "patient_id": "PAT123",
+      "patient_id": "100101",
       "event_date": "2016-05-11T22:06:33+00:00",
       "event_name": "Event Name 3",
       "event_type": "biopsy.variantReportShipped",
@@ -404,7 +404,7 @@
       }
     },
     {
-      "patient_id": "PAT123",
+      "patient_id": "100101",
       "event_date": "2016-05-11T22:06:33+00:00",
       "event_name": "Event Name 2",
       "event_type": "biopsy.variantReportReceived",
@@ -419,7 +419,7 @@
       }
     },
     {
-      "patient_id": "PAT123",
+      "patient_id": "100101",
       "event_date": "2016-05-09T22:06:33+00:00",
       "event_name": "Event Name 1",
       "event_type": "patient",
@@ -468,7 +468,7 @@
           {
             "molecular_id_analysis_id": "MSNANL123AN123",
             "variant_type": "single_nucleitide_variants",
-            "patient_id": "PAT123",
+            "patient_id": "100101",
             "surgical_event_id": "SUREVT0981",
             "molecular_id": "MOL0981",
             "analysis_id": "ANZ98761",
@@ -503,7 +503,7 @@
           {
             "molecular_id_analysis_id": "MSNANL123AN123",
             "variant_type": "single_nucleitide_variants",
-            "patient_id": "PAT123",
+            "patient_id": "100101",
             "surgical_event_id": "SUREVT0982",
             "molecular_id": "MOL0982",
             "analysis_id": "ANZ98762",
@@ -566,7 +566,7 @@
           {
             "molecular_id_analysis_id": "MSNANL123AN123",
             "variant_type": "single_nucleitide_variants",
-            "patient_id": "PAT123",
+            "patient_id": "100101",
             "surgical_event_id": "SUREVT0981",
             "molecular_id": "MOL0981",
             "analysis_id": "ANZ98761",
@@ -601,7 +601,7 @@
           {
             "molecular_id_analysis_id": "MSNANL123AN123",
             "variant_type": "single_nucleitide_variants",
-            "patient_id": "PAT123",
+            "patient_id": "100101",
             "surgical_event_id": "SUREVT0982",
             "molecular_id": "MOL0982",
             "analysis_id": "ANZ98762",
@@ -776,7 +776,7 @@
     }
   ],
   "specimen": {
-    "patient_id": "PAT123",
+    "patient_id": "100101",
     "collected_date": "2016-06-09T22:06:33+00:00",
     "received_date": "2016-06-09T22:06:33+00:00",
     "surgical_event_id": "SUREVT0982",
@@ -852,7 +852,7 @@
   },
   "specimen_history": [
     {
-      "patient_id": "PAT123",
+      "patient_id": "100101",
       "collected_date": "2016-06-09T22:06:33+00:00",
       "surgical_event_id": "SUREVT0981",
       "failed_date": "2016-06-09T22:06:33+00:00",
@@ -925,7 +925,7 @@
       ]
     },
     {
-      "patient_id": "PAT123",
+      "patient_id": "100101",
       "collected_date": "2016-06-09T22:06:33+00:00",
       "surgical_event_id": "SUREVT0982",
       "failed_date": "2016-06-09T22:06:33+00:00",
