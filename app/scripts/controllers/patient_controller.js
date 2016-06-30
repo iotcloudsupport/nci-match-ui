@@ -79,6 +79,7 @@
         $scope.onBloodVariantReportSelected = onBloodVariantReportSelected;
         $scope.onVariantReportSelected = onVariantReportSelected;
         $scope.showVariantReportActions = showVariantReportActions;
+        $scope.showAssignmentReportActions = showAssignmentReportActions;
         $scope.setActiveTab = setActiveTab;
 
         function setActiveTab(tab) {
@@ -496,8 +497,12 @@
             $log.debug(selected);
         }
 
-        function showVariantReportActions(variantReport) {
-            return variantReport && variantReport.status && variantReport.status === 'PENDING';
+        function showVariantReportActions(report) {
+            return report && report.status && report.status === 'PENDING';
+        }
+
+        function showAssignmentReportActions(report) {
+            return true; // TODO:RZ add loginc back: report && report.status && report.status === 'PENDING';
         }
     }
 
