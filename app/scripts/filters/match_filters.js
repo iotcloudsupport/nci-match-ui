@@ -119,7 +119,7 @@
 
     function irsample() {
         return function (text) {
-            return colorFilter(text, { 'PASSED': 'green', 'FAILED': 'red', 'TRUE': '#C3FDB8' });
+            return colorFilter(text, { 'PASSED': 'green', 'FAILED': 'red', 'TRUE': '#C3FDB8', 'FAILING': 'red', 'CONNECTED': 'green', 'WAITING': 'orange' });
         };
     }
 
