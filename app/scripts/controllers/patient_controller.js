@@ -228,15 +228,18 @@
 
             var currentAssignment = $scope.data.current_assignment;
 
-            $scope.assignmentReportOptions.push(
-                {
-                    text: currentAssignment.molecular_sequence_number + ' | ' + currentAssignment.analysis_id + ' | ' + currentAssignment.analysis_id + ' | ' + currentAssignment.received_from_cog_date,
-                    value: {
-                        molecular_sequence_number: currentAssignment.molecular_sequence_number,
-                        assignmemnt_reason: $scope.currentTreatmentArm.reason
-                    }
+            $scope.assignmentReportOption = {
+                text: $scope.currentTreatmentArm.name + 
+                    ' | ' + currentAssignment.biopsy_sequence_number + 
+                    ' | ' + currentAssignment.molecular_sequence_number + 
+                    ' | ' + currentAssignment.received_from_cog_date,
+                value: {
+                    molecular_sequence_number: currentAssignment.molecular_sequence_number,
+                    assignmemnt_reason: $scope.currentTreatmentArm.reason
                 }
-            );
+            };
+
+            $scope.assignmentReportOptions.push(assignmentReportOption);
         }
 
         function setupVariantReportOptions() {
