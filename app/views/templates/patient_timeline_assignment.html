@@ -1,16 +1,15 @@
 <div class="row">
     <div class="col-xs-5 col-md-4 date" title="Assignment Event">
-        <i class="fa fa-medkit fa-2x"></i> {{::timelineEvent.event_date | utc}}
+        <i class="fa fa-medkit fa-2x"></i> <small>{{::timelineEvent.event_date | utc}}</small>
         <br/>
         <small class="text-navy">{{::timelineEvent.from_now}}</small>
     </div>
     <div class="col-xs-7 col-md-8 content no-top-border">
-        <p class="m-b-xs"><strong>{{::timelineEvent.event_message}}.</strong></p>
+        <p class="m-b-xs"><span class="timeline-step">Step: {{::timelineEvent.step}}.</span> <strong>{{::timelineEvent.event_message}}.</strong></p>
         <body>
             <p>
                 Treatment Arm ID: <span class="timeline-value"><a>{{::timelineEvent.event_data.treatment_arm_id}}</a></span>,
                 Status: <span class="timeline-value">{{::timelineEvent.event_data.status}}</span>,
-                Step: <span class="timeline-value">{{::timelineEvent.event_data.step}}</span>,
                 Stratum ID: <span class="timeline-value">{{::timelineEvent.event_data.stratum_id}}</span>,
                 Assignment Date: <span class="timeline-value">{{::timelineEvent.event_data.assignment_date | utc}}</span>
             </p>
