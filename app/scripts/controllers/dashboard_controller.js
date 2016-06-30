@@ -56,6 +56,13 @@ angular.module('dashboard.matchbox',[])
         this.dtColumnDefs = [];
         this.dtInstance = {};
 
+        this.ddOptions = {
+            'info': false,
+            'paging': false,
+            'bFilter': false,
+            'order': [6, 'desc']
+        };
+
         $scope.pendingAssignmentReportList = [];
         $scope.pendingTissueVariantReportList = [];
         $scope.pendingBloodVariantReportList = [];
