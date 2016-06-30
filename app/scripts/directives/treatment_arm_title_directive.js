@@ -11,9 +11,8 @@
         };
 
         var template = '<span class="ta-title">\
-                    <a href="#/treatment-arm/{{vm.ta.name}}">\
-                        <span class="ta-name">{{vm.ta.name}}</span>\
-                        <span class="ta-version">{{vm.ta.version}}</span>\
+                    <a href="#/treatment-arm/{{vm.ta.name}}-{{vm.ta.stratum}}">\
+                        <span class="ta-name">{{vm.ta.name}}</span>-<span class="ta-stratum">{{vm.ta.stratum}}</span> <span class="ta-version">({{vm.ta.version}})</span>\
                     </a>\
                 </span>';
 

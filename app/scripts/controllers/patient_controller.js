@@ -156,7 +156,7 @@
         function __addMockData() {
             $scope.data.ta_history = [
                 {
-                    'name':'APEC1621-A', 
+                    'name':'APEC1621', 
                     'version':'2015-08-06', 
                     'stratum':'A', 
                     'title':'APEC1621-A (2015-08-06)', 
