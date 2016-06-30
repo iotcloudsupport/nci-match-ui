@@ -809,8 +809,9 @@ angular.module('treatment-arm.matchbox',[])
                     "assignmentLogic": "Assignment Details",
                     "variantReport": "Variant Report",
                     "dateSelected": "August 8, 2015  7:37 PM GMT",
-                    "dateOnArm": "-",
-                    "dateOffArm": "-",
+                    "dateOnArm": "August 9, 2015  9:20 AM GMT",
+                    "dateOffArm": "August 10, 2015  10:32 AM GMT",
+                    "timeOnArm": "1 day",
                     "step": "0",
                     "diseases": "Skin cancer, NOS"
                 }
@@ -826,6 +827,7 @@ angular.module('treatment-arm.matchbox',[])
                     "dateSelected": "January 20, 2015  7:05 PM GMT",
                     "dateOnArm": "-",
                     "dateOffArm": "-",
+                    "timeOnArm": "0 days",
                     "step": "0",
                     "diseases": "Chondrosarcoma"
                 }
@@ -839,9 +841,10 @@ angular.module('treatment-arm.matchbox',[])
                     "assignmentLogic": "Assignment Details",
                     "variantReport": "Variant Report",
                     "dateSelected": "September 21, 2015  1:25 PM GMT",
-                    "dateOnArm": "2015-09-22",
+                    "dateOnArm": "September 22, 2015  11:00 AM GMT",
                     "dateOffArm": "-",
-                    "step": "1",
+                    "timeOnArm": "9 months, 9 days",
+                    "step": "1.1",
                     "diseases": "Bone cancer, NOS"
                 }
             }
