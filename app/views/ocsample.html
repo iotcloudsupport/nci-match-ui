@@ -10,7 +10,7 @@
                     <a ui-sref="dashboard">Dashboard</a>
                 </li>
                 <li class="active">
-                    <a ui-sref="iradmin({ branch: branch})">Clia Labs ({{branch}})</a>
+                    <a ui-sref="iradmin({ branch: branch})">Clia Labs</a>
                 </li>
                 <!--<li class="active">-->
                     <!--<a ui-sref="ngsample({ sampleId: sid})">IR Sample Control Variant Report ({{sid}})</a>-->
@@ -26,7 +26,6 @@
 
     <div class="wrapper">
 
-
             <div class="no-horizontal-padding header-box-container">
 
                 <div class="row">
@@ -40,37 +39,9 @@
                                             <!--PIE CHART-->
                                             <div class="col-lg-3 cols-height cols-bottom">
 
-                                                <div class="panel" ng-init="loadPieChart();">
-                                                    <canvas id="pieCanvas" piechart
-                                                            ng-attr-data="pieData" responsive=true
-                                                            style="border-bottom: thin dimgrey solid; border-top: thin dimgrey solid;"></canvas>
-                                                </div>
 
 
-                                                <div class="ibox-title ibox-title-no-line">
-                                                    <h6>Oncomine Control Panel Summary</h6>
-                                                </div>
 
-                                                <table class="table" role="grid" style="font-size: small">
-                                                    <tbody>
-                                                    <tr>
-                                                        <td><a class="report-link" href ng-click="openCosmicGene(&quot;LRP1&quot;)">LRP1</a></td>
-                                                        <td><a class="report-link" href ng-click="openCosmicGene(&quot;TBP&quot;)">TBP</a></td>
-                                                        <td><a class="report-link" href ng-click="openCosmicGene(&quot;MYC&quot;)">MYC</a></td>
-                                                        <td><a class="report-link" href ng-click="openCosmicGene(&quot;HMBS&quot;)">HMBS</a></td>
-                                                        <td><a class="report-link" href ng-click="openCosmicGene(&quot;ITGB7&quot;)">ITGB7</a></td>
-                                                        <td class="label2">SUM</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td id="LRP1" width="15%">8668</td>
-                                                        <td id="v5TBP" width="15%">708413</td>
-                                                        <td id="v5MYC" width="15%">75577</td>
-                                                        <td id="v5HMBS" width="15%">164227</td>
-                                                        <td id="v5ITGB7" width="15%">1028</td>
-                                                        <td id="v5sum" width="15%">957913</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
 
                                                 <dl class="dl-horizontal" style="font-size: small">
 
@@ -123,6 +94,42 @@
                                                         </td></tr></table>
                                                     </dd>
                                                 </dl>
+
+
+                                                <!--CHART-->
+                                                <div class="panel" ng-init="loadPieChart();">
+                                                    <canvas id="pieCanvas" piechart
+                                                            ng-attr-data="pieData" responsive=true
+                                                            style="border-bottom: thin dimgrey solid; border-top: thin dimgrey solid;"></canvas>
+                                                </div>
+                                                <!--CHART-->
+
+                                                <!--SUMMARY-->
+                                                <div class="ibox-title ibox-title-no-line">
+                                                    <h6>Oncomine Control Panel Summary</h6>
+                                                </div>
+
+                                                <table class="table" role="grid" style="font-size: small">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td><a class="report-link" href ng-click="openCosmicGene(&quot;LRP1&quot;)">LRP1</a></td>
+                                                        <td><a class="report-link" href ng-click="openCosmicGene(&quot;TBP&quot;)">TBP</a></td>
+                                                        <td><a class="report-link" href ng-click="openCosmicGene(&quot;MYC&quot;)">MYC</a></td>
+                                                        <td><a class="report-link" href ng-click="openCosmicGene(&quot;HMBS&quot;)">HMBS</a></td>
+                                                        <td><a class="report-link" href ng-click="openCosmicGene(&quot;ITGB7&quot;)">ITGB7</a></td>
+                                                        <td class="label2">SUM</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td id="LRP1" width="15%">8668</td>
+                                                        <td id="v5TBP" width="15%">708413</td>
+                                                        <td id="v5MYC" width="15%">75577</td>
+                                                        <td id="v5HMBS" width="15%">164227</td>
+                                                        <td id="v5ITGB7" width="15%">1028</td>
+                                                        <td id="v5sum" width="15%">957913</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                <!--SUMMARY-->
 
                                             </div>
 
