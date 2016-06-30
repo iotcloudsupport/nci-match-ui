@@ -158,6 +158,28 @@
     "Aspirin"
   ],
   "message": "Some message",
+  "documents": {
+    "list": [
+      {
+        "name": "Document 1",
+        "uploaded_date": "2016-05-09T22:06:33+00:00",
+        "user": "James Bond",
+        "comment": "Several types of cancer can occur in the stomach. The most common type is called adenocarcinoma. It starts from one of the cell types found in the lining of the stomach."
+      },
+      {
+        "name": "Document 2",
+        "uploaded_date": "2016-05-09T22:06:33+00:00",
+        "user": "James Bond",
+        "comment": "Comments"
+      },
+      {
+        "name": "X-File A23FSD34",
+        "uploaded_date": "2016-05-09T22:06:33+00:00",
+        "user": "Fox Mulder",
+        "comment": "Comments"
+      }
+    ]
+  },
   "timeline": [
     {
       "patient_id": "100088",
