@@ -87,7 +87,8 @@
                                                     <i class="fa fa-medkit"></i> {{::activity.treatmentArmId}}<br></a>
                                                 <a ng-if="activity.molecularId !== ''" ui-sref="patient({ patient_id: activity.patientId })">{{activity.molecularId}}<br></a>
                                                 <a ng-if="activity.biopsySequenceNumber !== ''" ui-sref="patient({ patient_id: activity.patientId })">{{activity.biopsySequenceNumber}}<br></a>
-                                                <small class="text-muted">{{ activity.time | date:'yyyy-MM-dd HH:mm:ss' }} </small>
+                                                <a ng-if="activity.surgicalEventId !== ''" ui-sref="patient({ patient_id: activity.patientId })">{{activity.surgicalEventId}}<br></a>
+                                                <small class="text-muted">{{ activity.time | gmt }} </small>
                                             </div>
                                         </div>
                                     </div>
