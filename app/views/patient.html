@@ -90,6 +90,38 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="ibox float-e-margins">
+                                    <div class="row">
+                                        <div class="col-xs-4 col-md-4">
+                                            <h3>Treatment Arm History</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table class="table table-hover" role="grid">
+                                                <thead>
+                                                    <tr>
+                                                        <th width="20%">Treatmennt Arm</th>
+                                                        <th width="10%">Step</th>
+                                                        <th width="50%">Assignment Reason</th>
+                                                        <th width="20%">Date Assigned</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="ta in data.ta_history" style="cursor: auto; " role="row" class="odd">
+                                                        <td><a href="#">{{ta.title}}</a></td>
+                                                        <td>{{ta.step}}</td>
+                                                        <td>{{ta.assignment_reason}}</td>
+                                                        <td>{{ta.assignment_date | utc}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+
                                 <div class="ibox float-e-margins">
                                     <div class="row">
                                         <div class="col-xs-3">
