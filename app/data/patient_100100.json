@@ -386,6 +386,24 @@
     },
     {
       "patient_id": "PAT123",
+      "event_date": "2015-07-12T22:06:33+00:00",
+      "event_name": "Event Name 3",
+      "event_type": "biopsy.variantReportShipped",
+      "event_message": "Tissue Slide Specimen Shipped",
+      "event_data": {
+        "surgical_event_id": "SUREVT0982",
+        "molecular_id" : "1234",
+        "molecular_dna_id" : "DNA1234",
+        "molecular_cdna_id" : "CDNA1234",
+        "carrier": "Federal Express",
+        "tracking_id": "1203454512316546",
+        "step": "1.0",
+        "status": "PENDING",
+        "biopsy_sequence_number": "B-987456"
+      }
+    },
+    {
+      "patient_id": "PAT123",
       "event_date": "2016-02-15T22:06:33+00:00",
       "event_name": "Event Name 3",
       "event_type": "biopsy.variantReportShipped",
@@ -666,6 +684,24 @@
         "status": "ORDER",
         "biopsy_sequence_number": "B-987456",
         "ordered_date": "2015-07-20T22:07:33+00:00"
+      }
+    },
+    {
+      "patient_id": "PAT123",
+      "event_date": "2015-07-12T22:06:33+00:00",
+      "event_name": "Event Name 3",
+      "event_type": "biopsy.variantReportShipped",
+      "event_message": "Tissue Slide Specimen Shipped",
+      "event_data": {
+        "surgical_event_id": "SUREVT0982",
+        "molecular_id" : "1234",
+        "molecular_dna_id" : "DNA1234",
+        "molecular_cdna_id" : "CDNA1234",
+        "carrier": "Federal Express",
+        "tracking_id": "1203454512316546",
+        "step": "1.0",
+        "status": "PENDING",
+        "biopsy_sequence_number": "B-987456"
       }
     },
     {
