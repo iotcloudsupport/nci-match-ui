@@ -47,20 +47,14 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="header-info-box top-main-header-box">
                         <dl class="dl-horizontal">
-                            <dt>Disease</dt>
-                            <dd>{{data.disease.name}}</dd>
+                            <dt>Disease Name</dt>
+                            <dd>{{::data.disease.name}}</dd>
 
-                            <dt>CTEP Category</dt>
-                            <dd>{{data.disease.ctep_category}}</dd>
+                            <dt>Disease Type</dt>
+                            <dd>{{::data.disease.type}}</dd>
 
-                            <dt>CTEP Sub Category</dt>
-                            <dd>{{data.disease.ctep_sub_category}}</dd>
-
-                            <dt>CTEP Term</dt>
-                            <dd>{{data.disease.ctep_term}}</dd>
-
-                            <dt>MedDRA Code</dt>
-                            <dd>{{data.disease.med_dra_code}}</dd>
+                            <dt>Disease Code</dt>
+                            <dd>{{::data.disease.code}}</dd>
 
                             <dt>Prior Drugs</dt>
                             <dd>{{data.prior_drugs.join(', ')}}</dd>
@@ -479,71 +473,76 @@
                                 <h3>Single Nucleitide Variant(s)</h3>
                             </div>
 
-                            <table class="table table-hover" role="grid">
-                                <thead>
-                                    <tr>
-                                        <th ng-if="variantReportMode!=='QC'">Confirm</th>
-                                        <th ng-if="variantReportMode!=='QC'">Comment</th>
-                                        <th>ID</th>
-                                        <th ng-if="variantReportMode!=='QC'">aMOI</th>
-                                        <th>Chrom</th>
-                                        <th>Position</th>
-                                        <th>CDS Ref</th>
-                                        <th>CDS Alt</th>
-                                        <th>OCP Ref</th>
-                                        <th>OCP Alt</th>
-                                        <th>Strand</th>
-                                        <th>Allele Freq</th>
-                                        <th>Func Gene</th>
-                                        <th>Oncomine Variant Class</th>
-                                        <th>Exon</th>
-                                        <th>Function</th>
-                                        <th>HGVS</th>
-                                        <th>Read Depth</th>
-                                        <th>Transcript</th>
-                                        <th>Protein</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="variant in currentVariantReport.variants.single_nucleitide_variants" style="cursor: auto;" role="row" class="odd">
-                                        <td ng-if="variantReportMode!=='QC'">
-                                            <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
-                                                comment="variant.comment" prompt-only-if="true">
-                                            </div>
-                                        </td>
-                                        <td ng-if="variantReportMode!=='QC'">
-                                            <a ng-if="variant.comment" href ng-click="editComment(variant)"> <i class="fa fa-file-text-o"></i></a>
-                                        </td>
-                                        <td>{{variant.variant_id}}</td>
-                                        <td ng-if="variantReportMode!=='QC'">{{variant.aMOI}}<sup>({{variant.inclusion}})</sup></td>
-                                        <td>{{variant.chromosome}}</td>
-                                        <td>{{variant.position}}</td>
-                                        <td>{{variant.cds_ref}}</td>
-                                        <td>{{variant.cds_alt}}</td>
-                                        <td>{{variant.ocp_ref}}</td>
-                                        <td>{{variant.ocp_alt}}</td>
-                                        <td>{{variant.strand}}</td>
-                                        <td>{{variant.allele_frequency}}</td>
-                                        <td>{{variant.funcGene}}</td>
-                                        <td>{{variant.oncomine_variant_class}}</td>
-                                        <td>{{variant.exon}}</td>
-                                        <td>{{variant.function}}</td>
-                                        <td>{{variant.hgvs}}</td>
-                                        <td>{{variant.read_depth}}</td>
-                                        <td>{{variant.transcript}}</td>
-                                        <td>{{variant.protein}}</td>
-                                    </tr>
+                        <!--Single Nucleitide Variant(s)-->
+                        <div class="ibox-title ibox-title-no-line">
+                            <h3>SNVs, MNVs, Indels</h3>
+                        </div>
 
-                                    <tr ng-if="!currentVariantReport.variants.single_nucleitide_variants || !currentVariantReport.variants.single_nucleitide_variants.length">
-                                        <td colspan="8"><span class="text-muted">No Single Nucleitide Variants</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <table class="table table-hover" role="grid">
+                            <thead>
+                                <tr>
+                                    <th ng-if="variantReportMode!=='QC'">Confirm</th>
+                                    <th ng-if="variantReportMode!=='QC'">Comment</th>
+                                    <th>ID</th>
+                                    <th ng-if="variantReportMode!=='QC'">aMOI</th>
+                                    <th>Chrom</th>
+                                    <th>Position</th>
+                                    <th>CDS Ref</th>
+                                    <th>CDS Alt</th>
+                                    <th>OCP Ref</th>
+                                    <th>OCP Alt</th>
+                                    <th>Strand</th>
+                                    <th>Allele Freq</th>
+                                    <th>Func Gene</th>
+                                    <th>Oncomine Variant Class</th>
+                                    <th>Exon</th>
+                                    <th>Function</th>
+                                    <th>HGVS</th>
+                                    <th>Read Depth</th>
+                                    <th>Transcript</th>
+                                    <th>Protein</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="variant in currentVariantReport.variants.single_nucleitide_variants" style="cursor: auto;" role="row" class="odd">
+                                    <td ng-if="variantReportMode!=='QC'">
+                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
+                                            comment="variant.comment" prompt-only-if="true">
+                                        </div>
+                                    </td>
+                                    <td ng-if="variantReportMode!=='QC'">
+                                        <a ng-if="variant.comment" href ng-click="editComment(variant)"> <i class="fa fa-file-text-o"></i></a>
+                                    </td>
+                                    <td>{{::variant.variant_id}}</td>
+                                    <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}<sup>({{::variant.inclusion}})</sup></td>
+                                    <td>{{::variant.chromosome}}</td>
+                                    <td>{{::variant.position}}</td>
+                                    <td>{{::variant.cds_ref}}</td>
+                                    <td>{{::variant.cds_alt}}</td>
+                                    <td>{{::variant.ocp_ref}}</td>
+                                    <td>{{::variant.ocp_alt}}</td>
+                                    <td>{{::variant.strand}}</td>
+                                    <td>{{::variant.allele_frequency}}</td>
+                                    <td>{{::variant.funcGene}}</td>
+                                    <td>{{::variant.oncomine_variant_class}}</td>
+                                    <td>{{::variant.exon}}</td>
+                                    <td>{{::variant.function}}</td>
+                                    <td>{{::variant.hgvs}}</td>
+                                    <td>{{::variant.read_depth}}</td>
+                                    <td>{{::variant.transcript}}</td>
+                                    <td>{{::variant.protein}}</td>
+                                </tr>
 
-                            <!--Indels-->
-                            <div class="ibox-title ibox-title-no-line">
-                                <h3>Indel(s)</h3>
-                            </div>
+                                <tr ng-if="!currentVariantReport.variants.single_nucleitide_variants || !currentVariantReport.variants.single_nucleitide_variants.length">
+                                    <td colspan="8"><span class="text-muted">No Single Nucleitide Variants</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <!--Copy Number Variant(s)-->
+                        <div class="ibox-title ibox-title-no-line">
+                            <h3>Copy Number Variant(s)</h3>
+                        </div>
 
                             <table class="table table-hover" role="grid">
                                 <thead>
@@ -808,7 +807,7 @@
 
                             <!--Single Nucleitide Variant(s)-->
                             <div class="ibox-title ibox-title-no-line">
-                                <h3>Single Nucleitide Variant(s)</h3>
+                                <h3>SNVs, MNVs, Indels(s)</h3>
                             </div>
 
                             <table class="table table-hover" role="grid">
@@ -873,71 +872,6 @@
                                 </tbody>
                             </table>
 
-                            <!--Indels-->
-                            <div class="ibox-title ibox-title-no-line">
-                                <h3>Indel(s)</h3>
-                            </div>
-
-                            <table class="table table-hover" role="grid">
-                                <thead>
-                                    <tr>
-                                        <th ng-if="variantReportMode!=='QC'">Confirm</th>
-                                        <th ng-if="variantReportMode!=='QC'">Comment</th>
-                                        <th>ID</th>
-                                        <th ng-if="variantReportMode!=='QC'">aMOI</th>
-                                        <th>Chrom</th>
-                                        <th>Position</th>
-                                        <th>CDS Ref</th>
-                                        <th>CDS Alt</th>
-                                        <th>OCP Ref</th>
-                                        <th>OCP Alt</th>
-                                        <th>Strand</th>
-                                        <th>Allele Freq</th>
-                                        <th>Func Gene</th>
-                                        <th>Oncomine Variant Class</th>
-                                        <th>Exon</th>
-                                        <th>Function</th>
-                                        <th>HGVS</th>
-                                        <th>Read Depth</th>
-                                        <th>Transcript</th>
-                                        <th>Protein</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="variant in currentBloodVariantReport.variants.indels" style="cursor: auto;" role="row" class="odd">
-                                        <td ng-if="variantReportMode!=='QC'">
-                                            <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
-                                                comment="variant.comment" prompt-only-if="true">
-                                            </div>
-                                        </td>
-                                        <td ng-if="variantReportMode!=='QC'">
-                                            <a ng-if="variant.comment" href ng-click="editComment(variant)"> <i class="fa fa-file-text-o"></i></a>
-                                        </td>
-                                        <td>{{variant.id}}</td>
-                                        <td ng-if="variantReportMode!=='QC'">{{variant.aMOI}}<sup>({{variant.inclusion}})</sup></td>
-                                        <td>{{variant.chrom}}</td>
-                                        <td>{{variant.position}}</td>
-                                        <td>{{variant.cds_ref}}</td>
-                                        <td>{{variant.cds_alt}}</td>
-                                        <td>{{variant.ocp_ref}}</td>
-                                        <td>{{variant.ocp_alt}}</td>
-                                        <td>{{variant.strand}}</td>
-                                        <td>{{variant.alleleFreq}}</td>
-                                        <td>{{variant.funcGene}}</td>
-                                        <td>{{variant.oncomineVariantClass}}</td>
-                                        <td>{{variant.exon}}</td>
-                                        <td>{{variant.funct}}</td>
-                                        <td>{{variant.hGVS}}</td>
-                                        <td>{{variant.readDepth}}</td>
-                                        <td>{{variant.transcript}}</td>
-                                        <td>{{variant.protein}}</td>
-                                    </tr>
-
-                                    <tr ng-if="!currentBloodVariantReport.variants.indels || !currentBloodVariantReport.variants.indels.length">
-                                        <td colspan="8"><span class="text-muted">No Indels</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
 
                             <!--Copy Number Variant(s)-->
                             <div class="ibox-title ibox-title-no-line">
