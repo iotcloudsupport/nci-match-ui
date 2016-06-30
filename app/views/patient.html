@@ -737,50 +737,6 @@
                                         </tbody>
                                     </table>
 
-                                    <!--Copy Number Variant(s)-->
-                                    <div class="ibox-title ibox-title-no-line">
-                                        <h3>Copy Number Variant(s)</h3>
-                                    </div>
-
-                                    <table class="table table-hover" role="grid">
-                                        <thead>
-                                            <tr>
-                                                <th ng-if="variantReportMode!=='QC'">Confirm</th>
-                                                <th ng-if="variantReportMode!=='QC'">Comment</th>
-                                                <th>ID</th>
-                                                <th ng-if="variantReportMode!=='QC'">aMOI</th>
-                                                <th>Chrom</th>
-                                                <th>Raw CN</th>
-                                                <th>CN</th>
-                                                <th>CI 5%</th>
-                                                <th>CI 95%</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr ng-repeat="variant in currentVariantReport.variants.copy_number_variants" style="cursor: auto;" role="row" class="odd">
-                                                <td ng-if="variantReportMode!=='QC'">
-                                                    <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
-                                                        comment="variant.comment" prompt-only-if="true">
-                                                    </div>
-                                                </td>
-                                                <td ng-if="variantReportMode!=='QC'">
-                                                    <a ng-if="variant.comment" href ng-click="editComment(variant)"> <i class="fa fa-file-text-o"></i></a>
-                                                </td>
-                                                <td>{{variant.identifier}}</td>
-                                                <td ng-if="variantReportMode!=='QC'">{{variant.aMOI}}<sup>({{variant.inclusion}})</sup></td>
-                                                <td>{{variant.chromosome}}</td>
-                                                <td>{{variant.rawCopyNumber}}</td>
-                                                <td>{{variant.copyNumber}}</td>
-                                                <td>{{variant.confidenceInterval5percent}}</td>
-                                                <td>{{variant.confidenceInterval95percent}}</td>
-                                            </tr>
-
-                                            <tr ng-if="!currentVariantReport.variants.copy_number_variants || !currentVariantReport.variants.copy_number_variants.length">
-                                                <td colspan="8"><span class="text-muted">No Copy Number Variants</span></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-
                                     <!--Gene Fusion(s)-->
                                     <div class="ibox-title ibox-title-no-line">
                                         <h3>Gene Fusion(s)</h3>
