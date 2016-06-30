@@ -14,8 +14,8 @@
         {
             "name":"APEC1621-T",
             "version":"2016-05-13",
-            "stratum":"T",
-            "title":"APEC1621-T (2016-05-13)",
+            "stratum":"STR13",
+            "title":"APEC1621-T; STR13; 2016-05-13",
             "step": "Step 4.1",
             "assignment_reason": "The patient and treatment match on variand identifier [VAR98762].",
             "assignment_date":"2016-06-12T13:42:13+00:00"
@@ -23,8 +23,8 @@
         {
             "name":"APEC1621-Q",
             "version":"2015-08-06",
-            "stratum":"Q",
-            "title":"APEC1621-Q (2015-08-06)",
+            "stratum":"STR43",
+            "title":"APEC1621-Q; STR43; 2015-08-06",
             "step": "Step 3.1",
             "assignment_reason": "The patient and treatment match on variand identifier [COSM14062].",
             "assignment_date":"2016-04-21T08:46:53+00:00"
@@ -32,8 +32,8 @@
         {
             "name":"APEC1621-E",
             "version":"2015-06-18",
-            "stratum":"E",
-            "title":"APEC1621-E (2015-02-18)",
+            "stratum":"STR16",
+            "title":"APEC1621-E; STR16; 2015-02-18",
             "step": "Step 2.1",
             "assignment_reason": "The patient and treatment arm match on non-hotspot variant [(ID: .,GENE: NF1,OVA: Deleterious,EXON: 35,FUNC: nonsense,PROTEIN: p.Arg1534Ter)].",
             "assignment_date":"2016-01-29T12:36:53+00:00"
@@ -41,8 +41,8 @@
         {
             "name":"APEC1621-U",
             "version":"2015-04-26",
-            "stratum":"U",
-            "title":"APEC1621-U (2015-04-26)",
+            "stratum":"STR5",
+            "title":"APEC1621-U; STR5; 2015-04-26",
             "step": "Step 1.1",
             "assignment_reason": "The patient and treatment match on variand identifier [ABSF, DEDF].",
             "assignment_date":"2015-11-25T15:37:43+00:00"
@@ -217,9 +217,9 @@
                 "step": "4.1",
                 "status": "ON_TREATMENT_ARM",
                 "message": "",
-                "stratum_id": "1235",
+                "stratum_id": "STR13",
                 "biopsy_sequence_number": "B-987456",
-                "treatment_arm_id": "APEC1621-Y",
+                "treatment_arm_id": "APEC1621-T",
                 "assignment_date" : "2016-05-05T13:52:13+00:00"
             }
         },
@@ -295,7 +295,7 @@
                 "step": "3.1",
                 "status": "ON_TREATMENT_ARM",
                 "message": "",
-                "stratum_id": "Q",
+                "stratum_id": "STR43",
                 "biopsy_sequence_number": "B-987456",
                 "treatment_arm_id": "APEC1621-Q",
                 "assignment_date" : "2015-11-30T13:52:13+00:00"
@@ -508,7 +508,7 @@
                 "step": "2.1",
                 "status": "ON_TREATMENT_ARM",
                 "message": "",
-                "stratum_id": "E",
+                "stratum_id": "STR16",
                 "biopsy_sequence_number": "B-987456",
                 "treatment_arm_id": "APEC1621-E",
                 "assignment_date" : "2015-08-15T13:52:13+00:00"
@@ -586,9 +586,9 @@
                 "step": "1.1",
                 "status": "ON_TREATMENT_ARM",
                 "message": "",
-                "stratum_id": "12",
+                "stratum_id": "STR5",
                 "biopsy_sequence_number": "B-987456",
-                "treatment_arm_id": "APEC1621-Y",
+                "treatment_arm_id": "APEC1621-U",
                 "assignment_date" : "2015-06-12T13:52:13+00:00"
             }
         },

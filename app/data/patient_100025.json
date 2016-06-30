@@ -14,8 +14,8 @@
         {
             "name":"APEC1621-U",
             "version":"2015-08-06",
-            "stratum":"U",
-            "title":"APEC1621-U (2015-08-06)",
+            "stratum":"STR2",
+            "title":"APEC1621-U; STR2; 2015-08-06",
             "step": "Step 1.1",
             "assignment_reason": "The patient and treatment match on variand identifier [ABSF, DEDF].",
             "assignment_date":"2016-05-09T22:06:33+00:00"
@@ -190,7 +190,7 @@
                 "step": "1.1",
                 "status": "ON_TREATMENT_ARM",
                 "message": "",
-                "stratum_id": "U",
+                "stratum_id": "STR2",
                 "biopsy_sequence_number": "B-987456",
                 "treatment_arm_id": "APEC1621-U",
                 "assignment_date" : "2016-05-16T22:08:33+00:00"
