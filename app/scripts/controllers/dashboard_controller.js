@@ -91,7 +91,7 @@ angular.module('dashboard.matchbox',[])
                 'clia_lab': 'MoCha',
                 'specimen_received_date': 1421162969643,
                 'variant_report_received_date': 1421162969643,
-                'days_pending': '3'
+                'days_pending': '1'
 
             },
             {
@@ -102,6 +102,26 @@ angular.module('dashboard.matchbox',[])
                 'specimen_received_date': 1421163069643,
                 'variant_report_received_date': 1421163269643,
                 'days_pending': '3'
+
+            },
+            {
+                'patient_id': '100099',
+                'molecular_id': 'MSN1245',
+                'analysis_id': 'AT5678',
+                'clia_lab': 'MoCha',
+                'specimen_received_date': 1421162969643,
+                'variant_report_received_date': 1421162969643,
+                'days_pending': '8'
+
+            },
+            {
+                'patient_id': '100065',
+                'molecular_id': 'MSN12345',
+                'analysis_id': 'AT5682',
+                'clia_lab': 'MDA',
+                'specimen_received_date': 1421163069643,
+                'variant_report_received_date': 1421163269643,
+                'days_pending': '15'
 
             }
         ];
