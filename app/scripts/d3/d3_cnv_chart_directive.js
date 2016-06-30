@@ -288,10 +288,10 @@
                                         placement: dir,
                                         container: 'body',
                                         content: function () {
-                                            return '<ul class="list-group">' +
-                                                '<li class="list-group-item" style="width:100%;">chr: ' + chr + '</li>' +
-                                                '<li class="list-group-item" style="width:100%;">' + pos + '</li>' +
-                                                '<li class="list-group-item" style="width:100%;">' + cn + '</li>' +
+                                            return '<ul class="list-group no-bullets">' +
+                                                '<li style="width:100%;">chr: ' + chr + '</li>' +
+                                                '<li style="width:100%;">' + pos + '</li>' +
+                                                '<li style="width:100%;">' + cn + '</li>' +
                                                 '</ul>';
                                         }
                                     });
