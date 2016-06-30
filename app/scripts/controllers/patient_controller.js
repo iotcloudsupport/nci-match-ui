@@ -209,6 +209,11 @@
         function setupVariantReports() {
             $scope.variantReports = [];
 
+            if (!$scope.data.variant_reports || !$scope.data.variant_reports.length) {
+                $log.error('The web service didn\'t send Variant Reports');
+                return;
+            }
+
             for (var i = 0; i < $scope.data.variant_reports.length; i++) {
                 $scope.data.variant_reports[i].variant_report_mode = 'FILTERED';
                 $scope.variantReports['' + $scope.data.variant_reports[i].variant_report_type + $scope.data.variant_reports[i].variant_report_mode] = $scope.data.variant_reports[i];
@@ -223,12 +228,12 @@
 
             $scope.variantReportType = 'TISSUE';
             $scope.variantReportMode = 'FILTERED';
+
             setVariantReport();
         }
 
         function setupVariantReportOptions() {
-            if (!$scope.data.variant_reports && !$scope.data.variant_reports.length) {
-                $log.error('The web service didn\'t send Variant Reports');
+            if (!$scope.data.variant_reports || !$scope.data.variant_reports.length) {
                 return;
             }
 
