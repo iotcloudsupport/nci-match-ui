@@ -56,6 +56,13 @@ angular.module('dashboard.matchbox',[])
         this.dtColumnDefs = [];
         this.dtInstance = {};
 
+        this.ddOptions = {
+            'info': false,
+            'paging': false,
+            'bFilter': false,
+            'order': [6, 'desc']
+        };
+
         $scope.pendingAssignmentReportList = [];
         $scope.pendingTissueVariantReportList = [];
         $scope.pendingBloodVariantReportList = [];
@@ -91,7 +98,7 @@ angular.module('dashboard.matchbox',[])
                 'clia_lab': 'MoCha',
                 'specimen_received_date': 1421162969643,
                 'variant_report_received_date': 1421162969643,
-                'days_pending': '3'
+                'days_pending': '1'
 
             },
             {
@@ -102,6 +109,26 @@ angular.module('dashboard.matchbox',[])
                 'specimen_received_date': 1421163069643,
                 'variant_report_received_date': 1421163269643,
                 'days_pending': '3'
+
+            },
+            {
+                'patient_id': '100099',
+                'molecular_id': 'MSN1245',
+                'analysis_id': 'AT5678',
+                'clia_lab': 'MoCha',
+                'specimen_received_date': 1421162969643,
+                'variant_report_received_date': 1421162969643,
+                'days_pending': '8'
+
+            },
+            {
+                'patient_id': '100065',
+                'molecular_id': 'MSN12345',
+                'analysis_id': 'AT5682',
+                'clia_lab': 'MDA',
+                'specimen_received_date': 1421163069643,
+                'variant_report_received_date': 1421163269643,
+                'days_pending': '15'
 
             }
         ];
@@ -196,11 +223,12 @@ angular.module('dashboard.matchbox',[])
 
         $scope.message = [
             'Patient Registration',
-            'Specimen Received',
-            'Specimen Failure',
+            'Tissue Specimen Received',
+            'Tissue Specimen Failure',
             'New Treatment Arm',
             'Treatment Arm Open',
-            'Treatment Arm Closed'
+            'Treatment Arm Closed',
+            'Blood Specimen Received'
         ];
 
         $scope.status = [
@@ -221,6 +249,7 @@ angular.module('dashboard.matchbox',[])
                 "treatmentArmId": '',
                 "molecularId": '',
                 "biopsySequenceNumber": '',
+                "surgicalEventId": '',
                 "time": 1421175969643,
                 "age": '3m',
                 "displayName": $scope.message[0]
@@ -232,6 +261,7 @@ angular.module('dashboard.matchbox',[])
                 "treatmentArmId": 'APEC1621-A',
                 "molecularId": '',
                 "biopsySequenceNumber": '',
+                "surgicalEventId": '',
                 "time": 1421175969643,
                 "age": '3m',
                 "displayName": $scope.message[4]
@@ -243,6 +273,7 @@ angular.module('dashboard.matchbox',[])
                 "treatmentArmId": '',
                 "molecularId": 'MSN12349',
                 "biopsySequenceNumber": 'AT111',
+                "surgicalEventId": '125',
                 "time": 1421171969643,
                 "age": '5m',
                 "displayName": $scope.message[1]
@@ -254,6 +285,7 @@ angular.module('dashboard.matchbox',[])
                 "treatmentArmId": 'APEC1621-Z',
                 "molecularId": '',
                 "biopsySequenceNumber": '',
+                "surgicalEventId": '',
                 "time": 1421169969643,
                 "age": '5m',
                 "displayName": $scope.message[5]
@@ -265,6 +297,7 @@ angular.module('dashboard.matchbox',[])
                 "treatmentArmId": '',
                 "molecularId": 'MSN12349',
                 "biopsySequenceNumber": 'AT108',
+                "surgicalEventId": '125',
                 "time": 1421165969643,
                 "age": '18m',
                 "displayName": $scope.message[1]
@@ -275,6 +308,7 @@ angular.module('dashboard.matchbox',[])
                 "patientId": '100065',
                 "treatmentArmId": '',
                 "molecularId": 'MSN12340',
+                "surgicalEventId": '125',
                 "biopsySequenceNumber": 'AT105',
                 "time": 1421162969643,
                 "age": '5h',
@@ -287,6 +321,7 @@ angular.module('dashboard.matchbox',[])
                 "treatmentArmId": 'APEC1621-A',
                 "molecularId": '',
                 "biopsySequenceNumber": '',
+                "surgicalEventId": '',
                 "time": 1421162969643,
                 "age": '5h',
                 "displayName": $scope.message[3]
@@ -298,9 +333,10 @@ angular.module('dashboard.matchbox',[])
                 "treatmentArmId": '',
                 "molecularId": 'MSN12340',
                 "biopsySequenceNumber": 'AT105',
+                "surgicalEventId": '125',
                 "time": 1421160969643,
                 "age": '6d',
-                "displayName": $scope.message[1]
+                "displayName": $scope.message[6]
             },
             {
                 "pic": $scope.icons[4],
@@ -309,6 +345,7 @@ angular.module('dashboard.matchbox',[])
                 "treatmentArmId": '',
                 "molecularId": '',
                 "biopsySequenceNumber": '',
+                "surgicalEventId": '',
                 "time": 1421155768643,
                 "age": '1y',
                 "displayName": $scope.message[0]
@@ -320,6 +357,7 @@ angular.module('dashboard.matchbox',[])
                 "treatmentArmId": '',
                 "molecularId": 'MSN12330',
                 "biopsySequenceNumber": 'AT101',
+                "surgicalEventId": '125',
                 "time": 1421162969643,
                 "age": '5h',
                 "displayName": $scope.message[2]
@@ -331,9 +369,10 @@ angular.module('dashboard.matchbox',[])
                 "treatmentArmId": '',
                 "molecularId": 'MSN12330',
                 "biopsySequenceNumber": 'AT101',
+                "surgicalEventId": '125',
                 "time": 1421160969643,
                 "age": '6d',
-                "displayName": $scope.message[1]
+                "displayName": $scope.message[6]
             },
             {
                 "pic": $scope.icons[4],
@@ -342,6 +381,7 @@ angular.module('dashboard.matchbox',[])
                 "treatmentArmId": '',
                 "molecularId": '',
                 "biopsySequenceNumber": '',
+                "surgicalEventId": '125',
                 "time": 1421155768643,
                 "age": '1y',
                 "displayName": $scope.message[0]
@@ -353,6 +393,7 @@ angular.module('dashboard.matchbox',[])
                 "treatmentArmId": '',
                 "molecularId": '',
                 "biopsySequenceNumber": '',
+                "surgicalEventId": '125',
                 "time": 1421155768643,
                 "age": '1y',
                 "displayName": $scope.message[0]

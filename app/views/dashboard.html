@@ -87,7 +87,8 @@
                                                     <i class="fa fa-medkit"></i> {{::activity.treatmentArmId}}<br></a>
                                                 <a ng-if="activity.molecularId !== ''" ui-sref="patient({ patient_id: activity.patientId })">{{activity.molecularId}}<br></a>
                                                 <a ng-if="activity.biopsySequenceNumber !== ''" ui-sref="patient({ patient_id: activity.patientId })">{{activity.biopsySequenceNumber}}<br></a>
-                                                <small class="text-muted">{{ activity.time | date:'yyyy-MM-dd HH:mm:ss' }} </small>
+                                                <a ng-if="activity.surgicalEventId !== ''" ui-sref="patient({ patient_id: activity.patientId })">{{activity.surgicalEventId}}<br></a>
+                                                <small class="text-muted">{{ activity.time | gmt }} </small>
                                             </div>
                                         </div>
                                     </div>
@@ -109,7 +110,7 @@
                                                  ng-controller="DashboardPendingReviewController as DashCtrl"
                                                  ng-init="loadTissueVariantReportsList()">
                                                 <table datatable="ng"
-                                                       dt-options="DashCtrl.dtOptions"
+                                                       dt-options="DashCtrl.ddOptions"
                                                        dt-column-defs="DashCtrl.dtColumnDefs"
                                                        dt-instance="DashCtrl.dtInstance"
                                                        class="table table-striped table-bordered table-hover">
@@ -147,7 +148,7 @@
                                                  ng-controller="DashboardPendingReviewController as DashCtrl"
                                                  ng-init="loadBloodVariantReportsList()">
                                                 <table datatable="ng"
-                                                       dt-options="DashCtrl.dtOptions"
+                                                       dt-options="DashCtrl.ddOptions"
                                                        dt-column-defs="DashCtrl.dtColumnDefs"
                                                        dt-instance="DashCtrl.dtInstance"
                                                        class="table table-striped table-bordered table-hover">
@@ -174,7 +175,10 @@
                                                         <td>{{ patient.clia_lab || '-' }}</td>
                                                         <td>{{ patient.specimen_received_date | gmt }}</td>
                                                         <td>{{ patient.variant_report_received_date | gmt }}</td>
-                                                        <td><span class="label label-primary">{{ patient.days_pending || '-' }}</span></td>
+                                                        <td><span ng-if="patient.days_pending >= 14" class="label label-danger">{{ patient.days_pending || '-' }}</span>
+                                                            <span ng-if="patient.days_pending < 14 && patient.days_pending >= 8" class="label label-warning">{{ patient.days_pending || '-' }}</span>
+                                                            <span ng-if="patient.days_pending < 8 " class="label label-primary">{{ patient.days_pending || '-' }}</span>
+                                                        </td>
                                                     </tr>
                                                     </tbody>
                                                 </table>

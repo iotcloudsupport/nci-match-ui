@@ -79,6 +79,7 @@
         $scope.onBloodVariantReportSelected = onBloodVariantReportSelected;
         $scope.onVariantReportSelected = onVariantReportSelected;
         $scope.showVariantReportActions = showVariantReportActions;
+        $scope.showAssignmentReportActions = showAssignmentReportActions;
         $scope.setActiveTab = setActiveTab;
 
         function setActiveTab(tab) {
@@ -209,6 +210,11 @@
         function setupVariantReports() {
             $scope.variantReports = [];
 
+            if (!$scope.data.variant_reports || !$scope.data.variant_reports.length) {
+                $log.error('The web service didn\'t send Variant Reports');
+                return;
+            }
+
             for (var i = 0; i < $scope.data.variant_reports.length; i++) {
                 $scope.data.variant_reports[i].variant_report_mode = 'FILTERED';
                 $scope.variantReports['' + $scope.data.variant_reports[i].variant_report_type + $scope.data.variant_reports[i].variant_report_mode] = $scope.data.variant_reports[i];
@@ -223,12 +229,12 @@
 
             $scope.variantReportType = 'TISSUE';
             $scope.variantReportMode = 'FILTERED';
+
             setVariantReport();
         }
 
         function setupVariantReportOptions() {
-            if (!$scope.data.variant_reports && !$scope.data.variant_reports.length) {
-                $log.error('The web service didn\'t send Variant Reports');
+            if (!$scope.data.variant_reports || !$scope.data.variant_reports.length) {
                 return;
             }
 
@@ -491,8 +497,12 @@
             $log.debug(selected);
         }
 
-        function showVariantReportActions(variantReport) {
-            return variantReport && variantReport.status && variantReport.status === 'PENDING';
+        function showVariantReportActions(report) {
+            return report && report.status && report.status === 'PENDING';
+        }
+
+        function showAssignmentReportActions(report) {
+            return true; // TODO:RZ add loginc back: report && report.status && report.status === 'PENDING';
         }
     }
 

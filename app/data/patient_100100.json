@@ -170,16 +170,8 @@
     "code": "1000961"
   },
   "prior_drugs": [
-    {
-      "drug_id" : "",
-      "name" : "Aspirin",
-      "date_received" : "2016-06-29T14:46:00+00:00"
-    },
-    {
-      "drug_id" : "",
-      "name" : "Afatinib",
-      "date_received" : "2016-06-29T14:46:00+00:00"
-    }
+    "Aspirin",
+    "Afatinib"
   ],
   "message": "Some message",
   "timeline": [
@@ -1354,7 +1346,7 @@
         ]
       },
       {
-        "molecular_id": "MSN5678",
+        "molecular_id": "5678",
         "tracking_number": "675867856677",
         "destination_date": "2016-06-09T22:06:33+00:00",
         "dna_concordance": 10.2,
@@ -1391,28 +1383,16 @@
       "variant_report_confirmed_date": "2016-06-09T22:06:33+00:00",
       "assays": [
         {
-          "gene": "PTEN",
-          "ordered_date": "2016-06-09T22:06:33+00:00",
-          "result_date": "2016-07-09T22:06:33+00:00T",
-          "result": "POSITIVE"
-        },
-        {
           "gene": "MLH1",
           "ordered_date": "2016-06-09T22:06:33+00:00",
-          "result_date": "2016-07-09T22:06:33+00:00T",
+          "result_date": "2016-07-09T22:06:33+00:00",
           "result": "POSITIVE"
         },
         {
           "gene": "MSCH2",
           "ordered_date": "2016-06-09T22:06:33+00:00",
-          "result_date": "2016-07-09T22:06:33+00:00T",
+          "result_date": "2016-07-09T22:06:33+00:00",
           "result": "POSITIVE"
-        },
-        {
-          "gene": "RB",
-          "ordered_date": "2016-06-09T22:06:33+00:00",
-          "result_date": "2016-07-09T22:06:33+00:00T",
-          "result": "NEGATIVE"
         }
       ],
       "assignments": "",
@@ -1422,6 +1402,7 @@
           "surgical_event_id" : "SUREVT101",
           "molecular_id": "MSN5678",
           "site" : "Mocha",
+          "specimen_type": "TISSUE",
           "tracking_number": "675867856677",
           "destination_date": "2016-06-09T22:06:33+00:00",
           "dna_concordance": 10.2,
@@ -1451,36 +1432,25 @@
       "variant_report_confirmed_date": "2016-06-09T22:06:33+00:00",
       "assays": [
         {
-          "gene": "PTEN",
-          "ordered_date": "2016-06-09T22:06:33+00:00",
-          "result_date": "2016-07-09T22:06:33+00:00T",
-          "result": "POSITIVE"
-        },
-        {
           "gene": "MLH1",
           "ordered_date": "2016-06-09T22:06:33+00:00",
-          "result_date": "2016-07-09T22:06:33+00:00T",
+          "result_date": "2016-07-09T22:06:33+00:00",
           "result": "POSITIVE"
         },
         {
           "gene": "MSCH2",
           "ordered_date": "2016-06-09T22:06:33+00:00",
-          "result_date": "2016-07-09T22:06:33+00:00T",
+          "result_date": "2016-07-09T22:06:33+00:00",
           "result": "POSITIVE"
-        },
-        {
-          "gene": "RB",
-          "ordered_date": "2016-06-09T22:06:33+00:00",
-          "result_date": "2016-07-09T22:06:33+00:00T",
-          "result": "NEGATIVE"
         }
       ],
       "assignments": "",
       "specimen_shipments": [
         {
           "surgical_event_id" : "SUREVT0982",
-          "molecular_id": "MSN8765",
+          "molecular_id": "93146",
           "site" : "MDA",
+          "specimen_type": "SLIDE",
           "tracking_number": "675867855577",
           "destination_date": "2016-06-09T22:06:33+00:00",
           "dna_concordance": 5.5,
@@ -1498,8 +1468,9 @@
         },
         {
           "surgical_event_id" : "SUREVT0982",
-          "molecular_id": "MSN8765",
+          "molecular_id": "8765",
           "site" : "MDA",
+          "specimen_type": "TISSUE",
           "tracking_number": "675867855577",
           "destination_date": "2016-06-09T22:06:33+00:00",
           "dna_concordance": 12,
@@ -1529,36 +1500,25 @@
       "variant_report_confirmed_date": "2016-06-09T22:06:33+00:00",
       "assays": [
         {
-          "gene": "PTEN",
-          "ordered_date": "2016-06-09T22:06:33+00:00",
-          "result_date": "2016-07-09T22:06:33+00:00T",
-          "result": "POSITIVE"
-        },
-        {
           "gene": "MLH1",
           "ordered_date": "2016-06-09T22:06:33+00:00",
-          "result_date": "2016-07-09T22:06:33+00:00T",
+          "result_date": "2016- 07-09T22:06:33+00:00",
           "result": "POSITIVE"
         },
         {
           "gene": "MSCH2",
           "ordered_date": "2016-06-09T22:06:33+00:00",
-          "result_date": "2016-07-09T22:06:33+00:00T",
+          "result_date": "2016-07-09T22:06:33+00:00",
           "result": "POSITIVE"
-        },
-        {
-          "gene": "RB",
-          "ordered_date": "2016-06-09T22:06:33+00:00",
-          "result_date": "2016-07-09T22:06:33+00:00T",
-          "result": "NEGATIVE"
         }
       ],
       "assignments": "",
       "specimen_shipments": [
         {
           "surgical_event_id" : "SUREVT100",
-          "molecular_id": "MSN8765",
+          "molecular_id": "68530",
           "site" : "MDA",
+          "specimen_type": "TISSUE",
           "specimen_type" : "TISSUE",
           "tracking_number": "675867855577",
           "destination_date": "2016-06-09T22:06:33+00:00",
@@ -1579,8 +1539,9 @@
         },
         {
           "surgical_event_id" : "SUREVT100",
-          "molecular_id": "MSN4321",
+          "molecular_id": "4321",
           "site" : "MoCha",
+          "specimen_type": "SLIDE",
           "specimen_type" : "BLOOD",
           "tracking_number": "675867855577",
           "destination_date": "2016-06-09T22:06:33+00:00",
@@ -1598,6 +1559,16 @@
           ]
         }
       ]
+    }
+  ],
+  "oncomine_report": [
+    {
+      "lmna": 234059,
+      "tbp": 10345,
+      "myc": 13023,
+      "hmbs": 45098,
+      "itgby": 2134,
+      "sum": 304659
     }
   ]
 }

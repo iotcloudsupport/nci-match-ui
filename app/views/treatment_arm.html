@@ -310,8 +310,11 @@
                                                             <th>Gene</th>
                                                             <th>Chr <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.chr}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>Pos <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                            <th>Ref <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.ref}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                            <th>Alt <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>CDS Ref <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.ref}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>CDS Alt <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>OCP Ref <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.ref}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>OCP Alt <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>Strand <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>Protein</th>
                                                             <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>Lit <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
@@ -327,6 +330,9 @@
                                                             <td>{{item.chromosome || '-'}}</td>
                                                             <td>{{item.position || '-'}}</td>
                                                             <td>{{item.reference || '-'}}</td>
+                                                            <td>{{item.alternative || '-'}}</td>
+                                                            <td>{{item.reference || '-'}}</td>
+                                                            <td>{{item.alternative || '-'}}</td>
                                                             <td>{{item.alternative || '-'}}</td>
                                                             <td>{{item.description || '-'}}</td>
                                                             <td>{{item.level_of_evidence || '-'}}</td>
@@ -354,8 +360,11 @@
                                                             <th>Gene</th>
                                                             <th>Chr <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.chr}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>Pos <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                            <th>Ref <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.ref}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                            <th>Alt <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>CDS Ref <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.ref}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>CDS Alt <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>OCP Ref <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.ref}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>OCP Alt <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th>Strand <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>Protein</th>
                                                             <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
                                                             <th>Lit <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
@@ -370,6 +379,9 @@
                                                             <td>{{item.chromosome || '-'}}</td>
                                                             <td>{{item.position || '-'}}</td>
                                                             <td>{{item.reference || '-'}}</td>
+                                                            <td>{{item.alternative || '-'}}</td>
+                                                            <td>{{item.reference || '-'}}</td>
+                                                            <td>{{item.alternative || '-'}}</td>
                                                             <td>{{item.alternative || '-'}}</td>
                                                             <td>{{item.description || '-'}}</td>
                                                             <td>{{item.level_of_evidence || '-'}}</td>
