@@ -239,7 +239,7 @@
                 }
             };
 
-            $scope.assignmentReportOptions.push(assignmentReportOption);
+            $scope.assignmentReportOptions.push($scope.assignmentReportOption);
         }
 
         function setupVariantReportOptions() {
