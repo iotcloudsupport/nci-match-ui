@@ -57,18 +57,19 @@
                             <dd>{{::data.disease.code}}</dd>
 
                             <dt>Prior Drugs</dt>
-                            <dd class="row">
-                                <table class="table-striped" role="grid" width="50%">
-                                    <thead>
-                                        <td>Name</td>
-                                        <td>Date Received</td>
-                                    </thead>
-                                    <tbody class="priordrug-item" ng-repeat="priorDrug in data.prior_drugs" style="font-size: smaller">
-                                        <td>{{::priorDrug.name}}</td>
-                                        <td>{{::priorDrug.date_received | utc}}</td>
-                                    </tbody>
-                                </table>
-                            </dd>
+                            <dd>{{data.prior_drugs.join(', ')}}</dd>
+                            <!--<dd class="row">-->
+                                <!--<table class="table-striped" role="grid" width="50%">-->
+                                    <!--<thead>-->
+                                        <!--<td>Name</td>-->
+                                        <!--<td>Date Received</td>-->
+                                    <!--</thead>-->
+                                    <!--<tbody class="priordrug-item" ng-repeat="priorDrug in data.prior_drugs" style="font-size: smaller">-->
+                                        <!--<td>{{::priorDrug.name}}</td>-->
+                                        <!--<td>{{::priorDrug.date_received | utc}}</td>-->
+                                    <!--</tbody>-->
+                                <!--</table>-->
+                            <!--</dd>-->
                         </dl>
                     </div>
                 </div>
