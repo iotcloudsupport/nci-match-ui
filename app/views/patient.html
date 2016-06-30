@@ -607,11 +607,6 @@
 
                                     <!--Single Nucleitide Variant(s)-->
                                     <div class="ibox-title ibox-title-no-line">
-                                        <h3>Single Nucleitide Variant(s)</h3>
-                                    </div>
-
-                                    <!--Single Nucleitide Variant(s)-->
-                                    <div class="ibox-title ibox-title-no-line">
                                         <h3>SNVs, MNVs, Indels</h3>
                                     </div>
 
@@ -641,7 +636,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr ng-repeat="variant in currentVariantReport.variants.single_nucleitide_variants" style="cursor: auto;" role="row" class="odd">
+                                            <tr ng-repeat="variant in currentVariantReport.variants.snvs_and_indels" style="cursor: auto;" role="row" class="odd">
                                                 <td ng-if="variantReportMode!=='QC'">
                                                     <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
                                                         comment="variant.comment" prompt-only-if="true">
@@ -670,8 +665,8 @@
                                                 <td>{{::variant.protein}}</td>
                                             </tr>
 
-                                            <tr ng-if="!currentVariantReport.variants.single_nucleitide_variants || !currentVariantReport.variants.single_nucleitide_variants.length">
-                                                <td colspan="8"><span class="text-muted">No Single Nucleitide Variants</span></td>
+                                            <tr ng-if="!currentVariantReport.variants.snvs_and_indels || !currentVariantReport.variants.snvs_and_indels.length">
+                                                <td colspan="8"><span class="text-muted">No SNVs, MNVs or Indels</span></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -967,7 +962,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="variant in currentBloodVariantReport.variants.single_nucleitide_variants" style="cursor: auto;" role="row"
+                                    <tr ng-repeat="variant in currentBloodVariantReport.variants.snvs_and_indels" style="cursor: auto;" role="row"
                                         class="odd">
                                         <td ng-if="variantReportMode!=='QC'">
                                             <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
@@ -997,8 +992,8 @@
                                         <td>{{variant.protein}}</td>
                                     </tr>
 
-                                    <tr ng-if="!currentBloodVariantReport.variants.single_nucleitide_variants || !currentBloodVariantReport.variants.single_nucleitide_variants.length">
-                                        <td colspan="8"><span class="text-muted">No Single Nucleitide Variants</span></td>
+                                    <tr ng-if="!currentBloodVariantReport.variants.snvs_and_indels || !currentBloodVariantReport.variants.snvs_and_indels.length">
+                                        <td colspan="8"><span class="text-muted">No SNVs, MNVs or Indels</span></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -1127,14 +1122,16 @@
                                 <thead>
                                     <tr>
                                         <th width="20%" class="label2 sorting_disabled">Document</th>
-                                        <th width="40%" class="label2 sorting_disabled">Uploaded Date</th>
-                                        <th width="20%" class="label2 sorting_disabled">User</th>
+                                        <th width="60%" class="label2 sorting_disabled">Comment</th>
+                                        <th width="10%" class="label2 sorting_disabled">Uploaded Date</th>
+                                        <th width="10%" class="label2 sorting_disabled">User</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     <tr ng-repeat="document in data.documents.list" style="cursor: auto;" role="row" class="odd">
                                         <td><a href>{{document.name}}</a></td>
+                                        <td>{{document.comment}}</td>
                                         <td>{{document.uploaded_date | utc}}</td>
                                         <td>{{document.user}}</td>
                                     </tr>
