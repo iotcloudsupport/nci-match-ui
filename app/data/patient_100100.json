@@ -1375,7 +1375,7 @@
         ]
       },
       {
-        "molecular_id": "MSN5678",
+        "molecular_id": "5678",
         "tracking_number": "675867856677",
         "destination_date": "2016-06-09T22:06:33+00:00",
         "dna_concordance": 10.2,
@@ -1443,6 +1443,7 @@
           "surgical_event_id" : "SUREVT101",
           "molecular_id": "MSN5678",
           "site" : "Mocha",
+          "specimen_type": "TISSUE",
           "tracking_number": "675867856677",
           "destination_date": "2016-06-09T22:06:33+00:00",
           "dna_concordance": 10.2,
@@ -1500,8 +1501,9 @@
       "specimen_shipments": [
         {
           "surgical_event_id" : "SUREVT0982",
-          "molecular_id": "MSN8765",
+          "molecular_id": "93146",
           "site" : "MDA",
+          "specimen_type": "SLIDE",
           "tracking_number": "675867855577",
           "destination_date": "2016-06-09T22:06:33+00:00",
           "dna_concordance": 5.5,
@@ -1519,8 +1521,9 @@
         },
         {
           "surgical_event_id" : "SUREVT0982",
-          "molecular_id": "MSN8765",
+          "molecular_id": "8765",
           "site" : "MDA",
+          "specimen_type": "TISSUE",
           "tracking_number": "675867855577",
           "destination_date": "2016-06-09T22:06:33+00:00",
           "dna_concordance": 12,
@@ -1578,8 +1581,9 @@
       "specimen_shipments": [
         {
           "surgical_event_id" : "SUREVT100",
-          "molecular_id": "MSN8765",
+          "molecular_id": "68530",
           "site" : "MDA",
+          "specimen_type": "TISSUE",
           "specimen_type" : "TISSUE",
           "tracking_number": "675867855577",
           "destination_date": "2016-06-09T22:06:33+00:00",
@@ -1600,8 +1604,9 @@
         },
         {
           "surgical_event_id" : "SUREVT100",
-          "molecular_id": "MSN4321",
+          "molecular_id": "4321",
           "site" : "MoCha",
+          "specimen_type": "SLIDE",
           "specimen_type" : "BLOOD",
           "tracking_number": "675867855577",
           "destination_date": "2016-06-09T22:06:33+00:00",
