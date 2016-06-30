@@ -127,10 +127,12 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
 
             function setSampleType(reportType) {
+                $scope.positives = "undefined";
+                $scope.negatives = "undefined";
 
                 if(reportType === 'MoCha'){
                     $scope.branch = 'mocha';
-                    $scope.positives = "undefined";
+
                 }
                 else if(reportType === 'MDAC'){
                     $scope.branch = 'mdacc';
