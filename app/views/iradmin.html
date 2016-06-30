@@ -2,13 +2,13 @@
 
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-10">
-            <h2>Clear Labs</h2>
+            <h2>Clia Labs</h2>
             <ol class="breadcrumb">
                 <li>
                     <a ui-sref="dashboard">Dashboard</a>
                 </li>
                 <li class="active">
-                    <strong>Clia Labs </strong>
+                    <strong>Clia Lab {{sitename}} </strong>
                 </li>
             </ol>
         </div>
@@ -28,13 +28,10 @@
 
                             <div class="col-lg-12 pull-left">
 
-
                                 <!--SELECT SITE-->
 
                                 <div class="ibox float-e-margins">
                                         <div class="col-xs-12 cols-height" ng-init="loadSampleBreakups();loadHeartMoChaBeatList()">
-
-
 
                                             <div class="btn-group btn-group-margin" data-toggle="buttons" >
                                             <label class="btn btn-outline btn-success" #1ab394 ng-click="setSampleType('MoCha')"
@@ -50,48 +47,234 @@
 
                                             <!--PIE CHART-->
                                             <div ng-if="branch == 'mocha'" >
-                                                <div class="col-xs-2 cols-height cols-bottom">
+
+                                                <div class="col-lg-12">
+                                                <div class="col-lg-2 cols-height cols-bottom">
 
                                                         <div class="panel" ng-init="loadPieChart(branch);">
-                                                            <canvas id="amoiCanvas" piechart
+                                                            <canvas id="amoiCanvas" doughnutchart
                                                                     ng-attr-data="pieData" responsive=true width="600" height="600"
-                                                                    style="width: 603px; height: 601px; border-bottom: thin dimgrey solid; border-top: thin dimgrey solid;">
+                                                                    style="width: 603px; height: 601px; ">
                                                             </canvas>
                                                         </div>
 
-                                                    <div class="tabs-container">
-                                                        <div >
+                                                        <div class="tabs-container">
+                                                            <div >
 
-                                                            <table class="table" role="grid" style="font-size: 10px" width="100%">
-                                                                <thead>
-                                                                <tr style="font-size: smaller">
-                                                                    <td >Positive Control Success Status</td>
-                                                                    <td >Positive Control Failed Status</td>
-                                                                    <td >Not Generated</td>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                <td><div class="stat-percent font-bold text-success"> 75% </i></div></td>
-                                                                <td><div class="stat-percent font-bold text-info"> 15% </i></div></td>
-                                                                <td><div class="stat-percent font-bold text-info"> 10% </i></div></td>
-                                                                </tbody>
-                                                            </table>
+                                                                <table class="table" role="grid" style="font-size: 10px" width="100%">
+                                                                    <thead>
+                                                                    <tr style="font-size: smaller">
+                                                                        <td >Positive Control Success Status</td>
+                                                                        <td >Positive Control Failed Status</td>
+                                                                        <td >Not Generated</td>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <td><div class="stat-percent font-bold text-success"> 75 </i></div></td>
+                                                                    <td><div class="stat-percent font-bold text-info"> 15 </i></div></td>
+                                                                    <td><div class="stat-percent font-bold text-info"> 10 </i></div></td>
+                                                                    </tbody>
+                                                                </table>
+
+                                                            </div>
+                                                        </div>
+
+                                                 </div>
+
+
+                                                    <!--HEART BEAT-->
+                                                    <div class="col-xs-8">
+
+                                                        <div class="tabs-container">
+                                                            <i class="fa fa-clock-o fa-2x" style=";color:green;"> </i> <b>Heartbeat</b>
+                                                            <span class="label label-warning pull-right">{{branch}}</span>
+
+                                                            <div ng-if="branch == 'mocha'">
+
+                                                                <table class="table table-hover" role="grid" width="100%" >
+                                                                    <thead>
+                                                                    <tr style="font-size: smaller">
+                                                                        <td >IP Address</td>
+                                                                        <td >Internal IP Address</td>
+                                                                        <td >Host</td>
+                                                                        <td >Status</td>
+                                                                        <td >Last Contact</td>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody ng-repeat="ir in moChaList">
+                                                                    <td> <div class="stat-percent font-bold text-info"> {{ ir.externalIpAddress }} </div></td>
+                                                                    <td> <div class="stat-percent font-bold text-info"> {{ ir.ipAddress }} </div></td>
+                                                                    <td> <div class="stat-percent font-bold text-info"> {{ ir.host }} </div></td>
+                                                                    <td> <div ng-style="{'color':'{{ ir.status | irsample }}'}"> {{ ir.status }} </div></td>
+                                                                    <td> <div ng-style="{'color':'{{ ir.status | irsample }}'}"> {{ ir.lastcon }} </div></td>
+                                                                    </tbody>
+                                                                </table>
+
+                                                                <!--SPOT TAGS-->
+                                                                <div class="tabs-container">
+                                                                    <div >
+                                                                        <i class="fa fa-filter fa-2x" style=";color:purple;font-size: small"> </i> <b>Positive Sample Controls Breakup</b>
+                                                                        <table class="table table-hover" role="grid" width="100%">
+                                                                            <thead>
+                                                                            <tr style="font-size: smaller">
+                                                                                <td >Matching Variants</td>
+                                                                                <td >Non Matching Variants</td>
+                                                                                <td >False Positive Variants</td>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            <td> <div class="stat-percent font-bold text-success"> 91% </i></div></td>
+                                                                            <td> <div class="stat-percent font-bold text-success"> 9% </i></div></td>
+                                                                            <td> <div class="stat-percent font-bold text-success"> 0.5% </i></div></td>
+                                                                            </tbody>
+                                                                        </table>
+
+                                                                    </div>
+                                                                </div>
+                                                                <!--SPOT TAGS-->
+
+                                                                <!--SPOT TAGS-->
+                                                                <div class="tabs-container">
+                                                                    <div >
+                                                                        <i class="fa fa-filter fa-2x" style=";color:darkred;font-size: small"> </i> <b>No Template Controls Breakup</b>
+                                                                        <table class="table table-hover" role="grid" width="100%">
+                                                                            <thead>
+                                                                            <tr style="font-size: smaller">
+                                                                                <td >SNVs, MNVs, Indels</td>
+                                                                                <td >Gene Fusion(s)</td>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            <td>1020 <div class="stat-percent font-bold text-success"> 74%</i></div></td>
+                                                                            <td>1001 <div class="stat-percent font-bold text-info"> 98% </i></div></td>
+
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+
+
+
+                                                            </div>
+
+                                                            <div ng-if="branch == 'mdacc'">
+
+                                                                <table class="table table-hover" role="grid" width="100%" >
+                                                                    <thead>
+                                                                    <tr style="font-size: smaller">
+                                                                        <td >IP Address</td>
+                                                                        <td >Internal IP Address</td>
+                                                                        <td >Host</td>
+                                                                        <td >Status</td>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody ng-repeat="ir in mdAccList">
+                                                                    <td> <div class="stat-percent font-bold text-info"> {{ ir.externalIpAddress }} </div></td>
+                                                                    <td> <div class="stat-percent font-bold text-info"> {{ ir.ipAddress }} </div></td>
+                                                                    <td> <div class="stat-percent font-bold text-info"> {{ ir.host }} </div></td>
+                                                                    <td> <div ng-style="{'color':'{{ ir.status | irsample }}'}"> {{ ir.status }} </div></td>
+                                                                    </tbody>
+                                                                </table>
+
+
+                                                                <!--SPOT TAGS-->
+                                                                <div class="tabs-container">
+                                                                    <div >
+                                                                        <i class="fa fa-filter fa-2x" style=";color:purple;font-size: small"> </i> <b>Positive Sample Controls Breakup</b>
+                                                                        <table class="table table-hover" role="grid" width="100%">
+                                                                            <thead>
+                                                                            <tr style="font-size: smaller">
+                                                                                <td >Matching Variants</td>
+                                                                                <td >Non Matching Variants</td>
+                                                                                <td >False Positive Variants</td>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            <td> <div class="stat-percent font-bold text-success"> 71% </i></div></td>
+                                                                            <td> <div class="stat-percent font-bold text-success"> 29% </i></div></td>
+                                                                            <td> <div class="stat-percent font-bold text-success"> 3.5% </i></div></td>
+                                                                            </tbody>
+                                                                        </table>
+
+                                                                    </div>
+                                                                </div>
+                                                                <!--SPOT TAGS-->
+
+                                                                <!--SPOT TAGS-->
+                                                                <div class="tabs-container">
+                                                                    <div >
+                                                                        <i class="fa fa-filter fa-2x" style=";color:darkred;font-size: small"> </i> <b>No Template Controls Breakup</b>
+                                                                        <table class="table table-hover" role="grid" width="100%">
+                                                                            <thead>
+                                                                            <tr style="font-size: smaller">
+                                                                                <td >SNVs, MNVs, Indels</td>
+                                                                                <td >Gene Fusion(s)</td>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            <td>189 <div class="stat-percent font-bold text-success"> 74% </div></td>
+                                                                            <td>780 <div class="stat-percent font-bold text-info"> 98% </div></td>
+
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+
+                                                    <div class="col-lg-2">
+
+                                                        <div class="tabs-container">
+
+                                                            <div class="panel" ng-init="loadPieChart(branch);">
+                                                                <canvas id="amoiCanvas" doughnutchart
+                                                                        ng-attr-data="ntcpieData" responsive=true width="300" height="300"
+                                                                        style="width: 603px; height: 601px;">
+                                                                </canvas>
+                                                            </div>
+
+                                                            <div class="tabs-container">
+                                                                <div >
+
+                                                                    <table class="table" role="grid" style="font-size: 10px" width="100%">
+                                                                        <thead>
+                                                                        <tr style="font-size: smaller">
+                                                                            <td >Ntc Control Success Status</td>
+                                                                            <td >Ntc Control Failed Status</td>
+                                                                            <td >Ntc Not Generated</td>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <td><div class="stat-percent font-bold text-success"> 1 </i></div></td>
+                                                                        <td><div class="stat-percent font-bold text-info"> 3 </i></div></td>
+                                                                        <td><div class="stat-percent font-bold text-info"> 23 </i></div></td>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                </div>
+                                                            </div>
 
                                                         </div>
                                                     </div>
-                                                 </div>
+                                                    </div>
+
                                                 <!--PIE CHART-->
 
-                                                <div class="col-sm-6">
-                                                    <div class="statistic-box">
-                                                        <div class="text-center">
-                                                            <h4>Sample Control Breakup </h4>
-                                                        </div>
+                                                <!--<div class="col-sm-6">-->
+                                                    <!--<div class="statistic-box">-->
+                                                        <!--<div class="text-center">-->
+                                                            <!--<h4>Sample Control Breakup </h4>-->
+                                                        <!--</div>-->
 
-                                                        <canvas id="irSampleCanvas" barchart options="chart.barOptions" ng-attr-data="barData"
-                                                                responsive=true width="500" height="200"  style="width: 503px; height: 201px;"></canvas>
-                                                    </div>
-                                                </div>
+                                                        <!--<canvas id="irSampleCanvas" barchart options="chart.barOptions" ng-attr-data="barData"-->
+                                                                <!--responsive=true width="500" height="200"  style="width: 503px; height: 201px;"></canvas>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+
                                             </div>
                                             <!--HISTOGRAM CHART-->
 
@@ -103,7 +286,7 @@
                                                     <div class="panel" ng-init="loadPieChart(branch);">
                                                         <canvas id="amoiCanvas" piechart
                                                                 ng-attr-data="pieData" responsive=true width="600" height="600"
-                                                                style="width: 603px; height: 601px; border-bottom: thin dimgrey solid; border-top: thin dimgrey solid;">
+                                                                style="width: 603px; height: 601px; ">
                                                         </canvas>
                                                     </div>
 
@@ -119,9 +302,9 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                <td><div class="stat-percent font-bold text-success"> 67% </i></div></td>
-                                                                <td><div class="stat-percent font-bold text-info"> 25% </i></div></td>
-                                                                <td><div class="stat-percent font-bold text-info"> 8% </i></div></td>
+                                                                <td><div class="stat-percent font-bold text-success"> 67 </i></div></td>
+                                                                <td><div class="stat-percent font-bold text-info"> 25 </i></div></td>
+                                                                <td><div class="stat-percent font-bold text-info"> 8 </i></div></td>
                                                                 </tbody>
                                                             </table>
 
@@ -130,163 +313,187 @@
                                                 </div>
                                                 <!--PIE CHART-->
 
+                                                <!--<div class="col-sm-6">-->
+                                                    <!--<div class="statistic-box">-->
+                                                        <!--<div class="text-center">-->
+                                                            <!--<h4>Sample Control Breakup </h4>-->
+                                                        <!--</div>-->
+
+                                                        <!--<canvas id="irSampleCanvas" barchart options="chart.barOptions" ng-attr-data="barDataMDACC"-->
+                                                                <!--responsive=true width="500" height="200"  style="width: 503px; height: 201px;"></canvas>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+
+
                                                 <div class="col-sm-6">
-                                                    <div class="statistic-box">
-                                                        <div class="text-center">
-                                                            <h4>Sample Control Breakup </h4>
+                                                <div class="statistic-box">
+                                                <div class="text-center">
+                                                <h4>Sample Control Breakup </h4>
+                                                </div>
+                                                    <canvas id="irSampleCanvas" barchart options="chart.barOptions" ng-attr-data="barData"
+                                                    responsive=true width="500" height="200"  style="width: 503px; height: 201px;">
+                                                    </canvas>
+                                                </div>
+                                                </div>
+
+                                                <!--HEART BEAT-->
+                                                <div class="col-xs-4">
+
+                                                    <div class="tabs-container">
+                                                        <i class="fa fa-clock-o fa-2x" style=";color:green;"> </i> <b>Heartbeat</b>
+                                                        <span class="label label-warning pull-right">{{branch}}</span>
+
+                                                        <div ng-if="branch == 'mocha'">
+
+                                                            <table class="table table-hover" role="grid" width="100%" >
+                                                                <thead>
+                                                                <tr style="font-size: smaller">
+                                                                    <td >IP Address</td>
+                                                                    <td >Internal IP Address</td>
+                                                                    <td >Host</td>
+                                                                    <td >Status</td>
+                                                                    <td >Last Contact</td>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody ng-repeat="ir in moChaList">
+                                                                <td> <div class="stat-percent font-bold text-info"> {{ ir.externalIpAddress }} </div></td>
+                                                                <td> <div class="stat-percent font-bold text-info"> {{ ir.ipAddress }} </div></td>
+                                                                <td> <div class="stat-percent font-bold text-info"> {{ ir.host }} </div></td>
+                                                                <td> <div ng-style="{'color':'{{ ir.status | irsample }}'}"> {{ ir.status }} </div></td>
+                                                                <td> <div ng-style="{'color':'{{ ir.status | irsample }}'}"> {{ ir.lastcon }} </div></td>
+                                                                </tbody>
+                                                            </table>
+
+                                                            <!--SPOT TAGS-->
+                                                            <div class="tabs-container">
+                                                                <div >
+                                                                    <i class="fa fa-filter fa-2x" style=";color:purple;font-size: small"> </i> <b>Positive Sample Controls Breakup</b>
+                                                                    <table class="table table-hover" role="grid" width="100%">
+                                                                        <thead>
+                                                                        <tr style="font-size: smaller">
+                                                                            <td >Matching Variants</td>
+                                                                            <td >Non Matching Variants</td>
+                                                                            <td >False Positive Variants</td>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <td> <div class="stat-percent font-bold text-success"> 91% </i></div></td>
+                                                                        <td> <div class="stat-percent font-bold text-success"> 9% </i></div></td>
+                                                                        <td> <div class="stat-percent font-bold text-success"> 0.5% </i></div></td>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                </div>
+                                                            </div>
+                                                            <!--SPOT TAGS-->
+
+                                                            <!--SPOT TAGS-->
+                                                            <div class="tabs-container">
+                                                                <div >
+                                                                    <i class="fa fa-filter fa-2x" style=";color:darkred;font-size: small"> </i> <b>No Template Controls Breakup</b>
+                                                                    <table class="table table-hover" role="grid" width="100%">
+                                                                        <thead>
+                                                                        <tr style="font-size: smaller">
+                                                                            <td >SNVs, MNVs, Indels</td>
+                                                                            <td >Gene Fusion(s)</td>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <td>1020 <div class="stat-percent font-bold text-success"> 74%</i></div></td>
+                                                                        <td>1001 <div class="stat-percent font-bold text-info"> 98% </i></div></td>
+
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+
+
+
                                                         </div>
 
-                                                        <canvas id="irSampleCanvas" barchart options="chart.barOptions" ng-attr-data="barDataMDACC"
-                                                                responsive=true width="500" height="200"  style="width: 503px; height: 201px;"></canvas>
+                                                        <div ng-if="branch == 'mdacc'">
+
+                                                            <table class="table table-hover" role="grid" width="100%" >
+                                                                <thead>
+                                                                <tr style="font-size: smaller">
+                                                                    <td >IP Address</td>
+                                                                    <td >Internal IP Address</td>
+                                                                    <td >Host</td>
+                                                                    <td >Status</td>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody ng-repeat="ir in mdAccList">
+                                                                <td> <div class="stat-percent font-bold text-info"> {{ ir.externalIpAddress }} </div></td>
+                                                                <td> <div class="stat-percent font-bold text-info"> {{ ir.ipAddress }} </div></td>
+                                                                <td> <div class="stat-percent font-bold text-info"> {{ ir.host }} </div></td>
+                                                                <td> <div ng-style="{'color':'{{ ir.status | irsample }}'}"> {{ ir.status }} </div></td>
+                                                                </tbody>
+                                                            </table>
+
+
+                                                            <!--SPOT TAGS-->
+                                                            <div class="tabs-container">
+                                                                <div >
+                                                                    <i class="fa fa-filter fa-2x" style=";color:purple;font-size: small"> </i> <b>Positive Sample Controls Breakup</b>
+                                                                    <table class="table table-hover" role="grid" width="100%">
+                                                                        <thead>
+                                                                        <tr style="font-size: smaller">
+                                                                            <td >Matching Variants</td>
+                                                                            <td >Non Matching Variants</td>
+                                                                            <td >False Positive Variants</td>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <td> <div class="stat-percent font-bold text-success"> 71% </i></div></td>
+                                                                        <td> <div class="stat-percent font-bold text-success"> 29% </i></div></td>
+                                                                        <td> <div class="stat-percent font-bold text-success"> 3.5% </i></div></td>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                </div>
+                                                            </div>
+                                                            <!--SPOT TAGS-->
+
+                                                            <!--SPOT TAGS-->
+                                                            <div class="tabs-container">
+                                                                <div >
+                                                                    <i class="fa fa-filter fa-2x" style=";color:darkred;font-size: small"> </i> <b>No Template Controls Breakup</b>
+                                                                    <table class="table table-hover" role="grid" width="100%">
+                                                                        <thead>
+                                                                        <tr style="font-size: smaller">
+                                                                            <td >SNVs, MNVs, Indels</td>
+                                                                            <td >Gene Fusion(s)</td>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <td>189 <div class="stat-percent font-bold text-success"> 74% </div></td>
+                                                                        <td>780 <div class="stat-percent font-bold text-info"> 98% </div></td>
+
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
                                                     </div>
+
                                                 </div>
+
                                              </div>
                                             <!--HISTOGRAM CHART-->
 
 
-                                            <div class="col-xs-4">
-
-                                                <!--HEART BEAT-->
-                                                <div class="tabs-container">
-                                                    <i class="fa fa-clock-o fa-2x" style=";color:green;"> </i> <b>Heartbeat</b>
-                                                    <span class="label label-warning pull-right">{{branch}}</span>
-
-                                                    <div ng-if="branch == 'mocha'">
-
-                                                        <table class="table table-hover" role="grid" width="100%" >
-                                                            <thead>
-                                                            <tr style="font-size: smaller">
-                                                                <td >IP Address</td>
-                                                                <td >Internal IP Address</td>
-                                                                <td >Host</td>
-                                                                <td >Status</td>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody ng-repeat="ir in moChaList">
-                                                            <td> <div class="stat-percent font-bold text-info"> {{ ir.externalIpAddress }} </div></td>
-                                                            <td> <div class="stat-percent font-bold text-info"> {{ ir.ipAddress }} </div></td>
-                                                            <td> <div class="stat-percent font-bold text-info"> {{ ir.host }} </div></td>
-                                                            <td> <div ng-style="{'color':'{{ ir.status | irsample }}'}"> {{ ir.status }} </div></td>
-                                                            </tbody>
-                                                        </table>
-
-                                                        <!--SPOT TAGS-->
-                                                        <div class="tabs-container">
-                                                            <div >
-                                                                <i class="fa fa-filter fa-2x" style=";color:purple;font-size: small"> </i> <b>Positive Sample Controls Breakup</b>
-                                                                <table class="table table-hover" role="grid" width="100%">
-                                                                    <thead>
-                                                                    <tr style="font-size: smaller">
-                                                                        <td >Matching Variants</td>
-                                                                        <td >Non Matching Variants</td>
-                                                                        <td >False Positive Variants</td>
-                                                                    </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                    <td> <div class="stat-percent font-bold text-success"> 91% </i></div></td>
-                                                                    <td> <div class="stat-percent font-bold text-success"> 9% </i></div></td>
-                                                                    <td> <div class="stat-percent font-bold text-success"> 0.5% </i></div></td>
-                                                                    </tbody>
-                                                                </table>
-
-                                                            </div>
-                                                        </div>
-                                                        <!--SPOT TAGS-->
-
-                                                        <!--SPOT TAGS-->
-                                                        <div class="tabs-container">
-                                                            <div >
-                                                                <i class="fa fa-flag fa-2x" style=";color:darkred;font-size: small"> </i> <b>No Template Controls Breakup</b>
-                                                                <table class="table table-hover" role="grid" width="100%">
-                                                                    <thead>
-                                                                    <tr style="font-size: smaller">
-                                                                        <td >Generated Molecular Sequences</td>
-                                                                        <td >IR Reported Sequences</td>
-                                                                        <td >Failed Generated</td>
-                                                                    </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                    <td>1020 <div class="stat-percent font-bold text-success"> 74% <i class="fa fa-bolt"></i></div></td>
-                                                                    <td>1001 <div class="stat-percent font-bold text-info"> 98% <i class="fa fa-level-up"></i></div></td>
-                                                                    <td>54 <div class="stat-percent font-bold text-info"> 11% <i class="fa fa-level-up"></i></div></td>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-
-                                                        </div>
-
-                                                    <div ng-if="branch == 'mdacc'">
-
-                                                        <table class="table table-hover" role="grid" width="100%" >
-                                                            <thead>
-                                                            <tr style="font-size: smaller">
-                                                                <td >IP Address</td>
-                                                                <td >Internal IP Address</td>
-                                                                <td >Host</td>
-                                                                <td >Status</td>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody ng-repeat="ir in mdAccList">
-                                                            <td> <div class="stat-percent font-bold text-info"> {{ ir.externalIpAddress }} </div></td>
-                                                            <td> <div class="stat-percent font-bold text-info"> {{ ir.ipAddress }} </div></td>
-                                                            <td> <div class="stat-percent font-bold text-info"> {{ ir.host }} </div></td>
-                                                            <td> <div ng-style="{'color':'{{ ir.status | irsample }}'}"> {{ ir.status }} </div></td>
-                                                            </tbody>
-                                                        </table>
+                                            <div class="col-xs-10">
 
 
-                                                        <!--SPOT TAGS-->
-                                                        <div class="tabs-container">
-                                                            <div >
-                                                                <i class="fa fa-filter fa-2x" style=";color:purple;font-size: small"> </i> <b>Positive Sample Controls Breakup</b>
-                                                                <table class="table table-hover" role="grid" width="100%">
-                                                                    <thead>
-                                                                    <tr style="font-size: smaller">
-                                                                        <td >Matching Variants</td>
-                                                                        <td >Non Matching Variants</td>
-                                                                        <td >False Positive Variants</td>
-                                                                    </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                    <td> <div class="stat-percent font-bold text-success"> 71% </i></div></td>
-                                                                    <td> <div class="stat-percent font-bold text-success"> 29% </i></div></td>
-                                                                    <td> <div class="stat-percent font-bold text-success"> 3.5% </i></div></td>
-                                                                    </tbody>
-                                                                </table>
 
-                                                            </div>
-                                                        </div>
-                                                        <!--SPOT TAGS-->
-
-                                                        <!--SPOT TAGS-->
-                                                        <div class="tabs-container">
-                                                            <div >
-                                                                <i class="fa fa-flag fa-2x" style=";color:darkred;font-size: small"> </i> <b>No Template Controls Breakup</b>
-                                                                <table class="table table-hover" role="grid" width="100%">
-                                                                    <thead>
-                                                                    <tr style="font-size: smaller">
-                                                                        <td >Generated Molecular Sequences</td>
-                                                                        <td >IR Reported Sequences</td>
-                                                                        <td >Failed Generated</td>
-                                                                    </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                    <td>1020 <div class="stat-percent font-bold text-success"> 74% <i class="fa fa-bolt"></i></div></td>
-                                                                    <td>1001 <div class="stat-percent font-bold text-info"> 98% <i class="fa fa-level-up"></i></div></td>
-                                                                    <td>54 <div class="stat-percent font-bold text-info"> 11% <i class="fa fa-level-up"></i></div></td>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
 
 
 
 
                                             </div>
+
+
 
                                         </div>
                                     </div>
@@ -312,34 +519,27 @@
                 <uib-tab heading="Positive Sample Controls ">
 
 
-                <div class="col-lg-16" >
-                <div class="ibox float-e-margins">
-                <div class="col-lg-16" >
-                    <div class="ibox-content">
-
-                        <!--POSITIVES-->
-                        <div class="wrapper wrapper-content">
+                    <div class="col-lg-16" >
+                        <div class="ibox float-e-margins">
+                            <div class="col-lg-16" >
+                                <div class="ibox-content">
 
                             <div class="row">
-                                <div class="row wrapper border-bottom white-bg page-heading">
 
                                     <!--MOCHA GENERATOR-->
-                                    <div class="wrapper" ng-if="branch === 'mocha'">
-                                        <h3> MoCha </h3>
+                                    <div class="col-lg-16" ng-if="branch === 'mocha'">
 
-                                        <div class="no-horizontal-padding header-box-container">
-                                            <div class="row equal-height-panels">
+                                        <div class="row wrapper border-bottom white-bg page-heading">
 
+                                                <div class="col-lg-16">
 
-                                                <div class="col-lg-14">
-
-                                                    <div class="col-lg-14">
 
                                                         <a ng-click="showPositiveControlConfirmation('MoCha')" class="btn btn-xs btn-primary file-button-xl pull-right">
                                                             <span class="bold">Generate MSN</span>
                                                         </a>
 
-                                                        <table width="100%" dt-instance="dtInstance" dt-column-defs="dtColumnDefs" dt-options="dtOptions" datatable="ng" role="grid" class="table table-hover ng-isolate-scope dataTable no-footer" style="display: table; width: 100%;" id="DataTables_Table_4" aria-describedby="DataTables_Table_4_info">
+                                                        <table width="100%" dt-instance="dtInstance" dt-column-defs="dtColumnDefs" dt-options="dtOptions" datatable="ng" role="grid"
+                                                               class="table table-hover ng-isolate-scope dataTable no-footer" style="display: table; width: 100%;" id="DataTables_Table_4" aria-describedby="DataTables_Table_4_info">
                                                             <thead>
                                                             <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 93px;" aria-sort="ascending" aria-label="Molecular ID: activate to sort column descending">Molecular ID</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 145px;" aria-label="Variant Reports: activate to sort column ascending">Variant Reports</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 160px;" aria-label="Date Created: activate to sort column ascending">Date Created</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 160px;" aria-label="Date Received: activate to sort column ascending">Date Received</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 49px;" aria-label="Status: activate to sort column ascending">Status</th></tr>
                                                             </thead>
@@ -389,12 +589,13 @@
 
                                                     </div>
 
-                                                    <div class="row">
 
                                                         <!--MOCK MOCHA GENERATOR-->
+
                                                         <div class="wrapper" ng-if="positives === 'mocha'">
 
-                                                            <i ng-click="closePositives()" class="fa fa-chevron-up fa-2x" style="cursor: pointer"></i>&nbsp;&nbsp;
+                                                                <i ng-click="closePositives()" class="fa fa-chevron-up" style="cursor: pointer; color: silver;"></i> <h3>Positive Sample Control</h3>
+
 
                                                             <div class="row">
 
@@ -466,7 +667,7 @@
                                                                         <dl class="dl-horizontal">
                                                                             <dt>Quality Control Report</dt>
                                                                             <dd>
-                                                                                <a ui-sref="ocsample({ sampleId:'MoCha' })" class="btn btn-xs btn-success file-button-xl">
+                                                                                <a ui-sref="ocsample({ sampleId:'SampleControl_MoCha_3' })" class="btn btn-xs btn-success file-button-xl">
                                                                                     <i class="fa fa-bar-chart"></i>&nbsp;&nbsp;
                                                                                     <span class="bold">Quality Control Report</span>
                                                                                 </a>
@@ -482,11 +683,10 @@
                                                             <!--SPOT TABS-->
 
 
-                                                            <div class="panel">
+                                                            <div class="row">
 
-                                                                <div class="col-lg-12" >
-                                                                    <div class="ibox float-e-margins">
-                                                                        <div class="col-lg-12" >
+
+                                                                        <div class="col-lg-16" >
                                                                             <div class="ibox-content">
                                                                                 <div class="ibox-title ibox-title-no-line pull">
                                                                                     <h3>Positive Controls</h3>
@@ -524,13 +724,9 @@
                                                                                 </table>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                </div>
 
 
-                                                                <div class="col-lg-12" >
-                                                                    <div class="ibox float-e-margins">
-                                                                        <div class="col-lg-12" >
+                                                                        <div class="col-lg-16" >
                                                                             <div class="ibox-content">
                                                                                 <div class="ibox-title ibox-title-no-line pull">
                                                                                     <h3>False Positive Variants</h3>
@@ -566,8 +762,7 @@
                                                                                 </table>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                </div>
+
 
                                                             </div>
 
@@ -577,8 +772,8 @@
                                                         <!--MOCK MDACC GENERATOR-->
                                                         <div class="wrapper" ng-if="positives === 'mocha1'">
 
-                                                            <i ng-click="closePositives()" class="fa fa-chevron-up fa-2x" style="cursor: pointer"></i>&nbsp;&nbsp;
-
+                                                            <!--<i ng-click="closePositives()" class="fa fa-chevron-up fa-2x" style="cursor: pointer"></i>&nbsp;&nbsp;-->
+                                                            <i ng-click="closePositives()" class="fa fa-chevron-up" style="cursor: pointer; color: silver;"></i> <h3>Positive Sample Control</h3>
 
                                                             <div class="row">
 
@@ -590,10 +785,10 @@
                                                                         <dl class="dl-horizontal">
 
                                                                             <dt>Molecular ID</dt>
-                                                                            <dd>SampleControl_MoCha_3</dd>
+                                                                            <dd>SampleControl_MoCha_2</dd>
 
                                                                             <dt>Analysis ID</dt>
-                                                                            <dd>job_1</dd>
+                                                                            <dd>job_2</dd>
 
                                                                             <dt>Total Variants</dt>
                                                                             <dd>18</dd>
@@ -605,13 +800,13 @@
                                                                             <dd> - </dd>
 
                                                                             <dt>Positive Control</dt>
-                                                                            <dd>1</dd>
+                                                                            <dd>3</dd>
 
                                                                             <dt>Positive Control Loaded Date</dt>
-                                                                            <dd>July 31, 2015 3:57 PM GMT </dd>
+                                                                            <dd>July 22, 2015 3:57 PM GMT </dd>
 
                                                                             <dt>PFile Received Date</dt>
-                                                                            <dd>September 18, 2015 3:21 PM GMT </dd>
+                                                                            <dd>September 10, 2015 3:21 PM GMT </dd>
 
                                                                             <dt style="width: 200px;text-align: left">Torrent Variant Caller Version</dt>
                                                                             <dd>tvc 4.4-8 </dd>
@@ -650,7 +845,7 @@
                                                                         <dl class="dl-horizontal">
                                                                             <dt>Quality Control Report</dt>
                                                                             <dd>
-                                                                                <a ui-sref="ocsample({ sampleId:'MoCha' })" class="btn btn-xs btn-success file-button-xl">
+                                                                                <a ui-sref="ocsample({ sampleId:'SampleControl_MoCha_2' })" class="btn btn-xs btn-success file-button-xl">
                                                                                     <i class="fa fa-bar-chart"></i>&nbsp;&nbsp;
                                                                                     <span class="bold">Quality Control Report</span>
                                                                                 </a>
@@ -662,11 +857,10 @@
 
                                                             </div>
 
-                                                            <div class="panel">
+                                                            <div class="row">
 
-                                                                <div class="col-lg-12" >
-                                                                    <div class="ibox float-e-margins">
-                                                                        <div class="col-lg-12" >
+
+                                                                        <div class="col-lg-16" >
                                                                             <div class="ibox-content">
                                                                                 <div class="ibox-title ibox-title-no-line pull">
                                                                                     <h3>Positive Controls</h3>
@@ -704,13 +898,9 @@
                                                                                 </table>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                </div>
 
 
-                                                                <div class="col-lg-12" >
-                                                                    <div class="ibox float-e-margins">
-                                                                        <div class="col-lg-12" >
+                                                                        <div class="col-lg-16" >
                                                                             <div class="ibox-content">
                                                                                 <div class="ibox-title ibox-title-no-line pull">
                                                                                     <h3>False Positive Variants</h3>
@@ -746,231 +936,35 @@
                                                                                 </table>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                </div>
 
                                                             </div>
-
                                                         </div>
-                                                        <!--MDACC GENERATOR-->
 
-                                                        <!--MOCK MDACC GENERATOR-->
-                                                        <!--<div class="wrapper" ng-if="positives === 'mdacc'">-->
-
-                                                            <!--<i ng-click="closePositives()" class="fa fa-chevron-up fa-2x" style="cursor: pointer"></i>&nbsp;&nbsp;-->
-
-                                                            <!--<div class="row">-->
-
-                                                                <!--&lt;!&ndash;SPOT TABS&ndash;&gt;-->
-                                                                <!--<div class="col-md-6">-->
-
-                                                                    <!--<div class="header-info-box  variant-report-header-box">-->
-
-                                                                        <!--<dl class="dl-horizontal">-->
-
-                                                                            <!--<dt>Molecular ID</dt>-->
-                                                                            <!--<dd>SampleControl_MoCha_3</dd>-->
-
-                                                                            <!--<dt>Analysis ID</dt>-->
-                                                                            <!--<dd>job_1</dd>-->
-
-                                                                            <!--<dt>Total Variants</dt>-->
-                                                                            <!--<dd>18</dd>-->
-
-                                                                            <!--<dt>MAPD</dt>-->
-                                                                            <!--<dd> - </dd>-->
-
-                                                                            <!--<dt> Cellularity</dt>-->
-                                                                            <!--<dd> - </dd>-->
-
-                                                                            <!--<dt>Positive Control</dt>-->
-                                                                            <!--<dd>1</dd>-->
-
-                                                                            <!--<dt>Positive Control Loaded Date</dt>-->
-                                                                            <!--<dd>July 31, 2015 3:57 PM GMT </dd>-->
-
-                                                                            <!--<dt>PFile Received Date</dt>-->
-                                                                            <!--<dd>September 18, 2015 3:21 PM GMT </dd>-->
-
-                                                                            <!--<dt style="width: 200px;text-align: left">Torrent Variant Caller Version</dt>-->
-                                                                            <!--<dd>tvc 4.4-8 </dd>-->
-
-                                                                        <!--</dl>-->
-                                                                    <!--</div>-->
-                                                                <!--</div>-->
-
-                                                                <!--<div class="col-md-6">-->
-                                                                    <!--<div class="header-info-box  variant-report-header-box">-->
-                                                                        <!--<dl class="dl-horizontal">-->
-
-                                                                            <!--<dt>Files</dt>-->
-                                                                            <!--<dd>-->
-                                                                                <!--<table><tr><td>-->
-                                                                                    <!--<a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_087_rawlib.bam?molecularSequenceNumber={{sampleId}}"-->
-                                                                                       <!--class="btn btn-xs btn-white file-button-xs">DNA BAM</a>-->
-                                                                                <!--</td><td>-->
-                                                                                    <!--<a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_087_rawlib.bam.bai?molecularSequenceNumber={{sampleId}}"-->
-                                                                                       <!--class="btn btn-xs btn-white file-button-xs">DNA BAI</a>-->
-                                                                                <!--</td><td>-->
-                                                                                    <!--<a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/SampleControl_MoCha_1_v1_all-matched.vcf?molecularSequenceNumber={{sampleId}}"-->
-                                                                                       <!--class="btn btn-xs btn-white file-button-xs">VCF</a>-->
-                                                                                <!--</td></tr><tr><td>-->
-                                                                                    <!--<a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_088_rawlib.bam.bai?molecularSequenceNumber={{sampleId}}"-->
-                                                                                       <!--class="btn btn-xs btn-white file-button-xs">RNA BAI</a>-->
-                                                                                <!--</td><td>-->
-                                                                                    <!--<a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_088_rawlib.bam?molecularSequenceNumber={{sampleId}}"-->
-                                                                                       <!--class="btn btn-xs btn-white file-button-xs">RNA BAM</a>-->
-                                                                                <!--</td><td>-->
-                                                                                    <!--<a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>-->
-                                                                                <!--</td></tr></table>-->
-                                                                            <!--</dd>-->
-                                                                        <!--</dl>-->
-
-                                                                        <!--<dl class="dl-horizontal">-->
-                                                                            <!--<dt>Quality Control Report</dt>-->
-                                                                            <!--<dd>-->
-                                                                                <!--<a ui-sref="ocsample({ sampleId:sampleId })" class="btn btn-xs btn-success file-button-xl">-->
-                                                                                    <!--<i class="fa fa-bar-chart"></i>&nbsp;&nbsp;-->
-                                                                                    <!--<span class="bold">Quality Control Report</span>-->
-                                                                                <!--</a>-->
-                                                                            <!--</dd>-->
-                                                                        <!--</dl>-->
-
-                                                                    <!--</div>-->
-                                                                <!--</div>-->
-                                                                <!--&lt;!&ndash;SPOT TABS&ndash;&gt;-->
-
-                                                            <!--</div>-->
-
-                                                            <!--&lt;!&ndash;SPOT TABS&ndash;&gt;-->
-
-
-                                                            <!--<div class="panel">-->
-
-                                                                <!--<div class="col-lg-12" >-->
-                                                                    <!--<div class="ibox float-e-margins">-->
-                                                                        <!--<div class="col-lg-12" >-->
-                                                                            <!--<div class="ibox-content">-->
-                                                                                <!--<div class="ibox-title ibox-title-no-line pull">-->
-                                                                                    <!--<h3>Positive Controls</h3>-->
-                                                                                <!--</div>-->
-                                                                                <!--<table class="table" role="grid">-->
-                                                                                    <!--<thead>-->
-                                                                                    <!--<tr>-->
-                                                                                        <!--<th >Present ID</th>-->
-                                                                                        <!--<th >Chromosome</th>-->
-                                                                                        <!--<th >Position</th>-->
-                                                                                        <!--<th >Gene</th>-->
-                                                                                        <!--<th >Variant Type</th>-->
-
-                                                                                        <!--<th >Reference </th>-->
-                                                                                        <!--<th >Alternative</th>-->
-                                                                                        <!--<th >HGVS</th>-->
-                                                                                        <!--<th >Protein</th>-->
-                                                                                        <!--<th >Function</th>-->
-                                                                                    <!--</tr>-->
-                                                                                    <!--</thead>-->
-                                                                                    <!--<tbody>-->
-                                                                                    <!--<tr ng-style="{'background-color':'{{ sample.hasMatchingVariant | irsample }}'}" ng-repeat="sample in positiveControlList">-->
-                                                                                        <!--<td>{{sample.identifier || '-' }}</td>-->
-                                                                                        <!--<td>{{sample.chromosome || '-' }}</td>-->
-                                                                                        <!--<td>{{sample.position || '-' }}</td>-->
-                                                                                        <!--<td>{{sample.geneName || '-' }}</td>-->
-                                                                                        <!--<td>{{sample.variantType || '-' }}</td>-->
-                                                                                        <!--<td>{{sample.reference || '-' }}</td>-->
-                                                                                        <!--<td>{{sample.alternative || '-' }}</td>-->
-                                                                                        <!--<td>{{sample.hgvs || '-' }}</td>-->
-                                                                                        <!--<td>{{sample.protein || '-' }}</td>-->
-                                                                                        <!--<td>{{sample.function || '-' }}</td>-->
-                                                                                    <!--</tr>-->
-                                                                                    <!--</tbody>-->
-                                                                                <!--</table>-->
-                                                                            <!--</div>-->
-                                                                        <!--</div>-->
-                                                                    <!--</div>-->
-                                                                <!--</div>-->
-
-
-                                                                <!--<div class="col-lg-12" >-->
-                                                                    <!--<div class="ibox float-e-margins">-->
-                                                                        <!--<div class="col-lg-12" >-->
-                                                                            <!--<div class="ibox-content">-->
-                                                                                <!--<div class="ibox-title ibox-title-no-line pull">-->
-                                                                                    <!--<h3>False Positive Variants</h3>-->
-                                                                                <!--</div>-->
-
-                                                                                <!--<table class="table" role="grid">-->
-                                                                                    <!--<thead>-->
-                                                                                    <!--<tr>-->
-                                                                                        <!--<th > ID</th>-->
-                                                                                        <!--<th >Position</th>-->
-                                                                                        <!--<th >Gene</th>-->
-                                                                                        <!--<th >Variant Type</th>-->
-                                                                                        <!--<th >Reference </th>-->
-                                                                                        <!--<th >Alternative</th>-->
-                                                                                        <!--<th >HGVS</th>-->
-                                                                                        <!--<th >Protein</th>-->
-                                                                                        <!--<th >Function</th>-->
-                                                                                    <!--</tr>-->
-                                                                                    <!--</thead>-->
-                                                                                    <!--<tbody>-->
-                                                                                    <!--<tr ng-repeat="sample in negativeVariantsList">-->
-                                                                                        <!--<td>{{sample.publicMedIds || '-' }}</td>-->
-                                                                                        <!--<td>{{sample.position || '-' }}</td>-->
-                                                                                        <!--<td>{{sample.geneName || '-' }}</td>-->
-                                                                                        <!--<td>{{sample.variantType || '-' }}</td>-->
-                                                                                        <!--<td>{{sample.reference || '-' }}</td>-->
-                                                                                        <!--<td>{{sample.alternative || '-' }}</td>-->
-                                                                                        <!--<td>{{sample.hgvs || '-' }}</td>-->
-                                                                                        <!--<td>{{sample.protein || '-' }}</td>-->
-                                                                                        <!--<td>{{sample.function || '-' }}</td>-->
-                                                                                    <!--</tr>-->
-                                                                                    <!--</tbody>-->
-                                                                                <!--</table>-->
-                                                                            <!--</div>-->
-                                                                        <!--</div>-->
-                                                                    <!--</div>-->
-                                                                <!--</div>-->
-
-                                                            <!--</div>-->
-
-                                                        <!--</div>-->
-                                                        <!--MOCK MDACC GENERATOR-->
-
-
-
-
-                                                    </div>
                                                     <!--MDACC GENERATOR-->
-
-
-
-                                                </div>
-                                            </div>
                                         </div>
+
                                     </div>
                                     <!--MOCHA GENERATOR-->
 
                                     <!--MDACC GENERATOR-->
                                     <div class="wrapper" ng-if="branch === 'mdacc'">
-                                        <h3>MDACC</h3>
 
-                                        <div class="no-horizontal-padding header-box-container">
-                                            <div class="row equal-height-panels">
-                                                <div class="col-lg-14">
-                                                    <div class="col-lg-14">
+                                        <div class="row wrapper border-bottom white-bg page-heading">
+
+
+
+                                                    <div class="col-lg-16">
+
                                                         <a ng-click="showPositiveControlConfirmation('MDACC')" class="btn btn-xs btn-primary file-button-xl pull-right">
-                                                            <!--<i class="fa fa-bar-chart"></i>&nbsp;&nbsp;-->
                                                             <span class="bold">Generate MSN</span>
                                                         </a>
 
-                                                        <!--<div class="row">-->
 
-                                                           <!---->
-
-                                                        <!--</div>-->
-
-                                                        <table class="table table-hover ng-isolate-scope dataTable no-footer" role="grid" width="100%" datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs" dt-instance="dtInstance" style="display: table; width: 100%;" id="DataTables_Table_2" aria-describedby="DataTables_Table_2_info">
+                                                        <table class="table table-hover ng-isolate-scope dataTable no-footer"
+                                                               role="grid" width="100%"
+                                                               datatable="ng" dt-options="dtOptions"
+                                                               dt-column-defs="dtColumnDefs" dt-instance="dtInstance"
+                                                               style="display: table; width: 100%;" id="DataTables_Table_2" aria-describedby="DataTables_Table_2_info">
                                                             <thead>
                                                             <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Molecular ID: activate to sort column descending" style="width: 103px;">Molecular ID</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" aria-label="Variant Reports: activate to sort column ascending" style="width: 164px;">Variant Reports</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" aria-label="Date Created: activate to sort column ascending" style="width: 175px;">Date Created</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" aria-label="Date Received: activate to sort column ascending" style="width: 116px;">Date Received</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 57px;">Status</th></tr>
                                                             </thead>
@@ -1028,7 +1022,8 @@
                                                         <!--MOCK MDACC GENERATOR-->
                                                         <div class="wrapper" ng-if="positives === 'mdacc'">
 
-                                                            <i ng-click="closePositives()" class="fa fa-chevron-up fa-2x" style="cursor: pointer"></i>&nbsp;&nbsp;
+                                                            <i ng-click="closePositives()" class="fa fa-chevron-up" style="cursor: pointer; color: silver;"></i> <h3>Positive Sample Control</h3>
+                                                            <!--<i ng-click="closePositives()" class="fa fa-chevron-up fa-2x" style="cursor: pointer"></i>&nbsp;&nbsp;-->
 
                                                             <div class="row">
 
@@ -1118,9 +1113,9 @@
 
                                                             <div class="panel">
 
-                                                                <div class="col-lg-12" >
+                                                                <div class="col-lg-16" >
                                                                     <div class="ibox float-e-margins">
-                                                                        <div class="col-lg-12" >
+                                                                        <div class="col-lg-16" >
                                                                             <div class="ibox-content">
                                                                                 <div class="ibox-title ibox-title-no-line pull">
                                                                                     <h3>Positive Controls</h3>
@@ -1211,7 +1206,7 @@
                                                         <!--MOCK MDACC GENERATOR-->
                                                         <div class="wrapper" ng-if="positives === 'mdacc1'">
 
-                                                            <i ng-click="closePositives()" class="fa fa-chevron-up fa-2x" style="cursor: pointer"></i>&nbsp;&nbsp;
+                                                            <i ng-click="closePositives()" class="fa fa-chevron-up" style="cursor: pointer; color: silver;"></i> <h3>Positive Sample Control</h3>
 
                                                             <div class="row">
 
@@ -1301,9 +1296,9 @@
 
                                                             <div class="panel">
 
-                                                                <div class="col-lg-12" >
+                                                                <div class="col-lg-16" >
                                                                     <div class="ibox float-e-margins">
-                                                                        <div class="col-lg-12" >
+                                                                        <div class="col-lg-16" >
                                                                             <div class="ibox-content">
                                                                                 <div class="ibox-title ibox-title-no-line pull">
                                                                                     <h3>Positive Controls</h3>
@@ -1395,30 +1390,25 @@
                                                     </div>
 
 
-
-                                                </div>
-                                            </div>
                                         </div>
-
-
 
 
                                     </div>
                                     <!--MDACC GENERATOR-->
 
-                                </div>
                             </div>
                         </div>
                         <!--POSITIVES-->
 
                         </div>
+                            </div>
                     </div>
-                </div>
-                </div>
+
                 </uib-tab>
 
                 <!--NO TEMPLAT CONTROL-->
                 <uib-tab heading="No Template Control ">
+
                 <div class="col-lg-16" >
                 <div class="ibox float-e-margins">
                     <div class="col-lg-16" >
@@ -1428,13 +1418,13 @@
                             <div class="row">
 
                                 <!--MOCHA NTC-->
-                                <div class="col-lg-14"  ng-if="branch === 'mocha'">
-                                    <div class="wrapper wrapper-content">
+                                <div class="col-lg-16"  ng-if="branch === 'mocha'">
+
+                                    <!--<div class="wrapper wrapper-content">-->
 
                                             <div class="row wrapper border-bottom white-bg page-heading">
                                                 <!--NTC-->
-                                                <div class="col-lg-12">
-                                                    <h3>MoCha</h3>
+                                                <div class="col-lg-16">
                                                     <a ng-click="showNoTemplateControlConfirmation('MoCha')" class="btn btn-xs btn-primary file-button-xl pull-right">
                                                         <span class="bold">Generate MSN</span>
                                                     </a>
@@ -1490,22 +1480,18 @@
 
                                             </div>
 
-
-                                    </div>
+                                    <!--</div>-->
 
                                 </div>
                                 <!--MOCHA NTC-->
 
 
                                 <!--MDA NTC-->
-                                <div class="col-lg-14"   ng-if="branch === 'mdacc'">
-                                    <h3>MDACC</h3>
+                                <div class="col-lg-16"   ng-if="branch === 'mdacc'">
+
                                 <a ng-click="showNoTemplateControlConfirmation('MDACC')" class="btn btn-xs btn-primary file-button-xl pull-right">
-                                <!--<i class="fa fa-bar-chart"></i>&nbsp;&nbsp;-->
                                 <span class="bold">Generate MSN</span>
                                 </a>
-
-
 
                                 <table class="table table-hover ng-isolate-scope no-footer dataTable" role="grid" width="100%" datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs" dt-instance="dtInstance" style="display: table; width: 100%;" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info">
 
@@ -1549,7 +1535,10 @@
                                 <!--NTC MOCHA TABLES-->
                                 <div class="wrapper"  ng-if="negatives === 'mocha'">
 
-                                    <i ng-click="closeNegatives()" class="fa fa-chevron-up fa-2x" style="cursor: pointer"></i>&nbsp;&nbsp;
+                                    <!--<div class="ibox-title ibox-title-no-line">-->
+                                    <i ng-click="closeNegatives()" class="fa fa-chevron-up" style="cursor: pointer; color: silver;"></i> <h3>No Template Control</h3>
+                                    <!--</div>-->
+                                    <!--<i ng-click="closeNegatives()" class="fa fa-chevron-up fa-2x" style="cursor: pointer"></i>&nbsp;&nbsp;-->
 
 
                                     <div class="row">
@@ -1706,14 +1695,14 @@
                                                     </tbody>
                                                 </table>
 
-                                </div>
+                                        </div>
                                     </div>
                                 <!--NTC MOCHA TABLES-->
 
                                 <!--NTC MDACC TABLES-->
                                 <div class="wrapper"  ng-if="negatives === 'mdacc'">
 
-                                    <i ng-click="closeNegatives()" class="fa fa-chevron-up fa-2x" style="cursor: pointer"></i>&nbsp;&nbsp;
+                                    <i ng-click="closeNegatives()" class="fa fa-chevron-up" style="cursor: pointer; color: silver;"></i> <h3>No Template Control</h3>
 
 
                                     <div class="row">
@@ -1879,6 +1868,8 @@
                     </div>
                 </div>
                 </div>
+
+
             </uib-tab>
             </uib-tabset>
             </div>
