@@ -141,8 +141,16 @@
     "code": "1000961"
   },
   "prior_drugs": [
-    "Aspirin",
-    "Afatinib"
+    {
+      "drug_id" : "",
+      "name" : "Aspirin",
+      "date_received" : "2016-06-29T14:46:00+00:00"
+    },
+    {
+      "drug_id" : "",
+      "name" : "Afatinib",
+      "date_received" : "2016-06-29T14:46:00+00:00"
+    }
   ],
   "message": "Some message",
   "timeline": [
