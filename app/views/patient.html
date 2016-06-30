@@ -123,7 +123,7 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr ng-repeat="ta in data.ta_history" style="cursor: auto; " role="row" class="odd">
-                                                        <td><treatment-arm-title ta="ta"></treatment-arm-title>
+                                                        <td><treatment-arm-title ta="ta"></treatment-arm-title></td>
                                                         <td>{{ta.step}}</td>
                                                         <td>{{ta.assignment_reason}}</td>
                                                         <td>{{ta.assignment_date | utc}}</td>
@@ -133,7 +133,6 @@
                                         </div>
                                     </div>
                                 </div>
-
 
                                 <div class="ibox float-e-margins">
                                     <div class="row">
@@ -229,83 +228,83 @@
                                 </tbody>
                             </table>
 
-                            <div class="ibox collapsed">
-                                <div class="ibox-title ibox-title-no-line">
-                                    <div collapse-toggle-left></div>
-                                    <h3>Specimen History</h3>
-                                </div>
-                                <div class="ibox-content ibox-content-no-padding ibox-title-no-line">
-                                    <table class="table table-hover" role="grid">
-                                        <thead>
-                                            <tr>
-                                                <th width="20%">Surgical Event ID</th>
-                                                <th width="15%">Site</th>
-                                                <th width="10%">Tracking Number</th>
-                                                <th width="5%">DNA Conc</th>
-                                                <th width="5%">DNA Vol</th>
-                                                <th width="15%">Reported Date</th>
-                                                <th width="20%">Comments</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr ng-repeat-start="shipment in currentSurgicalEvent.specimen_shipments" style="cursor: auto;" role="row" class="odd">
-                                                <td>{{shipment.surgical_event_id}}</td>
-                                                <td>{{shipment.destination_date | utc}}</td>
-                                                <td>{{shipment.tracking_number}}</td>
-                                                <td>{{shipment.dna_concordance}}</td>
-                                                <td>{{shipment.dna_volume}}</td>
-                                                <td>{{shipment.reported_date | utc}}</td>
-                                                <td>
-                                                    <div class="text-truncate-200px">{{shipment.comments}}</div>
-                                                </td>
-                                            </tr>
-                                            <tr ng-repeat-end>
-                                                <td colspan="7">
-                                                    <ul class="panel-list">
-                                                        <li ng-repeat="analysis in shipment.analyses" class="info-element">
-                                                            <div class="row">
-                                                                <div class="col-md-4 col-sm-6 text-left">
-                                                                    <dl class="dl-horizontal-narrow">
-                                                                        <dt>Analysis ID</dt>
-                                                                        <dd><a> {{analysis.analysis_id}} </a></dd>
+                            <div class="ibox-title ibox-title-no-line">
+                                <h3>Specimen History</h3>
+                            </div>
+                            <div class="ibox-content ibox-content-no-padding ibox-title-no-line">
+                                <table class="table table-hover" role="grid">
+                                    <thead>
+                                        <tr>
+                                            <th width="20%">Molecular ID</th>
+                                            <th width="15%">Site</th>
+                                            <th width="10%">Tracking Number</th>
+                                            <th width="5%">DNA Conc</th>
+                                            <th width="5%">DNA Vol</th>
+                                            <th width="15%">Reported Date</th>
+                                            <th width="20%">Comments</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat-start="shipment in currentSurgicalEvent.specimen_shipments" style="cursor: auto;" role="row" class="odd">
+                                            <td>{{shipment.surgical_event_id}}</td>
+                                            <td>{{shipment.destination_date | utc}}</td>
+                                            <td>{{shipment.tracking_number}}</td>
+                                            <td>{{shipment.dna_concordance}}</td>
+                                            <td>{{shipment.dna_volume}}</td>
+                                            <td>{{shipment.reported_date | utc}}</td>
+                                            <td>
+                                                <div class="text-truncate-200px">{{shipment.comments}}</div>
+                                            </td>
+                                        </tr>
+                                        <tr ng-repeat-end>
+                                            <td colspan="7">
+                                                <ul class="panel-list">
+                                                    <li ng-repeat="analysis in shipment.analyses" class="info-element">
+                                                        <div class="row">
+                                                            <div class="col-md-4 col-sm-6 text-left">
+                                                                <dl class="dl-horizontal-narrow">
+                                                                    <dt>Analysis ID</dt>
+                                                                    <dd><a> {{analysis.analysis_id}} </a></dd>
 
-                                                                        <dt>Status</dt>
-                                                                        <dd ng-style="{'color':'{{ analysis.status | analysisStatus }}'}">{{analysis.status}}</dd>
-                                                                    </dl>
-                                                                </div>
-                                                                <div class="col-md-4 col-sm-6 text-left">
-                                                                    <dl class="dl-horizontal-narrow">
-                                                                        <dt>File Received Date</dt>
-                                                                        <dd>{{analysis.file_received_date | utc}}</dd>
+                                                                    <dt>Status</dt>
+                                                                    <dd ng-style="{'color':'{{ analysis.status | analysisStatus }}'}">{{analysis.status}}</dd>
 
-                                                                        <dt>{{analysis.status}} Date</dt>
-                                                                        <dd>{{analysis.status_date | utc}}</dd>
-                                                                    </dl>
-                                                                </div>
-                                                                <div class="col-md-4 text-right">
-                                                                    <div class="row">
-                                                                        <div class="col-md-12 text-right">
-                                                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.dna_bam_file_path)">DNA BAM</a>
-                                                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.dna_bai_file_path)">DNA BAI</a>
-                                                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.vcf_path)">VCF</a>
-                                                                        </div>
+                                                                    <dt ng-if="analysis.comment">Comment</dt>
+                                                                    <dd>{{analysis.comment}}</dd>
+                                                                </dl>
+                                                            </div>
+                                                            <div class="col-md-4 col-sm-6 text-left">
+                                                                <dl class="dl-horizontal-narrow">
+                                                                    <dt>File Received Date</dt>
+                                                                    <dd>{{analysis.file_received_date | utc}}</dd>
+
+                                                                    <dt>{{analysis.status}} Date</dt>
+                                                                    <dd>{{analysis.status_date | utc}}</dd>
+                                                                </dl>
+                                                            </div>
+                                                            <div class="col-md-4 text-right">
+                                                                <div class="row">
+                                                                    <div class="col-md-12 text-right">
+                                                                        <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.dna_bam_file_path)">DNA BAM</a>
+                                                                        <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.dna_bai_file_path)">DNA BAI</a>
+                                                                        <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.vcf_path)">VCF</a>
                                                                     </div>
-                                                                    <div class="row">
-                                                                        <div class="col-md-12 text-right">
-                                                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.rna_bam_file_path)">RNA BAM</a>
-                                                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.rna_bai_file_path)">RNA BAI</a>
-                                                                            <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(analisys, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
-                                                                        </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12 text-right">
+                                                                        <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.rna_bam_file_path)">RNA BAM</a>
+                                                                        <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analisys.rna_bai_file_path)">RNA BAI</a>
+                                                                        <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(analisys, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </li>
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
 
