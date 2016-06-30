@@ -1182,12 +1182,16 @@
                         {
                             "analysis_id": "SAM002_02",
                             "status": "Rejected",
+                            "comment": "Invalid Specimen",
+                            "comment_user": "G. Smith",
                             "file_received_date": "2016-02-14T22:06:33+00:00",
                             "status_date": "2016-02-14T23:06:33+00:00"
                         },
                         {
                             "analysis_id": "SAM002_01",
                             "status": "Rejected",
+                            "comment": "Invalid Specimen",
+                            "comment_user": "G. Smith",
                             "file_received_date": "2016-02-13T22:06:33+00:00",
                             "status_date": "2016-02-13T23:06:33+00:00"
                         }
