@@ -208,6 +208,7 @@
                             <table class="table table-hover" role="grid">
                                 <thead>
                                 <tr>
+                                    <th>Molecular ID</th>
                                     <th>Surgical Event ID</th>
                                     <th>Patient ID</th>
                                     <th>Collected Date</th>
@@ -215,6 +216,7 @@
                                     <th>Type</th>
                                     <th>Shipped Date</th>
                                     <th>Site</th>
+                                    <th>Fedex Tracking</th>
                                     <th>Concordance Status</th>
                                     <th>Concordance Date</th>
 
@@ -222,6 +224,7 @@
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat-start="specimenTrackingItem in specimenTrackingList">
+                                    <td>{{ specimenTrackingItem.molecular_id}}</td>
                                     <td>{{ specimenTrackingItem.surgical_event_id }}</td>
                                     <td>{{ specimenTrackingItem.patient_id }}</td>
                                     <td>{{ specimenTrackingItem.collected_date | gmt }}</td>
@@ -229,21 +232,22 @@
                                     <td>{{ specimenTrackingItem.type }}</td>
                                     <td>{{ specimenTrackingItem.shipped_date | gmt }}</td>
                                     <td>{{ specimenTrackingItem.site }}</td>
+                                    <td>{{ specimenTrackingItem.fedex_tracking }}</td>
                                     <td>{{ specimenTrackingItem.pathology_status }}</td>
                                     <td>{{ specimenTrackingItem.pathology_status_date | gmt }}</td>
                                 </tr>
                                 <tr ng-repeat-end>
-                                    <td colspan="9">
+                                    <td colspan="11">
                                         <ul class="panel-list">
                                             <li ng-repeat="assayItem in specimenTrackingItem.assays" class="info-element">
                                                 <div class="row">
-                                                    <div class="col-md-3 col-sm-6 text-left">
+                                                    <div class="col-md-2 col-sm-6 text-left">
                                                         <dl class="dl-horizontal-narrow">
                                                             <dt>IHC</dt>
                                                             <dd ng-style="{'color':'{{ analysis.status | analysisStatus }}'}">{{::assayItem.ihc}}</dd>
                                                         </dl>
                                                     </div>
-                                                    <div class="col-md-3 col-sm-6 text-left">
+                                                    <div class="col-md-4 col-sm-6 text-left">
                                                         <dl class="dl-horizontal-narrow">
                                                             <dt>Assay Order Date</dt>
                                                             <dd>{{assayItem.assay_order_date | utc}}</dd>
