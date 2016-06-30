@@ -103,17 +103,18 @@ angular.module('qcsample.matchbox',[])
 
         $scope.loadPieChart = function(site) {
 
-            aMoiLabels = ['ELRP1'
-                ,'v5TBP'
-                ,'v5MYC'
-                ,'v5HMBS'
-                ,'v5ITGB7'];
+            aMoiLabels = ['LRP1'
+                ,'TBP'
+                ,'MYC'
+                ,'HMBS'
+                ,'ITGB7'];
 
             if(site==='mocha') {
-                aMoiValues = [4, 35, 45, 9]; //[4, 10, 14, 6, 10, 16]; //[45, 21, 4, 35, 9, 6];
+                // 8668	708413	75577	164227	1028
+                aMoiValues = [8668, 708413, 75577, 164227, 1028]; //[4, 10, 14, 6, 10, 16]; //[45, 21, 4, 35, 9, 6];
             }
             else{
-                aMoiValues = [1, 45, 15, 1];
+                aMoiValues = [8668, 708413, 75577, 164227, 1028];
             }
             aMoiHighlight = "#000088"; //"#dedede";
 
@@ -141,7 +142,14 @@ angular.module('qcsample.matchbox',[])
                     color: "#f8ac59",
                     highlight: aMoiHighlight,
                     label: aMoiLabels[3]
+                },
+                {
+                    value: aMoiValues[4],
+                    color: "#f8ac59",
+                    highlight: aMoiHighlight,
+                    label: aMoiLabels[4]
                 }
+
             ];
         }
 

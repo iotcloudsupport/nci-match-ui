@@ -170,16 +170,8 @@
     "code": "1000961"
   },
   "prior_drugs": [
-    {
-      "drug_id" : "",
-      "name" : "Aspirin",
-      "date_received" : "2016-06-29T14:46:00+00:00"
-    },
-    {
-      "drug_id" : "",
-      "name" : "Afatinib",
-      "date_received" : "2016-06-29T14:46:00+00:00"
-    }
+    "Aspirin",
+    "Afatinib"
   ],
   "message": "Some message",
   "timeline": [
@@ -1588,6 +1580,7 @@
           "surgical_event_id" : "SUREVT100",
           "molecular_id": "MSN8765",
           "site" : "MDA",
+          "specimen_type" : "TISSUE",
           "tracking_number": "675867855577",
           "destination_date": "2016-06-09T22:06:33+00:00",
           "dna_concordance": 0,
@@ -1598,6 +1591,8 @@
             {
               "analysis_id": "MSN1234_v2_2rer53...yher4",
               "status": "Rejected",
+              "comment": "Broken container",
+              "comment_user": "Sarah Connor",
               "file_received_date": "2016-09-09T22:06:33+00:00",
               "status_date": "2016-06-09T22:06:33+00:00"
             }
@@ -1607,6 +1602,7 @@
           "surgical_event_id" : "SUREVT100",
           "molecular_id": "MSN4321",
           "site" : "MoCha",
+          "specimen_type" : "BLOOD",
           "tracking_number": "675867855577",
           "destination_date": "2016-06-09T22:06:33+00:00",
           "dna_concordance": 12,
@@ -1623,6 +1619,16 @@
           ]
         }
       ]
+    }
+  ],
+  "oncomine_report": [
+    {
+      "lmna": 234059,
+      "tbp": 10345,
+      "myc": 13023,
+      "hmbs": 45098,
+      "itgby": 2134,
+      "sum": 304659
     }
   ]
 }
