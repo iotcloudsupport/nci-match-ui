@@ -63,8 +63,8 @@ angular.module('dashboard.matchbox',[])
         $scope.pendingTissueVariantReportsMockData = [
             {
                 'patient_id': '100099',
-                'molecular_id': 'MSN-1245',
-                'analysis_id': 'A-T-5678',
+                'molecular_id': 'MSN1245',
+                'analysis_id': 'AT5678',
                 'clia_lab': 'MoCha',
                 'specimen_received_date': 1421162969643,
                 'variant_report_received_date': 1421162969643,
@@ -73,8 +73,8 @@ angular.module('dashboard.matchbox',[])
             },
             {
                 'patient_id': '100065',
-                'molecular_id': 'MSN-12345',
-                'analysis_id': 'A-T-5682',
+                'molecular_id': 'MSN12345',
+                'analysis_id': 'AT5682',
                 'clia_lab': 'MDA',
                 'specimen_received_date': 1421163069643,
                 'variant_report_received_date': 1421163269643,
@@ -86,8 +86,8 @@ angular.module('dashboard.matchbox',[])
         $scope.pendingBloodVariantReportsMockData = [
             {
                 'patient_id': '100099',
-                'molecular_id': 'MSN-1245',
-                'analysis_id': 'A-T-5678',
+                'molecular_id': 'MSN1245',
+                'analysis_id': 'AT5678',
                 'clia_lab': 'MoCha',
                 'specimen_received_date': 1421162969643,
                 'variant_report_received_date': 1421162969643,
@@ -96,8 +96,8 @@ angular.module('dashboard.matchbox',[])
             },
             {
                 'patient_id': '100065',
-                'molecular_id': 'MSN-12345',
-                'analysis_id': 'A-T-5682',
+                'molecular_id': 'MSN12345',
+                'analysis_id': 'AT5682',
                 'clia_lab': 'MDA',
                 'specimen_received_date': 1421163069643,
                 'variant_report_received_date': 1421163269643,
@@ -109,8 +109,8 @@ angular.module('dashboard.matchbox',[])
         $scope.pendingAssignmentReportsMockData = [
             {
                 'patient_id': '100136',
-                'molecular_id': 'MSN-124577',
-                'analysis_id': 'A-T-5690',
+                'molecular_id': 'MSN124577',
+                'analysis_id': 'AT5690',
                 'assignment_date': 1423162969643,
                 'hours_pending': '3'
 
@@ -187,7 +187,7 @@ angular.module('dashboard.matchbox',[])
         $scope.icons = [
             'fa fa-heartbeat fa-4x',
             'fa fa-cogs fa-4x',
-            'fa fa-database fa-4x',
+            'fa fa-medkit fa-4x',
             'fa fa-envelope fa-4x',
             'fa fa-users fa-4x',
             'fa fa-thumbs-up fa-4x',
@@ -199,7 +199,8 @@ angular.module('dashboard.matchbox',[])
             'Specimen Received',
             'Specimen Failure',
             'New Treatment Arm',
-            'Treatment Arm Open'
+            'Treatment Arm Open',
+            'Treatment Arm Closed'
         ];
 
         $scope.status = [
@@ -240,30 +241,30 @@ angular.module('dashboard.matchbox',[])
                 "status": $scope.status[4],
                 "patientId": '100065',
                 "treatmentArmId": '',
-                "molecularId": 'MSN-12349',
-                "biopsySequenceNumber": 'A-T-111',
+                "molecularId": 'MSN12349',
+                "biopsySequenceNumber": 'AT111',
                 "time": 1421171969643,
                 "age": '5m',
                 "displayName": $scope.message[1]
             },
             {
-                "pic": $scope.icons[1],
+                "pic": $scope.icons[2],
                 "status": $scope.status[0],
-                "patientId": '100065',
-                "treatmentArmId": '',
-                "molecularId": 'MSN-12349',
-                "biopsySequenceNumber": 'A-T-109',
+                "patientId": '',
+                "treatmentArmId": 'APEC1621-Z',
+                "molecularId": '',
+                "biopsySequenceNumber": '',
                 "time": 1421169969643,
                 "age": '5m',
-                "displayName": $scope.message[2]
+                "displayName": $scope.message[5]
             },
             {
                 "pic": $scope.icons[3],
                 "status": $scope.status[4],
                 "patientId": '100136',
                 "treatmentArmId": '',
-                "molecularId": 'MSN-12349',
-                "biopsySequenceNumber": 'A-T-108',
+                "molecularId": 'MSN12349',
+                "biopsySequenceNumber": 'AT108',
                 "time": 1421165969643,
                 "age": '18m',
                 "displayName": $scope.message[1]
@@ -273,8 +274,8 @@ angular.module('dashboard.matchbox',[])
                 "status": $scope.status[0],
                 "patientId": '100065',
                 "treatmentArmId": '',
-                "molecularId": 'MSN-12340',
-                "biopsySequenceNumber": 'A-T-105',
+                "molecularId": 'MSN12340',
+                "biopsySequenceNumber": 'AT105',
                 "time": 1421162969643,
                 "age": '5h',
                 "displayName": $scope.message[2]
@@ -295,8 +296,8 @@ angular.module('dashboard.matchbox',[])
                 "status": $scope.status[4],
                 "patientId": '100065',
                 "treatmentArmId": '',
-                "molecularId": 'MSN-12340',
-                "biopsySequenceNumber": 'A-T-105',
+                "molecularId": 'MSN12340',
+                "biopsySequenceNumber": 'AT105',
                 "time": 1421160969643,
                 "age": '6d',
                 "displayName": $scope.message[1]
@@ -317,8 +318,8 @@ angular.module('dashboard.matchbox',[])
                 "status": $scope.status[0],
                 "patientId": '100136',
                 "treatmentArmId": '',
-                "molecularId": 'MSN-12330',
-                "biopsySequenceNumber": 'A-T-101',
+                "molecularId": 'MSN12330',
+                "biopsySequenceNumber": 'AT101',
                 "time": 1421162969643,
                 "age": '5h',
                 "displayName": $scope.message[2]
@@ -328,8 +329,8 @@ angular.module('dashboard.matchbox',[])
                 "status": $scope.status[4],
                 "patientId": '100065',
                 "treatmentArmId": '',
-                "molecularId": 'MSN-12330',
-                "biopsySequenceNumber": 'A-T-101',
+                "molecularId": 'MSN12330',
+                "biopsySequenceNumber": 'AT101',
                 "time": 1421160969643,
                 "age": '6d',
                 "displayName": $scope.message[1]
@@ -421,6 +422,7 @@ angular.module('dashboard.matchbox',[])
     })
 
     .controller('DashboardTreatmentArmAccrualChartController', function( $scope, reportApi ) {
+
         this.donutOptions = {
             segmentShowStroke: true,
             segmentStrokeColor: "#fff",
