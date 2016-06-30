@@ -41,7 +41,7 @@
         $scope.currentVariantReport = null;
         $scope.currentBloodVariantReport = null;
 
-        $scope.currentTreatmentArm = 'Not Selected';
+        $scope.currentTreatmentArm = null;
 
         $scope.variantReports = [];
 
@@ -296,11 +296,19 @@
         }
 
         function setupCurrentTreatmentArm() {
-            $scope.currentTreatmentArm = $scope.data &&
+            var selected = $scope.data &&
                 $scope.data.current_assignment &&
                 $scope.data.current_assignment.treatment_arms &&
                 $scope.data.current_assignment.treatment_arms.selected &&
-                $scope.data.current_assignment.treatment_arms.selected.length ? $scope.data.current_assignment.treatment_arms.selected[0].treatment_arm : "Not Selected";
+                $scope.data.current_assignment.treatment_arms.selected.length ? $scope.data.current_assignment.treatment_arms.selected[0] : null;
+            
+            if (selected) {
+                $scope.currentTreatmentArm = {
+                    name : selected.treatment_arm, 
+                    version : selected.treatment_arm_version, 
+                    stratum : selected.treatment_arm_stratum 
+                }
+            }
         }
 
         function dzAddedFile(file) {
