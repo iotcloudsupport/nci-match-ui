@@ -154,17 +154,17 @@
         }
 
         function __addMockData() {
-            $scope.data.ta_history = [
-                {
-                    'name':'APEC1621-A', 
-                    'version':'2015-08-06', 
-                    'stratum':'A', 
-                    'title':'APEC1621-A (2015-08-06)', 
-                    'step': 'Step 2.0', 
-                    'assignment_reason': 'The patient and treatment match on variand identifier [ABSF, DEDF].', 
-                    'assignment_date':'2016-06-25T14:46:10+34:00'
-                }
-            ];
+            // $scope.data.ta_history = [
+            //     {
+            //         'name':'APEC1621-A', 
+            //         'version':'2015-08-06', 
+            //         'stratum':'s124', 
+            //         'title':'APEC1621-A (2015-08-06)', 
+            //         'step': 'Step 2.0', 
+            //         'assignment_reason': 'The patient and treatment match on variand identifier [ABSF, DEDF].', 
+            //         'assignment_date':'2016-06-25T14:46:10+34:00'
+            //     }
+            // ];
         }
 
         function setupTimeline() {
