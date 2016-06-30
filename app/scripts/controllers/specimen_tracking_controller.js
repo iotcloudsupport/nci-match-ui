@@ -17,7 +17,7 @@ angular.module('specimen-tracking.matchbox',[])
                 "type": "SLIDE",
                 "shipped_date": 151983588910,
                 "site": "MDA",
-                "pathology_status": "POSITIVE",
+                "pathology_status": "Y",
                 "pathology_status_date": 1511235777810,
                 "variant_report_confirmed_date": "",
                 "assays": [
@@ -46,7 +46,7 @@ angular.module('specimen-tracking.matchbox',[])
                 "type": "BLOOD",
                 "shipped_date": 151983588910,
                 "site": "MDA",
-                "pathology_status": "POSITIVE",
+                "pathology_status": "Y",
                 "pathology_status_date": 1511235777810,
                 "variant_report_confirmed_date": "",
                 "assays": [
@@ -61,7 +61,7 @@ angular.module('specimen-tracking.matchbox',[])
                 "type": "TISSUE",
                 "shipped_date": 151983588910,
                 "site": "MoCha",
-                "pathology_status": "POSITIVE",
+                "pathology_status": "Y",
                 "pathology_status_date": 1511235777810,
                 "variant_report_confirmed_date": "",
                 "assays": [
@@ -76,7 +76,7 @@ angular.module('specimen-tracking.matchbox',[])
                 "type": "SLIDE",
                 "shipped_date": 151983588910,
                 "site": "MDA",
-                "pathology_status": "POSITIVE",
+                "pathology_status": "Y",
                 "pathology_status_date": 1511235777810,
                 "variant_report_confirmed_date": "",
                 "assays": [
