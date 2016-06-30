@@ -8,9 +8,12 @@ angular.module("login.matchbox",[
                 store.set('profile', profile);
                 store.set('token', token);
                 $location.path("/index/dashboard");
+                // $scope.headersVisible = true;
+                // $location.path("/dashboard");
+
             }, function(error) {
                 console.log("There was an error logging into MATCHBox.", error);
             });
-        }
-
+        };
     });
+
