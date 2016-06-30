@@ -33,8 +33,18 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         $scope.indelsList = [];
         $scope.copyNumberVariantsList = [];
         $scope.geneFusionsList = [];
+        $scope.sitename = 'undefined';
 
         $scope.branch = $stateParams.branch;
+
+        if($scope.branch === 'mocha'){
+            $scope.sitename = 'MoCha';
+
+        }
+        else {
+            $scope.sitename = 'MDACC';
+        }
+
         $scope.siteName = [];
         $scope.site = 'undefined';
             $scope.positives = 'undefined';
@@ -104,9 +114,9 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
 
             $scope.moChaList.push(
-                {'ipAddress': '12 129.43.127.133', 'externalIpAddress': '3 129.43.127.133', 'host': 'NCI-MATCH-IR', 'status': 'CONNECTED'},
-                {'ipAddress': '56 129.43.127.133', 'externalIpAddress': '1 129.43.127.133', 'host': 'NCIAS', 'status': 'WAITING'},
-                {'ipAddress': '12 129.43.127.133', 'externalIpAddress': '42 129.43.127.133', 'host': 'ip-172-31-24-10', 'status': 'FAILING'}
+                {'ipAddress': '12 129.43.127.133', 'externalIpAddress': '3 129.43.127.133', 'host': 'NCI-MATCH-IR', 'status': 'CONNECTED', 'lastcon': 'June 21, 2016 5:50 PM GMT'}
+                // {'ipAddress': '56 129.43.127.133', 'externalIpAddress': '1 129.43.127.133', 'host': 'NCIAS', 'status': 'WAITING'},
+                // {'ipAddress': '12 129.43.127.133', 'externalIpAddress': '42 129.43.127.133', 'host': 'ip-172-31-24-10', 'status': 'FAILING'}
             );
 
             // $scope.moChaList.push(
@@ -521,11 +531,14 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
 
                 aMoiLabels = ['Positive Control Failed', 'Positive Control Success', 'Not Generated'];
+                ntcMoiLabels = ['Ntc Control Failed', 'Ntc Control Success', 'Ntc Not Generated'];
                 if(site==='mocha') {
                     aMoiValues = [10, 15, 75]; //[4, 10, 14, 6, 10, 16]; //[45, 21, 4, 35, 9, 6];
+                    ntcMoiValues = [1, 3, 23]; //[4, 10, 14, 6, 10, 16]; //[45, 21, 4, 35, 9, 6];
                 }
                 else{
                     aMoiValues = [8, 25, 67];
+                    ntcMoiValues = [1, 1, 18];
                 }
                 aMoiHighlight = "#000088"; //"#dedede";
 
@@ -567,6 +580,29 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     //     label: aMoiLabels[5]
                     // }
                 ];
+
+
+                $scope.ntcpieData = [
+                    {
+                        value: ntcMoiValues[0],
+                        color: "green",
+                        highlight: aMoiHighlight,
+                        label: ntcMoiLabels[0]
+                    },
+                    {
+                        value: ntcMoiValues[1],
+                        color: "orange",
+                        highlight: aMoiHighlight,
+                        label: ntcMoiLabels[1]
+                    },
+                    {
+                        value: ntcMoiValues[2],
+                        color: "indigo", //"#ab0102",
+                        highlight: aMoiHighlight,
+                        label: ntcMoiLabels[2]
+                    }
+            ];
+
             }
 
             //Svg for samples
@@ -626,21 +662,25 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 };
 
                     armNames = [
-                        'Pos. Snv'
-                        , 'Pos. Indels'
-                        , 'Pos. Cnv'
-                        , 'Chrom Values'
-                        , 'Allele Freq'
-                        , 'Protein'
-                        , 'Funk Gene'
-                        , 'Variant Type/Snv'
-                        , 'Variant Type/Id'
-                        , 'Read Depth Snv'
-                        , 'Read Depth Indel'
-                        , 'Transcript Snv'
-                        , 'Transcript Indel'
+                        'Succ. / Fail. '
+                        , 'Pos. Samples '
+                        , ' Avg. mm / y / total'
+                        , 'NTC Indx.'
+
+
+                        , 'HB Status / Year'
+                        // , 'Protein'
+                        // , 'Funk Gene'
+                        // , 'Variant Type/Snv'
+                        // , 'Variant Type/Id'
+                        // , 'Read Depth Snv'
+                        // , 'Read Depth Indel'
+                        // , 'Transcript Snv'
+                        // , 'Transcript Indel'
                     ];
-                    armValues = [6, 3, 15, 2, 1, 11, 2, 3, 1, 23, 24, 16, 22];
+                    armValues = [75, 91, 2, 74, 75];
+                    armValues1 = [15, 9, 71, 98, 2];
+                    armValues2 = [10, 0.5, 73, 0, 3];
 
                     mdaccNames = [
                         'Pos. Snv'
@@ -665,11 +705,27 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     datasets: [
                         {
                             label: "Accrual Dataset",
-                            fillColor: "Indigo",
+                            fillColor: "darkgreen",
                             strokeColor: "rgba(220,220,220,0.8)",
                             highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
                             highlightStroke: "rgba(220,220,220,1)",
                             data: armValues
+                        },
+                        {
+                            fillColor: 'darkred',
+                            strokeColor: 'rgba(151,187,205,1)',
+                            pointColor: 'rgba(151,187,205,1)',
+                            highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
+                            highlightStroke: "rgba(220,220,220,1)",
+                            data: armValues1
+                        },
+                        {
+                            fillColor: 'orange',
+                            strokeColor: 'rgba(151,187,205,1)',
+                            pointColor: 'rgba(151,187,205,1)',
+                            highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
+                            highlightStroke: "rgba(220,220,220,1)",
+                            data: armValues2
                         }
                     ]
                 };
