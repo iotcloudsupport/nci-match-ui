@@ -4,15 +4,13 @@
         <br/>
         <small class="text-navy">{{::timelineEvent.from_now}}</small>
     </div>
-    <div class="col-xs-7 col-md-8 content no-top-border">
+    <div class="col-xs-7 col-md-8 content" ng-class="{'no-top-border':!timelineEvent.isStepChanging}">
         <p class="m-b-xs"><span class="timeline-step">Step: {{::timelineEvent.step}}.</span> </strong> <p class="m-b-xs"><strong>{{::timelineEvent.event_message}}.</strong></p>
-        <p>Variant Report Status: <span ng-style="{'color':'{{ timelineEvent.status | analysisStatus }}'}">{{::timelineEvent.event_data.status}}</span></p>
-        <body>
-            <p>
-                Surgical Event ID: <span class="timeline-value"><a>{{::timelineEvent.event_data.surgical_event_id}}</a></span>
-                Collected Date: <span class="timeline-value">{{::timelineEvent.event_data.collected_datetime | utc}}</span>
-                Received Date: <span class="timeline-value">{{::timelineEvent.event_data.received_datetime | utc}}</span>
-            </p>
-        </body>
+        <p class="m-b-xs">Variant Report Status: <span ng-style="{'color':'{{ timelineEvent.status | analysisStatus }}'}">{{::timelineEvent.event_data.status}}</span></p>
+        <p class="m-b-xs">
+            Surgical Event ID: <span class="timeline-value"><a>{{::timelineEvent.event_data.surgical_event_id}}</a></span>
+            Collected Date: <span class="timeline-value">{{::timelineEvent.event_data.collected_datetime | utc}}</span>
+            Received Date: <span class="timeline-value">{{::timelineEvent.event_data.received_datetime | utc}}</span>
+        </p>
     </div>
 </div>

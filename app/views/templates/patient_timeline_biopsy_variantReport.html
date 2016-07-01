@@ -4,8 +4,8 @@
         <br/>
         <small class="text-navy">{{::timelineEvent.from_now}}</small>
     </div>
-    <div class="col-xs-7 col-md-8 content no-top-border">
+    <div class="col-xs-7 col-md-8 content" ng-class="{'no-top-border':!timelineEvent.isStepChanging}">
         <p class="m-b-xs"><strong>Variant Report Status: <span ng-style="{'color':'{{ timelineEvent.status | analysisStatus }}'}">{{::timelineEvent.status}}</span></strong></p>
-        <p>MSN <span class="timeline-value"><a>{{::timelineEvent.molecularSequenceNumber}}</a></span>, Analys ID <span class="timeline-value"><a>{{::timelineEvent.analysisId}}</a></span>, Location <span class="timeline-value">{{::timelineEvent.location}}</span>, Total MOI <span class="timeline-value">{{::timelineEvent.totalMoiCount}}</span>, Total aMOI <span class="timeline-value">{{::timelineEvent.totalAmoiCount}}</span></p>
+        <p class="m-b-xs">MSN <span class="timeline-value"><a>{{::timelineEvent.molecularSequenceNumber}}</a></span>, Analys ID <span class="timeline-value"><a>{{::timelineEvent.analysisId}}</a></span>, Location <span class="timeline-value">{{::timelineEvent.location}}</span>, Total MOI <span class="timeline-value">{{::timelineEvent.totalMoiCount}}</span>, Total aMOI <span class="timeline-value">{{::timelineEvent.totalAmoiCount}}</span></p>
     </div>
 </div>

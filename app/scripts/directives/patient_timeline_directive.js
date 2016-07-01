@@ -69,8 +69,9 @@
         return {
             restrict: 'E',
             scope: {
-                timelineEvent: '=',
-                type: '='
+                timelineEvent: '<',
+                type: '<',
+                isStepChanging: '<'
             },
             link: linker
         }
