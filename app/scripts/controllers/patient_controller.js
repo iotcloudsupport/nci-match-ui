@@ -100,7 +100,7 @@
             }
 
             $scope.variantReportType = reportType;
-            setVariantReport();
+            selectVariantReport($scope.variantReportOption);
         }
 
         function setVariantReportMode(reportMode) {
@@ -109,7 +109,7 @@
             }
 
             $scope.variantReportMode = reportMode;
-            setVariantReport();
+            selectVariantReport($scope.variantReportOption);
         }
 
         function getVariantReportTypeClass(reportType) {
@@ -118,15 +118,6 @@
 
         function getVariantReportModeClass(reportMode) {
             return $scope.variantReportMode === reportMode ? 'active' : '';
-        }
-
-        function setVariantReport() {
-            var selected = $scope.variantReportType + '' + $scope.variantReportMode;
-            if ($scope.variantReports && selected in $scope.variantReports) {
-                $scope.currentVariantReport = $scope.variantReports[$scope.variantReportType + '' + $scope.variantReportMode];
-            } else {
-                $scope.currentVariantReport = null;
-            }
         }
 
         function loadPatientData() {
@@ -156,8 +147,8 @@
             setupCurrentTreatmentArm();
             setupTimeline();
             setupSurgicalEventOptions();
-            setupVariantReports();
             setupVariantReportOptions();
+            setupVariantReports();
             setupAssignmentReportOptions();
             setupUserName();
         }
@@ -229,22 +220,36 @@
                 return;
             }
 
+            var selected = null;
+
             for (var i = 0; i < $scope.data.variant_reports.length; i++) {
-                $scope.data.variant_reports[i].variant_report_mode = 'FILTERED';
-                $scope.variantReports['' + $scope.data.variant_reports[i].variant_report_type + $scope.data.variant_reports[i].variant_report_mode] = $scope.data.variant_reports[i];
+                var variantReport = angular.copy($scope.data.variant_reports[i]);
+
+                variantReport.variant_report_mode = 'FILTERED';
+                $scope.variantReports.push(variantReport);
 
                 //TODO:RZ this is for demo only, remove after QC reports are implemented
                 var qcReport = {};
-                angular.copy($scope.data.variant_reports[i], qcReport);
+                angular.copy(variantReport, qcReport);
                 qcReport.variant_report_mode = 'QC';
 
-                $scope.variantReports['' + qcReport.variant_report_type + qcReport.variant_report_mode] = qcReport;
+                $scope.variantReports.push(qcReport);
+
+                if (!selected) {
+                    var byVariantReportKeys = function (x) { 
+                        return x.value.analysis_id === variantReport.analysis_id &&
+                            x.value.surgical_event_id === variantReport.surgical_event_id &&
+                            x.value.molecular_id === variantReport.molecular_id;
+                    };
+                    selected = $scope.variantReportOptions.find(byVariantReportKeys);
+                }
             }
 
             $scope.variantReportType = 'TISSUE';
             $scope.variantReportMode = 'FILTERED';
+            $scope.variantReportOption = selected;
 
-            setVariantReport();
+            selectVariantReport(selected);
         }
 
         function setupAssignmentReportOptions() {
@@ -266,6 +271,46 @@
             $scope.assignmentReportOptions.push($scope.assignmentReportOption);
         }
 
+        function selectVariantReport(option) {
+            var previous = $scope.currentVariantReport;
+
+            $scope.currentVariantReport = null;
+
+
+$log.debug('$scope.variantReportMode='+$scope.variantReportMode);
+$log.debug('$scope.variantReportType='+$scope.variantReportType);
+$log.debug('option.value.surgical_event_id='+option.value.surgical_event_id);
+$log.debug('option.value.analysis_id='+option.value.analysis_id);
+$log.debug('option.value.molecular_id='+option.value.molecular_id);
+$log.debug('----------------');
+
+            for (var i = 0; i < $scope.variantReports.length; i++) {
+                var variantReport = $scope.variantReports[i];
+
+$log.debug('variantReport.variant_report_mode='+variantReport.variant_report_mode);
+$log.debug('variantReport.variant_report_type='+variantReport.variant_report_type);
+$log.debug('variantReport.surgical_event_id='+variantReport.surgical_event_id);
+$log.debug('variantReport.analysis_id='+variantReport.analysis_id);
+$log.debug('variantReport.molecular_id='+variantReport.molecular_id);
+
+                if (variantReport.variant_report_mode === $scope.variantReportMode && variantReport.variant_report_type === $scope.variantReportType) {
+                    if (variantReport.surgical_event_id === option.value.surgical_event_id && 
+                        variantReport.analysis_id === option.value.analysis_id &&
+                        variantReport.molecular_id === option.value.molecular_id) {
+                            $scope.currentVariantReport = variantReport;
+                            break;
+                    }
+                }
+            }
+
+            if ($scope.currentVariantReport) {
+                return $scope.currentVariantReport;
+            }
+
+            $log.error("Unable to find Variant Report by " + option + '. Setting the Variant Report to previous value ' + previous);
+            $scope.currentVariantReport = previous;
+        }
+
         function setupVariantReportOptions() {
             if (!$scope.data.variant_reports || !$scope.data.variant_reports.length) {
                 return;
@@ -278,18 +323,13 @@
                     var surgicalEventOption = findSurgicalEventOption(variantReport.surgical_event_id);
                     if (surgicalEventOption) {
                         var variantReportItem = {
-                            text: 'Surgical Event ' + variantReport.surgical_event_id + ' | Variant Report Analysis ID ' + variantReport.analysis_id,
+                            text: 'Surgical Event ' + variantReport.surgical_event_id + ' | Analysis ID ' + variantReport.analysis_id + ' | Molecular ID ' + variantReport.molecular_id,
                             value: {
                                 surgical_event_id: variantReport.surgical_event_id,
-                                analysis_id: variantReport.analysis_id
+                                analysis_id: variantReport.analysis_id,
+                                molecular_id: variantReport.molecular_id
                             }
-                        }
-
-                        if (!$scope.variantReportOption) {
-                            $scope.variantReportOption = variantReportItem;
-                            selectVariantReport(variantReportItem);
-                        }
-
+                        };
                         $scope.variantReportOptions.push(variantReportItem);
                     } else {
                         $log.error('Unable to find Surgical Event by ' + variantReport.surgical_event_id);
@@ -300,7 +340,7 @@
                         value: {
                             analysis_id: variantReport.analysis_id
                         }
-                    }
+                    };
 
                     if (!$scope.bloodVariantReportOption) {
                         $scope.bloodVariantReportOption = bloodVariantReportItem;
@@ -494,13 +534,16 @@
             var surgicalEventItem = $scope.surgicalEventOptions.find(bySurgicalEvent);
 
             if (surgicalEventItem) {
-                $log.debug(selected);
                 $scope.surgicalEventOption = surgicalEventItem;
                 selectSurgicalEvent(surgicalEventItem);
                 selectVariantReport(selected);
             } else {
                 $log.error('Unable to find Surgical Event by ' + selected.value.surgical_event_id);
             }
+
+            $log.debug($scope.currentVariantReport.surgical_event_id);
+            $log.debug($scope.currentVariantReport.analysis_id);
+            $log.debug($scope.currentVariantReport.molecular_id);
         }
 
         function onAssignmentReportSelected(selected) {
@@ -534,18 +577,6 @@
                     }
                 }
             }
-        }
-
-        function selectVariantReport(option) {
-            for (var i = 0; i < $scope.data.variant_reports.length; i++) {
-                var variantReport = $scope.data.variant_reports[i];
-
-                if (variantReport.surgical_event_id === option.value.surgical_event_id) {
-                    $scope.currentVariantReport = variantReport;
-                    return;
-                }
-            }
-            $log.error('Variant report is not found for ' + option.value.surgical_event_id);
         }
 
         function onBloodVariantReportSelected(selected) {
