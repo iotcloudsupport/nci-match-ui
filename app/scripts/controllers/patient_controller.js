@@ -198,7 +198,7 @@
                 var surgicalEvent = $scope.data.specimen_history[i];
 
                 var item = {
-                    text: 'Surgical Event ' + surgicalEvent.surgical_event_id,
+                    text: 'Surgical Event ID ' + surgicalEvent.surgical_event_id,
                     value: {
                         event_index: i,
                         surgical_event_id: surgicalEvent.surgical_event_id
