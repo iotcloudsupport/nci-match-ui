@@ -576,14 +576,14 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
 
 
-                aMoiLabels = ['Positive Control Failed', 'Positive Control Success', 'Not Generated'];
-                ntcMoiLabels = ['Ntc Control Failed', 'Ntc Control Success', 'Ntc Not Generated'];
+                aMoiLabels = ['Failed', 'Success', 'Not Generated'];
+                ntcMoiLabels = ['Failed', 'Success', 'Not Generated'];
                 if(site==='mocha') {
-                    aMoiValues = [10, 15, 75]; //[4, 10, 14, 6, 10, 16]; //[45, 21, 4, 35, 9, 6];
+                    aMoiValues = [15, 75, 10]; //[4, 10, 14, 6, 10, 16]; //[45, 21, 4, 35, 9, 6];
                     ntcMoiValues = [10, 26, 4]; //[4, 10, 14, 6, 10, 16]; //[45, 21, 4, 35, 9, 6];
                 }
                 else{
-                    aMoiValues = [8, 25, 67];
+                    aMoiValues = [25, 67, 8];
                     ntcMoiValues = [1, 18, 2];
                 }
                 aMoiHighlight = "#000088"; //"#dedede";
@@ -591,13 +591,13 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 $scope.pieData = [
                     {
                         value: aMoiValues[0],
-                        color: "#23c6c8",
+                        color: "darkred",
                         highlight: aMoiHighlight,
                         label: aMoiLabels[0]
                     },
                     {
                         value: aMoiValues[1],
-                        color: "#1c84c6",
+                        color: "darkgreen",
                         highlight: aMoiHighlight,
                         label: aMoiLabels[1]
                     },
@@ -607,24 +607,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                         highlight: aMoiHighlight,
                         label: aMoiLabels[2]
                     }
-                    // {
-                    //     value: aMoiValues[3],
-                    //     color: "#f8ac59",
-                    //     highlight: aMoiHighlight,
-                    //     label: aMoiLabels[3]
-                    // },
-                    // {
-                    //     value: aMoiValues[4],
-                    //     color: "#707070",
-                    //     highlight: aMoiHighlight,
-                    //     label: aMoiLabels[4]
-                    // },
-                    // {
-                    //     value: aMoiValues[5],
-                    //     color: "#cfcfcf",
-                    //     highlight: aMoiHighlight,
-                    //     label: aMoiLabels[5]
-                    // }
+
                 ];
 
 
@@ -753,8 +736,8 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                         , 'Fri.'
                     ];
 
-                mdaccValues = [12, 55, 2, 33, 11];
-                mdaccValues1 = [44, 7, 71, 9, 2];
+                mdaccValues = [12, 15, 11, 21, 11];
+                mdaccValues1 = [6, 7, 3, 9, 2];
                 // mdaccValues = [10, 0.5, 73, 0, 3];
 
                     // mdaccValues = [1, 8, 3, 8, 1, 1, 9, 1, 1, 31, 28, 12, 31];
@@ -795,7 +778,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     datasets: [
                         {
                             label: "Accrual Dataset",
-                            fillColor: "Indigo",
+                            fillColor: "darkgreen",
                             strokeColor: "rgba(220,220,220,0.8)",
                             highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
                             highlightStroke: "rgba(220,220,220,1)",
