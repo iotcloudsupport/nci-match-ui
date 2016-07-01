@@ -12,8 +12,8 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withOption('bLengthChange', false);
 
-        // $scope.dtOptions = DTOptionsBuilder.newOptions()
-        //     .withOption('searching', false);
+        $scope.dtOptions = DTOptionsBuilder.newOptions()
+            .withOption('searching', false);
 
         this.dtInstance = {};
 
@@ -34,6 +34,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         $scope.copyNumberVariantsList = [];
         $scope.geneFusionsList = [];
         $scope.sitename = 'undefined';
+            $scope.barlegend = 'Weekly Positive Control Status';
 
         $scope.branch = $stateParams.branch;
 
@@ -547,11 +548,11 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 ntcMoiLabels = ['Ntc Control Failed', 'Ntc Control Success', 'Ntc Not Generated'];
                 if(site==='mocha') {
                     aMoiValues = [10, 15, 75]; //[4, 10, 14, 6, 10, 16]; //[45, 21, 4, 35, 9, 6];
-                    ntcMoiValues = [1, 26, 4]; //[4, 10, 14, 6, 10, 16]; //[45, 21, 4, 35, 9, 6];
+                    ntcMoiValues = [10, 26, 4]; //[4, 10, 14, 6, 10, 16]; //[45, 21, 4, 35, 9, 6];
                 }
                 else{
                     aMoiValues = [8, 25, 67];
-                    ntcMoiValues = [18, 1, 2];
+                    ntcMoiValues = [1, 18, 2];
                 }
                 aMoiHighlight = "#000088"; //"#dedede";
 
@@ -598,13 +599,13 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 $scope.ntcpieData = [
                     {
                         value: ntcMoiValues[0],
-                        color: "green",
+                        color: "orange",
                         highlight: aMoiHighlight,
                         label: ntcMoiLabels[0]
                     },
                     {
                         value: ntcMoiValues[1],
-                        color: "orange",
+                        color: "green",
                         highlight: aMoiHighlight,
                         label: ntcMoiLabels[1]
                     },
@@ -620,13 +621,13 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 $scope.ntcMDApieData = [
                     {
                         value: ntcMoiValues[0],
-                        color: "green",
+                        color: "orange",
                         highlight: aMoiHighlight,
                         label: ntcMoiLabels[0]
                     },
                     {
                         value: ntcMoiValues[1],
-                        color: "orange",
+                        color: "green",
                         highlight: aMoiHighlight,
                         label: ntcMoiLabels[1]
                     },
@@ -663,7 +664,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             // }
 
             $scope.loadSampleBreakups = function() {
-
+                $scope.barlegend = "Weekly Positive Control Status"
 
                 var prepareData = {
                     series: [5, 3, 4]
@@ -708,9 +709,9 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                         // , 'Transcript Snv'
                         // , 'Transcript Indel'
                     ];
-                    armValues = [75, 91, 2, 74, 75];
-                    armValues1 = [15, 9, 71, 98, 2];
-                    armValues2 = [10, 0.5, 73, 0, 3];
+                    armValues = [16, 13, 2, 24, 28];
+                    armValues1 = [2, 3, 4, 5, 2];
+                    // armValues2 = [10, 0.5, 73, 0, 3];
 
                     mdaccNames = [
                         'Mon.'
@@ -787,6 +788,8 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
             $scope.ntcBarChart = function(id){
 
+                $scope.barlegend = "Weekly NTC Control Status"
+
                 if(id === 'mocha'){
 
                     armNames = [
@@ -795,16 +798,8 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                         , ' Wed.'
                         , 'Thu.'
                         , 'Fri.'
-                        // , 'Protein'
-                        // , 'Funk Gene'
-                        // , 'Variant Type/Snv'
-                        // , 'Variant Type/Id'
-                        // , 'Read Depth Snv'
-                        // , 'Read Depth Indel'
-                        // , 'Transcript Snv'
-                        // , 'Transcript Indel'
                     ];
-                    armValues = [1, 2, 4, 4, 2];
+                    armValues = [4, 7, 3, 10, 1];
                     armValues1 = [3, 1, 1, 2, 3];
 
                     $scope.barData = {
@@ -827,6 +822,39 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                                 data: armValues1
                             }
                             ]};
+                }
+                else if (id === 'mdacc'){
+
+                    armNames = [
+                        'Mon.'
+                        , 'Tue.'
+                        , ' Wed.'
+                        , 'Thu.'
+                        , 'Fri.'
+                    ];
+                    armValues = [0, 0, 0, 1, 0];
+                    armValues1 = [3, 1, 1, 2, 3];
+
+                    $scope.barDataMDACC = {
+                        labels: armNames,
+                        datasets: [
+                            {
+                                label: "Accrual Dataset",
+                                fillColor: "orange",
+                                strokeColor: "rgba(220,220,220,0.8)",
+                                highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
+                                highlightStroke: "rgba(220,220,220,1)",
+                                data: armValues
+                            },
+                            {
+                                fillColor: 'darkgreen',
+                                strokeColor: 'rgba(151,187,205,1)',
+                                pointColor: 'rgba(151,187,205,1)',
+                                highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
+                                highlightStroke: "rgba(220,220,220,1)",
+                                data: armValues1
+                            }
+                        ]};
                 }
 
             };
