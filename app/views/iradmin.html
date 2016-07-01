@@ -34,7 +34,7 @@
                                         <div class="col-xs-12 cols-height" ng-init="loadSampleBreakups();loadHeartMoChaBeatList()">
 
                                             <div class="btn-group btn-group-margin" data-toggle="buttons" >
-                                            <label class="btn btn-outline btn-success" #1ab394 ng-click="setSampleType('MoCha')"
+                                            <label class="btn btn-outline btn-success" ng-class = "{'active' : (branch=='mocha')}" ng-click="setSampleType('MoCha')"
                                             title="Switch to Tumor MoCha Report">
                                             <input type="radio" name="SampleType">MoCha
                                             </label>
