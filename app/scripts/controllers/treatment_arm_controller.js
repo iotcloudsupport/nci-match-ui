@@ -814,7 +814,7 @@ angular.module('treatment-arm.matchbox',[])
                     "dateOnArm": "August 9, 2015  9:20 AM GMT",
                     "dateOffArm": "August 10, 2015  10:32 AM GMT",
                     "timeOnArm": "1 day",
-                    "step": "0",
+                    "step": "1.0",
                     "diseases": "Skin cancer, NOS"
                 }
             },
@@ -830,7 +830,7 @@ angular.module('treatment-arm.matchbox',[])
                     "dateOnArm": "-",
                     "dateOffArm": "-",
                     "timeOnArm": "0 days",
-                    "step": "0",
+                    "step": "1.0",
                     "diseases": "Chondrosarcoma"
                 }
             },
