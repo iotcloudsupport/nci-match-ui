@@ -278,7 +278,7 @@
                     var surgicalEventOption = findSurgicalEventOption(variantReport.surgical_event_id);
                     if (surgicalEventOption) {
                         var variantReportItem = {
-                            text: 'Variant Report Analysis ID ' + variantReport.analysis_id + ' | Surgical Event ' + variantReport.surgical_event_id,
+                            text: 'Surgical Event ' + variantReport.surgical_event_id + ' | Variant Report Analysis ID ' + variantReport.analysis_id,
                             value: {
                                 surgical_event_id: variantReport.surgical_event_id,
                                 analysis_id: variantReport.analysis_id
