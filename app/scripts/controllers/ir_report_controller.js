@@ -37,6 +37,8 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
         $scope.branch = $stateParams.branch;
 
+           
+
         if($scope.branch === 'mocha'){
             $scope.sitename = 'MoCha';
 
@@ -119,10 +121,12 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
                 if(reportType === 'MoCha'){
                     $scope.branch = 'mocha';
+                    $scope.sitename = 'MoCha';
 
                 }
-                else if(reportType === 'MDAC'){
+                else if(reportType === 'MDACC'){
                     $scope.branch = 'mdacc';
+                    $scope.sitename = 'MDACC';
                 }
 
                 if ($scope.SampleType === reportType) {
