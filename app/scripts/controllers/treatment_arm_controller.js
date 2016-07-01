@@ -20,6 +20,7 @@ angular.module('treatment-arm.matchbox',[])
 
         $scope.information = {
             name: 'APEC1621-A',
+            stratum: "123145",
             description: 'Afatinib in DDR2 activating mutations',
             currentVersion: '2016-03-17',
             genes: 'DDR2',
@@ -89,6 +90,7 @@ angular.module('treatment-arm.matchbox',[])
         $scope.versions = [
             {
                 name: '2016-03-17',
+                stratum: '231563',
                 text: '2016-03-17',
                 latest: 'This is the latest version.',
                 versionStatus: 'OPEN',
