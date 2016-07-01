@@ -20,6 +20,7 @@ angular.module('treatment-arm.matchbox',[])
 
         $scope.information = {
             name: 'APEC1621-A',
+            stratum: "123145",
             description: 'Afatinib in DDR2 activating mutations',
             currentVersion: '2016-03-17',
             genes: 'DDR2',
@@ -89,6 +90,7 @@ angular.module('treatment-arm.matchbox',[])
         $scope.versions = [
             {
                 name: '2016-03-17',
+                stratum: '231563',
                 text: '2016-03-17',
                 latest: 'This is the latest version.',
                 versionStatus: 'OPEN',
@@ -812,7 +814,7 @@ angular.module('treatment-arm.matchbox',[])
                     "dateOnArm": "August 9, 2015  9:20 AM GMT",
                     "dateOffArm": "August 10, 2015  10:32 AM GMT",
                     "timeOnArm": "1 day",
-                    "step": "0",
+                    "step": "1.0",
                     "diseases": "Skin cancer, NOS"
                 }
             },
@@ -827,8 +829,8 @@ angular.module('treatment-arm.matchbox',[])
                     "dateSelected": "January 20, 2015  7:05 PM GMT",
                     "dateOnArm": "-",
                     "dateOffArm": "-",
-                    "timeOnArm": "0 days",
-                    "step": "0",
+                    "timeOnArm": "-",
+                    "step": "1.0",
                     "diseases": "Chondrosarcoma"
                 }
             },
