@@ -18,12 +18,15 @@ angular.module('qcsample.matchbox',[])
         $scope.copyNumberVariants = [];
         $scope.geneFusions = [];
         $scope.branch = "";
+        $scope.sitename = 'undefined';
 
         if($scope.sampleId.indexOf('MoCha') >= 0) {
             $scope.branch = 'mocha';
+            $scope.sitename = 'MoCha';
         }
         else{
             $scope.branch = 'mdacc';
+            $scope.sitename = 'MDACC';
         }
 
 
