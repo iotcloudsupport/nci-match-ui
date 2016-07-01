@@ -168,12 +168,6 @@
                 var diff = eventDateMoment.diff(now, "DD/MM/YYYY HH:mm:ss");
                 timelineEvent.from_now = moment.duration(diff).humanize(true);
 
-                $log.debug('previousStep');
-                $log.debug(previousStep);
-
-                $log.debug('timelineEvent.step');
-                $log.debug(timelineEvent.step);
-
                 if (previousStep && previousStep !== timelineEvent.step) {
                     timelineEvent.isStepChanging = true;
                     previousStep = timelineEvent.step;
@@ -182,9 +176,6 @@
                 if (!previousStep) {
                     previousStep = timelineEvent.step;
                 }
-
-                $log.debug('previousStep');
-                $log.debug(previousStep);
             }
         }
 

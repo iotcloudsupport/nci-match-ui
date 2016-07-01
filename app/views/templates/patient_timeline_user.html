@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-xs-5 col-md-4 date" title="User Event">
+    <div class="col-xs-5 col-md-4 date" title="User Event" ng-class="{'date-top-border':timelineEvent.isStepChanging}">
         <i class="fa fa-user-md fa-2x"></i> <small>{{::timelineEvent.event_date | utc}}</small>
         <br/>
         <small class="text-navy">{{::timelineEvent.from_now}}</small>
