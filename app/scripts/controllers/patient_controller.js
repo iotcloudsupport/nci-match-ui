@@ -149,6 +149,7 @@
             setupSurgicalEventOptions();
             setupVariantReportOptions();
             setupVariantReports();
+            setupVariantReportOptions();
             setupAssignmentReportOptions();
             setupUserName();
         }
@@ -336,9 +337,10 @@
                     }
                 } else if (variantReport.variant_report_type === 'BLOOD') {
                     var bloodVariantReportItem = {
-                        text: 'Variant Report Analysis ID ' + variantReport.analysis_id,
+                        text: 'Analysis ID ' + variantReport.analysis_id + ' | Molecular ID ' + variantReport.molecular_id,
                         value: {
-                            analysis_id: variantReport.analysis_id
+                            analysis_id: variantReport.analysis_id,
+                            molecular_id: variantReport.molecular_id
                         }
                     };
 
@@ -350,7 +352,7 @@
                         $scope.currentBloodVariantReport = variantReport;
                     }
 
-                    $scope.bloodVariantReportOptions.push(variantReport);
+                    $scope.bloodVariantReportOptions.push(bloodVariantReportItem);
                 }
                 else {
                     $log.error('Invalid Variant Report type ' + variantReport.variant_report_type);
