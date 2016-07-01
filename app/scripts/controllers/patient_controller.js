@@ -277,21 +277,21 @@
             $scope.currentVariantReport = null;
 
 
-$log.debug('$scope.variantReportMode='+$scope.variantReportMode);
-$log.debug('$scope.variantReportType='+$scope.variantReportType);
-$log.debug('option.value.surgical_event_id='+option.value.surgical_event_id);
-$log.debug('option.value.analysis_id='+option.value.analysis_id);
-$log.debug('option.value.molecular_id='+option.value.molecular_id);
-$log.debug('----------------');
+// $log.debug('$scope.variantReportMode='+$scope.variantReportMode);
+// $log.debug('$scope.variantReportType='+$scope.variantReportType);
+// $log.debug('option.value.surgical_event_id='+option.value.surgical_event_id);
+// $log.debug('option.value.analysis_id='+option.value.analysis_id);
+// $log.debug('option.value.molecular_id='+option.value.molecular_id);
+// $log.debug('----------------');
 
             for (var i = 0; i < $scope.variantReports.length; i++) {
                 var variantReport = $scope.variantReports[i];
 
-$log.debug('variantReport.variant_report_mode='+variantReport.variant_report_mode);
-$log.debug('variantReport.variant_report_type='+variantReport.variant_report_type);
-$log.debug('variantReport.surgical_event_id='+variantReport.surgical_event_id);
-$log.debug('variantReport.analysis_id='+variantReport.analysis_id);
-$log.debug('variantReport.molecular_id='+variantReport.molecular_id);
+// $log.debug('variantReport.variant_report_mode='+variantReport.variant_report_mode);
+// $log.debug('variantReport.variant_report_type='+variantReport.variant_report_type);
+// $log.debug('variantReport.surgical_event_id='+variantReport.surgical_event_id);
+// $log.debug('variantReport.analysis_id='+variantReport.analysis_id);
+// $log.debug('variantReport.molecular_id='+variantReport.molecular_id);
 
                 if (variantReport.variant_report_mode === $scope.variantReportMode && variantReport.variant_report_type === $scope.variantReportType) {
                     if (variantReport.surgical_event_id === option.value.surgical_event_id && 
