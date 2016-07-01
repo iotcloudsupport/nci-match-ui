@@ -471,6 +471,8 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
                 $scope.positives = 'mocha';
 
+                // $("body").animate({scrollBottom: $elm.offset().top}, "slow");
+
             };
 
             $scope.openMDAPositives = function() {
@@ -728,6 +730,26 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     armValues1 = [2, 3, 4, 5, 2];
                     // armValues2 = [10, 0.5, 73, 0, 3];
 
+                    armNamesYear = [
+                        'Mon.'
+                        , 'Tue.'
+                        , ' Wed.'
+                        , 'Thu.'
+                        , 'Fri.'
+                        // , 'Protein'
+                        // , 'Funk Gene'
+                        // , 'Variant Type/Snv'
+                        // , 'Variant Type/Id'
+                        // , 'Read Depth Snv'
+                        // , 'Read Depth Indel'
+                        // , 'Transcript Snv'
+                        // , 'Transcript Indel'
+                    ];
+                    armValuesYear = [16, 13, 2, 24, 28];
+                    armValuesYear1 = [2, 3, 4, 5, 2];
+                    // armValues2 = [10, 0.5, 73, 0, 3];
+
+
                     mdaccNames = [
                         'Mon.'
                         , 'Tue.'
@@ -762,14 +784,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                             highlightStroke: "rgba(220,220,220,1)",
                             data: armValues1
                         }
-                        // {
-                        //     fillColor: 'orange',
-                        //     strokeColor: 'rgba(151,187,205,1)',
-                        //     pointColor: 'rgba(151,187,205,1)',
-                        //     highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
-                        //     highlightStroke: "rgba(220,220,220,1)",
-                        //     data: armValues2
-                        // }
+
                     ]
                 };
 
