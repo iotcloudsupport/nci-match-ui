@@ -212,13 +212,13 @@ angular.module('dashboard.matchbox',[])
         $scope.now = new Date();
 
         $scope.icons = [
-            'fa fa-heartbeat fa-4x',
-            'fa fa-cogs fa-4x',
-            'fa fa-medkit fa-4x',
-            'fa fa-envelope fa-4x',
-            'fa fa-users fa-4x',
-            'fa fa-thumbs-up fa-4x',
-            'fa fa-exclamation-triangle fa-4x'
+            'fa fa-heartbeat fa-2x',
+            'fa fa-bar-chart fa-2x',
+            'fa fa-medkit fa-2x',
+            'fa fa-truck fa-2x',
+            'fa fa-user fa-2x',
+            'fa fa-thumbs-up fa-2x',
+            'fa fa-exclamation-triangle fa-2x'
         ];
 
         $scope.message = [
@@ -241,10 +241,11 @@ angular.module('dashboard.matchbox',[])
 
         $scope.activityList = [];
 
+
         $scope.activityListData = [
             {
                 "pic": $scope.icons[4],
-                "status": $scope.status[3],
+                "status": "activity-feed-icon",
                 "patientId": '100099',
                 "treatmentArmId": '',
                 "molecularId": '',
@@ -256,7 +257,7 @@ angular.module('dashboard.matchbox',[])
             },
             {
                 "pic": $scope.icons[2],
-                "status": $scope.status[2],
+                "status": "activity-feed-icon",
                 "patientId": '',
                 "treatmentArmId": 'APEC1621-A',
                 "molecularId": '',
@@ -268,7 +269,7 @@ angular.module('dashboard.matchbox',[])
             },
             {
                 "pic": $scope.icons[3],
-                "status": $scope.status[4],
+                "status": "activity-feed-icon",
                 "patientId": '100065',
                 "treatmentArmId": '',
                 "molecularId": 'MSN12349',
@@ -280,7 +281,7 @@ angular.module('dashboard.matchbox',[])
             },
             {
                 "pic": $scope.icons[2],
-                "status": $scope.status[0],
+                "status": "activity-feed-icon",
                 "patientId": '',
                 "treatmentArmId": 'APEC1621-Z',
                 "molecularId": '',
@@ -292,7 +293,7 @@ angular.module('dashboard.matchbox',[])
             },
             {
                 "pic": $scope.icons[3],
-                "status": $scope.status[4],
+                "status": "activity-feed-icon",
                 "patientId": '100136',
                 "treatmentArmId": '',
                 "molecularId": 'MSN12349',
@@ -304,7 +305,7 @@ angular.module('dashboard.matchbox',[])
             },
             {
                 "pic": $scope.icons[1],
-                "status": $scope.status[0],
+                "status": "activity-feed-icon",
                 "patientId": '100065',
                 "treatmentArmId": '',
                 "molecularId": 'MSN12340',
@@ -316,7 +317,7 @@ angular.module('dashboard.matchbox',[])
             },
             {
                 "pic": $scope.icons[2],
-                "status": $scope.status[2],
+                "status": "activity-feed-icon",
                 "patientId": '',
                 "treatmentArmId": 'APEC1621-A',
                 "molecularId": '',
@@ -328,7 +329,7 @@ angular.module('dashboard.matchbox',[])
             },
             {
                 "pic": $scope.icons[3],
-                "status": $scope.status[4],
+                "status": "activity-feed-icon",
                 "patientId": '100065',
                 "treatmentArmId": '',
                 "molecularId": 'MSN12340',
@@ -340,7 +341,7 @@ angular.module('dashboard.matchbox',[])
             },
             {
                 "pic": $scope.icons[4],
-                "status": $scope.status[3],
+                "status": "activity-feed-icon",
                 "patientId": '100136',
                 "treatmentArmId": '',
                 "molecularId": '',
@@ -352,7 +353,7 @@ angular.module('dashboard.matchbox',[])
             },
             {
                 "pic": $scope.icons[1],
-                "status": $scope.status[0],
+                "status": "activity-feed-icon",
                 "patientId": '100136',
                 "treatmentArmId": '',
                 "molecularId": 'MSN12330',
@@ -364,7 +365,7 @@ angular.module('dashboard.matchbox',[])
             },
             {
                 "pic": $scope.icons[3],
-                "status": $scope.status[4],
+                "status": "activity-feed-icon",
                 "patientId": '100065',
                 "treatmentArmId": '',
                 "molecularId": 'MSN12330',
@@ -376,7 +377,7 @@ angular.module('dashboard.matchbox',[])
             },
             {
                 "pic": $scope.icons[4],
-                "status": $scope.status[3],
+                "status": "activity-feed-icon",
                 "patientId": '100065',
                 "treatmentArmId": '',
                 "molecularId": '',
@@ -388,7 +389,7 @@ angular.module('dashboard.matchbox',[])
             },
             {
                 "pic": $scope.icons[4],
-                "status": $scope.status[3],
+                "status": "activity-feed-icon",
                 "patientId": '100065',
                 "treatmentArmId": '',
                 "molecularId": '',
