@@ -211,17 +211,14 @@
                         event_index: i,
                         surgical_event_id: surgicalEvent.surgical_event_id
                     }
-                }
-
-                if (!$scope.surgicalEventOption) {
-                    $scope.surgicalEventOption = item;
-                    selectSurgicalEvent(item);
-                }
-
+                };
                 $scope.surgicalEventOptions.push(item);
             }
 
-            selectSurgicalEvent($scope.surgicalEventOptions[$scope.surgicalEventOptions.length - 1]);
+            var lastItem = $scope.surgicalEventOptions[$scope.surgicalEventOptions.length - 1];
+            
+            $scope.surgicalEventOption = lastItem;
+            selectSurgicalEvent(lastItem);
         }
 
         function setupVariantReports() {
@@ -474,6 +471,7 @@
 
         function onSurgicalEventSelected(selected) {
             $log.debug(selected);
+            $scope.surgicalEventOption = selected;
 
             var bySurgicalEvent = function (x) { return x.value.surgical_event_id === selected.value.surgical_event_id };
             var variantReportItem = $scope.variantReportOptions.find(bySurgicalEvent);
@@ -490,6 +488,7 @@
 
         function onVariantReportSelected(selected) {
             $log.debug(selected);
+            $scope.variantReportOption = selected;
 
             var bySurgicalEvent = function (x) { return x.value.surgical_event_id === selected.value.surgical_event_id };
             var surgicalEventItem = $scope.surgicalEventOptions.find(bySurgicalEvent);
@@ -506,6 +505,7 @@
 
         function onAssignmentReportSelected(selected) {
             $log.debug(selected);
+            $scope.assignmentReportOption = selected;
             // TODO:RZ add
             // $scope.currentAssignmentReport = null;            
         }
@@ -550,6 +550,7 @@
 
         function onBloodVariantReportSelected(selected) {
             $log.debug(selected);
+            $scope.bloodVariantReportOption = selected;
         }
 
         function showVariantReportActions(report) {

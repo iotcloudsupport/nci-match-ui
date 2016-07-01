@@ -44,7 +44,9 @@
                             <dd>{{data.current_step_number}}</dd>
 
                             <dt>Treatment Arm</dt>
-                            <dd><treatment-arm-title ta="currentTreatmentArm"></treatment-arm-title></dd>
+                            <dd>
+                                <treatment-arm-title ta="currentTreatmentArm"></treatment-arm-title>
+                            </dd>
                         </dl>
                     </div>
                 </div>
@@ -63,18 +65,6 @@
 
                             <dt>Prior Drugs</dt>
                             <dd>{{data.prior_drugs.join(', ')}}</dd>
-                            <!--<dd class="row">-->
-                            <!--<table class="table-striped" role="grid" width="50%">-->
-                            <!--<thead>-->
-                            <!--<td>Name</td>-->
-                            <!--<td>Date Received</td>-->
-                            <!--</thead>-->
-                            <!--<tbody class="priordrug-item" ng-repeat="priorDrug in data.prior_drugs" style="font-size: smaller">-->
-                            <!--<td>{{::priorDrug.name}}</td>-->
-                            <!--<td>{{::priorDrug.date_received | utc}}</td>-->
-                            <!--</tbody>-->
-                            <!--</table>-->
-                            <!--</dd>-->
                         </dl>
                     </div>
                 </div>
@@ -145,6 +135,13 @@
                             <div class="row content-select-list">
                                 <div class="col-md-12">
                                     <h4>
+                                        <!--<div class="btn-group" uib-dropdown dropdown-append-to-body>
+                                            <button id="btn-append-to-body" type="button" class="btn btn-success btn-outline" uib-dropdown-toggle>{{surgicalEventOption.text}}<span class="caret"></span></button>
+                                            <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+                                                <li ng-repeat="item in surgicalEventOptions" role="menuitem"><a href ng-click="onSurgicalEventSelected(item)">{{item.text}}</a></li>
+                                            </ul>
+                                        </div>
+                                        -->
                                         <div dropdown-select="surgicalEventOptions" dropdown-model="surgicalEventOption" dropdown-item-label="text" dropdown-onchange="onSurgicalEventSelected(selected)"></div>
                                     </h4>
                                 </div>
@@ -313,172 +310,6 @@
                 <uib-tab heading="Tissue Report" select="setActiveTab('tissue_variant_report')">
                     <div class="panel-body">
 
-                        <!--Assignment Report-->
-                        <div ng-if="currentVariantReport" class="ibox collapsed">
-                            <div class="ibox-title ibox-title-no-line">
-                                <div collapse-toggle-left></div>
-                                <h2>Assignment Report</h2>
-                            </div>
-
-                            <div class="ibox-content ibox-content-no-padding ibox-title-no-line">
-
-                                <div ng-if="currentVariantReport.status=='CONFIRMED'" class="row content-select-list">
-                                    <div class="col-md-12">
-                                        <h4>
-                                            <div dropdown-select="assignmentReportOptions " dropdown-model="assignmentReportOption" dropdown-item-label="text" dropdown-onchange="onAssignmentReportSelected(selected)"></div>
-                                        </h4>
-                                    </div>
-                                </div>
-
-                                <div ng-if="currentVariantReport.status=='CONFIRMED'">
-                                    <div class="row button-row">
-                                        <div class="col-md-12 text-right">
-                                            <button class="btn btn-success btn-outline" title="Export Assignment Report to Excel"><i class="fa fa-file-excel-o"></i>&nbsp;&nbsp;Excel</button>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="header-info-box assignment-header-box">
-                                                <dl class="dl-horizontal">
-                                                    <dt>Biopsy Sequence Number</dt>
-                                                    <dd>{{data.assignment_report.biopsy_sequence_number}}</dd>
-
-                                                    <dt>Molecular ID</dt>
-                                                    <dd><a>{{data.assignment_report.molecular_sequence_number}}</a></dd>
-
-                                                    <dt>Analysis ID</dt>
-                                                    <dd><a>{{data.assignment_report.analysis_id}}</a></dd>
-
-                                                    <dt>Variant Report aMOI(s)</dt>
-                                                    <dd><a ng-repeat="amoi in data.assignment_report.variant_report_amois">{{amoi.title}}{{$last ? '' : ', '}}</a></dd>
-                                                </dl>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="header-info-box assignment-header-box">
-                                                <h4>Assignment</h4>
-                                                <dl class="dl-horizontal">
-                                                    <dt>Generated date</dt>
-                                                    <dd>{{data.assignment_report.generated_date | utc}}</dd>
-
-                                                    <dt>Confirmed date</dt>
-                                                    <dd>{{data.assignment_report.confirmed_date | utc}}</dd>
-
-                                                    <dt>Sent to COG date</dt>
-                                                    <dd>{{data.assignment_report.sent_to_cog_date | utc}}</dd>
-
-                                                    <dt>Received from COG date</dt>
-                                                    <dd>{{data.assignment_report.received_from_cog_date | utc}}</dd>
-                                                </dl>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="ibox-title ibox-title-no-line">
-                                        <h3>Assay</h3>
-                                    </div>
-
-                                    <table class="table table-hover" role="grid">
-                                        <thead>
-                                            <tr>
-                                                <th width="20%">IHC</th>
-                                                <th width="40%">Result</th>
-                                                <th width="40%">Comment</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr ng-repeat="assay in data.assignment_report.assays" style="cursor: auto; " role="row" class="odd">
-                                                <td>{{assay.gene}}</td>
-                                                <td><span ng-style="{'color':'{{ assay.result | assayStatus }}'}">{{assay.result}}</span></td>
-                                                <td>{{assay.comment}}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-
-                                    <div class="ibox-title ibox-title-no-line">
-                                        <h3>Non Hot Spot Rule(s)</h3>
-                                    </div>
-
-                                    <table class="table table-hover" role="grid">
-                                        <thead>
-                                        <tr>
-                                            <th width="20%">Treatment Arm</th>
-                                            <th width="80%">Reason</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr class="table-subheader ">
-                                            <td colspan="8 ">
-                                                <h5>1 - NO VARIANT MATCH</h5>
-                                            </td>
-                                        </tr>
-                                        <tr ng-repeat="ta in data.assignment_report.treatment_arms.no_match " style="cursor: auto; " role="row" class="odd">
-                                            <td class="status-blue">
-                                                <a ui-sref="treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion: ta.currentTtreatmentArmVersion }) ">
-                                                    <i class="fa fa-medkit "></i> {{ ::ta.treatment_arm_title || '-'
-                                                    }}
-                                                </a>
-                                            </td>
-                                            <td>{{data.ta.reason}}</td>
-                                        </tr>
-
-                                        <tr class="table-subheader ">
-                                            <td colspan="8 ">
-                                                <h5>2 - RECORD BASED EXCLUSION</h5>
-                                            </td>
-                                        </tr>
-                                        <tr ng-repeat="ta in data.assignment_report.treatment_arms.record_based_exclusion " style="cursor: auto;
-                                                " role="row " class="odd ">
-                                            <td class="status-blue ">
-                                                <a ui-sref="treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion:
-                                                ta.treatmentArmVersion }) ">
-                                                    <i class="fa fa-medkit "></i> {{ ::ta.treatment_arm_title || '-'
-                                                    }}
-                                                </a>
-                                            </td>
-                                            <td>{{data.ta.reason}}</td>
-                                        </tr>
-
-                                        <tr class="table-subheader ">
-                                            <td colspan="8 ">
-                                                <h5>3 - SELECTED</h5>
-                                            </td>
-                                        </tr>
-                                        <tr ng-repeat="ta in data.assignment_report.treatment_arms.selected " style="cursor: auto; " role="row" class="odd">
-                                            <td class="status-blue ">
-                                                <a ui-sref="treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion: ta.currentTtreatmentArmVersion }) ">
-                                                    <i class="fa fa-medkit "></i> {{ ::ta.treatment_arm_title || '-'
-                                                    }}
-                                                </a>
-                                            </td>
-                                            <td>{{data.ta.reason}}</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-
-                                    <div class="ibox-content ibox-title-no-line" ng-if="showAssignmentReportActions(currentAssignmentReport)">
-                                        <div class="row">
-                                            <div class="col-md-12 text-center">
-                                                <button class="btn btn-danger" title="Reject this Report" ng-click="showConfirmation('Please confirm Assignment Report rejection', 'Enter comments')">REJECT</button>
-                                                <button class="btn btn-success" title="Confirm this Report" ng-click="showConfirmation('Please confirm Assignment Report approval', 'Enter comments')">CONFIRM</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div ng-if="currentVariantReport.status!='CONFIRMED'">
-                                    <div class="row">
-                                        <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-                                            <div class="no-data-panel text-muted">
-                                                <i class="fa fa-info-circle fa-2x"></i><span> Assignment Report Is Not Available. The Variant Report is not yet Approved.</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                         <!--Variant Report-->
                         <div class="ibox">
                             <div class="ibox-title ibox-title-no-line">
@@ -500,12 +331,10 @@
                                         </label>-->
                                             </div>
                                             <div class="btn-group btn-group-margin" data-toggle="buttons">
-                                                <label class="btn btn-outline btn-success" ng-class="getVariantReportModeClass('FILTERED')" ng-click="setVariantReportMode('FILTERED')"
-                                                    title="Show Filtered Report">
+                                                <label class="btn btn-outline btn-success" ng-class="getVariantReportModeClass('FILTERED')" ng-click="setVariantReportMode('FILTERED')" title="Show Filtered Report">
                                             <input type="radio" name="variantReportMode" id="option3">Filtered
                                         </label>
-                                                <label class="btn btn-outline btn-success" ng-class="getVariantReportModeClass('QC')" ng-click="setVariantReportMode('QC')"
-                                                    title="Show to QC Report">
+                                                <label class="btn btn-outline btn-success" ng-class="getVariantReportModeClass('QC')" ng-click="setVariantReportMode('QC')" title="Show to QC Report">
                                             <input type="radio" name="variantReportMode" id="option4">QC Report
                                         </label>
                                             </div>
@@ -651,8 +480,7 @@
                                         <tbody>
                                             <tr ng-repeat="variant in currentVariantReport.variants.snvs_and_indels" style="cursor: auto;" role="row" class="odd">
                                                 <td ng-if="variantReportMode!=='QC'">
-                                                    <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
-                                                        comment="variant.comment" prompt-only-if="true">
+                                                    <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true">
                                                     </div>
                                                 </td>
                                                 <td ng-if="variantReportMode!=='QC'">
@@ -706,8 +534,7 @@
                                         <tbody>
                                             <tr ng-repeat="variant in currentVariantReport.variants.copy_number_variants" style="cursor: auto;" role="row" class="odd">
                                                 <td ng-if="variantReportMode!=='QC'">
-                                                    <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
-                                                        comment="variant.comment" prompt-only-if="true">
+                                                    <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true">
                                                     </div>
                                                 </td>
                                                 <td ng-if="variantReportMode!=='QC'">
@@ -750,8 +577,7 @@
                                         <tbody>
                                             <tr ng-repeat="variant in currentVariantReport.variants.gene_fusions" style="cursor: auto;" role="row" class="odd">
                                                 <td ng-if="variantReportMode!=='QC'">
-                                                    <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
-                                                        comment="variant.comment" prompt-only-if="true">
+                                                    <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true">
                                                     </div>
                                                 </td>
                                                 <td ng-if="variantReportMode!=='QC'">
@@ -794,6 +620,169 @@
                             </div>
                         </div>
 
+                        <!--Assignment Report-->
+                        <div ng-if="currentVariantReport" class="ibox collapsed">
+                            <div class="ibox-title">
+                                <div collapse-toggle-left></div>
+                                <h2>Assignment Report</h2>
+                            </div>
+
+                            <div class="ibox-content ibox-content-no-padding ibox-title-no-line">
+
+                                <div ng-if="currentVariantReport.status=='CONFIRMED'" class="row content-select-list">
+                                    <div class="col-md-12">
+                                        <h4>
+                                            <div dropdown-select="assignmentReportOptions " dropdown-model="assignmentReportOption" dropdown-item-label="text" dropdown-onchange="onAssignmentReportSelected(selected)"></div>
+                                        </h4>
+                                    </div>
+                                </div>
+
+                                <div ng-if="currentVariantReport.status=='CONFIRMED'">
+                                    <div class="row button-row">
+                                        <div class="col-md-12 text-right">
+                                            <button class="btn btn-success btn-outline" title="Export Assignment Report to Excel"><i class="fa fa-file-excel-o"></i>&nbsp;&nbsp;Excel</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="header-info-box assignment-header-box">
+                                                <dl class="dl-horizontal">
+                                                    <dt>Biopsy Sequence Number</dt>
+                                                    <dd>{{data.assignment_report.biopsy_sequence_number}}</dd>
+
+                                                    <dt>Molecular ID</dt>
+                                                    <dd><a>{{data.assignment_report.molecular_sequence_number}}</a></dd>
+
+                                                    <dt>Analysis ID</dt>
+                                                    <dd><a>{{data.assignment_report.analysis_id}}</a></dd>
+
+                                                    <dt>Variant Report aMOI(s)</dt>
+                                                    <dd><a ng-repeat="amoi in data.assignment_report.variant_report_amois">{{amoi.title}}{{$last ? '' : ', '}}</a></dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="header-info-box assignment-header-box">
+                                                <h4>Assignment</h4>
+                                                <dl class="dl-horizontal">
+                                                    <dt>Generated date</dt>
+                                                    <dd>{{data.assignment_report.generated_date | utc}}</dd>
+
+                                                    <dt>Confirmed date</dt>
+                                                    <dd>{{data.assignment_report.confirmed_date | utc}}</dd>
+
+                                                    <dt>Sent to COG date</dt>
+                                                    <dd>{{data.assignment_report.sent_to_cog_date | utc}}</dd>
+
+                                                    <dt>Received from COG date</dt>
+                                                    <dd>{{data.assignment_report.received_from_cog_date | utc}}</dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="ibox-title ibox-title-no-line">
+                                        <h3>Assay</h3>
+                                    </div>
+
+                                    <table class="table table-hover" role="grid">
+                                        <thead>
+                                            <tr>
+                                                <th width="20%">IHC</th>
+                                                <th width="40%">Result</th>
+                                                <th width="40%">Comment</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="assay in data.assignment_report.assays" style="cursor: auto; " role="row" class="odd">
+                                                <td>{{assay.gene}}</td>
+                                                <td><span ng-style="{'color':'{{ assay.result | assayStatus }}'}">{{assay.result}}</span></td>
+                                                <td>{{assay.comment}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <div class="ibox-title ibox-title-no-line">
+                                        <h3>Non Hot Spot Rule(s)</h3>
+                                    </div>
+
+                                    <table class="table table-hover" role="grid">
+                                        <thead>
+                                            <tr>
+                                                <th width="20%">Treatment Arm</th>
+                                                <th width="80%">Reason</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="table-subheader ">
+                                                <td colspan="8 ">
+                                                    <h5>1 - NO VARIANT MATCH</h5>
+                                                </td>
+                                            </tr>
+                                            <tr ng-repeat="ta in data.assignment_report.treatment_arms.no_match " style="cursor: auto; " role="row" class="odd">
+                                                <td class="status-blue">
+                                                    <a ui-sref="treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion: ta.currentTtreatmentArmVersion }) ">
+                                                        <i class="fa fa-medkit "></i> {{ ::ta.treatment_arm_title || '-' }}
+                                                    </a>
+                                                </td>
+                                                <td>{{data.ta.reason}}</td>
+                                            </tr>
+
+                                            <tr class="table-subheader ">
+                                                <td colspan="8 ">
+                                                    <h5>2 - RECORD BASED EXCLUSION</h5>
+                                                </td>
+                                            </tr>
+                                            <tr ng-repeat="ta in data.assignment_report.treatment_arms.record_based_exclusion " style="cursor: auto;
+                                                " role="row " class="odd ">
+                                                <td class="status-blue ">
+                                                    <a ui-sref="treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion:
+                                                ta.treatmentArmVersion }) ">
+                                                        <i class="fa fa-medkit "></i> {{ ::ta.treatment_arm_title || '-' }}
+                                                    </a>
+                                                </td>
+                                                <td>{{data.ta.reason}}</td>
+                                            </tr>
+
+                                            <tr class="table-subheader ">
+                                                <td colspan="8 ">
+                                                    <h5>3 - SELECTED</h5>
+                                                </td>
+                                            </tr>
+                                            <tr ng-repeat="ta in data.assignment_report.treatment_arms.selected " style="cursor: auto; " role="row" class="odd">
+                                                <td class="status-blue ">
+                                                    <a ui-sref="treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion: ta.currentTtreatmentArmVersion }) ">
+                                                        <i class="fa fa-medkit "></i> {{ ::ta.treatment_arm_title || '-' }}
+                                                    </a>
+                                                </td>
+                                                <td>{{data.ta.reason}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <div class="ibox-content ibox-title-no-line" ng-if="showAssignmentReportActions(currentAssignmentReport)">
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                                <button class="btn btn-danger" title="Reject this Report" ng-click="showConfirmation('Please confirm Assignment Report rejection', 'Enter comments')">REJECT</button>
+                                                <button class="btn btn-success" title="Confirm this Report" ng-click="showConfirmation('Please confirm Assignment Report approval', 'Enter comments')">CONFIRM</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div ng-if="currentVariantReport.status!='CONFIRMED'">
+                                    <div class="row">
+                                        <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+                                            <div class="no-data-panel text-muted">
+                                                <i class="fa fa-info-circle fa-2x"></i><span> Assignment Report Is Not Available. The Variant Report is not yet Approved.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </uib-tab>
 
@@ -803,12 +792,10 @@
                             <div class="row toolbar-row">
                                 <div class="col-md-8 text-left">
                                     <div class="btn-group btn-group-margin" data-toggle="buttons">
-                                        <label class="btn btn-outline btn-success" ng-class="getVariantReportModeClass('FILTERED')" ng-click="setVariantReportMode('FILTERED')"
-                                            title="Show Filtered Report">
+                                        <label class="btn btn-outline btn-success" ng-class="getVariantReportModeClass('FILTERED')" ng-click="setVariantReportMode('FILTERED')" title="Show Filtered Report">
                                         <input type="radio" name="variantReportMode" id="option3">Filtered
                                     </label>
-                                        <label class="btn btn-outline btn-success" ng-class="getVariantReportModeClass('QC')" ng-click="setVariantReportMode('QC')"
-                                            title="Show to QC Report">
+                                        <label class="btn btn-outline btn-success" ng-class="getVariantReportModeClass('QC')" ng-click="setVariantReportMode('QC')" title="Show to QC Report">
                                         <input type="radio" name="variantReportMode" id="option4">QC Report
                                     </label>
                                     </div>
@@ -909,11 +896,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="variant in currentBloodVariantReport.variants.snvs_and_indels" style="cursor: auto;" role="row"
-                                        class="odd">
+                                    <tr ng-repeat="variant in currentBloodVariantReport.variants.snvs_and_indels" style="cursor: auto;" role="row" class="odd">
                                         <td ng-if="variantReportMode!=='QC'">
-                                            <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
-                                                comment="variant.comment" prompt-only-if="true">
+                                            <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true">
                                             </div>
                                         </td>
                                         <td ng-if="variantReportMode!=='QC'">
@@ -968,8 +953,7 @@
                                 <tbody>
                                     <tr ng-repeat="variant in currentBloodVariantReport.variants.copy_number_variants" style="cursor: auto;" role="row" class="odd">
                                         <td ng-if="variantReportMode!=='QC'">
-                                            <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
-                                                comment="variant.comment" prompt-only-if="true">
+                                            <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true">
                                             </div>
                                         </td>
                                         <td ng-if="variantReportMode!=='QC'">
@@ -1012,8 +996,7 @@
                                 <tbody>
                                     <tr ng-repeat="variant in currentBloodVariantReport.variants.gene_fusions" style="cursor: auto;" role="row" class="odd">
                                         <td ng-if="variantReportMode!=='QC'">
-                                            <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
-                                                comment="variant.comment" prompt-only-if="true">
+                                            <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true">
                                             </div>
                                         </td>
                                         <td ng-if="variantReportMode!=='QC'">
@@ -1086,8 +1069,7 @@
                             </table>
                         </div>
 
-                        <form class="dropzone" method="post" enctype="multipart/form-data" ng-dropzone dropzone="dropzone" dropzone-config="dropzoneConfig"
-                            event-handlers="{ 'addedfile': dzAddedFile, 'error': dzError }">
+                        <form class="dropzone" method="post" enctype="multipart/form-data" ng-dropzone dropzone="dropzone" dropzone-config="dropzoneConfig" event-handlers="{ 'addedfile': dzAddedFile, 'error': dzError }">
                         </form>
                     </div>
                 </uib-tab>
