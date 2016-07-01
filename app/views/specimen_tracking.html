@@ -224,9 +224,19 @@
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat-start="specimenTrackingItem in specimenTrackingList">
-                                    <td>{{ specimenTrackingItem.molecular_id}}</td>
-                                    <td>{{ specimenTrackingItem.surgical_event_id }}</td>
-                                    <td>{{ specimenTrackingItem.patient_id }}</td>
+                                    <td>
+                                        <a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id })">{{ specimenTrackingItem.molecular_id}}</a>
+                                        <!--{{ specimenTrackingItem.molecular_id}}-->
+                                    </td>
+                                    <td>
+                                        <a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id })">{{ specimenTrackingItem.surgical_event_id}}</a>
+                                        <!--{{ specimenTrackingItem.surgical_event_id }}-->
+                                    </td>
+
+                                    <td>
+                                        <a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id })">{{ specimenTrackingItem.patient_id}}</a>
+                                        <!--{{ specimenTrackingItem.patient_id }}-->
+                                    </td>
                                     <td>{{ specimenTrackingItem.collected_date | gmt }}</td>
                                     <td>{{ specimenTrackingItem.received_date | gmt }}</td>
                                     <td>{{ specimenTrackingItem.type }}</td>

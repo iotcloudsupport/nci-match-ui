@@ -547,7 +547,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 ntcMoiLabels = ['Ntc Control Failed', 'Ntc Control Success', 'Ntc Not Generated'];
                 if(site==='mocha') {
                     aMoiValues = [10, 15, 75]; //[4, 10, 14, 6, 10, 16]; //[45, 21, 4, 35, 9, 6];
-                    ntcMoiValues = [1, 3, 23]; //[4, 10, 14, 6, 10, 16]; //[45, 21, 4, 35, 9, 6];
+                    ntcMoiValues = [1, 26, 4]; //[4, 10, 14, 6, 10, 16]; //[45, 21, 4, 35, 9, 6];
                 }
                 else{
                     aMoiValues = [8, 25, 67];
@@ -664,9 +664,6 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
             $scope.loadSampleBreakups = function() {
 
-                // var ctx = document.getElementById("irSampleCanvas").getContext("2d");
-                // ctx.canvas.width = 300;
-                // ctx.canvas.height = 300;
 
                 var prepareData = {
                     series: [5, 3, 4]
@@ -699,7 +696,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     armNames = [
                         'Mon.'
                         , 'Tue.'
-                        , ' Wen.'
+                        , ' Wed.'
                         , 'Thu.'
                         , 'Fri.'
                         // , 'Protein'
@@ -718,7 +715,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     mdaccNames = [
                         'Mon.'
                         , 'Tue.'
-                        , ' Wen.'
+                        , ' Wed.'
                         , 'Thu.'
                         , 'Fri.'
                     ];
@@ -784,6 +781,53 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
 
                 // alert(JSON.stringify($scope.barData))
+
+            };
+
+
+            $scope.ntcBarChart = function(id){
+
+                if(id === 'mocha'){
+
+                    armNames = [
+                        'Mon.'
+                        , 'Tue.'
+                        , ' Wed.'
+                        , 'Thu.'
+                        , 'Fri.'
+                        // , 'Protein'
+                        // , 'Funk Gene'
+                        // , 'Variant Type/Snv'
+                        // , 'Variant Type/Id'
+                        // , 'Read Depth Snv'
+                        // , 'Read Depth Indel'
+                        // , 'Transcript Snv'
+                        // , 'Transcript Indel'
+                    ];
+                    armValues = [1, 2, 4, 4, 2];
+                    armValues1 = [3, 1, 1, 2, 3];
+
+                    $scope.barData = {
+                        labels: armNames,
+                        datasets: [
+                            {
+                                label: "Accrual Dataset",
+                                fillColor: "darkgreen",
+                                strokeColor: "rgba(220,220,220,0.8)",
+                                highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
+                                highlightStroke: "rgba(220,220,220,1)",
+                                data: armValues
+                            },
+                            {
+                                fillColor: 'orange',
+                                strokeColor: 'rgba(151,187,205,1)',
+                                pointColor: 'rgba(151,187,205,1)',
+                                highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
+                                highlightStroke: "rgba(220,220,220,1)",
+                                data: armValues1
+                            }
+                            ]};
+                }
 
             };
 
