@@ -829,7 +829,7 @@ angular.module('treatment-arm.matchbox',[])
                     "dateSelected": "January 20, 2015  7:05 PM GMT",
                     "dateOnArm": "-",
                     "dateOffArm": "-",
-                    "timeOnArm": "0 days",
+                    "timeOnArm": "-",
                     "step": "1.0",
                     "diseases": "Chondrosarcoma"
                 }
