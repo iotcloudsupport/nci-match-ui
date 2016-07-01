@@ -198,6 +198,8 @@
                                                         <th>Patient ID</th>
                                                         <th>Molecular ID</th>
                                                         <th>Analysis ID</th>
+                                                        <th>Disease</th>
+                                                        <th>Assigned Treatment Arm</th>
                                                         <th>Assignment Date</th>
                                                         <th>Hours Pending</th>
                                                     </tr>
@@ -211,6 +213,8 @@
                                                         </td>
                                                         <td><a ui-sref="patient({ patient_id: patient.patient_id })">{{ patient.molecular_id || '-' }}</a></td>
                                                         <td><a ui-sref="patient({ patient_id: patient.patient_id })">{{ patient.analysis_id || '-' }}</a></td>
+                                                        <td><a>{{patient.disease || '-'}}</a></td>
+                                                        <td><a ui-sref="treatment-arm({ treatmentArmId: patient.treatment_arm })">{{patient.treatment_arm + " " + patient.stratum || '-'}}</a></td>
                                                         <td>{{ patient.assignment_date | gmt }}</td>
                                                         <td><span class="label label-primary">{{ patient.hours_pending || ' - ' }}</span></td>
                                                     </tr>

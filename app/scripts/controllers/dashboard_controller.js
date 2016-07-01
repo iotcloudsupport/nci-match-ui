@@ -138,9 +138,11 @@ angular.module('dashboard.matchbox',[])
                 'patient_id': '100136',
                 'molecular_id': 'MSN124577',
                 'analysis_id': 'AT5690',
+                'disease': 'Breast Cancer',
+                'treatment_arm' : 'APEC1621-A',
+                'stratum' : '123145',
                 'assignment_date': 1423162969643,
                 'hours_pending': '3'
-
             }
         ];
 
@@ -155,6 +157,9 @@ angular.module('dashboard.matchbox',[])
                 assignmentReport.patient_id = value.patient_id;
                 assignmentReport.molecular_id = value.molecular_id;
                 assignmentReport.analysis_id = value.analysis_id;
+                assignmentReport.disease = value.disease;
+                assignmentReport.treatment_arm = value.treatment_arm;
+                assignmentReport.stratum = value.stratum;
                 assignmentReport.assignment_date = value.assignment_date;
                 assignmentReport.hours_pending = value.hours_pending;
                 $scope.pendingAssignmentReportList.push(assignmentReport);
