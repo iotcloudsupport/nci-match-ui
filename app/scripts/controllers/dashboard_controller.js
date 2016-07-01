@@ -19,7 +19,7 @@ angular.module('dashboard.matchbox',[])
             } else if (profile.email) {
                 name = profile.email;
             } else {
-                name = 'MATCHBox User'
+                name = 'MATCHBox User';
             }
             return name;
         }

@@ -11,13 +11,16 @@
         prompt,
         $uibModal,
         $state,
-        $window) {
+        $window,
+        store) {
 
         var vm = this;
 
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(100);
 
+        $scope.currentUser = null;
+        
         vm.enabledFileButtonClass = 'btn-success';
         vm.disabledFileButtonClass = 'btn-default btn-outline-default disabled';
 
@@ -156,6 +159,7 @@
             setupVariantReports();
             setupVariantReportOptions();
             setupAssignmentReportOptions();
+            setupUserName();
         }
 
         function setupTimeline() {
@@ -177,6 +181,19 @@
                     previousStep = timelineEvent.step;
                 }
             }
+        }
+
+        function setupUserName() {
+            var name;
+            var profile = store.get('profile');
+            if (profile.user_metadata && profile.user_metadata.firstName) {
+                name = profile.user_metadata.firstName;
+            } else if (profile.email) {
+                name = profile.email;
+            } else {
+                name = 'MATCHBox User';
+            }
+            $scope.currentUser = name;
         }
 
         function setupSurgicalEventOptions() {
@@ -403,6 +420,8 @@
                     $log.error('Current Variant Report is not set');
                 } else {
                     $scope.currentVariantReport.status = 'CONFIRMED';
+                    $scope.currentVariantReport.comment = null;
+                    $scope.currentVariantReport.comment_user = null;
                 }
             });
         }
@@ -418,6 +437,8 @@
                     $log.error('Current Variant Report is not set');
                 } else {
                     $scope.currentVariantReport.status = 'RECTED';
+                    $scope.currentVariantReport.comment = comment;
+                    $scope.currentVariantReport.comment_user = $scope.currentUser;
                 }
             });
         }
