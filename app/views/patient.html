@@ -156,19 +156,19 @@
                                         <h4>Event</h4>
                                         <dl class="dl-horizontal">
                                             <dt>Surgical Event ID</dt>
-                                            <dd>{{data.specimen.surgical_event_id}}</dd>
+                                            <dd>{{currentSurgicalEvent.surgical_event_id}}</dd>
 
                                             <dt>Type</dt>
-                                            <dd>{{data.specimen.type}}</dd>
+                                            <dd>{{currentSurgicalEvent.type}}</dd>
 
                                             <dt>Collection Date</dt>
-                                            <dd>{{data.specimen.collected_date | utc}}</dd>
+                                            <dd>{{currentSurgicalEvent.collected_date | utc}}</dd>
 
                                             <dt>Received Date</dt>
-                                            <dd>{{data.specimen.received_date | utc}}</dd>
+                                            <dd>{{currentSurgicalEvent.received_date | utc}}</dd>
 
                                             <dt>Failure Date</dt>
-                                            <dd>{{data.specimen.failed_date | utc}}</dd>
+                                            <dd>{{currentSurgicalEvent.failed_date | utc}}</dd>
                                         </dl>
                                     </div>
                                 </div>
@@ -177,13 +177,13 @@
                                         <h4>Pathology</h4>
                                         <dl class="dl-horizontal">
                                             <dt>Status</dt>
-                                            <dd>{{data.specimen.pathology_status}}</dd>
+                                            <dd>{{currentSurgicalEvent.pathology_status}}</dd>
 
                                             <dt>Received Date</dt>
-                                            <dd>{{data.specimen.pathology_status_date | utc}}</dd>
+                                            <dd>{{currentSurgicalEvent.pathology_status_date | utc}}</dd>
 
                                             <dt>Comment</dt>
-                                            <dd>{{data.specimen.comments}}</dd>
+                                            <dd>{{currentSurgicalEvent.comments}}</dd>
                                         </dl>
                                     </div>
                                 </div>
