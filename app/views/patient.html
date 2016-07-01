@@ -557,6 +557,9 @@
                                                     <dt>Status</dt>
                                                     <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{currentVariantReport.status}}</dd>
 
+                                                    <dt ng-if="currentVariantReport.comment">Comments</dt>
+                                                    <dd ng-if="currentVariantReport.comment">{{currentVariantReport.comment}}<span ng-if="currentVariantReport.comment_user"> (Entered by: {{currentVariantReport.comment_user}})</span></dd>
+
                                                     <dt>{{currentVariantReport.status | titlecase}} Date</dt>
                                                     <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{currentVariantReport.status_date | utc}}</dd>
                                                 </dl>

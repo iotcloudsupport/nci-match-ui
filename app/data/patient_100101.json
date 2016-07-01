@@ -16,7 +16,7 @@
       "version":"2015-04-26",
       "stratum":"STR9",
       "title":"APEC1621-Y; STR9; 2015-04-26",
-      "step": "1.1",
+      "step": "Step 1.1",
       "assignment_reason": "The patient and treatment match on variand identifier [ABSF, DEDF].",
       "assignment_date":"2016-05-10T22:05:33+00:00"
     }
@@ -487,6 +487,8 @@
       "total_amois": 2,
       "total_confirmed_mois": 3,
       "total_confirmed_amois": 1,
+      "comment": "Not enough information",
+      "comment_user": "John Sc.",
       "variants": {
         "single_nucleitide_variants": [
           {
@@ -696,6 +698,8 @@
       "total_amois": 2,
       "total_confirmed_mois": 3,
       "total_confirmed_amois": 1,
+      "comment": "Should update soon",
+      "comment_user": "John Sc.",
       "variants": {
         "single_nucleitide_variants": [
           {
