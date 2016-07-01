@@ -71,9 +71,9 @@
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody>
-                                                                    <td><div class="font-bold text-success"> 75 </i></div></td>
-                                                                    <td><div class="font-bold text-info"> 15 </i></div></td>
-                                                                    <td><div class="font-bold text-info"> 10 </i></div></td>
+                                                                    <td><div class="font-bold "> 75 </i></div></td>
+                                                                    <td><div class="font-bold "> 15 </i></div></td>
+                                                                    <td><div class="font-bold "> 10 </i></div></td>
                                                                     </tbody>
                                                                 </table>
 
@@ -101,9 +101,9 @@
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody ng-repeat="ir in moChaList">
-                                                                    <td> <div class="font-bold text-info"> {{ ir.externalIpAddress }} </div></td>
-                                                                    <td> <div class=" font-bold text-info"> {{ ir.ipAddress }} </div></td>
-                                                                    <td> <div class=" font-bold text-info"> {{ ir.host }} </div></td>
+                                                                    <td> <div class="font-bold "> {{ ir.externalIpAddress }} </div></td>
+                                                                    <td> <div class=" font-bold "> {{ ir.ipAddress }} </div></td>
+                                                                    <td> <div class=" font-bold "> {{ ir.host }} </div></td>
                                                                     <td> <div ng-style="{'color':'{{ ir.status | irsample }}'}"> {{ ir.status }} </div></td>
                                                                     <td> <div ng-style="{'color':'{{ ir.status | irsample }}'}"> {{ ir.lastcon }} </div></td>
                                                                     </tbody>
@@ -112,7 +112,7 @@
                                                                 <div class="col-sm-12">
                                                                     <div class="statistic-box">
                                                                         <div class="text-center">
-                                                                            <h4>Weekly Positive Control Status - MoCha</h4>
+                                                                            <h4>{{barlegend}} - MoCha</h4>
                                                                         </div>
 
                                                                         <canvas id="irSampleCanvas" barchart options="chart.barOptions" ng-attr-data="barData"
@@ -149,9 +149,9 @@
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
-                                                                        <td><div class="font-bold text-success"> 1 </i></div></td>
-                                                                        <td><div class="font-bold text-success"> 3 </i></div></td>
-                                                                        <td><div class="font-bold text-success"> 23 </i></div></td>
+                                                                        <td><div class="font-bold "> 1 </i></div></td>
+                                                                        <td><div class="font-bold "> 3 </i></div></td>
+                                                                        <td><div class="font-bold "> 23 </i></div></td>
                                                                         </tbody>
                                                                     </table>
 
@@ -205,9 +205,9 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                <td><div class="font-bold text-success"> 67 </div></td>
-                                                                <td><div class="font-bold text-info"> 25 </div></td>
-                                                                <td><div class="font-bold text-info"> 8 </div></td>
+                                                                <td><div class="font-bold "> 67 </div></td>
+                                                                <td><div class="font-bold "> 25 </div></td>
+                                                                <td><div class="font-bold "> 8 </div></td>
                                                                 </tbody>
                                                             </table>
 
@@ -235,9 +235,9 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody ng-repeat="ir in mdAccList">
-                                                                <td> <div class="font-bold text-info"> {{ ir.externalIpAddress }} </div></td>
-                                                                <td> <div class="font-bold text-info"> {{ ir.ipAddress }} </div></td>
-                                                                <td> <div class="font-bold text-info"> {{ ir.host }} </div></td>
+                                                                <td> <div class="font-bold "> {{ ir.externalIpAddress }} </div></td>
+                                                                <td> <div class="font-bold "> {{ ir.ipAddress }} </div></td>
+                                                                <td> <div class="font-bold "> {{ ir.host }} </div></td>
                                                                 <td> <div ng-style="{'color':'{{ ir.status | irsample }}'}"> {{ ir.status }} </div></td>
                                                                 <td> <div ng-style="{'color':'{{ ir.status | irsample }}'}"> {{ ir.lastcon }} </div></td>
                                                                 </tbody>
@@ -246,7 +246,7 @@
                                                             <div class="col-sm-12">
                                                                 <div class="statistic-box">
                                                                     <div class="text-center">
-                                                                        <h4>Weekly Positive Control Status - MDACC </h4>
+                                                                        <h4>{{barlegend}} - MDACC </h4>
                                                                     </div>
                                                                     <canvas id="irSampleCanvas" barchart options="chart.barOptions" ng-attr-data="barDataMDACC"
                                                                             responsive=true width="500" height="200"  style="width: 503px; height: 201px;">
@@ -285,9 +285,9 @@
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody>
-                                                                    <td><div class="font-bold text-success"> 18 </div></td>
-                                                                    <td><div class="font-bold text-info"> 1 </div></td>
-                                                                    <td><div class="font-bold text-info"> 2 </div></td>
+                                                                    <td><div class="font-bold "> 18 </div></td>
+                                                                    <td><div class="font-bold "> 1 </div></td>
+                                                                    <td><div class="font-bold "> 2 </div></td>
                                                                     </tbody>
                                                                 </table>
 
@@ -346,6 +346,7 @@
 
                                                             <table width="100%" dt-instance="dtInstance" dt-column-defs="dtColumnDefs" dt-options="dtOptions" datatable="ng" role="grid"
                                                                    class="table table-hover dataTable no-footer" style="display: table; width: 100%;" id="DataTables_Table_4" aria-describedby="DataTables_Table_4_info">
+                                                                <div id="SampleControl-table_filter" class="dataTables_filter pull-right"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="indel-table"></label></div>
                                                                 <thead>
                                                                 <tr role="row">
                                                                     <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_4" rowspan="1" colspan="1" style="width: 93px;" aria-sort="ascending" aria-label="Molecular ID: activate to sort column descending">Molecular ID</th>
@@ -600,8 +601,11 @@
                                                                    datatable="ng" dt-options="dtOptions"
                                                                    dt-column-defs="dtColumnDefs" dt-instance="dtInstance"
                                                                    style="display: table; width: 100%;" id="DataTables_Table_2" aria-describedby="DataTables_Table_2_info">
+                                                                <div id="SampleControl-table_filter" class="dataTables_filter pull-right"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="indel-table"></label></div>
                                                                 <thead>
-                                                                <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Molecular ID: activate to sort column descending" style="width: 103px;">Molecular ID</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" aria-label="Variant Reports: activate to sort column ascending" style="width: 164px;">Variant Reports</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" aria-label="Date Created: activate to sort column ascending" style="width: 175px;">Date Created</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" aria-label="Date Received: activate to sort column ascending" style="width: 116px;">Date Received</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 57px;">Status</th></tr>
+                                                                <tr role="row">
+                                                                    <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Molecular ID: activate to sort column descending" style="width: 103px;">Molecular ID</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" aria-label="Variant Reports: activate to sort column ascending" style="width: 164px;">Variant Reports</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" aria-label="Date Created: activate to sort column ascending" style="width: 175px;">Date Created</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" aria-label="Date Received: activate to sort column ascending" style="width: 116px;">Date Received</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_2" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 57px;">Status</th></tr>
+
                                                                 </thead>
                                                                 <tbody>
                                                                 <!-- ngRepeat: sample in positiveListMDCC --><!-- end ngRepeat: sample in positiveListMDCC -->
@@ -1042,7 +1046,7 @@
                         </uib-tab>
 
                         <!--NO TEMPLAT CONTROL-->
-                        <uib-tab heading="No Template Control " ng-click="ntcBarChart('mocha')">
+                        <uib-tab heading="No Template Control " ng-click="ntcBarChart(branch)">
 
                             <div class="col-lg-16" >
                                 <div class="ibox float-e-margins">
@@ -1065,7 +1069,7 @@
                                                             </a>
 
                                                             <table width="100%" dt-instance="dtInstance" dt-column-defs="dtColumnDefs" dt-options="dtOptions" datatable="ng" role="grid" class="table table-hover ng-isolate-scope dataTable no-footer" style="display: table; width: 100%;" id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info">
-
+                                                                <div id="SampleControl-table_filter" class="dataTables_filter pull-right"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="indel-table"></label></div>
                                                                 <thead>
                                                                 <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 119px;" aria-sort="ascending" aria-label="Molecular ID: activate to sort column descending">Molecular ID</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 119px;" aria-label="Variant Reports: activate to sort column ascending">Variant Reports</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 160px;" aria-label="Date Created: activate to sort column ascending">Date Created</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 160px;" aria-label="Date Received: activate to sort column ascending">Date Received</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 49px;" aria-label="Status: activate to sort column ascending">Status</th></tr>
                                                                 </thead>
@@ -1129,7 +1133,7 @@
                                                     </a>
 
                                                     <table class="table table-hover ng-isolate-scope no-footer dataTable" role="grid" width="100%" datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs" dt-instance="dtInstance" style="display: table; width: 100%;" id="DataTables_Table_1" aria-describedby="DataTables_Table_1_info">
-
+                                                        <div id="SampleControl-table_filter" class="dataTables_filter pull-right"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="indel-table"></label></div>
                                                         <thead class="ng-scope">
                                                         <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Molecular ID: activate to sort column descending" style="width: 123px;">Molecular ID</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Variant Reports: activate to sort column ascending" style="width: 124px;">Variant Reports</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Date Created: activate to sort column ascending" style="width: 162px;">Date Created</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Date Received: activate to sort column ascending" style="width: 163px;">Date Received</th><th class="sorting" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 51px;">Status</th></tr>
                                                         </thead>
