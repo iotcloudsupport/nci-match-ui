@@ -548,7 +548,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 ntcMoiLabels = ['Ntc Control Failed', 'Ntc Control Success', 'Ntc Not Generated'];
                 if(site==='mocha') {
                     aMoiValues = [10, 15, 75]; //[4, 10, 14, 6, 10, 16]; //[45, 21, 4, 35, 9, 6];
-                    ntcMoiValues = [1, 26, 4]; //[4, 10, 14, 6, 10, 16]; //[45, 21, 4, 35, 9, 6];
+                    ntcMoiValues = [10, 26, 4]; //[4, 10, 14, 6, 10, 16]; //[45, 21, 4, 35, 9, 6];
                 }
                 else{
                     aMoiValues = [8, 25, 67];
@@ -798,16 +798,8 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                         , ' Wed.'
                         , 'Thu.'
                         , 'Fri.'
-                        // , 'Protein'
-                        // , 'Funk Gene'
-                        // , 'Variant Type/Snv'
-                        // , 'Variant Type/Id'
-                        // , 'Read Depth Snv'
-                        // , 'Read Depth Indel'
-                        // , 'Transcript Snv'
-                        // , 'Transcript Indel'
                     ];
-                    armValues = [1, 2, 4, 4, 2];
+                    armValues = [4, 7, 3, 10, 1];
                     armValues1 = [3, 1, 1, 2, 3];
 
                     $scope.barData = {
