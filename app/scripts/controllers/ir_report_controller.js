@@ -52,37 +52,12 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
             
             $scope.positiveControlList = [];
-            $scope.positiveControlList = [{"variantType":"SNV","geneName":"PIK3CA","chromosome":"chr3","position":"178916946","identifier":"COSM12580","reference":"G","alternative":"C","protein":"p.Lys111Asn","hgvs":"c.333G>C","purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"SNV","geneName":"BRAF","chromosome":"chr7","position":"140453136","identifier":"COSM476","reference":"A","alternative":"T","protein":"p.V600E","hgvs":"c.1799T>A","purpose":"Substitution","function":"missense","hasMatchingVariant":"false"},{"variantType":"SNV","geneName":"BRCA2","chromosome":"chr13","position":"32968850","identifier":".","reference":"C","alternative":"A","protein":"p.Ser3094Ter","hgvs":"c.9281C>A","purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"Indel","geneName":"PTEN","chromosome":"chr10","position":"89717716","identifier":".","reference":"-","alternative":"A","protein":"p.Pro248fs","hgvs":"c.741_742insA","purpose":null,"function":null,"hasMatchingVariant":"false"},{"variantType":"Indels","purpose":"CNV","function":null,"hasMatchingVariant":"true"},{"variantType":"CNV","geneName":"RPS6KB1","chromosome":"chr17","position":null,"identifier":null,"reference":null,"alternative":null,"protein":null,"hgvs":null,"purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"CNV","geneName":"ZNF217","chromosome":"chr20","position":null,"identifier":null,"reference":null,"alternative":null,"protein":null,"hgvs":null,"purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"Fusion","geneName":"ALK","chromosome":null,"position":null,"identifier":"AB374361","reference":null,"alternative":"EML4-ALK.E6aA20","protein":null,"hgvs":"EML4-ALK","purpose":"Fusion","function":null,"hasMatchingVariant":"true"},{"variantType":"Fusion","geneName":"ALK","chromosome":null,"position":null,"identifier":"AB374362","reference":null,"alternative":"EML4-ALK.E6bA20","protein":null,"hgvs":"EML4-ALK","purpose":"Fusion","function":null,"hasMatchingVariant":"true"}];
-
             $scope.negativeVariantsList = [];
-            $scope.negativeVariantsList.push({
-                'publicMedIds': '',
-                'position': '7578373',
-                'geneName': "",
-                'variantType':'Indel',
-                'reference':'G',
-                'alternative': 'C',
-                'hgvs': 'c.557A',
-                'protein': 'p.Asp186Gly',
-                'function': 'missense'
-            });
 
 
             $scope.positiveControlList1 = [];
-            $scope.positiveControlList1 = [{"variantType":"SNV","geneName":"PIK3CA","chromosome":"chr3","position":"178916946","identifier":"COSM12880","reference":"G","alternative":"C","protein":"p.Lys111Asn","hgvs":"c.333G>C","purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"SNV","geneName":"BRAF","chromosome":"chr7","position":"140453136","identifier":"COSM476","reference":"A","alternative":"T","protein":"p.V600E","hgvs":"c.1799T>A","purpose":"Substitution","function":"missense","hasMatchingVariant":"true"},{"variantType":"SNV","geneName":"BRCA2","chromosome":"chr13","position":"32968850","identifier":".","reference":"C","alternative":"A","protein":"p.Ser3094Ter","hgvs":"c.9281C>A","purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"Indel","geneName":"PTEN","chromosome":"chr10","position":"89717716","identifier":".","reference":"-","alternative":"A","protein":"p.Pro248fs","hgvs":"c.741_742insA","purpose":null,"function":null,"hasMatchingVariant":"false"},{"variantType":"Indels","purpose":"CNV","function":null,"hasMatchingVariant":"false"},{"variantType":"CNV","geneName":"RPS6KB1","chromosome":"chr17","position":null,"identifier":null,"reference":null,"alternative":null,"protein":null,"hgvs":null,"purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"CNV","geneName":"ZNF217","chromosome":"chr20","position":null,"identifier":null,"reference":null,"alternative":null,"protein":null,"hgvs":null,"purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"Fusion","geneName":"ALK","chromosome":null,"position":null,"identifier":"AB374361","reference":null,"alternative":"EML4-ALK.E6aA20","protein":null,"hgvs":"EML4-ALK","purpose":"Fusion","function":null,"hasMatchingVariant":"false"},{"variantType":"Fusion","geneName":"ALK","chromosome":null,"position":null,"identifier":"AB374362","reference":null,"alternative":"EML4-ALK.E6bA20","protein":null,"hgvs":"EML4-ALK","purpose":"Fusion","function":null,"hasMatchingVariant":"true"}];
-
             $scope.negativeVariantsList1 = [];
-            $scope.negativeVariantsList1.push({
-                'publicMedIds': '',
-                'position': '112258',
-                'geneName': "",
-                'variantType':'Indel',
-                'reference':'G',
-                'alternative': 'C',
-                'hgvs': 'c.887A',
-                'protein': 'p.Emp186Gly',
-                'function': 'missense'
-            });
+
 
             $scope.positiveControlList2 = [];
             $scope.positiveControlList2 = [{"variantType":"SNV","geneName":"PIK3CA","chromosome":"chr3","position":"178916946","identifier":"COSM12880","reference":"G","alternative":"C","protein":"p.Lys111Asn","hgvs":"c.333G>C","purpose":null,"function":null,"hasMatchingVariant":"false"},{"variantType":"SNV","geneName":"BRAF","chromosome":"chr7","position":"140453136","identifier":"COSM476","reference":"A","alternative":"T","protein":"p.V600E","hgvs":"c.1799T>A","purpose":"Substitution","function":"missense","hasMatchingVariant":"true"},{"variantType":"SNV","geneName":"BRCA2","chromosome":"chr13","position":"32968850","identifier":".","reference":"C","alternative":"A","protein":"p.Ser3094Ter","hgvs":"c.9281C>A","purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"Indel","geneName":"PTEN","chromosome":"chr10","position":"89717716","identifier":".","reference":"-","alternative":"A","protein":"p.Pro248fs","hgvs":"c.741_742insA","purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"Indels","purpose":"CNV","function":null,"hasMatchingVariant":"true"},{"variantType":"CNV","geneName":"RPS6KB1","chromosome":"chr17","position":null,"identifier":null,"reference":null,"alternative":null,"protein":null,"hgvs":null,"purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"CNV","geneName":"ZNF217","chromosome":"chr20","position":null,"identifier":null,"reference":null,"alternative":null,"protein":null,"hgvs":null,"purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"Fusion","geneName":"ALK","chromosome":null,"position":null,"identifier":"AB374361","reference":null,"alternative":"EML4-ALK.E6aA20","protein":null,"hgvs":"EML4-ALK","purpose":"Fusion","function":null,"hasMatchingVariant":"false"},{"variantType":"Fusion","geneName":"ALK","chromosome":null,"position":null,"identifier":"AB374362","reference":null,"alternative":"EML4-ALK.E6bA20","protein":null,"hgvs":"EML4-ALK","purpose":"Fusion","function":null,"hasMatchingVariant":"true"}];
@@ -114,7 +89,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
 
             $scope.moChaList.push(
-                {'ipAddress': '12 129.43.127.133', 'externalIpAddress': '3 129.43.127.133', 'host': 'NCI-MATCH-IR', 'status': 'CONNECTED', 'lastcon': 'June 21, 2016 5:50 PM GMT'}
+                {'ipAddress': '129.43.127.133', 'externalIpAddress': '129.43.127.133', 'host': 'NCI-MATCH-IR', 'status': 'CONNECTED', 'lastcon': 'June 21, 2016 5:50 PM GMT'}
                 // {'ipAddress': '56 129.43.127.133', 'externalIpAddress': '1 129.43.127.133', 'host': 'NCIAS', 'status': 'WAITING'},
                 // {'ipAddress': '12 129.43.127.133', 'externalIpAddress': '42 129.43.127.133', 'host': 'ip-172-31-24-10', 'status': 'FAILING'}
             );
@@ -126,9 +101,9 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             // );
 
             $scope.mdAccList.push(
-            {'ipAddress': '12 129.43.127.133', 'externalIpAddress': '3 129.43.127.133', 'host': 'ip-D15889', 'status': 'CONNECTED'},
-            {'ipAddress': '56 129.43.127.133', 'externalIpAddress': '1 129.43.127.133', 'host': 'NCIAS-D1427', 'status': 'CONNECTED'},
-            {'ipAddress': '12 129.43.127.133', 'externalIpAddress': '42 129.43.127.133', 'host': 'NCIAS-D1227', 'status': 'WAITING'}
+            {'ipAddress': '129.43.127.133', 'externalIpAddress': '129.43.127.133', 'host': 'ip-D15889', 'status': 'CONNECTED', 'lastcon': 'July 1, 2016 5:50 PM GMT'}
+            // {'ipAddress': '56 129.43.127.133', 'externalIpAddress': '1 129.43.127.133', 'host': 'NCIAS-D1427', 'status': 'CONNECTED'},
+            // {'ipAddress': '12 129.43.127.133', 'externalIpAddress': '42 129.43.127.133', 'host': 'NCIAS-D1227', 'status': 'WAITING'}
             );
 
 
@@ -442,7 +417,41 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             };
 
 
-            $scope.openPositives = function() {
+            $scope.openPositives = function(id) {
+
+                if(id === 1){
+                    $scope.positiveControlList = [{"variantType":"SNV","geneName":"PIK3CA","chromosome":"chr3","position":"178916946","identifier":"COSM12580","reference":"G","alternative":"C","protein":"p.Lys111Asn","hgvs":"c.333G>C","purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"SNV","geneName":"BRAF","chromosome":"chr7","position":"140453136","identifier":"COSM476","reference":"A","alternative":"T","protein":"p.V600E","hgvs":"c.1799T>A","purpose":"Substitution","function":"missense","hasMatchingVariant":"false"},{"variantType":"SNV","geneName":"BRCA2","chromosome":"chr13","position":"32968850","identifier":".","reference":"C","alternative":"A","protein":"p.Ser3094Ter","hgvs":"c.9281C>A","purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"Indel","geneName":"PTEN","chromosome":"chr10","position":"89717716","identifier":".","reference":"-","alternative":"A","protein":"p.Pro248fs","hgvs":"c.741_742insA","purpose":null,"function":null,"hasMatchingVariant":"false"},{"variantType":"Indels","purpose":"CNV","function":null,"hasMatchingVariant":"true"},{"variantType":"CNV","geneName":"RPS6KB1","chromosome":"chr17","position":null,"identifier":null,"reference":null,"alternative":null,"protein":null,"hgvs":null,"purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"CNV","geneName":"ZNF217","chromosome":"chr20","position":null,"identifier":null,"reference":null,"alternative":null,"protein":null,"hgvs":null,"purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"Fusion","geneName":"ALK","chromosome":null,"position":null,"identifier":"AB374361","reference":null,"alternative":"EML4-ALK.E6aA20","protein":null,"hgvs":"EML4-ALK","purpose":"Fusion","function":null,"hasMatchingVariant":"true"},{"variantType":"Fusion","geneName":"ALK","chromosome":null,"position":null,"identifier":"AB374362","reference":null,"alternative":"EML4-ALK.E6bA20","protein":null,"hgvs":"EML4-ALK","purpose":"Fusion","function":null,"hasMatchingVariant":"true"}];
+
+
+                    $scope.negativeVariantsList.push({
+                        'publicMedIds': '',
+                        'position': '7578373',
+                        'geneName': "",
+                        'variantType':'Indel',
+                        'reference':'G',
+                        'alternative': 'C',
+                        'hgvs': 'c.557A',
+                        'protein': 'p.Asp186Gly',
+                        'function': 'missense'
+                    });
+                }
+                else{
+                    $scope.positiveControlList = [{"variantType":"SNV","geneName":"PIK3CA","chromosome":"chr3","position":"178916946","identifier":"COSM12880","reference":"G","alternative":"C","protein":"p.Lys111Asn","hgvs":"c.333G>C","purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"SNV","geneName":"BRAF","chromosome":"chr7","position":"140453136","identifier":"COSM476","reference":"A","alternative":"T","protein":"p.V600E","hgvs":"c.1799T>A","purpose":"Substitution","function":"missense","hasMatchingVariant":"true"},{"variantType":"SNV","geneName":"BRCA2","chromosome":"chr13","position":"32968850","identifier":".","reference":"C","alternative":"A","protein":"p.Ser3094Ter","hgvs":"c.9281C>A","purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"Indel","geneName":"PTEN","chromosome":"chr10","position":"89717716","identifier":".","reference":"-","alternative":"A","protein":"p.Pro248fs","hgvs":"c.741_742insA","purpose":null,"function":null,"hasMatchingVariant":"false"},{"variantType":"Indels","purpose":"CNV","function":null,"hasMatchingVariant":"false"},{"variantType":"CNV","geneName":"RPS6KB1","chromosome":"chr17","position":null,"identifier":null,"reference":null,"alternative":null,"protein":null,"hgvs":null,"purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"CNV","geneName":"ZNF217","chromosome":"chr20","position":null,"identifier":null,"reference":null,"alternative":null,"protein":null,"hgvs":null,"purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"Fusion","geneName":"ALK","chromosome":null,"position":null,"identifier":"AB374361","reference":null,"alternative":"EML4-ALK.E6aA20","protein":null,"hgvs":"EML4-ALK","purpose":"Fusion","function":null,"hasMatchingVariant":"false"},{"variantType":"Fusion","geneName":"ALK","chromosome":null,"position":null,"identifier":"AB374362","reference":null,"alternative":"EML4-ALK.E6bA20","protein":null,"hgvs":"EML4-ALK","purpose":"Fusion","function":null,"hasMatchingVariant":"true"}];
+
+
+                    $scope.negativeVariantsList.push({
+                        'publicMedIds': '',
+                        'position': '112258',
+                        'geneName': "",
+                        'variantType':'Indel',
+                        'reference':'G',
+                        'alternative': 'C',
+                        'hgvs': 'c.887A',
+                        'protein': 'p.Emp186Gly',
+                        'function': 'missense'
+                    });
+                }
+
                 $scope.positives = 'mocha';
 
             };
@@ -538,7 +547,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 }
                 else{
                     aMoiValues = [8, 25, 67];
-                    ntcMoiValues = [1, 1, 18];
+                    ntcMoiValues = [18, 1, 2];
                 }
                 aMoiHighlight = "#000088"; //"#dedede";
 
@@ -603,6 +612,28 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     }
             ];
 
+
+                $scope.ntcMDApieData = [
+                    {
+                        value: ntcMoiValues[0],
+                        color: "green",
+                        highlight: aMoiHighlight,
+                        label: ntcMoiLabels[0]
+                    },
+                    {
+                        value: ntcMoiValues[1],
+                        color: "orange",
+                        highlight: aMoiHighlight,
+                        label: ntcMoiLabels[1]
+                    },
+                    {
+                        value: ntcMoiValues[2],
+                        color: "indigo", //"#ab0102",
+                        highlight: aMoiHighlight,
+                        label: ntcMoiLabels[2]
+                    }
+                ];
+
             }
 
             //Svg for samples
@@ -662,13 +693,11 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 };
 
                     armNames = [
-                        'Succ. / Fail. '
-                        , 'Pos. Samples '
-                        , ' Avg. mm / y / total'
-                        , 'NTC Indx.'
-
-
-                        , 'HB Status / Year'
+                        'Mon.'
+                        , 'Tue.'
+                        , ' Wen.'
+                        , 'Thu.'
+                        , 'Fri.'
                         // , 'Protein'
                         // , 'Funk Gene'
                         // , 'Variant Type/Snv'
@@ -683,21 +712,18 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     armValues2 = [10, 0.5, 73, 0, 3];
 
                     mdaccNames = [
-                        'Pos. Snv'
-                        , 'Pos. Indels'
-                        , 'Pos. Cnv'
-                        , 'Chrom Values'
-                        , 'Allele Freq'
-                        , 'Protein'
-                        , 'Funk Gene'
-                        , 'Variant Type/Snv'
-                        , 'Variant Type/Id'
-                        , 'Read Depth Snv'
-                        , 'Read Depth Indel'
-                        , 'Transcript Snv'
-                        , 'Transcript Indel'
+                        'Mon.'
+                        , 'Tue.'
+                        , ' Wen.'
+                        , 'Thu.'
+                        , 'Fri.'
                     ];
-                    mdaccValues = [1, 8, 3, 8, 1, 1, 9, 1, 1, 31, 28, 12, 31];
+
+                mdaccValues = [12, 55, 2, 33, 11];
+                mdaccValues1 = [44, 7, 71, 9, 2];
+                // mdaccValues = [10, 0.5, 73, 0, 3];
+
+                    // mdaccValues = [1, 8, 3, 8, 1, 1, 9, 1, 1, 31, 28, 12, 31];
 
 
                 $scope.barData = {
@@ -718,15 +744,15 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                             highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
                             highlightStroke: "rgba(220,220,220,1)",
                             data: armValues1
-                        },
-                        {
-                            fillColor: 'orange',
-                            strokeColor: 'rgba(151,187,205,1)',
-                            pointColor: 'rgba(151,187,205,1)',
-                            highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
-                            highlightStroke: "rgba(220,220,220,1)",
-                            data: armValues2
                         }
+                        // {
+                        //     fillColor: 'orange',
+                        //     strokeColor: 'rgba(151,187,205,1)',
+                        //     pointColor: 'rgba(151,187,205,1)',
+                        //     highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
+                        //     highlightStroke: "rgba(220,220,220,1)",
+                        //     data: armValues2
+                        // }
                     ]
                 };
 
@@ -740,6 +766,14 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                             highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
                             highlightStroke: "rgba(220,220,220,1)",
                             data: mdaccValues
+                        },
+                        {
+                            fillColor: 'darkred',
+                            strokeColor: 'rgba(151,187,205,1)',
+                            pointColor: 'rgba(151,187,205,1)',
+                            highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
+                            highlightStroke: "rgba(220,220,220,1)",
+                            data: mdaccValues1
                         }
                     ]
                 };
