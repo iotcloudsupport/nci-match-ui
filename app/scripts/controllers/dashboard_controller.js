@@ -98,6 +98,7 @@ angular.module('dashboard.matchbox',[])
                 'clia_lab': 'MoCha',
                 'specimen_received_date': 1421162969643,
                 'variant_report_received_date': 1421162969643,
+                'approved' : false,
                 'days_pending': '1'
 
             },
@@ -108,6 +109,7 @@ angular.module('dashboard.matchbox',[])
                 'clia_lab': 'MDA',
                 'specimen_received_date': 1421163069643,
                 'variant_report_received_date': 1421163269643,
+                'approved' : false,
                 'days_pending': '3'
 
             },
@@ -118,6 +120,7 @@ angular.module('dashboard.matchbox',[])
                 'clia_lab': 'MoCha',
                 'specimen_received_date': 1421162969643,
                 'variant_report_received_date': 1421162969643,
+                'approved' : false,
                 'days_pending': '8'
 
             },
@@ -128,6 +131,7 @@ angular.module('dashboard.matchbox',[])
                 'clia_lab': 'MDA',
                 'specimen_received_date': 1421163069643,
                 'variant_report_received_date': 1421163269643,
+                'approved' : false,
                 'days_pending': '15'
 
             }
