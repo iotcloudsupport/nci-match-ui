@@ -62,7 +62,7 @@
                         <div class="ibox float-e-margins" ng-controller="DashboardActivityFeedController as DashCtrl"
                              ng-init="loadActivityList()">
 
-                            <div class="ibox-title">
+                            <div class="ibox-title ibox-title-no-line">
                                 <h5>Activity Feed</h5>
                                 <div class="pull-right">
                                     <span style="alignment:center" class="label label-warning-light">Showing the latest {{activityList.length}} messages</span>
@@ -99,11 +99,11 @@
                     </div>
 
                     <div class="col-lg-9">
-                        <div class="ibox float-e-margins">
-                            <div class="ibox-title">
+                        <!--<div class="ibox float-e-margins">-->
+                            <div class="ibox-title ibox-title-no-line">
                                 <h5>Item(s) Pending Review </h5>
                             </div>
-                            <div class="ibox-content">
+                            <!--<div class="ibox-content">-->
                                 <div class="tabs-container">
                                     <uib-tabset>
                                         <uib-tab heading="Tissue Variant Report(s)">
@@ -229,8 +229,8 @@
                                         </uib-tab>
                                     </uib-tabset>
                                 </div>
-                            </div>
-                        </div>
+                            <!--</div>-->
+                        <!--</div>-->
                     </div>
                 </div>
             </div>
