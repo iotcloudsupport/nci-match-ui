@@ -51,7 +51,7 @@
                                                 <div class="col-lg-12">
 
                                                     <div class="col-lg-2 cols-height cols-bottom">
-                                                        <h6>Positive Controls - MoCha</h6>
+                                                        <h4>Positive Controls</h4>
                                                         <div class="panel" ng-init="loadPieChart(branch);">
                                                             <canvas id="amoiCanvas" doughnutchart
                                                                     ng-attr-data="pieData" responsive=true width="600" height="600"
@@ -86,7 +86,6 @@
 
                                                         <div class="tabs-container">
                                                             <i class="fa fa-clock-o fa-2x" style=";color:green;"> </i> <b>Heartbeat</b>
-                                                            <span class="label label-warning pull-right">{{branch}}</span>
 
                                                             <div ng-if="branch == 'mocha'">
 
@@ -127,7 +126,7 @@
 
 
                                                     <div class="col-lg-2">
-                                                        <h6>No Template Controls - MoCha</h6>
+                                                        <h4>No Template Controls</h4>
                                                         <div class="tabs-container">
 
                                                             <div class="panel" ng-init="loadPieChart(branch);">
@@ -145,7 +144,7 @@
                                                                         <tr >
                                                                             <td >Success Status</td>
                                                                             <td >Failed Status</td>
-                                                                            <td >Ntc Not Generated</td>
+                                                                            <td >Not Generated</td>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -185,7 +184,7 @@
                                             <div ng-if="branch == 'mdacc'">
 
                                                 <div class="col-xs-2 cols-height cols-bottom">
-                                                    <h6>Positive Controls - MDACC</h6>
+                                                    <h4>Positive Controls</h4>
                                                     <div class="panel" ng-init="loadPieChart(branch);">
                                                         <canvas id="amoiCanvas" doughnutchart
                                                                 ng-attr-data="pieData" responsive=true width="600" height="600"
@@ -220,7 +219,6 @@
 
                                                     <div class="tabs-container">
                                                         <i class="fa fa-clock-o fa-2x" style=";color:green;"> </i> <b>Heartbeat</b>
-                                                        <span class="label label-warning pull-right">{{branch}}</span>
 
                                                         <div ng-if="branch == 'mdacc'">
 
@@ -263,7 +261,7 @@
 
 
                                                 <div class="col-lg-2">
-                                                    <h6>No Template Controls - MDACC</h6>
+                                                    <h4>No Template Controls</h4>
                                                     <div class="tabs-container">
 
                                                         <div class="panel" ng-init="loadPieChart('mdacc');">
@@ -281,7 +279,7 @@
                                                                     <tr >
                                                                         <td >Success Status</td>
                                                                         <td >Failed Status</td>
-                                                                        <td >Ntc Not Generated</td>
+                                                                        <td >Not Generated</td>
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody>
@@ -1046,7 +1044,7 @@
                         </uib-tab>
 
                         <!--NO TEMPLAT CONTROL-->
-                        <uib-tab heading="No Template Control " ng-click="ntcBarChart(branch)">
+                        <uib-tab heading="No Template Control " >
 
                             <div class="col-lg-16" >
                                 <div class="ibox float-e-margins">
