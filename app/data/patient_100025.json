@@ -2366,29 +2366,6 @@
             "assignments": "",
             "specimen_shipments": [
                 {
-                    "molecular_id": "MOL002_2",
-                    "tracking_number": "675867856685",
-                    "destination_date": "2016-02-19T23:16:53+00:00",
-                    "dna_concordance": 10.2,
-                    "dna_volume": 9,
-                    "reported_date": "2016-02-19T13:25:04+00:00",
-                    "comments": "Second shipment",
-                    "analyses": [
-                        {
-                            "analysis_id": "SAM002_04",
-                            "status": "Pending",
-                            "file_received_date": "2016-02-19T22:45:02+00:00",
-                            "status_date": "2016-02-19T23:52:24+00:00"
-                        },
-                        {
-                            "analysis_id": "SAM002_03",
-                            "status": "Confirmed",
-                            "file_received_date": "2016-02-19T22:06:33+00:00",
-                            "status_date": "2016-02-19T23:06:33+00:00"
-                        }
-                    ]
-                },
-                {
                     "molecular_id": "MOL002_1",
                     "tracking_number": "675867856678",
                     "destination_date": "2016-02-16T22:06:33+00:00",
@@ -2412,6 +2389,29 @@
                             "comment_user": "G. Smith",
                             "file_received_date": "2016-02-13T22:06:33+00:00",
                             "status_date": "2016-02-13T23:06:33+00:00"
+                        }
+                    ]
+                },
+                {
+                    "molecular_id": "MOL002_2",
+                    "tracking_number": "675867856685",
+                    "destination_date": "2016-02-19T23:16:53+00:00",
+                    "dna_concordance": 10.2,
+                    "dna_volume": 9,
+                    "reported_date": "2016-02-19T13:25:04+00:00",
+                    "comments": "Second shipment",
+                    "analyses": [
+                        {
+                            "analysis_id": "SAM002_04",
+                            "status": "Rejected",
+                            "file_received_date": "2016-02-19T22:45:02+00:00",
+                            "status_date": "2016-02-19T23:52:24+00:00"
+                        },
+                        {
+                            "analysis_id": "SAM002_03",
+                            "status": "Confirmed",
+                            "file_received_date": "2016-02-19T22:06:33+00:00",
+                            "status_date": "2016-02-19T23:06:33+00:00"
                         }
                     ]
                 }
