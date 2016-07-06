@@ -237,7 +237,9 @@
                                             <td>{{shipment.dna_concordance}}</td>
                                             <td>{{shipment.dna_volume}}</td>
                                             <td>{{shipment.reported_date}}</td>
-                                            <td><div class="text-truncate-200px">{{shipment.comments}}</div></td>
+                                            <td>
+                                                <div class="text-truncate-200px">{{shipment.comments}}</div>
+                                            </td>
                                         </tr>
                                         <tr ng-repeat-end>
                                             <td colspan="8">
@@ -711,6 +713,13 @@
                                             </tr>
                                         </tbody>
                                     </table>
+
+                                    <div class="panel panel-primary">
+                                        <div class="panel-heading"><i class="fa fa-bullseye"></i>Selected Treatment Arm:  <strong>{{selectedTreatmentArm.treatment_arm}}</strong> </div>
+                                        <div class="panel-body" id="selected-body">
+                                            <p>{{selectedTreatmentArm.reason}}</p>
+                                        </div>
+                                    </div>
 
                                     <table class="table table-hover" role="grid">
                                         <thead>

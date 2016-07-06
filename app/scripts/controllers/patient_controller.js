@@ -57,6 +57,7 @@
 
         $scope.assignmentReportOptions = [];
         $scope.assignmentReportOption = null;
+        $scope.selectedTreatmentArm = null;
 
         $scope.dropzoneConfig = {
             url: '/alt_upload_url',
@@ -151,6 +152,7 @@
             setupVariantReports();
             setupVariantReportOptions();
             setupAssignmentReportOptions();
+            setupSelectedTreatmentArm();
             setupUserName();
         }
 
@@ -272,28 +274,23 @@
             $scope.assignmentReportOptions.push($scope.assignmentReportOption);
         }
 
+        function setupSelectedTreatmentArm() {
+            if (!($scope.data && 
+                $scope.data.assignment_report && 
+                $scope.data.assignment_report.treatment_arms && 
+                $scope.data.assignment_report.treatment_arms.selected)) {
+                return;
+            }
+
+            $scope.selectedTreatmentArm = $scope.data.assignment_report.treatment_arms.selected[0];
+        }
+
         function selectVariantReport(option) {
             var previous = $scope.currentVariantReport;
-
             $scope.currentVariantReport = null;
-
-
-// $log.debug('$scope.variantReportMode='+$scope.variantReportMode);
-// $log.debug('$scope.variantReportType='+$scope.variantReportType);
-// $log.debug('option.value.surgical_event_id='+option.value.surgical_event_id);
-// $log.debug('option.value.analysis_id='+option.value.analysis_id);
-// $log.debug('option.value.molecular_id='+option.value.molecular_id);
-// $log.debug('----------------');
 
             for (var i = 0; i < $scope.variantReports.length; i++) {
                 var variantReport = $scope.variantReports[i];
-
-// $log.debug('variantReport.variant_report_mode='+variantReport.variant_report_mode);
-// $log.debug('variantReport.variant_report_type='+variantReport.variant_report_type);
-// $log.debug('variantReport.surgical_event_id='+variantReport.surgical_event_id);
-// $log.debug('variantReport.analysis_id='+variantReport.analysis_id);
-// $log.debug('variantReport.molecular_id='+variantReport.molecular_id);
-
                 if (variantReport.variant_report_mode === $scope.variantReportMode && variantReport.variant_report_type === $scope.variantReportType) {
                     if (variantReport.surgical_event_id === option.value.surgical_event_id && 
                         variantReport.analysis_id === option.value.analysis_id &&
