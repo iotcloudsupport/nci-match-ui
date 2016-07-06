@@ -158,17 +158,20 @@ describe('Controller: Patient Details Controller', function () {
                     {
                         "name": "Document 1",
                         "uploaded_date": "2016-05-09T22:06:33+00:00",
-                        "user": "James Bond"
+                        "user": "James Bond",
+                        "url": "/data/ClinicalNGSAnalysis_e-book.pdf"
                     },
                     {
                         "name": "Document 2",
                         "uploaded_date": "2016-05-09T22:06:33+00:00",
-                        "user": "James Bond"
+                        "user": "James Bond",
+                        "url": "/data/ClinicalNGSAnalysis_e-book.pdf"
                     },
                     {
                         "name": "X-File A23FSD34",
                         "uploaded_date": "2016-05-09T22:06:33+00:00",
-                        "user": "Fox Mulder"
+                        "user": "Fox Mulder",
+                        "url": "/data/ClinicalNGSAnalysis_e-book.pdf"
                     }
                 ]
             },
