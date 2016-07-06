@@ -135,14 +135,14 @@
                             <div class="row content-select-list">
                                 <div class="col-md-12">
                                     <h4>
-                                        <!--<div class="btn-group" uib-dropdown dropdown-append-to-body>
+                                        <div class="btn-group" uib-dropdown dropdown-append-to-body>
                                             <button id="btn-append-to-body" type="button" class="btn btn-success btn-outline" uib-dropdown-toggle>{{surgicalEventOption.text}}<span class="caret"></span></button>
                                             <ul class="dropdown-menu" uib-dropdown-menu role="menu">
                                                 <li ng-repeat="item in surgicalEventOptions" role="menuitem"><a href ng-click="onSurgicalEventSelected(item)">{{item.text}}</a></li>
                                             </ul>
                                         </div>
-                                        -->
-                                        <div dropdown-select="surgicalEventOptions" dropdown-model="surgicalEventOption" dropdown-item-label="text" dropdown-onchange="onSurgicalEventSelected(selected)"></div>
+<!--                                        
+                                        <div dropdown-select="surgicalEventOptions" dropdown-model="surgicalEventOption" dropdown-item-label="text" dropdown-onchange="onSurgicalEventSelected(selected)"></div>-->
                                     </h4>
                                 </div>
                             </div>
@@ -347,7 +347,15 @@
                                     <div class="row content-select-list">
                                         <div class="col-md-12">
                                             <h4>
-                                                <div dropdown-select="variantReportOptions " dropdown-model="variantReportOption" dropdown-item-label="text" dropdown-onchange="onVariantReportSelected(selected)"></div>
+                                                <div class="btn-group" uib-dropdown dropdown-append-to-body>
+                                                    <button id="btn-append-to-body" type="button" class="btn btn-success btn-outline" uib-dropdown-toggle>{{variantReportOption.text}}<span class="caret"></span></button>
+                                                    <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+                                                        <li ng-repeat="item in variantReportOptions" role="menuitem"><a href ng-click="onVariantReportSelected(item)">{{item.text}}</a></li>
+                                                    </ul>
+                                                </div>
+<!--
+
+                                                <div dropdown-select="variantReportOptions " dropdown-model="variantReportOption" dropdown-item-label="text" dropdown-onchange="onVariantReportSelected(selected)"></div>-->
                                             </h4>
                                         </div>
                                     </div>
@@ -621,7 +629,7 @@
                         </div>
 
                         <!--Assignment Report-->
-                        <div ng-if="currentVariantReport" class="ibox collapsed">
+                        <div ng-if="currentVariantReport" class="ibox">
                             <div class="ibox-title">
                                 <div collapse-toggle-left></div>
                                 <h2>Assignment Report</h2>
@@ -632,7 +640,15 @@
                                 <div ng-if="currentVariantReport.status=='CONFIRMED'" class="row content-select-list">
                                     <div class="col-md-12">
                                         <h4>
-                                            <div dropdown-select="assignmentReportOptions " dropdown-model="assignmentReportOption" dropdown-item-label="text" dropdown-onchange="onAssignmentReportSelected(selected)"></div>
+                                            <div class="btn-group" uib-dropdown dropdown-append-to-body>
+                                                <button id="btn-append-to-body" type="button" class="btn btn-success btn-outline" uib-dropdown-toggle>{{assignmentReportOption.text}}<span class="caret"></span></button>
+                                                <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+                                                    <li ng-repeat="item in assignmentReportOptions" role="menuitem"><a href ng-click="onAssignmentReportSelected(item)">{{item.text}}</a></li>
+                                                </ul>
+                                            </div>
+<!--                                            
+                                            <div dropdown-select="assignmentReportOptions " dropdown-model="assignmentReportOption" dropdown-item-label="text" dropdown-onchange="onAssignmentReportSelected(selected)"></div>-->
+                                            
                                         </h4>
                                     </div>
                                 </div>
