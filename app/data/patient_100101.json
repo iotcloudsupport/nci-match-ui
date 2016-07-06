@@ -1737,26 +1737,16 @@
       }
     ],
     "assays": [
-      {
-        "gene": "MSH2",
-        "result": "Not Applicable",
-        "comment": "Biopsy received prior to bimarker launch date"
-      },
-      {
-        "gene": "PTENs",
-        "result": "POSITIVE",
-        "comment": "-"
-      },
-      {
-        "gene": "MLH1",
-        "result": "Not Applicable",
-        "comment": "Biopsy received prior to bimarker launch date"
-      },
-      {
-        "gene": "RB",
-        "result": "Not Applicable",
-        "comment": "Biopsy received prior to bimarker launch date"
-      }
+            {
+                "gene": "PTENs",
+                "result": "POSITIVE",
+                "comment": "-"
+            },
+            {
+                "gene": "MLH1",
+                "result": "Not Applicable",
+                "comment": "Biopsy received prior to bimarker launch date"
+            }
     ],
     "treatment_arms": {
       "no_match": [
