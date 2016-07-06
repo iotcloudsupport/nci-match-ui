@@ -2190,7 +2190,7 @@
         "surgical_event_id": "SUREVT002",
         "failed_date": "",
         "study_id": "APEC1621",
-        "type": "TUMOR",
+        "type": "TISSUE",
         "pathology_status": "Agreed on pathology",
         "pathology_status_date": "2016-03-09T12:06:33+00:00",
         "variant_report_confirmed_date": "2016-03-09T15:06:33+00:00",
@@ -2225,6 +2225,7 @@
             {
                 "molecular_id": "MSN5678",
                 "tracking_number": "675867856685",
+                "type": "TISSUE",
                 "destination_date": "2016-02-19T23:16:53+00:00",
                 "dna_concordance": 10.2,
                 "dna_volume": 9,
@@ -2249,6 +2250,7 @@
                 "molecular_id": "MSN5678",
                 "tracking_number": "675867856678",
                 "destination_date": "2016-02-16T22:06:33+00:00",
+                "type": "TISSUE",
                 "dna_concordance": 10.2,
                 "dna_volume": 9,
                 "reported_date": "2016-02-15T22:06:33+00:00",
@@ -2277,7 +2279,7 @@
             "surgical_event_id": "SUREVT001",
             "failed_date": "2016-02-09T22:06:33+00:00",
             "study_id": "APEC1621",
-            "type": "TUMOR",
+            "type": "TISSUE",
             "pathology_status": "Agreed on pathology",
             "pathology_status_date": "2016-02-09T12:06:33+00:00",
             "variant_report_confirmed_date": "2016-02-09T15:06:33+00:00",
@@ -2345,7 +2347,7 @@
             "surgical_event_id": "SUREVT002",
             "failed_date": "",
             "study_id": "APEC1621",
-            "type": "TUMOR",
+            "type": "TISSUE",
             "pathology_status": "Agreed on pathology",
             "pathology_status_date": "2016-03-09T12:06:33+00:00",
             "variant_report_confirmed_date": "2016-03-09T15:06:33+00:00",
@@ -2371,8 +2373,10 @@
                     "destination_date": "2016-02-16T22:06:33+00:00",
                     "dna_concordance": 10.2,
                     "dna_volume": 9,
+                    "type": "TISSUE",
+                    "site": "MDH",
                     "reported_date": "2016-02-15T22:06:33+00:00",
-                    "comments": "Initial shipment",
+                    "comments": "Initial shipment. There were problems with the package - damaged in transit.",
                     "analyses": [
                         {
                             "analysis_id": "SAM002_02",
@@ -2396,6 +2400,8 @@
                     "molecular_id": "MOL002_2",
                     "tracking_number": "675867856685",
                     "destination_date": "2016-02-19T23:16:53+00:00",
+                    "type": "TISSUE",
+                    "site": "MDH",
                     "dna_concordance": 10.2,
                     "dna_volume": 9,
                     "reported_date": "2016-02-19T13:25:04+00:00",
@@ -2407,6 +2413,23 @@
                             "file_received_date": "2016-02-19T22:45:02+00:00",
                             "status_date": "2016-02-19T23:52:24+00:00"
                         },
+                        {
+                            "analysis_id": "SAM002_03",
+                            "status": "Confirmed",
+                            "file_received_date": "2016-02-19T22:06:33+00:00",
+                            "status_date": "2016-02-19T23:06:33+00:00"
+                        }
+                    ]
+                },
+                {
+                    "molecular_id": "MOL002_3",
+                    "tracking_number": "67586212856685",
+                    "destination_date": "2016-02-19T23:16:53+00:00",
+                    "type": "BLOOD",
+                    "site": "GCH",
+                    "reported_date": "2016-02-19T13:25:04+00:00",
+                    "comments": "Blood shipment",
+                    "analyses": [
                         {
                             "analysis_id": "SAM002_03",
                             "status": "Confirmed",

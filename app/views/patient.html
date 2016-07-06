@@ -231,15 +231,13 @@
                                     <tbody>
                                         <tr ng-repeat-start="shipment in currentSurgicalEvent.specimen_shipments" style="cursor: auto;" role="row" class="odd">
                                             <td>{{shipment.molecular_id}}</td>
-                                            <td>{{shipment.specimen_type | titlecase}}</td>
+                                            <td>{{shipment.type}}</td>
                                             <td>{{shipment.site}}</td>
-                                            <td>{{shipment.tracking_number}}</td>
+                                            <td><a href="http://www.fedex.com/Tracking?action=track&tracknumbers={{shipment.tracking_number}}" target="_blank">{{shipment.tracking_number}}</a></td>
                                             <td>{{shipment.dna_concordance}}</td>
                                             <td>{{shipment.dna_volume}}</td>
-                                            <td>{{shipment.reported_date | utc}}</td>
-                                            <td>
-                                                <div class="text-truncate-200px">{{shipment.comments}}</div>
-                                            </td>
+                                            <td>{{shipment.reported_date}}</td>
+                                            <td><div class="text-truncate-200px">{{shipment.comments}}</div></td>
                                         </tr>
                                         <tr ng-repeat-end>
                                             <td colspan="8">
