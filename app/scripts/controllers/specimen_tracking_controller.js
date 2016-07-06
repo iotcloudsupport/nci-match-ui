@@ -5,6 +5,11 @@ angular.module('specimen-tracking.matchbox',[])
         this.dtColumnDefs = [];
         this.dtInstance = {};
 
+        this.ddOptions = {
+            'info': false,
+            'paging': false
+        };
+
         //$scope.specimenTrackingList = [];
 
         $scope.specimenTrackingList = [
