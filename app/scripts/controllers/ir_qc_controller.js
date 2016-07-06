@@ -1,15 +1,34 @@
-angular.module('qcsample.matchbox',[])
+angular.module('qcsample.matchbox',[ ])
     .controller('QcSampleController', function($scope, $http, $window, $stateParams, matchConfig, DTOptionsBuilder, svgApi) {
         angular.element(document).ready(function () {
             $('.equal-height-panels .panel').matchHeight();
         });
 
+        // $scope.dtOptions = DTOptionsBuilder.newOptions()
+        //     .withDOM('&lt;"custom-element"&gt;pitrfl');
+            // .withDOM('&lt;"custom-element"&gt;pitrfl');
+
         $scope.dtOptions = DTOptionsBuilder.newOptions()
-            .withDisplayLength(50);
+            .withDisplayLength(25);
+            // .withDOM('<"top">t<"bottom"<"b_left"iT><"b_center"p><"b_right"l>><"clear spacer">');
 
         this.dtColumnDefs = [];
 
         this.dtInstance = {};
+
+        $scope.confirmed = '';
+        //FILTER
+        $scope.$watch('confirmed', function(newValue, oldValue) {
+
+            console.log($scope.confirmed);
+            if(newValue === 'ALL') {
+                $scope.filterCol = "";
+            }
+            else {
+                $scope.filterCol = newValue;
+            }
+        });
+
 
         $scope.sampleId=$stateParams.sampleId;
         $scope.samplesList = [];
@@ -29,26 +48,6 @@ angular.module('qcsample.matchbox',[])
             $scope.sitename = 'MDACC';
         }
 
-
-        // $scope.openCosmicGene = function (id) {
-        //
-        //     $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + id.toLowerCase(), "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=300, left=300, width=600, height=400");
-        //
-        // };
-        //
-        // $scope.openCosmicId = function (id) {
-        //
-        //     $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + id.toLowerCase(), "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=300, left=300, width=600, height=400");
-        //
-        // };
-        //
-        // $scope.openCosmicFusionId = function (id) {
-        //
-        //     $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + id.toLowerCase(), "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=300, left=300, width=600, height=400");
-        //
-        // };
-
-
         $scope.openCosmicGene = function (id) {
             $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + id.toLowerCase(), "_blank");
             $window.focus();
@@ -56,6 +55,8 @@ angular.module('qcsample.matchbox',[])
         };
 
         $scope.openCosmicId = function (id) {
+
+            alert(id)
             id = id.substring(4, id.length)
             $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + id.toLowerCase(), "_blank");
             $window.focus();
@@ -69,7 +70,6 @@ angular.module('qcsample.matchbox',[])
             $window.focus();
 
         };
-
 
         //Svg for samples
         $scope.loadSvgGeneList = function () {
@@ -221,9 +221,128 @@ angular.module('qcsample.matchbox',[])
                 ]
             };
 
+        };
 
-            // alert(JSON.stringify($scope.barData))
+        $scope.data = [];
+        $scope.snvList = {};
+        $scope.cnvList = {};
+        $scope.geneList = {};
+
+
+        //the controller
+        $scope.totalDisplayed = 100;
+
+        $scope.loadMore = function () {
+            $scope.totalDisplayed += 20;
+        };
+
+        function loadQcList(data) {
+
+            // $scope.snvList = data.singleNucleotideVariants;
+            $scope.cnvList = data.copyNumberVariants;
+            // $scope.geneList = data.geneFusions;
 
         };
 
+        $scope.filterCol = "";
+
+        //CNV
+        $scope.loadQc_Table = function () {
+
+            var url ="data/sample_qc.json";
+
+            $.ajax({
+
+                type   :  "GET",
+                url      :   url,
+                contentType : "application/json",
+                dataType      : "json",
+                data            :  {},
+                success: function(data){
+                    loadQcList(data)
+                },
+                error:function(jqXHR,textStatus,errorThrown){
+                    alert("Error: "+textStatus.toString());
+                }
+            });
+        };
+
+        //SNV
+        function loadSnvList(data) {
+            $scope.snvList = data.singleNucleotideVariants;
+        };
+        $scope.loadSnv_Table = function () {
+
+            var url ="data/sample_qc.json";
+
+            $.ajax({
+
+                type   :  "GET",
+                url      :   url,
+                contentType : "application/json",
+                dataType      : "json",
+                data            :  {},
+                success: function(data){
+                    loadSnvList(data)
+                },
+                error:function(jqXHR,textStatus,errorThrown){
+                    alert("Error: "+textStatus.toString());
+                }
+            });
+        };
+
+        
+
+        //GENE
+        function loadGeneList(data) {
+            $scope.geneList = data.geneFusions;
+        };
+        $scope.loadGene_Table = function () {
+
+            var url ="data/sample_qc.json";
+
+            $.ajax({
+
+                type   :  "GET",
+                url      :   url,
+                contentType : "application/json",
+                dataType      : "json",
+                data            :  {},
+                success: function(data){
+                    loadGeneList(data);
+                },
+                error:function(jqXHR,textStatus,errorThrown){
+                    alert("Error: "+textStatus.toString());
+                }
+            });
+        };
+
+
     });
+    // .directive('datatableWrapper', function($timeout, $compile){
+    // return {
+    //     restrict: 'E',
+    //     transclude: true,
+    //     template: '<ng-transclude></ng-transclude>',
+    //     link: link
+    // };
+    //
+    // function link(scope, element) {
+    //     // Using $timeout service as a "hack" to trigger the callback function once everything is rendered
+    //     $timeout(function () {
+    //         // Compiling so that angular knows the button has a directive
+    //         $compile(element.find('.custom-element'))(scope);
+    //     }, 0, false);
+    // }
+    // })
+    // .directive('customElement', function(){
+    //     return {
+    //         restrict: 'C',
+    //         template: '<select class="form-control pull-right" id="snv-table-select" >' +
+    //         '<option value="ALL" ng-click="filterPage(0)" selected="selected">ALL</option>' +
+    //         '<option value="PASS" ng-click="filterPage(1)">PASS</option>' +
+    //         '<option value="NOCALL" ng-click="filterPage(2)">NOCALL</option>' +
+    //         '<option value=".">.</option>' +
+    //     '</select>'
+    //     };
+    // });

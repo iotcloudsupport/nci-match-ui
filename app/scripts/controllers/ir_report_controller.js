@@ -15,6 +15,8 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withOption('searching', false);
 
+
+
         this.dtInstance = {};
 
         $scope.irList = [];
@@ -34,7 +36,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         $scope.copyNumberVariantsList = [];
         $scope.geneFusionsList = [];
         $scope.sitename = 'undefined';
-            $scope.barlegend = 'Weekly Positive Control Status';
+            $scope.barlegend = 'Total Positive / Ntc Control Status';
             $scope.titleid = "";
 
         $scope.branch = $stateParams.branch;
@@ -681,7 +683,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             // }
 
             $scope.loadSampleBreakups = function() {
-                $scope.barlegend = "Weekly Positive Control Status"
+                $scope.barlegend = "Total Positive / Ntc Control Status";
 
                 var prepareData = {
                     series: [5, 3, 4]
@@ -717,6 +719,8 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                         , ' Wed.'
                         , 'Thu.'
                         , 'Fri.'
+                        , 'Sat.'
+                        , 'Sun.'
                         // , 'Protein'
                         // , 'Funk Gene'
                         // , 'Variant Type/Snv'
@@ -726,8 +730,8 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                         // , 'Transcript Snv'
                         // , 'Transcript Indel'
                     ];
-                    armValues = [16, 13, 2, 24, 28];
-                    armValues1 = [2, 3, 4, 5, 2];
+                    armValues = [16, 13, 2, 24, 28, 1, 0];
+                    armValues1 = [2, 3, 4, 5, 2, 1, 0];
                     // armValues2 = [10, 0.5, 73, 0, 3];
 
                     armNamesYear = [
@@ -736,6 +740,8 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                         , ' Wed.'
                         , 'Thu.'
                         , 'Fri.'
+                        , 'Sat.'
+                        , 'Sun.'
                         // , 'Protein'
                         // , 'Funk Gene'
                         // , 'Variant Type/Snv'
@@ -745,8 +751,8 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                         // , 'Transcript Snv'
                         // , 'Transcript Indel'
                     ];
-                    armValuesYear = [16, 13, 2, 24, 28];
-                    armValuesYear1 = [2, 3, 4, 5, 2];
+                    armValuesYear = [16, 13, 2, 24, 28, 1, 0];
+                    armValuesYear1 = [2, 3, 4, 5, 2, 1, 0];
                     // armValues2 = [10, 0.5, 73, 0, 3];
 
 
@@ -756,10 +762,12 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                         , ' Wed.'
                         , 'Thu.'
                         , 'Fri.'
+                        , 'Sat.'
+                        , 'Sun.'
                     ];
 
-                mdaccValues = [12, 15, 11, 21, 11];
-                mdaccValues1 = [6, 7, 3, 9, 2];
+                mdaccValues = [12, 15, 11, 21, 11, 1, 0];
+                mdaccValues1 = [6, 7, 3, 9, 2, 1, 0];
                 // mdaccValues = [10, 0.5, 73, 0, 3];
 
                     // mdaccValues = [1, 8, 3, 8, 1, 1, 9, 1, 1, 31, 28, 12, 31];
