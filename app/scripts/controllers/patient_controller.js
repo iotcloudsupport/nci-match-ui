@@ -334,7 +334,7 @@
                     }
                 } else if (variantReport.variant_report_type === 'BLOOD') {
                     var bloodVariantReportItem = {
-                        text: 'Analysis ID ' + variantReport.analysis_id + ' | Molecular ID ' + variantReport.molecular_id,
+                        text: 'Analysis ID ' + variantReport.analysis_id + ' | Molecular ID ' + variantReport.molecular_id + ' | ' + variantReport.status,
                         value: {
                             analysis_id: variantReport.analysis_id,
                             molecular_id: variantReport.molecular_id
