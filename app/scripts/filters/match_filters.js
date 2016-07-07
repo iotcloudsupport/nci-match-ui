@@ -42,6 +42,10 @@
 
     function utc() {
         return function (date) {
+            if (date==='') {
+                return '-';
+            }
+
             if (date==='-') {
                 return date;
             }

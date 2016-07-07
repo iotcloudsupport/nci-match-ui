@@ -174,20 +174,23 @@
             {
                 "name": "Document 1",
                 "uploaded_date": "2016-05-09T22:06:33+00:00",
-                "user": "James Bond",
-                "comment": "Invasive Breast Cancer"
+                "user": "Jane Smith",
+                "comment": "Changed disease code",
+                "url": "/data/ClinicalNGSAnalysis_e-book.pdf"
             },
             {
                 "name": "Document 2",
                 "uploaded_date": "2016-05-09T22:06:33+00:00",
-                "user": "James Bond",
-                "comment": "comments"
+                "user": "Jane Smith",
+                "comment": "Changed assay results",
+                "url": "/data/ClinicalNGSAnalysis_e-book.pdf"
             },
             {
                 "name": "X-File A23FSD34",
                 "uploaded_date": "2016-05-09T22:06:33+00:00",
-                "user": "Fox Mulder",
-                "comment": "comments"
+                "user": "John Thatcher",
+                "comment": "Collected date changed",
+                "url": "/data/ClinicalNGSAnalysis_e-book.pdf"
             }
         ]
     },
@@ -1941,22 +1944,12 @@
         ],
         "assays": [
             {
-                "gene": "MSH2",
-                "result": "Not Applicable",
-                "comment": "Biopsy received prior to bimarker launch date"
-            },
-            {
                 "gene": "PTENs",
                 "result": "POSITIVE",
                 "comment": "-"
             },
             {
                 "gene": "MLH1",
-                "result": "Not Applicable",
-                "comment": "Biopsy received prior to bimarker launch date"
-            },
-            {
-                "gene": "RB",
                 "result": "Not Applicable",
                 "comment": "Biopsy received prior to bimarker launch date"
             }
@@ -2059,7 +2052,7 @@
         "surgical_event_id": "SUREVT0982",
         "failed_date": "2016-06-09T22:06:33+00:00",
         "study_id": "APEC1621",
-        "type": "TUMOR",
+        "type": "TISSUE",
         "pathology_status": "Agreed on pathology",
         "pathology_status_date": "2016-06-09T22:06:33+00:00",
         "variant_report_confirmed_date": "2016-06-09T22:06:33+00:00",
@@ -2134,7 +2127,7 @@
             "surgical_event_id": "SUREVT0981",
             "failed_date": "2016-06-09T22:06:33+00:00",
             "study_id": "APEC1621",
-            "type": "TUMOR",
+            "type": "TISSUE",
             "pathology_status": "Agreed on pathology",
             "pathology_status_date": "2016-06-09T22:06:33+00:00",
             "variant_report_confirmed_date": "2016-06-09T22:06:33+00:00",
@@ -2181,15 +2174,15 @@
                     "comments": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
                     "analyses": [
                         {
-                            "analysis_id": "SAM0981_2",
-                            "status": "Confirmed",
-                            "file_received_date": "2016-06-09T22:06:33+00:00",
-                            "status_date": "2016-06-09T22:06:33+00:00"
-                        },
-                        {
                             "analysis_id": "SAM0981_1",
                             "status": "Rejected",
                             "file_received_date": "2016-09-09T22:06:33+00:00",
+                            "status_date": "2016-06-09T22:06:33+00:00"
+                        },
+                        {
+                            "analysis_id": "SAM0981_2",
+                            "status": "Confirmed",
+                            "file_received_date": "2016-06-09T22:06:33+00:00",
                             "status_date": "2016-06-09T22:06:33+00:00"
                         }
                     ]
@@ -2202,7 +2195,7 @@
             "surgical_event_id": "SUREVT0982",
             "failed_date": "2016-06-09T22:06:33+00:00",
             "study_id": "APEC1621",
-            "type": "TUMOR",
+            "type": "TISSUE",
             "pathology_status": "Agreed on pathology",
             "pathology_status_date": "2016-06-09T22:06:33+00:00",
             "variant_report_confirmed_date": "2016-06-09T22:06:33+00:00",

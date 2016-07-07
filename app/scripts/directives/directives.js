@@ -60,7 +60,6 @@
                     content.slideToggle(200);
                     // Toggle icon from up to down
                     icon.toggleClass('fa-chevron-up').toggleClass('fa-chevron-down');
-                    ibox.toggleClass('').toggleClass('border-bottom');
                     $timeout(function () {
                         ibox.resize();
                         ibox.find('[id^=map-]').resize();

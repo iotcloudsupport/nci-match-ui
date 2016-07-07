@@ -165,20 +165,23 @@
             {
                 "name": "Document 1",
                 "uploaded_date": "2016-05-09T22:06:33+00:00",
-                "user": "James Bond",
-                "comment": "Invasive Breast Cancer"
+                "user": "Jane Smith",
+                "comment": "Changed disease code",
+                "url": "/data/ClinicalNGSAnalysis_e-book.pdf"
             },
             {
                 "name": "Document 2",
                 "uploaded_date": "2016-05-09T22:06:33+00:00",
-                "user": "James Bond",
-                "comment": "comments"
+                "user": "Jane Smith",
+                "comment": "Changed assay results",
+                "url": "/data/ClinicalNGSAnalysis_e-book.pdf"
             },
             {
                 "name": "X-File A23FSD34",
                 "uploaded_date": "2016-05-09T22:06:33+00:00",
-                "user": "Fox Mulder",
-                "comment": "comments"
+                "user": "John Thatcher",
+                "comment": "Collected date changed",
+                "url": "/data/ClinicalNGSAnalysis_e-book.pdf"
             }
         ]
     },
@@ -397,6 +400,8 @@
           "molecular_id": "MOL001_1",
           "analysis_id": "SAM001_01",
           "status": "REJECTED",
+          "comment": "Insuffucient data",
+          "comment_user": "Jane James",
           "status_date": "2016-01-13T23:06:33+00:00",
           "dna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
           "dna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
@@ -606,6 +611,8 @@
           "molecular_id": "MOL001_1",
           "analysis_id": "SAM001_02",
           "status": "CONFIRMED",
+          "comment": "",
+          "comment_user": "Jane James",
           "status_date": "2016-01-14T23:06:33+00:00",
           "dna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
           "dna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
@@ -1024,6 +1031,8 @@
           "molecular_id": "MOL002_1",
           "analysis_id": "SAM002_01",
           "status": "REJECTED",
+          "comment": "Insuffucient data",
+          "comment_user": "Jane James",
           "status_date": "2016-02-13T23:06:33+00:00",
           "dna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
           "dna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
@@ -1233,6 +1242,8 @@
           "molecular_id": "MOL002_1",
           "analysis_id": "SAM002_02",
           "status": "REJECTED",
+          "comment": "Insuffucient data",
+          "comment_user": "Jane James",
           "status_date": "2016-02-14T23:06:33+00:00",
           "dna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
           "dna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
@@ -1442,6 +1453,7 @@
           "molecular_id": "MOL002_2",
           "analysis_id": "SAM002_03",
           "status": "CONFIRMED",
+          "comment_user": "Jane James",
           "status_date": "2016-02-19T23:06:33+00:00",
           "dna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
           "dna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
@@ -1858,7 +1870,9 @@
             "patient_id": "100025",
             "molecular_id": "MOL100025BLD",
             "analysis_id": "SAM100025BLD_1",
-            "status": "PENDING",
+            "status": "REJECTED",
+            "comment": "Invalid reason",
+            "comment_user": "John Sams",
             "status_date": "016-02-19T23:52:24+00:00",
             "dna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
             "dna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
@@ -2080,22 +2094,12 @@
         ],
         "assays": [
             {
-                "gene": "MSH2",
-                "result": "Not Applicable",
-                "comment": "Biopsy received prior to bimarker launch date"
-            },
-            {
                 "gene": "PTENs",
                 "result": "POSITIVE",
                 "comment": "-"
             },
             {
                 "gene": "MLH1",
-                "result": "Not Applicable",
-                "comment": "Biopsy received prior to bimarker launch date"
-            },
-            {
-                "gene": "RB",
                 "result": "Not Applicable",
                 "comment": "Biopsy received prior to bimarker launch date"
             }
@@ -2197,7 +2201,7 @@
         "surgical_event_id": "SUREVT002",
         "failed_date": "",
         "study_id": "APEC1621",
-        "type": "TUMOR",
+        "type": "TISSUE",
         "pathology_status": "Agreed on pathology",
         "pathology_status_date": "2016-03-09T12:06:33+00:00",
         "variant_report_confirmed_date": "2016-03-09T15:06:33+00:00",
@@ -2232,6 +2236,7 @@
             {
                 "molecular_id": "MSN5678",
                 "tracking_number": "675867856685",
+                "type": "TISSUE",
                 "destination_date": "2016-02-19T23:16:53+00:00",
                 "dna_concordance": 10.2,
                 "dna_volume": 9,
@@ -2256,6 +2261,7 @@
                 "molecular_id": "MSN5678",
                 "tracking_number": "675867856678",
                 "destination_date": "2016-02-16T22:06:33+00:00",
+                "type": "TISSUE",
                 "dna_concordance": 10.2,
                 "dna_volume": 9,
                 "reported_date": "2016-02-15T22:06:33+00:00",
@@ -2284,7 +2290,7 @@
             "surgical_event_id": "SUREVT001",
             "failed_date": "2016-02-09T22:06:33+00:00",
             "study_id": "APEC1621",
-            "type": "TUMOR",
+            "type": "TISSUE",
             "pathology_status": "Agreed on pathology",
             "pathology_status_date": "2016-02-09T12:06:33+00:00",
             "variant_report_confirmed_date": "2016-02-09T15:06:33+00:00",
@@ -2352,7 +2358,7 @@
             "surgical_event_id": "SUREVT002",
             "failed_date": "",
             "study_id": "APEC1621",
-            "type": "TUMOR",
+            "type": "TISSUE",
             "pathology_status": "Agreed on pathology",
             "pathology_status_date": "2016-03-09T12:06:33+00:00",
             "variant_report_confirmed_date": "2016-03-09T15:06:33+00:00",
@@ -2373,36 +2379,15 @@
             "assignments": "",
             "specimen_shipments": [
                 {
-                    "molecular_id": "MOL002_2",
-                    "tracking_number": "675867856685",
-                    "destination_date": "2016-02-19T23:16:53+00:00",
-                    "dna_concordance": 10.2,
-                    "dna_volume": 9,
-                    "reported_date": "2016-02-19T13:25:04+00:00",
-                    "comments": "Second shipment",
-                    "analyses": [
-                        {
-                            "analysis_id": "SAM002_04",
-                            "status": "Pending",
-                            "file_received_date": "2016-02-19T22:45:02+00:00",
-                            "status_date": "2016-02-19T23:52:24+00:00"
-                        },
-                        {
-                            "analysis_id": "SAM002_03",
-                            "status": "Confirmed",
-                            "file_received_date": "2016-02-19T22:06:33+00:00",
-                            "status_date": "2016-02-19T23:06:33+00:00"
-                        }
-                    ]
-                },
-                {
                     "molecular_id": "MOL002_1",
                     "tracking_number": "675867856678",
                     "destination_date": "2016-02-16T22:06:33+00:00",
                     "dna_concordance": 10.2,
                     "dna_volume": 9,
+                    "type": "TISSUE",
+                    "site": "MDH",
                     "reported_date": "2016-02-15T22:06:33+00:00",
-                    "comments": "Initial shipment",
+                    "comments": "Initial shipment. There were problems with the package - damaged in transit.",
                     "analyses": [
                         {
                             "analysis_id": "SAM002_02",
@@ -2419,6 +2404,48 @@
                             "comment_user": "G. Smith",
                             "file_received_date": "2016-02-13T22:06:33+00:00",
                             "status_date": "2016-02-13T23:06:33+00:00"
+                        }
+                    ]
+                },
+                {
+                    "molecular_id": "MOL002_2",
+                    "tracking_number": "675867856685",
+                    "destination_date": "2016-02-19T23:16:53+00:00",
+                    "type": "TISSUE",
+                    "site": "MDH",
+                    "dna_concordance": 10.2,
+                    "dna_volume": 9,
+                    "reported_date": "2016-02-19T13:25:04+00:00",
+                    "comments": "Second shipment",
+                    "analyses": [
+                        {
+                            "analysis_id": "SAM002_04",
+                            "status": "Rejected",
+                            "file_received_date": "2016-02-19T22:45:02+00:00",
+                            "status_date": "2016-02-19T23:52:24+00:00"
+                        },
+                        {
+                            "analysis_id": "SAM002_03",
+                            "status": "Confirmed",
+                            "file_received_date": "2016-02-19T22:06:33+00:00",
+                            "status_date": "2016-02-19T23:06:33+00:00"
+                        }
+                    ]
+                },
+                {
+                    "molecular_id": "MOL002_3",
+                    "tracking_number": "67586212856685",
+                    "destination_date": "2016-02-19T23:16:53+00:00",
+                    "type": "BLOOD",
+                    "site": "GCH",
+                    "reported_date": "2016-02-19T13:25:04+00:00",
+                    "comments": "Blood shipment",
+                    "analyses": [
+                        {
+                            "analysis_id": "SAM002_03",
+                            "status": "Confirmed",
+                            "file_received_date": "2016-02-19T22:06:33+00:00",
+                            "status_date": "2016-02-19T23:06:33+00:00"
                         }
                     ]
                 }

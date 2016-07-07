@@ -210,7 +210,7 @@
                                                             <td>{{::ta.filter || '-'}}</td>
                                                             <td>{{::ta.alleleFrequency || '-'}}</td>
                                                             <td>
-                                                                <a href ng-click="openCosmicId(&quot;{{::ta.gene}}&quot;)" class="report-link">{{::ta.gene}}</a>
+                                                                <a href ng-click="openCosmicGene(ta.gene)" class="report-link">{{::ta.gene}}</a>
                                                             </td>
                                                             <td>{{::ta.oncominevariantclass || '-'}}</td>
                                                             <td>{{::ta.exon || '-'}}</td>
@@ -263,7 +263,7 @@
 
                                                             <tr ng-repeat="ta in cnvList | limitTo:totalDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">
                                                                 <td>
-                                                                    <a href ng-click="openCosmicGene(&quot;{{::ta.identifier}}&quot;)" class="report-link"> {{::ta.identifier || '-'}} </a>
+                                                                    <a href ng-click="openCosmicGene(ta.identifier)" class="report-link"> {{::ta.identifier || '-'}} </a>
                                                                 </td>
                                                                 <td>{{::ta.chromosome || '-'}}</td>
                                                                 <td>{{::ta.position || '-'}}</td>
@@ -278,6 +278,7 @@
                                                             </tr>
                                                             </tbody>
                                                         </table>
+
                                                     </div>
 
                                                 </uib-tab>
@@ -317,7 +318,7 @@
 
                                                             <tr ng-repeat="ta in geneList | limitTo:totalDisplayed " style="cursor: auto; " role="row" class="odd">
                                                                 <td>
-                                                                    <a href ng-click="openCosmicFusionId(&quot;{{::ta.identifier}}&quot;)" class="report-link"> {{::ta.identifier || '-'}} </a>
+                                                                    <a href ng-click="openCosmicFusionId(ta.identifier)" class="report-link"> {{::ta.identifier || '-'}} </a>
                                                                     <!--{{::ta.chromosome || '-'}}-->
                                                                 </td>
                                                                 <td>{{::ta.chromosome || '-'}}</td>

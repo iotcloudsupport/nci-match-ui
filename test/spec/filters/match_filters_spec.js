@@ -323,6 +323,7 @@ describe('Filter', function () {
         });
     });
 
+
     describe('titlecase', function () {
         var underTest;
 
@@ -356,6 +357,39 @@ describe('Filter', function () {
 
             result = underTest(null);
             expect(result).toEqual('');
+        });
+    });
+
+
+    describe('utc', function () {
+        it('should return a dash for a undefined value', function () {
+            var toUtc = filter('utc');
+            expect(toUtc(undefined)).toEqual('-');
+        });
+
+        it('should return a dash for a null value', function () {
+            var toUtc = filter('utc');
+            expect(toUtc(null)).toEqual('-');
+        });
+
+        it('should return a dash for an empty string', function () {
+            var toUtc = filter('utc');
+            expect(toUtc('')).toEqual('-');
+        });
+
+        it('should return a dash for a non-number value', function () {
+            var toUtc = filter('utc');
+            expect(toUtc('1234')).toEqual('-');
+        });
+
+        it('should return an incorrectly formatted GMT date', function () {
+            var toUtc = filter('utc');
+            expect(toUtc('016-02-19T23:52:24+00:00')).toEqual('-');
+        });
+
+        it('should return a correctly formatted GMT date', function () {
+            var toUtc = filter('utc');
+            expect(toUtc(1327303085000)).toEqual('January 23, 2012 7:18 AM GMT');
         });
     });
 
