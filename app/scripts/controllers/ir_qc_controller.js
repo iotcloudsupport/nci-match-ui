@@ -4,10 +4,6 @@ angular.module('qcsample.matchbox',[ ])
             $('.equal-height-panels .panel').matchHeight();
         });
 
-        // $scope.dtOptions = DTOptionsBuilder.newOptions()
-        //     .withDOM('&lt;"custom-element"&gt;pitrfl');
-            // .withDOM('&lt;"custom-element"&gt;pitrfl');
-
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(25);
             // .withDOM('<"top">t<"bottom"<"b_left"iT><"b_center"p><"b_right"l>><"clear spacer">');
@@ -55,8 +51,6 @@ angular.module('qcsample.matchbox',[ ])
         };
 
         $scope.openCosmicId = function (id) {
-
-            alert(id)
             id = id.substring(4, id.length)
             $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + id.toLowerCase(), "_blank");
             $window.focus();
@@ -64,11 +58,12 @@ angular.module('qcsample.matchbox',[ ])
         };
 
         $scope.openCosmicFusionId = function (id) {
+            var numericId = id.substring(id.indexOf("_") - 3, (id.length - 2));
 
-            // $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + id.toLowerCase(), "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=300, left=300, width=600, height=400");
-            $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + id.toLowerCase(), "_blank");
+            if (numericId !== null) {
+                $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + numericId.toLowerCase(), "_blank");
+            }
             $window.focus();
-
         };
 
         //Svg for samples
@@ -95,12 +90,7 @@ angular.module('qcsample.matchbox',[ ])
 
         //Svg for ntc  MOCK
         $scope.loadSvgNtcMockList = function () {
-            // svgApi
-            //     .getSvgNtc()
-            //     .then(function (d) {
-                    // $window.d3BoxVersion5(d.data);
                     $window.d3BoxVersion5Mock();
-                // });
         };
 
 
@@ -158,10 +148,6 @@ angular.module('qcsample.matchbox',[ ])
 
         $scope.loadSampleBreakups = function() {
 
-            // var ctx = document.getElementById("irSampleCanvas").getContext("2d");
-            // ctx.canvas.width = 300;
-            // ctx.canvas.height = 300;
-
             var prepareData = {
                 series: [5, 3, 4]
             }
@@ -189,14 +175,6 @@ angular.module('qcsample.matchbox',[ ])
                     }
                 ]
             };
-
-
-            // <td id="LRP1" width="15%">8668</td>
-            // <td id="v5TBP" width="15%">708413</td>
-            //     <td id="v5MYC" width="15%">75577</td>
-            //     <td id="v5HMBS" width="15%">164227</td>
-            //     <td id="v5ITGB7" width="15%">1028</td>
-            //     <td id="v5sum" width="15%">957913</td>
 
             armNames = [
                 'ELRP1'
@@ -291,8 +269,6 @@ angular.module('qcsample.matchbox',[ ])
             });
         };
 
-        
-
         //GENE
         function loadGeneList(data) {
             $scope.geneList = data.geneFusions;
@@ -319,30 +295,4 @@ angular.module('qcsample.matchbox',[ ])
 
 
     });
-    // .directive('datatableWrapper', function($timeout, $compile){
-    // return {
-    //     restrict: 'E',
-    //     transclude: true,
-    //     template: '<ng-transclude></ng-transclude>',
-    //     link: link
-    // };
-    //
-    // function link(scope, element) {
-    //     // Using $timeout service as a "hack" to trigger the callback function once everything is rendered
-    //     $timeout(function () {
-    //         // Compiling so that angular knows the button has a directive
-    //         $compile(element.find('.custom-element'))(scope);
-    //     }, 0, false);
-    // }
-    // })
-    // .directive('customElement', function(){
-    //     return {
-    //         restrict: 'C',
-    //         template: '<select class="form-control pull-right" id="snv-table-select" >' +
-    //         '<option value="ALL" ng-click="filterPage(0)" selected="selected">ALL</option>' +
-    //         '<option value="PASS" ng-click="filterPage(1)">PASS</option>' +
-    //         '<option value="NOCALL" ng-click="filterPage(2)">NOCALL</option>' +
-    //         '<option value=".">.</option>' +
-    //     '</select>'
-    //     };
-    // });
+
