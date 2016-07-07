@@ -124,7 +124,7 @@
         function loadPatientData() {
             matchApiMock
                 .loadPatient($stateParams.patient_id)
-                .then(setupScope, handleError);
+                .then(setupScope, handleError).then(navigateTo($stateParams.location));
         }
 
         function handleError(e) {
@@ -590,6 +590,28 @@
         function showAssignmentReportActions(report) {
             return true; // TODO:RZ add loginc back: report && report.status && report.status === 'PENDING';
         }
+    }
+
+    function navigateTo(location) {
+        switch (location.path) {
+            case 'molecular_id':
+                navigateToMolecularId(location.id);
+                break;
+            case 'analysis_id':
+                navigateToAnalisId(location.id);
+        }
+    }
+
+    function strStartsWith(str, prefix) {
+        return str.indexOf(prefix) === 0;
+    }
+
+    function navigateToMolecularId(id) {
+        
+    }
+
+    function navigateToAnalisId(id) {
+        
     }
 
 } ());
