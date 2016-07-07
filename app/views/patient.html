@@ -255,7 +255,7 @@
                                                                     <dd ng-style="{'color':'{{ analysis.status | analysisStatus }}'}">{{analysis.status}}</dd>
 
                                                                     <dt ng-if="analysis.comment">Comment</dt>
-                                                                    <dd ng-if="analysis.comment">{{analysis.comment}} (entered by: {{analysis.comment_user}})</dd>
+                                                                    <dd ng-if="analysis.comment">{{analysis.comment}} <span ng-if="analysis.comment_user"> (user: {{analysis.comment_user}})</span></dd>
                                                                 </dl>
                                                             </div>
                                                             <div class="col-md-4 col-sm-6 text-left">
@@ -389,13 +389,13 @@
                                                     <dd ng-show="variantReport.confirmedRejectedDate">{{currentVariantReport.confirmedRejectedDate | utc}}</dd>
 
                                                     <dt>Status</dt>
-                                                    <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{currentVariantReport.status}}</dd>
+                                                    <dd ng-style="{'color':'{{ currentVariantReport.status | analysisStatus }}'}">{{currentVariantReport.status}}</dd>
 
                                                     <dt ng-if="currentVariantReport.comment">Comments</dt>
-                                                    <dd ng-if="currentVariantReport.comment">{{currentVariantReport.comment}}<span ng-if="currentVariantReport.comment_user"> (Entered by: {{currentVariantReport.comment_user}})</span></dd>
+                                                    <dd ng-if="currentVariantReport.comment">{{currentVariantReport.comment}}<span ng-if="currentVariantReport.comment_user"> (user: {{currentVariantReport.comment_user}})</span></dd>
 
                                                     <dt>{{currentVariantReport.status | titlecase}} Date</dt>
-                                                    <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{currentVariantReport.status_date | utc}}</dd>
+                                                    <dd>{{currentVariantReport.status_date | utc}}</dd>
                                                 </dl>
                                             </div>
                                         </div>
@@ -858,14 +858,14 @@
                                             <dt>File Received Date</dt>
                                             <dd>{{currentBloodVariantReport.variant_report_received_date | utc}}</dd>
 
-                                            <dt ng-show="variantReport.confirmedRejectedDate">{{currentBloodVariantReport.confirmedRejectedDateLabel}}</dt>
-                                            <dd ng-show="variantReport.confirmedRejectedDate">{{currentBloodVariantReport.confirmedRejectedDate | utc}}</dd>
-
                                             <dt>Status</dt>
-                                            <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{currentBloodVariantReport.status}}</dd>
+                                            <dd ng-style="{'color':'{{ currentBloodVariantReport.status | analysisStatus }}'}">{{currentBloodVariantReport.status}}</dd>
 
-                                            <dt>{{currentBloodVariantReport.status | titlecase }} Date</dt>
-                                            <dd ng-style="{'color':'{{ variantReport.status | analysisStatus }}'}">{{currentBloodVariantReport.status_date | utc}}</dd>
+                                            <dt ng-if="currentBloodVariantReport.comment">Comments</dt>
+                                            <dd ng-if="currentBloodVariantReport.comment">{{currentBloodVariantReport.comment}}<span ng-if="currentBloodVariantReport.comment_user"> (user: {{currentBloodVariantReport.comment_user}})</span></dd>
+
+                                            <dt>{{currentBloodVariantReport.status | titlecase}} Date</dt>
+                                            <dd>{{currentBloodVariantReport.status_date | utc}}</dd>
                                         </dl>
                                     </div>
                                 </div>
