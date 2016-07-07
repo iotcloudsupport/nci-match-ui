@@ -55,8 +55,6 @@ angular.module('qcsample.matchbox',[ ])
         };
 
         $scope.openCosmicId = function (id) {
-
-            alert(id)
             id = id.substring(4, id.length)
             $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + id.toLowerCase(), "_blank");
             $window.focus();
@@ -64,11 +62,12 @@ angular.module('qcsample.matchbox',[ ])
         };
 
         $scope.openCosmicFusionId = function (id) {
+            var numericId = id.substring(id.indexOf("_")-3, (id.length - 2));
 
-            // $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + id.toLowerCase(), "_blank", "toolbar=yes, scrollbars=yes, resizable=yes, top=300, left=300, width=600, height=400");
-            $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + id.toLowerCase(), "_blank");
+            if (numericId !== null) {
+                $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + numericId.toLowerCase(), "_blank");
+            }
             $window.focus();
-
         };
 
         //Svg for samples
