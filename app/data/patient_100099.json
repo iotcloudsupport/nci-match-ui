@@ -53,8 +53,7 @@
         "confirmed_date": "2016-05-09T22:06:33+00:00",
         "sent_to_cog_date": "-",
         "received_from_cog_date": "-",
-        "biopsy_sequence_number": "T-15-000078",
-        "molecular_sequence_number": "MSN34534",
+        "molecular_id": "MSN34534",
         "analysis_id": "SAM1232",
         "variant_report_amois": [
             {
@@ -232,7 +231,7 @@
                 "status": "ON_TREATMENT_ARM",
                 "message": "",
                 "stratum_id": "STR13",
-                "biopsy_sequence_number": "B-987456",
+                "molecular_id": "B-987456",
                 "treatment_arm_id": "APEC1621-T",
                 "assignment_date" : "2016-05-05T13:52:13+00:00"
             }
@@ -246,7 +245,7 @@
             "step": "4.0",
             "event_data": {
                 "status": "PENDING",
-                "biopsy_sequence_number": "B-987456",
+                "molecular_id": "B-987456",
                 "location": "GHU"
             }
         },
@@ -259,7 +258,7 @@
             "step": "4.0",
             "event_data": {
                 "status": "PENDING",
-                "biopsy_sequence_number": "B-987456",
+                "molecular_id": "B-987456",
                 "location": "GHU"
             }
         },
@@ -295,7 +294,7 @@
             "event_data": {
                 "rebiopsy" : "N",
                 "status": "PENDING",
-                "biopsy_sequence_number": "B-987456",
+                "molecular_id": "B-987456",
                 "location": "GHU"
             }
         },
@@ -310,7 +309,7 @@
                 "status": "ON_TREATMENT_ARM",
                 "message": "",
                 "stratum_id": "STR43",
-                "biopsy_sequence_number": "B-987456",
+                "molecular_id": "B-987456",
                 "treatment_arm_id": "APEC1621-Q",
                 "assignment_date" : "2015-11-30T13:52:13+00:00"
             }
@@ -325,7 +324,7 @@
             "event_data": {
                 "rebiopsy" : "-",
                 "status": "PENDING",
-                "biopsy_sequence_number": "B-987456",
+                "molecular_id": "B-987456",
                 "location": "GHU"
             }
         },
@@ -339,7 +338,7 @@
             "event_data": {
                 "rebiopsy" : "-",
                 "status": "PENDING",
-                "biopsy_sequence_number": "B-987456",
+                "molecular_id": "B-987456",
                 "location": "GHU"
             }
         },
@@ -388,7 +387,7 @@
                 "collected_datetime": "2015-11-25T16:52:13+00:00",
                 "received_datetime": "2015-11-25T16:52:13+00:00",
                 "status": "CONFIRMED",
-                "biopsy_sequence_number": "B-987456"
+                "molecular_id": "B-987456"
             }
         },
         {
@@ -403,7 +402,7 @@
                 "collected_datetime": "2015-11-25T13:52:13+00:00",
                 "received_datetime": "2015-11-25T13:52:13+00:00",
                 "status": "RECEIVED",
-                "biopsy_sequence_number": "B-987456"
+                "molecular_id": "B-987456"
             }
         },
         {
@@ -417,7 +416,7 @@
                 "biomarker": "ICCPTEN",
                 "status": "RECEIVED",
                 "result" : "POSITIVE",
-                "biopsy_sequence_number": "B-987456",
+                "molecular_id": "B-987456",
                 "reported_date": "2015-11-24T13:52:13+00:00"
             }
         },
@@ -430,7 +429,7 @@
             "step": "3.0",
             "event_data": {
                 "status": "Y",
-                "biopsy_sequence_number": "B-987456",
+                "molecular_id": "B-987456",
                 "reported_date": "2015-11-21T13:52:13+00:00"
             }
         },
@@ -444,7 +443,7 @@
             "event_data": {
                 "biomarker": "ICCPTEN",
                 "status": "ORDER",
-                "biopsy_sequence_number": "B-987456",
+                "molecular_id": "B-987456",
                 "ordered_date": "2015-11-20T13:52:13+00:00"
             }
         },
@@ -463,7 +462,7 @@
                 "carrier": "Federal Express",
                 "tracking_id": "1203454512316546",
                 "status": "PENDING",
-                "biopsy_sequence_number": "B-987456"
+                "molecular_id": "B-987456"
             }
         },
         {
@@ -481,7 +480,7 @@
                 "carrier": "Federal Express",
                 "tracking_id": "1203454512316546",
                 "status": "PENDING",
-                "biopsy_sequence_number": "B-987456"
+                "molecular_id": "B-987456"
             }
         },
         {
@@ -496,7 +495,7 @@
                 "collected_datetime": "2015-11-12T13:52:13+00:00",
                 "received_datetime": "2015-11-16T13:52:13+00:00",
                 "status": "PENDING",
-                "biopsy_sequence_number": "B-987456"
+                "molecular_id": "B-987456"
             }
         },
         {
@@ -509,7 +508,7 @@
             "event_data": {
                 "rebiopsy" : "Y",
                 "status": "PENDING",
-                "biopsy_sequence_number": "B-987456",
+                "molecular_id": "B-987456",
                 "location": "GHU"
             }
         },
@@ -524,7 +523,7 @@
                 "status": "ON_TREATMENT_ARM",
                 "message": "",
                 "stratum_id": "STR16",
-                "biopsy_sequence_number": "B-987456",
+                "molecular_id": "B-987456",
                 "treatment_arm_id": "APEC1621-E",
                 "assignment_date" : "2015-08-15T13:52:13+00:00"
             }
@@ -538,7 +537,7 @@
             "step": "2.0",
             "event_data": {
                 "status": "PENDING",
-                "biopsy_sequence_number": "B-987456",
+                "molecular_id": "B-987456",
                 "location": "GHU"
             }
         },
@@ -551,7 +550,7 @@
             "step": "2.0",
             "event_data": {
                 "status": "PENDING",
-                "biopsy_sequence_number": "B-987456",
+                "molecular_id": "B-987456",
                 "location": "GHU"
             }
         },
@@ -587,7 +586,7 @@
             "event_data": {
                 "rebiopsy" : "N",
                 "status": "PENDING",
-                "biopsy_sequence_number": "B-987456",
+                "molecular_id": "B-987456",
                 "location": "GHU"
             }
         },
@@ -602,7 +601,7 @@
                 "status": "ON_TREATMENT_ARM",
                 "message": "",
                 "stratum_id": "STR5",
-                "biopsy_sequence_number": "B-987456",
+                "molecular_id": "B-987456",
                 "treatment_arm_id": "APEC1621-U",
                 "assignment_date" : "2015-06-12T13:52:13+00:00"
             }
@@ -616,7 +615,7 @@
             "step": "1.0",
             "event_data": {
                 "status": "PENDING",
-                "biopsy_sequence_number": "B-987456",
+                "molecular_id": "B-987456",
                 "location": "GHU"
             }
         },
@@ -629,7 +628,7 @@
             "step": "1.0",
             "event_data": {
                 "status": "PENDING",
-                "biopsy_sequence_number": "B-987456",
+                "molecular_id": "B-987456",
                 "location": "GHU"
             }
         },
@@ -678,7 +677,7 @@
                 "collected_datetime": "2015-05-27T13:52:13+00:00",
                 "received_datetime": "2015-06-03T13:52:13+00:00",
                 "status": "CONFIRMED",
-                "biopsy_sequence_number": "B-987456"
+                "molecular_id": "B-987456"
             }
         },
         {
@@ -693,7 +692,7 @@
                 "collected_datetime": "2015-05-20T13:52:13+00:00",
                 "received_datetime": "2015-05-27T13:52:13+00:00",
                 "status": "RECEIVED",
-                "biopsy_sequence_number": "B-987456"
+                "molecular_id": "B-987456"
             }
         },
         {
@@ -707,7 +706,7 @@
                 "biomarker": "ICCPTEN",
                 "status": "RECEIVED",
                 "result" : "POSITIVE",
-                "biopsy_sequence_number": "B-987456",
+                "molecular_id": "B-987456",
                 "reported_date": "2015-05-26T13:52:13+00:00"
             }
         },
@@ -720,7 +719,7 @@
             "step": "1.0",
             "event_data": {
                 "status": "Y",
-                "biopsy_sequence_number": "B-987456",
+                "molecular_id": "B-987456",
                 "reported_date": "2015-05-22T13:52:13+00:00"
             }
         },
@@ -734,7 +733,7 @@
             "event_data": {
                 "biomarker": "ICCPTEN",
                 "status": "ORDER",
-                "biopsy_sequence_number": "B-987456",
+                "molecular_id": "B-987456",
                 "ordered_date": "2015-05-20T13:52:13+00:00"
             }
         },
@@ -753,7 +752,7 @@
                 "carrier": "Federal Express",
                 "tracking_id": "1203454512316546",
                 "status": "PENDING",
-                "biopsy_sequence_number": "B-987456"
+                "molecular_id": "B-987456"
             }
         },
         {
@@ -768,7 +767,7 @@
                 "collected_datetime": "2015-05-10T22:06:33+00:00",
                 "received_datetime": "2015-05-11T22:08:33+00:00",
                 "status": "PENDING",
-                "biopsy_sequence_number": "B-987456"
+                "molecular_id": "B-987456"
             }
         },
         {
@@ -780,7 +779,7 @@
             "event_data": {
                 "step": "1.0",
                 "status": "PENDING",
-                "biopsy_sequence_number": "B-987456",
+                "molecular_id": "B-987456",
                 "location": "GHU"
             }
         }
@@ -2044,8 +2043,8 @@
         "confirmed_date": "2016-05-09T22:06:33+00:00",
         "sent_to_cog_date": "-",
         "received_from_cog_date": "-",
-        "biopsy_sequence_number": "T-15-000078",
-        "molecular_sequence_number": "MSN34534",
+        "molecular_id": "T-15-000078",
+        "molecular_id": "MSN34534",
         "analysis_id": "SAM1232",
         "variant_report_amois": [
             {

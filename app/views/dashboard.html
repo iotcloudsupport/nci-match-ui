@@ -82,16 +82,16 @@
 
                                                 <small class="pull-right">{{activity.age }} ago</small>
                                                 <strong> {{ activity.displayName }} <br></strong>
+
+                                                <span ng-if="activity.patient_id !== ''"><strong><a ui-sref="patient({ patient_id: activity.patient_id })">
+                                                        <i class="fa fa-user"></i> {{::activity.patient_id}}</a></strong><br></span>
                                                 
-                                                <span ng-if="activity.patientId !== ''"><strong><a ui-sref="patient({ patient_id: activity.patientId })">
-                                                        <i class="fa fa-user"></i> {{::activity.patientId}}</a></strong><br></span>
+                                                <span ng-if="activity.treatment_arm_id !== ''" >Treatment Arm: <strong><a ui-sref="treatment-arm({ treatmentArmId: activity.treatment_arm_id })">
+                                                    <i class="fa fa-medkit"></i> {{::activity.treatment_arm_id}} {{::activity.version}}</a></strong><br></span>
                                                 
-                                                <span ng-if="activity.treatmentArmId !== ''" >Treatment Arm: <strong><a ui-sref="treatment-arm({ treatmentArmId: activity.treatmentArmId })">
-                                                    <i class="fa fa-medkit"></i> {{::activity.treatmentArmId}} {{::activity.version}}</a></strong><br></span>
+                                                <span ng-if="activity.molecular_id !== ''">Molecular ID: <strong><a ui-sref="patient({ patient_id: activity.patient_id, section: 'variant_report', molecular_id: activity.molecular_id })">{{activity.molecular_id}}</a></strong><br></span>
                                                 
-                                                <span ng-if="activity.molecularId !== ''">Molecular ID: <strong><a ui-sref="patient({ patient_id: activity.patientId, section: 'variant_report', molecular_id: activity.molecularId })">{{activity.molecularId}}</a></strong><br></span>
-                                                
-                                                <span ng-if="activity.surgicalEventId !== ''">Surgucal Event: <strong><a ui-sref="patient({ patient_id: activity.patientId, section: 'surgical_event', surgical_event_id: activity.surgicalEventId  })">{{activity.surgicalEventId}}</a></strong><br></span>
+                                                <span ng-if="activity.surgical_event_id !== ''">Surgucal Event: <strong><a ui-sref="patient({ patient_id: activity.patient_id, section: 'surgical_event', surgical_event_id: activity.surgical_event_id  })">{{activity.surgical_event_id}}</a></strong><br></span>
                                                 
                                                 <small class="text-muted">{{ activity.time | gmt }} </small>
                                             </div>

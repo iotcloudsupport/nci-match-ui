@@ -20,8 +20,7 @@ describe('Controller: Patient Details Controller', function () {
                 "confirmed_date": "2016-05-09T22:06:33+00 : 00",
                 "sent_to_cog_date": "-",
                 "received_from_cog_date": "-",
-                "biopsy_sequence_number": "T-15-000078",
-                "molecular_sequence_number": "MSN34534",
+                "molecular_id": "MSN34534",
                 "analysis_id": "MSN34534_v2_kjdf3-kejrt-3425-mnb34ert34f",
                 "variant_report_amois": [
                     {
@@ -185,7 +184,7 @@ describe('Controller: Patient Details Controller', function () {
                     "event_message": "Message 1",
                     "event_data": {
                         "current_status": "Pending",
-                        "biopsy_sequence_number": "B-987456"
+                        "molecular_id": "B-987456"
                     }
                 },
                 {
@@ -196,7 +195,7 @@ describe('Controller: Patient Details Controller', function () {
                     "event_message": "Patient Registered",
                     "event_data": {
                         "current_status": "Pending",
-                        "biopsy_sequence_number": "B-987456",
+                        "molecular_id": "B-987456",
                         "location": "GHU"
                     }
                 }
@@ -307,8 +306,8 @@ describe('Controller: Patient Details Controller', function () {
                 "confirmed_date": "2016-05-09T22:06:33+00 : 00",
                 "sent_to_cog_date": "-",
                 "received_from_cog_date": "-",
-                "biopsy_sequence_number": "T-15-000078",
-                "molecular_sequence_number": "MSN34534",
+                "molecular_id": "T-15-000078",
+                "molecular_id": "MSN34534",
                 "analysis_id": "MSN34534_v2_kjdf3-kejrt-3425-mnb34ert34f",
                 "variant_report_amois": [
                     {
