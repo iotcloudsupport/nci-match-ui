@@ -600,12 +600,12 @@
 
         switch (navigateTo.section) {
             case 'surgical_event':
-                navigateToSurgicalEVent(navigateTo.surgical_event_id, $log);
+                navigateToSurgicalEvent(navigateTo.surgical_event_id, $log);
                 break;
             case 'variant_report':
                 navigateToVariantReport(navigateTo.molecular_id, navigateTo.analysis_id, $log);
                 break;
-            case 'assignemnt_report':
+            case 'assignment_report':
                 navigateToAssignmentReport(navigateTo.molecular_id, navigateTo.analysis_id, $log);
                 break;
             default:
@@ -617,16 +617,16 @@
         return str.indexOf(prefix) === 0;
     }
 
-    function navigateToSurgicalEVent(surgicalEventId, $log) {
-        $log.debug(surgicalEventId);
+    function navigateToSurgicalEvent(surgicalEventId, $log) {
+        $log.debug('navigateToSurgicalEvent', surgicalEventId);
     }
 
     function navigateToVariantReport(molecularId, analysisId, $log) {
-        $log.debug(molecularId, analysisId);
+        $log.debug('navigateToVariantReport', molecularId, analysisId);
     }
 
     function navigateToAssignmentReport(molecularId, analysisId, $log) {
-        $log.debug(molecularId, analysisId);
+        $log.debug('navigateToAssignmentReport', molecularId, analysisId);
     }
 
 } ());

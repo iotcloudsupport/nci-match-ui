@@ -79,16 +79,20 @@
                                                     </span>
                                             </a>
                                             <div class="media-body ">
+
                                                 <small class="pull-right">{{activity.age }} ago</small>
-                                                <strong> {{ activity.displayName }} </strong>  <br>
-                                                <a ng-if="activity.patientId !== ''" ui-sref="patient({ patient_id: activity.patientId })">
-                                                        <i class="fa fa-user"></i> {{::activity.patientId}}<br>
-                                                </a>
-                                                <a ng-if="activity.treatmentArmId !== ''" ui-sref="treatment-arm({ treatmentArmId: activity.treatmentArmId })">
-                                                    <i class="fa fa-medkit"></i> {{::activity.treatmentArmId}} {{::activity.version}}<br></a>
-                                                <a ng-if="activity.molecularId !== ''" ui-sref="patient({ patient_id: activity.patientId })">{{activity.molecularId}}<br></a>
-                                                <a ng-if="activity.biopsySequenceNumber !== ''" ui-sref="patient({ patient_id: activity.patientId })">{{activity.biopsySequenceNumber}}<br></a>
-                                                <a ng-if="activity.surgicalEventId !== ''" ui-sref="patient({ patient_id: activity.patientId })">{{activity.surgicalEventId}}<br></a>
+                                                <strong> {{ activity.displayName }} <br></strong>
+                                                
+                                                <span ng-if="activity.patientId !== ''"><strong><a ui-sref="patient({ patient_id: activity.patientId })">
+                                                        <i class="fa fa-user"></i> {{::activity.patientId}}</a></strong><br></span>
+                                                
+                                                <span ng-if="activity.treatmentArmId !== ''" >Treatment Arm: <strong><a ui-sref="treatment-arm({ treatmentArmId: activity.treatmentArmId })">
+                                                    <i class="fa fa-medkit"></i> {{::activity.treatmentArmId}} {{::activity.version}}</a></strong><br></span>
+                                                
+                                                <span ng-if="activity.molecularId !== ''">Molecular ID: <strong><a ui-sref="patient({ patient_id: activity.patientId, section: 'variant_report', molecular_id: activity.molecularId })">{{activity.molecularId}}</a></strong><br></span>
+                                                
+                                                <span ng-if="activity.surgicalEventId !== ''">Surgucal Event: <strong><a ui-sref="patient({ patient_id: activity.patientId, section: 'surgical_event', surgical_event_id: activity.surgicalEventId  })">{{activity.surgicalEventId}}</a></strong><br></span>
+                                                
                                                 <small class="text-muted">{{ activity.time | gmt }} </small>
                                             </div>
                                         </div>
@@ -174,8 +178,8 @@
                                                                 <i class="fa fa-user"></i> {{::patient.patient_id || '-' }}
                                                             </a>
                                                         </td>
-                                                        <td><a ui-sref="patient({ patient_id: patient.patient_id })">{{ patient.molecular_id || '-' }}</a></td>
-                                                        <td><a ui-sref="patient({ patient_id: patient.patient_id })">{{ patient.analysis_id || '-' }}</a></td>
+                                                        <td><a ui-sref="patient({ patient_id: patient.patient_id, section: 'variant_report', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })">{{ patient.molecular_id || '-' }}</a></td>
+                                                        <td><a ui-sref="patient({ patient_id: patient.patient_id, section: 'variant_report', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })">{{ patient.analysis_id || '-' }}</a></td>
                                                         <td>{{ patient.clia_lab || '-' }}</td>
                                                         <td>{{ patient.specimen_received_date | gmt }}</td>
                                                         <td>{{ patient.variant_report_received_date | gmt }}</td>
@@ -216,8 +220,8 @@
                                                                 <i class="fa fa-user"></i> {{::patient.patient_id }}
                                                             </a>
                                                         </td>
-                                                        <td><a ui-sref="patient({ patient_id: patient.patient_id })">{{ patient.molecular_id || '-' }}</a></td>
-                                                        <td><a ui-sref="patient({ patient_id: patient.patient_id })">{{ patient.analysis_id || '-' }}</a></td>
+                                                        <td><a ui-sref="patient({ patient_id: patient.patient_id, section: 'assignment_report', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })">{{ patient.molecular_id || '-' }}</a></td>
+                                                        <td><a ui-sref="patient({ patient_id: patient.patient_id, section: 'assignment_report', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })">{{ patient.analysis_id || '-' }}</a></td>
                                                         <td><a>{{patient.disease || '-'}}</a></td>
                                                         <td><a ui-sref="treatment-arm({ treatmentArmId: patient.treatment_arm })">{{patient.treatment_arm + " " + patient.stratum || '-'}}</a></td>
                                                         <td>{{ patient.assignment_date | gmt }}</td>
