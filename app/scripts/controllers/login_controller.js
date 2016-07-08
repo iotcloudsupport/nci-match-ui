@@ -7,9 +7,9 @@ angular.module("login.matchbox",[
             auth.signin({}, function(profile, token) {
                 store.set('profile', profile);
                 store.set('token', token);
-                $location.path("/index/dashboard");
+                // $location.path("/index/dashboard");
                 // $scope.headersVisible = true;
-                // $location.path("/dashboard");
+                $location.path("/dashboard");
 
             }, function(error) {
                 console.log("There was an error logging into MATCHBox.", error);
