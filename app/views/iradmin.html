@@ -50,39 +50,10 @@
 
                                                 <div class="col-lg-12">
 
-                                                    <div class="col-lg-2 cols-height cols-bottom">
-                                                        <h4>Positive Controls</h4>
-                                                        <div class="panel" ng-init="loadPieChart(branch);">
-                                                            <canvas id="amoiCanvas" doughnutchart
-                                                                    ng-attr-data="pieData" responsive=true width="600" height="600"
-                                                                    style="width: 603px; height: 601px; ">
-                                                            </canvas>
-                                                        </div>
 
-                                                        <div class="tabs-container">
-                                                            <div >
-
-                                                                <table class="table" role="grid"  width="100%">
-                                                                    <thead>
-                                                                    <tr >
-                                                                        <td >Success Status</td>
-                                                                        <td >Failed Status</td>
-                                                                        <td >Not Generated</td>
-                                                                    </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                    <td><div class="font-bold "> 75 </i></div></td>
-                                                                    <td><div class="font-bold "> 15 </i></div></td>
-                                                                    <td><div class="font-bold "> 10 </i></div></td>
-                                                                    </tbody>
-                                                                </table>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
 
                                                     <!--HEART BEAT-->
-                                                    <div class="col-xs-8">
+                                                    <div class="col-xs-10">
 
                                                         <div class="tabs-container">
                                                             <i class="fa fa-clock-o fa-2x" style=";color:green;"> </i> <b>Heartbeat</b>
@@ -125,14 +96,48 @@
                                                     </div>
 
 
-                                                    <div class="col-lg-2">
-                                                        <h4>No Template Controls</h4>
+                                                    <div class="col-lg-2 cols-height cols-bottom text-center">
+                                                        <div class="text-center">
+                                                            <h4>Positive Controls</h4>
+                                                        </div>
+                                                        <div class="panel" ng-init="loadPieChart(branch);">
+                                                            <canvas id="amoiCanvas" doughnutchart
+                                                                    ng-attr-data="pieData" responsive=true width="200" height="200"
+                                                                    style="width: 203px; height: 201px; ">
+                                                            </canvas>
+                                                        </div>
+
+                                                        <div class="tabs-container">
+                                                            <div >
+
+                                                                <table class="table" role="grid"  width="100%">
+                                                                    <thead>
+                                                                    <tr >
+                                                                        <td >Success Status</td>
+                                                                        <td >Failed Status</td>
+                                                                        <td >No Sample</td>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <td><div class="font-bold "> 75 </i></div></td>
+                                                                    <td><div class="font-bold "> 15 </i></div></td>
+                                                                    <td><div class="font-bold "> 10 </i></div></td>
+                                                                    </tbody>
+                                                                </table>
+
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="text-center">
+                                                            <h4>No Template Controls</h4>
+                                                        </div>
                                                         <div class="tabs-container">
 
                                                             <div class="panel" ng-init="loadPieChart(branch);">
                                                                 <canvas id="amoiCanvas" doughnutchart
-                                                                        ng-attr-data="ntcpieData" responsive=true width="300" height="300"
-                                                                        style="width: 603px; height: 601px;">
+                                                                        ng-attr-data="ntcpieData" responsive=true width="200" height="200"
+                                                                        style="width: 203px; height: 201px;">
                                                                 </canvas>
                                                             </div>
 
@@ -144,7 +149,7 @@
                                                                         <tr >
                                                                             <td >Success Status</td>
                                                                             <td >Failed Status</td>
-                                                                            <td >Not Generated</td>
+                                                                            <td >No Sample</td>
                                                                         </tr>
                                                                         </thead>
                                                                         <tbody>
@@ -157,7 +162,46 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+
+
                                                     </div>
+
+                                                    <!--<div class="col-lg-2">-->
+                                                        <!--<h4>No Template Controls</h4>-->
+                                                        <!--<div class="tabs-container">-->
+
+                                                            <!--<div class="panel" ng-init="loadPieChart(branch);">-->
+                                                                <!--<canvas id="amoiCanvas" doughnutchart-->
+                                                                        <!--ng-attr-data="ntcpieData" responsive=true width="300" height="300"-->
+                                                                        <!--style="width: 603px; height: 601px;">-->
+                                                                <!--</canvas>-->
+                                                            <!--</div>-->
+
+                                                            <!--<div class="tabs-container">-->
+                                                                <!--<div >-->
+
+                                                                    <!--<table class="table" role="grid" width="100%">-->
+                                                                        <!--<thead>-->
+                                                                        <!--<tr >-->
+                                                                            <!--<td >Success Status</td>-->
+                                                                            <!--<td >Failed Status</td>-->
+                                                                            <!--<td >Not Generated</td>-->
+                                                                        <!--</tr>-->
+                                                                        <!--</thead>-->
+                                                                        <!--<tbody>-->
+                                                                        <!--<td><div class="font-bold "> 26 </i></div></td>-->
+                                                                        <!--<td><div class="font-bold "> 10 </i></div></td>-->
+                                                                        <!--<td><div class="font-bold "> 4 </i></div></td>-->
+                                                                        <!--</tbody>-->
+                                                                    <!--</table>-->
+
+                                                                <!--</div>-->
+                                                            <!--</div>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+
+
+
                                                 </div>
                                             </div>
                                             <!--HISTOGRAM CHART-->
@@ -165,40 +209,10 @@
                                             <!--PIE CHART-->
                                             <div ng-if="branch == 'mdacc'">
 
-                                                <div class="col-xs-2 cols-height cols-bottom">
-                                                    <h4>Positive Controls</h4>
-                                                    <div class="panel" ng-init="loadPieChart(branch);">
-                                                        <canvas id="amoiCanvas" doughnutchart
-                                                                ng-attr-data="pieData" responsive=true width="600" height="600"
-                                                                style="width: 603px; height: 601px; ">
-                                                        </canvas>
-                                                    </div>
 
-                                                    <div class="tabs-container">
-                                                        <div >
-
-                                                            <table class="table" role="grid"  width="100%">
-                                                                <thead>
-                                                                <tr>
-                                                                    <td >Success Status</td>
-                                                                    <td >Failed Status</td>
-                                                                    <td >Not Generated</td>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                <td><div class="font-bold "> 67 </div></td>
-                                                                <td><div class="font-bold "> 25 </div></td>
-                                                                <td><div class="font-bold "> 8 </div></td>
-                                                                </tbody>
-                                                            </table>
-
-                                                        </div>
-                                                    </div>
-
-                                                </div>
 
                                                 <!--HEART BEAT-->
-                                                <div class="col-xs-8">
+                                                <div class="col-xs-10">
 
                                                     <div class="tabs-container">
                                                         <i class="fa fa-clock-o fa-2x" style=";color:green;"> </i> <b>Heartbeat</b>
@@ -243,14 +257,49 @@
                                                 <!--PIE CHART-->
 
 
-                                                <div class="col-lg-2">
-                                                    <h4>No Template Controls</h4>
+                                                <div class="col-lg-2 cols-height cols-bottom text-center">
+
+                                                        <h4>Positive Controls</h4>
+                                                        <div class="panel" ng-init="loadPieChart(branch);">
+                                                            <canvas id="amoiCanvas" doughnutchart
+                                                                    ng-attr-data="pieData" responsive=true width="200" height="200"
+                                                                    style="width: 203px; height: 201px; ">
+                                                            </canvas>
+                                                        </div>
+
+                                                        <div class="tabs-container">
+                                                            <div >
+
+                                                                <table class="table" role="grid"  width="100%">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <td >Success Status</td>
+                                                                        <td >Failed Status</td>
+                                                                        <td >Not Generated</td>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <td><div class="font-bold "> 27 </div></td>
+                                                                    <td><div class="font-bold "> 25 </div></td>
+                                                                    <td><div class="font-bold "> 8 </div></td>
+                                                                    </tbody>
+                                                                </table>
+
+                                                            </div>
+                                                        </div>
+
+
+
+
+                                                    <div class="text-center">
+                                                        <h4>No Template Controls</h4>
+                                                    </div>
                                                     <div class="tabs-container">
 
                                                         <div class="panel" ng-init="loadPieChart('mdacc');">
                                                             <canvas id="amoiCanvas" doughnutchart
-                                                                    ng-attr-data="ntcMDApieData" responsive=true width="300" height="300"
-                                                                    style="width: 603px; height: 601px;">
+                                                                    ng-attr-data="ntcMDApieData" responsive=true width="200" height="200"
+                                                                    style="width: 203px; height: 201px;">
                                                             </canvas>
                                                         </div>
 
