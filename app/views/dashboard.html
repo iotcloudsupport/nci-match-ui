@@ -101,7 +101,7 @@
                     <div class="col-lg-9">
                         <!--<div class="ibox float-e-margins">-->
                             <div class="ibox-title ibox-title-no-line">
-                                <h5>Item(s) Pending Review </h5>
+                                <h5>Pending Review </h5>
                             </div>
                             <!--<div class="ibox-content">-->
                                 <div class="tabs-container">
@@ -134,8 +134,8 @@
                                                                 <i class="fa fa-user"></i> {{::patient.patient_id || '-' }}
                                                             </a>
                                                         </td>
-                                                        <td><a ui-sref="patient({ patient_id: patient.patient_id })">{{ patient.molecular_id || '-' }}</a></td>
-                                                        <td><a ui-sref="patient({ patient_id: patient.patient_id })">{{ patient.analysis_id || '-' }}</a></td>
+                                                        <td><a ui-sref="patient({ patient_id: patient.patient_id, section: 'variant_report', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })">{{ patient.molecular_id || '-' }}</a></td>
+                                                        <td><a ui-sref="patient({ patient_id: patient.patient_id, section: 'variant_report', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })">{{ patient.analysis_id || '-' }}</a></td>
                                                         <td>{{ patient.clia_lab || '-' }}</td>
                                                         <td>{{ patient.specimen_received_date | gmt }}</td>
                                                         <td>{{ patient.variant_report_received_date | gmt }}</td>
