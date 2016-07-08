@@ -125,7 +125,7 @@
         function loadPatientData() {
             matchApiMock
                 .loadPatient($stateParams.patient_id)
-                .then(setupScope, handleError).then(navigateTo($stateParams));
+                .then(setupScope, handleError);
         }
 
         function handleError(e) {
@@ -155,6 +155,7 @@
             setupAssignmentReportOptions();
             setupSelectedTreatmentArm();
             setupUserName();
+            navigateTo($stateParams);
         }
 
         function setupTimeline() {
