@@ -660,13 +660,13 @@
                                             <div class="header-info-box assignment-header-box">
                                                 <dl class="dl-horizontal">
                                                     <dt>Molecular ID</dt>
-                                                    <dd>{{data.assignment_report.molecular_id}}</dd>
+                                                    <dd>{{currentAssignmentReport.molecular_id}}</dd>
 
                                                     <dt>Analysis ID</dt>
-                                                    <dd>{{data.assignment_report.analysis_id}}</dd>
+                                                    <dd>{{currentAssignmentReport.analysis_id}}</dd>
 
                                                     <dt>Variant Report aMOI(s)</dt>
-                                                    <dd><a ng-repeat="amoi in data.assignment_report.variant_report_amois">{{amoi.title}}{{$last ? '' : ', '}}</a></dd>
+                                                    <dd><a ng-repeat="amoi in currentAssignmentReport.variant_report_amois">{{amoi.title}}{{$last ? '' : ', '}}</a></dd>
                                                 </dl>
                                             </div>
                                         </div>
@@ -675,16 +675,16 @@
                                                 <h4>Assignment</h4>
                                                 <dl class="dl-horizontal">
                                                     <dt>Generated Date</dt>
-                                                    <dd>{{data.assignment_report.generated_date | utc}}</dd>
+                                                    <dd>{{currentAssignmentReport.generated_date | utc}}</dd>
 
                                                     <dt>Confirmed Date</dt>
-                                                    <dd>{{data.assignment_report.confirmed_date | utc}}</dd>
+                                                    <dd>{{currentAssignmentReport.confirmed_date | utc}}</dd>
 
                                                     <dt>Sent to COG Date</dt>
-                                                    <dd>{{data.assignment_report.sent_to_cog_date | utc}}</dd>
+                                                    <dd>{{currentAssignmentReport.sent_to_cog_date | utc}}</dd>
 
                                                     <dt>Received from COG Date</dt>
-                                                    <dd>{{data.assignment_report.received_from_cog_date | utc}}</dd>
+                                                    <dd>{{currentAssignmentReport.received_from_cog_date | utc}}</dd>
                                                 </dl>
                                             </div>
                                         </div>
@@ -703,7 +703,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr ng-repeat="assay in data.assignment_report.assays" style="cursor: auto; " role="row" class="odd">
+                                            <tr ng-repeat="assay in currentAssignmentReport.assays" style="cursor: auto; " role="row" class="odd">
                                                 <td>{{assay.gene}}</td>
                                                 <td><span ng-style="{'color':'{{ assay.result | assayStatus }}'}">{{assay.result}}</span></td>
                                                 <td>{{assay.comment}}</td>
@@ -731,7 +731,7 @@
                                                     <h5>1 - NO VARIANT MATCH</h5>
                                                 </td>
                                             </tr>
-                                            <tr ng-repeat="ta in data.assignment_report.treatment_arms.no_match " style="cursor: auto; " role="row" class="odd">
+                                            <tr ng-repeat="ta in currentAssignmentReport.treatment_arms.no_match " style="cursor: auto; " role="row" class="odd">
                                                 <td class="status-blue">
                                                     <a ui-sref="treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion: ta.currentTtreatmentArmVersion }) ">
                                                         <i class="fa fa-medkit "></i> {{ ::ta.treatment_arm_title || '-' }}
@@ -745,7 +745,7 @@
                                                     <h5>2 - RECORD BASED EXCLUSION</h5>
                                                 </td>
                                             </tr>
-                                            <tr ng-repeat="ta in data.assignment_report.treatment_arms.record_based_exclusion " style="cursor: auto;
+                                            <tr ng-repeat="ta in currentAssignmentReport.treatment_arms.record_based_exclusion " style="cursor: auto;
                                                 " role="row " class="odd ">
                                                 <td class="status-blue ">
                                                     <a ui-sref="treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion:
@@ -761,7 +761,7 @@
                                                     <h5>3 - SELECTED</h5>
                                                 </td>
                                             </tr>
-                                            <tr ng-repeat="ta in data.assignment_report.treatment_arms.selected " style="cursor: auto; " role="row" class="odd">
+                                            <tr ng-repeat="ta in currentAssignmentReport.treatment_arms.selected " style="cursor: auto; " role="row" class="odd">
                                                 <td class="status-blue ">
                                                     <a ui-sref="treatment-arm({ treatmentArmId: ta.treatmentArm, treatmentArmVersion: ta.currentTtreatmentArmVersion }) ">
                                                         <i class="fa fa-medkit "></i> {{ ::ta.treatment_arm_title || '-' }}

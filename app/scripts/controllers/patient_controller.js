@@ -264,10 +264,10 @@
             $scope.assignmentReportOption = {
                 text: $scope.currentTreatmentArm.name +
                 ' | ' + currentAssignment.molecular_id +
-                ' | ' + currentAssignment.molecular_id +
                 ' | ' + currentAssignment.received_from_cog_date,
                 value: {
                     molecular_id: currentAssignment.molecular_id,
+                    analysis_id: currentAssignment.analysis_id,
                     assignmemnt_reason: $scope.currentTreatmentArm.reason
                 }
             };
@@ -549,8 +549,13 @@
         function onAssignmentReportSelected(selected) {
             $log.debug(selected);
             $scope.assignmentReportOption = selected;
-            var option = $scope.assignmentReportOptions.find(by);
-            $scope.currentAssignmentReport = null;            
+
+            // var byKeys = function (x) { return x.value.molecular_id === selected.value.molecular_id &&  x.value.analysis_id === selected.value.analysis_id; };
+            if ($scope.data.current_assignment.molecular_id === selected.value.molecular_id && $scope.data.current_assignment.analysis_id === selected.value.analysis_id) {
+                $scope.currentAssignmentReport = $scope.data.current_assignment;
+            } else {
+                $scope.currentAssignmentReport = null;
+            }
         }
 
         function selectSurgicalEvent(option) {
@@ -638,7 +643,7 @@
 
         function navigateToVariantReport(molecularId, analysisId) {
             $log.debug('navigateToVariantReport', molecularId, analysisId);
-            
+
             setActiveTab('tissue_report');
             $scope.activeTabIndex = 2;
 
@@ -652,7 +657,7 @@
 
         function navigateToAssignmentReport(molecularId, analysisId) {
             $log.debug('navigateToAssignmentReport', molecularId, analysisId);
-            
+
             setActiveTab('tissue_report');
             $scope.activeTabIndex = 2;
 
@@ -660,13 +665,12 @@
             if (variantReportOption) {
                 selectVariantReport(variantReportOption);
 
-                var assignmentReportOption = findAssignmentReportOption(molecularId, analysisId);
-                if (assignmentReportOption) {
-                    selectVariantReport(assignmentReportOption);
+                if ($scope.data.current_assignment.molecular_id === variantReportOption.value.molecular_id && $scope.data.current_assignment.analysis_id === variantReportOption.value.analysis_id) {
+                    $scope.currentAssignmentReport = $scope.data.current_assignment;
                 } else {
-                    $log.error('Unable to find Variant Report ' + molecularId + ',' + analysisId);
+                    $scope.currentAssignmentReport = null;
+                    $log.error('Unable to find Assignment Report ' + molecularId + ',' + analysisId);
                 }
-                
             } else {
                 $log.error('Unable to find Variant Report ' + molecularId + ',' + analysisId);
             }
