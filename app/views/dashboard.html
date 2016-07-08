@@ -45,7 +45,8 @@
             <div class="text-center">
                 <h4>Sequenced & Confirmed Patients with aMOI(s)</h4>
             </div>
-            <canvas id="amoiCanvas" doughnutchart options="chartjsDonut.donutOptions" ng-attr-data="donutData" responsive=true></canvas>
+            <canvas id="amoiCanvas" doughnutchart options="donutOptions" ng-attr-data="donutData" responsive=true></canvas>
+            <!--<div id="amoiCanvasLegend"></div>-->
         </div>
     </div>
 
@@ -217,7 +218,6 @@
                                                         </td>
                                                         <td><a ui-sref="patient({ patient_id: patient.patient_id })">{{ patient.molecular_id || '-' }}</a></td>
                                                         <td><a ui-sref="patient({ patient_id: patient.patient_id })">{{ patient.analysis_id || '-' }}</a></td>
-                                                        <td><a>{{patient.disease || '-'}}</a></td>
                                                         <td><a>{{patient.disease || '-'}}</a></td>
                                                         <td><a ui-sref="treatment-arm({ treatmentArmId: patient.treatment_arm })">{{patient.treatment_arm + " " + patient.stratum || '-'}}</a></td>
                                                         <td>{{ patient.assignment_date | gmt }}</td>
