@@ -2,7 +2,7 @@
 
  angular.module('login_config', [])
 
-.constant('ENV', {name:'production',AUTH0_DOMAIN:'ncimatch.auth0.com',AUTH0_CLIENT_ID:'??',loginUrl:'auth.login'})
+.constant('ENV', {name:'production',AUTH0_DOMAIN:'ncimatch.auth0.com',AUTH0_CLIENT_ID:'aD7QAC2p8tsR9cd8UZTAMnIEcJrj2tgS',loginUrl:'auth.login'})
 
 
 ;
