@@ -733,7 +733,7 @@
                                             </tr>
                                             <tr ng-repeat="ta in currentAssignmentReport.treatment_arms.no_match " style="cursor: auto; " role="row" class="odd">
                                                 <td class="status-blue">
-                                                    <treatment-arm-title name="ta.treatment_arm" version="ta.treatment_arm_version" stratum="ta.treatment_arm_title"></treatment-arm-title>
+                                                    <treatment-arm-title name="ta.treatment_arm" version="ta.treatment_arm_version" stratum="ta.treatment_arm_stratum_id"></treatment-arm-title>
                                                 </td>
                                                 <td>{{::ta.reason}}</td>
                                             </tr>
@@ -746,7 +746,7 @@
                                             <tr ng-repeat="ta in currentAssignmentReport.treatment_arms.record_based_exclusion " style="cursor: auto;
                                                 " role="row " class="odd ">
                                                 <td class="status-blue ">
-                                                    <treatment-arm-title name="ta.treatment_arm" version="ta.treatment_arm_version" stratum="ta.treatment_arm_title"></treatment-arm-title>
+                                                    <treatment-arm-title name="ta.treatment_arm" version="ta.treatment_arm_version" stratum="ta.treatment_arm_stratum_id"></treatment-arm-title>
                                                 </td>
                                                 <td>{{::ta.reason}}</td>
                                             </tr>
@@ -758,7 +758,7 @@
                                             </tr>
                                             <tr ng-repeat="ta in currentAssignmentReport.treatment_arms.selected " style="cursor: auto; " role="row" class="odd">
                                                 <td class="status-blue ">
-                                                    <treatment-arm-title name="ta.treatment_arm" version="ta.treatment_arm_version" stratum="ta.treatment_arm_title"></treatment-arm-title>
+                                                    <treatment-arm-title name="ta.treatment_arm" version="ta.treatment_arm_version" stratum="ta.treatment_arm_stratum_id"></treatment-arm-title>
                                                 </td>
                                                 <td>{{::ta.reason}}</td>
                                             </tr>
