@@ -1,0 +1,8 @@
+"use strict";
+
+ angular.module('login_config', [])
+
+.constant('ENV', {name:'development',AUTH0_DOMAIN:'ncimatch.auth0.com',AUTH0_CLIENT_ID:'uCkLRzSlYP3CFOm1pHVn5lYzBMceCgEH',loginUrl:'auth.login'})
+
+
+;
