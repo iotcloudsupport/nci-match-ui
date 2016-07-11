@@ -58,11 +58,11 @@
                                             <div class="tabs-container">
                                                 <i class="fa fa-clock-o fa-2x" style=";color:green;"> </i> <b>Heartbeat</b>
 
-                                                <div ng-if="branch == 'mocha'">
+                                                <div class="col-lg-12" ng-if="branch == 'mocha'">
 
                                                     <table class="table table-hover" role="grid" width="100%" >
                                                         <thead>
-                                                        <tr style="font-size: smaller">
+                                                        <tr >
                                                             <td >IP Address</td>
                                                             <td >Internal IP Address</td>
                                                             <td >Host</td>
@@ -99,16 +99,17 @@
 
 
                                         <div class="col-lg-2 cols-height cols-bottom text-center">
-                                            <div class="text-center">
+                                            <div class="col-lg-10 text-center">
                                                 <h4>Positive Controls</h4>
                                             </div>
+
                                             <div class="tabs-container" >
                                                     <div class="col-lg-8" >
                                                         <canvas id="amoiCanvas" doughnutchart class="chart chart-doughnut" options="doughnutOptions"
                                                                 ng-attr-data="pieData" responsive=true width="78" height="78">
                                                         </canvas>
                                                     </div>
-                                                    <table class="table" role="grid"  width="100%" style="font-size: 12px">
+                                                    <table class="table" role="grid"  width="100%" >
                                                         <thead>
                                                         <tr >
                                                             <td >Success Status</td>
@@ -125,7 +126,7 @@
                                             </div>
 
                                             <div class="tabs-container" ng-init="loadPieChart(branch);">
-                                                    <div class="text-center">
+                                                    <div class="col-lg-10 text-center">
                                                         <h4>No Template Controls</h4>
                                                     </div>
                                                     <div class="col-lg-8" >
@@ -133,7 +134,7 @@
                                                                 ng-attr-data="ntcpieData" responsive=true  width="78" height="78" options="doughnutOptions">
                                                         </canvas>
                                                     </div>
-                                                    <table class="table" role="grid" width="100%" style="font-size: 12px">
+                                                    <table class="table" role="grid" width="100%" >
                                                         <thead>
                                                         <tr >
                                                             <td >Success Status</td>
@@ -151,7 +152,6 @@
 
                                         </div>
 
-
                                     </div>
                                 </div>
                                 <!--HISTOGRAM CHART-->
@@ -165,11 +165,11 @@
                                             <div class="tabs-container">
                                                 <i class="fa fa-clock-o fa-2x" style=";color:green;"> </i> <b>Heartbeat</b>
 
-                                                <div ng-if="branch == 'mdacc'">
+                                                <div class="col-lg-12" ng-if="branch == 'mdacc'">
 
                                                     <table class="table table-hover" role="grid" width="100%" >
                                                         <thead>
-                                                        <tr style="font-size: smaller">
+                                                        <tr >
                                                             <td >IP Address</td>
                                                             <td >Internal IP Address</td>
                                                             <td >Host</td>
@@ -207,7 +207,7 @@
                                         <!--PIE CHART-->
 
                                         <div class="col-lg-2 cols-height cols-bottom text-center" >
-                                            <div class="text-center">
+                                            <div class="col-lg-10 text-center">
                                                 <h4>Positive Controls</h4>
                                             </div>
                                             <div class="tabs-container" >
@@ -221,7 +221,7 @@
                                                     <tr>
                                                         <td >Success Status</td>
                                                         <td >Failed Status</td>
-                                                        <td >Not Generated</td>
+                                                        <td >No Sample</td>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -233,7 +233,7 @@
                                             </div>
 
                                             <div class="tabs-container">
-                                                <div class="text-center">
+                                                <div class="col-lg-10 text-center">
                                                     <h4>No Template Controls</h4>
                                                 </div>
                                                 <div class="col-lg-8" >
@@ -246,7 +246,7 @@
                                                     <tr >
                                                         <td >Success Status</td>
                                                         <td >Failed Status</td>
-                                                        <td >Not Generated</td>
+                                                        <td >No Sample</td>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -256,8 +256,6 @@
                                                     </tbody>
                                                 </table>
                                             </div>
-
-
 
                                         </div>
 
