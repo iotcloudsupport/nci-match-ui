@@ -8,7 +8,7 @@ RUN mkdir -p /usr/local/apache2/match
 #COPY dist/ /usr/local/apache2/htdocs/
 ADD httpd.conf /usr/local/apache2/conf/
 ADD  nci-match-ui.tgz /usr/local/apache2/match/
-ADD login_config.js.test /usr/local/apache2/match/app/scripts/env/
+ADD login_config.js.test /usr/local/apache2/match/app/scripts/env/login_config.js
 #RUN tar -xvf /usr/local/apache2/match/nci-match-ui.tgz
 RUN mv /usr/local/apache2/match/bower_components/ /usr/local/apache2/match/app/
 
