@@ -30,7 +30,7 @@
         $scope.patient_id = '';
         $scope.warningResult = false;
 
-        $scope.confirmTitle = 'Confirmation Changed';
+        $scope.confirmTitle = 'Confirmation Change Comments';
         $scope.confirmMessage = 'Please enter a reason:';
 
         $scope.surgicalEventLabel = 'Latest';
@@ -394,7 +394,7 @@
             // $log.debug(errorMessage);
         }
 
-        function editComment(variant) {
+        function editComment(variant, enabled) {
             $log.debug('Variant = ' + variant);
 
             var modalInstance = $uibModal.open({
@@ -409,7 +409,10 @@
                         return $scope.confirmTitle;
                     },
                     message: function () {
-                        return $scope.confirmMessage;
+                        return enabled ? $scope.confirmMessage : '';
+                    },
+                    enabled: function() {
+                        return enabled;
                     }
                 }
             });
@@ -448,35 +451,35 @@
             });
         }
 
-        function confirmVariantReport() {
+        function confirmVariantReport(variantReport) {
             showPrompt({
                 title: 'Confirm Variant Report',
                 message: 'Are you sure you want to confirm the Variant Report',
                 buttons: [{ label: 'OK', primary: true }, { label: 'Cancel', cancel: true }]
             }).then(function (comment) {
-                if (!$scope.currentVariantReport) {
+                if (variantReport) {
                     $log.error('Current Variant Report is not set');
                 } else {
-                    $scope.currentVariantReport.status = 'CONFIRMED';
-                    $scope.currentVariantReport.comment = null;
-                    $scope.currentVariantReport.comment_user = null;
+                    variantReport.status = 'CONFIRMED';
+                    variantReport.comment = null;
+                    variantReport.comment_user = null;
                 }
             });
         }
 
-        function rejectVariantReport() {
+        function rejectVariantReport(variantReport) {
             showPrompt({
                 title: 'Reject Variant Report',
                 message: 'Are you sure you want to reject the Variant Report? Please enter reason:',
                 input: true,
                 buttons: [{ label: 'OK', primary: true }, { label: 'Cancel', cancel: true }]
             }).then(function (comment) {
-                if (!$scope.currentVariantReport) {
+                if (variantReport) {
                     $log.error('Current Variant Report is not set');
                 } else {
-                    $scope.currentVariantReport.status = 'RECTED';
-                    $scope.currentVariantReport.comment = comment;
-                    $scope.currentVariantReport.comment_user = $scope.currentUser;
+                    variantReport.status = 'RECTED';
+                    variantReport.comment = comment;
+                    variantReport.comment_user = $scope.currentUser;
                 }
             });
         }
