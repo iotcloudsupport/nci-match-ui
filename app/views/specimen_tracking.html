@@ -157,8 +157,8 @@
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat="specimenTrackingItem in specimenTrackingList"><!-- ng-repeat-start -->
-                                    <td><a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id })">{{ specimenTrackingItem.molecular_id}}</a></td>
-                                    <td><a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id })">{{ specimenTrackingItem.surgical_event_id}}</a></td>
+                                    <td><a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id, section: 'variant_report', molecular_id: specimenTrackingItem.molecular_id, analysis_id: specimenTrackingItem.analysis_id })">{{ specimenTrackingItem.molecular_id || '-' }}</a></td>
+                                    <td><a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id, section: 'surgical_event', surgical_event_id: specimenTrackingItem.surgical_event_id })">{{ specimenTrackingItem.surgical_event_id || '-' }}</a></td>
                                     <td><a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id })">{{ specimenTrackingItem.patient_id}}</a></td>
                                     <td>{{ specimenTrackingItem.collected_date | gmt }}</td>
                                     <td>{{ specimenTrackingItem.received_date | gmt }}</td>
