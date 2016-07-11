@@ -157,8 +157,6 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 // setVariantReport();
             }
 
-            // $scope.getMDACC = getMDACC;
-            // $scope.getMOCHA = getMOCHA;
 
         this.barOptions = {
             scaleBeginAtZero: true,
@@ -241,8 +239,6 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                             'status': v.status
                         });
                     }
-
-
                 });
             });
         };
@@ -425,51 +421,6 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             };
 
 
-        // $scope.showPositiveControlConfirmation = function (id) {
-        //     Clean tables
-        //
-        //         .then(function (d) {
-        //
-        //             alert(JSON.stringify(d))
-        //
-        //             $scope.populateData(d);
-        //         });
-        //
-        //
-        // prompt({
-        //     "title": "Do you want to continue?",
-        //     "message": "Warning! Once this action has been submitted it cannot be undone. Please enter your site pin to confirm. ",
-        //     "input": true,
-        //     "label": "PIN",
-        //     "value": ""
-        // }).then(function(result){
-        //     var items = {};
-        //     var d = $filter('filter')($scope.tokenIpAddress, id);
-        //     items.confirmation = result;
-        //     items.ipAddress = d[0].siteIpAddress;
-        //     irAdminApi
-        //         .generatePositiveControlToken(items)
-        //         .then(
-        //             function () {
-        //                 irAdminApi
-        //                     .loadSampleControlsList()
-        //                     .then(function (d) {
-        //                         //Clean tables
-        //                         $scope.positiveListMocha = [];
-        //                         $scope.positiveListMDCC = [];
-        //                         $scope.negativeListMocha = [];
-        //                         $scope.negativeListMDCC = [];
-        //                         $scope.tokenIpAddress = [];
-        //
-        //                         $scope.populateData(d);
-        //                     });
-        //             },
-        //         function(response) { // optional
-        //         });
-        //     });
-        // };
-
-
         $scope.showNoTemplateControlConfirmation_old = function (id) {
             prompt({
                 "title": "Do you want to continue?",
@@ -581,45 +532,9 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
                             if(value.location === "MoCha") {
 
-                                // alert(value.location)
-
-                                // $scope.moChaList.push({
-                                //     'timer': timer,
-                                //     'time': time,
-                                //     'hostName': value.hostName,
-                                //     'ipAddress': value.ipAddress,
-                                //     'externalIpAddress': value.externalIpAddress,
-                                //     'status': value.status,
-                                //     'lastContactDate': value.lastContactDate,
-                                //     'dbReport': value.dbReport,
-                                //     'dataFile': value.dataFile,
-                                //     'logFile': value.logFile,
-                                //     'location': value.location,
-                                //     'dbReportPath': dbreport,
-                                //     'dataFilePath': datafile,
-                                //     'logFilePath': logfile
-                                // });
                             }
                             else if(value.location === "MDACC") {
 
-                                // alert(value.location)
-
-                                // $scope.mdAccList.push({
-                                //     'timer': timer,
-                                //     'time': time,
-                                //     'hostName': value.hostName,
-                                //     'ipAddress': value.ipAddress,
-                                //     'externalIpAddress': value.externalIpAddress,
-                                //     'status': value.status,
-                                //     'lastContactDate': value.lastContactDate,
-                                //     'dbReport': value.dbReport,
-                                //     'dataFile': value.dataFile,
-                                //     'logFile': value.logFile,
-                                //     'location': value.location,
-                                //     'dbReportPath': dbreport,
-                                //     'dataFilePath': datafile,
-                                //     'logFilePath': logfile
-                                // });
                             }
                         });
                     });
@@ -957,24 +872,12 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             //Svg for samples
             $scope.loadScatterPlot = function () {
 
-                // svgApi
-                //     .getSvgGene('SampleControl_MoCha_2')
-                //     .then(function (d) {
-                //
-                //         alert(JSON.stringify(d.data))
-
                 $window.histogramPlot();
                 $window.circosPlot();
                 $window.piePlot();
                         // $window.d3BoxVersion5(d.data);
 
             };
-
-            // $scope.setCanvasHeight = function(elementName, heightVal) {
-            //     alert(heightVal)
-            //     var ctx = $(elementName)[0].getContext('2d');
-            //     ctx.canvas.height = heightVal;
-            // }
 
             $scope.loadSampleBreakups = function() {
                 $scope.barlegend = "Total Positive / Ntc Control Status";
@@ -991,6 +894,10 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     , 'EAY131-HRRR'
                 ];
 
+                var options = {
+                    percentageInnerCutout: 40
+                };
+
                 $scope.flotPieData = {
                     labels: pieNames,
                     datasets: [
@@ -1002,9 +909,24 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                             highlightStroke: "rgba(220,220,220,1)",
                             segmentShowStroke : false,
                             animateScale : true,
+                            percentageInnerCutout: 95,
                             data: prepareData
                         }
                     ]
+                };
+
+                /**
+                 * Options for Doughnut chart
+                 */
+                $scope.doughnutOptions = {
+                    segmentShowStroke : true,
+                    segmentStrokeColor : "#fff",
+                    segmentStrokeWidth : 2,
+                    percentageInnerCutout : 55, // This is 0 for Pie charts
+                    animationSteps : 100,
+                    animationEasing : "easeOutBounce",
+                    animateRotate : true,
+                    animateScale : false
                 };
 
                     armNames = [
@@ -1015,14 +937,6 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                         , 'Fri.'
                         , 'Sat.'
                         , 'Sun.'
-                        // , 'Protein'
-                        // , 'Funk Gene'
-                        // , 'Variant Type/Snv'
-                        // , 'Variant Type/Id'
-                        // , 'Read Depth Snv'
-                        // , 'Read Depth Indel'
-                        // , 'Transcript Snv'
-                        // , 'Transcript Indel'
                     ];
                     armValues = [16, 13, 2, 24, 28, 1, 0];
                     armValues1 = [2, 3, 4, 5, 2, 1, 0];
@@ -1036,14 +950,6 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                         , 'Fri.'
                         , 'Sat.'
                         , 'Sun.'
-                        // , 'Protein'
-                        // , 'Funk Gene'
-                        // , 'Variant Type/Snv'
-                        // , 'Variant Type/Id'
-                        // , 'Read Depth Snv'
-                        // , 'Read Depth Indel'
-                        // , 'Transcript Snv'
-                        // , 'Transcript Indel'
                     ];
                     armValuesYear = [16, 13, 2, 24, 28, 1, 0];
                     armValuesYear1 = [2, 3, 4, 5, 2, 1, 0];
@@ -1111,10 +1017,6 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                         }
                     ]
                 };
-
-
-                // alert(JSON.stringify($scope.barData))
-
             };
 
 
