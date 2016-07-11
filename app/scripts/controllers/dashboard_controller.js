@@ -485,7 +485,13 @@ angular.module('dashboard.matchbox',[])
             animationEasing: "easeOutBounce",
             animateRotate: true,
             animateScale: false,
-            responsive: true
+            responsive: true,
+            legend: {
+                labels: {
+                    display: true,
+                    fontColor: 'rgb(255, 99, 132)'
+                }
+            }
         };
 
         this.barOptions = {
@@ -528,6 +534,19 @@ angular.module('dashboard.matchbox',[])
             aMoiLabels = ['0 aMOI', '1 aMOI', '2 aMOI', '3 aMOI', '4 aMOI', '5+ aMOI'];
             aMoiValues = [4, 35, 45, 9, 6, 21]; //[4, 10, 14, 6, 10, 16]; //[45, 21, 4, 35, 9, 6];
             aMoiHighlight = "#000088"; //"#dedede";
+
+            $scope.donutOptions = {
+                segmentShowStroke: true,
+                segmentStrokeColor: "#fff",
+                segmentStrokeWidth: 2,
+                percentageInnerCutout: 45, // This is 0 for Pie charts
+                animationSteps: 100,
+                animationEasing: "easeOutBounce",
+                animateRotate: true,
+                animateScale: false,
+                responsive: true,
+                legendTemplate: '<ul><% for (var i=0; i<segments.length; i++) {%><i class="fa fa-square-o"></i> <%if(segments[i].label){%><%=segments[i].label%> : <%=segments[i].value%> patients <%}%><br><%}%></ul>'
+            };
 
             $scope.donutData = [
             {
