@@ -20,11 +20,12 @@
             .withDisplayLength(100);
 
         $scope.currentUser = null;
-        
+
         vm.enabledFileButtonClass = 'btn-success';
         vm.disabledFileButtonClass = 'btn-default btn-outline-default disabled';
 
         $scope.activeTab = 'summary';
+        $scope.activeTabIndex = 0;
 
         $scope.patient_id = '';
         $scope.warningResult = false;
@@ -124,20 +125,20 @@
         function loadPatientData() {
             matchApiMock
                 .loadPatient($stateParams.patient_id)
-                .then(setupScope, handleError).then(navigateTo($stateParams.location));
+                .then(setupScope, handleError);
         }
 
         function handleError(e) {
             $log.error(e);
             $log.info('Error while retriving data from the service. Transferring back to patient list');
-            $state.transitionTo('patients')
+            $state.transitionTo('patients');
             return;
         }
 
         function setupScope(data) {
             if (!data || !data.data) {
                 $log.error('The web service didn\'t send patient data. Transferring back to patient list');
-                $state.transitionTo('patients')
+                $state.transitionTo('patients');
             }
 
             $scope.patient_id = $stateParams.patient_id;
@@ -154,6 +155,7 @@
             setupAssignmentReportOptions();
             setupSelectedTreatmentArm();
             setupUserName();
+            navigateTo($stateParams);
         }
 
         function setupTimeline() {
@@ -210,7 +212,7 @@
             }
 
             var lastItem = $scope.surgicalEventOptions[$scope.surgicalEventOptions.length - 1];
-            
+
             $scope.surgicalEventOption = lastItem;
             selectSurgicalEvent(lastItem);
         }
@@ -239,7 +241,7 @@
                 $scope.variantReports.push(qcReport);
 
                 if (!selected) {
-                    var byVariantReportKeys = function (x) { 
+                    var byVariantReportKeys = function (x) {
                         return x.value.analysis_id === variantReport.analysis_id &&
                             x.value.surgical_event_id === variantReport.surgical_event_id &&
                             x.value.molecular_id === variantReport.molecular_id;
@@ -261,12 +263,12 @@
             var currentAssignment = $scope.data.current_assignment;
 
             $scope.assignmentReportOption = {
-                text: $scope.currentTreatmentArm.name + 
-                    ' | ' + currentAssignment.biopsy_sequence_number + 
-                    ' | ' + currentAssignment.molecular_sequence_number + 
-                    ' | ' + currentAssignment.received_from_cog_date,
+                text: $scope.currentTreatmentArm.name +
+                ' | ' + currentAssignment.molecular_id +
+                ' | ' + currentAssignment.received_from_cog_date,
                 value: {
-                    molecular_sequence_number: currentAssignment.molecular_sequence_number,
+                    molecular_id: currentAssignment.molecular_id,
+                    analysis_id: currentAssignment.analysis_id,
                     assignmemnt_reason: $scope.currentTreatmentArm.reason
                 }
             };
@@ -275,9 +277,9 @@
         }
 
         function setupSelectedTreatmentArm() {
-            if (!($scope.data && 
-                $scope.data.assignment_report && 
-                $scope.data.assignment_report.treatment_arms && 
+            if (!($scope.data &&
+                $scope.data.assignment_report &&
+                $scope.data.assignment_report.treatment_arms &&
                 $scope.data.assignment_report.treatment_arms.selected)) {
                 return;
             }
@@ -292,11 +294,11 @@
             for (var i = 0; i < $scope.variantReports.length; i++) {
                 var variantReport = $scope.variantReports[i];
                 if (variantReport.variant_report_mode === $scope.variantReportMode && variantReport.variant_report_type === $scope.variantReportType) {
-                    if (variantReport.surgical_event_id === option.value.surgical_event_id && 
+                    if (variantReport.surgical_event_id === option.value.surgical_event_id &&
                         variantReport.analysis_id === option.value.analysis_id &&
                         variantReport.molecular_id === option.value.molecular_id) {
-                            $scope.currentVariantReport = variantReport;
-                            break;
+                        $scope.currentVariantReport = variantReport;
+                        break;
                     }
                 }
             }
@@ -373,12 +375,12 @@
                 $scope.data.current_assignment.treatment_arms &&
                 $scope.data.current_assignment.treatment_arms.selected &&
                 $scope.data.current_assignment.treatment_arms.selected.length ? $scope.data.current_assignment.treatment_arms.selected[0] : null;
-            
+
             if (selected) {
                 $scope.currentTreatmentArm = {
-                    name : selected.treatment_arm, 
-                    version : selected.treatment_arm_version, 
-                    stratum : selected.treatment_arm_stratum,
+                    name: selected.treatment_arm,
+                    version: selected.treatment_arm_version,
+                    stratum: selected.treatment_arm_stratum,
                     reason: selected.reason
                 }
             }
@@ -512,7 +514,7 @@
             $log.debug(selected);
             $scope.surgicalEventOption = selected;
 
-            var bySurgicalEvent = function (x) { return x.value.surgical_event_id === selected.value.surgical_event_id };
+            var bySurgicalEvent = function (x) { return x.value.surgical_event_id === selected.value.surgical_event_id; };
             var variantReportItem = $scope.variantReportOptions.find(bySurgicalEvent);
 
             if (variantReportItem) {
@@ -529,7 +531,7 @@
             $log.debug(selected);
             $scope.variantReportOption = selected;
 
-            var bySurgicalEvent = function (x) { return x.value.surgical_event_id === selected.value.surgical_event_id };
+            var bySurgicalEvent = function (x) { return x.value.surgical_event_id === selected.value.surgical_event_id; };
             var surgicalEventItem = $scope.surgicalEventOptions.find(bySurgicalEvent);
 
             if (surgicalEventItem) {
@@ -548,8 +550,13 @@
         function onAssignmentReportSelected(selected) {
             $log.debug(selected);
             $scope.assignmentReportOption = selected;
-            // TODO:RZ add
-            // $scope.currentAssignmentReport = null;            
+
+            // var byKeys = function (x) { return x.value.molecular_id === selected.value.molecular_id &&  x.value.analysis_id === selected.value.analysis_id; };
+            if ($scope.data.current_assignment.molecular_id === selected.value.molecular_id && $scope.data.current_assignment.analysis_id === selected.value.analysis_id) {
+                $scope.currentAssignmentReport = $scope.data.current_assignment;
+            } else {
+                $scope.currentAssignmentReport = null;
+            }
         }
 
         function selectSurgicalEvent(option) {
@@ -590,28 +597,85 @@
         function showAssignmentReportActions(report) {
             return true; // TODO:RZ add loginc back: report && report.status && report.status === 'PENDING';
         }
-    }
 
-    function navigateTo(location) {
-        switch (location.path) {
-            case 'molecular_id':
-                navigateToMolecularId(location.id);
-                break;
-            case 'analysis_id':
-                navigateToAnalisId(location.id);
+        function navigateTo(navigateTo) {
+            if (!navigateTo || !navigateTo.section) {
+                $log.debug('No internal Patient section provided. Params: ' + navigateTo);
+                return;
+            }
+
+            switch (navigateTo.section) {
+                case 'surgical_event':
+                    navigateToSurgicalEvent(navigateTo.surgical_event_id);
+                    break;
+                case 'variant_report':
+                    navigateToVariantReport(navigateTo.molecular_id, navigateTo.analysis_id);
+                    break;
+                case 'assignment_report':
+                    navigateToAssignmentReport(navigateTo.molecular_id, navigateTo.analysis_id);
+                    break;
+                default:
+                    $log.error('Unrecongnized Patient navingation section: ' + navigateTo.section);
+            }
         }
-    }
 
-    function strStartsWith(str, prefix) {
-        return str.indexOf(prefix) === 0;
-    }
+        function strStartsWith(str, prefix) {
+            return str.indexOf(prefix) === 0;
+        }
 
-    function navigateToMolecularId(id) {
-        
-    }
+        function navigateToSurgicalEvent(surgicalEventId) {
+            $log.debug('navigateToSurgicalEvent', surgicalEventId);
 
-    function navigateToAnalisId(id) {
-        
+            setActiveTab('surgical_event');
+            $scope.activeTabIndex = 1;
+
+            var option = findSurgicalEventOption(surgicalEventId);
+            if (option) {
+                selectSurgicalEvent(option);
+            } else {
+                $log.error('Unable to find Surgical Event ' + surgicalEventId);
+            }
+        }
+
+        function findVariantReportOption(molecularId, analysisId) {
+            var byMolecularAndAnalysisId = function (x) { return x.value.molecular_id === molecularId && x.value.analysis_id === analysisId; };
+            return $scope.variantReportOptions.find(byMolecularAndAnalysisId);
+        }
+
+        function navigateToVariantReport(molecularId, analysisId) {
+            $log.debug('navigateToVariantReport', molecularId, analysisId);
+
+            setActiveTab('tissue_report');
+            $scope.activeTabIndex = 2;
+
+            var option = findVariantReportOption(molecularId, analysisId);
+            if (option) {
+                selectVariantReport(option);
+            } else {
+                $log.error('Unable to find Variant Report ' + molecularId + ',' + analysisId);
+            }
+        }
+
+        function navigateToAssignmentReport(molecularId, analysisId) {
+            $log.debug('navigateToAssignmentReport', molecularId, analysisId);
+
+            setActiveTab('tissue_report');
+            $scope.activeTabIndex = 2;
+
+            var variantReportOption = findVariantReportOption(molecularId, analysisId);
+            if (variantReportOption) {
+                selectVariantReport(variantReportOption);
+
+                if ($scope.data.current_assignment.molecular_id === variantReportOption.value.molecular_id && $scope.data.current_assignment.analysis_id === variantReportOption.value.analysis_id) {
+                    $scope.currentAssignmentReport = $scope.data.current_assignment;
+                } else {
+                    $scope.currentAssignmentReport = null;
+                    $log.error('Unable to find Assignment Report ' + molecularId + ',' + analysisId);
+                }
+            } else {
+                $log.error('Unable to find Variant Report ' + molecularId + ',' + analysisId);
+            }
+        }
     }
 
 } ());

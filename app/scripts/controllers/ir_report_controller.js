@@ -6,16 +6,25 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             $('.equal-height-panels .panel').matchHeight();
         });
 
-        $scope.dtOptions = DTOptionsBuilder.newOptions()
+            var vm = this;
+
+            // vm.dtOptions = DTOptionBuilder.newOptions()
+            //     .withOptions('autoWidth', fnThatReturnsAPromise);
+
+            // function fnThatReturnsAPromise() {
+            //     var defer = $q.defer();
+            //     defer.resolve(false);
+            //     return defer.promise;
+            // }
+
+            vm.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(5);
 
-        $scope.dtOptions = DTOptionsBuilder.newOptions()
+            vm.dtOptions = DTOptionsBuilder.newOptions()
             .withOption('bLengthChange', false);
 
-        $scope.dtOptions = DTOptionsBuilder.newOptions()
+            vm.dtOptions = DTOptionsBuilder.newOptions()
             .withOption('searching', false);
-
-
 
         this.dtInstance = {};
 
@@ -36,10 +45,16 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         $scope.copyNumberVariantsList = [];
         $scope.geneFusionsList = [];
         $scope.sitename = 'undefined';
-            $scope.barlegend = 'Total Positive / Ntc Control Status';
-            $scope.titleid = "";
+        $scope.barlegend = 'Total Positive / Ntc Control Status';
+        $scope.titleid = "";
+        $scope.mochaList=[];
+        $scope.mochaNtcList=[];
+        $scope.mdaccList=[];
+        $scope.mdaccNtcList=[];
 
         $scope.branch = $stateParams.branch;
+
+            $scope.mid = "undefined";
 
            
 
@@ -120,6 +135,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
 
             function setSampleType(reportType) {
+
                 $scope.positives = "undefined";
                 $scope.negatives = "undefined";
 
@@ -158,6 +174,9 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
         //Populate Data
         $scope.populateData = function(d) {
+
+
+            alert(JSON.stringify(d))
 
 
             angular.forEach(d.data, function (value,key) {
@@ -225,51 +244,233 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
 
                 });
-
-                // alert(JSON.stringify($scope.positiveListMDCC))
-                // alert(JSON.stringify($scope.negativeListMDCC))
-
-
             });
         };
 
-        $scope.showPositiveControlConfirmation = function (id) {
 
-        prompt({
-            "title": "Do you want to continue?",
-            "message": "Warning! Once this action has been submitted it cannot be undone. Please enter your site pin to confirm. ",
-            "input": true,
-            "label": "PIN",
-            "value": ""
-        }).then(function(result){
-            var items = {};
-            var d = $filter('filter')($scope.tokenIpAddress, id);
-            items.confirmation = result;
-            items.ipAddress = d[0].siteIpAddress;
-            irAdminApi
-                .generatePositiveControlToken(items)
-                .then(
-                    function () {
-                        irAdminApi
-                            .loadSampleControlsList()
-                            .then(function (d) {
-                                //Clean tables
-                                $scope.positiveListMocha = [];
-                                $scope.positiveListMDCC = [];
-                                $scope.negativeListMocha = [];
-                                $scope.negativeListMDCC = [];
-                                $scope.tokenIpAddress = [];
+            //SNV
+            function loadMoChaList(data) {
+                $scope.mochaList = data;
+            };
+            $scope.loadMocha_Table = function () {
 
-                                $scope.populateData(d);
-                            });
+                var url ="data/sample_mocha_list.json";
+
+                $.ajax({
+
+                    type   :  "GET",
+                    url      :   url,
+                    contentType : "application/json",
+                    dataType      : "json",
+                    data            :  {},
+                    success: function(data){
+                        loadMoChaList(data);
                     },
-                function(response) { // optional
+                    error:function(jqXHR,textStatus,errorThrown){
+                        alert("Error: "+textStatus.toString());
+                    }
                 });
-            });
-        };
+            };
+            function loadMoChaNtcList(data) {
+                // alert(JSON.stringify(data))
+                $scope.mochaNtcList = data;
+            };
+            $scope.loadMochaNtc_Table = function () {
+
+                var url ="data/sample_mocha_ntc_list.json";
+
+                $.ajax({
+
+                    type   :  "GET",
+                    url      :   url,
+                    contentType : "application/json",
+                    dataType      : "json",
+                    data            :  {},
+                    success: function(data){
+                        loadMoChaNtcList(data);
+                    },
+                    error:function(jqXHR,textStatus,errorThrown){
+                        alert("Error: "+textStatus.toString());
+                    }
+                });
+            };
+
+            function loadMDACCList(data) {
+                $scope.mdaccList = data;
+            };
+            $scope.loadMDACC_Table = function () {
+
+                var url ="data/sample_mdacc_list.json";
+
+                $.ajax({
+
+                    type   :  "GET",
+                    url      :   url,
+                    contentType : "application/json",
+                    dataType      : "json",
+                    data            :  {},
+                    success: function(data){
+                        loadMDACCList(data);
+                    },
+                    error:function(jqXHR,textStatus,errorThrown){
+                        alert("Error: "+textStatus.toString());
+                    }
+                });
+            };
+
+            function loadMDACCNtcList(data) {
+                $scope.mdaccNtcList = data;
+            };
+            $scope.loadMDACCNtc_Table = function () {
+
+                var url ="data/sample_mdacc_ntc_list.json";
+
+                $.ajax({
+
+                    type   :  "GET",
+                    url      :   url,
+                    contentType : "application/json",
+                    dataType      : "json",
+                    data            :  {},
+                    success: function(data){
+                        loadMDACCNtcList(data);
+                    },
+                    error:function(jqXHR,textStatus,errorThrown){
+                        alert("Error: "+textStatus.toString());
+                    }
+                });
+            };
+
+            $scope.date = new Date();
+
+            $scope.generateMocha_Table = function () {
+
+                var nr = $scope.mochaList.length + 2;
+                var mol = "SampleControl_MoCha_" + nr;
+
+                    $scope.mochaList.push({
+                        "molecular_is": mol,
+                        "variant_reports": "-",
+                        "current_status": "-",
+                        "date_created": $scope.date,
+                        "date_received": "-"
+                    });
+            };
+
+            $scope.generateNtcMocha_Table = function () {
+
+                var nr = $scope.mochaNtcList.length + 2;
+                var mol = "NtcControl_MoCha_" + nr;
+
+                $scope.mochaNtcList.push({
+                    "molecular_is": mol,
+                    "variant_reports": "-",
+                    "current_status": "-",
+                    "date_created": "June 8, 2016 4:51 PM GMT",
+                    "date_received": "-"
+                });
+            };
+
+            $scope.generateMDACC_Table = function () {
+
+                var nr = $scope.mdaccList.length + 1;
+                var mol = "SampleControl_MDACC_" + nr;
+
+                $scope.mdaccList.push({
+                    "molecular_is": mol,
+                    "variant_reports": "-",
+                    "current_status": "-",
+                    "date_created": "June 8, 2016 4:51 PM GMT",
+                    "date_received": "-"
+                });
+            };
+
+            $scope.generateNtcMDACC_Table = function () {
+
+                var nr = $scope.mdaccNtcList.length + 1;
+                var mol = "NtcControl_MDACC_" + nr;
+
+                $scope.mdaccNtcList.push({
+                    "molecular_is": mol,
+                    "variant_reports": "-",
+                    "current_status": "-",
+                    "date_created": $scope.date,
+                    "date_received": "-"
+                });
+            };
 
 
-        $scope.showNoTemplateControlConfirmation = function (id) {
+            $scope.showPositiveControlConfirmation = function (id) {
+                //Clean tables
+                $scope.positiveListMocha = [];
+                $scope.positiveListMDCC = [];
+                $scope.negativeListMocha = [];
+                $scope.negativeListMDCC = [];
+                $scope.tokenIpAddress = [];
+                if(id === 'MoCha'){$scope.generateMocha_Table();}
+                else {$scope.generateMDACC_Table();}
+
+            };
+
+            $scope.showNoTemplateControlConfirmation = function (id) {
+                //Clean tables
+                $scope.positiveListMocha = [];
+                $scope.positiveListMDCC = [];
+                $scope.negativeListMocha = [];
+                $scope.negativeListMDCC = [];
+                $scope.tokenIpAddress = [];
+                if(id === 'MoCha'){$scope.generateNtcMocha_Table();}
+                else {$scope.generateNtcMDACC_Table();}
+
+            };
+
+
+        // $scope.showPositiveControlConfirmation = function (id) {
+        //     Clean tables
+        //
+        //         .then(function (d) {
+        //
+        //             alert(JSON.stringify(d))
+        //
+        //             $scope.populateData(d);
+        //         });
+        //
+        //
+        // prompt({
+        //     "title": "Do you want to continue?",
+        //     "message": "Warning! Once this action has been submitted it cannot be undone. Please enter your site pin to confirm. ",
+        //     "input": true,
+        //     "label": "PIN",
+        //     "value": ""
+        // }).then(function(result){
+        //     var items = {};
+        //     var d = $filter('filter')($scope.tokenIpAddress, id);
+        //     items.confirmation = result;
+        //     items.ipAddress = d[0].siteIpAddress;
+        //     irAdminApi
+        //         .generatePositiveControlToken(items)
+        //         .then(
+        //             function () {
+        //                 irAdminApi
+        //                     .loadSampleControlsList()
+        //                     .then(function (d) {
+        //                         //Clean tables
+        //                         $scope.positiveListMocha = [];
+        //                         $scope.positiveListMDCC = [];
+        //                         $scope.negativeListMocha = [];
+        //                         $scope.negativeListMDCC = [];
+        //                         $scope.tokenIpAddress = [];
+        //
+        //                         $scope.populateData(d);
+        //                     });
+        //             },
+        //         function(response) { // optional
+        //         });
+        //     });
+        // };
+
+
+        $scope.showNoTemplateControlConfirmation_old = function (id) {
             prompt({
                 "title": "Do you want to continue?",
                 "message": "Warning! Once this action has been submitted it cannot be undone. Please enter your site pin to confirm. ",
@@ -426,20 +627,25 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
             $scope.posDate = "undefined";
             $scope.tvarDate = "undefined";
+            $scope.aid = "undefined";
 
 
             $scope.openPositives = function(id) {
 
-                if(id === 1){
+                $scope.mid = id;
+
+                if(id === 'SampleControl_MoCha_2'){
+
+                    $scope.positives = 'mocha';
 
                     $scope.posDate = 'July 27, 2015 3:57 PM GMT';
                     $scope.tvarDate = '18';
+                    $scope.aid = "1445_AA_FR";
 
-                    $scope.titleid = 'SampleControl_MoCha_3';
+                    $scope.titleid = 'SampleControl_MoCha_2';
                     $scope.positiveControlList = [{"variantType":"SNV","geneName":"PIK3CA","chromosome":"chr3","position":"178916946","identifier":"COSM12580","reference":"G","alternative":"C","protein":"p.Lys111Asn","hgvs":"c.333G>C","purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"SNV","geneName":"BRAF","chromosome":"chr7","position":"140453136","identifier":"COSM476","reference":"A","alternative":"T","protein":"p.V600E","hgvs":"c.1799T>A","purpose":"Substitution","function":"missense","hasMatchingVariant":"false"},{"variantType":"SNV","geneName":"BRCA2","chromosome":"chr13","position":"32968850","identifier":".","reference":"C","alternative":"A","protein":"p.Ser3094Ter","hgvs":"c.9281C>A","purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"Indel","geneName":"PTEN","chromosome":"chr10","position":"89717716","identifier":".","reference":"-","alternative":"A","protein":"p.Pro248fs","hgvs":"c.741_742insA","purpose":null,"function":null,"hasMatchingVariant":"false"},{"variantType":"Indels","purpose":"CNV","function":null,"hasMatchingVariant":"true"},{"variantType":"CNV","geneName":"RPS6KB1","chromosome":"chr17","position":null,"identifier":null,"reference":null,"alternative":null,"protein":null,"hgvs":null,"purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"CNV","geneName":"ZNF217","chromosome":"chr20","position":null,"identifier":null,"reference":null,"alternative":null,"protein":null,"hgvs":null,"purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"Fusion","geneName":"ALK","chromosome":null,"position":null,"identifier":"AB374361","reference":null,"alternative":"EML4-ALK.E6aA20","protein":null,"hgvs":"EML4-ALK","purpose":"Fusion","function":null,"hasMatchingVariant":"true"},{"variantType":"Fusion","geneName":"ALK","chromosome":null,"position":null,"identifier":"AB374362","reference":null,"alternative":"EML4-ALK.E6bA20","protein":null,"hgvs":"EML4-ALK","purpose":"Fusion","function":null,"hasMatchingVariant":"true"}];
 
-
-                    $scope.negativeVariantsList.push({
+                    $scope.negativeVariantsList = [{
                         'publicMedIds': '',
                         'position': '7578373',
                         'geneName': "",
@@ -449,16 +655,23 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                         'hgvs': 'c.557A',
                         'protein': 'p.Asp186Gly',
                         'function': 'missense'
-                    });
+                    }];
+
+                    return;
+
                 }
-                else{
-                    $scope.titleid = 'SampleControl_MoCha_2';
+                else if(id === 'SampleControl_MoCha_3') {
+
+                    $scope.positives = 'mocha';
+
+                    $scope.titleid = 'SampleControl_MoCha_3';
                     $scope.posDate = 'July 31, 2015 3:57 PM GMT';
                     $scope.tvarDate = '21';
+                    $scope.aid = "1448_AA_FR";
                     $scope.positiveControlList = [{"variantType":"SNV","geneName":"PIK3CA","chromosome":"chr3","position":"178916946","identifier":"COSM12880","reference":"G","alternative":"C","protein":"p.Lys111Asn","hgvs":"c.333G>C","purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"SNV","geneName":"BRAF","chromosome":"chr7","position":"140453136","identifier":"COSM476","reference":"A","alternative":"T","protein":"p.V600E","hgvs":"c.1799T>A","purpose":"Substitution","function":"missense","hasMatchingVariant":"true"},{"variantType":"SNV","geneName":"BRCA2","chromosome":"chr13","position":"32968850","identifier":".","reference":"C","alternative":"A","protein":"p.Ser3094Ter","hgvs":"c.9281C>A","purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"Indel","geneName":"PTEN","chromosome":"chr10","position":"89717716","identifier":".","reference":"-","alternative":"A","protein":"p.Pro248fs","hgvs":"c.741_742insA","purpose":null,"function":null,"hasMatchingVariant":"false"},{"variantType":"Indels","purpose":"CNV","function":null,"hasMatchingVariant":"false"},{"variantType":"CNV","geneName":"RPS6KB1","chromosome":"chr17","position":null,"identifier":null,"reference":null,"alternative":null,"protein":null,"hgvs":null,"purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"CNV","geneName":"ZNF217","chromosome":"chr20","position":null,"identifier":null,"reference":null,"alternative":null,"protein":null,"hgvs":null,"purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"Fusion","geneName":"ALK","chromosome":null,"position":null,"identifier":"AB374361","reference":null,"alternative":"EML4-ALK.E6aA20","protein":null,"hgvs":"EML4-ALK","purpose":"Fusion","function":null,"hasMatchingVariant":"false"},{"variantType":"Fusion","geneName":"ALK","chromosome":null,"position":null,"identifier":"AB374362","reference":null,"alternative":"EML4-ALK.E6bA20","protein":null,"hgvs":"EML4-ALK","purpose":"Fusion","function":null,"hasMatchingVariant":"true"}];
 
 
-                    $scope.negativeVariantsList.push({
+                    $scope.negativeVariantsList = [{
                         'publicMedIds': '',
                         'position': '112258',
                         'geneName': "",
@@ -468,15 +681,96 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                         'hgvs': 'c.887A',
                         'protein': 'p.Emp186Gly',
                         'function': 'missense'
-                    });
+                    },
+                        {
+                            'publicMedIds': '',
+                            'position': '55689',
+                            'geneName': "G_12",
+                            'variantType':'Indel',
+                            'reference':'G',
+                            'alternative': 'C',
+                            'hgvs': 'c.997A',
+                            'protein': 'p.Emp82wGly',
+                            'function': 'missense'
+                        }];
+
+
                 }
-
-                $scope.positives = 'mocha';
-
-                // $("body").animate({scrollBottom: $elm.offset().top}, "slow");
 
             };
 
+
+            $scope.openMDACCPositives = function(id) {
+
+                $scope.mid = id;
+
+                if(id === 'SampleControl_MDACC_1'){
+
+                    $scope.positives = 'mdacc';
+
+                    $scope.posDate = 'July 27, 2015 3:57 PM GMT';
+                    $scope.tvarDate = '18';
+                    $scope.aid = "1445_BB_FR";
+
+                    $scope.titleid = 'SampleControl_MDACC_1';
+                    $scope.positiveControlList = [{"variantType":"SNV","geneName":"PIK3CA","chromosome":"chr3","position":"178916946","identifier":"COSM12580","reference":"G","alternative":"C","protein":"p.Lys111Asn","hgvs":"c.333G>C","purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"SNV","geneName":"BRAF","chromosome":"chr7","position":"140453136","identifier":"COSM476","reference":"A","alternative":"T","protein":"p.V600E","hgvs":"c.1799T>A","purpose":"Substitution","function":"missense","hasMatchingVariant":"false"},{"variantType":"SNV","geneName":"BRCA2","chromosome":"chr13","position":"32968850","identifier":".","reference":"C","alternative":"A","protein":"p.Ser3094Ter","hgvs":"c.9281C>A","purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"Indel","geneName":"PTEN","chromosome":"chr10","position":"89717716","identifier":".","reference":"-","alternative":"A","protein":"p.Pro248fs","hgvs":"c.741_742insA","purpose":null,"function":null,"hasMatchingVariant":"false"},{"variantType":"Indels","purpose":"CNV","function":null,"hasMatchingVariant":"true"},{"variantType":"CNV","geneName":"RPS6KB1","chromosome":"chr17","position":null,"identifier":null,"reference":null,"alternative":null,"protein":null,"hgvs":null,"purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"CNV","geneName":"ZNF217","chromosome":"chr20","position":null,"identifier":null,"reference":null,"alternative":null,"protein":null,"hgvs":null,"purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"Fusion","geneName":"ALK","chromosome":null,"position":null,"identifier":"AB374361","reference":null,"alternative":"EML4-ALK.E6aA20","protein":null,"hgvs":"EML4-ALK","purpose":"Fusion","function":null,"hasMatchingVariant":"true"},{"variantType":"Fusion","geneName":"ALK","chromosome":null,"position":null,"identifier":"AB374362","reference":null,"alternative":"EML4-ALK.E6bA20","protein":null,"hgvs":"EML4-ALK","purpose":"Fusion","function":null,"hasMatchingVariant":"true"}];
+
+
+                    $scope.negativeVariantsList = [{
+                        'publicMedIds': '',
+                        'position': '7578373',
+                        'geneName': "",
+                        'variantType':'Indel',
+                        'reference':'G',
+                        'alternative': 'C',
+                        'hgvs': 'c.557A',
+                        'protein': 'p.Asp186Gly',
+                        'function': 'missense'
+                    }];
+
+                    return;
+
+                }
+                else if(id === 'SampleControl_MDACC_2') {
+
+                    $scope.positives = 'mdacc';
+
+                    $scope.titleid = 'SampleControl_MDACC_2';
+                    $scope.posDate = 'July 31, 2015 3:57 PM GMT';
+                    $scope.tvarDate = '8';
+                    $scope.aid = "1448_BB_FR";
+                    $scope.positiveControlList = [{"variantType":"SNV","geneName":"PIK3CA","chromosome":"chr3","position":"178916946","identifier":"COSM12880","reference":"G","alternative":"C","protein":"p.Lys111Asn","hgvs":"c.333G>C","purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"SNV","geneName":"BRAF","chromosome":"chr7","position":"140453136","identifier":"COSM476","reference":"A","alternative":"T","protein":"p.V600E","hgvs":"c.1799T>A","purpose":"Substitution","function":"missense","hasMatchingVariant":"true"},{"variantType":"SNV","geneName":"BRCA2","chromosome":"chr13","position":"32968850","identifier":".","reference":"C","alternative":"A","protein":"p.Ser3094Ter","hgvs":"c.9281C>A","purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"Indel","geneName":"PTEN","chromosome":"chr10","position":"89717716","identifier":".","reference":"-","alternative":"A","protein":"p.Pro248fs","hgvs":"c.741_742insA","purpose":null,"function":null,"hasMatchingVariant":"false"},{"variantType":"Indels","purpose":"CNV","function":null,"hasMatchingVariant":"false"},{"variantType":"CNV","geneName":"RPS6KB1","chromosome":"chr17","position":null,"identifier":null,"reference":null,"alternative":null,"protein":null,"hgvs":null,"purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"CNV","geneName":"ZNF217","chromosome":"chr20","position":null,"identifier":null,"reference":null,"alternative":null,"protein":null,"hgvs":null,"purpose":null,"function":null,"hasMatchingVariant":"true"},{"variantType":"Fusion","geneName":"ALK","chromosome":null,"position":null,"identifier":"AB374361","reference":null,"alternative":"EML4-ALK.E6aA20","protein":null,"hgvs":"EML4-ALK","purpose":"Fusion","function":null,"hasMatchingVariant":"false"},{"variantType":"Fusion","geneName":"ALK","chromosome":null,"position":null,"identifier":"AB374362","reference":null,"alternative":"EML4-ALK.E6bA20","protein":null,"hgvs":"EML4-ALK","purpose":"Fusion","function":null,"hasMatchingVariant":"true"}];
+
+
+                    $scope.negativeVariantsList = [{
+                        'publicMedIds': '',
+                        'position': '112258',
+                        'geneName': "",
+                        'variantType':'Indel',
+                        'reference':'G',
+                        'alternative': 'C',
+                        'hgvs': 'c.887A',
+                        'protein': 'p.Emp186Gly',
+                        'function': 'missense'
+                        },
+                        {
+                            'publicMedIds': '',
+                            'position': '55689',
+                            'geneName': "G_12",
+                            'variantType':'Indel',
+                            'reference':'G',
+                            'alternative': 'C',
+                            'hgvs': 'c.997A',
+                            'protein': 'p.Emp82wGly',
+                            'function': 'missense'
+                        }];
+
+
+                }
+
+            };
+            
+            
             $scope.openMDAPositives = function() {
 
                 $scope.posDate = 'July 27, 2015 3:57 PM GMT';
@@ -624,7 +918,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     },
                     {
                         value: ntcMoiValues[1],
-                        color: "green",
+                        color: "navy",
                         highlight: aMoiHighlight,
                         label: ntcMoiLabels[1]
                     },
@@ -646,7 +940,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     },
                     {
                         value: ntcMoiValues[1],
-                        color: "green",
+                        color: "navy",
                         highlight: aMoiHighlight,
                         label: ntcMoiLabels[1]
                     },
@@ -785,7 +1079,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                             data: armValues
                         },
                         {
-                            fillColor: 'darkred',
+                            fillColor: 'navy',
                             strokeColor: 'rgba(151,187,205,1)',
                             pointColor: 'rgba(151,187,205,1)',
                             highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
@@ -808,7 +1102,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                             data: mdaccValues
                         },
                         {
-                            fillColor: 'darkred',
+                            fillColor: 'navy',
                             strokeColor: 'rgba(151,187,205,1)',
                             pointColor: 'rgba(151,187,205,1)',
                             highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",

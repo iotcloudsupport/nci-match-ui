@@ -69,9 +69,9 @@ angular.module('dashboard.matchbox',[])
 
         $scope.pendingTissueVariantReportsMockData = [
             {
-                'patient_id': '100099',
-                'molecular_id': 'MSN1245',
-                'analysis_id': 'AT5678',
+                'patient_id': '100025',
+                'molecular_id': 'MOL001_1',
+                'analysis_id': 'SAM001_02',
                 'clia_lab': 'MoCha',
                 'specimen_received_date': 1421162969643,
                 'variant_report_received_date': 1421162969643,
@@ -79,9 +79,9 @@ angular.module('dashboard.matchbox',[])
 
             },
             {
-                'patient_id': '100065',
-                'molecular_id': 'MSN12345',
-                'analysis_id': 'AT5682',
+                'patient_id': '100025',
+                'molecular_id': 'MOL001_1',
+                'analysis_id': 'SAM001_02',
                 'clia_lab': 'MDA',
                 'specimen_received_date': 1421163069643,
                 'variant_report_received_date': 1421163269643,
@@ -92,9 +92,9 @@ angular.module('dashboard.matchbox',[])
 
         $scope.pendingBloodVariantReportsMockData = [
             {
-                'patient_id': '100099',
-                'molecular_id': 'MSN1245',
-                'analysis_id': 'AT5678',
+                'patient_id': '100025',
+                'molecular_id': 'MOL001_1',
+                'analysis_id': 'SAM001_02',
                 'clia_lab': 'MoCha',
                 'specimen_received_date': 1421162969643,
                 'variant_report_received_date': 1421162969643,
@@ -103,9 +103,9 @@ angular.module('dashboard.matchbox',[])
 
             },
             {
-                'patient_id': '100065',
-                'molecular_id': 'MSN12345',
-                'analysis_id': 'AT5682',
+                'patient_id': '100025',
+                'molecular_id': 'MOL001_1',
+                'analysis_id': 'SAM001_02',
                 'clia_lab': 'MDA',
                 'specimen_received_date': 1421163069643,
                 'variant_report_received_date': 1421163269643,
@@ -114,9 +114,9 @@ angular.module('dashboard.matchbox',[])
 
             },
             {
-                'patient_id': '100099',
-                'molecular_id': 'MSN1245',
-                'analysis_id': 'AT5678',
+                'patient_id': '100025',
+                'molecular_id': 'MOL001_1',
+                'analysis_id': 'SAM001_02',
                 'clia_lab': 'MoCha',
                 'specimen_received_date': 1421162969643,
                 'variant_report_received_date': 1421162969643,
@@ -125,9 +125,9 @@ angular.module('dashboard.matchbox',[])
 
             },
             {
-                'patient_id': '100065',
-                'molecular_id': 'MSN12345',
-                'analysis_id': 'AT5682',
+                'patient_id': '100025',
+                'molecular_id': 'MOL001_1',
+                'analysis_id': 'SAM001_02',
                 'clia_lab': 'MDA',
                 'specimen_received_date': 1421163069643,
                 'variant_report_received_date': 1421163269643,
@@ -139,12 +139,12 @@ angular.module('dashboard.matchbox',[])
 
         $scope.pendingAssignmentReportsMockData = [
             {
-                'patient_id': '100136',
-                'molecular_id': 'MSN124577',
-                'analysis_id': 'AT5690',
+                'patient_id': '100025',
+                'molecular_id': 'MOL001_1',
+                'analysis_id': 'SAM001_02',
                 'disease': 'Breast Cancer',
-                'treatment_arm' : 'APEC1621-A',
-                'stratum' : '123145',
+                'treatment_arm' : 'APEC1621-U',
+                'stratum' : 'STR1',
                 'assignment_date': 1423162969643,
                 'hours_pending': '3'
             }
@@ -255,11 +255,10 @@ angular.module('dashboard.matchbox',[])
             {
                 "pic": $scope.icons[4],
                 "status": "activity-feed-icon",
-                "patientId": '100099',
-                "treatmentArmId": '',
-                "molecularId": '',
-                "biopsySequenceNumber": '',
-                "surgicalEventId": '',
+                "patient_id": '100025',
+                "treatment_arm_id": '',
+                "molecular_id": '',
+                "surgical_event_id": '',
                 "time": 1421175969643,
                 "age": '3m',
                 "displayName": $scope.message[0]
@@ -267,12 +266,11 @@ angular.module('dashboard.matchbox',[])
             {
                 "pic": $scope.icons[2],
                 "status": "activity-feed-icon",
-                "patientId": '',
-                "treatmentArmId": 'APEC1621-A',
+                "patient_id": '',
+                "treatment_arm_id": 'APEC1621-A',
                 "version": "2016-03-17",
-                "molecularId": '',
-                "biopsySequenceNumber": '',
-                "surgicalEventId": '',
+                "molecular_id": '',
+                "surgical_event_id": '',
                 "time": 1421175969643,
                 "age": '3m',
                 "displayName": $scope.message[4]
@@ -280,11 +278,10 @@ angular.module('dashboard.matchbox',[])
             {
                 "pic": $scope.icons[3],
                 "status": "activity-feed-icon",
-                "patientId": '100065',
-                "treatmentArmId": '',
-                "molecularId": 'MSN12349',
-                "biopsySequenceNumber": 'AT111',
-                "surgicalEventId": '125',
+                "patient_id": '100025',
+                "treatment_arm_id": '',
+                "molecular_id": 'MOL001_1',
+                "surgical_event_id": 'SUREVT002',
                 "time": 1421171969643,
                 "age": '5m',
                 "displayName": $scope.message[1]
@@ -292,11 +289,10 @@ angular.module('dashboard.matchbox',[])
             {
                 "pic": $scope.icons[2],
                 "status": "activity-feed-icon",
-                "patientId": '',
-                "treatmentArmId": 'APEC1621-Z',
-                "molecularId": '',
-                "biopsySequenceNumber": '',
-                "surgicalEventId": '',
+                "patient_id": '',
+                "treatment_arm_id": 'APEC1621-Z',
+                "molecular_id": '',
+                "surgical_event_id": '',
                 "time": 1421169969643,
                 "age": '5m',
                 "displayName": $scope.message[5]
@@ -305,10 +301,9 @@ angular.module('dashboard.matchbox',[])
                 "pic": $scope.icons[3],
                 "status": "activity-feed-icon",
                 "patientId": '100136',
-                "treatmentArmId": '',
-                "molecularId": 'MSN12349',
-                "biopsySequenceNumber": 'AT108',
-                "surgicalEventId": '125',
+                "treatment_arm_id": '',
+                "molecular_id": 'MOL001_1',
+                "surgical_event_id": 'SUREVT002',
                 "time": 1421165969643,
                 "age": '18m',
                 "displayName": $scope.message[1]
@@ -316,11 +311,10 @@ angular.module('dashboard.matchbox',[])
             {
                 "pic": $scope.icons[1],
                 "status": "activity-feed-icon",
-                "patientId": '100065',
-                "treatmentArmId": '',
-                "molecularId": 'MSN12340',
-                "surgicalEventId": '125',
-                "biopsySequenceNumber": 'AT105',
+                "patient_id": '100025',
+                "treatment_arm_id": '',
+                "molecular_id": 'MOL001_1',
+                "surgical_event_id": 'SUREVT002',
                 "time": 1421162969643,
                 "age": '5h',
                 "displayName": $scope.message[2]
@@ -328,12 +322,11 @@ angular.module('dashboard.matchbox',[])
             {
                 "pic": $scope.icons[2],
                 "status": "activity-feed-icon",
-                "patientId": '',
-                "treatmentArmId": 'APEC1621-A',
+                "patient_id": '',
+                "treatment_arm_id": 'APEC1621-A',
                 "version": "2016-03-17",
-                "molecularId": '',
-                "biopsySequenceNumber": '',
-                "surgicalEventId": '',
+                "molecular_id": '',
+                "surgical_event_id": '',
                 "time": 1421162969643,
                 "age": '5h',
                 "displayName": $scope.message[3]
@@ -341,11 +334,10 @@ angular.module('dashboard.matchbox',[])
             {
                 "pic": $scope.icons[3],
                 "status": "activity-feed-icon",
-                "patientId": '100065',
-                "treatmentArmId": '',
-                "molecularId": 'MSN12340',
-                "biopsySequenceNumber": 'AT105',
-                "surgicalEventId": '125',
+                "patient_id": '100025',
+                "treatment_arm_id": '',
+                "molecular_id": 'MOL001_1',
+                "surgical_event_id": 'SUREVT002',
                 "time": 1421160969643,
                 "age": '6d',
                 "displayName": $scope.message[6]
@@ -353,11 +345,10 @@ angular.module('dashboard.matchbox',[])
             {
                 "pic": $scope.icons[4],
                 "status": "activity-feed-icon",
-                "patientId": '100136',
-                "treatmentArmId": '',
-                "molecularId": '',
-                "biopsySequenceNumber": '',
-                "surgicalEventId": '',
+                "patientId": '100025',
+                "treatment_arm_id": '',
+                "molecular_id": '',
+                "surgical_event_id": '',
                 "time": 1421155768643,
                 "age": '1y',
                 "displayName": $scope.message[0]
@@ -365,11 +356,10 @@ angular.module('dashboard.matchbox',[])
             {
                 "pic": $scope.icons[1],
                 "status": "activity-feed-icon",
-                "patientId": '100136',
-                "treatmentArmId": '',
-                "molecularId": 'MSN12330',
-                "biopsySequenceNumber": 'AT101',
-                "surgicalEventId": '125',
+                "patientId": '100025',
+                "treatment_arm_id": '',
+                "molecular_id": 'MOL001_1',
+                "surgical_event_id": '125',
                 "time": 1421162969643,
                 "age": '5h',
                 "displayName": $scope.message[2]
@@ -377,11 +367,10 @@ angular.module('dashboard.matchbox',[])
             {
                 "pic": $scope.icons[3],
                 "status": "activity-feed-icon",
-                "patientId": '100065',
-                "treatmentArmId": '',
-                "molecularId": 'MSN12330',
-                "biopsySequenceNumber": 'AT101',
-                "surgicalEventId": '125',
+                "patient_id": '100025',
+                "treatment_arm_id": '',
+                "molecular_id": 'MOL001_1',
+                "surgical_event_id": 'SUREVT002',
                 "time": 1421160969643,
                 "age": '6d',
                 "displayName": $scope.message[6]
@@ -389,11 +378,10 @@ angular.module('dashboard.matchbox',[])
             {
                 "pic": $scope.icons[4],
                 "status": "activity-feed-icon",
-                "patientId": '100065',
-                "treatmentArmId": '',
-                "molecularId": '',
-                "biopsySequenceNumber": '',
-                "surgicalEventId": '125',
+                "patient_id": '100025',
+                "treatment_arm_id": '',
+                "molecular_id": '',
+                "surgical_event_id": 'SUREVT002',
                 "time": 1421155768643,
                 "age": '1y',
                 "displayName": $scope.message[0]
@@ -401,11 +389,10 @@ angular.module('dashboard.matchbox',[])
             {
                 "pic": $scope.icons[4],
                 "status": "activity-feed-icon",
-                "patientId": '100065',
-                "treatmentArmId": '',
-                "molecularId": '',
-                "biopsySequenceNumber": '',
-                "surgicalEventId": '125',
+                "patient_id": '100025',
+                "treatment_arm_id": '',
+                "molecular_id": '',
+                "surgical_event_id": 'SUREVT002',
                 "time": 1421155768643,
                 "age": '1y',
                 "displayName": $scope.message[0]
