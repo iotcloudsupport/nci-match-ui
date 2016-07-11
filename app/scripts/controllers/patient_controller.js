@@ -454,10 +454,10 @@
         function confirmVariantReport(variantReport) {
             showPrompt({
                 title: 'Confirm Variant Report',
-                message: 'Are you sure you want to confirm the Variant Report',
+                message: 'Are you sure you want to confirm the Variant Report?',
                 buttons: [{ label: 'OK', primary: true }, { label: 'Cancel', cancel: true }]
             }).then(function (comment) {
-                if (variantReport) {
+                if (!variantReport) {
                     $log.error('Current Variant Report is not set');
                 } else {
                     variantReport.status = 'CONFIRMED';
@@ -474,10 +474,10 @@
                 input: true,
                 buttons: [{ label: 'OK', primary: true }, { label: 'Cancel', cancel: true }]
             }).then(function (comment) {
-                if (variantReport) {
+                if (!variantReport) {
                     $log.error('Current Variant Report is not set');
                 } else {
-                    variantReport.status = 'RECTED';
+                    variantReport.status = 'REJECTED';
                     variantReport.comment = comment;
                     variantReport.comment_user = $scope.currentUser;
                 }
