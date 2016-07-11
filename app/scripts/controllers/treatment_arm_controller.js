@@ -18,11 +18,15 @@ angular.module('treatment-arm.matchbox',[])
 
         $scope.test = '';
 
+        $scope.name = 'APEC1621-A';
+        $scope.version = '2016-03-17';
+        $scope.stratum = '123145';
+
         $scope.information = {
             name: 'APEC1621-A',
             stratum: "123145",
             description: 'Afatinib in DDR2 activating mutations',
-            currentVersion: '2016-03-17',
+            version: '2016-03-17',
             genes: 'DDR2',
             patientsAssigned: '3',
             currentStatus: 'OPEN',
@@ -81,7 +85,7 @@ angular.module('treatment-arm.matchbox',[])
 
         function setInExclusion() {
             //$scope.inExclusion = $scope.variants[$scope.inExclusionType];
-            $scope.inExclusion = $scope.currentVersion;
+            $scope.inExclusion = $scope.version;
         }
 
 
@@ -1044,7 +1048,7 @@ angular.module('treatment-arm.matchbox',[])
                             version.nonSequencingAssays = nonSequencingAssays;
                             version.versionHistory = $scope.versionHistory;
                             $scope.versions.push(version);
-                            $scope.information.currentVersion = $scope.versions[0].name;
+                            $scope.information.version = $scope.versions[0].name;
 
                             /*var nextVersion = {};
                             nextVersion.text = '2015-12-20';

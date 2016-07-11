@@ -200,7 +200,9 @@
       "event_data": {
         "status": "OFF_STUDY",
         "message": "",
-        "stratum_id": "12",
+        "stratum_id": "STR17",
+        "treatment_arm_id": "APEC1621-U",
+        "treatment_arm_version": "2016-08-14",
         "molecular_id": "B-987456",
         "location": "GHU"
       }
@@ -215,7 +217,9 @@
       "event_data": {
         "status": "NO_PED_MATCH_TA_AVAILABLE",
         "message": "",
-        "stratum_id": "12",
+        "stratum_id": "STR17",
+        "treatment_arm_id": "APEC1621-U",
+        "treatment_arm_version": "2016-08-14",
         "molecular_id": "B-987456",
         "location": "GHU"
       }
@@ -230,7 +234,9 @@
       "event_data": {
         "status": "COMPASSIONATE_CARE",
         "message": "",
-        "stratum_id": "12",
+        "stratum_id": "STR17",
+        "treatment_arm_id": "APEC1621-U",
+        "treatment_arm_version": "2016-08-14",
         "molecular_id": "B-987456",
         "location": "GHU"
       }
@@ -267,7 +273,9 @@
       "event_data": {
         "status": "PROGRESSION",
         "message": "",
-        "stratum_id": "12",
+        "stratum_id": "STR17",
+        "treatment_arm_id": "APEC1621-U",
+        "treatment_arm_version": "2016-08-14",
         "molecular_id": "B-987456"
       }
     },
@@ -284,6 +292,7 @@
         "stratum_id": "STR9",
         "molecular_id": "B-987456",
         "treatment_arm_id": "APEC1621-Y",
+        "treatment_arm_version": "2016-08-14",
         "assignment_date": "2016-05-10T22:05:33+00:00"
       }
     },
