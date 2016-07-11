@@ -532,8 +532,9 @@ angular.module('dashboard.matchbox',[])
                 animateRotate: true,
                 animateScale: false,
                 responsive: true,
-                legendTemplate: '<ul><% for (var i=0; i<segments.length; i++) {%><i class="fa fa-square-o"></i> <%if(segments[i].label){%><%=segments[i].label%> : <%=segments[i].value%> patients <%}%><br><%}%></ul>'
+                legendTemplate: '<ul><% for (var i=0; i<segments.length; i++) {%><i class="fa fa-square" style="color:<%=segments[i].fillColor%>" ></i> <%if(segments[i].label){%><%=segments[i].label%> : <%=segments[i].value%> patients <%}%><br><%}%></ul>'
             };
+
 
             $scope.donutData = [
             {
