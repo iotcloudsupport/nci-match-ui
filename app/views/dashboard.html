@@ -45,7 +45,7 @@
             <div class="text-center">
                 <h4>Sequenced & Confirmed Patients with aMOI(s)</h4>
             </div>
-            <canvas id="amoiCanvas" doughnutchart options="donutOptions" ng-attr-data="donutData" legend="true" responsive=true></canvas>
+            <canvas id="amoiCanvas" doughnutchart options="donutOptions" ng-attr-data="donutData" responsive=true></canvas><!--  legend="true" -->
         </div>
     </div>
 
@@ -90,7 +90,7 @@
                                                 
                                                 <span ng-if="activity.molecular_id !== ''">Molecular ID: <strong><a ui-sref="patient({ patient_id: activity.patient_id, section: 'variant_report', molecular_id: activity.molecular_id })">{{activity.molecular_id}}</a></strong><br></span>
                                                 
-                                                <span ng-if="activity.surgical_event_id !== ''">Surgucal Event: <strong><a ui-sref="patient({ patient_id: activity.patient_id, section: 'surgical_event', surgical_event_id: activity.surgical_event_id  })">{{activity.surgical_event_id}}</a></strong><br></span>
+                                                <span ng-if="activity.surgical_event_id !== ''">Surgical Event: <strong><a ui-sref="patient({ patient_id: activity.patient_id, section: 'surgical_event', surgical_event_id: activity.surgical_event_id  })">{{activity.surgical_event_id}}</a></strong><br></span>
                                                 
                                                 <small class="text-muted">{{ activity.time | gmt }} </small>
                                             </div>
