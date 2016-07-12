@@ -93,6 +93,7 @@
         $scope.showVariantReportActions = showVariantReportActions;
         $scope.showAssignmentReportActions = showAssignmentReportActions;
         $scope.setActiveTab = setActiveTab;
+        $scope.needToDisplayReportStatus = needToDisplayReportStatus;
 
         function setActiveTab(tab) {
             $scope.activeTab = tab;
@@ -481,6 +482,7 @@
                     assignmentReport.status = 'REJECTED';
                     assignmentReport.comment = comment;
                     assignmentReport.comment_user = $scope.currentUser;
+                    assignmentReport.status_date = moment.utc(new Date()).utc();
                 }
             });
         }
@@ -514,6 +516,7 @@
                     variantReport.status = 'REJECTED';
                     variantReport.comment = comment;
                     variantReport.comment_user = $scope.currentUser;
+                    variantReport.status_date = moment.utc(new Date()).utc();
                 }
             });
         }
@@ -712,6 +715,10 @@
             } else {
                 $log.error('Unable to find Variant Report ' + molecularId + ',' + analysisId);
             }
+        }
+
+        function needToDisplayReportStatus(report) {
+            return report && report.status && report.status !== 'PENDING';  
         }
     }
 

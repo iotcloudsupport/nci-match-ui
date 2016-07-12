@@ -263,8 +263,8 @@
                                                                     <dt>File Received Date</dt>
                                                                     <dd>{{analysis.file_received_date | utc}}</dd>
 
-                                                                    <dt>{{analysis.status}} Date</dt>
-                                                                    <dd>{{analysis.status_date | utc}}</dd>
+                                                                    <dt ng-if="needToDisplayReportStatus(analysis)">{{analysis.status | titlecase}} Date</dt>
+                                                                    <dd ng-if="needToDisplayReportStatus(analysis)">{{analysis.status_date | utc}}</dd>
                                                                 </dl>
                                                             </div>
                                                             <div class="col-md-3 text-right">
@@ -386,8 +386,8 @@
                                                     <dt ng-if="currentVariantReport.comment">Comments</dt>
                                                     <dd ng-if="currentVariantReport.comment">{{currentVariantReport.comment}}<span ng-if="currentVariantReport.comment_user"> (user: {{currentVariantReport.comment_user}})</span></dd>
 
-                                                    <dt>{{currentVariantReport.status | titlecase}} Date</dt>
-                                                    <dd>{{currentVariantReport.status_date | utc}}</dd>
+                                                    <dt ng-if="needToDisplayReportStatus(currentVariantReport)">{{currentVariantReport.status | titlecase}} Date</dt>
+                                                    <dd ng-if="needToDisplayReportStatus(currentVariantReport)">{{currentVariantReport.status_date | utc}}</dd>
                                                 </dl>
                                             </div>
                                         </div>
@@ -666,9 +666,8 @@
                                                     <dt ng-if="currentAssignmentReport.comment">Comments</dt>
                                                     <dd ng-if="currentAssignmentReport.comment">{{currentAssignmentReport.comment}}<span ng-if="currentAssignmentReport.comment_user"> (user: {{currentAssignmentReport.comment_user}})</span></dd>
 
-                                                    <dt>{{currentAssignmentReport.status | titlecase}} Date</dt>
-                                                    <dd>{{currentAssignmentReport.status_date | utc}}</dd>
-
+                                                    <dt ng-if="needToDisplayReportStatus(currentAssignmentReport)">{{currentAssignmentReport.status | titlecase}} Date</dt>
+                                                    <dd ng-if="needToDisplayReportStatus(currentAssignmentReport)">{{currentAssignmentReport.status_date | utc}}</dd>
                                                 </dl>
                                             </div>
                                         </div>
@@ -856,8 +855,8 @@
                                             <dt ng-if="currentBloodVariantReport.comment">Comments</dt>
                                             <dd ng-if="currentBloodVariantReport.comment">{{currentBloodVariantReport.comment}}<span ng-if="currentBloodVariantReport.comment_user"> (user: {{currentBloodVariantReport.comment_user}})</span></dd>
 
-                                            <dt>{{currentBloodVariantReport.status | titlecase}} Date</dt>
-                                            <dd>{{currentBloodVariantReport.status_date | utc}}</dd>
+                                            <dt ng-if="needToDisplayReportStatus(currentBloodVariantReport)">{{currentBloodVariantReport | titlecase}} Date</dt>
+                                            <dd ng-if="needToDisplayReportStatus(currentBloodVariantReport)">{{currentBloodVariantReport.status_date | utc}}</dd>
                                         </dl>
                                     </div>
                                 </div>
