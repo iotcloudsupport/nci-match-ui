@@ -1,8 +1,7 @@
 (function () {
     'use strict';
 
-    angular
-        .module('d3')
+    angular.module('d3', ['d3module'])
         .directive('d3CnvChart', cnvChart);
 
     cnvChart.$inject = ['d3service', '$log', '$timeout', '$http'];

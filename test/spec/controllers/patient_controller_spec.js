@@ -1,4 +1,4 @@
-describe('Controller: Patient Details Controller', function () {
+xdescribe('Controller: Patient Details Controller', function () {
 
     'use strict'
 
@@ -320,7 +320,6 @@ describe('Controller: Patient Details Controller', function () {
                 "sent_to_cog_date": "-",
                 "received_from_cog_date": "-",
                 "molecular_id": "T-15-000078",
-                "molecular_id": "MSN34534",
                 "analysis_id": "MSN34534_v2_kjdf3-kejrt-3425-mnb34ert34f",
                 "variant_report_amois": [
                     {

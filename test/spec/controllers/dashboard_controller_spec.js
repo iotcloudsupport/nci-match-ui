@@ -1,4 +1,4 @@
-describe('Controller: dashboard Controller', function () {
+xdescribe('Controller: dashboard Controller', function () {
 
     beforeEach(module('config.matchbox', 'http.matchbox', 'dashboard.matchbox'));
 

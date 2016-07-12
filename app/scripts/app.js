@@ -29,6 +29,7 @@
         'ngDropdowns',
         'ngAnimate',
         'login_config',
+        'd3module',
         'd3'
     ]);
 })();
