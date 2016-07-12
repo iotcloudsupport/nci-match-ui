@@ -485,11 +485,11 @@
                                         <tbody>
                                             <tr ng-repeat="variant in currentVariantReport.variants.snvs_and_indels" style="cursor: auto;" role="row" class="odd">
                                                 <td ng-if="variantReportMode!=='QC'">
-                                                    <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentVariantReport.status==='PENDING'">
+                                                    <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true">
                                                     </div>
                                                 </td>
                                                 <td ng-if="variantReportMode!=='QC'">
-                                                    <a ng-if="variant.comment" href ng-click="editComment(variant, currentVariantReport.status==='PENDING')"> <i class="fa fa-file-text-o"></i></a>
+                                                    <a ng-if="variant.comment" href ng-click="editComment(variant)"> <i class="fa fa-file-text-o"></i></a>
                                                 </td>
                                                 <td>{{::variant.variant_id}}</td>
                                                 <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}<sup>({{::variant.inclusion}})</sup></td>
@@ -539,11 +539,11 @@
                                         <tbody>
                                             <tr ng-repeat="variant in currentVariantReport.variants.copy_number_variants" style="cursor: auto;" role="row" class="odd">
                                                 <td ng-if="variantReportMode!=='QC'">
-                                                    <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentVariantReport.status==='PENDING'""
+                                                    <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true">
                                                     </div>
                                                 </td>
                                                 <td ng-if="variantReportMode!=='QC'">
-                                                    <a ng-if="variant.comment" href ng-click="editComment(variant, currentVariantReport.status==='PENDING')"> <i class="fa fa-file-text-o"></i></a>
+                                                    <a ng-if="variant.comment" href ng-click="editComment(variant)"> <i class="fa fa-file-text-o"></i></a>
                                                 </td>
                                                 <td>{{variant.identifier}}</td>
                                                 <td ng-if="variantReportMode!=='QC'">{{variant.aMOI}}<sup>({{variant.inclusion}})</sup></td>
@@ -582,11 +582,11 @@
                                         <tbody>
                                             <tr ng-repeat="variant in currentVariantReport.variants.gene_fusions" style="cursor: auto;" role="row" class="odd">
                                                 <td ng-if="variantReportMode!=='QC'">
-                                                    <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentVariantReport.status==='PENDING'""
+                                                    <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true">
                                                     </div>
                                                 </td>
                                                 <td ng-if="variantReportMode!=='QC'">
-                                                    <a ng-if="variant.comment" href ng-click="editComment(variant, currentVariantReport.status==='PENDING')"> <i class="fa fa-file-text-o"></i></a>
+                                                    <a ng-if="variant.comment" href ng-click="editComment(variant)"> <i class="fa fa-file-text-o"></i></a>
                                                 </td>
                                                 <td>{{variant.identifier}}</td>
                                                 <td ng-if="variantReportMode!=='QC'">{{variant.aMOI}}<sup>({{variant.inclusion}})</sup></td>
@@ -606,8 +606,8 @@
                                     <div class="ibox-content ibox-title-no-line" ng-if="showVariantReportActions(currentVariantReport)">
                                         <div class="row">
                                             <div class="col-md-12 text-center">
-                                                <button class="btn btn-danger" title="Reject this Report" ng-click="rejectVariantReport(currentVariantReport)">REJECT</button>
-                                                <button class="btn btn-success" title="Confirm this Report" ng-click="confirmVariantReport(currentVariantReport)">CONFIRM</button>
+                                                <button class="btn btn-danger" title="Reject this Report" ng-click="rejectVariantReport()">REJECT</button>
+                                                <button class="btn btn-success" title="Confirm this Report" ng-click="confirmVariantReport()">CONFIRM</button>
                                             </div>
                                         </div>
                                     </div>
@@ -908,11 +908,11 @@
                                 <tbody>
                                     <tr ng-repeat="variant in currentBloodVariantReport.variants.snvs_and_indels" style="cursor: auto;" role="row" class="odd">
                                         <td ng-if="variantReportMode!=='QC'">
-                                            <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentBloodVariantReport.status==='PENDING'""
+                                            <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true">
                                             </div>
                                         </td>
                                         <td ng-if="variantReportMode!=='QC'">
-                                            <a ng-if="variant.comment" href ng-click="editComment(variant, currentBloodVariantReport.status==='PENDING')"> <i class="fa fa-file-text-o"></i></a>
+                                            <a ng-if="variant.comment" href ng-click="editComment(variant)"> <i class="fa fa-file-text-o"></i></a>
                                         </td>
                                         <td>{{variant.id}}</td>
                                         <td ng-if="variantReportMode!=='QC'">{{variant.aMOI}}<sup>({{variant.inclusion}})</sup></td>
@@ -963,11 +963,11 @@
                                 <tbody>
                                     <tr ng-repeat="variant in currentBloodVariantReport.variants.copy_number_variants" style="cursor: auto;" role="row" class="odd">
                                         <td ng-if="variantReportMode!=='QC'">
-                                            <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentBloodVariantReport.status==='PENDING'""
+                                            <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true">
                                             </div>
                                         </td>
                                         <td ng-if="variantReportMode!=='QC'">
-                                            <a ng-if="variant.comment" href ng-click="editComment(variant, currentBloodVariantReport.status==='PENDING')"> <i class="fa fa-file-text-o"></i></a>
+                                            <a ng-if="variant.comment" href ng-click="editComment(variant)"> <i class="fa fa-file-text-o"></i></a>
                                         </td>
                                         <td>{{variant.id}}</td>
                                         <td ng-if="variantReportMode!=='QC'">{{variant.aMOI}}<sup>({{variant.inclusion}})</sup></td>
@@ -1006,11 +1006,11 @@
                                 <tbody>
                                     <tr ng-repeat="variant in currentBloodVariantReport.variants.gene_fusions" style="cursor: auto;" role="row" class="odd">
                                         <td ng-if="variantReportMode!=='QC'">
-                                            <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentBloodVariantReport.status==='PENDING'""
+                                            <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true">
                                             </div>
                                         </td>
                                         <td ng-if="variantReportMode!=='QC'">
-                                            <a ng-if="variant.comment" href ng-click="editComment(variant, currentBloodVariantReport.status==='PENDING')"> <i class="fa fa-file-text-o"></i></a>
+                                            <a ng-if="variant.comment" href ng-click="editComment(variant)"> <i class="fa fa-file-text-o"></i></a>
                                         </td>
                                         <td>{{variant.id}}</td>
                                         <td ng-if="variantReportMode!=='QC'">{{variant.aMOI}}<sup>({{variant.inclusion}})</sup></td>
@@ -1030,8 +1030,8 @@
                             <div class="ibox-content ibox-title-no-line" ng-if="showVariantReportActions(bloodVariantReport)">
                                 <div class="row">
                                     <div class="col-md-12 text-center">
-                                        <button class="btn btn-danger" title="Reject this Report" ng-click="rejectVariantReport(bloodVariantReport)">REJECT</button>
-                                        <button class="btn btn-success" title="Confirm this Report" ng-click="confirmVariantReport(bloodVariantReport)">CONFIRM</button>
+                                        <button class="btn btn-danger" title="Reject this Report" ng-click="rejectVariantReport()">REJECT</button>
+                                        <button class="btn btn-success" title="Confirm this Report" ng-click="confirmVariantReport()">CONFIRM</button>
                                     </div>
                                 </div>
                             </div>
