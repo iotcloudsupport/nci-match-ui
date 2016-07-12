@@ -20,4 +20,4 @@ ADD envconfig/login_config.js.* /usr/local/apache2/match/
 #RUN ls /usr/local/apache2/match/app/scripts/env/
 
 #CMD httpd-foreground -C 'DocumentRoot /usr/local/apache2/match/app/'
-CMD ls /usr/local/apache2/match/ && ls -alt /usr/local/apache2/match/app/scripts/env/ && /usr/local/apache2/match/setenv.sh && ls -alth /usr/local/apache2/match/app/scripts/env/ && httpd-foreground -C 'DocumentRoot /usr/local/apache2/match/app/'
+CMD /usr/local/apache2/match/setenv.sh && sleep 3 && httpd-foreground -C 'DocumentRoot /usr/local/apache2/match/app/'
