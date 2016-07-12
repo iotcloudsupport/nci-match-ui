@@ -17,8 +17,9 @@
             vm.confirm = function () {
                 if (typeof vm.promptOnlyIf !== 'undefined') {
                     var promptIf = !!vm.promptOnlyIf;
+                    var isChecked = !!vm.isChecked;
 
-                    if (!!vm.isChecked !== promptIf) {
+                    if (isChecked !== promptIf) {
                         vm.toggle(null);
                         return;
                     }
@@ -36,6 +37,9 @@
                         },
                         message: function () {
                             return vm.confirmMessage;
+                        },
+                        enabled: function () {
+                            return vm.enabled;
                         }
                     }
                 });
@@ -48,10 +52,10 @@
 
         var template = '<div class="stacked-container">\
                     <div class="stacked-front">\
-                        <button type="input" ng-click="vm.confirm()"></button>\
+                        <button type="input" ng-click="vm.confirm()" ng-disabled="!vm.enabled"></button>\
                     </div>\
                     <div class="stacked-back">\
-                        <input type="checkbox" tabindex="-1" ng-checked="vm.isChecked">\
+                        <input type="checkbox" tabindex="-1" ng-checked="vm.isChecked" ng-disabled="!vm.enabled">\
                     </div>\
                 </div>';
 
@@ -62,7 +66,8 @@
                 isChecked: '=',
                 reason: '=',
                 promptOnlyIf: '=',
-                comment: '='
+                comment: '=',
+                enabled: '='
             },
             restrict: 'A',
             template: template,

@@ -30,7 +30,7 @@
         $scope.patient_id = '';
         $scope.warningResult = false;
 
-        $scope.confirmTitle = 'Confirmation Changed';
+        $scope.confirmTitle = 'Confirmation Change Comments';
         $scope.confirmMessage = 'Please enter a reason:';
 
         $scope.surgicalEventLabel = 'Latest';
@@ -394,7 +394,7 @@
             // $log.debug(errorMessage);
         }
 
-        function editComment(variant) {
+        function editComment(variant, isEnabled) {
             $log.debug('Variant = ' + variant);
 
             var modalInstance = $uibModal.open({
@@ -409,7 +409,10 @@
                         return $scope.confirmTitle;
                     },
                     message: function () {
-                        return $scope.confirmMessage;
+                        return isEnabled ? $scope.confirmMessage : '';
+                    },
+                    enabled: function() {
+                        return isEnabled;
                     }
                 }
             });
