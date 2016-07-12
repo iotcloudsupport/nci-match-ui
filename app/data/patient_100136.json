@@ -418,8 +418,8 @@
             "event_name": "Event Name 5",
             "event_type": "biopsy.pathology",
             "event_message": "PATHOLOGY_CONFIRMATION",
-            "status": "Y",
             "event_data": {
+                "status": "CONFIRMED",
                 "molecular_id": "B-987456",
                 "reported_date": "2016-05-12T22:04:33+00:00"
             }
