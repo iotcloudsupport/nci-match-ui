@@ -4,7 +4,13 @@
         .factory('matchApiMock', function ($http, matchConfig, $q, $log) {
             return {
                 loadPatient: loadPatient,
-                loadPatientList: loadPatientList
+                loadPatientList: loadPatientList,
+                loadDashboardStatistics: loadDashboardStatistics,
+                loadTreatmentArmAccrual: loadTreatmentArmAccrual,
+                loadChartjsDonutChart: loadChartjsDonutChart,
+                loadTissueVariantReportsList: loadTissueVariantReportsList,
+                loadBloodVariantReportsList: loadBloodVariantReportsList,
+                loadPatientPendingAssignmentReportsList: loadPatientPendingAssignmentReportsList
             }
 
             function loadPatient(id) {
@@ -33,7 +39,7 @@
             }
 
             function loadTreatmentArmAccrual() {
-                return $http.get('data/treatment_arm_accrual.json');
+                return $http.get('data/dashboard_treatment_arm_accrual.json');
             }
             function loadChartjsDonutChart(){
                 return $http.get('data/dashboard_donut_chart.json');
