@@ -138,229 +138,93 @@
                 });
             
         }
-        // TODO: ED start here with mock
+
         function loadChartjsDonutChartData() {
-            this.donutOptions = {
-                segmentShowStroke: true,
-                segmentStrokeColor: "#fff",
-                segmentStrokeWidth: 2,
-                percentageInnerCutout: 45, // This is 0 for Pie charts
-                animationSteps: 100,
-                animationEasing: "easeOutBounce",
-                animateRotate: true,
-                animateScale: false,
-                responsive: true,
-                legend: {
-                    labels: {
-                        display: true,
-                        fontColor: 'rgb(255, 99, 132)'
-                    }
-                }
-            };
+            matchApiMock
+                .loadChartjsDonutChart()
+                .then(function (d) {
+                    var aMoiValues = d.data.aMoiValues;
+                    var aMoiLabels = ['0 aMOI', '1 aMOI', '2 aMOI', '3 aMOI', '4 aMOI', '5+ aMOI'];
+                    var aMoiHighlight = "#000088";
 
-                aMoiLabels = ['0 aMOI', '1 aMOI', '2 aMOI', '3 aMOI', '4 aMOI', '5+ aMOI'];
-                aMoiValues = [4, 35, 45, 9, 6, 21]; //[4, 10, 14, 6, 10, 16]; //[45, 21, 4, 35, 9, 6];
-                aMoiHighlight = "#000088"; //"#dedede";
-
-                $scope.donutOptions = {
-                    segmentShowStroke: true,
-                    segmentStrokeColor: "#fff",
-                    segmentStrokeWidth: 2,
-                    percentageInnerCutout: 45, // This is 0 for Pie charts
-                    animationSteps: 100,
-                    animationEasing: "easeOutBounce",
-                    animateRotate: true,
-                    animateScale: false,
-                    responsive: true //,
-                    //legendTemplate: '<ul><% for (var i=0; i<segments.length; i++) {%><i class="fa fa-square" style="color: <%=segments[i].fillColor%>" ></i> <%if(segments[i].label){%><%=segments[i].label%> : <%=segments[i].value%> patients <%}%><br><%}%></ul>'
-                };
+                    $scope.donutOptions = {
+                        segmentShowStroke: true,
+                        segmentStrokeColor: "#fff",
+                        segmentStrokeWidth: 2,
+                        percentageInnerCutout: 45, // This is 0 for Pie charts
+                        animationSteps: 100,
+                        animationEasing: "easeOutBounce",
+                        animateRotate: true,
+                        animateScale: false,
+                        responsive: true //,
+                        //legendTemplate: '<ul><% for (var i=0; i<segments.length; i++) {%><i class="fa fa-square" style="color: <%=segments[i].fillColor%>" ></i> <%if(segments[i].label){%><%=segments[i].label%> : <%=segments[i].value%> patients <%}%><br><%}%></ul>'
+                    };
 
 
-                $scope.donutData = [
-                    {
-                        value: aMoiValues[0],
-                        color: "#23c6c8",
-                        highlight: aMoiHighlight,
-                        label: aMoiLabels[0]
-                    },
-                    {
-                        value: aMoiValues[1],
-                        color: "#1c84c6",
-                        highlight: aMoiHighlight,
-                        label: aMoiLabels[1]
-                    },
-                    {
-                        value: aMoiValues[2],
-                        color: "#18a689", //"#ab0102",
-                        highlight: aMoiHighlight,
-                        label: aMoiLabels[2]
-                    },
-                    {
-                        value: aMoiValues[3],
-                        color: "#f8ac59",
-                        highlight: aMoiHighlight,
-                        label: aMoiLabels[3]
-                    },
-                    {
-                        value: aMoiValues[4],
-                        color: "#707070",
-                        highlight: aMoiHighlight,
-                        label: aMoiLabels[4]
-                    },
-                    {
-                        value: aMoiValues[5],
-                        color: "#cfcfcf",
-                        highlight: aMoiHighlight,
-                        label: aMoiLabels[5]
-                    }
-                ];
-
+                    $scope.donutData = [
+                        {
+                            value: aMoiValues[0],
+                            color: "#23c6c8",
+                            highlight: aMoiHighlight,
+                            label: aMoiLabels[0]
+                        },
+                        {
+                            value: aMoiValues[1],
+                            color: "#1c84c6",
+                            highlight: aMoiHighlight,
+                            label: aMoiLabels[1]
+                        },
+                        {
+                            value: aMoiValues[2],
+                            color: "#18a689", //"#ab0102",
+                            highlight: aMoiHighlight,
+                            label: aMoiLabels[2]
+                        },
+                        {
+                            value: aMoiValues[3],
+                            color: "#f8ac59",
+                            highlight: aMoiHighlight,
+                            label: aMoiLabels[3]
+                        },
+                        {
+                            value: aMoiValues[4],
+                            color: "#707070",
+                            highlight: aMoiHighlight,
+                            label: aMoiLabels[4]
+                        },
+                        {
+                            value: aMoiValues[5],
+                            color: "#cfcfcf",
+                            highlight: aMoiHighlight,
+                            label: aMoiLabels[5]
+                        }
+                    ]; 
+                });
 
         }
         
         function loadTissueVariantReportsList() {
-            $scope.pendingTissueVariantReportsMockData = [
-                {
-                    'patient_id': '100025',
-                    'molecular_id': 'MOL001_1',
-                    'analysis_id': 'SAM001_02',
-                    'clia_lab': 'MoCha',
-                    'specimen_received_date': 1421162969643,
-                    'variant_report_received_date': 1421162969643,
-                    'days_pending': '3'
-
-                },
-                {
-                    'patient_id': '100025',
-                    'molecular_id': 'MOL001_1',
-                    'analysis_id': 'SAM001_02',
-                    'clia_lab': 'MDA',
-                    'specimen_received_date': 1421163069643,
-                    'variant_report_received_date': 1421163269643,
-                    'days_pending': '3'
-
-                }
-            ];
-
-
-                /*matchApi
-                 .getTissueVariantReports()
-                 .then(function(d) {
-                 $scope.pendingTissueVariantReportList = d.data;
-                 });*/
-                angular.forEach($scope.pendingTissueVariantReportsMockData, function (value) {
-                    var tissueReport = {};
-                    tissueReport.patient_id = value.patient_id;
-                    tissueReport.molecular_id = value.molecular_id;
-                    tissueReport.analysis_id = value.analysis_id;
-                    tissueReport.clia_lab = value.clia_lab;
-                    tissueReport.specimen_received_date = value.specimen_received_date;
-                    tissueReport.variant_report_received_date = value.variant_report_received_date;
-                    tissueReport.days_pending = value.days_pending;
-                    $scope.pendingTissueVariantReportList.push(tissueReport);
+            matchApiMock
+                .loadTissueVariantReportsList()
+                .then(function (d) {
+                    $scope.pendingTissueVariantReportList = d.data;
                 });
-
-            
         }
 
         function loadBloodVariantReportsList() {
-            $scope.pendingBloodVariantReportsMockData = [
-                {
-                    'patient_id': '100025',
-                    'molecular_id': 'MOL001_1',
-                    'analysis_id': 'SAM001_02',
-                    'clia_lab': 'MoCha',
-                    'specimen_received_date': 1421162969643,
-                    'variant_report_received_date': 1421162969643,
-                    'approved': false,
-                    'days_pending': '1'
-
-                },
-                {
-                    'patient_id': '100025',
-                    'molecular_id': 'MOL001_1',
-                    'analysis_id': 'SAM001_02',
-                    'clia_lab': 'MDA',
-                    'specimen_received_date': 1421163069643,
-                    'variant_report_received_date': 1421163269643,
-                    'approved': false,
-                    'days_pending': '3'
-
-                },
-                {
-                    'patient_id': '100025',
-                    'molecular_id': 'MOL001_1',
-                    'analysis_id': 'SAM001_02',
-                    'clia_lab': 'MoCha',
-                    'specimen_received_date': 1421162969643,
-                    'variant_report_received_date': 1421162969643,
-                    'approved': false,
-                    'days_pending': '8'
-
-                },
-                {
-                    'patient_id': '100025',
-                    'molecular_id': 'MOL001_1',
-                    'analysis_id': 'SAM001_02',
-                    'clia_lab': 'MDA',
-                    'specimen_received_date': 1421163069643,
-                    'variant_report_received_date': 1421163269643,
-                    'approved': false,
-                    'days_pending': '15'
-
-                }
-            ];
-
-                /*matchApi
-                 .getBloodVariantReports()
-                 .then(function(d) {
-                 $scope.pendingBloodVariantReportList = d.data;
-                 });*/
-                angular.forEach($scope.pendingBloodVariantReportsMockData, function (value) {
-                    var bloodReport = {};
-                    bloodReport.patient_id = value.patient_id;
-                    bloodReport.molecular_id = value.molecular_id;
-                    bloodReport.analysis_id = value.analysis_id;
-                    bloodReport.clia_lab = value.clia_lab;
-                    bloodReport.specimen_received_date = value.specimen_received_date;
-                    bloodReport.variant_report_received_date = value.variant_report_received_date;
-                    bloodReport.days_pending = value.days_pending;
-                    $scope.pendingBloodVariantReportList.push(bloodReport);
+            matchApiMock
+                .loadBloodVariantReportsList()
+                .then(function(d) {
+                    $scope.pendingBloodVariantReportList = d.data;
                 });
-
         }
 
         function loadPatientPendingAssignmentReportsList() {
-            $scope.pendingAssignmentReportsMockData = [
-                {
-                    'patient_id': '100025',
-                    'molecular_id': 'MOL001_1',
-                    'analysis_id': 'SAM001_02',
-                    'disease': 'Breast Cancer',
-                    'treatment_arm': 'APEC1621-U',
-                    'stratum': 'STR1',
-                    'assignment_date': 1423162969643,
-                    'hours_pending': '3'
-                }
-            ];
-
-            /*matchApi
-             .getPatientPendingAssignmentReports()
-             .then(function(d) {
-             $scope.pendingAssignmentReportList = d.data;
-             });*/
-            angular.forEach($scope.pendingAssignmentReportsMockData, function (value) {
-                var assignmentReport = {};
-                assignmentReport.patient_id = value.patient_id;
-                assignmentReport.molecular_id = value.molecular_id;
-                assignmentReport.analysis_id = value.analysis_id;
-                assignmentReport.disease = value.disease;
-                assignmentReport.treatment_arm = value.treatment_arm;
-                assignmentReport.stratum = value.stratum;
-                assignmentReport.assignment_date = value.assignment_date;
-                assignmentReport.hours_pending = value.hours_pending;
-                $scope.pendingAssignmentReportList.push(assignmentReport);
-            });
+            matchApiMock
+                .loadPatientPendingAssignmentReportsList()
+                .then(function(d) {
+                    $scope.pendingAssignmentReportList = d.data;
+                });
         }
 
         function setupActivityList(listSize, entryMax) {
