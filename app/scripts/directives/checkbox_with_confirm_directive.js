@@ -10,6 +10,8 @@
             var vm = this;
 
             vm.toggle = function (comment) {
+                if (!vm.enabled)
+                    return;
                 vm.isChecked = !vm.isChecked;
                 vm.comment = comment;
             };
@@ -48,10 +50,10 @@
 
         var template = '<div class="stacked-container">\
                     <div class="stacked-front">\
-                        <button type="input" ng-click="vm.confirm()"></button>\
+                        <button type="input" ng-click="vm.confirm()" ng-disabled="!vm.enabled"></button>\
                     </div>\
                     <div class="stacked-back">\
-                        <input type="checkbox" tabindex="-1" ng-checked="vm.isChecked">\
+                        <input type="checkbox" tabindex="-1" ng-checked="vm.isChecked" ng-disabled="!vm.enabled">\
                     </div>\
                 </div>';
 
@@ -62,7 +64,8 @@
                 isChecked: '=',
                 reason: '=',
                 promptOnlyIf: '=',
-                comment: '='
+                comment: '=',
+                enabled: '='
             },
             restrict: 'A',
             template: template,

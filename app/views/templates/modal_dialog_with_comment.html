@@ -5,11 +5,14 @@
     <div class="modal-body">
         <div class="form-group">
             <label for="comment">{{ message }}</label>
-            <input type="textarea" name="comment" ng-model="comment" class="form-control" autofocus="autofocus">
+            <input type="textarea" name="comment" ng-model="comment" class="form-control" autofocus="autofocus" ng-disabled="!enabled">
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-default" type="button" ng-click="ok()">OK</button>
-        <button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-default" type="button" ng-click="ok()" ng-if="enabled">OK</button>
+        <button class="btn btn-default" type="button" ng-click="cancel()">
+            <span ng-if="enabled">Cancel</span>
+            <span ng-if="!enabled">Close</span>
+        </button>
     </div>
 <!--</script>-->

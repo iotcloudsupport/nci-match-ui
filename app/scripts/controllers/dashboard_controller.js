@@ -1,5 +1,5 @@
-angular.module('dashboard.matchbox',[])
-    .controller('DashboardStatisticsController', function( $scope, workflowApi, store ) {
+angular.module('dashboard.matchbox', [])
+    .controller('DashboardStatisticsController', function ($scope, workflowApi, store) {
         $scope.lastUpdated = (new Date()).getTime();
         $scope.name = 'MATCHBox User';
         $scope.name = setName();
@@ -24,10 +24,10 @@ angular.module('dashboard.matchbox',[])
             return name;
         }
 
-        $scope.loadDashboardStatistics = function() {
+        $scope.loadDashboardStatistics = function () {
             workflowApi
                 .getDashboardStatistcs()
-                .then(function(d) {
+                .then(function (d) {
                     $scope.numberOfPatients = d.data.number_of_patients;
                     $scope.numberOfScreenedPatients = d.data.number_of_screened_patients;
                     $scope.numberOfPatientsWithTreatment = d.data.number_of_patients_with_treatment;
@@ -45,7 +45,7 @@ angular.module('dashboard.matchbox',[])
         $scope.numberOfPendingTissueVariantReports = 1;
         $scope.numberOfPendingBloodVariantReports = 1;
     })
-    .controller('DashboardPendingReviewController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, workflowApi, reportApi ) {
+    .controller('DashboardPendingReviewController', function ($scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, workflowApi, reportApi) {
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(25);
         this.dtOptions = DTOptionsBuilder.newOptions()
@@ -98,7 +98,7 @@ angular.module('dashboard.matchbox',[])
                 'clia_lab': 'MoCha',
                 'specimen_received_date': 1421162969643,
                 'variant_report_received_date': 1421162969643,
-                'approved' : false,
+                'approved': false,
                 'days_pending': '1'
 
             },
@@ -109,7 +109,7 @@ angular.module('dashboard.matchbox',[])
                 'clia_lab': 'MDA',
                 'specimen_received_date': 1421163069643,
                 'variant_report_received_date': 1421163269643,
-                'approved' : false,
+                'approved': false,
                 'days_pending': '3'
 
             },
@@ -120,7 +120,7 @@ angular.module('dashboard.matchbox',[])
                 'clia_lab': 'MoCha',
                 'specimen_received_date': 1421162969643,
                 'variant_report_received_date': 1421162969643,
-                'approved' : false,
+                'approved': false,
                 'days_pending': '8'
 
             },
@@ -131,7 +131,7 @@ angular.module('dashboard.matchbox',[])
                 'clia_lab': 'MDA',
                 'specimen_received_date': 1421163069643,
                 'variant_report_received_date': 1421163269643,
-                'approved' : false,
+                'approved': false,
                 'days_pending': '15'
 
             }
@@ -143,20 +143,20 @@ angular.module('dashboard.matchbox',[])
                 'molecular_id': 'MOL001_1',
                 'analysis_id': 'SAM001_02',
                 'disease': 'Breast Cancer',
-                'treatment_arm' : 'APEC1621-U',
-                'stratum' : 'STR1',
+                'treatment_arm': 'APEC1621-U',
+                'stratum': 'STR1',
                 'assignment_date': 1423162969643,
                 'hours_pending': '3'
             }
         ];
 
-        $scope.loadPatientPendingAssignmentReportsList = function() {
+        $scope.loadPatientPendingAssignmentReportsList = function () {
             /*matchApi
                 .getPatientPendingAssignmentReports()
                 .then(function(d) {
                     $scope.pendingAssignmentReportList = d.data;
                 });*/
-            angular.forEach($scope.pendingAssignmentReportsMockData, function(value) {
+            angular.forEach($scope.pendingAssignmentReportsMockData, function (value) {
                 var assignmentReport = {};
                 assignmentReport.patient_id = value.patient_id;
                 assignmentReport.molecular_id = value.molecular_id;
@@ -169,14 +169,14 @@ angular.module('dashboard.matchbox',[])
                 $scope.pendingAssignmentReportList.push(assignmentReport);
             });
         };
-        
-        $scope.loadTissueVariantReportsList = function() {
+
+        $scope.loadTissueVariantReportsList = function () {
             /*matchApi
                 .getTissueVariantReports()
                 .then(function(d) {
                     $scope.pendingTissueVariantReportList = d.data;
                 });*/
-            angular.forEach($scope.pendingTissueVariantReportsMockData, function(value) {
+            angular.forEach($scope.pendingTissueVariantReportsMockData, function (value) {
                 var tissueReport = {};
                 tissueReport.patient_id = value.patient_id;
                 tissueReport.molecular_id = value.molecular_id;
@@ -188,14 +188,14 @@ angular.module('dashboard.matchbox',[])
                 $scope.pendingTissueVariantReportList.push(tissueReport);
             });
         };
-        
-        $scope.loadBloodVariantReportsList = function() {
+
+        $scope.loadBloodVariantReportsList = function () {
             /*matchApi
                 .getBloodVariantReports()
                 .then(function(d) {
                     $scope.pendingBloodVariantReportList = d.data;
                 });*/
-            angular.forEach($scope.pendingBloodVariantReportsMockData, function(value) {
+            angular.forEach($scope.pendingBloodVariantReportsMockData, function (value) {
                 var bloodReport = {};
                 bloodReport.patient_id = value.patient_id;
                 bloodReport.molecular_id = value.molecular_id;
@@ -209,7 +209,7 @@ angular.module('dashboard.matchbox',[])
         }
 
     })
-    .controller('DashboardActivityFeedController', function( $scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, reportApi ) {
+    .controller('DashboardActivityFeedController', function ($scope, DTOptionsBuilder, DTColumnDefBuilder, matchApi, reportApi) {
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(25);
         this.dtOptions = DTOptionsBuilder.newOptions()
@@ -256,9 +256,6 @@ angular.module('dashboard.matchbox',[])
                 "pic": $scope.icons[4],
                 "status": "activity-feed-icon",
                 "patient_id": '100025',
-                "treatment_arm_id": '',
-                "molecular_id": '',
-                "surgical_event_id": '',
                 "time": 1421175969643,
                 "age": '3m',
                 "displayName": $scope.message[0]
@@ -267,10 +264,7 @@ angular.module('dashboard.matchbox',[])
                 "pic": $scope.icons[2],
                 "status": "activity-feed-icon",
                 "patient_id": '',
-                "treatment_arm_id": 'APEC1621-A',
-                "version": "2016-03-17",
-                "molecular_id": '',
-                "surgical_event_id": '',
+                "treatment_arm": { "name": "APEC1621-A", "version": "2016-03-17", "stratum": "STR1" },
                 "time": 1421175969643,
                 "age": '3m',
                 "displayName": $scope.message[4]
@@ -279,7 +273,6 @@ angular.module('dashboard.matchbox',[])
                 "pic": $scope.icons[3],
                 "status": "activity-feed-icon",
                 "patient_id": '100025',
-                "treatment_arm_id": '',
                 "molecular_id": 'MOL001_1',
                 "surgical_event_id": 'SUREVT002',
                 "time": 1421171969643,
@@ -290,9 +283,7 @@ angular.module('dashboard.matchbox',[])
                 "pic": $scope.icons[2],
                 "status": "activity-feed-icon",
                 "patient_id": '',
-                "treatment_arm_id": 'APEC1621-Z',
-                "molecular_id": '',
-                "surgical_event_id": '',
+                "treatment_arm": { "name": "APEC1621-Z", "version": "2016-03-17", "stratum": "STR1" },
                 "time": 1421169969643,
                 "age": '5m',
                 "displayName": $scope.message[5]
@@ -301,7 +292,6 @@ angular.module('dashboard.matchbox',[])
                 "pic": $scope.icons[3],
                 "status": "activity-feed-icon",
                 "patientId": '100136',
-                "treatment_arm_id": '',
                 "molecular_id": 'MOL001_1',
                 "surgical_event_id": 'SUREVT002',
                 "time": 1421165969643,
@@ -312,7 +302,6 @@ angular.module('dashboard.matchbox',[])
                 "pic": $scope.icons[1],
                 "status": "activity-feed-icon",
                 "patient_id": '100025',
-                "treatment_arm_id": '',
                 "molecular_id": 'MOL001_1',
                 "surgical_event_id": 'SUREVT002',
                 "time": 1421162969643,
@@ -323,10 +312,7 @@ angular.module('dashboard.matchbox',[])
                 "pic": $scope.icons[2],
                 "status": "activity-feed-icon",
                 "patient_id": '',
-                "treatment_arm_id": 'APEC1621-A',
-                "version": "2016-03-17",
-                "molecular_id": '',
-                "surgical_event_id": '',
+                "treatment_arm": { "name": "APEC1621-A", "version": "2016-03-17", "stratum": "STR1" },
                 "time": 1421162969643,
                 "age": '5h',
                 "displayName": $scope.message[3]
@@ -335,7 +321,6 @@ angular.module('dashboard.matchbox',[])
                 "pic": $scope.icons[3],
                 "status": "activity-feed-icon",
                 "patient_id": '100025',
-                "treatment_arm_id": '',
                 "molecular_id": 'MOL001_1',
                 "surgical_event_id": 'SUREVT002',
                 "time": 1421160969643,
@@ -346,9 +331,6 @@ angular.module('dashboard.matchbox',[])
                 "pic": $scope.icons[4],
                 "status": "activity-feed-icon",
                 "patientId": '100025',
-                "treatment_arm_id": '',
-                "molecular_id": '',
-                "surgical_event_id": '',
                 "time": 1421155768643,
                 "age": '1y',
                 "displayName": $scope.message[0]
@@ -357,7 +339,6 @@ angular.module('dashboard.matchbox',[])
                 "pic": $scope.icons[1],
                 "status": "activity-feed-icon",
                 "patientId": '100025',
-                "treatment_arm_id": '',
                 "molecular_id": 'MOL001_1',
                 "surgical_event_id": '125',
                 "time": 1421162969643,
@@ -368,7 +349,6 @@ angular.module('dashboard.matchbox',[])
                 "pic": $scope.icons[3],
                 "status": "activity-feed-icon",
                 "patient_id": '100025',
-                "treatment_arm_id": '',
                 "molecular_id": 'MOL001_1',
                 "surgical_event_id": 'SUREVT002',
                 "time": 1421160969643,
@@ -379,8 +359,6 @@ angular.module('dashboard.matchbox',[])
                 "pic": $scope.icons[4],
                 "status": "activity-feed-icon",
                 "patient_id": '100025',
-                "treatment_arm_id": '',
-                "molecular_id": '',
                 "surgical_event_id": 'SUREVT002',
                 "time": 1421155768643,
                 "age": '1y',
@@ -390,8 +368,6 @@ angular.module('dashboard.matchbox',[])
                 "pic": $scope.icons[4],
                 "status": "activity-feed-icon",
                 "patient_id": '100025',
-                "treatment_arm_id": '',
-                "molecular_id": '',
                 "surgical_event_id": 'SUREVT002',
                 "time": 1421155768643,
                 "age": '1y',
@@ -403,7 +379,7 @@ angular.module('dashboard.matchbox',[])
             for (var i = 0; i < entryMax; i++) {
                 $scope.activityList.push($scope.activityListData[listSize + i]);
                 //console.log($scope.activityList);
-                
+
             }
             //console.log($scope.activityList);
         }
@@ -425,7 +401,7 @@ angular.module('dashboard.matchbox',[])
             }
         };*/
 
-        $scope.loadActivityList = function() {
+        $scope.loadActivityList = function () {
             var listSize = $scope.activityList.length;
             setupActivityList(listSize, 10);
         };
@@ -461,7 +437,7 @@ angular.module('dashboard.matchbox',[])
         };*/
     })
 
-    .controller('DashboardTreatmentArmAccrualChartController', function( $scope, reportApi ) {
+    .controller('DashboardTreatmentArmAccrualChartController', function ($scope, reportApi) {
 
         this.donutOptions = {
             segmentShowStroke: true,
@@ -491,13 +467,13 @@ angular.module('dashboard.matchbox',[])
             barValueSpacing: 5,
             barDatasetSpacing: 1
         };
-        
-        $scope.setCanvasHeight = function(elementName, heightVal) {
+
+        $scope.setCanvasHeight = function (elementName, heightVal) {
             var ctx = $(elementName)[0].getContext('2d');
             ctx.canvas.height = heightVal;
         }
 
-        $scope.loadTreatmentArmAccrual = function() {
+        $scope.loadTreatmentArmAccrual = function () {
 
             armNames = ['APEC1621-Q', 'APEC1621-B', 'APEC1621-H', 'APEC1621-U', 'APEC1621-E'];
             armValues = [6, 3, 2, 2, 1];
@@ -517,7 +493,7 @@ angular.module('dashboard.matchbox',[])
             };
         }
 
-        $scope.loadChartjsDonutChart = function() {
+        $scope.loadChartjsDonutChart = function () {
             aMoiLabels = ['0 aMOI', '1 aMOI', '2 aMOI', '3 aMOI', '4 aMOI', '5+ aMOI'];
             aMoiValues = [4, 35, 45, 9, 6, 21]; //[4, 10, 14, 6, 10, 16]; //[45, 21, 4, 35, 9, 6];
             aMoiHighlight = "#000088"; //"#dedede";
@@ -537,43 +513,43 @@ angular.module('dashboard.matchbox',[])
 
 
             $scope.donutData = [
-            {
-                value: aMoiValues[0],
-                color: "#23c6c8",
-                highlight: aMoiHighlight,
-                label: aMoiLabels[0]
-            },
-            {
-                value: aMoiValues[1],
-                color: "#1c84c6",
-                highlight: aMoiHighlight,
-                label: aMoiLabels[1]
-            },
-            {
-                value: aMoiValues[2],
-                color: "#18a689", //"#ab0102",
-                highlight: aMoiHighlight,
-                label: aMoiLabels[2]
-            },
-            {
-                value: aMoiValues[3],
-                color: "#f8ac59",
-                highlight: aMoiHighlight,
-                label: aMoiLabels[3]
-            },
-            {
-                value: aMoiValues[4],
-                color: "#707070",
-                highlight: aMoiHighlight,
-                label: aMoiLabels[4]
-            },
-            {
-                value: aMoiValues[5],
-                color: "#cfcfcf",
-                highlight: aMoiHighlight,
-                label: aMoiLabels[5]
-            }
+                {
+                    value: aMoiValues[0],
+                    color: "#23c6c8",
+                    highlight: aMoiHighlight,
+                    label: aMoiLabels[0]
+                },
+                {
+                    value: aMoiValues[1],
+                    color: "#1c84c6",
+                    highlight: aMoiHighlight,
+                    label: aMoiLabels[1]
+                },
+                {
+                    value: aMoiValues[2],
+                    color: "#18a689", //"#ab0102",
+                    highlight: aMoiHighlight,
+                    label: aMoiLabels[2]
+                },
+                {
+                    value: aMoiValues[3],
+                    color: "#f8ac59",
+                    highlight: aMoiHighlight,
+                    label: aMoiLabels[3]
+                },
+                {
+                    value: aMoiValues[4],
+                    color: "#707070",
+                    highlight: aMoiHighlight,
+                    label: aMoiLabels[4]
+                },
+                {
+                    value: aMoiValues[5],
+                    color: "#cfcfcf",
+                    highlight: aMoiHighlight,
+                    label: aMoiLabels[5]
+                }
             ];
         }
     })
-;
+    ;
