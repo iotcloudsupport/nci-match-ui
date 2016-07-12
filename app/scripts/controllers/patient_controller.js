@@ -95,6 +95,7 @@
         $scope.setActiveTab = setActiveTab;
         $scope.needToDisplayReportStatus = needToDisplayReportStatus;
         $scope.needToDisplayCbnaWarning = needToDisplayCbnaWarning;
+        $scope.getNewFileButtonClass = getNewFileButtonClass;
 
         function setActiveTab(tab) {
             $scope.activeTab = tab;
@@ -541,6 +542,14 @@
             } catch (error) {
                 return vm.disabledFileButtonClass;
             }
+        }
+
+        function getNewFileButtonClass(shipment, analisys) {
+            $log.debug(analisys);
+            
+            return (analisys && analisys.status && analisys.status === 'PENDING') ?
+                vm.enabledFileButtonClass :
+                vm.disabledFileButtonClass;
         }
 
         function loadVariantReportChart() {
