@@ -42,21 +42,12 @@
 
     function utc() {
         return function (date) {
-            if (date===null) {
-                return '-';
-            }
-
-            if (date==='') {
-                return '-';
-            }
-
-            if (date==='-') {
+            if (date === null || date === '' || date === '-') {
                 return date;
             }
 
             if (angular.isDefined(date)) {
                 var utcDate = moment.utc(date).utc().format('LLL');
-                console.log('utcDate = ' + utcDate);
                 if (utcDate === 'Invalid date') {
                     return '-';
                 } else {
@@ -71,7 +62,7 @@
     function concordance() {
         return function (text) {
             return colorFilter(text, { 'YES': 'green' });
-        }
+        };
     }
 
     function analysisStatus() {
@@ -91,44 +82,44 @@
             return colorFilter(text,
                 {
                     'REGISTRATION': 'blue',
-                    'REGISTRATION_ERROR' : 'blue',
-                    'PROGRESSION' : 'blue',
+                    'REGISTRATION_ERROR': 'blue',
+                    'PROGRESSION': 'blue',
                     'OFF_TRIAL_NO_TA_AVAILABLE': 'blue',
-                    'TOXICITY' : 'blue',
+                    'TOXICITY': 'blue',
                     'ON_TREATMENT_ARM': 'blue',
                     'OFF_STUDY_NOT_CONSENTED': 'blue',
-                    'NOT_ELIGIBLE' : 'blue',
-                    'TREATMENT_ARM_SUSPENDED' : 'blue',
-                    'TREATMENT_ARM_CLOSED' : 'blue',
+                    'NOT_ELIGIBLE': 'blue',
+                    'TREATMENT_ARM_SUSPENDED': 'blue',
+                    'TREATMENT_ARM_CLOSED': 'blue',
                     'REGIMENT_COMPLETED': 'blue',
-                    'TISSUE_SPECIMEN_RECEIVED' : 'purple',
-                    'TISSUE_SPECIMEN_FAILURE' : 'purple',
-                    'BLOOD_SPECIMEN_RECEIVED' : 'purple',
-                    'BLOOD_NECLEIC_ACID_SHIPPED' :'purple',
-                    'TISSUE_NUCLEIC_ACID_SHIPPED' : 'purple',
-                    'TISSUE_SLIDE_SPECIMEN_SHIPPED' : 'purple',
-                    'ORDER_X_IHC' : 'red',
-                    'RESULT_X_IHC' : 'red',
-                    'PATHOLOGY_REVIEW' : 'red',
-                    'TISSUE_VARIANT_REPORT_RECEIVED' : 'green',
-                    'TISSUE_VARIANT_REPORT_CONFIRMED' : 'green',
-                    'TISSUE_VARIANT_REPORT_REJECTED' : 'green',
-                    'TISSUE_NUCLEIC_ACID_FAILURE' : 'green',
-                    'RUNNING_RULES' : 'green',
-                    'AWAITING_PATIENT_DATA' : 'green',
+                    'TISSUE_SPECIMEN_RECEIVED': 'purple',
+                    'TISSUE_SPECIMEN_FAILURE': 'purple',
+                    'BLOOD_SPECIMEN_RECEIVED': 'purple',
+                    'BLOOD_NECLEIC_ACID_SHIPPED': 'purple',
+                    'TISSUE_NUCLEIC_ACID_SHIPPED': 'purple',
+                    'TISSUE_SLIDE_SPECIMEN_SHIPPED': 'purple',
+                    'ORDER_X_IHC': 'red',
+                    'RESULT_X_IHC': 'red',
+                    'PATHOLOGY_REVIEW': 'red',
+                    'TISSUE_VARIANT_REPORT_RECEIVED': 'green',
+                    'TISSUE_VARIANT_REPORT_CONFIRMED': 'green',
+                    'TISSUE_VARIANT_REPORT_REJECTED': 'green',
+                    'TISSUE_NUCLEIC_ACID_FAILURE': 'green',
+                    'RUNNING_RULES': 'green',
+                    'AWAITING_PATIENT_DATA': 'green',
                     'AWAITING_TREATMENT_ARMS_STATUS': 'green',
-                    'RETRIEVING_RULES_ASSIGNMENT' : 'green',
-                    'COMPASSIONATE_CARE' : 'green',
-                    'PENDING_INFORMATICS_REVIEW' : 'green',
-                    'COMPLETED_MDA_DATA_SET' : 'green',
+                    'RETRIEVING_RULES_ASSIGNMENT': 'green',
+                    'COMPASSIONATE_CARE': 'green',
+                    'PENDING_INFORMATICS_REVIEW': 'green',
+                    'COMPLETED_MDA_DATA_SET': 'green',
                     'PENDING_APPROVAL': 'green',
-                    'PENDING_CONFIRMATION' : 'green',
-                    'BLOOD_VARIANT_REPORT_RECEIVED' : 'green',
-                    'BLOOD_VARIANT_REPORT_CONFIRMED' : 'green',
-                    'BLOOD_VARIANT_REPORT_REJECTED' : 'green',
-                    'BLOOD_NUCLEIC_ACID_FAILURE' : 'green',
+                    'PENDING_CONFIRMATION': 'green',
+                    'BLOOD_VARIANT_REPORT_RECEIVED': 'green',
+                    'BLOOD_VARIANT_REPORT_CONFIRMED': 'green',
+                    'BLOOD_VARIANT_REPORT_REJECTED': 'green',
+                    'BLOOD_NUCLEIC_ACID_FAILURE': 'green',
                     'OFF_TRIAL': 'blue',
-                    'OFF_STUDY' : 'blue',
+                    'OFF_STUDY': 'blue',
                     'OFF_TRIAL_DECEASED': 'blue',
                     'NO_PED_MATCH_AVAILABLE': 'green'
                 });
@@ -147,7 +138,6 @@
         };
     }
 
-
     function titlecase() {
         return function (input) {
             var smallWords = /^(a|an|and|as|at|but|by|en|for|if|in|nor|of|on|or|per|the|to|vs?\.?|via)$/i;
@@ -156,7 +146,7 @@
                 return '';
             }
 
-            input = (''+input).toLowerCase();
+            input = ('' + input).toLowerCase();
             return input.replace(/[A-Za-z0-9\u00C0-\u00FF]+[^\s-]*/g, function (match, index, title) {
                 if (index > 0 && index + match.length !== title.length &&
                     match.search(smallWords) > -1 && title.charAt(index - 2) !== ":" &&

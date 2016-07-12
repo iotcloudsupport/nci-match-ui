@@ -1952,7 +1952,6 @@
                         "molecular_id": "MOL100025BLD",
                         "analysis_id": "SAM100025BLD_1",
                         "variant_id": "SAM100025BLD_1_CNV",
-                        "confirmed": false,
                         "comment": "",
                         "refCopyNumber": 8.1,
                         "rawCopyNumber": 2.1,
@@ -1960,7 +1959,6 @@
                         "confidenceInterval95percent": 2.46082,
                         "confidenceInterval5percent": 1.79208,
                         "confirmed": true,
-                        "aMOI": "PRIOR",
                         "gene": "MYCL",
                         "exon": "",
                         "function": "",
@@ -2001,7 +1999,6 @@
                             "_id": "354a721e-81c2-4773-937c-ad1e3936b3c3"
                         },
                         "geneName": "ALK",
-                        "aMOI": "PRIOR",
                         "chromosome": "chr2",
                         "position": "29446394",
                         "identifier": "TPM3-ALK.T7A20_1",
@@ -2027,7 +2024,6 @@
                         "variant_id": "SAM100025BLD_1_GF2",
                         "comment": "",
                         "confirmed": true,
-                        "aMOI": "PRIOR",
                         "gene": "TPM3",
                         "oncominevariantclass": "Fusion",
                         "exon": "12",
@@ -2308,7 +2304,7 @@
                     "analyses": [
                         {
                             "analysis_id": "SAM001_03",
-                            "status": "Rejected",
+                            "status": "REJECTED",
                             "file_received_date": "2016-01-19T22:06:33+00:00",
                             "status_date": "2016-01-19T23:06:33+00:00"
                         }
@@ -2325,13 +2321,13 @@
                     "analyses": [
                         {
                             "analysis_id": "SAM001_02",
-                            "status": "Confirmed",
+                            "status": "CONFIRMED",
                             "file_received_date": "2016-01-14T22:06:33+00:00",
                             "status_date": "2016-01-14T23:06:33+00:00"
                         },
                         {
                             "analysis_id": "SAM001_01",
-                            "status": "Rejected",
+                            "status": "REJECTED",
                             "file_received_date": "2016-01-13T22:06:33+00:00",
                             "status_date": "2016-01-13T23:06:33+00:00"
                         }
@@ -2378,7 +2374,7 @@
                     "analyses": [
                         {
                             "analysis_id": "SAM002_02",
-                            "status": "Rejected",
+                            "status": "REJECTED",
                             "comment": "Invalid Specimen",
                             "comment_user": "G. Smith",
                             "file_received_date": "2016-02-14T22:06:33+00:00",
@@ -2386,7 +2382,7 @@
                         },
                         {
                             "analysis_id": "SAM002_01",
-                            "status": "Rejected",
+                            "status": "REJECTED",
                             "comment": "Invalid Specimen",
                             "comment_user": "G. Smith",
                             "file_received_date": "2016-02-13T22:06:33+00:00",
@@ -2407,13 +2403,13 @@
                     "analyses": [
                         {
                             "analysis_id": "SAM002_04",
-                            "status": "Rejected",
+                            "status": "REJECTED",
                             "file_received_date": "2016-02-19T22:45:02+00:00",
                             "status_date": "2016-02-19T23:52:24+00:00"
                         },
                         {
                             "analysis_id": "SAM002_03",
-                            "status": "Confirmed",
+                            "status": "PENDING",
                             "file_received_date": "2016-02-19T22:06:33+00:00",
                             "status_date": "2016-02-19T23:06:33+00:00"
                         }
@@ -2430,7 +2426,7 @@
                     "analyses": [
                         {
                             "analysis_id": "SAM002_03",
-                            "status": "Confirmed",
+                            "status": "CONFIRMED",
                             "file_received_date": "2016-02-19T22:06:33+00:00",
                             "status_date": "2016-02-19T23:06:33+00:00"
                         }
