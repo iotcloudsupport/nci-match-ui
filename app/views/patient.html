@@ -320,14 +320,6 @@
                                     <div class="row toolbar-row">
                                         <div class="col-md-8 text-left">
                                             <div class="btn-group btn-group-margin" data-toggle="buttons">
-                                                <!--<label class="btn btn-outline btn-success" ng-class="getVariantReportTypeClass('TISSUE')" ng-click="setVariantReportType('TISSUE')"
-                                            title="Switch to Tissue Report">
-                                            <input type="radio" name="variantReportType" id="option1">Tissue
-                                        </label>-->
-                                                <!--<label class="btn btn-outline btn-success" ng-class="getVariantReportTypeClass('BLOOD')" ng-click="setVariantReportType('BLOOD')"
-                                            title="Switch to Blood Report">
-                                            <input type="radio" name="variantReportType" id="option2">Blood
-                                        </label>-->
                                             </div>
                                             <div class="btn-group btn-group-margin" data-toggle="buttons">
                                                 <label class="btn btn-outline btn-success" ng-class="getVariantReportModeClass('FILTERED')" ng-click="setVariantReportMode('FILTERED')" title="Show Filtered Report">
@@ -667,6 +659,16 @@
 
                                                     <dt>Variant Report aMOI(s)</dt>
                                                     <dd><a ng-repeat="amoi in currentAssignmentReport.variant_report_amois">{{amoi.title}}{{$last ? '' : ', '}}</a></dd>
+
+                                                    <dt>Status</dt>
+                                                    <dd ng-style="{'color':'{{ currentAssignmentReport.status | analysisStatus }}'}">{{currentAssignmentReport.status}}</dd>
+
+                                                    <dt ng-if="currentAssignmentReport.comment">Comments</dt>
+                                                    <dd ng-if="currentAssignmentReport.comment">{{currentAssignmentReport.comment}}<span ng-if="currentAssignmentReport.comment_user"> (user: {{currentAssignmentReport.comment_user}})</span></dd>
+
+                                                    <dt>{{currentAssignmentReport.status | titlecase}} Date</dt>
+                                                    <dd>{{currentAssignmentReport.status_date | utc}}</dd>
+
                                                 </dl>
                                             </div>
                                         </div>
@@ -768,8 +770,8 @@
                                     <div class="ibox-content ibox-title-no-line" ng-if="showAssignmentReportActions(currentAssignmentReport)">
                                         <div class="row">
                                             <div class="col-md-12 text-center">
-                                                <button class="btn btn-danger" title="Reject this Report" ng-click="showConfirmation('Please confirm Assignment Report rejection', 'Enter comments')">REJECT</button>
-                                                <button class="btn btn-success" title="Confirm this Report" ng-click="showConfirmation('Please confirm Assignment Report approval', 'Enter comments')">CONFIRM</button>
+                                                <button class="btn btn-danger" title="Reject this Report" ng-click="rejectAssignmentReport(currentAssignmentReport)">REJECT</button>
+                                                <button class="btn btn-success" title="Confirm this Report" ng-click="confirmAssignmentReport(currentAssignmentReport)">CONFIRM</button>
                                             </div>
                                         </div>
                                     </div>

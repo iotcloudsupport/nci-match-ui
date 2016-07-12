@@ -78,6 +78,8 @@
         $scope.editComment = editComment;
         $scope.confirmVariantReport = confirmVariantReport;
         $scope.rejectVariantReport = rejectVariantReport;
+        $scope.confirmAssignmentReport = confirmAssignmentReport;
+        $scope.rejectAssignmentReport = rejectAssignmentReport;
         $scope.setupScope = setupScope;
         $scope.showPrompt = showPrompt;
         $scope.getFileButtonClass = getFileButtonClass;
@@ -264,8 +266,7 @@
 
             $scope.assignmentReportOption = {
                 text: $scope.currentTreatmentArm.name +
-                ' | ' + currentAssignment.molecular_id +
-                ' | ' + currentAssignment.received_from_cog_date,
+                ' | Received from COG ' + currentAssignment.received_from_cog_date,
                 value: {
                     molecular_id: currentAssignment.molecular_id,
                     analysis_id: currentAssignment.analysis_id,
@@ -448,6 +449,39 @@
                 buttons: [{ label: 'OK', primary: true }, { label: 'Cancel', cancel: true }]
             }).then(function (comment) {
                 $log.debug('User entered comment: ' + comment);
+            });
+        }
+
+        function confirmAssignmentReport(assignmentReport) {
+            showPrompt({
+                title: 'Confirm Assignment Report',
+                message: 'Are you sure you want to confirm the Assignment Report?',
+                buttons: [{ label: 'OK', primary: true }, { label: 'Cancel', cancel: true }]
+            }).then(function (comment) {
+                if (!assignmentReport) {
+                    $log.error('Current Assignment Report is not set');
+                } else {
+                    assignmentReport.status = 'CONFIRMED';
+                    assignmentReport.comment = null;
+                    assignmentReport.comment_user = null;
+                }
+            });
+        }
+
+        function rejectAssignmentReport(assignmentReport) {
+            showPrompt({
+                title: 'Reject Assignment Report',
+                message: 'Are you sure you want to reject the Assignment Report? Please enter reason:',
+                input: true,
+                buttons: [{ label: 'OK', primary: true }, { label: 'Cancel', cancel: true }]
+            }).then(function (comment) {
+                if (!assignmentReport) {
+                    $log.error('Current Assignment Report is not set');
+                } else {
+                    assignmentReport.status = 'REJECTED';
+                    assignmentReport.comment = comment;
+                    assignmentReport.comment_user = $scope.currentUser;
+                }
             });
         }
 
