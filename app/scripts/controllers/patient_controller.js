@@ -12,7 +12,8 @@
         $uibModal,
         $state,
         $window,
-        store) {
+        store,
+        $filter) {
 
         var vm = this;
 
@@ -205,12 +206,14 @@
 
             for (var i = 0; i < $scope.data.specimen_history.length; i++) {
                 var surgicalEvent = $scope.data.specimen_history[i];
+                var collectedDate = $filter('utc')(surgicalEvent.collected_date);
 
                 var item = {
-                    text: 'Surgical Event ID ' + surgicalEvent.surgical_event_id,
+                    text: 'Surgical Event ' + surgicalEvent.surgical_event_id + ' | Collected ' + collectedDate,
                     value: {
                         event_index: i,
-                        surgical_event_id: surgicalEvent.surgical_event_id
+                        surgical_event_id: surgicalEvent.surgical_event_id,
+                        collected_date: surgicalEvent.collected_date
                     }
                 };
                 $scope.surgicalEventOptions.push(item);

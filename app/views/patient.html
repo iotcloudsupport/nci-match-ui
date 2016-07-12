@@ -57,7 +57,7 @@
                             <dt>Disease Name</dt>
                             <dd>{{::data.disease.name}}</dd>
 
-                            <dt>Disease Type</dt>
+                            <dt>Disease Code Type</dt>
                             <dd>{{::data.disease.type}}</dd>
 
                             <dt>Disease Code</dt>
@@ -128,7 +128,7 @@
                     </div>
                 </uib-tab>
 
-                <uib-tab heading="Surgical Event" select="setActiveTab('surgical_event')">
+                <uib-tab heading="Surgical Events" select="setActiveTab('surgical_event')">
                     <div class="panel-body">
                         <div ng-if="currentSurgicalEvent">
 
@@ -317,7 +317,7 @@
                     </div>
                 </uib-tab>
 
-                <uib-tab heading="Tissue Report" select="setActiveTab('tissue_report')">
+                <uib-tab heading="Tissue Reports" select="setActiveTab('tissue_report')">
                     <div class="panel-body">
 
                         <!--Variant Report-->
@@ -673,9 +673,6 @@
                                                     <dt>Analysis ID</dt>
                                                     <dd>{{currentAssignmentReport.analysis_id}}</dd>
 
-                                                    <dt>Variant Report aMOI(s)</dt>
-                                                    <dd><a ng-repeat="amoi in currentAssignmentReport.variant_report_amois">{{amoi.title}}{{$last ? '' : ', '}}</a></dd>
-
                                                     <dt>Status</dt>
                                                     <dd ng-style="{'color':'{{ currentAssignmentReport.status | analysisStatus }}'}">{{currentAssignmentReport.status}}</dd>
 
@@ -807,7 +804,7 @@
                     </div>
                 </uib-tab>
 
-                <uib-tab heading="Blood Variant Report" select="setActiveTab('blood_variant_report')">
+                <uib-tab heading="Blood Variant Reports" select="setActiveTab('blood_variant_report')">
                     <div class="panel-body">
                         <div ng-if="currentBloodVariantReport">
                             <div class="row toolbar-row">
