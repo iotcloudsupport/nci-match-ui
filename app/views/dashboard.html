@@ -1,6 +1,6 @@
 <div class="row border-bottom white-bg dashboard-header animated fadeInRight">
 
-    <div class="col-sm-3" ng-controller="DashboardStatisticsController as dashboardStats" ng-init="loadDashboardStatistics()">
+    <div class="col-sm-3" ng-controller="DashboardController as dashboardStats" ng-init="loadDashboardStatisticsData()">
         <h2>Welcome, {{ name }}!</h2>
         <small>Last updated on {{ lastUpdated | gmt }}.</small>
         <ul class="list-group clear-list m-t">
@@ -31,16 +31,16 @@
         </ul>
     </div>
 
-    <div class="col-sm-6" ng-controller="DashboardTreatmentArmAccrualChartController as chart" ng-init="setCanvasHeight('#treatmentArmAccrualCanvas', 100);loadTreatmentArmAccrual();">
+    <div class="col-sm-6" ng-controller="DashboardController as chart" ng-init="setCanvasHeight('#treatmentArmAccrualCanvas', 100);loadTreatmentArmAccrualData();">
         <div id="chartBox" class="statistic-box">
             <div class="text-center">
                 <h4>Top 5 Treatment Arm Accrual</h4>
             </div>
-            <canvas id="treatmentArmAccrualCanvas" barchart options="chart.barOptions" ng-attr-data="barData" responsive=true ></canvas>
+            <canvas id="treatmentArmAccrualCanvas" barchart options="barOptions" ng-attr-data="barData" responsive=true ></canvas>
         </div>
     </div>
 
-    <div class="col-sm-3" ng-controller="DashboardTreatmentArmAccrualChartController as chartjsDonut" ng-init="setCanvasHeight('#amoiCanvas', 200);loadChartjsDonutChart();">
+    <div class="col-sm-3" ng-controller="DashboardController as chartjsDonut" ng-init="setCanvasHeight('#amoiCanvas', 200);loadChartjsDonutChartData();">
         <div class="statistic-box">
             <div class="text-center">
                 <h4>Sequenced & Confirmed Patients with aMOI(s)</h4>
@@ -58,7 +58,7 @@
                 <div class="row">
                     <div class="col-lg-3">
 
-                        <div class="ibox float-e-margins" ng-controller="DashboardActivityFeedController as DashCtrl"
+                        <div class="ibox float-e-margins" ng-controller="DashboardController as DashCtrl"
                              ng-init="loadActivityList()">
 
                             <div class="ibox-title ibox-title-no-line">
@@ -110,7 +110,7 @@
                                     <uib-tabset>
                                         <uib-tab heading="Tissue Variant Report(s)">
                                             <div class="panel-body"
-                                                 ng-controller="DashboardPendingReviewController as DashCtrl"
+                                                 ng-controller="DashboardController as DashCtrl"
                                                  ng-init="loadTissueVariantReportsList()">
                                                 <table datatable="ng"
                                                        dt-options="DashCtrl.ddOptions"
@@ -150,7 +150,7 @@
                                         </uib-tab>
                                         <uib-tab heading="Blood Variant Report(s)">
                                             <div class="panel-body"
-                                                 ng-controller="DashboardPendingReviewController as DashCtrl"
+                                                 ng-controller="DashboardController as DashCtrl"
                                                  ng-init="loadBloodVariantReportsList()">
                                                 <table datatable="ng"
                                                        dt-options="DashCtrl.ddOptions"
@@ -193,7 +193,7 @@
                                         </uib-tab>
                                         <uib-tab heading="Assignment Report(s)">
                                             <div class="panel-body"
-                                                 ng-controller="DashboardPendingReviewController as DashCtrl"
+                                                 ng-controller="DashboardController as DashCtrl"
                                                  ng-init="loadPatientPendingAssignmentReportsList()">
                                                 <table datatable="ng"
                                                        dt-options="DashCtrl.dtOptions"
