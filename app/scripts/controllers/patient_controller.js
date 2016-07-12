@@ -78,6 +78,8 @@
         $scope.editComment = editComment;
         $scope.confirmVariantReport = confirmVariantReport;
         $scope.rejectVariantReport = rejectVariantReport;
+        $scope.confirmAssignmentReport = confirmAssignmentReport;
+        $scope.rejectAssignmentReport = rejectAssignmentReport;
         $scope.setupScope = setupScope;
         $scope.showPrompt = showPrompt;
         $scope.getFileButtonClass = getFileButtonClass;
@@ -91,6 +93,8 @@
         $scope.showVariantReportActions = showVariantReportActions;
         $scope.showAssignmentReportActions = showAssignmentReportActions;
         $scope.setActiveTab = setActiveTab;
+        $scope.needToDisplayReportStatus = needToDisplayReportStatus;
+        $scope.needToDisplayCbnaWarning = needToDisplayCbnaWarning;
 
         function setActiveTab(tab) {
             $scope.activeTab = tab;
@@ -264,8 +268,7 @@
 
             $scope.assignmentReportOption = {
                 text: $scope.currentTreatmentArm.name +
-                ' | ' + currentAssignment.molecular_id +
-                ' | ' + currentAssignment.received_from_cog_date,
+                ' | Received from COG ' + currentAssignment.received_from_cog_date,
                 value: {
                     molecular_id: currentAssignment.molecular_id,
                     analysis_id: currentAssignment.analysis_id,
@@ -394,7 +397,7 @@
             // $log.debug(errorMessage);
         }
 
-        function editComment(variant, enabled) {
+        function editComment(variant, isEnabled) {
             $log.debug('Variant = ' + variant);
 
             var modalInstance = $uibModal.open({
@@ -409,10 +412,10 @@
                         return $scope.confirmTitle;
                     },
                     message: function () {
-                        return enabled ? $scope.confirmMessage : '';
+                        return isEnabled ? $scope.confirmMessage : '';
                     },
-                    enabled: function() {
-                        return enabled;
+                    enabled: function () {
+                        return isEnabled;
                     }
                 }
             });
@@ -451,6 +454,40 @@
             });
         }
 
+        function confirmAssignmentReport(assignmentReport) {
+            showPrompt({
+                title: 'Confirm Assignment Report',
+                message: 'Are you sure you want to confirm the Assignment Report?',
+                buttons: [{ label: 'OK', primary: true }, { label: 'Cancel', cancel: true }]
+            }).then(function (comment) {
+                if (!assignmentReport) {
+                    $log.error('Current Assignment Report is not set');
+                } else {
+                    assignmentReport.status = 'CONFIRMED';
+                    assignmentReport.comment = null;
+                    assignmentReport.comment_user = null;
+                }
+            });
+        }
+
+        function rejectAssignmentReport(assignmentReport) {
+            showPrompt({
+                title: 'Reject Assignment Report',
+                message: 'Are you sure you want to reject the Assignment Report? Please enter reason:',
+                input: true,
+                buttons: [{ label: 'OK', primary: true }, { label: 'Cancel', cancel: true }]
+            }).then(function (comment) {
+                if (!assignmentReport) {
+                    $log.error('Current Assignment Report is not set');
+                } else {
+                    assignmentReport.status = 'REJECTED';
+                    assignmentReport.comment = comment;
+                    assignmentReport.comment_user = $scope.currentUser;
+                    assignmentReport.status_date = moment.utc(new Date()).utc();
+                }
+            });
+        }
+
         function confirmVariantReport(variantReport) {
             showPrompt({
                 title: 'Confirm Variant Report',
@@ -480,6 +517,7 @@
                     variantReport.status = 'REJECTED';
                     variantReport.comment = comment;
                     variantReport.comment_user = $scope.currentUser;
+                    variantReport.status_date = moment.utc(new Date()).utc();
                 }
             });
         }
@@ -678,6 +716,23 @@
             } else {
                 $log.error('Unable to find Variant Report ' + molecularId + ',' + analysisId);
             }
+        }
+
+        function needToDisplayReportStatus(report) {
+            return report && report.status && report.status !== 'PENDING';
+        }
+
+        function needToDisplayCbnaWarning() {
+            if (!$scope.data.oncomine_report || !$scope.data.oncomine_report.length)
+                return false;
+
+            var total = 0;
+
+            angular.forEach($scope.data.oncomine_report, function (value, index) {
+                total += value.sum;
+            });
+
+            return total === 0;
         }
     }
 

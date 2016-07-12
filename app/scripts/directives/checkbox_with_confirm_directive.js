@@ -10,8 +10,6 @@
             var vm = this;
 
             vm.toggle = function (comment) {
-                if (!vm.enabled)
-                    return;
                 vm.isChecked = !vm.isChecked;
                 vm.comment = comment;
             };
@@ -19,8 +17,9 @@
             vm.confirm = function () {
                 if (typeof vm.promptOnlyIf !== 'undefined') {
                     var promptIf = !!vm.promptOnlyIf;
+                    var isChecked = !!vm.isChecked;
 
-                    if (!!vm.isChecked !== promptIf) {
+                    if (isChecked !== promptIf) {
                         vm.toggle(null);
                         return;
                     }
@@ -38,6 +37,9 @@
                         },
                         message: function () {
                             return vm.confirmMessage;
+                        },
+                        enabled: function () {
+                            return vm.enabled;
                         }
                     }
                 });

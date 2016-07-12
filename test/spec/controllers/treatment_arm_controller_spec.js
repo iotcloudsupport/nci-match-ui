@@ -1,5 +1,5 @@
 
-describe('Controller: Treatment Arm Controller', function () {
+xdescribe('Controller: Treatment Arm Controller', function () {
 
     beforeEach(module('config.matchbox', 'http.matchbox', 'treatment-arm.matchbox', 'angular-flot'));
 

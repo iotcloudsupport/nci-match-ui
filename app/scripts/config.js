@@ -1,4 +1,4 @@
-function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authProvider, $httpProvider, jwtInterceptorProvider, ENV, PRO, UT) {
+function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authProvider, $httpProvider, jwtInterceptorProvider, ENV) {
     $urlRouterProvider.otherwise("dashboard");
 
 

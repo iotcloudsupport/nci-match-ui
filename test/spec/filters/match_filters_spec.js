@@ -240,36 +240,166 @@ describe('Filter', function () {
             expect(underTest('registration')).toEqual('blue');
         });
 
-        it('should return "purple" for PENDING_APPROVAL', function () {
-            expect(underTest('PENDING_APPROVAL')).toEqual('purple');
+        it('should return "green" for REGISTRATION_ERROR', function () {
+            expect(underTest('REGISTRATION_ERROR')).toEqual('blue');
         });
 
-        it('should return "purple" for REJOIN_REQUESTED', function () {
-            expect(underTest('REJOIN_REQUESTED')).toEqual('purple');
+        it('should return "blue" for PROGRESSION', function () {
+            expect(underTest('PROGRESSION')).toEqual('blue');
         });
 
-        it('should return "red" for OFF_TRIAL_NO_TA_AVAILABLE', function () {
-            expect(underTest('OFF_TRIAL_NO_TA_AVAILABLE')).toEqual('red');
+        it(' should return "blue" for "OFF_TRIAL_NO_TA_AVAILABLE"', function () {
+            expect(underTest('OFF_TRIAL_NO_TA_AVAILABLE')).toEqual('blue');
         });
 
-        it('should return "red" for OFF_TRIAL_NOT_CONSENTED', function () {
-            expect(underTest('OFF_TRIAL_NOT_CONSENTED')).toEqual('red');
+        it(' should return "blue" for "TOXICITY"', function () {
+            expect(underTest('TOXICITY')).toEqual('blue');
         });
 
-        it('should return "red" for OFF_TRIAL', function () {
-            expect(underTest('OFF_TRIAL')).toEqual('red');
+        it(' should return "blue" for "ON_TREATMENT_ARM"', function () {
+            expect(underTest('ON_TREATMENT_ARM')).toEqual('blue');
         });
 
-        it('should return "red" for OFF_TRIAL_DECEASED', function () {
-            expect(underTest('OFF_TRIAL_DECEASED')).toEqual('red');
+        it(' should return "blue" for "OFF_STUDY_NOT_CONSENTED"', function () {
+            expect(underTest('OFF_STUDY_NOT_CONSENTED')).toEqual('blue');
         });
 
-        it('should return "green" for ON_TREATMENT_ARM', function () {
-            expect(underTest('ON_TREATMENT_ARM')).toEqual('green');
+        it(' should return "blue" for "NOT_ELIGIBLE"', function () {
+            expect(underTest('NOT_ELIGIBLE')).toEqual('blue');
         });
 
+        it(' should return "blue" for "TREATMENT_ARM_SUSPENDED"', function () {
+            expect(underTest('TREATMENT_ARM_SUSPENDED')).toEqual('blue');
+        });
+
+        it(' should return "blue" for "TREATMENT_ARM_CLOSED"', function () {
+            expect(underTest('TREATMENT_ARM_CLOSED')).toEqual('blue');
+        });
+
+        it(' should return "blue" for "REGIMENT_COMPLETED"', function () {
+            expect(underTest('REGIMENT_COMPLETED')).toEqual('blue');
+        });
+
+        it(' should return "purple" for "TISSUE_SPECIMEN_RECEIVED"', function () {
+            expect(underTest('TISSUE_SPECIMEN_RECEIVED')).toEqual('purple');
+        });
+
+        it(' should return "purple" for "TISSUE_SPECIMEN_FAILURE"', function () {
+            expect(underTest('TISSUE_SPECIMEN_FAILURE')).toEqual('purple');
+        });
+
+        it(' should return "purple" for "BLOOD_SPECIMEN_RECEIVED"', function () {
+            expect(underTest('BLOOD_SPECIMEN_RECEIVED')).toEqual('purple');
+        });
+
+        it(' should return "purple" for "BLOOD_NECLEIC_ACID_SHIPPED"', function () {
+            expect(underTest('BLOOD_NECLEIC_ACID_SHIPPED')).toEqual('purple');
+        });
+
+        it(' should return "purple" for "TISSUE_NUCLEIC_ACID_SHIPPED"', function () {
+            expect(underTest('TISSUE_NUCLEIC_ACID_SHIPPED')).toEqual('purple');
+        });
+
+        it(' should return "purple" for "TISSUE_SLIDE_SPECIMEN_SHIPPED"', function () {
+            expect(underTest('TISSUE_SLIDE_SPECIMEN_SHIPPED')).toEqual('purple');
+        });
+
+        it(' should return "red" for "ORDER_X_IHC"', function () {
+            expect(underTest('ORDER_X_IHC')).toEqual('red');
+        });
+
+        it(' should return "red" for "RESULT_X_IHC"', function () {
+            expect(underTest('RESULT_X_IHC')).toEqual('red');
+        });
+
+        it(' should return "red" for "PATHOLOGY_REVIEW"', function () {
+            expect(underTest('PATHOLOGY_REVIEW')).toEqual('red');
+        });
+
+        it(' should return "green" for "TISSUE_VARIANT_REPORT_RECEIVED"', function () {
+            expect(underTest('TISSUE_VARIANT_REPORT_RECEIVED')).toEqual('green');
+        });
+
+        it(' should return "green" for "TISSUE_VARIANT_REPORT_CONFIRMED"', function () {
+            expect(underTest('TISSUE_VARIANT_REPORT_CONFIRMED')).toEqual('green');
+        });
+
+        it(' should return "green" for "TISSUE_VARIANT_REPORT_REJECTED"', function () {
+            expect(underTest('TISSUE_VARIANT_REPORT_REJECTED')).toEqual('green');
+        });
+
+        it(' should return "green" for "TISSUE_NUCLEIC_ACID_FAILURE"', function () {
+            expect(underTest('TISSUE_NUCLEIC_ACID_FAILURE')).toEqual('green');
+        });
+
+        it(' should return "green" for "RUNNING_RULES"', function () {
+            expect(underTest('RUNNING_RULES')).toEqual('green');
+        });
+
+        it(' should return "green" for "AWAITING_PATIENT_DATA"', function () {
+            expect(underTest('AWAITING_PATIENT_DATA')).toEqual('green');
+        });
+
+        it(' should return "green" for "AWAITING_TREATMENT_ARMS_STATUS"', function () {
+            expect(underTest('AWAITING_TREATMENT_ARMS_STATUS')).toEqual('green');
+        });
+
+        it(' should return "green" for "RETRIEVING_RULES_ASSIGNMENT"', function () {
+            expect(underTest('RETRIEVING_RULES_ASSIGNMENT')).toEqual('green');
+        });
+
+        it(' should return "green" for "COMPASSIONATE_CARE"', function () {
+            expect(underTest('COMPASSIONATE_CARE')).toEqual('green');
+        });
+
+        it(' should return "green" for "PENDING_INFORMATICS_REVIEW"', function () {
+            expect(underTest('PENDING_INFORMATICS_REVIEW')).toEqual('green');
+        });
+
+        it(' should return "green" for "COMPLETED_MDA_DATA_SET"', function () {
+            expect(underTest('COMPLETED_MDA_DATA_SET')).toEqual('green');
+        });
+
+        it(' should return "green" for "PENDING_APPROVAL"', function () {
+            expect(underTest('PENDING_APPROVAL')).toEqual('green');
+        });
+
+        it(' should return "green" for "PENDING_CONFIRMATION"', function () {
+            expect(underTest('PENDING_CONFIRMATION')).toEqual('green');
+        });
+
+        it(' should return "green" for "BLOOD_VARIANT_REPORT_RECEIVED"', function () {
+            expect(underTest('BLOOD_VARIANT_REPORT_RECEIVED')).toEqual('green');
+        });
+
+        it(' should return "green" for "BLOOD_VARIANT_REPORT_CONFIRMED"', function () {
+            expect(underTest('BLOOD_VARIANT_REPORT_CONFIRMED')).toEqual('green');
+        });
+
+        it(' should return "green" for "BLOOD_VARIANT_REPORT_REJECTED"', function () {
+            expect(underTest('BLOOD_VARIANT_REPORT_REJECTED')).toEqual('green');
+        });
+
+        it(' should return "green" for "BLOOD_NUCLEIC_ACID_FAILURE"', function () {
+            expect(underTest('BLOOD_NUCLEIC_ACID_FAILURE')).toEqual('green');
+        });
+
+        it(' should return "blue" for "OFF_TRIAL"', function () {
+            expect(underTest('OFF_TRIAL')).toEqual('blue');
+        });
+
+        it(' should return "blue" for "OFF_STUDY"', function () {
+            expect(underTest('OFF_STUDY')).toEqual('blue');
+        });
+
+        it(' should return "blue" for "OFF_TRIAL_DECEASED"', function () {
+            expect(underTest('OFF_TRIAL_DECEASED')).toEqual('blue');
+        });
+
+        it(' should return "green" for "NO_PED_MATCH_AVAILABLE"', function () {
+            expect(underTest('NO_PED_MATCH_AVAILABLE')).toEqual('green');
+        });
     });
-
 
     describe('irsample', function () {
         var underTest;

@@ -1,9 +1,7 @@
 (function () {
     "use strict";
 
-    angular.module('d3', []);
-
-    angular.module('d3')
+    angular.module('d3module', [])
         .factory('d3service', d3service);
 
     d3service.$inject = ['$document', '$q', '$rootScope'];

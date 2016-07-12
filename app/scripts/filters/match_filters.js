@@ -42,6 +42,10 @@
 
     function utc() {
         return function (date) {
+            if (date===null) {
+                return '-';
+            }
+
             if (date==='') {
                 return '-';
             }
@@ -51,7 +55,13 @@
             }
 
             if (angular.isDefined(date)) {
-                return moment.utc(date).utc().format('LLL') + ' GMT';
+                var utcDate = moment.utc(date).utc().format('LLL');
+                console.log('utcDate = ' + utcDate);
+                if (utcDate === 'Invalid date') {
+                    return '-';
+                } else {
+                    return utcDate + ' GMT';
+                }
             } else {
                 return '-';
             }
