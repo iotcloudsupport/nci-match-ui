@@ -424,7 +424,7 @@
                                                                 <td><a>ITGBY</a></td>
                                                                 <td>SUM</td>
                                                             </thead>
-                                                            <tbody class="priordrug-item" ng-repeat="oncomine in data.oncomine_report" style="font-size: smaller">
+                                                            <tbody class="priordrug-item" ng-repeat="oncomine in currentVariantReport.oncomine_report" style="font-size: smaller">
                                                                 <td>{{::oncomine.lmna}}</td>
                                                                 <td>{{::oncomine.tbp}}</td>
                                                                 <td>{{::oncomine.myc}}</td>
@@ -452,14 +452,14 @@
                                         </div>
                                     </div>
 
-                                    <div ng-if="activeTab=='tissue_report'" d3-cnv-chart=""></div>
-
                                     <div class="panel panel-warning" ng-if="needToDisplayCbnaWarning()">
                                         <div class="panel-heading"><i class="fa fa-warning"></i></div>
                                         <div class="panel-body" id="selected-body">
                                             <p>cDNA is not present</p>
                                         </div>
                                     </div>
+
+                                    <div ng-if="activeTab=='tissue_report'" d3-cnv-chart=""></div>
 
                                     <!--Single Nucleitide Variant(s)-->
                                     <div class="ibox-title ibox-title-no-line">

@@ -588,7 +588,17 @@
                         "armSpecific": false
                     }
                 ]
-            }
+            },
+            "oncomine_report": [
+                {
+                    "lmna": 0,
+                    "tbp": 0,
+                    "myc": 0,
+                    "hmbs": 0,
+                    "itgby": 0,
+                    "sum": 0
+                }
+            ]
         },
         {
             "surgical_event_id": "SUREVT001",
@@ -1797,7 +1807,6 @@
                             "_id": "354a721e-81c2-4773-937c-ad1e3936b3c3"
                         },
                         "geneName": "ALK",
-                        "aMOI": "PRIOR",
                         "chromosome": "chr2",
                         "position": "29446394",
                         "identifier": "TPM3-ALK.T7A20_1",
@@ -1824,7 +1833,6 @@
                         "variant_id": "VAR002_04_GF2",
                         "comment": "",
                         "confirmed": true,
-                        "aMOI": "PRIOR",
                         "gene": "TPM3",
                         "oncominevariantclass": "Fusion",
                         "exon": "12",
@@ -1849,7 +1857,17 @@
                         "armSpecific": false
                     }
                 ]
-            }
+            },
+            "oncomine_report": [
+                {
+                    "lmna": 234059,
+                    "tbp": 10345,
+                    "myc": 13023,
+                    "hmbs": 45098,
+                    "itgby": 2134,
+                    "sum": 304659
+                }
+            ]
         },
         {
             "variant_report_received_date": "2016-02-19T22:45:02+00:00",
@@ -2433,16 +2451,6 @@
                     ]
                 }
             ]
-        }
-    ],
-    "oncomine_report": [
-        {
-            "lmna": 234059,
-            "tbp": 10345,
-            "myc": 13023,
-            "hmbs": 45098,
-            "itgby": 2134,
-            "sum": 304659
         }
     ]
 }
