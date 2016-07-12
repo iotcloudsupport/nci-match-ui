@@ -94,6 +94,7 @@
         $scope.showAssignmentReportActions = showAssignmentReportActions;
         $scope.setActiveTab = setActiveTab;
         $scope.needToDisplayReportStatus = needToDisplayReportStatus;
+        $scope.needToDisplayCbnaWarning = needToDisplayCbnaWarning;
 
         function setActiveTab(tab) {
             $scope.activeTab = tab;
@@ -413,7 +414,7 @@
                     message: function () {
                         return isEnabled ? $scope.confirmMessage : '';
                     },
-                    enabled: function() {
+                    enabled: function () {
                         return isEnabled;
                     }
                 }
@@ -718,7 +719,20 @@
         }
 
         function needToDisplayReportStatus(report) {
-            return report && report.status && report.status !== 'PENDING';  
+            return report && report.status && report.status !== 'PENDING';
+        }
+
+        function needToDisplayCbnaWarning() {
+            if (!$scope.data.oncomine_report || !$scope.data.oncomine_report.length)
+                return false;
+
+            var total = 0;
+
+            angular.forEach($scope.data.oncomine_report, function (value, index) {
+                total += value.sum;
+            });
+
+            return total === 0;
         }
     }
 

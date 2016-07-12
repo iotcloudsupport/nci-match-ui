@@ -141,7 +141,6 @@
                                                 <li ng-repeat="item in surgicalEventOptions" role="menuitem"><a href ng-click="onSurgicalEventSelected(item)">{{item.text}}</a></li>
                                             </ul>
                                         </div>
-                                        <!--<div dropdown-select="surgicalEventOptions" dropdown-model="surgicalEventOption" dropdown-item-label="text" dropdown-onchange="onSurgicalEventSelected(selected)"></div>-->
                                     </h4>
                                 </div>
                             </div>
@@ -344,7 +343,6 @@
                                                         <li ng-repeat="item in variantReportOptions" role="menuitem"><a href ng-click="onVariantReportSelected(item)">{{item.text}}</a></li>
                                                     </ul>
                                                 </div>
-                                                <!--<div dropdown-select="variantReportOptions " dropdown-model="variantReportOption" dropdown-item-label="text" dropdown-onchange="onVariantReportSelected(selected)"></div>-->
                                             </h4>
                                         </div>
                                     </div>
@@ -443,6 +441,13 @@
                                     </div>
 
                                     <div ng-if="activeTab=='tissue_report'" d3-cnv-chart=""></div>
+
+                                    <div class="panel panel-warning" ng-if="needToDisplayCbnaWarning()">
+                                        <div class="panel-heading"><i class="fa fa-warning"></i></div>
+                                        <div class="panel-body" id="selected-body">
+                                            <p>cDNA is not present</p>
+                                        </div>
+                                    </div>
 
                                     <!--Single Nucleitide Variant(s)-->
                                     <div class="ibox-title ibox-title-no-line">
@@ -635,7 +640,6 @@
                                                     <li ng-repeat="item in assignmentReportOptions" role="menuitem"><a href ng-click="onAssignmentReportSelected(item)">{{item.text}}</a></li>
                                                 </ul>
                                             </div>
-                                            <!--<div dropdown-select="assignmentReportOptions " dropdown-model="assignmentReportOption" dropdown-item-label="text" dropdown-onchange="onAssignmentReportSelected(selected)"></div>-->
                                         </h4>
                                     </div>
                                 </div>
@@ -819,7 +823,6 @@
                                                 <li ng-repeat="item in bloodVariantReportOptions" role="menuitem"><a href ng-click="onBloodVariantReportSelected(item)">{{item.text}}</a></li>
                                             </ul>
                                         </div>
-                                        <!--<div dropdown-select="bloodVariantReportOptions " dropdown-model="bloodVariantReportOption" dropdown-item-label="text" dropdown-onchange="onBloodVariantReportSelected(selected)"></div>-->
                                     </h4>
                                 </div>
                             </div>
