@@ -10,7 +10,9 @@
                 loadChartjsDonutChart: loadChartjsDonutChart,
                 loadTissueVariantReportsList: loadTissueVariantReportsList,
                 loadBloodVariantReportsList: loadBloodVariantReportsList,
-                loadPatientPendingAssignmentReportsList: loadPatientPendingAssignmentReportsList
+                loadPatientPendingAssignmentReportsList: loadPatientPendingAssignmentReportsList,
+                loadChartjsDonutChart: loadChartjsDonutChart,
+                loadActivityList: loadActivityList
             }
 
             function loadPatient(id) {
