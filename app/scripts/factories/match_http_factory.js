@@ -12,15 +12,29 @@
         .factory('svgApi', svgApi)
         .factory('patientApi', patientApi);
 
+    function patientApi($http, matchConfig) {
+        return {
+            loadPatient: loadPatient,
+            loadPatientList: loadPatientList
+        }
+
+        function loadPatient(id) {
+            return $http.get(matchConfig.patientApiBaseUrl + '/patients/' + id);
+        }
+
+        function loadPatientList() {
+            return $http.get(matchConfig.patientApiBaseUrl + '/patients');
+        }
+    }
+
     function workflowApi($http, matchConfig) {
         return {
-            getDashboardStatistcs: function () {
-                return $http.get(matchConfig.workflowApiBaseUrl + '/dashboardStatistics');
-            },
-            getRejoinRequested: function () {
-                return $http.get(matchConfig.workflowApiBaseUrl + '/rejoinRequested');
-            }
-        };
+            loadDashboardStatistics: loadDashboardStatistics
+        }
+        
+        function loadDashboardStatistics() {
+            return $http.get(matchConfig.workflowApiBaseUrl + '/dashboardStatistics');
+        }
     }
 
     function matchApi($http, matchConfig) {
