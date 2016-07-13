@@ -1,5 +1,11 @@
-angular.module('specimen-tracking.matchbox',[])
-    .controller('SpecimenTrackingController', function( $scope, $http, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, matchApi ) {
+(function () {
+    angular.module('specimen-tracking.matchbox',[])
+        .controller('SpecimenTrackingController', SpecimenTrackingController);
+
+    function SpecimenTrackingController( $scope,
+                                         $http, matchConfig, DTOptionsBuilder, DTColumnDefBuilder,
+                                         matchApiMock ) { //matchApi
+
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(100);
         this.dtColumnDefs = [];
@@ -10,9 +16,11 @@ angular.module('specimen-tracking.matchbox',[])
             'paging': false
         };
 
-        //$scope.specimenTrackingList = [];
+        $scope.loadSpecimenTrackingList = loadSpecimenTrackingList;
 
-        $scope.specimenTrackingList = [
+        $scope.specimenTrackingList = [];
+
+        /*$scope.specimenTrackingList = [
             {
                 "molecular_id": "MSN234240",
                 "patient_id": "100099",
@@ -58,8 +66,7 @@ angular.module('specimen-tracking.matchbox',[])
                 "pathology_status": "Y",
                 "pathology_status_date": 1511235777810,
                 "variant_report_confirmed_date": "",
-                "assays": [
-                ]
+                "assays": []
             },
             {
                 "molecular_id": "MSN234242",
@@ -75,8 +82,7 @@ angular.module('specimen-tracking.matchbox',[])
                 "pathology_status": "Y",
                 "pathology_status_date": 1511235777810,
                 "variant_report_confirmed_date": "",
-                "assays": [
-                ]
+                "assays": []
             },
             {
                 "molecular_id": "MSN233643",
@@ -117,7 +123,7 @@ angular.module('specimen-tracking.matchbox',[])
                     }
                 ]
             }
-        ];
+        ];*/
 
         $scope.sites = {
             'mgh': {
@@ -181,7 +187,7 @@ angular.module('specimen-tracking.matchbox',[])
                 },
                 tooltip: true,
                 tooltipOpts: {
-                    content: function(label, xval, yval) {
+                    content: function (label, xval, yval) {
                         return setupTooltip(label, xval, yval);
                     },
                     shifts: {
@@ -201,10 +207,15 @@ angular.module('specimen-tracking.matchbox',[])
 
         $scope.pieOptions2 = setupPieChartOptions('#legendContainer2');
 
-        $scope.loadSpecimenTrackingList = function() {
-            matchApi
+        function loadSpecimenTrackingList() {
+            matchApiMock
+                .loadSpecimenTrackingList()
+                .then(function (d) {
+                    $scope.specimenTrackingList = d.data;
+                });
+            /*matchApi
                 .getPatientSpecimentTrackingSummary()
-                .then(function(d) {
+                .then(function (d) {
                     angular.forEach(d.data, function (value, key) {
                         var patientSequenceNumber = value.patientSequenceNumber;
                         if (angular.isDefined(value.biopsies) && angular.isArray(value.biopsies)) {
@@ -245,10 +256,10 @@ angular.module('specimen-tracking.matchbox',[])
                     });
 
                     updateSiteStatistics();
-                });
+                });*/
         };
 
-        updateSiteStatistics = function() {
+        updateSiteStatistics = function () {
             var total = $scope.sites.mgh.count + $scope.sites.yale.count + $scope.sites.mocha.count + $scope.sites.mda.count;
             total = (total === 0) ? 1 : total;
 
@@ -258,7 +269,10 @@ angular.module('specimen-tracking.matchbox',[])
             $scope.sites.mocha.percent = calculatePercent($scope.sites.mocha.count, total);
         }
 
-        calculatePercent = function(numerator, denominator) {
+        calculatePercent = function (numerator, denominator) {
             return (numerator / denominator) * 100;
         }
-    });
+    }
+}());
+
+

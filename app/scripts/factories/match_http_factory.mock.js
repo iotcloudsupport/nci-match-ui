@@ -12,7 +12,9 @@
                 loadBloodVariantReportsList: loadBloodVariantReportsList,
                 loadPatientPendingAssignmentReportsList: loadPatientPendingAssignmentReportsList,
                 loadChartjsDonutChart: loadChartjsDonutChart,
-                loadActivityList: loadActivityList
+                loadActivityList: loadActivityList,
+                loadSpecimenTrackingList: loadSpecimenTrackingList,
+                displayTreatmentArmList: displayTreatmentArmList
             }
 
             function loadPatient(id) {
@@ -61,6 +63,10 @@
 
             function loadPatientPendingAssignmentReportsList() {
                 return $http.get('data/dashboard_patient_assignment_reports.json');
+            }
+            
+            function displayTreatmentArmList() {
+                return $http.get('data/treatment_arms_list.json');
             }
 
         });
