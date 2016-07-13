@@ -308,7 +308,7 @@
                                 .attr("x", (width / 2))
                                 .attr("y", 0 + (margin.top / 2))
                                 .attr("text-anchor", "middle")
-                                .style("font-size", "20px")
+                                .style("font-size", "15px")
                                 .text(" MAPD:" + mapd + " Cellularity:" + cellularity + " TorrentVariantCaller Version: " + tvcVersion);
 
                             // draw y axis Copy Number

@@ -230,15 +230,19 @@ angular.module('irntc.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 , 'EAY131-HRRR'
             ];
 
+           
             $scope.flotPieData = {
                 labels: pieNames,
                 datasets: [
                     {
                         label: "Accrual Dataset",
                         fillColor: "#1c84c6",
-                        strokeColor: "rgba(320,220,220,0.8)",
-                        highlightFill: "#33c6c8", //"rgba(220,220,220,0.75)",
-                        highlightStroke: "rgba(320,220,220,1)",
+                        strokeColor: "rgba(220,220,220,0.8)",
+                        highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
+                        highlightStroke: "rgba(220,220,220,1)",
+                        segmentShowStroke : false,
+                        animateScale : true,
+                        percentageInnerCutout: 95,
                         data: prepareData
                     }
                 ]
