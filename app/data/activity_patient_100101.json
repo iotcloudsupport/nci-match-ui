@@ -1,0 +1,2062 @@
+{
+  "patient_id": "100101",
+  "registration_date": "2016-05-09T22:06:33.000+00:00",
+  "last_rejoin_scan_date": "2016-05-09T22:06:33.000+00:00",
+  "study_id": "APEC1621",
+  "gender": "MALE",
+  "ethnicity": "WHITE",
+  "races": [
+    "WHITE",
+    "HAWAIIAN"
+  ],
+  "current_step_number": "2.0",
+  "ta_history": [
+    {
+      "name": "APEC1621-Y",
+      "version": "2015-04-26",
+      "stratum": "STR9",
+      "title": "APEC1621-Y; STR9; 2015-04-26",
+      "step": "Step 1.1",
+      "assignment_reason": "The patient and treatment match on variand identifier [ABSF, DEDF].",
+      "assignment_date": "2016-05-10T22:05:33+00:00"
+    }
+  ],
+  "current_assignment": {
+    "generated_date": "2016-05-09T22:06:33+00:00",
+    "sent_to_cog_date": "-",
+    "received_from_cog_date": "-",
+    "molecular_id": "MSN34534",
+    "analysis_id": "MSN34534_v2_kjdf3-kejrt-3425-mnb34ert34f",
+    "variant_report_amois": [
+      {
+        "title": "[COSM12344]",
+        "url": ""
+      },
+      {
+        "title": "p.S310Y",
+        "url": ""
+      },
+      {
+        "title": "CISM23423",
+        "url": ""
+      }
+    ],
+    "assays": [
+      {
+        "gene": "MSH2",
+        "result": "Not Applicable",
+        "comment": "Biopsy received prior to bimarker launch date"
+      },
+      {
+        "gene": "PTENs",
+        "result": "POSITIVE",
+        "comment": "-"
+      },
+      {
+        "gene": "MLH1",
+        "result": "Not Applicable",
+        "comment": "Biopsy received prior to bimarker launch date"
+      },
+      {
+        "gene": "RB",
+        "result": "Not Applicable",
+        "comment": "Biopsy received prior to bimarker launch date"
+      }
+    ],
+    "treatment_arms": {
+            "no_match": [
+                {
+                    "treatment_arm": "APEC1621-U",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_stratum_id": "STR2",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-F",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_stratum_id": "STR2",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-F",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_stratum_id": "STR2",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-F",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_stratum_id": "STR2",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-G",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_stratum_id": "STR2",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-H",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_stratum_id": "STR2",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-R",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_stratum_id": "STR2",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-E",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_stratum_id": "STR2",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-A",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_stratum_id": "STR2",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-V",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_stratum_id": "STR2",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient contains no matching variant."
+                }
+            ],
+            "record_based_exclusion": [
+                {
+                    "treatment_arm": "APEC1621-Q",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_stratum_id": "STR2",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient excluded from this arm because of invasive breast carcinoma."
+                }
+            ],
+            "selected": [
+                {
+                    "treatment_arm": "APEC1621-U",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_stratum_id": "STR2",
+                    "treatment_arm_stratum": "STR1",
+                    "treatment_arm_title": "APEC1621-U (2015-08-06)",
+                    "reason": "The patient and treatment match on variand identifier [ABSF, DEDF]."
+                }
+            ]
+        }
+  },
+  "current_status": "OFF_STUDY",
+  "disease": {
+    "name": "Solitary plasmacytoma",
+    "ctep_category": "Breast Neoplasm",
+    "ctep_sub_category": "Breast Cancer - Invasive",
+    "ctep_term": "Invasive Breast Carcinoma",
+    "med_dra_code": "1000961"
+  },
+  "prior_drugs": [
+    "Aspirin"
+  ],
+  "message": "Some message",
+  "documents": {
+    "list": [
+      {
+        "name": "Lab Notes",
+        "uploaded_date": "2016-05-09T22:06:33+00:00",
+        "user": "Liz Jame",
+        "comment": "A Plasmacytoma is a plasma cell neoplasm which forms tumors when plasma cells become malignant and grow out of control. Plasmacytomas crowd out normal cells in the bone marrow as well as invade the hard outer part of the bone and then spread into the cavities of the large bones in the body. Plasmacytoma in the bones may cause pain or broken bones. Plasmacytoma of the bone often becomes multiple myeloma. When only one tumor is formed, it is called a solitary plasmacytoma. When multiple small tumors are formed, the disease is multiple myeloma. Plasmacytomas can also invade soft tissue in the body. Plastacytoma in soft tissue can press on nearby areas and cause pain such as the throat, tonsils or sinuses.",
+        "url": "/data/ClinicalNGSAnalysis_e-book.pdf"
+      },
+      {
+        "name": "Document 1",
+        "uploaded_date": "2016-05-09T22:06:33+00:00",
+        "user": "Jane Smith",
+        "comment": "Changed disease code",
+        "url": "/data/ClinicalNGSAnalysis_e-book.pdf"
+      },
+      {
+        "name": "Document 2",
+        "uploaded_date": "2016-05-09T22:06:33+00:00",
+        "user": "Jane Smith",
+        "comment": "Changed assay results",
+        "url": "/data/ClinicalNGSAnalysis_e-book.pdf"
+      },
+      {
+        "name": "X-File A23FSD34",
+        "uploaded_date": "2016-05-09T22:06:33+00:00",
+        "user": "John Thatcher",
+        "comment": "Collected date changed",
+        "url": "/data/ClinicalNGSAnalysis_e-book.pdf"
+      }
+    ]
+  },
+  "timeline": [
+    {
+      "patient_id": "100101",
+      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_name": "Event Name 1",
+      "event_type": "patient",
+      "event_message": "Off Study",
+      "step": "2.0",
+      "event_data": {
+        "status": "OFF_STUDY",
+        "message": "",
+        "stratum_id": "STR17",
+        "treatment_arm_id": "APEC1621-U",
+        "treatment_arm_version": "2016-08-14",
+        "molecular_id": "B-987456",
+        "location": "GHU"
+      }
+    },
+    {
+      "patient_id": "100101",
+      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_name": "Event Name 1",
+      "event_type": "patient",
+      "event_message": "No Ped Match Ta Available",
+      "step": "2.0",
+      "event_data": {
+        "status": "NO_PED_MATCH_TA_AVAILABLE",
+        "message": "",
+        "stratum_id": "STR17",
+        "treatment_arm_id": "APEC1621-U",
+        "treatment_arm_version": "2016-08-14",
+        "molecular_id": "B-987456",
+        "location": "GHU"
+      }
+    },
+    {
+      "patient_id": "100101",
+      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_name": "Event Name 1",
+      "event_type": "patient",
+      "event_message": "Compassionate Care",
+      "step": "2.0",
+      "event_data": {
+        "status": "COMPASSIONATE_CARE",
+        "message": "",
+        "stratum_id": "STR17",
+        "treatment_arm_id": "APEC1621-U",
+        "treatment_arm_version": "2016-08-14",
+        "molecular_id": "B-987456",
+        "location": "GHU"
+      }
+    },
+    {
+      "patient_id": "100101",
+      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_name": "Event Name 1",
+      "event_type": "system",
+      "event_message": "Receiving Rule Assignment",
+      "step": "2.0",
+      "event_data": {
+        "status": "COMPLETE"
+      }
+    },
+    {
+      "patient_id": "100101",
+      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_name": "Event Name 1",
+      "event_type": "system",
+      "event_message": "Awaiting Treatment Arms Status",
+      "step": "2.0",
+      "event_data": {
+        "status": "COMPLETE"
+      }
+    },
+    {
+      "patient_id": "100101",
+      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_name": "Event Name 1",
+      "event_type": "patient",
+      "event_message": "Patient Progression",
+      "step": "2.0",
+      "event_data": {
+        "status": "PROGRESSION",
+        "message": "",
+        "stratum_id": "STR17",
+        "treatment_arm_id": "APEC1621-U",
+        "treatment_arm_version": "2016-08-14",
+        "molecular_id": "B-987456"
+      }
+    },
+    {
+      "patient_id": "100101",
+      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_name": "Event Name 1",
+      "event_type": "assignment",
+      "event_message": "Patient Assignment",
+      "step": "1.1",
+      "event_data": {
+        "status": "ON_TREATMENT_ARM",
+        "message": "",
+        "stratum_id": "STR9",
+        "molecular_id": "B-987456",
+        "treatment_arm_id": "APEC1621-Y",
+        "treatment_arm_version": "2016-08-14",
+        "assignment_date": "2016-05-10T22:05:33+00:00"
+      }
+    },
+    {
+      "patient_id": "100101",
+      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_name": "Event Name 1",
+      "event_type": "patient",
+      "event_message": "Patient Pending Approval",
+      "step": "1.0",
+      "event_data": {
+        "status": "PENDING",
+        "molecular_id": "B-987456",
+        "location": "GHU"
+      }
+    },
+    {
+      "patient_id": "100101",
+      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_name": "Event Name 1",
+      "event_type": "patient",
+      "event_message": "Patient Pending Confirmation",
+      "step": "1.0",
+      "event_data": {
+        "status": "PENDING",
+        "molecular_id": "B-987456",
+        "location": "GHU"
+      }
+    },
+    {
+      "patient_id": "100101",
+      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_name": "Event Name 1",
+      "event_type": "system",
+      "event_message": "Receiving Rule Assignment",
+      "step": "1.0",
+      "event_data": {
+        "status": "COMPLETE"
+      }
+    },
+    {
+      "patient_id": "100101",
+      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_name": "Event Name 1",
+      "event_type": "system",
+      "event_message": "Awaiting Treatment Arms Status",
+      "step": "1.0",
+      "event_data": {
+        "status": "COMPLETE"
+      }
+    },
+    {
+      "patient_id": "100101",
+      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_name": "Event Name 1",
+      "event_type": "system",
+      "event_message": "Awaiting Patient Data",
+      "step": "1.0",
+      "event_data": {
+        "status": "COMPLETE"
+      }
+    },
+    {
+      "patient_id": "100101",
+      "event_date": "2016-05-11T22:06:33+00:00",
+      "event_name": "Event Name 2",
+      "event_type": "biopsy.variantReportReceived",
+      "event_message": "Tissue Variant Report",
+      "step": "1.0",
+      "event_data": {
+        "surgical_event_id": "COSM1234",
+        "collected_datetime": "2016-05-09T22:06:33+00:00",
+        "received_datetime": "2016-05-13T22:08:33+00:00",
+        "status": "CONFIRMED",
+        "molecular_id": "B-987456"
+      }
+    },
+    {
+      "patient_id": "100101",
+      "event_date": "2016-05-11T22:06:33+00:00",
+      "event_name": "Event Name 2",
+      "event_type": "biopsy.variantReportReceived",
+      "event_message": "Tissue Variant Report",
+      "step": "1.0",
+      "event_data": {
+        "surgical_event_id": "COSM1234",
+        "collected_datetime": "2016-05-09T22:06:33+00:00",
+        "received_datetime": "2016-05-13T22:08:33+00:00",
+        "status": "RECEIVED",
+        "molecular_id": "B-987456"
+      }
+    },
+    {
+      "patient_id": "100101",
+      "event_date": "2016-05-12T22:04:33+00:00",
+      "event_name": "Event Name 5",
+      "event_type": "biopsy.assay_received",
+      "event_message": "Assay Received",
+      "step": "1.0",
+      "event_data": {
+        "biomarker": "ICCPTEN",
+        "status": "RECEIVED",
+        "result": "POSITIVE",
+        "molecular_id": "B-987456",
+        "reported_date": "2016-05-12T22:04:33+00:00"
+      }
+    },
+    {
+      "patient_id": "100101",
+      "event_date": "2016-05-12T22:04:33+00:00",
+      "event_name": "Event Name 5",
+      "event_type": "biopsy.pathology",
+      "event_message": "PATHOLOGY_CONFIRMATION",
+      "step": "1.0",
+      "event_data": {
+        "status": "CONFIRMED",
+        "molecular_id": "B-987456",
+        "reported_date": "2016-05-12T22:04:33+00:00"
+      }
+    },
+    {
+      "patient_id": "100101",
+      "event_date": "2016-05-11T22:08:33+00:00",
+      "event_name": "Event Name 4",
+      "event_type": "biopsy.assay_order",
+      "event_message": "Assay Order",
+      "step": "1.0",
+      "event_data": {
+        "biomarker": "ICCPTEN",
+        "status": "ORDER",
+        "molecular_id": "B-987456",
+        "ordered_date": "2016-05-11T22:07:33+00:00"
+      }
+    },
+    {
+      "patient_id": "100101",
+      "event_date": "2016-05-11T22:06:33+00:00",
+      "event_name": "Event Name 3",
+      "event_type": "biopsy.variantReportShipped",
+      "event_message": "Tissue Nucleic Acid Shipped",
+      "step": "1.0",
+      "event_data": {
+        "surgical_event_id": "COSM1234",
+        "molecular_id": "1234",
+        "molecular_dna_id": "DNA1234",
+        "molecular_cdna_id": "CDNA1234",
+        "carrier": "Federal Express",
+        "tracking_id": "1203454512316546",
+        "status": "PENDING",
+        "molecular_id": "B-987456"
+      }
+    },
+    {
+      "patient_id": "100101",
+      "event_date": "2016-05-11T22:06:33+00:00",
+      "event_name": "Event Name 2",
+      "event_type": "biopsy.variantReportReceived",
+      "event_message": "Tissue Specimen Received",
+      "step": "1.0",
+      "event_data": {
+        "surgical_event_id": "COSM1234",
+        "collected_datetime": "2016-05-09T22:06:33+00:00",
+        "received_datetime": "2016-05-11T22:08:33+00:00",
+        "status": "PENDING",
+        "molecular_id": "B-987456"
+      }
+    },
+    {
+      "patient_id": "100101",
+      "event_date": "2016-05-09T22:06:33+00:00",
+      "event_name": "Event Name 1",
+      "event_type": "patient",
+      "event_message": "Patient Registered",
+      "step": "1.0",
+      "event_data": {
+        "status": "PENDING",
+        "molecular_id": "B-987456",
+        "location": "GHU"
+      }
+    }
+  ],
+  "variant_report_selectors": [
+    {
+      "text": "SUREVT0981",
+      "variant_report_received_date": "2016-05-09T22:06:33.000+00:00"
+    },
+    {
+      "text": "SUREVT0982",
+      "variant_report_received_date": "2016-05-09T22:06:33.000+00:00"
+    }
+  ],
+  "variant_reports": [
+    {
+      "surgical_event_id": "SUREVT194",
+      "variant_report_received_date": "2016-05-09T22:06:33.000+00:00",
+      "variant_report_type": "TISSUE",
+      "patient_id": "100101",
+      "molecular_id": "MOL194_1",
+      "analysis_id": "SAM194_1",
+      "status": "PENDING",
+      "status_date": "2016-05-09T22:06:33.000+00:00",
+      "dna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "dna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "rna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "rna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "vcf_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "total_variants": 8,
+      "cellularity": 7,
+      "total_mois": 4,
+      "total_amois": 2,
+      "total_confirmed_mois": 3,
+      "total_confirmed_amois": 1,
+      "comment": "Not enough information",
+      "comment_user": "John Sc.",
+      "variants": {
+        "snvs_and_indels": [
+          {
+            "confirm": "true",
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "single_nucleitide_variants",
+            "patient_id": "100101",
+            "surgical_event_id": "SUREVT194",
+            "molecular_id": "MOL194_1",
+            "analysis_id": "SAM194_1",
+            "variant_id": "VAR194_1_SNV",
+            "status": "REJECTED",
+            "status_date": "2016-01-13T23:06:33+00:00",
+            "comment": "Don't need this",
+            "gene_name": "gene",
+            "chromosome": "chr3",
+            "position": "12345",
+            "oncomine_variant_class": "Hotspot",
+            "exon": "10",
+            "function": "missense",
+            "cds_ref": "A",
+            "cds_alt": "C",
+            "ocp_ref": "A",
+            "ocp_alt": "C",
+            "strand": "S",
+            "filter": "flt",
+            "protein": "p.Glu6565Ala",
+            "transcript": "NM_0456345",
+            "hgvs": "c.234534>C",
+            "read_depth": "648",
+            "rare": "?",
+            "allele_frequency": "0.0344",
+            "flow_alternative_observation": "alt obs",
+            "flow_reference_allele_observation": "alt allele",
+            "reference_allele_observation": "ref allele",
+            "inclusion": "inlc",
+            "arm_specific": "arm spec"
+          },
+          {
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "indels",
+            "patient_id": "100101",
+            "aMOI": "PRIOR",
+            "surgical_event_id": "SUREVT194",
+            "molecular_id": "MOL194_1",
+            "analysis_id": "SAM194_1",
+            "variant_id": "VAR194_1_ID",
+            "confirmed": false,
+            "comment": "",
+            "gene": "EGFR",
+            "oncominevariantclass": "Hotspot",
+            "exon": "19",
+            "function": "nonframeshiftDeletion",
+            "metadata": {
+              "_id": "017d6838-fcfe-410b-8537-ce2d012aa1ea"
+            },
+            "geneName": "",
+            "chromosome": "chr7",
+            "position": "41266133",
+            "identifier": ".",
+            "cds_ref": "C",
+            "cds_alt": "T",
+            "filter": "PASS",
+            "hgvs": "",
+            "location": "exonic",
+            "readDepth": 1450,
+            "rare": false,
+            "alleleFreq": 0.433844,
+            "flowAlternativeAlleleObservationCount": "623",
+            "flowReferenceAlleleObservations": "813",
+            "referenceAlleleObservations": 1450,
+            "alternativeAlleleObservationCount": 0,
+            "armSpecific": false
+          }
+        ],
+        "copy_number_variants": [
+          {
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "copy_number_variants",
+            "patient_id": "100101",
+            "aMOI": "PRIOR",
+            "surgical_event_id": "SUREVT194",
+            "molecular_id": "MOL194_1",
+            "analysis_id": "SAM194_1",
+            "variant_id": "VAR194_1_CNV",
+            "confirmed": false,
+            "comment": "",
+            "refCopyNumber": 8.1,
+            "rawCopyNumber": 2.1,
+            "copyNumber": 8.1,
+            "confidenceInterval95percent": 2.46082,
+            "confidenceInterval5percent": 1.79208,
+            "confirmed": true,
+            "aMOI": "PRIOR",
+            "gene": "MYCL",
+            "exon": "",
+            "function": "",
+            "metadata": {
+              "_id": "4213853e-1afc-4950-9908-752267d04851"
+            },
+            "geneName": "",
+            "chromosome": "chr1",
+            "position": "40361592",
+            "identifier": "MYCL",
+            "reference": "A",
+            "alternative": "<CNV>",
+            "filter": "PASS",
+            "hgvs": "",
+            "rare": false,
+            "flowAlternativeAlleleObservationCount": "",
+            "flowReferenceAlleleObservations": "",
+            "inclusion": "E",
+            "armSpecific": false
+          }
+        ],
+        "gene_fusions": [
+          {
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "gene_fusions",
+            "patient_id": "100101",
+            "aMOI": "PRIOR",
+            "surgical_event_id": "SUREVT194",
+            "molecular_id": "MOL194_1",
+            "analysis_id": "SAM194_1",
+            "variant_id": "VAR194_1_GF1",
+            "comment": "",
+            "confirmed": true,
+            "gene": "ALK",
+            "oncominevariantclass": "Fusion",
+            "exon": "20",
+            "function": "",
+            "metadata": {
+              "_id": "354a721e-81c2-4773-937c-ad1e3936b3c3"
+            },
+            "geneName": "ALK",
+            "aMOI": "PRIOR",
+            "chromosome": "chr2",
+            "position": "29446394",
+            "identifier": "TPM3-ALK.T7A20_1",
+            "reference": "A",
+            "alternative": "[chr1:154142875[A",
+            "filter": "PASS",
+            "hgvs": "",
+            "location": "",
+            "readDepth": 1001,
+            "rare": false,
+            "flowAlternativeAlleleObservationCount": "",
+            "flowReferenceAlleleObservations": "",
+            "inclusion": "I",
+            "armSpecific": false
+          },
+          {
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "gene_fusions",
+            "patient_id": "100101",
+            "aMOI": "PRIOR",
+            "surgical_event_id": "SUREVT194",
+            "molecular_id": "MOL194_1",
+            "analysis_id": "SAM194_1",
+            "variant_id": "VAR194_1_GF2",
+            "comment": "",
+            "confirmed": true,
+            "aMOI": "PRIOR",
+            "gene": "TPM3",
+            "oncominevariantclass": "Fusion",
+            "exon": "12",
+            "function": "",
+            "metadata": {
+              "_id": "aa8b08f6-6c98-4d3a-ba0c-c387f817cf2c"
+            },
+            "geneName": "TPM3",
+            "chromosome": "chr2",
+            "position": "29446394",
+            "identifier": "TPM3-ALK.T7A20_2",
+            "reference": "C",
+            "alternative": "[chr1:154142875[A",
+            "filter": "PASS",
+            "hgvs": "",
+            "location": "",
+            "readDepth": 1001,
+            "rare": false,
+            "flowAlternativeAlleleObservationCount": "",
+            "flowReferenceAlleleObservations": "",
+            "inclusion": "I",
+            "armSpecific": false
+          }
+        ]
+      }
+    },
+    {
+      "surgical_event_id": "SUREVT195",
+      "variant_report_received_date": "2016-05-09T22:06:33.000+00:00",
+      "variant_report_type": "TISSUE",
+      "patient_id": "100101",
+      "molecular_id": "MOL195_2",
+      "analysis_id": "SAM195_3",
+      "status": "PENDING",
+      "status_date": "2016-05-09T22:06:33.000+00:00",
+      "dna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "dna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "rna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "rna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "vcf_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "total_variants": 8,
+      "cellularity": 7,
+      "total_mois": 4,
+      "total_amois": 2,
+      "total_confirmed_mois": 3,
+      "total_confirmed_amois": 1,
+      "comment": "Should update soon",
+      "comment_user": "John Sc.",
+      "variants": {
+        "snvs_and_indels": [
+          {
+            "confirm": "true",
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "single_nucleitide_variants",
+            "patient_id": "100101",
+            "surgical_event_id": "SUREVT195",
+            "molecular_id": "MOL195_2",
+            "analysis_id": "SAM195_3",
+            "variant_id": "VAR195_3_SNV",
+            "status": "REJECTED",
+            "status_date": "2016-01-13T23:06:33+00:00",
+            "comment": "Don't need this",
+            "gene_name": "gene",
+            "chromosome": "chr3",
+            "position": "12345",
+            "oncomine_variant_class": "Hotspot",
+            "exon": "10",
+            "function": "missense",
+            "cds_ref": "A",
+            "cds_alt": "C",
+            "ocp_ref": "A",
+            "ocp_alt": "C",
+            "strand": "S",
+            "filter": "flt",
+            "protein": "p.Glu6565Ala",
+            "transcript": "NM_0456345",
+            "hgvs": "c.234534>C",
+            "read_depth": "648",
+            "rare": "?",
+            "allele_frequency": "0.0344",
+            "flow_alternative_observation": "alt obs",
+            "flow_reference_allele_observation": "alt allele",
+            "reference_allele_observation": "ref allele",
+            "inclusion": "inlc",
+            "arm_specific": "arm spec"
+          },
+          {
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "indels",
+            "patient_id": "100101",
+            "aMOI": "PRIOR",
+            "surgical_event_id": "SUREVT195",
+            "molecular_id": "MOL195_2",
+            "analysis_id": "SAM195_3",
+            "variant_id": "VAR195_3_ID",
+            "confirmed": false,
+            "comment": "",
+            "gene": "EGFR",
+            "oncominevariantclass": "Hotspot",
+            "exon": "19",
+            "function": "nonframeshiftDeletion",
+            "metadata": {
+              "_id": "017d6838-fcfe-410b-8537-ce2d012aa1ea"
+            },
+            "geneName": "",
+            "chromosome": "chr7",
+            "position": "41266133",
+            "identifier": ".",
+            "cds_ref": "C",
+            "cds_alt": "T",
+            "filter": "PASS",
+            "hgvs": "",
+            "location": "exonic",
+            "readDepth": 1450,
+            "rare": false,
+            "alleleFreq": 0.433844,
+            "flowAlternativeAlleleObservationCount": "623",
+            "flowReferenceAlleleObservations": "813",
+            "referenceAlleleObservations": 1450,
+            "alternativeAlleleObservationCount": 0,
+            "armSpecific": false
+          }
+        ],
+        "copy_number_variants": [
+          {
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "copy_number_variants",
+            "patient_id": "100101",
+            "aMOI": "PRIOR",
+            "surgical_event_id": "SUREVT195",
+            "molecular_id": "MOL195_2",
+            "analysis_id": "SAM195_3",
+            "variant_id": "VAR195_3_CNV",
+            "confirmed": false,
+            "comment": "",
+            "refCopyNumber": 8.1,
+            "rawCopyNumber": 2.1,
+            "copyNumber": 8.1,
+            "confidenceInterval95percent": 2.46082,
+            "confidenceInterval5percent": 1.79208,
+            "confirmed": true,
+            "aMOI": "PRIOR",
+            "gene": "MYCL",
+            "exon": "",
+            "function": "",
+            "metadata": {
+              "_id": "4213853e-1afc-4950-9908-752267d04851"
+            },
+            "geneName": "",
+            "chromosome": "chr1",
+            "position": "40361592",
+            "identifier": "MYCL",
+            "reference": "A",
+            "alternative": "<CNV>",
+            "filter": "PASS",
+            "hgvs": "",
+            "rare": false,
+            "flowAlternativeAlleleObservationCount": "",
+            "flowReferenceAlleleObservations": "",
+            "inclusion": "E",
+            "armSpecific": false
+          }
+        ],
+        "gene_fusions": [
+          {
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "gene_fusions",
+            "patient_id": "100101",
+            "aMOI": "PRIOR",
+            "surgical_event_id": "SUREVT195",
+            "molecular_id": "MOL195_2",
+            "analysis_id": "SAM195_3",
+            "variant_id": "VAR195_3_GF1",
+            "comment": "",
+            "confirmed": true,
+            "gene": "ALK",
+            "oncominevariantclass": "Fusion",
+            "exon": "20",
+            "function": "",
+            "metadata": {
+              "_id": "354a721e-81c2-4773-937c-ad1e3936b3c3"
+            },
+            "geneName": "ALK",
+            "aMOI": "PRIOR",
+            "chromosome": "chr2",
+            "position": "29446394",
+            "identifier": "TPM3-ALK.T7A20_1",
+            "reference": "A",
+            "alternative": "[chr1:154142875[A",
+            "filter": "PASS",
+            "hgvs": "",
+            "location": "",
+            "readDepth": 1001,
+            "rare": false,
+            "flowAlternativeAlleleObservationCount": "",
+            "flowReferenceAlleleObservations": "",
+            "inclusion": "I",
+            "armSpecific": false
+          },
+          {
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "gene_fusions",
+            "patient_id": "100101",
+            "aMOI": "PRIOR",
+            "surgical_event_id": "SUREVT195",
+            "molecular_id": "MOL195_2",
+            "analysis_id": "SAM195_3",
+            "variant_id": "VAR195_3_GF2",
+            "comment": "",
+            "confirmed": true,
+            "aMOI": "PRIOR",
+            "gene": "TPM3",
+            "oncominevariantclass": "Fusion",
+            "exon": "12",
+            "function": "",
+            "metadata": {
+              "_id": "aa8b08f6-6c98-4d3a-ba0c-c387f817cf2c"
+            },
+            "geneName": "TPM3",
+            "chromosome": "chr2",
+            "position": "29446394",
+            "identifier": "TPM3-ALK.T7A20_2",
+            "reference": "C",
+            "alternative": "[chr1:154142875[A",
+            "filter": "PASS",
+            "hgvs": "",
+            "location": "",
+            "readDepth": 1001,
+            "rare": false,
+            "flowAlternativeAlleleObservationCount": "",
+            "flowReferenceAlleleObservations": "",
+            "inclusion": "I",
+            "armSpecific": false
+          }
+        ]
+      }
+    },
+    {
+      "surgical_event_id": "SUREVT195",
+      "variant_report_received_date": "2016-05-09T22:06:33.000+00:00",
+      "variant_report_type": "TISSUE",
+      "patient_id": "100101",
+      "molecular_id": "MOL195_1",
+      "analysis_id": "SAM195_2",
+      "status": "PENDING",
+      "status_date": "2016-05-09T22:06:33.000+00:00",
+      "dna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "dna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "rna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "rna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "vcf_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "total_variants": 8,
+      "cellularity": 7,
+      "total_mois": 4,
+      "total_amois": 2,
+      "total_confirmed_mois": 3,
+      "total_confirmed_amois": 1,
+      "variants": {
+        "snvs_and_indels": [
+          {
+            "confirm": "true",
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "single_nucleitide_variants",
+            "patient_id": "100101",
+            "surgical_event_id": "SUREVT195",
+            "molecular_id": "MOL195_1",
+            "analysis_id": "SAM195_2",
+            "variant_id": "VAR195_2_SNV",
+            "status": "REJECTED",
+            "status_date": "2016-01-13T23:06:33+00:00",
+            "comment": "Don't need this",
+            "gene_name": "gene",
+            "chromosome": "chr3",
+            "position": "12345",
+            "oncomine_variant_class": "Hotspot",
+            "exon": "10",
+            "function": "missense",
+            "cds_ref": "A",
+            "cds_alt": "C",
+            "ocp_ref": "A",
+            "ocp_alt": "C",
+            "strand": "S",
+            "filter": "flt",
+            "protein": "p.Glu6565Ala",
+            "transcript": "NM_0456345",
+            "hgvs": "c.234534>C",
+            "read_depth": "648",
+            "rare": "?",
+            "allele_frequency": "0.0344",
+            "flow_alternative_observation": "alt obs",
+            "flow_reference_allele_observation": "alt allele",
+            "reference_allele_observation": "ref allele",
+            "inclusion": "inlc",
+            "arm_specific": "arm spec"
+          },
+          {
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "indels",
+            "patient_id": "100101",
+            "aMOI": "PRIOR",
+            "surgical_event_id": "SUREVT195",
+            "molecular_id": "MOL195_1",
+            "analysis_id": "SAM195_2",
+            "variant_id": "VAR195_2_ID",
+            "confirmed": false,
+            "comment": "",
+            "gene": "EGFR",
+            "oncominevariantclass": "Hotspot",
+            "exon": "19",
+            "function": "nonframeshiftDeletion",
+            "metadata": {
+              "_id": "017d6838-fcfe-410b-8537-ce2d012aa1ea"
+            },
+            "geneName": "",
+            "chromosome": "chr7",
+            "position": "41266133",
+            "identifier": ".",
+            "cds_ref": "C",
+            "cds_alt": "T",
+            "filter": "PASS",
+            "hgvs": "",
+            "location": "exonic",
+            "readDepth": 1450,
+            "rare": false,
+            "alleleFreq": 0.433844,
+            "flowAlternativeAlleleObservationCount": "623",
+            "flowReferenceAlleleObservations": "813",
+            "referenceAlleleObservations": 1450,
+            "alternativeAlleleObservationCount": 0,
+            "armSpecific": false
+          }
+        ],
+        "copy_number_variants": [
+          {
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "copy_number_variants",
+            "patient_id": "100101",
+            "aMOI": "PRIOR",
+            "surgical_event_id": "SUREVT195",
+            "molecular_id": "MOL195_1",
+            "analysis_id": "SAM195_2",
+            "variant_id": "VAR195_2_CNV",
+            "confirmed": false,
+            "comment": "",
+            "refCopyNumber": 8.1,
+            "rawCopyNumber": 2.1,
+            "copyNumber": 8.1,
+            "confidenceInterval95percent": 2.46082,
+            "confidenceInterval5percent": 1.79208,
+            "confirmed": true,
+            "aMOI": "PRIOR",
+            "gene": "MYCL",
+            "exon": "",
+            "function": "",
+            "metadata": {
+              "_id": "4213853e-1afc-4950-9908-752267d04851"
+            },
+            "geneName": "",
+            "chromosome": "chr1",
+            "position": "40361592",
+            "identifier": "MYCL",
+            "reference": "A",
+            "alternative": "<CNV>",
+            "filter": "PASS",
+            "hgvs": "",
+            "rare": false,
+            "flowAlternativeAlleleObservationCount": "",
+            "flowReferenceAlleleObservations": "",
+            "inclusion": "E",
+            "armSpecific": false
+          }
+        ],
+        "gene_fusions": [
+          {
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "gene_fusions",
+            "patient_id": "100101",
+            "aMOI": "PRIOR",
+            "surgical_event_id": "SUREVT195",
+            "molecular_id": "MOL195_1",
+            "analysis_id": "SAM195_2",
+            "variant_id": "VAR195_2_GF1",
+            "comment": "",
+            "confirmed": true,
+            "gene": "ALK",
+            "oncominevariantclass": "Fusion",
+            "exon": "20",
+            "function": "",
+            "metadata": {
+              "_id": "354a721e-81c2-4773-937c-ad1e3936b3c3"
+            },
+            "geneName": "ALK",
+            "aMOI": "PRIOR",
+            "chromosome": "chr2",
+            "position": "29446394",
+            "identifier": "TPM3-ALK.T7A20_1",
+            "reference": "A",
+            "alternative": "[chr1:154142875[A",
+            "filter": "PASS",
+            "hgvs": "",
+            "location": "",
+            "readDepth": 1001,
+            "rare": false,
+            "flowAlternativeAlleleObservationCount": "",
+            "flowReferenceAlleleObservations": "",
+            "inclusion": "I",
+            "armSpecific": false
+          },
+          {
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "gene_fusions",
+            "patient_id": "100101",
+            "aMOI": "PRIOR",
+            "surgical_event_id": "SUREVT195",
+            "molecular_id": "MOL195_1",
+            "analysis_id": "SAM195_2",
+            "variant_id": "VAR195_2_GF2",
+            "comment": "",
+            "confirmed": true,
+            "aMOI": "PRIOR",
+            "gene": "TPM3",
+            "oncominevariantclass": "Fusion",
+            "exon": "12",
+            "function": "",
+            "metadata": {
+              "_id": "aa8b08f6-6c98-4d3a-ba0c-c387f817cf2c"
+            },
+            "geneName": "TPM3",
+            "chromosome": "chr2",
+            "position": "29446394",
+            "identifier": "TPM3-ALK.T7A20_2",
+            "reference": "C",
+            "alternative": "[chr1:154142875[A",
+            "filter": "PASS",
+            "hgvs": "",
+            "location": "",
+            "readDepth": 1001,
+            "rare": false,
+            "flowAlternativeAlleleObservationCount": "",
+            "flowReferenceAlleleObservations": "",
+            "inclusion": "I",
+            "armSpecific": false
+          }
+        ]
+      }
+    },
+    {
+      "surgical_event_id": "SUREVT195",
+      "variant_report_received_date": "2016-05-09T22:06:33.000+00:00",
+      "variant_report_type": "TISSUE",
+      "patient_id": "100101",
+      "molecular_id": "MOL195_1",
+      "analysis_id": "SAM195_1",
+      "status": "PENDING",
+      "status_date": "2016-05-09T22:06:33.000+00:00",
+      "dna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "dna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "rna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "rna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "vcf_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "total_variants": 8,
+      "cellularity": 7,
+      "total_mois": 4,
+      "total_amois": 2,
+      "total_confirmed_mois": 3,
+      "total_confirmed_amois": 1,
+      "variants": {
+        "snvs_and_indels": [
+          {
+            "confirm": "true",
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "single_nucleitide_variants",
+            "patient_id": "100101",
+            "surgical_event_id": "SUREVT195",
+            "molecular_id": "MOL195_1",
+            "analysis_id": "SAM195_1",
+            "variant_id": "VAR195_1_SNV",
+            "status": "REJECTED",
+            "status_date": "2016-01-13T23:06:33+00:00",
+            "comment": "Don't need this",
+            "gene_name": "gene",
+            "chromosome": "chr3",
+            "position": "12345",
+            "oncomine_variant_class": "Hotspot",
+            "exon": "10",
+            "function": "missense",
+            "cds_ref": "A",
+            "cds_alt": "C",
+            "ocp_ref": "A",
+            "ocp_alt": "C",
+            "strand": "S",
+            "filter": "flt",
+            "protein": "p.Glu6565Ala",
+            "transcript": "NM_0456345",
+            "hgvs": "c.234534>C",
+            "read_depth": "648",
+            "rare": "?",
+            "allele_frequency": "0.0344",
+            "flow_alternative_observation": "alt obs",
+            "flow_reference_allele_observation": "alt allele",
+            "reference_allele_observation": "ref allele",
+            "inclusion": "inlc",
+            "arm_specific": "arm spec"
+          },
+          {
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "indels",
+            "patient_id": "100101",
+            "aMOI": "PRIOR",
+            "surgical_event_id": "SUREVT195",
+            "molecular_id": "MOL195_1",
+            "analysis_id": "SAM195_1",
+            "variant_id": "VAR195_1_ID",
+            "confirmed": false,
+            "comment": "",
+            "gene": "EGFR",
+            "oncominevariantclass": "Hotspot",
+            "exon": "19",
+            "function": "nonframeshiftDeletion",
+            "metadata": {
+              "_id": "017d6838-fcfe-410b-8537-ce2d012aa1ea"
+            },
+            "geneName": "",
+            "chromosome": "chr7",
+            "position": "41266133",
+            "identifier": ".",
+            "cds_ref": "C",
+            "cds_alt": "T",
+            "filter": "PASS",
+            "hgvs": "",
+            "location": "exonic",
+            "readDepth": 1450,
+            "rare": false,
+            "alleleFreq": 0.433844,
+            "flowAlternativeAlleleObservationCount": "623",
+            "flowReferenceAlleleObservations": "813",
+            "referenceAlleleObservations": 1450,
+            "alternativeAlleleObservationCount": 0,
+            "armSpecific": false
+          }
+        ],
+        "copy_number_variants": [
+          {
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "copy_number_variants",
+            "patient_id": "100101",
+            "aMOI": "PRIOR",
+            "surgical_event_id": "SUREVT195",
+            "molecular_id": "MOL195_1",
+            "analysis_id": "SAM195_1",
+            "variant_id": "VAR195_1_CNV",
+            "confirmed": false,
+            "comment": "",
+            "refCopyNumber": 8.1,
+            "rawCopyNumber": 2.1,
+            "copyNumber": 8.1,
+            "confidenceInterval95percent": 2.46082,
+            "confidenceInterval5percent": 1.79208,
+            "confirmed": true,
+            "aMOI": "PRIOR",
+            "gene": "MYCL",
+            "exon": "",
+            "function": "",
+            "metadata": {
+              "_id": "4213853e-1afc-4950-9908-752267d04851"
+            },
+            "geneName": "",
+            "chromosome": "chr1",
+            "position": "40361592",
+            "identifier": "MYCL",
+            "reference": "A",
+            "alternative": "<CNV>",
+            "filter": "PASS",
+            "hgvs": "",
+            "rare": false,
+            "flowAlternativeAlleleObservationCount": "",
+            "flowReferenceAlleleObservations": "",
+            "inclusion": "E",
+            "armSpecific": false
+          }
+        ],
+        "gene_fusions": [
+          {
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "gene_fusions",
+            "patient_id": "100101",
+            "aMOI": "PRIOR",
+            "surgical_event_id": "SUREVT195",
+            "molecular_id": "MOL195_1",
+            "analysis_id": "SAM195_1",
+            "variant_id": "VAR195_1_GF1",
+            "comment": "",
+            "confirmed": true,
+            "gene": "ALK",
+            "oncominevariantclass": "Fusion",
+            "exon": "20",
+            "function": "",
+            "metadata": {
+              "_id": "354a721e-81c2-4773-937c-ad1e3936b3c3"
+            },
+            "geneName": "ALK",
+            "aMOI": "PRIOR",
+            "chromosome": "chr2",
+            "position": "29446394",
+            "identifier": "TPM3-ALK.T7A20_1",
+            "reference": "A",
+            "alternative": "[chr1:154142875[A",
+            "filter": "PASS",
+            "hgvs": "",
+            "location": "",
+            "readDepth": 1001,
+            "rare": false,
+            "flowAlternativeAlleleObservationCount": "",
+            "flowReferenceAlleleObservations": "",
+            "inclusion": "I",
+            "armSpecific": false
+          },
+          {
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "gene_fusions",
+            "patient_id": "100101",
+            "aMOI": "PRIOR",
+            "surgical_event_id": "SUREVT195",
+            "molecular_id": "MOL195_1",
+            "analysis_id": "SAM195_1",
+            "variant_id": "VAR195_1_GF2",
+            "comment": "",
+            "confirmed": true,
+            "aMOI": "PRIOR",
+            "gene": "TPM3",
+            "oncominevariantclass": "Fusion",
+            "exon": "12",
+            "function": "",
+            "metadata": {
+              "_id": "aa8b08f6-6c98-4d3a-ba0c-c387f817cf2c"
+            },
+            "geneName": "TPM3",
+            "chromosome": "chr2",
+            "position": "29446394",
+            "identifier": "TPM3-ALK.T7A20_2",
+            "reference": "C",
+            "alternative": "[chr1:154142875[A",
+            "filter": "PASS",
+            "hgvs": "",
+            "location": "",
+            "readDepth": 1001,
+            "rare": false,
+            "flowAlternativeAlleleObservationCount": "",
+            "flowReferenceAlleleObservations": "",
+            "inclusion": "I",
+            "armSpecific": false
+          }
+        ]
+      }
+    },
+    {
+      "variant_report_received_date": "2016-02-19T22:45:02+00:00",
+      "variant_report_type": "BLOOD",
+      "patient_id": "100025",
+      "molecular_id": "MOL100101BLD",
+      "analysis_id": "SAM100101BLD_1",
+      "status": "PENDING",
+      "status_date": "016-02-19T23:52:24+00:00",
+      "dna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "dna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "rna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "rna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "vcf_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "total_variants": 8,
+      "cellularity": 7,
+      "total_mois": 2,
+      "total_amois": 6,
+      "total_confirmed_mois": 3,
+      "total_confirmed_amois": 1,
+      "variants": {
+        "snvs_and_indels": [
+          {
+            "confirm": "true",
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "single_nucleitide_variants",
+            "patient_id": "100025",
+            "molecular_id": "MOL100101BLD",
+            "analysis_id": "SAM100101BLD_1",
+            "variant_id": "SAM100101BLD_1_SNV",
+            "status": "REJECTED",
+            "status_date": "2016-01-13T23:06:33+00:00",
+            "comment": "Don't need this",
+            "gene_name": "gene",
+            "chromosome": "chr3",
+            "position": "12345",
+            "oncomine_variant_class": "Hotspot",
+            "exon": "10",
+            "function": "missense",
+            "cds_ref": "A",
+            "cds_alt": "C",
+            "ocp_ref": "A",
+            "ocp_alt": "C",
+            "strand": "S",
+            "filter": "flt",
+            "protein": "p.Glu6565Ala",
+            "transcript": "NM_0456345",
+            "hgvs": "c.234534>C",
+            "read_depth": "648",
+            "rare": "?",
+            "allele_frequency": "0.0344",
+            "flow_alternative_observation": "alt obs",
+            "flow_reference_allele_observation": "alt allele",
+            "reference_allele_observation": "ref allele",
+            "inclusion": "inlc",
+            "arm_specific": "arm spec"
+          },
+          {
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "indels",
+            "patient_id": "100025",
+            "aMOI": "PRIOR",
+            "molecular_id": "MOL100101BLD",
+            "analysis_id": "SAM100101BLD_1",
+            "variant_id": "SAM100101BLD_1_ID",
+            "confirmed": false,
+            "comment": "",
+            "gene": "EGFR",
+            "oncominevariantclass": "Hotspot",
+            "exon": "19",
+            "function": "nonframeshiftDeletion",
+            "metadata": {
+              "_id": "017d6838-fcfe-410b-8537-ce2d012aa1ea"
+            },
+            "geneName": "",
+            "chromosome": "chr7",
+            "position": "41266133",
+            "identifier": ".",
+            "cds_ref": "C",
+            "cds_alt": "T",
+            "filter": "PASS",
+            "hgvs": "",
+            "location": "exonic",
+            "readDepth": 1450,
+            "rare": false,
+            "alleleFreq": 0.433844,
+            "flowAlternativeAlleleObservationCount": "623",
+            "flowReferenceAlleleObservations": "813",
+            "referenceAlleleObservations": 1450,
+            "alternativeAlleleObservationCount": 0,
+            "armSpecific": false
+          }
+        ],
+        "copy_number_variants": [
+          {
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "copy_number_variants",
+            "patient_id": "100025",
+            "aMOI": "PRIOR",
+            "molecular_id": "MOL100101BLD",
+            "analysis_id": "SAM100101BLD_1",
+            "variant_id": "SAM100101BLD_1_CNV",
+            "confirmed": false,
+            "comment": "",
+            "refCopyNumber": 8.1,
+            "rawCopyNumber": 2.1,
+            "copyNumber": 8.1,
+            "confidenceInterval95percent": 2.46082,
+            "confidenceInterval5percent": 1.79208,
+            "confirmed": true,
+            "aMOI": "PRIOR",
+            "gene": "MYCL",
+            "exon": "",
+            "function": "",
+            "metadata": {
+              "_id": "4213853e-1afc-4950-9908-752267d04851"
+            },
+            "geneName": "",
+            "chromosome": "chr1",
+            "position": "40361592",
+            "identifier": "MYCL",
+            "reference": "A",
+            "alternative": "<CNV>",
+            "filter": "PASS",
+            "hgvs": "",
+            "rare": false,
+            "flowAlternativeAlleleObservationCount": "",
+            "flowReferenceAlleleObservations": "",
+            "inclusion": "E",
+            "armSpecific": false
+          }
+        ],
+        "gene_fusions": [
+          {
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "gene_fusions",
+            "patient_id": "100025",
+            "aMOI": "PRIOR",
+            "molecular_id": "MOL100101BLD",
+            "analysis_id": "SAM100101BLD_1",
+            "variant_id": "SAM100101BLD_1_GF1",
+            "comment": "",
+            "confirmed": true,
+            "gene": "ALK",
+            "oncominevariantclass": "Fusion",
+            "exon": "20",
+            "function": "",
+            "metadata": {
+              "_id": "354a721e-81c2-4773-937c-ad1e3936b3c3"
+            },
+            "geneName": "ALK",
+            "aMOI": "PRIOR",
+            "chromosome": "chr2",
+            "position": "29446394",
+            "identifier": "TPM3-ALK.T7A20_1",
+            "reference": "A",
+            "alternative": "[chr1:154142875[A",
+            "filter": "PASS",
+            "hgvs": "",
+            "location": "",
+            "readDepth": 1001,
+            "rare": false,
+            "flowAlternativeAlleleObservationCount": "",
+            "flowReferenceAlleleObservations": "",
+            "inclusion": "I",
+            "armSpecific": false
+          },
+          {
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "gene_fusions",
+            "patient_id": "100025",
+            "aMOI": "PRIOR",
+            "molecular_id": "MOL100101BLD",
+            "analysis_id": "SAM100101BLD_1",
+            "variant_id": "SAM100101BLD_1_GF2",
+            "comment": "",
+            "confirmed": true,
+            "aMOI": "PRIOR",
+            "gene": "TPM3",
+            "oncominevariantclass": "Fusion",
+            "exon": "12",
+            "function": "",
+            "metadata": {
+              "_id": "aa8b08f6-6c98-4d3a-ba0c-c387f817cf2c"
+            },
+            "geneName": "TPM3",
+            "chromosome": "chr2",
+            "position": "29446394",
+            "identifier": "TPM3-ALK.T7A20_2",
+            "reference": "C",
+            "alternative": "[chr1:154142875[A",
+            "filter": "PASS",
+            "hgvs": "",
+            "location": "",
+            "readDepth": 1001,
+            "rare": false,
+            "flowAlternativeAlleleObservationCount": "",
+            "flowReferenceAlleleObservations": "",
+            "inclusion": "I",
+            "armSpecific": false
+          }
+        ]
+      }
+    },
+    {
+      "variant_report_received_date": "2016-02-19T22:45:02+00:00",
+      "variant_report_type": "BLOOD",
+      "patient_id": "100025",
+      "molecular_id": "MOL100101BLD",
+      "analysis_id": "SAM100101BLD_2",
+      "status": "PENDING",
+      "status_date": "016-02-19T23:52:24+00:00",
+      "dna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "dna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "rna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "rna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "vcf_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
+      "total_variants": 8,
+      "cellularity": 7,
+      "total_mois": 4,
+      "total_amois": 2,
+      "total_confirmed_mois": 3,
+      "total_confirmed_amois": 1,
+      "variants": {
+        "snvs_and_indels": [
+          {
+            "confirm": "true",
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "single_nucleitide_variants",
+            "patient_id": "100025",
+            "molecular_id": "MOL100101BLD",
+            "analysis_id": "SAM100101BLD_2",
+            "variant_id": "SAM100101BLD_2_SNV",
+            "status": "REJECTED",
+            "status_date": "2016-01-13T23:06:33+00:00",
+            "comment": "Don't need this",
+            "gene_name": "gene",
+            "chromosome": "chr3",
+            "position": "12345",
+            "oncomine_variant_class": "Hotspot",
+            "exon": "10",
+            "function": "missense",
+            "cds_ref": "A",
+            "cds_alt": "C",
+            "ocp_ref": "A",
+            "ocp_alt": "C",
+            "strand": "S",
+            "filter": "flt",
+            "protein": "p.Glu6565Ala",
+            "transcript": "NM_0456345",
+            "hgvs": "c.234534>C",
+            "read_depth": "648",
+            "rare": "?",
+            "allele_frequency": "0.0344",
+            "flow_alternative_observation": "alt obs",
+            "flow_reference_allele_observation": "alt allele",
+            "reference_allele_observation": "ref allele",
+            "inclusion": "inlc",
+            "arm_specific": "arm spec"
+          },
+          {
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "indels",
+            "patient_id": "100025",
+            "aMOI": "PRIOR",
+            "molecular_id": "MOL100101BLD",
+            "analysis_id": "SAM100101BLD_2",
+            "variant_id": "SAM100101BLD_2_ID",
+            "confirmed": false,
+            "comment": "",
+            "gene": "EGFR",
+            "oncominevariantclass": "Hotspot",
+            "exon": "19",
+            "function": "nonframeshiftDeletion",
+            "metadata": {
+              "_id": "017d6838-fcfe-410b-8537-ce2d012aa1ea"
+            },
+            "geneName": "",
+            "chromosome": "chr7",
+            "position": "41266133",
+            "identifier": ".",
+            "cds_ref": "C",
+            "cds_alt": "T",
+            "filter": "PASS",
+            "hgvs": "",
+            "location": "exonic",
+            "readDepth": 1450,
+            "rare": false,
+            "alleleFreq": 0.433844,
+            "flowAlternativeAlleleObservationCount": "623",
+            "flowReferenceAlleleObservations": "813",
+            "referenceAlleleObservations": 1450,
+            "alternativeAlleleObservationCount": 0,
+            "armSpecific": false
+          }
+        ],
+        "copy_number_variants": [
+          {
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "copy_number_variants",
+            "patient_id": "100025",
+            "aMOI": "PRIOR",
+            "molecular_id": "MOL100101BLD",
+            "analysis_id": "SAM100101BLD_2",
+            "variant_id": "SAM100101BLD_2_CNV",
+            "confirmed": false,
+            "comment": "",
+            "refCopyNumber": 8.1,
+            "rawCopyNumber": 2.1,
+            "copyNumber": 8.1,
+            "confidenceInterval95percent": 2.46082,
+            "confidenceInterval5percent": 1.79208,
+            "confirmed": true,
+            "aMOI": "PRIOR",
+            "gene": "MYCL",
+            "exon": "",
+            "function": "",
+            "metadata": {
+              "_id": "4213853e-1afc-4950-9908-752267d04851"
+            },
+            "geneName": "",
+            "chromosome": "chr1",
+            "position": "40361592",
+            "identifier": "MYCL",
+            "reference": "A",
+            "alternative": "<CNV>",
+            "filter": "PASS",
+            "hgvs": "",
+            "rare": false,
+            "flowAlternativeAlleleObservationCount": "",
+            "flowReferenceAlleleObservations": "",
+            "inclusion": "E",
+            "armSpecific": false
+          }
+        ],
+        "gene_fusions": [
+          {
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "gene_fusions",
+            "patient_id": "100025",
+            "aMOI": "PRIOR",
+            "molecular_id": "MOL100101BLD",
+            "analysis_id": "SAM100101BLD_2",
+            "variant_id": "SAM100101BLD_2_GF1",
+            "comment": "",
+            "confirmed": true,
+            "gene": "ALK",
+            "oncominevariantclass": "Fusion",
+            "exon": "20",
+            "function": "",
+            "metadata": {
+              "_id": "354a721e-81c2-4773-937c-ad1e3936b3c3"
+            },
+            "geneName": "ALK",
+            "aMOI": "PRIOR",
+            "chromosome": "chr2",
+            "position": "29446394",
+            "identifier": "TPM3-ALK.T7A20_1",
+            "reference": "A",
+            "alternative": "[chr1:154142875[A",
+            "filter": "PASS",
+            "hgvs": "",
+            "location": "",
+            "readDepth": 1001,
+            "rare": false,
+            "flowAlternativeAlleleObservationCount": "",
+            "flowReferenceAlleleObservations": "",
+            "inclusion": "I",
+            "armSpecific": false
+          },
+          {
+            "molecular_id_analysis_id": "MSNANL123AN123",
+            "variant_type": "gene_fusions",
+            "patient_id": "100025",
+            "aMOI": "PRIOR",
+            "molecular_id": "MOL100101BLD",
+            "analysis_id": "SAM100101BLD_2",
+            "variant_id": "SAM100101BLD_2_GF2",
+            "comment": "",
+            "confirmed": true,
+            "aMOI": "PRIOR",
+            "gene": "TPM3",
+            "oncominevariantclass": "Fusion",
+            "exon": "12",
+            "function": "",
+            "metadata": {
+              "_id": "aa8b08f6-6c98-4d3a-ba0c-c387f817cf2c"
+            },
+            "geneName": "TPM3",
+            "chromosome": "chr2",
+            "position": "29446394",
+            "identifier": "TPM3-ALK.T7A20_2",
+            "reference": "C",
+            "alternative": "[chr1:154142875[A",
+            "filter": "PASS",
+            "hgvs": "",
+            "location": "",
+            "readDepth": 1001,
+            "rare": false,
+            "flowAlternativeAlleleObservationCount": "",
+            "flowReferenceAlleleObservations": "",
+            "inclusion": "I",
+            "armSpecific": false
+          }
+        ]
+      }
+    }
+  ],
+  "assignment_report": {
+    "generated_date": "2016-05-09T22:06:33+00:00",
+    "confirmed_date": "2016-05-09T22:06:33+00:00",
+    "sent_to_cog_date": "-",
+    "received_from_cog_date": "-",
+    "molecular_id": "T-15-000078",
+    "molecular_id": "MSN34534",
+    "analysis_id": "MSN34534_v2_kjdf3-kejrt-3425-mnb34ert34f",
+    "variant_report_amois": [
+      {
+        "title": "[COSM12344]",
+        "url": ""
+      },
+      {
+        "title": "p.S310Y",
+        "url": ""
+      },
+      {
+        "title": "CISM23423",
+        "url": ""
+      }
+    ],
+    "assays": [
+      {
+        "gene": "PTENs",
+        "result": "POSITIVE",
+        "comment": "-"
+      },
+      {
+        "gene": "MLH1",
+        "result": "Not Applicable",
+        "comment": "Biopsy received prior to bimarker launch date"
+      }
+    ],
+    "treatment_arms": {
+      "no_match": [
+        {
+          "treatment_arm": "APEC1621-U",
+          "treatment_arm_version": "2015-08-06",
+          "treatment_arm_title": "APEC1621-U (2015-08-06)",
+          "reason": "The patient contains no matching variant."
+        },
+        {
+          "treatment_arm": "APEC1621-F",
+          "treatment_arm_version": "2015-08-06",
+          "treatment_arm_title": "APEC1621-U (2015-08-06)",
+          "reason": "The patient contains no matching variant."
+        },
+        {
+          "treatment_arm": "APEC1621-F",
+          "treatment_arm_version": "2015-08-06",
+          "treatment_arm_title": "APEC1621-U (2015-08-06)",
+          "reason": "The patient contains no matching variant."
+        },
+        {
+          "treatment_arm": "APEC1621-F",
+          "treatment_arm_version": "2015-08-06",
+          "treatment_arm_title": "APEC1621-U (2015-08-06)",
+          "reason": "The patient contains no matching variant."
+        },
+        {
+          "treatment_arm": "APEC1621-G",
+          "treatment_arm_version": "2015-08-06",
+          "treatment_arm_title": "APEC1621-U (2015-08-06)",
+          "reason": "The patient contains no matching variant."
+        },
+        {
+          "treatment_arm": "APEC1621-H",
+          "treatment_arm_version": "2015-08-06",
+          "treatment_arm_title": "APEC1621-U (2015-08-06)",
+          "reason": "The patient contains no matching variant."
+        },
+        {
+          "treatment_arm": "APEC1621-R",
+          "treatment_arm_version": "2015-08-06",
+          "treatment_arm_title": "APEC1621-U (2015-08-06)",
+          "reason": "The patient contains no matching variant."
+        },
+        {
+          "treatment_arm": "APEC1621-E",
+          "treatment_arm_version": "2015-08-06",
+          "treatment_arm_title": "APEC1621-U (2015-08-06)",
+          "reason": "The patient contains no matching variant."
+        },
+        {
+          "treatment_arm": "APEC1621-A",
+          "treatment_arm_version": "2015-08-06",
+          "treatment_arm_title": "APEC1621-U (2015-08-06)",
+          "reason": "The patient contains no matching variant."
+        },
+        {
+          "treatment_arm": "APEC1621-V",
+          "treatment_arm_version": "2015-08-06",
+          "treatment_arm_title": "APEC1621-U (2015-08-06)",
+          "reason": "The patient contains no matching variant."
+        }
+      ],
+      "record_based_exclusion": [
+        {
+          "treatment_arm": "APEC1621-Q",
+          "treatment_arm_version": "2015-08-06",
+          "treatment_arm_title": "APEC1621-U (2015-08-06)",
+          "reason": "The patient excluded from this arm because of invasive breast carcinoma."
+        }
+      ],
+      "selected": [
+        {
+          "treatment_arm": "APEC1621-B",
+          "treatment_arm_version": "2015-08-06",
+          "treatment_arm_title": "APEC1621-U (2015-08-06)",
+          "reason": "The patient and treatment match on variand identifier [ABSF, DEDF]."
+        }
+      ]
+    }
+  },
+  "specimen_selectors": [
+    {
+      "text": "SUREVT0981",
+      "collected_date": "2016-06-09T22:06:33.000+00:00"
+    },
+    {
+      "text": "SUREVT0982",
+      "collected_date": "2016-06-09T22:06:33.000+00:00"
+    }
+  ],
+  "specimen": {
+    "patient_id": "100101",
+    "collected_date": "2016-06-09T22:06:33+00:00",
+    "received_date": "2016-06-09T22:06:33+00:00",
+    "surgical_event_id": "SUREVT0982",
+    "failed_date": "2016-06-09T22:06:33+00:00",
+    "study_id": "APEC1621",
+    "type": "TISSUE",
+    "pathology_status": "Agreed on pathology",
+    "pathology_status_date": "2016-06-09T22:06:33+00:00",
+    "variant_report_confirmed_date": "2016-06-09T22:06:33+00:00",
+    "comments": "-",
+    "assays": [
+      {
+        "gene": "PTEN",
+        "ordered_date": "2016-06-09T22:06:33+00:00",
+        "result_date": "2016-07-09T22:06:33+00:00",
+        "result": "POSITIVE"
+      },
+      {
+        "gene": "MLH1",
+        "ordered_date": "2016-06-09T22:06:33+00:00",
+        "result_date": "2016-07-09T22:06:33+00:00",
+        "result": "POSITIVE"
+      },
+      {
+        "gene": "MSCH2",
+        "ordered_date": "2016-06-09T22:06:33+00:00",
+        "result_date": "2016-07-09T22:06:33+00:00",
+        "result": "POSITIVE"
+      },
+      {
+        "gene": "RB",
+        "ordered_date": "2016-06-09T22:06:33+00:00",
+        "result_date": "2016-07-09T22:06:33+00:00",
+        "result": "NEGATIVE"
+      }
+    ],
+    "assignments": "",
+    "specimen_shipments": [
+      {
+        "analyses": [
+          {
+            "analysis_id": "MSN5678_v1_676...tyyrt4",
+            "status": "Rejected",
+            "file_received_date": "Sep 18, 2015, 1:08 PM GMT",
+            "status_date": "2016-06-09T22:06:33+00:00"
+          }
+        ]
+      },
+      {
+        "molecular_id": "MSN5678",
+        "tracking_number": "675867856677",
+        "destination_date": "2016-06-09T22:06:33+00:00",
+        "dna_concordance": 10.2,
+        "dna_volume": 9,
+        "reported_date": "2016-06-09T22:06:33+00:00",
+        "comments": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+        "analyses": [
+          {
+            "analysis_id": "MSN1234_v1_23453...jher4",
+            "status": "Confirmed",
+            "file_received_date": "2016-06-09T22:06:33+00:00",
+            "status_date": "2016-06-09T22:06:33+00:00"
+          },
+          {
+            "analysis_id": "MSN1234_v2_2rer53...yher4",
+            "status": "Rejected",
+            "file_received_date": "2016-09-09T22:06:33+00:00",
+            "status_date": "2016-06-09T22:06:33+00:00"
+          }
+        ]
+      }
+    ]
+  },
+  "specimen_history": [
+    {
+      "patient_id": "100101",
+      "collected_date": "2016-06-09T22:06:33+00:00",
+      "surgical_event_id": "SUREVT195",
+      "failed_date": "2016-06-09T22:06:33+00:00",
+      "study_id": "APEC1621",
+      "type": "TISSUE",
+      "pathology_status": "Agreed on pathology",
+      "pathology_status_date": "2016-06-09T22:06:33+00:00",
+      "variant_report_confirmed_date": "2016-06-09T22:06:33+00:00",
+      "assays": [
+        {
+          "gene": "PTEN",
+          "ordered_date": "2016-06-09T22:06:33+00:00",
+          "result_date": "2016-07-09T22:06:33+00:00",
+          "result": "POSITIVE"
+        },
+        {
+          "gene": "MLH1",
+          "ordered_date": "2016-06-09T22:06:33+00:00",
+          "result_date": "2016-07-09T22:06:33+00:00",
+          "result": "POSITIVE"
+        }
+      ],
+      "assignments": "",
+      "specimen_shipments": [
+        {
+          "molecular_id": "MOL195_2",
+          "tracking_number": "675867850196",
+          "destination_date": "2016-06-09T22:06:33+00:00",
+          "dna_concordance": 10.2,
+          "dna_volume": 9,
+          "reported_date": "2016-06-09T22:06:33+00:00",
+          "comments": "Comment",
+          "analyses": [
+            {
+              "analysis_id": "SAM195_3",
+              "status": "Rejected",
+              "file_received_date": "Sep 18, 2015, 1:08 PM GMT",
+              "status_date": "2016-06-09T22:06:33+00:00"
+            }
+          ]
+        },
+        {
+          "molecular_id": "MOL195_1",
+          "tracking_number": "675867852965",
+          "destination_date": "2016-06-09T22:06:33+00:00",
+          "dna_concordance": 10.2,
+          "dna_volume": 9,
+          "reported_date": "2016-06-09T22:06:33+00:00",
+          "comments": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "analyses": [
+            {
+              "analysis_id": "SAM195-1",
+              "status": "Rejected",
+              "file_received_date": "2016-09-09T22:06:33+00:00",
+              "status_date": "2016-06-09T22:06:33+00:00"
+            },
+            {
+              "analysis_id": "SAM195_2",
+              "status": "Confirmed",
+              "file_received_date": "2016-06-09T22:06:33+00:00",
+              "status_date": "2016-06-09T22:06:33+00:00"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "patient_id": "100101",
+      "collected_date": "2016-06-09T22:06:33+00:00",
+      "surgical_event_id": "SUREVT194",
+      "failed_date": "2016-06-09T22:06:33+00:00",
+      "study_id": "APEC1621",
+      "type": "TISSUE",
+      "pathology_status": "Agreed on pathology",
+      "pathology_status_date": "2016-06-09T22:06:33+00:00",
+      "variant_report_confirmed_date": "2016-06-09T22:06:33+00:00",
+      "assays": [
+        {
+          "gene": "PTEN",
+          "ordered_date": "2016-06-09T22:06:33+00:00",
+          "result_date": "2016-07-09T22:06:33+00:00",
+          "result": "POSITIVE"
+        },
+        {
+          "gene": "MLH1",
+          "ordered_date": "2016-06-09T22:06:33+00:00",
+          "result_date": "2016-07-09T22:06:33+00:00",
+          "result": "POSITIVE"
+        }
+      ],
+      "assignments": "",
+      "specimen_shipments": [
+        {
+          "molecular_id": "MOL194_1",
+          "tracking_number": "675867854291",
+          "destination_date": "2016-06-09T22:06:33+00:00",
+          "dna_concordance": 10.2,
+          "dna_volume": 9,
+          "reported_date": "2016-06-09T22:06:33+00:00",
+          "comments": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+          "analyses": [
+            {
+              "analysis_id": "SAM194_1",
+              "status": "Confirmed",
+              "file_received_date": "2016-06-09T22:06:33+00:00",
+              "status_date": "2016-06-09T22:06:33+00:00"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
