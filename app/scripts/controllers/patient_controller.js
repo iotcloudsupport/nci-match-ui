@@ -144,7 +144,7 @@
 
         function loadPatientActivity() {
             matchApiMock
-                .loadPatientActivity($stateParams.patient_id)
+                .loadActivity($stateParams.patient_id)
                 .then(setupActivity, handleActivityLoadError);
         }
 

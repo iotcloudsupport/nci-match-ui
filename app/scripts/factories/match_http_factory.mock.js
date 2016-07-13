@@ -5,7 +5,7 @@
             return {
                 loadPatient: loadPatient,
                 loadPatientList: loadPatientList,
-                loadPatientActivity: loadPatientActivity,
+                loadActivity: loadActivity,
                 loadDashboardStatistics: loadDashboardStatistics,
                 loadTreatmentArmAccrual: loadTreatmentArmAccrual,
                 loadChartjsDonutChart: loadChartjsDonutChart,
@@ -22,9 +22,14 @@
                 return $http.get('data/patient_' + id + '.json');
             }
 
-            function loadPatientActivity(id) {
-                $log.info('Loading patient activity' + id);
-                return $http.get('data/activity_patient_' + id + '.json');
+            function loadActivity(id) {
+                if (id) {
+                    $log.info('Loading patient activity ' + id);
+                    return $http.get('data/activity_patient_' + id + '.json');
+                } else {
+                    $log.info('Loading dashboard activity');
+                    return $http.get('data/activity_dashboard.json');
+                }
             }
 
             function loadPatientList() {
