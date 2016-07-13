@@ -722,7 +722,9 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
             };
 
-            $scope.openMDANegatives = function() {
+            $scope.openMDANegatives = function(id) {
+
+                $scope.sampleId = id;
 
                 $scope.negatives = 'mdacc';
 
