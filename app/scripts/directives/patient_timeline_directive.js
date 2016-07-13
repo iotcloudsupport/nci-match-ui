@@ -32,7 +32,7 @@
             'biopsy.variantReportReceived': baseUrl + 'biopsy_variantReportReceived.html',
             'biopsy.variantReportShipped': baseUrl + 'biopsy_variantReportShipped.html',
             'biopsy.pathology': baseUrl + 'biopsy_pathology.html',
-            'assignment': baseUrl + 'assignment.html',
+            'assignment': baseUrl + 'assignment_narrow.html',
             'patient': baseUrl + 'patient.html',
             'user': baseUrl + 'user.html',
             'system': baseUrl + 'system.html'
