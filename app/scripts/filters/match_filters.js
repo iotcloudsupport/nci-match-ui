@@ -73,7 +73,7 @@
 
     function assayStatus() {
         return function (text) {
-            return colorFilter(text, { 'POSITIVE': 'green', 'NEGATIVE': 'red' });
+            return colorFilter(text, { 'POSITIVE': 'green', 'NEGATIVE': 'red', 'ORDER': 'blue' });
         };
     }
 

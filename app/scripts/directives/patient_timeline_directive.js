@@ -29,7 +29,6 @@
             'biopsy.assay': baseUrl + 'biopsy_assay.html',
             'biopsy.assay_order': baseUrl + 'biopsy_assay_order.html',
             'biopsy.assay_received': baseUrl + 'biopsy_assay_received.html',
-            'biopsy.variantReport': baseUrl + 'biopsy_variantReport.html',
             'biopsy.variantReportReceived': baseUrl + 'biopsy_variantReportReceived.html',
             'biopsy.variantReportShipped': baseUrl + 'biopsy_variantReportShipped.html',
             'biopsy.pathology': baseUrl + 'biopsy_pathology.html',

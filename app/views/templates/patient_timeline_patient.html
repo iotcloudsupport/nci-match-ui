@@ -7,8 +7,16 @@
     <div class="col-xs-7 col-md-8 content" ng-class="{'no-top-border':!timelineEvent.isStepChanging}">
         <p class="m-b-xs"><span class="timeline-step">Step: {{::timelineEvent.step}}.</span> <strong>{{::timelineEvent.event_message}}.</strong></p>
         <p class="m-b-xs">
-            Location: <a href target="_blank">{{::timelineEvent.event_data.location}}</a>
-            <br>Rebiopsy: {{::timelineEvent.event_data.rebiopsy}}
+
+            <span ng-if="timelineEvent.event_data.location">
+                Locations: <span class="timeline-value">{{::timelineEvent.event_data.location}}</span>
+                <br>
+            </span>
+                                    
+            <span ng-if="timelineEvent.event_data.rebiopsy && timelineEvent.event_data.rebiopsy !== '-'">
+                Rebiopsy: <span class="timeline-value">{{::timelineEvent.event_data.rebiopsy}}</span>
+                <br>
+            </span>
         </p>
     </div>
 </div>
