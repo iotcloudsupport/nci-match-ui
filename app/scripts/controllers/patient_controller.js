@@ -199,13 +199,13 @@
         }
 
         function setupSurgicalEventOptions() {
-            if (!$scope.data.specimen_history) {
+            if (!$scope.data.specimens) {
                 $log.error('The web service didn\'t send Secimen History');
                 return;
             }
 
-            for (var i = 0; i < $scope.data.specimen_history.length; i++) {
-                var surgicalEvent = $scope.data.specimen_history[i];
+            for (var i = 0; i < $scope.data.specimens.length; i++) {
+                var surgicalEvent = $scope.data.specimens[i];
                 var collectedDate = $filter('utc')(surgicalEvent.collected_date);
 
                 var item = {
@@ -617,8 +617,8 @@
             $scope.currentAnalisys = null;
             $scope.currentShipment = null;
 
-            for (var i = 0; i < $scope.data.specimen_history.length; i++) {
-                var surgicalEvent = $scope.data.specimen_history[i];
+            for (var i = 0; i < $scope.data.specimens.length; i++) {
+                var surgicalEvent = $scope.data.specimens[i];
 
                 if (surgicalEvent.surgical_event_id === option.value.surgical_event_id) {
                     $scope.currentSurgicalEvent = surgicalEvent;
