@@ -212,141 +212,10 @@
         function setupActivityList(listSize, entryMax) {
             for (var i = 0; i < entryMax; i++) {
                 $scope.activityList.push($scope.activityListData[listSize + i]);
-                //console.log($scope.activityList);
-
             }
-            //console.log($scope.activityList);
         }
 
         function loadActivityList() {
-            /*$scope.activityListData = [
-                {
-                    "pic": $scope.icons[4],
-                    "status": "activity-feed-icon",
-                    "patient_id": '100025',
-                    "time": 1421175969643,
-                    "age": '3m',
-                    "displayName": $scope.message[0]
-                },
-                {
-                    "pic": $scope.icons[2],
-                    "status": "activity-feed-icon",
-                    "patient_id": '',
-                    "treatment_arm": { "name": "APEC1621-A", "version": "2016-03-17", "stratum": "STR1" },
-                    "time": 1421175969643,
-                    "age": '3m',
-                    "displayName": $scope.message[4]
-                },
-                {
-                    "pic": $scope.icons[3],
-                    "status": "activity-feed-icon",
-                    "patient_id": '100025',
-                    "molecular_id": 'MOL001_1',
-                    "surgical_event_id": 'SUREVT002',
-                    "time": 1421171969643,
-                    "age": '5m',
-                    "displayName": $scope.message[1]
-                },
-                {
-                    "pic": $scope.icons[2],
-                    "status": "activity-feed-icon",
-                    "patient_id": '',
-                    "treatment_arm": { "name": "APEC1621-Z", "version": "2016-03-17", "stratum": "STR1" },
-                    "time": 1421169969643,
-                    "age": '5m',
-                    "displayName": $scope.message[5]
-                },
-                {
-                    "pic": $scope.icons[3],
-                    "status": "activity-feed-icon",
-                    "patientId": '100136',
-                    "molecular_id": 'MOL001_1',
-                    "surgical_event_id": 'SUREVT002',
-                    "time": 1421165969643,
-                    "age": '18m',
-                    "displayName": $scope.message[1]
-                },
-                {
-                    "pic": $scope.icons[1],
-                    "status": "activity-feed-icon",
-                    "patient_id": '100025',
-                    "molecular_id": 'MOL001_1',
-                    "surgical_event_id": 'SUREVT002',
-                    "time": 1421162969643,
-                    "age": '5h',
-                    "displayName": $scope.message[2]
-                },
-                {
-                    "pic": $scope.icons[2],
-                    "status": "activity-feed-icon",
-                    "patient_id": '',
-                    "treatment_arm": { "name": "APEC1621-A", "version": "2016-03-17", "stratum": "STR1" },
-                    "time": 1421162969643,
-                    "age": '5h',
-                    "displayName": $scope.message[3]
-                },
-                {
-                    "pic": $scope.icons[3],
-                    "status": "activity-feed-icon",
-                    "patient_id": '100025',
-                    "molecular_id": 'MOL001_1',
-                    "surgical_event_id": 'SUREVT002',
-                    "time": 1421160969643,
-                    "age": '6d',
-                    "displayName": $scope.message[6]
-                },
-                {
-                    "pic": $scope.icons[4],
-                    "status": "activity-feed-icon",
-                    "patientId": '100025',
-                    "time": 1421155768643,
-                    "age": '1y',
-                    "displayName": $scope.message[0]
-                },
-                {
-                    "pic": $scope.icons[1],
-                    "status": "activity-feed-icon",
-                    "patientId": '100025',
-                    "molecular_id": 'MOL001_1',
-                    "surgical_event_id": '125',
-                    "time": 1421162969643,
-                    "age": '5h',
-                    "displayName": $scope.message[2]
-                },
-                {
-                    "pic": $scope.icons[3],
-                    "status": "activity-feed-icon",
-                    "patient_id": '100025',
-                    "molecular_id": 'MOL001_1',
-                    "surgical_event_id": 'SUREVT002',
-                    "time": 1421160969643,
-                    "age": '6d',
-                    "displayName": $scope.message[6]
-                },
-                {
-                    "pic": $scope.icons[4],
-                    "status": "activity-feed-icon",
-                    "patient_id": '100025',
-                    "surgical_event_id": 'SUREVT002',
-                    "time": 1421155768643,
-                    "age": '1y',
-                    "displayName": $scope.message[0]
-                },
-                {
-                    "pic": $scope.icons[4],
-                    "status": "activity-feed-icon",
-                    "patient_id": '100025',
-                    "surgical_event_id": 'SUREVT002',
-                    "time": 1421155768643,
-                    "age": '1y',
-                    "displayName": $scope.message[0]
-                }
-            ];*/
-
-
-
-
-
             matchApiMock
                 .loadActivityList()
                 .then(function(d) {
@@ -355,35 +224,6 @@
                     var listSize = $scope.activityList.length;
                     setupActivityList(listSize, 10);
                 });
-            /*$scope.loadActivityList = function() {
-             reportApi
-             .getActivityFeedList()
-             .then(function(d) {
-             angular.forEach(d.data, function (value) {
-             console.log(value);
-             $scope.num = (Math.ceil(Math.random() * 9));
-             $scope.icon = (Math.ceil(Math.random() * 5));
-             $scope.time = value.timestamp;
-             $scope.age = value.age;
-             $scope.message = value.message;
-             $scope.actor = value.actor;
-
-             if($scope.activityList.length < $scope.num) {
-             var feedTemplate = {
-             "pic": $scope.icons[$scope.num],
-             "status": $scope.status[$scope.icon],
-             "messages": $scope.message,
-             "time": $scope.time,
-             "age": $scope.age,
-             "actor": $scope.actor,
-             "displayName": $scope.message[$scope.num],
-             "description": "Delayed DB configuration"
-             };
-             $scope.activityList.push(feedTemplate);
-             }
-             });
-             });
-             };*/
         }
 
     }
