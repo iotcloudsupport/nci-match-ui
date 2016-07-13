@@ -31,8 +31,6 @@
             'Blood Specimen Received'
         ];
 
-        $scope.activityList = [];
-
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(25);
         this.dtOptions = DTOptionsBuilder.newOptions()
@@ -88,7 +86,7 @@
                     $scope.numberOfPendingTissueVariantReports = d.data.number_of_pending_tissue_variant_reports;
                     $scope.numberOfPendingBloodVariantReports = d.data.number_of_pending_blood_variant_reports;
                 });
-        };
+        }
 
         function loadTreatmentArmAccrualData() {
             matchApiMock
@@ -209,24 +207,6 @@
                     $scope.pendingAssignmentReportList = d.data;
                 });
         }
-
-        function setupActivityList(listSize, entryMax) {
-            for (var i = 0; i < entryMax; i++) {
-                $scope.activityList.push($scope.activityListData[listSize + i]);
-            }
-        }
-
-        function loadActivityList() {
-            matchApiMock
-                .loadActivityList()
-                .then(function(d) {
-                    console.log(d);
-                    $scope.activityListData = d.data;
-                    var listSize = $scope.activityList.length;
-                    setupActivityList(listSize, 10);
-                });
-        }
-
     }
 
     function ActivityController(matchApiMock, $stateParams, $log) {
