@@ -1,6 +1,7 @@
 (function () {
     angular.module('dashboard.matchbox', [])
-        .controller('DashboardController', DashboardController);
+        .controller('DashboardController', DashboardController)
+        .controller('ActivityController', ActivityController);
 
     function DashboardController($scope, matchApiMock, store, DTOptionsBuilder) { //workflowApi
         $scope.lastUpdated = (new Date()).getTime();
@@ -228,5 +229,47 @@
 
     }
 
+    function ActivityController(matchApiMock, $stateParams, $log) {
+        var vm = this; 
+
+        vm.data = [];
+        vm.loadData = loadData;
+
+        function loadData() {
+            matchApiMock
+                .loadActivity($stateParams.patient_id)
+                .then(setupScope, handleActivityLoadError);
+        }
+
+        function handleActivityLoadError(e) {
+            $log.error(e);
+            return;
+        }
+        
+        function setupScope(data) {
+            vm.data = [];
+            angular.copy(data.data, vm.data);
+
+            var now = moment();
+            var previousStep = null;
+
+            for (var i = 0; i < vm.data.length; i++) {
+                var timelineEvent = vm.data[i];
+                var eventDateMoment = moment(timelineEvent.event_date);
+                var diff = eventDateMoment.diff(now, "DD/MM/YYYY HH:mm:ss");
+                timelineEvent.from_now = moment.duration(diff).humanize(true);
+
+                if (previousStep && previousStep !== timelineEvent.step) {
+                    timelineEvent.isStepChanging = true;
+                    previousStep = timelineEvent.step;
+                }
+
+                if (!previousStep) {
+                    previousStep = timelineEvent.step;
+                }
+            }
+        }
+
+    }
 
 } ());
