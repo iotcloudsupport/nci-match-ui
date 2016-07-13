@@ -1,22 +1,12 @@
 angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
     .controller('IrAdminController',
-        function( $scope, $http, $window, $stateParams, DTOptionsBuilder, irAdminApi, prompt, $uibModal, $filter) {
+        function( $scope, $http, $window, $stateParams, DTOptionsBuilder, irAdminApi) {
 
         angular.element(document).ready(function () {
             $('.equal-height-panels .panel').matchHeight();
         });
 
             var vm = this;
-
-            // vm.dtOptions = DTOptionBuilder.newOptions()
-            //     .withOptions('autoWidth', fnThatReturnsAPromise);
-
-            // function fnThatReturnsAPromise() {
-            //     var defer = $q.defer();
-            //     defer.resolve(false);
-            //     return defer.promise;
-            // }
-
             vm.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(5);
 
@@ -166,16 +156,16 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             barShowStroke: true,
             barStrokeWidth: 2,
             barValueSpacing: 5,
-            barDatasetSpacing: 1
+            barDatasetSpacing: 1,
+            legend: {
+                show: true,
+                container: '#legendContainer2'
+            }
         };
 
 
         //Populate Data
         $scope.populateData = function(d) {
-
-
-            alert(JSON.stringify(d))
-
 
             angular.forEach(d.data, function (value,key) {
                 if(value.siteName !== 'Unknown' && (value.siteName === 'MoCha'  || value.siteName === 'MDACC')) {
@@ -421,39 +411,39 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             };
 
 
-        $scope.showNoTemplateControlConfirmation_old = function (id) {
-            prompt({
-                "title": "Do you want to continue?",
-                "message": "Warning! Once this action has been submitted it cannot be undone. Please enter your site pin to confirm. ",
-                "input": true,
-                "label": "PIN",
-                "value": ""
-            }).then(function(result){
-                var items = {};
-                var d = $filter('filter')($scope.tokenIpAddress, id);
-                items.confirmation = result;
-                items.ipAddress = d[0].siteIpAddress;
-                irAdminApi
-                    .generateNoTemplateControlToken(items)
-                    .then(
-                        function () {
-                            irAdminApi
-                                .loadSampleControlsList()
-                                .then(function (d) {
-                                    //Clean tables
-                                    $scope.positiveListMocha = [];
-                                    $scope.positiveListMDCC = [];
-                                    $scope.negativeListMocha = [];
-                                    $scope.negativeListMDCC = [];
-                                    $scope.tokenIpAddress = [];
-
-                                    $scope.populateData(d);
-                                });
-                        },
-                        function(response) { // optional
-                        });
-            });
-        };
+        // $scope.showNoTemplateControlConfirmation_old = function (id) {
+        //     prompt({
+        //         "title": "Do you want to continue?",
+        //         "message": "Warning! Once this action has been submitted it cannot be undone. Please enter your site pin to confirm. ",
+        //         "input": true,
+        //         "label": "PIN",
+        //         "value": ""
+        //     }).then(function(result){
+        //         var items = {};
+        //         var d = $filter('filter')($scope.tokenIpAddress, id);
+        //         items.confirmation = result;
+        //         items.ipAddress = d[0].siteIpAddress;
+        //         irAdminApi
+        //             .generateNoTemplateControlToken(items)
+        //             .then(
+        //                 function () {
+        //                     irAdminApi
+        //                         .loadSampleControlsList()
+        //                         .then(function (d) {
+        //                             //Clean tables
+        //                             $scope.positiveListMocha = [];
+        //                             $scope.positiveListMDCC = [];
+        //                             $scope.negativeListMocha = [];
+        //                             $scope.negativeListMDCC = [];
+        //                             $scope.tokenIpAddress = [];
+        //
+        //                             $scope.populateData(d);
+        //                         });
+        //                 },
+        //                 function(response) { // optional
+        //                 });
+        //     });
+        // };
 
         $scope.loadHeartBeatList = function () {
             irAdminApi
@@ -785,6 +775,36 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             };
 
 
+            function setupBarChartOptions(htmlContainer) {
+                return {
+                    series: {
+                        pie: {
+                            show: true
+                        }
+                    },
+                    grid: {
+                        hoverable: true
+                    },
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: function(label, xval, yval) {
+                            return setupTooltip(label, xval, yval);
+                        },
+                        shifts: {
+                            x: 20,
+                            y: 0
+                        },
+                        defaultTheme: true
+                    },
+                    legend: {
+                        show: true,
+                        container: htmlContainer
+                    }
+                };
+            }
+
+            $scope.pieOptions2 = setupBarChartOptions('#legendContainer2');
+
             $scope.loadPieChart = function(site) {
 
 
@@ -985,6 +1005,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                             data: armValues
                         },
                         {
+                            label: "Accrual 2 Dataset",
                             fillColor: 'navy',
                             strokeColor: 'rgba(151,187,205,1)',
                             pointColor: 'rgba(151,187,205,1)',

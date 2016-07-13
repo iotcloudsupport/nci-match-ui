@@ -6,7 +6,7 @@ angular.module('qcsample.matchbox',[ ])
 
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(25);
-            // .withDOM('<"top">t<"bottom"<"b_left"iT><"b_center"p><"b_right"l>><"clear spacer">');
+        // .withDOM('<"top">t<"bottom"<"b_left"iT><"b_center"p><"b_right"l>><"clear spacer">');
 
         this.dtColumnDefs = [];
 
@@ -76,7 +76,7 @@ angular.module('qcsample.matchbox',[ ])
                 });
         };
         $scope.loadSvgGeneMockList = function () {
-                    $window.d3BoxVersion5Mock();
+            $window.d3BoxVersion5Mock();
         };
         //Svg for ntc
         $scope.loadSvgNtcList = function () {
@@ -90,7 +90,7 @@ angular.module('qcsample.matchbox',[ ])
 
         //Svg for ntc  MOCK
         $scope.loadSvgNtcMockList = function () {
-                    $window.d3BoxVersion5Mock();
+            $window.d3BoxVersion5Mock();
         };
 
 
@@ -295,4 +295,3 @@ angular.module('qcsample.matchbox',[ ])
 
 
     });
-
