@@ -21,21 +21,5 @@
       "Aspirin",
       "Motrin",
       "Vitamin C"
-    ],
-    "message": "Some message",
-    "timeline": [
-        {
-            "patient_id": "PAT123",
-            "event_date": "2016-05-09T22:06:33+00:00",
-            "event_name": "Event Name 1",
-            "event_type": "patient",
-            "event_message": "Patient Registered",
-            "event_data": {
-                "step": "1.0",
-                "status": "PENDING",
-                "molecular_id": "B-987456",
-                "location": "GHU"
-            }
-        }
     ]
 }
