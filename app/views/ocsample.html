@@ -1,8 +1,5 @@
-<div ng-controller="QcSampleController">
 
-    <div class="row wrapper border-bottom white-bg page-heading"  >
-
-
+<div class="row wrapper border-bottom white-bg page-heading" ng-controller="QcSampleController" >
             <div class="col-lg-10">
                 <h2>Sample Quality Control Report </h2>
 
@@ -17,11 +14,123 @@
                         <strong>Sample Quality Control Report </strong>
                     </li>
                 </ol>
-
             </div>
+    </div>
+
+    <!--TABS-->
+    <div class="wrapper" >
+
+        <div class="no-horizontal-padding header-box-container">
+            <div class="animated fadeInRight">
+                <div class="row">
+
+                    <div class="col-xs-12 ">
+
+                        <div class="col-lg-6 col-md-6 equal-height-panels" style="border: none">
+
+                            <div class="header-info-box top-main-header-box">
+                                <dl class="dl-horizontal">
+
+                                    <dt>Molecular ID</dt>
+                                    <dd>{{sampleId}}</dd>
+
+                                    <dt>Analysis ID</dt>
+                                    <dd>job_2354</dd>
+
+                                    <dt>Total Variants</dt>
+                                    <dd>18</dd>
+
+                                    <dt>MAPD</dt>
+                                    <dd> - </dd>
+
+                                    <dt> Cellularity</dt>
+                                    <dd> - </dd>
+
+                                    <dt>Positive Control Loaded Date</dt>
+                                    <dd>July 31, 2015 3:57 PM GMT </dd>
+
+                                    <dt style="width: 200px;text-align: left">Torrent Variant Caller Version</dt>
+                                    <dd>tvc 4.4-8 </dd>
+
+                                </dl>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 equal-height-panels " style="border: none">
+
+                            <div class="header-info-box top-main-header-box ">
+
+
+
+                                    <dl class="dl-horizontal" style="font-size: small">
+                                        <dt>Oncomine Control Panel Summary</dt>
+                                        <dd>
+
+                                            <table class="table" role="grid">
+                                                <tbody>
+                                                <tr>
+                                                    <td><a class="report-link" href ng-click="openCosmicGene(&quot;LRP1&quot;)">LRP1</a></td>
+                                                    <td><a class="report-link" href ng-click="openCosmicGene(&quot;TBP&quot;)">TBP</a></td>
+                                                    <td><a class="report-link" href ng-click="openCosmicGene(&quot;MYC&quot;)">MYC</a></td>
+                                                    <td><a class="report-link" href ng-click="openCosmicGene(&quot;HMBS&quot;)">HMBS</a></td>
+                                                    <td><a class="report-link" href ng-click="openCosmicGene(&quot;ITGB7&quot;)">ITGB7</a></td>
+                                                    <td class="label2">SUM</td>
+                                                </tr>
+                                                <tr>
+                                                    <td id="LRP1" width="15%">8668</td>
+                                                    <td id="v5TBP" width="15%">708413</td>
+                                                    <td id="v5MYC" width="15%">75577</td>
+                                                    <td id="v5HMBS" width="15%">164227</td>
+                                                    <td id="v5ITGB7" width="15%">1028</td>
+                                                    <td id="v5sum" width="15%">957913</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </dd>
+
+                                        <dt>Files</dt>
+                                        <dd>
+
+                                            <table><tr><td>
+                                                <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_087_rawlib.bam?molecularSequenceNumber={{sampleId}}"
+                                                   class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
+                                            </td><td>
+                                                <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_087_rawlib.bam.bai?molecularSequenceNumber={{sampleId}}"
+                                                   class="btn btn-xs btn-white file-button-xs">DNA BAI</a>
+                                            </td><td>
+                                                <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/SampleControl_MoCha_1_v1_all-matched.vcf?molecularSequenceNumber={{sampleId}}"
+                                                   class="btn btn-xs btn-white file-button-xs">VCF</a>
+                                            </td></tr><tr><td>
+                                                <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_088_rawlib.bam.bai?molecularSequenceNumber={{sampleId}}"
+                                                   class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
+                                            </td><td>
+                                                <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_088_rawlib.bam?molecularSequenceNumber={{sampleId}}"
+                                                   class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
+                                            </td><td>
+                                                <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
+                                            </td></tr></table>
+                                        </dd>
+                                    </dl>
+
+                            </div>
+                                <!--<div class="col-lg-3" ng-init="loadSampleBreakups();loadPieChart();">-->
+                                    <!--&lt;!&ndash;CHART&ndash;&gt;-->
+                                    <!--<canvas id="pieCanvas" donutchart ng-attr-data="pieData" responsive=true options="doughnutOptions" style=""></canvas>-->
+
+                                <!--</div>-->
+
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 
+
+    <!--TABS-->
 
     <div class="wrapper wrapper-content p-xl"  ng-init="loadSampleBreakups()" >
 
@@ -33,111 +142,10 @@
                         <div class="ibox float-e-margins ">
                             <div class="col-lg-12 white-bg animated fadeInRight">
 
-                                <div class="col-lg-5 cols-height cols-bottom ">
 
-                                    <!--PIE CHART-->
-                                    <div class="header-info-box top-main-header-box" style="border: none">
-
-                                        <!--TAGS-->
-                                        <dl class="dl-horizontal" style="font-size: small">
-
-                                            <dt>Molecular ID</dt>
-                                            <dd>{{sampleId}}</dd>
-
-                                            <dt>Analysis ID</dt>
-                                            <dd>job_2354</dd>
-
-                                            <dt>Total Variants</dt>
-                                            <dd>18</dd>
-
-                                            <dt>MAPD</dt>
-                                            <dd> - </dd>
-
-                                            <dt> Cellularity</dt>
-                                            <dd> - </dd>
-
-                                            <dt>Positive Control</dt>
-                                            <dd>1</dd>
-
-                                            <dt>Positive Control Loaded Date</dt>
-                                            <dd>July 31, 2015 3:57 PM GMT </dd>
-
-                                            <dt>File Received Date</dt>
-                                            <dd>September 18, 2015 3:21 PM GMT </dd>
-
-                                            <dt style="width: 200px;text-align: left">Torrent Variant Caller Version</dt>
-                                            <dd>tvc 4.4-8 </dd>
-
-                                            <dt>Files</dt>
-                                            <dd>
-
-                                                <table><tr><td>
-                                                    <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_087_rawlib.bam?molecularSequenceNumber={{sampleId}}"
-                                                       class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
-                                                </td><td>
-                                                    <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_087_rawlib.bam.bai?molecularSequenceNumber={{sampleId}}"
-                                                       class="btn btn-xs btn-white file-button-xs">DNA BAI</a>
-                                                </td><td>
-                                                    <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/SampleControl_MoCha_1_v1_all-matched.vcf?molecularSequenceNumber={{sampleId}}"
-                                                       class="btn btn-xs btn-white file-button-xs">VCF</a>
-                                                </td></tr><tr><td>
-                                                    <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_088_rawlib.bam.bai?molecularSequenceNumber={{sampleId}}"
-                                                       class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
-                                                </td><td>
-                                                    <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_088_rawlib.bam?molecularSequenceNumber={{sampleId}}"
-                                                       class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
-                                                </td><td>
-                                                    <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
-                                                </td></tr></table>
-                                            </dd>
-                                        </dl>
-                                        <!--TAGS-->
-
-                                        <!--SUMMARY-->
-                                        <div class="header-info-box top-main-header-box" style="border: none">
-
-                                            <div class="tabs-container" >
-                                                <div class="col-lg-8  text-center" >
-                                                    <h4>Oncomine Control Panel Summary</h4>
-                                                    </div>
-
-                                                <div class="col-lg-11" ng-init="loadPieChart();">
-                                                    <!--CHART-->
-                                                    <div class="col-lg-8" >
-                                                        <canvas id="pieCanvas" donutchart ng-attr-data="pieData" responsive=true options="doughnutOptions" style=""></canvas>
-                                                    <!--CHART-->
-
-                                                        <table class="table" role="grid" style="font-size: small">
-                                                            <tbody>
-                                                            <tr>
-                                                                <td><a class="report-link" href ng-click="openCosmicGene(&quot;LRP1&quot;)">LRP1</a></td>
-                                                                <td><a class="report-link" href ng-click="openCosmicGene(&quot;TBP&quot;)">TBP</a></td>
-                                                                <td><a class="report-link" href ng-click="openCosmicGene(&quot;MYC&quot;)">MYC</a></td>
-                                                                <td><a class="report-link" href ng-click="openCosmicGene(&quot;HMBS&quot;)">HMBS</a></td>
-                                                                <td><a class="report-link" href ng-click="openCosmicGene(&quot;ITGB7&quot;)">ITGB7</a></td>
-                                                                <td class="label2">SUM</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td id="LRP1" width="15%">8668</td>
-                                                                <td id="v5TBP" width="15%">708413</td>
-                                                                <td id="v5MYC" width="15%">75577</td>
-                                                                <td id="v5HMBS" width="15%">164227</td>
-                                                                <td id="v5ITGB7" width="15%">1028</td>
-                                                                <td id="v5sum" width="15%">957913</td>
-                                                            </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <!--SUMMARY-->
-                                    </div>
-                                </div>
 
                                 <!--SCATTER TABLE-->
-                                <div class="col-lg-7 col-xs-6 " >
+                                <div class="col-lg-12 col-xs-6 " >
                                     <div class="white-bg " d3-cnv-chart=""></div>
                                 </div>
                                 <!--SCATTER TABLE-->
@@ -352,4 +360,3 @@
 
     </div>
 
-</div>
