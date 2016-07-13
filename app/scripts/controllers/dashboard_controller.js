@@ -55,7 +55,6 @@
         $scope.loadTissueVariantReportsList = loadTissueVariantReportsList;
         $scope.loadBloodVariantReportsList = loadBloodVariantReportsList;
         $scope.loadPatientPendingAssignmentReportsList = loadPatientPendingAssignmentReportsList;
-        $scope.loadActivityList = loadActivityList;
 
         function setName() {
             var name;
