@@ -20,16 +20,6 @@
 
         $scope.now = new Date();
 
-        $scope.icons = [
-            'fa fa-heartbeat fa-2x',
-            'fa fa-bar-chart fa-2x',
-            'fa fa-medkit fa-2x',
-            'fa fa-truck fa-2x',
-            'fa fa-user fa-2x',
-            'fa fa-thumbs-up fa-2x',
-            'fa fa-exclamation-triangle fa-2x'
-        ];
-
         $scope.message = [
             'Patient Registration',
             'Tissue Specimen Received',
@@ -38,14 +28,6 @@
             'Treatment Arm Open',
             'Treatment Arm Closed',
             'Blood Specimen Received'
-        ];
-
-        $scope.status = [
-            'btn-danger',
-            'btn-success',
-            'btn-default',
-            'btn-warning',
-            'btn-priority'
         ];
 
         $scope.activityList = [];
@@ -237,7 +219,7 @@
         }
 
         function loadActivityList() {
-            $scope.activityListData = [
+            /*$scope.activityListData = [
                 {
                     "pic": $scope.icons[4],
                     "status": "activity-feed-icon",
@@ -359,13 +341,20 @@
                     "age": '1y',
                     "displayName": $scope.message[0]
                 }
-            ];
+            ];*/
 
 
-                var listSize = $scope.activityList.length;
-                setupActivityList(listSize, 10);
 
 
+
+            matchApiMock
+                .loadActivityList()
+                .then(function(d) {
+                    console.log(d);
+                    $scope.activityListData = d.data;
+                    var listSize = $scope.activityList.length;
+                    setupActivityList(listSize, 10);
+                });
             /*$scope.loadActivityList = function() {
              reportApi
              .getActivityFeedList()
