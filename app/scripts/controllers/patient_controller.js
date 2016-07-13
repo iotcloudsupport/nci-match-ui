@@ -131,14 +131,50 @@
         function loadPatientData() {
             matchApiMock
                 .loadPatient($stateParams.patient_id)
-                .then(setupScope, handleError);
+                .then(setupScope, handlePatientLoadError)
+                .then(loadPatientActivity);
         }
 
-        function handleError(e) {
+        function handlePatientLoadError(e) {
             $log.error(e);
             $log.info('Error while retriving data from the service. Transferring back to patient list');
             $state.transitionTo('patients');
             return;
+        }
+
+        function loadPatientActivity() {
+            matchApiMock
+                .loadPatientActivity($stateParams.patient_id)
+                .then(setupActivity, handleActivityLoadError);
+        }
+
+        function handleActivityLoadError(e) {
+            $log.error(e);
+            return;
+        }
+        
+        function setupActivity(data) {
+            $scope.activity = [];
+            angular.copy(data.data, $scope.activity);
+
+            var now = moment();
+            var previousStep = null;
+
+            for (var i = 0; i < $scope.activity.length; i++) {
+                var timelineEvent = $scope.activity[i];
+                var eventDateMoment = moment(timelineEvent.event_date);
+                var diff = eventDateMoment.diff(now, "DD/MM/YYYY HH:mm:ss");
+                timelineEvent.from_now = moment.duration(diff).humanize(true);
+
+                if (previousStep && previousStep !== timelineEvent.step) {
+                    timelineEvent.isStepChanging = true;
+                    previousStep = timelineEvent.step;
+                }
+
+                if (!previousStep) {
+                    previousStep = timelineEvent.step;
+                }
+            }
         }
 
         function setupScope(data) {
@@ -153,7 +189,6 @@
             $scope.data = scopeData;
 
             setupCurrentTreatmentArm();
-            setupTimeline();
             setupSurgicalEventOptions();
             setupVariantReportOptions();
             setupVariantReports();
@@ -162,27 +197,6 @@
             setupSelectedTreatmentArm();
             setupUserName();
             navigateTo($stateParams);
-        }
-
-        function setupTimeline() {
-            var now = moment();
-            var previousStep = null;
-
-            for (var i = 0; i < $scope.data.timeline.length; i++) {
-                var timelineEvent = $scope.data.timeline[i];
-                var eventDateMoment = moment(timelineEvent.event_date);
-                var diff = eventDateMoment.diff(now, "DD/MM/YYYY HH:mm:ss");
-                timelineEvent.from_now = moment.duration(diff).humanize(true);
-
-                if (previousStep && previousStep !== timelineEvent.step) {
-                    timelineEvent.isStepChanging = true;
-                    previousStep = timelineEvent.step;
-                }
-
-                if (!previousStep) {
-                    previousStep = timelineEvent.step;
-                }
-            }
         }
 
         function setupUserName() {

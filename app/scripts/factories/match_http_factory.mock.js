@@ -5,21 +5,26 @@
             return {
                 loadPatient: loadPatient,
                 loadPatientList: loadPatientList,
+                loadPatientActivity: loadPatientActivity,
                 loadDashboardStatistics: loadDashboardStatistics,
                 loadTreatmentArmAccrual: loadTreatmentArmAccrual,
                 loadChartjsDonutChart: loadChartjsDonutChart,
                 loadTissueVariantReportsList: loadTissueVariantReportsList,
                 loadBloodVariantReportsList: loadBloodVariantReportsList,
                 loadPatientPendingAssignmentReportsList: loadPatientPendingAssignmentReportsList,
-                loadChartjsDonutChart: loadChartjsDonutChart,
                 loadActivityList: loadActivityList,
                 loadSpecimenTrackingList: loadSpecimenTrackingList,
                 displayTreatmentArmList: displayTreatmentArmList
-            }
+            };
 
             function loadPatient(id) {
                 $log.info('Loading patient ' + id);
                 return $http.get('data/patient_' + id + '.json');
+            }
+
+            function loadPatientActivity(id) {
+                $log.info('Loading patient activity' + id);
+                return $http.get('data/activity_patient_' + id + '.json');
             }
 
             function loadPatientList() {
