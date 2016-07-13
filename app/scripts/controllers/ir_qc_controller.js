@@ -104,35 +104,35 @@ angular.module('qcsample.matchbox',[ ])
 
             if(site==='mocha') {
                 // 8668	708413	75577	164227	1028
-                aMoiValues = [8668, 708413, 75577, 164227, 1028]; //[4, 10, 14, 6, 10, 16]; //[45, 21, 4, 35, 9, 6];
+                aMoiValues = [8668, 558413, 75577, 164227, 1028]; //[4, 10, 14, 6, 10, 16]; //[45, 21, 4, 35, 9, 6];
             }
             else{
-                aMoiValues = [8668, 708413, 75577, 164227, 1028];
+                aMoiValues = [5668, 358413, 15577, 234227, 5028];
             }
             aMoiHighlight = "#000088"; //"#dedede";
 
             $scope.pieData = [
                 {
                     value: aMoiValues[0],
-                    color: "#23c6c8",
+                    color: "DarkCyan",
                     highlight: aMoiHighlight,
                     label: aMoiLabels[0]
                 },
                 {
                     value: aMoiValues[1],
-                    color: "#1c84c6",
+                    color: "Indigo",
                     highlight: aMoiHighlight,
                     label: aMoiLabels[1]
                 },
                 {
                     value: aMoiValues[2],
-                    color: "#18a689", //"#ab0102",
+                    color: "SandyBrown", //"#ab0102",
                     highlight: aMoiHighlight,
                     label: aMoiLabels[2]
                 },
                 {
                     value: aMoiValues[3],
-                    color: "#f8ac59",
+                    color: "FireBrick",
                     highlight: aMoiHighlight,
                     label: aMoiLabels[3]
                 },
