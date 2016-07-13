@@ -2197,163 +2197,7 @@
             ]
         }
     },
-    "specimen": {
-        "patient_id": "100025",
-        "collected_date": "2016-03-09T09:06:33+00:00",
-        "surgical_event_id": "SUREVT002",
-        "failed_date": "",
-        "study_id": "APEC1621",
-        "type": "TISSUE",
-        "pathology_status": "Agreed on pathology",
-        "pathology_status_date": "2016-03-09T12:06:33+00:00",
-        "variant_report_confirmed_date": "2016-03-09T15:06:33+00:00",
-        "assays": [
-            {
-                "gene": "PTEN",
-                "ordered_date": "2016-02-09T22:06:33+00:00",
-                "result_date": "2016-02-15T22:06:33+00:00",
-                "result": "POSITIVE"
-            },
-            {
-                "gene": "MLH1",
-                "ordered_date": "2016-02-09T22:06:33+00:00",
-                "result_date": "2016-02-14T22:06:33+00:00",
-                "result": "POSITIVE"
-            },
-            {
-                "gene": "MSCH2",
-                "ordered_date": "2016-02-09T22:06:33+00:00",
-                "result_date": "2016-02-14T22:06:33+00:00",
-                "result": "POSITIVE"
-            },
-            {
-                "gene": "RB",
-                "ordered_date": "2016-02-09T22:06:33+00:00",
-                "result_date": "2016-02-14T22:06:33+00:00",
-                "result": "NEGATIVE"
-            }
-        ],
-        "assignments": "",
-        "specimen_shipments": [
-            {
-                "molecular_id": "MSN5678",
-                "tracking_number": "675867856685",
-                "type": "TISSUE",
-                "destination_date": "2016-02-19T23:16:53+00:00",
-                "dna_concordance": 10.2,
-                "dna_volume": 9,
-                "reported_date": "2016-02-19T13:25:04+00:00",
-                "comments": "Second shipment",
-                "analyses": [
-                    {
-                        "analysis_id": "SAM002_04",
-                        "status": "Pending",
-                        "file_received_date": "2016-02-19T22:45:02+00:00",
-                        "status_date": "2016-02-19T23:52:24+00:00"
-                    },
-                    {
-                        "analysis_id": "SAM002_03",
-                        "status": "Confirmed",
-                        "file_received_date": "2016-02-19T22:06:33+00:00",
-                        "status_date": "2016-02-19T23:06:33+00:00"
-                    }
-                ]
-            },
-            {
-                "molecular_id": "MSN5678",
-                "tracking_number": "675867856678",
-                "destination_date": "2016-02-16T22:06:33+00:00",
-                "type": "TISSUE",
-                "dna_concordance": 10.2,
-                "dna_volume": 9,
-                "reported_date": "2016-02-15T22:06:33+00:00",
-                "comments": "Initial shipment",
-                "analyses": [
-                    {
-                        "analysis_id": "SAM002_02",
-                        "status": "Rejected",
-                        "file_received_date": "2016-02-14T22:06:33+00:00",
-                        "status_date": "2016-02-14T23:06:33+00:00"
-                    },
-                    {
-                        "analysis_id": "SAM002_01",
-                        "status": "Rejected",
-                        "file_received_date": "2016-02-13T22:06:33+00:00",
-                        "status_date": "2016-02-13T23:06:33+00:00"
-                    }
-                ]
-            }
-        ]
-    },
-    "specimen_history": [
-        {
-            "patient_id": "100025",
-            "collected_date": "2016-02-09T09:06:33+00:00",
-            "surgical_event_id": "SUREVT001",
-            "failed_date": "2016-02-09T22:06:33+00:00",
-            "study_id": "APEC1621",
-            "type": "TISSUE",
-            "pathology_status": "Agreed on pathology",
-            "pathology_status_date": "2016-02-09T12:06:33+00:00",
-            "variant_report_confirmed_date": "2016-02-09T15:06:33+00:00",
-            "assays": [
-                {
-                    "gene": "MLH1",
-                    "ordered_date": "2016-06-09T22:06:33+00:00",
-                    "result_date": "2016-07-09T22:06:33+00:00",
-                    "result": "POSITIVE"
-                },
-                {
-                    "gene": "MSCH2",
-                    "ordered_date": "2016-06-09T22:06:33+00:00",
-                    "result_date": "2016-07-09T22:06:33+00:00",
-                    "result": "POSITIVE"
-                }
-            ],
-            "assignments": "",
-            "specimen_shipments": [
-                {
-                    "molecular_id": "MOL001_2",
-                    "tracking_number": "675867956680",
-                    "destination_date": "2016-01-19T23:46:33+00:00",
-                    "dna_concordance": 10.2,
-                    "dna_volume": 9,
-                    "reported_date": "2016-01-19T12:06:33+00:00",
-                    "comments": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                    "analyses": [
-                        {
-                            "analysis_id": "SAM001_03",
-                            "status": "REJECTED",
-                            "file_received_date": "2016-01-19T22:06:33+00:00",
-                            "status_date": "2016-01-19T23:06:33+00:00"
-                        }
-                    ]
-                },
-                {
-                    "molecular_id": "MOL001_1",
-                    "tracking_number": "675867956677",
-                    "destination_date": "2016-01-16T22:06:33+00:00",
-                    "dna_concordance": 10.2,
-                    "dna_volume": 9,
-                    "reported_date": "2016-01-15T22:06:33+00:00",
-                    "comments": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-                    "analyses": [
-                        {
-                            "analysis_id": "SAM001_02",
-                            "status": "CONFIRMED",
-                            "file_received_date": "2016-01-14T22:06:33+00:00",
-                            "status_date": "2016-01-14T23:06:33+00:00"
-                        },
-                        {
-                            "analysis_id": "SAM001_01",
-                            "status": "REJECTED",
-                            "file_received_date": "2016-01-13T22:06:33+00:00",
-                            "status_date": "2016-01-13T23:06:33+00:00"
-                        }
-                    ]
-                }
-            ]
-        },
+    "specimens": [
         {
             "patient_id": "100025",
             "collected_date": "2016-03-09T09:06:33+00:00",
@@ -2448,6 +2292,74 @@
                             "status": "CONFIRMED",
                             "file_received_date": "2016-02-19T22:06:33+00:00",
                             "status_date": "2016-02-19T23:06:33+00:00"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "patient_id": "100025",
+            "collected_date": "2016-02-09T09:06:33+00:00",
+            "surgical_event_id": "SUREVT001",
+            "failed_date": "2016-02-09T22:06:33+00:00",
+            "study_id": "APEC1621",
+            "type": "TISSUE",
+            "pathology_status": "Agreed on pathology",
+            "pathology_status_date": "2016-02-09T12:06:33+00:00",
+            "variant_report_confirmed_date": "2016-02-09T15:06:33+00:00",
+            "assays": [
+                {
+                    "gene": "MLH1",
+                    "ordered_date": "2016-06-09T22:06:33+00:00",
+                    "result_date": "2016-07-09T22:06:33+00:00",
+                    "result": "POSITIVE"
+                },
+                {
+                    "gene": "MSCH2",
+                    "ordered_date": "2016-06-09T22:06:33+00:00",
+                    "result_date": "2016-07-09T22:06:33+00:00",
+                    "result": "POSITIVE"
+                }
+            ],
+            "assignments": "",
+            "specimen_shipments": [
+                {
+                    "molecular_id": "MOL001_2",
+                    "tracking_number": "675867956680",
+                    "destination_date": "2016-01-19T23:46:33+00:00",
+                    "dna_concordance": 10.2,
+                    "dna_volume": 9,
+                    "reported_date": "2016-01-19T12:06:33+00:00",
+                    "comments": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                    "analyses": [
+                        {
+                            "analysis_id": "SAM001_03",
+                            "status": "REJECTED",
+                            "file_received_date": "2016-01-19T22:06:33+00:00",
+                            "status_date": "2016-01-19T23:06:33+00:00"
+                        }
+                    ]
+                },
+                {
+                    "molecular_id": "MOL001_1",
+                    "tracking_number": "675867956677",
+                    "destination_date": "2016-01-16T22:06:33+00:00",
+                    "dna_concordance": 10.2,
+                    "dna_volume": 9,
+                    "reported_date": "2016-01-15T22:06:33+00:00",
+                    "comments": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                    "analyses": [
+                        {
+                            "analysis_id": "SAM001_02",
+                            "status": "CONFIRMED",
+                            "file_received_date": "2016-01-14T22:06:33+00:00",
+                            "status_date": "2016-01-14T23:06:33+00:00"
+                        },
+                        {
+                            "analysis_id": "SAM001_01",
+                            "status": "REJECTED",
+                            "file_received_date": "2016-01-13T22:06:33+00:00",
+                            "status_date": "2016-01-13T23:06:33+00:00"
                         }
                     ]
                 }
