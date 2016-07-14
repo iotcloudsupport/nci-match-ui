@@ -4,8 +4,10 @@
             <i class="fa fa-medkit fa-2x event-icon" title="Assignment Event"></i>
         </div>
         <div class="col-md-10 event-title">
-            <small>{{::timelineEvent.event_date | utc}}</small>
-            <small class="text-navy event-age">{{::timelineEvent.from_now}}</small>
+            <span class="event-date-age">
+                {{::timelineEvent.event_date | utc}}
+                <span class="text-navy event-age">{{::timelineEvent.from_now}}</span>
+            </span>
             <p class="m-b-xs"><span class="timeline-step">Step: {{::timelineEvent.step}}.</span> <strong>{{::timelineEvent.event_message}}.</strong></p>
         </div>
     </div>

@@ -2038,6 +2038,13 @@
             "assignments": "",
             "specimen_shipments": [
                 {
+                    "type": "SLIDE",
+                    "slide_barcode": "RED123",
+                    "tracking_number": "675867856678",
+                    "site": "MDA",
+                    "reported_date": "2016-02-15T22:06:33+00:00"
+                },
+                {
                     "molecular_id": "MOL001_2",
                     "tracking_number": "675867956680",
                     "destination_date": "2016-01-19T23:46:33+00:00",

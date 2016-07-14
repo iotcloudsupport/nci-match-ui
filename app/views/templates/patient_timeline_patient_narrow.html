@@ -1,0 +1,29 @@
+<div class="row timeline-event">
+    <div class="row">
+        <div class="col-md-2">
+            <i class="fa fa-user fa-2x event-icon" title="Patient Event"></i>
+        </div>
+        <div class="col-md-10 event-title">
+            <span class="event-date-age">
+                {{::timelineEvent.event_date | utc}}
+                <span class="text-navy event-age">{{::timelineEvent.from_now}}</span>
+            </span>
+            <p class="m-b-xs"><span class="timeline-step">Step: {{::timelineEvent.step}}.</span> <strong>{{::timelineEvent.event_message}}.</strong></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p class="m-b-xs event-content">
+                <span ng-if="timelineEvent.event_data.location">
+                    Locations: <span class="timeline-value">{{::timelineEvent.event_data.location}}</span>
+                    <br>
+                </span>
+                                        
+                <span ng-if="timelineEvent.event_data.rebiopsy && timelineEvent.event_data.rebiopsy !== '-'">
+                    Rebiopsy: <span class="timeline-value">{{::timelineEvent.event_data.rebiopsy}}</span>
+                    <br>
+                </span>
+            </p>
+        </div>
+    </div>
+</div>

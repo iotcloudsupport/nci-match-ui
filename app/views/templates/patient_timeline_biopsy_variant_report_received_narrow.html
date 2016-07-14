@@ -1,0 +1,39 @@
+<div class="row timeline-event">
+    <div class="row">
+        <div class="col-md-2">
+            <i class="fa fa-bar-chart fa-2x event-icon" title="Biopsy Variant Report Received"></i>
+        </div>
+        <div class="col-md-10 event-title">
+            <span class="event-date-age">
+                {{::timelineEvent.event_date | utc}}
+                <span class="text-navy event-age">{{::timelineEvent.from_now}}</span>
+            </span>
+            <p class="m-b-xs"><span class="timeline-step">Step: {{::timelineEvent.step}}.</span> <strong>{{::timelineEvent.event_message}}.</strong></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p class="m-b-xs event-content">
+                <span ng-if="timelineEvent.event_data.status">
+                    Variant Report Status: <span ng-style="{'color':'{{ timelineEvent.status | analysisStatus }}'}">{{::timelineEvent.event_data.status}}</span>
+                    <br>
+                </span>
+
+                <span ng-if="timelineEvent.event_data.surgical_event_id">
+                    Surgical Event ID: <span class="timeline-value">{{::timelineEvent.event_data.surgical_event_id}}</span>
+                    <br>
+                </span>
+                            
+                <span ng-if="timelineEvent.event_data.collected_datetime && (timelineEvent.event_data.collected_datetime | utc) !== '-'">
+                    Collected Date: <span class="timeline-value">{{::timelineEvent.event_data.collected_datetime | utc}}</span>
+                    <br>
+                </span>
+                
+                <span ng-if="timelineEvent.event_data.received_datetime && (timelineEvent.event_data.received_datetime | utc) !== '-'">
+                    Received Date: <span class="timeline-value">{{::timelineEvent.event_data.received_datetime | utc}}</span>
+                    <br>
+                </span>
+            </p>
+        </div>
+    </div>
+</div>
