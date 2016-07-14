@@ -105,6 +105,9 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
             url: "/treatment-arms",
             templateUrl: "views/treatment_arms.html",
             data: { pageTitle: 'Treatment Arms', requiresLogin: true },
+            controller: function($scope, $stateParams) {
+                console.log($stateParams);
+            },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -125,12 +128,13 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
             }
         })
         .state('treatment-arm', {
-            url: "/treatment-arm/:treatmentArmId",
+            url: "/treatment-arm/:name",
             //url: "/treatment-arm/:treatmentArmId/:treatmentArmVersion",
             templateUrl: "views/treatment_arm.html",
             data: { pageTitle: 'Treatment Arm', requiresLogin: true },
-            controller: function($scope) { //, $stateParams
-                //$scope.taid = $stateParams.treatmentArmId;
+            controller: function($scope, $stateParams) { //, $stateParams
+                console.log($stateParams);
+                $scope.taid = $stateParams.name; //treatmentArmId;
                 //$scope.tavsn = $stateParams.treatmentArmVersion;
             },
             resolve: {
