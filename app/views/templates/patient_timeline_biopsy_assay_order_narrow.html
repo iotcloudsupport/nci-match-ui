@@ -1,21 +1,29 @@
-<div class="row">
-    <div class="col-xs-5 col-md-4 date" title="Biopsy Assay Ordered" ng-class="{'date-top-border':timelineEvent.isStepChanging}">
-        <i class="fa fa-flask fa-2x"></i> <small>{{::timelineEvent.event_date | utc}}</small>
-        <br/>
-        <small class="text-navy">{{::timelineEvent.from_now}}</small>
+<div class="row timeline-event">
+    <div class="row">
+        <div class="col-md-2">
+            <i class="fa fa-flask fa-2x event-icon" title="Biopsy Assay Ordered"></i>
+        </div>
+        <div class="col-md-10 event-title">
+            <span class="event-date-age">
+                {{::timelineEvent.event_date | utc}}
+                <span class="text-navy event-age">{{::timelineEvent.from_now}}</span>
+            </span>
+            <p class="m-b-xs"><span class="timeline-step">Step: {{::timelineEvent.step}}.</span> <strong>{{::timelineEvent.event_message}}.</strong></p>
+        </div>
     </div>
-    <div class="col-xs-7 col-md-8 content" ng-class="{'no-top-border':!timelineEvent.isStepChanging}">
-        <p class="m-b-xs"><span class="timeline-step">Step: {{::timelineEvent.step}}.</span> <strong>{{::timelineEvent.event_message}} for {{::timelineEvent.event_data.biomarker}}.</strong></p>
-        <p class="m-b-xs">
-            <span ng-if="timelineEvent.event_data.status">
-                Assay Status: <span class="timeline-value" ng-style="{'color':'{{ timelineEvent.event_data.status | assayStatus }}'}">{{::timelineEvent.event_data.status}}</span>
-                <br>
-            </span>
+    <div class="row">
+        <div class="col-md-12">
+            <p class="m-b-xs event-content">
+                <span ng-if="timelineEvent.event_data.status">
+                    Assay Status: <span class="timeline-value" ng-style="{'color':'{{ timelineEvent.event_data.status | assayStatus }}'}">{{::timelineEvent.event_data.status}}</span>
+                    <br>
+                </span>
 
-            <span ng-if="timelineEvent.event_data.ordered_date">
-                Order Date: <span class="timeline-value">{{::timelineEvent.event_data.ordered_date | utc}}</span>
-                <br>
-            </span>
-        </p>
+                <span ng-if="timelineEvent.event_data.ordered_date">
+                    Order Date: <span class="timeline-value">{{::timelineEvent.event_data.ordered_date | utc}}</span>
+                    <br>
+                </span>
+            </p>
+        </div>
     </div>
 </div>

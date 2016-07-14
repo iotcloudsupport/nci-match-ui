@@ -160,7 +160,7 @@
         "patient_id": "100099",
         "event_date": "2015-11-25T16:52:13+00:00",
         "event_name": "Event Name 2",
-        "event_type": "biopsy.variantReportReceived",
+        "event_type": "",
         "event_message": "Tissue Variant Report",
         "step": "3.0",
         "event_data": {
@@ -175,7 +175,7 @@
         "patient_id": "100099",
         "event_date": "2015-11-25T13:52:13+00:00",
         "event_name": "Event Name 2",
-        "event_type": "biopsy.variantReportReceived",
+        "event_type": "",
         "event_message": "Tissue Variant Report",
         "step": "3.0",
         "event_data": {
@@ -232,7 +232,7 @@
         "patient_id": "100099",
         "event_date": "2015-11-18T13:52:13+00:00",
         "event_name": "Event Name 3",
-        "event_type": "biopsy.variantReportShipped",
+        "event_type": "",
         "event_message": "Tissue Slide Specimen Shipped",
         "step": "1.0",
         "event_data": {
@@ -250,7 +250,7 @@
         "patient_id": "100099",
         "event_date": "2015-11-17T13:52:13+00:00",
         "event_name": "Event Name 3",
-        "event_type": "biopsy.variantReportShipped",
+        "event_type": "",
         "event_message": "Tissue Nucleic Acid Shipped",
         "step": "3.0",
         "event_data": {
@@ -268,7 +268,7 @@
         "patient_id": "100099",
         "event_date": "2015-11-16T13:52:13+00:00",
         "event_name": "Event Name 2",
-        "event_type": "biopsy.variantReportReceived",
+        "event_type": "",
         "event_message": "Tissue Specimen Received",
         "step": "3.0",
         "event_data": {
@@ -452,7 +452,7 @@
         "patient_id": "100099",
         "event_date": "2015-06-03T13:52:13+00:00",
         "event_name": "Event Name 2",
-        "event_type": "biopsy.variantReportReceived",
+        "event_type": "",
         "event_message": "Tissue Variant Report",
         "step": "1.0",
         "event_data": {
@@ -467,7 +467,7 @@
         "patient_id": "100099",
         "event_date": "2015-05-27T13:52:13+00:00",
         "event_name": "Event Name 2",
-        "event_type": "biopsy.variantReportReceived",
+        "event_type": "",
         "event_message": "Tissue Variant Report",
         "step": "1.0",
         "event_data": {
@@ -524,7 +524,7 @@
         "patient_id": "100099",
         "event_date": "2015-05-15T13:26:43+00:00",
         "event_name": "Event Name 3",
-        "event_type": "biopsy.variantReportShipped",
+        "event_type": "",
         "event_message": "Tissue Nucleic Acid Shipped",
         "step": "1.0",
         "event_data": {
@@ -542,7 +542,7 @@
         "patient_id": "100099",
         "event_date": "2015-05-11T22:46:33+00:00",
         "event_name": "Event Name 2",
-        "event_type": "biopsy.variantReportReceived",
+        "event_type": "",
         "event_message": "Tissue Specimen Received",
         "step": "1.0",
         "event_data": {
