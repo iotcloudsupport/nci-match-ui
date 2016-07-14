@@ -30,10 +30,10 @@
             'biopsy.assay_order.narrow': baseUrl + 'biopsy_assay_order_narrow.html',
             'biopsy.assay_received.normal': baseUrl + 'biopsy_assay_received.html',
             'biopsy.assay_received.narrow': baseUrl + 'biopsy_assay_received_narrow.html',
-            '.normal': baseUrl + 'biopsy_variantReportReceived.html',
-            '.narrow': baseUrl + 'biopsy_variantReportReceived_narrow.html',
-            '.normal': baseUrl + 'biopsy_variantReportShipped.html',
-            '.narrow': baseUrl + 'biopsy_variantReportShipped_narrow.html',
+            'biopsy.variant_report_received.normal': baseUrl + 'biopsy_variant_report_received.html',
+            'biopsy.variant_report_received.narrow': baseUrl + 'biopsy_variant_report_received_narrow.html',
+            'biopsy.variant_report_shipped.normal': baseUrl + 'biopsy_variant_report_shipped.html',
+            'biopsy.variant_report_shipped.narrow': baseUrl + 'biopsy_variant_report_shipped_narrow.html',
             'biopsy.pathology.normal': baseUrl + 'biopsy_pathology.html',
             'biopsy.pathology.narrow': baseUrl + 'biopsy_pathology_narrow.html',
             'assignment.normal': baseUrl + 'assignment.html',
@@ -43,13 +43,15 @@
             'user.normal': baseUrl + 'user.html',
             'user.narrow': baseUrl + 'user_narrow.html',
             'system.normal': baseUrl + 'system.html',
-            'system.narrow': baseUrl + 'system_narrow.html'
+            'system.narrow': baseUrl + 'system_narrow.html',
+            'generic.normal': baseUrl + 'generic.html',
+            'generic.narrow': baseUrl + 'generic_narrow.html'
         };
 
         var getTemplateLoader = function (type, layout) {
             var key = type + '.' + (layout ? layout : 'normal');
 
-            $log.debug('key = '+key);
+            $log.debug('key = ' + key);
 
             if (key in templateMap) {
                 var url = templateMap[key];
