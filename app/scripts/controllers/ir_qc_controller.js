@@ -35,6 +35,7 @@ angular.module('qcsample.matchbox',[ ])
         $scope.branch = "";
         $scope.sitename = 'undefined';
 
+        
         if($scope.sampleId.indexOf('MoCha') >= 0) {
             $scope.branch = 'mocha';
             $scope.sitename = 'MoCha';

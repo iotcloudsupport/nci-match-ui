@@ -1,6 +1,6 @@
 angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
     .controller('IrAdminController',
-        function( $scope, $http, $window, $stateParams, DTOptionsBuilder, irAdminApi) {
+        function( $scope, $http, $window, $stateParams, DTOptionsBuilder, irAdminApi, $location, $anchorScroll, $timeout) {
 
         angular.element(document).ready(function () {
             $('.equal-height-panels .panel').matchHeight();
@@ -163,6 +163,23 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             }
         };
 
+            $scope.gotoBottom = function(id) {
+
+                var tic = id + 'bottom';
+                // set the location.hash to the id of
+                // the element you wish to scroll to.
+
+                $timeout(function() {
+                    $location.hash(tic);
+                    // $("body").animate({scrollTop: $location.offset().top}, "slow");
+                    $anchorScroll();
+                });
+
+                // $location.hash('bottom');
+                //
+                // // call $anchorScroll()
+                // $anchorScroll();
+            };
 
         //Populate Data
         $scope.populateData = function(d) {
