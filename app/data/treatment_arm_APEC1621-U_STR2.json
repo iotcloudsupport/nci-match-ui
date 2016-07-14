@@ -1,0 +1,1028 @@
+[
+  {
+    "active": null,
+    "name": "APEC1621-U",
+    "date_created": "2016-05-06T18:24:55+00:00",
+    "version": "2016-05-06",
+    "stratum_id": "STR2",
+    "description": "Afatinib in DDR2 activating mutations",
+    "target_id": "750691",
+    "target_name": "Afatinib",
+    "gene": "EGFR",
+    "treatment_arm_status": "OPEN",
+    "study_id": "APEC1621",
+    "assay_results": [
+      {
+        "assay_result_status": "POSITIVE",
+        "description": null,
+        "gene": "PIK3CA",
+        "level_of_evidence": "2.0",
+        "assay_variant": "PRESENT"
+      }
+    ],
+    "num_patients_assigned": "3.0",
+    "date_opened": null,
+    "treatment_arm_drugs": [
+      {
+        "name": "Afatinib_p",
+        "pathway": "EGFR",
+        "drug_id": "750691"
+      }
+    ],
+    "variant_report": {
+      "unified_gene_fusions": [],
+      "single_nucleotide_variants": [
+        {
+          "gene_name": "EGFR",
+          "identifier": "COSM6224",
+          "arm_specific": false,
+          "chromosome": "7",
+          "alternative": "G",
+          "description": "p.L858R",
+          "confirmed": false,
+          "reference": "T",
+          "inclusion": true,
+          "public_med_ids": [
+            "20573926",
+            " 19692684",
+            " 20022809"
+          ],
+          "level_of_evidence": "1.0",
+          "rare": false,
+          "position": "55259515"
+        },
+        {
+          "gene_name": "EGFR",
+          "identifier": "COSM6252",
+          "arm_specific": false,
+          "chromosome": "7",
+          "alternative": "A",
+          "description": "p.G719S",
+          "confirmed": false,
+          "reference": "G",
+          "inclusion": false,
+          "public_med_ids": [
+            "26051236"
+          ],
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "position": "55241707"
+        },
+        {
+          "gene_name": "EGFR",
+          "identifier": "COSM6253",
+          "arm_specific": true,
+          "chromosome": "7",
+          "alternative": "T",
+          "description": "p.G719C",
+          "confirmed": false,
+          "reference": "G",
+          "inclusion": true,
+          "public_med_ids": [
+            "26051236"
+          ],
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "position": "55241707"
+        },
+        {
+          "gene_name": "EGFR",
+          "identifier": "COSM18425",
+          "arm_specific": false,
+          "chromosome": "7",
+          "alternative": "A",
+          "description": "p.G719D",
+          "confirmed": false,
+          "reference": "G",
+          "inclusion": true,
+          "public_med_ids": [
+            "26051236"
+          ],
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "position": "55241708"
+        },
+        {
+          "gene_name": "EGFR",
+          "identifier": "COSM6239",
+          "arm_specific": false,
+          "chromosome": "7",
+          "alternative": "C",
+          "description": "p.G719A",
+          "confirmed": false,
+          "reference": "G",
+          "inclusion": true,
+          "public_med_ids": [
+            "26051236"
+          ],
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "position": "55241708"
+        },
+        {
+          "gene_name": "EGFR",
+          "identifier": "COSM6241",
+          "arm_specific": false,
+          "chromosome": "7",
+          "alternative": "T",
+          "description": "p.S768I",
+          "confirmed": false,
+          "reference": "G",
+          "inclusion": false,
+          "public_med_ids": [
+            "26051236"
+          ],
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "position": "55249005"
+        },
+        {
+          "gene_name": "EGFR",
+          "identifier": "COSM6240",
+          "arm_specific": false,
+          "chromosome": "7",
+          "alternative": "T",
+          "description": "p.T790M",
+          "confirmed": false,
+          "reference": "C",
+          "inclusion": false,
+          "public_med_ids": [
+            "26051236"
+          ],
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "position": "55249071"
+        }
+      ],
+      "indels": [
+        {
+          "reference": "CAAGGAATTAAGAGAA",
+          "gene_name": "EGFR",
+          "identifier": "COSM26038",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "C",
+          "description": "p.K745_E749del",
+          "position": "55242462",
+          "confirmed": false
+        },
+        {
+          "gene_name": "EGFR",
+          "identifier": "COSM1190791",
+          "arm_specific": false,
+          "chromosome": "7",
+          "alternative": "A",
+          "description": "p.K745_A750delinsT",
+          "type": "id",
+          "confirmed": false,
+          "reference": "AAGGAATTAAGAGAAG",
+          "inclusion": true,
+          "level_of_evidence": "1.0",
+          "rare": false,
+          "position": "55242463"
+        },
+        {
+          "reference": "AAGG",
+          "gene_name": "EGFR",
+          "identifier": "COSM18420",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "A",
+          "description": "p.E754del",
+          "position": "55242463",
+          "confirmed": false
+        },
+        {
+          "reference": "AGGAATTAAGAGAAGC",
+          "gene_name": "EGFR",
+          "identifier": "COSM6223",
+          "inclusion": false,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "A",
+          "description": "p.E754_A758del",
+          "position": "55242464",
+          "confirmed": false
+        },
+        {
+          "reference": "AGGAATTAAGAGAAG",
+          "gene_name": "EGFR",
+          "identifier": "COSM13550",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "AAATTC",
+          "description": "p.E746_A750delinsIP",
+          "position": "55242464",
+          "confirmed": false
+        },
+        {
+          "reference": "GGAATTAAGAGAAGCAACATCT",
+          "gene_name": "EGFR",
+          "identifier": "COSM133189",
+          "inclusion": false,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "G",
+          "description": "p.E746_S752del",
+          "position": "55242465",
+          "confirmed": false
+        },
+        {
+          "reference": "GGAATTAAGAGAAGCA",
+          "gene_name": "EGFR",
+          "identifier": "COSM6225",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "G",
+          "description": "p.E746_A750del",
+          "position": "55242465",
+          "confirmed": false
+        },
+        {
+          "reference": "GGAATTAAGA",
+          "gene_name": "EGFR",
+          "identifier": "COSM6218",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "G",
+          "description": "p.E746_R748del",
+          "position": "55242465",
+          "confirmed": false
+        },
+        {
+          "reference": "GGAATTAAGAGAAGCAACA",
+          "gene_name": "EGFR",
+          "identifier": "COSM12728",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "G",
+          "description": "p.E746_T751del",
+          "position": "55242465",
+          "confirmed": false
+        },
+        {
+          "reference": "GGAATTAAGAGAAGCAACA",
+          "gene_name": "EGFR",
+          "identifier": "COSM51526",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "GATTCCT",
+          "description": "p.E746_T751delinsIP",
+          "position": "55242465",
+          "confirmed": false
+        },
+        {
+          "reference": "GAATTAAGAGAAGCAA",
+          "gene_name": "EGFR",
+          "identifier": "COSM12678",
+          "inclusion": false,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "G",
+          "description": "p.E746_T751delinsA",
+          "position": "55242466",
+          "confirmed": false
+        },
+        {
+          "reference": "GAATTAAGAGAAGCAACAT",
+          "gene_name": "EGFR",
+          "identifier": "COSM12367",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "G",
+          "description": "p.E746_S752delinsA",
+          "position": "55242466",
+          "confirmed": false
+        },
+        {
+          "reference": "GAATTAAGAGAAGCAAC",
+          "gene_name": "EGFR",
+          "identifier": "COSM12386",
+          "inclusion": false,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "GT",
+          "description": "p.E746_T751delinsV",
+          "position": "55242466",
+          "confirmed": false
+        },
+        {
+          "reference": "GAATTAAGAGAAGCAACA",
+          "gene_name": "EGFR",
+          "identifier": "COSM133192",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "GTA",
+          "description": "p.E746_T751delinsV",
+          "position": "55242466",
+          "confirmed": false
+        },
+        {
+          "reference": "GAATTAAGAGAAGCAACATCT",
+          "gene_name": "EGFR",
+          "identifier": "COSM18426",
+          "inclusion": false,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "GTC",
+          "description": "p.E746_S752delinsV",
+          "position": "55242466",
+          "confirmed": false
+        },
+        {
+          "reference": "GAATTAAGAGAAGCAACATCTC",
+          "gene_name": "EGFR",
+          "identifier": "COSM18427",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "GTCT",
+          "description": "p.E746_P753delinsVS",
+          "position": "55242466",
+          "confirmed": false
+        },
+        {
+          "reference": "GAATTAAGAGAAGCAACA",
+          "gene_name": "EGFR",
+          "identifier": "COSM133193",
+          "inclusion": false,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "GTC",
+          "description": "p.E746_T751delinsV",
+          "position": "55242466",
+          "confirmed": false
+        }
+      ],
+      "non_hotspot_rules": [
+        {
+          "inclusion": true,
+          "public_med_ids": [
+            "22190593"
+          ],
+          "gene": "EGFR",
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "function": "nonframeshiftDeletion",
+          "rare": false,
+          "exon": "19"
+        },
+        {
+          "inclusion": false,
+          "gene": "EGFR",
+          "arm_specific": false,
+          "level_of_evidence": "2.0",
+          "function": "nonframeshiftInsertion",
+          "rare": false,
+          "exon": "20"
+        }
+      ],
+      "copy_number_variants": [
+        {
+          "ref_copy_number": "0.0",
+          "gene_name": "ERBB2",
+          "identifier": "ERBB2",
+          "copy_number": "0.0",
+          "arm_specific": false,
+          "description": "ERBB2 Amplification",
+          "confirmed": false,
+          "inclusion": true,
+          "public_med_ids": [
+            "3798106"
+          ],
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "confidence_interval5percent": "0.0",
+          "confidence_interval95percent": "0.0",
+          "raw_copy_number": "0.0"
+        },
+        {
+          "ref_copy_number": "0.0",
+          "gene_name": "FGFR3",
+          "identifier": "FGFR3",
+          "copy_number": "0.0",
+          "arm_specific": false,
+          "description": "FGFR1/2/3/4 Amplification and activating mutations",
+          "confirmed": false,
+          "inclusion": false,
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "confidence_interval5percent": "0.0",
+          "confidence_interval95percent": "0.0",
+          "raw_copy_number": "0.0"
+        }
+      ],
+      "gene_fusions": [
+        {
+          "gene_name": "EGFR",
+          "identifier": "EGFR.DelPositive.E1E8",
+          "inclusion": true,
+          "public_med_ids": [
+            "23777544"
+          ],
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "rare": false,
+          "description": "EGFR.DelPositive.E1E8",
+          "confirmed": false
+        },
+        {
+          "reference": "C",
+          "gene_name": "FGFR2",
+          "identifier": "FGFR2-OFD1.F17O3",
+          "inclusion": false,
+          "arm_specific": false,
+          "level_of_evidence": "3.0",
+          "rare": false,
+          "alternative": "C[chrX:13754596[",
+          "description": "some description",
+          "confirmed": false
+        }
+      ]
+    },
+    "exclusion_diseases": [
+      {
+        "short_name": "Bronchioloalveolar carcinoma",
+        "medra_code": "10058354",
+        "ctep_category": "Non-Small Cell Lung Cancer"
+      },
+      {
+        "short_name": "Lung adenocarcinoma",
+        "medra_code": "10025032",
+        "ctep_category": "Non-Small Cell Lung Cancer"
+      },
+      {
+        "short_name": "Lung adenocar. w/ bronch. feat.",
+        "medra_code": "90600324",
+        "ctep_category": "Non-Small Cell Lung Cancer"
+      },
+      {
+        "short_name": "Non-small cell lung cancer, NOS",
+        "medra_code": "10029514",
+        "ctep_category": "Non-Small Cell Lung Cancer"
+      },
+      {
+        "short_name": "Squamous cell lung carcinoma",
+        "medra_code": "10025126",
+        "ctep_category": "Non-Small Cell Lung Cancer"
+      },
+      {
+        "short_name": "Small Cell Lung Cancer",
+        "medra_code": "10041071",
+        "ctep_category": "Small cell lung cancer"
+      }
+    ],
+    "inclusion_diseases": [
+      {
+        "medra_code": "10041071",
+        "short_name": "Lung adenocarcinoma",
+        "ctep_category": "Non-Small Cell Lung Cancer"
+      }
+    ],
+    "exclusion_drugs": [
+      {
+        "name": "Afatinib",
+        "drug_id": "750691"
+      },
+      {
+        "name": "Erlotinib"
+      },
+      {
+        "name": "Gefitinib"
+      },
+      {
+        "name": "Neratinib"
+      },
+      {
+        "name": "Dacomitinib"
+      },
+      {
+        "name": "AZD9291",
+        "drug_id": "781254"
+      },
+      {
+        "name": "Cabertinib"
+      },
+      {
+        "name": "CO-1696"
+      }
+    ],
+    "pten_results": [
+      {
+        "pten_variant": "PRESENT",
+        "description": null,
+        "pten_ihc_result": "POSITIVE"
+      }
+    ],
+    "status_log": {
+      "1468434295": "OPEN"
+    },
+    "current_patients": null,
+    "former_patients": null,
+    "not_enrolled_patients": null,
+    "pending_patients": null
+  },
+  {
+    "active": null,
+    "name": "APEC1621-U",
+    "date_created": "2015-02-01T13:00:55+00:00",
+    "version": "2015-06-01",
+    "stratum_id": "STR2",
+    "description": "Afatinib in DDR2 activating mutations",
+    "target_id": "750691x",
+    "target_name": "Afatinib",
+    "gene": "EGFR",
+    "treatment_arm_status": "OPEN",
+    "study_id": "APEC1621",
+    "assay_results": [
+      {
+        "assay_result_status": "POSITIVE",
+        "description": null,
+        "gene": "PIK3CA",
+        "level_of_evidence": "2.0",
+        "assay_variant": "PRESENT"
+      }
+    ],
+    "num_patients_assigned": "4.0",
+    "date_opened": null,
+    "treatment_arm_drugs": [
+      {
+        "name": "Afatinib",
+        "pathway": "EGFR",
+        "drug_id": "750691"
+      }
+    ],
+    "variant_report": {
+      "unified_gene_fusions": [],
+      "single_nucleotide_variants": [
+        {
+          "gene_name": "EGFR",
+          "identifier": "COSM6224",
+          "arm_specific": false,
+          "chromosome": "7",
+          "alternative": "G",
+          "description": "p.L858R",
+          "confirmed": false,
+          "reference": "T",
+          "inclusion": true,
+          "public_med_ids": [
+            "20573926",
+            " 19692684",
+            " 20022809"
+          ],
+          "level_of_evidence": "1.0",
+          "rare": false,
+          "position": "55259515"
+        },
+        {
+          "gene_name": "EGFR",
+          "identifier": "COSM6252",
+          "arm_specific": false,
+          "chromosome": "7",
+          "alternative": "A",
+          "description": "p.G719S",
+          "confirmed": false,
+          "reference": "G",
+          "inclusion": false,
+          "public_med_ids": [
+            "26051236"
+          ],
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "position": "55241707"
+        },
+        {
+          "gene_name": "EGFR",
+          "identifier": "COSM6253",
+          "arm_specific": true,
+          "chromosome": "7",
+          "alternative": "T",
+          "description": "p.G719C",
+          "confirmed": false,
+          "reference": "G",
+          "inclusion": true,
+          "public_med_ids": [
+            "26051236"
+          ],
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "position": "55241707"
+        },
+        {
+          "gene_name": "EGFR",
+          "identifier": "COSM18425",
+          "arm_specific": false,
+          "chromosome": "7",
+          "alternative": "A",
+          "description": "p.G719D",
+          "confirmed": false,
+          "reference": "G",
+          "inclusion": true,
+          "public_med_ids": [
+            "26051236"
+          ],
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "position": "55241708"
+        },
+        {
+          "gene_name": "EGFR",
+          "identifier": "COSM6241",
+          "arm_specific": false,
+          "chromosome": "7",
+          "alternative": "T",
+          "description": "p.S768I",
+          "confirmed": false,
+          "reference": "G",
+          "inclusion": false,
+          "public_med_ids": [
+            "26051236"
+          ],
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "position": "55249005"
+        },
+        {
+          "gene_name": "EGFR",
+          "identifier": "COSM6240",
+          "arm_specific": false,
+          "chromosome": "7",
+          "alternative": "T",
+          "description": "p.T790M",
+          "confirmed": false,
+          "reference": "C",
+          "inclusion": true,
+          "public_med_ids": [
+            "26051236"
+          ],
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "position": "55249071"
+        }
+      ],
+      "indels": [
+        {
+          "reference": "CAAGGAATTAAGAGAA",
+          "gene_name": "EGFR",
+          "identifier": "COSM26038",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "C",
+          "description": "p.K745_E749del",
+          "position": "55242462",
+          "confirmed": false
+        },
+        {
+          "reference": "AAGG",
+          "gene_name": "EGFR",
+          "identifier": "COSM18420",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "A",
+          "description": "p.E754del",
+          "position": "55242463",
+          "confirmed": false
+        },
+        {
+          "reference": "AGGAATTAAGAGAAG",
+          "gene_name": "EGFR",
+          "identifier": "COSM13550",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "AAATTC",
+          "description": "p.E746_A750delinsIP",
+          "position": "55242464",
+          "confirmed": false
+        },
+        {
+          "reference": "GGAATTAAGAGAAGCAACATCT",
+          "gene_name": "EGFR",
+          "identifier": "COSM133189",
+          "inclusion": false,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "G",
+          "description": "p.E746_S752del",
+          "position": "55242465",
+          "confirmed": false
+        },
+        {
+          "reference": "GGAATTAAGAGAAGCA",
+          "gene_name": "EGFR",
+          "identifier": "COSM6225",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "G",
+          "description": "p.E746_A750del",
+          "position": "55242465",
+          "confirmed": false
+        },
+        {
+          "reference": "GGAATTAAGA",
+          "gene_name": "EGFR",
+          "identifier": "COSM6218",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "G",
+          "description": "p.E746_R748del",
+          "position": "55242465",
+          "confirmed": false
+        },
+        {
+          "reference": "GAATTAAGAGAAGCAA",
+          "gene_name": "EGFR",
+          "identifier": "COSM12678",
+          "inclusion": false,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "G",
+          "description": "p.E746_T751delinsA",
+          "position": "55242466",
+          "confirmed": false
+        },
+        {
+          "reference": "GAATTAAGAGAAGCAACAT",
+          "gene_name": "EGFR",
+          "identifier": "COSM12367",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "G",
+          "description": "p.E746_S752delinsA",
+          "position": "55242466",
+          "confirmed": false
+        },
+        {
+          "reference": "GAATTAAGAGAAGCAAC",
+          "gene_name": "EGFR",
+          "identifier": "COSM12386",
+          "inclusion": false,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "GT",
+          "description": "p.E746_T751delinsV",
+          "position": "55242466",
+          "confirmed": false
+        },
+        {
+          "reference": "GAATTAAGAGAAGCAACA",
+          "gene_name": "EGFR",
+          "identifier": "COSM133192",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "GTA",
+          "description": "p.E746_T751delinsV",
+          "position": "55242466",
+          "confirmed": false
+        },
+        {
+          "reference": "GAATTAAGAGAAGCAACATCT",
+          "gene_name": "EGFR",
+          "identifier": "COSM18426",
+          "inclusion": false,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "7",
+          "rare": false,
+          "alternative": "GTC",
+          "description": "p.E746_S752delinsV",
+          "position": "55242466",
+          "confirmed": false
+        }
+      ],
+      "non_hotspot_rules": [
+        {
+          "inclusion": true,
+          "public_med_ids": [
+            "22190593"
+          ],
+          "gene": "EGFR",
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "function": "nonframeshiftDeletion",
+          "rare": false,
+          "exon": "19"
+        },
+        {
+          "inclusion": false,
+          "gene": "EGFR",
+          "arm_specific": false,
+          "level_of_evidence": "2.0",
+          "function": "nonframeshiftInsertion",
+          "rare": false,
+          "exon": "20"
+        }
+      ],
+      "copy_number_variants": [
+        {
+          "ref_copy_number": "0.0",
+          "gene_name": "ERBB2",
+          "identifier": "ERBB2",
+          "copy_number": "0.0",
+          "arm_specific": false,
+          "description": "ERBB2 Amplification",
+          "confirmed": false,
+          "inclusion": true,
+          "public_med_ids": [
+            "3798106"
+          ],
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "confidence_interval5percent": "0.0",
+          "confidence_interval95percent": "0.0",
+          "raw_copy_number": "0.0"
+        },
+        {
+          "ref_copy_number": "0.0",
+          "gene_name": "FGFR3",
+          "identifier": "FGFR3",
+          "copy_number": "0.0",
+          "arm_specific": false,
+          "description": "FGFR1/2/3/4 Amplification and activating mutations",
+          "confirmed": false,
+          "inclusion": false,
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "confidence_interval5percent": "0.0",
+          "confidence_interval95percent": "0.0",
+          "raw_copy_number": "0.0"
+        }
+      ],
+      "gene_fusions": [
+        {
+          "gene_name": "EGFR",
+          "identifier": "EGFR.DelPositive.E1E8",
+          "inclusion": true,
+          "public_med_ids": [
+            "23777544"
+          ],
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "rare": false,
+          "description": "EGFR.DelPositive.E1E8",
+          "confirmed": false
+        },
+        {
+          "reference": "C",
+          "gene_name": "FGFR2",
+          "identifier": "FGFR2-OFD1.F17O3",
+          "inclusion": false,
+          "arm_specific": false,
+          "level_of_evidence": "3.0",
+          "rare": false,
+          "alternative": "C[chrX:13754596[",
+          "description": "some description",
+          "confirmed": false
+        }
+      ]
+    },
+    "exclusion_diseases": [
+      {
+        "short_name": "Bronchioloalveolar carcinoma",
+        "medra_code": "10058354",
+        "ctep_category": "Non-Small Cell Lung Cancer"
+      },
+      {
+        "short_name": "Lung adenocarcinoma",
+        "medra_code": "10025032",
+        "ctep_category": "Non-Small Cell Lung Cancer"
+      },
+      {
+        "short_name": "Lung adenocar. w/ bronch. feat.",
+        "medra_code": "90600324",
+        "ctep_category": "Non-Small Cell Lung Cancer"
+      },
+      {
+        "short_name": "Non-small cell lung cancer, NOS",
+        "medra_code": "10029514",
+        "ctep_category": "Non-Small Cell Lung Cancer"
+      },
+      {
+        "short_name": "Squamous cell lung carcinoma",
+        "medra_code": "10025126",
+        "ctep_category": "Non-Small Cell Lung Cancer"
+      },
+      {
+        "short_name": "Small Cell Lung Cancer",
+        "medra_code": "10041071",
+        "ctep_category": "Small cell lung cancer"
+      }
+    ],
+    "inclusion_diseases": [
+      {
+        "medra_code": "10041071",
+        "short_name": "Lung adenocarcinoma",
+        "ctep_category": "Non-Small Cell Lung Cancer"
+      }
+    ],
+    "exclusion_drugs": [
+      {
+        "name": "Afatinib",
+        "drug_id": "750691"
+      },
+      {
+        "name": "Erlotinib"
+      },
+      {
+        "name": "Gefitinib"
+      },
+      {
+        "name": "Neratinib"
+      },
+      {
+        "name": "Dacomitinib"
+      },
+      {
+        "name": "AZD9291",
+        "drug_id": "781254"
+      },
+      {
+        "name": "Cabertinib"
+      },
+      {
+        "name": "CO-1696"
+      }
+    ],
+    "pten_results": [
+      {
+        "pten_variant": "PRESENT",
+        "description": null,
+        "pten_ihc_result": "POSITIVE"
+      }
+    ],
+    "status_log": {
+      "1468434295": "OPEN"
+    },
+    "current_patients": null,
+    "former_patients": null,
+    "not_enrolled_patients": null,
+    "pending_patients": null
+  }
+]

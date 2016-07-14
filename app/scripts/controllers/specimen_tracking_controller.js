@@ -20,111 +20,6 @@
 
         $scope.specimenTrackingList = [];
 
-        /*$scope.specimenTrackingList = [
-            {
-                "molecular_id": "MSN234240",
-                "patient_id": "100099",
-                "collected_date": 1519735694848,
-                "received_date": 1519735777810,
-                "failed_date": "",
-                "surgical_event_id": "125",
-                "type": "SLIDE",
-                "shipped_date": 151983588910,
-                "site": "MDA",
-                "fedex_tracking": "120932177598",
-                "pathology_status": "Y",
-                "pathology_status_date": 1511235777810,
-                "variant_report_confirmed_date": "",
-                "assays": [
-                    {
-                        "surgical_event_id": "125",
-                        "ihc": "PTEN",
-                        "assay_order_date": 15112345678,
-                        "assay_result_date": 15112355728,
-                        "result_information": "POSITIVE"
-                    },
-                    {
-                        "surgical_event_id": "125",
-                        "ihc": "MSH2",
-                        "assay_order_date": 15112345678,
-                        "assay_result_date": 15112355728,
-                        "result_information": ""
-                    }
-                ]
-            },
-            {
-                "molecular_id": "MSN223641",
-                "patient_id": "100065",
-                "collected_date": 1511235694848,
-                "received_date": 1511235777810,
-                "failed_date": "",
-                "surgical_event_id": "125",
-                "type": "BLOOD",
-                "shipped_date": 151983588910,
-                "site": "MDA",
-                "fedex_tracking": "120932173498",
-                "pathology_status": "Y",
-                "pathology_status_date": 1511235777810,
-                "variant_report_confirmed_date": "",
-                "assays": []
-            },
-            {
-                "molecular_id": "MSN234242",
-                "patient_id": "100136",
-                "collected_date": 1511235694848,
-                "received_date": 1511235777810,
-                "failed_date": "",
-                "surgical_event_id": "125",
-                "type": "TISSUE",
-                "shipped_date": 151983588910,
-                "site": "MoCha",
-                "fedex_tracking": "127732177598",
-                "pathology_status": "Y",
-                "pathology_status_date": 1511235777810,
-                "variant_report_confirmed_date": "",
-                "assays": []
-            },
-            {
-                "molecular_id": "MSN233643",
-                "patient_id": "100136",
-                "collected_date": 1519735694848,
-                "received_date": 1519735777810,
-                "failed_date": "",
-                "surgical_event_id": "125",
-                "type": "SLIDE",
-                "shipped_date": 151983588910,
-                "site": "MDA",
-                "fedex_tracking": "120932119598",
-                "pathology_status": "Y",
-                "pathology_status_date": 1511235777810,
-                "variant_report_confirmed_date": "",
-                "assays": [
-                    {
-                        "surgical_event_id": "125",
-                        "ihc": "PTEN",
-                        "assay_order_date": 15112345678,
-                        "assay_result_date": 15112355728,
-                        "result_information": "POSITIVE"
-                    },
-                    {
-                        "surgical_event_id": "125",
-                        "ihc": "MSH2",
-                        "assay_order_date": 15112345678,
-                        "assay_result_date": 15112355728,
-                        "result_information": ""
-                    },
-                    ,
-                    {
-                        "surgical_event_id": "125",
-                        "ihc": "MLH1",
-                        "assay_order_date": 15112345678,
-                        "assay_result_date": 15112355728,
-                        "result_information": ""
-                    }
-                ]
-            }
-        ];*/
-
         $scope.sites = {
             'mgh': {
                 'count': 0,
@@ -144,33 +39,16 @@
             }
         }
 
-        $scope.pieDataset = [
-            {
-                label: "SUCCESSES",
-                data: 5,
-                color: "#f8ac59",
-                psns: "215re, 203re, 312re"
-            },
-            {
-                label: "FAILURES",
-                data: 2,
-                color: "#707070",
-                psns: "205re, 206re"
-            }
-        ];
-
         $scope.pieDataset2 = [
             {
                 label: "MDA",
                 data: 12,
-                color: "#1ab394",
-                psns: "215re, 203re, 312re"
+                color: "#1ab394"
             },
             {
                 label: "Mocha",
                 data: 15,
-                color: "#1c84c6",
-                psns: "205re, 206re"
+                color: "#1c84c6"
             }
         ];
 

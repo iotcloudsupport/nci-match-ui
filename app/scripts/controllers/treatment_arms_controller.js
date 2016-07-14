@@ -8,7 +8,8 @@
                 $scope,
                 DTOptionsBuilder,
                 treatmentArmApi,
-                matchApiMock) {
+                matchApiMock,
+                $stateParams) {
 
                 this.dtOptions = {
                     'info': false,

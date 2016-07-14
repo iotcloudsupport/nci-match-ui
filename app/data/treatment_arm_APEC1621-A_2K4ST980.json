@@ -1,0 +1,1072 @@
+[
+  {
+    "active": null,
+    "name": "CukeTestUI-02",
+    "version": "2012-05-23",
+    "description": "Sufitinib in GUVR activating mutation",
+    "target_id": "750691.0",
+    "target_name": "Sufitinib",
+    "gene": "GUVR",
+    "treatment_arm_status": "OPEN",
+    "study_id": null,
+    "stratum_id": null,
+    "assay_results": null,
+    "num_patients_assigned": "0",
+    "date_created": "2016-06-16 19:17:46 UTC",
+    "date_opened": null,
+    "treatment_arm_drugs": [
+      {
+        "name": "Sufitinib",
+        "pathway": "GUVR",
+        "drug_id": "750691"
+      }
+    ],
+    "variant_report": {
+      "unified_gene_fusions": [],
+      "single_nucleotide_variants": [
+        {
+          "gene_name": "GUVR",
+          "identifier": "COSM6224",
+          "arm_specific": false,
+          "chromosome": "chr7",
+          "alternative": "G",
+          "description": "p.L858R",
+          "confirmed": false,
+          "reference": "T",
+          "inclusion": true,
+          "public_med_ids": [
+            "20573926",
+            " 19692684",
+            " 20022809"
+          ],
+          "level_of_evidence": "1.0",
+          "rare": false,
+          "position": "55259515"
+        },
+        {
+          "gene_name": "GUVR",
+          "identifier": "COSM6252",
+          "arm_specific": false,
+          "chromosome": "chr7",
+          "alternative": "A",
+          "description": "p.G719S",
+          "confirmed": false,
+          "reference": "G",
+          "inclusion": false,
+          "public_med_ids": [
+            "26051236"
+          ],
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "position": "55241707"
+        },
+        {
+          "gene_name": "GUVR",
+          "identifier": "COSM6253",
+          "arm_specific": true,
+          "chromosome": "chr7",
+          "alternative": "T",
+          "description": "p.G719C",
+          "confirmed": false,
+          "reference": "G",
+          "inclusion": true,
+          "public_med_ids": [
+            "26051236"
+          ],
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "position": "55241707"
+        },
+        {
+          "gene_name": "GUVR",
+          "identifier": "COSM18425",
+          "arm_specific": false,
+          "chromosome": "chr7",
+          "alternative": "A",
+          "description": "p.G719D",
+          "confirmed": false,
+          "reference": "G",
+          "inclusion": true,
+          "public_med_ids": [
+            "26051236"
+          ],
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "position": "55241708"
+        },
+        {
+          "gene_name": "GUVR",
+          "identifier": "COSM6239",
+          "arm_specific": false,
+          "chromosome": "chr7",
+          "alternative": "C",
+          "description": "p.G719A",
+          "confirmed": false,
+          "reference": "G",
+          "inclusion": true,
+          "public_med_ids": [
+            "26051236"
+          ],
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "position": "55241708"
+        },
+        {
+          "gene_name": "GUVR",
+          "identifier": "COSM6213",
+          "arm_specific": false,
+          "chromosome": "chr7",
+          "alternative": "A",
+          "description": "p.L861Q",
+          "confirmed": false,
+          "reference": "T",
+          "inclusion": true,
+          "public_med_ids": [
+            "26051236"
+          ],
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "position": "55259524"
+        },
+        {
+          "gene_name": "GUVR",
+          "identifier": "COSM18441",
+          "arm_specific": false,
+          "chromosome": "chr7",
+          "alternative": "TT",
+          "description": "p.G719C",
+          "confirmed": false,
+          "reference": "GG",
+          "inclusion": true,
+          "public_med_ids": [
+            "26051236"
+          ],
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "position": "55241707"
+        },
+        {
+          "gene_name": "GUVR",
+          "identifier": "COSM6241",
+          "arm_specific": false,
+          "chromosome": "chr7",
+          "alternative": "T",
+          "description": "p.S768I",
+          "confirmed": false,
+          "reference": "G",
+          "inclusion": true,
+          "public_med_ids": [
+            "26051236"
+          ],
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "position": "55249005"
+        },
+        {
+          "gene_name": "GUVR",
+          "identifier": "COSM6240",
+          "arm_specific": false,
+          "chromosome": "chr7",
+          "alternative": "T",
+          "description": "p.T790M",
+          "confirmed": false,
+          "reference": "C",
+          "inclusion": false,
+          "public_med_ids": [
+            "26051236"
+          ],
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "position": "55249071"
+        }
+      ],
+      "indels": [
+        {
+          "reference": "CAAGGAATTAAGAGAA",
+          "gene_name": "GUVR",
+          "identifier": "COSM26038",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "C",
+          "description": "p.K745_E749del",
+          "position": "55242462",
+          "confirmed": false
+        },
+        {
+          "gene_name": "GUVR",
+          "identifier": "COSM1190791",
+          "arm_specific": false,
+          "chromosome": "chr7",
+          "alternative": "A",
+          "description": "p.K745_A750delinsT",
+          "type": "id",
+          "confirmed": false,
+          "reference": "AAGGAATTAAGAGAAG",
+          "inclusion": true,
+          "level_of_evidence": "1.0",
+          "rare": false,
+          "position": "55242463"
+        },
+        {
+          "reference": "AAGGAATTAAGAG",
+          "gene_name": "GUVR",
+          "identifier": "COSM28517",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "A",
+          "description": "p.E754_E757del",
+          "position": "55242463",
+          "confirmed": false
+        },
+        {
+          "reference": "AAGG",
+          "gene_name": "GUVR",
+          "identifier": "COSM18420",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "A",
+          "description": "p.E754del",
+          "position": "55242463",
+          "confirmed": false
+        },
+        {
+          "reference": "AGGAATTAAGAGAAGCAAC",
+          "gene_name": "GUVR",
+          "identifier": "COSM24869",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "A",
+          "description": "p.E754_T759del",
+          "position": "55242464",
+          "confirmed": false
+        },
+        {
+          "reference": "AGGAATTAAGAGAAGC",
+          "gene_name": "GUVR",
+          "identifier": "COSM6223",
+          "inclusion": false,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "A",
+          "description": "p.E754_A758del",
+          "position": "55242464",
+          "confirmed": false
+        },
+        {
+          "reference": "AGGAATTAAGAGAAGCAAC",
+          "gene_name": "GUVR",
+          "identifier": "COSM13551",
+          "inclusion": false,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "AAAT",
+          "description": "p.E746_T751delinsI",
+          "position": "55242464",
+          "confirmed": false
+        },
+        {
+          "reference": "AGGAATTAAGAGAAG",
+          "gene_name": "GUVR",
+          "identifier": "COSM13550",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "AAATTC",
+          "description": "p.E746_A750delinsIP",
+          "position": "55242464",
+          "confirmed": false
+        },
+        {
+          "reference": "AGGAATTAAGAGAAGCAA",
+          "gene_name": "GUVR",
+          "identifier": "COSM13552",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "AAATTC",
+          "description": "p.E746_T751delinsIP",
+          "position": "55242464",
+          "confirmed": false
+        },
+        {
+          "reference": "AGGAATTAAGAGAAGCAA",
+          "gene_name": "GUVR",
+          "identifier": "COSM13549",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "AAG",
+          "description": "p.E746_T751delinsA",
+          "position": "55242464",
+          "confirmed": false
+        },
+        {
+          "reference": "GGAATTAAGAGAAGCAACATCT",
+          "gene_name": "GUVR",
+          "identifier": "COSM133189",
+          "inclusion": false,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "G",
+          "description": "p.E746_S752del",
+          "position": "55242465",
+          "confirmed": false
+        },
+        {
+          "reference": "GGAATTAAGAGAAGCA",
+          "gene_name": "GUVR",
+          "identifier": "COSM6225",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "G",
+          "description": "p.E746_A750del",
+          "position": "55242465",
+          "confirmed": false
+        },
+        {
+          "reference": "GGAATTAAGA",
+          "gene_name": "GUVR",
+          "identifier": "COSM6218",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "G",
+          "description": "p.E746_R748del",
+          "position": "55242465",
+          "confirmed": false
+        },
+        {
+          "reference": "GGAATTAAGAGAAGCAACA",
+          "gene_name": "GUVR",
+          "identifier": "COSM12728",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "G",
+          "description": "p.E746_T751del",
+          "position": "55242465",
+          "confirmed": false
+        },
+        {
+          "reference": "GGAATTAAGAGAAGCAAC",
+          "gene_name": "GUVR",
+          "identifier": "COSM26680",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "GAT",
+          "description": "p.E746_T751delinsI",
+          "position": "55242465",
+          "confirmed": false
+        },
+        {
+          "reference": "GGAATTAAGAGAAGCAACA",
+          "gene_name": "GUVR",
+          "identifier": "COSM51526",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "GATTCCT",
+          "description": "p.E746_T751delinsIP",
+          "position": "55242465",
+          "confirmed": false
+        },
+        {
+          "reference": "GAATTAAGAGAAGCAACATCTCCGA",
+          "gene_name": "GUVR",
+          "identifier": "COSM24970",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "G",
+          "description": "p.L755_K762del",
+          "position": "55242466",
+          "confirmed": false
+        },
+        {
+          "reference": "GAATTAAGAGAAGCAA",
+          "gene_name": "GUVR",
+          "identifier": "COSM12678",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "G",
+          "description": "p.E746_T751delinsA",
+          "position": "55242466",
+          "confirmed": false
+        },
+        {
+          "reference": "GAATTAAGAGAAGCAACAT",
+          "gene_name": "GUVR",
+          "identifier": "COSM12367",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "G",
+          "description": "p.E746_S752delinsA",
+          "position": "55242466",
+          "confirmed": false
+        },
+        {
+          "reference": "GAATTAAGAGAAGCAAC",
+          "gene_name": "GUVR",
+          "identifier": "COSM12386",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "GT",
+          "description": "p.E746_T751delinsV",
+          "position": "55242466",
+          "confirmed": false
+        },
+        {
+          "reference": "GAATTAAGAGAAGCAACA",
+          "gene_name": "GUVR",
+          "identifier": "COSM133192",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "GTA",
+          "description": "p.E746_T751delinsV",
+          "position": "55242466",
+          "confirmed": false
+        },
+        {
+          "reference": "GAATTAAGAGAAGCAACATCT",
+          "gene_name": "GUVR",
+          "identifier": "COSM18426",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "GTC",
+          "description": "p.E746_S752delinsV",
+          "position": "55242466",
+          "confirmed": false
+        },
+        {
+          "reference": "GAATTAAGAGAAGCAACATCTC",
+          "gene_name": "GUVR",
+          "identifier": "COSM18427",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "GTCT",
+          "description": "p.E746_P753delinsVS",
+          "position": "55242466",
+          "confirmed": false
+        },
+        {
+          "reference": "GAATTAAGAGAAGCAACA",
+          "gene_name": "GUVR",
+          "identifier": "COSM133193",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "GTC",
+          "description": "p.E746_T751delinsV",
+          "position": "55242466",
+          "confirmed": false
+        },
+        {
+          "reference": "GAATTAAGAGAAGCAACATCT",
+          "gene_name": "GUVR",
+          "identifier": "COSM674057",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "GTG",
+          "description": "p.E746_S752delinsV",
+          "position": "55242466",
+          "confirmed": false
+        },
+        {
+          "reference": "GAATTAAGAGAAGCAA",
+          "gene_name": "GUVR",
+          "identifier": "COSM53205",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "GTGG",
+          "description": "p.E746_T751delinsVa",
+          "position": "55242466",
+          "confirmed": false
+        },
+        {
+          "reference": "GAATTAAGAGAAGCAACATC",
+          "gene_name": "GUVR",
+          "identifier": "COSM12384",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "GT",
+          "description": "p.E746_S752delinsV",
+          "position": "55242466",
+          "confirmed": false
+        },
+        {
+          "reference": "GAATTAAGAGAAGCAACA",
+          "gene_name": "GUVR",
+          "identifier": "COSM12416",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "GTTGCT",
+          "description": "p.E746_T751delinsVa",
+          "position": "55242466",
+          "confirmed": false
+        },
+        {
+          "reference": "AATTAAGAGAAGCAACATCTCC",
+          "gene_name": "GUVR",
+          "identifier": "COSM255211",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "A",
+          "description": "p.E746_P753delinsG",
+          "position": "55242467",
+          "confirmed": false
+        },
+        {
+          "reference": "AATTAAGAGAAGCAAC",
+          "gene_name": "GUVR",
+          "identifier": "COSM6254",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "A",
+          "description": "p.E746_T751delinsG",
+          "position": "55242467",
+          "confirmed": false
+        },
+        {
+          "reference": "AATTAAGAGAAGCAACATC",
+          "gene_name": "GUVR",
+          "identifier": "COSM6220",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "A",
+          "description": "p.E746_S752delinsG",
+          "position": "55242467",
+          "confirmed": false
+        },
+        {
+          "reference": "AATTAAGAGAAGCAAC",
+          "gene_name": "GUVR",
+          "identifier": "COSM12419",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "AGCA",
+          "description": "p.L747_T751delinsQ",
+          "position": "55242467",
+          "confirmed": false
+        },
+        {
+          "reference": "AATTAAGAGAAG",
+          "gene_name": "GUVR",
+          "identifier": "COSM12422",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "AGC",
+          "description": "p.L747_A750delinsP",
+          "position": "55242467",
+          "confirmed": false
+        },
+        {
+          "reference": "AATTAAGAGAAGCAA",
+          "gene_name": "GUVR",
+          "identifier": "COSM22944",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "AGC",
+          "description": "p.L747_T751delinsP",
+          "position": "55242467",
+          "confirmed": false
+        },
+        {
+          "reference": "ATTAAGAGAAGCAACATCT",
+          "gene_name": "GUVR",
+          "identifier": "COSM6255",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "A",
+          "description": "p.L747_S752del",
+          "position": "55242468",
+          "confirmed": false
+        },
+        {
+          "reference": "ATTAAGAGAAGCAACA",
+          "gene_name": "GUVR",
+          "identifier": "COSM51527",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "ACAA",
+          "description": "p.L747_T751delinsQ",
+          "position": "55242468",
+          "confirmed": false
+        },
+        {
+          "reference": "ATTAAGAGAAGCA",
+          "gene_name": "GUVR",
+          "identifier": "COSM133195",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "ACCA",
+          "description": "p.L747_A750delinsP",
+          "position": "55242468",
+          "confirmed": false
+        },
+        {
+          "reference": "ATTAAGAGAAGCAACATCTCC",
+          "gene_name": "GUVR",
+          "identifier": "COSM12387",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "ACA",
+          "description": "p.L747_P753delinsQ",
+          "position": "55242468",
+          "confirmed": false
+        },
+        {
+          "reference": "ATTAAGAGAAGCAAC",
+          "gene_name": "GUVR",
+          "identifier": "COSM12420",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "ACA",
+          "description": "p.L747_T751delinsQ",
+          "position": "55242468",
+          "confirmed": false
+        },
+        {
+          "reference": "ATTAAGAGAAG",
+          "gene_name": "GUVR",
+          "identifier": "COSM12382",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "AC",
+          "description": "p.L747_A750delinsP",
+          "position": "55242468",
+          "confirmed": false
+        },
+        {
+          "reference": "ATTAAGAGAAGCAA",
+          "gene_name": "GUVR",
+          "identifier": "COSM12383",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "AC",
+          "description": "p.L747_T751delinsP",
+          "position": "55242468",
+          "confirmed": false
+        },
+        {
+          "reference": "TTAAGAGAAGCAACATCTC",
+          "gene_name": "GUVR",
+          "identifier": "COSM12370",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "T",
+          "description": "p.L747_P753delinsS",
+          "position": "55242469",
+          "confirmed": false
+        },
+        {
+          "reference": "TTAAGAGAAGCAA",
+          "gene_name": "GUVR",
+          "identifier": "COSM6210",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "T",
+          "description": "p.L747_T751delinsS",
+          "position": "55242469",
+          "confirmed": false
+        },
+        {
+          "reference": "CAACATCTCCGAAAGCCAACAAGGA",
+          "gene_name": "GUVR",
+          "identifier": "COSM23634",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "C",
+          "description": "p.A750_E758delinsG",
+          "position": "55242479",
+          "confirmed": false
+        },
+        {
+          "reference": "CAACATCTCCGAAAGCCAACAAGGAAATC",
+          "gene_name": "GUVR",
+          "identifier": "COSM1667024",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "CCAAC",
+          "description": "p.T751_I759delinsN",
+          "position": "55242479",
+          "confirmed": false
+        },
+        {
+          "reference": "ACATCTCCGAAAGCCAACAAGGAAAT",
+          "gene_name": "GUVR",
+          "identifier": "COSM96856",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "AA",
+          "description": "p.T751_I759delinsN",
+          "position": "55242481",
+          "confirmed": false
+        },
+        {
+          "reference": "ACATCTCCGAAAGCCAACAAGGAAATC",
+          "gene_name": "GUVR",
+          "identifier": "COSM24270",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "AAT",
+          "description": "p.T751_I759delinsN",
+          "position": "55242481",
+          "confirmed": false
+        },
+        {
+          "reference": "CATCTCCGAAAGCCAACAAGGAAAT",
+          "gene_name": "GUVR",
+          "identifier": "COSM13556",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "C",
+          "description": "p.T751_I759delinsN",
+          "position": "55242482",
+          "confirmed": false
+        },
+        {
+          "reference": "ATCTCCGAAAGCCAACAAGGAAATC",
+          "gene_name": "GUVR",
+          "identifier": "COSM6256",
+          "inclusion": false,
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "chromosome": "chr7",
+          "rare": false,
+          "alternative": "A",
+          "description": "p.S752_I759del",
+          "position": "55242483",
+          "confirmed": false
+        }
+      ],
+      "non_hotspot_rules": [
+        {
+          "inclusion": true,
+          "public_med_ids": [
+            "22190593"
+          ],
+          "gene": "GUVR",
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "function": "nonframeshiftDeletion",
+          "rare": false,
+          "exon": "19"
+        },
+        {
+          "inclusion": false,
+          "gene": "GUVR",
+          "arm_specific": false,
+          "level_of_evidence": "2.0",
+          "function": "nonframeshiftInsertion",
+          "rare": false,
+          "exon": "20"
+        },
+        {
+          "inclusion": true,
+          "gene": "GUVR1",
+          "arm_specific": false,
+          "level_of_evidence": "2.0",
+          "function": "nonframeshiftShiftInsertion",
+          "rare": false,
+          "exon": "20"
+        }
+      ],
+      "copy_number_variants": [
+        {
+          "ref_copy_number": "0.0",
+          "gene_name": "ERBB2",
+          "identifier": "ERBB2",
+          "copy_number": "0.0",
+          "arm_specific": false,
+          "description": "ERBB2 Amplification",
+          "confirmed": false,
+          "inclusion": true,
+          "public_med_ids": [
+            "3798106"
+          ],
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "confidence_interval5percent": "0.0",
+          "confidence_interval95percent": "0.0",
+          "raw_copy_number": "0.0"
+        },
+        {
+          "ref_copy_number": "0.0",
+          "gene_name": "FGFR3",
+          "identifier": "FGFR3",
+          "copy_number": "0.0",
+          "arm_specific": false,
+          "description": "FGFR1/2/3/4 Amplification and activating mutations",
+          "confirmed": false,
+          "inclusion": false,
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "confidence_interval5percent": "0.0",
+          "confidence_interval95percent": "0.0",
+          "raw_copy_number": "0.0"
+        },
+        {
+          "ref_copy_number": "0.0",
+          "gene_name": "FGFR5",
+          "identifier": "FGFR5",
+          "copy_number": "0.0",
+          "arm_specific": false,
+          "description": "FGFR1/2/3/4/5 Amplification and activating mutations",
+          "confirmed": false,
+          "inclusion": true,
+          "level_of_evidence": "2.0",
+          "rare": false,
+          "confidence_interval5percent": "0.0",
+          "confidence_interval95percent": "0.0",
+          "raw_copy_number": "0.0"
+        }
+      ],
+      "gene_fusions": [
+        {
+          "gene_name": "GUVR",
+          "identifier": "GUVR.DelPositive.E1E8",
+          "inclusion": true,
+          "public_med_ids": [
+            "23777544"
+          ],
+          "arm_specific": false,
+          "level_of_evidence": "1.0",
+          "rare": false,
+          "description": "GUVR.DelPositive.E1E8",
+          "confirmed": false
+        },
+        {
+          "reference": "C",
+          "gene_name": "FGFR2",
+          "identifier": "FGFR2-OFD1.F17O3",
+          "inclusion": false,
+          "arm_specific": false,
+          "level_of_evidence": "3.0",
+          "rare": false,
+          "alternative": "C[chrX:13754596[",
+          "description": "some description",
+          "confirmed": false
+        },
+        {
+          "reference": "C",
+          "gene_name": "FGFR2",
+          "identifier": "FGFR2-OFD1.F17O3",
+          "inclusion": true,
+          "arm_specific": false,
+          "level_of_evidence": "3.0",
+          "rare": false,
+          "alternative": "C[chrX:13754596[",
+          "description": "some description",
+          "confirmed": false
+        }
+      ]
+    },
+    "exclusion_diseases": [
+      {
+        "short_name": "Bronchioloalveolar carcinoma",
+        "_id": "10058354",
+        "ctep_category": "Non-Small Cell Lung Cancer"
+      },
+      {
+        "short_name": "Lung adenocarcinoma",
+        "_id": "10025032",
+        "ctep_category": "Non-Small Cell Lung Cancer"
+      },
+      {
+        "short_name": "Lung adenocar. w/ bronch. feat.",
+        "_id": "90600324",
+        "ctep_category": "Non-Small Cell Lung Cancer"
+      },
+      {
+        "short_name": "Non-small cell lung cancer, NOS",
+        "_id": "10029514",
+        "ctep_category": "Non-Small Cell Lung Cancer"
+      },
+      {
+        "short_name": "Squamous cell lung carcinoma",
+        "_id": "10025126",
+        "ctep_category": "Non-Small Cell Lung Cancer"
+      },
+      {
+        "short_name": "Small Cell Lung Cancer",
+        "_id": "10041071",
+        "ctep_category": "Small cell lung cancer"
+      }
+    ],
+    "exclusion_drugs": [
+      {
+        "name": "Sufitinib",
+        "drug_id": "750691"
+      },
+      {
+        "name": "Erlotinib"
+      },
+      {
+        "name": "Gefitinib"
+      },
+      {
+        "name": "Neratinib"
+      },
+      {
+        "name": "Dacomitinib"
+      },
+      {
+        "name": "AZD9291",
+        "drug_id": "781254"
+      },
+      {
+        "name": "Cabertinib"
+      },
+      {
+        "name": "CO-1696"
+      }
+    ],
+    "pten_results": [
+      {
+        "pten_variant": "PRESENT",
+        "description": null,
+        "pten_ihc_result": "POSITIVE"
+      }
+    ],
+    "status_log": {
+      "1456245969145": "AMENDED",
+      "1439352000000": "OPEN",
+      "1439210358620": "READY",
+      "1438968827096": "PENDING"
+    },
+    "current_patients": null,
+    "former_patients": null,
+    "not_enrolled_patients": null,
+    "pending_patients": null
+  }
+]

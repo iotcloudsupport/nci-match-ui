@@ -36,6 +36,8 @@
                             <tbody>
                                 <tr ng-repeat="treatmentArm in treatmentArmList">
                                     <td><treatment-arm-title name="treatmentArm.name" version="treatmentArm.version" stratum="treatmentArm.stratum"></td>
+                                    <!--<td><a ui-href="treatment-arm({ treatmentArmId: treatmentArm.name})">{{treatmentArm.name}}</a></td>-->
+
                                     <td>{{ treatmentArm.current_patients }}</td>
                                     <td>{{ treatmentArm.former_patients }}</td>
                                     <td>{{ treatmentArm.not_enrolled_patients }}</td>
