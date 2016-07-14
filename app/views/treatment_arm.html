@@ -54,7 +54,7 @@
                 <div id="right-info-box" class="header-info-box ta-header-box">
                     <dl class="dl-horizontal">
 
-                        <dt>Gene(s)</dt>
+                        <dt>Genes</dt>
                         <dd>{{information.genes}}</dd>
 
                         <dt>Patients Assigned</dt>
@@ -140,6 +140,7 @@
                                     <th>Time On Arm</th>
                                     <th>Step</th>
                                     <th>Disease</th>
+                                    <th>Reason</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -156,6 +157,7 @@
                                     <td>{{item.Patient.timeOnArm || '-'}}</td>
                                     <td>{{item.Patient.step || '-'}}</td>
                                     <td>{{item.Patient.diseases || '-'}}</td>
+                                    <td>{{item.Patient.reason || '-'}}</td>
                                 </tr>
                                 </tbody>
                             </table>
