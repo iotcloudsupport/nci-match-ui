@@ -264,6 +264,9 @@
                                     <uib-tabset>
 
                                         <uib-tab heading="Positive Sample Controls " ng-click="loadSampleBreakups()" ng-if="branch === 'mocha'">
+                                            <!--SCROLL TIC-->
+                                            <div id="mochabottom"></div>
+                                            <!--SCROLL TIC-->
 
                                             <div class="col-lg-16" >
 
@@ -308,7 +311,7 @@
                                                                                         <td>{{ta.date_created }}</td>
                                                                                         <td>{{ta.date_received }}</td>
                                                                                         <td>
-                                                                                            <a class="ng-binding ng-scope" ng-click="openPositives(ta.variant_reports)" href>
+                                                                                            <a class="ng-binding ng-scope" ng-click="openPositives(ta.variant_reports);gotoBottom('mocha')" href>
                                                                                                 {{ta.variant_reports || '-'}}
                                                                                             </a>
                                                                                         </td>
@@ -321,6 +324,8 @@
 
                                                                                 <!--QC TABS-->
                                                                                 <div class="row" ng-if="positives === 'mocha'">
+
+
 
                                                                                     <!--MOCK MOCHA GENERATOR-->
                                                                                     <div class="wrapper" >
@@ -407,6 +412,7 @@
                                                                                                 </div>
                                                                                             </div>
                                                                                             <!--SPOT TABS-->
+
 
                                                                                         </div>
 
@@ -522,6 +528,10 @@
 
                                             <uib-tab heading="Positive Sample Controls " ng-click="loadSampleBreakups()" ng-if="branch === 'mdacc'">
 
+                                                <!--SCROLL TIC-->
+                                                <div id="mdaccbottom"></div>
+                                                <!--SCROLL TIC-->
+
                                                 <div class="col-lg-16" >
 
                                                     <div class="ibox float-e-margins">
@@ -565,7 +575,8 @@
                                                                                         <td>{{ta.date_created }}</td>
                                                                                         <td>{{ta.date_received }}</td>
                                                                                         <td>
-                                                                                            <a class="ng-binding ng-scope" ng-click="openMDACCPositives(ta.variant_reports)" href>
+
+                                                                                            <a class="ng-binding ng-scope" ng-click="openMDACCPositives(ta.variant_reports);gotoBottom('mdacc')" href>
                                                                                                 {{ta.variant_reports || '-'}}
                                                                                             </a>
                                                                                         </td>
@@ -652,6 +663,7 @@
                                                                                                     </dl>
 
                                                                                                     <dl class="dl-horizontal">
+
                                                                                                         <dt>Quality Control Report</dt>
                                                                                                         <dd>
                                                                                                             <a ui-sref="ocsample({ sampleId:titleid })" class="btn btn-xs btn-success file-button-xl">
@@ -662,6 +674,8 @@
                                                                                                     </dl>
 
                                                                                                 </div>
+
+
                                                                                             </div>
                                                                                             <!--SPOT TABS-->
 
@@ -779,7 +793,9 @@
                                                                 <!--MOCHA NTC-->
                                                                 <div class="animated fadeInRight" ng-if="branch === 'mocha'">
 
-                                                                    <div class="row">
+                                                                    <div id="ntcmochabottom"></div>
+
+                                                                    <div  class="row">
                                                                         <div class="col-lg-16">
 
                                                                             <div class="ibox float-e-margins">
@@ -813,7 +829,7 @@
                                                                                             <td>{{ta.date_created }}</td>
                                                                                             <td>{{ta.date_received }}</td>
                                                                                             <td>
-                                                                                                <a class="ng-binding ng-scope" ng-click="openNegatives()" href>
+                                                                                                <a class="ng-binding ng-scope" ng-click="openNegatives();gotoBottom('ntcmocha')" href>
                                                                                                     {{ta.variant_reports || '-'}}
                                                                                                 </a>
                                                                                             </td>
@@ -1003,6 +1019,8 @@
                                                                 <!--MDA NTC-->
                                                                 <div class="animated fadeInRight" ng-if="branch === 'mdacc'">
 
+                                                                    <div id="ntcmdaccbottom"></div>
+
                                                                     <div class="row ">
                                                                         <div class="col-lg-16">
 
@@ -1037,7 +1055,7 @@
                                                                                                 <td>{{ta.date_created }}</td>
                                                                                                 <td>{{ta.date_received }}</td>
                                                                                                 <td>
-                                                                                                    <a class="ng-binding ng-scope" ng-click="openMDANegatives(ta.variant_reports)" href>
+                                                                                                    <a class="ng-binding ng-scope" ng-click="openMDANegatives(ta.variant_reports);;gotoBottom('ntcmdacc')" href>
                                                                                                         {{ta.variant_reports || '-'}}
                                                                                                     </a>
                                                                                                 </td>
@@ -1227,6 +1245,8 @@
                                                     </div>
                                                 </div>
 
+
+
                                         </uib-tab>
 
                                     </uib-tabset>
@@ -1237,4 +1257,5 @@
                     </div>
             <!--TABLES-->
             </div>
+
     </div>

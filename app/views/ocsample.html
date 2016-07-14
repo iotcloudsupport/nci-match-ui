@@ -1,5 +1,6 @@
+<div ng-controller="QcSampleController">
 
-<div class="row wrapper border-bottom white-bg page-heading" ng-controller="QcSampleController" >
+    <div class="row wrapper border-bottom white-bg page-heading" >
             <div class="col-lg-10">
                 <h2>Sample Quality Control Report </h2>
 
@@ -18,7 +19,7 @@
     </div>
 
     <!--TABS-->
-    <div class="wrapper" >
+    <div class="wrapper">
 
         <div class="no-horizontal-padding header-box-container">
             <div class="animated fadeInRight">
@@ -51,22 +52,17 @@
 
                                     <dt style="width: 200px;text-align: left">Torrent Variant Caller Version</dt>
                                     <dd>tvc 4.4-8 </dd>
-
                                 </dl>
                             </div>
-
                         </div>
 
                         <div class="col-lg-6 col-md-6 equal-height-panels " style="border: none">
 
                             <div class="header-info-box top-main-header-box ">
 
-
-
                                     <dl class="dl-horizontal" style="font-size: small">
                                         <dt>Oncomine Control Panel Summary</dt>
                                         <dd>
-
                                             <table class="table" role="grid">
                                                 <tbody>
                                                 <tr>
@@ -87,12 +83,10 @@
                                                 </tr>
                                                 </tbody>
                                             </table>
-
                                         </dd>
 
                                         <dt>Files</dt>
                                         <dd>
-
                                             <table><tr><td>
                                                 <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_087_rawlib.bam?molecularSequenceNumber={{sampleId}}"
                                                    class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
@@ -113,7 +107,6 @@
                                             </td></tr></table>
                                         </dd>
                                     </dl>
-
                             </div>
                                 <!--<div class="col-lg-3" ng-init="loadSampleBreakups();loadPieChart();">-->
                                     <!--&lt;!&ndash;CHART&ndash;&gt;-->
@@ -360,3 +353,4 @@
 
     </div>
 
+</div>
