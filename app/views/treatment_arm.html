@@ -146,7 +146,7 @@
                                     <td>{{item.Patient.treatmentArmVersion || '-'}}</td>
                                     <td ng-style="{'color':'{{ item.Patient.patientAssignmentStatusOutcome | status }}'}">{{item.Patient.patientAssignmentStatusOutcome || '-'}}</td>
                                     <td> <a ui-sref="patient({ patient_id: item.Patient.patientSequenceNumber, section: 'assignment_report', molecular_id: item.Patient.molecular_id, analysis_id: item.Patient.analysis_id })">{{item.Patient.assignmentLogic || '-'}}</a></td>
-                                    <td> <a ui-sref="patient({ patient_id: item.Patient.patientSequenceNumber, section: 'variant_report', molecular_id: item.Patient.molecular_id })">{{item.Patient.variantReport || '-'}}</a></td>
+                                    <td> <a ui-sref="patient({ patient_id: item.Patient.patientSequenceNumber, section: 'tissue_variant_report', molecular_id: item.Patient.molecular_id })">{{item.Patient.variantReport || '-'}}</a></td>
                                     <td>{{item.Patient.dateSelected || '-'}}</td>
                                     <td>{{item.Patient.dateOnArm || '-'}}</td>
                                     <td>{{item.Patient.dateOffArm || '-'}}</td>

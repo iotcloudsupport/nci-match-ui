@@ -314,7 +314,7 @@
 
             for (var i = 0; i < $scope.variantReports.length; i++) {
                 var variantReport = $scope.variantReports[i];
-                if (variantReport.report_type === 'TISSUE' && variantReport.variant_report_mode === $scope.variantReportMode && variantReport.variant_report_type === $scope.variantReportType) {
+                if (variantReport.variant_report_mode === $scope.variantReportMode && variantReport.variant_report_type === $scope.variantReportType) {
                     if (variantReport.surgical_event_id === option.value.surgical_event_id &&
                         variantReport.analysis_id === option.value.analysis_id &&
                         variantReport.molecular_id === option.value.molecular_id) {
@@ -338,7 +338,7 @@
 
             for (var i = 0; i < $scope.variantReports.length; i++) {
                 var variantReport = $scope.variantReports[i];
-                if (variantReport.report_type === 'BLOOD' && variantReport.variant_report_mode === $scope.variantReportMode && variantReport.variant_report_type === $scope.variantReportType) {
+                if (variantReport.variant_report_mode === $scope.variantReportMode && variantReport.variant_report_type === $scope.variantReportType) {
                     if (variantReport.surgical_event_id === option.value.surgical_event_id &&
                         variantReport.analysis_id === option.value.analysis_id &&
                         variantReport.molecular_id === option.value.molecular_id) {
