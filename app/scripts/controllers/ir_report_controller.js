@@ -147,8 +147,8 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 // setVariantReport();
             }
 
-
-        this.barOptions = {
+        //
+            $scope.barOptions = {
             scaleBeginAtZero: true,
             scaleShowGridLines: true,
             scaleGridLineColor: "rgba(0,0,0,.05)",
@@ -156,12 +156,49 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             barShowStroke: true,
             barStrokeWidth: 2,
             barValueSpacing: 5,
-            barDatasetSpacing: 1,
-            legend: {
-                show: true,
-                container: '#legendContainer2'
-            }
+            barDatasetSpacing: 1
+            // legendTemplate : '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
+
+            // legend: {
+            //     show: true,
+            //     container: '#legendDiv'
+            // }
         };
+
+            // function setupTooltip(label, xval, yval) {
+            //     return label + "<br>------------------------------------------<br>Patients: " + yval;
+            // }
+
+            function setupBarChartOptions(htmlContainer) {
+                return {
+                    series: {
+                        bar: {
+                            show: true
+                        }
+                    },
+                    // grid: {
+                    //     hoverable: true
+                    // },
+                    // tooltip: true,
+                    // tooltipOpts: {
+                    //     content: function(label, xval, yval) {
+                    //         return setupTooltip(label, xval, yval);
+                    //     },
+                    //     shifts: {
+                    //         x: 20,
+                    //         y: 0
+                    //     },
+                    //     defaultTheme: true
+                    // },
+                    legend: {
+                        show: true,
+                        container: htmlContainer
+                    }
+                };
+            }
+
+            // this.barOptions = setupBarChartOptions('#legendDiv');
+
 
             $scope.gotoBottom = function(id) {
 
@@ -794,35 +831,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             };
 
 
-            function setupBarChartOptions(htmlContainer) {
-                return {
-                    series: {
-                        pie: {
-                            show: true
-                        }
-                    },
-                    grid: {
-                        hoverable: true
-                    },
-                    tooltip: true,
-                    tooltipOpts: {
-                        content: function(label, xval, yval) {
-                            return setupTooltip(label, xval, yval);
-                        },
-                        shifts: {
-                            x: 20,
-                            y: 0
-                        },
-                        defaultTheme: true
-                    },
-                    legend: {
-                        show: true,
-                        container: htmlContainer
-                    }
-                };
-            }
 
-            $scope.pieOptions2 = setupBarChartOptions('#legendContainer2');
 
             $scope.loadPieChart = function(site) {
 
@@ -941,7 +950,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     labels: pieNames,
                     datasets: [
                         {
-                            label: "Accrual Dataset",
+                            label: "Positive Controls",
                             fillColor: "#1c84c6",
                             strokeColor: "rgba(220,220,220,0.8)",
                             highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
@@ -953,6 +962,9 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                         }
                     ]
                 };
+
+
+
 
                 /**
                  * Options for Doughnut chart
@@ -995,52 +1007,54 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     // armValues2 = [10, 0.5, 73, 0, 3];
 
 
-                    mdaccNames = [
-                        'Mon.'
-                        , 'Tue.'
-                        , ' Wed.'
-                        , 'Thu.'
-                        , 'Fri.'
-                        , 'Sat.'
-                        , 'Sun.'
-                    ];
-
-                mdaccValues = [12, 15, 11, 21, 11, 1, 0];
-                mdaccValues1 = [6, 7, 3, 9, 2, 1, 0];
-                // mdaccValues = [10, 0.5, 73, 0, 3];
-
-                    // mdaccValues = [1, 8, 3, 8, 1, 1, 9, 1, 1, 31, 28, 12, 31];
 
 
                 $scope.barData = {
                     labels: armNames,
                     datasets: [
                         {
-                            label: "Accrual Dataset",
-                            fillColor: "darkgreen",
-                            strokeColor: "rgba(220,220,220,0.8)",
-                            highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
-                            highlightStroke: "rgba(220,220,220,1)",
+                            // label: "<b style='color:darkgreen;'>Positive Controls</b>",
+                            backgroundColor: 'darkgreen',
+                            fillColor: 'darkgreen',
+                            strokeColor: 'rgba(220,220,220,0.8)',
+                            pointColor: 'darkgreen',
+                            highlightFill: '#23c6c8', //"rgba(220,220,220,0.75)",
+                            highlightStroke: 'rgba(220,220,220,1)',
                             data: armValues
                         },
                         {
-                            label: "Accrual 2 Dataset",
+                            // label: "<b style='color:navy;'>No Template Controls</b>",
+                            backgroundColor: 'navy',
                             fillColor: 'navy',
                             strokeColor: 'rgba(151,187,205,1)',
-                            pointColor: 'rgba(151,187,205,1)',
-                            highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
-                            highlightStroke: "rgba(220,220,220,1)",
+                            pointColor: 'navy',
+                            highlightFill: '#23c6c8', //'rgba(220,220,220,0.75)',
+                            highlightStroke: 'rgba(220,220,220,1)',
                             data: armValues1
                         }
 
                     ]
                 };
 
+                mdaccNames = [
+                    'Mon.'
+                    , 'Tue.'
+                    , ' Wed.'
+                    , 'Thu.'
+                    , 'Fri.'
+                    , 'Sat.'
+                    , 'Sun.'
+                ];
+
+                mdaccValues = [12, 15, 11, 21, 11, 1, 0];
+                mdaccValues1 = [6, 7, 3, 9, 2, 1, 0];
+
                 $scope.barDataMDACC = {
                     labels: mdaccNames,
                     datasets: [
                         {
-                            label: "Accrual Dataset",
+                            // label: "<b style='color:darkgreen;'>Positive Controls</b>",
+                            backgroundColor: 'darkgreen',
                             fillColor: "darkgreen",
                             strokeColor: "rgba(220,220,220,0.8)",
                             highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
@@ -1048,6 +1062,8 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                             data: mdaccValues
                         },
                         {
+                            // label: "<b style='color:navy;'>No Template Controls</b>",
+                            backgroundColor: 'navy',
                             fillColor: 'navy',
                             strokeColor: 'rgba(151,187,205,1)',
                             pointColor: 'rgba(151,187,205,1)',
