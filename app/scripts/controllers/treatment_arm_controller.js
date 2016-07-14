@@ -41,6 +41,7 @@
                     version: '2016-03-17',
                     genes: 'DDR2',
                     patientsAssigned: '3',
+                    patientsAssignedBasic: '4',
                     currentStatus: 'OPEN',
                     drug: 'AZD9291 (781254)'
                 };
@@ -997,6 +998,7 @@
                                     $scope.information.description = value.description;
                                     $scope.information.genes = value.gene;
                                     $scope.information.patientsAssigned = value.num_patients_assigned;
+                                    $scope.information.patientsAssignedBasic = value.num_patients_assigned_basic;
                                     var exclusionDrugs = [];
                                     var exclusionDiseases = [];
 

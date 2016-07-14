@@ -21,7 +21,7 @@
     <div class="no-horizontal-padding header-box-container">
         <div class="row">
             <div class="col-lg-6 col-md-6">
-                <div id="left-info-box" class="header-info-box">
+                <div id="left-info-box" class="header-info-box ta-header-box">
                     <dl class="dl-horizontal">
                         <dt>Name</dt>
                         <dd>{{name}}</dd>
@@ -51,7 +51,7 @@
             </div>
 
             <div class="col-lg-6 col-md-6">
-                <div id="right-info-box" class="header-info-box" style="height:219px">
+                <div id="right-info-box" class="header-info-box ta-header-box">
                     <dl class="dl-horizontal">
 
                         <dt>Gene(s)</dt>
@@ -59,6 +59,9 @@
 
                         <dt>Patients Assigned</dt>
                         <dd>{{information.patientsAssigned}}</dd>
+
+                        <dt>Patients Assigned to Arm</dt>
+                        <dd>{{information.patientsAssignedBasic}}</dd>
 
                         <dt>Drug</dt>
                         <dd>{{information.drug}}</dd>

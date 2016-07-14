@@ -45,7 +45,7 @@
 
                             <dt>Treatment Arm</dt>
                             <dd>
-                                <treatment-arm-title ta="currentTreatmentArm"></treatment-arm-title>
+                                <treatment-arm-title name="currentTreatmentArm.name" stratum="currentTreatmentArm.stratum" version="currentTreatmentArm.version"></treatment-arm-title>
                             </dd>
                         </dl>
                     </div>
@@ -102,7 +102,7 @@
                             <tbody>
                                 <tr ng-repeat="ta in data.ta_history" style="cursor: auto; " role="row" class="odd">
                                     <td>
-                                        <treatment-arm-title ta="ta"></treatment-arm-title>
+                                        <treatment-arm-title name="ta.name" stratum="ta.stratum" version="ta.version"></treatment-arm-title>
                                     </td>
                                     <td>{{ta.step}}</td>
                                     <td>{{ta.assignment_reason}}</td>
