@@ -97,10 +97,10 @@
   border-left: 3px solid @red;
 }
 .panel-list li.info-element {
-  border-left: 3px solid @blue;
+  border-left: 3px solid @navy;
 }
 .panel-list li.success-element {
-  border-left: 3px solid @navy;
+  border-left: 3px solid @blue;
 }
 .panel-list-detail {
   margin-top: 5px;
@@ -416,4 +416,37 @@ div.timeline-item {
   .event-content {
     padding: 10px;
   }
+}
+
+.action-items {
+  li:hover {
+    cursor: auto;
+  }
+
+  .label {
+    font-size: 1em;
+    padding: 2px;;
+  }
+
+  p {
+    padding-top: 2px;
+    padding-left: 8px;
+  }
+}
+
+.agile-list li.warning-element {
+  border-left: 3px solid @yellow;
+}
+.agile-list li.danger-element {
+  border-left: 3px solid @red;
+}
+.agile-list li.info-element {
+  border-left: 3px solid @navy;
+}
+.agile-list li.success-element {
+  border-left: 3px solid @blue;
+}
+
+.label-info, .badge-info {
+  background-color: @navy;
 }

@@ -76,19 +76,15 @@
                 <uib-tab heading="Summary" select="setActiveTab('summary')">
                     <div class="panel-body">
 
-                        <div class="ibox-title ibox-title-no-line">
-                            <h3>Actions Needed</h3>
+                        <div ng-if="data.action_items">
+                            <div class="ibox-title ibox-title-no-line">
+                                <h3>Actions Needed</h3>
+                            </div>
+                            <div action-items>
+                                
+                            </div>
+                            <action-items items="data.action_items" patient-id="patient_id"></action-items>
                         </div>
-
-                        <ul class="sortable-list connectList agile-list">
-                            <li class="warning-element">
-                                Variant Report <a>molecular_id12345</a> <span style="color:orange">PENDING</span>.
-                                <strong>Please review.</strong>
-                                <div class="agile-detail">
-                                    <i class="fa fa-clock-o"></i> 12.10.2015
-                                </div>
-                            </li>
-                        </ul>
 
                         <div class="ibox-title ibox-title-no-line">
                             <h3>Treatment Arm History</h3>

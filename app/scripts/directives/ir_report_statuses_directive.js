@@ -1,17 +1,17 @@
 angular.module('matchbox')
-    .directive('passObject', function() {
+    .directive('passObject', function () {
 
         var baseUrl = '/views/templates/ir_report_statuses.html';
 
-    return {
-        restrict: 'E',
-        scope: { obj: '=' },
-        // template: '<div>Hello, {{obj.list}}!</div>'
-        template: '<ul><li ng-repeat="prop in obj">{{ prop[0].ipAddress }}</li></ul>'
-        // template: '<div>Hello, {{obj.prop}}!</div>'
-    };
-})
-    .directive('datatableWrapper', function($timeout, $compile){
+        return {
+            restrict: 'E',
+            scope: { obj: '=' },
+            // template: '<div>Hello, {{obj.list}}!</div>'
+            template: '<ul><li ng-repeat="prop in obj">{{ prop[0].ipAddress }}</li></ul>'
+            // template: '<div>Hello, {{obj.prop}}!</div>'
+        };
+    })
+    .directive('datatableWrapper', function ($timeout, $compile) {
         return {
             restrict: 'E',
             transclude: true,
@@ -27,8 +27,9 @@ angular.module('matchbox')
             }, 0, false);
         }
     })
-    .directive('customElement', function(){
+    .directive('customElement', function () {
 
+        /*jshint multistr: true */
         var template = '<select width="100%" class="form-control pull-right" ng-model="confirmed" ng-change="confirmedFunc()" >\
         <option value="ALL" selected="selected">ALL</option>\
         <option value="PASS" >PASS</option>\
@@ -44,13 +45,13 @@ angular.module('matchbox')
             template: template
         };
     })
-    .directive('customBtn', function() {
+    .directive('customBtn', function () {
 
         return {
             restrict: 'C', // Notice the C for "class" restriction
             template: '<h1>Foobar</h1>'
         };
-});
+    });
 
 
 

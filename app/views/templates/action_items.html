@@ -1,0 +1,29 @@
+<ul class="sortable-list connectList agile-list action-items no-hover">
+    <li class="{{vm.getUrgencyClass(item)}}-element" ng-repeat="item in vm.items">
+        <span ng-if="item.days_pending"><span class="label label-{{vm.getUrgencyClass(item)}} ng-binding">&nbsp;  <i class="fa fa-clock-o"></i> {{item.days_pending}} days &nbsp; </span> &nbsp; since </span> {{item.created_datetime | utc}}   
+        <br>
+        <div class="agile-detail">
+            <p>{{item.title}}</p>
+            <p><strong>{{item.message}}</strong></p>
+
+            <p ng-switch="item.action_type">
+                <strong>
+                    <span ng-switch-when="pending_tissue_variant_report">
+                        Click on the link to open and review Tissue Variant Report:
+                        <a ui-sref="patient({ patient_id: vm.patientId, section: 'tissue_variant_report', molecular_id: item.molecular_id, analysis_id: item.analysis_id })">{{ ::item.molecular_id }}</a>                        
+                    </span>
+
+                    <span ng-switch-when="pending_blood_variant_report">
+                        Click on the link to open and review Blood Variant Report:
+                        <a ui-sref="patient({ patient_id: vm.patientId, section: 'blood_variant_report', molecular_id: item.molecular_id, analysis_id: item.analysis_id })">{{ ::item.molecular_id }}</a>                        
+                    </span>
+
+                    <span ng-switch-when="pending_assignment_report">
+                        Click on the link to open and review Assignment Variant Report:
+                        <a ui-sref="patient({ patient_id: vm.patientId, section: 'assignment_report', molecular_id: item.molecular_id, analysis_id: item.analysis_id })">{{ ::item.analysis_id }}</a>                        
+                    </span>
+                </strong>
+            </p>
+        </div>
+    </li>
+</ul>

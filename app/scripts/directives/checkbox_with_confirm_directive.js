@@ -50,6 +50,7 @@
             };
         };
 
+        /*jshint multistr: true */
         var template = '<div class="stacked-container">\
                     <div class="stacked-front">\
                         <button type="input" ng-click="vm.confirm()" ng-disabled="!vm.enabled"></button>\

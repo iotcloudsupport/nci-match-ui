@@ -2189,19 +2189,29 @@
     "action_items": [
         {
             "action_type" : "pending_tissue_variant_report",
-            "surgical_event_id": "MOLID1234",
-            "molecular_id": "MOLID1234"
+            "title": "Pending Tissue Variant Report",
+            "molecular_id": "MOL001_2",
+            "analysis_id": "SAM001_03",
+            "created_datetime": "2016-09-19T13:25:04+00:00",
+            "days_pending": "2" 
         },
         {
             "action_type" : "pending_blood_variant_report",
-            "surgical_event_id": "MOLID1234",
-            "molecular_id": "MOLID1234"
+            "title": "Pending Blood Variant Report",
+            "surgical_event_id": "SURVEVT02",
+            "molecular_id": "MOL100025BLD",
+            "analysis_id": "SAM100025BLD_1",
+            "created_datetime": "2016-05-19T13:25:04+00:00",
+            "days_pending": "8" 
         },
         {
             "action_type" : "pending_assignment_report",
-            "surgical_event_id": "MOLID1234",
-            "molecular_id": "MOLID1234",
-            "analysis_id": "ANLS1234"
+            "title": "Pending Assignment Variant Report",
+            "surgical_event_id": "SURVEVT02",
+            "molecular_id": "MOL001_2",
+            "analysis_id": "SAM001_03",
+            "created_datetime": "2016-02-19T13:25:04+00:00",
+            "days_pending": "16" 
         }
     ]
 }

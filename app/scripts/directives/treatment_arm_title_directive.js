@@ -17,6 +17,7 @@
             };
         };
 
+        /*jshint multistr: true */
         var template = '<span class="ta-title">\
                     <span ng-if="vm.noUrl">\
                         <span class="ta-name">{{vm.ta.name || vm.name}}</span> (<span class="ta-stratum">{{vm.ta.stratum||vm.stratum}}</span>, <span class="ta-version">{{vm.ta.version||vm.version}})</span>\

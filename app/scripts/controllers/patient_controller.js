@@ -108,7 +108,7 @@
             }
 
             $scope.variantReportType = reportType;
-            selectVariantReport($scope.variantReportOption);
+            selectTissueVariantReport($scope.variantReportOption);
         }
 
         function setVariantReportMode(reportMode) {
@@ -117,7 +117,7 @@
             }
 
             $scope.variantReportMode = reportMode;
-            selectVariantReport($scope.variantReportOption);
+            selectTissueVariantReport($scope.variantReportOption);
         }
 
         function getVariantReportTypeClass(reportType) {
@@ -276,7 +276,7 @@
             $scope.variantReportMode = 'FILTERED';
             $scope.variantReportOption = selected;
 
-            selectVariantReport(selected);
+            selectTissueVariantReport(selected);
         }
 
         function setupAssignmentReportOptions() {
@@ -308,13 +308,13 @@
             $scope.selectedTreatmentArm = $scope.data.assignment_report.treatment_arms.selected[0];
         }
 
-        function selectVariantReport(option) {
+        function selectTissueVariantReport(option) {
             var previous = $scope.currentVariantReport;
             $scope.currentVariantReport = null;
 
             for (var i = 0; i < $scope.variantReports.length; i++) {
                 var variantReport = $scope.variantReports[i];
-                if (variantReport.variant_report_mode === $scope.variantReportMode && variantReport.variant_report_type === $scope.variantReportType) {
+                if (variantReport.report_type === 'TISSUE' && variantReport.variant_report_mode === $scope.variantReportMode && variantReport.variant_report_type === $scope.variantReportType) {
                     if (variantReport.surgical_event_id === option.value.surgical_event_id &&
                         variantReport.analysis_id === option.value.analysis_id &&
                         variantReport.molecular_id === option.value.molecular_id) {
@@ -328,8 +328,32 @@
                 return $scope.currentVariantReport;
             }
 
-            $log.error("Unable to find Variant Report by " + option + '. Setting the Variant Report to previous value ' + previous);
+            $log.error("Unable to find Tissue Variant Report by " + option + '. Setting the Variant Report to previous value ' + previous);
             $scope.currentVariantReport = previous;
+        }
+
+        function selectBloodVariantReport(option) {
+            var previous = $scope.currentBloodVariantReport;
+            $scope.currentBloodVariantReport = null;
+
+            for (var i = 0; i < $scope.variantReports.length; i++) {
+                var variantReport = $scope.variantReports[i];
+                if (variantReport.report_type === 'BLOOD' && variantReport.variant_report_mode === $scope.variantReportMode && variantReport.variant_report_type === $scope.variantReportType) {
+                    if (variantReport.surgical_event_id === option.value.surgical_event_id &&
+                        variantReport.analysis_id === option.value.analysis_id &&
+                        variantReport.molecular_id === option.value.molecular_id) {
+                        $scope.currentBloodVariantReport = variantReport;
+                        break;
+                    }
+                }
+            }
+
+            if ($scope.currentBloodVariantReport) {
+                return $scope.currentBloodVariantReport;
+            }
+
+            $log.error("Unable to find Blood Variant Report by " + option + '. Setting the Variant Report to previous value ' + previous);
+            $scope.currentBloodVariantReport = previous;
         }
 
         function setupVariantReportOptions() {
@@ -588,7 +612,7 @@
                 $log.debug(selected);
                 $scope.variantReportOption = variantReportItem;
                 selectSurgicalEvent(selected);
-                selectVariantReport(variantReportItem);
+                selectTissueVariantReport(variantReportItem);
             } else {
                 $log.error('Unable to find Variant Report by ' + selected.value.surgical_event_id + ', ' + selected.value.analysis_id);
             }
@@ -604,7 +628,7 @@
             if (surgicalEventItem) {
                 $scope.surgicalEventOption = surgicalEventItem;
                 selectSurgicalEvent(surgicalEventItem);
-                selectVariantReport(selected);
+                selectTissueVariantReport(selected);
             } else {
                 $log.error('Unable to find Surgical Event by ' + selected.value.surgical_event_id);
             }
@@ -675,8 +699,11 @@
                 case 'surgical_event':
                     navigateToSurgicalEvent(navigateTo.surgical_event_id);
                     break;
-                case 'variant_report':
-                    navigateToVariantReport(navigateTo.molecular_id, navigateTo.analysis_id);
+                case 'tissue_variant_report':
+                    navigateToTissueVariantReport(navigateTo.molecular_id, navigateTo.analysis_id);
+                    break;
+                case 'blood_variant_report':
+                    navigateToBloodVariantReport(navigateTo.molecular_id, navigateTo.analysis_id);
                     break;
                 case 'assignment_report':
                     navigateToAssignmentReport(navigateTo.molecular_id, navigateTo.analysis_id);
@@ -704,22 +731,41 @@
             }
         }
 
-        function findVariantReportOption(molecularId, analysisId) {
+        function findTissueVariantReportOption(molecularId, analysisId) {
             var byMolecularAndAnalysisId = function (x) { return x.value.molecular_id === molecularId && x.value.analysis_id === analysisId; };
             return $scope.variantReportOptions.find(byMolecularAndAnalysisId);
         }
 
-        function navigateToVariantReport(molecularId, analysisId) {
-            $log.debug('navigateToVariantReport', molecularId, analysisId);
+        function navigateToTissueVariantReport(molecularId, analysisId) {
+            $log.debug('navigateToTissueVariantReport', molecularId, analysisId);
 
             setActiveTab('tissue_report');
             $scope.activeTabIndex = 2;
 
-            var option = findVariantReportOption(molecularId, analysisId);
+            var option = findTissueVariantReportOption(molecularId, analysisId);
             if (option) {
-                selectVariantReport(option);
+                selectTissueVariantReport(option);
             } else {
-                $log.error('Unable to find Variant Report ' + molecularId + ',' + analysisId);
+                $log.error('Unable to find Tissue Variant Report ' + molecularId + ',' + analysisId);
+            }
+        }
+
+        function findBloodVariantReportOption(molecularId, analysisId) {
+            var byMolecularAndAnalysisId = function (x) { return x.value.molecular_id === molecularId && x.value.analysis_id === analysisId; };
+            return $scope.bloodVariantReportOptions.find(byMolecularAndAnalysisId);
+        }
+
+        function navigateToBloodVariantReport(molecularId, analysisId) {
+            $log.debug('navigateToBloodVariantReport', molecularId, analysisId);
+
+            setActiveTab('tissue_report');
+            $scope.activeTabIndex = 3;
+
+            var option = findBloodVariantReportOption(molecularId, analysisId);
+            if (option) {
+                selectBloodVariantReport(option);
+            } else {
+                $log.error('Unable to find Blood Variant Report ' + molecularId + ',' + analysisId);
             }
         }
 
@@ -729,7 +775,7 @@
             setActiveTab('tissue_report');
             $scope.activeTabIndex = 2;
 
-            var variantReportOption = findVariantReportOption(molecularId, analysisId);
+            var variantReportOption = findTissueVariantReportOption(molecularId, analysisId);
             if (variantReportOption) {
                 selectVariantReport(variantReportOption);
 
