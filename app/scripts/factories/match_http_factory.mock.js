@@ -38,12 +38,12 @@
                 return $http.get('data/patient_list.json');
             }
 
-            function loadTreatmentArmDetails(taid) {
-                return $http.get('data/treatment_arm_' + taid + '.json');
+            function loadTreatmentArmDetails(name, stratum) {
+                return $http.get('data/treatment_arm_' + name + '_' + stratum + '.json');
             }
 
-            function loadPatientsForTa(taid) {
-                return $http.get('data/treatment_arm_' + taid + '_patients.json');
+            function loadPatientsForTa(name, stratum) {
+                return $http.get('data/treatment_arm_' + name + '_' + stratum +  '_patients.json');
             }
 
             function loadSpecimenTrackingList() {
