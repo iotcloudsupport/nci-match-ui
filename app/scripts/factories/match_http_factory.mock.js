@@ -14,8 +14,10 @@
                 loadPatientPendingAssignmentReportsList: loadPatientPendingAssignmentReportsList,
                 loadActivityList: loadActivityList,
                 loadSpecimenTrackingList: loadSpecimenTrackingList,
-                displayTreatmentArmList: displayTreatmentArmList
-            };
+                displayTreatmentArmList: displayTreatmentArmList,
+                loadPatientsForTa: loadPatientsForTa,
+                loadTreatmentArmDetails: loadTreatmentArmDetails
+            }
 
             function loadPatient(id) {
                 $log.info('Loading patient ' + id);
@@ -36,12 +38,12 @@
                 return $http.get('data/patient_list.json');
             }
 
-            function loadTreatmentArmDetails(taId) {
-                return $http.get('data/treatment_arm_' + id + '.json');
+            function loadTreatmentArmDetails(taid) {
+                return $http.get('data/treatment_arm_' + taid + '.json');
             }
 
             function loadPatientsForTa(taid) {
-                return $http.get('data/treatment_arm_' + id + '_patients.json');
+                return $http.get('data/treatment_arm_' + taid + '_patients.json');
             }
 
             function loadSpecimenTrackingList() {

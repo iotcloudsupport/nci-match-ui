@@ -129,9 +129,9 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
             //url: "/treatment-arm/:treatmentArmId/:treatmentArmVersion",
             templateUrl: "views/treatment_arm.html",
             data: { pageTitle: 'Treatment Arm', requiresLogin: true },
-            controller: function($scope, $stateParams) {
-                $scope.taid = $stateParams.treatmentArmId;
-                $scope.tavsn = $stateParams.treatmentArmVersion;
+            controller: function($scope) { //, $stateParams
+                //$scope.taid = $stateParams.treatmentArmId;
+                //$scope.tavsn = $stateParams.treatmentArmVersion;
             },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
