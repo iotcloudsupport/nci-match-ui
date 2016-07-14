@@ -128,8 +128,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
             }
         })
         .state('treatment-arm', {
-            url: "/treatment-arm/:name",
-            //url: "/treatment-arm/:treatmentArmId/:treatmentArmVersion",
+            url: "/treatment-arm?name&stratum&version",
             templateUrl: "views/treatment_arm.html",
             data: { pageTitle: 'Treatment Arm', requiresLogin: true },
             controller: function($scope, $stateParams) { //, $stateParams

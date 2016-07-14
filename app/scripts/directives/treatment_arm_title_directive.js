@@ -20,10 +20,10 @@
         /*jshint multistr: true */
         var template = '<span class="ta-title">\
                     <span ng-if="vm.noUrl">\
-                        <span class="ta-name">{{vm.ta.name || vm.name}}</span> (<span class="ta-stratum">{{vm.ta.stratum||vm.stratum}}</span>, <span class="ta-version">{{vm.ta.version||vm.version}})</span>\
+                        <span class="ta-name">{{vm.ta.name || vm.name}}</span> (<span class="ta-stratum">{{vm.ta.stratum||vm.stratum}}</span><span ng-if="{{vm.ta.version||vm.version}}" class="ta-version">, {{vm.ta.version||vm.version}}</span>)\
                     </span>\
-                    <a ng-if="!vm.noUrl" ng-if="vm.hasData()" href="#/treatment-arm/{{vm.ta.name}}">\
-                        <span class="ta-name">{{vm.ta.name || vm.name}}</span> (<span class="ta-stratum">{{vm.ta.stratum||vm.stratum}}</span>, <span class="ta-version">{{vm.ta.version||vm.version}})</span>\
+                    <a ng-if="!vm.noUrl" ng-if="vm.hasData()" ui-sref="treatment-arm({ name: vm.ta.name||vm.name, stratum: vm.ta.stratum||vm.stratum, version: vm.ta.version||vm.version } )">\
+                        <span class="ta-name">{{vm.ta.name || vm.name}}</span> (<span class="ta-stratum">{{vm.ta.stratum||vm.stratum}}</span><span ng-if="{{vm.ta.version||vm.version}}" class="ta-version">, {{vm.ta.version||vm.version}}</span>)\
                     </a>\
                     <span ng-if="!vm.hasData()">-</span>\
                 </span>';

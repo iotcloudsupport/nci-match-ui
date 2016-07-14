@@ -28,9 +28,9 @@
 
                 $scope.test = '';
 
-                $scope.name = 'APEC1621-A'; //
-                $scope.version = '2012-05-23'; //2016-03-17
-                $scope.stratum = '2K4ST980'; //
+                // $scope.name = 'APEC1621-A'; //
+                // $scope.version = '2012-05-23'; //2016-03-17
+                // $scope.stratum = '2K4ST980'; //
 
                 $scope.patients = [];
 
@@ -926,10 +926,18 @@
 
                 $scope.extraVersion = {};
 
+                function onLoad() {
+                    $scope.name = $stateParams.name;
+                    $scope.version = $stateParams.version;
+                    $scope.stratum = $stateParams.stratum;
+                }
+
+                onLoad();
+
                 function loadPatientsForTa() {
                     console.log($stateParams);
                     matchApiMock
-                        .loadPatientsForTa($scope.name, $scope.stratum)
+                        .loadPatientsForTa($stateParams.name, $stateParams.stratum)
                         .then(function (d) {
                             console.log(d.data);
                             $scope.patients = d.data;
@@ -939,7 +947,7 @@
                      .then(function (d) {
                      //console.log(d.data);
                      });*/
-                };
+                }
 
                 function setTADrug(drugsArray) {
                     var drugString = '';
@@ -954,7 +962,7 @@
                     //console.log('taid:');
                     //console.log($stateParams.ta);
                     matchApiMock
-                        .loadTreatmentArmDetails($scope.name, $scope.stratum) //$stateParams.treatmentArmId
+                        .loadTreatmentArmDetails($stateParams.name, $stateParams.stratum) //$stateParams.treatmentArmId
                         .then(function (d) {
                             /*console.log(d.data);
                              $scope.versions = d.data;

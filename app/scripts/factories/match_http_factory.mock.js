@@ -17,7 +17,7 @@
                 displayTreatmentArmList: displayTreatmentArmList,
                 loadPatientsForTa: loadPatientsForTa,
                 loadTreatmentArmDetails: loadTreatmentArmDetails
-            }
+            };
 
             function loadPatient(id) {
                 $log.info('Loading patient ' + id);
