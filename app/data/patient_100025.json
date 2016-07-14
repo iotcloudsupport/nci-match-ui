@@ -2185,5 +2185,23 @@
                 }
             ]
         }
+    ],
+    "action_items": [
+        {
+            "action_type" : "pending_tissue_variant_report",
+            "surgical_event_id": "MOLID1234",
+            "molecular_id": "MOLID1234"
+        },
+        {
+            "action_type" : "pending_blood_variant_report",
+            "surgical_event_id": "MOLID1234",
+            "molecular_id": "MOLID1234"
+        },
+        {
+            "action_type" : "pending_assignment_report",
+            "surgical_event_id": "MOLID1234",
+            "molecular_id": "MOLID1234",
+            "analysis_id": "ANLS1234"
+        }
     ]
 }
