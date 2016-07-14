@@ -44,6 +44,8 @@
             'user.narrow': baseUrl + 'user_narrow.html',
             'system.normal': baseUrl + 'system.html',
             'system.narrow': baseUrl + 'system_narrow.html',
+            'treatment_arm.normal': baseUrl + 'treatment_arm.html',
+            'treatment_arm.narrow': baseUrl + 'treatment_arm_narrow.html',
             'generic.normal': baseUrl + 'generic.html',
             'generic.narrow': baseUrl + 'generic_narrow.html'
         };
