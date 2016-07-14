@@ -213,6 +213,7 @@
 
         vm.data = [];
         vm.loadData = loadData;
+        vm.maxItems = 10;
 
         function loadData() {
             matchApiMock
@@ -232,7 +233,7 @@
             var now = moment();
             var previousStep = null;
 
-            for (var i = 0; i < vm.data.length; i++) {
+            for (var i = 0; i < vm.data.length && i < vm.maxItems; i++) {
                 var timelineEvent = vm.data[i];
                 var eventDateMoment = moment(timelineEvent.event_date);
                 var diff = eventDateMoment.diff(now, "DD/MM/YYYY HH:mm:ss");
