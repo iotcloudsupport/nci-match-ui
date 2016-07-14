@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-xs-5 col-md-4 date" title="System Event" ng-class="{'date-top-border':timelineEvent.isStepChanging}">
+        <i class="fa fa-cogs fa-2x"></i> <small>{{::timelineEvent.event_date | utc}}</small>
+        <br/>
+        <small class="text-navy">{{::timelineEvent.from_now}}</small>
+    </div>
+    <div class="col-xs-7 col-md-8 content" ng-class="{'no-top-border':!timelineEvent.isStepChanging}">
+        <p class="m-b-xs"><span class="timeline-step">Step: {{::timelineEvent.step}}.</span> <strong>{{::timelineEvent.event_message}}.</strong></p>
+        <p class="m-b-xs">
+            <span ng-if="timelineEvent.event_data.event_message" class="timeline-value">{{::timelineEvent.event_data.event_message}}<br></span>
+            <span ng-if="timelineEvent.event_data.status" class="timeline-value">{{::timelineEvent.event_data.status}}</span>
+        </p>
+    </div>
+</div>
