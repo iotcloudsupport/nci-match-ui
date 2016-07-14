@@ -43,7 +43,9 @@
             'user.normal': baseUrl + 'user.html',
             'user.narrow': baseUrl + 'user_narrow.html',
             'system.normal': baseUrl + 'system.html',
-            'system.narrow': baseUrl + 'system_narrow.html'
+            'system.narrow': baseUrl + 'system_narrow.html',
+            'generic.normal': baseUrl + 'generic.html',
+            'generic.narrow': baseUrl + 'generic_narrow.html'
         };
 
         var getTemplateLoader = function (type, layout) {
