@@ -2278,6 +2278,20 @@
             }
           ]
         }
+      ],
+      "slides": [
+        {
+          "slide_barcode": "0HG8Q0",
+          "carrier": "Federal Express",
+          "tracking_id": "1234 4567 8910",
+          "shipped_dttm": "2016-06-06T10:12:33+00:00"
+        },
+        {
+          "slide_barcode": "0BJ6A5",
+          "carrier": "Federal Express",
+          "tracking_id": "7956 4568 1235",
+          "shipped_dttm": "2016-05-01T19:42:13+00:00"
+        }
       ]
     },
     {
@@ -2349,6 +2363,20 @@
             }
           ]
         }
+      ],
+      "slides": [
+        {
+          "slide_barcode": "0HG8Q0",
+          "carrier": "Federal Express",
+          "tracking_id": "1234 4567 8910",
+          "shipped_dttm": "2016-06-06T10:12:33+00:00"
+        },
+        {
+          "slide_barcode": "0BJ6A5",
+          "carrier": "Federal Express",
+          "tracking_id": "7956 4568 1235",
+          "shipped_dttm": "2016-05-01T19:42:13+00:00"
+        }
       ]
     },
     {
@@ -2397,6 +2425,20 @@
             }
           ]
         }
+      ],
+      "slides": [
+        {
+          "slide_barcode": "0HG8Q0",
+          "carrier": "Federal Express",
+          "tracking_id": "1234 4567 8910",
+          "shipped_dttm": "2016-06-06T10:12:33+00:00"
+        },
+        {
+          "slide_barcode": "0BJ6A5",
+          "carrier": "Federal Express",
+          "tracking_id": "7956 4568 1235",
+          "shipped_dttm": "2016-05-01T19:42:13+00:00"
+        }
       ]
     }
   ],
@@ -2408,20 +2450,6 @@
       "hmbs": 45098,
       "itgby": 2134,
       "sum": 304659
-    }
-  ],
-  "slides": [
-    {
-      "slide_barcode": "0HG8Q0",
-      "carrier": "Federal Express",
-      "tracking_id": "1234 4567 8910",
-      "shipped_dttm": "2016-06-06T10:12:33+00:00"
-    },
-    {
-      "slide_barcode": "0BJ6A5",
-      "carrier": "Federal Express",
-      "tracking_id": "7956 4568 1235",
-      "shipped_dttm": "2016-05-01T19:42:13+00:00"
     }
   ]
 }
