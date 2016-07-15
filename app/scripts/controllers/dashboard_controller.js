@@ -55,6 +55,7 @@
         $scope.loadTissueVariantReportsList = loadTissueVariantReportsList;
         $scope.loadBloodVariantReportsList = loadBloodVariantReportsList;
         $scope.loadPatientPendingAssignmentReportsList = loadPatientPendingAssignmentReportsList;
+        $scope.loadDashboardData = loadDashboardData;
 
         function setName() {
             var name;
@@ -77,14 +78,14 @@
         function loadDashboardStatisticsData() {
             matchApiMock
                 .loadDashboardStatistics()
-                .then(function (d) {
-                    $scope.numberOfPatients = d.data.number_of_patients;
-                    $scope.numberOfScreenedPatients = d.data.number_of_screened_patients;
-                    $scope.numberOfPatientsWithTreatment = d.data.number_of_patients_with_treatment;
-                    $scope.numberOfPendingAssignmentReports = d.data.number_of_pending_assignment_reports;
-                    $scope.numberOfPendingTissueVariantReports = d.data.number_of_pending_tissue_variant_reports;
-                    $scope.numberOfPendingBloodVariantReports = d.data.number_of_pending_blood_variant_reports;
-                });
+                    .then(function (d) {
+                        $scope.numberOfPatients = d.data.number_of_patients;
+                        $scope.numberOfScreenedPatients = d.data.number_of_screened_patients;
+                        $scope.numberOfPatientsWithTreatment = d.data.number_of_patients_with_treatment;
+                        //$scope.numberOfPendingAssignmentReports = d.data.number_of_pending_assignment_reports;
+                        //$scope.numberOfPendingTissueVariantReports = d.data.number_of_pending_tissue_variant_reports;
+                        //$scope.numberOfPendingBloodVariantReports = d.data.number_of_pending_blood_variant_reports;
+                    });
         }
 
         function loadTreatmentArmAccrualData() {
@@ -205,6 +206,14 @@
                 .then(function(d) {
                     $scope.pendingAssignmentReportList = d.data;
                 });
+            
+        }
+
+        function loadDashboardData() {
+            loadTissueVariantReportsList();
+            loadBloodVariantReportsList();
+            loadPatientPendingAssignmentReportsList();
+            loadDashboardStatisticsData();
         }
     }
 
@@ -249,6 +258,8 @@
                 }
             }
         }
+        
+
 
     }
 
