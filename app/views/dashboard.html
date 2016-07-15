@@ -1,6 +1,6 @@
 <div class="row border-bottom white-bg dashboard-header animated fadeInRight">
 
-    <div class="col-sm-3" ng-controller="DashboardController as dashboardStats" ng-init="loadDashboardStatisticsData()">
+    <div class="col-sm-3" ng-controller="DashboardController as dashboardStats" ng-init="loadDashboardData()"><!-- loadPatientPendingAssignmentReportsList() -->
         <h2>Welcome, {{ name }}!</h2>
         <ul class="list-group clear-list m-t">
             <li class="list-group-item fist-item">
@@ -16,15 +16,15 @@
                 <span class="label label-success"><i class="fa fa-medkit"></i></span>Number of Patients on Treatment
             </li>
             <li class="list-group-item">
-                <span class="pull-right">{{ numberOfPendingTissueVariantReports }}</span>
+                <span class="pull-right">{{ pendingTissueVariantReportList.length }}</span>
                 <span class="label label-warning"><i class="fa fa-newspaper-o"></i></span>Pending Tissue Variant Reports
             </li>
             <li class="list-group-item">
-                <span class="pull-right">{{ numberOfPendingBloodVariantReports }}</span>
+                <span class="pull-right">{{ pendingBloodVariantReportList.length }}</span>
                 <span class="label label-warning"><i class="fa fa-newspaper-o"></i></span>Pending Blood Variant Reports
             </li>
             <li class="list-group-item">
-                <span class="pull-right">{{ numberOfPendingAssignmentReports }}</span>
+                <span class="pull-right">{{ pendingAssignmentReportList.length }}</span>
                 <span class="label label-warning"><i class="fa fa-newspaper-o"></i></span>Pending Assignment Reports
             </li>
         </ul>
