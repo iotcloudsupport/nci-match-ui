@@ -3,8 +3,10 @@
         .controller('SpecimenTrackingController', SpecimenTrackingController);
 
     function SpecimenTrackingController( $scope,
-                                         $http, matchConfig, DTOptionsBuilder, DTColumnDefBuilder,
-                                         matchApiMock ) { //matchApi
+                                         $http,
+                                         matchConfig,
+                                         DTOptionsBuilder,
+                                         matchApiMock ) {
 
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(100);
@@ -21,38 +23,33 @@
         $scope.specimenTrackingList = [];
 
         $scope.sites = {
-            'mgh': {
-                'count': 0,
-                'percent': 0
-            },
-            'yale': {
-                'count': 0,
-                'percent': 0
-            },
             'mda': {
-                'count': 45,
-                'percent': 45
+                'count': 0,
+                'percent': 0
             },
             'mocha': {
-                'count': 55,
-                'percent': 55
+                'count': 0,
+                'percent': 0
             }
         }
 
-        $scope.pieDataset2 = [
+        $scope.pieDataset = [
             {
                 label: "MDA",
-                data: 12,
+                data: 0,
                 color: "#1ab394"
             },
             {
                 label: "Mocha",
-                data: 15,
+                data: 0,
                 color: "#1c84c6"
             }
         ];
 
-        //mda mocha "#1ab394" "#1c84c6"
+        function setupTooltip(label, xval, yval) {
+            return label + "<br>------------------------------------------<br>Assays: " + yval;
+        }
+
         function setupPieChartOptions(htmlContainer) {
             return {
                 series: {
@@ -83,68 +80,34 @@
 
         $scope.pieOptions = setupPieChartOptions('#legendContainer');
 
-        $scope.pieOptions2 = setupPieChartOptions('#legendContainer2');
+        function setupSites() {
+            angular.forEach($scope.specimenTrackingList, function(value) {
+                var biopsy = value;
+                angular.forEach(biopsy.assays, function() {
+                    if (biopsy.site === 'MoCha') $scope.sites.mocha.count++;
+                    if (biopsy.site === 'MDA') $scope.sites.mda.count++;
+                });
+            });
+        }
 
         function loadSpecimenTrackingList() {
             matchApiMock
                 .loadSpecimenTrackingList()
                 .then(function (d) {
                     $scope.specimenTrackingList = d.data;
-                });
-            /*matchApi
-                .getPatientSpecimentTrackingSummary()
-                .then(function (d) {
-                    angular.forEach(d.data, function (value, key) {
-                        var patientSequenceNumber = value.patientSequenceNumber;
-                        if (angular.isDefined(value.biopsies) && angular.isArray(value.biopsies)) {
-                            angular.forEach(value.biopsies, function (value, key) {
-                                var biopsyTemplate = {
-                                    'patientSequenceNumber': patientSequenceNumber,
-                                    'biopsySeqenuceNumber': value.biopsySequenceNumber,
-                                    'molecular_id': '-',
-                                    'lab': '-',
-                                    'trackingNumber': '-',
-                                    'specimenReceivedDate': value.specimenReceivedDate,
-                                    'specimenFailureDate': value.specimenFailureDate,
-                                    'ptenOrderDate': value.ptenOrderDate,
-                                    'ptenResultDate': value.ptenResultDate,
-                                    'pathologyReviewDate': value.pathologyReviewdate,
-                                    'nucleicAcidSendoutDate': '-'
-                                };
-
-                                if (angular.isDefined(value.samples) && angular.isArray(value.samples)) {
-                                    angular.forEach(value.samples, function (value, key) {
-                                        biopsyWithSample = angular.copy(biopsyTemplate);
-                                        biopsyWithSample.molecular_id = value.molecularSequenceNumber;
-                                        biopsyWithSample.lab = value.lab;
-                                        biopsyWithSample.trackingNumber = value.trackingNumber;
-                                        biopsyWithSample.nucleicAcidSendoutDate = value.dnaShippedDate;
-                                        $scope.specimenTrackingList.push(biopsyWithSample);
-
-                                        if (value.lab === 'MGH') $scope.sites.mgh.count++;
-                                        if (value.lab === 'Yale') $scope.sites.yale.count++;
-                                        if (value.lab === 'MoCha') $scope.sites.mocha.count++;
-                                        if (value.lab === 'MDACC') $scope.sites.mda.count++;
-                                    });
-                                } else {
-                                    $scope.specimenTrackingList.push(biopsyTemplate);
-                                }
-                            });
-                        }
-                    });
-
-                    updateSiteStatistics();
-                });*/
+                })
+                .then (setupSites)
+                .then (updateSiteStatistics)
         };
 
         updateSiteStatistics = function () {
-            var total = $scope.sites.mgh.count + $scope.sites.yale.count + $scope.sites.mocha.count + $scope.sites.mda.count;
+            var total = $scope.sites.mocha.count + $scope.sites.mda.count;
             total = (total === 0) ? 1 : total;
 
-            $scope.sites.mgh.percent = calculatePercent($scope.sites.mgh.count, total);
-            $scope.sites.yale.percent = calculatePercent($scope.sites.yale.count, total);
             $scope.sites.mda.percent = calculatePercent($scope.sites.mda.count, total);
             $scope.sites.mocha.percent = calculatePercent($scope.sites.mocha.count, total);
+            $scope.pieDataset[0].data = $scope.sites.mda.count;
+            $scope.pieDataset[1].data = $scope.sites.mocha.count;
         }
 
         calculatePercent = function (numerator, denominator) {
