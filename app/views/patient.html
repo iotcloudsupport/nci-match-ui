@@ -177,9 +177,6 @@
                                 </div>
                             </div>
 
-
-
-
                             <div class="ibox-title ibox-title-no-line">
                                 <h3>Slide Shipments</h3>
                             </div>
@@ -194,18 +191,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="slide in currentSurgicalEvent.data.slides" style="cursor: auto;" role="row" class="odd">
-                                        <td>{{slide.gene}}</td>
-                                        <td>{{slide.ordered_date | utc}}</td>
-                                        <td>{{slide.result_date | utc}}</td>
-                                        <td>
-                                            <span ng-style="{'color':'{{ slide.result | slideStatus }}'}">{{slide.result}}</span>
-                                        </td>
+                                    <tr ng-repeat="slide in currentSurgicalEvent.slides" style="cursor: auto;" role="row" class="odd">
+                                        <td>{{slide.slide_barcode}}</td>
+                                        <td>{{slide.carrier}}</td>
+                                        <td><a href="http://www.fedex.com/Tracking?action=track&tracknumbers={{slide.tracking_id}}" target="_blank">{{slide.tracking_id}}</a></td>
+                                        <td>{{slide.shipped_dttm | utc}}</td>
                                     </tr>
                                 </tbody>
                             </table>
-
-
 
                             <div class="ibox-title ibox-title-no-line">
                                 <h3>Assay History</h3>
