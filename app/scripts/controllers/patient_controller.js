@@ -179,7 +179,7 @@
 
         function setupScope(data) {
             if (!data || !data.data) {
-                $log.error('The web service didn\'t send patient data. Transferring back to patient list');
+                $log.error('The web service didn\'t send Patient data. Transferring back to Patient list');
                 $state.transitionTo('patients');
             }
 
