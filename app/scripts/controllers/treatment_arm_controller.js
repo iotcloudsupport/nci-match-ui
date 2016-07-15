@@ -307,14 +307,14 @@
 
         $scope.extraVersion = {};
 
-        function setTADrug(drugsArray) {
-            var drugString = '';
-            drugString = drugsArray[0].name + ' (' + drugsArray[0].drug_id + ')';
-            if (drugsArray.length > 1) {
-                drugString = drugString + ', ' + drugsArray[1].name + ' (' + drugsArray[1].drug_id + ')';
-            }
-            return drugString;
-        }
+        // function setTADrug(drugsArray) {
+        //     var drugString = '';
+        //     drugString = drugsArray[0].name + ' (' + drugsArray[0].drug_id + ')';
+        //     if (drugsArray.length > 1) {
+        //         drugString = drugString + ', ' + drugsArray[1].name + ' (' + drugsArray[1].drug_id + ')';
+        //     }
+        //     return drugString;
+        // }
 
         function loadTreatmentArmDetails() {
             $log.info('Loading Treatment Arm', $stateParams.name, $stateParams.stratum, $stateParams.version);
@@ -373,49 +373,49 @@
                         $log.debug('value');
                         $log.debug(value);
                         if (value !== [] && value !== null && value !== undefined) {
-                            $scope.information.currentStatus = value.treatment_arm_status;
-                            $scope.test = "test";
-                            $scope.information.name = value.name;
-                            $log.debug('name');
-                            $log.debug(value.name);
-                            $scope.information.description = value.description;
-                            $scope.information.genes = value.gene;
-                            $scope.information.patientsAssigned = value.num_patients_assigned;
-                            $scope.information.patientsAssignedBasic = value.num_patients_assigned_basic;
-                            var exclusionDrugs = [];
-                            var exclusionDiseases = [];
+                            // $scope.information.currentStatus = value.treatment_arm_status;
+                            // $scope.test = "test";
+                            // $scope.information.name = value.name;
+                            // $log.debug('name');
+                            // $log.debug(value.name);
+                            // $scope.information.description = value.description;
+                            // $scope.information.genes = value.gene;
+                            // $scope.information.patientsAssigned = value.num_patients_assigned;
+                            // $scope.information.patientsAssignedBasic = value.num_patients_assigned_basic;
+                            // var exclusionDrugs = [];
+                            // var exclusionDiseases = [];
 
                             var nonSequencingAssays = [];
 
-                            angular.forEach(value.exclusion_drugs, function (value) {
-                                var exclusionDrug = {};
-                                //angular.forEach(value.drugs, function(value) {
-                                exclusionDrug.id = value.drug_id;
-                                exclusionDrug.name = value.name;
-                                exclusionDrugs.push(exclusionDrug);
-                                //});
-                                //exclusionDrug.id = value.id;
-                                //exclusionDrug.name = value.name;
-                            });
-                            angular.forEach(value.exclusion_diseases, function (value) {
+                            // angular.forEach(value.exclusion_drugs, function (value) {
+                            //     var exclusionDrug = {};
+                            //     //angular.forEach(value.drugs, function(value) {
+                            //     exclusionDrug.id = value.drug_id;
+                            //     exclusionDrug.name = value.name;
+                            //     exclusionDrugs.push(exclusionDrug);
+                            //     //});
+                            //     //exclusionDrug.id = value.id;
+                            //     //exclusionDrug.name = value.name;
+                            // });
+                            // angular.forEach(value.exclusion_diseases, function (value) {
 
-                                var exclusionDisease = {};
-                                exclusionDisease.medraCode = value.medra_code;
-                                exclusionDisease.ctepCategory = value.ctep_category;
-                                exclusionDisease.ctepTerm = value.short_name;
-                                exclusionDiseases.push(exclusionDisease);
-                            });
-                            angular.forEach(value.treatment_arm_drugs, function (value) {
-                                var inclusionDrug = {};
-                                inclusionDrug.id = value.drug_id;
-                                inclusionDrug.name = value.name;
-                            });
+                            //     var exclusionDisease = {};
+                            //     exclusionDisease.medraCode = value.medra_code;
+                            //     exclusionDisease.ctepCategory = value.ctep_category;
+                            //     exclusionDisease.ctepTerm = value.short_name;
+                            //     exclusionDiseases.push(exclusionDisease);
+                            // });
+                            // angular.forEach(value.treatment_arm_drugs, function (value) {
+                            //     var inclusionDrug = {};
+                            //     inclusionDrug.id = value.drug_id;
+                            //     inclusionDrug.name = value.name;
+                            // });
 
-                            var treatmentArmDrug = '';
-                            if (value.treatment_arm_drugs !== null && value.treatment_arm_drugs !== undefined) {
-                                treatmentArmDrug = setTADrug(value.treatment_arm_drugs);
-                            }
-                            $scope.information.drug = treatmentArmDrug;
+                            // var treatmentArmDrug = '';
+                            // if (value.treatment_arm_drugs !== null && value.treatment_arm_drugs !== undefined) {
+                            //     treatmentArmDrug = setTADrug(value.treatment_arm_drugs);
+                            // }
+                            // $scope.information.drug = treatmentArmDrug;
 
                             angular.forEach(value.pten_results, function (value) {
                                 var nonSequencingAssay = {};
@@ -491,25 +491,6 @@
                             $log.debug('versions');
                             $log.debug($scope.versions);
 
-                            /*var nextVersion = {};
-                             nextVersion.text = '2015-12-20';
-                             nextVersion.latest = 'This is not the latest version.';
-                             nextVersion.exclusionaryDiseases = exclusionDiseases;
-                             nextVersion.exclusionaryDrugs = exclusionDrugs;
-                             nextVersion.inclusionaryDrugs = inclusionDrugs;
-                             nextVersion.snvsInclusion = $scope.snvsInclusion;
-                             nextVersion.snvsExclusion = $scope.snvsExclusion;
-                             nextVersion.indelsInclusion = $scope.indelsInclusion;
-                             nextVersion.indelsExclusion = $scope.indelsExclusion;
-                             nextVersion.cnvsInclusion = $scope.cnvsInclusion;
-                             nextVersion.cnvsExclusion = $scope.cnvsExclusion;
-                             nextVersion.geneFusionsInclusion = $scope.gfsInclusion;
-                             nextVersion.geneFusionsExclusion = $scope.gfsExclusion;
-                             nextVersion.nhrsInclusion = $scope.nhrsInclusion;
-                             nextVersion.nhrsExclusion = $scope.nhrsExclusion;
-                             nextVersion.nonSequencingAssays = nonSequencingAssays;
-                             nextVersion.versionHistory = $scope.versionHistoryClosed;
-                             $scope.versions.push(nextVersion);*/
                             $scope.selectedVersion = $scope.versions[0];
                             $log.debug('sel vsn');
                             $log.debug($scope.selectedVersion);

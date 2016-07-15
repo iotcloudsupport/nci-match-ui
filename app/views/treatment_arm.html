@@ -20,9 +20,72 @@
 
     <div class="wrapper">
 
-        <div class="no-horizontal-padding header-box-container">
-            <div class="row">current     </div>
+<div ng-controller="TreatmentArmController as TaCtrl" ng-init="loadTreatmentArmDetails()" class="wrapper">
+
+    <div class="no-horizontal-padding header-box-container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div id="left-info-box" class="header-info-box ta-header-box">
+                    <dl class="dl-horizontal">
+                        <dt>Name</dt>
+                        <dd>{{currentVersion.name}}</dd>
+
+                        <dt>Stratum ID</dt>
+                        <dd>{{currentVersion.stratum_id}}</dd>
+
+                        <dt>Description</dt>
+                        <dd>{{currentVersion.description}}</dd>
+
+                        <dt>Status</dt>
+                        <dd ng-style="{'color':'{{ currentVersion.treatment_arm_status | taStatus }}'}">{{currentVersion.treatment_arm_status}}</dd>
+
+                        <dt><span class="drop-down-label">Version</span></dt>
+                        <dd>
+                            <div class="btn-group" uib-dropdown dropdown-append-to-body>
+                                <button id="btn-append-to-body" type="button" class="btn btn-success btn-outline" uib-dropdown-toggle>{{currentVersion.version}}<span class="caret"></span></button>
+                                <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+                                    <li ng-repeat="version in versions" role="menuitem"><a href ng-click="onVersionSelected(item)">{{version.version}}</a></li>
+                                </ul>
+                            </div>
+                        </dd>
+
+                        <dt></dt>
+                        <dd ng-style="selectedVersion.latest === 'This is the latest version.' && {'color':'green'} ||
+                                        selectedVersion.latest === 'This is not the latest version.' && {'color': 'red'}">{{selectedVersion.latest}}
+                        </dd>
+
+                    </dl>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6">
+                <div id="right-info-box" class="header-info-box ta-header-box">
+                    <dl class="dl-horizontal">
+
+                        <dt>Genes</dt>
+                        <dd>{{currentVersion.gene}}</dd>
+
+                        <dt>Patients Assigned</dt>
+                        <dd>{{currentVersion.num_patients_assigned}}</dd>
+
+                        <dt>Patients Assigned to Arm</dt>
+                        <dd>{{currentVersion.num_patients_assigned_basic}}</dd>
+
+                        <dt>Drug</dt>
+                        <dd> <span ng-repeat="drug in currentVersion.treatment_arm_drugs">{{drug.name}}{{$last?'':', '}}</span>                            </dd>
+
+                        <dt>Download</dt>
+                        <dd>
+                            <button class="btn btn-outline btn-success" title="Export Variant Report to PDF"><i class="fa fa-file-pdf-o"></i>&nbsp;&nbsp;PDF</button>
+                            <button class="btn btn-outline btn-success" title="Export Variant Report to Excel"><i class="fa fa-file-excel-o"></i>&nbsp;&nbsp;Excel</button>
+                            <button class="btn btn-outline btn-success" title="Export Pharma Report"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;Pharma</button>
+                        </dd>
+
+                    </dl>
+                </div>
+            </div>
         </div>
+    </div>
 
         <div class="tabs-container">
             <uib-tabset>
