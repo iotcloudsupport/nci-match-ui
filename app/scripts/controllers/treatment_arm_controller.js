@@ -328,7 +328,8 @@
             matchApiMock
                 .loadPatientsForTa($stateParams.name, $stateParams.stratum)
                 .then(function (d) {
-                    $scope.patients = d.data;
+                    $scope.patients = [];
+                    angular.copy(d.data, $scope.patients);
                 });
         }
 
