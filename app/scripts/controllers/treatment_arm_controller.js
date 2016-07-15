@@ -26,12 +26,6 @@
                 $scope.loadTreatmentArmDetails = loadTreatmentArmDetails;
                 $scope.loadPatientsForTa = loadPatientsForTa;
 
-                $scope.test = '';
-
-                // $scope.name = 'APEC1621-A'; //
-                // $scope.version = '2012-05-23'; //2016-03-17
-                // $scope.stratum = '2K4ST980'; //
-
                 $scope.patients = [];
 
                 $scope.information = {
@@ -95,562 +89,8 @@
                 }
 
                 function setInExclusion() {
-                    //$scope.inExclusion = $scope.variants[$scope.inExclusionType];
                     $scope.inExclusion = $scope.version;
                 }
-
-
-                // It is important that the versions are populated in reverse order, starting with current version
-                /*$scope.versions = [
-                 {
-                 name: '2016-03-17',
-                 stratum: '231563',
-                 text: '2016-03-17',
-                 latest: 'This is the latest version.',
-                 versionStatus: 'OPEN',
-                 versionHistory: {
-                 history: [
-                 {status: 'OPEN', date: 'March 17, 2016 10:10PM GMT'},
-                 ]
-                 },
-                 inclusionaryDrugs: [
-                 {
-                 "id": "750691",
-                 "name": "Afatinib"
-                 },
-                 {
-                 "id": "781254",
-                 "name": "AZD9291"
-                 },
-                 {
-                 "id": "749005",
-                 "name": "Crizotinib"
-                 }
-                 ],
-                 inclusionaryDiseases: [
-                 {
-                 "ctepCategory": "Small Cell Lung Cancer",
-                 "ctepTerm": "Small Cell Lung Cancer",
-                 "medraCode": "10041071"
-                 }
-                 ],
-                 exclusionaryDrugs: [
-                 {
-                 "id": "781257",
-                 "name": "AZZ0056731"
-                 }
-                 ],
-                 exclusionaryDiseases: [
-                 {
-                 "ctepCategory": "Non-Small Cell Lung Cancer",
-                 "ctepTerm": "Lung adenocarcinoma",
-                 "medraCode": "10025032"
-                 }
-                 ],
-                 snvsInclusion: [
-                 {
-                 "identifier": "COSM1256700",
-                 "gene_name": "EBFRA",
-                 "level_of_evidence": "2",
-                 "chromosome": "7",
-                 "position": "5522678451",
-                 "reference": "G",
-                 "alternative": "A",
-                 "public_med_ids": [
-                 "26051236"
-                 ],
-                 "description": "p.G719A",
-                 "totNumPtsWithVariant": "1",
-                 "ptsWithVariantOnArm": "1",
-                 "pctPtsWithVarOnArmOfTotPtsWithVar": "20%",
-                 "inclusion": true,
-                 "exclusion": false
-                 },
-                 {
-                 "identifier": "COSM125678",
-                 "gene_name": "EBFRA",
-                 "level_of_evidence": "2",
-                 "chromosome": "7",
-                 "position": "5522678455",
-                 "reference": "C",
-                 "alternative": "T",
-                 "public_med_ids": [
-                 "26051236",
-                 "19692684"
-                 ],
-                 "description": "p.G719A",
-                 "totNumPtsWithVariant": "0",
-                 "ptsWithVariantOnArm": "0",
-                 "pctPtsWithVarOnArmOfTotPtsWithVar": "0%",
-                 "inclusion": true,
-                 "exclusion": false
-                 },
-                 {
-                 "identifier": "COSM99995",
-                 "gene_name": "EBFRA",
-                 "level_of_evidence": "1",
-                 "chromosome": "7",
-                 "position": "5522678457",
-                 "reference": "C",
-                 "alternative": "T",
-                 "public_med_ids": [
-                 "26051236"
-                 ],
-                 "description": "p.G719A",
-                 "totNumPtsWithVariant": "0",
-                 "ptsWithVariantOnArm": "0",
-                 "pctPtsWithVarOnArmOfTotPtsWithVar": "0%",
-                 "inclusion": true,
-                 "exclusion": false
-                 },
-                 {
-                 "identifier": "COSM9999000",
-                 "gene_name": "EBFRA",
-                 "level_of_evidence": "1",
-                 "chromosome": "7",
-                 "position": "5522678459",
-                 "reference": "C",
-                 "alternative": "T",
-                 "public_med_ids": [
-                 "26051236",
-                 "19692684"
-                 ],
-                 "description": "p.G719A",
-                 "totNumPtsWithVariant": "2",
-                 "ptsWithVariantOnArm": "1",
-                 "pctPtsWithVarOnArmOfTotPtsWithVar": "20%",
-                 "inclusion": true,
-                 "exclusion": false
-                 }
-                 ],
-                 snvsExclusion: [
-                 {
-                 "identifier": "COSM746",
-                 "gene_name": "PIK3CA",
-                 "level_of_evidence": "3",
-                 "chromosome": "7",
-                 "position": "5522678453",
-                 "reference": "C",
-                 "alternative": "T",
-                 "public_med_ids": [
-                 "21266528"
-                 ],
-                 "description": "p.G719A",
-                 "inclusion": false,
-                 "exclusion": true
-                 },
-                 {
-                 "identifier": "COSM757",
-                 "gene_name": "PIK3CA",
-                 "level_of_evidence": "2",
-                 "chromosome": "7",
-                 "position": "178927980",
-                 "reference": "G",
-                 "alternative": "A",
-                 "public_med_ids": [
-                 "17376864",
-                 "22949682"
-                 ],
-                 "description": "p.G719A",
-                 "inclusion": false,
-                 "exclusion": true
-                 }
-                 ],
-                 indelsInclusion: [
-                 {
-                 "identifier": "COSM746",
-                 "gene_name": "ALK",
-                 "level_of_evidence": "3",
-                 "chromosome": "7",
-                 "position": "5522678453",
-                 "reference": "C",
-                 "alternative": "T",
-                 "public_med_ids": [
-                 "21266528"
-                 ],
-                 "description": "p.G719A",
-                 "totNumPtsWithVariant": "0",
-                 "ptsWithVariantOnArm": "0",
-                 "pctPtsWithVarOnArmOfTotPtsWithVar": "0%",
-                 "inclusion": false,
-                 "exclusion": true
-                 },
-                 {
-                 "identifier": "COSM763",
-                 "gene_name": "ALK",
-                 "level_of_evidence": "2",
-                 "chromosome": "7",
-                 "position": "552267845",
-                 "reference": "G",
-                 "alternative": "A",
-                 "public_med_ids": [
-                 "17376864"
-                 ],
-                 "description": "p.G719A",
-                 "totNumPtsWithVariant": "2",
-                 "ptsWithVariantOnArm": "1",
-                 "pctPtsWithVarOnArmOfTotPtsWithVar": "20%",
-                 "inclusion": false,
-                 "exclusion": true
-                 },
-                 {
-                 "identifier": "COSM765",
-                 "gene_name": "ALK",
-                 "level_of_evidence": "2",
-                 "chromosome": "7",
-                 "position": "552267845",
-                 "reference": "G",
-                 "alternative": "A",
-                 "public_med_ids": [
-                 "17376864"
-                 ],
-                 "description": "p.G719A",
-                 "totNumPtsWithVariant": "2",
-                 "ptsWithVariantOnArm": "1",
-                 "pctPtsWithVarOnArmOfTotPtsWithVar": "20%",
-                 "inclusion": false,
-                 "exclusion": true
-                 }
-                 ],
-                 indelsExclusion: [],
-                 cnvsInclusion: [
-                 {
-                 "gene_name": "ERBB2",
-                 "level_of_evidence": "1",
-                 "chromosome": "chr17",
-                 "position": "37856492",
-                 "public_med_ids": [
-                 "19692684"
-                 ],
-                 "description": "ERBB2 Amplification",
-                 "totNumPtsWithVariant": "0",
-                 "ptsWithVariantOnArm": "0",
-                 "pctPtsWithVarOnArmOfTotPtsWithVar": "-",
-                 "inclusion": true,
-                 "exclusion": false
-                 }
-                 ],
-                 cnvsExclusion: [
-                 {
-                 "gene_name": "ERBB661",
-                 "level_of_evidence": "1",
-                 "chromosome": "chr17",
-                 "position": "3785648800",
-                 "public_med_ids": [
-                 "26051236"
-                 ],
-                 "description": "ERBB661 Amplification",
-                 "inclusion": false,
-                 "exclusion": true
-                 }
-                 ],
-                 geneFusionsInclusion: [],
-                 geneFusionsExclusion: [],
-                 nhrsInclusion: [
-                 {
-                 "oncomineVariantClass": "-",
-                 "gene_name": "EGFR",
-                 "level_of_evidence" : "1",
-                 "function": "nonframeshiftinsertion",
-                 "public_med_ids": [
-                 "26051236"
-                 ],
-                 "variantDescription": "-",
-                 "exon": "19",
-                 "descriptionRegex": "-",
-                 "inclusion": true,
-                 "exclusion": false
-                 }
-                 ],
-                 nhrsExclusion: [],
-                 nonSequencingAssaysInclusion: [
-                 {
-                 "assay": "IHC",
-                 "gene_name": "EBFRA",
-                 "result": "POSITIVE",
-                 "variantAssociation": "PRESENT",
-                 "level_of_evidence": "1",
-                 "totNumPtsWithGene": "0",
-                 "ptsWithGeneOnArm": "0",
-                 "pctPtsWithGeneOnArmOfTotPtsWithGene": "0%",
-                 "inclusion": true,
-                 "exclusion": false
-                 },
-                 {
-                 "assay": "IHC",
-                 "gene_name": "ABBC",
-                 "result": "POSITIVE",
-                 "variantAssociation": "ABSENT",
-                 "level_of_evidence": "1",
-                 "totNumPtsWithGene": "0",
-                 "ptsWithGeneOnArm": "0",
-                 "pctPtsWithGeneOnArmOfTotPtsWithGene": "0%",
-                 "inclusion": true,
-                 "exclusion": false
-                 }
-                 ],
-                 nonSequencingAssaysExclusion: [
-                 {
-                 "assay": "IHC",
-                 "gene_name": "ALK",
-                 "result": "NEGATIVE",
-                 "variantAssociation": "EMPTY",
-                 "level_of_evidence": "1",
-                 "inclusion": false,
-                 "exclusion": true
-                 }
-                 ]
-                 },
-                 {
-                 name: '2016-02-20',
-                 text: '2016-02-20',
-                 latest: 'This is not the latest version.',
-                 versionStatus: 'CLOSED',
-                 versionHistory: {
-                 history: [
-                 {status: 'OPEN', date: 'January 9, 2016 10:10PM GMT'},
-                 {status: 'SUSPENDED', date: 'February 20, 2016 10:10PM GMT'},
-                 {status: 'CLOSED', date: 'Febrary 28, 2016 9:15AM GMT'}
-                 ]
-                 },
-                 inclusionaryDrugs: [
-                 {
-                 "id": "750691",
-                 "name": "Afatinib"
-                 },
-                 {
-                 "id": "781254",
-                 "name": "AZD9291"
-                 },
-                 {
-                 "id": "749005",
-                 "name": "Crizotinib"
-                 }
-                 ],
-                 inclusionaryDiseases: [
-                 {
-                 "ctepCategory": "Small Cell Lung Cancer",
-                 "ctepTerm": "Small Cell Lung Cancer",
-                 "medraCode": "10041071"
-                 }
-                 ],
-                 exclusionaryDrugs: [
-                 {
-                 "id": "781257",
-                 "name": "AZZ0056731"
-                 }
-                 ],
-                 exclusionaryDiseases: [
-                 {
-                 "ctepCategory": "Non-Small Cell Lung Cancer",
-                 "ctepTerm": "Lung adenocarcinoma",
-                 "medraCode": "10025032"
-                 }
-                 ],
-                 snvsInclusion: [
-                 {
-                 "identifier": "COSM776",
-                 "gene_name": "PIK3CA",
-                 "level_of_evidence": "1",
-                 "chromosome": "7",
-                 "position": "22120714",
-                 "reference": "C",
-                 "alternative": "T",
-                 "public_med_ids": [
-                 "26051236"
-                 ],
-                 "description": "p.G719A",
-                 "totNumPtsWithVariant": "0",
-                 "ptsWithVariantOnArm": "0",
-                 "pctPtsWithVarOnArmOfTotPtsWithVar": "0%",
-                 "inclusion": true,
-                 "exclusion": false
-                 },
-                 {
-                 "identifier": "COSM776",
-                 "gene_name": "PIK3CA",
-                 "level_of_evidence": "1",
-                 "chromosome": "7",
-                 "position": "5522678459",
-                 "reference": "C",
-                 "alternative": "T",
-                 "public_med_ids": [
-                 "17376964",
-                 "17376963"
-                 ],
-                 "description": "p.G719A",
-                 "totNumPtsWithVariant": "2",
-                 "ptsWithVariantOnArm": "1",
-                 "pctPtsWithVarOnArmOfTotPtsWithVar": "20%",
-                 "inclusion": true,
-                 "exclusion": false
-                 }
-                 ],
-                 snvsExclusion: [
-                 {
-                 "identifier": "COSM774",
-                 "gene_name": "PIK3CA",
-                 "level_of_evidence": "3",
-                 "chromosome": "7",
-                 "position": "5522678453",
-                 "reference": "C",
-                 "alternative": "T",
-                 "public_med_ids": [
-                 "17376866"
-                 ],
-                 "description": "p.G719A",
-                 "inclusion": false,
-                 "exclusion": true
-                 }
-                 ],
-                 indelsInclusion: [],
-                 indelsExclusion: [
-                 {
-                 "identifier": "COSM111112345",
-                 "gene_name": "EBFRA",
-                 "level_of_evidence": "3",
-                 "chromosome": "7",
-                 "position": "5522678453",
-                 "reference": "C",
-                 "alternative": "T",
-                 "public_med_ids": [
-                 "19692684"
-                 ],
-                 "description": "p.G719A",
-                 "inclusion": false,
-                 "exclusion": true
-                 },
-                 {
-                 "identifier": "COSM000012567",
-                 "gene_name": "EBFRA",
-                 "level_of_evidence": "2",
-                 "chromosome": "7",
-                 "position": "552267845",
-                 "reference": "G",
-                 "alternative": "A",
-                 "public_med_ids": [
-                 "26051236"
-                 ],
-                 "description": "p.G719A",
-                 "inclusion": false,
-                 "exclusion": true
-                 }
-                 ],
-                 cnvsInclusion: [],
-                 cnvsExclusion: [],
-                 geneFusionsInclusion: [
-                 {
-                 "identifier": "EML4-ALK.E13A20.COSF1062",
-                 "gene_name": "ALK",
-                 "level_of_evidence": "1",
-                 "public_med_ids": [
-                 "23724913"
-                 ],
-                 "totNumPtsWithVariant": "0",
-                 "ptsWithVariantOnArm": "0",
-                 "pctPtsWithVarOnArmOfTotPtsWithVar": "-",
-                 "inclusion": true,
-                 "exclusion": false
-
-                 },
-                 {
-                 "identifier": "EML4-ALK.E13A20.COSF1065",
-                 "gene_name": "ALK",
-                 "level_of_evidence": "1",
-                 "public_med_ids": [
-                 "26051236",
-                 "19692684"
-                 ],
-                 "totNumPtsWithVariant": "0",
-                 "ptsWithVariantOnArm": "0",
-                 "pctPtsWithVarOnArmOfTotPtsWithVar": "-",
-                 "inclusion": true,
-                 "exclusion": false
-                 },
-                 {
-                 "identifier": "EML4-ALK.E13A20.COSF1762",
-                 "gene_name": "ALK",
-                 "level_of_evidence": "1",
-                 "public_med_ids": [
-                 "26051236",
-                 "19692684"
-                 ],
-                 "totNumPtsWithVariant": "0",
-                 "ptsWithVariantOnArm": "0",
-                 "pctPtsWithVarOnArmOfTotPtsWithVar": "-",
-                 "inclusion": true,
-                 "exclusion": false
-                 }
-                 ],
-                 geneFusionsExclusion: [
-                 {
-                 "identifier": "EML4-ALK.EBA17",
-                 "gene_name": "ALK",
-                 "level_of_evidence": "1",
-                 "public_med_ids": [
-                 "234566"
-                 ],
-                 "inclusion": false,
-                 "exclusion": true
-                 }
-                 ],
-                 nhrsInclusion: [
-                 {
-                 "oncomineVariantClass": "-",
-                 "gene_name": "EGFR",
-                 "level_of_evidence" : "1",
-                 "function": "nonframeshiftinsertion",
-                 "public_med_ids": [
-                 "26051236",
-                 "19692684"
-                 ],
-                 "variantDescription": "-",
-                 "exon": "19",
-                 "proteinRegex": "-",
-                 "inclusion": true,
-                 "exclusion": false
-                 }
-                 ],
-                 nhrsExclusion: [],
-                 nonSequencingAssaysInclusion: [
-                 {
-                 "assay": "IHC",
-                 "gene_name": "EBFRA",
-                 "result": "POSITIVE",
-                 "variantAssociation": "PRESENT",
-                 "level_of_evidence": "1",
-                 "totNumPtsWithGene": "0",
-                 "ptsWithGeneOnArm": "0",
-                 "pctPtsWithGeneOnArmOfTotPtsWithGene": "0%",
-                 "inclusion": true,
-                 "exclusion": false
-                 },
-                 {
-                 "assay": "IHC",
-                 "gene_name": "ABBC",
-                 "result": "POSITIVE",
-                 "variantAssociation": "ABSENT",
-                 "level_of_evidence": "1",
-                 "totNumPtsWithGene": "0",
-                 "ptsWithGeneOnArm": "0",
-                 "pctPtsWithGeneOnArmOfTotPtsWithGene": "0%",
-                 "inclusion": true,
-                 "exclusion": false
-                 }
-                 ],
-                 nonSequencingAssaysExclusion: [
-                 {
-                 "assay": "IHC",
-                 "gene_name": "ALK",
-                 "result": "NEGATIVE",
-                 "variantAssociation": "EMPTY",
-                 "level_of_evidence": "1",
-                 "inclusion": false,
-                 "exclusion": true
-                 }
-                 ]
-                 }
-                 ];*/
 
                 $scope.selectedVersion = $scope.versions[0];
 
@@ -690,96 +130,96 @@
                 }
 
                 // TODO: Extract into separate json
-                $scope.pieDataset = [
-                    {
-                        label: "ON_TREATMENT_ARM",
-                        data: 5,
-                        color: "#1c84c6",
-                        psns: "215re, 203re, 312re"
-                    },
-                    {
-                        label: "PENDING_APPROVAL",
-                        data: 3,
-                        color: "#23c6c8",
-                        psns: "201re, 302re"
-                    },
-                    {
-                        label: "FORMERLY_ON_TREATMENT_ARM",
-                        data: 2,
-                        color: "#f8ac59",
-                        psns: "205re, 206re"
-                    },
-                    {
-                        label: "NOT_ELIGIBLE",
-                        data: 1,
-                        color: "#1ab394",
-                        psns: "202re, 211re, 252re, 255re, 304re"
-                    }
-                ];
+                // $scope.pieDataset = [
+                //     {
+                //         label: "ON_TREATMENT_ARM",
+                //         data: 5,
+                //         color: "#1c84c6",
+                //         psns: "215re, 203re, 312re"
+                //     },
+                //     {
+                //         label: "PENDING_APPROVAL",
+                //         data: 3,
+                //         color: "#23c6c8",
+                //         psns: "201re, 302re"
+                //     },
+                //     {
+                //         label: "FORMERLY_ON_TREATMENT_ARM",
+                //         data: 2,
+                //         color: "#f8ac59",
+                //         psns: "205re, 206re"
+                //     },
+                //     {
+                //         label: "NOT_ELIGIBLE",
+                //         data: 1,
+                //         color: "#1ab394",
+                //         psns: "202re, 211re, 252re, 255re, 304re"
+                //     }
+                // ];
 
                 // TODO: Extract into separate json
-                $scope.diseasePieDataset = [
-                    {
-                        label: "Endocrine cancer, NOS",
-                        data: 3,
-                        color: "#1c84c6",
-                        psns: "215re, 205re, 203re"
-                    },
-                    {
-                        label: "Glioblastoma multiforme",
-                        data: 6,
-                        color: "#23c6c8",
-                        psns: "201re,  206re, 252re, 255re, 302re, 202re"
-                    },
-                    {
-                        label: "Head & neck cancer, NOS",
-                        data: 4,
-                        color: "#f8ac59",
-                        psns: "202re, 211re, 312re, 304re"
-                    },
-                    {
-                        label: "Retinoblastoma",
-                        data: 2,
-                        color: "#1ab394",
-                        psns: "201re,  206re, 252re, 255re, 302re, 202re"
-                    },
-                    {
-                        label: "Skin Cancer, NOS",
-                        data: 7,
-                        color: "#707070",
-                        psns: "202re, 211re, 312re, 304re"
-                    },
-                    {
-                        label: "Bone cancer, NOS",
-                        data: 4,
-                        color: "#1c84c6",
-                        psns: "202re, 211re, 312re, 304re"
-                    },
-                    {
-                        label: "Chrondrosarcoma",
-                        data: 2,
-                        color: "#23c6c8",
-                        psns: "201re,  206re, 252re, 255re, 302re, 202re"
-                    },
-                    {
-                        label: "Diffuse brainstem glioma",
-                        data: 7,
-                        color: "#f8ac59",
-                        psns: "202re, 211re, 312re, 304re"
-                    },
-                    {
-                        label: "Anaplastic astrocytoma",
-                        data: 10,
-                        color: "#1ab394",
-                        psns: "201re,  206re, 252re, 255re, 302re, 202re"
-                    },
-                    {
-                        label: "Endocrine cancer, NOS",
-                        data: 4,
-                        color: "#707070",
-                        psns: "202re, 211re, 312re, 304re"
-                    }
-                ];
+                // $scope.diseasePieDataset = [
+                //     {
+                //         label: "Endocrine cancer, NOS",
+                //         data: 3,
+                //         color: "#1c84c6",
+                //         psns: "215re, 205re, 203re"
+                //     },
+                //     {
+                //         label: "Glioblastoma multiforme",
+                //         data: 6,
+                //         color: "#23c6c8",
+                //         psns: "201re,  206re, 252re, 255re, 302re, 202re"
+                //     },
+                //     {
+                //         label: "Head & neck cancer, NOS",
+                //         data: 4,
+                //         color: "#f8ac59",
+                //         psns: "202re, 211re, 312re, 304re"
+                //     },
+                //     {
+                //         label: "Retinoblastoma",
+                //         data: 2,
+                //         color: "#1ab394",
+                //         psns: "201re,  206re, 252re, 255re, 302re, 202re"
+                //     },
+                //     {
+                //         label: "Skin Cancer, NOS",
+                //         data: 7,
+                //         color: "#707070",
+                //         psns: "202re, 211re, 312re, 304re"
+                //     },
+                //     {
+                //         label: "Bone cancer, NOS",
+                //         data: 4,
+                //         color: "#1c84c6",
+                //         psns: "202re, 211re, 312re, 304re"
+                //     },
+                //     {
+                //         label: "Chrondrosarcoma",
+                //         data: 2,
+                //         color: "#23c6c8",
+                //         psns: "201re,  206re, 252re, 255re, 302re, 202re"
+                //     },
+                //     {
+                //         label: "Diffuse brainstem glioma",
+                //         data: 7,
+                //         color: "#f8ac59",
+                //         psns: "202re, 211re, 312re, 304re"
+                //     },
+                //     {
+                //         label: "Anaplastic astrocytoma",
+                //         data: 10,
+                //         color: "#1ab394",
+                //         psns: "201re,  206re, 252re, 255re, 302re, 202re"
+                //     },
+                //     {
+                //         label: "Endocrine cancer, NOS",
+                //         data: 4,
+                //         color: "#707070",
+                //         psns: "202re, 211re, 312re, 304re"
+                //     }
+                // ];
 
                 function setupTooltip(label, xval, yval) {
                     return label + "<br>------------------------------------------<br>Patients: " + yval;
