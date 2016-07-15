@@ -118,98 +118,6 @@
             document.getElementById("patientPieChartContainer").style["height"] = window.innerWidth / 3.2 + "px";
         }
 
-        // TODO: Extract into separate json
-        // $scope.pieDataset = [
-        //     {
-        //         label: "ON_TREATMENT_ARM",
-        //         data: 5,
-        //         color: "#1c84c6",
-        //         psns: "215re, 203re, 312re"
-        //     },
-        //     {
-        //         label: "PENDING_APPROVAL",
-        //         data: 3,
-        //         color: "#23c6c8",
-        //         psns: "201re, 302re"
-        //     },
-        //     {
-        //         label: "FORMERLY_ON_TREATMENT_ARM",
-        //         data: 2,
-        //         color: "#f8ac59",
-        //         psns: "205re, 206re"
-        //     },
-        //     {
-        //         label: "NOT_ELIGIBLE",
-        //         data: 1,
-        //         color: "#1ab394",
-        //         psns: "202re, 211re, 252re, 255re, 304re"
-        //     }
-        // ];
-
-        // TODO: Extract into separate json
-        // $scope.diseasePieDataset = [
-        //     {
-        //         label: "Endocrine cancer, NOS",
-        //         data: 3,
-        //         color: "#1c84c6",
-        //         psns: "215re, 205re, 203re"
-        //     },
-        //     {
-        //         label: "Glioblastoma multiforme",
-        //         data: 6,
-        //         color: "#23c6c8",
-        //         psns: "201re,  206re, 252re, 255re, 302re, 202re"
-        //     },
-        //     {
-        //         label: "Head & neck cancer, NOS",
-        //         data: 4,
-        //         color: "#f8ac59",
-        //         psns: "202re, 211re, 312re, 304re"
-        //     },
-        //     {
-        //         label: "Retinoblastoma",
-        //         data: 2,
-        //         color: "#1ab394",
-        //         psns: "201re,  206re, 252re, 255re, 302re, 202re"
-        //     },
-        //     {
-        //         label: "Skin Cancer, NOS",
-        //         data: 7,
-        //         color: "#707070",
-        //         psns: "202re, 211re, 312re, 304re"
-        //     },
-        //     {
-        //         label: "Bone cancer, NOS",
-        //         data: 4,
-        //         color: "#1c84c6",
-        //         psns: "202re, 211re, 312re, 304re"
-        //     },
-        //     {
-        //         label: "Chrondrosarcoma",
-        //         data: 2,
-        //         color: "#23c6c8",
-        //         psns: "201re,  206re, 252re, 255re, 302re, 202re"
-        //     },
-        //     {
-        //         label: "Diffuse brainstem glioma",
-        //         data: 7,
-        //         color: "#f8ac59",
-        //         psns: "202re, 211re, 312re, 304re"
-        //     },
-        //     {
-        //         label: "Anaplastic astrocytoma",
-        //         data: 10,
-        //         color: "#1ab394",
-        //         psns: "201re,  206re, 252re, 255re, 302re, 202re"
-        //     },
-        //     {
-        //         label: "Endocrine cancer, NOS",
-        //         data: 4,
-        //         color: "#707070",
-        //         psns: "202re, 211re, 312re, 304re"
-        //     }
-        // ];
-
         function setupTooltip(label, xval, yval) {
             return label + "<br>------------------------------------------<br>Patients: " + yval;
         }
@@ -307,15 +215,6 @@
 
         $scope.extraVersion = {};
 
-        // function setTADrug(drugsArray) {
-        //     var drugString = '';
-        //     drugString = drugsArray[0].name + ' (' + drugsArray[0].drug_id + ')';
-        //     if (drugsArray.length > 1) {
-        //         drugString = drugString + ', ' + drugsArray[1].name + ' (' + drugsArray[1].drug_id + ')';
-        //     }
-        //     return drugString;
-        // }
-
         function loadTreatmentArmDetails() {
             $log.info('Loading Treatment Arm', $stateParams.name, $stateParams.stratum, $stateParams.version);
             
@@ -356,7 +255,21 @@
             var scopeData = [];
             angular.copy(data.data, scopeData);
             $scope.versions = scopeData;
-            $scope.currentVersion = $scope.versions[0]; 
+            $scope.currentVersion = $scope.versions[0];
+
+            setupFinal(); 
+        }
+
+        function setupFinal() {
+            $scope.inExclusionType = 'inclusion';
+            setInExclusion();
+            changeHeight();
+            $log.debug($scope.inExclusionType);
+            $(window).on("resize.doResize", function () {
+                $scope.$apply(function () {
+                    changeHeight();
+                });
+            });
         }
 
         function onVersionSelected(selected) {
@@ -373,49 +286,7 @@
                         $log.debug('value');
                         $log.debug(value);
                         if (value !== [] && value !== null && value !== undefined) {
-                            // $scope.information.currentStatus = value.treatment_arm_status;
-                            // $scope.test = "test";
-                            // $scope.information.name = value.name;
-                            // $log.debug('name');
-                            // $log.debug(value.name);
-                            // $scope.information.description = value.description;
-                            // $scope.information.genes = value.gene;
-                            // $scope.information.patientsAssigned = value.num_patients_assigned;
-                            // $scope.information.patientsAssignedBasic = value.num_patients_assigned_basic;
-                            // var exclusionDrugs = [];
-                            // var exclusionDiseases = [];
-
                             var nonSequencingAssays = [];
-
-                            // angular.forEach(value.exclusion_drugs, function (value) {
-                            //     var exclusionDrug = {};
-                            //     //angular.forEach(value.drugs, function(value) {
-                            //     exclusionDrug.id = value.drug_id;
-                            //     exclusionDrug.name = value.name;
-                            //     exclusionDrugs.push(exclusionDrug);
-                            //     //});
-                            //     //exclusionDrug.id = value.id;
-                            //     //exclusionDrug.name = value.name;
-                            // });
-                            // angular.forEach(value.exclusion_diseases, function (value) {
-
-                            //     var exclusionDisease = {};
-                            //     exclusionDisease.medraCode = value.medra_code;
-                            //     exclusionDisease.ctepCategory = value.ctep_category;
-                            //     exclusionDisease.ctepTerm = value.short_name;
-                            //     exclusionDiseases.push(exclusionDisease);
-                            // });
-                            // angular.forEach(value.treatment_arm_drugs, function (value) {
-                            //     var inclusionDrug = {};
-                            //     inclusionDrug.id = value.drug_id;
-                            //     inclusionDrug.name = value.name;
-                            // });
-
-                            // var treatmentArmDrug = '';
-                            // if (value.treatment_arm_drugs !== null && value.treatment_arm_drugs !== undefined) {
-                            //     treatmentArmDrug = setTADrug(value.treatment_arm_drugs);
-                            // }
-                            // $scope.information.drug = treatmentArmDrug;
 
                             angular.forEach(value.pten_results, function (value) {
                                 var nonSequencingAssay = {};
