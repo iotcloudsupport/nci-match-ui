@@ -109,28 +109,27 @@
         $scope.needToDisplayCbnaWarning = needToDisplayCbnaWarning;
         $scope.getNewFileButtonClass = getNewFileButtonClass;
 
-
         //CNV
         function loadQcList(data) {
             $scope.cnvList = data.copyNumberVariants;
-        };
-        
+        }
+
         $scope.loadQc_Table = function () {
 
-            var url ="data/sample_qc.json";
+            var url = "data/sample_qc.json";
 
             $.ajax({
 
-                type   :  "GET",
-                url      :   url,
-                contentType : "application/json",
-                dataType      : "json",
-                data            :  {},
-                success: function(data){
+                type: "GET",
+                url: url,
+                contentType: "application/json",
+                dataType: "json",
+                data: {},
+                success: function (data) {
                     loadQcList(data)
                 },
-                error:function(jqXHR,textStatus,errorThrown){
-                    alert("Error: "+textStatus.toString());
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("Error: " + textStatus.toString());
                 }
             });
         };
@@ -138,24 +137,24 @@
         //SNV
         function loadSnvList(data) {
             $scope.snvList = data.singleNucleotideVariants;
-        };
-        
+        }
+
         $scope.loadSnv_Table = function () {
 
-            var url ="data/sample_qc.json";
+            var url = "data/sample_qc.json";
 
             $.ajax({
 
-                type   :  "GET",
-                url      :   url,
-                contentType : "application/json",
-                dataType      : "json",
-                data            :  {},
-                success: function(data){
+                type: "GET",
+                url: url,
+                contentType: "application/json",
+                dataType: "json",
+                data: {},
+                success: function (data) {
                     loadSnvList(data)
                 },
-                error:function(jqXHR,textStatus,errorThrown){
-                    alert("Error: "+textStatus.toString());
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("Error: " + textStatus.toString());
                 }
             });
         };
@@ -164,26 +163,27 @@
         function loadGeneList(data) {
             $scope.geneList = data.geneFusions;
         };
+
         $scope.loadGene_Table = function () {
 
-            var url ="data/sample_qc.json";
+            var url = "data/sample_qc.json";
 
             $.ajax({
 
-                type   :  "GET",
-                url      :   url,
-                contentType : "application/json",
-                dataType      : "json",
-                data            :  {},
-                success: function(data){
+                type: "GET",
+                url: url,
+                contentType: "application/json",
+                dataType: "json",
+                data: {},
+                success: function (data) {
                     loadGeneList(data);
                 },
-                error:function(jqXHR,textStatus,errorThrown){
-                    alert("Error: "+textStatus.toString());
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("Error: " + textStatus.toString());
                 }
             });
         };
-        
+
 
         function setActiveTab(tab) {
             $scope.activeTab = tab;
@@ -276,6 +276,7 @@
             $scope.data = scopeData;
 
             setupCurrentTreatmentArm();
+            setupSlides();
             setupSurgicalEventOptions();
             setupVariantReportOptions();
             setupVariantReports();
@@ -297,6 +298,28 @@
                 name = 'MATCHBox User';
             }
             $scope.currentUser = name;
+        }
+
+        function setupSlides() {
+            for (var i = 0; i < $scope.data.specimens.length; i++) {
+                var surgicalEvent = $scope.data.specimens[i];
+                for (var j = 0; j < surgicalEvent.specimen_shipments.length; j++) {
+                    var shipment = surgicalEvent.specimen_shipments[j];
+                    if ('slide_barcode' in shipment) {
+                        if (surgicalEvent.slides === undefined) {
+                        	surgicalEvent.slides = [];
+                        }
+                        surgicalEvent.slides.push(
+                            {
+                                slide_barcode: shipment.slide_barcode,
+                                carrier: shipment.carrier, 
+                                tracking_id: shipment.tracking_id, 
+                                shipped_dttm: shipment.shipped_dttm
+                            }
+                        );
+                    }
+                }
+            }
         }
 
         function setupSurgicalEventOptions() {
@@ -443,7 +466,7 @@
             $scope.currentBloodVariantReport = previous;
         }
 
-        function createTissueVariantReportOption(variantReport){
+        function createTissueVariantReportOption(variantReport) {
             return {
                 text: 'Surgical Event ' + variantReport.surgical_event_id + ' | Analysis ID ' + variantReport.analysis_id + ' | Molecular ID ' + variantReport.molecular_id + ' | ' + variantReport.status,
                 value: {
@@ -454,7 +477,7 @@
             };
         }
 
-        function createBloodVariantReportOption(variantReport){
+        function createBloodVariantReportOption(variantReport) {
             return {
                 text: 'Analysis ID ' + variantReport.analysis_id + ' | Molecular ID ' + variantReport.molecular_id + ' | ' + variantReport.status,
                 value: {
