@@ -27,21 +27,9 @@
          */
 
         $scope.loadTreatmentArmDetails = loadTreatmentArmDetails;
-        $scope.loadPatientsForTa = loadPatientsForTa;
+        $scope.loadPatients = loadPatients;
 
         $scope.patients = [];
-
-        $scope.information = {
-            name: 'APEC1621-A',
-            stratum: "123145",
-            description: 'Afatinib in DDR2 activating mutations',
-            version: '2016-03-17',
-            genes: 'DDR2',
-            patientsAssigned: '3',
-            patientsAssignedBasic: '4',
-            currentStatus: 'OPEN',
-            drug: 'AZD9291 (781254)'
-        };
 
         $scope.tooltipContent = {
             psn: 'Patient ID',
@@ -94,8 +82,6 @@
         function setInExclusion() {
             $scope.inExclusion = $scope.version;
         }
-
-        $scope.selectedVersion = $scope.versions[0];
 
         $scope.openPubMed = function (data) {
             $window.open("http://www.ncbi.nlm.nih.gov/pubmed/?term=" + data, '_blank');
@@ -321,16 +307,6 @@
 
         $scope.extraVersion = {};
 
-        function loadPatientsForTa() {
-            console.log($stateParams);
-            matchApiMock
-                .loadPatientsForTa($stateParams.name, $stateParams.stratum)
-                .then(function (d) {
-                    console.log(d.data);
-                    $scope.patients = d.data;
-                });
-        }
-
         function setTADrug(drugsArray) {
             var drugString = '';
             drugString = drugsArray[0].name + ' (' + drugsArray[0].drug_id + ')';
@@ -342,9 +318,18 @@
 
         function loadTreatmentArmDetails() {
             $log.info('Loading Treatment Arm', $stateParams.name, $stateParams.stratum, $stateParams.version);
+            
             matchApiMock
                 .loadTreatmentArmDetails($stateParams.name, $stateParams.stratum)
                 .then(setupScope, handleError);
+        }
+
+        function loadPatients() {
+            matchApiMock
+                .loadPatientsForTa($stateParams.name, $stateParams.stratum)
+                .then(function (d) {
+                    $scope.patients = d.data;
+                });
         }
 
         function handleError(e) {
@@ -360,14 +345,21 @@
                 $state.transitionTo('treatment-arms');
             }
 
-            $scope.patient_id = $stateParams.patient_id;
-            var scopeData = {};
-            angular.copy(data.data, scopeData);
-            $scope.data = scopeData;
+            loadPatients();
 
             $scope.name = $stateParams.name;
             $scope.version = $stateParams.version;
             $scope.stratum = $stateParams.stratum;
+
+            $scope.patient_id = $stateParams.patient_id;
+            var scopeData = [];
+            angular.copy(data.data, scopeData);
+            $scope.versions = scopeData;
+            $scope.currentVersion = $scope.versions[0]; 
+        }
+
+        function onVersionSelected(selected) {
+            $log.debug('Selected version: ' + selected);
         }
 
         function loadTreatmentArmDetailsOld() {
@@ -377,14 +369,14 @@
                 .then(function (d) {
                     var versionCount = 0;
                     angular.forEach(d.data, function (value) {
-                        console.log('value');
-                        console.log(value);
+                        $log.debug('value');
+                        $log.debug(value);
                         if (value !== [] && value !== null && value !== undefined) {
                             $scope.information.currentStatus = value.treatment_arm_status;
                             $scope.test = "test";
                             $scope.information.name = value.name;
-                            console.log('name');
-                            console.log(value.name);
+                            $log.debug('name');
+                            $log.debug(value.name);
                             $scope.information.description = value.description;
                             $scope.information.genes = value.gene;
                             $scope.information.patientsAssigned = value.num_patients_assigned;
@@ -495,8 +487,8 @@
                             $scope.versions.push(version);
                             versionCount = versionCount + 1;
                             $scope.information.version = $scope.versions[0].name;
-                            console.log('versions');
-                            console.log($scope.versions);
+                            $log.debug('versions');
+                            $log.debug($scope.versions);
 
                             /*var nextVersion = {};
                              nextVersion.text = '2015-12-20';
@@ -518,8 +510,8 @@
                              nextVersion.versionHistory = $scope.versionHistoryClosed;
                              $scope.versions.push(nextVersion);*/
                             $scope.selectedVersion = $scope.versions[0];
-                            console.log('sel vsn');
-                            console.log($scope.selectedVersion);
+                            $log.debug('sel vsn');
+                            $log.debug($scope.selectedVersion);
 
                         }
 
@@ -532,7 +524,7 @@
                     $scope.inExclusionType = 'inclusion';
                     setInExclusion();
                     changeHeight();
-                    console.log($scope.inExclusionType);
+                    $log.debug($scope.inExclusionType);
                     $(window).on("resize.doResize", function () {
                         $scope.$apply(function () {
                             changeHeight();

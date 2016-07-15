@@ -24,20 +24,24 @@
                 <div id="left-info-box" class="header-info-box ta-header-box">
                     <dl class="dl-horizontal">
                         <dt>Name</dt>
-                        <dd>{{name}}</dd>
+                        <dd>{{currentVersion.name}}</dd>
 
                         <dt>Stratum ID</dt>
-                        <dd>{{information.stratum}}</dd>
+                        <dd>{{currentVersion.stratum_id}}</dd>
 
                         <dt>Description</dt>
-                        <dd>{{information.description}}</dd>
+                        <dd>{{currentVersion.description}}</dd>
 
                         <dt>Status</dt>
-                        <dd ng-style="{'color':'{{ information.currentStatus | taStatus }}'}">{{information.currentStatus}}</dd>
+                        <dd ng-style="{'color':'{{ currentVersion.treatment_arm_status | taStatus }}'}">{{currentVersion.treatment_arm_status}}</dd>
 
                         <dt><span class="drop-down-label">Version</span></dt>
                         <dd>
-                            <div dropdown-select="versions" dropdown-model="selectedVersion" dropdown-item-label="text">
+                            <div class="btn-group" uib-dropdown dropdown-append-to-body>
+                                <button id="btn-append-to-body" type="button" class="btn btn-success btn-outline" uib-dropdown-toggle>{{currentVersion.version}}<span class="caret"></span></button>
+                                <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+                                    <li ng-repeat="version in versions" role="menuitem"><a href ng-click="onVersionSelected(item)">{{version.version}}</a></li>
+                                </ul>
                             </div>
                         </dd>
 
@@ -55,16 +59,16 @@
                     <dl class="dl-horizontal">
 
                         <dt>Genes</dt>
-                        <dd>{{information.genes}}</dd>
+                        <dd>{{currentVersion.gene}}</dd>
 
                         <dt>Patients Assigned</dt>
-                        <dd>{{information.patientsAssigned}}</dd>
+                        <dd>{{currentVersion.num_patients_assigned}}</dd>
 
                         <dt>Patients Assigned to Arm</dt>
-                        <dd>{{information.patientsAssignedBasic}}</dd>
+                        <dd>{{currentVersion.num_patients_assigned_basic}}</dd>
 
                         <dt>Drug</dt>
-                        <dd>{{information.drug}}</dd>
+                        <dd> <span ng-repeat="drug in currentVersion.treatment_arm_drugs" >{{drug.name}}{{$last?'':', '}}</span> </dd>
 
                         <dt>Download</dt>
                         <dd>
@@ -79,7 +83,7 @@
         </div>
     </div>
 
-    <div class="tabs-container" ng-init="loadPatientsForTa(taid)">
+    <div class="tabs-container">
         <uib-tabset>
             <uib-tab heading="Analysis">
                 <div class="panel-body">
