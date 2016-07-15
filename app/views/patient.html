@@ -178,6 +178,29 @@
                             </div>
 
                             <div class="ibox-title ibox-title-no-line">
+                                <h3>Slide Shipments</h3>
+                            </div>
+
+                            <table class="table" role="grid">
+                                <thead>
+                                    <tr>
+                                        <th width="20%" class="label2">Bar-Code</th>
+                                        <th width="40%" class="label2">Carrier</th>
+                                        <th width="20%" class="label2">Tracking Number</th>
+                                        <th width="20%" class="label2">Date Shipped</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="slide in currentSurgicalEvent.slides" style="cursor: auto;" role="row" class="odd">
+                                        <td>{{slide.slide_barcode}}</td>
+                                        <td>{{slide.carrier}}</td>
+                                        <td><a href="http://www.fedex.com/Tracking?action=track&tracknumbers={{slide.tracking_id}}" target="_blank">{{slide.tracking_id}}</a></td>
+                                        <td>{{slide.shipped_dttm | utc}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="ibox-title ibox-title-no-line">
                                 <h3>Assay History</h3>
                             </div>
 
@@ -228,7 +251,7 @@
                                             <td><a href="http://www.fedex.com/Tracking?action=track&tracknumbers={{shipment.tracking_number}}" target="_blank">{{shipment.tracking_number}}</a></td>
                                             <td>{{shipment.dna_concordance}}</td>
                                             <td>{{shipment.dna_volume}}</td>
-                                            <td>{{shipment.reported_date}}</td>
+                                            <td>{{shipment.reported_date | utc}}</td>
                                             <td>
                                                 <div class="text-truncate-200px">{{shipment.comments}}</div>
                                             </td>
@@ -244,10 +267,10 @@
                                                                     <dd><a> {{analysis.analysis_id}} </a></dd>
 
                                                                     <dt>Status</dt>
-                                                                    <dd ng-style="{'color':'{{ analysis.status | analysisStatus }}'}">{{analysis.status | titlecase}}</dd>
+                                                                    <dd ng-style="{'color':'{{ analysis.status | analysisStatus }}'}">{{analysis.status | titlecase}} <span ng-if="analysis.comment_user"> (user: {{analysis.comment_user}})</span></dd>
 
                                                                     <dt ng-if="analysis.comment">Comment</dt>
-                                                                    <dd ng-if="analysis.comment">{{analysis.comment}} <span ng-if="analysis.comment_user"> (user: {{analysis.comment_user}})</span></dd>
+                                                                    <dd ng-if="analysis.comment">{{analysis.comment}}</dd>
                                                                 </dl>
                                                             </div>
                                                             <div class="col-md-5 col-sm-6 text-left">
@@ -386,10 +409,10 @@
                                                     <dd ng-show="variantReport.confirmedRejectedDate">{{currentVariantReport.confirmedRejectedDate | utc}}</dd>
 
                                                     <dt>Status</dt>
-                                                    <dd ng-style="{'color':'{{ currentVariantReport.status | analysisStatus }}'}">{{currentVariantReport.status}}</dd>
+                                                    <dd ng-style="{'color':'{{ currentVariantReport.status | analysisStatus }}'}">{{currentVariantReport.status}} <span ng-if="currentVariantReport.comment_user"> (user: {{currentVariantReport.comment_user}})</span></dd>
 
                                                     <dt ng-if="currentVariantReport.comment">Comments</dt>
-                                                    <dd ng-if="currentVariantReport.comment">{{currentVariantReport.comment}}<span ng-if="currentVariantReport.comment_user"> (user: {{currentVariantReport.comment_user}})</span></dd>
+                                                    <dd ng-if="currentVariantReport.comment">{{currentVariantReport.comment}}</dd>
 
                                                     <dt ng-if="needToDisplayReportStatus(currentVariantReport)">{{currentVariantReport.status | titlecase}} Date</dt>
                                                     <dd ng-if="needToDisplayReportStatus(currentVariantReport)">{{currentVariantReport.status_date | utc}}</dd>
@@ -1100,10 +1123,10 @@
                                                     <dd>{{currentAssignmentReport.analysis_id}}</dd>
 
                                                     <dt>Status</dt>
-                                                    <dd ng-style="{'color':'{{ currentAssignmentReport.status | analysisStatus }}'}">{{currentAssignmentReport.status}}</dd>
+                                                    <dd ng-style="{'color':'{{ currentAssignmentReport.status | analysisStatus }}'}">{{currentAssignmentReport.status}} <span ng-if="currentAssignmentReport.comment_user"> (user: {{currentAssignmentReport.comment_user}})</span></dd>
 
                                                     <dt ng-if="currentAssignmentReport.comment">Comments</dt>
-                                                    <dd ng-if="currentAssignmentReport.comment">{{currentAssignmentReport.comment}}<span ng-if="currentAssignmentReport.comment_user"> (user: {{currentAssignmentReport.comment_user}})</span></dd>
+                                                    <dd ng-if="currentAssignmentReport.comment">{{currentAssignmentReport.comment}}</dd>
 
                                                     <dt ng-if="needToDisplayReportStatus(currentAssignmentReport)">{{currentAssignmentReport.status | titlecase}} Date</dt>
                                                     <dd ng-if="needToDisplayReportStatus(currentAssignmentReport)">{{currentAssignmentReport.status_date | utc}}</dd>
@@ -1208,7 +1231,7 @@
                                     <div class="ibox-content ibox-title-no-line" ng-if="showAssignmentReportActions(currentAssignmentReport)">
                                         <div class="row">
                                             <div class="col-md-12 text-center">
-                                                <button class="btn btn-danger" title="Reject this Report" ng-click="rejectAssignmentReport(currentAssignmentReport)">REJECT</button>
+                                                <!-- RZ:Removed for now <button class="btn btn-danger" title="Reject this Report" ng-click="rejectAssignmentReport(currentAssignmentReport)">REJECT</button>-->
                                                 <button class="btn btn-success" title="Confirm this Report" ng-click="confirmAssignmentReport(currentAssignmentReport)">CONFIRM</button>
                                             </div>
                                         </div>
@@ -1288,10 +1311,10 @@
                                             <dd>{{currentBloodVariantReport.variant_report_received_date | utc}}</dd>
 
                                             <dt>Status</dt>
-                                            <dd ng-style="{'color':'{{ currentBloodVariantReport.status | analysisStatus }}'}">{{currentBloodVariantReport.status}}</dd>
+                                            <dd ng-style="{'color':'{{ currentBloodVariantReport.status | analysisStatus }}'}">{{currentBloodVariantReport.status}}<span ng-if="currentBloodVariantReport.comment_user"> (user: {{currentBloodVariantReport.comment_user}})</span></dd>
 
                                             <dt ng-if="currentBloodVariantReport.comment">Comments</dt>
-                                            <dd ng-if="currentBloodVariantReport.comment">{{currentBloodVariantReport.comment}}<span ng-if="currentBloodVariantReport.comment_user"> (user: {{currentBloodVariantReport.comment_user}})</span></dd>
+                                            <dd ng-if="currentBloodVariantReport.comment">{{currentBloodVariantReport.comment}}</dd>
 
                                             <dt ng-if="needToDisplayReportStatus(currentBloodVariantReport)">{{currentBloodVariantReport | titlecase}} Date</dt>
                                             <dd ng-if="needToDisplayReportStatus(currentBloodVariantReport)">{{currentBloodVariantReport.status_date | utc}}</dd>

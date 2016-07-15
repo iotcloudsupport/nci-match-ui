@@ -84,6 +84,15 @@
         }
     },
     {
+        "event_date": "2016-05-25 23:52:32+00:00",
+        "event_type": "treatment_arm",
+        "event_message": "Treatment Arm Open",
+        "treatment_arm": {"name":"APEC1621-M", "stratum":"STR1", "version": "2016-05-24"},
+        "event_data": [
+            {"prop":"Date Open","value":"May 25, 2016 11:52 PM GMT"}
+        ]
+    },
+    {
         "patient_id": "100136",
         "event_date": "2016-05-23T12:23:56+00:00",
         "event_name": "Event Name 1",

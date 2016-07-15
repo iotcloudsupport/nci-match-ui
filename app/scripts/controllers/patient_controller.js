@@ -239,7 +239,7 @@
             $log.error(e);
             return;
         }
-        
+
         function setupActivity(data) {
             $scope.activity = [];
             angular.copy(data.data, $scope.activity);
@@ -443,6 +443,27 @@
             $scope.currentBloodVariantReport = previous;
         }
 
+        function createTissueVariantReportOption(variantReport){
+            return {
+                text: 'Surgical Event ' + variantReport.surgical_event_id + ' | Analysis ID ' + variantReport.analysis_id + ' | Molecular ID ' + variantReport.molecular_id + ' | ' + variantReport.status,
+                value: {
+                    surgical_event_id: variantReport.surgical_event_id,
+                    analysis_id: variantReport.analysis_id,
+                    molecular_id: variantReport.molecular_id
+                }
+            };
+        }
+
+        function createBloodVariantReportOption(variantReport){
+            return {
+                text: 'Analysis ID ' + variantReport.analysis_id + ' | Molecular ID ' + variantReport.molecular_id + ' | ' + variantReport.status,
+                value: {
+                    analysis_id: variantReport.analysis_id,
+                    molecular_id: variantReport.molecular_id
+                }
+            };
+        }
+
         function setupVariantReportOptions() {
             if (!$scope.data.variant_reports || !$scope.data.variant_reports.length) {
                 return;
@@ -454,26 +475,12 @@
                 if (variantReport.surgical_event_id) {
                     var surgicalEventOption = findSurgicalEventOption(variantReport.surgical_event_id);
                     if (surgicalEventOption) {
-                        var variantReportItem = {
-                            text: 'Surgical Event ' + variantReport.surgical_event_id + ' | Analysis ID ' + variantReport.analysis_id + ' | Molecular ID ' + variantReport.molecular_id + ' | ' + variantReport.status,
-                            value: {
-                                surgical_event_id: variantReport.surgical_event_id,
-                                analysis_id: variantReport.analysis_id,
-                                molecular_id: variantReport.molecular_id
-                            }
-                        };
-                        $scope.variantReportOptions.push(variantReportItem);
+                        $scope.variantReportOptions.push(createTissueVariantReportOption(variantReport));
                     } else {
                         $log.error('Unable to find Surgical Event by ' + variantReport.surgical_event_id);
                     }
                 } else if (variantReport.variant_report_type === 'BLOOD') {
-                    var bloodVariantReportItem = {
-                        text: 'Analysis ID ' + variantReport.analysis_id + ' | Molecular ID ' + variantReport.molecular_id + ' | ' + variantReport.status,
-                        value: {
-                            analysis_id: variantReport.analysis_id,
-                            molecular_id: variantReport.molecular_id
-                        }
-                    };
+                    var bloodVariantReportItem = createBloodVariantReportOption(variantReport);
 
                     if (!$scope.bloodVariantReportOption) {
                         $scope.bloodVariantReportOption = bloodVariantReportItem;
@@ -594,7 +601,7 @@
                 } else {
                     assignmentReport.status = 'CONFIRMED';
                     assignmentReport.comment = null;
-                    assignmentReport.comment_user = null;
+                    assignmentReport.comment_user = $scope.currentUser;
                 }
             });
         }
@@ -617,22 +624,6 @@
             });
         }
 
-        function confirmVariantReport(variantReport) {
-            showPrompt({
-                title: 'Confirm Variant Report',
-                message: 'Are you sure you want to confirm the Variant Report?',
-                buttons: [{ label: 'OK', primary: true }, { label: 'Cancel', cancel: true }]
-            }).then(function (comment) {
-                if (!variantReport) {
-                    $log.error('Current Variant Report is not set');
-                } else {
-                    variantReport.status = 'CONFIRMED';
-                    variantReport.comment = null;
-                    variantReport.comment_user = null;
-                }
-            });
-        }
-
         function rejectVariantReport(variantReport) {
             showPrompt({
                 title: 'Reject Variant Report',
@@ -647,8 +638,68 @@
                     variantReport.comment = comment;
                     variantReport.comment_user = $scope.currentUser;
                     variantReport.status_date = moment.utc(new Date()).utc();
+
+                    var rejectVariants = function (variants) {
+                        if (!variants || !variants.length)
+                            return;
+                        for (var i = 0; i < variants.length; i++) {
+                            variants[i].comment = null;
+                            variants[i].confirmed = false;
+                        }
+                    };
+
+                    if (variantReport.variants.snvs_and_indels)
+                        rejectVariants(variantReport.variants.snvs_and_indels);
+
+                    if (variantReport.variants.copy_number_variants)
+                        rejectVariants(variantReport.variants.copy_number_variants);
+
+                    if (variantReport.variants.gene_fusions)
+                        rejectVariants(variantReport.variants.gene_fusions);
+
+                    if (variantReport.variant_report_type === 'BLOOD') {
+                        updateTissueVariantReportOption(variantReport);
+                    } else if (variantReport.variant_report_type === 'TISSUE') {
+                        updateTissueVariantReportOption(variantReport);
+                    }
                 }
             });
+        }
+
+        function confirmVariantReport(variantReport) {
+            showPrompt({
+                title: 'Confirm Variant Report',
+                message: 'Are you sure you want to confirm the Variant Report?',
+                buttons: [{ label: 'OK', primary: true }, { label: 'Cancel', cancel: true }]
+            }).then(function (comment) {
+                if (!variantReport) {
+                    $log.error('Current Variant Report is not set');
+                } else {
+                    variantReport.status = 'CONFIRMED';
+                    variantReport.comment = null;
+                    variantReport.comment_user = $scope.currentUser;
+
+                    if (variantReport.variant_report_type === 'BLOOD') {
+                        updateTissueVariantReportOption(variantReport);
+                    } else if (variantReport.variant_report_type === 'TISSUE') {
+                        updateTissueVariantReportOption(variantReport);
+                    }
+                }
+            });
+        }
+
+        function updateTissueVariantReportOption(variantReport) {
+            variantReportOption = findTissueVariantReportOption(variantReport.molecular_id, variantReport.analysis_id);
+            if (variantReportOption) {
+                angular.copy(createTissueVariantReportOption(variantReport), variantReportOption);
+            }
+        }
+
+        function updateBloodVariantReportOption(variantReport) {
+            variantReportOption = findBloodVariantReportOption(variantReport.molecular_id, variantReport.analysis_id);
+            if (variantReportOption) {
+                angular.copy(createBloodVariantReportOption(variantReport), variantReportOption);
+            }
         }
 
         function getFileButtonClass(filePath) {
@@ -854,6 +905,11 @@
             } else {
                 $log.error('Unable to find Blood Variant Report ' + molecularId + ',' + analysisId);
             }
+        }
+
+        function findAssignmentReportOption(molecularId, analysisId) {
+            var byMolecularAndAnalysisId = function (x) { return x.value.molecular_id === molecularId && x.value.analysis_id === analysisId; };
+            return $scope.assignmentReportOptions.find(byMolecularAndAnalysisId);
         }
 
         function navigateToAssignmentReport(molecularId, analysisId) {

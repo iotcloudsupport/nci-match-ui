@@ -689,6 +689,7 @@
                     document.getElementById("patientPieChartContainer").style["height"] = window.innerWidth / 3.2 + "px";
                 }
 
+                // TODO: Extract into separate json
                 $scope.pieDataset = [
                     {
                         label: "ON_TREATMENT_ARM",
@@ -716,6 +717,7 @@
                     }
                 ];
 
+                // TODO: Extract into separate json
                 $scope.diseasePieDataset = [
                     {
                         label: "Endocrine cancer, NOS",
@@ -986,6 +988,7 @@
                              .getTreatmentArmDetails(ta)
                              .then(function (d) {*/
                             console.log(d.data);
+                            var versionCount = 0;
                             angular.forEach(d.data, function (value) {
                                 console.log('value');
                                 console.log(value);
@@ -1081,7 +1084,12 @@
 
                                     var version = {};
                                     version.text = value.version;
-                                    version.latest = 'This is the latest version.';
+                                    if (versionCount === 0) {
+                                        version.latest = 'This is the latest version.';
+                                    } else {
+                                        version.latest = 'This is not the latest version.';
+                                    }
+
                                     version.exclusionaryDiseases = exclusionDiseases;
                                     version.exclusionaryDrugs = exclusionDrugs;
                                     //version.inclusionaryDrugs = inclusionDrugs;
@@ -1098,6 +1106,7 @@
                                     version.nonSequencingAssays = nonSequencingAssays;
                                     version.versionHistory = $scope.versionHistory;
                                     $scope.versions.push(version);
+                                    versionCount = versionCount + 1;
                                     $scope.information.version = $scope.versions[0].name;
                                     console.log('versions');
                                     console.log($scope.versions);
