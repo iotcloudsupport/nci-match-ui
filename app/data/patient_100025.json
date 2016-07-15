@@ -421,7 +421,7 @@
             "patient_id": "100025",
             "molecular_id": "MOL001_1",
             "analysis_id": "SAM001_02",
-            "status": "CONFIRMED",
+            "status": "REJECTED",
             "comment": "",
             "comment_user": "Jane James",
             "status_date": "2016-01-14T23:06:33+00:00",
@@ -632,7 +632,7 @@
             "patient_id": "100025",
             "molecular_id": "MOL001_2",
             "analysis_id": "SAM001_03",
-            "status": "PENDING",
+            "status": "REJECTED",
             "status_date": "2016-01-19T23:06:33+00:00",
             "dna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
             "dna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
@@ -842,7 +842,7 @@
             "molecular_id": "MOL002_1",
             "analysis_id": "SAM002_01",
             "status": "REJECTED",
-            "comment": "Insuffucient data",
+            "comment": "Invalid Specimen",
             "comment_user": "Jane James",
             "status_date": "2016-02-13T23:06:33+00:00",
             "dna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
@@ -1263,7 +1263,7 @@
             "patient_id": "100025",
             "molecular_id": "MOL002_2",
             "analysis_id": "SAM002_03",
-            "status": "CONFIRMED",
+            "status": "REJECTED",
             "comment_user": "Jane James",
             "status_date": "2016-02-19T23:06:33+00:00",
             "dna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
@@ -1473,7 +1473,7 @@
             "patient_id": "100025",
             "molecular_id": "MOL002_2",
             "analysis_id": "SAM002_04",
-            "status": "PENDING",
+            "status": "CONFIRMED",
             "status_date": "016-02-19T23:52:24+00:00",
             "dna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
             "dna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
@@ -1682,205 +1682,6 @@
                     "sum": 304659
                 }
             ]
-        },
-        {
-            "variant_report_received_date": "2016-02-19T22:45:02+00:00",
-            "variant_report_type": "BLOOD",
-            "patient_id": "100025",
-            "molecular_id": "MOL100025BLD",
-            "analysis_id": "SAM100025BLD_1",
-            "status": "PENDING",
-            "status_date": "016-02-19T23:52:24+00:00",
-            "dna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
-            "dna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
-            "rna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
-            "rna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
-            "vcf_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
-            "total_variants": 8,
-            "cellularity": 7,
-            "total_mois": 4,
-            "total_amois": 2,
-            "total_confirmed_mois": 3,
-            "total_confirmed_amois": 1,
-            "variants": {
-                "snvs_and_indels": [
-                    {
-                        "confirm": "true",
-                        "molecular_id_analysis_id": "MSNANL123AN123",
-                        "variant_type": "single_nucleitide_variants",
-                        "patient_id": "100025",
-                        "molecular_id": "MOL100025BLD",
-                        "analysis_id": "SAM100025BLD_1",
-                        "variant_id": "SAM100025BLD_1_SNV",
-                        "status": "REJECTED",
-                        "status_date": "2016-01-13T23:06:33+00:00",
-                        "comment": "Don't need this",
-                        "gene_name": "gene",
-                        "chromosome": "chr3",
-                        "position": "12345",
-                        "oncomine_variant_class": "Hotspot",
-                        "exon": "10",
-                        "function": "missense",
-                        "cds_ref": "A",
-                        "cds_alt": "C",
-                        "ocp_ref": "A",
-                        "ocp_alt": "C",
-                        "strand": "S",
-                        "filter": "flt",
-                        "protein": "p.Glu6565Ala",
-                        "transcript": "NM_0456345",
-                        "hgvs": "c.234534>C",
-                        "read_depth": "648",
-                        "rare": "?",
-                        "allele_frequency": "0.0344",
-                        "flow_alternative_observation": "alt obs",
-                        "flow_reference_allele_observation": "alt allele",
-                        "reference_allele_observation": "ref allele",
-                        "inclusion": "inlc",
-                        "arm_specific": "arm spec"
-                    },
-                    {
-                        "molecular_id_analysis_id": "MSNANL123AN123",
-                        "variant_type": "indels",
-                        "patient_id": "100025",
-                        "aMOI": "PRIOR",
-                        "molecular_id": "MOL100025BLD",
-                        "analysis_id": "SAM100025BLD_1",
-                        "variant_id": "SAM100025BLD_1_ID",
-                        "confirmed": false,
-                        "comment": "",
-                        "gene": "EGFR",
-                        "oncominevariantclass": "Hotspot",
-                        "exon": "19",
-                        "function": "nonframeshiftDeletion",
-                        "metadata": {
-                            "_id": "017d6838-fcfe-410b-8537-ce2d012aa1ea"
-                        },
-                        "geneName": "",
-                        "chromosome": "chr7",
-                        "position": "41266133",
-                        "identifier": ".",
-                        "cds_ref": "C",
-                        "cds_alt": "T",
-                        "filter": "PASS",
-                        "hgvs": "",
-                        "location": "exonic",
-                        "readDepth": 1450,
-                        "rare": false,
-                        "alleleFreq": 0.433844,
-                        "flowAlternativeAlleleObservationCount": "623",
-                        "flowReferenceAlleleObservations": "813",
-                        "referenceAlleleObservations": 1450,
-                        "alternativeAlleleObservationCount": 0,
-                        "armSpecific": false
-                    }
-                ],
-                "copy_number_variants": [
-                    {
-                        "molecular_id_analysis_id": "MSNANL123AN123",
-                        "variant_type": "copy_number_variants",
-                        "patient_id": "100025",
-                        "aMOI": "PRIOR",
-                        "molecular_id": "MOL100025BLD",
-                        "analysis_id": "SAM100025BLD_1",
-                        "variant_id": "SAM100025BLD_1_CNV",
-                        "comment": "",
-                        "refCopyNumber": 8.1,
-                        "rawCopyNumber": 2.1,
-                        "copyNumber": 8.1,
-                        "confidenceInterval95percent": 2.46082,
-                        "confidenceInterval5percent": 1.79208,
-                        "confirmed": true,
-                        "gene": "MYCL",
-                        "exon": "",
-                        "function": "",
-                        "metadata": {
-                            "_id": "4213853e-1afc-4950-9908-752267d04851"
-                        },
-                        "geneName": "",
-                        "chromosome": "chr1",
-                        "position": "40361592",
-                        "identifier": "MYCL",
-                        "reference": "A",
-                        "alternative": "<CNV>",
-                        "filter": "PASS",
-                        "hgvs": "",
-                        "rare": false,
-                        "flowAlternativeAlleleObservationCount": "",
-                        "flowReferenceAlleleObservations": "",
-                        "inclusion": "E",
-                        "armSpecific": false
-                    }
-                ],
-                "gene_fusions": [
-                    {
-                        "molecular_id_analysis_id": "MSNANL123AN123",
-                        "variant_type": "gene_fusions",
-                        "patient_id": "100025",
-                        "aMOI": "PRIOR",
-                        "molecular_id": "MOL100025BLD",
-                        "analysis_id": "SAM100025BLD_1",
-                        "variant_id": "SAM100025BLD_1_GF1",
-                        "comment": "",
-                        "confirmed": true,
-                        "gene": "ALK",
-                        "oncominevariantclass": "Fusion",
-                        "exon": "20",
-                        "function": "",
-                        "metadata": {
-                            "_id": "354a721e-81c2-4773-937c-ad1e3936b3c3"
-                        },
-                        "geneName": "ALK",
-                        "chromosome": "chr2",
-                        "position": "29446394",
-                        "identifier": "TPM3-ALK.T7A20_1",
-                        "reference": "A",
-                        "alternative": "[chr1:154142875[A",
-                        "filter": "PASS",
-                        "hgvs": "",
-                        "location": "",
-                        "readDepth": 1001,
-                        "rare": false,
-                        "flowAlternativeAlleleObservationCount": "",
-                        "flowReferenceAlleleObservations": "",
-                        "inclusion": "I",
-                        "armSpecific": false
-                    },
-                    {
-                        "molecular_id_analysis_id": "MSNANL123AN123",
-                        "variant_type": "gene_fusions",
-                        "patient_id": "100025",
-                        "aMOI": "PRIOR",
-                        "molecular_id": "MOL100025BLD",
-                        "analysis_id": "SAM100025BLD_1",
-                        "variant_id": "SAM100025BLD_1_GF2",
-                        "comment": "",
-                        "confirmed": true,
-                        "gene": "TPM3",
-                        "oncominevariantclass": "Fusion",
-                        "exon": "12",
-                        "function": "",
-                        "metadata": {
-                            "_id": "aa8b08f6-6c98-4d3a-ba0c-c387f817cf2c"
-                        },
-                        "geneName": "TPM3",
-                        "chromosome": "chr2",
-                        "position": "29446394",
-                        "identifier": "TPM3-ALK.T7A20_2",
-                        "reference": "C",
-                        "alternative": "[chr1:154142875[A",
-                        "filter": "PASS",
-                        "hgvs": "",
-                        "location": "",
-                        "readDepth": 1001,
-                        "rare": false,
-                        "flowAlternativeAlleleObservationCount": "",
-                        "flowReferenceAlleleObservations": "",
-                        "inclusion": "I",
-                        "armSpecific": false
-                    }
-                ]
-            }
         }
     ],
     "assignment_report": {
@@ -2038,13 +1839,6 @@
             "assignments": "",
             "specimen_shipments": [
                 {
-                    "type": "SLIDE",
-                    "slide_barcode": "RED123",
-                    "tracking_number": "675867856678",
-                    "site": "MDA",
-                    "reported_date": "2016-02-15T22:06:33+00:00"
-                },
-                {
                     "molecular_id": "MOL001_2",
                     "tracking_number": "675867956680",
                     "destination_date": "2016-01-19T23:46:33+00:00",
@@ -2072,7 +1866,7 @@
                     "analyses": [
                         {
                             "analysis_id": "SAM001_02",
-                            "status": "CONFIRMED",
+                            "status": "REJECTED",
                             "file_received_date": "2016-01-14T22:06:33+00:00",
                             "status_date": "2016-01-14T23:06:33+00:00"
                         },
@@ -2087,16 +1881,16 @@
             ],
             "slides": [
                 {
-                    "slide_barcode": "0HG8Q0",
+                    "slide_barcode": "H1HWRU",
                     "carrier": "Federal Express",
                     "tracking_id": "1234 4567 8910",
-                    "shipped_dttm": "2016-06-06T10:12:33+00:00"
+                    "shipped_dttm": "2016-04-06T10:12:33+00:00"
                 },
                 {
-                    "slide_barcode": "0BJ6A5",
+                    "slide_barcode": "1MFINE                                                                                                                            ",
                     "carrier": "Federal Express",
                     "tracking_id": "7956 4568 1235",
-                    "shipped_dttm": "2016-05-01T19:42:13+00:00"
+                    "shipped_dttm": "2016-04-01T19:42:13+00:00"
                 }
             ]
         },
@@ -2127,6 +1921,33 @@
             "assignments": "",
             "specimen_shipments": [
                 {
+                    "molecular_id": "MOL002_2",
+                    "tracking_number": "675867856685",
+                    "destination_date": "2016-02-18T09:20:53+00:00",
+                    "type": "TISSUE",
+                    "site": "MDH",
+                    "dna_concordance": 10.2,
+                    "dna_volume": 9,
+                    "reported_date": "2016-02-18T13:25:04+00:00",
+                    "comments": "Second shipment",
+                    "analyses": [
+                        {
+                            "analysis_id": "SAM002_04",
+                            "status": "CONFIRMED",
+                            "file_received_date": "2016-02-18T22:45:02+00:00",
+                            "status_date": "2016-02-19T23:52:24+00:00"
+                        },
+                        {
+                            "analysis_id": "SAM002_03",
+                            "status": "REJECTED",
+                            "comment": "",
+                            "comment_user": "Jane James"
+                            "file_received_date": "2016-02-18T22:06:33+00:00",
+                            "status_date": "2016-02-19T23:06:33+00:00"
+                        }
+                    ]
+                },
+                {
                     "molecular_id": "MOL002_1",
                     "tracking_number": "675867856678",
                     "destination_date": "2016-02-16T22:06:33+00:00",
@@ -2140,7 +1961,7 @@
                         {
                             "analysis_id": "SAM002_02",
                             "status": "REJECTED",
-                            "comment": "Invalid Specimen",
+                            "comment": "Insuffucient data",
                             "comment_user": "G. Smith",
                             "file_received_date": "2016-02-14T22:06:33+00:00",
                             "status_date": "2016-02-14T23:06:33+00:00"
@@ -2149,53 +1970,25 @@
                             "analysis_id": "SAM002_01",
                             "status": "REJECTED",
                             "comment": "Invalid Specimen",
-                            "comment_user": "G. Smith",
+                            "comment_user": "Jane James",
                             "file_received_date": "2016-02-13T22:06:33+00:00",
                             "status_date": "2016-02-13T23:06:33+00:00"
                         }
                     ]
+                }
+            ],
+            "slides": [
+                {
+                    "slide_barcode": "ATCH00",
+                    "carrier": "Federal Express",
+                    "tracking_id": "1234 4567 8910",
+                    "shipped_dttm": "2016-03-06T10:12:33+00:00"
                 },
                 {
-                    "molecular_id": "MOL002_2",
-                    "tracking_number": "675867856685",
-                    "destination_date": "2016-02-19T23:16:53+00:00",
-                    "type": "TISSUE",
-                    "site": "MDH",
-                    "dna_concordance": 10.2,
-                    "dna_volume": 9,
-                    "reported_date": "2016-02-19T13:25:04+00:00",
-                    "comments": "Second shipment",
-                    "analyses": [
-                        {
-                            "analysis_id": "SAM002_04",
-                            "status": "REJECTED",
-                            "file_received_date": "2016-02-19T22:45:02+00:00",
-                            "status_date": "2016-02-19T23:52:24+00:00"
-                        },
-                        {
-                            "analysis_id": "SAM002_03",
-                            "status": "PENDING",
-                            "file_received_date": "2016-02-19T22:06:33+00:00",
-                            "status_date": "2016-02-19T23:06:33+00:00"
-                        }
-                    ]
-                },
-                {
-                    "molecular_id": "MOL002_3",
-                    "tracking_number": "67586212856685",
-                    "destination_date": "2016-02-19T23:16:53+00:00",
-                    "type": "BLOOD",
-                    "site": "GCH",
-                    "reported_date": "2016-02-19T13:25:04+00:00",
-                    "comments": "Blood shipment",
-                    "analyses": [
-                        {
-                            "analysis_id": "SAM002_03",
-                            "status": "CONFIRMED",
-                            "file_received_date": "2016-02-19T22:06:33+00:00",
-                            "status_date": "2016-02-19T23:06:33+00:00"
-                        }
-                    ]
+                    "slide_barcode": "BLSSU2",
+                    "carrier": "Federal Express",
+                    "tracking_id": "7956 4568 1235",
+                    "shipped_dttm": "2016-03-01T19:42:13+00:00"
                 }
             ]
         }
@@ -2208,15 +2001,6 @@
             "analysis_id": "SAM001_03",
             "created_datetime": "2016-09-19T13:25:04+00:00",
             "days_pending": "2"
-        },
-        {
-            "action_type": "pending_blood_variant_report",
-            "title": "Pending Blood Variant Report",
-            "surgical_event_id": "SURVEVT02",
-            "molecular_id": "MOL100025BLD",
-            "analysis_id": "SAM100025BLD_1",
-            "created_datetime": "2016-05-19T13:25:04+00:00",
-            "days_pending": "8"
         },
         {
             "action_type": "pending_assignment_report",
