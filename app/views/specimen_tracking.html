@@ -88,7 +88,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr ng-repeat="specimenTrackingItem in specimenTrackingList"><!-- ng-repeat-start -->
+                                <tr ng-repeat-start="specimenTrackingItem in specimenTrackingList"><!-- ng-repeat -->
                                     <td><a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id, section: 'tissue_variant_report', molecular_id: specimenTrackingItem.molecular_id, analysis_id: specimenTrackingItem.analysis_id })">{{ specimenTrackingItem.molecular_id || '-' }}</a></td>
                                     <td><a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id, section: 'surgical_event', surgical_event_id: specimenTrackingItem.surgical_event_id })">{{ specimenTrackingItem.surgical_event_id || '-' }}</a></td>
                                     <td><a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id })">{{ specimenTrackingItem.patient_id}}</a></td>
@@ -101,8 +101,8 @@
                                     <td>{{ specimenTrackingItem.pathology_status }}</td>
                                     <td>{{ specimenTrackingItem.pathology_status_date | gmt }}</td>
                                 </tr>
-                                <!--<tr ng-repeat-end>-->
-                                    <!--<td colspan="11">
+                                <tr ng-repeat-end>
+                                    <td colspan="11">
                                         <ul class="panel-list">
                                             <li ng-repeat="assayItem in specimenTrackingItem.assays" class="info-element">
                                                 <div class="row">
@@ -137,7 +137,7 @@
                                                 </div>
                                             </li>
                                         </ul>
-                                    </td>-->
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
