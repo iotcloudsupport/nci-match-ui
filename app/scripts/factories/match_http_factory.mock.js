@@ -80,6 +80,6 @@
             function displayTreatmentArmList() {
                 return $http.get('data/treatment_arms_list.json');
             }
-
+            
         });
 } ());
