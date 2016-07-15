@@ -689,6 +689,7 @@
                     document.getElementById("patientPieChartContainer").style["height"] = window.innerWidth / 3.2 + "px";
                 }
 
+                // TODO: Extract into separate json
                 $scope.pieDataset = [
                     {
                         label: "ON_TREATMENT_ARM",
@@ -716,6 +717,7 @@
                     }
                 ];
 
+                // TODO: Extract into separate json
                 $scope.diseasePieDataset = [
                     {
                         label: "Endocrine cancer, NOS",
