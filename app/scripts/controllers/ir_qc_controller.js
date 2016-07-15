@@ -16,7 +16,7 @@ angular.module('qcsample.matchbox',[ ])
         //FILTER
         $scope.$watch('confirmed', function(newValue, oldValue) {
 
-            console.log($scope.confirmed);
+            // console.log($scope.confirmed);
             if(newValue === 'ALL') {
                 $scope.filterCol = "";
             }
