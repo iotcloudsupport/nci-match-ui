@@ -19,6 +19,10 @@
         $scope.pendingBloodVariantReportList = [];
         $scope.pendingAssignmentReportList = [];
 
+        $scope.top_5_arms = [];
+        $scope.top_5_arm_labels = [];
+        $scope.top_5_arm_counts = [];
+
         $scope.now = new Date();
 
         $scope.message = [
@@ -92,9 +96,6 @@
                         $scope.numberOfPatients = d.data.number_of_patients;
                         $scope.numberOfScreenedPatients = d.data.number_of_screened_patients;
                         $scope.numberOfPatientsWithTreatment = d.data.number_of_patients_with_treatment;
-                        //$scope.numberOfPendingAssignmentReports = d.data.number_of_pending_assignment_reports;
-                        //$scope.numberOfPendingTissueVariantReports = d.data.number_of_pending_tissue_variant_reports;
-                        //$scope.numberOfPendingBloodVariantReports = d.data.number_of_pending_blood_variant_reports;
                     });
         }
 
@@ -102,8 +103,13 @@
             matchApiMock
                 .loadTreatmentArmAccrual()
                 .then(function (d) {
+                    $scope.top_5_arms = d.data.arms;
+                    angular.forEach($scope.top_5_arms, function(value) {
+                        $scope.top_5_arm_labels.push(value.name + " (" + value.stratum + ")");
+                        $scope.top_5_arm_counts.push(value.patients);
+                    });
                     $scope.barData = {
-                        labels: d.data.arm_names,
+                        labels: $scope.top_5_arm_labels, //d.data.arm_names,
                         datasets: [
                             {
                                 label: "Accrual Dataset",
@@ -111,7 +117,7 @@
                                 strokeColor: "rgba(220,220,220,0.8)",
                                 highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
                                 highlightStroke: "rgba(220,220,220,1)",
-                                data: d.data.arm_values
+                                data: $scope.top_5_arm_counts //d.data.arm_values
                             }
                         ]
                     };
