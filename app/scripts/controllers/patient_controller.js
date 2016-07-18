@@ -18,13 +18,13 @@
         var vm = this;
 
         this.dtOptions = DTOptionsBuilder.newOptions()
-            .withDisplayLength(100);
+            .withDisplayLength(10);
 
-        vm.dtOptions = DTOptionsBuilder.newOptions()
-            .withOption('bLengthChange', false);
+        // vm.dtOptions = DTOptionsBuilder.newOptions()
+        //     .withOption('bLengthChange', false);
 
-        vm.dtOptions = DTOptionsBuilder.newOptions()
-            .withOption('searching', false);
+        // vm.dtOptions = DTOptionsBuilder.newOptions()
+        //     .withOption('searching', false);
 
 
         $scope.currentUser = null;
@@ -114,6 +114,7 @@
 
         //FILTER
         $scope.$watch('confirmed', function(newValue, oldValue) {
+
             if(newValue === 'ALL') {
                 $scope.filterCol = "";
             }

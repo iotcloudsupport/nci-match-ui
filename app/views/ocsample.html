@@ -59,7 +59,33 @@
 
                             <div class="header-info-box top-main-header-box ">
 
-                                    <dl class="dl-horizontal" style="font-size: small">
+
+                                <!--<dl class="dl-horizontal dl-horizontal-expanded-label" ng-if="variantReportMode=='QC'">-->
+                                    <!--<dt>Oncomine Control Panel Summary</dt>-->
+                                    <!--<dd class="row">-->
+                                        <!--<table class="table" role="grid" width="100">-->
+                                            <!--<thead>-->
+                                            <!--<td><a>LMNA</a></td>-->
+                                            <!--<td><a>TBP</a></td>-->
+                                            <!--<td><a>MYC</a></td>-->
+                                            <!--<td><a>HMBS</a></td>-->
+                                            <!--<td><a>ITGBY</a></td>-->
+                                            <!--<td>SUM</td>-->
+                                            <!--</thead>-->
+                                            <!--<tbody class="priordrug-item" ng-repeat="oncomine in currentVariantReport.oncomine_report" style="font-size: smaller">-->
+                                            <!--<td>{{::oncomine.lmna}}</td>-->
+                                            <!--<td>{{::oncomine.tbp}}</td>-->
+                                            <!--<td>{{::oncomine.myc}}</td>-->
+                                            <!--<td>{{::oncomine.hmbs}}</td>-->
+                                            <!--<td>{{::oncomine.itgby}}</td>-->
+                                            <!--<td>{{::oncomine.sum}}</td>-->
+                                            <!--</tbody>-->
+                                        <!--</table>-->
+                                    <!--</dd>-->
+                                <!--</dl>-->
+
+
+                                    <dl class="dl-horizontal dl-horizontal-expanded-label" style="font-size: small">
                                         <dt>Oncomine Control Panel Summary</dt>
                                         <dd>
                                             <table class="table" role="grid">
@@ -157,21 +183,26 @@
                                 <div class="tabs-container" >
                                 <uib-tabset >
 
-                                    <uib-tab heading="SNVs/MNVs/Indels">
 
+
+                                    <uib-tab heading="SNVs/MNVs/Indels">
                                         <div class="panel-body"
                                              ng-controller="QcSampleController as DashCtrl"
                                              ng-init="loadSnv_Table()">
+
                                             <table datatable="ng"
-                                                   dt-options="DashCtrl.ddOptions"
+                                                   dt-options="DashCtrl.dtOptions"
                                                    dt-column-defs="DashCtrl.dtColumnDefs"
                                                    dt-instance="DashCtrl.dtInstance"
                                                    dt-columns="dtColumns"
                                                    class="table table-striped table-bordered table-hover">
-
                                                 <thead>
 
-                                                <tr><div confirmed="confirmed" custom-element class="pull-left" style="width:200px"></div></tr>
+                                                    <div class="form-group">
+                                                        <label>
+                                                            <div confirmed="confirmed" custom-element class="pull-right" style="width:200px"></div>
+                                                        </label>
+                                                    </div>
 
                                                 <tr>
                                                     <th class="label2" >Id</th>
@@ -229,17 +260,19 @@
                                         <div class="panel-body"
                                              ng-controller="QcSampleController as DashCtrl"
                                              ng-init="loadQc_Table()">
-
-
                                             <table datatable="ng"
-                                                   dt-options="DashCtrl.ddOptions"
+                                                   dt-options="DashCtrl.dtOptions"
                                                    dt-column-defs="DashCtrl.dtColumnDefs"
                                                    dt-instance="DashCtrl.dtInstance"
                                                    dt-columns="dtColumns"
                                                    class="table table-striped table-bordered table-hover">
                                                 <thead>
 
-                                                <tr><div confirmed="confirmed" custom-element class="pull-left" style="width:200px"></div></tr>
+                                                <div class="form-group">
+                                                    <label>
+                                                        <div confirmed="confirmed" custom-element class="pull-right" style="width:200px"></div>
+                                                    </label>
+                                                </div>
 
                                                 <tr>
                                                     <th class="label2" >Id</th>
@@ -255,7 +288,6 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-
 
                                                 <tr ng-repeat="ta in cnvList | limitTo:totalDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">
                                                     <td>
@@ -284,17 +316,19 @@
                                         <div class="panel-body"
                                              ng-controller="QcSampleController as DashCtrl"
                                              ng-init="loadGene_Table()">
-
-
                                             <table datatable="ng"
-                                                   dt-options="DashCtrl.ddOptions"
+                                                   dt-options="DashCtrl.dtOptions"
                                                    dt-column-defs="DashCtrl.dtColumnDefs"
                                                    dt-instance="DashCtrl.dtInstance"
                                                    dt-columns="dtColumns"
                                                    class="table table-striped table-bordered table-hover">
                                                 <thead>
 
-                                                <tr><div confirmed="confirmed" custom-element class="pull-left" style="width:200px"></div></tr>
+                                                <div class="form-group">
+                                                    <label>
+                                                        <div confirmed="confirmed" custom-element class="pull-right" style="width:200px"></div>
+                                                    </label>
+                                                </div>
 
                                                 <tr>
                                                     <th class="label2" >Id</th> <!--openCosmicGene("ACVRL1")-->
