@@ -1,4 +1,29 @@
 {
-  "arm_names": ["APEC1621-Q", "APEC1621-B", "APEC1621-H", "APEC1621-U", "APEC1621-E"],
-  "arm_values": [6, 3, 2, 2, 1]
+  "arms": [
+    {
+      "name": "APEC1621-U",
+      "stratum": "STR2",
+      "patients": 6
+    },
+    {
+      "name": "APEC1621-A",
+      "stratum": "STR17",
+      "patients": 4
+    },
+    {
+      "name": "APEC1621-Q",
+      "stratum": "STR6",
+      "patients": 3
+    },
+    {
+      "name": "APEC1621-U",
+      "stratum": "STR11",
+      "patients": 3
+    },
+    {
+      "name": "APEC1621-U",
+      "stratum": "STR3",
+      "patients": 2
+    }
+  ]
 }
