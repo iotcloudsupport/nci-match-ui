@@ -659,7 +659,9 @@
 
                                                                             <thead>
 
-                                                                            <tr><div confirmed="confirmed" custom-element class="pull-left" style="width:200px"></div></tr>
+                                                                            <tr>
+                                                                                    <div confirmed="confirmed" custom-element class="pull-right" style="width:200px"></div>
+                                                                            </tr>
 
                                                                             <tr>
                                                                                 <th class="label2" >Id</th>
@@ -679,9 +681,7 @@
                                                                                 <th class="label2" >Transcript</th>
                                                                                 <th class="label2" >Protein</th>
                                                                             </tr>
-
                                                                             </thead>
-
                                                                             <tbody>
 
                                                                             <tr ng-repeat="ta in snvList | limitTo:totalDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">
@@ -729,7 +729,7 @@
                                                                                class="table table-striped table-bordered table-hover">
                                                                             <thead>
 
-                                                                            <tr><div confirmed="confirmed" custom-element class="pull-left" style="width:200px"></div></tr>
+                                                                            <tr><div confirmed="confirmed" custom-element class="pull-right" style="width:200px"></div></tr>
 
                                                                             <tr>
                                                                                 <th class="label2" >Id</th>
@@ -775,14 +775,16 @@
                                                                          ng-init="loadGene_Table()">
 
                                                                         <table datatable="ng"
-                                                                               ddt-options="DashCtrl.dtOptions"
+                                                                               dt-options="DashCtrl.dtOptions"
                                                                                dt-column-defs="DashCtrl.dtColumnDefs"
                                                                                dt-instance="DashCtrl.dtInstance"
                                                                                dt-columns="DashCtrl.dtColumns"
                                                                                class="table table-striped table-bordered table-hover">
                                                                             <thead>
 
-                                                                            <tr><div confirmed="confirmed" custom-element class="pull-left" style="width:200px"></div></tr>
+                                                                            <tr>
+                                                                                    <div confirmed="confirmed" custom-element class="pull-right" style="width:200px"></div>
+                                                                            </tr>
 
                                                                             <tr>
                                                                                 <th class="label2" >Id</th> <!--openCosmicGene("ACVRL1")-->
@@ -800,18 +802,18 @@
                                                                             </thead>
                                                                             <tbody>
 
-                                                                            <tr ng-repeat="ta in geneList | limitTo:totalDisplayed | filter:filterCol " style="cursor: auto; " role="row" class="odd">
+                                                                            <tr ng-repeat="ta in geneList | limitTo:totalDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">
                                                                                 <td>
-                                                                                    <a href ng-click="openCosmicFusionId(ta.identifier)" class="report-link"> {{::ta.identifier || '-'}} </a>
+                                                                                    <a class="report-link" href ng-click="openCosmicFusionId(ta.identifier)">
+                                                                                        {{::ta.identifier || '-'}}
+                                                                                    </a>
                                                                                 </td>
                                                                                 <td>{{::ta.chromosome || '-'}}</td>
                                                                                 <td>{{::ta.position || '-'}}</td>
                                                                                 <td>{{::ta.reference || '-'}}</td>
                                                                                 <td>{{::ta.alternative || '-'}}</td>
                                                                                 <td>{{::ta.filter || '-'}}</td>
-                                                                                <td>
-                                                                                    {{::ta.gene || '-'}}
-                                                                                </td>
+                                                                                <td>{{::ta.gene || '-'}}</td>
                                                                                 <td>{{::ta.oncominevariantclass || '-'}}</td>
                                                                                 <td>{{::ta.exon || '-'}}</td>
                                                                                 <td>{{::ta.function || '-'}}</td>
