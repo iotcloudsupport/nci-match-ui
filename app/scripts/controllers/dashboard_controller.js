@@ -30,6 +30,16 @@
             'Treatment Arm Closed',
             'Blood Specimen Received'
         ];
+        
+        $scope.days_pending_range = {
+            "upper_bound_green": 8,
+            "upper_bound_yellow": 14
+        };
+
+        $scope.hours_pending_range = {
+            "upper_bound_green": 8,
+            "upper_bound_yellow": 14
+        };
 
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(25);
@@ -45,7 +55,7 @@
             'info': false,
             'paging': false,
             'bFilter': false,
-            'order': [6, 'desc']
+            'order': [7, 'desc']
         };
 
         $scope.loadDashboardStatisticsData = loadDashboardStatisticsData;
