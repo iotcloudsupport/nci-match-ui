@@ -108,10 +108,22 @@
         $scope.needToDisplayReportStatus = needToDisplayReportStatus;
         $scope.needToDisplayCbnaWarning = needToDisplayCbnaWarning;
         $scope.getNewFileButtonClass = getNewFileButtonClass;
+        $scope.loadQc_Table = loadQc_Table;
+        $scope.loadSnv_Table = loadSnv_Table;
+        $scope.loadGene_Table = loadGene_Table;
 
+        //FILTER
+        $scope.$watch('confirmed', function(newValue, oldValue) {
+            if(newValue === 'ALL') {
+                $scope.filterCol = "";
+            }
+            else {
+                $scope.filterCol = newValue;
+            }
+        });
 
         //Large data flow controller
-        $scope.totalDisplayed = 50;
+        $scope.totalDisplayed = 100;
 
         $scope.loadMore = function () {
             $scope.totalDisplayed += 20;
@@ -141,82 +153,40 @@
         };
         //COSMIC LINKS
 
-
+        //Sample Mocks
         //CNV
+        function loadQc_Table() {
+            matchApiMock
+                .loadQc_Table()
+                .then(loadQcList);
+        };
+
         function loadQcList(data) {
-            $scope.cnvList = data.copyNumberVariants;
-        }
-
-        $scope.loadQc_Table = function () {
-
-            var url = "data/sample_qc.json";
-
-            $.ajax({
-
-                type: "GET",
-                url: url,
-                contentType: "application/json",
-                dataType: "json",
-                data: {},
-                success: function (data) {
-                    loadQcList(data)
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    alert("Error: " + textStatus.toString());
-                }
-            });
+            $scope.cnvList = data.data.copyNumberVariants;
         };
 
         //SNV
+        function loadSnv_Table() {
+            matchApiMock
+                .loadQc_Table()
+                .then(loadSnvList);
+        };
+
         function loadSnvList(data) {
-            $scope.snvList = data.singleNucleotideVariants;
-        }
-
-        $scope.loadSnv_Table = function () {
-
-            var url = "data/sample_qc.json";
-
-            $.ajax({
-
-                type: "GET",
-                url: url,
-                contentType: "application/json",
-                dataType: "json",
-                data: {},
-                success: function (data) {
-                    loadSnvList(data)
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    alert("Error: " + textStatus.toString());
-                }
-            });
+            $scope.snvList = data.data.singleNucleotideVariants;
         };
 
         //GENE
+        function loadGene_Table() {
+            matchApiMock
+                .loadQc_Table()
+                .then(loadGeneList);
+        };
+
         function loadGeneList(data) {
-            $scope.geneList = data.geneFusions;
+            $scope.geneList = data.data.geneFusions;
         };
-
-        $scope.loadGene_Table = function () {
-
-            var url = "data/sample_qc.json";
-
-            $.ajax({
-
-                type: "GET",
-                url: url,
-                contentType: "application/json",
-                dataType: "json",
-                data: {},
-                success: function (data) {
-                    loadGeneList(data);
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    alert("Error: " + textStatus.toString());
-                }
-            });
-        };
-
+        //Sample Mocks
 
         function setActiveTab(tab) {
             $scope.activeTab = tab;
