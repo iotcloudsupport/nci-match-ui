@@ -104,7 +104,10 @@
                                         <td>{{ patient.clia_lab || '-' }}</td>
                                         <td>{{ patient.specimen_received_date | gmt }}</td>
                                         <td>{{ patient.variant_report_received_date | gmt }}</td>
-                                        <td><span class="label label-primary">{{ patient.days_pending || '-' }}</span></td>
+                                        <td><span ng-if="patient.days_pending >= days_pending_range.upper_bound_yellow" class="label label-danger">{{ patient.days_pending || '-' }}</span>
+                                            <span ng-if="patient.days_pending < days_pending_range.upper_bound_yellow && patient.days_pending >= days_pending_range.upper_bound_green" class="label label-warning">{{ patient.days_pending || '-' }}</span>
+                                            <span ng-if="patient.days_pending < days_pending_range.upper_bound_green" class="label label-primary">{{ patient.days_pending || '-' }}</span>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -142,9 +145,9 @@
                                         <td>{{ patient.clia_lab || '-' }}</td>
                                         <td>{{ patient.specimen_received_date | gmt }}</td>
                                         <td>{{ patient.variant_report_received_date | gmt }}</td>
-                                        <td><span ng-if="patient.days_pending >= 14" class="label label-danger">{{ patient.days_pending || '-' }}</span>
-                                            <span ng-if="patient.days_pending < 14 && patient.days_pending >= 8" class="label label-warning">{{ patient.days_pending || '-' }}</span>
-                                            <span ng-if="patient.days_pending < 8 " class="label label-primary">{{ patient.days_pending || '-' }}</span>
+                                        <td><span ng-if="patient.days_pending >= days_pending_range.upper_bound_yellow" class="label label-danger">{{ patient.days_pending || '-' }}</span>
+                                            <span ng-if="patient.days_pending < days_pending_range.upper_bound_yellow && patient.days_pending >= days_pending_range.upper_bound_green" class="label label-warning">{{ patient.days_pending || '-' }}</span>
+                                            <span ng-if="patient.days_pending < days_pending_range.upper_bound_green" class="label label-primary">{{ patient.days_pending || '-' }}</span>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -183,7 +186,10 @@
                                         <td><a>{{patient.disease || '-'}}</a></td>
                                         <td><a ui-sref="treatment-arm({ treatmentArmId: patient.treatment_arm })">{{patient.treatment_arm + " " + patient.stratum || '-'}}</a></td>
                                         <td>{{ patient.assignment_date | gmt }}</td>
-                                        <td><span class="label label-primary">{{ patient.hours_pending || ' - ' }}</span></td>
+                                        <td><span ng-if="patient.hours_pending >= hours_pending_range.upper_bound_yellow" class="label label-danger">{{ patient.hours_pending || '-' }}</span>
+                                            <span ng-if="patient.hours_pending < hours_pending_range.upper_bound_yellow && patient.hours_pending >= hours_pending_range.upper_bound_green" class="label label-warning">{{ patient.hours_pending || '-' }}</span>
+                                            <span ng-if="patient.hours_pending < hours_pending_range.upper_bound_green" class="label label-primary">{{ patient.hours_pending || '-' }}</span>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
