@@ -1877,20 +1877,20 @@
                             "status_date": "2016-01-13T23:06:33+00:00"
                         }
                     ]
-                }
-            ],
-            "slides": [
-                {
-                    "slide_barcode": "H1HWRU",
-                    "carrier": "Federal Express",
-                    "tracking_id": "1234 4567 8910",
-                    "shipped_dttm": "2016-04-06T10:12:33+00:00"
                 },
                 {
-                    "slide_barcode": "1MFINE                                                                                                                            ",
+                    "surgical_event_id": "SUREVT001",
+                    "shipped_dttm": "2016-05-01T19:42:13+00:00",
+                    "study_id": "APEC1621",
+                    "slide_barcode": "0BJ6A5",
                     "carrier": "Federal Express",
-                    "tracking_id": "7956 4568 1235",
-                    "shipped_dttm": "2016-04-01T19:42:13+00:00"
+                    "internal_use_only": {
+                        "stars_specimen_id_slide": "ABCXYZ-0BJ6A5",
+                        "stars_patient_id": "ABCXYZ"
+                    },
+                    "patient_id": "3344",
+                    "type": "SLIDE",
+                    "tracking_id": "7956 4568 1235"
                 }
             ]
         },
@@ -1941,7 +1941,7 @@
                             "analysis_id": "SAM002_03",
                             "status": "REJECTED",
                             "comment": "",
-                            "comment_user": "Jane James"
+                            "comment_user": "Jane James",
                             "file_received_date": "2016-02-18T22:06:33+00:00",
                             "status_date": "2016-02-19T23:06:33+00:00"
                         }
@@ -1975,20 +1975,20 @@
                             "status_date": "2016-02-13T23:06:33+00:00"
                         }
                     ]
-                }
-            ],
-            "slides": [
-                {
-                    "slide_barcode": "ATCH00",
-                    "carrier": "Federal Express",
-                    "tracking_id": "1234 4567 8910",
-                    "shipped_dttm": "2016-03-06T10:12:33+00:00"
                 },
                 {
-                    "slide_barcode": "BLSSU2",
+                    "surgical_event_id": "SUREVT001",
+                    "shipped_dttm": "2016-05-01T19:42:13+00:00",
+                    "study_id": "APEC1621",
+                    "slide_barcode": "0BJ6A5",
                     "carrier": "Federal Express",
-                    "tracking_id": "7956 4568 1235",
-                    "shipped_dttm": "2016-03-01T19:42:13+00:00"
+                    "internal_use_only": {
+                        "stars_specimen_id_slide": "ABCXYZ-0BJ6A5",
+                        "stars_patient_id": "ABCXYZ"
+                    },
+                    "patient_id": "3344",
+                    "type": "SLIDE",
+                    "tracking_id": "7956 4568 1235"
                 }
             ]
         }

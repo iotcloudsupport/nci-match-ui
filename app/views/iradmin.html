@@ -960,7 +960,12 @@
                                                                                                     </thead>
                                                                                                     <tbody>
                                                                                                     <tr ng-repeat="sample in indelsList">
-                                                                                                        <td>{{sample.identifier || '-' }}</td>
+                                                                                                        <td>
+                                                                                                            <a class="report-link" href ng-click="openCosmicId( sample.identifier )">
+                                                                                                                {{sample.identifier || '-' }}
+                                                                                                            </a>
+                                                                                                        </td>
+                                                                                                        </td>
                                                                                                         <td>{{sample.chromosome || '-' }}</td>
                                                                                                         <td>{{sample.position || '-' }}</td>
                                                                                                         <td>{{sample.reference || '-' }}</td>
@@ -997,7 +1002,11 @@
                                                                                                     <tr ng-repeat="sample in geneFusionsList">
 
                                                                                                         <td>{{sample.identifier || '-' }}</td>
-                                                                                                        <td>{{sample.geneName || '-' }}</td>
+                                                                                                        <td>
+                                                                                                            <a class="report-link" href ng-click="openCosmicGene( sample.geneName )">
+                                                                                                                {{sample.geneName || '-' }}
+                                                                                                            </a>
+                                                                                                        </td>
                                                                                                         <td>{{sample.gene || '-' }}</td>
                                                                                                         <td>{{sample.flowAlternativeAlleleObservationCount || '-' }}</td>
                                                                                                         <td>{{sample.alternativeAlleleObservationCount || '-' }}</td>
