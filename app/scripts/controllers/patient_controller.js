@@ -109,6 +109,39 @@
         $scope.needToDisplayCbnaWarning = needToDisplayCbnaWarning;
         $scope.getNewFileButtonClass = getNewFileButtonClass;
 
+
+        //Large data flow controller
+        $scope.totalDisplayed = 50;
+
+        $scope.loadMore = function () {
+            $scope.totalDisplayed += 20;
+        };
+
+        //COSMIC LINKS
+        $scope.openCosmicGene = function (id) {
+            $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + id.toLowerCase(), "_blank");
+            $window.focus();
+
+        };
+
+        $scope.openCosmicId = function (id) {
+            id = id.substring(4, id.length)
+            $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + id.toLowerCase(), "_blank");
+            $window.focus();
+
+        };
+
+        $scope.openCosmicFusionId = function (id) {
+            var numericId = id.substring(id.indexOf("_") - 3, (id.length - 2));
+
+            if (numericId !== null) {
+                $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + numericId.toLowerCase(), "_blank");
+            }
+            $window.focus();
+        };
+        //COSMIC LINKS
+
+
         //CNV
         function loadQcList(data) {
             $scope.cnvList = data.copyNumberVariants;
