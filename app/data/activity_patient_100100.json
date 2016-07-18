@@ -130,7 +130,7 @@
     "patient_id": "100100",
     "event_date": "2016-05-11T22:06:33+00:00",
     "event_name": "Event Name 2",
-    "event_type": "biopsy.variant_veport_received",
+    "event_type": "biopsy.variant_report_received",
     "event_message": "Tissue Variant Report",
     "step": "3.0",
     "event_data": {
@@ -145,7 +145,7 @@
     "patient_id": "100100",
     "event_date": "2016-03-15T22:06:33+00:00",
     "event_name": "Event Name 2",
-    "event_type": "biopsy.variant_veport_received",
+    "event_type": "biopsy.variant_report_received",
     "event_message": "Tissue Variant Report",
     "step": "3.0",
     "event_data": {
@@ -202,7 +202,7 @@
     "patient_id": "100100",
     "event_date": "2015-07-12T22:06:33+00:00",
     "event_name": "Event Name 3",
-    "event_type": "biopsy.variant_veport_shipped",
+    "event_type": "biopsy.variant_report_shipped",
     "event_message": "Tissue Slide Specimen Shipped",
     "step": "3.0",
     "event_data": {
@@ -219,7 +219,7 @@
     "patient_id": "100100",
     "event_date": "2016-02-15T22:06:33+00:00",
     "event_name": "Event Name 3",
-    "event_type": "biopsy.variant_veport_shipped",
+    "event_type": "biopsy.variant_report_shipped",
     "event_message": "Tissue Nucleic Acid Shipped",
     "step": "3.0",
     "event_data": {
@@ -236,7 +236,7 @@
     "patient_id": "100100",
     "event_date": "2016-02-09T22:06:33+00:00",
     "event_name": "Event Name 2",
-    "event_type": "biopsy.variant_veport_received",
+    "event_type": "biopsy.variant_report_received",
     "event_message": "Tissue Specimen Received",
     "step": "3.0",
     "event_data": {
@@ -433,7 +433,7 @@
     "patient_id": "100100",
     "event_date": "2015-08-14T22:08:33+00:00",
     "event_name": "Event Name 2",
-    "event_type": "biopsy.variant_veport_received",
+    "event_type": "biopsy.variant_report_received",
     "event_message": "Tissue Variant Report",
     "step": "1.0",
     "event_data": {
@@ -448,7 +448,7 @@
     "patient_id": "100100",
     "event_date": "2015-05-11T22:06:33+00:00",
     "event_name": "Event Name 2",
-    "event_type": "biopsy.variant_veport_received",
+    "event_type": "biopsy.variant_report_received",
     "event_message": "Tissue Variant Report",
     "step": "1.0",
     "event_data": {
@@ -471,7 +471,7 @@
       "status": "RECEIVED",
       "result": "POSITIVE",
       "molecular_id": "B-987456",
-      "reported_date": "2015-08-02T22:04:33+00:00"
+      "reported_date": "2016-07-09T22:06:33+00:00"
     }
   },
   {
@@ -484,7 +484,7 @@
     "event_data": {
       "status": "CONFIRMED",
       "molecular_id": "B-987456",
-      "reported_date": "2015-07-28T22:04:33+00:00"
+      "reported_date": "2016-06-10T22:06:33+00:00"
     }
   },
   {
@@ -498,36 +498,19 @@
       "biomarker": "ICCPTEN",
       "status": "ORDER",
       "molecular_id": "B-987456",
-      "ordered_date": "2015-07-20T22:07:33+00:00"
+      "ordered_date": "2016-06-09T22:06:33+00:00"
     }
   },
   {
     "patient_id": "100100",
     "event_date": "2015-07-12T22:06:33+00:00",
     "event_name": "Event Name 3",
-    "event_type": "biopsy.variant_veport_shipped",
+    "event_type": "biopsy.variant_report_shipped",
     "event_message": "Tissue Slide Specimen Shipped",
     "step": "1.0",
     "event_data": {
-      "surgical_event_id": "SUREVT0982",
-      "molecular_dna_id": "DNA1234",
-      "molecular_cdna_id": "CDNA1234",
-      "carrier": "Federal Express",
-      "tracking_id": "1203454512316546",
-      "status": "PENDING",
-      "molecular_id": "B-987456"
-    }
-  },
-  {
-    "patient_id": "100100",
-    "event_date": "2015-07-12T22:06:33+00:00",
-    "event_name": "Event Name 3",
-    "event_type": "biopsy.variant_veport_shipped",
-    "event_message": "Tissue Nucleic Acid Shipped",
-    "step": "1.0",
-    "event_data": {
-      "surgical_event_id": "SUREVT0982",
-      "molecular_dna_id": "DNA1234",
+      "surgical_event_id": "SUREVT099",
+      "molecular_dna_id": "MOL099-2",
       "molecular_cdna_id": "CDNA1234",
       "carrier": "Federal Express",
       "tracking_id": "1203454512316546",
@@ -539,14 +522,31 @@
     "patient_id": "100100",
     "event_date": "2015-07-12T22:06:33+00:00",
     "event_name": "Event Name 2",
-    "event_type": "biopsy.variant_veport_received",
-    
+    "event_type": "biopsy.variant_report_received",
+
     "event_message": "Tissue Specimen Received",
     "step": "1.0",
     "event_data": {
-      "surgical_event_id": "SUREVT0982",
-      "collected_datetime": "2015-07-12T22:06:33+00:00",
-      "received_datetime": "2015-07-11T22:06:33+00:00",
+      "surgical_event_id": "SUREVT099",
+      "collected_datetime": "2016-05-07T22:06:33+00:00",
+      "received_datetime": "2016-05-09T22:06:33.000+00:00",
+      "status": "REJECTED",
+      "molecular_id": "B-987456"
+    }
+  },
+  {
+    "patient_id": "100100",
+    "event_date": "2016-05-07T22:06:33+00:00",
+    "event_name": "Event Name 3",
+    "event_type": "biopsy.variant_report_shipped",
+    "event_message": "Tissue Nucleic Acid Shipped",
+    "step": "1.0",
+    "event_data": {
+      "surgical_event_id": "SUREVT099",
+      "molecular_dna_id": "MOL099-1",
+      "molecular_cdna_id": "CDNA1234",
+      "carrier": "Federal Express",
+      "tracking_id": "1203454512316546",
       "status": "PENDING",
       "molecular_id": "B-987456"
     }

@@ -40,7 +40,7 @@
     }
   ],
   "current_assignment": {
-    "generated_date": "2016-05-09T22:06:33+00:00",
+    "generated_date": "2016-06-09T22:06:33+00:00",
     "sent_to_cog_date": "-",
     "received_from_cog_date": "-",
     "molecular_id": "MSN34534",
@@ -167,7 +167,7 @@
         {
           "treatment_arm": "APEC1621-U",
           "treatment_arm_version": "2015-08-06",
-          "treatment_arm_stratum_id": "STR2",
+          "treatment_arm_stratum_id": "STR1",
           "treatment_arm_stratum": "STR1",
           "treatment_arm_title": "APEC1621-U (2015-08-06)",
           "reason": "The patient and treatment match on variand identifier [ABSF, DEDF]."
@@ -228,9 +228,9 @@
       "patient_id": "100100",
       "molecular_id": "MOL099-1",
       "analysis_id": "SAM099-1",
-      "status": "CONFIRMED",
+      "status": "REJECTED",
       "comment_user": "Jane James",
-      "status_date": "2016-05-09T22:06:33.000+00:00",
+      "status_date": "2016-05-10T22:16:33.000+00:00",
       "dna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
       "dna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
       "rna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
@@ -515,14 +515,14 @@
     },
     {
       "surgical_event_id": "SUREVT099",
-      "variant_report_received_date": "2016-05-09T22:06:33.000+00:00",
+      "variant_report_received_date": "2016-05-10T22:16:33.000+00:00",
       "variant_report_type": "TISSUE",
       "patient_id": "100100",
       "molecular_id": "MOL099-2",
       "analysis_id": "SAM099-2",
-      "status": "CONFIRMED",
+      "status": "REJECTED",
       "comment_user": "Jane James",
-      "status_date": "2016-05-09T22:06:33.000+00:00",
+      "status_date": "2016-05-11T22:16:33.000+00:00",
       "dna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
       "dna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
       "rna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
@@ -807,13 +807,13 @@
     },
     {
       "surgical_event_id": "SUREVT100",
-      "variant_report_received_date": "2016-05-09T22:06:33.000+00:00",
+      "variant_report_received_date": "2016-05-11T22:16:33.000+00:00",
       "variant_report_type": "TISSUE",
       "patient_id": "100100",
       "molecular_id": "MOL100-1",
       "analysis_id": "SAM100-1",
-      "status": "PENDING",
-      "status_date": "2016-05-09T22:06:33.000+00:00",
+      "status": "REJECTED",
+      "status_date": "2016-05-12T00:16:33.000+00:00",
       "dna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
       "dna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
       "rna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
@@ -1098,13 +1098,13 @@
     },
     {
       "surgical_event_id": "SUREVT100",
-      "variant_report_received_date": "2016-05-09T22:06:33.000+00:00",
+      "variant_report_received_date": "2016-05-12T00:16:33.000+00:00",
       "variant_report_type": "TISSUE",
       "patient_id": "100100",
       "molecular_id": "MOL100-2",
       "analysis_id": "SAM100-2",
-      "status": "PENDING",
-      "status_date": "2016-05-09T22:06:33.000+00:00",
+      "status": "REJECTED",
+      "status_date": "2016-05-12T09:16:33.000+00:00",
       "dna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
       "dna_bai_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
       "rna_bam_file_path": "data\\MATCHControl_v1-1fusion-notmatch.zip",
@@ -1389,7 +1389,7 @@
     },
     {
       "surgical_event_id": "SUREVT101",
-      "variant_report_received_date": "2016-05-09T22:06:33.000+00:00",
+      "variant_report_received_date": "2016-05-12T09:16:33.000+00:00",
       "variant_report_type": "TISSUE",
       "patient_id": "100100",
       "molecular_id": "MOL101-1",
@@ -2193,7 +2193,7 @@
       ],
       "selected": [
         {
-          "treatment_arm": "APEC1621-B",
+          "treatment_arm": "APEC1621-U",
           "treatment_arm_version": "2015-08-06",
           "treatment_arm_title": "APEC1621-U (2015-08-06)",
           "reason": "The patient and treatment match on variand identifier [ABSF, DEDF]."
@@ -2279,7 +2279,7 @@
           ]
         },
         {
-          "surgical_event_id": "SUREVT001",
+          "surgical_event_id": "SUREVT101",
           "shipped_dttm": "2016-05-01T19:42:13+00:00",
           "study_id": "APEC1621",
           "slide_barcode": "0BJ6A5",
