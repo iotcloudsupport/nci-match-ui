@@ -631,8 +631,8 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div ng-if="variantReportMode === 'QC'">
 
+                                    <div ng-if="variantReportMode === 'QC'">
 
                                         <!--TABLES-->
                                         <div class="no-horizontal-padding header-box-container" >
@@ -833,210 +833,12 @@
                                                             </table>
                                                         </div>
                                                         <!--GENE TABLE-->
-
-
-                                                        <!--<div class="tabs-container" >-->
-                                                            <!--<uib-tabset >-->
-
-                                                                <!--<uib-tab heading="SNVs/MNVs/Indels">-->
-
-                                                                    <!--<div class="panel-body"-->
-                                                                         <!--ng-controller="PatientController as DashCtrl"-->
-                                                                         <!--ng-init="loadSnv_Table()">-->
-                                                                        <!--<table datatable="ng"-->
-                                                                               <!--dt-options="DashCtrl.dtOptions"-->
-                                                                               <!--dt-column-defs="DashCtrl.dtColumnDefs"-->
-                                                                               <!--dt-instance="DashCtrl.dtInstance"-->
-                                                                               <!--dt-columns="DashCtrl.dtColumns"-->
-                                                                               <!--class="table table-striped table-bordered table-hover">-->
-
-                                                                            <!--<thead>-->
-
-                                                                            <!--<div class="form-group">-->
-                                                                                <!--<label>-->
-                                                                                    <!--<div confirmed="confirmed" custom-element class="pull-right" style="width:200px"></div>-->
-                                                                                <!--</label>-->
-                                                                            <!--</div>-->
-
-                                                                            <!--<tr>-->
-                                                                                <!--<th class="label2" >Id</th>-->
-                                                                                <!--<th class="label2" >Chrom</th>-->
-                                                                                <!--<th class="label2" >Position</th>-->
-                                                                                <!--<th class="label2" >Reference</th>-->
-                                                                                <!--<th class="label2" >Alternative</th>-->
-                                                                                <!--<th class="label2" >Filter</th>-->
-                                                                                <!--<th class="label2" >Allele Freq</th>-->
-
-                                                                                <!--<th class="label2" >Func Gene</th> &lt;!&ndash; openCosmicGene("MTOR") &ndash;&gt;-->
-                                                                                <!--<th class="label2" >Oncomine Variant Class</th>-->
-                                                                                <!--<th class="label2" >Exon</th>-->
-                                                                                <!--<th class="label2" >Function</th>-->
-                                                                                <!--<th class="label2" >Hgvs</th>-->
-                                                                                <!--<th class="label2" >Read Depth</th>-->
-                                                                                <!--<th class="label2" >Transcript</th>-->
-                                                                                <!--<th class="label2" >Protein</th>-->
-                                                                            <!--</tr>-->
-                                                                            <!--</thead>-->
-                                                                            <!--<tbody>-->
-
-                                                                            <!--<tr ng-repeat="ta in snvList | limitTo:totalDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">-->
-                                                                                <!--<td>-->
-                                                                                    <!--<a class="report-link" href ng-click="openCosmicId( ta.identifier )">-->
-                                                                                        <!--{{::ta.identifier || '-'}}-->
-                                                                                    <!--</a>-->
-                                                                                <!--</td>-->
-                                                                                <!--<td>{{::ta.chromosome || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.position || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.reference || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.alternative || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.filter || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.alleleFrequency || '-'}}</td>-->
-                                                                                <!--<td>-->
-                                                                                    <!--<a href ng-click="openCosmicGene(ta.gene)" class="report-link">{{::ta.gene}}</a>-->
-                                                                                <!--</td>-->
-                                                                                <!--<td>{{::ta.oncominevariantclass || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.exon || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.function || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.hgvs || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.readDepth || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.transcript || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.proteinMatch || '-'}}</td>-->
-
-                                                                            <!--</tr>-->
-                                                                            <!--</tbody>-->
-                                                                        <!--</table>-->
-                                                                    <!--</div>-->
-
-
-                                                                <!--</uib-tab>-->
-
-                                                                <!--<uib-tab heading="Copy Number Variant(s)  ">-->
-
-                                                                    <!--<div class="panel-body"-->
-                                                                         <!--ng-controller="PatientController as DashCtrl"-->
-                                                                         <!--ng-init="loadQc_Table()">-->
-
-                                                                        <!--<table datatable="ng"-->
-                                                                               <!--dt-options="DashCtrl.dtOptions"-->
-                                                                               <!--dt-column-defs="DashCtrl.dtColumnDefs"-->
-                                                                               <!--dt-instance="DashCtrl.dtInstance"-->
-                                                                               <!--dt-columns="DashCtrl.dtColumns"-->
-                                                                               <!--class="table table-striped table-bordered table-hover">-->
-                                                                            <!--<thead>-->
-
-                                                                            <!--<div class="form-group">-->
-                                                                                <!--<label>-->
-                                                                                    <!--<div confirmed="confirmed" custom-element class="pull-right" style="width:200px"></div>-->
-                                                                                <!--</label>-->
-                                                                            <!--</div>-->
-
-                                                                            <!--<tr>-->
-                                                                                <!--<th class="label2" >Id</th>-->
-                                                                                <!--<th class="label2" >Chrom</th>-->
-                                                                                <!--<th class="label2" >Position</th>-->
-                                                                                <!--<th class="label2" >Reference</th>-->
-                                                                                <!--<th class="label2" >Alternative</th>-->
-                                                                                <!--<th class="label2" >Filter</th>-->
-                                                                                <!--<th class="label2" >RAW Nc</th>-->
-                                                                                <!--<th class="label2" >FCN</th>-->
-                                                                                <!--<th class="label2" >Cl 5%</th>-->
-                                                                                <!--<th class="label2" >Cl 95%</th>-->
-                                                                            <!--</tr>-->
-                                                                            <!--</thead>-->
-                                                                            <!--<tbody>-->
-
-
-                                                                            <!--<tr ng-repeat="ta in cnvList | limitTo:totalDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">-->
-                                                                                <!--<td>-->
-                                                                                    <!--<a href ng-click="openCosmicGene(ta.identifier)" class="report-link"> {{::ta.identifier || '-'}} </a>-->
-                                                                                <!--</td>-->
-                                                                                <!--<td>{{::ta.chromosome || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.position || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.reference || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.alternative || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.filter || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.rawCopyNumber || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.copyNumber || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.confidenceInterval5percent || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.confidenceInterval95percent || '-'}}</td>-->
-                                                                            <!--</tr>-->
-                                                                            <!--</tbody>-->
-                                                                        <!--</table>-->
-
-                                                                    <!--</div>-->
-
-                                                                <!--</uib-tab>-->
-
-                                                                <!--<uib-tab heading="Gene Fusion(s)  ">-->
-
-                                                                    <!--<div class="panel-body"-->
-                                                                         <!--ng-controller="PatientController as DashCtrl"-->
-                                                                         <!--ng-init="loadGene_Table()">-->
-
-                                                                        <!--<table datatable="ng"-->
-                                                                               <!--ddt-options="DashCtrl.dtOptions"-->
-                                                                               <!--dt-column-defs="DashCtrl.dtColumnDefs"-->
-                                                                               <!--dt-instance="DashCtrl.dtInstance"-->
-                                                                               <!--dt-columns="DashCtrl.dtColumns"-->
-                                                                               <!--class="table table-striped table-bordered table-hover">-->
-                                                                            <!--<thead>-->
-
-                                                                            <!--<div class="form-group">-->
-                                                                                <!--<label>-->
-                                                                                    <!--<div confirmed="confirmed" custom-element class="pull-right" style="width:200px"></div>-->
-                                                                                <!--</label>-->
-                                                                            <!--</div>-->
-
-                                                                            <!--<tr>-->
-                                                                                <!--<th class="label2" >Id</th> &lt;!&ndash;openCosmicGene("ACVRL1")&ndash;&gt;-->
-                                                                                <!--<th class="label2" >Chrom</th>-->
-                                                                                <!--<th class="label2" >Position</th>-->
-                                                                                <!--<th class="label2" >Reference</th>-->
-                                                                                <!--<th class="label2" >Alternative</th>-->
-                                                                                <!--<th class="label2" >Filter</th>-->
-                                                                                <!--<th class="label2" >Func Gene</th>-->
-                                                                                <!--<th class="label2" >Oncomine Variant Class</th>-->
-                                                                                <!--<th class="label2" >Exon</th>-->
-                                                                                <!--<th class="label2" >Function</th>-->
-                                                                                <!--<th class="label2" >Read Count</th>-->
-                                                                            <!--</tr>-->
-                                                                            <!--</thead>-->
-                                                                            <!--<tbody>-->
-
-                                                                            <!--<tr ng-repeat="ta in geneList | limitTo:totalDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">-->
-                                                                                <!--<td>-->
-                                                                                    <!--<a class="report-link" href ng-click="openCosmicFusionId(ta.identifier)">-->
-                                                                                        <!--{{::ta.identifier || '-'}}-->
-                                                                                    <!--</a>-->
-                                                                                <!--</td>-->
-                                                                                <!--<td>{{::ta.chromosome || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.position || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.reference || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.alternative || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.filter || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.gene || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.oncominevariantclass || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.exon || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.function || '-'}}</td>-->
-                                                                                <!--<td>{{::ta.readDepth || '-'}}</td>-->
-
-                                                                            <!--</tr>-->
-                                                                            <!--</tbody>-->
-                                                                        <!--</table>-->
-                                                                    <!--</div>-->
-
-                                                                <!--</uib-tab>-->
-
-                                                            <!--</uib-tabset>-->
-                                                        <!--</div>-->
-
-
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
                                         <!--TABLES-->
+
                                     </div>
 
 
@@ -1234,6 +1036,7 @@
 
                 <uib-tab heading="Blood Variant Reports" select="setActiveTab('blood_variant_report')">
                     <div class="panel-body">
+
                         <div ng-if="currentBloodVariantReport">
                             <div class="row toolbar-row">
                                 <div class="col-md-8 text-left">
@@ -1316,157 +1119,372 @@
 
                             <div ng-if="activeTab=='blood_variant_report'" d3-cnv-chart=""></div>
 
-                            <!--Single Nucleitide Variant(s)-->
-                            <div class="ibox-title ibox-title-no-line">
-                                <h3>SNVs/MNVs/Indels(s)</h3>
+                            <!--FILTERED-->
+                            <div ng-if="variantReportMode === 'FILTERED'">
+                                <!--Single Nucleitide Variant(s)-->
+                                <div class="ibox-title ibox-title-no-line">
+                                    <h3>SNVs/MNVs/Indels(s) ##</h3>
+                                </div>
+
+                                <table class="table table-hover" role="grid">
+                                    <thead>
+                                        <tr>
+                                            <th ng-if="variantReportMode!=='QC'">Confirm</th>
+                                            <th ng-if="variantReportMode!=='QC'">Comment</th>
+                                            <th>ID</th>
+                                            <th ng-if="variantReportMode!=='QC'">aMOI</th>
+                                            <th>Chrom</th>
+                                            <th>Position</th>
+                                            <th>CDS Ref</th>
+                                            <th>CDS Alt</th>
+                                            <th>OCP Ref</th>
+                                            <th>OCP Alt</th>
+                                            <th>Strand</th>
+                                            <th>Allele Freq</th>
+                                            <th>Func Gene</th>
+                                            <th>Oncomine Variant Class</th>
+                                            <th>Exon</th>
+                                            <th>Function</th>
+                                            <th>HGVS</th>
+                                            <th>Read Depth</th>
+                                            <th>Transcript</th>
+                                            <th>Protein</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="variant in currentBloodVariantReport.variants.snvs_and_indels" style="cursor: auto;" role="row" class="odd">
+                                            <td ng-if="variantReportMode!=='QC'">
+                                                <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentBloodVariantReport.status==='PENDING'">
+                                                </div>
+                                            </td>
+                                            <td ng-if="variantReportMode!=='QC'">
+                                                <a ng-if="variant.comment " href ng-click="editComment(variant, currentBloodVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
+                                            </td>
+                                            <td>{{variant.id}}</td>
+                                            <td ng-if="variantReportMode!=='QC'">{{variant.aMOI}}<sup>({{variant.inclusion}})</sup></td>
+                                            <td>{{variant.chrom}}</td>
+                                            <td>{{variant.position}}</td>
+                                            <td>{{variant.cds_ref}}</td>
+                                            <td>{{variant.cds_alt}}</td>
+                                            <td>{{variant.ocp_ref}}</td>
+                                            <td>{{variant.ocp_alt}}</td>
+                                            <td>{{variant.strand}}</td>
+                                            <td>{{variant.alleleFreq}}</td>
+                                            <td>{{variant.funcGene}}</td>
+                                            <td>{{variant.oncomineVariantClass}}</td>
+                                            <td>{{variant.exon}}</td>
+                                            <td>{{variant.funct}}</td>
+                                            <td>{{variant.hGVS}}</td>
+                                            <td>{{variant.readDepth}}</td>
+                                            <td>{{variant.transcript}}</td>
+                                            <td>{{variant.protein}}</td>
+                                        </tr>
+
+                                        <tr ng-if="!currentBloodVariantReport.variants.snvs_and_indels || !currentBloodVariantReport.variants.snvs_and_indels.length">
+                                            <td colspan="8"><span class="text-muted">No SNVs, MNVs or Indels</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+                                <!--Copy Number Variant(s)-->
+                                <div class="ibox-title ibox-title-no-line">
+                                    <h3>Copy Number Variant(s)</h3>
+                                </div>
+
+                                <table class="table table-hover" role="grid">
+                                    <thead>
+                                        <tr>
+                                            <th ng-if="variantReportMode!=='QC'">Confirm</th>
+                                            <th ng-if="variantReportMode!=='QC'">Comment</th>
+                                            <th>ID</th>
+                                            <th ng-if="variantReportMode!=='QC'">aMOI</th>
+                                            <th>Chrom</th>
+                                            <th>Raw CN</th>
+                                            <th>CN</th>
+                                            <th>CI 5%</th>
+                                            <th>CI 95%</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="variant in currentBloodVariantReport.variants.copy_number_variants" style="cursor: auto;" role="row" class="odd">
+                                            <td ng-if="variantReportMode!=='QC'">
+                                                <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentBloodVariantReport.status==='PENDING'">
+                                                </div>
+                                            </td>
+                                            <td ng-if="variantReportMode!=='QC'">
+                                                <a ng-if="variant.comment " href ng-click="editComment(variant, currentBloodVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
+                                            </td>
+                                            <td>{{variant.id}}</td>
+                                            <td ng-if="variantReportMode!=='QC'">{{variant.aMOI}}<sup>({{variant.inclusion}})</sup></td>
+                                            <td>{{variant.chrom}}</td>
+                                            <td>{{variant.rawCN}}</td>
+                                            <td>{{variant.cn}}</td>
+                                            <td>{{variant.ci5percent}}</td>
+                                            <td>{{variant.ci95percent}}</td>
+                                        </tr>
+
+                                        <tr ng-if="!currentBloodVariantReport.variants.copy_number_variants || !currentBloodVariantReport.variants.copy_number_variants.length">
+                                            <td colspan="8"><span class="text-muted">No Copy Number Variants</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <!--Gene Fusion(s)-->
+                                <div class="ibox-title ibox-title-no-line">
+                                    <h3>Gene Fusion(s)</h3>
+                                </div>
+
+                                <table class="table table-hover" role="grid">
+                                    <thead>
+                                        <tr>
+                                            <th ng-if="variantReportMode!=='QC'">Confirm</th>
+                                            <th ng-if="variantReportMode!=='QC'">Comment</th>
+                                            <th>ID</th>
+                                            <th ng-if="variantReportMode!=='QC'">aMOI</th>
+                                            <th>Gene 2</th>
+                                            <th>Gene 2 Count</th>
+                                            <th>Gene 1</th>
+                                            <th>Gene 1 Count</th>
+                                            <th>Annotation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="variant in currentBloodVariantReport.variants.gene_fusions" style="cursor: auto;" role="row" class="odd">
+                                            <td ng-if="variantReportMode!=='QC'">
+                                                <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentBloodVariantReport.status==='PENDING'">
+                                                </div>
+                                            </td>
+                                            <td ng-if="variantReportMode!=='QC'">
+                                                <a ng-if="variant.comment " href ng-click="editComment(variant, currentBloodVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
+                                            </td>
+                                            <td>{{variant.id}}</td>
+                                            <td ng-if="variantReportMode!=='QC'">{{variant.aMOI}}<sup>({{variant.inclusion}})</sup></td>
+                                            <td>{{variant.gene2}}</td>
+                                            <td>{{variant.gene2count}}</td>
+                                            <td>{{variant.gene1}}</td>
+                                            <td>{{variant.gene1count}}</td>
+                                            <td>{{variant.annotation}}</td>
+                                        </tr>
+
+                                        <tr ng-if="!currentBloodVariantReport.variants.gene_fusions || !currentBloodVariantReport.variants.gene_fusions.length">
+                                            <td colspan="8"><span class="text-muted">No Gene Fusions</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
+                            <!--FILTERED-->
 
-                            <table class="table table-hover" role="grid">
-                                <thead>
-                                    <tr>
-                                        <th ng-if="variantReportMode!=='QC'">Confirm</th>
-                                        <th ng-if="variantReportMode!=='QC'">Comment</th>
-                                        <th>ID</th>
-                                        <th ng-if="variantReportMode!=='QC'">aMOI</th>
-                                        <th>Chrom</th>
-                                        <th>Position</th>
-                                        <th>CDS Ref</th>
-                                        <th>CDS Alt</th>
-                                        <th>OCP Ref</th>
-                                        <th>OCP Alt</th>
-                                        <th>Strand</th>
-                                        <th>Allele Freq</th>
-                                        <th>Func Gene</th>
-                                        <th>Oncomine Variant Class</th>
-                                        <th>Exon</th>
-                                        <th>Function</th>
-                                        <th>HGVS</th>
-                                        <th>Read Depth</th>
-                                        <th>Transcript</th>
-                                        <th>Protein</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="variant in currentBloodVariantReport.variants.snvs_and_indels" style="cursor: auto;" role="row" class="odd">
-                                        <td ng-if="variantReportMode!=='QC'">
-                                            <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentBloodVariantReport.status==='PENDING'">
+                            <!--QC-->
+                            <div ng-if="variantReportMode === 'QC'">
+
+                                <!--TABLES-->
+                                <div class="no-horizontal-padding header-box-container" >
+
+                                    <div class="animated fadeInRight">
+
+                                        <div class="row" >
+
+                                            <div class="col-lg-12">
+
+                                                <!--SNV TABLE-->
+                                                <div class="ibox-title ibox-title-no-line">
+                                                    <h3>SNVs/MNVs/Indels</h3>
+                                                </div>
+                                                <div class="col-md-12 white-bg animated fadeInRight"
+                                                     ng-controller="PatientController as DashCtrl"
+                                                     ng-init="loadSnv_Table()">
+
+                                                    <table datatable="ng"
+                                                           dt-options="DashCtrl.dtOptions"
+                                                           dt-column-defs="DashCtrl.dtColumnDefs"
+                                                           dt-instance="DashCtrl.dtInstance"
+                                                           dt-columns="dtColumns"
+                                                           class="table table-striped table-bordered table-hover">
+                                                        <thead>
+
+                                                        <div class="form-group">
+                                                            <label>
+                                                                <div confirmed="confirmed" custom-element class="pull-right" style="width:200px"></div>
+                                                            </label>
+                                                        </div>
+
+                                                        <tr>
+                                                            <th class="label2" >Id</th>
+                                                            <th class="label2" >Chrom</th>
+                                                            <th class="label2" >Position</th>
+                                                            <th class="label2" >Reference</th>
+                                                            <th class="label2" >Alternative</th>
+                                                            <th class="label2" >Filter</th>
+                                                            <th class="label2" >Allele Freq</th>
+
+                                                            <th class="label2" >Func Gene</th> <!-- openCosmicGene("MTOR") -->
+                                                            <th class="label2" >Oncomine Variant Class</th>
+                                                            <th class="label2" >Exon</th>
+                                                            <th class="label2" >Function</th>
+                                                            <th class="label2" >Hgvs</th>
+                                                            <th class="label2" >Read Depth</th>
+                                                            <th class="label2" >Transcript</th>
+                                                            <th class="label2" >Protein</th>
+                                                        </tr>
+
+                                                        </thead>
+
+                                                        <tbody>
+
+                                                        <tr ng-repeat="ta in snvList | limitTo:totalDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">
+
+                                                            <td>{{::ta.identifier || '-'}}</td>
+                                                            <td>{{::ta.chromosome || '-'}}</td>
+                                                            <td>{{::ta.position || '-'}}</td>
+                                                            <td>{{::ta.reference || '-'}}</td>
+                                                            <td>{{::ta.alternative || '-'}}</td>
+                                                            <td>{{::ta.filter || '-'}}</td>
+                                                            <td>{{::ta.alleleFrequency || '-'}}</td>
+                                                            <td>
+                                                                <a href ng-click="openCosmicGene(ta.gene)" class="report-link">{{::ta.gene}}</a>
+                                                            </td>
+                                                            <td>{{::ta.oncominevariantclass || '-'}}</td>
+                                                            <td>{{::ta.exon || '-'}}</td>
+                                                            <td>{{::ta.function || '-'}}</td>
+                                                            <td>{{::ta.hgvs || '-'}}</td>
+                                                            <td>{{::ta.readDepth || '-'}}</td>
+                                                            <td>{{::ta.transcript || '-'}}</td>
+                                                            <td>{{::ta.proteinMatch || '-'}}</td>
+
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!--SNV TABLE-->
+
+                                                <!--CNV TABLE-->
+                                                <div class="ibox-title ibox-title-no-line">
+                                                    <h3>Copy Number Variant(s)</h3>
+                                                </div>
+                                                <div class="col-md-12 white-bg animated fadeInRight"
+                                                     ng-controller="PatientController as DashCtrl"
+                                                     ng-init="loadQc_Table()">
+                                                    <table datatable="ng"
+                                                           dt-options="DashCtrl.dtOptions"
+                                                           dt-column-defs="DashCtrl.dtColumnDefs"
+                                                           dt-instance="DashCtrl.dtInstance"
+                                                           dt-columns="dtColumns"
+                                                           class="table table-striped table-bordered table-hover">
+                                                        <thead>
+
+                                                        <div class="form-group">
+                                                            <label>
+                                                                <div confirmed="confirmed" custom-element class="pull-right" style="width:200px"></div>
+                                                            </label>
+                                                        </div>
+
+                                                        <tr>
+                                                            <th class="label2" >Id</th>
+                                                            <th class="label2" >Chrom</th>
+                                                            <th class="label2" >Position</th>
+                                                            <th class="label2" >Reference</th>
+                                                            <th class="label2" >Alternative</th>
+                                                            <th class="label2" >Filter</th>
+                                                            <th class="label2" >RAW Nc</th>
+                                                            <th class="label2" >FCN</th>
+                                                            <th class="label2" >Cl 5%</th>
+                                                            <th class="label2" >Cl 95%</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                        <tr ng-repeat="ta in cnvList | limitTo:totalDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">
+                                                            <td>
+                                                                <a href ng-click="openCosmicGene(ta.identifier)" class="report-link"> {{::ta.identifier || '-'}} </a>
+                                                            </td>
+                                                            <td>{{::ta.chromosome || '-'}}</td>
+                                                            <td>{{::ta.position || '-'}}</td>
+                                                            <td>{{::ta.reference || '-'}}</td>
+                                                            <td>{{::ta.alternative || '-'}}</td>
+                                                            <td>{{::ta.filter || '-'}}</td>
+                                                            <td>{{::ta.rawCopyNumber || '-'}}</td>
+                                                            <td>{{::ta.copyNumber || '-'}}</td>
+                                                            <td>{{::ta.confidenceInterval5percent || '-'}}</td>
+                                                            <td>{{::ta.confidenceInterval95percent || '-'}}</td>
+
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+                                                <!--CNV TABLE-->
+
+                                                <!--GENE TABLE-->
+                                                <div class="ibox-title ibox-title-no-line">
+                                                    <h3>Gene Fusion(s)</h3>
+                                                </div>
+                                                <div class="col-md-12 white-bg animated fadeInRight"
+                                                     ng-controller="PatientController as DashCtrl"
+                                                     ng-init="loadGene_Table()">
+                                                    <table datatable="ng"
+                                                           dt-options="DashCtrl.dtOptions"
+                                                           dt-column-defs="DashCtrl.dtColumnDefs"
+                                                           dt-instance="DashCtrl.dtInstance"
+                                                           dt-columns="dtColumns"
+                                                           class="table table-striped table-bordered table-hover">
+                                                        <thead>
+
+                                                        <div class="form-group">
+                                                            <label>
+                                                                <div confirmed="confirmed" custom-element class="pull-right" style="width:200px"></div>
+                                                            </label>
+                                                        </div>
+
+                                                        <tr>
+                                                            <th class="label2" >Id</th> <!--openCosmicGene("ACVRL1")-->
+                                                            <th class="label2" >Chrom</th>
+                                                            <th class="label2" >Position</th>
+                                                            <th class="label2" >Reference</th>
+                                                            <th class="label2" >Alternative</th>
+                                                            <th class="label2" >Filter</th>
+                                                            <th class="label2" >Func Gene</th>
+                                                            <th class="label2" >Oncomine Variant Class</th>
+                                                            <th class="label2" >Exon</th>
+                                                            <th class="label2" >Function</th>
+                                                            <th class="label2" >Read Count</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                        <tr ng-repeat="ta in geneList | limitTo:totalDisplayed " style="cursor: auto; " role="row" class="odd">
+                                                            <td>
+                                                                <a href ng-click="openCosmicFusionId(ta.identifier)" class="report-link"> {{::ta.identifier || '-'}} </a>
+                                                                <!--{{::ta.chromosome || '-'}}-->
+                                                            </td>
+                                                            <td>{{::ta.chromosome || '-'}}</td>
+                                                            <td>{{::ta.position || '-'}}</td>
+                                                            <td>{{::ta.reference || '-'}}</td>
+                                                            <td>{{::ta.alternative || '-'}}</td>
+                                                            <td>{{::ta.filter || '-'}}</td>
+                                                            <td>
+
+                                                                {{::ta.gene || '-'}}
+
+                                                            </td>
+                                                            <td>{{::ta.oncominevariantclass || '-'}}</td>
+                                                            <td>{{::ta.exon || '-'}}</td>
+                                                            <td>{{::ta.function || '-'}}</td>
+                                                            <td>{{::ta.readDepth || '-'}}</td>
+
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!--GENE TABLE-->
                                             </div>
-                                        </td>
-                                        <td ng-if="variantReportMode!=='QC'">
-                                            <a ng-if="variant.comment " href ng-click="editComment(variant, currentBloodVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
-                                        </td>
-                                        <td>{{variant.id}}</td>
-                                        <td ng-if="variantReportMode!=='QC'">{{variant.aMOI}}<sup>({{variant.inclusion}})</sup></td>
-                                        <td>{{variant.chrom}}</td>
-                                        <td>{{variant.position}}</td>
-                                        <td>{{variant.cds_ref}}</td>
-                                        <td>{{variant.cds_alt}}</td>
-                                        <td>{{variant.ocp_ref}}</td>
-                                        <td>{{variant.ocp_alt}}</td>
-                                        <td>{{variant.strand}}</td>
-                                        <td>{{variant.alleleFreq}}</td>
-                                        <td>{{variant.funcGene}}</td>
-                                        <td>{{variant.oncomineVariantClass}}</td>
-                                        <td>{{variant.exon}}</td>
-                                        <td>{{variant.funct}}</td>
-                                        <td>{{variant.hGVS}}</td>
-                                        <td>{{variant.readDepth}}</td>
-                                        <td>{{variant.transcript}}</td>
-                                        <td>{{variant.protein}}</td>
-                                    </tr>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--TABLES-->
 
-                                    <tr ng-if="!currentBloodVariantReport.variants.snvs_and_indels || !currentBloodVariantReport.variants.snvs_and_indels.length">
-                                        <td colspan="8"><span class="text-muted">No SNVs, MNVs or Indels</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-
-                            <!--Copy Number Variant(s)-->
-                            <div class="ibox-title ibox-title-no-line">
-                                <h3>Copy Number Variant(s)</h3>
                             </div>
-
-                            <table class="table table-hover" role="grid">
-                                <thead>
-                                    <tr>
-                                        <th ng-if="variantReportMode!=='QC'">Confirm</th>
-                                        <th ng-if="variantReportMode!=='QC'">Comment</th>
-                                        <th>ID</th>
-                                        <th ng-if="variantReportMode!=='QC'">aMOI</th>
-                                        <th>Chrom</th>
-                                        <th>Raw CN</th>
-                                        <th>CN</th>
-                                        <th>CI 5%</th>
-                                        <th>CI 95%</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="variant in currentBloodVariantReport.variants.copy_number_variants" style="cursor: auto;" role="row" class="odd">
-                                        <td ng-if="variantReportMode!=='QC'">
-                                            <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentBloodVariantReport.status==='PENDING'">
-                                            </div>
-                                        </td>
-                                        <td ng-if="variantReportMode!=='QC'">
-                                            <a ng-if="variant.comment " href ng-click="editComment(variant, currentBloodVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
-                                        </td>
-                                        <td>{{variant.id}}</td>
-                                        <td ng-if="variantReportMode!=='QC'">{{variant.aMOI}}<sup>({{variant.inclusion}})</sup></td>
-                                        <td>{{variant.chrom}}</td>
-                                        <td>{{variant.rawCN}}</td>
-                                        <td>{{variant.cn}}</td>
-                                        <td>{{variant.ci5percent}}</td>
-                                        <td>{{variant.ci95percent}}</td>
-                                    </tr>
-
-                                    <tr ng-if="!currentBloodVariantReport.variants.copy_number_variants || !currentBloodVariantReport.variants.copy_number_variants.length">
-                                        <td colspan="8"><span class="text-muted">No Copy Number Variants</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-
-                            <!--Gene Fusion(s)-->
-                            <div class="ibox-title ibox-title-no-line">
-                                <h3>Gene Fusion(s)</h3>
-                            </div>
-
-                            <table class="table table-hover" role="grid">
-                                <thead>
-                                    <tr>
-                                        <th ng-if="variantReportMode!=='QC'">Confirm</th>
-                                        <th ng-if="variantReportMode!=='QC'">Comment</th>
-                                        <th>ID</th>
-                                        <th ng-if="variantReportMode!=='QC'">aMOI</th>
-                                        <th>Gene 2</th>
-                                        <th>Gene 2 Count</th>
-                                        <th>Gene 1</th>
-                                        <th>Gene 1 Count</th>
-                                        <th>Annotation</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="variant in currentBloodVariantReport.variants.gene_fusions" style="cursor: auto;" role="row" class="odd">
-                                        <td ng-if="variantReportMode!=='QC'">
-                                            <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentBloodVariantReport.status==='PENDING'">
-                                            </div>
-                                        </td>
-                                        <td ng-if="variantReportMode!=='QC'">
-                                            <a ng-if="variant.comment " href ng-click="editComment(variant, currentBloodVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
-                                        </td>
-                                        <td>{{variant.id}}</td>
-                                        <td ng-if="variantReportMode!=='QC'">{{variant.aMOI}}<sup>({{variant.inclusion}})</sup></td>
-                                        <td>{{variant.gene2}}</td>
-                                        <td>{{variant.gene2count}}</td>
-                                        <td>{{variant.gene1}}</td>
-                                        <td>{{variant.gene1count}}</td>
-                                        <td>{{variant.annotation}}</td>
-                                    </tr>
-
-                                    <tr ng-if="!currentBloodVariantReport.variants.gene_fusions || !currentBloodVariantReport.variants.gene_fusions.length">
-                                        <td colspan="8"><span class="text-muted">No Gene Fusions</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <!--QC-->
 
                             <div class="ibox-content ibox-title-no-line" ng-if="showVariantReportActions(currentBloodVariantReport)">
                                 <div class="row">
