@@ -101,7 +101,12 @@
                                                 <i class="fa fa-file-text-o"></i>
                                             </a>
                                         </td>
-                                        <td>{{ patient.clia_lab || '-' }}</td>
+                                        <td ng-if="patient.clia_lab === 'MoCha'">
+                                            <a ui-sref="iradmin({branch: 'mocha'})">{{ patient.clia_lab || '-' }}</a>
+                                        </td>
+                                        <td ng-if="patient.clia_lab === 'MDA'">
+                                            <a ui-sref="iradmin({branch: 'mdacc'})">{{ patient.clia_lab || '-' }}</a>
+                                        </td>
                                         <td>{{ patient.specimen_received_date | gmt }}</td>
                                         <td>{{ patient.variant_report_received_date | gmt }}</td>
                                         <td><span ng-if="patient.days_pending >= days_pending_range.upper_bound_yellow" class="label label-danger">{{ patient.days_pending || '-' }}</span>
