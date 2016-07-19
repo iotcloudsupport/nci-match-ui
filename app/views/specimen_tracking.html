@@ -30,7 +30,9 @@
                                         <h3 class="font-bold no-margins">
                                             {{sites.mda.percent}}%
                                         </h3>
-                                        <small>MDA</small>
+                                        <small>
+                                            <a ui-sref="iradmin({branch: 'mdacc'})" style="color: white">MDA</a>
+                                        </small>
                                     </div>
                                 </div>
                             </div>
@@ -42,7 +44,9 @@
                                         <h3 class="font-bold no-margins">
                                             {{sites.mocha.percent}}%
                                         </h3>
-                                        <small>MoCha</small>
+                                        <small>
+                                            <a ui-sref="iradmin({branch: 'mocha'})" style="color: white">MoCha</a>
+                                        </small>
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +100,12 @@
                                     <td>{{ specimenTrackingItem.received_date | gmt }}</td>
                                     <td>{{ specimenTrackingItem.type }}</td>
                                     <td>{{ specimenTrackingItem.shipped_date | gmt }}</td>
-                                    <td>{{ specimenTrackingItem.site }}</td>
+                                    <td ng-if="specimenTrackingItem.site === 'MoCha'">
+                                        <a ui-sref="iradmin({branch: 'mocha'})">{{ specimenTrackingItem.site || '-' }}</a>
+                                    </td>
+                                    <td ng-if="specimenTrackingItem.site === 'MDA'">
+                                        <a ui-sref="iradmin({branch: 'mdacc'})">{{ specimenTrackingItem.site || '-' }}</a>
+                                    </td>
                                     <td>{{ specimenTrackingItem.fedex_tracking }}</td>
                                     <td>{{ specimenTrackingItem.pathology_status }}</td>
                                     <td>{{ specimenTrackingItem.pathology_status_date | gmt }}</td>
