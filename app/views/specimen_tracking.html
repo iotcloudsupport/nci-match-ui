@@ -101,10 +101,10 @@
                                     <td><a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id, section: 'tissue_variant_report', molecular_id: specimenTrackingItem.molecular_id, analysis_id: specimenTrackingItem.analysis_id })">{{ specimenTrackingItem.molecular_id || '-' }}</a></td>
                                     <td><a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id, section: 'surgical_event', surgical_event_id: specimenTrackingItem.surgical_event_id })">{{ specimenTrackingItem.surgical_event_id || '-' }}</a></td>
                                     <td><a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id })">{{ specimenTrackingItem.patient_id}}</a></td>
-                                    <td>{{ specimenTrackingItem.collected_date | gmt }}</td>
-                                    <td>{{ specimenTrackingItem.received_date | gmt }}</td>
+                                    <td>{{ specimenTrackingItem.collected_date | utc }}</td>
+                                    <td>{{ specimenTrackingItem.received_date | utc }}</td>
                                     <td>{{ specimenTrackingItem.type }}</td>
-                                    <td>{{ specimenTrackingItem.shipped_date | gmt }}</td>
+                                    <td>{{ specimenTrackingItem.shipped_date | utc }}</td>
                                     <td ng-if="specimenTrackingItem.site === 'MoCha'">
                                         <a ui-sref="iradmin({branch: 'mocha'})">{{ specimenTrackingItem.site || '-' }}</a>
                                     </td>
@@ -113,7 +113,7 @@
                                     </td>
                                     <td>{{ specimenTrackingItem.fedex_tracking }}</td>
                                     <td>{{ specimenTrackingItem.pathology_status }}</td>
-                                    <td>{{ specimenTrackingItem.pathology_status_date | gmt }}</td>
+                                    <td>{{ specimenTrackingItem.pathology_status_date | utc }}</td>
                                 </tr>
                                 <tr ng-repeat-end>
 

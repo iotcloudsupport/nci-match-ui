@@ -284,7 +284,6 @@
             setupSurgicalEventOptions();
             setupVariantReportOptions();
             setupVariantReports();
-            setupVariantReportOptions();
             setupAssignmentReportOptions();
             setupSelectedTreatmentArm();
             setupUserName();
