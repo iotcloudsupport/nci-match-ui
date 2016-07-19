@@ -451,10 +451,18 @@
                                                                                                         </thead>
                                                                                                         <tbody>
                                                                                                         <tr ng-style="{'background-color':'{{ sample.hasMatchingVariant | irsample }}'}" ng-repeat="sample in positiveControlList">
-                                                                                                            <td>{{sample.identifier || '-' }}</td>
+                                                                                                            <td>
+                                                                                                                <a class="report-link" href ng-click="openCosmicId( sample.identifier )">
+                                                                                                                    {{sample.identifier || '-' }}
+                                                                                                                </a>
+                                                                                                            </td>
                                                                                                             <td>{{sample.chromosome || '-' }}</td>
                                                                                                             <td>{{sample.position || '-' }}</td>
-                                                                                                            <td>{{sample.geneName || '-' }}</td>
+                                                                                                            <td>
+                                                                                                                <a class="report-link" href ng-click="openCosmicGene( sample.geneName )">
+                                                                                                                    {{sample.geneName || '-' }}
+                                                                                                                </a>
+                                                                                                            </td>
                                                                                                             <td>{{sample.variantType || '-' }}</td>
                                                                                                             <td>{{sample.reference || '-' }}</td>
                                                                                                             <td>{{sample.alternative || '-' }}</td>
@@ -490,9 +498,17 @@
                                                                                                         </thead>
                                                                                                         <tbody>
                                                                                                         <tr ng-repeat="sample in negativeVariantsList">
-                                                                                                            <td>{{sample.publicMedIds || '-' }}</td>
+                                                                                                            <td>
+                                                                                                                <a class="report-link" href ng-click="openCosmicId( sample.publicMedIds )">
+                                                                                                                    {{sample.publicMedIds || '-' }}
+                                                                                                                </a>
+                                                                                                            </td>
                                                                                                             <td>{{sample.position || '-' }}</td>
-                                                                                                            <td>{{sample.geneName || '-' }}</td>
+                                                                                                            <td>
+                                                                                                                <a class="report-link" href ng-click="openCosmicGene( sample.geneName )">
+                                                                                                                    {{sample.geneName || '-' }}
+                                                                                                                </a>
+                                                                                                            </td>
                                                                                                             <td>{{sample.variantType || '-' }}</td>
                                                                                                             <td>{{sample.reference || '-' }}</td>
                                                                                                             <td>{{sample.alternative || '-' }}</td>
@@ -716,10 +732,18 @@
                                                                                                     </thead>
                                                                                                     <tbody>
                                                                                                     <tr ng-style="{'background-color':'{{ sample.hasMatchingVariant | irsample }}'}" ng-repeat="sample in positiveControlList">
-                                                                                                        <td>{{sample.identifier || '-' }}</td>
+                                                                                                        <td>
+                                                                                                            <a class="report-link" href ng-click="openCosmicId( sample.identifier )">
+                                                                                                                {{sample.identifier || '-' }}
+                                                                                                            </a>
+                                                                                                        </td>
                                                                                                         <td>{{sample.chromosome || '-' }}</td>
                                                                                                         <td>{{sample.position || '-' }}</td>
-                                                                                                        <td>{{sample.geneName || '-' }}</td>
+                                                                                                        <td>
+                                                                                                            <a class="report-link" href ng-click="openCosmicGene( sample.geneName )">
+                                                                                                                {{sample.geneName || '-' }}
+                                                                                                            </a>
+                                                                                                        </td>
                                                                                                         <td>{{sample.variantType || '-' }}</td>
                                                                                                         <td>{{sample.reference || '-' }}</td>
                                                                                                         <td>{{sample.alternative || '-' }}</td>
@@ -1195,7 +1219,12 @@
                                                                                                         </thead>
                                                                                                         <tbody>
                                                                                                         <tr ng-repeat="sample in indelsList">
-                                                                                                            <td>{{sample.identifier || '-' }}</td>
+                                                                                                            <td>
+                                                                                                                <a class="report-link" href ng-click="openCosmicId( sample.identifier )">
+                                                                                                                    {{sample.identifier || '-' }}
+                                                                                                                </a>
+                                                                                                                <!--{{sample.identifier || '-' }}-->
+                                                                                                            </td>
                                                                                                             <td>{{sample.chromosome || '-' }}</td>
                                                                                                             <td>{{sample.position || '-' }}</td>
                                                                                                             <td>{{sample.reference || '-' }}</td>
