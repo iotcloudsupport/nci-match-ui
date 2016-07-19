@@ -179,20 +179,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             barStrokeWidth: 2,
             barValueSpacing: 5,
             barDatasetSpacing: 1
-            // legendTemplate : '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
-
-            // legend: {
-            //     show: true,
-            //     container: '#legendDiv'
-            // }
         };
-
-            // function setupTooltip(label, xval, yval) {
-            //     return label + "<br>------------------------------------------<br>Patients: " + yval;
-            // }
-
-
-
 
             $scope.gotoBottom = function(id) {
 
@@ -205,11 +192,6 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     // $("body").animate({scrollTop: $location.offset().top}, "slow");
                     $anchorScroll();
                 });
-
-                // $location.hash('bottom');
-                //
-                // // call $anchorScroll()
-                // $anchorScroll();
             };
 
         //Populate Data
