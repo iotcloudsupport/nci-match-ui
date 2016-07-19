@@ -332,9 +332,22 @@
             if (slideShipments.length > 0) {
                 for (var k = 0; k < slideShipments.length; k++) {
                     var slideSpecimenShipment = slideShipments[k];
-                    slideSpecimenShipment.surgicalEvent.specimen_shipments.delete(slideSpecimenShipment.shipment);
+                    removeFromArray(slideSpecimenShipment.surgicalEvent.specimen_shipments, slideSpecimenShipment.shipment)
                 }
             }
+        }
+
+        function removeFromArray(arrayObj, elementObj) {
+            if (!arrayObj || !elementObj)
+                return -1;
+
+            var index = arrayObj.indexOf(elementObj);
+            if (index >= 0) {
+                arrayObj.splice(index, 1);
+                return index;
+            }
+
+            return -1;
         }
 
         function setupSurgicalEventOptions() {
