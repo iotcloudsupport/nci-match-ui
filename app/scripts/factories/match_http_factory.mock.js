@@ -16,7 +16,9 @@
                 loadSpecimenTrackingList: loadSpecimenTrackingList,
                 displayTreatmentArmList: displayTreatmentArmList,
                 loadPatientsForTa: loadPatientsForTa,
-                loadTreatmentArmDetails: loadTreatmentArmDetails
+                loadTreatmentArmDetails: loadTreatmentArmDetails,
+                loadQc_Table: loadQc_Table,
+                loadSnv_Table: loadSnv_Table
             };
 
             function loadPatient(id) {
@@ -79,6 +81,14 @@
             
             function displayTreatmentArmList() {
                 return $http.get('data/treatment_arms_list.json');
+            }
+
+            function loadQc_Table(){
+                return $http.get('data/sample_qc.json');
+            }
+
+            function loadSnv_Table(){
+                return $http.get('data/sample_qc.json');
             }
             
         });
