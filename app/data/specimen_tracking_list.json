@@ -1,103 +1,87 @@
 [
   {
-    "molecular_id": "MSN234240",
-    "patient_id": "100099",
-    "collected_date": 1519735694848,
-    "received_date": 1519735777810,
+    "molecular_id": "B-987456",
+    "patient_id": "100100",
+    "collected_date": "2015-07-08T09:06:33+00:00",
+    "received_date": "2015-08-14T22:08:33+00:00",
     "failed_date": "",
-    "surgical_event_id": "125",
-    "type": "SLIDE",
-    "shipped_date": 151983588910,
-    "site": "MDA",
-    "fedex_tracking": "120932177598",
-    "pathology_status": "Y",
-    "pathology_status_date": 1511235777810,
-    "variant_report_confirmed_date": "",
-    "assays": [
-      {
-        "surgical_event_id": "125",
-        "ihc": "PTEN",
-        "assay_order_date": 15112345678,
-        "assay_result_date": 15112355728,
-        "result_information": "POSITIVE"
-      },
-      {
-        "surgical_event_id": "125",
-        "ihc": "MSH2",
-        "assay_order_date": 15112345678,
-        "assay_result_date": 15112355728,
-        "result_information": ""
-      }
-    ]
-  },
-  {
-    "molecular_id": "MSN223641",
-    "patient_id": "100065",
-    "collected_date": 1511235694848,
-    "received_date": 1511235777810,
-    "failed_date": "",
-    "surgical_event_id": "125",
-    "type": "BLOOD",
-    "shipped_date": 151983588910,
-    "site": "MDA",
-    "fedex_tracking": "120932173498",
-    "pathology_status": "Y",
-    "pathology_status_date": 1511235777810,
-    "variant_report_confirmed_date": "",
-    "assays": []
-  },
-  {
-    "molecular_id": "MSN234242",
-    "patient_id": "100136",
-    "collected_date": 1511235694848,
-    "received_date": 1511235777810,
-    "failed_date": "",
-    "surgical_event_id": "125",
+    "surgical_event_id": "SUREVT099",
     "type": "TISSUE",
-    "shipped_date": 151983588910,
-    "site": "MoCha",
-    "fedex_tracking": "127732177598",
-    "pathology_status": "Y",
-    "pathology_status_date": 1511235777810,
-    "variant_report_confirmed_date": "",
-    "assays": []
-  },
-  {
-    "molecular_id": "MSN233643",
-    "patient_id": "100136",
-    "collected_date": 1519735694848,
-    "received_date": 1519735777810,
-    "failed_date": "",
-    "surgical_event_id": "125",
-    "type": "SLIDE",
-    "shipped_date": 151983588910,
+    "shipped_date": "2015-07-09T09:06:33+00:00",
     "site": "MDA",
-    "fedex_tracking": "120932119598",
-    "pathology_status": "Y",
-    "pathology_status_date": 1511235777810,
-    "variant_report_confirmed_date": "",
+    "fedex_tracking": "675867853526 ",
+    "pathology_status": "Agreed on pathology",
+    "pathology_status_date": "2015-09-09T22:06:33+00:00",
+    "variant_report_confirmed_date": "2015-09-09T22:06:33+00:00",
     "assays": [
       {
-        "surgical_event_id": "125",
-        "ihc": "PTEN",
-        "assay_order_date": 15112345678,
-        "assay_result_date": 15112355728,
+        "gene": "MLH1",
+        "assay_order_date": "2015-09-09T22:06:33+00:00",
+        "assay_result_date": "2015-09-10T22:07:33+00:00",
         "result_information": "POSITIVE"
       },
       {
-        "surgical_event_id": "125",
-        "ihc": "MSH2",
-        "assay_order_date": 15112345678,
-        "assay_result_date": 15112355728,
-        "result_information": ""
-      },
-      {
-        "surgical_event_id": "125",
-        "ihc": "MLH1",
-        "assay_order_date": 15112345678,
-        "assay_result_date": 15112355728,
-        "result_information": ""
+        "gene": "MSCH2",
+        "assay_order_date": "2015-09-09T22:06:33+00:00",
+        "assay_result_date": "2015-09-10T22:06:33+00:00",
+        "result_information": "POSITIVE"
       }
     ]
+  },
+  {
+    "molecular_id": "MOL651_1",
+    "patient_id": "100099",
+    "collected_date": "2016-06-09T22:06:33+00:00",
+    "received_date": "2016-06-10T12:06:33+00:00",
+    "failed_date": "2016-06-15T22:06:33+00:00",
+    "surgical_event_id": "SUREVT651",
+    "type": "TISSUE",
+    "shipped_date": "2016-06-10T22:06:33+00:00",
+    "site": "MoCha",
+    "fedex_tracking": "675867850791",
+    "pathology_status": "Agreed on pathology",
+    "pathology_status_date": "2016-06-09T22:06:33+00:00",
+    "variant_report_confirmed_date": "2016-06-09T22:06:33+00:00",
+    "assays": [
+      {
+        "gene": "PTEN",
+        "assay_order_date": "2016-06-09T22:06:33+00:00",
+        "assay_result_date": "2016-07-09T22:06:33+00:00",
+        "result_information": "POSITIVE"
+      },
+      {
+        "gene": "MLH1",
+        "assay_order_date": "2016-06-09T22:06:33+00:00",
+        "assay_result_date": "2016-07-09T22:06:33+00:00",
+        "result_information": "POSITIVE"
+      }
+    ]
+  },
+  {
+    "molecular_id": "MOL100136_02_02",
+    "patient_id": "100136",
+    "collected_date": "2016-05-09T22:06:33+00:00",
+    "received_date": "2016-05-10T12:36:33+00:00",
+    "failed_date": "2016-05-30T13:54:24+00:00",
+    "surgical_event_id": "SEI100136_02",
+    "type": "TISSUE",
+    "shipped_date": "2016-05-10T22:06:33+00:00",
+    "site": "MoCha",
+    "fedex_tracking": "6758 6785 9276",
+    "pathology_status": "Agreed on pathology",
+    "pathology_status_date": "2016-05-28T12:46:35+00:00",
+    "variant_report_confirmed_date": "2016-05-30T13:54:24+00:00",
+    "assays": [{
+      "gene": "PTEN",
+      "assay_order_date": "2016-05-12T18:15:16+00:00",
+      "assay_result_date": "2016-05-15T09:37:23+00:00",
+      "result_information": "POSITIVE"
+    },
+      {
+        "gene": "MLH1",
+        "assay_order_date": "2016-05-12T18:15:16+00:00",
+        "assay_result_date": "2016-05-15T09:37:23+00:00",
+        "result_information": "POSITIVE"
+      }]
   }
 ]
