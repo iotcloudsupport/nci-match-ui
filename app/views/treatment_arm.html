@@ -20,7 +20,7 @@
 
     <div class="wrapper">
 
-        <div ng-controller="TreatmentArmController as TaCtrl" ng-init="loadTreatmentArmDetails()" class="wrapper">
+        <div class="wrapper">
 
             <div class="no-horizontal-padding header-box-container">
                 <div class="row">
@@ -102,7 +102,7 @@
                                                 <div id="legendContainer" style="text-align:left;overflow-y:auto"></div>
                                             </div>
                                             <div id="patientPieChartContainer" class="flot-chart" style="height:360px;padding:40px 0px 20px 100px">
-                                                <flot id="patientPieChart" dataset="currentVersion.pie_dataset" options="pieOptions" height="100%"></flot>
+                                                <flot id="patientPieChart" options="patientPieChartOptions" dataset="patientPieChartDataset" height="100%"></flot>
                                             </div>
                                         </div>
                                     </div>
@@ -117,7 +117,7 @@
                                                 <div id="diseaseLegendContainer" style="text-align:left;overflow-y:auto"></div>
                                             </div>
                                             <div id="diseasePieChartContainer" class="flot-chart" style="height:360px;padding:40px 0px 20px 100px">
-                                                <flot id="diseasePieChart" dataset="currentVersion.disease_pie_dataset" options="diseasePieOptions" height="100%"></flot>
+                                                <flot id="diseasePieChart" options="diseasePieChartOptions" dataset="diseasePieChartDataset" height="100%"></flot>
                                             </div>
                                         </div>
                                     </div>
@@ -272,7 +272,7 @@
                                                         </div>
                                                     </div>
                                                     <br><br>
-                                                    <div class="row" ng-if="inExclusionType == 'inclusion'">
+                                                    <div class="row" ng-if="inExclusionType === 'inclusion'">
                                                         <table datatable="ng" dt-options="dtOptions" class="table table-striped table-bordered table-hover" style="width:100%">
                                                             <thead>
                                                                 <tr>
@@ -320,7 +320,7 @@
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                    <div class="row" ng-if="inExclusionType == 'exclusion'">
+                                                    <div class="row" ng-if="inExclusionType === 'exclusion'">
                                                         <table datatable="ng" dt-options="dtOptions" class="table table-striped table-bordered table-hover" style="width:100%">
                                                             <thead>
                                                                 <tr>
@@ -458,6 +458,7 @@
                                             </div>
                                         </div>
                                     </uib-tab>
+
                                     <uib-tab heading="Gene Fusions">
                                         <div class="panel-body">
                                             <div class="ibox float-e-margins">
@@ -537,6 +538,7 @@
                                             </div>
                                         </div>
                                     </uib-tab>
+
                                     <uib-tab heading="Non-Hotspot Rules">
                                         <div class="panel-body">
                                             <div class="ibox float-e-margins">
@@ -624,6 +626,7 @@
                                             </div>
                                         </div>
                                     </uib-tab>
+
                                     <uib-tab heading="Non-Sequencing Assays">
                                         <div class="panel-body">
                                             <div class="ibox float-e-margins">
@@ -643,15 +646,15 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr ng-repeat="item in currentVersion.nonSequencingAssays">
+                                                                <tr ng-repeat="item in currentVersion.pten_results">
                                                                     <td>{{item.assay || '-'}}</td>
-                                                                    <td><a ng-click="openGene(item.gene_name)">{{item.gene_name || '-'}}</a></td>
-                                                                    <td>{{item.result || '-'}}</td>
-                                                                    <td>{{item.variantAssociation || '-'}}</td>
+                                                                    <td><a ng-click="openGene(item.pten_variant)">{{item.pten_variant || '-'}}</a></td>
+                                                                    <td>{{item.pten_ihc_result || '-'}}</td>
+                                                                    <td>{{item.variant_association || '-'}}</td>
                                                                     <td>{{item.level_of_evidence || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.totNumPtsWithGene || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.ptsWithGeneOnArm || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.pctPtsWithGeneOnArmOfTotPtsWithGene || '-'}}</td>
+                                                                    <td style="text-align:right">{{item.num_patients_with_gene || '-'}}</td>
+                                                                    <td style="text-align:right">{{item.num_patients_with_gene_on_arm || '-'}}</td>
+                                                                    <td style="text-align:right">{{item.percent_patients_with_gene_on_arm || '-'}}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -674,12 +677,12 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>{{currentVersion.text || '-'}}</td>
+                                        <td>{{currentVersion.version || '-'}}</td>
                                     </tr>
                                     <tr ng-repeat-end>
                                         <td colspan="7">
                                             <ul class="panel-list">
-                                                <li ng-repeat="item in currentVersion.versionHistory.history" class="info-element">
+                                                <li ng-repeat="item in currentVersion.version_history" class="info-element">
                                                     <div class="row">
                                                         <div class="col-md-4 col-sm-6 text-left">
                                                             <dl class="dl-horizontal-narrow">

@@ -11,6 +11,20 @@
     "gene": "EGFR",
     "treatment_arm_status": "SUSPENDED",
     "study_id": "APEC1621",
+    "version_history": [
+      {
+        "status": "OPEN",
+        "date": "January 9, 2016 10:10PM GMT"
+      },
+      {
+        "status": "SUSPENDED",
+        "date": "February 20, 2016 10:10PM GMT"
+      },
+      {
+        "status": "CLOSED",
+        "date": "Febrary 28, 2016 9:15AM GMT"
+      }
+    ],
     "assay_results": [
       {
         "assay_result_status": "POSITIVE",
@@ -558,7 +572,12 @@
       {
         "pten_variant": "PRESENT",
         "description": null,
-        "pten_ihc_result": "POSITIVE"
+        "pten_ihc_result": "POSITIVE",
+        "variant_association": "ABSENT",
+        "level_of_evidence": "1",
+        "num_patients_with_gene": "3",
+        "num_patients_with_gene_on_arm": "1",
+        "percent_patients_with_gene_on_arm": "33"
       }
     ],
     "status_log": {
@@ -671,6 +690,20 @@
     "gene": "EGFR",
     "treatment_arm_status": "SUSPENDED",
     "study_id": "APEC1621",
+    "version_history": [
+      {
+        "status": "OPEN",
+        "date": "January 9, 2016 10:10PM GMT"
+      },
+      {
+        "status": "SUSPENDED",
+        "date": "February 20, 2016 10:10PM GMT"
+      },
+      {
+        "status": "CLOSED",
+        "date": "Febrary 28, 2016 9:15AM GMT"
+      }
+    ],
     "assay_results": [
       {
         "assay_result_status": "POSITIVE",
@@ -1211,7 +1244,12 @@
       {
         "pten_variant": "PRESENT",
         "description": null,
-        "pten_ihc_result": "POSITIVE"
+        "pten_ihc_result": "POSITIVE",
+        "variant_association": "ABSENT",
+        "level_of_evidence": "1",
+        "num_patients_with_gene": "3",
+        "num_patients_with_gene_on_arm": "1",
+        "percent_patients_with_gene_on_arm": "33"
       }
     ],
     "status_log": {

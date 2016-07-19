@@ -28,6 +28,7 @@
 
         $scope.loadTreatmentArmDetails = loadTreatmentArmDetails;
         $scope.loadPatients = loadPatients;
+        $scope.openId = openId;
 
         $scope.patients = [];
 
@@ -41,27 +42,11 @@
             lit: 'Lit Ref'
         };
 
-        $scope.drugsDiseases = [
-            {}
-        ];
+        $scope.patientPieChartOptions = {};
+        $scope.patientPieChartDataset = [];
 
-        $scope.versionHistory = {
-            versionStatus: 'OPEN',
-            history: [
-                { status: 'OPEN', date: 'March 17, 2016 10:10PM GMT' }
-            ]
-        };
-
-        $scope.versionHistoryClosed = {
-            versionStatus: 'CLOSED',
-            history: [
-                { status: 'OPEN', date: 'December 02, 2016 4:00AM GMT' },
-                { status: 'SUSPENDED', date: 'December 20, 2015 10:10PM GMT' },
-                { status: 'CLOSED', date: 'February 20, 2016 9:00PM GMT' }
-            ]
-        };
-
-        $scope.versions = [];
+        $scope.diseasePieChartOptions = {};
+        $scope.diseasePieChartDataset = [];
 
         $scope.setInExclusionType = setInExclusionType;
         $scope.getInExclusionTypeClass = getInExclusionTypeClass;
@@ -99,7 +84,7 @@
             $window.open(linkString + fid[0], '_blank');
         }
 
-        $scope.openId = function (cosmicId) {
+        function openId (cosmicId) {
             if (cosmicId !== undefined && cosmicId !== null) {
                 var tmp = cosmicId.indexOf("COSF");
                 if (tmp > 0) {
@@ -111,7 +96,7 @@
                     }
                 }
             }
-        };
+        }
 
         function changeHeight() {
             document.getElementById("diseasePieChartContainer").style["height"] = window.innerWidth / 3.2 + "px";
@@ -121,38 +106,6 @@
         function setupTooltip(label, xval, yval) {
             return label + "<br>------------------------------------------<br>Patients: " + yval;
         }
-
-        function setupPieChartOptions(htmlContainer) {
-            return {
-                series: {
-                    pie: {
-                        show: true
-                    }
-                },
-                grid: {
-                    hoverable: true
-                },
-                tooltip: true,
-                tooltipOpts: {
-                    content: function (label, xval, yval) {
-                        return setupTooltip(label, xval, yval);
-                    },
-                    shifts: {
-                        x: 20,
-                        y: 0
-                    },
-                    defaultTheme: true
-                },
-                legend: {
-                    show: true,
-                    container: htmlContainer
-                }
-            };
-        }
-
-        $scope.pieOptions = setupPieChartOptions('#legendContainer');
-
-        $scope.diseasePieOptions = setupPieChartOptions('#diseaseLegendContainer');
 
         function setupLit(pubmed_ids) {
             var litRefs = [];
@@ -217,7 +170,7 @@
 
         function loadTreatmentArmDetails() {
             $log.info('Loading Treatment Arm', $stateParams.name, $stateParams.stratum, $stateParams.version);
-            
+
             matchApiMock
                 .loadTreatmentArmDetails($stateParams.name, $stateParams.stratum)
                 .then(setupScope, handleError);
@@ -245,19 +198,87 @@
                 $state.transitionTo('treatment-arms');
             }
 
-            loadPatients();
-
             $scope.name = $stateParams.name;
             $scope.version = $stateParams.version;
             $scope.stratum = $stateParams.stratum;
 
-            $scope.patient_id = $stateParams.patient_id;
+            loadPatients();
+
             var scopeData = [];
             angular.copy(data.data, scopeData);
             $scope.versions = scopeData;
             $scope.currentVersion = $scope.versions[0];
+            $scope.currentVersion.latest = 'This is the latest version.';
 
-            setupFinal(); 
+            setupRulesExlcusionInclusionLists();
+            setupCharts();
+           // setupFinal();
+        }
+
+        function setupRulesExlcusionInclusionLists() {
+            for (var i = 0; i < $scope.versions.length; i++) {
+                var version = $scope.versions[i];
+
+                setupCriteriaList(version.variant_report.single_nucleotide_variants, version, 'snvsInclusion', 'snvsExclusion');
+                setupCriteriaList(version.variant_report.indels, version, 'indelsInclusion', 'indelsExclusion');
+                setupCriteriaList(version.variant_report.copy_number_variants, version, 'cnvsInclusion', 'cnvsExclusion');
+                setupCriteriaList(version.variant_report.gene_fusions, version, 'geneFusionsInclusion', 'geneFusionsExclusion');
+                setupCriteriaList(version.variant_report.non_hotspot_rules, version, 'nhrsInclusion', 'nhrsExclusion');
+            }
+        }
+
+        function setupCriteriaList(sourceArray, version, inclusionArrayName, exclusionArrayName) {
+            inclusionList = [];
+            exclusionList = [];
+
+            version[inclusionArrayName] = inclusionList;
+            version[exclusionArrayName] = exclusionList;
+
+            for (var i = 0; i < sourceArray.length; i++) {
+                var row = sourceArray[i];
+                if (row.inclusion) {
+                    inclusionList.push(angular.copy(row));
+                }
+                else {
+                    exclusionList.push(angular.copy(row));
+                }
+            }
+        }
+
+        function setupCharts() {
+            $scope.patientPieChartOptions = createPieChartOptions('#legendContainer');
+            $scope.diseasePieChartOptions = createPieChartOptions('#diseaseLegendContainer');
+
+            $scope.patientPieChartDataset = $scope.currentVersion.pie_dataset;
+            $scope.diseasePieChartDataset = $scope.currentVersion.disease_pie_dataset;
+        }
+
+        function createPieChartOptions(htmlContainer) {
+            return {
+                series: {
+                    pie: {
+                        show: true
+                    }
+                },
+                grid: {
+                    hoverable: true
+                },
+                tooltip: true,
+                tooltipOpts: {
+                    content: function (label, xval, yval) {
+                        return setupTooltip(label, xval, yval);
+                    },
+                    shifts: {
+                        x: 20,
+                        y: 0
+                    },
+                    defaultTheme: true
+                },
+                legend: {
+                    show: true,
+                    container: htmlContainer
+                }
+            };
         }
 
         function setupFinal() {
@@ -274,119 +295,6 @@
 
         function onVersionSelected(selected) {
             $log.debug('Selected version: ' + selected);
-        }
-
-        function loadTreatmentArmDetailsOld() {
-            $log.info('Loading Treatment Arm', $stateParams.name, $stateParams.stratum);
-            matchApiMock
-                .loadTreatmentArmDetails($stateParams.name, $stateParams.stratum) //$stateParams.treatmentArmId
-                .then(function (d) {
-                    var versionCount = 0;
-                    angular.forEach(d.data, function (value) {
-                        $log.debug('value');
-                        $log.debug(value);
-                        if (value !== [] && value !== null && value !== undefined) {
-                            var nonSequencingAssays = [];
-
-                            angular.forEach(value.pten_results, function (value) {
-                                var nonSequencingAssay = {};
-                                nonSequencingAssay.assay = value.assay;
-                                nonSequencingAssay.gene = value.gene_name;
-                                nonSequencingAssay.result = value.pten_ihc_result;
-                                nonSequencingAssay.variantAssociation = value.pten_variant;
-                                nonSequencingAssay.levelOfEvidence = value.level_of_evidence;
-                                nonSequencingAssays.push(nonSequencingAssay);
-                            });
-
-                            if (value.variant_report !== undefined) {
-                                angular.forEach(value.variant_report.single_nucleotide_variants, function (value) {
-                                    $scope.setupSnvIndel('snv', value);
-                                });
-                                angular.forEach(value.variant_report.indels, function (value) {
-                                    $scope.setupSnvIndel('indel', value);
-                                });
-                                angular.forEach(value.variant_report.copy_number_variants, function (value) {
-                                    var cnv = {};
-                                    cnv = setupGeneLoe(cnv, value);
-                                    cnv.chrom = value.chromosome; //
-                                    cnv.position = value.position;
-                                    cnv.protein = value.description; //
-                                    cnv.litRefs = setupLit(value.public_med_ids);
-                                    $scope.setInclusionExclusion('cnv', value);
-                                });
-                                angular.forEach(value.variant_report.gene_fusions, function (value) {
-                                    var gf = {};
-                                    gf.id = value.identifier;
-                                    gf = setupGeneLoe(gf, value);
-                                    gf.litRefs = setupLit(value.public_med_ids);
-                                    $scope.setInclusionExclusion('gf', value);
-                                });
-                                angular.forEach(value.variant_report.non_hotspot_rules, function (value) {
-                                    var nhr = {};
-                                    nhr.exon = value.exon;
-                                    nhr.function = value.function;
-                                    nhr = setupGeneLoe(nhr, value);
-                                    nhr.oncomineVariantClass = value.oncominevariantclass; //
-                                    nhr.proteinRegex = value.protein_match; //
-                                    nhr.litRefs = setupLit(value.public_med_ids);
-                                    $scope.setInclusionExclusion('nhr', value);
-                                });
-                            }
-
-                            var version = {};
-                            version.text = value.version;
-                            if (versionCount === 0) {
-                                version.latest = 'This is the latest version.';
-                            } else {
-                                version.latest = 'This is not the latest version.';
-                            }
-
-                            version.exclusionaryDiseases = exclusionDiseases;
-                            version.exclusionaryDrugs = exclusionDrugs;
-                            //version.inclusionaryDrugs = inclusionDrugs;
-                            version.snvsInclusion = $scope.snvsInclusion;
-                            version.snvsExclusion = $scope.snvsExclusion;
-                            version.indelsInclusion = $scope.indelsInclusion;
-                            version.indelsExclusion = $scope.indelsExclusion;
-                            version.cnvsInclusion = $scope.cnvsInclusion;
-                            version.cnvsExclusion = $scope.cnvsExclusion;
-                            version.geneFusionsInclusion = $scope.gfsInclusion;
-                            version.geneFusionsExclusion = $scope.gfsExclusion;
-                            version.nhrsInclusion = $scope.nhrsInclusion;
-                            version.nhrsExclusion = $scope.nhrsExclusion;
-                            version.nonSequencingAssays = nonSequencingAssays;
-                            version.versionHistory = $scope.versionHistory;
-                            $scope.versions.push(version);
-                            versionCount = versionCount + 1;
-                            $scope.information.version = $scope.versions[0].name;
-                            $log.debug('versions');
-                            $log.debug($scope.versions);
-
-                            $scope.selectedVersion = $scope.versions[0];
-                            $log.debug('sel vsn');
-                            $log.debug($scope.selectedVersion);
-
-                        }
-
-
-                    });
-
-
-                })
-                .then(function () {
-                    $scope.inExclusionType = 'inclusion';
-                    setInExclusion();
-                    changeHeight();
-                    $log.debug($scope.inExclusionType);
-                    $(window).on("resize.doResize", function () {
-                        $scope.$apply(function () {
-                            changeHeight();
-                        });
-                    });
-                });
-
-            //}
-
         }
     }
 
