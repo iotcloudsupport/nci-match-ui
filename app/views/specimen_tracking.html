@@ -1,3 +1,8 @@
+<style>
+    hid {
+        display: none;
+    }
+</style>
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
         <h2>Specimen Tracking</h2>
@@ -102,41 +107,50 @@
                                     <td>{{ specimenTrackingItem.pathology_status_date | gmt }}</td>
                                 </tr>
                                 <tr ng-repeat-end>
-                                    <td colspan="11">
-                                        <ul class="panel-list">
-                                            <li ng-repeat="assayItem in specimenTrackingItem.assays" class="info-element">
-                                                <div class="row">
-                                                    <div class="col-md-2 col-sm-6 text-left">
-                                                        <dl class="dl-horizontal-narrow">
-                                                            <dt>IHC</dt>
-                                                            <dd ng-style="{'color':'{{ analysis.status | analysisStatus }}'}">{{::assayItem.ihc}}</dd>
-                                                        </dl>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6 text-left">
-                                                        <dl class="dl-horizontal-narrow">
-                                                            <dt>Assay Order Date</dt>
-                                                            <dd>{{assayItem.assay_order_date | utc}}</dd>
 
-                                                        </dl>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6 text-left">
-                                                        <dl class="dl-horizontal-narrow">
-                                                            <dt>Assay Result Date</dt>
-                                                            <dd>{{assayItem.assay_result_date | utc}}</dd>
+                                    <td class="no-padding" ng-if="specimenTrackingItem.assays.length > 0" colspan="11">
 
-                                                        </dl>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-6 text-left">
-                                                        <dl class="dl-horizontal-narrow">
-                                                            <dt>Result</dt>
-                                                            <dd>{{assayItem.result_information}}</dd>
+                                        <div class="ibox no-padding">
+                                            <div class="ibox-title no-padding">
+                                                <div collapse-toggle-left-closed></div>
+                                            </div>
+                                            <div class="ibox-content ibox-content-no-padding ibox-title-no-line">
+                                                <ul class="panel-list">
+                                                    <li ng-repeat="assayItem in specimenTrackingItem.assays" class="info-element">
+                                                        <div class="row">
+                                                            <div class="col-md-2 col-sm-6 text-left">
+                                                                <dl class="dl-horizontal-narrow">
+                                                                    <dt>IHC</dt>
+                                                                    <dd ng-style="{'color':'{{ analysis.status | analysisStatus }}'}">{{::assayItem.ihc}}</dd>
+                                                                </dl>
+                                                            </div>
+                                                            <div class="col-md-3 col-sm-6 text-left">
+                                                                <dl class="dl-horizontal-narrow">
+                                                                    <dt>Assay Order Date</dt>
+                                                                    <dd>{{assayItem.assay_order_date | utc}}</dd>
 
-                                                        </dl>
-                                                    </div>
+                                                                </dl>
+                                                            </div>
+                                                            <div class="col-md-3 col-sm-6 text-left">
+                                                                <dl class="dl-horizontal-narrow">
+                                                                    <dt>Assay Result Date</dt>
+                                                                    <dd>{{assayItem.assay_result_date | utc}}</dd>
 
-                                                </div>
-                                            </li>
-                                        </ul>
+                                                                </dl>
+                                                            </div>
+                                                            <div class="col-md-3 col-sm-6 text-left">
+                                                                <dl class="dl-horizontal-narrow">
+                                                                    <dt>Result</dt>
+                                                                    <dd>{{assayItem.result_information}}</dd>
+
+                                                                </dl>
+                                                            </div>
+
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                                 </tbody>
