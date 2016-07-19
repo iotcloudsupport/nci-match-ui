@@ -458,6 +458,7 @@
                                             </div>
                                         </div>
                                     </uib-tab>
+
                                     <uib-tab heading="Gene Fusions">
                                         <div class="panel-body">
                                             <div class="ibox float-e-margins">
@@ -537,6 +538,7 @@
                                             </div>
                                         </div>
                                     </uib-tab>
+
                                     <uib-tab heading="Non-Hotspot Rules">
                                         <div class="panel-body">
                                             <div class="ibox float-e-margins">
@@ -624,6 +626,7 @@
                                             </div>
                                         </div>
                                     </uib-tab>
+
                                     <uib-tab heading="Non-Sequencing Assays">
                                         <div class="panel-body">
                                             <div class="ibox float-e-margins">
@@ -645,13 +648,13 @@
                                                             <tbody>
                                                                 <tr ng-repeat="item in currentVersion.pten_results">
                                                                     <td>{{item.assay || '-'}}</td>
-                                                                    <td><a ng-click="openGene(item.gene_name)">{{item.gene_name || '-'}}</a></td>
+                                                                    <td><a ng-click="openGene(item.pten_variant)">{{item.pten_variant || '-'}}</a></td>
                                                                     <td>{{item.pten_ihc_result || '-'}}</td>
-                                                                    <td>{{item.pten_variant || '-'}}</td>
+                                                                    <td>{{item.variant_association || '-'}}</td>
                                                                     <td>{{item.level_of_evidence || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.totNumPtsWithGene || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.ptsWithGeneOnArm || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.pctPtsWithGeneOnArmOfTotPtsWithGene || '-'}}</td>
+                                                                    <td style="text-align:right">{{item.num_patients_with_gene || '-'}}</td>
+                                                                    <td style="text-align:right">{{item.num_patients_with_gene_on_arm || '-'}}</td>
+                                                                    <td style="text-align:right">{{item.percent_patients_with_gene_on_arm || '-'}}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -674,12 +677,12 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>{{currentVersion.text || '-'}}</td>
+                                        <td>{{currentVersion.version || '-'}}</td>
                                     </tr>
                                     <tr ng-repeat-end>
                                         <td colspan="7">
                                             <ul class="panel-list">
-                                                <li ng-repeat="item in currentVersion.versionHistory.history" class="info-element">
+                                                <li ng-repeat="item in currentVersion.version_history" class="info-element">
                                                     <div class="row">
                                                         <div class="col-md-4 col-sm-6 text-left">
                                                             <dl class="dl-horizontal-narrow">

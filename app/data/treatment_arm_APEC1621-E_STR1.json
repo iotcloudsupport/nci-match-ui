@@ -572,7 +572,12 @@
       {
         "pten_variant": "PRESENT",
         "description": null,
-        "pten_ihc_result": "POSITIVE"
+        "pten_ihc_result": "POSITIVE",
+        "variant_association": "ABSENT",
+        "level_of_evidence": "1",
+        "num_patients_with_gene": "3",
+        "num_patients_with_gene_on_arm": "1",
+        "percent_patients_with_gene_on_arm": "33"
       }
     ],
     "status_log": {
@@ -1239,7 +1244,12 @@
       {
         "pten_variant": "PRESENT",
         "description": null,
-        "pten_ihc_result": "POSITIVE"
+        "pten_ihc_result": "POSITIVE",
+        "variant_association": "ABSENT",
+        "level_of_evidence": "1",
+        "num_patients_with_gene": "3",
+        "num_patients_with_gene_on_arm": "1",
+        "percent_patients_with_gene_on_arm": "33"
       }
     ],
     "status_log": {

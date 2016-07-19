@@ -358,18 +358,6 @@
         }
         
         function setupRulesExlcusionInclusionLists() {
-            // version.snvsInclusion = $scope.snvsInclusion;
-            // version.snvsExclusion = $scope.snvsExclusion;
-            // version.indelsInclusion = $scope.indelsInclusion;
-            // version.indelsExclusion = $scope.indelsExclusion;
-            // version.cnvsInclusion = $scope.cnvsInclusion;
-            // version.cnvsExclusion = $scope.cnvsExclusion;
-            // version.geneFusionsInclusion = $scope.gfsInclusion;
-            // version.geneFusionsExclusion = $scope.gfsExclusion;
-            // version.nhrsInclusion = $scope.nhrsInclusion;
-            // version.nhrsExclusion = $scope.nhrsExclusion;
-
-
             for (var i = 0; i < $scope.versions.length; i++) {
                 var version = $scope.versions[i];
 
@@ -480,19 +468,6 @@
                                 version.latest = 'This is not the latest version.';
                             }
 
-                            // version.exclusionaryDiseases = exclusionDiseases;
-                            // version.exclusionaryDrugs = exclusionDrugs;
-                            //version.inclusionaryDrugs = inclusionDrugs;
-                            version.snvsInclusion = $scope.snvsInclusion;
-                            version.snvsExclusion = $scope.snvsExclusion;
-                            version.indelsInclusion = $scope.indelsInclusion;
-                            version.indelsExclusion = $scope.indelsExclusion;
-                            version.cnvsInclusion = $scope.cnvsInclusion;
-                            version.cnvsExclusion = $scope.cnvsExclusion;
-                            version.geneFusionsInclusion = $scope.gfsInclusion;
-                            version.geneFusionsExclusion = $scope.gfsExclusion;
-                            version.nhrsInclusion = $scope.nhrsInclusion;
-                            version.nhrsExclusion = $scope.nhrsExclusion;
                             version.nonSequencingAssays = nonSequencingAssays;
                             version.versionHistory = $scope.versionHistory;
                             $scope.versions.push(version);
