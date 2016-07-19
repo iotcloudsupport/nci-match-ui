@@ -138,6 +138,7 @@
       "collected_datetime": "2016-05-12T22:06:33+00:00",
       "received_datetime": "2016-05-13T22:08:33+00:00",
       "status": "CONFIRMED",
+      "location" : "at Nationwide",
       "molecular_id": "B-987456"
     }
   },
@@ -153,6 +154,7 @@
       "collected_datetime": "2016-03-15T22:06:33+00:00",
       "received_datetime": "2016-03-15T22:06:33+00:00",
       "status": "RECEIVED",
+      "location" : "at Nationwide",
       "molecular_id": "B-987456"
     }
   },
@@ -224,6 +226,7 @@
       "slide_barcode": "45228BS",
       "carrier": "Federal Express",
       "tracking_id": "1203454512316546",
+      "location" : "at Nationwide",
       "status": "PENDING",
       "molecular_id": "B-987565"
     }
@@ -241,6 +244,7 @@
       "molecular_cdna_id": "CDNA1234",
       "carrier": "Federal Express",
       "tracking_id": "1203454512316546",
+      "location" : "at Nationwide",
       "status": "PENDING",
       "molecular_id": "B-987512"
     }
@@ -515,7 +519,7 @@
       "surgical_event_id": "SUREVT099",
       "slide_barcode": "123456",
       "carrier": "Federal Express",
-
+      "location" : "at Nationwide",
       "tracking_id": "1203454512316546",
       "status": "PENDING",
       "molecular_id": "B-987456"
@@ -534,7 +538,7 @@
       "molecular_dna_id": "MOL099-1",
       "molecular_cdna_id": "CDNA1234",
       "carrier": "Federal Express",
-
+      "location" : "at Nationwide",
       "tracking_id": "1203454512316546",
       "status": "PENDING",
       "molecular_id": "B-987455"

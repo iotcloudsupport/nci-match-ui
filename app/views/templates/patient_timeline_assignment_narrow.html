@@ -25,7 +25,12 @@
                 </span>
 
                 <span ng-if="timelineEvent.event_data.status">
-                    Assignment Status: <span class="timeline-value" ng-style="{'color':'{{ timelineEvent.event_data.status | status }}'}">{{::timelineEvent.event_data.status}}</span>
+                    Assignment: <span class="timeline-value" ng-style="{'color':'{{ timelineEvent.event_data.status | status }}'}">{{::timelineEvent.event_data.status}}</span>
+                <br>
+                </span>
+
+                <span ng-if="timelineEvent.event_data.comment_user">
+                    By: <span class="timeline-value" >{{::timelineEvent.event_data.comment_user}}</span>
                 <br>
                 </span>
 

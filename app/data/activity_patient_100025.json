@@ -84,6 +84,7 @@
             "surgical_event_id": "COSM1234",
             "collected_datetime": "2016-05-09T22:06:33+00:00",
             "received_datetime": "2016-05-13T22:08:33+00:00",
+            "location" : "at Nationwide",
             "status": "CONFIRMED"
         }
     },
@@ -98,6 +99,7 @@
             "surgical_event_id": "COSM1234",
             "collected_datetime": "2016-05-09T22:06:33+00:00",
             "received_datetime": "2016-05-13T22:08:33+00:00",
+            "location" : "at Nationwide",
             "status": "RECEIVED"
         }
     },
@@ -154,6 +156,7 @@
             "molecular_cdna_id": "CDNA1234",
             "carrier": "Federal Express",
             "tracking_id": "1203454512316546",
+            "location" : "at Nationwide",
             "status": "PENDING"
         }
     },
@@ -168,6 +171,7 @@
             "surgical_event_id": "COSM1234",
             "collected_datetime": "2016-05-09T22:06:33+00:00",
             "received_datetime": "2016-05-11T22:08:33+00:00",
+            "location" : "at Nationwide",
             "status": "PENDING"
         }
     },

@@ -22,25 +22,25 @@
         }
     },
     {
-        "patient_id": "100100",
-        "event_date": "2016-06-29T18:17:26+00:00",
-        "event_name": "Event Name 1",
-        "event_type": "system",
-        "event_message": "Receiving Rule Assignment",
-        "step": "4.0",
+        "patient_id": "100100 ???",
+        "event_date": "2016-06-29T18:17:26+00:00 ???",
+        "event_type": "biopsy.variant_report_received",
+        "event_message": "Tissue Variant Report confirmed",
+        "step": "4.0 ???",
         "event_data": {
-            "status": "COMPLETE"
+            "status": " CONFIRMED",
+            "comment_user": "Jane James"
         }
     },
     {
-        "patient_id": "100100",
-        "event_date": "2016-06-29T18:10:28+00:00",
-        "event_name": "Event Name 1",
-        "event_type": "system",
-        "event_message": "Awaiting Treatment Arms Status",
-        "step": "4.0",
+        "patient_id": "100100 ???",
+        "event_date": "2016-06-29T18:10:28+00:00 ???",
+        "event_type": "assignment",
+        "event_message": "Assignment Report approved",
+        "step": "4.0 ???",
         "event_data": {
-            "status": "COMPLETE"
+            "status": "APPROVED",
+            "comment_user": "Jane James"
         }
     },
     {

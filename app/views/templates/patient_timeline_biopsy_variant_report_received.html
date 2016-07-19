@@ -12,6 +12,11 @@
                 <br>
             </span>
 
+            <span ng-if="timelineEvent.event_data.comment_user">
+                By: <span>{{::timelineEvent.event_data.comment_user}}</span>
+                <br>
+            </span>
+
             <span ng-if="timelineEvent.event_data.surgical_event_id">
                 Surgical Event ID: <span class="timeline-value">{{::timelineEvent.event_data.surgical_event_id}}</span>
                 <br>
