@@ -305,11 +305,15 @@
         }
 
         function setupSlides() {
+            var slideShipments = []; 
+
             for (var i = 0; i < $scope.data.specimens.length; i++) {
                 var surgicalEvent = $scope.data.specimens[i];
                 for (var j = 0; j < surgicalEvent.specimen_shipments.length; j++) {
                     var shipment = surgicalEvent.specimen_shipments[j];
                     if ('slide_barcode' in shipment) {
+                        slideShipments.push({surgicalEvent: surgicalEvent, shipment: shipment});
+
                         if (surgicalEvent.slides === undefined) {
                         	surgicalEvent.slides = [];
                         }
@@ -322,6 +326,13 @@
                             }
                         );
                     }
+                }
+            }
+
+            if (slideShipments.length > 0) {
+                for (var k = 0; k < slideShipments.length; k++) {
+                    var slideSpecimenShipment = slideShipments[k];
+                    slideSpecimenShipment.surgicalEvent.specimen_shipments.delete(slideSpecimenShipment.shipment);
                 }
             }
         }
