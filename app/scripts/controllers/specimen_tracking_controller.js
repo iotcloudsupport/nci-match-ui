@@ -45,6 +45,10 @@
                 color: "#1c84c6"
             }
         ];
+        
+        $scope.showHideRow = function() {
+            
+        }
 
         function setupTooltip(label, xval, yval) {
             return label + "<br>------------------------------------------<br>Assays: " + yval;
