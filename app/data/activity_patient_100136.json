@@ -1,51 +1,51 @@
 [
     {
         "patient_id": "100136",
-        "event_date": "2016-05-25T16:42:43+00:00",
-        "event_name": "Event Name 1",
+        "event_date": "2016-06-05T16:42:43+00:00",
+        "event_name": "Event Name 40",
         "event_type": "assignment",
         "event_message": "Patient Assignment",
         "step": "2.1",
         "event_data": {
             "status": "ON_TREATMENT_ARM",
             "message": "",
-            "stratum_id": "STR15",
-            "molecular_id": "B-987456",
-            "treatment_arm_id": "APEC1621-E",
-            "treatment_arm_version": "2016-08-14",
-            "assignment_date": "2016-05-25T16:42:43+00:00"
+            "stratum_id": "STR11",
+            "molecular_id": "MOL100136_02_02",
+            "treatment_arm_id": "APEC1621-U",
+            "treatment_arm_version": "2016-05-06",
+            "assignment_date": "2016-06-01T14:28:16+00:00"
         }
     },
     {
         "patient_id": "100136",
-        "event_date": "2016-05-23T12:23:56+00:00",
-        "event_name": "Event Name 1",
+        "event_date": "2016-06-04T15:22:51+00:00",
+        "event_name": "Event Name 39",
         "event_type": "patient",
         "event_message": "Patient Pending Approval",
         "step": "2.0",
         "event_data": {
             "status": "PENDING",
-            "molecular_id": "B-987456",
+            "molecular_id": "MOL100136_02_02",
             "location": "GHU"
         }
     },
     {
         "patient_id": "100136",
-        "event_date": "2016-05-23T09:08:33+00:00",
-        "event_name": "Event Name 1",
+        "event_date": "2016-06-02T10:27:51+00:00",
+        "event_name": "Event Name 38",
         "event_type": "patient",
         "event_message": "Patient Pending Confirmation",
         "step": "2.0",
         "event_data": {
             "status": "PENDING",
-            "molecular_id": "B-987456",
+            "molecular_id": "MOL100136_02_02",
             "location": "GHU"
         }
     },
     {
         "patient_id": "100136",
-        "event_date": "2016-05-22T17:45:31+00:00",
-        "event_name": "Event Name 1",
+        "event_date": "2016-06-01T14:28:16+00:00",
+        "event_name": "Event Name 37",
         "event_type": "system",
         "event_message": "Receiving Rule Assignment",
         "step": "2.0",
@@ -55,8 +55,8 @@
     },
     {
         "patient_id": "100136",
-        "event_date": "2016-05-22T10:08:33+00:00",
-        "event_name": "Event Name 1",
+        "event_date": "2016-06-01T12:46:16+00:00",
+        "event_name": "Event Name 36",
         "event_type": "system",
         "event_message": "Awaiting Treatment Arms Status",
         "step": "2.0",
@@ -66,22 +66,226 @@
     },
     {
         "patient_id": "100136",
-        "event_date": "2016-05-21T22:08:33+00:00",
-        "event_name": "Event Name 1",
+        "event_date": "2016-05-31T10:49:39+00:00",
+        "event_name": "Event Name 35",
+        "event_type": "system",
+        "event_message": "Awaiting Patient Data",
+        "step": "2.0",
+        "event_data": {
+            "status": "COMPLETE"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2016-05-30T13:54:24+00:00",
+        "event_name": "Event Name 34",
+        "event_type": "patient",
+        "event_message": "Tissue variant report confirmed",
+        "step": "2.0",
+        "event_data": {
+            "status": "CONFIRMED",
+            "molecular_id": "MOL100136_02_02"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2016-05-28T12:46:35+00:00",
+        "event_name": "Event Name 33",
+        "event_type": "biopsy.pathology",
+        "event_message": "Pathology confirmed",
+        "step": "2.0",
+        "event_data": {
+            "status": "CONFIRMED",
+            "molecular_id": "MOL100136_02_02",
+            "reported_date": "2016-05-10T04:23:12+00:00"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2016-05-24T02:44:58+00:00",
+        "event_name": "Event Name 32",
+        "event_type": "patient",
+        "event_message": "Tissue Variant Report Received",
+        "step": "2.0",
+        "event_data": {
+            "surgical_event_id": "SEI100136_02",
+            "collected_datetime": "2016-05-09T22:06:33+00:00",
+            "received_datetime": "2016-05-10T04:23:12+00:00",
+            "status": "RECEIVED",
+            "molecular_id": "MOL100136_02_02",
+            "analysis_id": "AI100136_02_02_1"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2016-05-18T18:41:16+00:00",
+        "event_name": "Event Name 31",
+        "event_type": "patient",
+        "event_message": "Tissue Nucleic Acid Shipped",
+        "step": "2.0",
+        "event_data": {
+            "surgical_event_id": "SEI100136_02",
+            "molecular_dna_id": "MOL100136_02_02D",
+            "molecular_cdna_id": "MOL100136_02_02C",
+            "carrier": "Federal Express",
+            "tracking_id": "6758 6785 9276",
+            "status": "SHIPPED",
+            "molecular_id": "MOL100136_02_02"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2016-05-16T16:01:21+00:00",
+        "event_name": "Event Name 30",
+        "event_type": "patient",
+        "event_message": "Tissue Variant Report Received",
+        "step": "2.0",
+        "event_data": {
+            "surgical_event_id": "SEI100136_02",
+            "collected_datetime": "2016-05-09T22:06:33+00:00",
+            "received_datetime": "2016-05-10T04:23:12+00:00",
+            "status": "RECEIVED",
+            "molecular_id": "MOL100136_02_01",
+            "analysis_id": "AI100136_02_01_2"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2016-05-15T09:37:23+00:00",
+        "event_name": "Event Name 29",
+        "event_type": "biopsy.assay_received",
+        "event_message": "Assay Received",
+        "step": "2.0",
+        "event_data": {
+            "biomarker": "MLH1",
+            "status": "RECEIVED",
+            "result": "POSITIVE",
+            "slide_barcode": "0BJ6A5",
+            "reported_date": "2016-05-15T09:37:23+00:00"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2016-05-15T09:37:23+00:00",
+        "event_name": "Event Name 28",
+        "event_type": "biopsy.assay_received",
+        "event_message": "Assay Received",
+        "step": "2.0",
+        "event_data": {
+            "biomarker": "PTEN",
+            "status": "RECEIVED",
+            "result": "POSITIVE",
+            "slide_barcode": "0BJ6A5",
+            "reported_date": "2016-05-15T09:37:23+00:00"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2016-05-12T18:15:16+00:00",
+        "event_name": "Event Name 27",
+        "event_type": "biopsy.assay_order",
+        "event_message": "Assay Order",
+        "step": "2.0",
+        "event_data": {
+            "biomarker": "PTEN",
+            "status": "ORDER",
+            "ordered_date": "2016-05-12T18:15:16+00:00"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2016-05-12T18:15:16+00:00",
+        "event_name": "Event Name 26",
+        "event_type": "biopsy.assay_order",
+        "event_message": "Assay Order",
+        "step": "2.0",
+        "event_data": {
+            "biomarker": "MLH1",
+            "status": "ORDER",
+            "ordered_date": "2016-05-12T18:15:16+00:00"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2016-05-12T00:17:16+00:00",
+        "event_name": "Event Name 25",
+        "event_type": "patient",
+        "event_message": "Tissue Variant Report Received",
+        "step": "2.0",
+        "event_data": {
+            "surgical_event_id": "SEI100136_02",
+            "collected_datetime": "2016-05-09T22:06:33+00:00",
+            "received_datetime": "2016-05-10T04:23:12+00:00",
+            "status": "RECEIVED",
+            "molecular_id": "MOL100136_02_01",
+            "analysis_id": "AI100136_02_01_1"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2016-05-10T06:19:15+00:00",
+        "event_name": "Event Name 24",
+        "event_type": "patient",
+        "event_message": "Tissue Nucleic Acid Shipped",
+        "step": "2.0",
+        "event_data": {
+            "surgical_event_id": "SEI100136_02",
+            "molecular_dna_id": "MOL100136_02_01D",
+            "molecular_cdna_id": "MOL100136_02_01C",
+            "carrier": "Federal Express",
+            "tracking_id": "6758 6785 9184",
+            "status": "SHIPPED",
+            "molecular_id": "MOL100136_02_01"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2016-05-10T05:22:48+00:00",
+        "event_name": "Event Name 23",
+        "event_type": "patient",
+        "event_message": "Slide Shipped",
+        "step": "2.0",
+        "event_data": {
+            "surgical_event_id": "SEI100136_02",
+            "slide_barcode": "0BJ6A5",
+            "carrier": "Federal Express",
+            "tracking_id": "7956 4568 1235",
+            "status": "SHIPPED"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2016-05-10T04:23:12+00:00",
+        "event_name": "Event Name 22",
+        "event_type": "patient",
+        "event_message": "Tissue Specimen Received",
+        "step": "2.0",
+        "event_data": {
+            "surgical_event_id": "SEI100136_02",
+            "collected_datetime": "2016-05-09T22:06:33+00:00",
+            "received_datetime": "2016-05-10T04:23:12+00:00",
+            "status": "RECEIVED",
+            "molecular_id": "MOL100136_02_02"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2016-05-02T15:04:27+00:00",
+        "event_name": "Event Name 21",
         "event_type": "patient",
         "event_message": "Patient Progression",
         "step": "2.0",
         "event_data": {
-            "rebiopsy": "N",
+            "rebiopsy": "Y",
             "status": "PENDING",
-            "molecular_id": "B-987456",
+            "molecular_id": "MOL100136_01_01",
             "location": "GHU"
         }
     },
     {
         "patient_id": "100136",
-        "event_date": "2016-05-09T22:06:33+00:00",
-        "event_name": "Event Name 1",
+        "event_date": "2015-12-08T22:05:33+00:00",
+        "event_name": "Event Name 20",
         "event_type": "assignment",
         "event_message": "Patient Assignment",
         "step": "1.1",
@@ -89,42 +293,42 @@
             "status": "ON_TREATMENT_ARM",
             "message": "",
             "stratum_id": "STR2",
-            "molecular_id": "B-987456",
+            "molecular_id": "MOL100136_01_01",
             "treatment_arm_id": "APEC1621-U",
-            "treatment_arm_version": "2016-08-14",
-            "assignment_date": "2016-05-10T22:05:33+00:00"
+            "treatment_arm_version": "2015-06-01",
+            "assignment_date": "2015-11-25T14:28:16+00:00"
         }
     },
     {
         "patient_id": "100136",
-        "event_date": "2016-05-09T22:06:33+00:00",
-        "event_name": "Event Name 1",
+        "event_date": "2015-12-08T15:22:51+00:00",
+        "event_name": "Event Name 19",
         "event_type": "patient",
         "event_message": "Patient Pending Approval",
         "step": "1.0",
         "event_data": {
             "status": "PENDING",
-            "molecular_id": "B-987456",
+            "molecular_id": "MOL100136_01_01",
             "location": "GHU"
         }
     },
     {
         "patient_id": "100136",
-        "event_date": "2016-05-09T22:06:33+00:00",
-        "event_name": "Event Name 1",
+        "event_date": "2015-11-25T18:27:51+00:00",
+        "event_name": "Event Name 18",
         "event_type": "patient",
         "event_message": "Patient Pending Confirmation",
         "step": "1.0",
         "event_data": {
             "status": "PENDING",
-            "molecular_id": "B-987456",
+            "molecular_id": "MOL100136_01_01",
             "location": "GHU"
         }
     },
     {
         "patient_id": "100136",
-        "event_date": "2016-05-09T22:06:33+00:00",
-        "event_name": "Event Name 1",
+        "event_date": "2015-11-25T14:28:16+00:00",
+        "event_name": "Event Name 17",
         "event_type": "system",
         "event_message": "Receiving Rule Assignment",
         "step": "1.0",
@@ -134,8 +338,8 @@
     },
     {
         "patient_id": "100136",
-        "event_date": "2016-05-09T22:06:33+00:00",
-        "event_name": "Event Name 1",
+        "event_date": "2015-11-24T22:06:33+00:00",
+        "event_name": "Event Name 16",
         "event_type": "system",
         "event_message": "Awaiting Treatment Arms Status",
         "step": "1.0",
@@ -145,8 +349,8 @@
     },
     {
         "patient_id": "100136",
-        "event_date": "2016-05-09T22:06:33+00:00",
-        "event_name": "Event Name 1",
+        "event_date": "2015-11-24T10:49:39+00:00",
+        "event_name": "Event Name 15",
         "event_type": "system",
         "event_message": "Awaiting Patient Data",
         "step": "1.0",
@@ -156,110 +360,210 @@
     },
     {
         "patient_id": "100136",
-        "event_date": "2016-05-11T22:06:33+00:00",
-        "event_name": "Event Name 2",
-        "event_type": "biopsy.variant_veport_received",
-        "event_message": "Tissue Variant Report",
-        "step": "1.0",
-        "event_data": {
-            "surgical_event_id": "COSM1234",
-            "collected_datetime": "2016-05-09T22:06:33+00:00",
-            "received_datetime": "2016-05-13T22:08:33+00:00",
-            "status": "CONFIRMED",
-            "molecular_id": "B-987456"
-        }
-    },
-    {
-        "patient_id": "100136",
-        "event_date": "2016-05-11T22:06:33+00:00",
-        "event_name": "Event Name 2",
-        "event_type": "biopsy.variant_veport_received",
-        "event_message": "Tissue Variant Report",
-        "step": "1.0",
-        "event_data": {
-            "surgical_event_id": "COSM1234",
-            "collected_datetime": "2016-05-09T22:06:33+00:00",
-            "received_datetime": "2016-05-13T22:08:33+00:00",
-            "status": "RECEIVED",
-            "molecular_id": "B-987456"
-        }
-    },
-    {
-        "patient_id": "100136",
-        "event_date": "2016-05-12T22:04:33+00:00",
-        "event_name": "Event Name 5",
+        "event_date": "2015-11-23T10:49:39+00:00",
+        "event_name": "Event Name 14",
         "event_type": "biopsy.assay_received",
         "event_message": "Assay Received",
         "step": "1.0",
         "event_data": {
-            "biomarker": "ICCPTEN",
+            "biomarker": "MLH1",
             "status": "RECEIVED",
             "result": "POSITIVE",
-            "molecular_id": "B-987456",
-            "reported_date": "2016-05-12T22:04:33+00:00"
+            "slide_barcode": "9D24KG27GDB",
+            "reported_date": "2015-11-23T10:49:39+00:00"
         }
     },
     {
         "patient_id": "100136",
-        "event_date": "2016-05-12T22:04:33+00:00",
-        "event_name": "Event Name 5",
+        "event_date": "2015-11-23T10:49:39+00:00",
+        "event_name": "Event Name 14",
+        "event_type": "biopsy.assay_received",
+        "event_message": "Assay Received",
+        "step": "1.0",
+        "event_data": {
+            "biomarker": "PTEN",
+            "status": "RECEIVED",
+            "result": "POSITIVE",
+            "slide_barcode": "9D24KG27GDB",
+            "reported_date": "2015-11-23T10:49:39+00:00"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2015-11-22T22:53:19+00:00",
+        "event_name": "Event Name 13",
         "event_type": "biopsy.pathology",
-        "event_message": "PATHOLOGY_CONFIRMATION",
+        "event_message": "Pathology confirmed",
+        "step": "1.0",
         "event_data": {
             "status": "CONFIRMED",
-            "molecular_id": "B-987456",
-            "reported_date": "2016-05-12T22:04:33+00:00"
+            "molecular_id": "MOL100136_01_01",
+            "reported_date": "2015-11-22T22:53:19+00:00"
         }
     },
     {
         "patient_id": "100136",
-        "event_date": "2016-05-11T22:08:33+00:00",
-        "event_name": "Event Name 4",
+        "event_date": "2015-11-21T16:17:21+00:00",
+        "event_name": "Event Name 12",
+        "event_type": "patient",
+        "step": "1.0",
+        "event_message": "Tissue variant report confirmed",
+        "event_data": {
+            "status": "CONFIRMED",
+            "molecular_id": "MOL100136_01_01"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2015-11-20T10:15:48+00:00",
+        "event_name": "Event Name 11",
         "event_type": "biopsy.assay_order",
         "event_message": "Assay Order",
         "step": "1.0",
         "event_data": {
-            "biomarker": "ICCPTEN",
+            "biomarker": "PTEN",
             "status": "ORDER",
-            "molecular_id": "B-987456",
-            "ordered_date": "2016-05-11T22:07:33+00:00"
+            "ordered_date": "2015-11-20T10:15:48+00:00"
         }
     },
     {
         "patient_id": "100136",
-        "event_date": "2016-05-11T22:06:33+00:00",
-        "event_name": "Event Name 3",
-        "event_type": "biopsy.variant_veport_received",
+        "event_date": "2015-11-20T10:15:48+00:00",
+        "event_name": "Event Name 10",
+        "event_type": "biopsy.assay_order",
+        "event_message": "Assay Order",
+        "step": "1.0",
+        "event_data": {
+            "biomarker": "MLH1",
+            "status": "ORDER",
+            "ordered_date": "2015-11-20T10:15:48+00:00"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2015-11-19T19:25:20+00:00",
+        "event_name": "Event Name 9",
+        "event_type": "patient",
+        "event_message": "Blood Variant Report Received",
+        "step": "1.0",
+        "event_data": {
+            "collected_datetime": "2015-11-15T02:07:08+00:00",
+            "received_datetime": "2015-11-15T02:41:07+00:00",
+            "status": "RECEIVED",
+            "molecular_id": "MOL100136BLD_01",
+            "analysis_id": "AI100136BLD_01_1"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2015-11-19T03:22:21+00:00",
+        "event_name": "Event Name 8",
+        "event_type": "patient",
+        "event_message": "Tissue Variant Report Received",
+        "step": "1.0",
+        "event_data": {
+            "surgical_event_id": "SEI100136_01",
+            "collected_datetime": "2015-11-15T03:06:33+00:00",
+            "received_datetime": "2015-11-15T10:40:02+00:00",
+            "status": "RECEIVED",
+            "molecular_id": "MOL100136_01_01",
+            "analysis_id": "AI100136_01_01_2"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2015-11-16T18:06:13+00:00",
+        "event_name": "Event Name 7",
+        "event_type": "patient",
+        "event_message": "Slide Shipped",
+        "step": "1.0",
+        "event_data": {
+            "surgical_event_id": "SEI100136_01",
+            "slide_barcode": "9D24KG27GDB",
+            "carrier": "Federal Express",
+            "tracking_id": "7956 6423 4682",
+            "status": "SHIPPED"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2015-11-15T16:55:17+00:00",
+        "event_name": "Event Name 6",
+        "event_type": "patient",
+        "event_message": "Tissue Variant Report Received",
+        "step": "1.0",
+        "event_data": {
+            "surgical_event_id": "SEI100136_01",
+            "collected_datetime": "2015-11-15T03:06:33+00:00",
+            "received_datetime": "2015-11-15T10:40:02+00:00",
+            "status": "RECEIVED",
+            "molecular_id": "MOL100136_01_01",
+            "analysis_id": "AI100136_01_01_1"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2015-11-15T14:26:14+00:00",
+        "event_name": "Event Name 5",
+        "event_type": "patient",
         "event_message": "Tissue Nucleic Acid Shipped",
         "step": "1.0",
         "event_data": {
-            "surgical_event_id": "COSM1234",
-            "molecular_dna_id": "DNA1234",
-            "molecular_cdna_id": "CDNA1234",
+            "surgical_event_id": "SEI100136_01",
+            "molecular_dna_id": "MOL100136_01_01D",
+            "molecular_cdna_id": "MOL100136_01_01C",
             "carrier": "Federal Express",
-            "tracking_id": "1203454512316546",
-            "status": "PENDING",
-            "molecular_id": "B-987456"
+            "tracking_id": "6758 6785 4682",
+            "status": "SHIPPED",
+            "molecular_id": "MOL100136_01_01"
         }
     },
     {
         "patient_id": "100136",
-        "event_date": "2016-05-11T22:06:33+00:00",
-        "event_name": "Event Name 2",
-        "event_type": "biopsy.variant_veport_received",
+        "event_date": "2015-11-15T10:40:02+00:00",
+        "event_name": "Event Name 4",
+        "event_type": "patient",
         "event_message": "Tissue Specimen Received",
         "step": "1.0",
         "event_data": {
-            "surgical_event_id": "COSM1234",
-            "collected_datetime": "2016-05-09T22:06:33+00:00",
-            "received_datetime": "2016-05-11T22:08:33+00:00",
-            "status": "PENDING",
-            "molecular_id": "B-987456"
+            "surgical_event_id": "SEI100136_01",
+            "collected_datetime": "2015-11-15T03:06:33+00:00",
+            "received_datetime": "2015-11-15T10:40:02+00:00",
+            "status": "RECEIVED",
+            "molecular_id": "MOL100136_01_01"
         }
     },
     {
         "patient_id": "100136",
-        "event_date": "2016-05-09T22:06:33+00:00",
+        "event_date": "2015-11-15T09:33:46+00:00",
+        "event_name": "Event Name 3",
+        "event_type": "patient",
+        "event_message": "Blood Nucleic Acid Shipped",
+        "step": "1.0",
+        "event_data": {
+            "carrier": "Federal Express",
+            "tracking_id": "6758 8346 4821",
+            "status": "SHIPPED",
+            "molecular_id": "MOL100136BLD_01"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2015-11-15T02:41:07+00:00",
+        "event_name": "Event Name 2",
+        "event_type": "patient",
+        "event_message": "Blood Specimen Received",
+        "step": "1.0",
+        "event_data": {
+            "collected_datetime": "2015-11-15T02:07:08+00:00",
+            "received_datetime": "2015-11-15T02:41:07+00:00",
+            "status": "RECEIVED",
+            "molecular_id": "MOL100136BLD_01"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2015-11-10T22:06:33+00:00",
         "event_name": "Event Name 1",
         "event_type": "patient",
         "event_message": "Patient Registered",

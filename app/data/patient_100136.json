@@ -1455,7 +1455,7 @@
                     "destination_date": "2016-05-18T18:41:16+00:00",
                     "dna_concordance": 10.2,
                     "dna_volume": 9,
-                    "reported_date": "2016-05-18T16:26:47+00:00",
+                    "reported_date": "2016-05-10T04:23:12+00:00",
                     "comments": "Comment",
                     "analyses": [
                         {
@@ -1513,19 +1513,19 @@
             "study_id": "APEC1621",
             "type": "TISSUE",
             "pathology_status": "Agreed on pathology",
-            "pathology_status_date": "2016-11-22T22:53:19+00:00",
+            "pathology_status_date": "2015-11-22T22:53:19+00:00",
             "variant_report_confirmed_date": "2015-11-21T16:17:21+00:00",
             "assays": [
                 {
                     "gene": "PTEN",
-                    "ordered_date": "2016-11-20T10:15:48+00:00",
-                    "result_date": "2016-11-23T10:49:39+00:00",
+                    "ordered_date": "2015-11-20T10:15:48+00:00",
+                    "result_date": "2015-11-23T10:49:39+00:00",
                     "result": "POSITIVE"
                 },
                 {
                     "gene": "MLH1",
-                    "ordered_date": "2016-11-20T10:15:48+00:00",
-                    "result_date": "2016-11-23T10:49:39+00:00",
+                    "ordered_date": "2015-11-20T10:15:48+00:00",
+                    "result_date": "2015-11-23T10:49:39+00:00",
                     "result": "POSITIVE"
                 }
             ],
@@ -1549,14 +1549,14 @@
                         {
                             "analysis_id": "AI100136_01_01_1",
                             "status": "Rejected",
-                            "file_received_date": "2016-11-15T16:55:17+00:00",
+                            "file_received_date": "2015-11-15T16:55:17+00:00",
                             "status_date": "2015-11-21T16:17:21+00:00"
                         }
                     ]
                 },
                 {
                     "surgical_event_id": "SEI100136_01",
-                    "shipped_dttm": "2016-05-16T18:06:13+00:00",
+                    "shipped_dttm": "2015-11-16T18:06:13+00:00",
                     "study_id": "APEC1621",
                     "slide_barcode": "9D24KG27GDB",
                     "carrier": "Federal Express",
