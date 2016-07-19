@@ -353,7 +353,50 @@
             $scope.versions = scopeData;
             $scope.currentVersion = $scope.versions[0];
 
+            setupRulesExlcusionInclusionLists();
             setupFinal(); 
+        }
+        
+        function setupRulesExlcusionInclusionLists() {
+            // version.snvsInclusion = $scope.snvsInclusion;
+            // version.snvsExclusion = $scope.snvsExclusion;
+            // version.indelsInclusion = $scope.indelsInclusion;
+            // version.indelsExclusion = $scope.indelsExclusion;
+            // version.cnvsInclusion = $scope.cnvsInclusion;
+            // version.cnvsExclusion = $scope.cnvsExclusion;
+            // version.geneFusionsInclusion = $scope.gfsInclusion;
+            // version.geneFusionsExclusion = $scope.gfsExclusion;
+            // version.nhrsInclusion = $scope.nhrsInclusion;
+            // version.nhrsExclusion = $scope.nhrsExclusion;
+
+
+            for (var i = 0; i < $scope.versions.length; i++) {
+                var version = $scope.versions[i];
+
+                setupCriteriaList(version.variant_report.single_nucleotide_variants, version, 'snvsInclusion', 'snvsExclusion');
+                setupCriteriaList(version.variant_report.indels, version, 'indelsInclusion', 'indelsExclusion');
+                setupCriteriaList(version.variant_report.copy_number_variants, version, 'cnvsInclusion', 'cnvsExclusion');
+                setupCriteriaList(version.variant_report.gene_fusions, version, 'geneFusionsInclusion', 'geneFusionsExclusion');
+                setupCriteriaList(version.variant_report.non_hotspot_rules, version, 'nhrsInclusion', 'nhrsExclusion');
+            }
+        }
+
+        function setupCriteriaList(sourceArray, version, inclusionArrayName, exclusionArrayName) {
+            inclusionList = [];
+            exclusionList = [];
+
+            version[inclusionArrayName] = inclusionList;
+            version[exclusionArrayName] = exclusionList;
+
+            for (var i = 0; i < sourceArray.length; i++) {
+                var row = sourceArray[i];
+                if (row.inclusion) {
+                    inclusionList.push(angular.copy(row));
+                }
+                else {
+                    exclusionList.push(angular.copy(row));
+                }
+            }
         }
 
         function setupFinal() {
@@ -437,8 +480,8 @@
                                 version.latest = 'This is not the latest version.';
                             }
 
-                            version.exclusionaryDiseases = exclusionDiseases;
-                            version.exclusionaryDrugs = exclusionDrugs;
+                            // version.exclusionaryDiseases = exclusionDiseases;
+                            // version.exclusionaryDrugs = exclusionDrugs;
                             //version.inclusionaryDrugs = inclusionDrugs;
                             version.snvsInclusion = $scope.snvsInclusion;
                             version.snvsExclusion = $scope.snvsExclusion;
