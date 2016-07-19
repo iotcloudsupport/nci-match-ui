@@ -20,7 +20,7 @@
 
     <div class="wrapper">
 
-        <div ng-controller="TreatmentArmController as TaCtrl" ng-init="loadTreatmentArmDetails()" class="wrapper">
+        <div class="wrapper">
 
             <div class="no-horizontal-padding header-box-container">
                 <div class="row">
@@ -643,11 +643,11 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr ng-repeat="item in currentVersion.nonSequencingAssays">
+                                                                <tr ng-repeat="item in currentVersion.pten_results">
                                                                     <td>{{item.assay || '-'}}</td>
                                                                     <td><a ng-click="openGene(item.gene_name)">{{item.gene_name || '-'}}</a></td>
-                                                                    <td>{{item.result || '-'}}</td>
-                                                                    <td>{{item.variantAssociation || '-'}}</td>
+                                                                    <td>{{item.pten_ihc_result || '-'}}</td>
+                                                                    <td>{{item.pten_variant || '-'}}</td>
                                                                     <td>{{item.level_of_evidence || '-'}}</td>
                                                                     <td style="text-align:right">{{item.totNumPtsWithGene || '-'}}</td>
                                                                     <td style="text-align:right">{{item.ptsWithGeneOnArm || '-'}}</td>

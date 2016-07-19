@@ -245,13 +245,12 @@
                 $state.transitionTo('treatment-arms');
             }
 
-            loadPatients();
-
             $scope.name = $stateParams.name;
             $scope.version = $stateParams.version;
             $scope.stratum = $stateParams.stratum;
 
-            $scope.patient_id = $stateParams.patient_id;
+            loadPatients();
+
             var scopeData = [];
             angular.copy(data.data, scopeData);
             $scope.versions = scopeData;
@@ -365,12 +364,9 @@
                             $scope.selectedVersion = $scope.versions[0];
                             $log.debug('sel vsn');
                             $log.debug($scope.selectedVersion);
-
                         }
 
-
                     });
-
 
                 })
                 .then(function () {
