@@ -22,28 +22,6 @@
         }
     },
     {
-        "patient_id": "100100 ???",
-        "event_date": "2016-06-29T18:17:26+00:00 ???",
-        "event_type": "biopsy.variant_report_received",
-        "event_message": "Tissue Variant Report confirmed",
-        "step": "4.0 ???",
-        "event_data": {
-            "status": " CONFIRMED",
-            "comment_user": "Jane James"
-        }
-    },
-    {
-        "patient_id": "100100 ???",
-        "event_date": "2016-06-29T18:10:28+00:00 ???",
-        "event_type": "assignment",
-        "event_message": "Assignment Report approved",
-        "step": "4.0 ???",
-        "event_data": {
-            "status": "APPROVED",
-            "comment_user": "Jane James"
-        }
-    },
-    {
         "patient_id": "100100",
         "event_date": "2016-06-29T14:30:32+00:00",
         "event_name": "Event Name 1",
@@ -68,19 +46,44 @@
     },
     {
         "patient_id": "100136",
-        "event_date": "2016-05-25T16:42:43+00:00",
-        "event_name": "Event Name 1",
+        "event_date": "2016-06-05T16:42:43+00:00",
+        "event_name": "Event Name 37",
         "event_type": "assignment",
         "event_message": "Patient Assignment",
         "step": "2.1",
         "event_data": {
             "status": "ON_TREATMENT_ARM",
             "message": "",
-            "stratum_id": "STR15",
-            "molecular_id": "B-987456",
-            "treatment_arm_id": "APEC1621-E",
-            "treatment_arm_version": "2016-08-14",
-            "assignment_date": "2016-05-25T16:42:43+00:00"
+            "stratum_id": "STR11",
+            "molecular_id": "MOL100136_02_02",
+            "treatment_arm_id": "APEC1621-U",
+            "treatment_arm_version": "2016-05-06",
+            "assignment_date": "2016-06-01T14:28:16+00:00"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2016-06-04T15:22:51+00:00",
+        "event_type": "assignment",
+        "event_message": "Assignment Report approved",
+        "step": "2.0",
+        "event_data": {
+            "status": "APPROVED",
+            "molecular_id": "MOL100136_02_02",
+            "comment_user": "Jane James"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2016-05-30T13:54:24+00:00",
+        "event_name": "Event Name 31",
+        "event_type": "biopsy.variant_report_received",
+        "event_message": "Tissue variant report confirmed",
+        "step": "2.0",
+        "event_data": {
+            "status": "CONFIRMED",
+            "molecular_id": "MOL100136_02_02",
+            "comment_user": "Jane James"
         }
     },
     {
