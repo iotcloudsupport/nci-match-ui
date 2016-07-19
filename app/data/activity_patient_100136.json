@@ -2,7 +2,7 @@
     {
         "patient_id": "100136",
         "event_date": "2016-06-05T16:42:43+00:00",
-        "event_name": "Event Name 40",
+        "event_name": "Event Name 37",
         "event_type": "assignment",
         "event_message": "Patient Assignment",
         "step": "2.1",
@@ -19,20 +19,20 @@
     {
         "patient_id": "100136",
         "event_date": "2016-06-04T15:22:51+00:00",
-        "event_name": "Event Name 39",
+        "event_name": "Event Name 36",
         "event_type": "patient",
-        "event_message": "Patient Pending Approval",
+        "event_message": "Assignment Report approved",
         "step": "2.0",
         "event_data": {
-            "status": "PENDING",
+            "status": "APPROVED",
             "molecular_id": "MOL100136_02_02",
-            "location": "GHU"
+            "comment_user": "Jane James"
         }
     },
     {
         "patient_id": "100136",
         "event_date": "2016-06-02T10:27:51+00:00",
-        "event_name": "Event Name 38",
+        "event_name": "Event Name 35",
         "event_type": "patient",
         "event_message": "Patient Pending Confirmation",
         "step": "2.0",
@@ -45,7 +45,7 @@
     {
         "patient_id": "100136",
         "event_date": "2016-06-01T14:28:16+00:00",
-        "event_name": "Event Name 37",
+        "event_name": "Event Name 34",
         "event_type": "system",
         "event_message": "Receiving Rule Assignment",
         "step": "2.0",
@@ -56,7 +56,7 @@
     {
         "patient_id": "100136",
         "event_date": "2016-06-01T12:46:16+00:00",
-        "event_name": "Event Name 36",
+        "event_name": "Event Name 33",
         "event_type": "system",
         "event_message": "Awaiting Treatment Arms Status",
         "step": "2.0",
@@ -67,7 +67,7 @@
     {
         "patient_id": "100136",
         "event_date": "2016-05-31T10:49:39+00:00",
-        "event_name": "Event Name 35",
+        "event_name": "Event Name 32",
         "event_type": "system",
         "event_message": "Awaiting Patient Data",
         "step": "2.0",
@@ -78,19 +78,20 @@
     {
         "patient_id": "100136",
         "event_date": "2016-05-30T13:54:24+00:00",
-        "event_name": "Event Name 34",
-        "event_type": "patient",
+        "event_name": "Event Name 31",
+        "event_type": "biopsy.variant_report_received",
         "event_message": "Tissue variant report confirmed",
         "step": "2.0",
         "event_data": {
             "status": "CONFIRMED",
-            "molecular_id": "MOL100136_02_02"
+            "molecular_id": "MOL100136_02_02",
+            "comment_user": "Jane James"
         }
     },
     {
         "patient_id": "100136",
         "event_date": "2016-05-28T12:46:35+00:00",
-        "event_name": "Event Name 33",
+        "event_name": "Event Name 30",
         "event_type": "biopsy.pathology",
         "event_message": "Pathology confirmed",
         "step": "2.0",
@@ -103,8 +104,8 @@
     {
         "patient_id": "100136",
         "event_date": "2016-05-24T02:44:58+00:00",
-        "event_name": "Event Name 32",
-        "event_type": "patient",
+        "event_name": "Event Name 29",
+        "event_type": "biopsy.variant_report_received",
         "event_message": "Tissue Variant Report Received",
         "step": "2.0",
         "event_data": {
@@ -119,7 +120,7 @@
     {
         "patient_id": "100136",
         "event_date": "2016-05-18T18:41:16+00:00",
-        "event_name": "Event Name 31",
+        "event_name": "Event Name 28",
         "event_type": "patient",
         "event_message": "Tissue Nucleic Acid Shipped",
         "step": "2.0",
@@ -136,8 +137,8 @@
     {
         "patient_id": "100136",
         "event_date": "2016-05-16T16:01:21+00:00",
-        "event_name": "Event Name 30",
-        "event_type": "patient",
+        "event_name": "Event Name 27",
+        "event_type": "biopsy.variant_report_received",
         "event_message": "Tissue Variant Report Received",
         "step": "2.0",
         "event_data": {
@@ -152,7 +153,7 @@
     {
         "patient_id": "100136",
         "event_date": "2016-05-15T09:37:23+00:00",
-        "event_name": "Event Name 29",
+        "event_name": "Event Name 26",
         "event_type": "biopsy.assay_received",
         "event_message": "Assay Received",
         "step": "2.0",
@@ -167,7 +168,7 @@
     {
         "patient_id": "100136",
         "event_date": "2016-05-15T09:37:23+00:00",
-        "event_name": "Event Name 28",
+        "event_name": "Event Name 25",
         "event_type": "biopsy.assay_received",
         "event_message": "Assay Received",
         "step": "2.0",
@@ -181,35 +182,9 @@
     },
     {
         "patient_id": "100136",
-        "event_date": "2016-05-12T18:15:16+00:00",
-        "event_name": "Event Name 27",
-        "event_type": "biopsy.assay_order",
-        "event_message": "Assay Order",
-        "step": "2.0",
-        "event_data": {
-            "biomarker": "PTEN",
-            "status": "ORDER",
-            "ordered_date": "2016-05-12T18:15:16+00:00"
-        }
-    },
-    {
-        "patient_id": "100136",
-        "event_date": "2016-05-12T18:15:16+00:00",
-        "event_name": "Event Name 26",
-        "event_type": "biopsy.assay_order",
-        "event_message": "Assay Order",
-        "step": "2.0",
-        "event_data": {
-            "biomarker": "MLH1",
-            "status": "ORDER",
-            "ordered_date": "2016-05-12T18:15:16+00:00"
-        }
-    },
-    {
-        "patient_id": "100136",
         "event_date": "2016-05-12T00:17:16+00:00",
-        "event_name": "Event Name 25",
-        "event_type": "patient",
+        "event_name": "Event Name 24",
+        "event_type": "biopsy.variant_report_received",
         "event_message": "Tissue Variant Report Received",
         "step": "2.0",
         "event_data": {
@@ -224,7 +199,7 @@
     {
         "patient_id": "100136",
         "event_date": "2016-05-10T06:19:15+00:00",
-        "event_name": "Event Name 24",
+        "event_name": "Event Name 23",
         "event_type": "patient",
         "event_message": "Tissue Nucleic Acid Shipped",
         "step": "2.0",
@@ -241,7 +216,7 @@
     {
         "patient_id": "100136",
         "event_date": "2016-05-10T05:22:48+00:00",
-        "event_name": "Event Name 23",
+        "event_name": "Event Name 22",
         "event_type": "patient",
         "event_message": "Slide Shipped",
         "step": "2.0",
@@ -256,7 +231,7 @@
     {
         "patient_id": "100136",
         "event_date": "2016-05-10T04:23:12+00:00",
-        "event_name": "Event Name 22",
+        "event_name": "Event Name 21",
         "event_type": "patient",
         "event_message": "Tissue Specimen Received",
         "step": "2.0",
@@ -271,7 +246,7 @@
     {
         "patient_id": "100136",
         "event_date": "2016-05-02T15:04:27+00:00",
-        "event_name": "Event Name 21",
+        "event_name": "Event Name 20",
         "event_type": "patient",
         "event_message": "Patient Progression",
         "step": "2.0",
@@ -285,7 +260,7 @@
     {
         "patient_id": "100136",
         "event_date": "2015-12-08T22:05:33+00:00",
-        "event_name": "Event Name 20",
+        "event_name": "Event Name 19",
         "event_type": "assignment",
         "event_message": "Patient Assignment",
         "step": "1.1",
@@ -302,20 +277,20 @@
     {
         "patient_id": "100136",
         "event_date": "2015-12-08T15:22:51+00:00",
-        "event_name": "Event Name 19",
-        "event_type": "patient",
-        "event_message": "Patient Pending Approval",
+        "event_name": "Event Name 18",
+        "event_type": "assignment",
+        "event_message": "Assignment Report approved",
         "step": "1.0",
         "event_data": {
-            "status": "PENDING",
-            "molecular_id": "MOL100136_01_01",
-            "location": "GHU"
+            "status": "APPROVED",
+            "molecular_id": "MOL100136_02_02",
+            "comment_user": "Jane James"
         }
     },
     {
         "patient_id": "100136",
         "event_date": "2015-11-25T18:27:51+00:00",
-        "event_name": "Event Name 18",
+        "event_name": "Event Name 17",
         "event_type": "patient",
         "event_message": "Patient Pending Confirmation",
         "step": "1.0",
@@ -328,7 +303,7 @@
     {
         "patient_id": "100136",
         "event_date": "2015-11-25T14:28:16+00:00",
-        "event_name": "Event Name 17",
+        "event_name": "Event Name 16",
         "event_type": "system",
         "event_message": "Receiving Rule Assignment",
         "step": "1.0",
@@ -339,7 +314,7 @@
     {
         "patient_id": "100136",
         "event_date": "2015-11-24T22:06:33+00:00",
-        "event_name": "Event Name 16",
+        "event_name": "Event Name 15",
         "event_type": "system",
         "event_message": "Awaiting Treatment Arms Status",
         "step": "1.0",
@@ -350,7 +325,7 @@
     {
         "patient_id": "100136",
         "event_date": "2015-11-24T10:49:39+00:00",
-        "event_name": "Event Name 15",
+        "event_name": "Event Name 14",
         "event_type": "system",
         "event_message": "Awaiting Patient Data",
         "step": "1.0",
@@ -361,7 +336,7 @@
     {
         "patient_id": "100136",
         "event_date": "2015-11-23T10:49:39+00:00",
-        "event_name": "Event Name 14",
+        "event_name": "Event Name 13",
         "event_type": "biopsy.assay_received",
         "event_message": "Assay Received",
         "step": "1.0",
@@ -376,7 +351,7 @@
     {
         "patient_id": "100136",
         "event_date": "2015-11-23T10:49:39+00:00",
-        "event_name": "Event Name 14",
+        "event_name": "Event Name 12",
         "event_type": "biopsy.assay_received",
         "event_message": "Assay Received",
         "step": "1.0",
@@ -391,7 +366,7 @@
     {
         "patient_id": "100136",
         "event_date": "2015-11-22T22:53:19+00:00",
-        "event_name": "Event Name 13",
+        "event_name": "Event Name 11",
         "event_type": "biopsy.pathology",
         "event_message": "Pathology confirmed",
         "step": "1.0",
@@ -404,39 +379,14 @@
     {
         "patient_id": "100136",
         "event_date": "2015-11-21T16:17:21+00:00",
-        "event_name": "Event Name 12",
-        "event_type": "patient",
+        "event_name": "Event Name 10",
+        "event_type": "biopsy.variant_report_received",
         "step": "1.0",
         "event_message": "Tissue variant report confirmed",
         "event_data": {
             "status": "CONFIRMED",
-            "molecular_id": "MOL100136_01_01"
-        }
-    },
-    {
-        "patient_id": "100136",
-        "event_date": "2015-11-20T10:15:48+00:00",
-        "event_name": "Event Name 11",
-        "event_type": "biopsy.assay_order",
-        "event_message": "Assay Order",
-        "step": "1.0",
-        "event_data": {
-            "biomarker": "PTEN",
-            "status": "ORDER",
-            "ordered_date": "2015-11-20T10:15:48+00:00"
-        }
-    },
-    {
-        "patient_id": "100136",
-        "event_date": "2015-11-20T10:15:48+00:00",
-        "event_name": "Event Name 10",
-        "event_type": "biopsy.assay_order",
-        "event_message": "Assay Order",
-        "step": "1.0",
-        "event_data": {
-            "biomarker": "MLH1",
-            "status": "ORDER",
-            "ordered_date": "2015-11-20T10:15:48+00:00"
+            "molecular_id": "MOL100136_01_01",
+            "comment_user": "Jane James"
         }
     },
     {
@@ -458,7 +408,7 @@
         "patient_id": "100136",
         "event_date": "2015-11-19T03:22:21+00:00",
         "event_name": "Event Name 8",
-        "event_type": "patient",
+        "event_type": "biopsy.variant_report_received",
         "event_message": "Tissue Variant Report Received",
         "step": "1.0",
         "event_data": {
@@ -489,7 +439,7 @@
         "patient_id": "100136",
         "event_date": "2015-11-15T16:55:17+00:00",
         "event_name": "Event Name 6",
-        "event_type": "patient",
+        "event_type": "biopsy.variant_report_received",
         "event_message": "Tissue Variant Report Received",
         "step": "1.0",
         "event_data": {
