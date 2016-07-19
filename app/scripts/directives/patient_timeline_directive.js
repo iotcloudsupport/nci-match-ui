@@ -52,9 +52,6 @@
 
         var getTemplateLoader = function (type, layout) {
             var key = type + '.' + (layout ? layout : 'normal');
-
-            $log.debug('key = ' + key);
-
             if (key in templateMap) {
                 var url = templateMap[key];
                 return $http.get(url, { cache: $templateCache });
