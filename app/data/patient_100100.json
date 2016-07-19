@@ -266,7 +266,7 @@
             "cds_alt": "C",
             "ocp_ref": "A",
             "ocp_alt": "C",
-            "strand": "S",
+            "strand": "-",
             "filter": "flt",
             "protein": "p.Glu6565Ala",
             "transcript": "NM_0456345",
@@ -302,7 +302,7 @@
             "cds_alt": "A",
             "ocp_ref": "A",
             "ocp_alt": "C",
-            "strand": "S",
+            "strand": "-",
             "filter": "flt",
             "protein": "p.Glu6565Ala",
             "transcript": "NM_0456345",
@@ -337,7 +337,6 @@
               "_id": "a55c92d6-8080-44fa-be02-6553549000ac"
             },
             "geneName": "",
-            "aMOI": "PRIOR",
             "chromosome": "chr3",
             "position": "41266134",
             "identifier": "COSM6128",
@@ -558,7 +557,7 @@
             "cds_alt": "C",
             "ocp_ref": "A",
             "ocp_alt": "C",
-            "strand": "S",
+            "strand": "+",
             "filter": "flt",
             "protein": "p.Glu6565Ala",
             "transcript": "NM_0456345",
@@ -594,7 +593,7 @@
             "cds_alt": "A",
             "ocp_ref": "A",
             "ocp_alt": "C",
-            "strand": "S",
+            "strand": "-",
             "filter": "flt",
             "protein": "p.Glu6565Ala",
             "transcript": "NM_0456345",
@@ -850,7 +849,7 @@
             "cds_alt": "C",
             "ocp_ref": "A",
             "ocp_alt": "C",
-            "strand": "S",
+            "strand": "-",
             "filter": "flt",
             "protein": "p.Glu6565Ala",
             "transcript": "NM_0456345",
@@ -886,7 +885,7 @@
             "cds_alt": "A",
             "ocp_ref": "A",
             "ocp_alt": "C",
-            "strand": "S",
+            "strand": "-",
             "filter": "flt",
             "protein": "p.Glu6565Ala",
             "transcript": "NM_0456345",
@@ -1098,7 +1097,7 @@
             "cds_alt": "C",
             "ocp_ref": "A",
             "ocp_alt": "C",
-            "strand": "S",
+            "strand": "-",
             "filter": "flt",
             "protein": "p.Glu6565Ala",
             "transcript": "NM_0456345",
@@ -1301,7 +1300,7 @@
             "cds_alt": "C",
             "ocp_ref": "A",
             "ocp_alt": "C",
-            "strand": "S",
+            "strand": "-",
             "filter": "flt",
             "protein": "p.Glu6565Ala",
             "transcript": "NM_0456345",
@@ -1581,15 +1580,11 @@
   "specimen_selectors": [
     {
       "text": "SUREVT099",
-      "collected_date": "2016-06-09T22:06:33.000+00:00"
-    },
-    {
-      "text": "SUREVT0100",
-      "collected_date": "2016-06-09T22:06:33.000+00:00"
+      "collected_date": "2015-07-08T09:06:33+00:00"
     },
     {
       "text": "SUREVT0101",
-      "collected_date": "2015-11-02T22:06:33+00:00"
+      "collected_date": "2016-06-09T22:06:33+00:00"
     }
   ],
   "specimens": [
