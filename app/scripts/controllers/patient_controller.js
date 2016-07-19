@@ -420,10 +420,11 @@
             $scope.assignmentReportOptions = [];
 
             var currentAssignment = $scope.data.current_assignment;
+            var receivedDate = currentAssignment.received_from_cog_date && currentAssignment.received_from_cog_date !== '-' ? $filter('utc')(currentAssignment.received_from_cog_date) : '-';
 
             $scope.assignmentReportOption = {
                 text: $scope.currentTreatmentArm.name +
-                ' | Received from COG ' + currentAssignment.received_from_cog_date,
+                ' | Received from COG ' + receivedDate,
                 value: {
                     molecular_id: currentAssignment.molecular_id,
                     analysis_id: currentAssignment.analysis_id,
@@ -652,6 +653,7 @@
                     assignmentReport.status = 'CONFIRMED';
                     assignmentReport.comment = null;
                     assignmentReport.comment_user = $scope.currentUser;
+                    assignmentReport.status_date = moment.utc(new Date()).utc();
                 }
             });
         }
@@ -728,6 +730,7 @@
                     variantReport.status = 'CONFIRMED';
                     variantReport.comment = null;
                     variantReport.comment_user = $scope.currentUser;
+                    variantReport.status_date = moment.utc(new Date()).utc();
 
                     if (variantReport.variant_report_type === 'BLOOD') {
                         updateTissueVariantReportOption(variantReport);

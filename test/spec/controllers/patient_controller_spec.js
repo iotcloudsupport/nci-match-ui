@@ -17,7 +17,7 @@ xdescribe('Controller: Patient Details Controller', function () {
             "current_current_step_number": "1.0",
             "current_assignment": {
                 "generated_date": "2016-05-09T22:06:33+00 : 00",
-                "confirmed_date": "2016-05-09T22:06:33+00 : 00",
+                "status_date": "2016-05-09T22:06:33+00 : 00",
                 "sent_to_cog_date": "-",
                 "received_from_cog_date": "-",
                 "molecular_id": "MSN34534",
