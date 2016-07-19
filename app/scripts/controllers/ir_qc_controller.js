@@ -1,8 +1,10 @@
 angular.module('qcsample.matchbox',[ ])
-    .controller('QcSampleController', function($scope, $http, $window, $stateParams, matchConfig, DTOptionsBuilder, svgApi) {
+    .controller('QcSampleController', function($scope, $http, $window, $stateParams, matchConfig, DTOptionsBuilder, svgApi, matchApiMock) {
         angular.element(document).ready(function () {
             $('.equal-height-panels .panel').matchHeight();
         });
+
+        var vm = this;
 
         $scope.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(25);
@@ -34,6 +36,15 @@ angular.module('qcsample.matchbox',[ ])
         $scope.geneFusions = [];
         $scope.branch = "";
         $scope.sitename = 'undefined';
+        $scope.getFileButtonClass = getFileButtonClass;
+        $scope.currentVariantReport = null;
+        $scope.loadQc_Table = loadQc_Table;
+        $scope.loadSnv_Table = loadSnv_Table;
+        $scope.loadGene_Table = loadGene_Table;
+
+        function getFileButtonClass(filePath) {
+            return filePath ? vm.enabledFileButtonClass : vm.disabledFileButtonClass;
+        }
 
         
         if($scope.sampleId.indexOf('MoCha') >= 0) {
@@ -225,74 +236,40 @@ angular.module('qcsample.matchbox',[ ])
 
         $scope.filterCol = "";
 
+
+        //Sample Mocks
         //CNV
-        $scope.loadQc_Table = function () {
+        function loadQc_Table() {
+            matchApiMock
+                .loadQc_Table()
+                .then(loadQcList);
+        };
 
-            var url ="data/sample_qc.json";
-
-            $.ajax({
-
-                type   :  "GET",
-                url      :   url,
-                contentType : "application/json",
-                dataType      : "json",
-                data            :  {},
-                success: function(data){
-                    loadQcList(data)
-                },
-                error:function(jqXHR,textStatus,errorThrown){
-                    alert("Error: "+textStatus.toString());
-                }
-            });
+        function loadQcList(data) {
+            $scope.cnvList = data.data.copyNumberVariants;
         };
 
         //SNV
-        function loadSnvList(data) {
-            $scope.snvList = data.singleNucleotideVariants;
+        function loadSnv_Table() {
+            matchApiMock
+                .loadQc_Table()
+                .then(loadSnvList);
         };
-        $scope.loadSnv_Table = function () {
 
-            var url ="data/sample_qc.json";
-
-            $.ajax({
-
-                type   :  "GET",
-                url      :   url,
-                contentType : "application/json",
-                dataType      : "json",
-                data            :  {},
-                success: function(data){
-                    loadSnvList(data)
-                },
-                error:function(jqXHR,textStatus,errorThrown){
-                    alert("Error: "+textStatus.toString());
-                }
-            });
+        function loadSnvList(data) {
+            $scope.snvList = data.data.singleNucleotideVariants;
         };
 
         //GENE
+        function loadGene_Table() {
+            matchApiMock
+                .loadQc_Table()
+                .then(loadGeneList);
+        };
+
         function loadGeneList(data) {
-            $scope.geneList = data.geneFusions;
+            $scope.geneList = data.data.geneFusions;
         };
-        $scope.loadGene_Table = function () {
-
-            var url ="data/sample_qc.json";
-
-            $.ajax({
-
-                type   :  "GET",
-                url      :   url,
-                contentType : "application/json",
-                dataType      : "json",
-                data            :  {},
-                success: function(data){
-                    loadGeneList(data);
-                },
-                error:function(jqXHR,textStatus,errorThrown){
-                    alert("Error: "+textStatus.toString());
-                }
-            });
-        };
-
+        //Sample Mocks
 
     });
