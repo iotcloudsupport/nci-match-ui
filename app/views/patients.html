@@ -51,7 +51,7 @@
                                 <td>{{ ::patient.disease_name || '-' }}</td>
                                 <td ng-if="patient.treatment_arm === null">-</td>
                                 <td ng-if="patient.treatment_arm !== null">
-                                    <treatment-arm-title name="patient.treatment_arm" stratum="patient.treatment_arm_stratum" version="patient.treatment_arm_version"></treatment-arm-title>
+                                    <treatment-arm-title name="patient.treatment_arm" stratum="patient.treatment_arm_stratum_id" version="patient.treatment_arm_version"></treatment-arm-title>
                                 </td>
                                 <td>{{ patient.registration_date | utc }}</td>
                                 <td>{{ patient.off_trial_date | utc }}</td>
