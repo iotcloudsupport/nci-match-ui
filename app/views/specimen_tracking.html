@@ -111,7 +111,7 @@
                                     <td ng-if="specimenTrackingItem.site === 'MDA'">
                                         <a ui-sref="iradmin({branch: 'mdacc'})">{{ specimenTrackingItem.site || '-' }}</a>
                                     </td>
-                                    <td>{{ specimenTrackingItem.fedex_tracking }}</td>
+                                    <td><tracking-link carrier="'fedex'" tracking-number="specimenTrackingItem.fedex_tracking"></tracking-link></td>
                                     <td>{{ specimenTrackingItem.pathology_status }}</td>
                                     <td>{{ specimenTrackingItem.pathology_status_date | utc }}</td>
                                 </tr>
