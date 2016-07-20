@@ -4,9 +4,10 @@
     angular.module('d3', ['d3module'])
         .directive('d3CnvChart', cnvChart);
 
-    cnvChart.$inject = ['d3service', '$log', '$timeout', '$http'];
+    cnvChart.$inject = ['d3service', '$log', '$timeout', '$http', '$window'];
 
-    function cnvChart(d3Service, $log, $timeout, $http) {
+    function cnvChart(d3Service, $log, $timeout, $http, $window) {
+
         return {
             restrict: 'EA',
             scope: {
@@ -17,20 +18,22 @@
 
         function link(scope, iElement, iAttrs) {
             // on window resize, re-render d3 canvas
-            window.onresize = function () {
+            $window.onresize = function () {
                 return scope.$apply();
             };
 
             scope.$watch(function () {
-                return angular.element(window)[0].innerWidth;
+                return angular.element($window)[0].innerWidth;
             }, function () {
                 return scope.render();
             }
             );
 
+
             scope.render = function () {
                 d3Service.d3().then(function (d3) {
                     $timeout(function () {
+
                         d3Service.boxify(d3);
 
                         var margin = { top: 45, right: 55, bottom: 100, left: 50 }; //TODO: move to driective's paramaters
@@ -84,12 +87,13 @@
                                 var gene = value.gene;
                                 var chr = value.chromosome;
                                 var pos = value.position;
+                                var cis = value.cis;
 
                                 if (tsg === true) {
                                     tsg_genes.push(gene)
                                 }
 
-                                var gene_chrom = [gene, chr, ' pos: ' + pos, ' cn: ' + cp];
+                                var gene_chrom = [gene, chr, pos, cp, cis[0], cis[1]];
                                 genes.push(gene_chrom);
                             });
 
@@ -114,6 +118,7 @@
                                     }
                                 }
                             }
+
 
                             //Count same chromosmes
                             var obj = {};
@@ -146,6 +151,7 @@
                             var line2 = (height - ((height / max) * 2)) + margin.top;
                             var line7 = (height - ((height / max) * rank)) + margin.top;
 
+
                             //Build the box
                             var chart = d3.box()
                                 .whiskers(iqr(1.5))
@@ -172,8 +178,12 @@
                             //     .attr("width", width + margin.left + margin.right)
                             //     .attr("height", height + margin.top + margin.bottom)
                             //     .attr("class", "box")
+                            //     .attr("fill", "black")
                             //     .append("g")
                             //     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+                            var pad = 0.3;
+                            var lin = 0.6;
 
                             // the x-axis Gene
                             var x = d3.scale.ordinal()
@@ -238,9 +248,9 @@
                             var svg_height = height + 200;
                             var svg_width = width + 100;
 
-                            svg
+
                                 //responsive SVG needs these 2 attributes and no width and height attr
-                                .attr("viewBox", "0 0 " + svg_width + " " + svg_height)
+                            svg.attr("viewBox", "0 0 " + svg_width + " " + svg_height)
                                 //class to make it responsive
                                 .classed("svg-content-responsive", true);
 
@@ -253,6 +263,10 @@
                                 var chr = value[1].substring(3, value[1].length);
                                 var pos = value[2];
                                 var cn = value[3];
+                                var tmp = value[4];
+                                var ci05 = tmp.substring(tmp.indexOf(':')+1, tmp.length);
+                                tmp = value[5];
+                                var ci95 = tmp.substring(tmp.indexOf(':')+1, tmp.length);
                                 var info, line;
                                 var tl = [];
                                 var label = "";
@@ -271,7 +285,7 @@
                                         label = '<span class="label label-danger">' + mainid + '</span>';
                                     }
                                     else {
-                                        label = '<span class="label label-success">' + mainid + '</span>';
+                                        label = '<span class="label label-primary">' + mainid + '</span>';
                                     }
                                     var dir = 'top';
                                     var locY = d3.select(this).select("rect").attr("y");
@@ -288,9 +302,10 @@
                                         container: 'body',
                                         content: function () {
                                             return '<ul class="list-group no-bullets">' +
-                                                '<li style="width:100%;">chr: ' + chr + '</li>' +
-                                                '<li style="width:100%;">' + pos + '</li>' +
-                                                '<li style="width:100%;">' + cn + '</li>' +
+                                                '<li class="list-group-item" style="width:100%;">POS: ' + pos + '</li>' +
+                                                '<li class="list-group-item" style="width:100%;">CN: ' + cn + '</li>' +
+                                                '<li class="list-group-item" style="width:100%;">CI 5%: ' + ci05 + '</li>' +
+                                                '<li class="list-group-item" style="width:100%;">CI 95%: ' + ci95 + '</li>' +
                                                 '</ul>';
                                         }
                                     });
@@ -398,10 +413,10 @@
                                 .style("text-anchor", "end")
                                 .style({
                                     'text-anchor': 'end',
-                                    visibility: 'visible',
+                                    'visibility': 'visible',
                                     'font-size': '14px',
                                     'font-weight': 'bold',
-                                    fill: 'black'
+                                    'fill': 'black'
                                 })
                                 .text(function (d) { return d });
 
@@ -515,12 +530,12 @@
                         .attr("width", "100%");
 
                     // on window resize, re-render d3 canvas
-                    window.onresize = function () {
+                    $window.onresize = function () {
                         return scope.$apply();
                     };
 
                     scope.$watch(function () {
-                        return angular.element(window)[0].innerWidth;
+                        return angular.element($window)[0].innerWidth;
                     }, function () {
                         return scope.render(scope.data);
                     }
