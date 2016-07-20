@@ -1,45 +1,13 @@
 [
   {
     "patient_id": "100025",
-    "molecular_id": "MOL001_1",
-    "analysis_id": "SAM001_02",
+    "molecular_id": "MOL003_BLD",
+    "analysis_id": "SAM003_BLD_1",
     "clia_lab": "MoCha",
-    "specimen_received_date": 1421162969643,
-    "variant_report_received_date": 1421162969643,
+    "specimen_received_date": 1467484867000,
+    "variant_report_received_date": 1468128320000,
     "approved": false,
-    "days_pending": "1"
+    "days_pending": "10"
 
-  },
-  {
-    "patient_id": "100025",
-    "molecular_id": "MOL001_1",
-    "analysis_id": "SAM001_02",
-    "clia_lab": "MDA",
-    "specimen_received_date": 1421163069643,
-    "variant_report_received_date": 1421163269643,
-    "approved": false,
-    "days_pending": "3"
-
-  },
-  {
-    "patient_id": "100025",
-    "molecular_id": "MOL001_1",
-    "analysis_id": "SAM001_02",
-    "clia_lab": "MoCha",
-    "specimen_received_date": 1421162969643,
-    "variant_report_received_date": 1421162969643,
-    "approved": false,
-    "days_pending": "8"
-
-  },
-  {
-    "patient_id": "100025",
-    "molecular_id": "MOL001_1",
-    "analysis_id": "SAM001_02",
-    "clia_lab": "MDA",
-    "specimen_received_date": 1421163069643,
-    "variant_report_received_date": 1421163269643,
-    "approved": false,
-    "days_pending": "15"
   }
 ]
