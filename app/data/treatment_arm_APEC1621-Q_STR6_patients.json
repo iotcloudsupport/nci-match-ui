@@ -28,5 +28,19 @@
     "step": "1.0",
     "diseases": "Breast Neoplasm",
     "reason": "The patient contains no matching variant."
+  },
+  {
+    "patientSequenceNumber": "100100",
+    "treatmentArmVersion": "2015-08-06",
+    "patientAssignmentStatusOutcome": "ON_TREATMENT_ARM",
+    "assignmentLogic": "Assignment Details",
+    "variantReport": "Variant Report",
+    "dateSelected": "May 9, 2016 10:06 PM GMT",
+    "dateOnArm": "May 9, 2016 10:06 PM GMT",
+    "dateOffArm": "June 29, 2016 2:44 PM GMT",
+    "timeOnArm": "51 days",
+    "step": "3.1",
+    "diseases": "Breast Neoplasm",
+    "reason": "The patient and treatment match on variand identifier [COSM14062]."
   }
 ]
