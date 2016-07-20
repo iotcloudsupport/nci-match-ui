@@ -102,14 +102,14 @@
                 })
                 .then (setupSites)
                 .then (updateSiteStatistics)
-        };
+        }
 
         updateSiteStatistics = function () {
             var total = $scope.sites.mocha.count + $scope.sites.mda.count;
             total = (total === 0) ? 1 : total;
 
-            $scope.sites.mda.percent = calculatePercent($scope.sites.mda.count, total);
-            $scope.sites.mocha.percent = calculatePercent($scope.sites.mocha.count, total);
+            $scope.sites.mda.percent = Math.round(calculatePercent($scope.sites.mda.count, total));
+            $scope.sites.mocha.percent = Math.round(calculatePercent($scope.sites.mocha.count, total));
             $scope.pieDataset[0].data = $scope.sites.mda.count;
             $scope.pieDataset[1].data = $scope.sites.mocha.count;
         }
