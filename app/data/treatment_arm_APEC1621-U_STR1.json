@@ -566,42 +566,6 @@
     "current_patients": null,
     "former_patients": null,
     "not_enrolled_patients": null,
-    "pending_patients": null,
-    "pie_dataset": [
-      {
-        "label": "ON_TREATMENT_ARM",
-        "data": "1",
-        "color": "#1c84c6",
-        "psns": "215re, 203re, 312re"
-      },
-      {
-        "label": "OFF_TRIAL",
-        "data": "1",
-        "color": "#f8ac59",
-        "psns": "205re, 206re"
-      },
-      {
-        "label": "PENDING_CONFIRMATION",
-        "data": "1",
-        "color": "#1ab394"
-      }
-    ],
-    "disease_pie_dataset": [
-      {
-        "label": "Invasive Breast Cancer",
-        "data": 1,
-        "color": "#1c84c6"
-      },
-      {
-        "label": "Myeloma, NOS",
-        "data": 1,
-        "color": "#23c6c8"
-      },
-      {
-        "label": "Invasive Breast Cancer",
-        "data": 1,
-        "color": "#f8ac59"
-      }
-    ]
+    "pending_patients": null
   }
 ]

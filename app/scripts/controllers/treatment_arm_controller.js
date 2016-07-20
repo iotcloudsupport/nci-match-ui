@@ -52,6 +52,19 @@
         $scope.setInExclusionType = setInExclusionType;
         $scope.getInExclusionTypeClass = getInExclusionTypeClass;
 
+        $scope.chartColors = [
+            "#1c84c6",
+            "#23c6c8",
+            "#f8ac59",
+            "#1ab394",
+            "#707070",
+            "#1c84c6",
+            "#23c6c8",
+            "#f8ac59",
+            "#1ab394",
+            "#707070"
+        ];
+
         function setInExclusionType(inExclusionType) {
             if ($scope.inExclusionType === inExclusionType) {
                 return;
@@ -85,7 +98,7 @@
             $window.open(linkString + fid[0], '_blank');
         }
 
-        function openId (cosmicId) {
+        function openId(cosmicId) {
             if (cosmicId !== undefined && cosmicId !== null) {
                 var tmp = cosmicId.indexOf("COSF");
                 if (tmp > 0) {
@@ -183,6 +196,7 @@
                 .then(function (d) {
                     $scope.patients = [];
                     angular.copy(d.data, $scope.patients);
+                    setupCharts();
                 });
         }
 
@@ -212,8 +226,7 @@
             $scope.currentVersion.latest = 'This is the latest version.';
 
             setupRulesExlcusionInclusionLists();
-            setupCharts();
-           // setupFinal();
+            setupFinal();
         }
 
         function setupRulesExlcusionInclusionLists() {
@@ -250,8 +263,50 @@
             $scope.patientPieChartOptions = createPieChartOptions('#legendContainer');
             $scope.diseasePieChartOptions = createPieChartOptions('#diseaseLegendContainer');
 
-            $scope.patientPieChartDataset = $scope.currentVersion.pie_dataset;
-            $scope.diseasePieChartDataset = $scope.currentVersion.disease_pie_dataset;
+            var statistics = calculateStatistics();
+            $scope.patientPieChartDataset = createChartData(statistics.statuses);
+            $scope.diseasePieChartDataset = createChartData(statistics.diseases);
+        }
+
+        function calculateStatistics() {
+            var statistics = { statuses: {}, diseases: {} };
+
+            for (var i = 0; i < $scope.patients.length; i++) {
+                var patient = $scope.patients[i];
+
+                if (patient.patientAssignmentStatusOutcome in statistics.statuses) {
+                    statistics.statuses[patient.patientAssignmentStatusOutcome] = 1 + statistics.statuses[patient.patientAssignmentStatusOutcome];
+                } else {
+                    statistics.statuses[patient.patientAssignmentStatusOutcome] = 1;
+                }
+
+                if (patient.diseases in statistics.diseases) {
+                    statistics.diseases[patient.diseases] = 1 + statistics.diseases[patient.diseases];
+                } else {
+                    statistics.diseases[patient.diseases] = 1;
+                }
+            }
+
+            return statistics;
+        }
+
+        function createChartData(statistics) {
+            var chartData = [];
+            var colorIndex = 0;
+            angular.forEach(statistics, function (value, key) {
+                this.push({ label: key, data: value, color: getColor(colorIndex++) });
+            }, chartData);
+            return chartData;
+        }
+
+        function getColor(colorIndex) {
+            var index;
+            if (colorIndex >= $scope.chartColors.lentgh) {
+                index = colorIndex % $scope.chartColors.lentgh;
+            } else {
+                index = colorIndex;
+            }
+            return $scope.chartColors[index];
         }
 
         function createPieChartOptions(htmlContainer) {
@@ -286,7 +341,7 @@
             $scope.inExclusionType = 'inclusion';
             setInExclusion();
             changeHeight();
-            $log.debug($scope.inExclusionType);
+            // $log.debug($scope.inExclusionType);
             $(window).on("resize.doResize", function () {
                 $scope.$apply(function () {
                     changeHeight();
