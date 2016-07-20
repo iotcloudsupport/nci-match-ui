@@ -10,7 +10,7 @@
     "dateOnArm": "May 16, 2016 10:08 PM GMT",
     "dateOffArm": "",
     "timeOnArm": "2 months",
-    "step": "1.0",
+    "step": "1.1",
     "diseases": "Invasive Breast Cancer",
     "reason": "The patient and treatment match on variand identifier [ABSF, DEDF]."
   },
@@ -31,9 +31,9 @@
   },
   {
     "slot": "3",
-    "patientSequenceNumber": "100410",
-    "treatmentArmVersion": "2015-08-05",
-    "patientAssignmentStatusOutcome": "OFF_TRIAL",
+    "patientSequenceNumber": "10087",
+    "treatmentArmVersion": "2015-08-06",
+    "patientAssignmentStatusOutcome": "PENDING_CONFIRMATION",
     "assignmentLogic": "Assignment Details",
     "variantReport": "Variant Report",
     "dateSelected": "September 21, 2015  1:25 PM GMT",
@@ -41,7 +41,7 @@
     "dateOffArm": "-",
     "timeOnArm": "9 months, 9 days",
     "step": "1.1",
-    "diseases": "Bone cancer, NOS",
+    "diseases": "Invasive Breast Cancer",
     "reason": "p.G719S ( COSM6252 ) , p.T790M ( COSM6240 ) , p.I740_P741insPVaIKT ( COSM255152 ) , p.A775_G776insYVMA ( COSM20959 ) , ERBB2, NF2, KLC1-ALK.K9A20.COSF1276"
   }
 ]

@@ -1,0 +1,47 @@
+[
+  {
+    "slot": "-",
+    "patientSequenceNumber": "100088",
+    "treatmentArmVersion": "2014-01-01",
+    "patientAssignmentStatusOutcome": "PENDING_APPROVAL",
+    "assignmentLogic": "Assignment Details",
+    "variantReport": "Variant Report",
+    "dateSelected": "August 8, 2015  7:37 PM GMT",
+    "dateOnArm": "August 9, 2015  9:20 AM GMT",
+    "dateOffArm": "August 10, 2015  10:32 AM GMT",
+    "timeOnArm": "1 day",
+    "step": "1.0",
+    "diseases": "Breast Neoplasm",
+    "reason": "p.G719S ( COSM6252 ) , p.T790M ( COSM6240 ) , p.I740_P741insPVaIKT ( COSM255152 ) , p.A775_G776insYVMA ( COSM20959 ) , ERBB2, NF2, KLC1-ALK.K9A20.COSF1276"
+  },
+  {
+    "slot": "-",
+    "patientSequenceNumber": "100099",
+    "treatmentArmVersion": "2015-01-01",
+    "patientAssignmentStatusOutcome": "NOT_ELIGIBLE",
+    "assignmentLogic": "Assignment Details",
+    "variantReport": "Variant Report",
+    "dateSelected": "January 20, 2015  7:05 PM GMT",
+    "dateOnArm": "-",
+    "dateOffArm": "-",
+    "timeOnArm": "-",
+    "step": "1.0",
+    "diseases": "Chondrosarcoma",
+    "reason": "p.G719S ( COSM6252 ) , p.T790M ( COSM6240 ) , p.I740_P741insPVaIKT ( COSM255152 ) , p.A775_G776insYVMA ( COSM20959 ) , ERBB2, NF2, KLC1-ALK.K9A20.COSF1276"
+  },
+  {
+    "slot": "1",
+    "patientSequenceNumber": "100136",
+    "treatmentArmVersion": "2015-08-05",
+    "patientAssignmentStatusOutcome": "NOT_ELIGIBLE",
+    "assignmentLogic": "Assignment Details",
+    "variantReport": "Variant Report",
+    "dateSelected": "September 21, 2015  1:25 PM GMT",
+    "dateOnArm": "September 22, 2015  11:00 AM GMT",
+    "dateOffArm": "-",
+    "timeOnArm": "9 months, 9 days",
+    "step": "1.1",
+    "diseases": "Bone cancer, NOS",
+    "reason": "p.G719S ( COSM6252 ) , p.T790M ( COSM6240 ) , p.I740_P741insPVaIKT ( COSM255152 ) , p.A775_G776insYVMA ( COSM20959 ) , ERBB2, NF2, KLC1-ALK.K9A20.COSF1276"
+  }
+]
