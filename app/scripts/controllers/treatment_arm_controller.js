@@ -5,6 +5,7 @@
     function TreatmentArmController($scope,
         $window,
         $stateParams,
+        $state,
         DTOptionsBuilder,
         DTColumnDefBuilder,
         treatmentArmApi,
