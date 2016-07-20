@@ -7,7 +7,7 @@ services:
   - docker
 language: node_js
 node_js:
-  - 0.12.1
+  - 4.4.3
 before_script:
   - npm install -g bower karma grunt-cli
   - npm install
