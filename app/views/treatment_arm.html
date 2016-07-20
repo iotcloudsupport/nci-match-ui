@@ -44,7 +44,7 @@
                                     <div class="btn-group" uib-dropdown dropdown-append-to-body>
                                         <button id="btn-append-to-body" type="button" class="btn btn-success btn-outline" uib-dropdown-toggle>{{currentVersion.version}}<span class="caret"></span></button>
                                         <ul class="dropdown-menu" uib-dropdown-menu role="menu">
-                                            <li ng-repeat="version in versions" role="menuitem"><a href ng-click="onVersionSelected(item)">{{version.version}}</a></li>
+                                            <li ng-repeat="item in versions" role="menuitem"><a href ng-click="onVersionSelected(item)">{{item.version}}</a></li>
                                         </ul>
                                     </div>
                                 </dd>

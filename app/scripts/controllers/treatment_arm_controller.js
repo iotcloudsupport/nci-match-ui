@@ -30,7 +30,9 @@
         $scope.loadTreatmentArmDetails = loadTreatmentArmDetails;
         $scope.loadPatients = loadPatients;
         $scope.openId = openId;
+        $scope.onVersionSelected = onVersionSelected;
 
+        $scope.versions = [];
         $scope.patients = [];
 
         $scope.tooltipContent = {
@@ -351,6 +353,7 @@
 
         function onVersionSelected(selected) {
             $log.debug('Selected version: ' + selected);
+            $scope.currentVersion = selected;
         }
     }
 
