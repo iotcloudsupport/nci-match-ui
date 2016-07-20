@@ -194,7 +194,9 @@
                                     <tr ng-repeat="slide in currentSurgicalEvent.slides" style="cursor: auto;" role="row" class="odd">
                                         <td>{{slide.slide_barcode}}</td>
                                         <td>{{slide.carrier}}</td>
-                                        <td><a href="http://www.fedex.com/Tracking?action=track&tracknumbers={{slide.tracking_id}}" target="_blank">{{slide.tracking_id}}</a></td>
+                                        <td>
+                                            <tracking-link carrier="'fedex''" tracking-number="slide.tracking_id"></tracking-link>
+                                        </td>
                                         <td>{{slide.shipped_dttm | utc}}</td>
                                     </tr>
                                 </tbody>
@@ -248,7 +250,9 @@
                                             <td>{{shipment.molecular_id}}</td>
                                             <td>{{shipment.type}}</td>
                                             <td>{{shipment.site}}</td>
-                                            <td><a href="http://www.fedex.com/Tracking?action=track&tracknumbers={{shipment.tracking_number}}" target="_blank">{{shipment.tracking_number}}</a></td>
+                                            <td>
+                                                <tracking-link carrier="'fedex'" tracking-number="shipment.tracking_number"></tracking-link>
+                                            </td>
                                             <td>{{shipment.dna_concordance}}</td>
                                             <td>{{shipment.dna_volume}}</td>
                                             <td>{{shipment.reported_date | utc}}</td>

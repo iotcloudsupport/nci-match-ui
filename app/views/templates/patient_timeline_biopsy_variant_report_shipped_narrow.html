@@ -60,7 +60,7 @@
                 </span>
                 
                 <span ng-if="timelineEvent.event_data.tracking_id">
-                    Tracking Number: <span class="timeline-value"><a href="http://www.fedex.com/Tracking?action=track&tracknumbers={{timelineEvent.event_data.tracking_id}}" target="_blank">{{::timelineEvent.event_data.tracking_id}}</a></span>
+                    Tracking Number: <span class="timeline-value"><tracking-link carrier="'fedex''" tracking-number="timelineEvent.event_data.tracking_id"></tracking-link></span>
                     <br>
                 </span>
             </p>
