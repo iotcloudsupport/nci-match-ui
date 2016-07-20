@@ -51,9 +51,7 @@
                                 <td>{{ ::patient.disease_name || '-' }}</td>
                                 <td ng-if="patient.treatment_arm === null">-</td>
                                 <td ng-if="patient.treatment_arm !== null">
-                                    <a ui-sref="treatment-arm({ treatment_arm_id: patient.treatment_arm, treatment_arm_version: patient.treatment_arm_version })">
-                                        {{ ::patient.treatment_arm || '-' }}
-                                    </a>
+                                    <treatment-arm-title name="patient.treatment_arm" stratum="patient.treatment_arm_stratum" version="patient.treatment_arm_version"></treatment-arm-title>
                                 </td>
                                 <td>{{ patient.registration_date | utc }}</td>
                                 <td>{{ patient.off_trial_date | utc }}</td>

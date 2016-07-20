@@ -18,7 +18,6 @@
             };
 
             vm.getTextColor = function() {
-                $log.debug(vm.textColor ? vm.textColor : 'color:inherit');
                 return vm.textColor ? vm.textColor : 'color:inherit';
             }
         };
