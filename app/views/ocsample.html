@@ -86,25 +86,38 @@
 
                                         <dt>Files</dt>
                                         <dd>
-                                            <table><tr><td>
-                                                <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_087_rawlib.bam?molecularSequenceNumber={{sampleId}}"
-                                                   class="btn btn-xs btn-white file-button-xs">DNA BAM</a>
-                                            </td><td>
-                                                <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_087_rawlib.bam.bai?molecularSequenceNumber={{sampleId}}"
-                                                   class="btn btn-xs btn-white file-button-xs">DNA BAI</a>
-                                            </td><td>
-                                                <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/SampleControl_MoCha_1_v1_all-matched.vcf?molecularSequenceNumber={{sampleId}}"
-                                                   class="btn btn-xs btn-white file-button-xs">VCF</a>
-                                            </td></tr><tr><td>
-                                                <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_088_rawlib.bam.bai?molecularSequenceNumber={{sampleId}}"
-                                                   class="btn btn-xs btn-white file-button-xs">RNA BAI</a>
-                                            </td><td>
-                                                <a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_088_rawlib.bam?molecularSequenceNumber={{sampleId}}"
-                                                   class="btn btn-xs btn-white file-button-xs">RNA BAM</a>
-                                            </td><td>
-                                                <a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>
-                                            </td></tr></table>
+                                            <a href="{{currentVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.dna_bam_file_path)">DNA BAM</a>
+                                            <a href="{{currentVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.dna_bai_file_path)">DNA BAI</a>
+                                            <a href="{{currentVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.vcf_path)">VCF</a>
                                         </dd>
+                                        <dd>
+                                            <a href="{{currentVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.rna_bam_file_path)">RNA BAM</a>
+                                            <a href="{{currentVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.rna_bai_file_path)">RNA BAI</a>
+                                            <a href="{{currentVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(currentVariantReport, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
+                                        </dd>
+
+                                        <!--<dt>Files</dt>-->
+                                        <!--<dd>-->
+                                            <!--<table><tr><td>-->
+                                                <!--<a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_087_rawlib.bam?molecularSequenceNumber={{sampleId}}"-->
+                                                   <!--class="btn btn-xs btn-white file-button-xs">DNA BAM</a>-->
+                                            <!--</td><td>-->
+                                                <!--<a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_087_rawlib.bam.bai?molecularSequenceNumber={{sampleId}}"-->
+                                                   <!--class="btn btn-xs btn-white file-button-xs">DNA BAI</a>-->
+                                            <!--</td><td>-->
+                                                <!--<a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/SampleControl_MoCha_1_v1_all-matched.vcf?molecularSequenceNumber={{sampleId}}"-->
+                                                   <!--class="btn btn-xs btn-white file-button-xs">VCF</a>-->
+                                            <!--</td></tr><tr><td>-->
+                                                <!--<a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_088_rawlib.bam.bai?molecularSequenceNumber={{sampleId}}"-->
+                                                   <!--class="btn btn-xs btn-white file-button-xs">RNA BAI</a>-->
+                                            <!--</td><td>-->
+                                                <!--<a href="https://matchbox.nci.nih.gov:8443/match/common/rs/getSampleControlFile/IonXpress_088_rawlib.bam?molecularSequenceNumber={{sampleId}}"-->
+                                                   <!--class="btn btn-xs btn-white file-button-xs">RNA BAM</a>-->
+                                            <!--</td><td>-->
+                                                <!--<a href="#" class="btn btn-xs btn-white file-button-xs">All (Zip)</a>-->
+                                            <!--</td></tr></table>-->
+                                        <!--</dd>-->
+
                                     </dl>
                             </div>
                                 <!--<div class="col-lg-3" ng-init="loadSampleBreakups();loadPieChart();">-->
@@ -137,7 +150,7 @@
 
                                 <!--SCATTER TABLE-->
                                 <div class="col-lg-12 col-xs-6 " >
-                                    <div class="white-bg " d3-cnv-chart=""></div>
+                                    <div id="D3Box" class="white-bg " d3-cnv-chart=""></div>
                                 </div>
                                 <!--SCATTER TABLE-->
 
