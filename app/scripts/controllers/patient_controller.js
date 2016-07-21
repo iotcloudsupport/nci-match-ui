@@ -1,10 +1,11 @@
 (function () {
 
-    angular.module('patient.matchbox', [])
+    angular.module('patient.matchbox', ['ui.router'])
         .controller('PatientController', PatientController);
 
     function PatientController($scope,
         DTOptionsBuilder,
+        DTColumnDefBuilder,
         matchApiMock,
         $stateParams,
         $log,
@@ -18,15 +19,13 @@
 
         var vm = this;
 
-        this.dtOptions = DTOptionsBuilder.newOptions()
-            .withDisplayLength(10);
+        $scope.dtColumnDefs = DTColumnDefBuilder.newColumnDef(0).notSortable();
 
-        // vm.dtOptions = DTOptionsBuilder.newOptions()
-        //     .withOption('bLengthChange', false);
-
-        // vm.dtOptions = DTOptionsBuilder.newOptions()
-        //     .withOption('searching', false);
-
+        $scope.dtOptions = DTOptionsBuilder.newOptions()
+            .withDisplayLength(10)
+            .withOption('paging', false)
+            .withOption('bLengthChange', false)
+            .withOption('searching', false);
 
         $scope.currentUser = null;
 
