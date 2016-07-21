@@ -121,14 +121,13 @@
         "patient_id": "100136",
         "event_date": "2016-05-18T18:41:16+00:00",
         "event_name": "Event Name 28",
-        "event_type": "patient",
+        "event_type": "biopsy.variant_report_shipped",
         "event_message": "Tissue Nucleic Acid Shipped",
         "step": "2.0",
         "event_data": {
             "surgical_event_id": "SEI100136_02",
             "molecular_dna_id": "MOL100136_02_02D",
             "molecular_cdna_id": "MOL100136_02_02C",
-            "carrier": "Federal Express",
             "tracking_id": "6758 6785 9276",
             "status": "SHIPPED",
             "molecular_id": "MOL100136_02_02"
@@ -200,14 +199,13 @@
         "patient_id": "100136",
         "event_date": "2016-05-10T06:19:15+00:00",
         "event_name": "Event Name 23",
-        "event_type": "patient",
+        "event_type": "biopsy.variant_report_shipped",
         "event_message": "Tissue Nucleic Acid Shipped",
         "step": "2.0",
         "event_data": {
             "surgical_event_id": "SEI100136_02",
             "molecular_dna_id": "MOL100136_02_01D",
             "molecular_cdna_id": "MOL100136_02_01C",
-            "carrier": "Federal Express",
             "tracking_id": "6758 6785 9184",
             "status": "SHIPPED",
             "molecular_id": "MOL100136_02_01"
@@ -217,13 +215,12 @@
         "patient_id": "100136",
         "event_date": "2016-05-10T05:22:48+00:00",
         "event_name": "Event Name 22",
-        "event_type": "patient",
+        "event_type": "biopsy.variant_report_shipped",
         "event_message": "Slide Shipped",
         "step": "2.0",
         "event_data": {
             "surgical_event_id": "SEI100136_02",
             "slide_barcode": "0BJ6A5",
-            "carrier": "Federal Express",
             "tracking_id": "7956 4568 1235",
             "status": "SHIPPED"
         }
@@ -424,13 +421,12 @@
         "patient_id": "100136",
         "event_date": "2015-11-16T18:06:13+00:00",
         "event_name": "Event Name 7",
-        "event_type": "patient",
+        "event_type": "biopsy.variant_report_shipped",
         "event_message": "Slide Shipped",
         "step": "1.0",
         "event_data": {
             "surgical_event_id": "SEI100136_01",
             "slide_barcode": "9D24KG27GDB",
-            "carrier": "Federal Express",
             "tracking_id": "7956 6423 4682",
             "status": "SHIPPED"
         }
@@ -455,14 +451,13 @@
         "patient_id": "100136",
         "event_date": "2015-11-15T14:26:14+00:00",
         "event_name": "Event Name 5",
-        "event_type": "patient",
+        "event_type": "biopsy.variant_report_shipped",
         "event_message": "Tissue Nucleic Acid Shipped",
         "step": "1.0",
         "event_data": {
             "surgical_event_id": "SEI100136_01",
             "molecular_dna_id": "MOL100136_01_01D",
             "molecular_cdna_id": "MOL100136_01_01C",
-            "carrier": "Federal Express",
             "tracking_id": "6758 6785 4682",
             "status": "SHIPPED",
             "molecular_id": "MOL100136_01_01"
@@ -487,11 +482,10 @@
         "patient_id": "100136",
         "event_date": "2015-11-15T09:33:46+00:00",
         "event_name": "Event Name 3",
-        "event_type": "patient",
+        "event_type": "biopsy.variant_report_shipped",
         "event_message": "Blood Nucleic Acid Shipped",
         "step": "1.0",
         "event_data": {
-            "carrier": "Federal Express",
             "tracking_id": "6758 8346 4821",
             "status": "SHIPPED",
             "molecular_id": "MOL100136BLD_01"

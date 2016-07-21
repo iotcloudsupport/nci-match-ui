@@ -11,6 +11,7 @@
             "collected_datetime": "2016-07-09T22:06:33+00:00",
             "received_datetime": "2016-07-10T04:23:12+00:00",
             "status": "RECEIVED",
+            "tracking_id": "6758 6785 7318",
             "molecular_id": "MOL003_1",
             "analysis_id": "SAM003_01"
         }
@@ -19,14 +20,13 @@
         "patient_id": "100025",
         "event_date": "2016-07-10T06:19:15+00:00",
         "event_name": "Event Name 23",
-        "event_type": "patient",
+        "event_type": "biopsy.variant_report_shipped",
         "event_message": "Tissue Nucleic Acid Shipped",
         "step": "2.0",
         "event_data": {
             "surgical_event_id": "SEI100025_02",
             "molecular_dna_id": "MOL100025_02_01D",
             "molecular_cdna_id": "MOL100025_02_01C",
-            "carrier": "Federal Express",
             "tracking_id": "6758 6785 7318",
             "status": "SHIPPED",
             "molecular_id": "MOL100025_02_01"
@@ -36,12 +36,13 @@
         "patient_id": "100025",
         "event_date": "2016-07-10T05:25:20+00:00",
         "event_name": "Event Name 9",
-        "event_type": "patient",
+        "event_type": "biopsy.variant_report_received",
         "event_message": "Blood Variant Report Received",
         "step": "2.0",
         "event_data": {
             "collected_datetime": "2016-07-02T10:07:08+00:00",
             "received_datetime": "2016-07-02T18:41:07+00:00",
+            "tracking_id": "6758 6785 7318",
             "status": "RECEIVED",
             "molecular_id": "MOL003_BLD",
             "analysis_id": "SAM003_BLD_1"
@@ -51,13 +52,12 @@
         "patient_id": "100025",
         "event_date": "2016-07-10T05:22:48+00:00",
         "event_name": "Event Name 22",
-        "event_type": "patient",
+        "event_type": "biopsy.variant_report_shipped",
         "event_message": "Slide Shipped",
         "step": "2.0",
         "event_data": {
             "surgical_event_id": "SEI100025_02",
             "slide_barcode": "86BS29JKJLH",
-            "carrier": "Federal Express",
             "tracking_id": "7956 4568 5347",
             "status": "SHIPPED"
         }
@@ -66,13 +66,14 @@
         "patient_id": "100025",
         "event_date": "2016-07-10T04:23:12+00:00",
         "event_name": "Event Name 21",
-        "event_type": "patient",
+        "event_type": "biopsy.variant_report_received",
         "event_message": "Tissue Specimen Received",
         "step": "2.0",
         "event_data": {
             "surgical_event_id": "SEI100025_02",
             "collected_datetime": "2016-07-09T22:06:33+00:00",
             "received_datetime": "2016-07-10T04:23:12+00:00",
+            "tracking_id": "7956 4568 5347",
             "status": "RECEIVED",
             "molecular_id": "MOL100025_02_02"
         }
@@ -81,11 +82,10 @@
         "patient_id": "100025",
         "event_date": "2016-07-02T23:33:46+00:00",
         "event_name": "Event Name 3",
-        "event_type": "patient",
+        "event_type": "biopsy.variant_report_shipped",
         "event_message": "Blood Nucleic Acid Shipped",
         "step": "2.0",
         "event_data": {
-            "carrier": "Federal Express",
             "tracking_id": "6758 8346 4253",
             "status": "SHIPPED",
             "molecular_id": "MOL003_BLD"
@@ -95,12 +95,13 @@
         "patient_id": "100025",
         "event_date": "2016-07-02T18:41:07+00:00",
         "event_name": "Event Name 2",
-        "event_type": "patient",
+        "event_type": "biopsy.variant_report_received",
         "event_message": "Blood Specimen Received",
         "step": "2.0",
         "event_data": {
             "collected_datetime": "2016-07-02T10:07:08+00:00",
             "received_datetime": "2016-07-02T18:41:07+00:00",
+            "tracking_id": "7956 4568 5347",
             "status": "RECEIVED",
             "molecular_id": "MOL003_BLD"
         }
@@ -161,39 +162,6 @@
     },
     {
         "patient_id": "100025",
-        "event_date": "2016-05-09T22:06:33+00:00",
-        "event_name": "Event Name 1",
-        "event_type": "system",
-        "event_message": "Receiving Rule Assignment",
-        "step": "1.0",
-        "event_data": {
-            "status": "COMPLETE"
-        }
-    },
-    {
-        "patient_id": "100025",
-        "event_date": "2016-05-09T22:06:33+00:00",
-        "event_name": "Event Name 1",
-        "event_type": "system",
-        "event_message": "Awaiting Treatment Arms Status",
-        "step": "1.0",
-        "event_data": {
-            "status": "COMPLETE"
-        }
-    },
-    {
-        "patient_id": "100025",
-        "event_date": "2016-05-09T22:06:33+00:00",
-        "event_name": "Event Name 1",
-        "event_type": "system",
-        "event_message": "Awaiting Patient Data",
-        "step": "1.0",
-        "event_data": {
-            "status": "COMPLETE"
-        }
-    },
-    {
-        "patient_id": "100025",
         "event_date": "2016-05-11T22:06:33+00:00",
         "event_name": "Event Name 2",
         "event_type": "biopsy.variant_report_received",
@@ -218,6 +186,7 @@
             "surgical_event_id": "COSM1234",
             "collected_datetime": "2016-05-09T22:06:33+00:00",
             "received_datetime": "2016-05-13T22:08:33+00:00",
+            "tracking_id": "7956 4568 5347",
             "location" : "at Nationwide",
             "status": "RECEIVED"
         }
@@ -232,6 +201,7 @@
         "event_data": {
             "biomarker": "ICCPTEN",
             "status": "RECEIVED",
+            "tracking_id": "7956 4568 5347",
             "result": "POSITIVE",
             "reported_date": "2016-05-12T22:04:33+00:00"
         }
@@ -273,7 +243,6 @@
             "molecular_id": "1234",
             "molecular_dna_id": "DNA1234",
             "molecular_cdna_id": "CDNA1234",
-            "carrier": "Federal Express",
             "tracking_id": "1203454512316546",
             "location" : "at Nationwide",
             "status": "PENDING"
@@ -290,6 +259,7 @@
             "surgical_event_id": "COSM1234",
             "collected_datetime": "2016-05-09T22:06:33+00:00",
             "received_datetime": "2016-05-11T22:08:33+00:00",
+            "tracking_id": "6758 8346 4253",
             "location" : "at Nationwide",
             "status": "PENDING"
         }
