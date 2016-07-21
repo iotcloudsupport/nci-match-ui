@@ -193,8 +193,8 @@
                                                 <i class="fa fa-file-text-o"></i>
                                             </a>
                                         </td>
-                                        <td><a>{{patient.disease || '-'}}</a></td>
-                                        <td><a ui-sref="treatment-arm({ treatmentArmId: patient.treatment_arm })">{{patient.treatment_arm + " " + patient.stratum || '-'}}</a></td>
+                                        <td>{{patient.disease || '-'}}</td>
+                                        <td><treatment-arm-title name="patient.treatment_arm" stratum="patient.stratum"></td>
                                         <td>{{ patient.assignment_date | gmt }}</td>
                                         <td><span ng-if="patient.hours_pending >= hours_pending_range.upper_bound_yellow" class="label label-danger">{{ patient.hours_pending || '-' }}</span>
                                             <span ng-if="patient.hours_pending < hours_pending_range.upper_bound_yellow && patient.hours_pending >= hours_pending_range.upper_bound_green" class="label label-warning">{{ patient.hours_pending || '-' }}</span>
