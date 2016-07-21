@@ -17,7 +17,7 @@
       "stratum": "STR6",
       "title": "APEC1621-Q; STR6; 2015-08-06",
       "step": "3.1",
-      "assignment_reason": "The patient and treatment match on variand identifier [COSM14062].",
+      "assignment_reason": "The patient and treatment match on variant identifier [COSM14062].",
       "assignment_date": "2016-05-14T22:05:33+00:00"
     },
     {
@@ -35,7 +35,7 @@
       "stratum": "STR3",
       "title": "APEC1621-U; STR3; 2014-01-01",
       "step": "1.1",
-      "assignment_reason": "The patient and treatment match on variand identifier [ABSF, DEDF].",
+      "assignment_reason": "The patient and treatment match on variant identifier [ABSF, DEDF].",
       "assignment_date": "2015-08-16T22:08:33+00:00"
     }
   ],
@@ -170,7 +170,7 @@
           "treatment_arm_stratum_id": "STR6",
           "treatment_arm_stratum": "STR6",
           "treatment_arm_title": "APEC1621-Q (2015-08-06)",
-          "reason": "The patient and treatment match on variand identifier [COSM14062]"
+          "reason": "The patient and treatment match on variant identifier [COSM14062]"
         }
       ]
     }
@@ -1572,7 +1572,7 @@
           "treatment_arm": "APEC1621-U",
           "treatment_arm_version": "2015-08-06",
           "treatment_arm_title": "APEC1621-U (2015-08-06)",
-          "reason": "The patient and treatment match on variand identifier [ABSF, DEDF]."
+          "reason": "The patient and treatment match on variant identifier [ABSF, DEDF]."
         }
       ]
     }

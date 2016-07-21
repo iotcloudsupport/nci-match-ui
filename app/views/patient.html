@@ -346,7 +346,7 @@
                                 <h2>Variant Report</h2>
                             </div>
                             <div class="ibox-content ibox-content-no-padding ibox-title-no-line">
-                                <div ng-if="currentVariantReport">
+                                <div ng-if="currentTissueVariantReport">
 
                                     <div class="row toolbar-row">
                                         <div class="col-md-8 text-left">
@@ -372,9 +372,9 @@
                                         <div class="col-md-12">
                                             <h4>
                                                 <div class="btn-group" uib-dropdown dropdown-append-to-body>
-                                                    <button id="btn-append-to-body" type="button" class="btn btn-success btn-outline" uib-dropdown-toggle>{{variantReportOption.text}}<span class="caret"></span></button>
+                                                    <button id="btn-append-to-body" type="button" class="btn btn-success btn-outline" uib-dropdown-toggle>{{tissueVariantReportOption.text}}<span class="caret"></span></button>
                                                     <ul class="dropdown-menu" uib-dropdown-menu role="menu">
-                                                        <li ng-repeat="item in variantReportOptions" role="menuitem"><a href ng-click="onVariantReportSelected(item)">{{item.text}}</a></li>
+                                                        <li ng-repeat="item in tissueVariantReportOptions" role="menuitem"><a href ng-click="onTissueVariantReportSelected(item)">{{item.text}}</a></li>
                                                     </ul>
                                                 </div>
                                             </h4>
@@ -386,40 +386,40 @@
                                             <div class="header-info-box  variant-report-header-box">
                                                 <dl class="dl-horizontal">
                                                     <dt>Surgical Event ID</dt>
-                                                    <dd>{{currentVariantReport.surgical_event_id}}</dd>
+                                                    <dd>{{currentTissueVariantReport.surgical_event_id}}</dd>
 
                                                     <dt>Analysis ID</dt>
-                                                    <dd>{{currentVariantReport.analysis_id}}</dd>
+                                                    <dd>{{currentTissueVariantReport.analysis_id}}</dd>
 
                                                     <dt>Molecular ID</dt>
-                                                    <dd>{{currentVariantReport.molecular_id}}</dd>
+                                                    <dd>{{currentTissueVariantReport.molecular_id}}</dd>
 
                                                     <dt>Files</dt>
                                                     <dd>
-                                                        <a href="{{currentVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.dna_bam_file_path)">DNA BAM</a>
-                                                        <a href="{{currentVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.dna_bai_file_path)">DNA BAI</a>
-                                                        <a href="{{currentVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.vcf_path)">VCF</a>
+                                                        <a href="{{currentTissueVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentTissueVariantReport.dna_bam_file_path)">DNA BAM</a>
+                                                        <a href="{{currentTissueVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentTissueVariantReport.dna_bai_file_path)">DNA BAI</a>
+                                                        <a href="{{currentTissueVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentTissueVariantReport.vcf_path)">VCF</a>
                                                     </dd>
                                                     <dd>
-                                                        <a href="{{currentVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.rna_bam_file_path)">RNA BAM</a>
-                                                        <a href="{{currentVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentVariantReport.rna_bai_file_path)">RNA BAI</a>
-                                                        <a href="{{currentVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(currentVariantReport, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
+                                                        <a href="{{currentTissueVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentTissueVariantReport.rna_bam_file_path)">RNA BAM</a>
+                                                        <a href="{{currentTissueVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentTissueVariantReport.rna_bai_file_path)">RNA BAI</a>
+                                                        <a href="{{currentTissueVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(currentTissueVariantReport, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
                                                     </dd>
 
                                                     <dt>File Received Date</dt>
-                                                    <dd>{{currentVariantReport.variant_report_received_date | utc}}</dd>
+                                                    <dd>{{currentTissueVariantReport.variant_report_received_date | utc}}</dd>
 
-                                                    <dt ng-show="variantReport.confirmedRejectedDate">{{currentVariantReport.confirmedRejectedDateLabel}}</dt>
-                                                    <dd ng-show="variantReport.confirmedRejectedDate">{{currentVariantReport.confirmedRejectedDate | utc}}</dd>
+                                                    <dt ng-show="variantReport.confirmedRejectedDate">{{currentTissueVariantReport.confirmedRejectedDateLabel}}</dt>
+                                                    <dd ng-show="variantReport.confirmedRejectedDate">{{currentTissueVariantReport.confirmedRejectedDate | utc}}</dd>
 
                                                     <dt>Status</dt>
-                                                    <dd ng-style="{'color':'{{ currentVariantReport.status | analysisStatus }}'}">{{currentVariantReport.status}} <span ng-if="currentVariantReport.comment_user"> (user: {{currentVariantReport.comment_user}})</span></dd>
+                                                    <dd ng-style="{'color':'{{ currentTissueVariantReport.status | analysisStatus }}'}">{{currentTissueVariantReport.status}} <span ng-if="currentTissueVariantReport.comment_user"> (user: {{currentTissueVariantReport.comment_user}})</span></dd>
 
-                                                    <dt ng-if="currentVariantReport.comment">Comments</dt>
-                                                    <dd ng-if="currentVariantReport.comment">{{currentVariantReport.comment}}</dd>
+                                                    <dt ng-if="currentTissueVariantReport.comment">Comments</dt>
+                                                    <dd ng-if="currentTissueVariantReport.comment">{{currentTissueVariantReport.comment}}</dd>
 
-                                                    <dt ng-if="needToDisplayReportStatus(currentVariantReport)">{{currentVariantReport.status | titlecase}} Date</dt>
-                                                    <dd ng-if="needToDisplayReportStatus(currentVariantReport)">{{currentVariantReport.status_date | utc}}</dd>
+                                                    <dt ng-if="needToDisplayReportStatus(currentTissueVariantReport)">{{currentTissueVariantReport.status | titlecase}} Date</dt>
+                                                    <dd ng-if="needToDisplayReportStatus(currentTissueVariantReport)">{{currentTissueVariantReport.status_date | utc}}</dd>
                                                 </dl>
                                             </div>
                                         </div>
@@ -428,10 +428,10 @@
 
                                                 <dl class="dl-horizontal dl-horizontal-expanded-label">
                                                     <dt>Total Variants</dt>
-                                                    <dd>{{currentVariantReport.total_variants}}</dd>
+                                                    <dd>{{currentTissueVariantReport.total_variants}}</dd>
 
                                                     <dt>Cellularity</dt>
-                                                    <dd>{{currentVariantReport.cellularity}}</dd>
+                                                    <dd>{{currentTissueVariantReport.cellularity}}</dd>
                                                 </dl>
 
                                                 <dl class="dl-horizontal dl-horizontal-expanded-label" ng-if="variantReportMode=='QC'">
@@ -446,7 +446,7 @@
                                                                 <td><a>ITGBY</a></td>
                                                                 <td>SUM</td>
                                                             </thead>
-                                                            <tbody class="priordrug-item" ng-repeat="oncomine in currentVariantReport.oncomine_report" style="font-size: smaller">
+                                                            <tbody class="priordrug-item" ng-repeat="oncomine in currentTissueVariantReport.oncomine_report" style="font-size: smaller">
                                                                 <td>{{::oncomine.lmna}}</td>
                                                                 <td>{{::oncomine.tbp}}</td>
                                                                 <td>{{::oncomine.myc}}</td>
@@ -462,13 +462,13 @@
 
                                                 <dl class="dl-horizontal dl-horizontal-expanded-label" ng-if="variantReportMode!=='QC'">
                                                     <dt>Total MOIs</dt>
-                                                    <dd>{{currentVariantReport.total_mois}}</dd>
+                                                    <dd>{{currentTissueVariantReport.total_mois}}</dd>
                                                     <dt>Total aMOIs</dt>
-                                                    <dd>{{currentVariantReport.total_amois}}</dd>
+                                                    <dd>{{currentTissueVariantReport.total_amois}}</dd>
                                                     <dt>Total Confirmed MOIs</dt>
-                                                    <dd>{{currentVariantReport.total_confirmed_mois}}</dd>
+                                                    <dd>{{currentTissueVariantReport.total_confirmed_mois}}</dd>
                                                     <dt>Total Confirmed aMOIs</dt>
-                                                    <dd>{{currentVariantReport.total_confirmed_amois}}</dd>
+                                                    <dd>{{currentTissueVariantReport.total_confirmed_amois}}</dd>
                                                 </dl>
                                             </div>
                                         </div>
@@ -515,13 +515,13 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr ng-repeat="variant in currentVariantReport.variants.snvs_and_indels" style="cursor: auto;" role="row" class="odd">
+                                                <tr ng-repeat="variant in currentTissueVariantReport.variants.snvs_and_indels" style="cursor: auto;" role="row" class="odd">
                                                     <td ng-if="variantReportMode!=='QC'">
-                                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentVariantReport.status==='PENDING'">
+                                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentTissueVariantReport.status==='PENDING'">
                                                         </div>
                                                     </td>
                                                     <td ng-if="variantReportMode!=='QC'">
-                                                        <a ng-if="variant.comment " href ng-click="editComment(variant, currentVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
+                                                        <a ng-if="variant.comment " href ng-click="editComment(variant, currentTissueVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
                                                     </td>
                                                     <td>{{::variant.variant_id}}</td>
                                                     <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI}}<sup>({{::variant.inclusion}})</sup></td>
@@ -543,7 +543,7 @@
                                                     <td>{{::variant.protein}}</td>
                                                 </tr>
 
-                                                <tr ng-if="!currentVariantReport.variants.snvs_and_indels || !currentVariantReport.variants.snvs_and_indels.length">
+                                                <tr ng-if="!currentTissueVariantReport.variants.snvs_and_indels || !currentTissueVariantReport.variants.snvs_and_indels.length">
                                                     <td colspan="8"><span class="text-muted">No SNVs, MNVs or Indels</span></td>
                                                 </tr>
                                             </tbody>
@@ -569,13 +569,13 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr ng-repeat="variant in currentVariantReport.variants.copy_number_variants" style="cursor: auto;" role="row" class="odd">
+                                                <tr ng-repeat="variant in currentTissueVariantReport.variants.copy_number_variants" style="cursor: auto;" role="row" class="odd">
                                                     <td ng-if="variantReportMode!=='QC'">
-                                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentVariantReport.status==='PENDING'">
+                                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentTissueVariantReport.status==='PENDING'">
                                                         </div>
                                                     </td>
                                                     <td ng-if="variantReportMode!=='QC' ">
-                                                        <a ng-if="variant.comment " href ng-click="editComment(variant, currentVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
+                                                        <a ng-if="variant.comment " href ng-click="editComment(variant, currentTissueVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
                                                     </td>
                                                     <td>{{variant.identifier}}</td>
                                                     <td ng-if="variantReportMode!=='QC'">{{variant.aMOI}}<sup>({{variant.inclusion}})</sup></td>
@@ -586,7 +586,7 @@
                                                     <td>{{variant.confidenceInterval95percent}}</td>
                                                 </tr>
 
-                                                <tr ng-if="!currentVariantReport.variants.copy_number_variants || !currentVariantReport.variants.copy_number_variants.length">
+                                                <tr ng-if="!currentTissueVariantReport.variants.copy_number_variants || !currentTissueVariantReport.variants.copy_number_variants.length">
                                                     <td colspan="8"><span class="text-muted">No Copy Number Variants</span></td>
                                                 </tr>
                                             </tbody>
@@ -612,13 +612,13 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr ng-repeat="variant in currentVariantReport.variants.gene_fusions" style="cursor: auto;" role="row" class="odd">
+                                                <tr ng-repeat="variant in currentTissueVariantReport.variants.gene_fusions" style="cursor: auto;" role="row" class="odd">
                                                     <td ng-if="variantReportMode!=='QC'">
-                                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentVariantReport.status==='PENDING'">
+                                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentTissueVariantReport.status==='PENDING'">
                                                         </div>
                                                     </td>
                                                     <td ng-if="variantReportMode!=='QC'">
-                                                        <a ng-if="variant.comment " href ng-click="editComment(variant, currentVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
+                                                        <a ng-if="variant.comment " href ng-click="editComment(variant, currentTissueVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
                                                     </td>
                                                     <td>{{variant.identifier}}</td>
                                                     <td ng-if="variantReportMode!=='QC'">{{variant.aMOI}}<sup>({{variant.inclusion}})</sup></td>
@@ -629,7 +629,7 @@
                                                     <td>{{variant.annotation}}</td>
                                                 </tr>
 
-                                                <tr ng-if="!currentVariantReport.variants.gene_fusions || !currentVariantReport.variants.gene_fusions.length">
+                                                <tr ng-if="!currentTissueVariantReport.variants.gene_fusions || !currentTissueVariantReport.variants.gene_fusions.length">
                                                     <td colspan="8"><span class="text-muted">No Gene Fusions</span></td>
                                                 </tr>
                                             </tbody>
@@ -846,17 +846,17 @@
                                     </div>
 
 
-                                    <div class="ibox-content ibox-title-no-line" ng-if="showVariantReportActions(currentVariantReport)">
+                                    <div class="ibox-content ibox-title-no-line" ng-if="showVariantReportActions(currentTissueVariantReport)">
                                         <div class="row">
                                             <div class="col-md-12 text-center">
-                                                <button class="btn btn-danger" title="Reject this Report" ng-click="rejectVariantReport(currentVariantReport)">REJECT</button>
-                                                <button class="btn btn-success" title="Confirm this Report" ng-click="confirmVariantReport(currentVariantReport)">CONFIRM</button>
+                                                <button class="btn btn-danger" title="Reject this Report" ng-click="rejectVariantReport(currentTissueVariantReport)">REJECT</button>
+                                                <button class="btn btn-success" title="Confirm this Report" ng-click="confirmVariantReport(currentTissueVariantReport)">CONFIRM</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div ng-if="!currentVariantReport">
+                                <div ng-if="!currentTissueVariantReport">
                                     <div class="row">
                                         <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
                                             <div class="no-data-panel text-muted">
@@ -869,7 +869,7 @@
                         </div>
 
                         <!--Assignment Report-->
-                        <div ng-if="variantReportMode!=='QC' && currentVariantReport" class="ibox">
+                        <div ng-if="variantReportMode!=='QC' && currentTissueVariantReport" class="ibox">
                             <div class="ibox-title">
                                 <div collapse-toggle-left></div>
                                 <h2>Assignment Report</h2>
@@ -877,7 +877,7 @@
 
                             <div class="ibox-content ibox-content-no-padding ibox-title-no-line">
 
-                                <div ng-if="currentVariantReport.status=='CONFIRMED'" class="row content-select-list">
+                                <div ng-if="currentTissueVariantReport.status=='CONFIRMED'" class="row content-select-list">
                                     <div class="col-md-12">
                                         <h4>
                                             <div class="btn-group" uib-dropdown dropdown-append-to-body>
@@ -890,7 +890,7 @@
                                     </div>
                                 </div>
 
-                                <div ng-if="currentVariantReport.status=='CONFIRMED'">
+                                <div ng-if="currentTissueVariantReport.status=='CONFIRMED'">
                                     <div class="row button-row">
                                         <div class="col-md-12 text-right">
                                             <button class="btn btn-success btn-outline" title="Export Assignment Report to Excel"><i class="fa fa-file-excel-o"></i>&nbsp;&nbsp;Excel</button>
@@ -1020,7 +1020,7 @@
                                     </div>
                                 </div>
 
-                                <div ng-if="currentVariantReport.status!='CONFIRMED'">
+                                <div ng-if="currentTissueVariantReport.status!='CONFIRMED'">
                                     <div class="row">
                                         <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
                                             <div class="no-data-panel text-muted">
