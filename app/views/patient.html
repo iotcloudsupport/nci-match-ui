@@ -869,7 +869,7 @@
                         </div>
 
                         <!--Assignment Report-->
-                        <div ng-if="variantReportMode!=='QC' && currentTissueVariantReport" class="ibox">
+                        <div ng-if="variantReportMode!=='QC'" class="ibox">
                             <div class="ibox-title">
                                 <div collapse-toggle-left></div>
                                 <h2>Assignment Report</h2>
@@ -877,7 +877,7 @@
 
                             <div class="ibox-content ibox-content-no-padding ibox-title-no-line">
 
-                                <div ng-if="currentTissueVariantReport.status=='CONFIRMED'" class="row content-select-list">
+                                <div ng-if="currentTissueVariantReport && currentTissueVariantReport.status=='CONFIRMED' && assignmentReportOptions.length" class="row content-select-list">
                                     <div class="col-md-12">
                                         <h4>
                                             <div class="btn-group" uib-dropdown dropdown-append-to-body>
@@ -890,7 +890,7 @@
                                     </div>
                                 </div>
 
-                                <div ng-if="currentTissueVariantReport.status=='CONFIRMED'">
+                                <div ng-if="currentTissueVariantReport && currentTissueVariantReport.status=='CONFIRMED' && assignmentReportOptions.length">
                                     <div class="row button-row">
                                         <div class="col-md-12 text-right">
                                             <button class="btn btn-success btn-outline" title="Export Assignment Report to Excel"><i class="fa fa-file-excel-o"></i>&nbsp;&nbsp;Excel</button>
@@ -1020,7 +1020,7 @@
                                     </div>
                                 </div>
 
-                                <div ng-if="currentTissueVariantReport.status!='CONFIRMED'">
+                                <div ng-if="!(currentTissueVariantReport && currentTissueVariantReport.status=='CONFIRMED' && assignmentReportOptions.length)">
                                     <div class="row">
                                         <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
                                             <div class="no-data-panel text-muted">

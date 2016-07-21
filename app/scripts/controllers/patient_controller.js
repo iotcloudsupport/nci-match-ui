@@ -413,7 +413,7 @@
             // Assuming latest variant reports are sorted as "latest on top"
             for (var i = 0; i < $scope.tissueVariantReportOptions.length; i++) {
                 var option = $scope.tissueVariantReportOptions[i];
-                if (option.surgical_event_id === $scope.currentSurgicalEvent.surgical_event_id) {
+                if (option.value.surgical_event_id === $scope.currentSurgicalEvent.surgical_event_id) {
                     return option;
                 }
             }
@@ -430,7 +430,7 @@
 
             if ($scope.currentTissueVariantReport.molecular_id !== currentAssignment.molecular_id
                 || $scope.currentTissueVariantReport.analysis_id !== currentAssignment.analysis_id) {
-                $log.error('Unable to find Assignment Report ' + $scope.currentTissueVariantReport.molecularId + ',' + $scope.currentTissueVariantReport.analysisId);
+                $log.debug('Unable to find Assignment Report ' + $scope.currentTissueVariantReport.molecular_id + ',' + $scope.currentTissueVariantReport.analysis_id);
                 return;
             }
 
@@ -463,6 +463,8 @@
         function selectTissueVariantReport(option) {
             var previous = $scope.currentTissueVariantReport;
             $scope.currentTissueVariantReport = null;
+            $scope.assignmentReportOption = null;
+            $scope.currentAssignmentReport = null;
 
             for (var i = 0; i < $scope.variantReports.length; i++) {
                 var variantReport = $scope.variantReports[i];
@@ -475,6 +477,8 @@
                     }
                 }
             }
+
+            setupAssignmentReportOptions();
 
             if ($scope.currentTissueVariantReport) {
                 setupAssignmentReportOptions();
@@ -712,23 +716,14 @@
                     variantReport.comment_user = $scope.currentUser;
                     variantReport.status_date = moment.utc(new Date()).utc();
 
-                    var rejectVariants = function (variants) {
-                        if (!variants || !variants.length)
-                            return;
-                        for (var i = 0; i < variants.length; i++) {
-                            variants[i].comment = null;
-                            variants[i].confirmed = false;
-                        }
-                    };
-
                     if (variantReport.variants.snvs_and_indels)
-                        rejectVariants(variantReport.variants.snvs_and_indels);
+                        updateVariants(variantReport.variants.snvs_and_indels, false);
 
                     if (variantReport.variants.copy_number_variants)
-                        rejectVariants(variantReport.variants.copy_number_variants);
+                        updateVariants(variantReport.variants.copy_number_variants, false);
 
                     if (variantReport.variants.gene_fusions)
-                        rejectVariants(variantReport.variants.gene_fusions);
+                        updateVariants(variantReport.variants.gene_fusions, false);
 
                     if (variantReport.variant_report_type === 'BLOOD') {
                         updateTissueVariantReportOption(variantReport);
@@ -737,6 +732,17 @@
                     }
                 }
             });
+        }
+
+        function updateVariants(variants, confirmed) {
+            if (!variants || !variants.length)
+                return;
+            for (var i = 0; i < variants.length; i++) {
+                if (confirmed) {
+                    variants[i].comment = null;
+                }
+                variants[i].confirmed = confirmed;
+            }
         }
 
         function confirmVariantReport(variantReport) {
