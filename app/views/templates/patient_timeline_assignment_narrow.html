@@ -15,7 +15,7 @@
         <div class="col-md-12">
             <p class="m-b-xs event-content">
                 <span ng-if="timelineEvent.patient_id">
-                    Patient: <span class="timeline-value">{{::timelineEvent.patient_id}}</span>
+                    Patient: <span class="timeline-value"><patient-title id="timelineEvent.patient_id"></span><!-- {{::timelineEvent.patient_id}} -->
                 <br>
                 </span>
 
