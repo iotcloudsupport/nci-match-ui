@@ -123,7 +123,7 @@
                         </div>
                         <!--<div class="col-lg-3" ng-init="loadSampleBreakups();loadPieChart();">-->
                         <!--&lt;!&ndash;CHART&ndash;&gt;-->
-                        <!--<canvas id="pieCanvas" donutchart ng-attr-data="pieData" responsive=true options="doughnutOptions" style=""></canvas>-->
+                        <!--<canvas id="pieCanvas" donutchart ng-attr-data="pieData" responsive="true" options="doughnutOptions" style=""></canvas>-->
 
                         <!--</div>-->
 
@@ -214,23 +214,23 @@
 
                                 <tr ng-repeat="ta in snvList | limitTo:totalDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">
 
-                                    <td>{{::ta.identifier || '-'}}</td>
-                                    <td>{{::ta.chromosome || '-'}}</td>
-                                    <td>{{::ta.position || '-'}}</td>
-                                    <td>{{::ta.reference || '-'}}</td>
-                                    <td>{{::ta.alternative || '-'}}</td>
-                                    <td>{{::ta.filter || '-'}}</td>
-                                    <td>{{::ta.alleleFrequency || '-'}}</td>
+                                    <td>{{::ta.identifier | dashify }}</td>
+                                    <td>{{::ta.chromosome | dashify }}</td>
+                                    <td>{{::ta.position | dashify }}</td>
+                                    <td>{{::ta.reference | dashify }}</td>
+                                    <td>{{::ta.alternative | dashify }}</td>
+                                    <td>{{::ta.filter | dashify }}</td>
+                                    <td>{{::ta.alleleFrequency | dashify }}</td>
                                     <td>
-                                        <a href ng-click="openCosmicGene(ta.gene)" class="report-link">{{::ta.gene}}</a>
+                                        <a href ng-click="openCosmicGene(ta.gene)" class="report-link">{{::ta.gene | dashify}}</a>
                                     </td>
-                                    <td>{{::ta.oncominevariantclass || '-'}}</td>
-                                    <td>{{::ta.exon || '-'}}</td>
-                                    <td>{{::ta.function || '-'}}</td>
-                                    <td>{{::ta.hgvs || '-'}}</td>
-                                    <td>{{::ta.readDepth || '-'}}</td>
-                                    <td>{{::ta.transcript || '-'}}</td>
-                                    <td>{{::ta.proteinMatch || '-'}}</td>
+                                    <td>{{::ta.oncominevariantclass | dashify }}</td>
+                                    <td>{{::ta.exon | dashify }}</td>
+                                    <td>{{::ta.function | dashify }}</td>
+                                    <td>{{::ta.hgvs | dashify }}</td>
+                                    <td>{{::ta.readDepth | dashify }}</td>
+                                    <td>{{::ta.transcript | dashify }}</td>
+                                    <td>{{::ta.proteinMatch | dashify }}</td>
 
                                 </tr>
                                 </tbody>
@@ -276,17 +276,17 @@
 
                                 <tr ng-repeat="ta in cnvList | limitTo:totalDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">
                                     <td>
-                                        <a href ng-click="openCosmicGene(ta.identifier)" class="report-link"> {{::ta.identifier || '-'}} </a>
+                                        <a href ng-click="openCosmicGene(ta.identifier)" class="report-link"> {{::ta.identifier | dashify }} </a>
                                     </td>
-                                    <td>{{::ta.chromosome || '-'}}</td>
-                                    <td>{{::ta.position || '-'}}</td>
-                                    <td>{{::ta.reference || '-'}}</td>
-                                    <td>{{::ta.alternative || '-'}}</td>
-                                    <td>{{::ta.filter || '-'}}</td>
-                                    <td>{{::ta.rawCopyNumber || '-'}}</td>
-                                    <td>{{::ta.copyNumber || '-'}}</td>
-                                    <td>{{::ta.confidenceInterval5percent || '-'}}</td>
-                                    <td>{{::ta.confidenceInterval95percent || '-'}}</td>
+                                    <td>{{::ta.chromosome | dashify }}</td>
+                                    <td>{{::ta.position | dashify }}</td>
+                                    <td>{{::ta.reference | dashify }}</td>
+                                    <td>{{::ta.alternative | dashify }}</td>
+                                    <td>{{::ta.filter | dashify }}</td>
+                                    <td>{{::ta.rawCopyNumber | dashify }}</td>
+                                    <td>{{::ta.copyNumber | dashify }}</td>
+                                    <td>{{::ta.confidenceInterval5percent | dashify }}</td>
+                                    <td>{{::ta.confidenceInterval95percent | dashify }}</td>
 
                                 </tr>
                                 </tbody>
@@ -334,23 +334,21 @@
 
                                 <tr ng-repeat="ta in geneList | limitTo:totalDisplayed " style="cursor: auto; " role="row" class="odd">
                                     <td>
-                                        <a href ng-click="openCosmicFusionId(ta.identifier)" class="report-link"> {{::ta.identifier || '-'}} </a>
-                                        <!--{{::ta.chromosome || '-'}}-->
+                                        <a href ng-click="openCosmicFusionId(ta.identifier)" class="report-link"> {{::ta.identifier | dashify }} </a>
+                                        <!--{{::ta.chromosome | dashify }}-->
                                     </td>
-                                    <td>{{::ta.chromosome || '-'}}</td>
-                                    <td>{{::ta.position || '-'}}</td>
-                                    <td>{{::ta.reference || '-'}}</td>
-                                    <td>{{::ta.alternative || '-'}}</td>
-                                    <td>{{::ta.filter || '-'}}</td>
+                                    <td>{{::ta.chromosome | dashify }}</td>
+                                    <td>{{::ta.position | dashify }}</td>
+                                    <td>{{::ta.reference | dashify }}</td>
+                                    <td>{{::ta.alternative | dashify }}</td>
+                                    <td>{{::ta.filter | dashify }}</td>
                                     <td>
-
-                                        {{::ta.gene || '-'}}
-
+                                        {{::ta.gene | dashify }}
                                     </td>
-                                    <td>{{::ta.oncominevariantclass || '-'}}</td>
-                                    <td>{{::ta.exon || '-'}}</td>
-                                    <td>{{::ta.function || '-'}}</td>
-                                    <td>{{::ta.readDepth || '-'}}</td>
+                                    <td>{{::ta.oncominevariantclass | dashify }}</td>
+                                    <td>{{::ta.exon | dashify }}</td>
+                                    <td>{{::ta.function | dashify }}</td>
+                                    <td>{{::ta.readDepth | dashify }}</td>
 
                                 </tr>
                                 </tbody>
@@ -416,23 +414,23 @@
 
                                         <!--<tr ng-repeat="ta in snvList | limitTo:totalDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">-->
 
-                                            <!--<td>{{::ta.identifier || '-'}}</td>-->
-                                            <!--<td>{{::ta.chromosome || '-'}}</td>-->
-                                            <!--<td>{{::ta.position || '-'}}</td>-->
-                                            <!--<td>{{::ta.reference || '-'}}</td>-->
-                                            <!--<td>{{::ta.alternative || '-'}}</td>-->
-                                            <!--<td>{{::ta.filter || '-'}}</td>-->
-                                            <!--<td>{{::ta.alleleFrequency || '-'}}</td>-->
+                                            <!--<td>{{::ta.identifier | dashify }}</td>-->
+                                            <!--<td>{{::ta.chromosome | dashify }}</td>-->
+                                            <!--<td>{{::ta.position | dashify }}</td>-->
+                                            <!--<td>{{::ta.reference | dashify }}</td>-->
+                                            <!--<td>{{::ta.alternative | dashify }}</td>-->
+                                            <!--<td>{{::ta.filter | dashify }}</td>-->
+                                            <!--<td>{{::ta.alleleFrequency | dashify }}</td>-->
                                             <!--<td>-->
                                                 <!--<a href ng-click="openCosmicGene(ta.gene)" class="report-link">{{::ta.gene}}</a>-->
                                             <!--</td>-->
-                                            <!--<td>{{::ta.oncominevariantclass || '-'}}</td>-->
-                                            <!--<td>{{::ta.exon || '-'}}</td>-->
-                                            <!--<td>{{::ta.function || '-'}}</td>-->
-                                            <!--<td>{{::ta.hgvs || '-'}}</td>-->
-                                            <!--<td>{{::ta.readDepth || '-'}}</td>-->
-                                            <!--<td>{{::ta.transcript || '-'}}</td>-->
-                                            <!--<td>{{::ta.proteinMatch || '-'}}</td>-->
+                                            <!--<td>{{::ta.oncominevariantclass | dashify }}</td>-->
+                                            <!--<td>{{::ta.exon | dashify }}</td>-->
+                                            <!--<td>{{::ta.function | dashify }}</td>-->
+                                            <!--<td>{{::ta.hgvs | dashify }}</td>-->
+                                            <!--<td>{{::ta.readDepth | dashify }}</td>-->
+                                            <!--<td>{{::ta.transcript | dashify }}</td>-->
+                                            <!--<td>{{::ta.proteinMatch | dashify }}</td>-->
 
                                         <!--</tr>-->
                                         <!--</tbody>-->
@@ -476,17 +474,17 @@
 
                                         <!--<tr ng-repeat="ta in cnvList | limitTo:totalDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">-->
                                             <!--<td>-->
-                                                <!--<a href ng-click="openCosmicGene(ta.identifier)" class="report-link"> {{::ta.identifier || '-'}} </a>-->
+                                                <!--<a href ng-click="openCosmicGene(ta.identifier)" class="report-link"> {{::ta.identifier | dashify }} </a>-->
                                             <!--</td>-->
-                                            <!--<td>{{::ta.chromosome || '-'}}</td>-->
-                                            <!--<td>{{::ta.position || '-'}}</td>-->
-                                            <!--<td>{{::ta.reference || '-'}}</td>-->
-                                            <!--<td>{{::ta.alternative || '-'}}</td>-->
-                                            <!--<td>{{::ta.filter || '-'}}</td>-->
-                                            <!--<td>{{::ta.rawCopyNumber || '-'}}</td>-->
-                                            <!--<td>{{::ta.copyNumber || '-'}}</td>-->
-                                            <!--<td>{{::ta.confidenceInterval5percent || '-'}}</td>-->
-                                            <!--<td>{{::ta.confidenceInterval95percent || '-'}}</td>-->
+                                            <!--<td>{{::ta.chromosome | dashify }}</td>-->
+                                            <!--<td>{{::ta.position | dashify }}</td>-->
+                                            <!--<td>{{::ta.reference | dashify }}</td>-->
+                                            <!--<td>{{::ta.alternative | dashify }}</td>-->
+                                            <!--<td>{{::ta.filter | dashify }}</td>-->
+                                            <!--<td>{{::ta.rawCopyNumber | dashify }}</td>-->
+                                            <!--<td>{{::ta.copyNumber | dashify }}</td>-->
+                                            <!--<td>{{::ta.confidenceInterval5percent | dashify }}</td>-->
+                                            <!--<td>{{::ta.confidenceInterval95percent | dashify }}</td>-->
 
                                         <!--</tr>-->
                                         <!--</tbody>-->
@@ -531,23 +529,23 @@
 
                                         <!--<tr ng-repeat="ta in geneList | limitTo:totalDisplayed " style="cursor: auto; " role="row" class="odd">-->
                                             <!--<td>-->
-                                                <!--<a href ng-click="openCosmicFusionId(ta.identifier)" class="report-link"> {{::ta.identifier || '-'}} </a>-->
-                                                <!--&lt;!&ndash;{{::ta.chromosome || '-'}}&ndash;&gt;-->
+                                                <!--<a href ng-click="openCosmicFusionId(ta.identifier)" class="report-link"> {{::ta.identifier | dashify }} </a>-->
+                                                <!--&lt;!&ndash;{{::ta.chromosome | dashify }}&ndash;&gt;-->
                                             <!--</td>-->
-                                            <!--<td>{{::ta.chromosome || '-'}}</td>-->
-                                            <!--<td>{{::ta.position || '-'}}</td>-->
-                                            <!--<td>{{::ta.reference || '-'}}</td>-->
-                                            <!--<td>{{::ta.alternative || '-'}}</td>-->
-                                            <!--<td>{{::ta.filter || '-'}}</td>-->
+                                            <!--<td>{{::ta.chromosome | dashify }}</td>-->
+                                            <!--<td>{{::ta.position | dashify }}</td>-->
+                                            <!--<td>{{::ta.reference | dashify }}</td>-->
+                                            <!--<td>{{::ta.alternative | dashify }}</td>-->
+                                            <!--<td>{{::ta.filter | dashify }}</td>-->
                                             <!--<td>-->
 
-                                                <!--{{::ta.gene || '-'}}-->
+                                                <!--{{::ta.gene | dashify }}-->
 
                                             <!--</td>-->
-                                            <!--<td>{{::ta.oncominevariantclass || '-'}}</td>-->
-                                            <!--<td>{{::ta.exon || '-'}}</td>-->
-                                            <!--<td>{{::ta.function || '-'}}</td>-->
-                                            <!--<td>{{::ta.readDepth || '-'}}</td>-->
+                                            <!--<td>{{::ta.oncominevariantclass | dashify }}</td>-->
+                                            <!--<td>{{::ta.exon | dashify }}</td>-->
+                                            <!--<td>{{::ta.function | dashify }}</td>-->
+                                            <!--<td>{{::ta.readDepth | dashify }}</td>-->
 
                                         <!--</tr>-->
                                         <!--</tbody>-->

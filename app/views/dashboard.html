@@ -35,7 +35,7 @@
             <div class="text-center">
                 <h4>Top 5 Treatment Arm Accrual</h4>
             </div>
-            <canvas id="treatmentArmAccrualCanvas" barchart options="barOptions" ng-attr-data="barData" responsive=true></canvas>
+            <canvas id="treatmentArmAccrualCanvas" barchart options="barOptions" ng-attr-data="barData" responsive="true"></canvas>
         </div>
     </div>
 
@@ -44,7 +44,7 @@
             <div class="text-center">
                 <h4>Sequenced & Confirmed Patients with aMOI(s)</h4>
             </div>
-            <canvas id="amoiCanvas" doughnutchart options="donutOptions" ng-attr-data="donutData" legend="true" responsive=true></canvas>
+            <canvas id="amoiCanvas" doughnutchart options="donutOptions" ng-attr-data="donutData" legend="true" responsive="true"></canvas>
             <!--  legend="true" -->
         </div>
     </div>
@@ -91,27 +91,27 @@
                                     <tr ng-repeat="patient in pendingTissueVariantReportList">
                                         <td>
                                             <a ui-sref="patient({ patient_id: patient.patient_id })">
-                                                <i class="fa fa-user"></i> {{::patient.patient_id || '-' }}
+                                                <i class="fa fa-user"></i> {{::patient.patient_id | dashify }}
                                             </a>
                                         </td>
-                                        <td><a ui-sref="patient({ patient_id: patient.patient_id, section: 'surgical_event', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })">{{ patient.molecular_id || '-' }}</a></td>
-                                        <td><a ui-sref="patient({ patient_id: patient.patient_id, section: 'tissue_variant_report', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })">{{ patient.analysis_id || '-' }}</a></td>
+                                        <td><a ui-sref="patient({ patient_id: patient.patient_id, section: 'surgical_event', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })">{{ patient.molecular_id | dashify }}</a></td>
+                                        <td><a ui-sref="patient({ patient_id: patient.patient_id, section: 'tissue_variant_report', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })">{{ patient.analysis_id | dashify }}</a></td>
                                         <td class="text-center">
                                             <a ui-sref="patient({ patient_id: patient.patient_id, section: 'tissue_variant_report', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })" title="Variant Report">
                                                 <i class="fa fa-file-text-o"></i>
                                             </a>
                                         </td>
                                         <td ng-if="patient.clia_lab === 'MoCha'">
-                                            <a ui-sref="iradmin({branch: 'mocha'})">{{ patient.clia_lab || '-' }}</a>
+                                            <a ui-sref="iradmin({branch: 'mocha'})">{{ patient.clia_lab | dashify }}</a>
                                         </td>
                                         <td ng-if="patient.clia_lab === 'MDA'">
-                                            <a ui-sref="iradmin({branch: 'mdacc'})">{{ patient.clia_lab || '-' }}</a>
+                                            <a ui-sref="iradmin({branch: 'mdacc'})">{{ patient.clia_lab | dashify }}</a>
                                         </td>
                                         <td>{{ patient.specimen_received_date | gmt }}</td>
                                         <td>{{ patient.variant_report_received_date | gmt }}</td>
-                                        <td><span ng-if="patient.days_pending >= days_pending_range.upper_bound_yellow" class="label label-danger">{{ patient.days_pending || '-' }}</span>
-                                            <span ng-if="patient.days_pending < days_pending_range.upper_bound_yellow && patient.days_pending >= days_pending_range.upper_bound_green" class="label label-warning">{{ patient.days_pending || '-' }}</span>
-                                            <span ng-if="patient.days_pending < days_pending_range.upper_bound_green" class="label label-primary">{{ patient.days_pending || '-' }}</span>
+                                        <td><span ng-if="patient.days_pending >= days_pending_range.upper_bound_yellow" class="label label-danger">{{ patient.days_pending | dashify }}</span>
+                                            <span ng-if="patient.days_pending < days_pending_range.upper_bound_yellow && patient.days_pending >= days_pending_range.upper_bound_green" class="label label-warning">{{ patient.days_pending | dashify }}</span>
+                                            <span ng-if="patient.days_pending < days_pending_range.upper_bound_green" class="label label-primary">{{ patient.days_pending | dashify }}</span>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -137,27 +137,27 @@
                                     <tr ng-repeat="patient in pendingBloodVariantReportList">
                                         <td>
                                             <a ui-sref="patient({ patient_id: patient.patient_id })">
-                                                <i class="fa fa-user"></i> {{::patient.patient_id || '-' }}
+                                                <i class="fa fa-user"></i> {{::patient.patient_id | dashify }}
                                             </a>
                                         </td>
-                                        <td><a ui-sref="patient({ patient_id: patient.patient_id, section: 'surgical_event', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })">{{ patient.molecular_id || '-' }}</a></td>
-                                        <td><a ui-sref="patient({ patient_id: patient.patient_id, section: 'blood_variant_report', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })">{{ patient.analysis_id || '-' }}</a></td>
+                                        <td><a ui-sref="patient({ patient_id: patient.patient_id, section: 'surgical_event', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })">{{ patient.molecular_id | dashify }}</a></td>
+                                        <td><a ui-sref="patient({ patient_id: patient.patient_id, section: 'blood_variant_report', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })">{{ patient.analysis_id | dashify }}</a></td>
                                         <td class="text-center">
                                             <a ui-sref="patient({ patient_id: patient.patient_id, section: 'blood_variant_report', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })" title="Variant Report">
                                                 <i class="fa fa-file-text-o"></i>
                                             </a>
                                         </td>
                                         <td ng-if="patient.clia_lab === 'MoCha'">
-                                            <a ui-sref="iradmin({branch: 'mocha'})">{{ patient.clia_lab || '-' }}</a>
+                                            <a ui-sref="iradmin({branch: 'mocha'})">{{ patient.clia_lab | dashify }}</a>
                                         </td>
                                         <td ng-if="patient.clia_lab === 'MDA'">
-                                            <a ui-sref="iradmin({branch: 'mdacc'})">{{ patient.clia_lab || '-' }}</a>
+                                            <a ui-sref="iradmin({branch: 'mdacc'})">{{ patient.clia_lab | dashify }}</a>
                                         </td>
                                         <td>{{ patient.specimen_received_date | gmt }}</td>
                                         <td>{{ patient.variant_report_received_date | gmt }}</td>
-                                        <td><span ng-if="patient.days_pending >= days_pending_range.upper_bound_yellow" class="label label-danger">{{ patient.days_pending || '-' }}</span>
-                                            <span ng-if="patient.days_pending < days_pending_range.upper_bound_yellow && patient.days_pending >= days_pending_range.upper_bound_green" class="label label-warning">{{ patient.days_pending || '-' }}</span>
-                                            <span ng-if="patient.days_pending < days_pending_range.upper_bound_green" class="label label-primary">{{ patient.days_pending || '-' }}</span>
+                                        <td><span ng-if="patient.days_pending >= days_pending_range.upper_bound_yellow" class="label label-danger">{{ patient.days_pending | dashify }}</span>
+                                            <span ng-if="patient.days_pending < days_pending_range.upper_bound_yellow && patient.days_pending >= days_pending_range.upper_bound_green" class="label label-warning">{{ patient.days_pending | dashify }}</span>
+                                            <span ng-if="patient.days_pending < days_pending_range.upper_bound_green" class="label label-primary">{{ patient.days_pending | dashify }}</span>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -186,19 +186,19 @@
                                                 <i class="fa fa-user"></i> {{::patient.patient_id }}
                                             </a>
                                         </td>
-                                        <td><a ui-sref="patient({ patient_id: patient.patient_id, section: 'surgical_event', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })">{{ patient.molecular_id || '-' }}</a></td>
-                                        <td><a ui-sref="patient({ patient_id: patient.patient_id, section: 'assignment_report', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })">{{ patient.analysis_id || '-' }}</a></td>
+                                        <td><a ui-sref="patient({ patient_id: patient.patient_id, section: 'surgical_event', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })">{{ patient.molecular_id | dashify }}</a></td>
+                                        <td><a ui-sref="patient({ patient_id: patient.patient_id, section: 'assignment_report', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })">{{ patient.analysis_id | dashify }}</a></td>
                                         <td class="text-center">
                                             <a ui-sref="patient({ patient_id: patient.patient_id, section: 'assignment_report', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })" title="Variant Report">
                                                 <i class="fa fa-file-text-o"></i>
                                             </a>
                                         </td>
-                                        <td>{{patient.disease || '-'}}</td>
+                                        <td>{{patient.disease | dashify }}</td>
                                         <td><treatment-arm-title name="patient.treatment_arm" stratum="patient.stratum"></td>
                                         <td>{{ patient.assignment_date | gmt }}</td>
-                                        <td><span ng-if="patient.hours_pending >= hours_pending_range.upper_bound_yellow" class="label label-danger">{{ patient.hours_pending || '-' }}</span>
-                                            <span ng-if="patient.hours_pending < hours_pending_range.upper_bound_yellow && patient.hours_pending >= hours_pending_range.upper_bound_green" class="label label-warning">{{ patient.hours_pending || '-' }}</span>
-                                            <span ng-if="patient.hours_pending < hours_pending_range.upper_bound_green" class="label label-primary">{{ patient.hours_pending || '-' }}</span>
+                                        <td><span ng-if="patient.hours_pending >= hours_pending_range.upper_bound_yellow" class="label label-danger">{{ patient.hours_pending | dashify }}</span>
+                                            <span ng-if="patient.hours_pending < hours_pending_range.upper_bound_yellow && patient.hours_pending >= hours_pending_range.upper_bound_green" class="label label-warning">{{ patient.hours_pending | dashify }}</span>
+                                            <span ng-if="patient.hours_pending < hours_pending_range.upper_bound_green" class="label label-primary">{{ patient.hours_pending | dashify }}</span>
                                         </td>
                                     </tr>
                                 </tbody>

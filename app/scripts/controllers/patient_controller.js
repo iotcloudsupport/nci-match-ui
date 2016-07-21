@@ -13,7 +13,8 @@
         $state,
         $window,
         store,
-        $filter) {
+        $filter,
+        arrayTools) {
 
         var vm = this;
 
@@ -108,9 +109,9 @@
         $scope.needToDisplayReportStatus = needToDisplayReportStatus;
         $scope.needToDisplayCbnaWarning = needToDisplayCbnaWarning;
         $scope.getNewFileButtonClass = getNewFileButtonClass;
-        $scope.loadQc_Table = loadQc_Table;
-        $scope.loadSnv_Table = loadSnv_Table;
-        $scope.loadGene_Table = loadGene_Table;
+        $scope.loadQcTable = loadQcTable;
+        $scope.loadSnvTable = loadSnvTable;
+        $scope.loadGeneTable = loadGeneTable;
 
         //FILTER
         $scope.$watch('confirmed', function (newValue, oldValue) {
@@ -152,9 +153,9 @@
 
         //Sample Mocks
         //CNV
-        function loadQc_Table() {
+        function loadQcTable() {
             matchApiMock
-                .loadQc_Table()
+                .loadQcTable()
                 .then(loadQcList);
         }
 
@@ -163,9 +164,9 @@
         }
 
         //SNV
-        function loadSnv_Table() {
+        function loadSnvTable() {
             matchApiMock
-                .loadQc_Table()
+                .loadQcTable()
                 .then(loadSnvList);
         }
 
@@ -174,9 +175,9 @@
         }
 
         //GENE
-        function loadGene_Table() {
+        function loadGeneTable() {
             matchApiMock
-                .loadQc_Table()
+                .loadQcTable()
                 .then(loadGeneList);
         }
 
@@ -327,22 +328,9 @@
             if (slideShipments.length > 0) {
                 for (var k = 0; k < slideShipments.length; k++) {
                     var slideSpecimenShipment = slideShipments[k];
-                    removeFromArray(slideSpecimenShipment.surgicalEvent.specimen_shipments, slideSpecimenShipment.shipment)
+                    arrayTools.removeElement(slideSpecimenShipment.surgicalEvent.specimen_shipments, slideSpecimenShipment.shipment)
                 }
             }
-        }
-
-        function removeFromArray(arr, element) {
-            if (!arr || !element)
-                return -1;
-
-            var index = arr.indexOf(element);
-            if (index >= 0) {
-                arr.splice(index, 1);
-                return index;
-            }
-
-            return -1;
         }
 
         function setupSurgicalEventOptions() {

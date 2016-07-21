@@ -51,7 +51,7 @@
 
                                                         <div class="panel" ng-init="loadPieChart();">
                                                             <canvas id="pieCanvas" piechart
-                                                                    ng-attr-data="pieData" responsive=true width="600" height="600"
+                                                                    ng-attr-data="pieData" responsive="true" width="600" height="600"
                                                                     style="width: 603px; height: 601px; border-bottom: thin dimgrey solid; border-top: thin dimgrey solid;"></canvas>
                                                         </div>
 
@@ -82,7 +82,7 @@
                                                     <!--HISTOGRAM CHART-->
                                                     <div class="col-xs-7 cols-height cols-bottom" >
                                                         <canvas id="mainSampleCanvas" barchart options="chart.barOptions" ng-attr-data="barData"
-                                                                responsive=true width="500" height="200"  style="width: 503px; height: 201px;"></canvas>
+                                                                responsive="true" width="500" height="200"  style="width: 503px; height: 201px;"></canvas>
                                                     </div>
                                                     <!--HISTOGRAM CHART-->
 
@@ -211,22 +211,22 @@
                                                             <tr ng-repeat="sample in singleNucleotideVariantsList">
                                                                 <td>
                                                                     <a class="report-link" href ng-click="openCosmicId( sample.identifier )">
-                                                                    {{sample.identifier || '-' }}
+                                                                    {{sample.identifier | dashify }}
                                                                     </a>
                                                                 </td>
-                                                                <td>{{sample.chromosome || '-' }}</td>
-                                                                <td>{{sample.position || '-' }}</td>
-                                                                <td>{{sample.reference || '-' }}</td>
-                                                                <td>{{sample.alternative || '-' }}</td>
-                                                                <td>{{sample.alleleFrequency || '-' }}</td>
-                                                                <td>{{sample.geneName || '-' }}</td>
-                                                                <td>{{sample.type || '-' }}</td>
-                                                                <td>{{sample.oncominevariantclass || '-' }}</td>
-                                                                <td>{{sample.function || '-' }}</td>
-                                                                <td>{{sample.hgvs || '-' }}</td>
-                                                                <td>{{sample.readDepth || '-' }}</td>
-                                                                <td>{{sample.transcript || '-' }}</td>
-                                                                <td>{{sample.protein || '-' }}</td>
+                                                                <td>{{sample.chromosome | dashify }}</td>
+                                                                <td>{{sample.position | dashify }}</td>
+                                                                <td>{{sample.reference | dashify }}</td>
+                                                                <td>{{sample.alternative | dashify }}</td>
+                                                                <td>{{sample.alleleFrequency | dashify }}</td>
+                                                                <td>{{sample.geneName | dashify }}</td>
+                                                                <td>{{sample.type | dashify }}</td>
+                                                                <td>{{sample.oncominevariantclass | dashify }}</td>
+                                                                <td>{{sample.function | dashify }}</td>
+                                                                <td>{{sample.hgvs | dashify }}</td>
+                                                                <td>{{sample.readDepth | dashify }}</td>
+                                                                <td>{{sample.transcript | dashify }}</td>
+                                                                <td>{{sample.protein | dashify }}</td>
                                                             </tr>
                                                             </tbody>
                                                         </table>
@@ -269,20 +269,20 @@
                                                             </thead>
                                                             <tbody>
                                                             <tr ng-repeat="sample in indelsList">
-                                                                <td>{{sample.identifier || '-' }}</td>
-                                                                <td>{{sample.chromosome || '-' }}</td>
-                                                                <td>{{sample.position || '-' }}</td>
-                                                                <td>{{sample.reference || '-' }}</td>
-                                                                <td>{{sample.alternative || '-' }}</td>
-                                                                <td>{{sample.alleleFrequency || '-' }}</td>
-                                                                <td>{{sample.geneName || '-' }}</td>
-                                                                <td>{{sample.type || '-' }}</td>
-                                                                <td>{{sample.oncominevariantclass || '-' }}</td>
-                                                                <td>{{sample.function || '-' }}</td>
-                                                                <td>{{sample.hgvs || '-' }}</td>
-                                                                <td>{{sample.readDepth || '-' }}</td>
-                                                                <td>{{sample.transcript || '-' }}</td>
-                                                                <td>{{sample.protein || '-' }}</td>
+                                                                <td>{{sample.identifier | dashify }}</td>
+                                                                <td>{{sample.chromosome | dashify }}</td>
+                                                                <td>{{sample.position | dashify }}</td>
+                                                                <td>{{sample.reference | dashify }}</td>
+                                                                <td>{{sample.alternative | dashify }}</td>
+                                                                <td>{{sample.alleleFrequency | dashify }}</td>
+                                                                <td>{{sample.geneName | dashify }}</td>
+                                                                <td>{{sample.type | dashify }}</td>
+                                                                <td>{{sample.oncominevariantclass | dashify }}</td>
+                                                                <td>{{sample.function | dashify }}</td>
+                                                                <td>{{sample.hgvs | dashify }}</td>
+                                                                <td>{{sample.readDepth | dashify }}</td>
+                                                                <td>{{sample.transcript | dashify }}</td>
+                                                                <td>{{sample.protein | dashify }}</td>
                                                             </tr>
                                                             </tbody>
                                                         </table>
@@ -325,20 +325,20 @@
                                                             </thead>
                                                             <tbody>
                                                             <tr ng-repeat="sample in copyNumberVariantsList">
-                                                                <td>{{sample.identifier || '-' }}</td>
-                                                                <td>{{sample.chromosome || '-' }}</td>
-                                                                <td>{{sample.position || '-' }}</td>
-                                                                <td>{{sample.reference || '-' }}</td>
-                                                                <td>{{sample.alternative || '-' }}</td>
-                                                                <td>{{sample.alleleFrequency || '-' }}</td>
-                                                                <td>{{sample.geneName || '-' }}</td>
-                                                                <td>{{sample.type || '-' }}</td>
-                                                                <td>{{sample.oncominevariantclass || '-' }}</td>
-                                                                <td>{{sample.function || '-' }}</td>
-                                                                <td>{{sample.hgvs || '-' }}</td>
-                                                                <td>{{sample.readDepth || '-' }}</td>
-                                                                <td>{{sample.transcript || '-' }}</td>
-                                                                <td>{{sample.protein || '-' }}</td>
+                                                                <td>{{sample.identifier | dashify }}</td>
+                                                                <td>{{sample.chromosome | dashify }}</td>
+                                                                <td>{{sample.position | dashify }}</td>
+                                                                <td>{{sample.reference | dashify }}</td>
+                                                                <td>{{sample.alternative | dashify }}</td>
+                                                                <td>{{sample.alleleFrequency | dashify }}</td>
+                                                                <td>{{sample.geneName | dashify }}</td>
+                                                                <td>{{sample.type | dashify }}</td>
+                                                                <td>{{sample.oncominevariantclass | dashify }}</td>
+                                                                <td>{{sample.function | dashify }}</td>
+                                                                <td>{{sample.hgvs | dashify }}</td>
+                                                                <td>{{sample.readDepth | dashify }}</td>
+                                                                <td>{{sample.transcript | dashify }}</td>
+                                                                <td>{{sample.protein | dashify }}</td>
                                                             </tr>
                                                             </tbody>
                                                         </table>
@@ -374,11 +374,11 @@
                                                             <tbody>
                                                             <tr ng-repeat="sample in geneFusionsList">
 
-                                                                <td>{{sample.identifier || '-' }}</td>
-                                                                <td>{{sample.geneName || '-' }}</td>
-                                                                <td>{{sample.gene || '-' }}</td>
-                                                                <td>{{sample.flowAlternativeAlleleObservationCount || '-' }}</td>
-                                                                <td>{{sample.alternativeAlleleObservationCount || '-' }}</td>
+                                                                <td>{{sample.identifier | dashify }}</td>
+                                                                <td>{{sample.geneName | dashify }}</td>
+                                                                <td>{{sample.gene | dashify }}</td>
+                                                                <td>{{sample.flowAlternativeAlleleObservationCount | dashify }}</td>
+                                                                <td>{{sample.alternativeAlleleObservationCount | dashify }}</td>
 
                                                             </tr>
                                                             </tbody>

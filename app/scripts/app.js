@@ -18,6 +18,7 @@
         'filters.matchbox',
         'config.matchbox',
         'http.matchbox',
+        'matchbox.tools',
         'angular-storage',
         'angular-jwt',
         'angular-flot',
