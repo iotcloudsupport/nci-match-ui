@@ -22,7 +22,7 @@
 
                 $scope.displayTreatmentArmList = function () {
                     matchApiMock
-                        .displayTreatmentArmList()
+                        .loadTreatmentArmList()
                         .then(function (d) {
                             $scope.treatmentArmList = d.data;
                         });

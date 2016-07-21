@@ -14,7 +14,7 @@
                 loadPatientPendingAssignmentReportsList: loadPatientPendingAssignmentReportsList,
                 loadActivityList: loadActivityList,
                 loadSpecimenTrackingList: loadSpecimenTrackingList,
-                displayTreatmentArmList: displayTreatmentArmList,
+                loadTreatmentArmList: loadTreatmentArmList,
                 loadPatientsForTa: loadPatientsForTa,
                 loadTreatmentArmDetails: loadTreatmentArmDetails,
                 loadQc_Table: loadQc_Table,
@@ -79,7 +79,7 @@
                 return $http.get('data/dashboard_patient_assignment_reports.json');
             }
             
-            function displayTreatmentArmList() {
+            function loadTreatmentArmList() {
                 return $http.get('data/treatment_arms_list.json');
             }
 
