@@ -149,19 +149,19 @@
                                         </thead>
                                         <tbody>
                                             <tr ng-repeat="item in patients">
-                                                <td>{{item.slot || '-'}}</td>
-                                                <td><a ui-sref="patient({ patient_id: item.patientSequenceNumber })"><i class="fa fa-user"></i> {{item.patientSequenceNumber || '-'}}</td>
-                                    <td>{{item.treatmentArmVersion || '-'}}</td>
-                                    <td ng-style="{'color':'{{ item.patientAssignmentStatusOutcome | status }}'}">{{item.patientAssignmentStatusOutcome || '-'}}</td>
-                                    <td> <a ui-sref="patient({ patient_id: item.patientSequenceNumber, section: 'assignment_report', molecular_id: item.molecular_id, analysis_id: item.analysis_id })">{{item.assignmentLogic || '-'}}</a></td>
-                                                <td> <a ui-sref="patient({ patient_id: item.patientSequenceNumber, section: 'tissue_variant_report', molecular_id: item.molecular_id })">{{item.variantReport || '-'}}</a></td>
-                                                <td>{{item.dateSelected || '-'}}</td>
-                                                <td>{{item.dateOnArm || '-'}}</td>
-                                                <td>{{item.dateOffArm || '-'}}</td>
-                                                <td>{{item.timeOnArm || '-'}}</td>
-                                                <td>{{item.step || '-'}}</td>
-                                                <td>{{item.diseases || '-'}}</td>
-                                                <td>{{item.reason || '-'}}</td>
+                                                <td>{{item.slot | dashify }}</td>
+                                                <td><a ui-sref="patient({ patient_id: item.patientSequenceNumber })"><i class="fa fa-user"></i> {{item.patientSequenceNumber | dashify }}</td>
+                                    <td>{{item.treatmentArmVersion | dashify }}</td>
+                                    <td ng-style="{'color':'{{ item.patientAssignmentStatusOutcome | status }}'}">{{item.patientAssignmentStatusOutcome | dashify }}</td>
+                                    <td> <a ui-sref="patient({ patient_id: item.patientSequenceNumber, section: 'assignment_report', molecular_id: item.molecular_id, analysis_id: item.analysis_id })">{{item.assignmentLogic | dashify }}</a></td>
+                                                <td> <a ui-sref="patient({ patient_id: item.patientSequenceNumber, section: 'tissue_variant_report', molecular_id: item.molecular_id })">{{item.variantReport | dashify }}</a></td>
+                                                <td>{{item.dateSelected | dashify }}</td>
+                                                <td>{{item.dateOnArm | dashify }}</td>
+                                                <td>{{item.dateOffArm | dashify }}</td>
+                                                <td>{{item.timeOnArm | dashify }}</td>
+                                                <td>{{item.step | dashify }}</td>
+                                                <td>{{item.diseases | dashify }}</td>
+                                                <td>{{item.reason | dashify }}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -193,9 +193,9 @@
                                                                 </thead>
                                                                 <tbody>
                                                                     <tr ng-repeat="item in currentVersion.exclusion_diseases">
-                                                                        <td>{{item.medra_code || '-'}}</td>
-                                                                        <td>{{item.short_name || '-'}}</td>
-                                                                        <td>{{item.ctep_category || '-'}}</td>
+                                                                        <td>{{item.medra_code | dashify }}</td>
+                                                                        <td>{{item.short_name | dashify }}</td>
+                                                                        <td>{{item.ctep_category | dashify }}</td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
@@ -219,9 +219,9 @@
                                                                 </thead>
                                                                 <tbody>
                                                                     <tr ng-repeat="item in currentVersion.inclusion_diseases">
-                                                                        <td>{{item.medra_code || '-'}}</td>
-                                                                        <td>{{item.short_name || '-'}}</td>
-                                                                        <td>{{item.ctep_category || '-'}}</td>
+                                                                        <td>{{item.medra_code | dashify }}</td>
+                                                                        <td>{{item.short_name | dashify }}</td>
+                                                                        <td>{{item.ctep_category | dashify }}</td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
@@ -245,8 +245,8 @@
                                                                 </thead>
                                                                 <tbody>
                                                                     <tr ng-repeat="item in currentVersion.exclusion_drugs">
-                                                                        <td>{{item.drug_id || '-'}}</td>
-                                                                        <td>{{item.name || '-'}}</td>
+                                                                        <td>{{item.drug_id | dashify }}</td>
+                                                                        <td>{{item.name | dashify }}</td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>
@@ -278,16 +278,16 @@
                                                                 <tr>
                                                                     <th>ID</th>
                                                                     <th>Gene</th>
-                                                                    <th>Chr <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.chr}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                    <th>Pos <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                    <th>CDS Ref <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.ref}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                    <th>CDS Alt <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                    <th>OCP Ref <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.ref}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                    <th>OCP Alt <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                    <th>Strand <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>Chr <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.chr}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>Pos <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.pos}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>CDS Ref <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.ref}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>CDS Alt <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.alt}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>OCP Ref <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.ref}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>OCP Alt <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.alt}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>Strand <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.alt}}" onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Protein</th>
-                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                    <th>Lit <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.loe}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>Lit <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.lit}}" onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Total # Of Patients With Variant</th>
                                                                     <th>Patients With Variant Who Were Assigned To This Arm</th>
                                                                     <th>% Of Patients With Variant On Arm Of Total Patients With Variant</th>
@@ -295,27 +295,27 @@
                                                             </thead>
                                                             <tbody>
                                                                 <tr ng-model="version" ng-repeat="item in currentVersion.snvsInclusion">
-                                                                    <td><a ng-click="openId(item.identifier)">{{item.identifier || '-'}}</a></td>
-                                                                    <td><a ng-click="openGene(item.gene_name)">{{item.gene_name || '-'}}</a></td>
-                                                                    <td>{{item.chromosome || '-'}}</td>
-                                                                    <td>{{item.position || '-'}}</td>
-                                                                    <td>{{item.reference || '-'}}</td>
-                                                                    <td>{{item.alternative || '-'}}</td>
-                                                                    <td>{{item.reference || '-'}}</td>
-                                                                    <td>{{item.alternative || '-'}}</td>
-                                                                    <td>{{item.alternative || '-'}}</td>
-                                                                    <td>{{item.description || '-'}}</td>
-                                                                    <td>{{item.level_of_evidence || '-'}}</td>
+                                                                    <td><a ng-click="openId(item.identifier)">{{item.identifier | dashify }}</a></td>
+                                                                    <td><a ng-click="openGene(item.gene_name)">{{item.gene_name | dashify }}</a></td>
+                                                                    <td>{{item.chromosome | dashify }}</td>
+                                                                    <td>{{item.position | dashify }}</td>
+                                                                    <td>{{item.reference | dashify }}</td>
+                                                                    <td>{{item.alternative | dashify }}</td>
+                                                                    <td>{{item.reference | dashify }}</td>
+                                                                    <td>{{item.alternative | dashify }}</td>
+                                                                    <td>{{item.alternative | dashify }}</td>
+                                                                    <td>{{item.description | dashify }}</td>
+                                                                    <td>{{item.level_of_evidence | dashify }}</td>
                                                                     <td>
                                                                         <table>
                                                                             <tr ng-repeat="subitem in item.public_med_ids">
-                                                                                <td><a ng-click="openPubMed(subitem)">{{subitem || '-'}}</a></td>
+                                                                                <td><a ng-click="openPubMed(subitem)">{{subitem | dashify }}</a></td>
                                                                             </tr>
                                                                         </table>
                                                                     </td>
-                                                                    <td style="text-align:right">{{item.totNumPtsWithVariant || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.ptsWithVariantOnArm || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
+                                                                    <td style="text-align:right">{{item.totNumPtsWithVariant | dashify }}</td>
+                                                                    <td style="text-align:right">{{item.ptsWithVariantOnArm | dashify }}</td>
+                                                                    <td style="text-align:right">{{item.pctPtsWithVarOnArmOfTotPtsWithVar | dashify }}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -326,42 +326,42 @@
                                                                 <tr>
                                                                     <th>ID</th>
                                                                     <th>Gene</th>
-                                                                    <th>Chr <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.chr}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                    <th>Pos <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                    <th>CDS Ref <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.ref}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                    <th>CDS Alt <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                    <th>OCP Ref <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.ref}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                    <th>OCP Alt <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                    <th>Strand <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.alt}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>Chr <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.chr}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>Pos <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.pos}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>CDS Ref <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.ref}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>CDS Alt <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.alt}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>OCP Ref <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.ref}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>OCP Alt <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.alt}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>Strand <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.alt}}" onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Protein</th>
-                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                    <th>Lit <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.loe}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>Lit <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.lit}}" onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Total # Of Patients With Variant</th>
                                                                     <th>Patients With Variant Who Were Excluded From This Arm</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 <tr ng-model="version" ng-repeat="item in currentVersion.snvsExclusion">
-                                                                    <td><a ng-click="openId(item.identifier)">{{item.identifier || '-'}}</td>
-                                                            <td><a ng-click="openGene(item.gene_name)">{{item.gene_name || '-'}}</a></td>
-                                                                    <td>{{item.chromosome || '-'}}</td>
-                                                                    <td>{{item.position || '-'}}</td>
-                                                                    <td>{{item.reference || '-'}}</td>
-                                                                    <td>{{item.alternative || '-'}}</td>
-                                                                    <td>{{item.reference || '-'}}</td>
-                                                                    <td>{{item.alternative || '-'}}</td>
-                                                                    <td>{{item.alternative || '-'}}</td>
-                                                                    <td>{{item.description || '-'}}</td>
-                                                                    <td>{{item.level_of_evidence || '-'}}</td>
+                                                                    <td><a ng-click="openId(item.identifier)">{{item.identifier | dashify }}</td>
+                                                            <td><a ng-click="openGene(item.gene_name)">{{item.gene_name | dashify }}</a></td>
+                                                                    <td>{{item.chromosome | dashify }}</td>
+                                                                    <td>{{item.position | dashify }}</td>
+                                                                    <td>{{item.reference | dashify }}</td>
+                                                                    <td>{{item.alternative | dashify }}</td>
+                                                                    <td>{{item.reference | dashify }}</td>
+                                                                    <td>{{item.alternative | dashify }}</td>
+                                                                    <td>{{item.alternative | dashify }}</td>
+                                                                    <td>{{item.description | dashify }}</td>
+                                                                    <td>{{item.level_of_evidence | dashify }}</td>
                                                                     <td>
                                                                         <table>
                                                                             <tr ng-repeat="subitem in item.public_med_ids">
-                                                                                <td><a ng-click="openPubMed(subitem)">{{subitem || '-'}}</a></td>
+                                                                                <td><a ng-click="openPubMed(subitem)">{{subitem | dashify }}</a></td>
                                                                             </tr>
                                                                         </table>
                                                                     </td>
-                                                                    <td style="text-align:right">{{item.totNumPtsWithVariant || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.ptsWithVariantOnArm || '-'}}</td>
+                                                                    <td style="text-align:right">{{item.totNumPtsWithVariant | dashify }}</td>
+                                                                    <td style="text-align:right">{{item.ptsWithVariantOnArm | dashify }}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -389,11 +389,11 @@
                                                             <thead>
                                                                 <tr>
                                                                     <th>Gene</th>
-                                                                    <th>Chr <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.chr}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                    <th>Pos <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>Chr <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.chr}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>Pos <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.pos}}" onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Protein</th>
-                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                    <th>Lit <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.loe}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>Lit <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.lit}}" onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Total # Patients With Copy Number</th>
                                                                     <th>Patients With This Copy Number Who Were Assigned To This Arm</th>
                                                                     <th>% Of Patients With Copy Number On Arm Of Total Patients With Variant</th>
@@ -401,21 +401,21 @@
                                                             </thead>
                                                             <tbody>
                                                                 <tr ng-repeat="item in currentVersion.cnvsInclusion">
-                                                                    <td><a ng-click="openGene(item.gene_name)">{{item.gene_name || '-'}}</a></td>
-                                                                    <td>{{item.chromosome || '-'}}</td>
-                                                                    <td>{{item.position || '-'}}</td>
-                                                                    <td>{{item.description || '-'}}</td>
-                                                                    <td>{{item.level_of_evidence || '-'}}</td>
+                                                                    <td><a ng-click="openGene(item.gene_name)">{{item.gene_name | dashify }}</a></td>
+                                                                    <td>{{item.chromosome | dashify }}</td>
+                                                                    <td>{{item.position | dashify }}</td>
+                                                                    <td>{{item.description | dashify }}</td>
+                                                                    <td>{{item.level_of_evidence | dashify }}</td>
                                                                     <td>
                                                                         <table>
                                                                             <tr ng-repeat="subitem in item.public_med_ids">
-                                                                                <td><a ng-click="openPubMed(subitem)">{{subitem || '-'}}</a></td>
+                                                                                <td><a ng-click="openPubMed(subitem)">{{subitem | dashify }}</a></td>
                                                                             </tr>
                                                                         </table>
                                                                     </td>
-                                                                    <td style="text-align:right">{{item.totNumPtsWithVariant || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.ptsWithVariantOnArm || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
+                                                                    <td style="text-align:right">{{item.totNumPtsWithVariant | dashify }}</td>
+                                                                    <td style="text-align:right">{{item.ptsWithVariantOnArm | dashify }}</td>
+                                                                    <td style="text-align:right">{{item.pctPtsWithVarOnArmOfTotPtsWithVar | dashify }}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -425,31 +425,31 @@
                                                             <thead>
                                                                 <tr>
                                                                     <th>Gene</th>
-                                                                    <th>Chr <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.chr}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                    <th>Pos <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.pos}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>Chr <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.chr}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>Pos <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.pos}}" onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Protein</th>
-                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                    <th>Lit <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.loe}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>Lit <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.lit}}" onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Total # Patients With Copy Number</th>
                                                                     <th>Patients With This Copy Number Who Were Excluded From This Arm</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 <tr ng-repeat="item in currentVersion.cnvsExclusion">
-                                                                    <td><a ng-click="openGene(item.gene_name)">{{item.gene_name || '-'}}</a></td>
-                                                                    <td>{{item.chromosome || '-'}}</td>
-                                                                    <td>{{item.position || '-'}}</td>
-                                                                    <td>{{item.description || '-'}}</td>
-                                                                    <td>{{item.level_of_evidence || '-'}}</td>
+                                                                    <td><a ng-click="openGene(item.gene_name)">{{item.gene_name | dashify }}</a></td>
+                                                                    <td>{{item.chromosome | dashify }}</td>
+                                                                    <td>{{item.position | dashify }}</td>
+                                                                    <td>{{item.description | dashify }}</td>
+                                                                    <td>{{item.level_of_evidence | dashify }}</td>
                                                                     <td>
                                                                         <table>
                                                                             <tr ng-repeat="subitem in item.public_med_ids">
-                                                                                <td><a ng-click="openPubMed(subitem)">{{subitem || '-'}}</a></td>
+                                                                                <td><a ng-click="openPubMed(subitem)">{{subitem | dashify }}</a></td>
                                                                             </tr>
                                                                         </table>
                                                                     </td>
-                                                                    <td style="text-align:right">{{item.totNumPtsWithVariant || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.ptsWithVariantOnArm || '-'}}</td>
+                                                                    <td style="text-align:right">{{item.totNumPtsWithVariant | dashify }}</td>
+                                                                    <td style="text-align:right">{{item.ptsWithVariantOnArm | dashify }}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -478,8 +478,8 @@
                                                                 <tr>
                                                                     <th>ID</th>
                                                                     <th>Gene</th>
-                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                    <th>Lit <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.loe}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>Lit <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.lit}}" onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Total # Patients With Gene Fusion</th>
                                                                     <th>Patients With This Gene Fusion Who Were Assigned To This Arm</th>
                                                                     <th>% Of Patients With Gene Fusion On Arm Of Total Patients With Gene Fusion</th>
@@ -487,19 +487,19 @@
                                                             </thead>
                                                             <tbody>
                                                                 <tr ng-repeat="item in currentVersion.geneFusionsInclusion">
-                                                                    <td><a ng-click="openId(item.identifier)">{{item.identifier || '-'}}</td>
-                                                            <td><a ng-click="openGene(item.gene_name)">{{item.gene_name || '-'}}</a></td>
-                                                                    <td>{{item.level_of_evidence || '-'}}</td>
+                                                                    <td><a ng-click="openId(item.identifier)">{{item.identifier | dashify }}</td>
+                                                            <td><a ng-click="openGene(item.gene_name)">{{item.gene_name | dashify }}</a></td>
+                                                                    <td>{{item.level_of_evidence | dashify }}</td>
                                                                     <td>
                                                                         <table>
                                                                             <tr ng-repeat="subitem in item.public_med_ids">
-                                                                                <td><a ng-click="openPubMed(subitem)">{{subitem || '-'}}</a></td>
+                                                                                <td><a ng-click="openPubMed(subitem)">{{subitem | dashify }}</a></td>
                                                                             </tr>
                                                                         </table>
                                                                     </td>
-                                                                    <td style="text-align:right">{{item.totNumPtsWithVariant || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.ptsWithVariantOnArm || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
+                                                                    <td style="text-align:right">{{item.totNumPtsWithVariant | dashify }}</td>
+                                                                    <td style="text-align:right">{{item.ptsWithVariantOnArm | dashify }}</td>
+                                                                    <td style="text-align:right">{{item.pctPtsWithVarOnArmOfTotPtsWithVar | dashify }}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -510,26 +510,26 @@
                                                                 <tr>
                                                                     <th>ID</th>
                                                                     <th>Gene</th>
-                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                    <th>Lit <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.loe}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>Lit <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.lit}}" onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Total # Patients With Gene Fusion</th>
                                                                     <th>Patients With This Gene Fusion Who Were Excluded From This Arm</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 <tr ng-repeat="item in currentVersion.geneFusionsExclusion">
-                                                                    <td><a ng-click="openId(item.identifier)">{{item.identifier || '-'}}</td>
-                                                            <td><a ng-click="openGene(item.gene_name)">{{item.gene_name || '-'}}</a></td>
-                                                                    <td>{{item.level_of_evidence || '-'}}</td>
+                                                                    <td><a ng-click="openId(item.identifier)">{{item.identifier | dashify }}</td>
+                                                            <td><a ng-click="openGene(item.gene_name)">{{item.gene_name | dashify }}</a></td>
+                                                                    <td>{{item.level_of_evidence | dashify }}</td>
                                                                     <td>
                                                                         <table>
                                                                             <tr ng-repeat="subitem in item.public_med_ids">
-                                                                                <td><a ng-click="openPubMed(subitem)">{{subitem || '-'}}</a></td>
+                                                                                <td><a ng-click="openPubMed(subitem)">{{subitem | dashify }}</a></td>
                                                                             </tr>
                                                                         </table>
                                                                     </td>
-                                                                    <td style="text-align:right">{{item.totNumPtsWithVariant || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.ptsWithVariantOnArm || '-'}}</td>
+                                                                    <td style="text-align:right">{{item.totNumPtsWithVariant | dashify }}</td>
+                                                                    <td style="text-align:right">{{item.ptsWithVariantOnArm | dashify }}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -560,8 +560,8 @@
                                                                     <th>Exon</th>
                                                                     <th>Oncomine Variant Class</th>
                                                                     <th>Function</th>
-                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                    <th>Lit <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.loe}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>Lit <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.lit}}" onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Total # Patients With Gene</th>
                                                                     <th>Patients With This Gene Who Were Assigned To This Arm</th>
                                                                     <th>% Of Patients With Gene On Arm Of Total Patients With Gene</th>
@@ -569,21 +569,21 @@
                                                             </thead>
                                                             <tbody>
                                                                 <tr ng-repeat="item in currentVersion.nhrsInclusion">
-                                                                    <td><a ng-click="openGene(item.gene_name)">{{item.gene_name || '-'}}</a></td>
-                                                                    <td>{{item.exon || '-'}}</td>
-                                                                    <td>{{item.oncomineVariantClass || '-'}}</td>
-                                                                    <td>{{item.function || '-'}}</td>
-                                                                    <td>{{item.level_of_evidence || '-'}}</td>
+                                                                    <td><a ng-click="openGene(item.gene_name)">{{item.gene_name | dashify }}</a></td>
+                                                                    <td>{{item.exon | dashify }}</td>
+                                                                    <td>{{item.oncomineVariantClass | dashify }}</td>
+                                                                    <td>{{item.function | dashify }}</td>
+                                                                    <td>{{item.level_of_evidence | dashify }}</td>
                                                                     <td>
                                                                         <table>
                                                                             <tr ng-repeat="subitem in item.public_med_ids">
-                                                                                <td><a ng-click="openPubMed(subitem)">{{subitem || '-'}}</a></td>
+                                                                                <td><a ng-click="openPubMed(subitem)">{{subitem | dashify }}</a></td>
                                                                             </tr>
                                                                         </table>
                                                                     </td>
-                                                                    <td style="text-align:right">{{item.totNumPtsWithVariant || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.ptsWithVariantOnArm || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.pctPtsWithVarOnArmOfTotPtsWithVar || '-'}}</td>
+                                                                    <td style="text-align:right">{{item.totNumPtsWithVariant | dashify }}</td>
+                                                                    <td style="text-align:right">{{item.ptsWithVariantOnArm | dashify }}</td>
+                                                                    <td style="text-align:right">{{item.pctPtsWithVarOnArmOfTotPtsWithVar | dashify }}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -596,28 +596,28 @@
                                                                     <th>Exon</th>
                                                                     <th>Oncomine Variant Class</th>
                                                                     <th>Function</th>
-                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                    <th>Lit <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.lit}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.loe}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>Lit <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.lit}}" onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Total # Patients With Gene</th>
                                                                     <th>Patients With This Gene Who Were Excluded From This Arm</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
                                                                 <tr ng-repeat="item in currentVersion.nhrsExclusion">
-                                                                    <td><a ng-click="openGene(item.gene_name)">{{item.gene_name || '-'}}</a></td>
-                                                                    <td>{{item.exon || '-'}}</td>
-                                                                    <td>{{item.oncomineVariantClass || '-'}}</td>
-                                                                    <td>{{item.function || '-'}}</td>
-                                                                    <td>{{item.level_of_evidence || '-'}}</td>
+                                                                    <td><a ng-click="openGene(item.gene_name)">{{item.gene_name | dashify }}</a></td>
+                                                                    <td>{{item.exon | dashify }}</td>
+                                                                    <td>{{item.oncomineVariantClass | dashify }}</td>
+                                                                    <td>{{item.function | dashify }}</td>
+                                                                    <td>{{item.level_of_evidence | dashify }}</td>
                                                                     <td>
                                                                         <table>
                                                                             <tr ng-repeat="subitem in item.public_med_ids">
-                                                                                <td><a ng-click="openPubMed(subitem)">{{subitem || '-'}}</a></td>
+                                                                                <td><a ng-click="openPubMed(subitem)">{{subitem | dashify }}</a></td>
                                                                             </tr>
                                                                         </table>
                                                                     </td>
-                                                                    <td style="text-align:right">{{item.totNumPtsWithVariant || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.ptsWithVariantOnArm || '-'}}</td>
+                                                                    <td style="text-align:right">{{item.totNumPtsWithVariant | dashify }}</td>
+                                                                    <td style="text-align:right">{{item.ptsWithVariantOnArm | dashify }}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -639,7 +639,7 @@
                                                                     <th>Gene</th>
                                                                     <th>Result</th>
                                                                     <th>Variant Association</th>
-                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title={{tooltipContent.loe}} onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                    <th>LOE <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.loe}}" onmouseenter="$(this).tooltip('show')"></i></th>
                                                                     <th>Total # Patients With Variant</th>
                                                                     <th>Patients With This Variant Who Were Assigned To This Arm</th>
                                                                     <th>% Of Patients With Variant On Arm Of Total Patients With Variant</th>
@@ -647,14 +647,14 @@
                                                             </thead>
                                                             <tbody>
                                                                 <tr ng-repeat="item in currentVersion.pten_results">
-                                                                    <td>{{item.assay || '-'}}</td>
-                                                                    <td><a ng-click="openGene(item.pten_variant)">{{item.pten_variant || '-'}}</a></td>
-                                                                    <td>{{item.pten_ihc_result || '-'}}</td>
-                                                                    <td>{{item.variant_association || '-'}}</td>
-                                                                    <td>{{item.level_of_evidence || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.num_patients_with_gene || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.num_patients_with_gene_on_arm || '-'}}</td>
-                                                                    <td style="text-align:right">{{item.percent_patients_with_gene_on_arm || '-'}}</td>
+                                                                    <td>{{item.assay | dashify }}</td>
+                                                                    <td><a ng-click="openGene(item.pten_variant)">{{item.pten_variant | dashify }}</a></td>
+                                                                    <td>{{item.pten_ihc_result | dashify }}</td>
+                                                                    <td>{{item.variant_association | dashify }}</td>
+                                                                    <td>{{item.level_of_evidence | dashify }}</td>
+                                                                    <td style="text-align:right">{{item.num_patients_with_gene | dashify }}</td>
+                                                                    <td style="text-align:right">{{item.num_patients_with_gene_on_arm | dashify }}</td>
+                                                                    <td style="text-align:right">{{item.percent_patients_with_gene_on_arm | dashify }}</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -677,7 +677,7 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>{{currentVersion.version || '-'}}</td>
+                                        <td>{{currentVersion.version | dashify }}</td>
                                     </tr>
                                     <tr ng-repeat-end>
                                         <td colspan="7">

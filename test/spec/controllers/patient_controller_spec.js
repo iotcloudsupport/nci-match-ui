@@ -18,8 +18,9 @@ xdescribe('Controller: Patient Details Controller', function () {
             "current_assignment": {
                 "generated_date": "2016-05-09T22:06:33+00 : 00",
                 "status_date": "2016-05-09T22:06:33+00 : 00",
-                "sent_to_cog_date": "-",
-                "received_from_cog_date": "-",
+                "status": "PENDING",
+                "sent_to_cog_date": "2016-05-03T22:06:33+00:00",
+                "received_from_cog_date": "2016-05-07T22:06:33+00:00",
                 "molecular_id": "MSN34534",
                 "analysis_id": "MSN34534_v2_kjdf3-kejrt-3425-mnb34ert34f",
                 "variant_report_amois": [
@@ -147,7 +148,7 @@ xdescribe('Controller: Patient Details Controller', function () {
                     "treatment_arm_stratum_id": "STR2",
                     "treatment_arm_stratum": "STR1",
                     "treatment_arm_title": "APEC1621-U (2015-08-06)",
-                    "reason": "The patient and treatment match on variand identifier [ABSF, DEDF]."
+                    "reason": "The patient and treatment match on variant identifier [ABSF, DEDF]."
                 }
             ]
         }
@@ -423,7 +424,7 @@ xdescribe('Controller: Patient Details Controller', function () {
                             "treatment_arm": "EAY131-B",
                             "treatment_arm_version": "2015-08-06",
                             "treatment_arm_title": "EAY131-U (2015-08-06)",
-                            "reason": "The patient and treatment match on variand identifier [ABSF, DEDF]."
+                            "reason": "The patient and treatment match on variant identifier [ABSF, DEDF]."
                         }
                     ]
                 }

@@ -50,7 +50,7 @@
 
                                                                 <div class="panel" ng-init="loadPieChart();">
                                                                     <canvas id="pieCanvas" piechart
-                                                                            ng-attr-data="pieData" responsive=true width="600" height="600"
+                                                                            ng-attr-data="pieData" responsive="true" width="600" height="600"
                                                                             style="width: 603px; height: 601px; border-bottom: thin dimgrey solid; border-top: thin dimgrey solid;"></canvas>
                                                                 </div>
 
@@ -81,7 +81,7 @@
 
                                                                 <div class="col-xs-6">
                                                                     <canvas id="mainSampleCanvas" barchart options="chart.barOptions" ng-attr-data="barData"
-                                                                            responsive=true width="500" height="400"  style="width: 503px; height: 401px;">
+                                                                            responsive="true" width="500" height="400"  style="width: 503px; height: 401px;">
                                                                     </canvas>
                                                                 </div>
 
@@ -205,16 +205,16 @@
                                                                 </thead>
                                                                 <tbody>
                                                                 <tr ng-style="{'background-color':'{{ sample.hasMatchingVariant | irsample }}'}" ng-repeat="sample in positiveControlList">
-                                                                    <td>{{sample.identifier || '-' }}</td>
-                                                                    <td>{{sample.chromosome || '-' }}</td>
-                                                                    <td>{{sample.position || '-' }}</td>
-                                                                    <td>{{sample.geneName || '-' }}</td>
-                                                                    <td>{{sample.variantType || '-' }}</td>
-                                                                    <td>{{sample.reference || '-' }}</td>
-                                                                    <td>{{sample.alternative || '-' }}</td>
-                                                                    <td>{{sample.hgvs || '-' }}</td>
-                                                                    <td>{{sample.protein || '-' }}</td>
-                                                                    <td>{{sample.function || '-' }}</td>
+                                                                    <td>{{sample.identifier | dashify }}</td>
+                                                                    <td>{{sample.chromosome | dashify }}</td>
+                                                                    <td>{{sample.position | dashify }}</td>
+                                                                    <td>{{sample.geneName | dashify }}</td>
+                                                                    <td>{{sample.variantType | dashify }}</td>
+                                                                    <td>{{sample.reference | dashify }}</td>
+                                                                    <td>{{sample.alternative | dashify }}</td>
+                                                                    <td>{{sample.hgvs | dashify }}</td>
+                                                                    <td>{{sample.protein | dashify }}</td>
+                                                                    <td>{{sample.function | dashify }}</td>
                                                                 </tr>
                                                                 </tbody>
                                                             </table>
@@ -247,15 +247,15 @@
                                                                     </thead>
                                                                     <tbody>
                                                                     <tr ng-repeat="sample in negativeVariantsList">
-                                                                        <td>{{sample.publicMedIds || '-' }}</td>
-                                                                        <td>{{sample.position || '-' }}</td>
-                                                                        <td>{{sample.geneName || '-' }}</td>
-                                                                        <td>{{sample.variantType || '-' }}</td>
-                                                                        <td>{{sample.reference || '-' }}</td>
-                                                                        <td>{{sample.alternative || '-' }}</td>
-                                                                        <td>{{sample.hgvs || '-' }}</td>
-                                                                        <td>{{sample.protein || '-' }}</td>
-                                                                        <td>{{sample.function || '-' }}</td>
+                                                                        <td>{{sample.publicMedIds | dashify }}</td>
+                                                                        <td>{{sample.position | dashify }}</td>
+                                                                        <td>{{sample.geneName | dashify }}</td>
+                                                                        <td>{{sample.variantType | dashify }}</td>
+                                                                        <td>{{sample.reference | dashify }}</td>
+                                                                        <td>{{sample.alternative | dashify }}</td>
+                                                                        <td>{{sample.hgvs | dashify }}</td>
+                                                                        <td>{{sample.protein | dashify }}</td>
+                                                                        <td>{{sample.function | dashify }}</td>
                                                                     </tr>
                                                                     </tbody>
                                                                 </table>

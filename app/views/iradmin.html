@@ -82,7 +82,7 @@
                                                             </div>
                                                             <div class="col-lg-12" >
                                                                 <canvas id="mochaBar" barchart ng-attr-data="barData" labels="false" options="barOptions" legend="false"
-                                                                        responsive=true width="700" height="200">
+                                                                        responsive="true" width="700" height="200">
                                                                 </canvas>
                                                                 <div><b style='color:darkgreen;'>Positive Controls</b></div>
                                                                 <div><b style='color:navy;'>No Template Controls</b></div>
@@ -101,7 +101,7 @@
                                             <div class="tabs-container" >
                                                     <div class="col-lg-8" >
                                                         <canvas id="amoiCanvas" doughnutchart class="chart chart-doughnut" options="doughnutOptions"
-                                                                ng-attr-data="pieData" responsive=true width="78" height="78">
+                                                                ng-attr-data="pieData" responsive="true" width="78" height="78">
                                                         </canvas>
 
                                                         <table class="table" role="grid"  width="100%" style="font-size: 10px" >
@@ -129,7 +129,7 @@
                                                     </div>
                                                     <div class="col-lg-8" >
                                                         <canvas id="amoiCanvas" doughnutchart
-                                                                ng-attr-data="ntcpieData" responsive=true  width="78" height="78" options="doughnutOptions">
+                                                                ng-attr-data="ntcpieData" responsive="true"  width="78" height="78" options="doughnutOptions">
                                                         </canvas>
                                                         <table class="table" role="grid" width="100%" style="font-size: 10px">
                                                             <thead>
@@ -191,7 +191,7 @@
                                                             </div>
                                                             <div class="col-lg-12" >
                                                                 <canvas id="mdaccBar" barchart ng-attr-data="barDataMDACC" labels="false" options="barOptions" legend="false"
-                                                                        responsive=true width="700" height="200">
+                                                                        responsive="true" width="700" height="200">
                                                                 </canvas>
                                                                 <div><b style='color:darkgreen;'>Positive Controls</b></div>
                                                                 <div><b style='color:navy;'>No Template Controls</b></div>
@@ -210,7 +210,7 @@
                                             <div class="tabs-container" >
                                                 <div class="col-lg-8" >
                                                     <canvas id="amoiCanvas" doughnutchart options="doughnutOptions"
-                                                            ng-attr-data="pieData" responsive=true width="78" height="78">
+                                                            ng-attr-data="pieData" responsive="true" width="78" height="78">
                                                     </canvas>
                                                     <table class="table" role="grid"  width="100%" style="font-size: 10px">
                                                         <thead>
@@ -235,7 +235,7 @@
                                                 </div>
                                                 <div class="col-lg-8" >
                                                     <canvas id="amoiCanvas" doughnutchart
-                                                            ng-attr-data="ntcMDApieData" responsive=true  width="78" height="78" options="doughnutOptions">
+                                                            ng-attr-data="ntcMDApieData" responsive="true"  width="78" height="78" options="doughnutOptions">
                                                     </canvas>
                                                     <table class="table" role="grid" width="100%" style="font-size: 10px">
                                                         <thead>
@@ -314,15 +314,15 @@
                                                                                     <tbody>
 
                                                                                     <tr ng-repeat="ta in mochaList">
-                                                                                        <td>{{ta.molecular_is || '-'}}</td>
-                                                                                        <td>{{ta.date_created }}</td>
-                                                                                        <td>{{ta.date_received }}</td>
+                                                                                        <td>{{ta.molecular_is | dashify }}</td>
+                                                                                        <td>{{ta.date_created | dashify }}</td>
+                                                                                        <td>{{ta.date_received | dashify }}</td>
                                                                                         <td>
                                                                                             <a class="ng-binding ng-scope" ng-click="openPositives(ta.variant_reports);gotoBottom('mocha')" href>
-                                                                                                {{ta.variant_reports || '-'}}
+                                                                                                {{ta.variant_reports | dashify }}
                                                                                             </a>
                                                                                         </td>
-                                                                                        <td ng-style="{'color':'{{ ta.current_status | irsample }}'}">{{ta.current_status || '-'}}</td>
+                                                                                        <td ng-style="{'color':'{{ ta.current_status | irsample }}'}">{{ta.current_status | dashify }}</td>
                                                                                     </tr>
 
                                                                                     </tbody>
@@ -453,22 +453,22 @@
                                                                                                         <tr ng-style="{'background-color':'{{ sample.hasMatchingVariant | irsample }}'}" ng-repeat="sample in positiveControlList">
                                                                                                             <td>
                                                                                                                 <a class="report-link" href ng-click="openCosmicId( sample.identifier )">
-                                                                                                                    {{sample.identifier || '-' }}
+                                                                                                                    {{sample.identifier | dashify }}
                                                                                                                 </a>
                                                                                                             </td>
-                                                                                                            <td>{{sample.chromosome || '-' }}</td>
-                                                                                                            <td>{{sample.position || '-' }}</td>
+                                                                                                            <td>{{sample.chromosome | dashify }}</td>
+                                                                                                            <td>{{sample.position | dashify }}</td>
                                                                                                             <td>
                                                                                                                 <a class="report-link" href ng-click="openCosmicGene( sample.geneName )">
-                                                                                                                    {{sample.geneName || '-' }}
+                                                                                                                    {{sample.geneName | dashify }}
                                                                                                                 </a>
                                                                                                             </td>
-                                                                                                            <td>{{sample.variantType || '-' }}</td>
-                                                                                                            <td>{{sample.reference || '-' }}</td>
-                                                                                                            <td>{{sample.alternative || '-' }}</td>
-                                                                                                            <td>{{sample.hgvs || '-' }}</td>
-                                                                                                            <td>{{sample.protein || '-' }}</td>
-                                                                                                            <td>{{sample.function || '-' }}</td>
+                                                                                                            <td>{{sample.variantType | dashify }}</td>
+                                                                                                            <td>{{sample.reference | dashify }}</td>
+                                                                                                            <td>{{sample.alternative | dashify }}</td>
+                                                                                                            <td>{{sample.hgvs | dashify }}</td>
+                                                                                                            <td>{{sample.protein | dashify }}</td>
+                                                                                                            <td>{{sample.function | dashify }}</td>
                                                                                                         </tr>
                                                                                                         </tbody>
                                                                                                     </table>
@@ -500,21 +500,21 @@
                                                                                                         <tr ng-repeat="sample in negativeVariantsList">
                                                                                                             <td>
                                                                                                                 <a class="report-link" href ng-click="openCosmicId( sample.publicMedIds )">
-                                                                                                                    {{sample.publicMedIds || '-' }}
+                                                                                                                    {{sample.publicMedIds | dashify }}
                                                                                                                 </a>
                                                                                                             </td>
-                                                                                                            <td>{{sample.position || '-' }}</td>
+                                                                                                            <td>{{sample.position | dashify }}</td>
                                                                                                             <td>
                                                                                                                 <a class="report-link" href ng-click="openCosmicGene( sample.geneName )">
-                                                                                                                    {{sample.geneName || '-' }}
+                                                                                                                    {{sample.geneName | dashify }}
                                                                                                                 </a>
                                                                                                             </td>
-                                                                                                            <td>{{sample.variantType || '-' }}</td>
-                                                                                                            <td>{{sample.reference || '-' }}</td>
-                                                                                                            <td>{{sample.alternative || '-' }}</td>
-                                                                                                            <td>{{sample.hgvs || '-' }}</td>
-                                                                                                            <td>{{sample.protein || '-' }}</td>
-                                                                                                            <td>{{sample.function || '-' }}</td>
+                                                                                                            <td>{{sample.variantType | dashify }}</td>
+                                                                                                            <td>{{sample.reference | dashify }}</td>
+                                                                                                            <td>{{sample.alternative | dashify }}</td>
+                                                                                                            <td>{{sample.hgvs | dashify }}</td>
+                                                                                                            <td>{{sample.protein | dashify }}</td>
+                                                                                                            <td>{{sample.function | dashify }}</td>
                                                                                                         </tr>
                                                                                                         </tbody>
                                                                                                     </table>
@@ -594,16 +594,16 @@
                                                                                 <tbody>
 
                                                                                 <tr ng-repeat="ta in mdaccList">
-                                                                                    <td>{{ta.molecular_is || '-'}}</td>
-                                                                                    <td>{{ta.date_created }}</td>
-                                                                                    <td>{{ta.date_received }}</td>
+                                                                                    <td>{{ta.molecular_is | dashify }}</td>
+                                                                                    <td>{{ta.date_created | dashify }}</td>
+                                                                                    <td>{{ta.date_received | dashify }}</td>
                                                                                     <td>
 
                                                                                         <a class="ng-binding ng-scope" ng-click="openMDACCPositives(ta.variant_reports);gotoBottom('mdacc')" href>
-                                                                                            {{ta.variant_reports || '-'}}
+                                                                                            {{ta.variant_reports | dashify }}
                                                                                         </a>
                                                                                     </td>
-                                                                                    <td ng-style="{'color':'{{ ta.current_status | irsample }}'}">{{ta.current_status || '-'}}</td>
+                                                                                    <td ng-style="{'color':'{{ ta.current_status | irsample }}'}">{{ta.current_status | dashify }}</td>
                                                                                 </tr>
 
                                                                                 </tbody>
@@ -734,22 +734,22 @@
                                                                                                     <tr ng-style="{'background-color':'{{ sample.hasMatchingVariant | irsample }}'}" ng-repeat="sample in positiveControlList">
                                                                                                         <td>
                                                                                                             <a class="report-link" href ng-click="openCosmicId( sample.identifier )">
-                                                                                                                {{sample.identifier || '-' }}
+                                                                                                                {{sample.identifier | dashify }}
                                                                                                             </a>
                                                                                                         </td>
-                                                                                                        <td>{{sample.chromosome || '-' }}</td>
-                                                                                                        <td>{{sample.position || '-' }}</td>
+                                                                                                        <td>{{sample.chromosome | dashify }}</td>
+                                                                                                        <td>{{sample.position | dashify }}</td>
                                                                                                         <td>
                                                                                                             <a class="report-link" href ng-click="openCosmicGene( sample.geneName )">
-                                                                                                                {{sample.geneName || '-' }}
+                                                                                                                {{sample.geneName | dashify }}
                                                                                                             </a>
                                                                                                         </td>
-                                                                                                        <td>{{sample.variantType || '-' }}</td>
-                                                                                                        <td>{{sample.reference || '-' }}</td>
-                                                                                                        <td>{{sample.alternative || '-' }}</td>
-                                                                                                        <td>{{sample.hgvs || '-' }}</td>
-                                                                                                        <td>{{sample.protein || '-' }}</td>
-                                                                                                        <td>{{sample.function || '-' }}</td>
+                                                                                                        <td>{{sample.variantType | dashify }}</td>
+                                                                                                        <td>{{sample.reference | dashify }}</td>
+                                                                                                        <td>{{sample.alternative | dashify }}</td>
+                                                                                                        <td>{{sample.hgvs | dashify }}</td>
+                                                                                                        <td>{{sample.protein | dashify }}</td>
+                                                                                                        <td>{{sample.function | dashify }}</td>
                                                                                                     </tr>
                                                                                                     </tbody>
                                                                                                 </table>
@@ -779,15 +779,15 @@
                                                                                                     </thead>
                                                                                                     <tbody>
                                                                                                     <tr ng-repeat="sample in negativeVariantsList">
-                                                                                                        <td>{{sample.publicMedIds || '-' }}</td>
-                                                                                                        <td>{{sample.position || '-' }}</td>
-                                                                                                        <td>{{sample.geneName || '-' }}</td>
-                                                                                                        <td>{{sample.variantType || '-' }}</td>
-                                                                                                        <td>{{sample.reference || '-' }}</td>
-                                                                                                        <td>{{sample.alternative || '-' }}</td>
-                                                                                                        <td>{{sample.hgvs || '-' }}</td>
-                                                                                                        <td>{{sample.protein || '-' }}</td>
-                                                                                                        <td>{{sample.function || '-' }}</td>
+                                                                                                        <td>{{sample.publicMedIds | dashify }}</td>
+                                                                                                        <td>{{sample.position | dashify }}</td>
+                                                                                                        <td>{{sample.geneName | dashify }}</td>
+                                                                                                        <td>{{sample.variantType | dashify }}</td>
+                                                                                                        <td>{{sample.reference | dashify }}</td>
+                                                                                                        <td>{{sample.alternative | dashify }}</td>
+                                                                                                        <td>{{sample.hgvs | dashify }}</td>
+                                                                                                        <td>{{sample.protein | dashify }}</td>
+                                                                                                        <td>{{sample.function | dashify }}</td>
                                                                                                     </tr>
                                                                                                     </tbody>
                                                                                                 </table>
@@ -856,15 +856,15 @@
                                                                                         <tbody>
 
                                                                                         <tr ng-repeat="ta in mochaNtcList">
-                                                                                            <td>{{ta.molecular_is || '-'}}</td>
-                                                                                            <td>{{ta.date_created }}</td>
-                                                                                            <td>{{ta.date_received }}</td>
+                                                                                            <td>{{ta.molecular_is | dashify }}</td>
+                                                                                            <td>{{ta.date_created | dashify }}</td>
+                                                                                            <td>{{ta.date_received  | dashify}}</td>
                                                                                             <td>
                                                                                                 <a class="ng-binding ng-scope" ng-click="openNegatives();gotoBottom('ntcmocha')" href>
-                                                                                                    {{ta.variant_reports || '-'}}
+                                                                                                    {{ta.variant_reports | dashify }}
                                                                                                 </a>
                                                                                             </td>
-                                                                                            <td ng-style="{'color':'{{ ta.current_status | irsample }}'}">{{ta.current_status || '-'}}</td>
+                                                                                            <td ng-style="{'color':'{{ ta.current_status | irsample }}'}">{{ta.current_status | dashify }}</td>
                                                                                         </tr>
 
                                                                                         </tbody>
@@ -986,23 +986,23 @@
                                                                                                     <tr ng-repeat="sample in indelsList">
                                                                                                         <td>
                                                                                                             <a class="report-link" href ng-click="openCosmicId( sample.identifier )">
-                                                                                                                {{sample.identifier || '-' }}
+                                                                                                                {{sample.identifier | dashify }}
                                                                                                             </a>
                                                                                                         </td>
                                                                                                         </td>
-                                                                                                        <td>{{sample.chromosome || '-' }}</td>
-                                                                                                        <td>{{sample.position || '-' }}</td>
-                                                                                                        <td>{{sample.reference || '-' }}</td>
-                                                                                                        <td>{{sample.alternative || '-' }}</td>
-                                                                                                        <td>{{sample.alleleFrequency || '-' }}</td>
-                                                                                                        <td>{{sample.geneName || '-' }}</td>
-                                                                                                        <td>{{sample.type || '-' }}</td>
-                                                                                                        <td>{{sample.oncominevariantclass || '-' }}</td>
-                                                                                                        <td>{{sample.function || '-' }}</td>
-                                                                                                        <td>{{sample.hgvs || '-' }}</td>
-                                                                                                        <td>{{sample.readDepth || '-' }}</td>
-                                                                                                        <td>{{sample.transcript || '-' }}</td>
-                                                                                                        <td>{{sample.protein || '-' }}</td>
+                                                                                                        <td>{{sample.chromosome | dashify }}</td>
+                                                                                                        <td>{{sample.position | dashify }}</td>
+                                                                                                        <td>{{sample.reference | dashify }}</td>
+                                                                                                        <td>{{sample.alternative | dashify }}</td>
+                                                                                                        <td>{{sample.alleleFrequency | dashify }}</td>
+                                                                                                        <td>{{sample.geneName | dashify }}</td>
+                                                                                                        <td>{{sample.type | dashify }}</td>
+                                                                                                        <td>{{sample.oncominevariantclass | dashify }}</td>
+                                                                                                        <td>{{sample.function | dashify }}</td>
+                                                                                                        <td>{{sample.hgvs | dashify }}</td>
+                                                                                                        <td>{{sample.readDepth | dashify }}</td>
+                                                                                                        <td>{{sample.transcript | dashify }}</td>
+                                                                                                        <td>{{sample.protein | dashify }}</td>
                                                                                                     </tr>
                                                                                                     </tbody>
                                                                                                 </table>
@@ -1025,15 +1025,15 @@
                                                                                                     <tbody>
                                                                                                     <tr ng-repeat="sample in geneFusionsList">
 
-                                                                                                        <td>{{sample.identifier || '-' }}</td>
+                                                                                                        <td>{{sample.identifier | dashify }}</td>
                                                                                                         <td>
                                                                                                             <a class="report-link" href ng-click="openCosmicGene( sample.geneName )">
-                                                                                                                {{sample.geneName || '-' }}
+                                                                                                                {{sample.geneName | dashify }}
                                                                                                             </a>
                                                                                                         </td>
-                                                                                                        <td>{{sample.gene || '-' }}</td>
-                                                                                                        <td>{{sample.flowAlternativeAlleleObservationCount || '-' }}</td>
-                                                                                                        <td>{{sample.alternativeAlleleObservationCount || '-' }}</td>
+                                                                                                        <td>{{sample.gene | dashify }}</td>
+                                                                                                        <td>{{sample.flowAlternativeAlleleObservationCount | dashify }}</td>
+                                                                                                        <td>{{sample.alternativeAlleleObservationCount | dashify }}</td>
 
                                                                                                     </tr>
                                                                                                     </tbody>
@@ -1091,15 +1091,15 @@
                                                                                             <tbody>
 
                                                                                             <tr ng-repeat="ta in mdaccNtcList">
-                                                                                                <td>{{ta.molecular_is || '-'}}</td>
-                                                                                                <td>{{ta.date_created }}</td>
-                                                                                                <td>{{ta.date_received }}</td>
+                                                                                                <td>{{ta.molecular_is | dashify }}</td>
+                                                                                                <td>{{ta.date_created | dashify }}</td>
+                                                                                                <td>{{ta.date_received | dashify }}</td>
                                                                                                 <td>
                                                                                                     <a class="ng-binding ng-scope" ng-click="openMDANegatives(ta.variant_reports);;gotoBottom('ntcmdacc')" href>
-                                                                                                        {{ta.variant_reports || '-'}}
+                                                                                                        {{ta.variant_reports | dashify }}
                                                                                                     </a>
                                                                                                 </td>
-                                                                                                <td ng-style="{'color':'{{ ta.current_status | irsample }}'}">{{ta.current_status || '-'}}</td>
+                                                                                                <td ng-style="{'color':'{{ ta.current_status | irsample }}'}">{{ta.current_status | dashify }}</td>
                                                                                             </tr>
 
                                                                                             </tbody>
@@ -1221,23 +1221,23 @@
                                                                                                         <tr ng-repeat="sample in indelsList">
                                                                                                             <td>
                                                                                                                 <a class="report-link" href ng-click="openCosmicId( sample.identifier )">
-                                                                                                                    {{sample.identifier || '-' }}
+                                                                                                                    {{sample.identifier | dashify }}
                                                                                                                 </a>
-                                                                                                                <!--{{sample.identifier || '-' }}-->
+                                                                                                                <!--{{sample.identifier | dashify }}-->
                                                                                                             </td>
-                                                                                                            <td>{{sample.chromosome || '-' }}</td>
-                                                                                                            <td>{{sample.position || '-' }}</td>
-                                                                                                            <td>{{sample.reference || '-' }}</td>
-                                                                                                            <td>{{sample.alternative || '-' }}</td>
-                                                                                                            <td>{{sample.alleleFrequency || '-' }}</td>
-                                                                                                            <td>{{sample.geneName || '-' }}</td>
-                                                                                                            <td>{{sample.type || '-' }}</td>
-                                                                                                            <td>{{sample.oncominevariantclass || '-' }}</td>
-                                                                                                            <td>{{sample.function || '-' }}</td>
-                                                                                                            <td>{{sample.hgvs || '-' }}</td>
-                                                                                                            <td>{{sample.readDepth || '-' }}</td>
-                                                                                                            <td>{{sample.transcript || '-' }}</td>
-                                                                                                            <td>{{sample.protein || '-' }}</td>
+                                                                                                            <td>{{sample.chromosome | dashify }}</td>
+                                                                                                            <td>{{sample.position | dashify }}</td>
+                                                                                                            <td>{{sample.reference | dashify }}</td>
+                                                                                                            <td>{{sample.alternative | dashify }}</td>
+                                                                                                            <td>{{sample.alleleFrequency | dashify }}</td>
+                                                                                                            <td>{{sample.geneName | dashify }}</td>
+                                                                                                            <td>{{sample.type | dashify }}</td>
+                                                                                                            <td>{{sample.oncominevariantclass | dashify }}</td>
+                                                                                                            <td>{{sample.function | dashify }}</td>
+                                                                                                            <td>{{sample.hgvs | dashify }}</td>
+                                                                                                            <td>{{sample.readDepth | dashify }}</td>
+                                                                                                            <td>{{sample.transcript | dashify }}</td>
+                                                                                                            <td>{{sample.protein | dashify }}</td>
                                                                                                         </tr>
                                                                                                         </tbody>
                                                                                                     </table>
@@ -1260,11 +1260,11 @@
                                                                                                         <tbody>
                                                                                                         <tr ng-repeat="sample in geneFusionsList">
 
-                                                                                                            <td>{{sample.identifier || '-' }}</td>
-                                                                                                            <td>{{sample.geneName || '-' }}</td>
-                                                                                                            <td>{{sample.gene || '-' }}</td>
-                                                                                                            <td>{{sample.flowAlternativeAlleleObservationCount || '-' }}</td>
-                                                                                                            <td>{{sample.alternativeAlleleObservationCount || '-' }}</td>
+                                                                                                            <td>{{sample.identifier | dashify }}</td>
+                                                                                                            <td>{{sample.geneName | dashify }}</td>
+                                                                                                            <td>{{sample.gene | dashify }}</td>
+                                                                                                            <td>{{sample.flowAlternativeAlleleObservationCount | dashify }}</td>
+                                                                                                            <td>{{sample.alternativeAlleleObservationCount | dashify }}</td>
 
                                                                                                         </tr>
                                                                                                         </tbody>

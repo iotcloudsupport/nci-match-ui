@@ -45,10 +45,10 @@
                                     </a>
                                 </td>
                                 <td ng-style="{'color':'{{ patient.current_status | status }}'}">
-                                    {{ ::patient.current_status }}
+                                    {{ ::patient.current_status | dashify }}
                                 </td>
-                                <td>{{ ::patient.current_step_number }}</td>
-                                <td>{{ ::patient.disease_name || '-' }}</td>
+                                <td>{{ ::patient.current_step_number | dashify }}</td>
+                                <td>{{ ::patient.disease_name | dashify }}</td>
                                 <td ng-if="patient.treatment_arm === null">-</td>
                                 <td ng-if="patient.treatment_arm !== null">
                                     <treatment-arm-title name="patient.treatment_arm" stratum="patient.treatment_arm_stratum_id" version="patient.treatment_arm_version"></treatment-arm-title>

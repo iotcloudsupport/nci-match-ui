@@ -98,18 +98,18 @@
                                 </thead>
                                 <tbody>
                                 <tr ng-repeat-start="specimenTrackingItem in specimenTrackingList"><!-- ng-repeat -->
-                                    <td><a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id, section: 'tissue_variant_report', molecular_id: specimenTrackingItem.molecular_id, analysis_id: specimenTrackingItem.analysis_id })">{{ specimenTrackingItem.molecular_id || '-' }}</a></td>
-                                    <td><a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id, section: 'surgical_event', surgical_event_id: specimenTrackingItem.surgical_event_id })">{{ specimenTrackingItem.surgical_event_id || '-' }}</a></td>
+                                    <td><a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id, section: 'tissue_variant_report', molecular_id: specimenTrackingItem.molecular_id, analysis_id: specimenTrackingItem.analysis_id })">{{ specimenTrackingItem.molecular_id | dashify }}</a></td>
+                                    <td><a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id, section: 'surgical_event', surgical_event_id: specimenTrackingItem.surgical_event_id })">{{ specimenTrackingItem.surgical_event_id | dashify }}</a></td>
                                     <td><a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id })">{{ specimenTrackingItem.patient_id}}</a></td>
                                     <td>{{ specimenTrackingItem.collected_date | utc }}</td>
                                     <td>{{ specimenTrackingItem.received_date | utc }}</td>
                                     <td>{{ specimenTrackingItem.type }}</td>
                                     <td>{{ specimenTrackingItem.shipped_date | utc }}</td>
                                     <td ng-if="specimenTrackingItem.site === 'MoCha'">
-                                        <a ui-sref="iradmin({branch: 'mocha'})">{{ specimenTrackingItem.site || '-' }}</a>
+                                        <a ui-sref="iradmin({branch: 'mocha'})">{{ specimenTrackingItem.site | dashify }}</a>
                                     </td>
                                     <td ng-if="specimenTrackingItem.site === 'MDA'">
-                                        <a ui-sref="iradmin({branch: 'mdacc'})">{{ specimenTrackingItem.site || '-' }}</a>
+                                        <a ui-sref="iradmin({branch: 'mdacc'})">{{ specimenTrackingItem.site | dashify }}</a>
                                     </td>
                                     <td><tracking-link carrier="'fedex'" tracking-number="specimenTrackingItem.fedex_tracking"></tracking-link></td>
                                     <td>{{ specimenTrackingItem.pathology_status }}</td>

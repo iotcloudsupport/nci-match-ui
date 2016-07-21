@@ -35,45 +35,15 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="treatmentArm in treatmentArmList">
-                                    <td><treatment-arm-title name="treatmentArm.name" stratum="treatmentArm.stratum"></td>
-                                    <td>{{ treatmentArm.current_patients }}</td>
-                                    <td>{{ treatmentArm.former_patients }}</td>
-                                    <td>{{ treatmentArm.not_enrolled_patients }}</td>
-                                    <td>{{ treatmentArm.pending_patients }}</td>
-                                    <td ng-style="{'color':'{{ treatmentArm.treatment_arm_status | taStatus }}'}">{{ treatmentArm.treatment_arm_status }}</td>
+                                    <td><treatment-arm-title name="treatmentArm.name" stratum="treatmentArm.stratum"></treatment-arm-title></td>
+                                    <td>{{ treatmentArm.current_patients | dashify }}</td>
+                                    <td>{{ treatmentArm.former_patients | dashify }}</td>
+                                    <td>{{ treatmentArm.not_enrolled_patients | dashify }}</td>
+                                    <td>{{ treatmentArm.pending_patients | dashify }}</td>
+                                    <td ng-style="{'color':'{{ treatmentArm.treatment_arm_status | taStatus }}'}">{{ treatmentArm.treatment_arm_status | dashify }}</td>
                                     <td>{{ treatmentArm.date_opened | gmt }}</td>
                                     <td>-</td>
                                 </tr>
-                               <!--<tr>
-                                    <td><i class="fa fa-medkit"></i> APEC1621-A (23A34YKG)</a></td>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>1</td>
-                                    <td>1</td>
-                                    <td>OPEN</td>
-                                    <td>June 01, 2016 4:35PM GMT</td>
-                                    <td>-</td>
-                                </tr>-->
-                                <!--<tr>
-                                    <td><a ui-sref="treatment-arm({ treatmentArmId: 'APEC1621-B', treatmentArmVersion: 'v1' })"><i class="fa fa-medkit"></i> APEC1621-B (296C57)</a></td>
-                                    <td>0</td>
-                                    <td>3</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>SUSPENDED</td>
-                                    <td>June 01, 2016 4:35PM GMT</td>
-                                    <td>June 12, 2016 6:15PM GMT</td>
-                                </tr>
-                                <tr>
-                                    <td><a ui-sref="treatment-arm({ treatmentArmId: 'APEC1621-C', treatmentArmVersion: 'v1' })"><i class="fa fa-medkit"></i> APEC1621-C (56HYU8910)</a></td>
-                                    <td>0</td>
-                                    <td>3</td>
-                                    <td>0</td>
-                                    <td>0</td>
-                                    <td>CLOSED</td>
-                                    <td>June 01, 2016 4:35PM GMT</td>
-                                    <td>June 21, 2016 7:06AM GMT</td>
-                                </tr>-->
                             </tbody>
                         </table>
                     </div>

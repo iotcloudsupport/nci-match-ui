@@ -26,14 +26,14 @@
             "stratum": "STR2",
             "title": "APEC1621-U; STR2; 2015-06-01",
             "step": "1.1",
-            "assignment_reason": "The patient and treatment match on variand identifier [ABSF, DEDF].",
+            "assignment_reason": "The patient and treatment match on variant identifier [ABSF, DEDF].",
             "assignment_date": "2015-12-08T22:05:33+00:00"
         }
     ],
     "current_assignment": {
         "generated_date": "2016-06-03T22:06:33+00:00",
-        "status_date": "2016-06-05T16:42:43+00:00",
-        "sent_to_cog_date": "2016-06-04T13:44:16+00:00",
+        "status": "PENDING",
+        "sent_to_cog_date": "2016-05-03T22:06:33+00:00",
         "received_from_cog_date": "2016-06-05T16:41:16+00:00",
         "molecular_id": "MOL100136_02_02",
         "analysis_id": "AI100136_02_02_1",

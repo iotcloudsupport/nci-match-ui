@@ -10,7 +10,8 @@
         .filter('irsample', irsample)
         .filter('taStatus', taStatus)
         .filter('utc', utc)
-        .filter('titlecase', titlecase);
+        .filter('titlecase', titlecase)
+        .filter('dashify', dashify);
 
     function isNotString(text) {
         return typeof text !== "string";
@@ -162,6 +163,12 @@
                 return match.charAt(0).toUpperCase() + match.substr(1);
             });
         }
+    }
+
+    function dashify() {
+        return function (text) {
+            return text ? text : '-';
+        };
     }
 
 } ());
