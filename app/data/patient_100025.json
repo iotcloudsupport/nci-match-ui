@@ -2539,34 +2539,6 @@
                     "tracking_id": "7956 4568 5347"
                 }
             ]
-        },
-        {
-            "patient_id": "10025",
-            "collected_date": "2016-07-02T10:07:08+00:00",
-            "failed_date": "",
-            "study_id": "APEC1621",
-            "type": "BLOOD",
-            "variant_report_confirmed_date": "",
-            "assignments": "",
-            "specimen_shipments": [
-                {
-                    "molecular_id": "MOL003_BLD",
-                    "tracking_number": "6758 8346 4253",
-                    "destination_date": "2016-07-02T23:33:46+00:00",
-                    "dna_concordance": 10.2,
-                    "dna_volume": 9,
-                    "reported_date": "2016-07-02T18:41:07+00:00",
-                    "comments": "Comment",
-                    "analyses": [
-                        {
-                            "analysis_id": "SAM003_BLD_1",
-                            "status": "Pending",
-                            "file_received_date": "2016-07-10T05:25:20+00:00",
-                            "status_date": "2016-07-10T05:26:20+00:00"
-                        }
-                    ]
-                }
-            ]
         }
     ],
     "action_items": [
