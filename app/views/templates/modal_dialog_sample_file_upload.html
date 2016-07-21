@@ -1,0 +1,46 @@
+<div class="modal-header">
+    <h3 class="modal-title">Upload BAM files and Variant ZIP files</h3>
+</div>
+<div class="modal-body">
+
+    <div class="form-group">
+        <label for="analysisId">Analysis ID</label>
+        <input name="analysisId" ng-model="analysisId" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-9">
+            <label class="btn btn-success btn-outline upload-sample-file-button" for="vcfFile">
+                <input id="vcfFile" name="vcfFile" type="file" style="display:none;">
+                Select Variant ZIP File
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-9">
+            <label class="btn btn-success btn-outline upload-sample-file-button" for="dnaBamFile">
+                <input id="dnaBamFile" name="dnaBamFile" type="file" style="display:none;">
+                Select DNA BAM File
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-9">
+            <label class="btn btn-success btn-outline upload-sample-file-button" for="rnaBamFile">
+                <input id="rnaBamFile" name="rnaBamFile" type="file" style="display:none;">
+                Select DNA BAM File
+            </label>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-default" type="button" ng-click="ok()">OK</button>
+    <button class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
+</div>

@@ -48,7 +48,7 @@
         $scope.files = [];
 
         $scope.currentSurgicalEvent = null;
-        $scope.currentAnalisys = null;
+        $scope.currentAnalysis = null;
         $scope.currentShipment = null;
         $scope.currentTissueVariantReport = null;
         $scope.currentBloodVariantReport = null;
@@ -75,7 +75,7 @@
         $scope.dropzoneConfig = {
             url: '/alt_upload_url',
             parallelUploads: 3,
-            maxFileSize: 30
+            maxFileSize: 4000
         };
 
         $scope.setVariantReportType = setVariantReportType;
@@ -111,6 +111,7 @@
         $scope.loadQcTable = loadQcTable;
         $scope.loadSnvTable = loadSnvTable;
         $scope.loadGeneTable = loadGeneTable;
+        $scope.uploadSampleFile = uploadSampleFile;
 
         //FILTER
         $scope.$watch('confirmed', function (newValue, oldValue) {
@@ -790,10 +791,10 @@
             }
         }
 
-        function getNewFileButtonClass(shipment, analisys) {
-            $log.debug(analisys);
+        function getNewFileButtonClass(shipment, analysis) {
+            $log.debug(analysis);
 
-            return (analisys && analisys.status && analisys.status === 'PENDING') ?
+            return (analysis && analysis.status && analysis.status === 'PENDING') ?
                 vm.enabledFileButtonClass :
                 vm.disabledFileButtonClass;
         }
@@ -859,7 +860,7 @@
 
         function selectSurgicalEvent(option) {
             $scope.currentSurgicalEvent = null;
-            $scope.currentAnalisys = null;
+            $scope.currentAnalysis = null;
             $scope.currentShipment = null;
 
             for (var i = 0; i < $scope.data.specimens.length; i++) {
@@ -872,7 +873,7 @@
                         var shipment = surgicalEvent.specimen_shipments[0];
                         if (shipment.analyses && shipment.analyses.length) {
                             var analysis = shipment.analyses[0];
-                            $scope.currentAnalisys = analysis;
+                            $scope.currentAnalysis = analysis;
                         }
                     }
 
@@ -1021,6 +1022,21 @@
             });
 
             return total === 0;
+        }
+
+        function uploadSampleFile() {
+            var modalInstance = $uibModal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: 'views/templates/modal_dialog_sample_file_upload.html',
+                controller: 'SampleFileUploadController',
+                resolve: {
+                }
+            });
+
+            modalInstance.result.then(function (analysis) {
+                $log.debug('analysis');
+                $log.debug(analysis);
+            });
         }
     }
 

@@ -312,7 +312,7 @@
                                                 <li ng-if="shipment.analyses && shipment.analyses.length > 0 && shipment.analyses[shipment.analyses.length - 1].status === 'PENDING'" class="success-element">
                                                     <div class="row">
                                                         <div class="col-md-3 pull-right text-right">
-                                                            <a href="#" class="btn btn-xs btn-outline file-button-xs-3x btn-success" title="Upload new BAM file">Upload new sample file</a>
+                                                            <a ng-click="uploadSampleFile()" class="btn btn-xs btn-outline file-button-xs-3x btn-success" title="Upload new BAM file">Upload new sample file</a>
                                                         </div>
                                                     </div>
                                                 </li>
