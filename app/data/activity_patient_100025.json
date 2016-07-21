@@ -10,7 +10,6 @@
             "surgical_event_id": "SUREVT003",
             "collected_datetime": "2016-07-09T22:06:33+00:00",
             "received_datetime": "2016-07-10T04:23:12+00:00",
-            "status": "RECEIVED",
             "tracking_id": "6758 6785 7318",
             "location": "Nationwide",
             "molecular_id": "MOL003_1",
@@ -30,7 +29,6 @@
             "molecular_cdna_id": "MOL100025_02_01C",
             "tracking_id": "6758 6785 7318",
             "location": "Nationwide",
-            "status": "SHIPPED",
             "molecular_id": "MOL100025_02_01"
         }
     },
@@ -46,7 +44,6 @@
             "received_datetime": "2016-07-02T18:41:07+00:00",
             "tracking_id": "6758 6785 7318",
             "location": "Nationwide",
-            "status": "RECEIVED",
             "molecular_id": "MOL003_BLD",
             "analysis_id": "SAM003_BLD_1"
         }
@@ -79,7 +76,6 @@
             "received_datetime": "2016-07-10T04:23:12+00:00",
             "tracking_id": "7956 4568 5347",
             "location": "Nationwide",
-            "status": "RECEIVED",
             "molecular_id": "MOL100025_02_02"
         }
     },
@@ -93,7 +89,6 @@
         "event_data": {
             "tracking_id": "6758 8346 4253",
             "location": "Nationwide",
-            "status": "SHIPPED",
             "molecular_id": "MOL003_BLD"
         }
     },
@@ -109,8 +104,7 @@
             "received_datetime": "2016-07-02T18:41:07+00:00",
             "molecular_id": "MOL100136_01_01",
             "tracking_id": "7956 4568 5347",
-            "location": "Nationwide",
-            "status": "RECEIVED"
+            "location": "Nationwide"
         }
     },
     {
@@ -197,8 +191,7 @@
             "received_datetime": "2016-05-13T22:08:33+00:00",
             "tracking_id": "7956 4568 5347",
             "molecular_id": "MOL100136_01_01",
-            "location": "at Nationwide",
-            "status": "RECEIVED"
+            "location": "at Nationwide"
         }
     },
     {
@@ -210,7 +203,6 @@
         "step": "1.0",
         "event_data": {
             "biomarker": "ICCPTEN",
-            "status": "RECEIVED",
             "tracking_id": "7956 4568 5347",
             "result": "POSITIVE",
             "reported_date": "2016-05-12T22:04:33+00:00"

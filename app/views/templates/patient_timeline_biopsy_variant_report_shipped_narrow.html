@@ -59,13 +59,13 @@
                     <br>
                 </span>
                 
-                <span ng-if="timelineEvent.event_data.carrier">
-                    Carrier: <span class="timeline-value">{{::timelineEvent.event_data.carrier }}</span>
-                    <br>
-                </span>
-                
                 <span ng-if="timelineEvent.event_data.tracking_id">
                     Tracking Number: <span class="timeline-value"><tracking-link carrier="'fedex'" tracking-number="timelineEvent.event_data.tracking_id"></tracking-link></span>
+                    <br>
+                </span>
+
+                <span ng-if="timelineEvent.event_data.location">            
+                    Location: <span class="timeline-value">{{::timelineEvent.event_data.location }}</span>
                     <br>
                 </span>
             </p>

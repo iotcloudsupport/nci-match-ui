@@ -29,11 +29,6 @@
                     <br>
                 </span>
 
-                <span ng-if="timelineEvent.event_data.tracking_id">
-                    Tracking Number: <span class="timeline-value"><tracking-link carrier="'fedex'" tracking-number="timelineEvent.event_data.tracking_id"></tracking-link></span>
-                    <br>
-                </span>
-
                 <span ng-if="timelineEvent.event_data.slide_barcode">
                     Slide Bar-code: <span class="timeline-value">{{::timelineEvent.event_data.slide_barcode}}</span>
                     <br>
@@ -43,14 +38,19 @@
                     Surgical Event ID: <span class="timeline-value">{{::timelineEvent.event_data.surgical_event_id}}</span>
                     <br>
                 </span>
-                            
+
                 <span ng-if="timelineEvent.event_data.collected_datetime && (timelineEvent.event_data.collected_datetime | utc) !== '-'">
                     Collected Date: <span class="timeline-value">{{::timelineEvent.event_data.collected_datetime | utc}}</span>
                     <br>
                 </span>
-                
-                <span ng-if="timelineEvent.event_data.received_datetime && (timelineEvent.event_data.received_datetime | utc) !== '-'">
-                    Received Date: <span class="timeline-value">{{::timelineEvent.event_data.received_datetime | utc}}</span>
+                            
+                <span ng-if="timelineEvent.event_data.tracking_id">
+                    Tracking Number: <span class="timeline-value"><tracking-link carrier="'fedex'" tracking-number="timelineEvent.event_data.tracking_id"></tracking-link></span>
+                    <br>
+                </span>
+
+                <span ng-if="timelineEvent.event_data.location">            
+                    Location: <span class="timeline-value">{{::timelineEvent.event_data.location }}</span>
                     <br>
                 </span>
             </p>

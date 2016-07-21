@@ -114,7 +114,6 @@
             "surgical_event_id": "SEI100136_02",
             "collected_datetime": "2016-05-09T22:06:33+00:00",
             "received_datetime": "2016-05-10T04:23:12+00:00",
-            "status": "RECEIVED",
             "tracking_id": "6758 6785 7318",
             "location": "Nationwide",
             "molecular_id": "MOL100136_02_02",
@@ -134,7 +133,6 @@
             "molecular_cdna_id": "MOL100136_02_02C",
             "tracking_id": "6758 6785 9276",
             "location": "Nationwide",
-            "status": "SHIPPED",
             "molecular_id": "MOL100136_02_02"
         }
     },
@@ -149,7 +147,6 @@
             "surgical_event_id": "SEI100136_02",
             "collected_datetime": "2016-05-09T22:06:33+00:00",
             "received_datetime": "2016-05-10T04:23:12+00:00",
-            "status": "RECEIVED",
             "tracking_id": "6758 6785 7318",
             "location": "Nationwide",
             "molecular_id": "MOL100136_02_01",
@@ -165,7 +162,6 @@
         "step": "2.0",
         "event_data": {
             "biomarker": "MLH1",
-            "status": "RECEIVED",
             "result": "POSITIVE",
             "slide_barcode": "0BJ6A5",
             "reported_date": "2016-05-15T09:37:23+00:00"
@@ -180,7 +176,6 @@
         "step": "2.0",
         "event_data": {
             "biomarker": "PTEN",
-            "status": "RECEIVED",
             "result": "POSITIVE",
             "slide_barcode": "0BJ6A5",
             "reported_date": "2016-05-15T09:37:23+00:00"
@@ -197,7 +192,6 @@
             "surgical_event_id": "SEI100136_02",
             "collected_datetime": "2016-05-09T22:06:33+00:00",
             "received_datetime": "2016-05-10T04:23:12+00:00",
-            "status": "RECEIVED",
             "tracking_id": "6758 6785 7318",
             "location": "Nationwide",
             "molecular_id": "MOL100136_02_01",
@@ -217,7 +211,6 @@
             "molecular_cdna_id": "MOL100136_02_01C",
             "tracking_id": "6758 6785 9184",
             "location": "Nationwide",
-            "status": "SHIPPED",
             "molecular_id": "MOL100136_02_01"
         }
     },
@@ -247,7 +240,6 @@
             "surgical_event_id": "SEI100136_02",
             "collected_datetime": "2016-05-09T22:06:33+00:00",
             "received_datetime": "2016-05-10T04:23:12+00:00",
-            "status": "RECEIVED",
             "molecular_id": "MOL100136_02_02"
         }
     },
@@ -350,7 +342,6 @@
         "step": "1.0",
         "event_data": {
             "biomarker": "MLH1",
-            "status": "RECEIVED",
             "result": "POSITIVE",
             "slide_barcode": "9D24KG27GDB",
             "reported_date": "2015-11-23T10:49:39+00:00"
@@ -365,7 +356,6 @@
         "step": "1.0",
         "event_data": {
             "biomarker": "PTEN",
-            "status": "RECEIVED",
             "result": "POSITIVE",
             "slide_barcode": "9D24KG27GDB",
             "reported_date": "2015-11-23T10:49:39+00:00"
@@ -409,7 +399,6 @@
         "event_data": {
             "collected_datetime": "2015-11-15T02:07:08+00:00",
             "received_datetime": "2015-11-15T02:41:07+00:00",
-            "status": "RECEIVED",
             "molecular_id": "MOL100136BLD_01",
             "analysis_id": "AI100136BLD_01_1"
         }
@@ -425,7 +414,6 @@
             "surgical_event_id": "SEI100136_01",
             "collected_datetime": "2015-11-15T03:06:33+00:00",
             "received_datetime": "2015-11-15T10:40:02+00:00",
-            "status": "RECEIVED",
             "tracking_id": "6758 6785 7318",
             "location": "Nationwide",
             "molecular_id": "MOL100136_01_01",
@@ -458,7 +446,6 @@
             "surgical_event_id": "SEI100136_01",
             "collected_datetime": "2015-11-15T03:06:33+00:00",
             "received_datetime": "2015-11-15T10:40:02+00:00",
-            "status": "RECEIVED",
             "tracking_id": "6758 6785 7318",
             "location": "Nationwide",
             "molecular_id": "MOL100136_01_01",
@@ -478,7 +465,6 @@
             "molecular_cdna_id": "MOL100136_01_01C",
             "tracking_id": "6758 6785 4682",
             "location": "Nationwide",
-            "status": "SHIPPED",
             "molecular_id": "MOL100136_01_01"
         }
     },
@@ -493,7 +479,6 @@
             "surgical_event_id": "SEI100136_01",
             "collected_datetime": "2015-11-15T03:06:33+00:00",
             "received_datetime": "2015-11-15T10:40:02+00:00",
-            "status": "RECEIVED",
             "molecular_id": "MOL100136_01_01"
         }
     },
@@ -507,7 +492,6 @@
         "event_data": {
             "tracking_id": "6758 8346 4821",
             "location": "Nationwide",
-            "status": "SHIPPED",
             "molecular_id": "MOL100136BLD_01"
         }
     },
@@ -521,7 +505,6 @@
         "event_data": {
             "collected_datetime": "2015-11-15T02:07:08+00:00",
             "received_datetime": "2015-11-15T02:41:07+00:00",
-            "status": "RECEIVED",
             "molecular_id": "MOL100136BLD_01"
         }
     },

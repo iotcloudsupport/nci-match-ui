@@ -182,7 +182,6 @@
             "surgical_event_id": "SUREVT101",
             "collected_datetime": "2015-11-25T13:52:13+00:00",
             "received_datetime": "2015-11-25T13:52:13+00:00",
-            "status": "RECEIVED",
             "molecular_id": "B-987456"
         }
     },
@@ -195,7 +194,6 @@
         "step": "3.0",
         "event_data": {
             "biomarker": "ICCPTEN",
-            "status": "RECEIVED",
             "result": "POSITIVE",
             "molecular_id": "B-987456",
             "reported_date": "2015-11-24T13:52:13+00:00"
@@ -473,7 +471,6 @@
             "surgical_event_id": "COSM1234",
             "collected_datetime": "2015-05-20T13:52:13+00:00",
             "received_datetime": "2015-05-27T13:52:13+00:00",
-            "status": "RECEIVED",
             "molecular_id": "B-987456"
         }
     },
@@ -486,7 +483,6 @@
         "step": "1.0",
         "event_data": {
             "biomarker": "ICCPTEN",
-            "status": "RECEIVED",
             "result": "POSITIVE",
             "molecular_id": "B-987456",
             "reported_date": "2015-05-26T13:52:13+00:00"
