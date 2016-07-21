@@ -17,7 +17,7 @@
             "stratum": "STR13",
             "title": "APEC1621-T; STR13; 2016-05-13",
             "step": "4.1",
-            "assignment_reason": "The patient and treatment match on variand identifier [VAR98762].",
+            "assignment_reason": "The patient and treatment match on variant identifier [VAR98762].",
             "assignment_date": "2016-06-12T13:42:13+00:00"
         },
         {
@@ -26,7 +26,7 @@
             "stratum": "STR43",
             "title": "APEC1621-Q; STR43; 2015-08-06",
             "step": "3.1",
-            "assignment_reason": "The patient and treatment match on variand identifier [COSM14062].",
+            "assignment_reason": "The patient and treatment match on variant identifier [COSM14062].",
             "assignment_date": "2016-04-21T08:46:53+00:00"
         },
         {
@@ -44,7 +44,7 @@
             "stratum": "STR5",
             "title": "APEC1621-U; STR5; 2015-04-26",
             "step": "1.1",
-            "assignment_reason": "The patient and treatment match on variand identifier [ABSF, DEDF].",
+            "assignment_reason": "The patient and treatment match on variant identifier [ABSF, DEDF].",
             "assignment_date": "2015-11-25T15:37:43+00:00"
         }
     ],
@@ -180,7 +180,7 @@
                     "treatment_arm_stratum_id": "STR2",
                     "treatment_arm_stratum": "STR1",
                     "treatment_arm_title": "APEC1621-U (2015-08-06)",
-                    "reason": "The patient and treatment match on variand identifier [ABSF, DEDF]."
+                    "reason": "The patient and treatment match on variant identifier [ABSF, DEDF]."
                 }
             ]
         }
@@ -1594,7 +1594,7 @@
                     "treatment_arm": "APEC1621-B",
                     "treatment_arm_version": "2015-08-06",
                     "treatment_arm_title": "APEC1621-U (2015-08-06)",
-                    "reason": "The patient and treatment match on variand identifier [ABSF, DEDF]."
+                    "reason": "The patient and treatment match on variant identifier [ABSF, DEDF]."
                 }
             ]
         }

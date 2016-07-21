@@ -147,7 +147,7 @@ xdescribe('Controller: Patient Details Controller', function () {
                     "treatment_arm_stratum_id": "STR2",
                     "treatment_arm_stratum": "STR1",
                     "treatment_arm_title": "APEC1621-U (2015-08-06)",
-                    "reason": "The patient and treatment match on variand identifier [ABSF, DEDF]."
+                    "reason": "The patient and treatment match on variant identifier [ABSF, DEDF]."
                 }
             ]
         }
@@ -423,7 +423,7 @@ xdescribe('Controller: Patient Details Controller', function () {
                             "treatment_arm": "EAY131-B",
                             "treatment_arm_version": "2015-08-06",
                             "treatment_arm_title": "EAY131-U (2015-08-06)",
-                            "reason": "The patient and treatment match on variand identifier [ABSF, DEDF]."
+                            "reason": "The patient and treatment match on variant identifier [ABSF, DEDF]."
                         }
                     ]
                 }
