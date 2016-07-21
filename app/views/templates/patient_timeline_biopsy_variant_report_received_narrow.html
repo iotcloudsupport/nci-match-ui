@@ -29,6 +29,16 @@
                     <br>
                 </span>
 
+                <span ng-if="timelineEvent.event_data.tracking_id">
+                    Tracking Number: <span class="timeline-value"><tracking-link carrier="'fedex'" tracking-number="timelineEvent.event_data.tracking_id"></tracking-link></span>
+                    <br>
+                </span>
+
+                <span ng-if="timelineEvent.event_data.slide_barcode">
+                    Slide Bar-code: <span class="timeline-value">{{::timelineEvent.event_data.slide_barcode}}</span>
+                    <br>
+                </span>
+
                 <span ng-if="timelineEvent.event_data.surgical_event_id">
                     Surgical Event ID: <span class="timeline-value">{{::timelineEvent.event_data.surgical_event_id}}</span>
                     <br>

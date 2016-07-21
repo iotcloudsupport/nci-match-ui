@@ -53,6 +53,11 @@
                     Molecular CDNA ID: <span class="timeline-value">{{::timelineEvent.event_data.molecular_cdna_id }}</span>
                     <br>
                 </span>
+            
+                <span ng-if="timelineEvent.event_data.slide_barcode">
+                    Slide Bar-code: <span class="timeline-value">{{::timelineEvent.event_data.slide_barcode}}</span>
+                    <br>
+                </span>
                 
                 <span ng-if="timelineEvent.event_data.carrier">
                     Carrier: <span class="timeline-value">{{::timelineEvent.event_data.carrier }}</span>

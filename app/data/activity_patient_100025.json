@@ -12,6 +12,7 @@
             "received_datetime": "2016-07-10T04:23:12+00:00",
             "status": "RECEIVED",
             "tracking_id": "6758 6785 7318",
+            "location": "Nationwide",
             "molecular_id": "MOL003_1",
             "analysis_id": "SAM003_01"
         }
@@ -28,6 +29,7 @@
             "molecular_dna_id": "MOL100025_02_01D",
             "molecular_cdna_id": "MOL100025_02_01C",
             "tracking_id": "6758 6785 7318",
+            "location": "Nationwide",
             "status": "SHIPPED",
             "molecular_id": "MOL100025_02_01"
         }
@@ -43,6 +45,7 @@
             "collected_datetime": "2016-07-02T10:07:08+00:00",
             "received_datetime": "2016-07-02T18:41:07+00:00",
             "tracking_id": "6758 6785 7318",
+            "location": "Nationwide",
             "status": "RECEIVED",
             "molecular_id": "MOL003_BLD",
             "analysis_id": "SAM003_BLD_1"
@@ -58,6 +61,7 @@
         "event_data": {
             "surgical_event_id": "SEI100025_02",
             "slide_barcode": "86BS29JKJLH",
+            "location": "Nationwide",
             "tracking_id": "7956 4568 5347",
             "status": "SHIPPED"
         }
@@ -74,6 +78,7 @@
             "collected_datetime": "2016-07-09T22:06:33+00:00",
             "received_datetime": "2016-07-10T04:23:12+00:00",
             "tracking_id": "7956 4568 5347",
+            "location": "Nationwide",
             "status": "RECEIVED",
             "molecular_id": "MOL100025_02_02"
         }
@@ -87,6 +92,7 @@
         "step": "2.0",
         "event_data": {
             "tracking_id": "6758 8346 4253",
+            "location": "Nationwide",
             "status": "SHIPPED",
             "molecular_id": "MOL003_BLD"
         }
@@ -101,9 +107,10 @@
         "event_data": {
             "collected_datetime": "2016-07-02T10:07:08+00:00",
             "received_datetime": "2016-07-02T18:41:07+00:00",
+            "molecular_id": "MOL100136_01_01",
             "tracking_id": "7956 4568 5347",
-            "status": "RECEIVED",
-            "molecular_id": "MOL003_BLD"
+            "location": "Nationwide",
+            "status": "RECEIVED"
         }
     },
     {
@@ -170,8 +177,10 @@
         "event_data": {
             "surgical_event_id": "COSM1234",
             "collected_datetime": "2016-05-09T22:06:33+00:00",
+            "tracking_id": "6758 6785 7318",
             "received_datetime": "2016-05-13T22:08:33+00:00",
-            "location" : "at Nationwide",
+            "molecular_id": "MOL100136_01_01",
+            "location": "at Nationwide",
             "status": "CONFIRMED"
         }
     },
@@ -187,7 +196,8 @@
             "collected_datetime": "2016-05-09T22:06:33+00:00",
             "received_datetime": "2016-05-13T22:08:33+00:00",
             "tracking_id": "7956 4568 5347",
-            "location" : "at Nationwide",
+            "molecular_id": "MOL100136_01_01",
+            "location": "at Nationwide",
             "status": "RECEIVED"
         }
     },
@@ -244,7 +254,7 @@
             "molecular_dna_id": "DNA1234",
             "molecular_cdna_id": "CDNA1234",
             "tracking_id": "1203454512316546",
-            "location" : "at Nationwide",
+            "location": "at Nationwide",
             "status": "PENDING"
         }
     },
@@ -260,7 +270,7 @@
             "collected_datetime": "2016-05-09T22:06:33+00:00",
             "received_datetime": "2016-05-11T22:08:33+00:00",
             "tracking_id": "6758 8346 4253",
-            "location" : "at Nationwide",
+            "location": "at Nationwide",
             "status": "PENDING"
         }
     },
