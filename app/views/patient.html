@@ -257,7 +257,7 @@
                                             <td>{{shipment.dna_volume}}</td>
                                             <td>{{shipment.reported_date | utc}}</td>
                                             <td>
-                                                <div class="text-truncate-200px">{{shipment.comments}}</div>
+                                                <div class="text-truncate-200px"  data-placement="top" title="{{shipment.comments}}" onmouseenter="$(this).tooltip('show')" >{{shipment.comments}}</div>
                                             </td>
                                         </tr>
                                         <tr ng-repeat-end>

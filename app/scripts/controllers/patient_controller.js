@@ -907,7 +907,7 @@
         }
 
         function showAssignmentReportActions(report) {
-            return true; // TODO:RZ add logic back: report && report.status && report.status === 'PENDING';
+            return report && report.status && report.status === 'PENDING';
         }
 
         function navigateTo(navigateTo) {
