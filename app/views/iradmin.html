@@ -452,8 +452,11 @@
                                                                                                         </tr>
                                                                                                         </thead>
                                                                                                         <tbody>
-                                                                                                        <tr ng-style="{'background-color':'{{ sample.hasMatchingVariant | irsample }}'}" ng-repeat="sample in positiveControlList">
+                                                                                                        <!--<tr ng-style="{'background-color':'{{ sample.hasMatchingVariant | irsample }}'}" ng-repeat="sample in positiveControlList">-->
+                                                                                                        <tr ng-repeat="sample in positiveControlList">
                                                                                                             <td>
+                                                                                                                <i ng-if="sample.hasMatchingVariant == 'true'" class="fa fa-plus fa-2x" style="color: darkgreen"></i>
+                                                                                                                <i ng-if="sample.hasMatchingVariant == 'false'" class="fa fa-minus fa-2x" style="color: red"></i>
                                                                                                                 <a class="report-link" href ng-click="openCosmicId( sample.identifier )">
                                                                                                                     {{sample.identifier | dashify }}
                                                                                                                 </a>
@@ -732,8 +735,11 @@
                                                                                                     </tr>
                                                                                                     </thead>
                                                                                                     <tbody>
-                                                                                                    <tr ng-style="{'background-color':'{{ sample.hasMatchingVariant | irsample }}'}" ng-repeat="sample in positiveControlList">
+                                                                                                    <!--<tr ng-style="{'background-color':'{{ sample.hasMatchingVariant | irsample }}'}" ng-repeat="sample in positiveControlList">-->
+                                                                                                    <tr ng-repeat="sample in positiveControlList">
                                                                                                         <td>
+                                                                                                            <i ng-if="sample.hasMatchingVariant == 'true'" class="fa fa-plus fa-2x" style="color: darkgreen"></i>
+                                                                                                            <i ng-if="sample.hasMatchingVariant == 'false'" class="fa fa-minus fa-2x" style="color: red"></i>
                                                                                                             <a class="report-link" href ng-click="openCosmicId( sample.identifier )">
                                                                                                                 {{sample.identifier | dashify }}
                                                                                                             </a>
