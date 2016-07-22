@@ -27,28 +27,6 @@
   },
   {
     "patient_id": "100088",
-    "event_date": "2016-05-22T17:45:31+00:00",
-    "event_name": "Event Name 1",
-    "event_type": "system",
-    "event_message": "Receiving Rule Assignment",
-    "step": "2.0",
-    "event_data": {
-      "status": "COMPLETE"
-    }
-  },
-  {
-    "patient_id": "100088",
-    "event_date": "2016-05-22T10:08:33+00:00",
-    "event_name": "Event Name 1",
-    "event_type": "system",
-    "event_message": "Awaiting Treatment Arms Status",
-    "step": "2.0",
-    "event_data": {
-      "status": "COMPLETE"
-    }
-  },
-  {
-    "patient_id": "100088",
     "event_date": "2016-05-21T22:08:33+00:00",
     "event_name": "Event Name 1",
     "event_type": "patient",
@@ -102,39 +80,6 @@
       "status": "PENDING",
       "molecular_id": "B-987456",
       "location": "GHU"
-    }
-  },
-  {
-    "patient_id": "100088",
-    "event_date": "2016-05-09T22:06:33+00:00",
-    "event_name": "Event Name 1",
-    "event_type": "system",
-    "event_message": "Receiving Rule Assignment",
-    "step": "1.0",
-    "event_data": {
-      "status": "COMPLETE"
-    }
-  },
-  {
-    "patient_id": "100088",
-    "event_date": "2016-05-09T22:06:33+00:00",
-    "event_name": "Event Name 1",
-    "event_type": "system",
-    "event_message": "Awaiting Treatment Arms Status",
-    "step": "1.0",
-    "event_data": {
-      "status": "COMPLETE"
-    }
-  },
-  {
-    "patient_id": "100088",
-    "event_date": "2016-05-09T22:06:33+00:00",
-    "event_name": "Event Name 1",
-    "event_type": "system",
-    "event_message": "Awaiting Patient Data",
-    "step": "1.0",
-    "event_data": {
-      "status": "COMPLETE"
     }
   },
   {

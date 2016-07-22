@@ -11,18 +11,6 @@
     function patientTimeline($compile, $http, $templateCache, $log) {
         var baseUrl = '/views/templates/patient_timeline_';
 
-        /* sample data
-        
-        { type: 'biopsy.assay', dateTime: 'Sep 17, 2015, 10:00 AM GMT', gene: 'MLH1', status: 'Ordered', biopsySequenceNumber: 'B-987456' },
-        { type: 'biopsy.variantReport', dateTime: 'Sep 17, 2015, 10:00 AM GMT', status: 'Pending', molecularSequenceNumber: 'MSN-1245', analysisId: 'A-T-5678', location: 'MGH', totalMoiCount: 1, totalAmoiCount: 0 },
-        { type: 'biopsy.pathology', dateTime: 'Sep 17, 2015, 10:00 AM GMT', status: 'Confirmed', comment: 'Agreement on pathology' },
-        { type: 'assignment', dateTime: 'Sep 17, 2015, 10:00 AM GMT', status: 'Pending', biopsySequenceNumber: 'B-987456', molecularSequenceNumber: 'MSN-1245', analysisId: 'A-T-5678'},
-        { type: 'patient', dateTime: 'Sep 17, 2015, 10:00 AM GMT', status: 'Registration', location: 'MGH' },
-        { type: 'user', user:'Rick',  dateTime: 'Sep 17, 2015, 10:00 AM GMT', status:'upload.patientdocument', details:'Document Upload' },
-        { type: 'system', dateTime: 'Sep 17, 2015, 10:00 AM GMT', status: 'error', details: 'Unable to process patient biopsy message. Please contact techincal support.' }
-        
-        */
-
         var templateMap = {
             'biopsy.assay.normal': baseUrl + 'biopsy_assay.html',
             'biopsy.assay.narrow': baseUrl + 'biopsy_assay_narrow.html',
@@ -42,8 +30,6 @@
             'patient.narrow': baseUrl + 'patient_narrow.html',
             'user.normal': baseUrl + 'user.html',
             'user.narrow': baseUrl + 'user_narrow.html',
-            'system.normal': baseUrl + 'system.html',
-            'system.narrow': baseUrl + 'system_narrow.html',
             'treatment_arm.normal': baseUrl + 'treatment_arm.html',
             'treatment_arm.narrow': baseUrl + 'treatment_arm_narrow.html',
             'generic.normal': baseUrl + 'generic.html',
