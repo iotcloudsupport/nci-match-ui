@@ -42,7 +42,7 @@
                                     <td>{{ treatmentArm.pending_patients | dashify }}</td>
                                     <td ng-style="{'color':'{{ treatmentArm.treatment_arm_status | taStatus }}'}">{{ treatmentArm.treatment_arm_status | dashify }}</td>
                                     <td>{{ treatmentArm.date_opened | gmt }}</td>
-                                    <td>-</td>
+                                    <td>{{ treatmentArm.date_closed | utc }}</td>
                                 </tr>
                             </tbody>
                         </table>
