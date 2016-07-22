@@ -396,14 +396,25 @@
 
                                                     <dt>Files</dt>
                                                     <dd>
-                                                        <a href="{{currentTissueVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentTissueVariantReport.dna_bam_file_path)">DNA BAM</a>
-                                                        <a href="{{currentTissueVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentTissueVariantReport.dna_bai_file_path)">DNA BAI</a>
-                                                        <a href="{{currentTissueVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentTissueVariantReport.vcf_path)">VCF</a>
-                                                    </dd>
-                                                    <dd>
-                                                        <a href="{{currentTissueVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentTissueVariantReport.rna_bam_file_path)">RNA BAM</a>
-                                                        <a href="{{currentTissueVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentTissueVariantReport.rna_bai_file_path)">RNA BAI</a>
-                                                        <a href="{{currentTissueVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(currentTissueVariantReport, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
+                                                        <div class="row">
+                                                            <div class="col-md-12 text-left">
+                                                                <a href="{{currentTissueVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentTissueVariantReport.dna_bam_file_path)">DNA BAM</a>
+                                                                <a href="{{currentTissueVariantReport.dna_bai_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentTissueVariantReport.dna_bai_file_path)">DNA BAI</a>
+                                                                <a href="{{currentTissueVariantReport.dna_vcf_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentTissueVariantReport.dna_vcf_file_path)">VCF</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12 text-left">
+                                                                <a href="{{currentTissueVariantReport.dna_ram_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentTissueVariantReport.dna_ram_file_path)">RNA BAM</a>
+                                                                <a href="{{currentTissueVariantReport.dna_rai_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentTissueVariantReport.dna_rai_file_path)">RNA BAI</a>
+                                                                <a href="{{currentTissueVariantReport.dna_qc_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentTissueVariantReport.dna_qc_file_path)">QC Report</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12 text-left">
+                                                                <a href="{{currentTissueVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(currentTissueVariantReport, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path', 'qc_report')">All (Zip)</a>
+                                                            </div>
+                                                        </div>
                                                     </dd>
 
                                                     <dt>File Received Date</dt>
@@ -1091,14 +1102,25 @@
 
                                             <dt>Files</dt>
                                             <dd>
-                                                <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentBloodVariantReport.dna_bam_file_path)">DNA BAM</a>
-                                                <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentBloodVariantReport.dna_bai_file_path)">DNA BAI</a>
-                                                <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentBloodVariantReport.vcf_path)">VCF</a>
-                                            </dd>
-                                            <dd>
-                                                <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentBloodVariantReport.rna_bam_file_path)">RNA BAM</a>
-                                                <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentBloodVariantReport.rna_bai_file_path)">RNA BAI</a>
-                                                <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(currentBloodVariantReport, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path')">All (Zip)</a>
+                                                <div class="row">
+                                                    <div class="col-md-12 text-left">
+                                                        <a href="{{currentBloodVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentBloodVariantReport.dna_bam_file_path)">DNA BAM</a>
+                                                        <a href="{{currentBloodVariantReport.dna_bai_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentBloodVariantReport.dna_bai_file_path)">DNA BAI</a>
+                                                        <a href="{{currentBloodVariantReport.dna_vcf_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentBloodVariantReport.dna_vcf_file_path)">VCF</a>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12 text-left">
+                                                        <a href="{{currentBloodVariantReport.dna_ram_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentBloodVariantReport.dna_ram_file_path)">RNA BAM</a>
+                                                        <a href="{{currentBloodVariantReport.dna_rai_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentBloodVariantReport.dna_rai_file_path)">RNA BAI</a>
+                                                        <a href="{{currentBloodVariantReport.dna_qc_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentBloodVariantReport.dna_qc_file_path)">QC Report</a>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12 text-left">
+                                                        <a href="{{currentBloodVariantReport.dna_bam_file_path}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getAllFilesButtonClass(currentBloodVariantReport, 'dna_bam_file_path', 'dna_bai_file_path', 'vcf_path', 'rna_bai_file_path', 'rna_bam_file_path', 'qc_report')">All (Zip)</a>
+                                                    </div>
+                                                </div>
                                             </dd>
 
                                             <dt>File Received Date</dt>
