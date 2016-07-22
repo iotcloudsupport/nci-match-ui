@@ -2,6 +2,25 @@
 
     <div class="col-sm-3" ng-controller="DashboardController as dashboardStats" ng-init="loadDashboardData()"><!-- loadPatientPendingAssignmentReportsList() -->
         <h2>Welcome, {{ name }}!</h2>
+
+        <!--<div class="header-info-box">
+            <dl class="dl-horizontal">
+                <dt>Number of Registered Patients</dt>
+                <dd>{{ numberOfPatients }}</dd>
+
+                <dt>Number of Patients with Confirmed Variant Report</dt>
+                <dd>{{ numberOfScreenedPatients }}</dd>
+
+                <dt>Pending Tissue Variant Reports</dt>
+                <dd>{{ pendingTissueVariantReportList.length }}</dd>
+
+                <dt>Pending Blood Variant Reports</dt>
+                <dd>{{ pendingBloodVariantReportList.length }}</dd>
+
+                <dt>Pending Assignment Reports</dt>
+                <dd>{{ pendingAssignmentReportList.length }}</dd>
+            </dl>
+        </div>-->
         <ul class="list-group clear-list m-t">
             <li class="list-group-item fist-item">
                 <span class="pull-right">{{ numberOfPatients }}</span>
@@ -28,9 +47,10 @@
                 <span class="label label-warning"><i class="fa fa-newspaper-o"></i></span>Pending Assignment Reports
             </li>
         </ul>
+        
     </div>
 
-    <div class="col-sm-6" ng-controller="DashboardController as chart" ng-init="setCanvasHeight('#treatmentArmAccrualCanvas', 175);loadTreatmentArmAccrualData();">
+    <div class="col-sm-6" ng-controller="DashboardController as chart" ng-init="setCanvasHeight('#treatmentArmAccrualCanvas', 95);loadTreatmentArmAccrualData();">
         <div id="chartBox" class="statistic-box">
             <div class="text-center">
                 <h4>Top 5 Treatment Arm Accrual</h4>
@@ -39,7 +59,7 @@
         </div>
     </div>
 
-    <div class="col-sm-3" ng-controller="DashboardController as chartjsDonut" ng-init="setCanvasHeight('#amoiCanvas', 200);loadChartjsDonutChartData();">
+    <div class="col-sm-3" ng-controller="DashboardController as chartjsDonut" ng-init="setCanvasHeight('#amoiCanvas', 95);loadChartjsDonutChartData();">
         <div class="statistic-box">
             <div class="text-center">
                 <h4>Sequenced & Confirmed Patients with aMOI(s)</h4>
