@@ -7,10 +7,10 @@
     <div class="col-xs-7 col-md-8 content" ng-class="{'no-top-border':!timelineEvent.isStepChanging}">
         <p class="m-b-xs"><span class="timeline-step">Step: {{::timelineEvent.step}}.</span> <strong>Pathology Status: <span ng-style="{'color':'{{ timelineEvent.event_data.status | analysisStatus }}'}">{{::timelineEvent.event_data.status}}</span></strong></p>
         <p class="m-b-xs">
-            <span ng-if="timelineEvent.event_data.reported_date">
+            <!--<span ng-if="timelineEvent.event_data.reported_date">
                 Report Date: <span class="timeline-value">{{::timelineEvent.event_data.reported_date | utc}}</span>
                 <br>
-            </span>
+            </span>-->
 
             <span ng-if="timelineEvent.event_data.molecular_id">
                 Molecular ID: <span class="timeline-value">{{::timelineEvent.event_data.molecular_id }}</span>
