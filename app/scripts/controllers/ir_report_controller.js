@@ -651,6 +651,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             };
 
             $scope.closePositives = function() {
+                $scope.selectedRow = "";
                 $scope.positives = 'undefined';
 
             };
@@ -698,6 +699,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             };
 
             $scope.closeNegatives = function() {
+                $scope.selectedRow = "";
                 $scope.negatives = 'undefined';
 
             };
