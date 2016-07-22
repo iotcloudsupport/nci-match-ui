@@ -189,34 +189,10 @@ angular.module('irntc.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 .loadNtcUnfilteredReportList()
                 .then(function (d) {
                     posts = d.data;
-
-                    // $scope.armNames.push("Chrom");
-                    // $scope.armValues.push(posts.singleNucleotideVariants[0].position);
-                    //
-                    // $scope.armNames.push("Position");
-                    // $scope.armValues.push(posts.indels[0].position);
-                    // $scope.armNames.push(posts.copyNumberVariants[0].chromosome);
-                    // $scope.armValues.push(posts.copyNumberVariants[0].position);
-                    // $scope.armNames.push(posts.geneFusions[0].chromosome);
-                    // $scope.armValues.push(posts.geneFusions[0].position);
-
-
-
-
-
-
-
-
-
-
                 });
             };
 
         $scope.loadSampleBreakups = function() {
-
-            // var ctx = document.getElementById("irSampleCanvas").getContext("2d");
-            // ctx.canvas.width = 300;
-            // ctx.canvas.height = 300;
 
             var prepareData = {
                 series: [5, 3, 4]
@@ -248,27 +224,6 @@ angular.module('irntc.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 ]
             };
 
-
-            // armNames = [
-            //     'EAY131-QQQ'
-            //     , 'EAY131-BEEE'
-            //     , 'EAY131-HRRR'
-            //     , 'EAY131-U'
-            //     , 'EAY131-E'
-            //     , 'EAY131-D'
-            //     , 'EAY131-F'
-            //     , 'EAY131-G'
-            //     , 'EAY131-T'
-            //     , 'EAY131-Q'
-            // ];
-            // armValues = [6, 3, 2, 2, 1,1,2,3,1,1];
-
-
-
-
-
-
-            // alert(JSON.stringify($scope.barData))
 
         };
 

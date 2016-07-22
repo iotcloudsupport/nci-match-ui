@@ -313,12 +313,14 @@
                                                                                     </thead>
                                                                                     <tbody>
 
-                                                                                    <tr ng-repeat="ta in mochaList">
-                                                                                        <td>{{ta.molecular_is | dashify }}</td>
+                                                                                    <!--background-color:black;color:white;font-weight:bold;-->
+
+                                                                                    <tr ng-repeat="ta in mochaList" >
+                                                                                        <td> {{ta.molecular_is | dashify }}</td>
                                                                                         <td>{{ta.date_created | dashify }}</td>
                                                                                         <td>{{ta.date_received | dashify }}</td>
-                                                                                        <td>
-                                                                                            <a class="ng-binding ng-scope" ng-click="openPositives(ta.variant_reports);gotoBottom('mocha')" href>
+                                                                                        <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
+                                                                                            <a class="ng-binding ng-scope" ng-click="openPositives(ta.variant_reports);gotoBottom('mocha')" href >
                                                                                                 {{ta.variant_reports | dashify }}
                                                                                             </a>
                                                                                         </td>
@@ -597,8 +599,7 @@
                                                                                     <td>{{ta.molecular_is | dashify }}</td>
                                                                                     <td>{{ta.date_created | dashify }}</td>
                                                                                     <td>{{ta.date_received | dashify }}</td>
-                                                                                    <td>
-
+                                                                                    <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
                                                                                         <a class="ng-binding ng-scope" ng-click="openMDACCPositives(ta.variant_reports);gotoBottom('mdacc')" href>
                                                                                             {{ta.variant_reports | dashify }}
                                                                                         </a>
@@ -859,8 +860,8 @@
                                                                                             <td>{{ta.molecular_is | dashify }}</td>
                                                                                             <td>{{ta.date_created | dashify }}</td>
                                                                                             <td>{{ta.date_received  | dashify}}</td>
-                                                                                            <td>
-                                                                                                <a class="ng-binding ng-scope" ng-click="openNegatives();gotoBottom('ntcmocha')" href>
+                                                                                            <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
+                                                                                                <a class="ng-binding ng-scope" ng-click="openNegatives(ta.variant_reports);gotoBottom('ntcmocha')" href>
                                                                                                     {{ta.variant_reports | dashify }}
                                                                                                 </a>
                                                                                             </td>
@@ -1094,7 +1095,7 @@
                                                                                                 <td>{{ta.molecular_is | dashify }}</td>
                                                                                                 <td>{{ta.date_created | dashify }}</td>
                                                                                                 <td>{{ta.date_received | dashify }}</td>
-                                                                                                <td>
+                                                                                                <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
                                                                                                     <a class="ng-binding ng-scope" ng-click="openMDANegatives(ta.variant_reports);;gotoBottom('ntcmdacc')" href>
                                                                                                         {{ta.variant_reports | dashify }}
                                                                                                     </a>

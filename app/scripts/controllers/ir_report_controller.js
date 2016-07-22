@@ -41,10 +41,9 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         $scope.mochaNtcList=[];
         $scope.mdaccList=[];
         $scope.mdaccNtcList=[];
-
         $scope.branch = $stateParams.branch;
-
-            $scope.mid = "undefined";
+        $scope.mid = "undefined";
+        $scope.cellColor = "";
 
 
 
@@ -501,11 +500,9 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 $scope.positiveControlList = data;
             };
             $scope.openPositives = function (id) {
-
+                $scope.selectedRow = id;
                 $scope.mid = id;
-
                 var url = 'data/sample_positive_control_' + id.substring(id.length - 1, id.length) + '.json';
-
                 $scope.positives = 'mocha';
 
                 $scope.posDate = 'July 27, 2015 3:57 PM GMT';
@@ -548,7 +545,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
 
             $scope.openMDACCPositives = function(id) {
-
+                $scope.selectedRow = id;
                 $scope.mid = id;
 
                 if(id === 'SampleControl_MDACC_1'){
@@ -662,7 +659,8 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 $scope.indelsList = data;
             };
 
-            $scope.openNegatives = function() {
+            $scope.openNegatives = function(id) {
+                $scope.selectedRow = id;
 
                 $scope.negatives = 'mocha';
 
@@ -688,9 +686,8 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             };
 
             $scope.openMDANegatives = function(id) {
-
+                $scope.selectedRow = id;
                 $scope.sampleId = id;
-
                 $scope.negatives = 'mdacc';
 
             };
