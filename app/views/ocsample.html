@@ -179,9 +179,9 @@
                                     <table datatable="ng"
                                            dt-options="DashCtrl.dtOptions"
                                            dt-column-defs="DashCtrl.dtColumnDefs"
-                                           dt-instance="DashCtrl.dtInstance"
+                                           dt-instance="dtInstance"
                                            dt-columns="dtColumns"
-                                           class="table table-striped table-bordered table-hover">
+                                           class="table table-striped table-bordered dataTable table-hover">
                                         <thead>
 
                                         <div class="form-group">
@@ -249,7 +249,7 @@
                                     <table datatable="ng"
                                            dt-options="DashCtrl.dtOptions"
                                            dt-column-defs="DashCtrl.dtColumnDefs"
-                                           dt-instance="DashCtrl.dtInstance"
+                                           dt-instance="dtInstance"
                                            dt-columns="dtColumns"
                                            class="table table-striped table-bordered table-hover">
                                         <thead>
@@ -306,7 +306,7 @@
                                     <table datatable="ng"
                                            dt-options="DashCtrl.dtOptions"
                                            dt-column-defs="DashCtrl.dtColumnDefs"
-                                           dt-instance="DashCtrl.dtInstance"
+                                           dt-instance="dtInstance"
                                            dt-columns="dtColumns"
                                            class="table table-striped table-bordered table-hover">
                                         <thead>
@@ -336,18 +336,13 @@
                                         <tr ng-repeat="ta in geneList | limitTo:totalDisplayed " style="cursor: auto; " role="row" class="odd">
                                             <td>
                                                 <a href ng-click="openCosmicFusionId(ta.identifier)" class="report-link"> {{::ta.identifier | dashify }} </a>
-                                                <!--{{::ta.chromosome | dashify }}-->
                                             </td>
                                             <td>{{::ta.chromosome | dashify }}</td>
                                             <td>{{::ta.position | dashify }}</td>
                                             <td>{{::ta.reference | dashify }}</td>
                                             <td>{{::ta.alternative | dashify }}</td>
                                             <td>{{::ta.filter | dashify }}</td>
-                                            <td>
-
-                                                {{::ta.gene | dashify }}
-
-                                            </td>
+                                            <td>{{::ta.gene | dashify }}</td>
                                             <td>{{::ta.oncominevariantclass | dashify }}</td>
                                             <td>{{::ta.exon | dashify }}</td>
                                             <td>{{::ta.function | dashify }}</td>
