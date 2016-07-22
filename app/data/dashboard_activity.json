@@ -9,10 +9,6 @@
             "version": "2016-07-02"
         },
         "event_data": [
-            {
-                "prop": "Date Open",
-                "value": "July 02, 2016 7:30 PM GMT"
-            }
         ]
     },
     {
@@ -52,10 +48,6 @@
             "version": "2015-10-06"
         },
         "event_data": [
-            {
-                "prop": "Date Close",
-                "value": "June 24, 2016 08:52 AM GMT"
-            }
         ]
     },
     {
@@ -71,8 +63,7 @@
             "stratum_id": "STR11",
             "molecular_id": "MOL100136_02_02",
             "treatment_arm_id": "APEC1621-U",
-            "treatment_arm_version": "2016-05-06",
-            "assignment_date": "2016-06-01T14:28:16+00:00"
+            "treatment_arm_version": "2016-05-06"
         }
     },
     {
@@ -112,10 +103,6 @@
             "version": "2016-05-24"
         },
         "event_data": [
-            {
-                "prop": "Date Open",
-                "value": "May 25, 2016 11:52 PM GMT"
-            }
         ]
     },
     {
@@ -132,7 +119,7 @@
         }
     },
     {
-        "patient_id": "100088",
+        "patient_id": "100065",
         "event_date": "2016-05-23T12:23:56+00:00",
         "event_name": "Event Name 1",
         "event_type": "patient",
@@ -145,7 +132,7 @@
         }
     },
     {
-        "patient_id": "100088",
+        "patient_id": "100065",
         "event_date": "2016-05-23T09:08:33+00:00",
         "event_name": "Event Name 1",
         "event_type": "patient",
