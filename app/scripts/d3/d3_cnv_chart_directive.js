@@ -168,6 +168,7 @@
                                 .attr("width", width + margin.left + margin.right)
                                 .attr("height", height + margin.top + margin.bottom)
                                 .attr("class", "box")
+
                                 .append("g")
                                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -194,7 +195,8 @@
 
                             var xAxis = d3.svg.axis()
                                 .scale(x)
-                                .orient("bottom");
+                                .orient("bottom")
+                                .tickSize(1);
 
                             // the y-axis Copy Number
                             var y = d3.scale.linear()
@@ -203,7 +205,8 @@
 
                             var yAxis = d3.svg.axis()
                                 .scale(y)
-                                .orient("left");
+                                .orient("left")
+                                .tickSize(1);
 
                             var prevchr = "";
                             var px = "";
@@ -364,7 +367,8 @@
                                 .attr("x2", width)
                                 .attr("y2", line2)
                                 .style("stroke-dasharray", ("3, 3"))
-                                .style("stroke-opacity", 0.9);
+                                .style("stroke-opacity", 0.9)
+                                .style("stroke", "red");
 
                             // draw horizontal line at 1 for bounds
                             svg.append("svg:line")
