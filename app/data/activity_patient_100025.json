@@ -163,7 +163,7 @@
     },
     {
         "patient_id": "100025",
-        "event_date": "2016-05-11T22:06:33+00:00",
+        "event_date": "2016-05-09T10:06:33+00:00",
         "event_name": "Event Name 2",
         "event_type": "biopsy.variant_report_received",
         "event_message": "Tissue Variant Report",
@@ -180,7 +180,7 @@
     },
     {
         "patient_id": "100025",
-        "event_date": "2016-05-11T22:06:33+00:00",
+        "event_date": "2016-05-10T22:06:33+00:00",
         "event_name": "Event Name 2",
         "event_type": "biopsy.variant_report_received",
         "event_message": "Tissue Variant Report",
@@ -210,6 +210,20 @@
     },
     {
         "patient_id": "100025",
+        "event_date": "2016-05-11T22:08:33+00:00",
+        "event_type": "biopsy.variant_report_shipped",
+        "event_message": "Slide Shipped",
+        "step": "1.0",
+        "event_data": {
+            "surgical_event_id": "SEI100025_02",
+            "slide_barcode": "86BS29JKJLH",
+            "location": "Nationwide",
+            "tracking_id": "7956 4568 5347",
+            "status": "SHIPPED"
+        }
+    },
+    {
+        "patient_id": "100025",
         "event_date": "2016-05-12T22:04:33+00:00",
         "event_name": "Event Name 5",
         "event_type": "biopsy.pathology",
@@ -218,19 +232,6 @@
         "event_data": {
             "status": "CONFIRMED",
             "reported_date": "2016-05-12T22:04:33+00:00"
-        }
-    },
-    {
-        "patient_id": "100025",
-        "event_date": "2016-05-11T22:08:33+00:00",
-        "event_name": "Event Name 4",
-        "event_type": "biopsy.assay_order",
-        "event_message": "Assay Order",
-        "step": "1.0",
-        "event_data": {
-            "biomarker": "ICCPTEN",
-            "status": "ORDER",
-            "ordered_date": "2016-05-11T22:07:33+00:00"
         }
     },
     {
