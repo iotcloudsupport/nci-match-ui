@@ -12,18 +12,22 @@ angular.module('qcsample.matchbox',[ ])
 
         this.dtColumnDefs = [];
 
-        this.dtInstance = {};
+        $scope.dtInstance = {};
 
         $scope.confirmed = '';
+
         //FILTER
         $scope.$watch('confirmed', function(newValue, oldValue) {
 
             // console.log($scope.confirmed);
             if(newValue === 'ALL') {
                 $scope.filterCol = "";
+                $scope.dtInstance.DataTable.search("");
+                $scope.dtInstance.DataTable.search("").draw();
             }
             else {
-                $scope.filterCol = newValue;
+                $scope.dtInstance.DataTable.search(newValue);
+                $scope.dtInstance.DataTable.search(newValue).draw();
             }
         });
 

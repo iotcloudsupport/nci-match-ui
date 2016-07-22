@@ -12,9 +12,8 @@
                 loadTissueVariantReportsList: loadTissueVariantReportsList,
                 loadBloodVariantReportsList: loadBloodVariantReportsList,
                 loadPatientPendingAssignmentReportsList: loadPatientPendingAssignmentReportsList,
-                loadActivityList: loadActivityList,
                 loadSpecimenTrackingList: loadSpecimenTrackingList,
-                displayTreatmentArmList: displayTreatmentArmList,
+                loadTreatmentArmList: loadTreatmentArmList,
                 loadPatientsForTa: loadPatientsForTa,
                 loadTreatmentArmDetails: loadTreatmentArmDetails,
                 loadQc_Table: loadQc_Table,
@@ -32,7 +31,7 @@
                     return $http.get('data/activity_patient_' + id + '.json');
                 } else {
                     $log.info('Loading dashboard activity');
-                    return $http.get('data/activity_dashboard.json');
+                    return $http.get('data/dashboard_activity.json');
                 }
             }
 
@@ -63,10 +62,6 @@
                 return $http.get('data/dashboard_donut_chart.json');
             }
 
-            function loadActivityList() {
-                return $http.get('data/dashboard_activity_feed.json');
-            }
-
             function loadTissueVariantReportsList(){
                 return $http.get('data/dashboard_tissue_variant_reports.json');
             }
@@ -79,7 +74,7 @@
                 return $http.get('data/dashboard_patient_assignment_reports.json');
             }
             
-            function displayTreatmentArmList() {
+            function loadTreatmentArmList() {
                 return $http.get('data/treatment_arms_list.json');
             }
 

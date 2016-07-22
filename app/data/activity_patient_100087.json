@@ -57,6 +57,8 @@
             "surgical_event_id": "SUREVT101",
             "collected_datetime": "2016-05-12T22:06:33+00:00",
             "received_datetime": "2016-05-13T22:08:33+00:00",
+            "tracking_id": "6758 6785 7318",
+            "location": "Nationwide",
             "status": "CONFIRMED",
             "molecular_id": "B-987456"
         }
@@ -72,7 +74,8 @@
             "surgical_event_id": "SUREVT101",
             "collected_datetime": "2016-03-15T22:06:33+00:00",
             "received_datetime": "2016-03-15T22:06:33+00:00",
-            "status": "RECEIVED",
+            "tracking_id": "6758 6785 7318",
+            "location": "Nationwide",
             "molecular_id": "B-987456"
         }
     },
@@ -85,7 +88,6 @@
         "step": "3.0",
         "event_data": {
             "biomarker": "ICCPTEN",
-            "status": "RECEIVED",
             "result": "POSITIVE",
             "molecular_id": "B-987456",
             "reported_date": "2016-03-05T22:06:33+00:00"
@@ -129,8 +131,9 @@
             "surgical_event_id": "SUREVT0982",
             "molecular_dna_id": "DNA1234",
             "molecular_cdna_id": "CDNA1234",
-            "carrier": "Federal Express",
+            "slide_barcode": "0BJ6A5",
             "tracking_id": "1203454512316546",
+            "location": "Nationwide",
             "status": "PENDING",
             "molecular_id": "B-987456"
         }
@@ -146,8 +149,8 @@
             "surgical_event_id": "SUREVT101",
             "molecular_dna_id": "DNA1234",
             "molecular_cdna_id": "CDNA1234",
-            "carrier": "Federal Express",
             "tracking_id": "1203454512316546",
+            "location": "Nationwide",
             "status": "PENDING",
             "molecular_id": "B-987456"
         }
@@ -162,6 +165,8 @@
         "event_data": {
             "surgical_event_id": "SUREVT101",
             "collected_datetime": "2016-02-09T22:06:33+00:00",
+            "tracking_id": "6758 6785 7318",
+            "location": "Nationwide",
             "received_datetime": "2016-02-11T22:08:33+00:00",
             "status": "PENDING",
             "molecular_id": "B-987456"
@@ -359,6 +364,8 @@
         "step": "1.0",
         "event_data": {
             "surgical_event_id": "COSM1234",
+            "tracking_id": "6758 6785 7318",
+            "location": "Nationwide",
             "collected_datetime": "2015-05-09T22:06:33+00:00",
             "received_datetime": "2015-05-13T22:08:33+00:00",
             "status": "CONFIRMED",
@@ -375,8 +382,9 @@
         "event_data": {
             "surgical_event_id": "COSM1234",
             "collected_datetime": "2015-05-09T22:06:33+00:00",
+            "tracking_id": "6758 6785 7318",
+            "location": "Nationwide",
             "received_datetime": "2015-05-13T22:08:33+00:00",
-            "status": "RECEIVED",
             "molecular_id": "B-987456"
         }
     },
@@ -389,7 +397,6 @@
         "step": "1.0",
         "event_data": {
             "biomarker": "ICCPTEN",
-            "status": "RECEIVED",
             "result": "POSITIVE",
             "molecular_id": "B-987456",
             "reported_date": "2015-05-12T22:04:33+00:00"
@@ -433,8 +440,8 @@
             "surgical_event_id": "COSM1234",
             "molecular_dna_id": "DNA1234",
             "molecular_cdna_id": "CDNA1234",
-            "carrier": "Federal Express",
             "tracking_id": "1203454512316546",
+            "location": "Nationwide",
             "status": "PENDING",
             "molecular_id": "B-987456"
         }
@@ -449,6 +456,8 @@
         "event_data": {
             "surgical_event_id": "COSM1234",
             "collected_datetime": "2015-05-09T22:06:33+00:00",
+            "tracking_id": "6758 6785 7318",
+            "location": "Nationwide",
             "received_datetime": "2015-05-11T22:08:33+00:00",
             "status": "PENDING",
             "molecular_id": "B-987456"

@@ -1,10 +1,11 @@
 (function () {
 
-    angular.module('patient.matchbox', [])
+    angular.module('patient.matchbox', ['ui.router'])
         .controller('PatientController', PatientController);
 
     function PatientController($scope,
         DTOptionsBuilder,
+        DTColumnDefBuilder,
         matchApiMock,
         $stateParams,
         $log,
@@ -13,19 +14,18 @@
         $state,
         $window,
         store,
-        $filter) {
+        $filter,
+        arrayTools) {
 
         var vm = this;
 
-        this.dtOptions = DTOptionsBuilder.newOptions()
-            .withDisplayLength(10);
+        $scope.dtColumnDefs = DTColumnDefBuilder.newColumnDef(0).notSortable();
 
-        // vm.dtOptions = DTOptionsBuilder.newOptions()
-        //     .withOption('bLengthChange', false);
-
-        // vm.dtOptions = DTOptionsBuilder.newOptions()
-        //     .withOption('searching', false);
-
+        $scope.dtOptions = DTOptionsBuilder.newOptions()
+            .withDisplayLength(10)
+            .withOption('paging', false)
+            .withOption('bLengthChange', false)
+            .withOption('searching', false);
 
         $scope.currentUser = null;
 
@@ -48,7 +48,7 @@
         $scope.files = [];
 
         $scope.currentSurgicalEvent = null;
-        $scope.currentAnalisys = null;
+        $scope.currentAnalysis = null;
         $scope.currentShipment = null;
         $scope.currentTissueVariantReport = null;
         $scope.currentBloodVariantReport = null;
@@ -75,7 +75,7 @@
         $scope.dropzoneConfig = {
             url: '/alt_upload_url',
             parallelUploads: 3,
-            maxFileSize: 30
+            maxFileSize: 4000
         };
 
         $scope.setVariantReportType = setVariantReportType;
@@ -108,9 +108,10 @@
         $scope.needToDisplayReportStatus = needToDisplayReportStatus;
         $scope.needToDisplayCbnaWarning = needToDisplayCbnaWarning;
         $scope.getNewFileButtonClass = getNewFileButtonClass;
-        $scope.loadQc_Table = loadQc_Table;
-        $scope.loadSnv_Table = loadSnv_Table;
-        $scope.loadGene_Table = loadGene_Table;
+        $scope.loadQcTable = loadQcTable;
+        $scope.loadSnvTable = loadSnvTable;
+        $scope.loadGeneTable = loadGeneTable;
+        $scope.uploadSampleFile = uploadSampleFile;
 
         //FILTER
         $scope.$watch('confirmed', function (newValue, oldValue) {
@@ -152,9 +153,9 @@
 
         //Sample Mocks
         //CNV
-        function loadQc_Table() {
+        function loadQcTable() {
             matchApiMock
-                .loadQc_Table()
+                .loadQcTable()
                 .then(loadQcList);
         }
 
@@ -163,9 +164,9 @@
         }
 
         //SNV
-        function loadSnv_Table() {
+        function loadSnvTable() {
             matchApiMock
-                .loadQc_Table()
+                .loadQcTable()
                 .then(loadSnvList);
         }
 
@@ -174,9 +175,9 @@
         }
 
         //GENE
-        function loadGene_Table() {
+        function loadGeneTable() {
             matchApiMock
-                .loadQc_Table()
+                .loadQcTable()
                 .then(loadGeneList);
         }
 
@@ -327,22 +328,9 @@
             if (slideShipments.length > 0) {
                 for (var k = 0; k < slideShipments.length; k++) {
                     var slideSpecimenShipment = slideShipments[k];
-                    removeFromArray(slideSpecimenShipment.surgicalEvent.specimen_shipments, slideSpecimenShipment.shipment)
+                    arrayTools.removeElement(slideSpecimenShipment.surgicalEvent.specimen_shipments, slideSpecimenShipment.shipment)
                 }
             }
-        }
-
-        function removeFromArray(arr, element) {
-            if (!arr || !element)
-                return -1;
-
-            var index = arr.indexOf(element);
-            if (index >= 0) {
-                arr.splice(index, 1);
-                return index;
-            }
-
-            return -1;
         }
 
         function setupSurgicalEventOptions() {
@@ -413,7 +401,7 @@
             // Assuming latest variant reports are sorted as "latest on top"
             for (var i = 0; i < $scope.tissueVariantReportOptions.length; i++) {
                 var option = $scope.tissueVariantReportOptions[i];
-                if (option.surgical_event_id === $scope.currentSurgicalEvent.surgical_event_id) {
+                if (option.value.surgical_event_id === $scope.currentSurgicalEvent.surgical_event_id) {
                     return option;
                 }
             }
@@ -430,7 +418,7 @@
 
             if ($scope.currentTissueVariantReport.molecular_id !== currentAssignment.molecular_id
                 || $scope.currentTissueVariantReport.analysis_id !== currentAssignment.analysis_id) {
-                $log.error('Unable to find Assignment Report ' + $scope.currentTissueVariantReport.molecularId + ',' + $scope.currentTissueVariantReport.analysisId);
+                $log.debug('Unable to find Assignment Report ' + $scope.currentTissueVariantReport.molecular_id + ',' + $scope.currentTissueVariantReport.analysis_id);
                 return;
             }
 
@@ -463,6 +451,8 @@
         function selectTissueVariantReport(option) {
             var previous = $scope.currentTissueVariantReport;
             $scope.currentTissueVariantReport = null;
+            $scope.assignmentReportOption = null;
+            $scope.currentAssignmentReport = null;
 
             for (var i = 0; i < $scope.variantReports.length; i++) {
                 var variantReport = $scope.variantReports[i];
@@ -475,6 +465,8 @@
                     }
                 }
             }
+
+            setupAssignmentReportOptions();
 
             if ($scope.currentTissueVariantReport) {
                 setupAssignmentReportOptions();
@@ -712,23 +704,14 @@
                     variantReport.comment_user = $scope.currentUser;
                     variantReport.status_date = moment.utc(new Date()).utc();
 
-                    var rejectVariants = function (variants) {
-                        if (!variants || !variants.length)
-                            return;
-                        for (var i = 0; i < variants.length; i++) {
-                            variants[i].comment = null;
-                            variants[i].confirmed = false;
-                        }
-                    };
-
                     if (variantReport.variants.snvs_and_indels)
-                        rejectVariants(variantReport.variants.snvs_and_indels);
+                        updateVariants(variantReport.variants.snvs_and_indels, false);
 
                     if (variantReport.variants.copy_number_variants)
-                        rejectVariants(variantReport.variants.copy_number_variants);
+                        updateVariants(variantReport.variants.copy_number_variants, false);
 
                     if (variantReport.variants.gene_fusions)
-                        rejectVariants(variantReport.variants.gene_fusions);
+                        updateVariants(variantReport.variants.gene_fusions, false);
 
                     if (variantReport.variant_report_type === 'BLOOD') {
                         updateTissueVariantReportOption(variantReport);
@@ -737,6 +720,17 @@
                     }
                 }
             });
+        }
+
+        function updateVariants(variants, confirmed) {
+            if (!variants || !variants.length)
+                return;
+            for (var i = 0; i < variants.length; i++) {
+                if (confirmed) {
+                    variants[i].comment = null;
+                }
+                variants[i].confirmed = confirmed;
+            }
         }
 
         function confirmVariantReport(variantReport) {
@@ -797,10 +791,10 @@
             }
         }
 
-        function getNewFileButtonClass(shipment, analisys) {
-            $log.debug(analisys);
+        function getNewFileButtonClass(shipment, analysis) {
+            $log.debug(analysis);
 
-            return (analisys && analisys.status && analisys.status === 'PENDING') ?
+            return (analysis && analysis.status && analysis.status === 'PENDING') ?
                 vm.enabledFileButtonClass :
                 vm.disabledFileButtonClass;
         }
@@ -866,7 +860,7 @@
 
         function selectSurgicalEvent(option) {
             $scope.currentSurgicalEvent = null;
-            $scope.currentAnalisys = null;
+            $scope.currentAnalysis = null;
             $scope.currentShipment = null;
 
             for (var i = 0; i < $scope.data.specimens.length; i++) {
@@ -879,7 +873,7 @@
                         var shipment = surgicalEvent.specimen_shipments[0];
                         if (shipment.analyses && shipment.analyses.length) {
                             var analysis = shipment.analyses[0];
-                            $scope.currentAnalisys = analysis;
+                            $scope.currentAnalysis = analysis;
                         }
                     }
 
@@ -901,7 +895,7 @@
         }
 
         function showAssignmentReportActions(report) {
-            return true; // TODO:RZ add logic back: report && report.status && report.status === 'PENDING';
+            return report && report.status && report.status === 'PENDING';
         }
 
         function navigateTo(navigateTo) {
@@ -1028,6 +1022,21 @@
             });
 
             return total === 0;
+        }
+
+        function uploadSampleFile() {
+            var modalInstance = $uibModal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: 'views/templates/modal_dialog_sample_file_upload.html',
+                controller: 'SampleFileUploadController',
+                resolve: {
+                }
+            });
+
+            modalInstance.result.then(function (analysis) {
+                $log.debug('analysis');
+                $log.debug(analysis);
+            });
         }
     }
 

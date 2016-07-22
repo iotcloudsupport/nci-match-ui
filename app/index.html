@@ -25,6 +25,10 @@
     <!-- Angular Dropdowns -->
     <link href="bower_components/angular-dropdowns/dist/angular-dropdowns.min.css" rel="stylesheet">
 
+    <!--responsive table-->
+    <link rel="stylesheet" href="bower_components/RWD-Table-Patterns/dist/css/rwd-table.min.css">
+    <!--responsive table-->
+
     <!-- Main Inspinia CSS files -->
     <link href="styles/animate.css" rel="stylesheet">
     <!-- endbower -->
@@ -33,6 +37,8 @@
     <!-- build:css({.tmp,app}) styles/style.css -->
     <link href="styles/style.css" rel="stylesheet">
     <!-- endbuild -->
+
+
 </head>
 
 
@@ -112,23 +118,17 @@
 
     <!-- Matchbox Angular App Script -->
     <script src="scripts/app.js"></script>
+
     <script src="scripts/config.js"></script>
+
     <script src="scripts/filters/match_filters.js"></script>
+
     <script src="scripts/factories/match_config_factory.js"></script>
     <script src="scripts/factories/match_http_factory.js"></script>
     <script src="scripts/factories/match_http_factory.mock.js"></script>
-    <script src="scripts/directives/directives.js"></script>
-    <script src="scripts/controllers/login_controller.js"></script>
-    <script src="scripts/controllers/navigation_controller.js"></script>
-    <script src="scripts/controllers/patients_controller.js"></script>
-    <script src="scripts/controllers/patient_controller.js"></script>
+    <script src="scripts/factories/tools_factory.js"></script>
 
-    <script src="scripts/controllers/treatment_arms_controller.js"></script>
-    <script src="scripts/controllers/treatment_arm_controller.js"></script>
-    <script src="scripts/controllers/specimen_tracking_controller.js"></script>
-    <script src="scripts/controllers/reports_controller.js"></script>
-    <script src="scripts/controllers/dashboard_controller.js"></script>
-    <script src="scripts/controllers/modal_dialog_with_comment_controller.js"></script>
+    <script src="scripts/directives/directives.js"></script>
     <script src="scripts/directives/checkbox_with_confirm_directive.js"></script>
     <script src="scripts/directives/patient_timeline_directive.js"></script>
     <script src="scripts/directives/treatment_arm_title_directive.js"></script>
@@ -137,6 +137,17 @@
     <script src="scripts/directives/action_items_directive.js"></script>
     <script src="scripts/directives/tracking_link_directive.js"></script>
 
+    <script src="scripts/controllers/login_controller.js"></script>
+    <script src="scripts/controllers/navigation_controller.js"></script>
+    <script src="scripts/controllers/patients_controller.js"></script>
+    <script src="scripts/controllers/patient_controller.js"></script>
+    <script src="scripts/controllers/treatment_arms_controller.js"></script>
+    <script src="scripts/controllers/treatment_arm_controller.js"></script>
+    <script src="scripts/controllers/specimen_tracking_controller.js"></script>
+    <script src="scripts/controllers/reports_controller.js"></script>
+    <script src="scripts/controllers/dashboard_controller.js"></script>
+    <script src="scripts/controllers/modal_dialog_with_comment_controller.js"></script>
+    <script src="scripts/controllers/sample_file_upload_controller.js"></script>
     <script src="scripts/controllers/ir_report_controller.js"></script>
     <script src="scripts/controllers/ir_sample_controller.js"></script>
     <script src="scripts/controllers/ir_ntc_controller.js"></script>
@@ -164,6 +175,10 @@
 
     <!-- Config Custom JS -->
     <script src="scripts/env/login_config.js"></script>
+
+    <!--responsive tables-->
+    <script src="bower_components/RWD-Table-Patterns/src/js/rwd-table.js"></script>
+    <!--responsive tables-->
 
 </body>
 
