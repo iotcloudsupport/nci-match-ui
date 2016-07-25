@@ -19,7 +19,7 @@
                 <div class="col-lg-12 ">
                     <div class="ibox float-e-margins">
 
-                        <div class="col-lg-12 white-bg animated fadeInRight" ng-init="loadSampleBreakups();loadHeartMoChaBeatList()">
+                        <div class="col-lg-12 white-bg animated fadeInRight" ng-init="loadSampleBreakups();loadHeartMoChaBeatList();">
 
                             <div class="row">
                                 <div class="col-lg-12">
@@ -45,7 +45,7 @@
                                 </div>
 
                                 <!--PIE CHART-->
-                                <div ng-if="branch == 'mocha'" ng-init="loadPieChart(branch);">
+                                <div ng-if="branch == 'mocha'" ng-init="loadPieChart(branch);loadSampleHRFiles();">
 
                                     <div class="col-lg-12">
                                         <!--HEART BEAT-->
@@ -64,6 +64,7 @@
                                                             <td >Host</td>
                                                             <td >Status</td>
                                                             <td >Last Contact</td>
+                                                            <td >Data Files</td>
                                                         </tr>
                                                         </thead>
                                                         <tbody ng-repeat="ir in moChaList">
@@ -72,6 +73,20 @@
                                                         <td> <div class=" font-bold "> {{ ir.host }} </div></td>
                                                         <td> <div ng-style="{'color':'{{ ir.status | irsample }}'}"> {{ ir.status }} </div></td>
                                                         <td> <div ng-style="{'color':'{{ ir.status | irsample }}'}"> {{ ir.lastcon }} </div></td>
+                                                        <td>
+
+                                                            <div class="row">
+                                                                <div class="col-md-12 text-left">
+                                                                    <a ng-class="" target="_local" href="{{hrReports[0].report}}" download="report.json"
+                                                                       class="btn btn-xs btn-outline file-button-xs btn-success">DB REPORT</a>
+                                                                    <a ng-class="" target="_local" href="{{hrReports[0].data}}" download="data.txt"
+                                                                       class="btn btn-xs btn-outline file-button-xs btn-success">DATA FILE</a>
+                                                                    <a ng-class="" target="_local" href="{{hrReports[0].log}}" download="log.txt"
+                                                                       class="btn btn-xs btn-outline file-button-xs btn-success">LOG FILE</a>
+                                                                </div>
+                                                            </div>
+
+                                                        </td>
                                                         </tbody>
                                                     </table>
 
@@ -173,6 +188,7 @@
                                                             <td >Host</td>
                                                             <td >Status</td>
                                                             <td >Last Contact</td>
+                                                            <td >Data Files</td>
                                                         </tr>
                                                         </thead>
                                                         <tbody ng-repeat="ir in mdAccList">
@@ -181,6 +197,20 @@
                                                         <td> <div class="font-bold "> {{ ir.host }} </div></td>
                                                         <td> <div ng-style="{'color':'{{ ir.status | irsample }}'}"> {{ ir.status }} </div></td>
                                                         <td> <div ng-style="{'color':'{{ ir.status | irsample }}'}"> {{ ir.lastcon }} </div></td>
+                                                        <td>
+
+                                                            <div class="row">
+                                                                <div class="col-md-12 text-left">
+                                                                <a ng-class="" target="_local" href="{{hrReports[0].report}}" download="report.json"
+                                                                   class="btn btn-xs btn-outline file-button-xs btn-success">DB REPORT</a>
+                                                                <a ng-class="" target="_local" href="{{hrReports[0].data}}" download="data.txt"
+                                                                   class="btn btn-xs btn-outline file-button-xs btn-success">DATA FILE</a>
+                                                                <a ng-class="" target="_local" href="{{hrReports[0].log}}" download="log.txt"
+                                                                   class="btn btn-xs btn-outline file-button-xs btn-success">LOG FILE</a>
+                                                                </div>
+                                                            </div>
+
+                                                        </td>
                                                         </tbody>
                                                     </table>
 
@@ -377,6 +407,9 @@
                                                                                                         <dt>Torrent Variant Caller Version</dt>
                                                                                                         <dd>tvc 4.4-8 </dd>
 
+                                                                                                        <dt>STATUS</dt>
+                                                                                                        <dd>{{mochaList.current_status}}</dd>
+
                                                                                                     </dl>
                                                                                                 </div>
                                                                                             </div>
@@ -455,8 +488,8 @@
                                                                                                         <!--<tr ng-style="{'background-color':'{{ sample.hasMatchingVariant | irsample }}'}" ng-repeat="sample in positiveControlList">-->
                                                                                                         <tr ng-repeat="sample in positiveControlList">
                                                                                                             <td>
-                                                                                                                <i ng-if="sample.hasMatchingVariant == 'true'" class="fa fa-plus fa-2x" style="color: darkgreen"></i>
-                                                                                                                <i ng-if="sample.hasMatchingVariant == 'false'" class="fa fa-minus fa-2x" style="color: red"></i>
+                                                                                                                <i ng-if="sample.hasMatchingVariant == 'true'" class="fa fa-plus" style="color: darkgreen"></i>
+                                                                                                                <i ng-if="sample.hasMatchingVariant == 'false'" class="fa fa-minus" style="color: red"></i>
                                                                                                                 <a class="report-link" href ng-click="openCosmicId( sample.identifier )">
                                                                                                                     {{sample.identifier | dashify }}
                                                                                                                 </a>
@@ -738,8 +771,8 @@
                                                                                                     <!--<tr ng-style="{'background-color':'{{ sample.hasMatchingVariant | irsample }}'}" ng-repeat="sample in positiveControlList">-->
                                                                                                     <tr ng-repeat="sample in positiveControlList">
                                                                                                         <td>
-                                                                                                            <i ng-if="sample.hasMatchingVariant == 'true'" class="fa fa-plus fa-2x" style="color: darkgreen"></i>
-                                                                                                            <i ng-if="sample.hasMatchingVariant == 'false'" class="fa fa-minus fa-2x" style="color: red"></i>
+                                                                                                            <i ng-if="sample.hasMatchingVariant == 'true'" class="fa fa-plus" style="color: darkgreen"></i>
+                                                                                                            <i ng-if="sample.hasMatchingVariant == 'false'" class="fa fa-minus" style="color: red"></i>
                                                                                                             <a class="report-link" href ng-click="openCosmicId( sample.identifier )">
                                                                                                                 {{sample.identifier | dashify }}
                                                                                                             </a>

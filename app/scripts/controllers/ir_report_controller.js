@@ -1,20 +1,20 @@
 angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
     .controller('IrAdminController',
-        function( $scope, $http, $window, $stateParams, DTOptionsBuilder, irAdminApi, $location, $anchorScroll, $timeout) {
+        function( $scope, $http, $window, $stateParams, DTOptionsBuilder, irAdminApi, matchApiMock, $location, $anchorScroll, $timeout) {
 
         angular.element(document).ready(function () {
             $('.equal-height-panels .panel').matchHeight();
         });
 
-            var vm = this;
-            vm.dtOptions = DTOptionsBuilder.newOptions()
-            .withDisplayLength(5);
+        var vm = this;
+        vm.dtOptions = DTOptionsBuilder.newOptions()
+        .withDisplayLength(5);
 
-            vm.dtOptions = DTOptionsBuilder.newOptions()
-            .withOption('bLengthChange', false);
+        vm.dtOptions = DTOptionsBuilder.newOptions()
+        .withOption('bLengthChange', false);
 
-            vm.dtOptions = DTOptionsBuilder.newOptions()
-            .withOption('searching', false);
+        vm.dtOptions = DTOptionsBuilder.newOptions()
+        .withOption('searching', false);
 
         this.dtInstance = {};
 
@@ -44,7 +44,25 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         $scope.branch = $stateParams.branch;
         $scope.mid = "undefined";
         $scope.cellColor = "";
+        $scope.hrReports = null;
+        $scope.loadSampleHRFiles = loadSampleHRFiles;
 
+
+        function loadSampleHRFiles() {
+            var hr_files = [];
+            hr_files.push({
+                'report':'data/sample_hr_data_report.json',
+                'data':'data/sample_hr_data_file.txt',
+                'log':'data/sample_hr_log_file.txt'
+            });
+            $scope.hrReports = hr_files;
+            // alert(JSON.stringify( $scope.hrReports))
+        };
+
+            $scope.getFileButtonClass = getFileButtonClass;
+        function getFileButtonClass(filePath) {
+            return filePath ? vm.enabledFileButtonClass : vm.disabledFileButtonClass;
+        }
 
 
         if($scope.branch === 'mocha'){
@@ -86,6 +104,9 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             });
 
 
+           
+            
+            
             $scope.openCosmicGene = function (id) {
                 $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + id.toLowerCase(), "_blank");
                 $window.focus();
@@ -263,98 +284,59 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         };
 
 
-            //SNV
-            function loadMoChaList(data) {
-                $scope.mochaList = data;
-            };
+            //Svg for samples
             $scope.loadMocha_Table = function () {
+                matchApiMock
+                    .loadMocha_List()
+                    .then(function (d) {
+                        loadMoChaList(d);
+                    });
+            };
+            function loadMoChaList(data) {
+                $scope.mochaList = data.data;
+            };
 
-                var url ="data/sample_mocha_list.json";
 
-                $.ajax({
-
-                    type   :  "GET",
-                    url      :   url,
-                    contentType : "application/json",
-                    dataType      : "json",
-                    data            :  {},
-                    success: function(data){
-                        loadMoChaList(data);
-                    },
-                    error:function(jqXHR,textStatus,errorThrown){
-                        alert("Error: "+textStatus.toString());
-                    }
-                });
+            //Svg for samples
+            $scope.loadMochaNtc_Table = function () {
+                matchApiMock
+                    .loadMochaNtc_Table()
+                    .then(function (d) {
+                        loadMoChaNtcList(d);
+                    });
             };
             function loadMoChaNtcList(data) {
                 // alert(JSON.stringify(data))
-                $scope.mochaNtcList = data;
-            };
-            $scope.loadMochaNtc_Table = function () {
-
-                var url ="data/sample_mocha_ntc_list.json";
-
-                $.ajax({
-
-                    type   :  "GET",
-                    url      :   url,
-                    contentType : "application/json",
-                    dataType      : "json",
-                    data            :  {},
-                    success: function(data){
-                        loadMoChaNtcList(data);
-                    },
-                    error:function(jqXHR,textStatus,errorThrown){
-                        alert("Error: "+textStatus.toString());
-                    }
-                });
+                $scope.mochaNtcList = data.data;
             };
 
-            function loadMDACCList(data) {
-                $scope.mdaccList = data;
-            };
+            //Svg for samples
             $scope.loadMDACC_Table = function () {
-
-                var url ="data/sample_mdacc_list.json";
-
-                $.ajax({
-
-                    type   :  "GET",
-                    url      :   url,
-                    contentType : "application/json",
-                    dataType      : "json",
-                    data            :  {},
-                    success: function(data){
-                        loadMDACCList(data);
-                    },
-                    error:function(jqXHR,textStatus,errorThrown){
-                        alert("Error: "+textStatus.toString());
-                    }
-                });
+                matchApiMock
+                    .loadMDACC_Table()
+                    .then(function (d) {
+                        loadMDACCList(d);
+                    });
+            };
+            function loadMDACCList(data) {
+                // alert(JSON.stringify(data))
+                $scope.mdaccList = data.data;
             };
 
-            function loadMDACCNtcList(data) {
-                $scope.mdaccNtcList = data;
-            };
+            //Svg for samples
             $scope.loadMDACCNtc_Table = function () {
-
-                var url ="data/sample_mdacc_ntc_list.json";
-
-                $.ajax({
-
-                    type   :  "GET",
-                    url      :   url,
-                    contentType : "application/json",
-                    dataType      : "json",
-                    data            :  {},
-                    success: function(data){
-                        loadMDACCNtcList(data);
-                    },
-                    error:function(jqXHR,textStatus,errorThrown){
-                        alert("Error: "+textStatus.toString());
-                    }
-                });
+                matchApiMock
+                    .loadMDACCNtc_Table()
+                    .then(function (d) {
+                        loadMDACCNtcList(d);
+                    });
             };
+            function loadMDACCNtcList(data) {
+                // alert(JSON.stringify(data))
+                $scope.mdaccNtcList = data.data;
+            };
+
+            
 
             $scope.date = new Date();
 
@@ -438,6 +420,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 else {$scope.generateNtcMDACC_Table();}
 
             };
+
 
 
         $scope.loadHeartBeatList = function () {
@@ -714,6 +697,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             };
 
 
+
             $scope.loadSampleMDACCControlsList = function () {
 
                 irAdminApi
@@ -739,6 +723,16 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     .then(function (d) {},
                         function(response) {});
             };
+
+
+
+
+            // function loadFile(data) {
+            //
+            //     alert(JSON.stringify(data))
+            //
+            //     // $scope.cnvList = data.data.copyNumberVariants;
+            // };
 
 
 
