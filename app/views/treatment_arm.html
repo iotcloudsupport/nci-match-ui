@@ -154,13 +154,13 @@
                                                 <td>{{item.treatmentArmVersion | dashify }}</td>
                                                 <td ng-style="{'color':'{{ item.patientAssignmentStatusOutcome | status }}'}">{{item.patientAssignmentStatusOutcome | dashify }}</td>
                                                 <td class="text-center">
-                                                    <a ui-sref="patient({ patient_id: item.patient_id, section: 'variant_report', molecular_id: item.molecular_id, item: patient.analysis_id })"
+                                                    <a ui-sref="patient({ patient_id: item.patient_id, section: 'tissue_variant_report', molecular_id: item.molecular_id, analysis_id: item.analysis_id })"
                                                         title="Variant Report">
                                                         <i class="fa fa-file-text-o"></i>
                                                     </a>
                                                 </td>
                                                 <td class="text-center">
-                                                    <a ui-sref="patient({ patient_id: item.patient_id, section: 'assignment_report', molecular_id: item.molecular_id, item: patient.analysis_id })"
+                                                    <a ui-sref="patient({ patient_id: item.patient_id, section: 'assignment_report', molecular_id: item.molecular_id, analysis_id: item.analysis_id })"
                                                         title="Assignment Report">
                                                         <i class="fa fa-file-text-o"></i>
                                                     </a>
