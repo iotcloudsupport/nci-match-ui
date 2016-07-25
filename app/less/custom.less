@@ -386,12 +386,28 @@ div.timeline-item {
   margin-left: 8px
 }
 
-.navbar-brand span.logo {
-  background: url('/img/nci-logo-full.svg');
-  background-repeat: no-repeat;
-  padding-left: 260px; 
-  padding-right: 20px
+.navbar-brand {
+  border-right: 1px solid @border-color;
+
+  span.logo {
+    background: url('/img/nci-logo-full.svg');
+    background-repeat: no-repeat;
+    padding-left: 260px; 
+    padding-right: 10px;
+    color: #606060;
+  }
+
+  span.title {
+    color: @navy;
+  }
 }
+
+.top-navigation .navbar-brand {
+    background: #1ab394;
+    padding: 15px 25px;
+    background: inherit;
+}
+
 
 .wrapper-dashboard {
   margin-top: 24px;
