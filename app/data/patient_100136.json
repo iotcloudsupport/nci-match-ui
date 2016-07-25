@@ -103,11 +103,9 @@
     },
     "current_status": "ON_TREATMENT_ARM",
     "disease": {
-        "name": "Lung adenocarcinoma",
-        "ctep_category": "Lung, Mediastinal and Pleural Neoplasm",
-        "ctep_sub_category": "Non-Small Cell Lung Cancer",
-        "ctep_term": "Lung adenocarcinoma",
-        "med_dra_code": "10025032"
+        "name": "Myeloma, NOS",
+        "type": "Breast Neoplasm",
+        "code": "1000961"
     },
     "prior_drugs": [
         "Aspirin"
