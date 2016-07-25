@@ -1,0 +1,40 @@
+====================================================
+SystemReport on 2016-07-25 10:30:02 -0400
+====================================================
+
+
+IR Uploader Info
+---------------------------------------
+::::::::::::::
+/data/match_uploader/uploader/iruploader/scripts/version.properties
+::::::::::::::
+version=1.1.2
+build_on=Fri Mar  4 15:19:14 EST 2016
+
+
+Output from running dpkg -l ionreporter-manager
+---------------------------------------
+Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name                             Version                           Description
++++-================================-=================================-==========================================================================
+ii  ionreporter-manager              4.4.25                            Ion Reporter Manager
+
+
+Output from running landscape-sysinfo
+---------------------------------------
+System load:  0.47                Processes:           219
+Usage of /:   19.3% of 790.76GB   Users logged in:     0
+Memory usage: 4%                  IP address for eth0: 10.133.226.13
+Swap usage:   0%
+
+Graph this data and manage this system at:
+https://landscape.canonical.com/
+
+
+Output from running crontab -l
+---------------------------------
+0 */1 * * * /data/match_uploader/uploader/iruploader/scripts/run_jobwatcher.sh > /dev/null 2>&1
+*/10 * * * * /data/match_uploader/uploader/iruploader/scripts/run_heartbeat.sh > /dev/null 2>&1
+5 10 * * 6 /data/match_uploader/uploader/iruploader/scripts/backup-db.sh backup /data/match_uploader/uploader/iruploader > /dev/null 2>&1
