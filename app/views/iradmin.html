@@ -75,24 +75,16 @@
                                                         <td> <div ng-style="{'color':'{{ ir.status | irsample }}'}"> {{ ir.lastcon }} </div></td>
                                                         <td>
 
-                                                        <div >
-                                                            <table>
-                                                                <tr>
-                                                                    <td>
-                                                                        <a ng-class="" target="_self" href="{{hrReports[0].report}}" download="report.json"
-                                                                           class="btn btn-xs btn-white file-button-xs">DB REPORT</a>
-                                                                    </td>
-                                                                    <td>
-                                                                        <a ng-class="" target="_self" href="{{hrReports[0].data}}" download="data.txt"
-                                                                           class="btn btn-xs btn-white file-button-xs">DATA FILE</a>
-                                                                    </td>
-                                                                    <td>
-                                                                        <a ng-class="" target="_self" href="{{hrReports[0].log}}" download="log.txt"
-                                                                           class="btn btn-xs btn-white file-button-xs">LOG FILE</a>
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                        </div>
+                                                            <div class="row">
+                                                                <div class="col-md-12 text-left">
+                                                                    <a ng-class="" target="_local" href="{{hrReports[0].report}}" download="report.json"
+                                                                       class="btn btn-xs btn-outline file-button-xs btn-success">DB REPORT</a>
+                                                                    <a ng-class="" target="_local" href="{{hrReports[0].data}}" download="data.txt"
+                                                                       class="btn btn-xs btn-outline file-button-xs btn-success">DATA FILE</a>
+                                                                    <a ng-class="" target="_local" href="{{hrReports[0].log}}" download="log.txt"
+                                                                       class="btn btn-xs btn-outline file-button-xs btn-success">LOG FILE</a>
+                                                                </div>
+                                                            </div>
 
                                                         </td>
                                                         </tbody>
@@ -207,23 +199,15 @@
                                                         <td> <div ng-style="{'color':'{{ ir.status | irsample }}'}"> {{ ir.lastcon }} </div></td>
                                                         <td>
 
-                                                            <div >
-                                                                <table>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <a ng-class="" target="_self" href="{{hrReports[0].report}}" download="report.json"
-                                                                               class="btn btn-xs btn-white file-button-xs">DB REPORT</a>
-                                                                        </td>
-                                                                        <td>
-                                                                            <a ng-class="" target="_self" href="{{hrReports[0].data}}" download="data.txt"
-                                                                               class="btn btn-xs btn-white file-button-xs">DATA FILE</a>
-                                                                        </td>
-                                                                        <td>
-                                                                            <a ng-class="" target="_self" href="{{hrReports[0].log}}" download="log.txt"
-                                                                               class="btn btn-xs btn-white file-button-xs">LOG FILE</a>
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
+                                                            <div class="row">
+                                                                <div class="col-md-12 text-left">
+                                                                <a ng-class="" target="_local" href="{{hrReports[0].report}}" download="report.json"
+                                                                   class="btn btn-xs btn-outline file-button-xs btn-success">DB REPORT</a>
+                                                                <a ng-class="" target="_local" href="{{hrReports[0].data}}" download="data.txt"
+                                                                   class="btn btn-xs btn-outline file-button-xs btn-success">DATA FILE</a>
+                                                                <a ng-class="" target="_local" href="{{hrReports[0].log}}" download="log.txt"
+                                                                   class="btn btn-xs btn-outline file-button-xs btn-success">LOG FILE</a>
+                                                                </div>
                                                             </div>
 
                                                         </td>
