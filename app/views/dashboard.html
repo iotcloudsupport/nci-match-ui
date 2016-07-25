@@ -206,7 +206,7 @@
                                 <tbody>
                                     <tr ng-repeat="patient in pendingAssignmentReportList">
                                         <td>
-                                            <a ui-sref="patient({ "patient_id": patient.patient_id })">
+                                            <a ui-sref="patient({ patient_id: patient.patient_id })">
                                                 <i class="fa fa-user"></i> {{::patient.patient_id }}
                                             </a>
                                         </td>
@@ -349,7 +349,7 @@
                         <tbody>
                             <tr ng-repeat="patient in pendingAssignmentReportList">
                                 <td>
-                                    <a ui-sref="patient({ "patient_id": patient.patient_id })">
+                                    <a ui-sref="patient({ patient_id: patient.patient_id })">
                                         <i class="fa fa-user"></i> {{::patient.patient_id }}
                                     </a>
                                 </td>

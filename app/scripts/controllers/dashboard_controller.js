@@ -253,12 +253,11 @@
         
         function setupScope(data) {
             vm.data = [];
-            angular.copy(data.data, vm.data);
 
             var now = moment();
             var previousStep = null;
 
-            for (var i = 0; i < vm.data.length && i < vm.maxItems; i++) {
+            for (var i = 0; i < data.data.length && i < vm.maxItems; i++) {
                 var timelineEvent = angular.copy(data.data[i]);
                 vm.data.push(timelineEvent);
                 var eventDateMoment = moment(timelineEvent.event_date);
@@ -275,8 +274,6 @@
                 }
             }
         }
-        
-
 
     }
 
