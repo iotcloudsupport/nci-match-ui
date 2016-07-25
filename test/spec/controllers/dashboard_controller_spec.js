@@ -111,7 +111,7 @@ xdescribe('Controller: dashboard Controller', function () {
         httpBackend.when('GET', 'http://server:80/match/common/rs/getPatientsWithPendingAssignmentReport')
             .respond([
                 {
-                    "patientSequenceNumber" : 10372,
+                    "patient_id" : 10372,
                     "biopsySequenceNumber" : 10372-005,
                     "molecularSequenceNumber" : '10372_10372-005-001',
                     "analysis_id" : "somejob1",
@@ -123,7 +123,7 @@ xdescribe('Controller: dashboard Controller', function () {
                     "hoursPending" : 935
                 },
                 {
-                    "patientSequenceNumber" : 10373,
+                    "patient_id" : 10373,
                     "biopsySequenceNumber" : 'N-15-00005',
                     "molecularSequenceNumber" : '10373_1000_N-15-00005',
                     "jobName" : 'testjob1',
@@ -158,7 +158,7 @@ xdescribe('Controller: dashboard Controller', function () {
         httpBackend.when('GET', 'http://server:80/match/common/rs/getPatientsWithPendingVariantReport')
             .respond([
                 {
-                    "patientSequenceNumber":"10375",
+                    "patient_id":"10375",
                     "biopsySequenceNumber":"N-15-00005",
                     "currentPatientStatus":"REGISTRATION",
                     "specimenReceivedDate":1449922209071,
@@ -170,7 +170,7 @@ xdescribe('Controller: dashboard Controller', function () {
                     "location":"Boston"
                 },
                 {
-                    "patientSequenceNumber":"10376",
+                    "patient_id":"10376",
                     "biopsySequenceNumber":"N-15-00006",
                     "currentPatientStatus":"REGISTRATION",
                     "specimenReceivedDate":1449922209078,
@@ -182,7 +182,7 @@ xdescribe('Controller: dashboard Controller', function () {
                     "location":"Boston"
                 },
                 {
-                    "patientSequenceNumber":"10377",
+                    "patient_id":"10377",
                     "biopsySequenceNumber":"N-15-00007",
                     "currentPatientStatus":"REGISTRATION",
                     "specimenReceivedDate":1449922205071,
@@ -212,7 +212,7 @@ xdescribe('Controller: dashboard Controller', function () {
         httpBackend.when('GET', 'http://server:80/match/common/rs/getPatientsWithPendingVariantReport')
             .respond([
                 {
-                    "patientSequenceNumber":"10375",
+                    "patient_id":"10375",
                     "biopsySequenceNumber":"N-15-00005",
                     "currentPatientStatus":"REGISTRATION",
                     "specimenReceivedDate":1449922209071,
@@ -224,7 +224,7 @@ xdescribe('Controller: dashboard Controller', function () {
                     "location":"Boston"
                 },
                 {
-                    "patientSequenceNumber":"10376",
+                    "patient_id":"10376",
                     "biopsySequenceNumber":"N-15-00006",
                     "currentPatientStatus":"REGISTRATION",
                     "specimenReceivedDate":1449922209078,
@@ -236,7 +236,7 @@ xdescribe('Controller: dashboard Controller', function () {
                     "location":"Boston"
                 },
                 {
-                    "patientSequenceNumber":"10377",
+                    "patient_id":"10377",
                     "biopsySequenceNumber":"N-15-00007",
                     "currentPatientStatus":"REGISTRATION",
                     "specimenReceivedDate":1449922205071,

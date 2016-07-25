@@ -1,7 +1,7 @@
 [
   {
     "slot": "-",
-    "patientSequenceNumber": "100136",
+    "patient_id": "100136",
     "treatmentArmVersion": "2016-05-24",
     "patientAssignmentStatusOutcome": "NOT_ELIGIBLE",
     "assignmentLogic": "Assignment Details",
@@ -16,7 +16,7 @@
   },
   {
     "slot": "-",
-    "patientSequenceNumber": "100099",
+    "patient_id": "100099",
     "treatmentArmVersion": "2016-05-24",
     "patientAssignmentStatusOutcome": "NOT_ELIGIBLE",
     "assignmentLogic": "Assignment Details",
@@ -30,7 +30,7 @@
     "reason": "The patient contains no matching variant."
   },
   {
-    "patientSequenceNumber": "100100",
+    "patient_id": "100100",
     "treatmentArmVersion": "2015-08-06",
     "patientAssignmentStatusOutcome": "ON_TREATMENT_ARM",
     "assignmentLogic": "Assignment Details",

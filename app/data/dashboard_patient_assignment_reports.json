@@ -1,11 +1,12 @@
 [
   {
     "patient_id": "100025",
-    "molecular_id": "MOL001_1",
-    "analysis_id": "SAM001_02",
+    "molecular_id": "MOL002_2",
+    "analysis_id": "SAM002_04",
     "disease": "Breast Cancer",
-    "treatment_arm": "APEC1621-U",
-    "stratum": "STR1",
+    "treatment_arm": "APEC1621-B",
+    "treatment_arm_stratum_id": "STR2",
+    "treatment_arm_version": "2015-08-06",
     "assignment_date": 1423162969643,
     "hours_pending": "3"
   }

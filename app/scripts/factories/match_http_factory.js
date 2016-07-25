@@ -44,7 +44,7 @@
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getBasicPatientsData');
             },
             getPatientDetailsData: function (psn) {
-                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getPatientDetails?patientSequenceNumber=' + psn);
+                return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getPatientDetails?"patient_id"=' + psn);
             },
             getBasicTreatmentArms: function () {
                 return $http.get(matchConfig.matchApiBaseUrl + '/common/rs/getBasicTreatmentArms');

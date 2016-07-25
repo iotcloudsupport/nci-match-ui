@@ -1,7 +1,7 @@
 [
   {
     "slot": "-",
-    "patientSequenceNumber": "100100",
+    "patient_id": "100100",
     "treatmentArmVersion": "2014-06-06",
     "patientAssignmentStatusOutcome": "ON_TREATMENT_ARM",
     "assignmentLogic": "Assignment Details",
@@ -16,7 +16,7 @@
   },
   {
     "slot": "-",
-    "patientSequenceNumber": "100099",
+    "patient_id": "100099",
     "treatmentArmVersion": "2015-01-01",
     "patientAssignmentStatusOutcome": "NOT_ELIGIBLE",
     "assignmentLogic": "Assignment Details",
@@ -31,7 +31,7 @@
   },
   {
     "slot": "1",
-    "patientSequenceNumber": "100136",
+    "patient_id": "100136",
     "treatmentArmVersion": "2015-08-05",
     "patientAssignmentStatusOutcome": "ON_TREATMENT_ARM",
     "assignmentLogic": "Assignment Details",

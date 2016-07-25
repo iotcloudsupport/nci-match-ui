@@ -31,8 +31,8 @@
                     vm.shownId = vm.seid;
                     break;
                 case 'tissue_variant_report':
-                    console.log('in tissue variant report');
-                    console.log(vm);
+                    // console.log('in tissue variant report');
+                    // console.log(vm);
                     vm.attrs = '{ patient_id: vm.id, section: vm.text, molecular_id: vm.mid, analysis_id: vm.aid }';
                     vm.shownId = vm.aid;
                     break;
@@ -46,6 +46,7 @@
                     break;
                 case 'patient_assignment':
                     vm.shownId = vm.id;
+                    break;
                 default:
                     break;
             }

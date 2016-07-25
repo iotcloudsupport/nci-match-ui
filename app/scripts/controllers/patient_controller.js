@@ -15,7 +15,9 @@
         $window,
         store,
         $filter,
-        arrayTools) {
+        arrayTools,
+        $location,
+        $anchorScroll) {
 
         var vm = this;
 
@@ -112,6 +114,7 @@
         $scope.loadSnvTable = loadSnvTable;
         $scope.loadGeneTable = loadGeneTable;
         $scope.uploadSampleFile = uploadSampleFile;
+        $scope.navigateToTissueVariantReport = navigateToTissueVariantReport;
 
         //FILTER
         $scope.$watch('confirmed', function (newValue, oldValue) {
@@ -991,10 +994,12 @@
 
             var variantReportOption = findTissueVariantReportOption(molecularId, analysisId);
             if (variantReportOption) {
-                selectVariantReport(variantReportOption);
+                selectTissueVariantReport(variantReportOption);
 
                 if ($scope.data.current_assignment.molecular_id === variantReportOption.value.molecular_id && $scope.data.current_assignment.analysis_id === variantReportOption.value.analysis_id) {
                     $scope.currentAssignmentReport = $scope.data.current_assignment;
+                    $location.hash('assignment-report');
+                    $anchorScroll('top');
                 } else {
                     $scope.currentAssignmentReport = null;
                     $log.error('Unable to find Assignment Report ' + molecularId + ',' + analysisId);
