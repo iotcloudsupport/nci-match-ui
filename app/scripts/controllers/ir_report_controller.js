@@ -284,98 +284,59 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         };
 
 
-            //SNV
-            function loadMoChaList(data) {
-                $scope.mochaList = data;
-            };
+            //Svg for samples
             $scope.loadMocha_Table = function () {
+                matchApiMock
+                    .loadMocha_List()
+                    .then(function (d) {
+                        loadMoChaList(d);
+                    });
+            };
+            function loadMoChaList(data) {
+                $scope.mochaList = data.data;
+            };
 
-                var url ="data/sample_mocha_list.json";
 
-                $.ajax({
-
-                    type   :  "GET",
-                    url      :   url,
-                    contentType : "application/json",
-                    dataType      : "json",
-                    data            :  {},
-                    success: function(data){
-                        loadMoChaList(data);
-                    },
-                    error:function(jqXHR,textStatus,errorThrown){
-                        alert("Error: "+textStatus.toString());
-                    }
-                });
+            //Svg for samples
+            $scope.loadMochaNtc_Table = function () {
+                matchApiMock
+                    .loadMochaNtc_Table()
+                    .then(function (d) {
+                        loadMoChaNtcList(d);
+                    });
             };
             function loadMoChaNtcList(data) {
                 // alert(JSON.stringify(data))
-                $scope.mochaNtcList = data;
-            };
-            $scope.loadMochaNtc_Table = function () {
-
-                var url ="data/sample_mocha_ntc_list.json";
-
-                $.ajax({
-
-                    type   :  "GET",
-                    url      :   url,
-                    contentType : "application/json",
-                    dataType      : "json",
-                    data            :  {},
-                    success: function(data){
-                        loadMoChaNtcList(data);
-                    },
-                    error:function(jqXHR,textStatus,errorThrown){
-                        alert("Error: "+textStatus.toString());
-                    }
-                });
+                $scope.mochaNtcList = data.data;
             };
 
-            function loadMDACCList(data) {
-                $scope.mdaccList = data;
-            };
+            //Svg for samples
             $scope.loadMDACC_Table = function () {
-
-                var url ="data/sample_mdacc_list.json";
-
-                $.ajax({
-
-                    type   :  "GET",
-                    url      :   url,
-                    contentType : "application/json",
-                    dataType      : "json",
-                    data            :  {},
-                    success: function(data){
-                        loadMDACCList(data);
-                    },
-                    error:function(jqXHR,textStatus,errorThrown){
-                        alert("Error: "+textStatus.toString());
-                    }
-                });
+                matchApiMock
+                    .loadMDACC_Table()
+                    .then(function (d) {
+                        loadMDACCList(d);
+                    });
+            };
+            function loadMDACCList(data) {
+                // alert(JSON.stringify(data))
+                $scope.mdaccList = data.data;
             };
 
-            function loadMDACCNtcList(data) {
-                $scope.mdaccNtcList = data;
-            };
+            //Svg for samples
             $scope.loadMDACCNtc_Table = function () {
-
-                var url ="data/sample_mdacc_ntc_list.json";
-
-                $.ajax({
-
-                    type   :  "GET",
-                    url      :   url,
-                    contentType : "application/json",
-                    dataType      : "json",
-                    data            :  {},
-                    success: function(data){
-                        loadMDACCNtcList(data);
-                    },
-                    error:function(jqXHR,textStatus,errorThrown){
-                        alert("Error: "+textStatus.toString());
-                    }
-                });
+                matchApiMock
+                    .loadMDACCNtc_Table()
+                    .then(function (d) {
+                        loadMDACCNtcList(d);
+                    });
             };
+            function loadMDACCNtcList(data) {
+                // alert(JSON.stringify(data))
+                $scope.mdaccNtcList = data.data;
+            };
+
+            
 
             $scope.date = new Date();
 
