@@ -28,9 +28,19 @@
             </span>-->
 
             <span ng-if="timelineEvent.event_data.surgical_event_id">
-                    Surgical Event ID: <span class="timeline-value"><patient-title id="timelineEvent.patient_id" text="'surgical_event'" seid="timelineEvent.event_data.surgical_event_id" mid="timelineEvent.event_data.molecular_id" aid="timelineEvent.event_data.analysis_id"></patient-title></span>
-                    <br>
-                </span>
+                Surgical Event ID: <span class="timeline-value"><patient-title id="timelineEvent.patient_id" text="'surgical_event'" seid="timelineEvent.event_data.surgical_event_id" mid="timelineEvent.event_data.molecular_id" aid="timelineEvent.event_data.analysis_id"></patient-title></span>
+                <br>
+            </span>
+
+            <!--<span ng-if="timelineEvent.event_data.analysis_id">
+                Analysis ID: <span class="timeline-value">{{::timelineEvent.event_data.analysis_id}}</span>
+                <br>
+            </span>-->
+
+            <span ng-if="timelineEvent.event_data.analysis_id">
+                Analysis ID: <span class="timeline-value"><patient-title id="timelineEvent.patient_id" text="'tissue_variant_report'" mid="timelineEvent.event_data.molecular_id" aid="timelineEvent.event_data.analysis_id"></patient-title></span>
+                <br>
+            </span>
 
             <span ng-if="timelineEvent.event_data.collected_datetime && (timelineEvent.event_data.collected_datetime | utc) !== '-'">
                 Collected Date: <span class="timeline-value">{{::timelineEvent.event_data.collected_datetime | utc}}</span>
