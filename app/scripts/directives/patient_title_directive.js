@@ -22,8 +22,7 @@
             vm.getTextColor = function() {
                 return vm.textColor ? vm.textColor : 'color:inherit';
             };
-
-            console.log('does this print no matter what?');
+            
             vm.shownId = vm.id;
             vm.attrs = '{ patient_id: vm.id }';
             switch(vm.text) {
