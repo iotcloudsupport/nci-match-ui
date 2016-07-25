@@ -150,7 +150,7 @@
                                         <tbody>
                                             <tr ng-repeat="item in patients">
                                                 <td>{{item.slot | dashify }}</td>
-                                                <td><a ui-sref="patient({ patient_id: item."patient_id" })"><i class="fa fa-user"></i> {{item."patient_id" | dashify }}</a></td>
+                                                <td><a ui-sref="patient({ patient_id: item.patient_id })"><i class="fa fa-user"></i> {{item.patient_id | dashify }}</a></td>
                                                 <td>{{item.treatmentArmVersion | dashify }}</td>
                                                 <td ng-style="{'color':'{{ item.patientAssignmentStatusOutcome | status }}'}">{{item.patientAssignmentStatusOutcome | dashify }}</td>
                                                 <td class="text-center">
