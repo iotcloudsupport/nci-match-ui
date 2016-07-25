@@ -40,8 +40,6 @@
             var key = type + '.' + (layout ? layout : 'normal');
             if (key in templateMap) {
                 var url = templateMap[key];
-                console.log('-----------');
-                console.log(url);
                 return $http.get(url, { cache: $templateCache });
             } else {
                 $log.error('patient-timeline directive: invalid timeline type "' + type + '"');
