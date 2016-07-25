@@ -344,6 +344,10 @@
 
             for (var i = 0; i < $scope.data.specimens.length; i++) {
                 var surgicalEvent = $scope.data.specimens[i];
+
+                if (surgicalEvent.type === 'BLOOD')
+                    continue;
+
                 var collectedDate = $filter('utc')(surgicalEvent.collected_date);
 
                 var item = {
