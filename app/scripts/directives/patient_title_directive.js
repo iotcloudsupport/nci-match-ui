@@ -22,15 +22,17 @@
             vm.getTextColor = function() {
                 return vm.textColor ? vm.textColor : 'color:inherit';
             };
-            
+
             vm.shownId = vm.id;
             vm.attrs = '{ patient_id: vm.id }';
             switch(vm.text) {
                 case 'surgical_event':
-                    vm.attrs = '{ patient_id: vm.id, section: vm.text, molecular_id: vm.mid, analysis_id: vm.aid }';
+                    vm.attrs = '{ patient_id: vm.id, section: vm.text, surgical_event_id: vm.seid }';
                     vm.shownId = vm.seid;
                     break;
                 case 'tissue_variant_report':
+                    console.log('in tissue variant report');
+                    console.log(vm);
                     vm.attrs = '{ patient_id: vm.id, section: vm.text, molecular_id: vm.mid, analysis_id: vm.aid }';
                     vm.shownId = vm.aid;
                     break;
