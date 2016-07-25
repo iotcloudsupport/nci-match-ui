@@ -1,20 +1,20 @@
 angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
     .controller('IrAdminController',
-        function( $scope, $http, $window, $stateParams, DTOptionsBuilder, irAdminApi, $location, $anchorScroll, $timeout) {
+        function( $scope, $http, $window, $stateParams, DTOptionsBuilder, irAdminApi, matchApiMock, $location, $anchorScroll, $timeout) {
 
         angular.element(document).ready(function () {
             $('.equal-height-panels .panel').matchHeight();
         });
 
-            var vm = this;
-            vm.dtOptions = DTOptionsBuilder.newOptions()
-            .withDisplayLength(5);
+        var vm = this;
+        vm.dtOptions = DTOptionsBuilder.newOptions()
+        .withDisplayLength(5);
 
-            vm.dtOptions = DTOptionsBuilder.newOptions()
-            .withOption('bLengthChange', false);
+        vm.dtOptions = DTOptionsBuilder.newOptions()
+        .withOption('bLengthChange', false);
 
-            vm.dtOptions = DTOptionsBuilder.newOptions()
-            .withOption('searching', false);
+        vm.dtOptions = DTOptionsBuilder.newOptions()
+        .withOption('searching', false);
 
         this.dtInstance = {};
 
@@ -44,7 +44,25 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         $scope.branch = $stateParams.branch;
         $scope.mid = "undefined";
         $scope.cellColor = "";
+        $scope.hrReports = null;
+        $scope.loadSampleHRFiles = loadSampleHRFiles;
 
+
+        function loadSampleHRFiles() {
+            var hr_files = [];
+            hr_files.push({
+                'report':'data/sample_hr_data_report.json',
+                'data':'data/sample_hr_data_file.txt',
+                'log':'data/sample_hr_log_file.txt'
+            });
+            $scope.hrReports = hr_files;
+            // alert(JSON.stringify( $scope.hrReports))
+        };
+
+            $scope.getFileButtonClass = getFileButtonClass;
+        function getFileButtonClass(filePath) {
+            return filePath ? vm.enabledFileButtonClass : vm.disabledFileButtonClass;
+        }
 
 
         if($scope.branch === 'mocha'){
@@ -86,6 +104,9 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             });
 
 
+           
+            
+            
             $scope.openCosmicGene = function (id) {
                 $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + id.toLowerCase(), "_blank");
                 $window.focus();
@@ -440,6 +461,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             };
 
 
+
         $scope.loadHeartBeatList = function () {
             irAdminApi
                 .loadHeartBeatList()
@@ -714,6 +736,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             };
 
 
+
             $scope.loadSampleMDACCControlsList = function () {
 
                 irAdminApi
@@ -739,6 +762,16 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     .then(function (d) {},
                         function(response) {});
             };
+
+
+
+
+            // function loadFile(data) {
+            //
+            //     alert(JSON.stringify(data))
+            //
+            //     // $scope.cnvList = data.data.copyNumberVariants;
+            // };
 
 
 
