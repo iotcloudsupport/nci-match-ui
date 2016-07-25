@@ -161,11 +161,9 @@
     },
     "current_status": "TISSUE_VARIANT_REPORT_RECEIVED",
     "disease": {
-        "name": "Invasive Breast Cancer",
-        "ctep_category": "Breast Neoplasm",
-        "ctep_sub_category": "Breast Cancer - Invasive",
-        "ctep_term": "Invasive Breast Carcinoma",
-        "med_dra_code": "1000961"
+        "name": "Myeloma, NOS",
+        "type": "Breast Neoplasm",
+        "code": "1000961"
     },
     "prior_drugs": [
         "Aspirin",

@@ -17,7 +17,12 @@
                 loadPatientsForTa: loadPatientsForTa,
                 loadTreatmentArmDetails: loadTreatmentArmDetails,
                 loadQc_Table: loadQc_Table,
-                loadSnv_Table: loadSnv_Table
+                loadSnv_Table: loadSnv_Table,
+                loadSampleHRFiles: loadSampleHRFiles,
+                loadMocha_List: loadMocha_List,
+                loadMochaNtc_Table: loadMochaNtc_Table,
+                loadMDACC_Table: loadMDACC_Table,
+                loadMDACCNtc_Table: loadMDACCNtc_Table
             };
 
             function loadPatient(id) {
@@ -85,6 +90,31 @@
             function loadSnv_Table(){
                 return $http.get('data/sample_qc.json');
             }
-            
+
+            function loadMocha_List(){
+                return $http.get('data/sample_mocha_list.json');
+            }
+
+            function loadMochaNtc_Table(){
+                return $http.get('data/sample_mocha_ntc_list.json');
+            }
+
+            function loadMDACC_Table(){
+                return $http.get('data/sample_mdacc_list.json');
+            }
+
+            function loadMDACCNtc_Table(){
+                return $http.get('data/sample_mdacc_ntc_list.json');
+            }
+
+            function loadSampleHRFiles(){
+                var hr_files = [];
+                hr_files.push({
+                    'report':'data/sample_hr_data_report.json',
+                    'data':'data/sample_hr_data_file.txt',
+                    'log':'data/sample_hr_log_file.txt'
+                });
+                return hr_files;
+            }
         });
 } ());
