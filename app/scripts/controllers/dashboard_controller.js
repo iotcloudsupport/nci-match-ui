@@ -259,7 +259,8 @@
             var previousStep = null;
 
             for (var i = 0; i < vm.data.length && i < vm.maxItems; i++) {
-                var timelineEvent = vm.data[i];
+                var timelineEvent = angular.copy(data.data[i]);
+                vm.data.push(timelineEvent);
                 var eventDateMoment = moment(timelineEvent.event_date);
                 var diff = eventDateMoment.diff(now, "DD/MM/YYYY HH:mm:ss");
                 timelineEvent.from_now = moment.duration(diff).humanize(true);

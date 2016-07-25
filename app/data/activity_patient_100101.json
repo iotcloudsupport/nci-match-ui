@@ -54,28 +54,6 @@
     "patient_id": "100101",
     "event_date": "2016-05-09T22:06:33+00:00",
     "event_name": "Event Name 1",
-    "event_type": "system",
-    "event_message": "Receiving Rule Assignment",
-    "step": "2.0",
-    "event_data": {
-      "status": "COMPLETE"
-    }
-  },
-  {
-    "patient_id": "100101",
-    "event_date": "2016-05-09T22:06:33+00:00",
-    "event_name": "Event Name 1",
-    "event_type": "system",
-    "event_message": "Awaiting Treatment Arms Status",
-    "step": "2.0",
-    "event_data": {
-      "status": "COMPLETE"
-    }
-  },
-  {
-    "patient_id": "100101",
-    "event_date": "2016-05-09T22:06:33+00:00",
-    "event_name": "Event Name 1",
     "event_type": "patient",
     "event_message": "Patient Progression",
     "step": "2.0",
@@ -133,42 +111,9 @@
   },
   {
     "patient_id": "100101",
-    "event_date": "2016-05-09T22:06:33+00:00",
-    "event_name": "Event Name 1",
-    "event_type": "system",
-    "event_message": "Receiving Rule Assignment",
-    "step": "1.0",
-    "event_data": {
-      "status": "COMPLETE"
-    }
-  },
-  {
-    "patient_id": "100101",
-    "event_date": "2016-05-09T22:06:33+00:00",
-    "event_name": "Event Name 1",
-    "event_type": "system",
-    "event_message": "Awaiting Treatment Arms Status",
-    "step": "1.0",
-    "event_data": {
-      "status": "COMPLETE"
-    }
-  },
-  {
-    "patient_id": "100101",
-    "event_date": "2016-05-09T22:06:33+00:00",
-    "event_name": "Event Name 1",
-    "event_type": "system",
-    "event_message": "Awaiting Patient Data",
-    "step": "1.0",
-    "event_data": {
-      "status": "COMPLETE"
-    }
-  },
-  {
-    "patient_id": "100101",
     "event_date": "2016-05-11T22:06:33+00:00",
     "event_name": "Event Name 2",
-    "event_type": "biopsy.variant_veport_received",
+    "event_type": "biopsy.variant_report_received",
     "event_message": "Tissue Variant Report",
     "step": "1.0",
     "event_data": {
@@ -183,7 +128,7 @@
     "patient_id": "100101",
     "event_date": "2016-05-11T22:06:33+00:00",
     "event_name": "Event Name 2",
-    "event_type": "biopsy.variant_veport_received",
+    "event_type": "biopsy.variant_report_received",
     "event_message": "Tissue Variant Report",
     "step": "1.0",
     "event_data": {
@@ -238,7 +183,7 @@
     "patient_id": "100101",
     "event_date": "2016-05-11T22:06:33+00:00",
     "event_name": "Event Name 3",
-    "event_type": "biopsy.variant_veport_shipped",
+    "event_type": "biopsy.variant_report_shipped",
     "event_message": "Tissue Nucleic Acid Shipped",
     "step": "1.0",
     "event_data": {
@@ -255,7 +200,7 @@
     "patient_id": "100101",
     "event_date": "2016-05-11T22:06:33+00:00",
     "event_name": "Event Name 2",
-    "event_type": "biopsy.variant_veport_received",
+    "event_type": "biopsy.variant_report_received",
     "event_message": "Tissue Specimen Received",
     "step": "1.0",
     "event_data": {

@@ -16,10 +16,11 @@
     "stratum": "STR17",
     "current_patients": 4,
     "former_patients": 1,
-    "not_enrolled_patients": 0,
+    "not_enrolled_patients": 1,
     "pending_patients": 0,
     "treatment_arm_status": "CLOSED",
-    "date_opened": 1388566800678
+    "date_opened": 1388566800678,
+    "date_closed" : "2016-05-09T22:06:33.000+00:00"
   },
   {
     "name": "APEC1621-E",
@@ -28,8 +29,9 @@
     "current_patients": 2,
     "former_patients": 0,
     "not_enrolled_patients": 0,
-    "pending_patients": 0,
+    "pending_patients": 1,
     "treatment_arm_status": "SUSPENDED",
-    "date_opened": 1401615020000
+    "date_opened": 1401615020000,
+    "date_closed" : "2016-06-20T09:06:33.000+00:00"
   }
 ]

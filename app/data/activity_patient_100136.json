@@ -44,39 +44,6 @@
     },
     {
         "patient_id": "100136",
-        "event_date": "2016-06-01T14:28:16+00:00",
-        "event_name": "Event Name 34",
-        "event_type": "system",
-        "event_message": "Receiving Rule Assignment",
-        "step": "2.0",
-        "event_data": {
-            "status": "COMPLETE"
-        }
-    },
-    {
-        "patient_id": "100136",
-        "event_date": "2016-06-01T12:46:16+00:00",
-        "event_name": "Event Name 33",
-        "event_type": "system",
-        "event_message": "Awaiting Treatment Arms Status",
-        "step": "2.0",
-        "event_data": {
-            "status": "COMPLETE"
-        }
-    },
-    {
-        "patient_id": "100136",
-        "event_date": "2016-05-31T10:49:39+00:00",
-        "event_name": "Event Name 32",
-        "event_type": "system",
-        "event_message": "Awaiting Patient Data",
-        "step": "2.0",
-        "event_data": {
-            "status": "COMPLETE"
-        }
-    },
-    {
-        "patient_id": "100136",
         "event_date": "2016-05-30T13:54:24+00:00",
         "event_name": "Event Name 31",
         "event_type": "biopsy.variant_report_received",
@@ -298,39 +265,6 @@
             "status": "PENDING",
             "molecular_id": "MOL100136_01_01",
             "location": "GHU"
-        }
-    },
-    {
-        "patient_id": "100136",
-        "event_date": "2015-11-25T14:28:16+00:00",
-        "event_name": "Event Name 16",
-        "event_type": "system",
-        "event_message": "Receiving Rule Assignment",
-        "step": "1.0",
-        "event_data": {
-            "status": "COMPLETE"
-        }
-    },
-    {
-        "patient_id": "100136",
-        "event_date": "2015-11-24T22:06:33+00:00",
-        "event_name": "Event Name 15",
-        "event_type": "system",
-        "event_message": "Awaiting Treatment Arms Status",
-        "step": "1.0",
-        "event_data": {
-            "status": "COMPLETE"
-        }
-    },
-    {
-        "patient_id": "100136",
-        "event_date": "2015-11-24T10:49:39+00:00",
-        "event_name": "Event Name 14",
-        "event_type": "system",
-        "event_message": "Awaiting Patient Data",
-        "step": "1.0",
-        "event_data": {
-            "status": "COMPLETE"
         }
     },
     {

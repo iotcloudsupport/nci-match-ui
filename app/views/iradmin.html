@@ -19,7 +19,7 @@
                 <div class="col-lg-12 ">
                     <div class="ibox float-e-margins">
 
-                        <div class="col-lg-12 white-bg animated fadeInRight" ng-init="loadSampleBreakups();loadHeartMoChaBeatList()">
+                        <div class="col-lg-12 white-bg animated fadeInRight" ng-init="loadSampleBreakups();loadHeartMoChaBeatList();">
 
                             <div class="row">
                                 <div class="col-lg-12">
@@ -45,7 +45,7 @@
                                 </div>
 
                                 <!--PIE CHART-->
-                                <div ng-if="branch == 'mocha'" ng-init="loadPieChart(branch);">
+                                <div ng-if="branch == 'mocha'" ng-init="loadPieChart(branch);loadSampleHRFiles();">
 
                                     <div class="col-lg-12">
                                         <!--HEART BEAT-->
@@ -64,6 +64,7 @@
                                                             <td >Host</td>
                                                             <td >Status</td>
                                                             <td >Last Contact</td>
+                                                            <td >Data Files</td>
                                                         </tr>
                                                         </thead>
                                                         <tbody ng-repeat="ir in moChaList">
@@ -72,6 +73,20 @@
                                                         <td> <div class=" font-bold "> {{ ir.host }} </div></td>
                                                         <td> <div ng-style="{'color':'{{ ir.status | irsample }}'}"> {{ ir.status }} </div></td>
                                                         <td> <div ng-style="{'color':'{{ ir.status | irsample }}'}"> {{ ir.lastcon }} </div></td>
+                                                        <td>
+
+                                                            <div class="row">
+                                                                <div class="col-md-12 text-left">
+                                                                    <a ng-class="" target="_local" href="{{hrReports[0].report}}" download="report.json"
+                                                                       class="btn btn-xs btn-outline file-button-xs btn-success">DB REPORT</a>
+                                                                    <a ng-class="" target="_local" href="{{hrReports[0].data}}" download="data.txt"
+                                                                       class="btn btn-xs btn-outline file-button-xs btn-success">DATA FILE</a>
+                                                                    <a ng-class="" target="_local" href="{{hrReports[0].log}}" download="log.txt"
+                                                                       class="btn btn-xs btn-outline file-button-xs btn-success">LOG FILE</a>
+                                                                </div>
+                                                            </div>
+
+                                                        </td>
                                                         </tbody>
                                                     </table>
 
@@ -173,6 +188,7 @@
                                                             <td >Host</td>
                                                             <td >Status</td>
                                                             <td >Last Contact</td>
+                                                            <td >Data Files</td>
                                                         </tr>
                                                         </thead>
                                                         <tbody ng-repeat="ir in mdAccList">
@@ -181,6 +197,20 @@
                                                         <td> <div class="font-bold "> {{ ir.host }} </div></td>
                                                         <td> <div ng-style="{'color':'{{ ir.status | irsample }}'}"> {{ ir.status }} </div></td>
                                                         <td> <div ng-style="{'color':'{{ ir.status | irsample }}'}"> {{ ir.lastcon }} </div></td>
+                                                        <td>
+
+                                                            <div class="row">
+                                                                <div class="col-md-12 text-left">
+                                                                <a ng-class="" target="_local" href="{{hrReports[0].report}}" download="report.json"
+                                                                   class="btn btn-xs btn-outline file-button-xs btn-success">DB REPORT</a>
+                                                                <a ng-class="" target="_local" href="{{hrReports[0].data}}" download="data.txt"
+                                                                   class="btn btn-xs btn-outline file-button-xs btn-success">DATA FILE</a>
+                                                                <a ng-class="" target="_local" href="{{hrReports[0].log}}" download="log.txt"
+                                                                   class="btn btn-xs btn-outline file-button-xs btn-success">LOG FILE</a>
+                                                                </div>
+                                                            </div>
+
+                                                        </td>
                                                         </tbody>
                                                     </table>
 
@@ -313,12 +343,14 @@
                                                                                     </thead>
                                                                                     <tbody>
 
-                                                                                    <tr ng-repeat="ta in mochaList">
-                                                                                        <td>{{ta.molecular_is | dashify }}</td>
+                                                                                    <!--background-color:black;color:white;font-weight:bold;-->
+
+                                                                                    <tr ng-repeat="ta in mochaList" >
+                                                                                        <td> {{ta.molecular_is | dashify }}</td>
                                                                                         <td>{{ta.date_created | dashify }}</td>
                                                                                         <td>{{ta.date_received | dashify }}</td>
-                                                                                        <td>
-                                                                                            <a class="ng-binding ng-scope" ng-click="openPositives(ta.variant_reports);gotoBottom('mocha')" href>
+                                                                                        <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
+                                                                                            <a class="ng-binding ng-scope" ng-click="openPositives(ta.variant_reports);gotoBottom('mocha')" href >
                                                                                                 {{ta.variant_reports | dashify }}
                                                                                             </a>
                                                                                         </td>
@@ -346,7 +378,7 @@
 
                                                                                                 <div class="header-info-box  variant-report-header-box">
 
-                                                                                                    <dl class="dl-horizontal">
+                                                                                                    <dl class="dl-horizontal dl-horizontal-expanded-label">
 
                                                                                                         <dt>Molecular ID</dt>
                                                                                                         <dd>{{mid}}</dd>
@@ -372,7 +404,7 @@
                                                                                                         <dt>File Received Date</dt>
                                                                                                         <dd>September 18, 2015 3:21 PM GMT </dd>
 
-                                                                                                        <dt style="width: 200px;text-align: left">Torrent Variant Caller Version</dt>
+                                                                                                        <dt>Torrent Variant Caller Version</dt>
                                                                                                         <dd>tvc 4.4-8 </dd>
 
                                                                                                     </dl>
@@ -450,8 +482,11 @@
                                                                                                         </tr>
                                                                                                         </thead>
                                                                                                         <tbody>
-                                                                                                        <tr ng-style="{'background-color':'{{ sample.hasMatchingVariant | irsample }}'}" ng-repeat="sample in positiveControlList">
+                                                                                                        <!--<tr ng-style="{'background-color':'{{ sample.hasMatchingVariant | irsample }}'}" ng-repeat="sample in positiveControlList">-->
+                                                                                                        <tr ng-repeat="sample in positiveControlList">
                                                                                                             <td>
+                                                                                                                <i ng-if="sample.hasMatchingVariant == 'true'" class="fa fa-plus" style="color: darkgreen"></i>
+                                                                                                                <i ng-if="sample.hasMatchingVariant == 'false'" class="fa fa-minus" style="color: red"></i>
                                                                                                                 <a class="report-link" href ng-click="openCosmicId( sample.identifier )">
                                                                                                                     {{sample.identifier | dashify }}
                                                                                                                 </a>
@@ -597,8 +632,7 @@
                                                                                     <td>{{ta.molecular_is | dashify }}</td>
                                                                                     <td>{{ta.date_created | dashify }}</td>
                                                                                     <td>{{ta.date_received | dashify }}</td>
-                                                                                    <td>
-
+                                                                                    <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
                                                                                         <a class="ng-binding ng-scope" ng-click="openMDACCPositives(ta.variant_reports);gotoBottom('mdacc')" href>
                                                                                             {{ta.variant_reports | dashify }}
                                                                                         </a>
@@ -625,7 +659,7 @@
 
                                                                                             <div class="header-info-box  variant-report-header-box">
 
-                                                                                                <dl class="dl-horizontal">
+                                                                                                <dl class="dl-horizontal dl-horizontal-expanded-label">
 
                                                                                                     <dt>Molecular ID</dt>
                                                                                                     <dd>{{mid}}</dd>
@@ -651,7 +685,7 @@
                                                                                                     <dt>File Received Date</dt>
                                                                                                     <dd>September 18, 2015 3:21 PM GMT </dd>
 
-                                                                                                    <dt style="width: 200px;text-align: left">Torrent Variant Caller Version</dt>
+                                                                                                    <dt>Torrent Variant Caller Version</dt>
                                                                                                     <dd>tvc 4.4-8 </dd>
 
                                                                                                 </dl>
@@ -731,8 +765,11 @@
                                                                                                     </tr>
                                                                                                     </thead>
                                                                                                     <tbody>
-                                                                                                    <tr ng-style="{'background-color':'{{ sample.hasMatchingVariant | irsample }}'}" ng-repeat="sample in positiveControlList">
+                                                                                                    <!--<tr ng-style="{'background-color':'{{ sample.hasMatchingVariant | irsample }}'}" ng-repeat="sample in positiveControlList">-->
+                                                                                                    <tr ng-repeat="sample in positiveControlList">
                                                                                                         <td>
+                                                                                                            <i ng-if="sample.hasMatchingVariant == 'true'" class="fa fa-plus" style="color: darkgreen"></i>
+                                                                                                            <i ng-if="sample.hasMatchingVariant == 'false'" class="fa fa-minus" style="color: red"></i>
                                                                                                             <a class="report-link" href ng-click="openCosmicId( sample.identifier )">
                                                                                                                 {{sample.identifier | dashify }}
                                                                                                             </a>
@@ -859,8 +896,8 @@
                                                                                             <td>{{ta.molecular_is | dashify }}</td>
                                                                                             <td>{{ta.date_created | dashify }}</td>
                                                                                             <td>{{ta.date_received  | dashify}}</td>
-                                                                                            <td>
-                                                                                                <a class="ng-binding ng-scope" ng-click="openNegatives();gotoBottom('ntcmocha')" href>
+                                                                                            <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
+                                                                                                <a class="ng-binding ng-scope" ng-click="openNegatives(ta.variant_reports);gotoBottom('ntcmocha')" href>
                                                                                                     {{ta.variant_reports | dashify }}
                                                                                                 </a>
                                                                                             </td>
@@ -884,7 +921,7 @@
 
                                                                                                     <div class="header-info-box  variant-report-header-box">
 
-                                                                                                        <dl class="dl-horizontal">
+                                                                                                        <dl class="dl-horizontal dl-horizontal-expanded-label">
 
                                                                                                             <dt>Molecular ID</dt>
                                                                                                             <dd>NtcControl_MoCha_1</dd>
@@ -910,7 +947,7 @@
                                                                                                             <dt>File Received Date</dt>
                                                                                                             <dd>September 18, 2015 3:21 PM GMT </dd>
 
-                                                                                                            <dt style="width: 200px;text-align: left">Torrent Variant Caller Version</dt>
+                                                                                                            <dt>Torrent Variant Caller Version</dt>
                                                                                                             <dd>tvc 4.4-8 </dd>
 
                                                                                                         </dl>
@@ -1094,7 +1131,7 @@
                                                                                                 <td>{{ta.molecular_is | dashify }}</td>
                                                                                                 <td>{{ta.date_created | dashify }}</td>
                                                                                                 <td>{{ta.date_received | dashify }}</td>
-                                                                                                <td>
+                                                                                                <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
                                                                                                     <a class="ng-binding ng-scope" ng-click="openMDANegatives(ta.variant_reports);;gotoBottom('ntcmdacc')" href>
                                                                                                         {{ta.variant_reports | dashify }}
                                                                                                     </a>
@@ -1119,7 +1156,7 @@
 
                                                                                                         <div class="header-info-box  variant-report-header-box">
 
-                                                                                                            <dl class="dl-horizontal">
+                                                                                                            <dl class="dl-horizontal dl-horizontal-expanded-label">
 
                                                                                                                 <dt>Molecular ID</dt>
                                                                                                                 <dd>NtcControl_MDACC_1</dd>
@@ -1145,7 +1182,7 @@
                                                                                                                 <dt>File Received Date</dt>
                                                                                                                 <dd>September 18, 2015 3:21 PM GMT </dd>
 
-                                                                                                                <dt style="width: 200px;text-align: left">Torrent Variant Caller Version</dt>
+                                                                                                                <dt>Torrent Variant Caller Version</dt>
                                                                                                                 <dd>tvc 4.4-8 </dd>
 
                                                                                                             </dl>

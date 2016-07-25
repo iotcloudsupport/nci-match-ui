@@ -132,7 +132,7 @@ xdescribe('Controller: Treatment Arm Controller', function () {
                         single_nucleotide_variants: [
                             {
                                 alternative: "G",
-                                chromosome: "chr7",
+                                chromosome: "7",
                                 description: "p.L858R",
                                 gene_name: "EGFR",
                                 identifier: "COSM6224",
@@ -147,7 +147,7 @@ xdescribe('Controller: Treatment Arm Controller', function () {
                             },
                             {
                                 alternative: "G",
-                                chromosome: "chr7",
+                                chromosome: "7",
                                 description: "p.L858R",
                                 gene_name: "EGFR",
                                 identifier: "COSM00934",
@@ -160,7 +160,7 @@ xdescribe('Controller: Treatment Arm Controller', function () {
                         indels: [
                             {
                                 alternative: "C",
-                                chromosome: "chr7",
+                                chromosome: "7",
                                 description: "p.K734_E739del",
                                 gene_name: "EGFR",
                                 identifier: "COSM20649",
@@ -171,7 +171,7 @@ xdescribe('Controller: Treatment Arm Controller', function () {
                             },
                             {
                                 alternative: "C",
-                                chromosome: "chr7",
+                                chromosome: "7",
                                 description: "p.K734_E739del",
                                 gene_name: "EGFR",
                                 identifier: "COSF20649",
@@ -182,7 +182,7 @@ xdescribe('Controller: Treatment Arm Controller', function () {
                             },
                             {
                                 alternative: "C",
-                                chromosome: "chr7",
+                                chromosome: "7",
                                 description: "p.K734_E739del",
                                 gene_name: "EGFR",
                                 identifier: "20649",
