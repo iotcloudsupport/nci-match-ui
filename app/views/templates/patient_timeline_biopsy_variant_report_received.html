@@ -5,7 +5,7 @@
         <small class="text-navy">{{::timelineEvent.from_now}}</small>
     </div>
     <div class="col-xs-7 col-md-8 content" ng-class="{'no-top-border':!timelineEvent.isStepChanging}">
-        <p class="m-b-xs"><span class="timeline-step">Step: {{::timelineEvent.step}}.</span> </strong><strong>{{::timelineEvent.event_message}}.</strong></p>
+        <p class="m-b-xs"><span class="timeline-step">Step: {{::timelineEvent.step}}.</span><strong>{{::timelineEvent.event_message}}.</strong></p>
         <p class="m-b-xs">
             <span ng-if="timelineEvent.event_data.status">
                 Variant Report Status: <span ng-style="{'color':'{{ timelineEvent.status | analysisStatus }}'}">{{::timelineEvent.event_data.status}}</span>
@@ -28,7 +28,11 @@
             </span>-->
 
             <span ng-if="timelineEvent.event_data.surgical_event_id">
-                Surgical Event ID: <span class="timeline-value"><patient-title id="timelineEvent.patient_id" text="'surgical_event'" seid="timelineEvent.event_data.surgical_event_id" mid="timelineEvent.event_data.molecular_id" aid="timelineEvent.event_data.analysis_id"></patient-title></span>
+                Surgical Event ID: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id"
+                                                                               text="'surgical_event'"
+                                                                               surgical-event-id="timelineEvent.event_data.surgical_event_id"
+                                                                               molecular-id="timelineEvent.event_data.molecular_id"
+                                                                               analysis-id="timelineEvent.event_data.analysis_id"></patient-title></span>
                 <br>
             </span>
 
@@ -38,26 +42,31 @@
             </span>-->
 
             <span ng-if="timelineEvent.event_data.analysis_id">
-                Analysis ID: <span class="timeline-value"><patient-title id="timelineEvent.patient_id" text="'tissue_variant_report'" mid="timelineEvent.event_data.molecular_id" aid="timelineEvent.event_data.analysis_id"></patient-title></span>
+                Analysis ID: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id"
+                                                                         text="'tissue_variant_report'"
+                                                                         molecular-id="timelineEvent.event_data.molecular_id"
+                                                                         analysis-id="timelineEvent.event_data.analysis_id"></patient-title></span>
                 <br>
             </span>
 
             <span ng-if="timelineEvent.event_data.collected_datetime && (timelineEvent.event_data.collected_datetime | utc) !== '-'">
-                Collected Date: <span class="timeline-value">{{::timelineEvent.event_data.collected_datetime | utc}}</span>
+                Collected Date: <span
+                    class="timeline-value">{{::timelineEvent.event_data.collected_datetime | utc}}</span>
                 <br>
             </span>
-                        
+
             <span ng-if="timelineEvent.event_data.comment_user">
                 By: <span>{{::timelineEvent.event_data.comment_user}}</span>
                 <br>
             </span>
 
-            <span ng-if="timelineEvent.event_data.tracking_id">            
-                Tracking Number: <span class="timeline-value"><tracking-link carrier="'fedex'" tracking-number="timelineEvent.event_data.tracking_id"></tracking-link></span>
+            <span ng-if="timelineEvent.event_data.tracking_id">
+                Tracking Number: <span class="timeline-value"><tracking-link carrier="'fedex'"
+                                                                             tracking-number="timelineEvent.event_data.tracking_id"></tracking-link></span>
                 <br>
             </span>
 
-            <span ng-if="timelineEvent.event_data.location">            
+            <span ng-if="timelineEvent.event_data.location">
                 Location: <span class="timeline-value">{{::timelineEvent.event_data.location }}</span>
                 <br>
             </span>
