@@ -421,7 +421,7 @@
             if (!$scope.currentTissueVariantReport)
                 return;
 
-            var currentAssignment = $scope.data.current_assignment;
+            var currentAssignment = $scope.data.assignment_report;
 
             if ($scope.currentTissueVariantReport.molecular_id !== currentAssignment.molecular_id
                 || $scope.currentTissueVariantReport.analysis_id !== currentAssignment.analysis_id) {
@@ -581,10 +581,10 @@
 
         function setupCurrentTreatmentArm() {
             var selected = $scope.data &&
-                $scope.data.current_assignment &&
-                $scope.data.current_assignment.treatment_arms &&
-                $scope.data.current_assignment.treatment_arms.selected &&
-                $scope.data.current_assignment.treatment_arms.selected.length ? $scope.data.current_assignment.treatment_arms.selected[0] : null;
+                $scope.data.assignment_report &&
+                $scope.data.assignment_report.treatment_arms &&
+                $scope.data.assignment_report.treatment_arms.selected &&
+                $scope.data.assignment_report.treatment_arms.selected.length ? $scope.data.assignment_report.treatment_arms.selected[0] : null;
 
             if (selected) {
                 $scope.currentTreatmentArm = {
@@ -860,8 +860,8 @@
 
         function selectAssignmentReport(option) {
             $scope.currentAssignmentReport = null;
-            if ($scope.data.current_assignment.molecular_id === option.value.molecular_id && $scope.data.current_assignment.analysis_id === option.value.analysis_id) {
-                $scope.currentAssignmentReport = $scope.data.current_assignment;
+            if ($scope.data.assignment_report.molecular_id === option.value.molecular_id && $scope.data.assignment_report.analysis_id === option.value.analysis_id) {
+                $scope.currentAssignmentReport = $scope.data.assignment_report;
             }
         }
 
@@ -1000,8 +1000,8 @@
             if (variantReportOption) {
                 selectTissueVariantReport(variantReportOption);
 
-                if ($scope.data.current_assignment.molecular_id === variantReportOption.value.molecular_id && $scope.data.current_assignment.analysis_id === variantReportOption.value.analysis_id) {
-                    $scope.currentAssignmentReport = $scope.data.current_assignment;
+                if ($scope.data.assignment_report.molecular_id === variantReportOption.value.molecular_id && $scope.data.assignment_report.analysis_id === variantReportOption.value.analysis_id) {
+                    $scope.currentAssignmentReport = $scope.data.assignment_report;
                     $location.hash('assignment-report');
                     $anchorScroll('top');
                 } else {

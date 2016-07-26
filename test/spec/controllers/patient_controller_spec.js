@@ -15,51 +15,6 @@ xdescribe('Controller: Patient Details Controller', function () {
                 "HAWAIIAN"
             ],
             "current_current_step_number": "1.0",
-            "current_assignment": {
-                "generated_date": "2016-05-09T22:06:33+00 : 00",
-                "status_date": "2016-05-09T22:06:33+00 : 00",
-                "status": "PENDING",
-                "sent_to_cog_date": "2016-05-03T22:06:33+00:00",
-                "received_from_cog_date": "2016-05-07T22:06:33+00:00",
-                "molecular_id": "MSN34534",
-                "analysis_id": "MSN34534_v2_kjdf3-kejrt-3425-mnb34ert34f",
-                "variant_report_amois": [
-                    {
-                        "title": "[COSM12344]",
-                        "url": ""
-                    },
-                    {
-                        "title": "p.S310Y",
-                        "url": ""
-                    },
-                    {
-                        "title": "CISM23423",
-                        "url": ""
-                    }
-                ],
-                "assays": [
-                    {
-                        "gene": "MSH2",
-                        "result": "Not Applicable",
-                        "comment": "Biopsy received prior to bimarker launch date"
-                    },
-                    {
-                        "gene": "PTENs",
-                        "result": "POSITIVE",
-                        "comment": "-"
-                    },
-                    {
-                        "gene": "MLH1",
-                        "result": "Not Applicable",
-                        "comment": "Biopsy received prior to bimarker launch date"
-                    },
-                    {
-                        "gene": "RB",
-                        "result": "Not Applicable",
-                        "comment": "Biopsy received prior to bimarker launch date"
-                    }
-                ],
-                "treatment_arms": {
             "no_match": [
                 {
                     "treatment_arm": "APEC1621-U",

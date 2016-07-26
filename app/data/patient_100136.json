@@ -30,77 +30,6 @@
             "assignment_date": "2015-12-08T22:05:33+00:00"
         }
     ],
-    "current_assignment": {
-        "generated_date": "2016-06-03T22:06:33+00:00",
-        "status": "PENDING",
-        "sent_to_cog_date": "2016-05-03T22:06:33+00:00",
-        "received_from_cog_date": "2016-06-05T16:41:16+00:00",
-        "molecular_id": "MOL100136_02_02",
-        "analysis_id": "AI100136_02_02_1",
-        "variant_report_amois": [
-            {
-                "title": "[COSM12344]",
-                "url": ""
-            },
-            {
-                "title": "p.S310Y",
-                "url": ""
-            },
-            {
-                "title": "CISM23423",
-                "url": ""
-            }
-        ],
-        "assays": [
-            {
-                "gene": "PTENs",
-                "result": "POSITIVE",
-                "comment": "-"
-            },
-            {
-                "gene": "MLH1",
-                "result": "POSITIVE",
-                "comment": "-"
-            }
-        ],
-        "treatment_arms": {
-            "no_match": [
-                {
-                    "treatment_arm": "APEC1621-U",
-                    "treatment_arm_version": "2014-01-01",
-                    "treatment_arm_stratum_id": "STR3",
-                    "treatment_arm_title": "APEC1621-U (2014-01-01)",
-                    "reason": "The patient contains no matching variant."
-                },
-                {
-                    "treatment_arm": "APEC1621-E",
-                    "treatment_arm_version": "2014-06-06",
-                    "treatment_arm_stratum_id": "STR1",
-                    "treatment_arm_title": "APEC1621-E (2014-06-06)",
-                    "reason": "The patient contains no matching variant."
-                }
-            ],
-            "record_based_exclusion": [
-                {
-                    "treatment_arm": "APEC1621-Q",
-                    "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_stratum_id": "STR6",
-                    "treatment_arm_title": "APEC1621-Q (2015-08-06)",
-                    "reason": "The patient excluded from this arm because of invasive breast carcinoma."
-                }
-            ],
-            "selected": [
-                {
-                    "treatment_arm": "APEC1621-U",
-                    "treatment_arm_version": "2016-05-06",
-                    "treatment_arm_stratum_id": "STR11",
-                    "treatment_arm_stratum": "STR11",
-                    "treatment_arm_title": "APEC1621-U (2016-05-06)",
-                    "reason": "The patient and treatment arm match on non-hotspot variant [(ID: .,GENE: NF1,OVA: Deleterious,EXON: 35,FUNC: nonsense,PROTEIN: p.Arg1534Ter)]."
-                }
-            ]
-        }
-    },
     "current_status": "ON_TREATMENT_ARM",
     "disease": {
         "name": "Myeloma, NOS",
@@ -1401,6 +1330,76 @@
         }
     ],
     "assignment_report": {
+        "generated_date": "2016-06-03T22:06:33+00:00",
+        "status": "CONFIRMED",
+        "status_date": "2016-06-04T15:22:00+00:00",
+        "sent_to_cog_date": "2016-05-03T22:06:33+00:00",
+        "received_from_cog_date": "2016-06-05T16:41:16+00:00",
+        "molecular_id": "MOL100136_02_02",
+        "analysis_id": "AI100136_02_02_1",
+        "variant_report_amois": [
+            {
+                "title": "[COSM12344]",
+                "url": ""
+            },
+            {
+                "title": "p.S310Y",
+                "url": ""
+            },
+            {
+                "title": "CISM23423",
+                "url": ""
+            }
+        ],
+        "assays": [
+            {
+                "gene": "PTENs",
+                "result": "POSITIVE",
+                "comment": "-"
+            },
+            {
+                "gene": "MLH1",
+                "result": "POSITIVE",
+                "comment": "-"
+            }
+        ],
+        "treatment_arms": {
+            "no_match": [
+                {
+                    "treatment_arm": "APEC1621-U",
+                    "treatment_arm_version": "2014-01-01",
+                    "treatment_arm_stratum_id": "STR3",
+                    "treatment_arm_title": "APEC1621-U (2014-01-01)",
+                    "reason": "The patient contains no matching variant."
+                },
+                {
+                    "treatment_arm": "APEC1621-E",
+                    "treatment_arm_version": "2014-06-06",
+                    "treatment_arm_stratum_id": "STR1",
+                    "treatment_arm_title": "APEC1621-E (2014-06-06)",
+                    "reason": "The patient contains no matching variant."
+                }
+            ],
+            "record_based_exclusion": [
+                {
+                    "treatment_arm": "APEC1621-Q",
+                    "treatment_arm_version": "2015-08-06",
+                    "treatment_arm_stratum_id": "STR6",
+                    "treatment_arm_title": "APEC1621-Q (2015-08-06)",
+                    "reason": "The patient excluded from this arm because of invasive breast carcinoma."
+                }
+            ],
+            "selected": [
+                {
+                    "treatment_arm": "APEC1621-U",
+                    "treatment_arm_version": "2016-05-06",
+                    "treatment_arm_stratum_id": "STR11",
+                    "treatment_arm_stratum": "STR11",
+                    "treatment_arm_title": "APEC1621-U (2016-05-06)",
+                    "reason": "The patient and treatment arm match on non-hotspot variant [(ID: .,GENE: NF1,OVA: Deleterious,EXON: 35,FUNC: nonsense,PROTEIN: p.Arg1534Ter)]."
+                }
+            ]
+        }
     },
     "specimen_selectors": [
         {
