@@ -105,9 +105,7 @@ xdescribe('Controller: Patient Details Controller', function () {
                     "treatment_arm_title": "APEC1621-U (2015-08-06)",
                     "reason": "The patient and treatment match on variant identifier [ABSF, DEDF]."
                 }
-            ]
-        }
-            },
+            ],
             "current_current_status": "REGISTRATION",
             "disease": {
                 "name": "Invasive Breast Carcinoma",
