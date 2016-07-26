@@ -15,12 +15,12 @@
         <div class="col-md-12">
             <p class="m-b-xs event-content">
                 <span ng-if="timelineEvent.patient_id">
-                    Patient: <span class="timeline-value"><patient-title id="timelineEvent.patient_id" text="'patient_assignment'"></span><!-- {{::timelineEvent.patient_id}} -->
+                    Patient: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id" text="'patient_assignment'"></patient-title></span><!-- {{::timelineEvent.patient_id}} -->
                 <br>
                 </span>
 
                 <span ng-if="timelineEvent.event_data.treatment_arm_id">
-                    Treatment Arm: <span class="timeline-value"><treatment-arm-title name="timelineEvent.event_data.treatment_arm_id" version="timelineEvent.event_data.treatment_arm_version" stratum="timelineEvent.event_data.stratum_id"></span>
+                    Treatment Arm: <span class="timeline-value"><treatment-arm-title name="timelineEvent.event_data.treatment_arm_id" version="timelineEvent.event_data.treatment_arm_version" stratum="timelineEvent.event_data.stratum_id"></treatment-arm-title></span>
                 <br>
                 </span>
 
@@ -35,7 +35,6 @@
 
                 <span ng-if="timelineEvent.event_data.comment_user">
                     By: <span class="timeline-value" >{{::timelineEvent.event_data.comment_user}}</span>
-                    <br>
                 </span>
             </p>
         </div>
