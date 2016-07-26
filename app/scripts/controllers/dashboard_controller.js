@@ -3,7 +3,7 @@
         .controller('DashboardController', DashboardController)
         .controller('ActivityController', ActivityController);
 
-    function DashboardController($scope, matchApiMock, store, DTOptionsBuilder) { //workflowApi
+    function DashboardController($scope, matchApiMock, store, DTOptionsBuilder, sharedCliaProperties) { //workflowApi
         $scope.lastUpdated = (new Date()).getTime();
         $scope.name = 'MATCHBox User';
         $scope.name = setName();
@@ -70,6 +70,10 @@
         $scope.loadBloodVariantReportsList = loadBloodVariantReportsList;
         $scope.loadPatientPendingAssignmentReportsList = loadPatientPendingAssignmentReportsList;
         $scope.loadDashboardData = loadDashboardData;
+
+        $scope.clialab = function (id) {
+            sharedCliaProperties.setProperty(id);
+        };
 
         function setName() {
             var name;

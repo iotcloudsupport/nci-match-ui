@@ -6,7 +6,8 @@
                                          $http,
                                          matchConfig,
                                          DTOptionsBuilder,
-                                         matchApiMock ) {
+                                         matchApiMock,
+                                         sharedCliaProperties) {
 
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(100);
@@ -16,6 +17,10 @@
         this.ddOptions = {
             'info': false,
             'paging': false
+        };
+
+        $scope.clialab = function (id) {
+            sharedCliaProperties.setProperty(id);
         };
 
         $scope.loadSpecimenTrackingList = loadSpecimenTrackingList;
