@@ -540,7 +540,13 @@
                                                 <td ng-if="variantReportMode!=='QC'">
                                                     <a ng-if="variant.comment " href ng-click="editComment(variant, currentTissueVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
                                                 </td>
-                                                <td>{{::variant.variant_id | dashify }}</td>
+                                                <td>
+                                                    <a class="report-link" href ng-click="openCosmicId( variant.variant_id )">
+                                                        {{variant.variant_id | dashify }}
+                                                    </a>
+
+                                                    <!--{{::variant.variant_id | dashify }}-->
+                                                </td>
                                                 <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI | dashify }}<sup>({{::variant.inclusion}})</sup></td>
                                                 <td>{{::variant.chromosome | dashify }}</td>
                                                 <td>{{::variant.position | dashify }}</td>
@@ -550,7 +556,12 @@
                                                 <td>{{::variant.ocp_alt | dashify }}</td>
                                                 <td>{{::variant.strand | dashify }}</td>
                                                 <td>{{::variant.allele_frequency | dashify }}</td>
-                                                <td>{{::variant.funcGene | dashify }}</td>
+                                                <td>
+                                                    <a class="report-link" href ng-click="openCosmicGene( variant.funcGene )">
+                                                        {{variant.funcGene | dashify }}
+                                                    </a>
+                                                    <!--{{::variant.funcGene | dashify }}-->
+                                                </td>
                                                 <td>{{::variant.oncomine_variant_class | dashify }}</td>
                                                 <td>{{::variant.exon | dashify }}</td>
                                                 <td>{{::variant.function | dashify }}</td>
@@ -600,7 +611,10 @@
                                                     <td ng-if="variantReportMode!=='QC' ">
                                                         <a ng-if="variant.comment " href ng-click="editComment(variant, currentTissueVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
                                                     </td>
-                                                    <td>{{variant.identifier | dashify }}</td>
+                                                    <td>
+                                                        <a href ng-click="openCosmicGene(variant.identifier)" class="report-link"> {{::variant.identifier | dashify }} </a>
+                                                        <!--{{variant.identifier | dashify }}-->
+                                                    </td>
                                                     <td ng-if="variantReportMode!=='QC'">{{variant.aMOI | dashify }}<sup>({{variant.inclusion}})</sup></td>
                                                     <td>{{variant.chromosome | dashify }}</td>
                                                     <td>{{variant.rawCopyNumber | dashify }}</td>
@@ -654,7 +668,12 @@
                                                     <td ng-if="variantReportMode!=='QC'">{{variant.aMOI | dashify }}}}<sup>({{variant.inclusion}})</sup></td>
                                                     <td>{{variant.gene2 | dashify }}</td>
                                                     <td>{{variant.gene2count | dashify }}</td>
-                                                    <td>{{variant.gene | dashify }}</td>
+                                                    <td>
+                                                        <a class="report-link" href ng-click="openCosmicGene( variant.gene )">
+                                                            {{variant.gene | dashify }}
+                                                        </a>
+                                                        <!--{{variant.gene | dashify }}-->
+                                                    </td>
                                                     <td>{{variant.gene1count | dashify }}</td>
                                                     <td>{{variant.annotation | dashify }}</td>
                                                 </tr>
@@ -724,7 +743,13 @@
 
                                                                 <tr ng-repeat="ta in snvList | limitTo:totalDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">
 
-                                                                    <td>{{::ta.identifier | dashify }}</td>
+                                                                    <td>
+                                                                        <a class="report-link" href ng-click="openCosmicId( ta.identifier )">
+                                                                            {{ta.identifier | dashify }}
+                                                                        </a>
+
+                                                                        <!--{{::ta.identifier | dashify }}-->
+                                                                    </td>
                                                                     <td>{{::ta.chromosome | dashify }}</td>
                                                                     <td>{{::ta.position | dashify }}</td>
                                                                     <td>{{::ta.reference | dashify }}</td>
@@ -1200,7 +1225,14 @@
                                             <td ng-if="variantReportMode!=='QC'">
                                                 <a ng-if="variant.comment " href ng-click="editComment(variant, currentBloodVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
                                             </td>
-                                            <td>{{variant.id | dashify }}</td>
+                                            <td>
+                                                <!--{{variant.id | dashify }}-->
+
+                                                <a class="report-link" href ng-click="openCosmicId( variant.id )">
+                                                    {{variant.id | dashify }}
+                                                </a>
+
+                                            </td>
                                             <td ng-if="variantReportMode!=='QC'">{{variant.aMOI | dashify }}<sup>({{variant.inclusion}})</sup></td>
                                             <td>{{variant.chrom | dashify }}</td>
                                             <td>{{variant.position | dashify }}</td>
