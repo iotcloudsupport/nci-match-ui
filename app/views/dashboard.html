@@ -126,10 +126,10 @@
                                             </a>
                                         </td>
                                         <td ng-if="patient.clia_lab === 'MoCha'">
-                                            <a ui-sref="iradmin({branch: 'mocha'})">{{ patient.clia_lab | dashify }}</a>
+                                            <a ui-sref="clia-labs" ng-click="clialab('mocha')">{{ patient.clia_lab | dashify }}</a>
                                         </td>
                                         <td ng-if="patient.clia_lab === 'MDA'">
-                                            <a ui-sref="iradmin({branch: 'mdacc'})">{{ patient.clia_lab | dashify }}</a>
+                                            <a ui-sref="clia-labs" ng-click="clialab('mdacc')">{{ patient.clia_lab | dashify }}</a>
                                         </td>
                                         <td>{{ patient.specimen_received_date | gmt }}</td>
                                         <td>{{ patient.variant_report_received_date | gmt }}</td>
@@ -172,10 +172,10 @@
                                             </a>
                                         </td>
                                         <td ng-if="patient.clia_lab === 'MoCha'">
-                                            <a ui-sref="iradmin({branch: 'mocha'})">{{ patient.clia_lab | dashify }}</a>
+                                            <a ui-sref="clia-labs" ng-click="clialab('mocha')">{{ patient.clia_lab | dashify }}</a>
                                         </td>
                                         <td ng-if="patient.clia_lab === 'MDA'">
-                                            <a ui-sref="iradmin({branch: 'mdacc'})">{{ patient.clia_lab | dashify }}</a>
+                                            <a ui-sref="clia-labs" ng-click="clialab('mdacc')">{{ patient.clia_lab | dashify }}</a>
                                         </td>
                                         <td>{{ patient.specimen_received_date | gmt }}</td>
                                         <td>{{ patient.variant_report_received_date | gmt }}</td>
