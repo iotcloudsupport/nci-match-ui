@@ -235,6 +235,7 @@
                                 })
                                 .attr("data", function (d) {
                                     var data = d[0][1];
+
                                     if (prevchr !== data) {
                                         prevchr = data;
                                         return "start_" + data;
@@ -433,6 +434,7 @@
                                 location = (wscale * (i * 1));
                                 if (group !== genes[i][1]) {
                                     group = genes[i][1];
+
                                     drawVertLine(prevLocation, group);
                                     prevLocation += 1;
                                 }
@@ -440,7 +442,6 @@
 
                             // Returns a function to compute the interquartile range.
                             function iqr(k) {
-
 
                                 return function (d, i) {
                                     var q1 = d.quartiles[0],
@@ -459,7 +460,15 @@
                             function drawVertLine(label, group) {
                                 var vline;
                                 if (label === 0) { label = ""; }
-                                geneslot.push(group.substr(3, group.length));
+
+                                //Read chr value
+                                if(group.indexOf("chr") == 0){
+                                    geneslot.push(group.substr(3, group.length));
+                                }
+                                else{
+                                    geneslot.push(group);
+                                }
+
                                 $.each(arrayx, function (index, value) {
 
                                     if (value[0] === group) {
@@ -480,6 +489,7 @@
                                     location = (previous + (vline - previous));
 
                                     if (typeof label !== 'undefined') {
+
                                         svg.append("svg:line")
                                             .attr("class", 'd3-dp-line')
                                             .attr("x1", location)
