@@ -386,27 +386,43 @@ div.timeline-item {
   margin-left: 8px
 }
 
-.navbar-brand {
-  border-right: 1px solid @border-color;
+.navbar {
+  min-height: 75px;
 
-  span.logo {
-    background: url('/img/nci-logo-full.svg');
-    background-repeat: no-repeat;
-    padding-left: 260px; 
-    padding-right: 10px;
-    color: #606060;
+  .navbar-brand {
+    border-right: 1px solid @border-color;
+    height: 75px;
+
+    span.logo {
+      background: url('/img/nci-logo-full.svg');
+      background-repeat: no-repeat;
+      padding-left: 259px;
+      color: #606060;
+      display: block;
+      width: 163px;
+      height: 19px;
+      margin-left: 24px;
+    }
+
+    span.title {
+      color: @navy;
+      font-size: 1.25em;
+      display: block;
+      padding-top: 5px;
+      padding-left: 22px;
+      padding-right: 33px;
+
+      // .abbreviation {
+      //   font-weight: lighter;
+      // }
+      .name {
+        font-weight: bolder;
+      }
+    }
   }
 
-  span.title {
-    color: @navy;
-    font-size: 1.25em;
-
-    // .abbreviation {
-    //   font-weight: lighter;
-    // }
-    .name {
-      font-weight: bolder;
-    }
+  ul.nav {
+    padding-top: 27px;
   }
 }
 
