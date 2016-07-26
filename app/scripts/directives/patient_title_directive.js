@@ -80,6 +80,8 @@
             controller: controller,
             controllerAs: 'vm',
             scope: {
+                text: '<',
+                section: '<',
                 patientId: '<',
                 molecularId: '<',
                 analysisId: '<',
