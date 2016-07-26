@@ -27,10 +27,44 @@ angular.module('matchbox')
             }, 0, false);
         }
     })
+    .directive('patienttableWrapper', function ($timeout, $compile) {
+        return {
+            restrict: 'E',
+            transclude: true,
+            template: '<ng-transclude></ng-transclude>',
+            link: link
+        };
+
+        function link(scope, element) {
+            // Using $timeout service as a "hack" to trigger the callback function once everything is rendered
+            $timeout(function () {
+                // Compiling so that angular knows the button has a directive
+                $compile(element.find('.patient-element'))(scope);
+            }, 0, false);
+        }
+    })
     .directive('customElement', function () {
 
         /*jshint multistr: true */
         var template = '<select width="100%" class="form-control pull-right" ng-model="confirmed" ng-change="confirmedFunc()" >\
+        <option value="ALL" selected="selected">ALL</option>\
+        <option value="PASS" >PASS</option>\
+        <option value="NOCALL" >NOCALL</option>\
+        <option value=".">.</option>\
+        </select>';
+
+        return {
+            scope: {
+                confirmed: '='
+            },
+            restrict: 'AE',
+            template: template
+        };
+    })
+    .directive('patientElement', function () {
+
+        /*jshint multistr: true */
+        var template = '<select width="100%" class="form-control pull-right" ng-model="patientconfirmed" ng-change="confirmedFunc()" >\
         <option value="ALL" selected="selected">ALL</option>\
         <option value="PASS" >PASS</option>\
         <option value="NOCALL" >NOCALL</option>\
