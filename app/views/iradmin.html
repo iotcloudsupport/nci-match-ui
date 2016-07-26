@@ -342,15 +342,12 @@
                                                                                     </tr>
                                                                                     </thead>
                                                                                     <tbody>
-
-                                                                                    <!--background-color:black;color:white;font-weight:bold;-->
-
                                                                                     <tr ng-repeat="ta in mochaList" >
                                                                                         <td> {{ta.molecular_is | dashify }}</td>
                                                                                         <td>{{ta.date_created | dashify }}</td>
                                                                                         <td>{{ta.date_received | dashify }}</td>
                                                                                         <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
-                                                                                            <a class="ng-binding ng-scope" ng-click="openPositives(ta.variant_reports);gotoBottom('mocha')" href >
+                                                                                            <a class="ng-binding ng-scope" ng-click="openPositives(ta.variant_reports, ta.current_status);gotoBottom('mocha')" href >
                                                                                                 {{ta.variant_reports | dashify }}
                                                                                             </a>
                                                                                         </td>
@@ -363,8 +360,6 @@
 
                                                                                 <!--QC TABS-->
                                                                                 <div class="row" ng-if="positives === 'mocha'">
-
-
 
                                                                                     <!--MOCK MOCHA GENERATOR-->
                                                                                     <div class="wrapper" >
@@ -407,8 +402,8 @@
                                                                                                         <dt>Torrent Variant Caller Version</dt>
                                                                                                         <dd>tvc 4.4-8 </dd>
 
-                                                                                                        <dt>STATUS</dt>
-                                                                                                        <dd>{{mochaList.current_status}}</dd>
+                                                                                                        <dt>Status</dt>
+                                                                                                        <dd>{{ status }}</dd>
 
                                                                                                     </dl>
                                                                                                 </div>
@@ -636,7 +631,7 @@
                                                                                     <td>{{ta.date_created | dashify }}</td>
                                                                                     <td>{{ta.date_received | dashify }}</td>
                                                                                     <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
-                                                                                        <a class="ng-binding ng-scope" ng-click="openMDACCPositives(ta.variant_reports);gotoBottom('mdacc')" href>
+                                                                                        <a class="ng-binding ng-scope" ng-click="openMDACCPositives(ta.variant_reports, ta.current_status);gotoBottom('mdacc')" href>
                                                                                             {{ta.variant_reports | dashify }}
                                                                                         </a>
                                                                                     </td>
@@ -690,6 +685,9 @@
 
                                                                                                     <dt>Torrent Variant Caller Version</dt>
                                                                                                     <dd>tvc 4.4-8 </dd>
+
+                                                                                                    <dt>Status</dt>
+                                                                                                    <dd>{{ status }}</dd>
 
                                                                                                 </dl>
                                                                                             </div>
@@ -900,7 +898,7 @@
                                                                                             <td>{{ta.date_created | dashify }}</td>
                                                                                             <td>{{ta.date_received  | dashify}}</td>
                                                                                             <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
-                                                                                                <a class="ng-binding ng-scope" ng-click="openNegatives(ta.variant_reports);gotoBottom('ntcmocha')" href>
+                                                                                                <a class="ng-binding ng-scope" ng-click="openNegatives(ta.variant_reports, ta.current_status);gotoBottom('ntcmocha')" href>
                                                                                                     {{ta.variant_reports | dashify }}
                                                                                                 </a>
                                                                                             </td>
@@ -952,6 +950,9 @@
 
                                                                                                             <dt>Torrent Variant Caller Version</dt>
                                                                                                             <dd>tvc 4.4-8 </dd>
+
+                                                                                                            <dt>Status</dt>
+                                                                                                            <dd>{{ status }}</dd>
 
                                                                                                         </dl>
                                                                                                     </div>
@@ -1135,7 +1136,7 @@
                                                                                                 <td>{{ta.date_created | dashify }}</td>
                                                                                                 <td>{{ta.date_received | dashify }}</td>
                                                                                                 <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
-                                                                                                    <a class="ng-binding ng-scope" ng-click="openMDANegatives(ta.variant_reports);;gotoBottom('ntcmdacc')" href>
+                                                                                                    <a class="ng-binding ng-scope" ng-click="openMDANegatives(ta.variant_reports,ta.current_status);;gotoBottom('ntcmdacc')" href>
                                                                                                         {{ta.variant_reports | dashify }}
                                                                                                     </a>
                                                                                                 </td>
@@ -1187,6 +1188,9 @@
 
                                                                                                                 <dt>Torrent Variant Caller Version</dt>
                                                                                                                 <dd>tvc 4.4-8 </dd>
+
+                                                                                                                <dt>Status</dt>
+                                                                                                                <dd>{{ status }}</dd>
 
                                                                                                             </dl>
                                                                                                         </div>
