@@ -39,9 +39,9 @@
         "event_type": "treatment_arm",
         "event_message": "Treatment Arm Closed",
         "treatment_arm": {
-            "name": "APEC1621-M",
-            "stratum": "STR1",
-            "version": "2015-10-06"
+            "name": "APEC1621-A",
+            "stratum": "STR17",
+            "version": "2014-01-01"
         },
         "event_data": [
         ]
@@ -96,12 +96,10 @@
         "event_type": "treatment_arm",
         "event_message": "Treatment Arm Open",
         "treatment_arm": {
-            "name": "APEC1621-M",
-            "stratum": "STR1",
-            "version": "2016-05-24"
-        },
-        "event_data": [
-        ]
+            "name": "APEC1621-A",
+            "stratum": "STR17",
+            "version": "2014-01-01"
+        }
     },
     {
         "patient_id": "100136",
