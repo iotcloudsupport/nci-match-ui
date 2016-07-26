@@ -13,17 +13,17 @@
     "ta_history": [
         {
             "name": "APEC1621-U",
-            "version": "2016-05-06",
-            "stratum": "STR11",
-            "title": "APEC1621-U; STR11; 2015-05-06",
+            "version": "2014-01-01",
+            "stratum": "STR3",
+            "title": "APEC1621-U; STR3; 2014-01-01",
             "step": "2.1",
             "assignment_reason": "The patient and treatment arm match on non-hotspot variant [(ID: .,GENE: NF1,OVA: Deleterious,EXON: 35,FUNC: nonsense,PROTEIN: p.Arg1534Ter)].",
             "assignment_date": "2016-06-05T16:42:43+00:00"
         },
         {
-            "name": "APEC1621-U",
-            "version": "2015-06-01",
-            "stratum": "STR2",
+            "name": "APEC1621-E",
+            "version": "2014-06-06",
+            "stratum": "STR1",
             "title": "APEC1621-U; STR2; 2015-06-01",
             "step": "1.1",
             "assignment_reason": "The patient and treatment match on variant identifier [ABSF, DEDF].",
@@ -1369,33 +1369,29 @@
                     "treatment_arm": "APEC1621-U",
                     "treatment_arm_version": "2014-01-01",
                     "treatment_arm_stratum_id": "STR3",
-                    "treatment_arm_title": "APEC1621-U (2014-01-01)",
                     "reason": "The patient contains no matching variant."
                 },
                 {
                     "treatment_arm": "APEC1621-E",
                     "treatment_arm_version": "2014-06-06",
                     "treatment_arm_stratum_id": "STR1",
-                    "treatment_arm_title": "APEC1621-E (2014-06-06)",
                     "reason": "The patient contains no matching variant."
                 }
             ],
             "record_based_exclusion": [
                 {
-                    "treatment_arm": "APEC1621-Q",
-                    "treatment_arm_version": "2015-08-06",
-                    "treatment_arm_stratum_id": "STR6",
-                    "treatment_arm_title": "APEC1621-Q (2015-08-06)",
+                    "treatment_arm": "APEC1621-A",
+                    "treatment_arm_version": "2014-01-01",
+                    "treatment_arm_stratum_id": "STR17",
                     "reason": "The patient excluded from this arm because of invasive breast carcinoma."
                 }
             ],
             "selected": [
                 {
                     "treatment_arm": "APEC1621-U",
-                    "treatment_arm_version": "2016-05-06",
-                    "treatment_arm_stratum_id": "STR11",
-                    "treatment_arm_stratum": "STR11",
-                    "treatment_arm_title": "APEC1621-U (2016-05-06)",
+                    "treatment_arm_version": "2014-01-01",
+                    "treatment_arm_stratum_id": "STR3",
+                    "treatment_arm_stratum": "STR3",
                     "reason": "The patient and treatment arm match on non-hotspot variant [(ID: .,GENE: NF1,OVA: Deleterious,EXON: 35,FUNC: nonsense,PROTEIN: p.Arg1534Ter)]."
                 }
             ]

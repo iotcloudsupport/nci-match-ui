@@ -39,9 +39,9 @@
         "event_type": "treatment_arm",
         "event_message": "Treatment Arm Closed",
         "treatment_arm": {
-            "name": "APEC1621-M",
-            "stratum": "STR1",
-            "version": "2015-10-06"
+            "name": "APEC1621-A",
+            "stratum": "STR17",
+            "version": "2014-01-01"
         },
         "event_data": [
         ]
@@ -55,11 +55,11 @@
         "event_data": {
             "status": "ON_TREATMENT_ARM",
             "message": "",
-            "stratum_id": "STR11",
+            "stratum_id": "STR3",
             "molecular_id": "MOL100136_02_02",
             "analysis_id": "AI100136_02_02_1",
             "treatment_arm_id": "APEC1621-U",
-            "treatment_arm_version": "2016-05-06"
+            "treatment_arm_version": "2014-01-01"
         }
     },
     {
@@ -96,12 +96,10 @@
         "event_type": "treatment_arm",
         "event_message": "Treatment Arm Open",
         "treatment_arm": {
-            "name": "APEC1621-M",
-            "stratum": "STR1",
-            "version": "2016-05-24"
-        },
-        "event_data": [
-        ]
+            "name": "APEC1621-A",
+            "stratum": "STR17",
+            "version": "2014-01-01"
+        }
     },
     {
         "patient_id": "100136",
