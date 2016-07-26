@@ -85,93 +85,37 @@
     "treatment_arms": {
       "no_match": [
         {
-          "treatment_arm": "APEC1621-U",
-          "treatment_arm_version": "2015-08-06",
-          "treatment_arm_stratum_id": "STR2",
-          "treatment_arm_title": "APEC1621-U (2015-08-06)",
-          "reason": "The patient contains no matching variant."
-        },
-        {
-          "treatment_arm": "APEC1621-F",
-          "treatment_arm_version": "2015-08-06",
-          "treatment_arm_stratum_id": "STR2",
-          "treatment_arm_title": "APEC1621-U (2015-08-06)",
-          "reason": "The patient contains no matching variant."
-        },
-        {
-          "treatment_arm": "APEC1621-F",
-          "treatment_arm_version": "2015-08-06",
-          "treatment_arm_stratum_id": "STR2",
-          "treatment_arm_title": "APEC1621-U (2015-08-06)",
-          "reason": "The patient contains no matching variant."
-        },
-        {
-          "treatment_arm": "APEC1621-F",
-          "treatment_arm_version": "2015-08-06",
-          "treatment_arm_stratum_id": "STR2",
-          "treatment_arm_title": "APEC1621-U (2015-08-06)",
-          "reason": "The patient contains no matching variant."
-        },
-        {
-          "treatment_arm": "APEC1621-G",
-          "treatment_arm_version": "2015-08-06",
-          "treatment_arm_stratum_id": "STR2",
-          "treatment_arm_title": "APEC1621-U (2015-08-06)",
-          "reason": "The patient contains no matching variant."
-        },
-        {
-          "treatment_arm": "APEC1621-H",
-          "treatment_arm_version": "2015-08-06",
-          "treatment_arm_stratum_id": "STR2",
-          "treatment_arm_title": "APEC1621-U (2015-08-06)",
-          "reason": "The patient contains no matching variant."
-        },
-        {
-          "treatment_arm": "APEC1621-R",
-          "treatment_arm_version": "2015-08-06",
-          "treatment_arm_stratum_id": "STR2",
-          "treatment_arm_title": "APEC1621-U (2015-08-06)",
-          "reason": "The patient contains no matching variant."
-        },
-        {
           "treatment_arm": "APEC1621-E",
-          "treatment_arm_version": "2015-08-06",
-          "treatment_arm_stratum_id": "STR2",
-          "treatment_arm_title": "APEC1621-U (2015-08-06)",
+          "treatment_arm_version": "2014-06-06",
+          "treatment_arm_stratum_id": "STR1",
+          "treatment_arm_title": "APEC1621-E (2014-06-06)",
           "reason": "The patient contains no matching variant."
         },
         {
           "treatment_arm": "APEC1621-A",
-          "treatment_arm_version": "2015-08-06",
-          "treatment_arm_stratum_id": "STR2",
-          "treatment_arm_title": "APEC1621-U (2015-08-06)",
-          "reason": "The patient contains no matching variant."
-        },
-        {
-          "treatment_arm": "APEC1621-V",
-          "treatment_arm_version": "2015-08-06",
-          "treatment_arm_stratum_id": "STR2",
-          "treatment_arm_title": "APEC1621-U (2015-08-06)",
+          "treatment_arm_version": "2014-01-01",
+          "treatment_arm_stratum_id": "STR17",
+          "treatment_arm_title": "APEC1621-A (2014-01-01)",
           "reason": "The patient contains no matching variant."
         }
       ],
       "record_based_exclusion": [
         {
-          "treatment_arm": "APEC1621-Q",
-          "treatment_arm_version": "2015-08-06",
-          "treatment_arm_stratum_id": "STR2",
-          "treatment_arm_title": "APEC1621-U (2015-08-06)",
-          "reason": "The patient excluded from this arm because of invasive breast carcinoma."
+          "treatment_arm": "APEC1621-E",
+          "treatment_arm_version": "2014-06-06",
+          "treatment_arm_stratum_id": "STR1",
+          "treatment_arm_title": "APEC1621-E (2014-06-06)",
+          "reason": "The patient excluded from this arm because of prior invasive skin carcinoma."
         }
       ],
       "selected": [
         {
-          "treatment_arm": "APEC1621-Q",
-          "treatment_arm_version": "2015-08-06",
-          "treatment_arm_stratum_id": "STR6",
-          "treatment_arm_stratum": "STR6",
-          "treatment_arm_title": "APEC1621-Q (2015-08-06)",
-          "reason": "The patient and treatment match on variant identifier [COSM14062]"
+          "treatment_arm": "APEC1621-U",
+          "treatment_arm_version": "2014-01-01",
+          "treatment_arm_stratum_id": "STR3",
+          "treatment_arm_stratum": "STR3",
+          "treatment_arm_title": "APEC1621-U (2014-01-01)",
+          "reason": "The patient and treatment match on variant identifier [ABSF, DEDF]."
         }
       ]
     }
@@ -900,7 +844,6 @@
             "inclusion": "I",
             "arm_specific": "arm spec"
           },
-
           {
             "molecular_id_analysis_id": "MSNANL123AN123",
             "variant_type": "indels",
