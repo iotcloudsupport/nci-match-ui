@@ -24,20 +24,20 @@
                 <br>
                 </span>
 
-                <span ng-if="timelineEvent.event_data.status">
-                    Assignment: <span class="timeline-value" ng-style="{'color':'{{ timelineEvent.event_data.status | status }}'}">{{::timelineEvent.event_data.status}}</span>
-                <br>
+                <span ng-if="timelineEvent.patient_id && timelineEvent.event_data.molecular_id && timelineEvent.event_data.analysis_id">
+                    <span class="timeline-value">
+                        <a ui-sref="patient({ patient_id: timelineEvent.patient_id, section: 'assignment_report', molecular_id: timelineEvent.event_data.molecular_id, analysis_id: timelineEvent.event_data.analysis_id })">
+                            Assignment: <span class="timeline-value" ng-style="{'color':'{{ timelineEvent.event_data.status | status }}'}">{{::timelineEvent.event_data.status}}</span>
+                        </a>
+                    </span>
+                    <br>
                 </span>
 
                 <span ng-if="timelineEvent.event_data.comment_user">
                     By: <span class="timeline-value" >{{::timelineEvent.event_data.comment_user}}</span>
-                <br>
-                </span>
-<!-- date removed -->
-                <br>
+                    <br>
                 </span>
             </p>
-
         </div>
     </div>
 </div>

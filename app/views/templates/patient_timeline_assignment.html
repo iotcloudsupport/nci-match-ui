@@ -1,5 +1,5 @@
 <div class="row">
-    
+
     <div class="col-xs-5 col-md-4 date" title="Assignment Event" ng-class="{'date-top-border':timelineEvent.isStepChanging}">
         <i class="fa fa-medkit fa-2x"></i> <small>{{::timelineEvent.event_date | utc}}</small>
         <br/>
@@ -10,22 +10,21 @@
         <p class="m-b-xs"><span class="timeline-step">Step: {{::timelineEvent.step}}.</span> <strong>{{::timelineEvent.event_message}}.</strong></p>
         <p class="m-b-xs">
             <span ng-if="timelineEvent.event_data.treatment_arm_id">
-                Treatment Arm: <span class="timeline-value"><treatment-arm-title name="timelineEvent.event_data.treatment_arm_id" version="timelineEvent.event_data.treatment_arm_version" stratum="timelineEvent.event_data.stratum_id"></span>
-                <br>
+                Treatment Arm: <span class="timeline-value"><treatment-arm-title name="timelineEvent.event_data.treatment_arm_id" version="timelineEvent.event_data.treatment_arm_version" stratum="timelineEvent.event_data.stratum_id"></treatment-arm-title></span>
+            <br>
             </span>
 
-            <span ng-if="timelineEvent.event_data.status">
-                Assignment: <span class="timeline-value" ng-style="{'color':'{{ timelineEvent.event_data.status | status }}'}">{{::timelineEvent.event_data.status}}</span>
+            <span ng-if="timelineEvent.patient_id && timelineEvent.event_data.molecular_id && timelineEvent.event_data.analysis_id">
+                <span class="timeline-value">
+                    <a ui-sref="patient({ patient_id: timelineEvent.patient_id, section: 'assignment_report', molecular_id: timelineEvent.event_data.molecular_id, analysis_id: timelineEvent.event_data.analysis_id })">
+                        Assignment: <span class="timeline-value" ng-style="{'color':'{{ timelineEvent.event_data.status | status }}'}">{{::timelineEvent.event_data.status}}</span>
+                    </a>
+                </span>
                 <br>
             </span>
 
             <span ng-if="timelineEvent.event_data.comment_user">
                 By: <span class="timeline-value">{{::timelineEvent.event_data.comment_user}}</span>
-                <br>
-            </span>
-
-            <!--<span ng-if="timelineEvent.event_data.assignment_date && (timelineEvent.event_data.assignment_date | utc) !== '-'">
-                Assignment Date: <span class="timeline-value">{{::timelineEvent.event_data.assignment_date | utc}}</span>-->
                 <br>
             </span>
         </p>
