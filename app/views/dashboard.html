@@ -75,14 +75,14 @@
     </div>
 
     <div class="wrapper wrapper-dashboard">
-        <div class="row">
-            <div class="col-lg-3 col-md-4 col-sm-5">
+        <div vertilize-container class="row">
+            <div vertilize class="col-lg-3 col-md-4 col-sm-5">
 
-                <div class="ibox-title ibox-title-no-line">
+                <div class="ibox-title ibox-title-no-line" id="activity-column">
                     <h3>Activity Feed</h3>
                 </div>
 
-                <div class="ibox-content inspinia-timeline" ng-controller="ActivityController as activity" ng-init="activity.loadData()">
+                <div class="ibox-content inspinia-timeline" ng-controller="ActivityController as activity" ng-init="activity.loadData()" id="panding-items-column">
                     <div class="timeline-item" ng-repeat="timelineEvent in activity.data">
                         <patient-timeline timeline-event="timelineEvent" type="timelineEvent.event_type" layout="'narrow'"></patient-timeline>
                     </div>
@@ -90,7 +90,7 @@
             </div>
 
             <div class="col-lg-9 col-md-8 col-sm-7">
-                <div class="panel-container">
+                <div vertilize class="panel-container">
                     <div class="ibox-title ibox-title-no-line">
                         <h3>Pending Review </h3>
                     </div>
