@@ -36,7 +36,7 @@
                                             {{sites.mda.percent}}%
                                         </h3>
                                         <small>
-                                            <a ui-sref="iradmin({branch: 'mdacc'})" style="color: white">MDA</a>
+                                            <a ui-sref="clia-labs" ng-click="clialab('mdacc')" style="color: white">MDA</a>
                                         </small>
                                     </div>
                                 </div>
@@ -50,7 +50,7 @@
                                             {{sites.mocha.percent}}%
                                         </h3>
                                         <small>
-                                            <a ui-sref="iradmin({branch: 'mocha'})" style="color: white">MoCha</a>
+                                            <a ui-sref="clia-labs" ng-click="clialab('mocha')" style="color: white">MoCha</a>
                                         </small>
                                     </div>
                                 </div>
@@ -106,10 +106,10 @@
                                     <td>{{ specimenTrackingItem.type }}</td>
                                     <td>{{ specimenTrackingItem.shipped_date | utc }}</td>
                                     <td ng-if="specimenTrackingItem.site === 'MoCha'">
-                                        <a ui-sref="iradmin({branch: 'mocha'})">{{ specimenTrackingItem.site | dashify }}</a>
+                                        <a ui-sref="clia-labs" ng-click="clialab('mocha')">{{ specimenTrackingItem.site | dashify }}</a>
                                     </td>
                                     <td ng-if="specimenTrackingItem.site === 'MDA'">
-                                        <a ui-sref="iradmin({branch: 'mdacc'})">{{ specimenTrackingItem.site | dashify }}</a>
+                                        <a ui-sref="clia-labs" ng-click="clialab('mdacc')">{{ specimenTrackingItem.site | dashify }}</a>
                                     </td>
                                     <td><tracking-link carrier="'fedex'" tracking-number="specimenTrackingItem.fedex_tracking"></tracking-link></td>
                                     <td>{{ specimenTrackingItem.pathology_status }}</td>
