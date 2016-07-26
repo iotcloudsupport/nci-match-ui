@@ -268,7 +268,7 @@
                                                         <div class="col-md-4 col-sm-6 text-left">
                                                             <dl class="dl-horizontal-narrow">
                                                                 <dt>Analysis ID</dt>
-                                                                <dd><a> {{analysis.analysis_id | dashify}} </a></dd>
+                                                                <dd><a ng-click="navigateToTissueVariantReport(analysis.molecular_id, analysis.analysis_id)"> {{analysis.analysis_id | dashify}} </a></dd>
 
                                                                 <dt>Status</dt>
                                                                 <dd ng-style="{'color':'{{ analysis.status | analysisStatus }}'}">{{analysis.status | titlecase}} <span ng-if="analysis.comment_user"> (user: {{analysis.comment_user}})</span></dd>
@@ -919,7 +919,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
+                                    <div class="row" id="assignment-report">
                                         <div class="col-md-6">
                                             <div class="header-info-box assignment-header-box">
                                                 <dl class="dl-horizontal">

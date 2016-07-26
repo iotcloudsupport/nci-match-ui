@@ -206,19 +206,19 @@
                                 <tbody>
                                     <tr ng-repeat="patient in pendingAssignmentReportList">
                                         <td>
-                                            <a ui-sref="patient({ patientSequenceNumber: patient.patientSequenceNumber })">
+                                            <a ui-sref="patient({ patient_id: patient.patient_id })">
                                                 <i class="fa fa-user"></i> {{::patient.patient_id }}
                                             </a>
                                         </td>
                                         <td><a ui-sref="patient({ patient_id: patient.patient_id, section: 'surgical_event', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })">{{ patient.molecular_id | dashify }}</a></td>
                                         <td><a ui-sref="patient({ patient_id: patient.patient_id, section: 'assignment_report', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })">{{ patient.analysis_id | dashify }}</a></td>
                                         <td class="text-center">
-                                            <a ui-sref="patient({ patient_id: patient.patient_id, section: 'assignment_report', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })" title="Variant Report">
+                                            <a ui-sref="patient({ patient_id: patient.patient_id, section: 'assignment_report', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })" title="Assignment Report">
                                                 <i class="fa fa-file-text-o"></i>
                                             </a>
                                         </td>
                                         <td>{{patient.disease | dashify }}</td>
-                                        <td><treatment-arm-title name="patient.treatment_arm" stratum="patient.stratum"></td>
+                                        <td><treatment-arm-title name="patient.treatment_arm" stratum="patient.treatment_arm_stratum_id" version="patient.treatment_arm_version"></treatment-arm-title></td>
                                         <td>{{ patient.assignment_date | gmt }}</td>
                                         <td><span ng-if="patient.hours_pending >= hours_pending_range.upper_bound_yellow" class="label label-danger">{{ patient.hours_pending | dashify }}</span>
                                             <span ng-if="patient.hours_pending < hours_pending_range.upper_bound_yellow && patient.hours_pending >= hours_pending_range.upper_bound_green" class="label label-warning">{{ patient.hours_pending | dashify }}</span>
@@ -349,7 +349,7 @@
                         <tbody>
                             <tr ng-repeat="patient in pendingAssignmentReportList">
                                 <td>
-                                    <a ui-sref="patient({ patientSequenceNumber: patient.patientSequenceNumber })">
+                                    <a ui-sref="patient({ patient_id: patient.patient_id })">
                                         <i class="fa fa-user"></i> {{::patient.patient_id }}
                                     </a>
                                 </td>

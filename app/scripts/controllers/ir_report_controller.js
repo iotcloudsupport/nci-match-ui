@@ -1,6 +1,6 @@
 angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
     .controller('IrAdminController',
-        function( $scope, $http, $window, $stateParams, DTOptionsBuilder, irAdminApi, matchApiMock, $location, $anchorScroll, $timeout) {
+        function( $scope, $http, $window, $stateParams, DTOptionsBuilder, irAdminApi, matchApiMock, $location, $anchorScroll, $timeout, sharedCliaProperties) {
 
         angular.element(document).ready(function () {
             $('.equal-height-panels .panel').matchHeight();
@@ -41,7 +41,18 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         $scope.mochaNtcList=[];
         $scope.mdaccList=[];
         $scope.mdaccNtcList=[];
-        $scope.branch = $stateParams.branch;
+        $scope.status = "";
+
+            $scope.branch = sharedCliaProperties.getProperty();
+
+        //     if(sharedCliaProperties.getProperty() !== 'mocha')
+        // if ($scope.branch == undefined){
+        //     $scope.branch = 'mocha';
+        //     sharedCliaProperties.setProperty('mocha');
+        // }
+        // $scope.branch = sharedCliaProperties.getProperty();
+
+
         $scope.mid = "undefined";
         $scope.cellColor = "";
         $scope.hrReports = null;
@@ -103,10 +114,6 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 'function': 'missense'
             });
 
-
-           
-            
-            
             $scope.openCosmicGene = function (id) {
                 $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + id.toLowerCase(), "_blank");
                 $window.focus();
@@ -336,8 +343,6 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 $scope.mdaccNtcList = data.data;
             };
 
-            
-
             $scope.date = new Date();
 
             $scope.generateMocha_Table = function () {
@@ -482,9 +487,11 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             function loadPositivesList(data) {
                 $scope.positiveControlList = data;
             };
-            $scope.openPositives = function (id) {
+            $scope.openPositives = function (id, status) {
+
                 $scope.selectedRow = id;
                 $scope.mid = id;
+                $scope.status = status;
                 var url = 'data/sample_positive_control_' + id.substring(id.length - 1, id.length) + '.json';
                 $scope.positives = 'mocha';
 
@@ -527,9 +534,10 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
 
 
-            $scope.openMDACCPositives = function(id) {
+            $scope.openMDACCPositives = function(id, status) {
                 $scope.selectedRow = id;
                 $scope.mid = id;
+                $scope.status = status;
 
                 if(id === 'SampleControl_MDACC_1'){
 
@@ -643,10 +651,10 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 $scope.indelsList = data;
             };
 
-            $scope.openNegatives = function(id) {
+            $scope.openNegatives = function(id, status) {
                 $scope.selectedRow = id;
-
                 $scope.negatives = 'mocha';
+                $scope.status = status;
 
                 var url ="data/sample_ntc_mocha_control_1.json";
 
@@ -669,9 +677,10 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
             };
 
-            $scope.openMDANegatives = function(id) {
+            $scope.openMDANegatives = function(id, status) {
                 $scope.selectedRow = id;
                 $scope.sampleId = id;
+                $scope.status = status;
                 $scope.negatives = 'mdacc';
 
             };

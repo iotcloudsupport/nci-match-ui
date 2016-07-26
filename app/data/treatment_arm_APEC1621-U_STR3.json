@@ -35,7 +35,7 @@
       }
     ],
     "num_patients_assigned": "2",
-    "num_patients_assigned_basic": "3",
+    "num_patients_assigned_basic": "2",
     "date_opened": null,
     "treatment_arm_drugs": [
       {
@@ -565,9 +565,14 @@
     ],
     "pten_results": [
       {
-        "pten_variant": "PRESENT",
-        "description": null,
-        "pten_ihc_result": "POSITIVE"
+        "assay": "IHC",
+        "pten_variant": "PTEN",
+        "pten_ihc_result": "POSITIVE",
+        "variant_association": "Indels present",
+        "level_of_evidence": "1",
+        "num_patients_with_gene": "2",
+        "num_patients_with_gene_on_arm": "1",
+        "percent_patients_with_gene_on_arm": "50"
       }
     ],
     "status_log": {

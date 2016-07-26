@@ -7,14 +7,11 @@
             "name": "APEC1621-A",
             "stratum": "ABQ123",
             "version": "2016-07-02"
-        },
-        "event_data": [
-        ]
+        }
     },
     {
         "patient_id": "100100",
         "event_date": "2016-06-29T20:15:32+00:00",
-        "event_name": "Event Name 1",
         "event_type": "patient",
         "event_message": "Patient Off Trial",
         "step": "4.0",
@@ -27,7 +24,6 @@
     {
         "patient_id": "100100",
         "event_date": "2016-06-29T14:30:32+00:00",
-        "event_name": "Event Name 1",
         "event_type": "patient",
         "event_message": "Patient Progression",
         "step": "4.0",
@@ -53,7 +49,6 @@
     {
         "patient_id": "100136",
         "event_date": "2016-06-05T16:42:43+00:00",
-        "event_name": "Event Name 37",
         "event_type": "assignment",
         "event_message": "Patient Assignment",
         "step": "2.1",
@@ -62,6 +57,7 @@
             "message": "",
             "stratum_id": "STR11",
             "molecular_id": "MOL100136_02_02",
+            "analysis_id": "AI100136_02_02_1",
             "treatment_arm_id": "APEC1621-U",
             "treatment_arm_version": "2016-05-06"
         }
@@ -75,13 +71,13 @@
         "event_data": {
             "status": "APPROVED",
             "molecular_id": "MOL100136_02_02",
+            "analysis_id": "AI100136_02_02_1",
             "comment_user": "Jane James"
         }
     },
     {
         "patient_id": "100136",
         "event_date": "2016-05-30T13:54:24+00:00",
-        "event_name": "Event Name 31",
         "event_type": "biopsy.variant_report_received",
         "event_message": "Tissue variant report confirmed",
         "step": "2.0",
@@ -91,8 +87,8 @@
             "tracking_id": "6758 6785 7318",
             "location": "Nationwide",
             "molecular_id": "MOL100136_02_02",
-            "comment_user": "Jane James",
-            "analysis_id": "AI100136_02_02_1"
+            "analysis_id": "AI100136_02_02_1",
+            "comment_user": "Jane James"
         }
     },
     {
@@ -110,7 +106,6 @@
     {
         "patient_id": "100136",
         "event_date": "2016-05-23T12:23:56+00:00",
-        "event_name": "Event Name 1",
         "event_type": "patient",
         "event_message": "Patient Pending Approval",
         "step": "2.0",
@@ -123,7 +118,6 @@
     {
         "patient_id": "100065",
         "event_date": "2016-05-23T12:23:56+00:00",
-        "event_name": "Event Name 1",
         "event_type": "patient",
         "event_message": "Patient Pending Approval",
         "step": "2.0",
@@ -136,7 +130,6 @@
     {
         "patient_id": "100065",
         "event_date": "2016-05-23T09:08:33+00:00",
-        "event_name": "Event Name 1",
         "event_type": "patient",
         "event_message": "Patient Pending Confirmation",
         "step": "2.0",

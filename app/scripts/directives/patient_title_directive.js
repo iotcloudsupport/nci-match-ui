@@ -32,8 +32,6 @@
                     vm.shownId = vm.surgicalEventId;
                     break;
                 case 'tissue_variant_report':
-                    console.log('in tissue variant report');
-                    console.log(vm);
                     vm.attrs = '{ patient_id: vm.patientId, section: vm.text, molecular_id: vm.molecularId, analysis_id: vm.analysisId }';
                     vm.shownId = vm.analysisId;
                     break;

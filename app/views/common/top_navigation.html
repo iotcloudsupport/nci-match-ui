@@ -4,7 +4,10 @@
             <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
                 <i class="fa fa-reorder"></i>
             </button>
-            <a ui-sref="dashboard" class="navbar-brand"><span class="logo"></span><span>NCI-MATCHBox</span></a>
+            <a ui-sref="dashboard" class="navbar-brand">
+                <span class="logo"></span>
+                <span class="title"><span class="abbreviation">NCI-MATCH</span><span class="name">box</span></span>
+            </a>
         </div>
         <div class="navbar-collapse collapse" id="navbar">
             <ul class="nav navbar-nav">
@@ -28,7 +31,7 @@
                 <!--</li>-->
 
                 <li ui-sref-active="active">
-                    <a ui-sref="iradmin({branch: 'mocha'})"><i class="fa fa-flask"></i>  CLIA Labs</a>
+                    <a ui-sref="clia-labs"><i class="fa fa-flask"></i>  CLIA Labs</a>
 
                     <!--<a href data-toggle="dropdown" class="dropdown-toggle">CLIA Labs <b class="caret"></b></a>-->
                     <!--<ul class="dropdown-menu animated fadeInRight m-t-xs">-->

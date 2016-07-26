@@ -566,10 +566,10 @@
     ],
     "pten_results": [
       {
-        "pten_variant": "PRESENT",
-        "description": null,
+        "assay": "IHC",
+        "pten_variant": "PTEN",
         "pten_ihc_result": "POSITIVE",
-        "variant_association": "ABSENT",
+        "variant_association": "Indels present",
         "level_of_evidence": "1",
         "num_patients_with_gene": "3",
         "num_patients_with_gene_on_arm": "1",
@@ -1146,10 +1146,10 @@
     ],
     "pten_results": [
       {
-        "pten_variant": "PRESENT",
-        "description": null,
+        "assay": "IHC",
+        "pten_variant": "PTEN",
         "pten_ihc_result": "POSITIVE",
-        "variant_association": "ABSENT",
+        "variant_association": "Indels present",
         "level_of_evidence": "1",
         "num_patients_with_gene": "3",
         "num_patients_with_gene_on_arm": "1",

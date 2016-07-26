@@ -19,6 +19,7 @@
         'config.matchbox',
         'http.matchbox',
         'matchbox.tools',
+        'matchbox.service',
         'angular-storage',
         'angular-jwt',
         'angular-flot',
