@@ -6,10 +6,11 @@
         .directive('patientTitle', patientTitle);
 
     /**
-     * Expects an object with the follwing properties:
-     *   'id' - patient_id
-     *   'mid' - molecular_id
-     *   'aid' - analysis_id
+     * Expects an object with the following properties:
+     *   patientId
+     *   molecularId
+     *   analysisId
+     *   surgicalEventId
      */
     function patientTitle($uibModal, $log) {
         var controller = function () {
@@ -23,29 +24,30 @@
                 return vm.textColor ? vm.textColor : 'color:inherit';
             };
 
-            vm.shownId = vm.id;
-            vm.attrs = '{ patient_id: vm.id }';
+            vm.shownId = vm.patientId;
+            vm.attrs = '{ patient_id: vm.patientId }';
             switch(vm.text) {
                 case 'surgical_event':
-                    vm.attrs = '{ patient_id: vm.id, section: vm.text, surgical_event_id: vm.seid }';
-                    vm.shownId = vm.seid;
+                    vm.attrs = '{ patient_id: vm.patientId, section: vm.text, surgical_event_id: vm.surgicalEventId }';
+                    vm.shownId = vm.surgicalEventId;
                     break;
                 case 'tissue_variant_report':
                     console.log('in tissue variant report');
                     console.log(vm);
-                    vm.attrs = '{ patient_id: vm.id, section: vm.text, molecular_id: vm.mid, analysis_id: vm.aid }';
-                    vm.shownId = vm.aid;
+                    vm.attrs = '{ patient_id: vm.patientId, section: vm.text, molecular_id: vm.molecularId, analysis_id: vm.analysisId }';
+                    vm.shownId = vm.analysisId;
                     break;
                 case 'blood_variant_report':
-                    vm.attrs = '{ patient_id: vm.id, section: vm.text, molecular_id: vm.mid, analysis_id: vm.aid }';
-                    vm.shownId = vm.mid;
+                    vm.attrs = '{ patient_id: vm.patientId, section: vm.text, molecular_id: vm.molecularId, analysis_id: vm.analysisId }';
+                    vm.shownId = vm.molecularId;
                     break;
                 case 'assignment_report':
-                    vm.attrs = '{ patient_id: vm.id, section: vm.text, molecular_id: vm.mid, analysis_id: vm.aid }';
-                    vm.shownId = vm.aid;
+                    vm.attrs = '{ patient_id: vm.patientId, section: vm.text, molecular_id: vm.molecularId, analysis_id: vm.analysisId }';
+                    vm.shownId = vm.analysisId;
                     break;
                 case 'patient_assignment':
-                    vm.shownId = vm.id;
+                    vm.shownId = vm.patientId;
+                    break;
                 default:
                     break;
             }
@@ -61,11 +63,10 @@
          */
 
         /*jshint multistr: true */
-        //var template = '<span ng-if="vm.hasData()" ui-sref="patient({patient_id: vm.id})">{{vm.id}}</span>';
         var template = '<span class="ta-title">\
                     \
                     <span ng-if="vm.hasData() && vm.noUrl" style="color:{{vm.getTextColor()}}">\
-                        <span class="ta-name" style="color:{{vm.getTextColor()}}">{{vm.id}}</span>\
+                        <span class="ta-name" style="color:{{vm.getTextColor()}}">{{vm.patientId}}</span>\
                     </span>\
                     \
                     <a ng-if="vm.hasData() && !vm.noUrl" ui-sref="patient({{vm.attrs}})" style="color:{{vm.getTextColor()}}">\
@@ -81,16 +82,10 @@
             controller: controller,
             controllerAs: 'vm',
             scope: {
-                /*name: '<',
-                 stratum: '<',
-                 version: '<',
-                 noUrl: '<',
-                 textColor: '<',*/
-                id: '<',
-                text: '<',
-                mid: '<',
-                aid: '<',
-                seid: '<'
+                patientId: '<',
+                molecularId: '<',
+                analysisId: '<',
+                surgicalEventId: '<'
             }
         }
     }
