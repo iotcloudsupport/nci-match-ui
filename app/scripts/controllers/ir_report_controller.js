@@ -1,6 +1,6 @@
 angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
     .controller('IrAdminController',
-        function( $scope, $http, $window, $stateParams, DTOptionsBuilder, irAdminApi, matchApiMock, $location, $anchorScroll, $timeout) {
+        function( $scope, $http, $window, $stateParams, DTOptionsBuilder, irAdminApi, matchApiMock, $location, $anchorScroll, $timeout, sharedCliaProperties) {
 
         angular.element(document).ready(function () {
             $('.equal-height-panels .panel').matchHeight();
@@ -43,9 +43,15 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         $scope.mdaccNtcList=[];
         $scope.status = "";
 
-        if ($scope.branch == undefined){
-            $scope.branch = 'mocha';
-        }
+            $scope.branch = sharedCliaProperties.getProperty();
+
+        //     if(sharedCliaProperties.getProperty() !== 'mocha')
+        // if ($scope.branch == undefined){
+        //     $scope.branch = 'mocha';
+        //     sharedCliaProperties.setProperty('mocha');
+        // }
+        // $scope.branch = sharedCliaProperties.getProperty();
+
 
         $scope.mid = "undefined";
         $scope.cellColor = "";

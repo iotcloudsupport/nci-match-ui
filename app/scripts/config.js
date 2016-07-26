@@ -201,8 +201,8 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                 }
             }
         })
-        .state('iradmin', {
-            url: "/iradmin/:branch",
+        .state('clia-labs', {
+            url: "/clia-labs",
             templateUrl: "views/iradmin.html",
             data: { pageTitle: 'IR Reporters', requiresLogin: true },
             resolve: {

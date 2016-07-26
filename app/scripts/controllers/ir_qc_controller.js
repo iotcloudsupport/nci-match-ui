@@ -1,5 +1,5 @@
 angular.module('qcsample.matchbox',[ ])
-    .controller('QcSampleController', function($scope, $http, $window, $stateParams, matchConfig, DTOptionsBuilder, svgApi, matchApiMock) {
+    .controller('QcSampleController', function($scope, $http, $window, $stateParams, matchConfig, DTOptionsBuilder, svgApi, matchApiMock, sharedCliaProperties) {
         angular.element(document).ready(function () {
             $('.equal-height-panels .panel').matchHeight();
         });
@@ -22,11 +22,11 @@ angular.module('qcsample.matchbox',[ ])
             // console.log($scope.confirmed);
             if(newValue === 'ALL') {
                 $scope.filterCol = "";
-                $scope.dtInstance.DataTable.search("");
+                // $scope.dtInstance.DataTable.search("");
                 $scope.dtInstance.DataTable.search("").draw();
             }
             else {
-                $scope.dtInstance.DataTable.search(newValue);
+                // $scope.dtInstance.DataTable.search(newValue);
                 $scope.dtInstance.DataTable.search(newValue).draw();
             }
         });
@@ -54,10 +54,12 @@ angular.module('qcsample.matchbox',[ ])
         if($scope.sampleId.indexOf('MoCha') >= 0) {
             $scope.branch = 'mocha';
             $scope.sitename = 'MoCha';
+            sharedCliaProperties.setProperty('mocha');
         }
         else{
             $scope.branch = 'mdacc';
             $scope.sitename = 'MDACC';
+            sharedCliaProperties.setProperty('mdacc');
         }
 
         $scope.openCosmicGene = function (id) {
