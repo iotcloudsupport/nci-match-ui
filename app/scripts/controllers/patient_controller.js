@@ -74,6 +74,9 @@
         $scope.geneFusions = [];
         $scope.singleNucleotideVariants = [];
 
+        $scope.dtInstance = {};
+        $scope.confirmed = '';
+
         $scope.dropzoneConfig = {
             url: '/alt_upload_url',
             parallelUploads: 3,
@@ -117,11 +120,26 @@
         $scope.navigateToTissueVariantReport = navigateToTissueVariantReport;
 
         //FILTER
-        $scope.$watch('confirmed', function (newValue, oldValue) {
-            if (newValue === 'ALL') {
+        // $scope.$watch('confirmed', function (newValue, oldValue) {
+        //     if (newValue === 'ALL') {
+        //         $scope.filterCol = "";
+        //     } else {
+        //         $scope.filterCol = newValue;
+        //     }
+        // });
+
+        //FILTER
+        $scope.$watch('confirmed', function(newValue, oldValue) {
+
+            console.log(newValue);
+            if(newValue === 'ALL') {
                 $scope.filterCol = "";
-            } else {
-                $scope.filterCol = newValue;
+                // $scope.dtInstance.DataTable.search("");
+                $scope.dtInstance.DataTable.search("").draw();
+            }
+            else {
+                // $scope.dtInstance.DataTable.search(newValue);
+                $scope.dtInstance.DataTable.search(newValue).draw();
             }
         });
 
@@ -158,7 +176,7 @@
         //CNV
         function loadQcTable() {
             matchApiMock
-                .loadQcTable()
+                .loadQc_Table()
                 .then(loadQcList);
         }
 
@@ -169,7 +187,7 @@
         //SNV
         function loadSnvTable() {
             matchApiMock
-                .loadQcTable()
+                .loadQc_Table()
                 .then(loadSnvList);
         }
 
@@ -180,7 +198,7 @@
         //GENE
         function loadGeneTable() {
             matchApiMock
-                .loadQcTable()
+                .loadQc_Table()
                 .then(loadGeneList);
         }
 
