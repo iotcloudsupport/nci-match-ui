@@ -218,7 +218,7 @@
                                             </a>
                                         </td>
                                         <td>{{patient.disease | dashify }}</td>
-                                        <td><treatment-arm-title name="patient.treatment_arm" stratum="patient.treatment_arm_stratum_id" version="patient.treatment_version"></treatment-arm-title></td>
+                                        <td><treatment-arm-title name="patient.treatment_arm" stratum="patient.treatment_arm_stratum_id" version="patient.treatment_arm_version"></treatment-arm-title></td>
                                         <td>{{ patient.assignment_date | gmt }}</td>
                                         <td><span ng-if="patient.hours_pending >= hours_pending_range.upper_bound_yellow" class="label label-danger">{{ patient.hours_pending | dashify }}</span>
                                             <span ng-if="patient.hours_pending < hours_pending_range.upper_bound_yellow && patient.hours_pending >= hours_pending_range.upper_bound_green" class="label label-warning">{{ patient.hours_pending | dashify }}</span>
