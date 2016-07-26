@@ -54,6 +54,8 @@
         $scope.setInExclusionType = setInExclusionType;
         $scope.getInExclusionTypeClass = getInExclusionTypeClass;
 
+        $scope.versionHistory = [];
+
         $scope.chartColors = [
             "#1c84c6",
             "#23c6c8",
@@ -227,8 +229,23 @@
             $scope.currentVersion = $scope.versions[0];
             $scope.currentVersion.latest = 'This is the latest version.';
 
+            setupHistory();
             setupRulesExlcusionInclusionLists();
             setupFinal();
+        }
+
+        function setupHistory() {
+            $scope.versionHistory = [];
+
+            for (var i = 0; i < $scope.versions.length; i++) {
+                var version = $scope.versions[i];
+
+                for (var j = 0; j < version.version_history.length; j++) {
+                    var historyItem = angular.copy(version.version_history[j])
+                    historyItem.version = version.version;
+                    $scope.versionHistory.push(historyItem);
+                }
+            }            
         }
 
         function setupRulesExlcusionInclusionLists() {
