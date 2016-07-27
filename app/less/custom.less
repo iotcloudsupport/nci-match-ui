@@ -620,3 +620,35 @@ span.chart-legend-digit {
   margin-left: 2px;
   margin-right: 2px;
 }
+
+
+// Override Inspinia btn-default
+.btn-default {
+  background-color: #fff;
+  border-color: @dark-gray;
+  color: @text-color;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+  background-color: darken(#fff, 3%);
+  border-color: darken(@dark-gray, 3%);
+  color: @text-color;
+}
+
+.btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+  background-image: none;
+}
+
+.btn-default.disabled, .btn-default.disabled:hover, .btn-default.disabled:focus, .btn-default.disabled:active, .btn-default.disabled.active, .btn-default[disabled], .btn-default[disabled]:hover, .btn-default[disabled]:focus, .btn-default[disabled]:active, .btn-default.active[disabled], fieldset[disabled] .btn-default, fieldset[disabled] .btn-default:hover, fieldset[disabled] .btn-default:focus, fieldset[disabled] .btn-default:active, fieldset[disabled] .btn-default.active {
+  background-color: #fff;
+  border-color: lighten(@dark-gray, 4%);
+  color: darken(#fff, 40%);
+}
+
+button.btn-default.dim {
+  box-shadow: inset 0px 0px 0px darken(@dark-gray,6%), 0px 5px 0px 0px darken(@dark-gray,6%), 0px 10px 5px #999;
+}
+
+button.btn-default.dim:active {
+  box-shadow: inset 0px 0px 0px darken(@dark-gray,6%), 0px 2px 0px 0px darken(@dark-gray,6%), 0px 5px 3px #999;
+}
