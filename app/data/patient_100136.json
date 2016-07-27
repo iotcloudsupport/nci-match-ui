@@ -314,7 +314,7 @@
             "variants": {
                 "snvs_and_indels": [
                     {
-                        "confirmed": "false",
+                        "confirmed": "true",
                         "molecular_id_analysis_id": "MOL100136_01_01AI100136_01_01_2",
                         "variant_type": "single_nucleitide_variants",
                         "patient_id": "100136",
@@ -395,14 +395,13 @@
                         "molecular_id": "MOL100136_01_01",
                         "analysis_id": "AI100136_01_01_2",
                         "variant_id": "VAR100136_01_01_2_CNV_1",
-                        "confirmed": true,
+                        "confirmed": "true",
                         "comment": "",
                         "refCopyNumber": 8.1,
                         "rawCopyNumber": 2.1,
                         "copyNumber": 8.1,
                         "confidenceInterval95percent": 2.46082,
                         "confidenceInterval5percent": 1.79208,
-                        "confirmed": false,
                         "aMOI": "PRIOR",
                         "gene": "MYCL",
                         "exon": "",
@@ -519,7 +518,7 @@
             "variants": {
                 "snvs_and_indels": [
                     {
-                        "confirmed": false,
+                        "confirmed": "true",
                         "molecular_id_analysis_id": "MOL100136_01_01AI100136_01_01_1",
                         "variant_type": "single_nucleitide_variants",
                         "patient_id": "100136",
@@ -1029,7 +1028,7 @@
                         "copyNumber": 8.1,
                         "confidenceInterval95percent": 2.46082,
                         "confidenceInterval5percent": 1.79208,
-                        "confirmed": false,
+                        "confirmed": "true",
                         "gene": "MYCL",
                         "exon": "",
                         "function": "",
@@ -1053,7 +1052,7 @@
                 ],
                 "gene_fusions": [
                     {
-                        "confirmed": false,
+                        "confirmed": "true",
                         "molecular_id_analysis_id": "MOL100136_02_01AI100136_02_01_1",
                         "variant_type": "gene_fusions",
                         "patient_id": "100136",
@@ -1088,7 +1087,7 @@
                         "armSpecific": false
                     },
                     {
-                        "confirmed": false,
+                        "confirmed": "true",
                         "molecular_id_analysis_id": "MOL100136_02_01AI100136_02_01_1",
                         "variant_type": "gene_fusions",
                         "patient_id": "100136",
@@ -1147,7 +1146,7 @@
             "variants": {
                 "snvs_and_indels": [
                     {
-                        "confirmed": false,
+                        "confirmed": "true",
                         "molecular_id_analysis_id": "MOL100136BLD_01AI100136BLD_01_1",
                         "variant_type": "single_nucleitide_variants",
                         "patient_id": "100136",
@@ -1226,15 +1225,13 @@
                         "molecular_id": "MOL100136BLD_01",
                         "analysis_id": "AI100136BLD_01_1",
                         "variant_id": "VAR100136BLD_01_1_CNV_1",
-                        "confirmed": false,
+                        "confirmed": "true",
                         "comment": "",
                         "refCopyNumber": 8.1,
                         "rawCopyNumber": 2.1,
                         "copyNumber": 8.1,
                         "confidenceInterval95percent": 2.46082,
                         "confidenceInterval5percent": 1.79208,
-                        "confirmed": true,
-                        "aMOI": "PRIOR",
                         "gene": "MYCL",
                         "exon": "",
                         "function": "",
@@ -1266,7 +1263,7 @@
                         "analysis_id": "AI100136BLD_01_1",
                         "variant_id": "VAR100136BLD_01_1_GF_1",
                         "comment": "",
-                        "confirmed": false,
+                        "confirmed": "true",
                         "gene": "ALK",
                         "oncominevariantclass": "Fusion",
                         "exon": "20",
@@ -1275,7 +1272,6 @@
                             "_id": "354a721e-81c2-4773-937c-ad1e3936b3c3"
                         },
                         "geneName": "ALK",
-                        "aMOI": "PRIOR",
                         "chromosome": "2",
                         "position": "29446394",
                         "identifier": "TPM3-ALK.T7A20_1",
@@ -1300,8 +1296,7 @@
                         "analysis_id": "AI100136BLD_01_1",
                         "variant_id": "VAR100136BLD_01_1_GF_2",
                         "comment": "",
-                        "confirmed": false,
-                        "aMOI": "PRIOR",
+                        "confirmed": "true",
                         "gene": "TPM3",
                         "oncominevariantclass": "Fusion",
                         "exon": "12",
