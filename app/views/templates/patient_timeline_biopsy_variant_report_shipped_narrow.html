@@ -19,8 +19,12 @@
                     <br>
                 </span>
                 
-                <span ng-if="timelineEvent.event_data.status">
+                <!--<span ng-if="timelineEvent.event_data.status">
                     Variant Report Status: <span class="timeline-value" ng-style="{'color':'{{ timelineEvent.event_data.status | analysisStatus }}'}">{{::timelineEvent.event_data.status}}</span>
+                    <br>
+                </span>-->
+                <span ng-if="timelineEvent.event_data.status">
+                    Variant Report Status: <span class="timeline-value" ng-style="{'color':'{{ timelineEvent.event_data.status | analysisStatus }}'}"><patient-title patient-id="timelineEvent.patient_id" section="'tissue_variant_report'" text="timelineEvent.event_data.status" surgical-event-id="timelineEvent.event_data.surgical_event_id" molecular-id="timelineEvent.event_data.molecular_id" analysis-id="timelineEvent.event_data.analysis_id"></patient-title></span>
                     <br>
                 </span>
                                         
