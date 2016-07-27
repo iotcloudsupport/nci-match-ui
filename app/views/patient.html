@@ -383,7 +383,7 @@
 
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <div class="header-info-box  variant-report-header-box">
+                                            <div class="header-info-box  tissue-variant-report-header-box">
                                                 <dl class="dl-horizontal">
                                                     <dt>Surgical Event ID</dt>
                                                     <dd>{{currentTissueVariantReport.surgical_event_id}}</dd>
@@ -435,7 +435,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="header-info-box variant-report-header-box">
+                                            <div class="header-info-box tissue-variant-report-header-box">
 
                                                 <dl class="dl-horizontal dl-horizontal-expanded-label">
                                                     <dt>Total Variants</dt>
@@ -1116,7 +1116,7 @@
 
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="header-info-box  variant-report-header-box">
+                                    <div class="header-info-box  blood-variant-report-header-box">
                                         <dl class="dl-horizontal">
                                             <dt>Analysis ID</dt>
                                             <dd>{{currentBloodVariantReport.analysis_id}}</dd>
@@ -1156,13 +1156,13 @@
                                             <dt ng-if="currentBloodVariantReport.comment">Comments</dt>
                                             <dd ng-if="currentBloodVariantReport.comment">{{currentBloodVariantReport.comment}}</dd>
 
-                                            <dt ng-if="needToDisplayReportStatus(currentBloodVariantReport)">{{currentBloodVariantReport | titlecase}} Date</dt>
+                                            <dt ng-if="needToDisplayReportStatus(currentBloodVariantReport)">{{currentBloodVariantReport.status | titlecase}} Date</dt>
                                             <dd ng-if="needToDisplayReportStatus(currentBloodVariantReport)">{{currentBloodVariantReport.status_date | utc}}</dd>
                                         </dl>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="header-info-box variant-report-header-box">
+                                    <div class="header-info-box blood-variant-report-header-box">
 
                                         <dl class="dl-horizontal dl-horizontal-expanded-label">
                                             <dt>Total Variants</dt>
