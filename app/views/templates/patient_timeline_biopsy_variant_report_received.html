@@ -29,7 +29,8 @@
 
             <span ng-if="timelineEvent.event_data.surgical_event_id">
                 Surgical Event ID: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id"
-                                                                               text="'surgical_event'"
+                                                                               section="'surgical_event'"
+                                                                               text="timelineEvent.event_data.surgical_event_id"
                                                                                surgical-event-id="timelineEvent.event_data.surgical_event_id"
                                                                                molecular-id="timelineEvent.event_data.molecular_id"
                                                                                analysis-id="timelineEvent.event_data.analysis_id"></patient-title></span>
@@ -43,7 +44,8 @@
 
             <span ng-if="timelineEvent.event_data.analysis_id">
                 Analysis ID: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id"
-                                                                         text="'tissue_variant_report'"
+                                                                         section="'tissue_variant_report'"
+                                                                         text="timelineEvent.event.data.molecular_id"
                                                                          molecular-id="timelineEvent.event_data.molecular_id"
                                                                          analysis-id="timelineEvent.event_data.analysis_id"></patient-title></span>
                 <br>
