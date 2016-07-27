@@ -35,7 +35,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         $scope.copyNumberVariantsList = [];
         $scope.geneFusionsList = [];
         $scope.sitename = 'undefined';
-        $scope.barlegend = 'Total Positive / Ntc Control Status';
+        $scope.barlegend = 'Total Positive / NTC Control Status';
         $scope.titleid = "";
         $scope.mochaList=[];
         $scope.mochaNtcList=[];
@@ -841,7 +841,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             };
 
             $scope.loadSampleBreakups = function() {
-                $scope.barlegend = "Total Positive / Ntc Control Status";
+                $scope.barlegend = "Total Positive / NTC Control Status";
 
                 var prepareData = {
                     series: [5, 3, 4]

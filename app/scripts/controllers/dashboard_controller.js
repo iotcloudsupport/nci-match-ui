@@ -249,9 +249,10 @@
 
         vm.data = [];
         vm.loadData = loadData;
-        vm.maxItems = 10;
+        vm.maxItems = null;
 
-        function loadData() {
+        function loadData(maxItems) {
+            vm.maxItems = maxItems;
             matchApiMock
                 .loadActivity($stateParams.patient_id)
                 .then(setupScope, handleActivityLoadError);
@@ -268,7 +269,9 @@
             var now = moment();
             var previousStep = null;
 
-            for (var i = 0; i < data.data.length && i < vm.maxItems; i++) {
+            var limit = vm.maxItems || data.data.length;
+
+            for (var i = 0; i < limit; i++) {
                 var timelineEvent = angular.copy(data.data[i]);
                 vm.data.push(timelineEvent);
                 var eventDateMoment = moment(timelineEvent.event_date);
