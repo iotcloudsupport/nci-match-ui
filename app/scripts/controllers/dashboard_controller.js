@@ -145,7 +145,14 @@
                 .loadChartjsDonutChart()
                 .then(function (d) {
                     var aMoiValues = d.data.aMoiValues;
-                    var aMoiLabels = ['0 aMOI', '1 aMOI', '2 aMOI', '3 aMOI', '4 aMOI', '5+ aMOI'];
+                    var aMoiLabels = [
+                        '<span class="chart-legend-digit">0</span> aMOI', 
+                        '<span class="chart-legend-digit">1</span> aMOI', 
+                        '<span class="chart-legend-digit">2</span> aMOI', 
+                        '<span class="chart-legend-digit">3</span> aMOI', 
+                        '<span class="chart-legend-digit">4</span> aMOI', 
+                        '<span class="chart-legend-digit">5+</span> aMOI'
+                        ];
                     var aMoiHighlight = "#000088";
 
                     $scope.donutOptions = {
