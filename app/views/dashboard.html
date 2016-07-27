@@ -3,7 +3,7 @@
     <div class="row border-bottom white-bg dashboard-header animated fadeInRight statistics-row">
         <h2 class="welcome">Welcome, {{ name }}!</h2>
 
-        <div class="col-sm-3" ng-init="loadDashboardData()">
+        <div class="col-sm-3 col-md-3" ng-init="loadDashboardData()">
             <div>
                 <h3>Patients<br>Statistics</h3>
             </div>
@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <div class="col-sm-6" ng-init="setCanvasHeight('#treatmentArmAccrualCanvas', 100);loadTreatmentArmAccrualData();">
+        <div class="col-sm-6 col-md-6" ng-init="setCanvasHeight('#treatmentArmAccrualCanvas', 100);loadTreatmentArmAccrualData();">
             <div class="text-center">
                 <h3>Top 5 Treatment<br> Arm Accrual</h3>
             </div>
@@ -47,7 +47,7 @@
             </div>
         </div>
 
-        <div class="col-sm-3" ng-init="setCanvasHeight('#amoiCanvas', 95);loadChartjsDonutChartData();">
+        <div class="col-sm-3 col-md-3" ng-init="setCanvasHeight('#amoiCanvas', 95);loadChartjsDonutChartData();">
             <div class="text-center">
                 <h3>Sequenced & Confirmed <br> Patients with aMOI(s)</h3>
             </div>
@@ -80,7 +80,7 @@
                     <div class="ibox-title ibox-title-no-line">
                         <h3>Pending Review </h3>
                     </div>
-                    <div class="tabs-container">
+                    <div class="tabs-container no-tab-pane-border">
                         <uib-tabset>
                             <uib-tab heading="Tissue Variant Reports">
                                 <div class="panel-body" ng-init="loadTissueVariantReportsList()">
