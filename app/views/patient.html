@@ -38,7 +38,7 @@
                             <dd>{{ data.last_rejoin_scan_date | utc }}</dd>
 
                             <dt>Status</dt>
-                            <dd ng-style="{'color':'{{ data.current_status | status }}'}">{{data.current_status}}</dd>
+                            <dd style="color: {{ data.current_status | status }}">{{data.current_status}}</dd>
 
                             <dt> Current Step</dt>
                             <dd>{{data.current_step_number}}</dd>
@@ -221,7 +221,7 @@
                                     <td>{{assay.ordered_date | utc | dashify}}</td>
                                     <td>{{assay.result_date | utc | dashify}}</td>
                                     <td>
-                                        <span ng-style="{'color':'{{ assay.result | assayStatus }}'}">{{assay.result | dashify}}</span>
+                                        <span style="color:{{ assay.result | assayStatus }}">{{assay.result | dashify}}</span>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -271,7 +271,7 @@
                                                                 <dd><a ng-click="navigateToTissueVariantReport(analysis.molecular_id, analysis.analysis_id)"> {{analysis.analysis_id | dashify}} </a></dd>
 
                                                                 <dt>Status</dt>
-                                                                <dd ng-style="{'color':'{{ analysis.status | analysisStatus }}'}">{{analysis.status | titlecase}} <span ng-if="analysis.comment_user"> (user: {{analysis.comment_user}})</span></dd>
+                                                                <dd style="{color:{{ analysis.status | analysisStatus }}">{{analysis.status | titlecase}} <span ng-if="analysis.comment_user"> (user: {{analysis.comment_user}})</span></dd>
 
                                                                 <dt ng-if="analysis.comment">Comment</dt>
                                                                 <dd ng-if="analysis.comment">{{analysis.comment}}</dd>
@@ -424,7 +424,7 @@
                                                     <dd ng-show="variantReport.confirmedRejectedDate">{{currentTissueVariantReport.confirmedRejectedDate | utc}}</dd>
 
                                                     <dt>Status</dt>
-                                                    <dd ng-style="{'color':'{{ currentTissueVariantReport.status | analysisStatus }}'}">{{currentTissueVariantReport.status}} <span ng-if="currentTissueVariantReport.comment_user"> (user: {{currentTissueVariantReport.comment_user}})</span></dd>
+                                                    <dd style="color: {{currentTissueVariantReport.status | analysisStatus }}">{{currentTissueVariantReport.status}} <span ng-if="currentTissueVariantReport.comment_user"> (user: {{currentTissueVariantReport.comment_user}})</span></dd>
 
                                                     <dt ng-if="currentTissueVariantReport.comment">Comments</dt>
                                                     <dd ng-if="currentTissueVariantReport.comment">{{currentTissueVariantReport.comment}}</dd>
@@ -954,7 +954,7 @@
                                                     <dd>{{currentAssignmentReport.analysis_id}}</dd>
 
                                                     <dt>Status</dt>
-                                                    <dd ng-style="{'color':'{{ currentAssignmentReport.status | analysisStatus }}'}">{{currentAssignmentReport.status}} <span ng-if="currentAssignmentReport.comment_user"> (user: {{currentAssignmentReport.comment_user}})</span></dd>
+                                                    <dd style="{color:{{ currentAssignmentReport.status | analysisStatus }}">{{currentAssignmentReport.status}} <span ng-if="currentAssignmentReport.comment_user"> (user: {{currentAssignmentReport.comment_user}})</span></dd>
 
                                                     <dt ng-if="currentAssignmentReport.comment">Comments</dt>
                                                     <dd ng-if="currentAssignmentReport.comment">{{currentAssignmentReport.comment}}</dd>
@@ -996,7 +996,7 @@
                                         <tbody>
                                         <tr ng-repeat="assay in currentAssignmentReport.assays" style="cursor: auto; " role="row" class="odd">
                                             <td>{{assay.gene}}</td>
-                                            <td><span ng-style="{'color':'{{ assay.result | assayStatus }}'}">{{assay.result}}</span></td>
+                                            <td><span style="{color:{{ assay.result | assayStatus }}">{{assay.result}}</span></td>
                                             <td>{{assay.comment}}</td>
                                         </tr>
                                         </tbody>
@@ -1151,7 +1151,7 @@
                                             <dd>{{currentBloodVariantReport.variant_report_received_date | utc}}</dd>
 
                                             <dt>Status</dt>
-                                            <dd ng-style="{'color':'{{ currentBloodVariantReport.status | analysisStatus }}'}">{{currentBloodVariantReport.status}}<span ng-if="currentBloodVariantReport.comment_user"> (user: {{currentBloodVariantReport.comment_user}})</span></dd>
+                                            <dd style="{color:{{ currentBloodVariantReport.status | analysisStatus }}">{{currentBloodVariantReport.status}}<span ng-if="currentBloodVariantReport.comment_user"> (user: {{currentBloodVariantReport.comment_user}})</span></dd>
 
                                             <dt ng-if="currentBloodVariantReport.comment">Comments</dt>
                                             <dd ng-if="currentBloodVariantReport.comment">{{currentBloodVariantReport.comment}}</dd>
