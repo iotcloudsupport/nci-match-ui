@@ -379,10 +379,10 @@
                                                                     <i ng-click="closePositives()" class="fa fa-times" style="cursor: pointer; color: silver;"></i>
                                                                     <h3>Positive Sample Control</h3>
 
-                                                                    <div class="row">
+                                                                    <div class="row ">
 
                                                                         <!--SPOT TABS-->
-                                                                        <div class="col-md-6 equal-height-panels">
+                                                                        <div class="col-md-6 equal-height-panels panel">
 
                                                                             <div class="header-info-box  variant-report-header-box">
 
@@ -422,7 +422,7 @@
                                                                             </div>
                                                                         </div>
 
-                                                                        <div class="col-md-6 equal-height-panels">
+                                                                        <div class="col-md-6 equal-height-panels panel">
                                                                             <div class="header-info-box  variant-report-header-box">
                                                                                 <dl class="dl-horizontal">
 
@@ -513,29 +513,23 @@
                                                                                                 {{sample.identifier | dashify }}
                                                                                             </a>
                                                                                         </td>
-                                                                                        <td>{{sample.chromosome | dashify
-                                                                                            }}</td>
-                                                                                        <td>{{sample.position | dashify
-                                                                                            }}</td>
+                                                                                        <td>{{sample.chromosome | dashify}}</td>
+                                                                                        <td>{{sample.position | dashify}}</td>
                                                                                         <td>
                                                                                             <a class="report-link" href ng-click="openCosmicGene( sample.geneName )">
                                                                                                 {{sample.geneName | dashify }}
                                                                                             </a>
                                                                                         </td>
-                                                                                        <td>{{sample.variantType | dashify
-                                                                                            }}</td>
-                                                                                        <td>{{sample.reference | dashify
-                                                                                            }}</td>
-                                                                                        <td>{{sample.alternative | dashify
-                                                                                            }}</td>
+                                                                                        <td>{{sample.variantType | dashify}}</td>
+                                                                                        <td>{{sample.reference | dashify}}</td>
+                                                                                        <td>{{sample.alternative | dashify}}</td>
                                                                                         <td>{{sample.hgvs | dashify }}</td>
-                                                                                        <td>{{sample.protein | dashify
-                                                                                            }}</td>
-                                                                                        <td>{{sample.function | dashify
-                                                                                            }}</td>
+                                                                                        <td>{{sample.protein | dashify}}</td>
+                                                                                        <td>{{sample.function | dashify}}</td>
                                                                                     </tr>
                                                                                     </tbody>
                                                                                 </table>
+
                                                                             </div>
                                                                         </div>
 
@@ -567,24 +561,18 @@
                                                                                                 {{sample.publicMedIds | dashify }}
                                                                                             </a>
                                                                                         </td>
-                                                                                        <td>{{sample.position | dashify
-                                                                                            }}</td>
+                                                                                        <td>{{sample.position | dashify}}</td>
                                                                                         <td>
                                                                                             <a class="report-link" href ng-click="openCosmicGene( sample.geneName )">
                                                                                                 {{sample.geneName | dashify }}
                                                                                             </a>
                                                                                         </td>
-                                                                                        <td>{{sample.variantType | dashify
-                                                                                            }}</td>
-                                                                                        <td>{{sample.reference | dashify
-                                                                                            }}</td>
-                                                                                        <td>{{sample.alternative | dashify
-                                                                                            }}</td>
+                                                                                        <td>{{sample.variantType | dashify}}</td>
+                                                                                        <td>{{sample.reference | dashify}}</td>
+                                                                                        <td>{{sample.alternative | dashify}}</td>
                                                                                         <td>{{sample.hgvs | dashify }}</td>
-                                                                                        <td>{{sample.protein | dashify
-                                                                                            }}</td>
-                                                                                        <td>{{sample.function | dashify
-                                                                                            }}</td>
+                                                                                        <td>{{sample.protein | dashify}}</td>
+                                                                                        <td>{{sample.function | dashify}}</td>
                                                                                     </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -973,7 +961,7 @@
                                                                         <div class="row">
 
                                                                             <!--SPOT TABS-->
-                                                                            <div class="col-md-6">
+                                                                            <div class="col-md-6 equal-height-panels">
 
                                                                                 <div class="header-info-box  variant-report-header-box">
 
@@ -1014,7 +1002,7 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="col-md-6">
+                                                                            <div class="col-md-6 equal-height-panels">
                                                                                 <div class="header-info-box  variant-report-header-box">
                                                                                     <dl class="dl-horizontal">
 
@@ -1066,101 +1054,93 @@
                                                                             </div>
                                                                             <!--SPOT TABS-->
 
+                                                                                <div class="ibox-content">
 
-                                                                            <div class="ibox-title ibox-title-no-line pull">
-                                                                                <h3>SNVs/MNVs/Indels</h3>
-                                                                            </div>
+                                                                                    <div class="ibox-title ibox-title-no-line pull">
+                                                                                        <h3>SNVs/MNVs/Indels</h3>
+                                                                                    </div>
+                                                                                    <table class="table" role="grid">
+                                                                                        <thead>
+                                                                                        <tr>
+                                                                                            <th>Id</th>
+                                                                                            <th>Chrom</th>
+                                                                                            <th>Position</th>
+                                                                                            <th>Ref </th>
+                                                                                            <th>Alternative</th>
+                                                                                            <th>Allele Freq</th>
+                                                                                            <th>Func Gene</th>
+                                                                                            <th>Variant Type</th>
+                                                                                            <th>Oncomine Variant Class</th>
+                                                                                            <th>Function</th>
+                                                                                            <th>HGVS</th>
+                                                                                            <th>Read Depth</th>
+                                                                                            <th>Transcript</th>
+                                                                                            <th>Protein</th>
+                                                                                        </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
+                                                                                        <tr ng-repeat="sample in indelsList">
+                                                                                            <td>
+                                                                                                <a class="report-link" href ng-click="openCosmicId( sample.identifier )">
+                                                                                                    {{sample.identifier | dashify }}
+                                                                                                </a>
+                                                                                            </td>
+                                                                                            </td>
+                                                                                            <td>{{sample.chromosome | dashify}}</td>
+                                                                                            <td>{{sample.position | dashify }}</td>
+                                                                                            <td>{{sample.reference | dashify}}</td>
+                                                                                            <td>{{sample.alternative | dashify}}</td>
+                                                                                            <td>{{sample.alleleFrequency | dashify}}</td>
+                                                                                            <td>{{sample.geneName | dashify }}</td>
+                                                                                            <td>{{sample.type | dashify }}</td>
+                                                                                            <td>{{sample.oncominevariantclass | dashify }}</td>
+                                                                                            <td>{{sample.function | dashify }}</td>
+                                                                                            <td>{{sample.hgvs | dashify }}</td>
+                                                                                            <td>{{sample.readDepth | dashify}}</td>
+                                                                                            <td>{{sample.transcript | dashify}}</td>
+                                                                                            <td>{{sample.protein | dashify }}</td>
+                                                                                        </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
 
-                                                                            <table class="table" role="grid">
-                                                                                <thead>
-                                                                                <tr>
-                                                                                    <th>Id</th>
-                                                                                    <th>Chrom</th>
-                                                                                    <th>Position</th>
-                                                                                    <th>Ref </th>
-                                                                                    <th>Alternative</th>
-                                                                                    <th>Allele Freq</th>
-                                                                                    <th>Func Gene</th>
-                                                                                    <th>Variant Type</th>
-                                                                                    <th>Oncomine Variant Class</th>
-                                                                                    <th>Function</th>
-                                                                                    <th>HGVS</th>
-                                                                                    <th>Read Depth</th>
-                                                                                    <th>Transcript</th>
-                                                                                    <th>Protein</th>
-                                                                                </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                <tr ng-repeat="sample in indelsList">
-                                                                                    <td>
-                                                                                        <a class="report-link" href ng-click="openCosmicId( sample.identifier )">
-                                                                                            {{sample.identifier | dashify }}
-                                                                                        </a>
-                                                                                    </td>
-                                                                                    </td>
-                                                                                    <td>{{sample.chromosome | dashify
-                                                                                        }}</td>
-                                                                                    <td>{{sample.position | dashify }}</td>
-                                                                                    <td>{{sample.reference | dashify
-                                                                                        }}</td>
-                                                                                    <td>{{sample.alternative | dashify
-                                                                                        }}</td>
-                                                                                    <td>{{sample.alleleFrequency | dashify
-                                                                                        }}</td>
-                                                                                    <td>{{sample.geneName | dashify }}</td>
-                                                                                    <td>{{sample.type | dashify }}</td>
-                                                                                    <td>{{sample.oncominevariantclass
-                                                                                        | dashify }}</td>
-                                                                                    <td>{{sample.function | dashify }}</td>
-                                                                                    <td>{{sample.hgvs | dashify }}</td>
-                                                                                    <td>{{sample.readDepth | dashify
-                                                                                        }}</td>
-                                                                                    <td>{{sample.transcript | dashify
-                                                                                        }}</td>
-                                                                                    <td>{{sample.protein | dashify }}</td>
-                                                                                </tr>
-                                                                                </tbody>
-                                                                            </table>
 
-                                                                            <div class="ibox-title ibox-title-no-line pull">
-                                                                                <h3>Gene Fusion(s)</h3>
-                                                                            </div>
+                                                                                <div class="ibox-content">
 
-                                                                            <table class="table" role="grid">
-                                                                                <thead>
-                                                                                <tr>
-                                                                                    <th>Id</th>
-                                                                                    <th>Driver Gene</th>
-                                                                                    <th>Driver Count</th>
-                                                                                    <th>Partner Gene </th>
-                                                                                    <th>Annotation</th>
+                                                                                    <div class="ibox-title ibox-title-no-line pull">
+                                                                                        <h3>Gene Fusion(s)</h3>
+                                                                                    </div>
+                                                                                    <table class="table" role="grid">
+                                                                                        <thead>
+                                                                                        <tr>
+                                                                                            <th>Id</th>
+                                                                                            <th>Driver Gene</th>
+                                                                                            <th>Driver Count</th>
+                                                                                            <th>Partner Gene </th>
+                                                                                            <th>Annotation</th>
 
-                                                                                </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                <tr ng-repeat="sample in geneFusionsList">
+                                                                                        </tr>
+                                                                                        </thead>
+                                                                                        <tbody>
+                                                                                        <tr ng-repeat="sample in geneFusionsList">
 
-                                                                                    <td>{{sample.identifier | dashify
-                                                                                        }}</td>
-                                                                                    <td>
-                                                                                        <a class="report-link" href ng-click="openCosmicGene( sample.geneName )">
-                                                                                            {{sample.geneName | dashify }}
-                                                                                        </a>
-                                                                                    </td>
-                                                                                    <td>{{sample.gene | dashify }}</td>
-                                                                                    <td>{{sample.flowAlternativeAlleleObservationCount
-                                                                                        | dashify }}</td>
-                                                                                    <td>{{sample.alternativeAlleleObservationCount
-                                                                                        | dashify }}</td>
+                                                                                            <td>{{sample.identifier | dashify}}</td>
+                                                                                            <td>
+                                                                                                <a class="report-link" href ng-click="openCosmicGene( sample.geneName )">
+                                                                                                    {{sample.geneName | dashify }}
+                                                                                                </a>
+                                                                                            </td>
+                                                                                            <td>{{sample.gene | dashify }}</td>
+                                                                                            <td>{{sample.flowAlternativeAlleleObservationCount | dashify }}</td>
+                                                                                            <td>{{sample.alternativeAlleleObservationCount | dashify }}</td>
 
-                                                                                </tr>
-                                                                                </tbody>
-                                                                            </table>
+                                                                                        </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
 
                                                                         </div>
-
                                                                     </div>
-
                                                                 </div>
                                                                 <!--NTC MOCHA TABLES-->
 
@@ -1230,7 +1210,7 @@
                                                                         <div class="row">
 
                                                                             <!--SPOT TABS-->
-                                                                            <div class="col-md-6">
+                                                                            <div class="col-md-6 equal-height-panels">
 
                                                                                 <div class="header-info-box variant-report-header-box">
 
@@ -1271,7 +1251,7 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="col-md-6">
+                                                                            <div class="col-md-6 equal-height-panels">
                                                                                 <div class="header-info-box  variant-report-header-box">
                                                                                     <dl class="dl-horizontal">
 
@@ -1323,92 +1303,87 @@
                                                                             </div>
                                                                             <!--SPOT TABS-->
 
+                                                                            <div class="ibox-content">
 
-                                                                            <div class="ibox-title ibox-title-no-line pull">
-                                                                                <h3>SNVs/MNVs/Indels</h3>
+                                                                                <div class="ibox-title ibox-title-no-line pull">
+                                                                                    <h3>SNVs/MNVs/Indels</h3>
+                                                                                </div>
+                                                                                <table class="table" role="grid">
+                                                                                    <thead>
+                                                                                    <tr>
+                                                                                        <th>Id</th>
+                                                                                        <th>Chrom</th>
+                                                                                        <th>Position</th>
+                                                                                        <th>Ref </th>
+                                                                                        <th>Alternative</th>
+                                                                                        <th>Allele Freq</th>
+                                                                                        <th>Func Gene</th>
+                                                                                        <th>Variant Type</th>
+                                                                                        <th>Oncomine Variant Class</th>
+                                                                                        <th>Function</th>
+                                                                                        <th>HGVS</th>
+                                                                                        <th>Read Depth</th>
+                                                                                        <th>Transcript</th>
+                                                                                        <th>Protein</th>
+                                                                                    </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                    <tr ng-repeat="sample in indelsList">
+                                                                                        <td>
+                                                                                            <a class="report-link" href ng-click="openCosmicId( sample.identifier )">
+                                                                                                {{sample.identifier | dashify }}
+                                                                                            </a>
+                                                                                            <!--{{sample.identifier | dashify }}-->
+                                                                                        </td>
+                                                                                        <td>{{sample.chromosome | dashify}}</td>
+                                                                                        <td>{{sample.position | dashify }}</td>
+                                                                                        <td>{{sample.reference | dashify}}</td>
+                                                                                        <td>{{sample.alternative | dashify}}</td>
+                                                                                        <td>{{sample.alleleFrequency | dashify}}</td>
+                                                                                        <td>{{sample.geneName | dashify }}</td>
+                                                                                        <td>{{sample.type | dashify }}</td>
+                                                                                        <td>{{sample.oncominevariantclass | dashify }}</td>
+                                                                                        <td>{{sample.function | dashify }}</td>
+                                                                                        <td>{{sample.hgvs | dashify }}</td>
+                                                                                        <td>{{sample.readDepth | dashify}}</td>
+                                                                                        <td>{{sample.transcript | dashify}}</td>
+                                                                                        <td>{{sample.protein | dashify }}</td>
+                                                                                    </tr>
+                                                                                    </tbody>
+                                                                                </table>
                                                                             </div>
 
-                                                                            <table class="table" role="grid">
-                                                                                <thead>
-                                                                                <tr>
-                                                                                    <th>Id</th>
-                                                                                    <th>Chrom</th>
-                                                                                    <th>Position</th>
-                                                                                    <th>Ref </th>
-                                                                                    <th>Alternative</th>
-                                                                                    <th>Allele Freq</th>
-                                                                                    <th>Func Gene</th>
-                                                                                    <th>Variant Type</th>
-                                                                                    <th>Oncomine Variant Class</th>
-                                                                                    <th>Function</th>
-                                                                                    <th>HGVS</th>
-                                                                                    <th>Read Depth</th>
-                                                                                    <th>Transcript</th>
-                                                                                    <th>Protein</th>
-                                                                                </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                <tr ng-repeat="sample in indelsList">
-                                                                                    <td>
-                                                                                        <a class="report-link" href ng-click="openCosmicId( sample.identifier )">
-                                                                                            {{sample.identifier | dashify }}
-                                                                                        </a>
-                                                                                        <!--{{sample.identifier | dashify }}-->
-                                                                                    </td>
-                                                                                    <td>{{sample.chromosome | dashify
-                                                                                        }}</td>
-                                                                                    <td>{{sample.position | dashify }}</td>
-                                                                                    <td>{{sample.reference | dashify
-                                                                                        }}</td>
-                                                                                    <td>{{sample.alternative | dashify
-                                                                                        }}</td>
-                                                                                    <td>{{sample.alleleFrequency | dashify
-                                                                                        }}</td>
-                                                                                    <td>{{sample.geneName | dashify }}</td>
-                                                                                    <td>{{sample.type | dashify }}</td>
-                                                                                    <td>{{sample.oncominevariantclass
-                                                                                        | dashify }}</td>
-                                                                                    <td>{{sample.function | dashify }}</td>
-                                                                                    <td>{{sample.hgvs | dashify }}</td>
-                                                                                    <td>{{sample.readDepth | dashify
-                                                                                        }}</td>
-                                                                                    <td>{{sample.transcript | dashify
-                                                                                        }}</td>
-                                                                                    <td>{{sample.protein | dashify }}</td>
-                                                                                </tr>
-                                                                                </tbody>
-                                                                            </table>
 
-                                                                            <div class="ibox-title ibox-title-no-line pull">
-                                                                                <h3>Gene Fusion(s)</h3>
+                                                                            <div class="ibox-content">
+                                                                                
+                                                                                <div class="ibox-title ibox-title-no-line pull">
+                                                                                    <h3>Gene Fusion(s)</h3>
+                                                                                </div>
+
+                                                                                <table class="table" role="grid">
+                                                                                    <thead>
+                                                                                    <tr>
+                                                                                        <th>Id</th>
+                                                                                        <th>Driver Gene</th>
+                                                                                        <th>Driver Count</th>
+                                                                                        <th>Partner Gene </th>
+                                                                                        <th>Annotation</th>
+
+                                                                                    </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                    <tr ng-repeat="sample in geneFusionsList">
+
+                                                                                        <td>{{sample.identifier | dashify}}</td>
+                                                                                        <td>{{sample.geneName | dashify }}</td>
+                                                                                        <td>{{sample.gene | dashify }}</td>
+                                                                                        <td>{{sample.flowAlternativeAlleleObservationCount | dashify }}</td>
+                                                                                        <td>{{sample.alternativeAlleleObservationCount | dashify }}</td>
+
+                                                                                    </tr>
+                                                                                    </tbody>
+                                                                                </table>
                                                                             </div>
-
-                                                                            <table class="table" role="grid">
-                                                                                <thead>
-                                                                                <tr>
-                                                                                    <th>Id</th>
-                                                                                    <th>Driver Gene</th>
-                                                                                    <th>Driver Count</th>
-                                                                                    <th>Partner Gene </th>
-                                                                                    <th>Annotation</th>
-
-                                                                                </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                <tr ng-repeat="sample in geneFusionsList">
-
-                                                                                    <td>{{sample.identifier | dashify
-                                                                                        }}</td>
-                                                                                    <td>{{sample.geneName | dashify }}</td>
-                                                                                    <td>{{sample.gene | dashify }}</td>
-                                                                                    <td>{{sample.flowAlternativeAlleleObservationCount
-                                                                                        | dashify }}</td>
-                                                                                    <td>{{sample.alternativeAlleleObservationCount
-                                                                                        | dashify }}</td>
-
-                                                                                </tr>
-                                                                                </tbody>
-                                                                            </table>
 
                                                                         </div>
 
