@@ -10,6 +10,7 @@
         DTColumnDefBuilder,
         treatmentArmApi,
         matchApiMock,
+        colorFactory,
         $log) {
 
         this.dtOptions = {
@@ -55,19 +56,6 @@
         $scope.getInExclusionTypeClass = getInExclusionTypeClass;
 
         $scope.versionHistory = [];
-
-        $scope.chartColors = [
-            "#1c84c6",
-            "#23c6c8",
-            "#f8ac59",
-            "#1ab394",
-            "#707070",
-            "#1c84c6",
-            "#23c6c8",
-            "#f8ac59",
-            "#1ab394",
-            "#707070"
-        ];
 
         function setInExclusionType(inExclusionType) {
             if ($scope.inExclusionType === inExclusionType) {
@@ -313,19 +301,9 @@
             var chartData = [];
             var colorIndex = 0;
             angular.forEach(statistics, function (value, key) {
-                this.push({ label: key, data: value, color: getColor(colorIndex++) });
+                this.push({ label: key, data: value, color: colorFactory.getColor(colorIndex++) });
             }, chartData);
             return chartData;
-        }
-
-        function getColor(colorIndex) {
-            var index;
-            if (colorIndex >= $scope.chartColors.lentgh) {
-                index = colorIndex % $scope.chartColors.lentgh;
-            } else {
-                index = colorIndex;
-            }
-            return $scope.chartColors[index];
         }
 
         function createPieChartOptions(htmlContainer) {

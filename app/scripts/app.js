@@ -20,6 +20,7 @@
         'http.matchbox',
         'matchbox.tools',
         'matchbox.service',
+        'matchbox.colors',
         'angular-storage',
         'angular-jwt',
         'angular-flot',
