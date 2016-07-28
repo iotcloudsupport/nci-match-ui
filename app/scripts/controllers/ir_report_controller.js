@@ -43,7 +43,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         $scope.mdaccNtcList=[];
         $scope.status = "";
 
-            $scope.branch = sharedCliaProperties.getProperty();
+        $scope.branch = sharedCliaProperties.getProperty();
 
         //     if(sharedCliaProperties.getProperty() !== 'mocha')
         // if ($scope.branch == undefined){
@@ -492,14 +492,14 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 $scope.selectedRow = id;
                 $scope.mid = id;
                 $scope.status = status;
-                var url = 'data/sample_positive_control_' + id.substring(id.length - 1, id.length) + '.json';
+
                 $scope.positives = 'mocha';
 
                 $scope.posDate = 'July 27, 2015 3:57 PM GMT';
                 $scope.tvarDate = '18';
                 $scope.aid = "1445_AA_FR";
 
-                $scope.titleid = 'SampleControl_MoCha_2';
+                $scope.titleid = id;
 
                 $scope.negativeVariantsList = [{
                     'publicMedIds': '',
@@ -513,7 +513,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     'function': 'missense'
                 }];
 
-                // var url ="data/sample_positive_control.json";
+                var url = 'data/sample_positive_control_' + id.substring(id.length - 1, id.length) + '.json';
 
                 $.ajax({
 
