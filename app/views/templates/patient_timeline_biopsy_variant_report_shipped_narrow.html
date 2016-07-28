@@ -15,12 +15,16 @@
         <div class="col-md-12">
             <p class="m-b-xs event-content">
                 <span ng-if="timelineEvent.patient_id">
-                    Patient: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id"></patient-title></span>
+                    Patient: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id" text="timelineEvent.patient_id"></patient-title></span>
                     <br>
                 </span>
                 
-                <span ng-if="timelineEvent.event_data.status">
+                <!--<span ng-if="timelineEvent.event_data.status">
                     Variant Report Status: <span class="timeline-value" ng-style="{'color':'{{ timelineEvent.event_data.status | analysisStatus }}'}">{{::timelineEvent.event_data.status}}</span>
+                    <br>
+                </span>-->
+                <span ng-if="timelineEvent.event_data.status">
+                    Variant Report Status: <span class="timeline-value" ng-style="{'color':'{{ timelineEvent.event_data.status | analysisStatus }}'}"><patient-title patient-id="timelineEvent.patient_id" section="'tissue_variant_report'" text="timelineEvent.event_data.status" surgical-event-id="timelineEvent.event_data.surgical_event_id" molecular-id="timelineEvent.event_data.molecular_id" analysis-id="timelineEvent.event_data.analysis_id"></patient-title></span>
                     <br>
                 </span>
                                         
@@ -30,7 +34,7 @@
                 </span>-->
 
                 <span ng-if="timelineEvent.event_data.surgical_event_id">
-                    Surgical Event ID: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id" text="'surgical_event'" surgical-event-id="timelineEvent.event_data.surgical_event_id" molecular-id="timelineEvent.event_data.molecular_id" analysis-id="timelineEvent.event_data.analysis_id"></patient-title></span>
+                    Surgical Event ID: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id" section="'surgical_event'" text="timelineEvent.event_data.surgical_event_id" surgical-event-id="timelineEvent.event_data.surgical_event_id" molecular-id="timelineEvent.event_data.molecular_id" analysis-id="timelineEvent.event_data.analysis_id"></patient-title></span>
                     <br>
                 </span>
                             

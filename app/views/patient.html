@@ -77,13 +77,13 @@
                     <div class="panel-body">
 
                         <div ng-if="data.action_items">
-                            <div class="ibox-title ibox-title-no-line">
+                            <div class="ibox-title ibox-title-no-line-no-padding">
                                 <h3>Actions Needed</h3>
                             </div>
                             <action-items items="data.action_items" patient-id="patient_id"></action-items>
                         </div>
 
-                        <div class="ibox-title ibox-title-no-line">
+                        <div class="ibox-title ibox-title-no-line-no-padding">
                             <h3>Treatment Arm History</h3>
                         </div>
 
@@ -108,7 +108,7 @@
                             </tbody>
                         </table>
 
-                        <div class="ibox-title ibox-title-no-line">
+                        <div class="ibox-title ibox-title-no-line-no-padding">
                             <h3>Patient Timeline</h3>
                         </div>
 
@@ -177,7 +177,7 @@
                                 </div>
                             </div>
 
-                            <div class="ibox-title ibox-title-no-line">
+                            <div class="ibox-title ibox-title-no-line-no-padding">
                                 <h3>Slide Shipments</h3>
                             </div>
 
@@ -202,7 +202,7 @@
                                 </tbody>
                             </table>
 
-                            <div class="ibox-title ibox-title-no-line">
+                            <div class="ibox-title ibox-title-no-line-no-padding">
                                 <h3>Assay History</h3>
                             </div>
 
@@ -227,11 +227,11 @@
                                 </tbody>
                             </table>
 
-                            <div class="ibox-title ibox-title-no-line">
+                            <div class="ibox-title ibox-title-no-line-no-padding">
                                 <h3>Specimen History</h3>
                             </div>
 
-                            <div class="ibox-content ibox-content-no-padding ibox-title-no-line">
+                            <div class="ibox-content ibox-content-no-padding ibox-title-no-line-no-padding">
                                 <table class="table table-hover" role="grid">
                                     <thead>
                                     <tr>
@@ -342,10 +342,10 @@
 
                         <!--Variant Report-->
                         <div class="ibox">
-                            <div class="ibox-title ibox-title-no-line">
+                            <div class="ibox-title ibox-title-no-line-no-padding">
                                 <h2>Variant Report</h2>
                             </div>
-                            <div class="ibox-content ibox-content-no-padding ibox-title-no-line">
+                            <div class="ibox-content ibox-content-no-padding ibox-title-no-line-no-padding">
                                 <div ng-if="currentTissueVariantReport">
 
                                     <div class="row toolbar-row">
@@ -383,7 +383,7 @@
 
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <div class="header-info-box  variant-report-header-box">
+                                            <div class="header-info-box  tissue-variant-report-header-box">
                                                 <dl class="dl-horizontal">
                                                     <dt>Surgical Event ID</dt>
                                                     <dd>{{currentTissueVariantReport.surgical_event_id}}</dd>
@@ -435,7 +435,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="header-info-box variant-report-header-box">
+                                            <div class="header-info-box tissue-variant-report-header-box">
 
                                                 <dl class="dl-horizontal dl-horizontal-expanded-label">
                                                     <dt>Total Variants</dt>
@@ -496,7 +496,7 @@
 
                                     <div ng-if="variantReportMode === 'FILTERED'">
                                         <!--Single Nucleitide Variant(s)-->
-                                        <div class="ibox-title ibox-title-no-line">
+                                        <div class="ibox-title ibox-title-no-line-no-padding">
                                             <h3>SNVs/MNVs/Indels</h3>
                                         </div>
 
@@ -578,7 +578,7 @@
                                         </div>
 
                                         <!--Copy Number Variant(s)-->
-                                        <div class="ibox-title ibox-title-no-line">
+                                        <div class="ibox-title ibox-title-no-line-no-padding">
                                             <h3>Copy Number Variant(s)</h3>
                                         </div>
                                         <div class="table-responsive" style="border: none">
@@ -630,7 +630,7 @@
                                         </div>
 
                                         <!--Gene Fusion(s)-->
-                                        <div class="ibox-title ibox-title-no-line">
+                                        <div class="ibox-title ibox-title-no-line-no-padding">
                                             <h3>Gene Fusion(s)</h3>
                                         </div>
 
@@ -697,7 +697,7 @@
                                                     <div class="col-lg-12">
 
                                                         <!--SNV TABLE-->
-                                                        <div class="ibox-title ibox-title-no-line">
+                                                        <div class="ibox-title ibox-title-no-line-no-padding">
                                                             <h3>SNVs/MNVs/Indels</h3>
                                                         </div>
                                                         <div class="col-md-12 white-bg animated fadeInRight"
@@ -773,7 +773,7 @@
                                                         <!--SNV TABLE-->
 
                                                         <!--CNV TABLE-->
-                                                        <div class="ibox-title ibox-title-no-line">
+                                                        <div class="ibox-title ibox-title-no-line-no-padding">
                                                             <h3>Copy Number Variant(s)</h3>
                                                         </div>
                                                         <div class="col-md-12 white-bg animated fadeInRight"
@@ -829,7 +829,7 @@
                                                         <!--CNV TABLE-->
 
                                                         <!--GENE TABLE-->
-                                                        <div class="ibox-title ibox-title-no-line">
+                                                        <div class="ibox-title ibox-title-no-line-no-padding">
                                                             <h3>Gene Fusion(s)</h3>
                                                         </div>
                                                         <div class="col-md-12 white-bg animated fadeInRight"
@@ -892,7 +892,7 @@
                                     </div>
 
 
-                                    <div class="ibox-content ibox-title-no-line" ng-if="showVariantReportActions(currentTissueVariantReport)">
+                                    <div class="ibox-content ibox-title-no-line-no-padding" ng-if="showVariantReportActions(currentTissueVariantReport)">
                                         <div class="row">
                                             <div class="col-md-12 text-center">
                                                 <button class="btn btn-danger" title="Reject this Report" ng-click="rejectVariantReport(currentTissueVariantReport)">REJECT</button>
@@ -921,7 +921,7 @@
                                 <h2>Assignment Report</h2>
                             </div>
 
-                            <div class="ibox-content ibox-content-no-padding ibox-title-no-line">
+                            <div class="ibox-content ibox-content-no-padding ibox-title-no-line-no-padding">
 
                                 <div ng-if="currentTissueVariantReport && currentTissueVariantReport.status=='CONFIRMED' && assignmentReportOptions.length" class="row content-select-list">
                                     <div class="col-md-12">
@@ -981,7 +981,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="ibox-title ibox-title-no-line">
+                                    <div class="ibox-title ibox-title-no-line-no-padding">
                                         <h3>Assay</h3>
                                     </div>
 
@@ -1056,7 +1056,7 @@
                                         </tbody>
                                     </table>
 
-                                    <div class="ibox-content ibox-title-no-line" ng-if="showAssignmentReportActions(currentAssignmentReport)">
+                                    <div class="ibox-content ibox-title-no-line-no-padding" ng-if="showAssignmentReportActions(currentAssignmentReport)">
                                         <div class="row">
                                             <div class="col-md-12 text-center">
                                                 <!-- RZ:Removed for now <button class="btn btn-danger" title="Reject this Report" ng-click="rejectAssignmentReport(currentAssignmentReport)">REJECT</button>-->
@@ -1116,7 +1116,7 @@
 
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="header-info-box  variant-report-header-box">
+                                    <div class="header-info-box  blood-variant-report-header-box">
                                         <dl class="dl-horizontal">
                                             <dt>Analysis ID</dt>
                                             <dd>{{currentBloodVariantReport.analysis_id}}</dd>
@@ -1156,13 +1156,13 @@
                                             <dt ng-if="currentBloodVariantReport.comment">Comments</dt>
                                             <dd ng-if="currentBloodVariantReport.comment">{{currentBloodVariantReport.comment}}</dd>
 
-                                            <dt ng-if="needToDisplayReportStatus(currentBloodVariantReport)">{{currentBloodVariantReport | titlecase}} Date</dt>
+                                            <dt ng-if="needToDisplayReportStatus(currentBloodVariantReport)">{{currentBloodVariantReport.status | titlecase}} Date</dt>
                                             <dd ng-if="needToDisplayReportStatus(currentBloodVariantReport)">{{currentBloodVariantReport.status_date | utc}}</dd>
                                         </dl>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="header-info-box variant-report-header-box">
+                                    <div class="header-info-box blood-variant-report-header-box">
 
                                         <dl class="dl-horizontal dl-horizontal-expanded-label">
                                             <dt>Total Variants</dt>
@@ -1180,7 +1180,7 @@
                             <!--FILTERED-->
                             <div ng-if="variantReportMode === 'FILTERED'">
                                 <!--Single Nucleitide Variant(s)-->
-                                <div class="ibox-title ibox-title-no-line">
+                                <div class="ibox-title ibox-title-no-line-no-padding">
                                     <h3>SNVs/MNVs/Indels(s)</h3>
                                 </div>
 
@@ -1259,7 +1259,7 @@
                                 </div>
 
                                 <!--Copy Number Variant(s)-->
-                                <div class="ibox-title ibox-title-no-line">
+                                <div class="ibox-title ibox-title-no-line-no-padding">
                                     <h3>Copy Number Variant(s)</h3>
                                 </div>
 
@@ -1309,7 +1309,7 @@
                                 </div>
 
                                 <!--Gene Fusion(s)-->
-                                <div class="ibox-title ibox-title-no-line">
+                                <div class="ibox-title ibox-title-no-line-no-padding">
                                     <h3>Gene Fusion(s)</h3>
                                 </div>
 
@@ -1373,7 +1373,7 @@
                                             <div class="col-lg-12">
 
                                                 <!--SNV TABLE-->
-                                                <div class="ibox-title ibox-title-no-line">
+                                                <div class="ibox-title ibox-title-no-line-no-padding">
                                                     <h3>SNVs/MNVs/Indels</h3>
                                                 </div>
                                                 <div class="col-md-12 white-bg animated fadeInRight"
@@ -1441,7 +1441,7 @@
                                                 <!--SNV TABLE-->
 
                                                 <!--CNV TABLE-->
-                                                <div class="ibox-title ibox-title-no-line">
+                                                <div class="ibox-title ibox-title-no-line-no-padding">
                                                     <h3>Copy Number Variant(s)</h3>
                                                 </div>
                                                 <div class="col-md-12 white-bg animated fadeInRight"
@@ -1496,7 +1496,7 @@
                                                 <!--CNV TABLE-->
 
                                                 <!--GENE TABLE-->
-                                                <div class="ibox-title ibox-title-no-line">
+                                                <div class="ibox-title ibox-title-no-line-no-padding">
                                                     <h3>Gene Fusion(s)</h3>
                                                 </div>
                                                 <div class="col-md-12 white-bg animated fadeInRight"
@@ -1560,7 +1560,7 @@
                             </div>
                             <!--QC-->
 
-                            <div class="ibox-content ibox-title-no-line" ng-if="showVariantReportActions(currentBloodVariantReport)">
+                            <div class="ibox-content ibox-title-no-line-no-padding" ng-if="showVariantReportActions(currentBloodVariantReport)">
                                 <div class="row">
                                     <div class="col-md-12 text-center">
                                         <button class="btn btn-danger" title="Reject this Report" ng-click="rejectVariantReport(currentBloodVariantReport)">REJECT</button>
@@ -1587,7 +1587,7 @@
                     <div class="panel-body ">
 
                         <div class="ibox float-e-margins">
-                            <div class="ibox-title ibox-title-no-line">
+                            <div class="ibox-title ibox-title-no-line-no-padding">
                                 <h3>Patient Documents</h3>
                             </div>
 

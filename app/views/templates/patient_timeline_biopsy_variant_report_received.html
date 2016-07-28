@@ -5,10 +5,14 @@
         <small class="text-navy">{{::timelineEvent.from_now}}</small>
     </div>
     <div class="col-xs-7 col-md-8 content" ng-class="{'no-top-border':!timelineEvent.isStepChanging}">
-        <p class="m-b-xs"><span class="timeline-step">Step: {{::timelineEvent.step}}.</span><strong>{{::timelineEvent.event_message}}.</strong></p>
+        <p class="m-b-xs timeline-title"><span class="timeline-step">Step: {{::timelineEvent.step}}.</span><strong>{{::timelineEvent.event_message}}.</strong></p>
         <p class="m-b-xs">
-            <span ng-if="timelineEvent.event_data.status">
+            <!--<span ng-if="timelineEvent.event_data.status">
                 Variant Report Status: <span ng-style="{'color':'{{ timelineEvent.status | analysisStatus }}'}">{{::timelineEvent.event_data.status}}</span>
+                <br>
+            </span>-->
+            <span ng-if="timelineEvent.event_data.status">
+                Variant Report Status: <span class="timeline-value" ng-style="{'color':'{{ timelineEvent.event_data.status | analysisStatus }}'}"><patient-title patient-id="timelineEvent.patient_id" section="'tissue_variant_report'" text="timelineEvent.event_data.status" surgical-event-id="timelineEvent.event_data.surgical_event_id" molecular-id="timelineEvent.event_data.molecular_id" analysis-id="timelineEvent.event_data.analysis_id"></patient-title></span>
                 <br>
             </span>
 
@@ -29,7 +33,8 @@
 
             <span ng-if="timelineEvent.event_data.surgical_event_id">
                 Surgical Event ID: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id"
-                                                                               text="'surgical_event'"
+                                                                               section="'surgical_event'"
+                                                                               text="timelineEvent.event_data.surgical_event_id"
                                                                                surgical-event-id="timelineEvent.event_data.surgical_event_id"
                                                                                molecular-id="timelineEvent.event_data.molecular_id"
                                                                                analysis-id="timelineEvent.event_data.analysis_id"></patient-title></span>
@@ -43,7 +48,8 @@
 
             <span ng-if="timelineEvent.event_data.analysis_id">
                 Analysis ID: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id"
-                                                                         text="'tissue_variant_report'"
+                                                                         section="'tissue_variant_report'"
+                                                                         text="timelineEvent.event.data.molecular_id"
                                                                          molecular-id="timelineEvent.event_data.molecular_id"
                                                                          analysis-id="timelineEvent.event_data.analysis_id"></patient-title></span>
                 <br>

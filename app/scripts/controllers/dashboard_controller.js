@@ -145,7 +145,14 @@
                 .loadChartjsDonutChart()
                 .then(function (d) {
                     var aMoiValues = d.data.aMoiValues;
-                    var aMoiLabels = ['0 aMOI', '1 aMOI', '2 aMOI', '3 aMOI', '4 aMOI', '5+ aMOI'];
+                    var aMoiLabels = [
+                        '<span class="chart-legend-digit">0</span> aMOI', 
+                        '<span class="chart-legend-digit">1</span> aMOI', 
+                        '<span class="chart-legend-digit">2</span> aMOI', 
+                        '<span class="chart-legend-digit">3</span> aMOI', 
+                        '<span class="chart-legend-digit">4</span> aMOI', 
+                        '<span class="chart-legend-digit">5+</span> aMOI'
+                        ];
                     var aMoiHighlight = "#000088";
 
                     $scope.donutOptions = {
@@ -158,7 +165,7 @@
                         animateRotate: true,
                         animateScale: false,
                         responsive: true,
-                        legendTemplate: '<ul><% for (var i=0; i<segments.length; i++) {%><i class="fa fa-square" style="color: <%=segments[i].fillColor%>" ></i> <%if(segments[i].label){%><%=segments[i].label%> : <%=segments[i].value%> patients <%}%><br><%}%></ul>'
+                        legendTemplate: '<ul class="dashboard donut-chart-legend"><% for (var i=0; i<segments.length; i++) {%><i class="fa fa-square" style="color: <%=segments[i].fillColor%>" ></i> <%if(segments[i].label){%><%=segments[i].label%> : <strong><%=segments[i].value%> patients</strong> <%}%><br><%}%></ul>'
                     };
 
 
@@ -242,9 +249,10 @@
 
         vm.data = [];
         vm.loadData = loadData;
-        vm.maxItems = 10;
+        vm.maxItems = null;
 
-        function loadData() {
+        function loadData(maxItems) {
+            vm.maxItems = maxItems;
             matchApiMock
                 .loadActivity($stateParams.patient_id)
                 .then(setupScope, handleActivityLoadError);
@@ -261,7 +269,9 @@
             var now = moment();
             var previousStep = null;
 
-            for (var i = 0; i < data.data.length && i < vm.maxItems; i++) {
+            var limit = vm.maxItems || data.data.length;
+
+            for (var i = 0; i < limit; i++) {
                 var timelineEvent = angular.copy(data.data[i]);
                 vm.data.push(timelineEvent);
                 var eventDateMoment = moment(timelineEvent.event_date);

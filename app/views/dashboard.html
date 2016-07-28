@@ -1,72 +1,57 @@
 <div ng-controller="DashboardController">
 
-    <div class="row border-bottom white-bg dashboard-header animated fadeInRight">
+    <div class="row border-bottom white-bg dashboard-header animated fadeInRight statistics-row">
+        <h2 class="welcome">Welcome, {{ name }}!</h2>
 
-        <div class="col-sm-3" ng-init="loadDashboardData()">
-            <!-- loadPatientPendingAssignmentReportsList() -->
-            <h2>Welcome, {{ name }}!</h2>
+        <div class="col-sm-3 col-md-3" ng-init="loadDashboardData()">
+            <div>
+                <h3>Patients<br>Statistics</h3>
+            </div>
 
-            <!--<div class="header-info-box">
-            <dl class="dl-horizontal">
-                <dt>Number of Registered Patients</dt>
-                <dd>{{ numberOfPatients }}</dd>
-
-                <dt>Number of Patients with Confirmed Variant Report</dt>
-                <dd>{{ numberOfScreenedPatients }}</dd>
-
-                <dt>Pending Tissue Variant Reports</dt>
-                <dd>{{ pendingTissueVariantReportList.length }}</dd>
-
-                <dt>Pending Blood Variant Reports</dt>
-                <dd>{{ pendingBloodVariantReportList.length }}</dd>
-
-                <dt>Pending Assignment Reports</dt>
-                <dd>{{ pendingAssignmentReportList.length }}</dd>
-            </dl>
-        </div>-->
-            <ul class="list-group clear-list m-t">
-                <li class="list-group-item fist-item">
-                    <span class="pull-right">{{ numberOfPatients }}</span>
-                    <span class="label label-info"><i class="fa fa-group"></i></span>Registered Patients
-                </li>
-                <li class="list-group-item">
-                    <span class="pull-right">{{ numberOfScreenedPatients }}</span>
-                    <span class="label label-info"><i class="fa fa-group"></i></span>Patients with Confirmed Variant Report
-                </li>
-                <li class="list-group-item">
-                    <span class="pull-right">{{ numberOfPatientsWithTreatment }}</span>
-                    <span class="label label-success"><i class="fa fa-medkit"></i></span>Patients on Treatment
-                </li>
-                <li class="list-group-item">
-                    <span class="pull-right">{{ pendingTissueVariantReportList.length }}</span>
-                    <span class="label label-warning"><i class="fa fa-newspaper-o"></i></span>Pending Tissue Variant Reports
-                </li>
-                <li class="list-group-item">
-                    <span class="pull-right">{{ pendingBloodVariantReportList.length }}</span>
-                    <span class="label label-warning"><i class="fa fa-newspaper-o"></i></span>Pending Blood Variant Reports
-                </li>
-                <li class="list-group-item">
-                    <span class="pull-right">{{ pendingAssignmentReportList.length }}</span>
-                    <span class="label label-warning"><i class="fa fa-newspaper-o"></i></span>Pending Assignment Reports
-                </li>
-            </ul>
-
+            <div class="statistic-box dashboard">
+                <ul class="list-group clear-list statistics m-t">
+                    <li class="list-group-item fist-item">
+                        <strong><span class="pull-right">{{ numberOfPatients }}</span></strong>
+                        Registered Patients:
+                    </li>
+                    <li class="list-group-item">
+                        <strong><span class="pull-right">{{ numberOfScreenedPatients }}</span></strong>
+                        Patients with Confirmed Variant Report:
+                    </li>
+                    <li class="list-group-item">
+                        <strong><span class="pull-right">{{ numberOfPatientsWithTreatment }}</span></strong>
+                        Patients on Treatment:
+                    </li>
+                    <li class="list-group-item">
+                        <strong><span class="pull-right">{{ pendingTissueVariantReportList.length }}</span></strong>
+                        Pending Tissue Variant Reports:
+                    </li>
+                    <li class="list-group-item">
+                        <strong><span class="pull-right">{{ pendingBloodVariantReportList.length }}</span></strong>
+                        Pending Blood Variant Reports:
+                    </li>
+                    <li class="list-group-item">
+                        <strong><span class="pull-right">{{ pendingAssignmentReportList.length }}</span></strong>
+                        Pending Assignment Reports:
+                    </li>
+                </ul>
+            </div>
         </div>
 
-        <div class="col-sm-6" ng-init="setCanvasHeight('#treatmentArmAccrualCanvas', 95);loadTreatmentArmAccrualData();">
-            <div id="chartBox" class="statistic-box">
-                <div class="text-center">
-                    <h4>Top 5 Treatment Arm Accrual</h4>
-                </div>
+        <div class="col-sm-6 col-md-6" ng-init="setCanvasHeight('#treatmentArmAccrualCanvas', 100);loadTreatmentArmAccrualData();">
+            <div class="text-center">
+                <h3>Top 5 Treatment<br> Arm Accrual</h3>
+            </div>
+            <div id="chartBox" class="statistic-box dashboard">
                 <canvas id="treatmentArmAccrualCanvas" barchart options="barOptions" ng-attr-data="barData" responsive="true"></canvas>
             </div>
         </div>
 
-        <div class="col-sm-3" ng-init="setCanvasHeight('#amoiCanvas', 95);loadChartjsDonutChartData();">
-            <div class="statistic-box">
-                <div class="text-center">
-                    <h4>Sequenced & Confirmed Patients with aMOI(s)</h4>
-                </div>
+        <div class="col-sm-3 col-md-3" ng-init="setCanvasHeight('#amoiCanvas', 95);loadChartjsDonutChartData();">
+            <div class="text-center">
+                <h3>Sequenced & Confirmed <br> Patients with aMOI(s)</h3>
+            </div>
+            <div class="statistic-box dashboard">
                 <canvas id="amoiCanvas" doughnutchart options="donutOptions" ng-attr-data="donutData" legend="true" responsive="true"></canvas>
                 <!--  legend="true" -->
             </div>
@@ -82,7 +67,8 @@
                     <h3>Activity Feed</h3>
                 </div>
 
-                <div class="ibox-content inspinia-timeline" ng-controller="ActivityController as activity" ng-init="activity.loadData()" id="panding-items-column">
+                <div class="ibox-content inspinia-timeline" ng-controller="ActivityController as activity" ng-init="activity.loadData(10)"
+                    id="panding-items-column">
                     <div class="timeline-item" ng-repeat="timelineEvent in activity.data">
                         <patient-timeline timeline-event="timelineEvent" type="timelineEvent.event_type" layout="'narrow'"></patient-timeline>
                     </div>
@@ -94,7 +80,7 @@
                     <div class="ibox-title ibox-title-no-line">
                         <h3>Pending Review </h3>
                     </div>
-                    <div class="tabs-container">
+                    <div class="tabs-container no-tab-pane-border">
                         <uib-tabset>
                             <uib-tab heading="Tissue Variant Reports">
                                 <div class="panel-body" ng-init="loadTissueVariantReportsList()">

@@ -26,21 +26,21 @@
 
             vm.shownId = vm.patientId;
             vm.attrs = '{ patient_id: vm.patientId }';
-            switch(vm.text) {
+            switch(vm.section) {
                 case 'surgical_event':
-                    vm.attrs = '{ patient_id: vm.patientId, section: vm.text, surgical_event_id: vm.surgicalEventId }';
+                    vm.attrs = '{ patient_id: vm.patientId, section: vm.section, surgical_event_id: vm.surgicalEventId }';
                     vm.shownId = vm.surgicalEventId;
                     break;
                 case 'tissue_variant_report':
-                    vm.attrs = '{ patient_id: vm.patientId, section: vm.text, molecular_id: vm.molecularId, analysis_id: vm.analysisId }';
+                    vm.attrs = '{ patient_id: vm.patientId, section: vm.section, molecular_id: vm.molecularId, analysis_id: vm.analysisId }';
                     vm.shownId = vm.analysisId;
                     break;
                 case 'blood_variant_report':
-                    vm.attrs = '{ patient_id: vm.patientId, section: vm.text, molecular_id: vm.molecularId, analysis_id: vm.analysisId }';
+                    vm.attrs = '{ patient_id: vm.patientId, section: vm.section, molecular_id: vm.molecularId, analysis_id: vm.analysisId }';
                     vm.shownId = vm.molecularId;
                     break;
                 case 'assignment_report':
-                    vm.attrs = '{ patient_id: vm.patientId, section: vm.text, molecular_id: vm.molecularId, analysis_id: vm.analysisId }';
+                    vm.attrs = '{ patient_id: vm.patientId, section: vm.section, molecular_id: vm.molecularId, analysis_id: vm.analysisId }';
                     vm.shownId = vm.analysisId;
                     break;
                 case 'patient_assignment':
@@ -64,11 +64,11 @@
         var template = '<span class="ta-title">\
                     \
                     <span ng-if="vm.hasData() && vm.noUrl" style="color:{{vm.getTextColor()}}">\
-                        <span class="ta-name" style="color:{{vm.getTextColor()}}">{{vm.patientId}}</span>\
+                        <span class="ta-name" style="color:{{vm.getTextColor()}}">{{vm.text}}</span>\
                     </span>\
                     \
                     <a ng-if="vm.hasData() && !vm.noUrl" ui-sref="patient({{vm.attrs}})" style="color:{{vm.getTextColor()}}">\
-                        <span class="ta-name" style="color:{{vm.getTextColor()}}">{{vm.shownId}}</span>\
+                        <span class="ta-name" style="color:{{vm.getTextColor()}}">{{vm.text}}</span>\
                     </a>\
                     <span ng-if="!vm.hasData()">-</span>\
                 </span>';
@@ -80,8 +80,8 @@
             controller: controller,
             controllerAs: 'vm',
             scope: {
-                text: '<',
                 section: '<',
+                text: '<',
                 patientId: '<',
                 molecularId: '<',
                 analysisId: '<',

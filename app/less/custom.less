@@ -32,10 +32,6 @@
   margin-left: 50px;
 }
 
-.ibox-title-no-line {
-  border-style: none;
-}
-
 .table-subheader h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
   margin-left: 15px;
@@ -136,8 +132,12 @@
   height: 178px;     
 }
 
-.variant-report-header-box{
-  height: 241px;     
+.tissue-variant-report-header-box{
+  height: 257px;     
+}
+
+.blood-variant-report-header-box{
+  height: 237px
 }
  
 .assignment-header-box{
@@ -225,6 +225,22 @@
   margin-right: 5px;
 }
 
+.ibox-title {
+  margin-top: 10px;
+}
+
+.ibox-title-no-line {
+  border-style: none;
+}
+
+.ibox-title-no-line-no-padding {
+  border-style: none;
+  padding-top: 14px;
+  padding-right: 1px;
+  padding-bottom: 7px;
+  padding-left: 1px;
+}
+
 .stacked-container {
   position: relative;
 }
@@ -276,10 +292,6 @@
 
 .ibox-content-no-padding {
   padding: 0px;
-}
-
-.ibox-title {
-  margin-top: 10px;
 }
 
 .timeline-item .date {
@@ -545,4 +557,106 @@ td.text-center {
 
 .panel-container {
   background-color: @ibox-content-bg; 
+}
+
+.ibox-content-no-border {
+  border-style: none;
+}
+
+.timeline-item {
+  .timeline-title {
+    font-size: 1.20em;
+    margin-bottom: 1px;
+  }
+
+  .content {
+    font-size: 0.85em;
+  }
+}
+
+h2.welcome {
+  margin-left: 15px;
+  margin-bottom: 22px;
+}
+
+.list-group.clear-list.statistics {
+  .list-group-item {
+    border-style: none;    
+    padding-bottom: 2px;  
+  }
+  width: 264px;
+}
+
+.statistic-box.dashboard {
+  margin-top: 18px; 
+}
+
+.dashboard.donut-chart-legend {
+  margin-top: 10px;
+  font-size: smaller;
+  text-align: center;
+  padding: 0;
+}
+
+.statistics-row {
+  h3 {
+    line-height: 1.2em;
+  }
+}
+
+span.chart-legend-digit {
+    width: 13px;
+    display: inline-block;
+}
+
+.no-tab-pane-border {
+  .panel-body {
+    border-style: none
+  }
+}
+
+.outer-container {
+  margin-top: 38px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+
+// Override Inspinia btn-default
+.btn-default {
+  background-color: #fff;
+  border-color: @dark-gray;
+  color: @text-color;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+  background-color: darken(#fff, 3%);
+  border-color: darken(@dark-gray, 3%);
+  color: @text-color;
+}
+
+.btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+  background-image: none;
+}
+
+.btn-default.disabled, .btn-default.disabled:hover, .btn-default.disabled:focus, .btn-default.disabled:active, .btn-default.disabled.active, .btn-default[disabled], .btn-default[disabled]:hover, .btn-default[disabled]:focus, .btn-default[disabled]:active, .btn-default.active[disabled], fieldset[disabled] .btn-default, fieldset[disabled] .btn-default:hover, fieldset[disabled] .btn-default:focus, fieldset[disabled] .btn-default:active, fieldset[disabled] .btn-default.active {
+  background-color: #fff;
+  border-color: lighten(@dark-gray, 4%);
+  color: darken(#fff, 40%);
+}
+
+button.btn-default.dim {
+  box-shadow: inset 0px 0px 0px darken(@dark-gray,6%), 0px 5px 0px 0px darken(@dark-gray,6%), 0px 10px 5px #999;
+}
+
+button.btn-default.dim:active {
+  box-shadow: inset 0px 0px 0px darken(@dark-gray,6%), 0px 2px 0px 0px darken(@dark-gray,6%), 0px 5px 3px #999;
+}
+
+.push-down-inner-panel {
+  margin-bottom: 35px;
+}
+
+.push-up-inner-panel {
+  margin-top: 35px;
 }

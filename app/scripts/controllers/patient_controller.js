@@ -739,7 +739,7 @@
                         updateVariants(variantReport.variants.gene_fusions, false);
 
                     if (variantReport.variant_report_type === 'BLOOD') {
-                        updateTissueVariantReportOption(variantReport);
+                        updateBloodVariantReportOption(variantReport);
                     } else if (variantReport.variant_report_type === 'TISSUE') {
                         updateTissueVariantReportOption(variantReport);
                     }
@@ -773,7 +773,7 @@
                     variantReport.status_date = moment.utc(new Date()).utc();
 
                     if (variantReport.variant_report_type === 'BLOOD') {
-                        updateTissueVariantReportOption(variantReport);
+                        updateBloodVariantReportOption(variantReport);
                     } else if (variantReport.variant_report_type === 'TISSUE') {
                         updateTissueVariantReportOption(variantReport);
                     }
