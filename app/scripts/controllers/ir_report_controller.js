@@ -485,8 +485,19 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
             //SNV
             function loadPositivesList(data) {
+
+
+                // angular.forEach(data, function (value,key) {
+                //
+                //     alert(JSON.stringify(value))
+                //
+                // });
+
+
                 $scope.positiveControlList = data;
             };
+
+
             $scope.openPositives = function (id, status) {
 
                 $scope.selectedRow = id;
@@ -513,7 +524,13 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     'function': 'missense'
                 }];
 
-                var url = 'data/sample_positive_control_' + id.substring(id.length - 1, id.length) + '.json';
+                // alert(id.substring(id.indexOf("MoCha_"), id.length))
+
+                var url = 'data/sample_positive_control_' + id.substring(id.indexOf("MoCha_") + 6, id.length) + '.json';
+
+                // var url = 'data/sample_positive_controls.json';
+
+                // alert(url)
 
                 $.ajax({
 
@@ -523,6 +540,9 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     dataType      : "json",
                     data            :  {},
                     success: function(data){
+
+                        // alert(JSON.stringify(data))
+
                         loadPositivesList(data);
                     },
                     error:function(jqXHR,textStatus,errorThrown){
