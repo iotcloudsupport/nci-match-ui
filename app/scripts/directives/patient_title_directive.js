@@ -7,6 +7,8 @@
 
     /**
      * Expects an object with the following properties:
+     *   section - tells where to route to
+     *   text - text to display in the feed message
      *   patientId
      *   molecularId
      *   analysisId
@@ -24,31 +26,18 @@
                 return vm.textColor ? vm.textColor : 'color:inherit';
             };
 
-            vm.shownId = vm.patientId;
             vm.attrs = '{ patient_id: vm.patientId }';
             switch(vm.section) {
-                case 'surgical_event':
-                    vm.attrs = '{ patient_id: vm.patientId, section: vm.section, surgical_event_id: vm.surgicalEventId }';
-                    vm.shownId = vm.surgicalEventId;
+                case 'TISSUE':
+                    vm.section = 'tissue_variant_report';
                     break;
-                case 'tissue_variant_report':
-                    vm.attrs = '{ patient_id: vm.patientId, section: vm.section, molecular_id: vm.molecularId, analysis_id: vm.analysisId }';
-                    vm.shownId = vm.analysisId;
-                    break;
-                case 'blood_variant_report':
-                    vm.attrs = '{ patient_id: vm.patientId, section: vm.section, molecular_id: vm.molecularId, analysis_id: vm.analysisId }';
-                    vm.shownId = vm.molecularId;
-                    break;
-                case 'assignment_report':
-                    vm.attrs = '{ patient_id: vm.patientId, section: vm.section, molecular_id: vm.molecularId, analysis_id: vm.analysisId }';
-                    vm.shownId = vm.analysisId;
-                    break;
-                case 'patient_assignment':
-                    vm.shownId = vm.patientId;
+                case 'BLOOD':
+                    vm.section = 'blood_variant_report';
                     break;
                 default:
                     break;
             }
+            vm.attrs = '{ patient_id: vm.patientId, section: vm.section, surgical_event_id: vm.surgicalEventId, molecular_id: vm.molecularId, analysis_id: vm.analysisId }';
 
         };
 
