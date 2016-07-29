@@ -47,8 +47,111 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         $scope.cellColor = "";
         $scope.hrReports = null;
         $scope.loadSampleHRFiles = loadSampleHRFiles;
-        $scope.armValuesYear = [16, 13, 2, 24, 28, 1, 0];
+
         $scope.armValuesYear1 = [2, 3, 4, 5, 2, 1, 0];
+            
+            
+        //    #######
+
+
+            // Initialize random data for the demo
+            var now = moment().endOf('day').toDate();
+            var yearAgo = moment().startOf('day').subtract(1, 'year').toDate();
+            $scope.exampleData = d3.time.days(yearAgo, now).map(function (dateElement) {
+
+                return {
+                    date: dateElement,
+                    details: Array.apply(null, new Array(Math.floor(Math.random() * 25))).map(function(e, i, arr) {
+
+                        // console.log("E---> " + JSON.stringify(dateElement))
+
+                        return {
+                            'name': 'Project ' + Math.floor(Math.random() * 10),
+                            'date': function () {
+                                var projectDate = new Date(dateElement.getTime());
+                                projectDate.setHours(Math.floor(Math.random() * 24))
+                                projectDate.setMinutes(Math.floor(Math.random() * 60));
+                                return projectDate;
+                            }(),
+                            'value': 3600 * ((arr.length - i) / 5) + Math.floor(Math.random() * 3600)
+                        };
+                    }),
+                    init: function () {
+                        this.total = this.details.reduce(function (prev, e) {
+                            return prev + e.value;
+                        }, 0);
+                        return this;
+                    }
+                }.init();
+            });
+
+            // Set custom color for the calendar heatmap
+            $scope.color = '#cd2327';
+
+            // Set overview type (choices are year, month and day)
+            $scope.overview = 'year';
+
+            // Handler function
+            $scope.print = function (val) {
+                console.log(val);
+            };
+            
+            
+        //    ########
+
+
+
+            // $scope.armValuesYear = [16, 13, 2, 24, 28, 1, 0];
+
+
+            function loadMoChaList(data) {
+
+                $scope.count_dates = [0, 0, 0, 0, 0, 0, 0];
+
+                angular.forEach(data, function (value,k) {
+                    angular.forEach(value, function (v,k) {
+                        var tmp;
+                        switch (v.week_date) {
+                            case 'Mon':
+                                tmp = $scope.count_dates[0];
+                                $scope.count_dates[0] = tmp + 1;
+                                break;
+                            case 'Tue':
+                                tmp = $scope.count_dates[1];
+                                $scope.count_dates[1] = tmp + 1;
+                                break;
+                            case 'Wed':
+                                tmp = $scope.count_dates[2];
+                                $scope.count_dates[2] = tmp + 1;
+                                break;
+                            case 'Thu':
+                                tmp = $scope.count_dates[3];
+                                $scope.count_dates[3] = tmp + 1;
+                                break;
+                            case 'Fri':
+                                tmp = $scope.count_dates[4];
+                                $scope.count_dates[4] = tmp + 1;
+                                break;
+                            case 'Sat':
+                                // console.log("Selected Case Number is 6");
+                                break;
+                            default:
+                        }
+                    });
+                    console.log($scope.count_dates)
+                });
+                $scope.mochaList = data.data;
+            };
+
+            //Svg for samples
+            $scope.loadMocha_Table = function () {
+                matchApiMock
+                    .loadMocha_List()
+                    .then(function (d) {
+                        loadMoChaList(d);
+                    });
+            };
+            
 
 
         function loadSampleHRFiles() {
@@ -279,58 +382,26 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         };
 
 
-            //Svg for samples
-            $scope.loadMocha_Table = function () {
-                matchApiMock
-                    .loadMocha_List()
-                    .then(function (d) {
-                        loadMoChaList(d);
-                    });
-            };
-            function loadMoChaList(data) {
-                var count_dates = [{
-                    'Mon':'','Tue':'','Wen':'','Thu':'','Fri':'','Sat':'','Sun':''
-                }];
+           
+
+            // $scope.count_dates = {
+            //     'Mon':0,'Tue':0,'Wed':0,'Thu':0,'Fri':0,Sat:'',Sun:''
+            // };
 
 
-
-                angular.forEach(data, function (value,k) {
-
-
-                    angular.forEach(value, function (v,k) {
-
-                        $.each(count_dates, function( key, value ) {
-                            console.log(count_dates[0])
-                        });
-
-
-                        count_dates[0].Mon = v.week_date;
-
-
-
-
-                        // count_dates.push(v.week_date);
-
-                        console.log("---> "+jQuery.inArray( v.week_date, count_dates ) );
-                        // armValuesYear
-
-                        // console.log(v.week_date)
-
-                    });
-
-                });
-                $scope.mochaList = data.data;
-            };
 
 
             //Svg for samples
             $scope.loadMochaNtc_Table = function () {
+
                 matchApiMock
                     .loadMochaNtc_Table()
                     .then(function (d) {
                         loadMoChaNtcList(d);
                     });
             };
+
+
             function loadMoChaNtcList(data) {
                 // alert(JSON.stringify(data))
                 $scope.mochaNtcList = data.data;
@@ -788,6 +859,19 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             };
 
             $scope.loadSampleBreakups = function() {
+                matchApiMock
+                    .loadMocha_List()
+                    .then(function (d) {
+                        loadMoChaList(d);
+                    });
+                // matchApiMock
+                //     .loadMochaNtc_Table()
+                //     .then(function (d) {
+                //         loadMoChaNtcList(d);
+                //     });
+
+                // console.log("$scope.count_dates--> "+ $scope.count_dates)
+
                 $scope.barlegend = "Total Positive / NTC Control Status";
 
                 var prepareData = {
@@ -823,9 +907,6 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     ]
                 };
 
-
-
-
                 /**
                  * Options for Doughnut chart
                  */
@@ -849,7 +930,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                         , 'Sat.'
                         , 'Sun.'
                     ];
-                    armValues = [16, 13, 2, 24, 28, 1, 0];
+                    // armValues = [16, 13, 2, 24, 28, 1, 0];
                     armValues1 = [2, 3, 4, 5, 2, 1, 0];
                     // armValues2 = [10, 0.5, 73, 0, 3];
 
@@ -858,6 +939,9 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     armValuesYear = [16, 13, 2, 24, 28, 1, 0];
                     armValuesYear1 = [2, 3, 4, 5, 2, 1, 0];
                     // armValues2 = [10, 0.5, 73, 0, 3];
+
+
+
 
 
 
@@ -873,7 +957,161 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                             pointColor: 'darkgreen',
                             highlightFill: '#23c6c8', //"rgba(220,220,220,0.75)",
                             highlightStroke: 'rgba(220,220,220,1)',
-                            data: armValues
+                            data:  $scope.count_dates
+                        },
+                        {
+                            // label: "<b style='color:navy;'>No Template Controls</b>",
+                            backgroundColor: 'navy',
+                            fillColor: 'navy',
+                            strokeColor: 'rgba(151,187,205,1)',
+                            pointColor: 'navy',
+                            highlightFill: '#23c6c8', //'rgba(220,220,220,0.75)',
+                            highlightStroke: 'rgba(220,220,220,1)',
+                            data: armValues1
+                        }
+
+                    ]
+                };
+
+                mdaccNames = [
+                    'Mon.'
+                    , 'Tue.'
+                    , ' Wed.'
+                    , 'Thu.'
+                    , 'Fri.'
+                    , 'Sat.'
+                    , 'Sun.'
+                ];
+
+                mdaccValues = [12, 15, 11, 21, 11, 1, 0];
+                mdaccValues1 = [6, 7, 3, 9, 2, 1, 0];
+
+                $scope.barDataMDACC = {
+                    labels: mdaccNames,
+                    datasets: [
+                        {
+                            // label: "<b style='color:darkgreen;'>Positive Controls</b>",
+                            backgroundColor: 'darkgreen',
+                            fillColor: "darkgreen",
+                            strokeColor: "rgba(220,220,220,0.8)",
+                            highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
+                            highlightStroke: "rgba(220,220,220,1)",
+                            data: mdaccValues
+                        },
+                        {
+                            // label: "<b style='color:navy;'>No Template Controls</b>",
+                            backgroundColor: 'navy',
+                            fillColor: 'navy',
+                            strokeColor: 'rgba(151,187,205,1)',
+                            pointColor: 'rgba(151,187,205,1)',
+                            highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
+                            highlightStroke: "rgba(220,220,220,1)",
+                            data: mdaccValues1
+                        }
+                    ]
+                };
+            };
+
+            $scope.loadNtcSampleBreakups = function() {
+                // matchApiMock
+                //     .loadMocha_List()
+                //     .then(function (d) {
+                //         loadMoChaList(d);
+                //     });
+                matchApiMock
+                    .loadMochaNtc_Table()
+                    .then(function (d) {
+                        loadMoChaNtcList(d);
+                    });
+
+                // console.log("$scope.count_dates--> "+ $scope.count_dates)
+
+                $scope.barlegend = "Total Positive / NTC Control Status";
+
+                var prepareData = {
+                    series: [5, 3, 4]
+                }
+
+                this.pieData = prepareData;
+
+                pieNames = [
+                    'EAY131-QQQ'
+                    , 'EAY131-BEEE'
+                    , 'EAY131-HRRR'
+                ];
+
+                var options = {
+                    percentageInnerCutout: 40
+                };
+
+                $scope.flotPieData = {
+                    labels: pieNames,
+                    datasets: [
+                        {
+                            label: "Positive Controls",
+                            fillColor: "#1c84c6",
+                            strokeColor: "rgba(220,220,220,0.8)",
+                            highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
+                            highlightStroke: "rgba(220,220,220,1)",
+                            segmentShowStroke : false,
+                            animateScale : true,
+                            percentageInnerCutout: 95,
+                            data: prepareData
+                        }
+                    ]
+                };
+
+                /**
+                 * Options for Doughnut chart
+                 */
+                $scope.doughnutOptions = {
+                    segmentShowStroke : true,
+                    segmentStrokeColor : "#fff",
+                    segmentStrokeWidth : 2,
+                    percentageInnerCutout : 55, // This is 0 for Pie charts
+                    animationSteps : 100,
+                    animationEasing : "easeOutBounce",
+                    animateRotate : true,
+                    animateScale : false
+                };
+
+                armNames = [
+                    'Mon.'
+                    , 'Tue.'
+                    , ' Wed.'
+                    , 'Thu.'
+                    , 'Fri.'
+                    , 'Sat.'
+                    , 'Sun.'
+                ];
+                // armValues = [16, 13, 2, 24, 28, 1, 0];
+                armValues1 = [2, 3, 4, 5, 2, 1, 0];
+                // armValues2 = [10, 0.5, 73, 0, 3];
+
+                armNamesYear = ['Mon.', 'Tue.', ' Wed.', 'Thu.', 'Fri.', 'Sat.', 'Sun.'
+                ];
+                armValuesYear = [16, 13, 2, 24, 28, 1, 0];
+                armValuesYear1 = [2, 3, 4, 5, 2, 1, 0];
+                // armValues2 = [10, 0.5, 73, 0, 3];
+
+
+
+
+
+
+
+                $scope.barData = {
+                    labels: armNames,
+                    datasets: [
+                        {
+                            // label: "<b style='color:darkgreen;'>Positive Controls</b>",
+                            backgroundColor: 'darkgreen',
+                            fillColor: 'darkgreen',
+                            strokeColor: 'rgba(220,220,220,0.8)',
+                            pointColor: 'darkgreen',
+                            highlightFill: '#23c6c8', //"rgba(220,220,220,0.75)",
+                            highlightStroke: 'rgba(220,220,220,1)',
+                            data:  $scope.count_dates
                         },
                         {
                             // label: "<b style='color:navy;'>No Template Controls</b>",
