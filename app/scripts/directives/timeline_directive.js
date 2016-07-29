@@ -8,16 +8,43 @@
     /**
      * timeline
      */
-    function timeline($compile, $http, $templateCache, $log) {
-        var baseUrl = '/views/templates/patient_timeline_';
+    function timeline($scope, $compile, $http, $templateCache, $log) {
+        var baseUrl = '/views/templates/timeline_';
+
+        $scope.getIcon = function () {
+            switch ($scope.event_type) {
+                case 'assay_result_received':
+                    return 'fa-flask';
+
+                case 'specimen_received':
+                case 'specimen_shipped':
+                    return 'fa-bar-chart';
+
+                case 'user':
+                case 'pathology_status':
+                    return 'fa-user-md';
+
+                case 'assignment_report_pending':
+                case 'assignment_report_confirmed':
+                case 'treatment_arm':
+                    return 'fa-medkit';
+
+                case 'variant_report_received':
+                case 'variant_report_confirmed':
+                    return 'fa-bar-chart';
+
+                case 'patient':
+                    return 'fa-user';
+
+                case 'generic':
+                default:
+                    return 'fa-clock-o';
+            }
+        }
 
         var templateMap = {
-            'biopsy.assay.normal': baseUrl + 'biopsy_assay.html',
-            'biopsy.assay.narrow': baseUrl + 'biopsy_assay_narrow.html',
-            'biopsy.assay_order.normal': baseUrl + 'biopsy_assay_order.html',
-            'biopsy.assay_order.narrow': baseUrl + 'biopsy_assay_order_narrow.html',
-            'biopsy.assay_received.normal': baseUrl + 'biopsy_assay_received.html',
-            'biopsy.assay_received.narrow': baseUrl + 'biopsy_assay_received_narrow.html',
+            'assay_result_received.normal': baseUrl + 'assay_result_received.html',
+            'assay_result_received.narrow': baseUrl + 'assay_result_received_narrow.html',
             'biopsy.variant_report_received.normal': baseUrl + 'biopsy_variant_report_received.html',
             'biopsy.variant_report_received.narrow': baseUrl + 'biopsy_variant_report_received_narrow.html',
             'biopsy.variant_report_shipped.normal': baseUrl + 'biopsy_variant_report_shipped.html',

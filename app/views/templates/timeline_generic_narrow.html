@@ -1,0 +1,31 @@
+<div class="row timeline-event">
+    <div class="row">
+        <div class="col-md-2">
+            <i class="fa {{getIcon()}} fa-2x event-icon"></i>
+        </div>
+        <div class="col-md-10 event-title">
+            <span class="event-date-age">
+                {{::timelineEvent.event_date | utc}},
+                <span class="event-age">{{::timelineEvent.from_now}}</span>
+            </span>
+            <p class="m-b-xs">
+                <span ng-if="timelineEvent.step" class="timeline-step">Step: {{::timelineEvent.step}}.</span> <strong>{{::timelineEvent.event_message}}.</strong>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p class="m-b-xs event-content">
+                <span ng-if="timelineEvent.treatment_arm">
+                    <treatment-arm-title name="timelineEvent.treatment_arm.name" stratum="timelineEvent.treatment_arm.stratum" version="timelineEvent.treatment_arm.version"></treatment-arm-title>
+                    <br>
+                </span>
+
+                <span ng-repeat="pair in timelineEvent.event_data">
+                    {{::pair.prop}}: <span class="timeline-value">{{::pair.value}}</span>
+                    <br>
+                </span>
+            </p>
+        </div>
+    </div>
+</div>
