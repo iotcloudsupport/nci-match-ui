@@ -22,7 +22,9 @@
                 loadMocha_List: loadMocha_List,
                 loadMochaNtc_Table: loadMochaNtc_Table,
                 loadMDACC_Table: loadMDACC_Table,
-                loadMDACCNtc_Table: loadMDACCNtc_Table
+                loadMDACCNtc_Table: loadMDACCNtc_Table,
+                openPositives: openPositives,
+                openMDACCPositives: openMDACCPositives
             };
 
             function loadPatient(id) {
@@ -105,6 +107,17 @@
 
             function loadMDACCNtc_Table(){
                 return $http.get('data/sample_mdacc_ntc_list.json');
+            }
+
+            function openPositives(index){
+                return $http.get('data/sample_positive_control_' + index);
+            }
+
+            function openMDACCPositives(index){
+
+                console.log('data/sample_mda_positive_control_' + index)
+                
+                return $http.get('data/sample_mda_positive_control_' + index);
             }
 
             function loadSampleHRFiles(){
