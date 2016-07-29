@@ -1,0 +1,68 @@
+<div class="row timeline-event">
+    <div class="row">
+        <div class="col-md-2">
+            <i class="fa fa-bar-chart fa-2x event-icon" title="Biopsy Variant Report Received"></i>
+        </div>
+        <div class="col-md-10 event-title">
+            <span class="event-date-age">
+                {{::timelineEvent.event_date | utc}},
+                <span class="event-age">{{::timelineEvent.from_now}}</span>
+            </span>
+            <p class="m-b-xs"><span class="timeline-step">Step: {{::timelineEvent.step}}.</span> <strong>{{::timelineEvent.event_message}}.</strong></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p class="m-b-xs event-content">
+
+                <span ng-if="timelineEvent.patient_id">
+                    Patient: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id" text="timelineEvent.patient_id"></patient-title></span>
+                    <br>
+                </span>
+
+                <span ng-if="timelineEvent.event_data.surgical_event_id">
+                    Surgical Event ID: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id"
+                                                                                section="'surgical_event'"
+                                                                                text="timelineEvent.event_data.surgical_event_id"
+                                                                                surgical-event-id="timelineEvent.event_data.surgical_event_id"></patient-title></span>
+                    <br>
+                </span>
+
+                <span ng-if="timelineEvent.event_data.variant_report_type">
+                    Type: <span class="timeline-value">{{::timelineEvent.event_data.variant_report_type }}</span>
+                    <br>
+                </span>
+
+                <span ng-if="timelineEvent.event_data.molecular_id">
+                    Molecular ID: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id"
+                                                                            section="{{timelineEvent.event_data.variant_report_type === 'BLOOD' ? 'blood_variant_report' : 'tissue_variant_report'}}"
+                                                                            text="timelineEvent.event.data.molecular_id"
+                                                                            molecular-id="timelineEvent.event_data.molecular_id"
+                                                                            analysis-id="timelineEvent.event_data.analysis_id"></patient-title></span>
+                    <br>
+                </span>
+
+                <span ng-if="timelineEvent.event_data.analysis_id">
+                    Analysis ID: <span class="timeline-value">{{::timelineEvent.event_data.analysis_id }}</span>
+                    <br>
+                </span>
+
+                <span ng-if="timelineEvent.event_data.variant_report_status">
+                    Variant Report Status: <span class="timeline-value" style="color: {{timelineEvent.event_data.variant_report_status | analysisStatus}}">{{::timelineEvent.event_data.variant_report_status }}</span>
+                    <br>
+                </span>
+
+                <span ng-if="timelineEvent.event_data.comment">
+                    Comments: <span class="timeline-value">{{::timelineEvent.event_data.comment}}</span>
+                    <br>
+                </span>
+
+                <span ng-if="timelineEvent.event_data.comment_user">
+                    By: <span class="timeline-value">{{::timelineEvent.event_data.comment_user}}</span>
+                    <br>
+                </span>
+
+            </p>
+        </div>
+    </div>
+</div>

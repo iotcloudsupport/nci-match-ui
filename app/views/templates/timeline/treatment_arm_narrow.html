@@ -16,20 +16,17 @@
     <div class="row">
         <div class="col-md-12">
             <p class="m-b-xs event-content">
-                <span ng-if="timelineEvent.patient_id">
-                    Patient: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id" text="timelineEvent.patient_id"></patient-title></span>
-                    <br>
-                </span>
-                                
+
                 <span ng-if="timelineEvent.treatment_arm">
                     <treatment-arm-title name="timelineEvent.treatment_arm.name" stratum="timelineEvent.treatment_arm.stratum" version="timelineEvent.treatment_arm.version"></treatment-arm-title>
                     <br>
                 </span>
-
-                <!--<span ng-repeat="pair in timelineEvent.event_data">
-                    {{::pair.prop}}: <span class="timeline-value">{{::pair.value}}</span>
+        
+                <span ng-if="timelineEvent.event_data.treatment_arm_status">
+                    Status: <span class="timeline-value">{{::timelineEvent.event_data.treatment_arm_status | taStatus }}</span>
                     <br>
-                </span>-->
+                </span>
+
             </p>
         </div>
     </div>

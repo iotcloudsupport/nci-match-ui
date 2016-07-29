@@ -1,7 +1,7 @@
 <div class="row timeline-event">
     <div class="row">
         <div class="col-md-2">
-            <i class="fa fa-user-md fa-2x event-icon" title="User Event"></i>
+            <i class="fa fa-user fa-2x event-icon" title="Patient Event"></i>
         </div>
         <div class="col-md-10 event-title">
             <span class="event-date-age">
@@ -19,8 +19,15 @@
                     <br>
                 </span>
                                 
-                <p class="m-b-xs"><strong>{{::timelineEvent.user}}: {{::timelineEvent.details}}</strong></p>
-                <p class="m-b-xs">Download <a href="{{::timelineEvent.fileUrl}}" target="_blank">file</a></p>
+                <span ng-if="timelineEvent.event_data.location">
+                    Locations: <span class="timeline-value">{{::timelineEvent.event_data.location}}</span>
+                    <br>
+                </span>
+                                        
+                <span ng-if="timelineEvent.event_data.rebiopsy">
+                    Rebiopsy: <span class="timeline-value">{{::timelineEvent.event_data.rebiopsy}}</span>
+                    <br>
+                </span>
             </p>
         </div>
     </div>

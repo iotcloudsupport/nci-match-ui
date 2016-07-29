@@ -3,56 +3,54 @@
 
     angular
         .module('matchbox')
-        .directive('timeline', timeline);
+        .directive('timeLine', timeLine);
 
     /**
-     * timeline
+     * timeLine
      */
-    function timeline($scope, $compile, $http, $templateCache, $log) {
-        var baseUrl = '/views/templates/timeline_';
+    function timeLine($compile, $http, $templateCache, $log) {
+        var baseUrl = '/views/templates/timeline/';
 
-        $scope.getIcon = function () {
-            switch ($scope.event_type) {
-                case 'assay_result_received':
-                    return 'fa-flask';
+        // $scope.getIcon = function () {
+        //     switch ($scope.event_type) {
+        //         case 'assay':
+        //             return 'fa-flask';
 
-                case 'specimen_received':
-                case 'specimen_shipped':
-                    return 'fa-bar-chart';
+        //         case 'specimen':
+        //             return 'fa-truck';
 
-                case 'user':
-                case 'pathology_status':
-                    return 'fa-user-md';
+        //         case 'user':
+        //         case 'pathology_status':
+        //             return 'fa-user-md';
 
-                case 'assignment_report_pending':
-                case 'assignment_report_confirmed':
-                case 'treatment_arm':
-                    return 'fa-medkit';
+        //         case 'assignment_report':
+        //         case 'treatment_arm':
+        //             return 'fa-medkit';
 
-                case 'variant_report_received':
-                case 'variant_report_confirmed':
-                    return 'fa-bar-chart';
+        //         case 'variant_report':
+        //             return 'fa-bar-chart';
 
-                case 'patient':
-                    return 'fa-user';
+        //         case 'patient':
+        //             return 'fa-user';
 
-                case 'generic':
-                default:
-                    return 'fa-clock-o';
-            }
-        }
+        //         case 'generic':
+        //         default:
+        //             return 'fa-clock-o';
+        //     }
+        // }
 
         var templateMap = {
-            'assay_result_received.normal': baseUrl + 'assay_result_received.html',
-            'assay_result_received.narrow': baseUrl + 'assay_result_received_narrow.html',
-            'biopsy.variant_report_received.normal': baseUrl + 'biopsy_variant_report_received.html',
-            'biopsy.variant_report_received.narrow': baseUrl + 'biopsy_variant_report_received_narrow.html',
-            'biopsy.variant_report_shipped.normal': baseUrl + 'biopsy_variant_report_shipped.html',
-            'biopsy.variant_report_shipped.narrow': baseUrl + 'biopsy_variant_report_shipped_narrow.html',
-            'biopsy.pathology.normal': baseUrl + 'biopsy_pathology.html',
-            'biopsy.pathology.narrow': baseUrl + 'biopsy_pathology_narrow.html',
-            'assignment.normal': baseUrl + 'assignment.html',
-            'assignment.narrow': baseUrl + 'assignment_narrow.html',
+            'assay.normal': baseUrl + 'assay.html',
+            'assay.narrow': baseUrl + 'assay_narrow.html',
+            'specimen.normal': baseUrl + 'specimen.html',
+            'specimen.narrow': baseUrl + 'specimen_narrow.html',
+
+            'variant_report.normal': baseUrl + 'variant_report.html',
+            'variant_report.narrow': baseUrl + 'variant_report_narrow.html',
+            'pathology_status.normal': baseUrl + 'pathology_status.html',
+            'pathology_status.narrow': baseUrl + 'pathology_status_narrow.html',
+            'assignment_report.normal': baseUrl + 'assignment_report.html',
+            'assignment_report.narrow': baseUrl + 'assignment_report_narrow.html',
             'patient.normal': baseUrl + 'patient.html',
             'patient.narrow': baseUrl + 'patient_narrow.html',
             'user.normal': baseUrl + 'user.html',
@@ -69,11 +67,11 @@
                 var url = templateMap[key];
                 return $http.get(url, { cache: $templateCache });
             } else {
-                $log.error('timeline directive: invalid timeline type "' + type + '"');
+                $log.error('timeLine directive: invalid timeLine type "' + type + '"');
             }
         };
 
-        var defaultTemplate = '<div><p>Invalid Timeline Type "{{ timelineEvent.type }}"</p><p>{{ timelineEvent }}</p></div>';
+        var defaultTemplate = '<div><p>Invalid TimeLine Type "{{ timeLineEvent.type }}"</p><p>{{ timeLineEvent }}</p></div>';
 
         var linker = function (scope, element, attrs) {
             var loader = getTemplateLoader(scope.type, scope.layout);
@@ -94,7 +92,7 @@
         return {
             restrict: 'E',
             scope: {
-                timelineEvent: '<',
+                timeLineEvent: '<',
                 type: '<',
                 isStepChanging: '<',
                 layout: '<'

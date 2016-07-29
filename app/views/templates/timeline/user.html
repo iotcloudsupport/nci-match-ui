@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-xs-5 col-md-4 date" title="User Event" ng-class="{'date-top-border':timelineEvent.isStepChanging}">
+        <i class="fa fa-user-md fa-2x"></i> <small>{{::timelineEvent.event_date | utc}}</small>
+        <br/>
+        <small class="text-navy">{{::timelineEvent.from_now}}</small>
+    </div>
+    <div class="col-xs-7 col-md-8 content" ng-class="{'no-top-border':!timelineEvent.isStepChanging}">
+        <p class="m-b-xs timeline-title"><span class="timeline-step">Step: {{::timelineEvent.step}}.</span> <strong>{{::timelineEvent.event_message}}.</strong></p>
+        <p class="m-b-xs">
+            
+            <span ng-if="timelineEvent.event_data.user">
+                User: <span class="timeline-value">{{::timelineEvent.event_data.user }}</span>
+                <br>
+            </span>
+
+            <span ng-if="timelineEvent.event_data.user_file_name">
+                File: <span class="timeline-value"><a href="{{::timelineEvent.event_data.user_file_url }}">{{::timelineEvent.event_data.user_file_name }}</a></span>
+                <br>
+            </span>
+            
+        </p>
+    </div>
+</div>

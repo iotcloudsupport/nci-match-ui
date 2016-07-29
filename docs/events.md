@@ -4,6 +4,7 @@
     * event_date
     * event_message
     * patient_id
+    * surgical_event_id
     * assay_result
 
 * assignment_report
@@ -29,6 +30,8 @@
     * event_date
     * event_message
     * patient_id
+    * location
+    * rebiopsy
 
 * specimen
     * event_date
@@ -54,6 +57,8 @@
     * event_date
     * event_message
     * user
+    * user_file_name
+    * user_file_url
 
 * variant_report
     * event_date
@@ -62,6 +67,8 @@
     * surgical_event_id
     * molecular_id
     * analisys_id
+    * variant_report_type TISSUE | BLOOD
+    * variant_report_status
     * comment
     * comment_user
 

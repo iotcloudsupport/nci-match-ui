@@ -70,7 +70,7 @@
                 <div class="ibox-content inspinia-timeline" ng-controller="ActivityController as activity" ng-init="activity.loadData(10)"
                     id="panding-items-column">
                     <div class="timeline-item" ng-repeat="timelineEvent in activity.data">
-                        <timeline timeline-event="timelineEvent" type="timelineEvent.event_type" layout="'narrow'"></timeline>
+                        <time-line timeline-event="timelineEvent" type="timelineEvent.event_type" layout="'narrow'"></time-line>
                     </div>
                 </div>
             </div>

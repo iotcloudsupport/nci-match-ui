@@ -1,0 +1,99 @@
+[
+  {
+    "id": "3344",
+    "event_date": "2016-07-27T19:47:15+00:00",
+    "event_name": "ASSAY_RESULT_RECEIVED",
+    "event_type": "assay",
+    "event_message": "Patient received assay result for [ICCPTEN] from MDA.",
+    "event_data": {
+      "surgical_event_id": "3344-bsn",
+      "result": "POSITIVE",
+      "biomarker": "ICCPTEN",
+      "ordered_date": "20116-05-14T12:11:09.071-05:00",
+      "study_id": "APEC1621",
+      "patient_id": "3344",
+      "reported_date": "2016-05-15T12:12:09.071-05:00"
+    }
+  },
+  {
+    "id": "3344",
+    "event_date": "2016-07-27T19:46:44+00:00",
+    "event_name": "TISSUE_NUCLEIC_ACID_SHIPPED",
+    "event_type": "specimen",
+    "event_message": "Patient received specimen shipment of type [TISSUE_DNA_AND_CDNA] from NCH.",
+    "event_data": {
+      "surgical_event_id": "3344-bsn",
+      "shipped_dttm": "2016-05-13T19:42:13+00:00",
+      "molecular_id": "3344-bsn-msn-2",
+      "study_id": "APEC1621",
+      "molecular_cdna_id": "00012C",
+      "carrier": "Federal Express",
+      "patient_id": "3344",
+      "type": "TISSUE_DNA_AND_CDNA",
+      "tracking_id": "7956 4568 1235",
+      "molecular_dna_id": "00012D"
+    }
+  },
+  {
+    "id": "3344",
+    "event_date": "2016-07-27T19:46:23+00:00",
+    "event_name": "TISSUE_NUCLEIC_ACID_SHIPPED",
+    "event_type": "specimen",
+    "event_message": "Patient received specimen shipment of type [TISSUE_DNA_AND_CDNA] from NCH.",
+    "event_data": {
+      "surgical_event_id": "3344-bsn",
+      "shipped_dttm": "2016-05-12T19:42:13+00:00",
+      "molecular_id": "3344-bsn-msn",
+      "study_id": "APEC1621",
+      "molecular_cdna_id": "00012C",
+      "carrier": "Federal Express",
+      "patient_id": "3344",
+      "type": "TISSUE_DNA_AND_CDNA",
+      "tracking_id": "7956 4568 1235",
+      "molecular_dna_id": "00012D"
+    }
+  },
+  {
+    "id": "3344",
+    "event_date": "2016-07-27T19:44:41+00:00",
+    "event_name": "TISSUE_SPECIMEN_RECEIVED",
+    "event_type": "specimen_received",
+    "event_message": "Patient received specimen of type [TISSUE] from NCH.",
+    "event_data": {
+      "surgical_event_id": "3344-bsn",
+      "collected_dttm": "2016-05-11T15:17:11+00:00",
+      "patient_id": "3344",
+      "received_dttm": "2016-05-11T16:17:11+00:00",
+      "type": "TISSUE",
+      "study_id": "APEC1621"
+    }
+  },
+  {
+    "id": "3344",
+    "event_date": "2016-07-27T19:44:10+00:00",
+    "event_name": "BLOOD_SPECIMEN_RECEIVED",
+    "event_type": "specimen_received",
+    "event_message": "Patient received specimen of type [BLOOD] from NCH.",
+    "event_data": {
+      "collected_dttm": "2016-05-10T14:17:11+00:00",
+      "patient_id": "3344",
+      "received_dttm": "2016-04-10T15:17:11+00:00",
+      "type": "BLOOD",
+      "study_id": "APEC1621"
+    }
+  },
+  {
+    "id": "3344",
+    "event_date": "2016-07-27T19:43:29+00:00",
+    "event_name": "REGISTRATION",
+    "event_type": "patient",
+    "event_message": "Patient received REGISTRATION message from COG.",
+    "event_data": {
+      "registration_date": "2016-05-09T22:06:33+00:00",
+      "patient_id": "3344",
+      "status": "REGISTRATION",
+      "study_id": "APEC1621",
+      "step_number": "1.0"
+    }
+  }
+]

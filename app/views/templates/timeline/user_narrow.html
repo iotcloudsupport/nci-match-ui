@@ -1,7 +1,7 @@
 <div class="row timeline-event">
     <div class="row">
         <div class="col-md-2">
-            <i class="fa fa-flask fa-2x event-icon" title="Biopsy Assay Received"></i>
+            <i class="fa fa-user-md fa-2x event-icon" title="User Event"></i>
         </div>
         <div class="col-md-10 event-title">
             <span class="event-date-age">
@@ -14,15 +14,17 @@
     <div class="row">
         <div class="col-md-12">
             <p class="m-b-xs event-content">
-                <span ng-if="timelineEvent.patient_id">
-                    Patient: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id" text="timelineEvent.patient_id"></patient-title></span>
+
+                <span ng-if="timelineEvent.event_data.user">
+                    User: <span class="timeline-value">{{::timelineEvent.event_data.user }}</span>
                     <br>
                 </span>
- 
-                <span ng-if="timelineEvent.event_data.result">
-                    Results: <span class="timeline-value">{{::timelineEvent.event_data.assay_result | assayStatus }}</span>
+
+                <span ng-if="timelineEvent.event_data.user_file_name">
+                    File: <span class="timeline-value"><a href="{{::timelineEvent.event_data.user_file_url }}">{{::timelineEvent.event_data.user_file_name }}</a></span>
                     <br>
                 </span>
+
             </p>
         </div>
     </div>

@@ -7,24 +7,25 @@
     <div class="col-xs-7 col-md-8 content" ng-class="{'no-top-border':!timelineEvent.isStepChanging}">
         <p class="m-b-xs timeline-title"><span class="timeline-step">Step: {{::timelineEvent.step}}.</span> <strong>{{::timelineEvent.event_message}}.</strong></p>
         <p class="m-b-xs">
-            <span ng-if="timelineEvent.event_data.status">
-                Variant Report Status: <span class="timeline-value"><patient-title text-color="timelineEvent.event_data.status | analysisStatus" patient-id="timelineEvent.patient_id" section="'tissue_variant_report'" text="timelineEvent.event_data.status" surgical-event-id="timelineEvent.event_data.surgical_event_id" molecular-id="timelineEvent.event_data.molecular_id" analysis-id="timelineEvent.event_data.analysis_id"></patient-title></span>
-                <br>
-            </span>
 
-            <span ng-if="timelineEvent.event_data.surgical_event_id">
-                Surgical Event ID: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id" section="'surgical_event'" text="timelineEvent.event_data.surgical_event_id" molecular-id="timelineEvent.event_data.molecular_id" surgical-event-id="timelineEvent.event_data.surgical_event_id" analysis-id="timelineEvent.event_data.analysis_id"></patient-title></span>
-                <br>
-            </span>
-                        
             <span ng-if="timelineEvent.event_data.collected_datetime && (timelineEvent.event_data.collected_datetime | utc) !== '-'">
                 Collected Date: <span class="timeline-value">{{::timelineEvent.event_data.collected_datetime | utc}}</span>
                 <br>
             </span>
             
-            <span ng-if="timelineEvent.event_data.received_datetime && (timelineEvent.event_data.received_datetime | utc) !== '-'">
-                Received Date: <span class="timeline-value">{{::timelineEvent.event_data.received_datetime | utc}}</span>
+            <span ng-if="timelineEvent.patient_id">
+                Patient: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id" text="timelineEvent.patient_id"></patient-title></span>
                 <br>
+            </span>
+       
+            <span ng-if="timelineEvent.event_data.specimen_type">
+                Type: <span class="timeline-value">{{::timelineEvent.event_data.specimen_type }}</span>
+                <br>
+            </span>
+
+            <span ng-if="timelineEvent.event_data.surgical_event_id">
+                Surgical Event ID: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id" section="'surgical_event'" text="timelineEvent.event_data.surgical_event_id" surgical-event-id="timelineEvent.event_data.surgical_event_id" analysis-id="timelineEvent.event_data.analysis_id"></patient-title></span>
+            <br>
             </span>
             
             <span ng-if="timelineEvent.event_data.molecular_id">
@@ -43,12 +44,7 @@
             </span>
             
             <span ng-if="timelineEvent.event_data.slide_barcode">
-                Slide Bar-code: <span class="timeline-value">{{::timelineEvent.event_data.slide_barcode}}</span>
-                <br>
-            </span>
-
-            <span ng-if="timelineEvent.event_data.carrier">
-                Carrier: <span class="timeline-value">{{::timelineEvent.event_data.carrier }}</span>
+                Slide Barcode: <span class="timeline-value">{{::timelineEvent.event_data.slide_barcode}}</span>
                 <br>
             </span>
             
@@ -57,10 +53,11 @@
                 <br>
             </span>
 
-            <span ng-if="timelineEvent.event_data.location">            
-                Location: <span class="timeline-value">{{::timelineEvent.event_data.location }}</span>
+            <span ng-if="timelineEvent.event_data.destination">            
+                destination: <span class="timeline-value">{{::timelineEvent.event_data.destination }}</span>
                 <br>
             </span>
+            
         </p>
     </div>
 </div>
