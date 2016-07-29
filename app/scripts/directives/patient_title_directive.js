@@ -41,14 +41,6 @@
 
         };
 
-        /*
-         <a ui-sref="patient({ patient_id: patient.patient_id, section: 'surgical_event', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })">{{ patient.molecular_id | dashify }}</a>
-         <a ui-sref="patient({ patient_id: patient.patient_id, section: 'tissue_variant_report', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })">{{ patient.analysis_id | dashify }}</a>
-         <a ui-sref="patient({ patient_id: vm.patientId, section: 'blood_variant_report', molecular_id: item.molecular_id, analysis_id: item.analysis_id })">{{ ::item.molecular_id }}</a>
-         <a ui-sref="patient({ patient_id: vm.patientId, section: 'assignment_report', molecular_id: item.molecular_id, analysis_id: item.analysis_id })">{{ ::item.analysis_id }}</a>
-         else just patient id
-         */
-
         /*jshint multistr: true */
         var template = '<span class="ta-title">\
                     \
@@ -74,7 +66,8 @@
                 patientId: '<',
                 molecularId: '<',
                 analysisId: '<',
-                surgicalEventId: '<'
+                surgicalEventId: '<',
+                textColor: '<'
             }
         }
     }
