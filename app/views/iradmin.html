@@ -90,20 +90,29 @@
 
 
                                 <div class="statistic-box">
+                                    <i class="fa fa-calendar fa-2x" aria-hidden="true" ng-if="schedule == 'weekmap'" ng-click="loadMap(schedule)"></i>
+                                    <i class="fa fa-bar-chart fa-2x" aria-hidden="true" ng-if="schedule == 'heatmap'" ng-click="loadMap(schedule)"></i>
                                     <div class="text-center">
-                                        <h4>{{barlegend}} - MoCha</h4>
+                                         <h4>{{barlegend}} - MoCha</h4>
                                     </div>
                                     <div class="col-lg-12">
 
                                         <!--CALENDAR-->
-                                        <!--<calendar-heatmap data="exampleData" color="color" overview="overview" handler="print"></calendar-heatmap>-->
+                                        <div ng-if="schedule == 'heatmap'">
+                                            <calendar-heatmap data="exampleData" color="color" overview="overview" handler="print" ></calendar-heatmap>
+                                        </div>
                                         <!--CALENDAR-->
 
-                                        <canvas id="mochaBar" barchart ng-attr-data="barData" labels="false" options="barOptions" legend="false" responsive="true"
-                                                width="700" height="200">
-                                        </canvas>
-                                        <div><b style='color:darkgreen;'>Positive Controls</b></div>
-                                        <div><b style='color:navy;'>No Template Controls</b></div>
+                                        <div ng-if="schedule == 'weekmap'">
+                                            <canvas id="mochaBar" barchart ng-attr-data="barData" labels="false" options="barOptions" legend="false" responsive="true"
+                                                    width="700" height="200">
+                                            </canvas>
+
+
+                                            <div><b style='color:darkgreen;'>Positive Controls</b></div>
+                                            <div><b style='color:navy;'>No Template Controls</b></div>
+
+                                        </div>
 
 
 
@@ -327,16 +336,16 @@
     <!--CHARTS-->
 
     <!--TABLES-->
-    <div class="tabs-container" ng-init="loadSampleControlsList();indextab = 0">
+    <div class="tabs-container" ng-init="indextab = 0">
 
-        <uib-tabset active="indextab" ng-if="branch === 'mocha'">
+        <uib-tabset active="indextab" ng-if="branch === 'mocha'" >
 
-            <uib-tab heading="Positive Sample Controls " index="0" ng-click="loadSampleBreakups()">
+            <uib-tab heading="Positive Sample Controls " index="0" ng-click="loadSampleBreakups();">
                 <!--SCROLL TIC-->
                 <div id="mochabottom"></div>
                 <!--SCROLL TIC-->
 
-                <div class="col-lg-16">
+                <div class="col-lg-16" >
 
                     <div class="ibox float-e-margins">
                         <!--<div class="col-lg-16" >-->
@@ -521,8 +530,8 @@
                                                                         <!--<tr ng-style="{'background-color':'{{ sample.hasMatchingVariant | irsample }}'}" ng-repeat="sample in positiveControlList">-->
                                                                         <tr ng-repeat="sample in positiveControlList">
                                                                             <td>
-                                                                                <i ng-if="sample.hasMatchingVariant == 'true'" class="fa fa-plus" style="color: darkgreen"></i>
-                                                                                <i ng-if="sample.hasMatchingVariant == 'false'" class="fa fa-minus" style="color: red"></i>
+                                                                                <i ng-if="sample.hasMatchingVariant == 'true'" class="fa fa-check-circle" style="color: darkgreen"></i>
+                                                                                <i ng-if="sample.hasMatchingVariant == 'false'" class="fa fa-times-circle" style="color: red"></i>
                                                                                 <a class="report-link" href ng-click="openCosmicId( sample.identifier )">
                                                                                     {{sample.identifier | dashify }}
                                                                                 </a>
@@ -1086,32 +1095,25 @@
                                                                         <!--<tr ng-style="{'background-color':'{{ sample.hasMatchingVariant | irsample }}'}" ng-repeat="sample in positiveControlList">-->
                                                                         <tr ng-repeat="sample in positiveControlList">
                                                                             <td>
-                                                                                <i ng-if="sample.hasMatchingVariant == 'true'" class="fa fa-plus" style="color: darkgreen"></i>
-                                                                                <i ng-if="sample.hasMatchingVariant == 'false'" class="fa fa-minus" style="color: red"></i>
+                                                                                <i ng-if="sample.hasMatchingVariant == 'true'" class="fa fa-check-circle" style="color: darkgreen"></i>
+                                                                                <i ng-if="sample.hasMatchingVariant == 'false'" class="fa fa-times-circle" style="color: red"></i>
                                                                                 <a class="report-link" href ng-click="openCosmicId( sample.identifier )">
                                                                                     {{sample.identifier | dashify }}
                                                                                 </a>
                                                                             </td>
-                                                                            <td>{{sample.chromosome | dashify
-                                                                                }}</td>
-                                                                            <td>{{sample.position | dashify
-                                                                                }}</td>
+                                                                            <td>{{sample.chromosome | dashify}}</td>
+                                                                            <td>{{sample.position | dashify}}</td>
                                                                             <td>
                                                                                 <a class="report-link" href ng-click="openCosmicGene( sample.geneName )">
                                                                                     {{sample.geneName | dashify }}
                                                                                 </a>
                                                                             </td>
-                                                                            <td>{{sample.variantType | dashify
-                                                                                }}</td>
-                                                                            <td>{{sample.reference | dashify
-                                                                                }}</td>
-                                                                            <td>{{sample.alternative | dashify
-                                                                                }}</td>
+                                                                            <td>{{sample.variantType | dashify}}</td>
+                                                                            <td>{{sample.reference | dashify}}</td>
+                                                                            <td>{{sample.alternative | dashify}}</td>
                                                                             <td>{{sample.hgvs | dashify }}</td>
-                                                                            <td>{{sample.protein | dashify
-                                                                                }}</td>
-                                                                            <td>{{sample.function | dashify
-                                                                                }}</td>
+                                                                            <td>{{sample.protein | dashify}}</td>
+                                                                            <td>{{sample.function | dashify}}</td>
                                                                         </tr>
                                                                         </tbody>
                                                                     </table>

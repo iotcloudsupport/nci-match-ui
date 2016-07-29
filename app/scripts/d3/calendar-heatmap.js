@@ -72,7 +72,7 @@ angular.module('match.calendar-heatmap', []).
         // Watch for data availability
         scope.$watch('data', function (data) {
 
-          console.log("DATA ---> " + data)
+          // console.log("DATA ---> " + data)
 
           if ( !data ) { return; }
 
