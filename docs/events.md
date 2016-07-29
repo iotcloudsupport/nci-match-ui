@@ -16,12 +16,14 @@
     * analisys_id
     * comment
     * comment_user
+    * assignment_report_status
 
 * pathology_status
     * event_date
     * event_message
     * patient_id
     * pathology_status
+    * surgical_event_id
 
 * patient
     * event_date
@@ -33,7 +35,7 @@
     * event_message
     * collected_date
     * patient_id
-    * specimen_type BLOOD | TISSUE | SLIDE
+    * specimen_type BLOOD | TISSUE | SLIDE | TISSUE_DNA/cDNA | BLOOD_DNA
     * surgical_event_id
     * molecular_dna_id
     * molecular_cdna_id
@@ -51,11 +53,15 @@
 * user
     * event_date
     * event_message
+    * user
 
 * variant_report
     * event_date
     * event_message
+    * patient_id
     * surgical_event_id
+    * molecular_id
+    * analisys_id
     * comment
     * comment_user
 

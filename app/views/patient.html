@@ -210,7 +210,6 @@
                                 <thead>
                                 <tr>
                                     <th width="20%" class="label2">Gene</th>
-                                    <th width="40%" class="label2">Ordered Date</th>
                                     <th width="20%" class="label2">Result Date</th>
                                     <th width="20%" class="label2">Result</th>
                                 </tr>
@@ -218,7 +217,6 @@
                                 <tbody>
                                 <tr ng-repeat="assay in currentSurgicalEvent.assays" style="cursor: auto;" role="row" class="odd">
                                     <td>{{assay.gene | dashify}}</td>
-                                    <td>{{assay.ordered_date | utc | dashify}}</td>
                                     <td>{{assay.result_date | utc | dashify}}</td>
                                     <td>
                                         <span style="color:{{ assay.result | assayStatus }}">{{assay.result | dashify}}</span>
