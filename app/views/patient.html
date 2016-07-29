@@ -114,7 +114,7 @@
 
                         <div class="ibox-content inspinia-timeline" ng-controller="ActivityController as activity" ng-init="activity.loadData()">
                             <div class="timeline-item" ng-repeat="timelineEvent in activity.data">
-                                <patient-timeline timeline-event="timelineEvent" type="timelineEvent.event_type"></patient-timeline>
+                                <timeline timeline-event="timelineEvent" type="timelineEvent.event_type"></timeline>
                             </div>
                         </div>
 

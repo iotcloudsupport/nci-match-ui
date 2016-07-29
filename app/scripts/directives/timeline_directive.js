@@ -3,12 +3,12 @@
 
     angular
         .module('matchbox')
-        .directive('patientTimeline', patientTimeline);
+        .directive('timeline', timeline);
 
     /**
-     * patientTimeline
+     * timeline
      */
-    function patientTimeline($compile, $http, $templateCache, $log) {
+    function timeline($compile, $http, $templateCache, $log) {
         var baseUrl = '/views/templates/patient_timeline_';
 
         var templateMap = {
@@ -42,7 +42,7 @@
                 var url = templateMap[key];
                 return $http.get(url, { cache: $templateCache });
             } else {
-                $log.error('patient-timeline directive: invalid timeline type "' + type + '"');
+                $log.error('timeline directive: invalid timeline type "' + type + '"');
             }
         };
 
