@@ -1,0 +1,68 @@
+**Event Types and Attributes**
+
+* assay
+    * event_date
+    * event_message
+    * patient_id
+    * assay_result
+
+* assignment_report
+    * event_date
+    * event_message
+    * patient_id
+    * treatment_arm {name, stratum, version}
+    * surgical_event_id
+    * molecular_id
+    * analisys_id
+    * comment
+    * comment_user
+
+* pathology_status
+    * event_date
+    * event_message
+    * patient_id
+    * pathology_status
+
+* patient
+    * event_date
+    * event_message
+    * patient_id
+
+* specimen
+    * event_date
+    * event_message
+    * collected_date
+    * patient_id
+    * specimen_type BLOOD | TISSUE | SLIDE
+    * surgical_event_id
+    * molecular_dna_id
+    * molecular_cdna_id
+    * slide_barcode
+    * tracking_number
+    * carrier
+    * destination
+
+* treatment_arm
+    * event_date
+    * event_message
+    * treatment_arm {name, stratum, version}
+    * treatment_arm_status
+
+* user
+    * event_date
+    * event_message
+
+* variant_report
+    * event_date
+    * event_message
+    * surgical_event_id
+    * comment
+    * comment_user
+
+*For future use*
+    
+* generic
+    * event_date
+    * event_message
+    * prop_name
+    * prop_value

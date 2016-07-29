@@ -18,21 +18,11 @@
                     Patient: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id" text="timelineEvent.patient_id"></patient-title></span>
                     <br>
                 </span>
-                
-                <span ng-if="timelineEvent.event_data.status">
-                    Assay Status: <span class="timeline-value" ng-style="{'color':'{{ timelineEvent.event_data.status | assayStatus }}'}">{{::timelineEvent.event_data.status}}</span>
-                    <br>
-                </span>
-
+ 
                 <span ng-if="timelineEvent.event_data.result">
-                    Results: <span class="timeline-value">{{::timelineEvent.event_data.result }}</span>
+                    Results: <span class="timeline-value">{{::timelineEvent.event_data.assay_result | assayStatus }}</span>
                     <br>
                 </span>
-
-                <!--<span ng-if="timelineEvent.event_data.reported_date">
-                    Report Date: <span class="timeline-value">{{::timelineEvent.event_data.reported_date | utc}}</span>
-                    <br>
-                </span>-->
             </p>
         </div>
     </div>
