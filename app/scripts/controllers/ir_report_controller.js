@@ -47,8 +47,119 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         $scope.cellColor = "";
         $scope.hrReports = null;
         $scope.loadSampleHRFiles = loadSampleHRFiles;
-        $scope.armValuesYear = [16, 13, 2, 24, 28, 1, 0];
+            $scope.schedule = "weekmap";
+
         $scope.armValuesYear1 = [2, 3, 4, 5, 2, 1, 0];
+
+
+            $scope.loadMap = function (id) {
+                if(id == "heatmap"){$scope.schedule = "weekmap"}
+                else {$scope.schedule = "heatmap"}
+            };
+            
+        //    #######
+
+
+            // Initialize random data for the demo
+            var now = moment().endOf('day').toDate();
+            var yearAgo = moment().startOf('day').subtract(1, 'year').toDate();
+            $scope.exampleData = d3.time.days(yearAgo, now).map(function (dateElement) {
+
+                return {
+                    date: dateElement,
+                    details: Array.apply(null, new Array(Math.floor(Math.random() * 25))).map(function(e, i, arr) {
+
+                        var name = "";
+                        if(i > 8){name = 'Positive Controls '}
+                        else {name = 'Ntc Controls ';}
+
+                        return {
+                            'name': name + Math.floor(Math.random() * 3),
+                            'date': function () {
+                                var projectDate = new Date(dateElement.getTime());
+                                projectDate.setHours(Math.floor(Math.random() * 24))
+                                projectDate.setMinutes(Math.floor(Math.random() * 60));
+                                return projectDate;
+                            }(),
+                            'value': 3600 * ((arr.length - i) / 5) + Math.floor(Math.random() * 3600)
+                        };
+                    }),
+                    init: function () {
+                        this.total = this.details.reduce(function (prev, e) {
+                            return prev + e.value;
+                        }, 0);
+                        return this;
+                    }
+                }.init();
+            });
+
+            // Set custom color for the calendar heatmap
+            $scope.color = '#cd2327';
+
+            // Set overview type (choices are year, month and day)
+            $scope.overview = 'year';
+
+            // Handler function
+            $scope.print = function (val) {
+                console.log(val);
+            };
+            
+            
+        //    ########
+
+
+
+            // $scope.armValuesYear = [16, 13, 2, 24, 28, 1, 0];
+
+
+            function loadMoChaList(data) {
+
+                $scope.count_dates = [0, 0, 0, 0, 0, 0, 0];
+
+                angular.forEach(data, function (value,k) {
+                    angular.forEach(value, function (v,k) {
+                        var tmp;
+                        switch (v.week_date) {
+                            case 'Mon':
+                                tmp = $scope.count_dates[0];
+                                $scope.count_dates[0] = tmp + 1;
+                                break;
+                            case 'Tue':
+                                tmp = $scope.count_dates[1];
+                                $scope.count_dates[1] = tmp + 1;
+                                break;
+                            case 'Wed':
+                                tmp = $scope.count_dates[2];
+                                $scope.count_dates[2] = tmp + 1;
+                                break;
+                            case 'Thu':
+                                tmp = $scope.count_dates[3];
+                                $scope.count_dates[3] = tmp + 1;
+                                break;
+                            case 'Fri':
+                                tmp = $scope.count_dates[4];
+                                $scope.count_dates[4] = tmp + 1;
+                                break;
+                            case 'Sat':
+                                // console.log("Selected Case Number is 6");
+                                break;
+                            default:
+                        }
+                    });
+                    console.log($scope.count_dates)
+                });
+                $scope.mochaList = data.data;
+            };
+
+            //Svg for samples
+            $scope.loadMocha_Table = function () {
+                matchApiMock
+                    .loadMocha_List()
+                    .then(function (d) {
+                        loadMoChaList(d);
+                    });
+            };
+            
 
 
         function loadSampleHRFiles() {
@@ -129,37 +240,15 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             };
 
 
-            //Mocks
-            // $scope.indelsList = [{"type":"snv","metadata":{"id":"38781871-ebc3-4df7-b4d3-c89c124363c2","comment":null},"publicMedIds":null,"geneName":"","chromosome":"3","position":"178916946","identifier":"COSM12580","reference":"G","alternative":"C","filter":"PASS","description":null,"protein":"p.Lys111Asn","transcript":"NM_006218.2","hgvs":"c.333G>C","location":"exonic","readDepth":1403,"rare":false,"alleleFrequency":0.138275,"flowAlternativeAlleleObservationCount":"194","flowReferenceAlleleObservations":"1209","referenceAlleleObservations":1405,"alternativeAlleleObservationCount":0,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"PIK3CA","oncominevariantclass":"Hotspot","exon":"2","function":"missense","proteinMatch":null,"confirmed":false,"matchingId":"COSM12580"},{"type":"snv","metadata":{"id":"cb33b736-1101-4c22-8b21-66c4bad7f7ca","comment":null},"publicMedIds":null,"geneName":"","chromosome":"chr13","position":"32968850","identifier":".","reference":"C","alternative":"A","filter":"PASS","description":null,"protein":"p.Ser3094Ter","transcript":"NM_000059.3","hgvs":"c.9281C>A","location":"exonic","readDepth":1432,"rare":false,"alleleFrequency":0.244413,"flowAlternativeAlleleObservationCount":"350","flowReferenceAlleleObservations":"1082","referenceAlleleObservations":1079,"alternativeAlleleObservationCount":350,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"BRCA2","oncominevariantclass":"Deleterious","exon":"25","function":"nonsense","proteinMatch":null,"confirmed":false,"matchingId":"."},{"type":"snv","metadata":{"id":"2dae6bbe-caf5-4d2a-8f81-35ba9f85f0e8","comment":null},"publicMedIds":null,"geneName":"","chromosome":"7","position":"140453136","identifier":"COSM476","reference":"A","alternative":"T","filter":"PASS","description":null,"protein":"p.Val600Glu","transcript":"NM_004333.4","hgvs":"c.1799T>A","location":"exonic","readDepth":1866,"rare":false,"alleleFrequency":0.237406,"flowAlternativeAlleleObservationCount":"443","flowReferenceAlleleObservations":"1423","referenceAlleleObservations":1875,"alternativeAlleleObservationCount":0,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"BRAF","oncominevariantclass":"Hotspot","exon":"15","function":"missense","proteinMatch":null,"confirmed":false,"matchingId":"COSM476"},
-            //     {"type":"id","metadata":{"id":"f89e170d-f64e-4d9a-be7f-eb38497ed8ec","comment":null},"publicMedIds":null,"geneName":"","chromosome":"chr13","position":"48916816","identifier":".","reference":"ACTT","alternative":"-","filter":"PASS","description":null,"protein":"p.Thr116fs","transcript":"NM_000321.2","hgvs":"c.346_349delACTT","location":"exonic","readDepth":1187,"rare":false,"alleleFrequency":0.221567,"flowAlternativeAlleleObservationCount":"263","flowReferenceAlleleObservations":"924","referenceAlleleObservations":898,"alternativeAlleleObservationCount":261,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"RB1","oncominevariantclass":"Deleterious","exon":"3","function":"frameshiftDeletion","proteinMatch":null,"confirmed":false,"matchingId":"."},{"type":"id","metadata":{"id":"3c4d6ebe-b92f-4359-8f61-1ee7886e3aee","comment":null},"publicMedIds":null,"geneName":"","chromosome":"chr17","position":"7574003","identifier":".","reference":"G","alternative":"-","filter":"PASS","description":null,"protein":"p.Arg342fs","transcript":"NM_000546.5","hgvs":"c.1024_1024delC","location":"exonic","readDepth":1261,"rare":false,"alleleFrequency":0.171293,"flowAlternativeAlleleObservationCount":"216","flowReferenceAlleleObservations":"1045","referenceAlleleObservations":1037,"alternativeAlleleObservationCount":215,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"TP53","oncominevariantclass":"Deleterious","exon":"10","function":"frameshiftDeletion","proteinMatch":null,"confirmed":false,"matchingId":"."},{"type":"id","metadata":{"id":"bc315edc-8267-4ff5-b4b2-5ce79732093e","comment":null},"publicMedIds":null,"geneName":"","chromosome":"chr10","position":"89717716","identifier":".","reference":"-","alternative":"A","filter":"PASS","description":null,"protein":"p.Pro248fs","transcript":"NM_000314.4","hgvs":"c.740_741insA","location":"exonic","readDepth":1239,"rare":false,"alleleFrequency":0.230831,"flowAlternativeAlleleObservationCount":"286","flowReferenceAlleleObservations":"953","referenceAlleleObservations":951,"alternativeAlleleObservationCount":284,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"PTEN","oncominevariantclass":"Deleterious","exon":"7","function":"frameshiftInsertion","proteinMatch":null,"confirmed":false,"matchingId":"."},
-            //     {"type":"cnv","metadata":{"id":"1a69685f-c109-42b5-84aa-7387e29a6bcc","comment":null},"publicMedIds":null,"geneName":"","chromosome":"chr17","position":"37845133","identifier":"ERBB2","reference":"G","alternative":"<CNV>","filter":"PASS","description":null,"protein":null,"transcript":null,"hgvs":"","location":"","readDepth":null,"rare":false,"alleleFrequency":null,"flowAlternativeAlleleObservationCount":"","flowReferenceAlleleObservations":"","referenceAlleleObservations":null,"alternativeAlleleObservationCount":null,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"ERBB2","oncominevariantclass":"Amplification","exon":"","function":"","proteinMatch":null,"confirmed":false,"refCopyNumber":2,"rawCopyNumber":16.2,"copyNumber":16.2,"confidenceInterval95percent":17.0665,"confidenceInterval5percent":15.3775,"matchingId":"ERBB2"},{"type":"cnv","metadata":{"id":"2b8fc68e-5e8a-4685-82fd-54319551f83a","comment":null},"publicMedIds":null,"geneName":"","chromosome":"chr17","position":"57974717","identifier":"RPS6KB1","reference":"T","alternative":"<CNV>","filter":"PASS","description":null,"protein":null,"transcript":null,"hgvs":"","location":"","readDepth":null,"rare":false,"alleleFrequency":null,"flowAlternativeAlleleObservationCount":"","flowReferenceAlleleObservations":"","referenceAlleleObservations":null,"alternativeAlleleObservationCount":null,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"RPS6KB1","oncominevariantclass":"Amplification","exon":"","function":"","proteinMatch":null,"confirmed":false,"refCopyNumber":2,"rawCopyNumber":8.6,"copyNumber":8.6,"confidenceInterval95percent":9.16673,"confidenceInterval5percent":8.06831,"matchingId":"RPS6KB1"},{"type":"cnv","metadata":{"id":"1c8014d1-5ef1-4dfb-a053-c3f5cdb78126","comment":null},"publicMedIds":null,"geneName":"","chromosome":"chr20","position":"52184148","identifier":"ZNF217","reference":"G","alternative":"<CNV>","filter":"PASS","description":null,"protein":null,"transcript":null,"hgvs":"","location":"","readDepth":null,"rare":false,"alleleFrequency":null,"flowAlternativeAlleleObservationCount":"","flowReferenceAlleleObservations":"","referenceAlleleObservations":null,"alternativeAlleleObservationCount":null,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"ZNF217","oncominevariantclass":"Amplification","exon":"","function":"","proteinMatch":null,"confirmed":false,"refCopyNumber":2,"rawCopyNumber":12.5,"copyNumber":12.5,"confidenceInterval95percent":13.3237,"confidenceInterval5percent":11.7272,"matchingId":"ZNF217"}
-            //
-            // ];
-            // $scope.singleNucleotideVariantsList = [{"type":"id","metadata":{"id":"f89e170d-f64e-4d9a-be7f-eb38497ed8ec","comment":null},"publicMedIds":null,"geneName":"","chromosome":"chr13","position":"48916816","identifier":".","reference":"ACTT","alternative":"-","filter":"PASS","description":null,"protein":"p.Thr116fs","transcript":"NM_000321.2","hgvs":"c.346_349delACTT","location":"exonic","readDepth":1187,"rare":false,"alleleFrequency":0.221567,"flowAlternativeAlleleObservationCount":"263","flowReferenceAlleleObservations":"924","referenceAlleleObservations":898,"alternativeAlleleObservationCount":261,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"RB1","oncominevariantclass":"Deleterious","exon":"3","function":"frameshiftDeletion","proteinMatch":null,"confirmed":false,"matchingId":"."},{"type":"id","metadata":{"id":"3c4d6ebe-b92f-4359-8f61-1ee7886e3aee","comment":null},"publicMedIds":null,"geneName":"","chromosome":"chr17","position":"7574003","identifier":".","reference":"G","alternative":"-","filter":"PASS","description":null,"protein":"p.Arg342fs","transcript":"NM_000546.5","hgvs":"c.1024_1024delC","location":"exonic","readDepth":1261,"rare":false,"alleleFrequency":0.171293,"flowAlternativeAlleleObservationCount":"216","flowReferenceAlleleObservations":"1045","referenceAlleleObservations":1037,"alternativeAlleleObservationCount":215,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"TP53","oncominevariantclass":"Deleterious","exon":"10","function":"frameshiftDeletion","proteinMatch":null,"confirmed":false,"matchingId":"."},{"type":"id","metadata":{"id":"bc315edc-8267-4ff5-b4b2-5ce79732093e","comment":null},"publicMedIds":null,"geneName":"","chromosome":"chr10","position":"89717716","identifier":".","reference":"-","alternative":"A","filter":"PASS","description":null,"protein":"p.Pro248fs","transcript":"NM_000314.4","hgvs":"c.740_741insA","location":"exonic","readDepth":1239,"rare":false,"alleleFrequency":0.230831,"flowAlternativeAlleleObservationCount":"286","flowReferenceAlleleObservations":"953","referenceAlleleObservations":951,"alternativeAlleleObservationCount":284,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"PTEN","oncominevariantclass":"Deleterious","exon":"7","function":"frameshiftInsertion","proteinMatch":null,"confirmed":false,"matchingId":"."}]
-            // $scope.copyNumberVariantsList = [{"type":"cnv","metadata":{"id":"1a69685f-c109-42b5-84aa-7387e29a6bcc","comment":null},"publicMedIds":null,"geneName":"","chromosome":"chr17","position":"37845133","identifier":"ERBB2","reference":"G","alternative":"<CNV>","filter":"PASS","description":null,"protein":null,"transcript":null,"hgvs":"","location":"","readDepth":null,"rare":false,"alleleFrequency":null,"flowAlternativeAlleleObservationCount":"","flowReferenceAlleleObservations":"","referenceAlleleObservations":null,"alternativeAlleleObservationCount":null,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"ERBB2","oncominevariantclass":"Amplification","exon":"","function":"","proteinMatch":null,"confirmed":false,"refCopyNumber":2,"rawCopyNumber":16.2,"copyNumber":16.2,"confidenceInterval95percent":17.0665,"confidenceInterval5percent":15.3775,"matchingId":"ERBB2"},{"type":"cnv","metadata":{"id":"2b8fc68e-5e8a-4685-82fd-54319551f83a","comment":null},"publicMedIds":null,"geneName":"","chromosome":"chr17","position":"57974717","identifier":"RPS6KB1","reference":"T","alternative":"<CNV>","filter":"PASS","description":null,"protein":null,"transcript":null,"hgvs":"","location":"","readDepth":null,"rare":false,"alleleFrequency":null,"flowAlternativeAlleleObservationCount":"","flowReferenceAlleleObservations":"","referenceAlleleObservations":null,"alternativeAlleleObservationCount":null,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"RPS6KB1","oncominevariantclass":"Amplification","exon":"","function":"","proteinMatch":null,"confirmed":false,"refCopyNumber":2,"rawCopyNumber":8.6,"copyNumber":8.6,"confidenceInterval95percent":9.16673,"confidenceInterval5percent":8.06831,"matchingId":"RPS6KB1"},{"type":"cnv","metadata":{"id":"1c8014d1-5ef1-4dfb-a053-c3f5cdb78126","comment":null},"publicMedIds":null,"geneName":"","chromosome":"chr20","position":"52184148","identifier":"ZNF217","reference":"G","alternative":"<CNV>","filter":"PASS","description":null,"protein":null,"transcript":null,"hgvs":"","location":"","readDepth":null,"rare":false,"alleleFrequency":null,"flowAlternativeAlleleObservationCount":"","flowReferenceAlleleObservations":"","referenceAlleleObservations":null,"alternativeAlleleObservationCount":null,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"ZNF217","oncominevariantclass":"Amplification","exon":"","function":"","proteinMatch":null,"confirmed":false,"refCopyNumber":2,"rawCopyNumber":12.5,"copyNumber":12.5,"confidenceInterval95percent":13.3237,"confidenceInterval5percent":11.7272,"matchingId":"ZNF217"}]
-            // $scope.geneFusionsList = [{"type":"gf","metadata":{"id":"aea26ca8-0cf5-4248-bb09-bb29283677b5","comment":null},"publicMedIds":null,"geneName":"EML4","chromosome":"2","position":"42491871","identifier":"EML4-ALK.E6aA20.AB374361_1","reference":"G","alternative":"G]chr2:29446394]","filter":"PASS","description":null,"protein":null,"transcript":null,"hgvs":"","location":"","readDepth":73149,"rare":false,"alleleFrequency":null,"flowAlternativeAlleleObservationCount":"","flowReferenceAlleleObservations":"","referenceAlleleObservations":null,"alternativeAlleleObservationCount":null,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"EML4","oncominevariantclass":"Fusion","exon":"6","function":"","proteinMatch":null,"confirmed":false,"fusionIdentity":null,"matchingId":"EML4-ALK.E6aA20.AB374361_1"},{"type":"gf","metadata":{"id":"33f7c8eb-81c9-47af-a3ef-7d9b00b13046","comment":null},"publicMedIds":null,"geneName":"ALK","chromosome":"2","position":"29446394","identifier":"EML4-ALK.E6aA20.AB374361_2","reference":"A","alternative":"]chr2:42491871]A","filter":"PASS","description":null,"protein":null,"transcript":null,"hgvs":"","location":"","readDepth":73149,"rare":false,"alleleFrequency":null,"flowAlternativeAlleleObservationCount":"","flowReferenceAlleleObservations":"","referenceAlleleObservations":null,"alternativeAlleleObservationCount":null,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"ALK","oncominevariantclass":"Fusion","exon":"20","function":"","proteinMatch":null,"confirmed":false,"fusionIdentity":null,"matchingId":"EML4-ALK.E6aA20.AB374361_2"},{"type":"gf","metadata":{"id":"89fcff5c-69ee-41e7-a362-73a9e8fa4905","comment":null},"publicMedIds":null,"geneName":"EML4","chromosome":"2","position":"42492091","identifier":"EML4-ALK.E6bA20.AB374362_1","reference":"G","alternative":"G]chr2:29446394]","filter":"PASS","description":null,"protein":null,"transcript":null,"hgvs":"","location":"","readDepth":16372,"rare":false,"alleleFrequency":null,"flowAlternativeAlleleObservationCount":"","flowReferenceAlleleObservations":"","referenceAlleleObservations":null,"alternativeAlleleObservationCount":null,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"EML4","oncominevariantclass":"Fusion","exon":"6","function":"","proteinMatch":null,"confirmed":false,"fusionIdentity":null,"matchingId":"EML4-ALK.E6bA20.AB374362_1"},{"type":"gf","metadata":{"id":"2d87fd81-2fb7-434f-94e2-dd49be243a5a","comment":null},"publicMedIds":null,"geneName":"ALK","chromosome":"2","position":"29446394","identifier":"EML4-ALK.E6bA20.AB374362_2","reference":"A","alternative":"]chr2:42492091]A","filter":"PASS","description":null,"protein":null,"transcript":null,"hgvs":"","location":"","readDepth":16372,"rare":false,"alleleFrequency":null,"flowAlternativeAlleleObservationCount":"","flowReferenceAlleleObservations":"","referenceAlleleObservations":null,"alternativeAlleleObservationCount":null,"variantClass":null,"levelOfEvidence":null,"inclusion":true,"armSpecific":false,"gene":"ALK","oncominevariantclass":"Fusion","exon":"20","function":"","proteinMatch":null,"confirmed":false,"fusionIdentity":null,"matchingId":"EML4-ALK.E6bA20.AB374362_2"}]
-
-
             $scope.moChaList.push(
                 {'ipAddress': '129.43.127.133', 'externalIpAddress': '129.43.127.133', 'host': 'NCI-MATCH-IR', 'status': 'CONNECTED', 'lastcon': 'June 21, 2016 5:50 PM GMT'}
             );
-
-            // $scope.moChaList.push(
-            // {'ipAddress': '12 129.43.127.133', 'externalIpAddress': '3 129.43.127.133'},
-            // {'ipAddress': '56 129.43.127.133', 'externalIpAddress': '1 129.43.127.133'},
-            // {'ipAddress': '12 129.43.127.133', 'externalIpAddress': '42 129.43.127.133'}
-            // );
 
             $scope.mdAccList.push(
                 {'ipAddress': '129.43.127.133', 'externalIpAddress': '129.43.127.133', 'host': 'ip-D15889', 'status': 'CONNECTED', 'lastcon': 'July 1, 2016 5:50 PM GMT'}
             );
 
-
-        // $scope.mockListMDCC = [{"sampleSite":"MDACC","sampleId":"MDACC_1","sampleMsn":"NtcControl_MDACC_1","dateCreated":1466776298978,"dateReceived":1466776367227,"status":null}];
-
-
             $scope.setSampleType = setSampleType;
-
 
             function setSampleType(reportType) {
 
@@ -279,58 +368,26 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         };
 
 
-            //Svg for samples
-            $scope.loadMocha_Table = function () {
-                matchApiMock
-                    .loadMocha_List()
-                    .then(function (d) {
-                        loadMoChaList(d);
-                    });
-            };
-            function loadMoChaList(data) {
-                var count_dates = [{
-                    'Mon':'','Tue':'','Wen':'','Thu':'','Fri':'','Sat':'','Sun':''
-                }];
+           
+
+            // $scope.count_dates = {
+            //     'Mon':0,'Tue':0,'Wed':0,'Thu':0,'Fri':0,Sat:'',Sun:''
+            // };
 
 
-
-                angular.forEach(data, function (value,k) {
-
-
-                    angular.forEach(value, function (v,k) {
-
-                        $.each(count_dates, function( key, value ) {
-                            console.log(count_dates[0])
-                        });
-
-
-                        count_dates[0].Mon = v.week_date;
-
-
-
-
-                        // count_dates.push(v.week_date);
-
-                        console.log("---> "+jQuery.inArray( v.week_date, count_dates ) );
-                        // armValuesYear
-
-                        // console.log(v.week_date)
-
-                    });
-
-                });
-                $scope.mochaList = data.data;
-            };
 
 
             //Svg for samples
             $scope.loadMochaNtc_Table = function () {
+
                 matchApiMock
                     .loadMochaNtc_Table()
                     .then(function (d) {
                         loadMoChaNtcList(d);
                     });
             };
+
+
             function loadMoChaNtcList(data) {
                 // alert(JSON.stringify(data))
                 $scope.mochaNtcList = data.data;
@@ -788,6 +845,19 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             };
 
             $scope.loadSampleBreakups = function() {
+                matchApiMock
+                    .loadMocha_List()
+                    .then(function (d) {
+                        loadMoChaList(d);
+                    });
+                // matchApiMock
+                //     .loadMochaNtc_Table()
+                //     .then(function (d) {
+                //         loadMoChaNtcList(d);
+                //     });
+
+                // console.log("$scope.count_dates--> "+ $scope.count_dates)
+
                 $scope.barlegend = "Total Positive / NTC Control Status";
 
                 var prepareData = {
@@ -823,9 +893,6 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     ]
                 };
 
-
-
-
                 /**
                  * Options for Doughnut chart
                  */
@@ -849,7 +916,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                         , 'Sat.'
                         , 'Sun.'
                     ];
-                    armValues = [16, 13, 2, 24, 28, 1, 0];
+                    // armValues = [16, 13, 2, 24, 28, 1, 0];
                     armValues1 = [2, 3, 4, 5, 2, 1, 0];
                     // armValues2 = [10, 0.5, 73, 0, 3];
 
@@ -858,6 +925,9 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     armValuesYear = [16, 13, 2, 24, 28, 1, 0];
                     armValuesYear1 = [2, 3, 4, 5, 2, 1, 0];
                     // armValues2 = [10, 0.5, 73, 0, 3];
+
+
+
 
 
 
@@ -873,7 +943,161 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                             pointColor: 'darkgreen',
                             highlightFill: '#23c6c8', //"rgba(220,220,220,0.75)",
                             highlightStroke: 'rgba(220,220,220,1)',
-                            data: armValues
+                            data:  $scope.count_dates
+                        },
+                        {
+                            // label: "<b style='color:navy;'>No Template Controls</b>",
+                            backgroundColor: 'navy',
+                            fillColor: 'navy',
+                            strokeColor: 'rgba(151,187,205,1)',
+                            pointColor: 'navy',
+                            highlightFill: '#23c6c8', //'rgba(220,220,220,0.75)',
+                            highlightStroke: 'rgba(220,220,220,1)',
+                            data: armValues1
+                        }
+
+                    ]
+                };
+
+                mdaccNames = [
+                    'Mon.'
+                    , 'Tue.'
+                    , ' Wed.'
+                    , 'Thu.'
+                    , 'Fri.'
+                    , 'Sat.'
+                    , 'Sun.'
+                ];
+
+                mdaccValues = [12, 15, 11, 21, 11, 1, 0];
+                mdaccValues1 = [6, 7, 3, 9, 2, 1, 0];
+
+                $scope.barDataMDACC = {
+                    labels: mdaccNames,
+                    datasets: [
+                        {
+                            // label: "<b style='color:darkgreen;'>Positive Controls</b>",
+                            backgroundColor: 'darkgreen',
+                            fillColor: "darkgreen",
+                            strokeColor: "rgba(220,220,220,0.8)",
+                            highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
+                            highlightStroke: "rgba(220,220,220,1)",
+                            data: mdaccValues
+                        },
+                        {
+                            // label: "<b style='color:navy;'>No Template Controls</b>",
+                            backgroundColor: 'navy',
+                            fillColor: 'navy',
+                            strokeColor: 'rgba(151,187,205,1)',
+                            pointColor: 'rgba(151,187,205,1)',
+                            highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
+                            highlightStroke: "rgba(220,220,220,1)",
+                            data: mdaccValues1
+                        }
+                    ]
+                };
+            };
+
+            $scope.loadNtcSampleBreakups = function() {
+                // matchApiMock
+                //     .loadMocha_List()
+                //     .then(function (d) {
+                //         loadMoChaList(d);
+                //     });
+                matchApiMock
+                    .loadMochaNtc_Table()
+                    .then(function (d) {
+                        loadMoChaNtcList(d);
+                    });
+
+                // console.log("$scope.count_dates--> "+ $scope.count_dates)
+
+                $scope.barlegend = "Total Positive / NTC Control Status";
+
+                var prepareData = {
+                    series: [5, 3, 4]
+                }
+
+                this.pieData = prepareData;
+
+                pieNames = [
+                    'EAY131-QQQ'
+                    , 'EAY131-BEEE'
+                    , 'EAY131-HRRR'
+                ];
+
+                var options = {
+                    percentageInnerCutout: 40
+                };
+
+                $scope.flotPieData = {
+                    labels: pieNames,
+                    datasets: [
+                        {
+                            label: "Positive Controls",
+                            fillColor: "#1c84c6",
+                            strokeColor: "rgba(220,220,220,0.8)",
+                            highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
+                            highlightStroke: "rgba(220,220,220,1)",
+                            segmentShowStroke : false,
+                            animateScale : true,
+                            percentageInnerCutout: 95,
+                            data: prepareData
+                        }
+                    ]
+                };
+
+                /**
+                 * Options for Doughnut chart
+                 */
+                $scope.doughnutOptions = {
+                    segmentShowStroke : true,
+                    segmentStrokeColor : "#fff",
+                    segmentStrokeWidth : 2,
+                    percentageInnerCutout : 55, // This is 0 for Pie charts
+                    animationSteps : 100,
+                    animationEasing : "easeOutBounce",
+                    animateRotate : true,
+                    animateScale : false
+                };
+
+                armNames = [
+                    'Mon.'
+                    , 'Tue.'
+                    , ' Wed.'
+                    , 'Thu.'
+                    , 'Fri.'
+                    , 'Sat.'
+                    , 'Sun.'
+                ];
+                // armValues = [16, 13, 2, 24, 28, 1, 0];
+                armValues1 = [2, 3, 4, 5, 2, 1, 0];
+                // armValues2 = [10, 0.5, 73, 0, 3];
+
+                armNamesYear = ['Mon.', 'Tue.', ' Wed.', 'Thu.', 'Fri.', 'Sat.', 'Sun.'
+                ];
+                armValuesYear = [16, 13, 2, 24, 28, 1, 0];
+                armValuesYear1 = [2, 3, 4, 5, 2, 1, 0];
+                // armValues2 = [10, 0.5, 73, 0, 3];
+
+
+
+
+
+
+
+                $scope.barData = {
+                    labels: armNames,
+                    datasets: [
+                        {
+                            // label: "<b style='color:darkgreen;'>Positive Controls</b>",
+                            backgroundColor: 'darkgreen',
+                            fillColor: 'darkgreen',
+                            strokeColor: 'rgba(220,220,220,0.8)',
+                            pointColor: 'darkgreen',
+                            highlightFill: '#23c6c8', //"rgba(220,220,220,0.75)",
+                            highlightStroke: 'rgba(220,220,220,1)',
+                            data:  $scope.count_dates
                         },
                         {
                             // label: "<b style='color:navy;'>No Template Controls</b>",
