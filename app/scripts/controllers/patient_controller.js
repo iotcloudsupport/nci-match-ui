@@ -6,7 +6,7 @@
     function PatientController($scope,
         DTOptionsBuilder,
         DTColumnDefBuilder,
-        matchApiMock,
+        matchApi,
         $stateParams,
         $log,
         prompt,
@@ -175,7 +175,7 @@
         //Sample Mocks
         //CNV
         function loadQcTable() {
-            matchApiMock
+            matchApi
                 .loadQc_Table()
                 .then(loadQcList);
         }
@@ -186,7 +186,7 @@
 
         //SNV
         function loadSnvTable() {
-            matchApiMock
+            matchApi
                 .loadQc_Table()
                 .then(loadSnvList);
         }
@@ -197,7 +197,7 @@
 
         //GENE
         function loadGeneTable() {
-            matchApiMock
+            matchApi
                 .loadQc_Table()
                 .then(loadGeneList);
         }
@@ -238,7 +238,7 @@
         }
 
         function loadPatientData() {
-            matchApiMock
+            matchApi
                 .loadPatient($stateParams.patient_id)
                 .then(setupScope, handlePatientLoadError);
         }
@@ -851,6 +851,9 @@
             $scope.currentSurgicalEvent = null;
             $scope.currentAnalysis = null;
             $scope.currentShipment = null;
+
+            if (!option)
+                return;
 
             for (var i = 0; i < $scope.data.specimens.length; i++) {
                 var surgicalEvent = $scope.data.specimens[i];

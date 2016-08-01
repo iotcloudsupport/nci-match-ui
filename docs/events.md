@@ -3,8 +3,8 @@
 * assay
     * event_date
     * event_message
-    * patient_id
-    * step
+    * entity_id
+        * step
         * surgical_event_id
         * assay_result
         * biomarker
@@ -12,9 +12,9 @@
 * assignment_report
     * event_date
     * event_message
-    * patient_id
-    * step
-    * treatment_arm {name, stratum, version}
+    * entity_id
+        * treatment_arm {name, stratum, version}
+        * step
         * surgical_event_id
         * molecular_id
         * analisys_id
@@ -27,15 +27,15 @@
     * step
     * event_date
     * event_message
-    * patient_id
+    * entity_id
         * pathology_status
         * surgical_event_id
 
 * patient
     * event_date
     * event_message
-    * patient_id
-    * step
+    * entity_id
+        * step
         * patient_status
         * location
         * rebiopsy
@@ -43,9 +43,9 @@
 * specimen
     * event_date
     * event_message
-    * collected_date
-    * patient_id
-    * step
+    * entity_id
+        * step
+        * collected_date
         * specimen_type BLOOD | TISSUE | SLIDE | TISSUE_DNA/cDNA | BLOOD_DNA
         * surgical_event_id
         * molecular_dna_id
@@ -58,7 +58,7 @@
 * treatment_arm
     * event_date
     * event_message
-    * treatment_arm {name, stratum, version}
+        * treatment_arm {name, stratum, version}
         * treatment_arm_status
 
 * user
@@ -71,8 +71,8 @@
 * variant_report
     * event_date
     * event_message
-    * patient_id
-    * step
+    * entity_id
+        * step
         * surgical_event_id
         * molecular_id
         * analisys_id
