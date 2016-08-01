@@ -35,7 +35,7 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="treatmentArm in treatmentArmList">
-                                    <td><treatment-arm-title name="treatmentArm.name" stratum="treatmentArm.stratum"></treatment-arm-title></td>
+                                    <td><treatment-arm-title name="treatmentArm.name" stratum="treatmentArm.stratum_id"></treatment-arm-title></td>
                                     <td>{{ treatmentArm.current_patients | dashify }}</td>
                                     <td>{{ treatmentArm.former_patients | dashify }}</td>
                                     <td>{{ treatmentArm.not_enrolled_patients | dashify }}</td>

@@ -9,7 +9,7 @@
         DTOptionsBuilder,
         DTColumnDefBuilder,
         treatmentArmApi,
-        matchApiMock,
+        matchApi,
         colorFactory,
         $log) {
 
@@ -177,13 +177,13 @@
         function loadTreatmentArmDetails() {
             $log.info('Loading Treatment Arm', $stateParams.name, $stateParams.stratum, $stateParams.version);
 
-            matchApiMock
+            matchApi
                 .loadTreatmentArmDetails($stateParams.name, $stateParams.stratum)
                 .then(setupScope, handleError);
         }
 
         function loadPatients() {
-            matchApiMock
+            matchApi
                 .loadPatientsForTa($stateParams.name, $stateParams.stratum)
                 .then(function (d) {
                     $scope.patients = [];

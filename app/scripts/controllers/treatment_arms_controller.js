@@ -7,8 +7,7 @@
             function TreatmentArmsController (
                 $scope,
                 DTOptionsBuilder,
-                treatmentArmApi,
-                matchApiMock,
+                matchApi,
                 $stateParams) {
 
                 this.dtOptions = {
@@ -21,18 +20,11 @@
                 $scope.treatmentArmList = [];
 
                 $scope.displayTreatmentArmList = function () {
-                    matchApiMock
+                    matchApi
                         .loadTreatmentArmList()
                         .then(function (d) {
                             $scope.treatmentArmList = d.data;
                         });
-                    /*treatmentArmApi
-                        .getTreatmentArms()
-                        .then(function (d) {
-                            $scope.treatmentArmList = d.data;
-                            console.log(d);
-                            console.log(d.data);
-                        });*/
                 };
             }
 } ());
