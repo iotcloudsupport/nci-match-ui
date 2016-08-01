@@ -27,6 +27,7 @@
                 openMDACCPositives: openMDACCPositives
             };
 
+
             // Patient API - START
             function loadPatient(id) {
                 $log.info('Loading patient ' + id);
@@ -64,19 +65,21 @@
             }
             // Patient API - END
 
+
             // Treatment Arm API - START
             function loadTreatmentArmList() {
                 return $http.get(matchConfig.treatmentArmApiBaseUrl + '/basicTreatmentArms');
             }
 
-            function loadTreatmentArmDetails(name, stratum, version) {
-                return $http.get(matchConfig.treatmentArmApiBaseUrl + '/treatmentArms/' + name + '/' + stratum + '/' + version);
+            function loadTreatmentArmDetails(name, stratum) {
+                return $http.get(matchConfig.treatmentArmApiBaseUrl + '/treatmentArms/' + name + '/' + stratum);
             }
 
             function loadPatientsForTa(name, stratum) {
                 return $http.get(matchConfig.treatmentArmApiBaseUrl + '/patientsOnTreatmentArm/' + name + '/' + stratum);
             }
             // Treatment Arm API - END
+
 
             function loadDashboardStatistics() {
                 return $http.get('data/dashboard_statistics.json');
