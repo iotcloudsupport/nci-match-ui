@@ -340,7 +340,10 @@
 
         <uib-tabset active="indextab" ng-if="branch === 'mocha'" >
 
-            <uib-tab heading="Positive Sample Controls " index="0" ng-click="loadSampleBreakups();">
+            <uib-tab heading="Positive Sample Controls " index="0" >
+
+                <!--<uib-tab heading="Positive Sample Controls " index="0" ng-click="loadSampleBreakups();">-->
+
                 <!--SCROLL TIC-->
                 <div id="mochabottom"></div>
                 <!--SCROLL TIC-->
@@ -360,7 +363,7 @@
 
                                         <div class="ibox float-e-margins">
 
-                                            <div class="ibox-content ibox-title-no-line" ng-controller="IrAdminController" ng-init="loadMocha_Table()">
+                                            <div class="ibox-content ibox-title-no-line" ng-controller="IrAdminController" ng-init="loadSampleBreakups()">
 
                                                 <form class="form-horizontal" role="form" ng-submit="showPositiveControlConfirmation('MoCha')">
                                                     <input class="btn btn-xs btn-primary file-button-xl" type="submit" value="Generate MSN" class="btn btn-primary" />
