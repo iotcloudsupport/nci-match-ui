@@ -6,6 +6,7 @@
     * patient_id
     * surgical_event_id
     * assay_result
+    * biomarker
 
 * assignment_report
     * event_date

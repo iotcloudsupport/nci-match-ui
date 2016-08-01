@@ -17,6 +17,11 @@
             <br>
             </span>
 
+            <span ng-if="timelineEvent.event_data.biomarker">
+                Biomarker: <span class="timeline-value">{{::timelineEvent.event_data.biomarker}}</span>
+            <br>
+            </span>
+
             <span ng-if="timelineEvent.event_data.result">
                 Results: <span class="timeline-value">{{::timelineEvent.event_data.assay_result | assayStatus }}</span>
             <br>
