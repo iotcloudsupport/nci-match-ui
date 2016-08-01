@@ -240,8 +240,7 @@
         function loadPatientData() {
             matchApiMock
                 .loadPatient($stateParams.patient_id)
-                .then(setupScope, handlePatientLoadError)
-                .then(loadPatientActivity);
+                .then(setupScope, handlePatientLoadError);
         }
 
         function handlePatientLoadError(e) {
@@ -249,41 +248,6 @@
             $log.info('Error while retriving data from the service. Transferring back to patient list');
             $state.transitionTo('patients');
             return;
-        }
-
-        function loadPatientActivity() {
-            matchApiMock
-                .loadActivity($stateParams.patient_id)
-                .then(setupActivity, handleActivityLoadError);
-        }
-
-        function handleActivityLoadError(e) {
-            $log.error(e);
-            return;
-        }
-
-        function setupActivity(data) {
-            $scope.activity = [];
-            angular.copy(data.data, $scope.activity);
-
-            var now = moment();
-            var previousStep = null;
-
-            for (var i = 0; i < $scope.activity.length; i++) {
-                var timelineEvent = $scope.activity[i];
-                var eventDateMoment = moment(timelineEvent.event_date);
-                var diff = eventDateMoment.diff(now, "DD/MM/YYYY HH:mm:ss");
-                timelineEvent.from_now = moment.duration(diff).humanize(true);
-
-                if (previousStep && previousStep !== timelineEvent.step) {
-                    timelineEvent.isStepChanging = true;
-                    previousStep = timelineEvent.step;
-                }
-
-                if (!previousStep) {
-                    previousStep = timelineEvent.step;
-                }
-            }
         }
 
         function setupScope(data) {

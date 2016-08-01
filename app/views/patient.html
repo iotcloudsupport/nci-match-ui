@@ -38,7 +38,7 @@
                             <dd>{{ data.last_rejoin_scan_date | utc }}</dd>
 
                             <dt>Status</dt>
-                            <dd style="color: {{ data.current_status | status }}">{{data.current_status}}</dd>
+                            <dd style="color: {{ data.current_status | patientStatus }}">{{data.current_status}}</dd>
 
                             <dt> Current Step</dt>
                             <dd>{{data.current_step_number}}</dd>
