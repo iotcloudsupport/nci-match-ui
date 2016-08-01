@@ -71,7 +71,7 @@
             }
         };
 
-        var defaultTemplate = '<div><p>Invalid TimeLine Type "{{ timeLineEvent.type }}"</p><p>{{ timeLineEvent }}</p></div>';
+        var defaultTemplate = '<div><p>Invalid TimeLine Type "{{ timelineEvent.type }}"</p><p>{{ timelineEvent }}</p></div>';
 
         var linker = function (scope, element, attrs) {
             var loader = getTemplateLoader(scope.type, scope.layout);
@@ -92,7 +92,7 @@
         return {
             restrict: 'E',
             scope: {
-                timeLineEvent: '<',
+                timelineEvent: '<',
                 type: '<',
                 isStepChanging: '<',
                 layout: '<'

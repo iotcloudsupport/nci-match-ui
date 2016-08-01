@@ -269,7 +269,7 @@
             var now = moment();
             var previousStep = null;
 
-            var limit = vm.maxItems || data.data.length;
+            var limit = vm.maxItems ? Math.min(data.data.length, vm.maxItems) : data.data.length;
 
             for (var i = 0; i < limit; i++) {
                 var timelineEvent = angular.copy(data.data[i]);

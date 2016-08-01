@@ -193,11 +193,11 @@ describe('Filter', function () {
     });
 
 
-    describe('status', function () {
+    describe('patientStatus', function () {
         var underTest;
 
         beforeEach(function () {
-            underTest = filter('status');
+            underTest = filter('patientStatus');
         });
 
         it('should return empty string for undefined', function () {

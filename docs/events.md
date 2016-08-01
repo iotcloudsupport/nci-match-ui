@@ -4,6 +4,7 @@
     * event_date
     * event_message
     * patient_id
+    * step
     * surgical_event_id
     * assay_result
     * biomarker
@@ -12,6 +13,7 @@
     * event_date
     * event_message
     * patient_id
+    * step
     * treatment_arm {name, stratum, version}
     * surgical_event_id
     * molecular_id
@@ -21,6 +23,7 @@
     * assignment_report_status
 
 * pathology_status
+    * step
     * event_date
     * event_message
     * patient_id
@@ -31,6 +34,8 @@
     * event_date
     * event_message
     * patient_id
+    * step
+    * patient_status
     * location
     * rebiopsy
 
@@ -39,6 +44,7 @@
     * event_message
     * collected_date
     * patient_id
+    * step
     * specimen_type BLOOD | TISSUE | SLIDE | TISSUE_DNA/cDNA | BLOOD_DNA
     * surgical_event_id
     * molecular_dna_id
@@ -65,6 +71,7 @@
     * event_date
     * event_message
     * patient_id
+    * step
     * surgical_event_id
     * molecular_id
     * analisys_id

@@ -1,0 +1,140 @@
+[
+    {
+        "event_date": "2016-07-02 19:30:00+00:00",
+        "event_type": "treatment_arm",
+        "event_message": "Treatment Arm Open",
+        "treatment_arm": {
+            "name": "APEC1621-A",
+            "stratum": "ABQ123",
+            "version": "2016-07-02"
+        }
+    },
+    {
+        "patient_id": "100100",
+        "event_date": "2016-06-29T20:15:32+00:00",
+        "event_type": "patient",
+        "event_message": "Patient Off Trial",
+        "step": "4.0",
+        "event_data": {
+            "status": "OFF_TRIAL",
+            "location": "GHU"
+        }
+    },
+    {
+        "patient_id": "100100",
+        "event_date": "2016-06-29T14:30:32+00:00",
+        "event_type": "patient",
+        "event_message": "Patient Progression",
+        "step": "4.0",
+        "event_data": {
+            "rebiopsy": "N",
+            "status": "PENDING",
+            "molecular_id": "B-987456",
+            "location": "GHU"
+        }
+    },
+    {
+        "event_date": "2016-06-24 08:52:32+00:00",
+        "event_type": "treatment_arm",
+        "event_message": "Treatment Arm Closed",
+        "treatment_arm": {
+            "name": "APEC1621-A",
+            "stratum": "STR17",
+            "version": "2014-01-01"
+        },
+        "event_data": [
+        ]
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2016-06-05T16:42:43+00:00",
+        "event_type": "assignment",
+        "event_message": "Patient Assignment",
+        "step": "2.1",
+        "event_data": {
+            "status": "ON_TREATMENT_ARM",
+            "message": "",
+            "stratum_id": "STR3",
+            "molecular_id": "MOL100136_02_02",
+            "analysis_id": "AI100136_02_02_1",
+            "treatment_arm_id": "APEC1621-U",
+            "treatment_arm_version": "2014-01-01"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2016-06-04T15:22:51+00:00",
+        "event_type": "assignment",
+        "event_message": "Assignment Report approved",
+        "step": "2.0",
+        "event_data": {
+            "status": "APPROVED",
+            "molecular_id": "MOL100136_02_02",
+            "analysis_id": "AI100136_02_02_1",
+            "comment_user": "Jane James"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2016-05-30T13:54:24+00:00",
+        "event_type": "biopsy.variant_report_received",
+        "event_message": "Tissue variant report confirmed",
+        "step": "2.0",
+        "event_data": {
+            "surgical_event_id": "SEI100136_02",
+            "status": "CONFIRMED",
+            "tracking_id": "6758 6785 7318",
+            "variant_report_type": "TISSUE",
+            "location": "Nationwide",
+            "molecular_id": "MOL100136_02_02",
+            "analysis_id": "AI100136_02_02_1",
+            "comment_user": "Jane James"
+        }
+    },
+    {
+        "event_date": "2016-05-25 23:52:32+00:00",
+        "event_type": "treatment_arm",
+        "event_message": "Treatment Arm Open",
+        "treatment_arm": {
+            "name": "APEC1621-A",
+            "stratum": "STR17",
+            "version": "2014-01-01"
+        }
+    },
+    {
+        "patient_id": "100136",
+        "event_date": "2016-05-23T12:23:56+00:00",
+        "event_type": "patient",
+        "event_message": "Patient Pending Approval",
+        "step": "2.0",
+        "event_data": {
+            "status": "PENDING",
+            "molecular_id": "B-987456",
+            "location": "GHU"
+        }
+    },
+    {
+        "patient_id": "100065",
+        "event_date": "2016-05-23T12:23:56+00:00",
+        "event_type": "patient",
+        "event_message": "Patient Pending Approval",
+        "step": "2.0",
+        "event_data": {
+            "status": "PENDING",
+            "molecular_id": "B-987456",
+            "location": "GHU"
+        }
+    },
+    {
+        "patient_id": "100065",
+        "event_date": "2016-05-23T09:08:33+00:00",
+        "event_type": "patient",
+        "event_message": "Patient Pending Confirmation",
+        "step": "2.0",
+        "event_data": {
+            "status": "PENDING",
+            "molecular_id": "B-987456",
+            "location": "GHU"
+        }
+    }
+]

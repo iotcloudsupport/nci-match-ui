@@ -44,7 +44,7 @@
                                         <i class="fa fa-user"></i> {{::patient.patient_id }}
                                     </a>
                                 </td>
-                                <td ng-style="{'color':'{{ patient.current_status | status }}'}">
+                                <td ng-style="{'color':'{{ patient.current_status | patientStatus }}'}">
                                     {{ ::patient.current_status | dashify }}
                                 </td>
                                 <td>{{ ::patient.current_step_number | dashify }}</td>

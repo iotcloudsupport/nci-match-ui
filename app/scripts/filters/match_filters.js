@@ -3,7 +3,7 @@
 
     angular.module('filters.matchbox', [])
         .filter('gmt', gmt)
-        .filter('status', status)
+        .filter('patientStatus', patientStatus)
         .filter('analysisStatus', analysisStatus)
         .filter('assayStatus', assayStatus)
         .filter('concordance', concordance)
@@ -78,7 +78,7 @@
         };
     }
 
-    function status() {
+    function patientStatus() {
         return function (text) {
             return colorFilter(text,
                 {
