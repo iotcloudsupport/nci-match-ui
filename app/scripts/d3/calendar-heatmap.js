@@ -144,9 +144,23 @@ angular.module('match.calendar-heatmap', []).
           var max_value = d3.max(scope.data, function (d) {
             return d.total;
           });
+
+          // var color = d3.scale.linear()
+          //   .range(['#ffffff', scope.color || '#ff4500'])
+          //   .domain([-0.15 * max_value, max_value]);
+
+          // var ntc_color = d3.scale.linear()
+          //     .range(['#ffffff', scope.color || '#ff003b'])
+          //     .domain([-0.15 * max_value, max_value]);
+
+
           var color = d3.scale.linear()
-            .range(['#ffffff', scope.color || '#ff4500'])
-            .domain([-0.15 * max_value, max_value]);
+              .range(['green', 'red'])
+              .domain([-0.05 * max_value, max_value]);
+
+
+          // d3.scale.linear().domain([0, max_area]).range(['beige', 'red']);
+
 
           var calcItemX = function (d) {
             var date = moment(d.date);
@@ -187,6 +201,22 @@ angular.module('match.calendar-heatmap', []).
               return calcItemSize(d);
             })
             .attr('fill', function (d) {
+
+
+
+              // angular.forEach(d.details, function (d) {
+              //   if( d.name.substring(0,3) === 'Ntc'){
+              //     console.log("###-->" + d.name)
+              //     return ( d.total > 0 ) ? color(d.total) : 'transparent';
+              //   }
+              //   else{
+              //     return  color(10) : 'transparent';
+              //   }
+              // });
+
+              // console.log(d.total + " color(d.total)-->" + color(d.total))
+
+              // console.log(d.data + " --- "  + color(d.total))
               return ( d.total > 0 ) ? color(d.total) : 'transparent';
             })
             .on('click', function (d) {
@@ -252,7 +282,7 @@ angular.module('match.calendar-heatmap', []).
 
               // Add summary to the tooltip
               angular.forEach(d.summary, function (d) {
-                tooltip_html += '<div><span><strong>' + d.name + '</strong></span>';
+                tooltip_html += '<div><span><strong>' + d.name + ' | Sample Run Time: ' + '</strong></span>';
                 tooltip_html += '<span>' + scope.formatTime(d.value) + '</span></div>';
               });
 
