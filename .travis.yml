@@ -23,7 +23,7 @@ after_success:
   # - "curl -s -X POST -H \"Content-Type: application/json\" -H \"Accept: application/json\" -H \"Travis-API-Version: 3\" -H \"Authorization: token $TRAVIS_TOKEN\" -d '{\"request\": {\"message\": \"Triggered by nci-match-ui $TRAVIS_COMMIT\",\"branch\":\"master\", \"config\": {\"env\": {\"matrix\": [\"TRIGGER_REPO=nci-match-ui;CUC_TAG=@ui\"]}}}}' https://api.travis-ci.org/repo/CBIIT%2Fnci-uMatch-bddtests/requests"
   - "CURLBODY=(\"request\": {\"message\": \"Triggered by nci-match-ui $TRAVIS_COMMIT\",\"branch\":\"master\", \"config\": {\"env\": {\"matrix\": [\"TRIGGER_REPO=nci-match-ui;CUC_TAG=@ui\"]}}})"
   - "echo ${CURLBODY[@]}"
-  - "curl -s -X POST -H \"Content-Type: application/json\" -H \"Accept: application/json\" -H \"Travis-API-Version: 3\" -H \"Authorization: token $TRAVIS_TOKEN\" -d \"{${CURLBODY[@]}}\" https://api.travis-ci.org/repo/CBIIT%2Fnci-uMatch-bddtests/requests"
+  - "curl -s -X POST -H \"Content-Type: application/json\" -H \"Accept: application/json\" -H \"Travis-API-Version: 3\" -H \"Authorization: token $TRAVIS_TOKEN\" -d \"{ ${CURLBODY[@]} }\" https://api.travis-ci.org/repo/CBIIT%2Fnci-uMatch-bddtests/requests"
 after_script:
   - codeclimate-test-reporter < test/coverage/report-lcov/lcov.info
 notifications:
