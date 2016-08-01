@@ -1,5 +1,5 @@
 (function () {
-    angular.module('dashboard.matchbox', [])
+    angular.module('matchbox.dashboard', [])
         .controller('DashboardController', DashboardController)
         .controller('ActivityController', ActivityController);
 

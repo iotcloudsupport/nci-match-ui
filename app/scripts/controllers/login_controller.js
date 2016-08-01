@@ -1,4 +1,4 @@
-angular.module("login.matchbox",[
+angular.module("matchbox.login",[
         'auth0'
     ])
     .controller('AuthController', function( $scope, auth, $location, store ) {

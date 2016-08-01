@@ -1,6 +1,6 @@
 xdescribe('Controller: dashboard Controller', function () {
 
-    beforeEach(module('config.matchbox', 'http.matchbox', 'dashboard.matchbox'));
+    beforeEach(module('matchbox.config', 'matchbox.http', 'matchbox.dashboard'));
 
     var DashCtrl,
         DashActivityCtrl,

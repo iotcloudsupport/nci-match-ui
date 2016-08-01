@@ -1,6 +1,6 @@
 (function () {
 
-    angular.module('patients.matchbox', [])
+    angular.module('matchbox.patients', [])
         .controller('PatientsController', PatientsController);
 
     function PatientsController($scope,

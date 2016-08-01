@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    angular.module('filters.matchbox', [])
+    angular.module('matchbox.filters', [])
         .filter('gmt', gmt)
         .filter('patientStatus', patientStatus)
         .filter('analysisStatus', analysisStatus)

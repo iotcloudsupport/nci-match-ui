@@ -2,7 +2,7 @@
 
 /* globals d3 */
 
-angular.module('match.calendar-heatmap', []).
+angular.module('matchbox.calendar-heatmap', []).
     directive('calendarHeatmap', ['$window', function ($window) {
 
     return {

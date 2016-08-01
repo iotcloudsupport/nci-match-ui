@@ -1,5 +1,5 @@
 (function () {
-    angular.module('specimen-tracking.matchbox',[])
+    angular.module('matchbox.specimen-tracking',[])
         .controller('SpecimenTrackingController', SpecimenTrackingController);
 
     function SpecimenTrackingController( $scope,

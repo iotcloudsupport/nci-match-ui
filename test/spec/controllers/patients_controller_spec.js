@@ -46,7 +46,7 @@ describe('Controller: Patients Controller', function () {
 
     beforeEach(module(
         'config.matchbox',
-        'patients.matchbox',
+        'matchbox.patients',
         'http.matchbox'));
 
     var $scope;

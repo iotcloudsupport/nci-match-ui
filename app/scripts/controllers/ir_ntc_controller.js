@@ -1,4 +1,4 @@
-angular.module('irntc.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
+angular.module('matchbox.irntc',['ui.bootstrap', 'cgPrompt', 'ui.router'])
     .controller('NtcController', function( $scope, $http, $window, $stateParams, DTOptionsBuilder, prompt, irNtcQualityApi) {
 
         angular.element(document).ready(function () {

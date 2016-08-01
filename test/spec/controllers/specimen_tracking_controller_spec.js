@@ -1,6 +1,6 @@
 describe('Controller: Specimen Tracking Controller', function () {
 
-    beforeEach(module('config.matchbox', 'http.matchbox', 'specimen-tracking.matchbox'));
+    beforeEach(module('config.matchbox', 'http.matchbox', 'matchbox.specimen-tracking'));
 
     var biopsiesCtrl,
         httpBackend,

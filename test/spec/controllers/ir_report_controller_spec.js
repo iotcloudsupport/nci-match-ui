@@ -157,7 +157,7 @@ xdescribe('Controller: Ir Report Controller', function () {
         return data;
     }
 
-    beforeEach(module('config.matchbox', 'http.matchbox', 'iradmin.matchbox'));
+    beforeEach(module('config.matchbox', 'http.matchbox', 'matchbox.iradmin'));
     var $scope;
     var irAdminApi;
     var reportsCtrl;

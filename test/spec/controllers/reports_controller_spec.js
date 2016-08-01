@@ -1,6 +1,6 @@
 describe('Controller: Reports Controller', function () {
 
-    beforeEach(module('config.matchbox', 'http.matchbox', 'reports.matchbox'));
+    beforeEach(module('config.matchbox', 'http.matchbox', 'matchbox.reports'));
 
     var reportsCtrl,
         httpBackend,

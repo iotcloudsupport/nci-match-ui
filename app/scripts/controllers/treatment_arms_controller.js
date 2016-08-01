@@ -1,6 +1,6 @@
 (function () {
 
-    angular.module('treatment-arms.matchbox',[])
+    angular.module('matchbox.treatment-arms',[])
         .controller('TreatmentArmsController', TreatmentArmsController);
 
 

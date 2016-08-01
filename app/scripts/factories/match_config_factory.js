@@ -1,4 +1,4 @@
-angular.module('config.matchbox', [])
+angular.module('matchbox.config', [])
     .factory('matchConfig', function( $location ) {
         var urlPrefix = $location.protocol() + '://' + $location.host();
         if ($location.host() === 'localhost' || $location.host() === '127.0.0.1') {

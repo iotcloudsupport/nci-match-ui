@@ -1,4 +1,4 @@
-angular.module('reports.matchbox',[])
+angular.module('matchbox.reports',[])
     .controller('ReportsController', function( $scope, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, reportApi ) {
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(25);

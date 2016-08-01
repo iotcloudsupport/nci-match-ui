@@ -1,5 +1,5 @@
 angular
-    .module("nav.matchbox", [
+    .module("matchbox.nav", [
         'auth0'
     ])
     .controller('NavigationController', function( $scope, auth, $location, store ) {

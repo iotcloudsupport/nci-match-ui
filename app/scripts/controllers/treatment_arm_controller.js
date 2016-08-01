@@ -1,5 +1,5 @@
 (function () {
-    angular.module('treatment-arm.matchbox', [])
+    angular.module('matchbox.treatment-arm', [])
         .controller('TreatmentArmController', TreatmentArmController);
 
     function TreatmentArmController($scope,

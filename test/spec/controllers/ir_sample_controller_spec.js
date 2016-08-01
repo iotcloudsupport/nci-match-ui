@@ -92,7 +92,7 @@ describe('Controller: Ir Sample Controller', function () {
     }
 
 
-    beforeEach(module('config.matchbox', 'http.matchbox', 'irsample.matchbox'));
+    beforeEach(module('config.matchbox', 'http.matchbox', 'matchbox.irsample'));
 
     var $scope;
     var irSampleVariantApi;

@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    angular.module('http.matchbox', [])
+    angular.module('matchbox.http', [])
         .factory('workflowApi', workflowApi)
         .factory('matchApi', matchApi)
         .factory('reportApi', reportApi)

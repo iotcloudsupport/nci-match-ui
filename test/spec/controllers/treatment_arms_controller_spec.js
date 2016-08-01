@@ -1,6 +1,6 @@
 describe('Controller: Treatment Arms Controller', function () {
 
-    beforeEach(module('config.matchbox', 'http.matchbox', 'treatment-arms.matchbox'));
+    beforeEach(module('config.matchbox', 'http.matchbox', 'matchbox.treatment-arms'));
 
     var treatmentArmsCtrl,
         httpBackend,

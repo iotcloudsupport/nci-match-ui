@@ -523,7 +523,7 @@ xdescribe('Controller: Patient Details Controller', function () {
 
     beforeEach(module(
         'config.matchbox',
-        'patient.matchbox',
+        'matchbox.patient',
         'http.matchbox',
         'ui.bootstrap',
         'cgPrompt'));

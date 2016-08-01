@@ -1,4 +1,4 @@
-angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
+angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router'])
     .controller('IrAdminController',
         function( $scope, $http, $window, $stateParams, DTOptionsBuilder, irAdminApi, matchApiMock, $location, $anchorScroll, $timeout, sharedCliaProperties) {
 

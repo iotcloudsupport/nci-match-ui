@@ -1,6 +1,6 @@
 (function () {
 
-    angular.module('patient.matchbox', ['ui.router'])
+    angular.module('matchbox.patient', ['ui.router'])
         .controller('PatientController', PatientController);
 
     function PatientController($scope,

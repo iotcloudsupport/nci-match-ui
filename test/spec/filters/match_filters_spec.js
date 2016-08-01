@@ -2,7 +2,7 @@
 */
 describe('Filter', function () {
 
-    beforeEach(module('filters.matchbox'));
+    beforeEach(module('matchbox.filters'));
 
     var filter;
 
