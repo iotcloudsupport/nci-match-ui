@@ -11,22 +11,20 @@
         <p class="m-b-xs">
             <span ng-if="timelineEvent.patient_id">
                 Patient: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id" text="timelineEvent.patient_id"></patient-title></span>
+                <span ng-if="timelineEvent.event_data.patient_status">
+                    <span class="timeline-value" style="color: {{::timelineEvent.event_data.patient_status | patientStatus}}">{{::timelineEvent.event_data.patient_status}}</span>
+                </span>
             <br>
             </span>
             
-            <span ng-if="timelineEvent.event_data.treatment_arm_id">
-                Treatment Arm: <span class="timeline-value"><treatment-arm-title name="timelineEvent.event_data.treatment_arm_id" version="timelineEvent.event_data.treatment_arm_version" stratum="timelineEvent.event_data.stratum_id"></treatment-arm-title></span>
-            <br>
-            </span>
-
-            <span ng-if="timelineEvent.event_data.surgical_event_id">
-                Surgical Event ID: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id" section="'surgical_event'" text="timelineEvent.event_data.surgical_event_id" surgical-event-id="timelineEvent.event_data.surgical_event_id"></patient-title></span>
+            <span ng-if="timelineEvent.event_data.treatment_arm">
+                Treatment Arm: <span class="timeline-value"><treatment-arm-title name="timelineEvent.event_data.treatment_arm.name" version="timelineEvent.event_data.treatment_arm.version" stratum="timelineEvent.event_data.treatment_arm.stratum"></treatment-arm-title></span>
             <br>
             </span>
 
             <span ng-if="timelineEvent.patient_id && timelineEvent.event_data.molecular_id && timelineEvent.event_data.analysis_id">
-                Assignment: <span class="timeline-value"><patient-title text-color="timelineEvent.event_data.assignment_report_status | status" patient-id="timelineEvent.patient_id" section="'assignment_report'" text="timelineEvent.event_data.assignment_report_status" surgical-event-id="timelineEvent.event_data.surgical_event_id" molecular-id="timelineEvent.event_data.molecular_id" analysis-id="timelineEvent.event_data.analysis_id"></patient-title></span>
-                <br>
+                Assignment Report: <span class="timeline-value"><patient-title text-color="timelineEvent.event_data.assignment_report_status | status" patient-id="timelineEvent.patient_id" section="'assignment_report'" text="timelineEvent.event_data.assignment_report_status" molecular-id="timelineEvent.event_data.molecular_id" analysis-id="timelineEvent.event_data.analysis_id"></patient-title></span>
+            <br>
             </span>
 
             <span ng-if="timelineEvent.event_data.comment">

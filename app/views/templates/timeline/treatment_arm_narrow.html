@@ -23,7 +23,7 @@
                 </span>
         
                 <span ng-if="timelineEvent.event_data.treatment_arm_status">
-                    Status: <span class="timeline-value">{{::timelineEvent.event_data.treatment_arm_status | taStatus }}</span>
+                    Status: <span class="timeline-value" style="color: {{::timelineEvent.event_data.treatment_arm_status | taStatus}}">{{::timelineEvent.event_data.treatment_arm_status}}</span>
                     <br>
                 </span>
 

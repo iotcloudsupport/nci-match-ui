@@ -10,7 +10,10 @@
 
             <span ng-if="timelineEvent.patient_id">
                 Patient: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id" text="timelineEvent.patient_id"></patient-title></span>
-                <br>
+                <span ng-if="timelineEvent.event_data.patient_status">
+                    <span class="timeline-value" style="color: {{::timelineEvent.event_data.patient_status | patientStatus}}">{{::timelineEvent.event_data.patient_status}}</span>
+                </span>
+            <br>
             </span>
 
             <span ng-if="timelineEvent.event_data.surgical_event_id">

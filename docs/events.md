@@ -21,6 +21,7 @@
     * comment
     * comment_user
     * assignment_report_status
+    * patient_status
 
 * pathology_status
     * step

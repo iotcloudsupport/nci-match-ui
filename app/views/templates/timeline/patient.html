@@ -22,12 +22,20 @@
             </dl>-->
 
             <span ng-if="timelineEvent.patient_id">
-                Patient: <span class="timeline-value"></span>
-                <br>
+                Patient: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id" text="timelineEvent.patient_id"></patient-title></span>
+                <span ng-if="timelineEvent.event_data.patient_status">
+                    <span class="timeline-value" style="color: {{::timelineEvent.event_data.patient_status | patientStatus}}">{{::timelineEvent.event_data.patient_status}}</span>
+                </span>
+            <br>
             </span>
 
             <span ng-if="timelineEvent.event_data.location">
                 Locations: <span class="timeline-value">{{::timelineEvent.event_data.location}}</span>
+                <br>
+            </span>
+                                
+            <span ng-if="timelineEvent.event_data.patient_status">
+                Status: <span class="timeline-value" style="color: {{::timelineEvent.event_data.patient_status | patientStatus}}">{{::timelineEvent.event_data.patient_status}}</span>
                 <br>
             </span>
                                     
