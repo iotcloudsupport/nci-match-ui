@@ -8,15 +8,15 @@
                 {{::timelineEvent.event_date | utc}},
                 <span class="event-age">{{::timelineEvent.from_now}}</span>
             </span>
-            <p class="m-b-xs"><span class="timeline-step">Step: {{::timelineEvent.step}}.</span> <strong>{{::timelineEvent.event_message}}.</strong></p>
+            <p class="m-b-xs"><span class="timeline-step">Step: {{::timelineEvent.event_data.step}}.</span> <strong>{{::timelineEvent.event_message}}.</strong></p>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
             <p class="m-b-xs event-content">
                 <!--<dl>
-                    <dt ng-if="timelineEvent.patient_id">Patient</dt>
-                    <dd ng-if="timelineEvent.patient_id"><patient-title patient-id="timelineEvent.patient_id" text="timelineEvent.patient_id"></patient-title></dd>
+                    <dt ng-if="timelineEvent.entity_id">Patient</dt>
+                    <dd ng-if="timelineEvent.entity_id"><patient-title patient-id="timelineEvent.entity_id" text="timelineEvent.entity_id"></patient-title></dd>
 
                     <dt ng-if="timelineEvent.event_data.location">Status</dt>
                     <dd ng-if="timelineEvent.event_data.location">{{::timelineEvent.event_data.patient_status"}}</dd>
@@ -28,8 +28,8 @@
                     <dd ng-if="timelineEvent.event_data.rebiopsy">{{::timelineEvent.event_data.rebiopsy"}}</dd>
                 </dl>-->
                 
-                <span ng-if="timelineEvent.patient_id">
-                    Patient: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id" text="timelineEvent.patient_id"></patient-title></span>
+                <span ng-if="timelineEvent.entity_id">
+                    Patient: <span class="timeline-value"><patient-title patient-id="timelineEvent.entity_id" text="timelineEvent.entity_id"></patient-title></span>
                     <span ng-if="timelineEvent.event_data.patient_status">
                         <span class="timeline-value" style="color: {{::timelineEvent.event_data.patient_status | patientStatus}}">{{::timelineEvent.event_data.patient_status}}</span>
                     </span>

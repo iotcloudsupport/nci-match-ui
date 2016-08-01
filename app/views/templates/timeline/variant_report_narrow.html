@@ -8,15 +8,15 @@
                 {{::timelineEvent.event_date | utc}},
                 <span class="event-age">{{::timelineEvent.from_now}}</span>
             </span>
-            <p class="m-b-xs"><span class="timeline-step">Step: {{::timelineEvent.step}}.</span> <strong>{{::timelineEvent.event_message}}.</strong></p>
+            <p class="m-b-xs"><span class="timeline-step">Step: {{::timelineEvent.event_data.step}}.</span> <strong>{{::timelineEvent.event_message}}.</strong></p>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
             <p class="m-b-xs event-content">
 
-                <span ng-if="timelineEvent.patient_id">
-                    Patient: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id" text="timelineEvent.patient_id"></patient-title></span>
+                <span ng-if="timelineEvent.entity_id">
+                    Patient: <span class="timeline-value"><patient-title patient-id="timelineEvent.entity_id" text="timelineEvent.entity_id"></patient-title></span>
                     <span ng-if="timelineEvent.event_data.patient_status">
                         <span class="timeline-value" style="color: {{::timelineEvent.event_data.patient_status | patientStatus}}">{{::timelineEvent.event_data.patient_status}}</span>
                     </span>
@@ -24,7 +24,7 @@
                 </span>
 
                 <span ng-if="timelineEvent.event_data.surgical_event_id">
-                    Surgical Event ID: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id"
+                    Surgical Event ID: <span class="timeline-value"><patient-title patient-id="timelineEvent.entity_id"
                                                                                 section="'surgical_event'"
                                                                                 text="timelineEvent.event_data.surgical_event_id"
                                                                                 surgical-event-id="timelineEvent.event_data.surgical_event_id"></patient-title></span>
@@ -37,7 +37,7 @@
                 </span>
 
                 <span ng-if="timelineEvent.event_data.molecular_id">
-                    Molecular ID: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id"
+                    Molecular ID: <span class="timeline-value"><patient-title patient-id="timelineEvent.entity_id"
                                                                             section="{{timelineEvent.event_data.variant_report_type === 'BLOOD' ? 'blood_variant_report' : 'tissue_variant_report'}}"
                                                                             text="timelineEvent.event.data.molecular_id"
                                                                             molecular-id="timelineEvent.event_data.molecular_id"

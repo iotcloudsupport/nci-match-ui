@@ -7,15 +7,15 @@
     </div>
 
     <div class="col-xs-7 col-md-8 content" ng-class="{'no-top-border':!timelineEvent.isStepChanging}">
-        <p class="m-b-xs timeline-title"><span ng-if="timelineEvent.step" class="timeline-step">Step: {{::timelineEvent.step}}.</span> <strong>{{::timelineEvent.event_message}}.</strong></p>
+        <p class="m-b-xs timeline-title"><span ng-if="timelineEvent.event_data.step" class="timeline-step">Step: {{::timelineEvent.event_data.step}}.</span> <strong>{{::timelineEvent.event_message}}.</strong></p>
         <p class="m-b-xs">
-            <span ng-if="timelineEvent.patient_id">
-                Patient: <span class="timeline-value"><patient-title patient-id="timelineEvent.patient_id" text="timelineEvent.patient_id"></patient-title></span>
+            <span ng-if="timelineEvent.entity_id">
+                Patient: <span class="timeline-value"><patient-title patient-id="timelineEvent.entity_id" text="timelineEvent.entity_id"></patient-title></span>
                 <br>
             </span>
             
-            <span ng-if="timelineEvent.treatment_arm">
-                <treatment-arm-title name="timelineEvent.treatment_arm.name" stratum="timelineEvent.treatment_arm.stratum" version="timelineEvent.treatment_arm.version"></treatment-arm-title>
+            <span ng-if="timelineEvent.event_data.treatment_arm">
+                <treatment-arm-title name="timelineEvent.event_data.treatment_arm.name" stratum="timelineEvent.event_data.treatment_arm.stratum" version="timelineEvent.event_data.treatment_arm.version"></treatment-arm-title>
                 <br>
             </span>
 
