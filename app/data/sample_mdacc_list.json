@@ -2,37 +2,42 @@
     {
         "molecular_is": "SampleControl_MDACC_1",
         "variant_reports": "SampleControl_MDACC_1",
-        "current_status": "FAILED",
+        "current_status": "PASSED",
         "date_created": "June 1, 2016 4:51 PM GMT",
-        "date_received": "June 2, 2016 7:51 PM GMT"
+        "date_received": "June 2, 2016 7:51 PM GMT",
+        "week_date":"Mon"
     },
     {
         "molecular_is": "SampleControl_MDACC_2",
         "variant_reports": "SampleControl_MDACC_2",
         "current_status": "FAILED",
         "date_created": "June 2, 2016 2:51 PM GMT",
-        "date_received": "June 2, 2016 7:51 PM GMT"
+        "date_received": "June 2, 2016 7:51 PM GMT",
+        "week_date":"Mon"
     },
     {
         "molecular_is": "SampleControl_MDACC_3",
-        "variant_reports": "-",
-        "current_status": "-",
+        "variant_reports":  "SampleControl_MDACC_3",
+        "current_status": "FAILED",
         "date_created": "June 3, 2016 2:51 PM GMT",
-        "date_received": "June 3, 2016 6:51 PM GMT"
+        "date_received": "June 3, 2016 6:51 PM GMT",
+        "week_date":"Tue"
     },
     {
         "molecular_is": "SampleControl_MDACC_4",
-        "variant_reports": "-",
-        "current_status": "-",
-        "date_created": "June 3, 2016 1:51 PM GMT",
-        "date_received": "June 4, 2016 4:51 PM GMT"
+        "variant_reports":  "SampleControl_MDACC_4",
+        "current_status": "PASSED",
+        "date_created": "June 6, 2016 1:51 PM GMT",
+        "date_received": "June 4, 2016 4:51 PM GMT",
+        "week_date":"Fri"
     },
     {
         "molecular_is": "SampleControl_MDACC_5",
         "variant_reports": "-",
         "current_status": "-",
-        "date_created": "June 4, 2016 4:51 PM GMT",
-        "date_received": "June 6, 2016 5:51 PM GMT"
+        "date_created": "June 6, 2016 4:51 PM GMT",
+        "date_received": "June 6, 2016 5:51 PM GMT",
+        "week_date":"Fri"
     }
 
 ]

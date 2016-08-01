@@ -114,9 +114,6 @@
             }
 
             function openMDACCPositives(index){
-
-                console.log('data/sample_mda_positive_control_' + index)
-                
                 return $http.get('data/sample_mda_positive_control_' + index);
             }
 
