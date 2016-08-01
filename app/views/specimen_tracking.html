@@ -53,13 +53,23 @@
                 </div>
             </div>
 
-            <div vertilize class="col-lg-6">
+            <!--<div vertilize class="col-lg-6">
                 <div class="header-info-box">
                     <div style="float:left">
                         <div id="legendContainer" style="text-align:left;overflow-y:auto"></div>
                     </div>
                     <div id="patientPieChartContainer" class="flot-chart" style="height:200px;padding:20px 0px 10px 70px">
                         <flot id="patientPieChart" dataset="pieDataset" options="pieOptions" height="100%"></flot>
+                    </div>
+                </div>
+            </div>-->
+            <div vertilize class="col-lg-6">
+                <div class="header-info-box">
+                        <h3>Line Chart Trend Analysis</h3>
+                    <div>
+                        <div class="flot-chart">
+                            <flot class="flot-chart-content" dataset="chartData" options="lineOptions"></flot>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -94,7 +104,7 @@
                         <td><a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id, section: 'tissue_variant_report', molecular_id: specimenTrackingItem.molecular_id, analysis_id: specimenTrackingItem.analysis_id })">{{ specimenTrackingItem.molecular_id | dashify }}</a></td>
                         <td><a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id, section: 'surgical_event', surgical_event_id: specimenTrackingItem.surgical_event_id })">{{ specimenTrackingItem.surgical_event_id | dashify }}</a></td>
                         <td><a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id })">{{ specimenTrackingItem.patient_id}}</a></td>
-                        <td>{{ specimenTrackingItem.collected_date | utc }}</td>
+                        <td>{{ specimenTrackingItem.collected_date | utc | dashify }}</td>
                         <td>{{ specimenTrackingItem.received_date | utc }}</td>
                         <td>{{ specimenTrackingItem.type }}</td>
                         <td>{{ specimenTrackingItem.shipped_date | utc }}</td>
