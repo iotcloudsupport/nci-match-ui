@@ -225,8 +225,14 @@
         function setupHistory() {
             $scope.versionHistory = [];
 
+            if (!$scope.versions)
+                return;
+
             for (var i = 0; i < $scope.versions.length; i++) {
                 var version = $scope.versions[i];
+
+                if (!version.version_history)
+                    continue;
 
                 for (var j = 0; j < version.version_history.length; j++) {
                     var historyItem = angular.copy(version.version_history[j])
