@@ -20,7 +20,7 @@ describe('Controller: Specimen Tracking Controller', function () {
                 }
             },
             DTColumnDefBuilder: null,
-            matchApi: _matchApi_
+            matchCommonApi: _matchApi_
         });
     }));
 

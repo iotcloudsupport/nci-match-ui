@@ -2,11 +2,11 @@ describe('Factory: Get Basic Patients Data Service', function () {
 
     beforeEach(module('config.matchbox', 'http.matchbox'));
 
-    var matchApi,
+    var matchCommonApi,
         httpBackend;
 
     beforeEach(inject(function (_matchApi_, $httpBackend) {
-        matchApi = _matchApi_;
+        matchCommonApi = _matchApi_;
         httpBackend = $httpBackend;
     }));
 
@@ -17,7 +17,7 @@ describe('Factory: Get Basic Patients Data Service', function () {
 
     it('should return back a list with 3 patients', function () {
         httpBackend.when('GET', 'http://server:80/match/common/rs/getBasicPatientsData').respond([{}, {}, {}]);
-        matchApi
+        matchCommonApi
             .getBasicPatientsData()
             .then(function(response) {
                 expect(response.status).toBe(200);
@@ -28,7 +28,7 @@ describe('Factory: Get Basic Patients Data Service', function () {
 
     it ('should return back an internal server error', function() {
         httpBackend.when('GET', 'http://server:80/match/common/rs/getBasicPatientsData').respond(500);
-        matchApi
+        matchCommonApi
             .getBasicPatientsData()
             .then(
                 function(response) {

@@ -3,7 +3,7 @@
 
     angular.module('matchbox.http', [])
         .factory('workflowApi', workflowApi)
-        .factory('matchApi', matchApi)
+        .factory('matchCommonApi', matchCommonApi)
         .factory('reportApi', reportApi)
         .factory('treatmentArmApi', treatmentArmApi)
         .factory('irAdminApi', irAdminApi)
@@ -37,7 +37,7 @@
         }
     }
 
-    function matchApi($http, matchConfig) {
+    function matchCommonApi($http, matchConfig) {
         // Note: Legacy API that will be replaced in the future.
         return {
             getBasicPatientsData: function () {

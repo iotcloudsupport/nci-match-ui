@@ -58,7 +58,7 @@ xdescribe('Controller: dashboard Controller', function () {
                     };
                 }
             },
-            matchApi: _matchApi_,
+            matchCommonApi: _matchApi_,
             reportApi: _reportApi_,
             store: mockStore
         });
@@ -97,7 +97,7 @@ xdescribe('Controller: dashboard Controller', function () {
                     };
                 }
             },
-            matchApi: _matchApi_,
+            matchCommonApi: _matchApi_,
             reportApi: _reportApi_
         });
     }));
