@@ -62,14 +62,16 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router'])
 
                 return {
                     date: dateElement,
-                    details: Array.apply(null, new Array(Math.floor(Math.random() * 25))).map(function(e, i, arr) {
+                    details: Array.apply(null, new Array(Math.floor(Math.random() * 2))).map(function(e, i, arr) {
+
+                        // console.log(Math.random() * 3)
 
                         var name = "";
-                        if(i > 8){name = 'Positive Controls '}
+                        if((Math.random() * 3) > 2){name = 'Positive Controls '}
                         else {name = 'Ntc Controls ';}
 
                         return {
-                            'name': name + Math.floor(Math.random() * 3),
+                            'name': name + Math.floor(Math.random() * 123),
                             'date': function () {
                                 var projectDate = new Date(dateElement.getTime());
                                 projectDate.setHours(Math.floor(Math.random() * 24))
@@ -81,6 +83,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     }),
                     init: function () {
                         this.total = this.details.reduce(function (prev, e) {
+
                             return prev + e.value;
                         }, 0);
                         return this;
@@ -195,7 +198,6 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             };
             //MOCHA
 
-
             //MDA
             function loadMDACCList(data) {
 
@@ -280,7 +282,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 });
                 $scope.mdaccNtcList = data.data;
             };
-            //    MDA
+            //MDA
 
 
         function loadSampleHRFiles() {
