@@ -63,6 +63,14 @@
             function loadPatientPendingAssignmentReportsList() {
                 return $http.get(matchConfig.patientApiBaseUrl + '/dashboard/pendingAssignmentReports');
             }
+
+            function loadChartjsDonutChart() {
+                return $http.get(matchConfig.patientApiBaseUrl + '/dashboard/sequencedAndConfirmedPatients');
+            }
+
+            function loadDashboardStatistics() {
+                return $http.get(matchConfig.patientApiBaseUrl + '/dashboard/patientStatistics');
+            }
             // Patient API - END
 
 
@@ -80,17 +88,8 @@
             }
             // Treatment Arm API - END
 
-
-            function loadDashboardStatistics() {
-                return $http.get('data/dashboard_statistics.json');
-            }
-
             function loadTreatmentArmAccrual() {
                 return $http.get('data/dashboard_treatment_arm_accrual.json');
-            }
-
-            function loadChartjsDonutChart() {
-                return $http.get('data/dashboard_donut_chart.json');
             }
 
             function loadQc_Table() {

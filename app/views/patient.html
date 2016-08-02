@@ -219,7 +219,7 @@
                                 </thead>
                                 <tbody>
                                     <tr ng-repeat="assay in currentSurgicalEvent.assays" style="cursor: auto;" role="row" class="odd">
-                                        <td>{{assay.gene | dashify}}</td>
+                                        <td>{{assay.biomarker | dashify}}</td>
                                         <td>{{assay.result_date | utc | dashify}}</td>
                                         <td>
                                             <span style="color:{{ assay.result | assayStatus }}">{{assay.result | dashify}}</span>
