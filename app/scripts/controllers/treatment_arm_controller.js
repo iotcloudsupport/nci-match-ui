@@ -183,6 +183,7 @@
         }
 
         function loadPatients() {
+            /* matchApi */
             matchApiMock
                 .loadPatientsForTa($stateParams.name, $stateParams.stratum)
                 .then(function (d) {
