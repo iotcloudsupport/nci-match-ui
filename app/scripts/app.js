@@ -11,7 +11,6 @@
         'matchbox.iradmin',
         'matchbox.irsample',
         'matchbox.qcsample',
-        'matchbox.irntc',
         'matchbox.treatment-arms',
         'matchbox.treatment-arm',
         'matchbox.specimen-tracking',

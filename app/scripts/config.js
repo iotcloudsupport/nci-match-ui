@@ -231,69 +231,10 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
                 }
             }
         })
-        .state('ngsample', {
-            url: "/ngsample/:sampleId",
-            templateUrl: "views/ngsample.html",
-            data: { pageTitle: 'IR Sample Control Variant Report', requiresLogin: true },
-            controller: function($scope, $stateParams) {
-                $scope.sid = $stateParams.sampleId;
-            },
-            resolve: {
-                loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        {
-                            serie: true,
-                            files: ['bower_components/datatables/media/js/jquery.dataTables.min.js','bower_components/datatables/media/css/dataTables.bootstrap.min.css']
-                        },
-                        {
-                            serie: true,
-                            files: ['bower_components/datatables/media/js/dataTables.bootstrap.min.js']
-                        },
-                        {
-                            name: 'datatables',
-                            files: ['bower_components/angular-datatables/dist/angular-datatables.min.js']
-                        },
-                        {
-                            files: ['bower_components/chartjs/Chart.min.js']
-                        },
-                        {
-                            name: 'angles',
-                            files: ['bower_components/angles/angles.js']
-                        }
-                    ]);
-                }
-            }
-        })
         .state('ocsample', {
             url: "/ocsample/:sampleId",
             templateUrl: "views/ocsample.html",
             data: { pageTitle: 'IR Sample Quality Control Report', requiresLogin: true },
-            controller: function($scope, $stateParams) {
-                $scope.sid = $stateParams.sampleId;
-            },
-            resolve: {
-                loadPlugin: function ($ocLazyLoad) {
-                    return $ocLazyLoad.load([
-                        {
-                            serie: true,
-                            files: ['bower_components/datatables/media/js/jquery.dataTables.min.js','bower_components/datatables/media/css/dataTables.bootstrap.min.css']
-                        },
-                        {
-                            serie: true,
-                            files: ['bower_components/datatables/media/js/dataTables.bootstrap.min.js']
-                        },
-                        {
-                            name: 'datatables',
-                            files: ['bower_components/angular-datatables/dist/angular-datatables.min.js']
-                        }
-                    ]);
-                }
-            }
-        })
-        .state('ntcsample', {
-            url: "/ntcsample/:sampleId",
-            templateUrl: "views/ntcsample.html",
-            data: { pageTitle: 'IR NTC Control Variant Report', requiresLogin: true },
             controller: function($scope, $stateParams) {
                 $scope.sid = $stateParams.sampleId;
             },

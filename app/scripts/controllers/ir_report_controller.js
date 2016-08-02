@@ -50,8 +50,14 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         $scope.schedule = "weekmap";
 
             $scope.loadMap = function (id) {
-                if(id == "heatmap"){$scope.schedule = "weekmap"}
-                else {$scope.schedule = "heatmap"}
+                if(id == "heatmap"){
+                    $scope.schedule = "weekmap";
+                    $scope.barlegend = "Total Positive / NTC Control Status";
+                }
+                else {
+                    $scope.schedule = "heatmap";
+                    $scope.barlegend = "History of Total Positive / NTC Control Status";
+                }
             };
             
             //HEATMAP
@@ -60,6 +66,8 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             var yearAgo = moment().startOf('day').subtract(1, 'year').toDate();
             $scope.exampleData = d3.time.days(yearAgo, now).map(function (dateElement) {
 
+
+
                 return {
                     date: dateElement,
                     details: Array.apply(null, new Array(Math.floor(Math.random() * 2))).map(function(e, i, arr) {
@@ -67,7 +75,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                         // console.log(Math.random() * 3)
 
                         var name = "";
-                        if((Math.random() * 3) > 2){name = 'Positive Controls '}
+                        if((Math.random() * 3) > 2){name = 'Positive Controls ';}
                         else {name = 'Ntc Controls ';}
 
                         return {
@@ -89,6 +97,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                         return this;
                     }
                 }.init();
+
             });
             //HEATMAP
 
@@ -452,6 +461,64 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                         loadPositivesList(d);
                     });
             };
+
+            // GENERATE TABLES
+            $scope.generateMocha_Table = function () {
+
+                   var nr = $scope.mochaList.length + 2;
+               var mol = "SampleControl_MoCha_" + nr;
+
+                       $scope.mochaList.push({
+                               "molecular_is": mol,
+                           "variant_reports": "-",
+                           "current_status": "-",
+                           "date_created": $scope.date,
+                           "date_received": "-"
+                   });
+            };
+
+            $scope.generateNtcMocha_Table = function () {
+
+                   var nr = $scope.mochaNtcList.length + 2;
+               var mol = "NtcControl_MoCha_" + nr;
+
+                   $scope.mochaNtcList.push({
+                           "molecular_is": mol,
+                       "variant_reports": "-",
+                       "current_status": "-",
+                       "date_created": "June 8, 2016 4:51 PM GMT",
+                       "date_received": "-"
+               });
+            };
+
+            $scope.generateMDACC_Table = function () {
+
+                   var nr = $scope.mdaccList.length + 1;
+               var mol = "SampleControl_MDACC_" + nr;
+
+                   $scope.mdaccList.push({
+                           "molecular_is": mol,
+                       "variant_reports": "-",
+                       "current_status": "-",
+                       "date_created": "June 8, 2016 4:51 PM GMT",
+                       "date_received": "-"
+               });
+            };
+
+            $scope.generateNtcMDACC_Table = function () {
+
+                   var nr = $scope.mdaccNtcList.length + 1;
+               var mol = "NtcControl_MDACC_" + nr;
+
+                   $scope.mdaccNtcList.push({
+                           "molecular_is": mol,
+                       "variant_reports": "-",
+                       "current_status": "-",
+                       "date_created": $scope.date,
+                       "date_received": "-"
+               });
+            };
+            // GENERATE TABLES
             
             //SNV
             function loadPositivesList(data) {
