@@ -9,7 +9,6 @@
         'matchbox.patients',
         'matchbox.patient',
         'matchbox.iradmin',
-        'matchbox.irsample',
         'matchbox.qcsample',
         'matchbox.treatment-arms',
         'matchbox.treatment-arm',
