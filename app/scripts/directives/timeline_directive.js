@@ -3,12 +3,12 @@
 
     angular
         .module('matchbox')
-        .directive('timeLine', timeLine);
+        .directive('timeline', timeline);
 
     /**
-     * timeLine
+     * timeline
      */
-    function timeLine($compile, $http, $templateCache, $log) {
+    function timeline($compile, $http, $templateCache, $log) {
         var baseUrl = '/views/templates/timeline/';
 
         // $scope.getIcon = function () {
@@ -67,11 +67,11 @@
                 var url = templateMap[key];
                 return $http.get(url, { cache: $templateCache });
             } else {
-                $log.error('timeLine directive: invalid timeLine type "' + type + '"');
+                $log.error('timeline directive: invalid timeline type "' + type + '"');
             }
         };
 
-        var defaultTemplate = '<div><p>Invalid TimeLine Type "{{ timelineEvent.type }}"</p><p>{{ timelineEvent }}</p></div>';
+        var defaultTemplate = '<div><p>Invalid Timeline Type "{{ timelineEvent.type }}"</p><p>{{ timelineEvent }}</p></div>';
 
         var linker = function (scope, element, attrs) {
             var loader = getTemplateLoader(scope.type, scope.layout);

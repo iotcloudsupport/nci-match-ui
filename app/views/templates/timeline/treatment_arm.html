@@ -7,7 +7,7 @@
     </div>
 
     <div class="col-xs-7 col-md-8 content" ng-class="{'no-top-border':!timelineEvent.isStepChanging}">
-        <p class="m-b-xs timeline-title"><span ng-if="timelineEvent.event_data.step" class="timeline-step">Step: {{::timelineEvent.event_data.step}}.</span> <strong>{{::timelineEvent.event_message}}.</strong></p>
+        <p class="m-b-xs timeline-title"><span ng-if="timelineEvent.event_data.step" class="timeline-step">Step: {{::timelineEvent.event_data.step}}.</span> <strong>{{::timelineEvent.event_message}}</strong></p>
         <p class="m-b-xs">
             <span ng-if="timelineEvent.event_data.treatment_arm">
                 <treatment-arm-title name="timelineEvent.event_data.treatment_arm.name" stratum="timelineEvent.event_data.treatment_arm.stratum" version="timelineEvent.event_data.treatment_arm.version"></treatment-arm-title>

@@ -183,22 +183,25 @@
 
                             <table class="table" role="grid">
                                 <thead>
-                                <tr>
-                                    <th width="20%" class="label2">Bar-Code</th>
-                                    <th width="40%" class="label2">Carrier</th>
-                                    <th width="20%" class="label2">Tracking Number</th>
-                                    <th width="20%" class="label2">Date Shipped</th>
-                                </tr>
+                                    <tr>
+                                        <th width="20%" class="label2">Bar-Code</th>
+                                        <th width="40%" class="label2">Carrier</th>
+                                        <th width="20%" class="label2">Tracking Number</th>
+                                        <th width="20%" class="label2">Date Shipped</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr ng-repeat="slide in currentSurgicalEvent.slides" style="cursor: auto;" role="row" class="odd">
-                                    <td>{{slide.slide_barcode | dashify}}</td>
-                                    <td>{{slide.carrier | dashify}}</td>
-                                    <td>
-                                        <tracking-link carrier="'fedex'" tracking-number="slide.tracking_id"></tracking-link>
-                                    </td>
-                                    <td>{{slide.shipped_dttm | utc | dashify}}</td>
-                                </tr>
+                                    <tr ng-repeat="slide in currentSurgicalEvent.slides" style="cursor: auto;" role="row" class="odd">
+                                        <td>{{slide.slide_barcode | dashify}}</td>
+                                        <td>{{slide.carrier | dashify}}</td>
+                                        <td>
+                                            <tracking-link carrier="'fedex'" tracking-number="slide.tracking_id"></tracking-link>
+                                        </td>
+                                        <td>{{slide.shipped_dttm | utc | dashify}}</td>
+                                    </tr>
+                                    <tr ng-if="!currentSurgicalEvent.slides || !currentSurgicalEvent.slides.length">
+                                        <td colspan="4"><span class="text-muted">No slides shipped</span></td>
+                                    </tr>
                                 </tbody>
                             </table>
 
@@ -208,20 +211,23 @@
 
                             <table class="table" role="grid">
                                 <thead>
-                                <tr>
-                                    <th width="20%" class="label2">Gene</th>
-                                    <th width="20%" class="label2">Result Date</th>
-                                    <th width="20%" class="label2">Result</th>
-                                </tr>
+                                    <tr>
+                                        <th width="20%" class="label2">Gene</th>
+                                        <th width="20%" class="label2">Result Date</th>
+                                        <th width="20%" class="label2">Result</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr ng-repeat="assay in currentSurgicalEvent.assays" style="cursor: auto;" role="row" class="odd">
-                                    <td>{{assay.gene | dashify}}</td>
-                                    <td>{{assay.result_date | utc | dashify}}</td>
-                                    <td>
-                                        <span style="color:{{ assay.result | assayStatus }}">{{assay.result | dashify}}</span>
-                                    </td>
-                                </tr>
+                                    <tr ng-repeat="assay in currentSurgicalEvent.assays" style="cursor: auto;" role="row" class="odd">
+                                        <td>{{assay.gene | dashify}}</td>
+                                        <td>{{assay.result_date | utc | dashify}}</td>
+                                        <td>
+                                            <span style="color:{{ assay.result | assayStatus }}">{{assay.result | dashify}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr ng-if="!currentSurgicalEvent.assays || !currentSurgicalEvent.assays.length">
+                                        <td colspan="3"><span class="text-muted">No assay history</span></td>
+                                    </tr>
                                 </tbody>
                             </table>
 
@@ -316,6 +322,9 @@
                                                 </li>
                                             </ul>
                                         </td>
+                                    </tr>
+                                    <tr ng-if="!currentSurgicalEvent.specimen_shipments || !currentSurgicalEvent.specimen_shipments.length">
+                                        <td colspan="8"><span class="text-muted">No specimen history</span></td>
                                     </tr>
                                     </tbody>
                                 </table>
