@@ -2,7 +2,7 @@
     angular.module('matchbox.dashboard', [])
         .controller('DashboardController', DashboardController);
 
-    function DashboardController($scope, matchApiMock, store, DTOptionsBuilder, sharedCliaProperties) { //workflowApi
+    function DashboardController($scope, matchApi, store, DTOptionsBuilder, sharedCliaProperties) { //workflowApi
         $scope.lastUpdated = (new Date()).getTime();
         $scope.name = 'MATCHBox User';
         $scope.name = setName();
@@ -93,7 +93,7 @@
         }
 
         function loadDashboardStatisticsData() {
-            matchApiMock
+            matchApi
                 .loadDashboardStatistics()
                     .then(function (d) {
                         $scope.numberOfPatients = d.data.number_of_patients;
@@ -103,7 +103,7 @@
         }
 
         function loadTreatmentArmAccrualData() {
-            matchApiMock
+            matchApi
                 .loadTreatmentArmAccrual()
                 .then(function (d) {
                     $scope.top_5_arms = d.data.arms;
@@ -140,7 +140,7 @@
         }
 
         function loadChartjsDonutChartData() {
-            matchApiMock
+            matchApi
                 .loadChartjsDonutChart()
                 .then(function (d) {
                     var aMoiValues = d.data.aMoiValues;
@@ -211,7 +211,7 @@
         }
         
         function loadTissueVariantReportsList() {
-            matchApiMock
+            matchApi
                 .loadTissueVariantReportsList()
                 .then(function (d) {
                     $scope.pendingTissueVariantReportList = d.data;
@@ -219,7 +219,7 @@
         }
 
         function loadBloodVariantReportsList() {
-            matchApiMock
+            matchApi
                 .loadBloodVariantReportsList()
                 .then(function(d) {
                     $scope.pendingBloodVariantReportList = d.data;
@@ -227,7 +227,7 @@
         }
 
         function loadPatientPendingAssignmentReportsList() {
-            matchApiMock
+            matchApi
                 .loadPatientPendingAssignmentReportsList()
                 .then(function(d) {
                     $scope.pendingAssignmentReportList = d.data;

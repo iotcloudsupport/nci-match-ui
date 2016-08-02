@@ -53,15 +53,15 @@
             }
 
             function loadTissueVariantReportsList() {
-                return $http.get('data/dashboard_tissue_variant_reports.json');
+                return $http.get(matchConfig.patientApiBaseUrl + '/dashboard/pendingVariantReports/tissue');
             }
 
             function loadBloodVariantReportsList() {
-                return $http.get('data/dashboard_blood_variant_reports.json');
+                return $http.get(matchConfig.patientApiBaseUrl + '/dashboard/pendingVariantReports/blood');
             }
 
             function loadPatientPendingAssignmentReportsList() {
-                return $http.get('data/dashboard_patient_assignment_reports.json');
+                return $http.get(matchConfig.patientApiBaseUrl + '/dashboard/pendingAssignmentReports');
             }
             // Patient API - END
 
