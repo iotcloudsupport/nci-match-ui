@@ -71,6 +71,10 @@
             function loadDashboardStatistics() {
                 return $http.get(matchConfig.patientApiBaseUrl + '/dashboard/patientStatistics');
             }
+
+            function loadTreatmentArmAccrual() {
+                return $http.get(matchConfig.patientApiBaseUrl + '/dashboard/treatmentArmAccrual');
+            }
             // Patient API - END
 
 
@@ -87,10 +91,6 @@
                 return $http.get(matchConfig.treatmentArmApiBaseUrl + '/patientsOnTreatmentArm/' + name + '/' + stratum);
             }
             // Treatment Arm API - END
-
-            function loadTreatmentArmAccrual() {
-                return $http.get('data/dashboard_treatment_arm_accrual.json');
-            }
 
             function loadQc_Table() {
                 return $http.get('data/sample_qc.json');

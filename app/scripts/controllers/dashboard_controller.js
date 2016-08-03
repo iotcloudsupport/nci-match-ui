@@ -18,9 +18,6 @@
         $scope.pendingBloodVariantReportList = [];
         $scope.pendingAssignmentReportList = [];
 
-        $scope.top_5_arms = [];
-        $scope.top_5_arm_labels = [];
-        $scope.top_5_arm_counts = [];
         $scope.patientStatistics = {};
 
         $scope.now = new Date();
@@ -34,7 +31,7 @@
             'Treatment Arm Closed',
             'Blood Specimen Received'
         ];
-        
+
         $scope.days_pending_range = {
             "upper_bound_green": 8,
             "upper_bound_yellow": 14
@@ -63,7 +60,6 @@
         };
 
         $scope.loadDashboardStatisticsData = loadDashboardStatisticsData;
-        $scope.loadTreatmentArmAccrualData = loadTreatmentArmAccrualData;
         $scope.setCanvasHeight = setCanvasHeight;
         $scope.loadSequencedAndConfirmedChartData = loadSequencedAndConfirmedChartData;
         $scope.loadTissueVariantReportsList = loadTissueVariantReportsList;
@@ -98,44 +94,43 @@
                 .loadDashboardStatistics()
                 .then(function (d) {
                     $scope.patientStatistics = angular.copy(d.data);
+                    setupTreatmentArmAccrualData($scope.patientStatistics.treatment_arm_accrual);
                 });
         }
 
-        function loadTreatmentArmAccrualData() {
-            matchApi
-                .loadTreatmentArmAccrual()
-                .then(function (d) {
-                    $scope.top_5_arms = d.data.arms;
-                    angular.forEach($scope.top_5_arms, function(value) {
-                        $scope.top_5_arm_labels.push(value.name + " (" + value.stratum + ")");
-                        $scope.top_5_arm_counts.push(value.patients);
-                    });
-                    $scope.barData = {
-                        labels: $scope.top_5_arm_labels, //d.data.arm_names,
-                        datasets: [
-                            {
-                                label: "Accrual Dataset",
-                                fillColor: "#1c84c6",
-                                strokeColor: "rgba(220,220,220,0.8)",
-                                highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
-                                highlightStroke: "rgba(220,220,220,1)",
-                                data: $scope.top_5_arm_counts //d.data.arm_values
-                            }
-                        ]
-                    };
+        function setupTreatmentArmAccrualData(treatment_arm_accrual) {
+            var top_5_arm_labels = [];
+            var top_5_arm_counts = [];
 
-                    $scope.barOptions = {
-                        scaleBeginAtZero: true,
-                        scaleShowGridLines: true,
-                        scaleGridLineColor: "rgba(0,0,0,.05)",
-                        scaleGridLineWidth: 1,
-                        barShowStroke: true,
-                        barStrokeWidth: 2,
-                        barValueSpacing: 5,
-                        barDatasetSpacing: 1
-                    };
-                });
-            
+            angular.forEach(treatment_arm_accrual, function (value) {
+                top_5_arm_labels.push(value.name + " (" + value.stratum_id + ")");
+                top_5_arm_counts.push(value.patients);
+            });
+
+            $scope.barData = {
+                labels: top_5_arm_labels,
+                datasets: [
+                    {
+                        label: "Accrual Dataset",
+                        fillColor: "#1c84c6",
+                        strokeColor: "rgba(220,220,220,0.8)",
+                        highlightFill: "#23c6c8", //"rgba(220,220,220,0.75)",
+                        highlightStroke: "rgba(220,220,220,1)",
+                        data: top_5_arm_counts
+                    }
+                ]
+            };
+
+            $scope.barOptions = {
+                scaleBeginAtZero: true,
+                scaleShowGridLines: true,
+                scaleGridLineColor: "rgba(0,0,0,.05)",
+                scaleGridLineWidth: 1,
+                barShowStroke: true,
+                barStrokeWidth: 2,
+                barValueSpacing: 5,
+                barDatasetSpacing: 1
+            }
         }
 
         function loadSequencedAndConfirmedChartData() {
@@ -143,15 +138,15 @@
                 .loadSequencedAndConfirmedChartData()
                 .then(function (d) {
                     var stats = d.data;
-                    
+
                     var aMoiLabels = [
-                        '<span class="chart-legend-digit">0</span> aMOI', 
-                        '<span class="chart-legend-digit">1</span> aMOI', 
-                        '<span class="chart-legend-digit">2</span> aMOI', 
-                        '<span class="chart-legend-digit">3</span> aMOI', 
-                        '<span class="chart-legend-digit">4</span> aMOI', 
+                        '<span class="chart-legend-digit">0</span> aMOI',
+                        '<span class="chart-legend-digit">1</span> aMOI',
+                        '<span class="chart-legend-digit">2</span> aMOI',
+                        '<span class="chart-legend-digit">3</span> aMOI',
+                        '<span class="chart-legend-digit">4</span> aMOI',
                         '<span class="chart-legend-digit">5+</span> aMOI'
-                        ];
+                    ];
                     var aMoiHighlight = "#000088";
 
                     $scope.donutOptions = {
@@ -204,17 +199,17 @@
                             highlight: aMoiHighlight,
                             label: aMoiLabels[5]
                         }
-                    ]; 
+                    ];
                 });
 
         }
-        
+
         function loadTissueVariantReportsList() {
             matchApi
                 .loadTissueVariantReportsList()
                 .then(function (d) {
                     $scope.pendingTissueVariantReportList = d.data;
-                    arrayTools.forEach($scope.pendingTissueVariantReportList, function(element) {
+                    arrayTools.forEach($scope.pendingTissueVariantReportList, function (element) {
                         calculateDaysPending(element, 'status_date');
                     });
                 });
@@ -235,9 +230,9 @@
         function loadBloodVariantReportsList() {
             matchApi
                 .loadBloodVariantReportsList()
-                .then(function(d) {
+                .then(function (d) {
                     $scope.pendingBloodVariantReportList = d.data;
-                    arrayTools.forEach($scope.pendingTissueVariantReportList, function(element) {
+                    arrayTools.forEach($scope.pendingTissueVariantReportList, function (element) {
                         calculateDaysPending(element, 'status_date');
                     });
                 });
@@ -246,9 +241,9 @@
         function loadPatientPendingAssignmentReportsList() {
             matchApi
                 .loadPatientPendingAssignmentReportsList()
-                .then(function(d) {
+                .then(function (d) {
                     $scope.pendingAssignmentReportList = d.data;
-                    arrayTools.forEach($scope.pendingTissueVariantReportList, function(element) {
+                    arrayTools.forEach($scope.pendingTissueVariantReportList, function (element) {
                         calculateDaysPending(element, 'status_date');
                     });
                 });
