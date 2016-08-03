@@ -33,6 +33,8 @@
         'd3module',
         'd3',
         'matchbox.calendar-heatmap',
-        'angular.vertilize'
+        'angular.vertilize',
+        'datatables',
+        'ngResource'
     ]);
 })();
