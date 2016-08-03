@@ -24,11 +24,13 @@ after_success:
   - "CURLBODY=(\"request\": {\"message\": \"Triggered by nci-match-ui $TRAVIS_COMMIT\",\"branch\":\"master\", \"config\": {\"env\": {\"matrix\": [\"TRIGGER_REPO=nci-match-ui;CUC_TAG=@ui\"]}}})"
   - "echo ${CURLBODY[@]}"
   - "export ACCEPTJSON=\"Accept: application/json\""
+  - "echo $ACCEPTJSON"
   - "export CONTENTJSON=\"Content-Type: application/json\""
   - "export TRAVVER=\"Travis-API-Version: 3\""
   - "export TRAVAUTH=\"Authorization: token $TRAVIS_TOKEN\""
   # - "export CURLBODY=\"request\": {\"message\": \"Triggered by nci-match-ui $TRAVIS_COMMIT\",\"branch\":\"master\", \"config\": {\"env\": {\"matrix\": [\"TRIGGER_REPO=nci-match-ui;CUC_TAG=@ui\"]}}}"
   # - "echo $CURLBODY"
+  - echo "curl -s -X POST -H \"$CONTENTJSON\" -H \"$ACCEPTJSON\" -H \"$TRAVVER\" -H \"$TRAVAUTH\" -d \"{ ${CURLBODY[@]} }\" https://api.travis-ci.org/repo/CBIIT%2Fnci-uMatch-bddtests/requests"
   - curl -s -X POST -H \"$CONTENTJSON\" -H \"$ACCEPTJSON\" -H \"$TRAVVER\" -H \"$TRAVAUTH\" -d \"{ ${CURLBODY[@]} }\" https://api.travis-ci.org/repo/CBIIT%2Fnci-uMatch-bddtests/requests
 after_script:
   - codeclimate-test-reporter < test/coverage/report-lcov/lcov.info
