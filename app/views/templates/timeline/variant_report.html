@@ -5,7 +5,7 @@
         <small class="text-navy">{{::timelineEvent.from_now}}</small>
     </div>
     <div class="col-xs-7 col-md-8 content" ng-class="{'no-top-border': !(showStepDelimiter && timelineEvent.isStepChanging)}">
-        <p class="m-b-xs timeline-title"><span class="timeline-step">Step: {{::timelineEvent.event_data.step}}.</span><strong>{{::timelineEvent.event_message}}</strong></p>
+        <p class="m-b-xs timeline-title"><span class="timeline-step">Step: {{::timelineEvent.event_data.step}}. </span><strong>{{::timelineEvent.event_message}}</strong></p>
         <p class="m-b-xs">
 
             <span ng-if="timelineEvent.entity_id">
@@ -31,8 +31,8 @@
 
             <span ng-if="timelineEvent.event_data.molecular_id">
                 Molecular ID: <span class="timeline-value"><patient-title patient-id="timelineEvent.entity_id"
-                                                                         section="{{timelineEvent.event_data.variant_report_type === 'BLOOD' ? 'blood_variant_report' : 'tissue_variant_report'}}"
-                                                                         text="timelineEvent.event.data.molecular_id"
+                                                                         section="timelineEvent.event_data.variant_report_type === 'BLOOD' ? 'blood_variant_report' : 'tissue_variant_report'"
+                                                                         text="timelineEvent.event_data.molecular_id"
                                                                          molecular-id="timelineEvent.event_data.molecular_id"
                                                                          analysis-id="timelineEvent.event_data.analysis_id"></patient-title></span>
                 <br>

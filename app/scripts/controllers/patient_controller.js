@@ -292,7 +292,7 @@
                 var surgicalEvent = $scope.data.specimens[i];
                 for (var j = 0; j < surgicalEvent.specimen_shipments.length; j++) {
                     var shipment = surgicalEvent.specimen_shipments[j];
-                    if ('slide_barcode' in shipment) {
+                    if ('slide_barcode' in shipment && shipment.slide_barcode) {
                         slideShipments.push({ surgicalEvent: surgicalEvent, shipment: shipment });
 
                         if (surgicalEvent.slides === undefined) {
