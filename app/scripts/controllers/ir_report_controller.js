@@ -1,6 +1,6 @@
-angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
+angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router', 'datatables', 'ngResource'])
     .controller('IrAdminController',
-        function( $scope, $http, $window, $stateParams, DTOptionsBuilder, irAdminApi, matchApiMock, $location, $anchorScroll, $timeout, sharedCliaProperties) {
+        function( $scope, $http, $window, $stateParams, DTOptionsBuilder, irAdminApi, matchApiMock, $location, $anchorScroll, $timeout, sharedCliaProperties, $resource) {
 
         angular.element(document).ready(function () {
             $('.equal-height-panels .panel').matchHeight();
@@ -16,7 +16,10 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         vm.dtOptions = DTOptionsBuilder.newOptions()
         .withOption('searching', false);
 
-        this.dtInstance = {};
+
+
+
+
 
         $scope.irList = [];
         $scope.moChaList = [];
@@ -29,6 +32,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         $scope.tokenIpAddress = [];
         $scope.positiveList = [];
         $scope.negativeList = [];
+            $scope.mochaQueryList = [];
 
         $scope.singleNucleotideVariantsList = [];
         $scope.indelsList = [];
@@ -38,6 +42,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
         $scope.barlegend = 'Total Positive / NTC Control Status';
         $scope.titleid = "";
         $scope.mochaList=[];
+        $scope.mochaMonthList=[];
         $scope.mochaNtcList=[];
         $scope.mdaccList=[];
         $scope.mdaccNtcList=[];
@@ -52,6 +57,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             $scope.loadMap = function (id) {
                 if(id == "heatmap"){
                     $scope.schedule = "weekmap";
+                    $scope.monthview = 'none';
                     $scope.barlegend = "Total Positive / NTC Control Status";
                 }
                 else {
@@ -104,6 +110,7 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             // Set custom color for the calendar heatmap
             $scope.color = '#cd2327';
             $scope.overview = 'year';
+            // $scope.monthview = '';
 
 
             $scope.count_dates = [0, 0, 0, 0, 0, 0, 0];
@@ -119,7 +126,95 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
             aMoiLabels = ['Failed', 'Success', 'Not Generated'];
             ntcMoiLabels = ['Failed', 'Success', 'Not Generated'];
 
+
             //MOCHA
+            function loadMoChaMonthList(data) {
+                $scope.count_dates = [0, 0, 0, 0, 0, 0, 0];
+
+                angular.forEach(data, function (value,k) {
+                    angular.forEach(value, function (v,k) {
+
+                        if(v.current_status === 'FAILED'){$scope.pos_status[0] += 1;}
+                        if(v.current_status === 'PASSED'){$scope.pos_status[1] += 1;}
+                        else if(v.current_status === '-'){$scope.pos_status[2] += 1;}
+
+                        var tmp;
+                        switch (v.week_date) {
+                            case 'Mon':
+                                tmp = $scope.count_dates[0];
+                                $scope.count_dates[0] = tmp + 1;
+                                break;
+                            case 'Tue':
+                                tmp = $scope.count_dates[1];
+                                $scope.count_dates[1] = tmp + 1;
+                                break;
+                            case 'Wed':
+                                tmp = $scope.count_dates[2];
+                                $scope.count_dates[2] = tmp + 1;
+                                break;
+                            case 'Thu':
+                                tmp = $scope.count_dates[3];
+                                $scope.count_dates[3] = tmp + 1;
+                                break;
+                            case 'Fri':
+                                tmp = $scope.count_dates[4];
+                                $scope.count_dates[4] = tmp + 1;
+                                break;
+                            case 'Sat':
+                                // console.log("Selected Case Number is 6");
+                                break;
+                            default:
+                        }
+                    });
+                });
+
+                $scope.monthview = 'aug';
+                $scope.mochaQueryList = data.data;
+
+                console.log("reloadData--> " + $scope.mochaQueryList);
+            };
+
+            vm.dtInstance = {};
+
+            function reloadData() {
+                var resetPaging = false;
+
+
+                $scope.dtInstance.reloadData(callback, resetPaging);
+            }
+
+            function callback(json) {
+                console.log(json);
+            }
+
+            // function callback(json) {
+            //     console.log('@@@@@@-->' +json);
+            // }
+
+            // vm.dtInstanceCallback = function(_dtInstance) {
+            //     vm.dtInstance = _dtInstance;
+            //     vm.dtInstance.reloadData(); //or something else....
+            // }
+
+
+            //FILTER
+            // $scope.$watch('confirmed', function(newValue, oldValue) {
+            //
+            //     console.log(' ** --> ' + JSON.stringify($scope.mochaMonthList))
+            //
+            //     // console.log($scope.confirmed);
+            //     // if(newValue === 'ALL') {
+            //     //     $scope.filterCol = "";
+            //     //     // $scope.dtInstance.DataTable.search("");
+            //     //     $scope.dtInstance.DataTable.search("").draw();
+            //     // }
+            //     // else {
+            //     //     // $scope.dtInstance.DataTable.search(newValue);
+            //     //     $scope.dtInstance.DataTable.search(newValue).draw();
+            //     // }
+            // });
+            
+            
             function loadMoChaList(data) {
                 $scope.count_dates = [0, 0, 0, 0, 0, 0, 0];
 
@@ -160,7 +255,12 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                     });
 
                 });
+
                 $scope.mochaList = data.data;
+                $scope.monthview = 'none';
+
+                // console.log(' ** --> ' + JSON.stringify($scope.mochaList))
+
             };
 
             function loadMoChaNtcList(data) {
@@ -885,4 +985,52 @@ angular.module('iradmin.matchbox',['ui.bootstrap', 'cgPrompt', 'ui.router'])
                 };
             };
 
+
+            $scope.updateCustomRequest = function (data) {
+
+
+                console.log('### RUN TEST--> ' + data)
+
+                matchApiMock
+                    .loadMocha_Month_List()
+                    .then(function (d) {
+
+                        loadMoChaMonthList(d);
+
+                        // $scope.barData = {
+                        //     labels: armNames,
+                        //     datasets: [
+                        //         {
+                        //             // label: "<b style='color:darkgreen;'>Positive Controls</b>",
+                        //             backgroundColor: 'darkgreen',
+                        //             fillColor: 'darkgreen',
+                        //             strokeColor: 'rgba(220,220,220,0.8)',
+                        //             pointColor: 'darkgreen',
+                        //             highlightFill: '#23c6c8', //"rgba(220,220,220,0.75)",
+                        //             highlightStroke: 'rgba(220,220,220,1)',
+                        //             data: $scope.count_mda_dates
+                        //         },
+                        //         {
+                        //             // label: "<b style='color:navy;'>No Template Controls</b>",
+                        //             backgroundColor: 'navy',
+                        //             fillColor: 'navy',
+                        //             strokeColor: 'rgba(151,187,205,1)',
+                        //             pointColor: 'navy',
+                        //             highlightFill: '#23c6c8', //'rgba(220,220,220,0.75)',
+                        //             highlightStroke: 'rgba(220,220,220,1)',
+                        //             data: $scope.ntc_dates
+                        //         }
+                        //
+                        //     ]
+                        // };
+                    });
+            };
     });
+
+function ajaxResultPost(id) {
+
+    var scope = angular.element(document.getElementById("MainWrap")).scope();
+    scope.$apply(function () {
+        scope.updateCustomRequest(id);
+    });
+}
