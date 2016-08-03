@@ -2,7 +2,7 @@
     angular.module('matchbox.dashboard', [])
         .controller('DashboardController', DashboardController);
 
-    function DashboardController($scope, matchApi, store, DTOptionsBuilder, sharedCliaProperties) { //workflowApi
+    function DashboardController($scope, matchApi, store, DTOptionsBuilder, sharedCliaProperties, arrayTools) {
         $scope.lastUpdated = (new Date()).getTime();
         $scope.name = 'MATCHBox User';
         $scope.name = setName();
@@ -21,6 +21,7 @@
         $scope.top_5_arms = [];
         $scope.top_5_arm_labels = [];
         $scope.top_5_arm_counts = [];
+        $scope.patientStatistics = {};
 
         $scope.now = new Date();
 
@@ -64,7 +65,7 @@
         $scope.loadDashboardStatisticsData = loadDashboardStatisticsData;
         $scope.loadTreatmentArmAccrualData = loadTreatmentArmAccrualData;
         $scope.setCanvasHeight = setCanvasHeight;
-        $scope.loadChartjsDonutChartData = loadChartjsDonutChartData;
+        $scope.loadSequencedAndConfirmedChartData = loadSequencedAndConfirmedChartData;
         $scope.loadTissueVariantReportsList = loadTissueVariantReportsList;
         $scope.loadBloodVariantReportsList = loadBloodVariantReportsList;
         $scope.loadPatientPendingAssignmentReportsList = loadPatientPendingAssignmentReportsList;
@@ -95,11 +96,9 @@
         function loadDashboardStatisticsData() {
             matchApi
                 .loadDashboardStatistics()
-                    .then(function (d) {
-                        $scope.numberOfPatients = d.data.number_of_patients;
-                        $scope.numberOfScreenedPatients = d.data.number_of_screened_patients;
-                        $scope.numberOfPatientsWithTreatment = d.data.number_of_patients_with_treatment;
-                    });
+                .then(function (d) {
+                    $scope.patientStatistics = angular.copy(d.data);
+                });
         }
 
         function loadTreatmentArmAccrualData() {
@@ -139,11 +138,12 @@
             
         }
 
-        function loadChartjsDonutChartData() {
+        function loadSequencedAndConfirmedChartData() {
             matchApi
-                .loadChartjsDonutChart()
+                .loadSequencedAndConfirmedChartData()
                 .then(function (d) {
-                    var aMoiValues = d.data.aMoiValues;
+                    var stats = d.data;
+                    
                     var aMoiLabels = [
                         '<span class="chart-legend-digit">0</span> aMOI', 
                         '<span class="chart-legend-digit">1</span> aMOI', 
@@ -167,40 +167,39 @@
                         legendTemplate: '<ul class="dashboard donut-chart-legend"><% for (var i=0; i<segments.length; i++) {%><i class="fa fa-square" style="color: <%=segments[i].fillColor%>" ></i> <%if(segments[i].label){%><%=segments[i].label%> : <strong><%=segments[i].value%> patients</strong> <%}%><br><%}%></ul>'
                     };
 
-
                     $scope.donutData = [
                         {
-                            value: aMoiValues[0],
+                            value: stats.patients_with_0_amois,
                             color: "#23c6c8",
                             highlight: aMoiHighlight,
                             label: aMoiLabels[0]
                         },
                         {
-                            value: aMoiValues[1],
+                            value: stats.patients_with_1_amois,
                             color: "#1c84c6",
                             highlight: aMoiHighlight,
                             label: aMoiLabels[1]
                         },
                         {
-                            value: aMoiValues[2],
+                            value: stats.patients_with_2_amois,
                             color: "#18a689", //"#ab0102",
                             highlight: aMoiHighlight,
                             label: aMoiLabels[2]
                         },
                         {
-                            value: aMoiValues[3],
+                            value: stats.patients_with_3_amois,
                             color: "#f8ac59",
                             highlight: aMoiHighlight,
                             label: aMoiLabels[3]
                         },
                         {
-                            value: aMoiValues[4],
+                            value: stats.patients_with_4_amois,
                             color: "#707070",
                             highlight: aMoiHighlight,
                             label: aMoiLabels[4]
                         },
                         {
-                            value: aMoiValues[5],
+                            value: stats.patients_with_5_or_more_amois,
                             color: "#cfcfcf",
                             highlight: aMoiHighlight,
                             label: aMoiLabels[5]
@@ -215,7 +214,22 @@
                 .loadTissueVariantReportsList()
                 .then(function (d) {
                     $scope.pendingTissueVariantReportList = d.data;
+                    arrayTools.forEach($scope.pendingTissueVariantReportList, function(element) {
+                        calculateDaysPending(element, 'status_date');
+                    });
                 });
+        }
+
+        function calculateDaysPending(element, dateAttr) {
+            var dateValue = element[dateAttr];
+            if (dateValue) {
+                var now = moment();
+                var dateValueMoment = moment(dateValue);
+                var diff = dateValueMoment.diff(now, "DD/MM/YYYY HH:mm:ss");
+                element.days_pending = moment.duration(diff).days();
+            } else {
+                element.days_pending = '-';
+            }
         }
 
         function loadBloodVariantReportsList() {
@@ -223,6 +237,9 @@
                 .loadBloodVariantReportsList()
                 .then(function(d) {
                     $scope.pendingBloodVariantReportList = d.data;
+                    arrayTools.forEach($scope.pendingTissueVariantReportList, function(element) {
+                        calculateDaysPending(element, 'status_date');
+                    });
                 });
         }
 
@@ -231,8 +248,10 @@
                 .loadPatientPendingAssignmentReportsList()
                 .then(function(d) {
                     $scope.pendingAssignmentReportList = d.data;
+                    arrayTools.forEach($scope.pendingTissueVariantReportList, function(element) {
+                        calculateDaysPending(element, 'status_date');
+                    });
                 });
-            
         }
 
         function loadDashboardData() {

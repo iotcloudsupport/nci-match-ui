@@ -8,7 +8,7 @@
                 loadActivity: loadActivity,
                 loadDashboardStatistics: loadDashboardStatistics,
                 loadTreatmentArmAccrual: loadTreatmentArmAccrual,
-                loadChartjsDonutChart: loadChartjsDonutChart,
+                loadSequencedAndConfirmedChartData: loadSequencedAndConfirmedChartData,
                 loadTissueVariantReportsList: loadTissueVariantReportsList,
                 loadBloodVariantReportsList: loadBloodVariantReportsList,
                 loadPatientPendingAssignmentReportsList: loadPatientPendingAssignmentReportsList,
@@ -64,7 +64,7 @@
                 return $http.get(matchConfig.patientApiBaseUrl + '/dashboard/pendingAssignmentReports');
             }
 
-            function loadChartjsDonutChart() {
+            function loadSequencedAndConfirmedChartData() {
                 return $http.get(matchConfig.patientApiBaseUrl + '/dashboard/sequencedAndConfirmedPatients');
             }
 
