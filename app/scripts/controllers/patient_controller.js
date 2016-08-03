@@ -303,7 +303,7 @@
                                 slide_barcode: shipment.slide_barcode,
                                 carrier: shipment.carrier,
                                 tracking_id: shipment.tracking_id,
-                                shipped_dttm: shipment.shipped_dttm
+                                shipped_dttm: shipment.shipped_date
                             }
                         );
                     }
