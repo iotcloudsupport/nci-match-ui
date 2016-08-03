@@ -95,7 +95,8 @@
                 timelineEvent: '<',
                 type: '<',
                 isStepChanging: '<',
-                layout: '<'
+                layout: '<',
+                showStepDelimiter: '<'                
             },
             link: linker
         }

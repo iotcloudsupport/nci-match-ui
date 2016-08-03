@@ -1,10 +1,10 @@
 <div class="row">
-    <div class="col-xs-5 col-md-4 date" title="Biopsy Variant Report Received" ng-class="{'date-top-border':timelineEvent.isStepChanging}">
+    <div class="col-xs-5 col-md-4 date" ng-class="{'date-top-border': (showStepDelimiter && timelineEvent.isStepChanging)}">
         <i class="fa fa-bar-chart fa-2x"></i> <small>{{::timelineEvent.event_date | utc}}</small>
         <br/>
         <small class="text-navy">{{::timelineEvent.from_now}}</small>
     </div>
-    <div class="col-xs-7 col-md-8 content" ng-class="{'no-top-border':!timelineEvent.isStepChanging}">
+    <div class="col-xs-7 col-md-8 content" ng-class="{'no-top-border': !(showStepDelimiter && timelineEvent.isStepChanging)}">
         <p class="m-b-xs timeline-title"><span class="timeline-step">Step: {{::timelineEvent.event_data.step}}.</span><strong>{{::timelineEvent.event_message}}</strong></p>
         <p class="m-b-xs">
 
