@@ -8,9 +8,7 @@
         'patients.matchbox',
         'patient.matchbox',
         'iradmin.matchbox',
-        'irsample.matchbox',
         'qcsample.matchbox',
-        'irntc.matchbox',
         'treatment-arms.matchbox',
         'treatment-arm.matchbox',
         'specimen-tracking.matchbox',
@@ -34,6 +32,8 @@
         'd3module',
         'd3',
         'match.calendar-heatmap',
-        'angular.vertilize'
+        'angular.vertilize',
+        'datatables',
+        'ngResource'
     ]);
 })();
