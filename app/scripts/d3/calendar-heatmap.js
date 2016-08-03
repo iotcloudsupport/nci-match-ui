@@ -366,9 +366,21 @@ angular.module('match.calendar-heatmap', []).
             .attr('font-size', function () {
               return Math.floor(label_padding / 3) + 'px';
             })
-            .text(function (d) {
-              return d.toLocaleDateString('en-us', {month: 'short'});
-            })
+
+              .html(function (d) {
+
+                // return '<form action=""> <input onClick="ajaxResultPost()" type="submit" value="' + d.toLocaleDateString("en-us", {month: "short"}) + '"> </form>';
+                return '<a href="javascript: void(0)" target="_self" onClick="ajaxResultPost(2)" style="text-decoration: underline"> ' + d.toLocaleDateString("en-us", {month: "short"}) + '</a>'
+
+              })
+
+              // .attr("xlink:href": d.toLocaleDateString('en-us', {month: 'short'}))
+
+            // .text(function (d) {
+            //   return d.toLocaleDateString('en-us', {month: 'short'});
+            // })
+
+
             .attr('x', function (d, i) {
               return monthScale(i) + (monthScale(i) - monthScale(i-1)) / 2;
             })
