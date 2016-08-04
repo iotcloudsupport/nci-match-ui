@@ -232,14 +232,23 @@
             for (var i = 0; i < $scope.versions.length; i++) {
                 var version = $scope.versions[i];
 
-                if (!version.version_history)
+                if (!version.status_log)
                     continue;
 
-                for (var j = 0; j < version.version_history.length; j++) {
-                    var historyItem = angular.copy(version.version_history[j])
+                angular.forEach(version.status_log, function(key, value) {
+                    var historyItem = {};
+                    historyItem.version = version.version;
+                    historyItem.status = key;
+                    var gmtDate = new Date(value * 1000);
+                    historyItem.date = gmtDate.toGMTString();
+                    $scope.versionHistory.push(historyItem);
+                });
+                //mock data configuration
+                /*for (var j = 0; j < version.status_log.length; j++) {
+                    var historyItem = angular.copy(version.status_log[j])
                     historyItem.version = version.version;
                     $scope.versionHistory.push(historyItem);
-                }
+                }*/
             }            
         }
 
