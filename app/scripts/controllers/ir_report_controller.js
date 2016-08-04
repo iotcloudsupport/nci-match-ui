@@ -17,10 +17,6 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         .withOption('searching', false);
 
 
-
-
-
-
         $scope.irList = [];
         $scope.moChaList = [];
         $scope.mdAccList = [];
@@ -54,58 +50,200 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         $scope.loadSampleHRFiles = loadSampleHRFiles;
         $scope.schedule = "weekmap";
 
-            $scope.loadMap = function (id) {
-                if(id == "heatmap"){
-                    $scope.schedule = "weekmap";
-                    $scope.monthview = 'none';
-                    $scope.barlegend = "Total Positive / NTC Control Status";
-                }
-                else {
-                    $scope.schedule = "heatmap";
-                    $scope.barlegend = "History of Total Positive / NTC Control Status";
-                }
-            };
-            
+        $scope.heatMapList = [];
+
+        $scope.loadMap = function (id) {
+            if(id == "heatmap"){
+                $scope.schedule = "weekmap";
+                $scope.monthview = 'none';
+                $scope.barlegend = "Total Positive / NTC Control Status";
+            }
+            else {
+                $scope.schedule = "heatmap";
+                $scope.barlegend = "History of Total Positive / NTC Control Status";
+            }
+        };
+
+
+
             //HEATMAP
-            // Initialize random data for the demo
-            var now = moment().endOf('day').toDate();
-            var yearAgo = moment().startOf('day').subtract(1, 'year').toDate();
-            $scope.exampleData = d3.time.days(yearAgo, now).map(function (dateElement) {
+            //LOAD DATA
+            matchApiMock
+                .loadMocha_Month_List()
+                .then(function (d) {
+                    angular.forEach(d, function (value,k) {
+                        var d;
+                        angular.forEach(value, function (v,k) {
+                            // console.log(" isoDate ----> "+v.date_created )
+                            if(v.date_created !== undefined) {
+                                d = new Date(v.date_created);
+                                $scope.heatMapList.push({
+                                    'name': v.molecular_id,
+                                    'date_created': d,
+                                    'date': d.getDate(),
+                                    'month': d.getMonth(),
+                                    'year': d.getYear()
+                                });
+                            }
+                        })
+                    });
 
 
 
-                return {
-                    date: dateElement,
-                    details: Array.apply(null, new Array(Math.floor(Math.random() * 2))).map(function(e, i, arr) {
+                    //START HEATMAP
+                    // $scope.exampleData = angular.forEach($scope.heatMapList, function (value,k) {
+                    //
+                    //     // D --->{"name":"SampleControl_MoCha_12","date":"June 1, 2015 4:51 PM GMT"}
+                    //
+                    //     dateElement = value.date;
+                    //     nameElement = value.name;
+                    //
+                    //     console.log("dateElement--->" + dateElement)
+                    //
+                    //     return {
+                    //         date: dateElement,
+                    //         details: Array.apply(null, new Array(Math.floor(1))).map(function(e, i, arr) {
+                    //
+                    //             console.log("nameElement--->" + nameElement)
+                    //             return {
+                    //                 'name': nameElement,
+                    //                 'date': function () {
+                    //                     // var projectDate = new Date(dateElement.getTime());
+                    //
+                    //                     // var projectDate = new Date(dateElement);
+                    //                     // projectDate.setHours(Math.floor(Math.random() * 24))
+                    //                     // projectDate.setMinutes(Math.floor(Math.random() * 60));
+                    //                     return dateElement;
+                    //                 }(),
+                    //                 'value': 3600 * ((arr.length - i) / 5) + Math.floor(Math.random() * 3600)
+                    //             };
+                    //         }),
+                    //         init: function () {
+                    //
+                    //             console.log("this.details--->" + JSON.stringify(this.details))
+                    //
+                    //             this.total = this.details.reduce(function (prev, e) {
+                    //
+                    //                 console.log("prev--->" + JSON.stringify(prev) + "  ----  " +  JSON.stringify(e))
+                    //
+                    //                 return prev + e.value;
+                    //             }, 0);
+                    //             return this;
+                    //         }
+                    //     }.init();
+                    // });
+                    //START HEATMAP
 
-                        // console.log(Math.random() * 3)
+                // });
 
-                        var name = "";
-                        if((Math.random() * 3) > 2){name = 'Positive Controls ';}
-                        else {name = 'Ntc Controls ';}
+
+
+
+                // Initialize random data for the demo
+                var now = moment().endOf('day').toDate();
+                var yearAgo = moment().startOf('day').subtract(1, 'year').toDate();
+
+                $scope.exampleData = d3.time.days(yearAgo, now).map(function (dateElement) {
+                    var array = [];
+
+                    //Check heat map date
+                    // var check = hasDate(dateElement);
+                    array = hasDate(dateElement);
+
+                    if(array[0] === true) {
+                        return {
+                            date: dateElement,
+                            details: Array.apply(null, new Array(Math.floor(Math.random() * 12))).map(function (e, i, arr) {
+                                var name = array[1];
+                                var date = array[2];
+
+                                return {
+                                    'name': name,
+                                    'date': date,
+                                    'value': 3600 * ((arr.length - i) / 5) + Math.floor(Math.random() * 3600)
+                                    // 'date': function () {
+                                    //     var projectDate = new Date(dateElement.getTime());
+                                    //     projectDate.setHours(Math.floor(Math.random() * 24))
+                                    //     projectDate.setMinutes(Math.floor(Math.random() * 60));
+                                    //     return projectDate;
+                                    // }(),
+                                    // 'value': 3600 * ((arr.length - i) / 5) + Math.floor(Math.random() * 3600)
+                                };
+                            }),
+                            init: function () {
+                                this.total = this.details.reduce(function (prev, e) {
+
+                                    return prev + e.value;
+                                }, 0);
+                                return this;
+                            }
+                        }.init();
+                    }
+                    else{
 
                         return {
-                            'name': name + Math.floor(Math.random() * 123),
-                            'date': function () {
-                                var projectDate = new Date(dateElement.getTime());
-                                projectDate.setHours(Math.floor(Math.random() * 24))
-                                projectDate.setMinutes(Math.floor(Math.random() * 60));
-                                return projectDate;
-                            }(),
-                            'value': 3600 * ((arr.length - i) / 5) + Math.floor(Math.random() * 3600)
-                        };
-                    }),
-                    init: function () {
-                        this.total = this.details.reduce(function (prev, e) {
+                            date: dateElement,
+                            details: Array.apply(null, new Array(Math.floor(Math.random() * 2))).map(function (e, i, arr) {
 
-                            return prev + e.value;
-                        }, 0);
-                        return this;
+
+                                var name = "";
+                                // if ((Math.random() * 3) > 2) {
+                                //     name = 'Positive Controls ';
+                                // }
+                                // else {
+                                //     name = 'Ntc Controls ';
+                                // }
+
+                                return {
+                                    'name': "",
+                                    'date': function () {
+                                        var projectDate = new Date(dateElement.getTime());
+                                        projectDate.setHours(Math.floor(Math.random() * 24))
+                                        projectDate.setMinutes(Math.floor(Math.random() * 60));
+                                        return projectDate;
+                                    }(),
+                                    'value': 3600 * ((arr.length - i) / 5) + Math.floor(Math.random() * 3600)
+                                };
+                            }),
+                            init: function () {
+                                this.total = this.details.reduce(function (prev, e) {
+
+                                    return;
+
+                                    // return prev + e.value;
+                                }, 0);
+                                return this;
+                            }
+                        }.init();
+
                     }
-                }.init();
+
+                });
+
+                function hasDate(dateElement){
+                   var d = new Date(dateElement);
+                    var check = [false,0];
+                    jQuery.map($scope.heatMapList, function(obj) {
+                        // console.log("OBJ-->"+JSON.stringify(obj))
+                        if(obj.month === d.getMonth() && obj.date === d.getDate() && obj.year === d.getYear()) {
+                            // console.log(d.getMonth() + " -- obj.month--> " + obj.month + " -- obj.date--> " + obj.date)
+                            check = [true,obj.name,obj.date_created];
+                        }
+
+                        return check;
+                    });
+
+                    return check;
+                }
 
             });
-            //HEATMAP
+
+                //HEATMAP
+
+
+
+
+
 
             // Set custom color for the calendar heatmap
             $scope.color = '#cd2327';
@@ -171,7 +309,6 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                 $scope.monthview = 'aug';
                 $scope.mochaQueryList = data.data;
 
-                console.log("reloadData--> " + $scope.mochaQueryList);
             };
 
             vm.dtInstance = {};
@@ -184,7 +321,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             }
 
             function callback(json) {
-                console.log(json);
+                // console.log(json);
             }
 
             // function callback(json) {
@@ -986,14 +1123,19 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             };
 
 
-            $scope.updateCustomRequest = function (data) {
-
-
-                console.log('### RUN TEST--> ' + data)
+            $scope.updateCustomRequest = function (month) {
 
                 matchApiMock
                     .loadMocha_Month_List()
                     .then(function (d) {
+
+                        //Parse data
+                        for (var i = d.data.length - 1; i >= 0; i--) {
+                            dt = new Date(d.data[i].date_created);
+                            if ((dt.getMonth()+1) !== month) {
+                                d.data.splice(i, 1);
+                            }
+                        }
 
                         loadMoChaMonthList(d);
 

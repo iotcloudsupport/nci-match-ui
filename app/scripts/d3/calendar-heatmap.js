@@ -72,7 +72,7 @@ angular.module('matchbox.calendar-heatmap', []).
         // Watch for data availability
         scope.$watch('data', function (data) {
 
-          // console.log("DATA ---> " + data)
+          // console.log("DATA ---> " + JSON.stringify(data))
 
           if ( !data ) { return; }
 
@@ -145,18 +145,18 @@ angular.module('matchbox.calendar-heatmap', []).
             return d.total;
           });
 
-          // var color = d3.scale.linear()
-          //   .range(['#ffffff', scope.color || '#ff4500'])
-          //   .domain([-0.15 * max_value, max_value]);
+          var color = d3.scale.linear()
+            .range(['#ffffff', scope.color || '#ff4500'])
+            .domain([-0.15 * max_value, max_value]);
 
           // var ntc_color = d3.scale.linear()
           //     .range(['#ffffff', scope.color || '#ff003b'])
           //     .domain([-0.15 * max_value, max_value]);
 
 
-          var color = d3.scale.linear()
-              .range(['green', 'red'])
-              .domain([-0.05 * max_value, max_value]);
+          // var color = d3.scale.linear()
+          //     .range(['green', 'red'])
+          //     .domain([-0.05 * max_value, max_value]);
 
 
           // d3.scale.linear().domain([0, max_area]).range(['beige', 'red']);
@@ -350,6 +350,10 @@ angular.module('matchbox.calendar-heatmap', []).
                   in_transition = false;
                 });
 
+          function getMonth(monthStr){
+            return new Date(monthStr+'-1-01').getMonth()+1
+          }
+
           // Add month labels
           var today = moment().endOf('day');
           var today_year_ago = moment().startOf('day').subtract(1, 'year');
@@ -369,8 +373,11 @@ angular.module('matchbox.calendar-heatmap', []).
 
               .html(function (d) {
 
+               var month = getMonth(d.toLocaleDateString("en-us", {month: "short"}));
+
+
                 // return '<form action=""> <input onClick="ajaxResultPost()" type="submit" value="' + d.toLocaleDateString("en-us", {month: "short"}) + '"> </form>';
-                return '<a href="javascript: void(0)" target="_self" onClick="ajaxResultPost(2)" style="text-decoration: underline"> ' + d.toLocaleDateString("en-us", {month: "short"}) + '</a>'
+                return '<a href="javascript: void(0)" target="_self" onClick="ajaxResultPost(' + month + ')" style="text-decoration: underline"> ' + d.toLocaleDateString("en-us", {month: "short"}) + '</a>'
 
               })
 
