@@ -29,6 +29,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         $scope.positiveList = [];
         $scope.negativeList = [];
             $scope.mochaQueryList = [];
+            $scope.mdaccQueryList = [];
 
         $scope.singleNucleotideVariantsList = [];
         $scope.indelsList = [];
@@ -308,6 +309,55 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
                 $scope.monthview = 'aug';
                 $scope.mochaQueryList = data.data;
+
+            };
+
+            function loadMDACCMonthList(data) {
+
+
+                console.log(JSON.stringify(data))
+
+                $scope.count_dates = [0, 0, 0, 0, 0, 0, 0];
+
+                angular.forEach(data, function (value,k) {
+                    angular.forEach(value, function (v,k) {
+
+                        if(v.current_status === 'FAILED'){$scope.pos_status[0] += 1;}
+                        if(v.current_status === 'PASSED'){$scope.pos_status[1] += 1;}
+                        else if(v.current_status === '-'){$scope.pos_status[2] += 1;}
+
+                        var tmp;
+                        switch (v.week_date) {
+                            case 'Mon':
+                                tmp = $scope.count_dates[0];
+                                $scope.count_dates[0] = tmp + 1;
+                                break;
+                            case 'Tue':
+                                tmp = $scope.count_dates[1];
+                                $scope.count_dates[1] = tmp + 1;
+                                break;
+                            case 'Wed':
+                                tmp = $scope.count_dates[2];
+                                $scope.count_dates[2] = tmp + 1;
+                                break;
+                            case 'Thu':
+                                tmp = $scope.count_dates[3];
+                                $scope.count_dates[3] = tmp + 1;
+                                break;
+                            case 'Fri':
+                                tmp = $scope.count_dates[4];
+                                $scope.count_dates[4] = tmp + 1;
+                                break;
+                            case 'Sat':
+                                // console.log("Selected Case Number is 6");
+                                break;
+                            default:
+                        }
+                    });
+                });
+
+                $scope.monthview = 'aug';
+                $scope.mdaccQueryList = data.data;
 
             };
 
@@ -1125,47 +1175,69 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
             $scope.updateCustomRequest = function (month) {
 
-                matchApiMock
-                    .loadMocha_Month_List()
-                    .then(function (d) {
+                console.log("BRANCH--->"+$scope.branch)
 
-                        //Parse data
-                        for (var i = d.data.length - 1; i >= 0; i--) {
-                            dt = new Date(d.data[i].date_created);
-                            if ((dt.getMonth()+1) !== month) {
-                                d.data.splice(i, 1);
+
+                if ($scope.branch == 'mocha') {
+                    matchApiMock
+                        .loadMocha_Month_List()
+                        .then(function (d) {
+
+                            //Parse data
+                            for (var i = d.data.length - 1; i >= 0; i--) {
+                                dt = new Date(d.data[i].date_created);
+                                if ((dt.getMonth() + 1) !== month) {
+                                    d.data.splice(i, 1);
+                                }
                             }
-                        }
 
-                        loadMoChaMonthList(d);
+                            loadMoChaMonthList(d);
 
-                        // $scope.barData = {
-                        //     labels: armNames,
-                        //     datasets: [
-                        //         {
-                        //             // label: "<b style='color:darkgreen;'>Positive Controls</b>",
-                        //             backgroundColor: 'darkgreen',
-                        //             fillColor: 'darkgreen',
-                        //             strokeColor: 'rgba(220,220,220,0.8)',
-                        //             pointColor: 'darkgreen',
-                        //             highlightFill: '#23c6c8', //"rgba(220,220,220,0.75)",
-                        //             highlightStroke: 'rgba(220,220,220,1)',
-                        //             data: $scope.count_mda_dates
-                        //         },
-                        //         {
-                        //             // label: "<b style='color:navy;'>No Template Controls</b>",
-                        //             backgroundColor: 'navy',
-                        //             fillColor: 'navy',
-                        //             strokeColor: 'rgba(151,187,205,1)',
-                        //             pointColor: 'navy',
-                        //             highlightFill: '#23c6c8', //'rgba(220,220,220,0.75)',
-                        //             highlightStroke: 'rgba(220,220,220,1)',
-                        //             data: $scope.ntc_dates
-                        //         }
-                        //
-                        //     ]
-                        // };
-                    });
+                            // $scope.barData = {
+                            //     labels: armNames,
+                            //     datasets: [
+                            //         {
+                            //             // label: "<b style='color:darkgreen;'>Positive Controls</b>",
+                            //             backgroundColor: 'darkgreen',
+                            //             fillColor: 'darkgreen',
+                            //             strokeColor: 'rgba(220,220,220,0.8)',
+                            //             pointColor: 'darkgreen',
+                            //             highlightFill: '#23c6c8', //"rgba(220,220,220,0.75)",
+                            //             highlightStroke: 'rgba(220,220,220,1)',
+                            //             data: $scope.count_mda_dates
+                            //         },
+                            //         {
+                            //             // label: "<b style='color:navy;'>No Template Controls</b>",
+                            //             backgroundColor: 'navy',
+                            //             fillColor: 'navy',
+                            //             strokeColor: 'rgba(151,187,205,1)',
+                            //             pointColor: 'navy',
+                            //             highlightFill: '#23c6c8', //'rgba(220,220,220,0.75)',
+                            //             highlightStroke: 'rgba(220,220,220,1)',
+                            //             data: $scope.ntc_dates
+                            //         }
+                            //
+                            //     ]
+                            // };
+                        });
+
+                    }
+
+                else{
+                    matchApiMock
+                        .loadMDACC_Month_List()
+                        .then(function (d) {
+
+                            //Parse data
+                            for (var i = d.data.length - 1; i >= 0; i--) {
+                                dt = new Date(d.data[i].date_created);
+                                if ((dt.getMonth() + 1) !== month) {
+                                    d.data.splice(i, 1);
+                                }
+                            }
+                            loadMDACCMonthList(d);
+                        })
+                    }
             };
     });
 
@@ -1175,4 +1247,9 @@ function ajaxResultPost(id) {
     scope.$apply(function () {
         scope.updateCustomRequest(id);
     });
+
+    // var mdascope = angular.element(document.getElementById("MDACCWrap")).scope();
+    // mdascope.$apply(function () {
+    //     mdascope.updateCustomRequest(id);
+    // });
 }

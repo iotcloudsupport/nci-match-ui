@@ -22,6 +22,7 @@
                 loadMocha_List: loadMocha_List,
                 loadMochaNtc_Table: loadMochaNtc_Table,
                 loadMocha_Month_List: loadMocha_Month_List,
+                loadMDACC_Month_List: loadMDACC_Month_List,
                 loadMDACC_Table: loadMDACC_Table,
                 loadMDACCNtc_Table: loadMDACCNtc_Table,
                 openPositives: openPositives,
@@ -100,6 +101,10 @@
 
             function loadMocha_Month_List(){
                 return $http.get('data/sample_mocha_list_month.json');
+            }
+
+            function loadMDACC_Month_List(){
+                return $http.get('data/sample_mdacc_list_month.json');
             }
 
             function loadMochaNtc_Table(){
