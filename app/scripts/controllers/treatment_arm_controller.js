@@ -216,7 +216,8 @@
             $scope.versions = scopeData;
             $scope.currentVersion = $scope.versions[0];
             $scope.currentVersion.latest = 'This is the latest version.';
-
+            console.log('here');
+            console.log($scope.currentVersion);
             setupHistory();
             setupRulesExlcusionInclusionLists();
             setupFinal();
@@ -231,23 +232,31 @@
             for (var i = 0; i < $scope.versions.length; i++) {
                 var version = $scope.versions[i];
 
-                if (!version.version_history)
+                if (!version.status_log)
                     continue;
 
-                for (var j = 0; j < version.version_history.length; j++) {
-                    var historyItem = angular.copy(version.version_history[j])
+                angular.forEach(version.status_log, function(key, value) {
+                    var historyItem = {};
+                    historyItem.version = version.version;
+                    historyItem.status = key;
+                    var gmtDate = new Date(value * 1000);
+                    historyItem.date = gmtDate.toGMTString();
+                    $scope.versionHistory.push(historyItem);
+                });
+                //mock data configuration
+                /*for (var j = 0; j < version.status_log.length; j++) {
+                    var historyItem = angular.copy(version.status_log[j])
                     historyItem.version = version.version;
                     $scope.versionHistory.push(historyItem);
-                }
+                }*/
             }            
         }
 
         function setupRulesExlcusionInclusionLists() {
             for (var i = 0; i < $scope.versions.length; i++) {
                 var version = $scope.versions[i];
-
-                setupCriteriaList(version.variant_report.single_nucleotide_variants, version, 'snvsInclusion', 'snvsExclusion');
-                setupCriteriaList(version.variant_report.indels, version, 'indelsInclusion', 'indelsExclusion');
+                setupCriteriaList(version.variant_report.svns_and_indels[0], version, 'snvsInclusion', 'snvsExclusion');
+                setupCriteriaList(version.variant_report.svns_and_indels[1], version, 'snvsInclusion', 'snvsExclusion');
                 setupCriteriaList(version.variant_report.copy_number_variants, version, 'cnvsInclusion', 'cnvsExclusion');
                 setupCriteriaList(version.variant_report.gene_fusions, version, 'geneFusionsInclusion', 'geneFusionsExclusion');
                 setupCriteriaList(version.variant_report.non_hotspot_rules, version, 'nhrsInclusion', 'nhrsExclusion');

@@ -6,7 +6,7 @@
                                          $http,
                                          matchConfig,
                                          DTOptionsBuilder,
-                                         matchApiMock,
+                                         matchApi,
                                          sharedCliaProperties) {
 
         this.dtOptions = DTOptionsBuilder.newOptions()
@@ -100,7 +100,7 @@
         }
 
         function loadSpecimenTrackingList() {
-            matchApiMock
+            matchApi
                 .loadSpecimenTrackingList()
                 .then(function (d) {
                     $scope.specimenTrackingList = d.data;

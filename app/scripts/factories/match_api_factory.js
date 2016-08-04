@@ -88,7 +88,7 @@
             }
 
             function loadPatientsForTa(name, stratum) {
-                return $http.get(matchConfig.treatmentArmApiBaseUrl + '/patientsOnTreatmentArm/' + name + '/' + stratum);
+                return $http.get(matchConfig.treatmentArmApiBaseUrl + '/patientsOnTreatmentArm/' + name); // + '/' + stratum);
             }
             // Treatment Arm API - END
 
