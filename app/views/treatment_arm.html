@@ -376,7 +376,7 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr ng-model="version" ng-repeat="item in currentVersion.snvsExclusion">
-                                                                <td><a ng-click="openId(item.identifier)">{{item.identifier | dashify }}</td>
+                                                                <td><a ng-click="openId(item.identifier)">{{item.identifier | dashify }}</a></td>
                                                             <td><a ng-click="openGene(item.gene_name)">{{item.gene_name | dashify }}</a></td>
                                                                 <td>{{item.chromosome | dashify }}</td>
                                                                 <td>{{item.position | dashify }}</td>
