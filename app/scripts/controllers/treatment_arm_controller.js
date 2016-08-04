@@ -216,7 +216,8 @@
             $scope.versions = scopeData;
             $scope.currentVersion = $scope.versions[0];
             $scope.currentVersion.latest = 'This is the latest version.';
-
+            console.log('here');
+            console.log($scope.currentVersion);
             setupHistory();
             setupRulesExlcusionInclusionLists();
             setupFinal();
@@ -245,9 +246,8 @@
         function setupRulesExlcusionInclusionLists() {
             for (var i = 0; i < $scope.versions.length; i++) {
                 var version = $scope.versions[i];
-
-                setupCriteriaList(version.variant_report.single_nucleotide_variants, version, 'snvsInclusion', 'snvsExclusion');
-                setupCriteriaList(version.variant_report.indels, version, 'indelsInclusion', 'indelsExclusion');
+                setupCriteriaList(version.variant_report.svns_and_indels[0], version, 'snvsInclusion', 'snvsExclusion');
+                setupCriteriaList(version.variant_report.svns_and_indels[1], version, 'snvsInclusion', 'snvsExclusion');
                 setupCriteriaList(version.variant_report.copy_number_variants, version, 'cnvsInclusion', 'cnvsExclusion');
                 setupCriteriaList(version.variant_report.gene_fusions, version, 'geneFusionsInclusion', 'geneFusionsExclusion');
                 setupCriteriaList(version.variant_report.non_hotspot_rules, version, 'nhrsInclusion', 'nhrsExclusion');
