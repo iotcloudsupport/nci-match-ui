@@ -1,6 +1,6 @@
-<div class="row timeline-event">
+<div class="row">
     <div class="col-xs-5 col-md-4 date" ng-class="{'date-top-border': (showStepDelimiter && timelineEvent.isStepChanging)}">
-        <i class="fa fa-user fa-2x"></i> <small>{{::timelineEvent.event_date | utc}}</small>
+        <i class="fa fa-flask fa-2x"></i> <small>{{::timelineEvent.event_date | utc}}</small>
         <br/>
         <small class="text-navy">{{::timelineEvent.from_now}}</small>
     </div>
@@ -12,20 +12,16 @@
             <br>
             </span>
 
-            <span ng-if="timelineEvent.event_data.location">
-                Locations: <span class="timeline-value">{{::timelineEvent.event_data.location}}</span>
-                <br>
+            <span ng-if="timelineEvent.event_data.pathology_status">
+                Pathology Status: <span class="timeline-value">{{::timelineEvent.event_data.pathology_status }}</span>
+            <br>
             </span>
-                                
-            <span ng-if="timelineEvent.event_data.patient_status">
-                Status: <span class="timeline-value" style="color: {{::timelineEvent.event_data.patient_status | patientStatus}}">{{::timelineEvent.event_data.patient_status}}</span>
-                <br>
+
+            <span ng-if="timelineEvent.event_data.surgical_event_id">
+                Surgical Event ID: <span class="timeline-value"><patient-title patient-id="timelineEvent.entity_id" section="'surgical_event'" text="timelineEvent.event_data.surgical_event_id" surgical-event-id="timelineEvent.event_data.surgical_event_id"></patient-title></span>
+            <br>
             </span>
-                                    
-            <span ng-if="timelineEvent.event_data.rebiopsy">
-                Rebiopsy: <span class="timeline-value">{{::timelineEvent.event_data.rebiopsy}}</span>
-                <br>
-            </span>
+
         </p>
     </div>
 </div>

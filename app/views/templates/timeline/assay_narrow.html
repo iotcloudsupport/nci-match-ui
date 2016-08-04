@@ -8,7 +8,7 @@
                 {{::timelineEvent.event_date | utc}},
                 <span class="event-age">{{::timelineEvent.from_now}}</span>
             </span>
-            <p class="m-b-xs"><span class="timeline-step">Step: {{::timelineEvent.event_data.step}}.</span> <strong>{{::timelineEvent.event_message}}</strong></p>
+            <p class="m-b-xs"><span class="timeline-step">Step: {{::timelineEvent.event_data.step}}. </span> <strong>{{::timelineEvent.event_message}}</strong></p>
         </div>
     </div>
     <div class="row">
@@ -24,9 +24,9 @@
                 <br>
                 </span>
                 
-                <span ng-if="timelineEvent.event_data.result">
-                    Results: <span class="timeline-value">{{::timelineEvent.event_data.assay_result | assayStatus }}</span>
-                <br>
+                <span ng-if="timelineEvent.event_data.assay_result">
+                    Results: <span class="timeline-value" style="color: {{::timelineEvent.event_data.assay_result | assayStatus}}">{{::timelineEvent.event_data.assay_result }}</span>
+                    <br>
                 </span>
             </p>
         </div>

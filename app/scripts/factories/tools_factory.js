@@ -6,7 +6,8 @@
 
     function arrayTools() {
         return {
-            removeElement: removeElement
+            removeElement: removeElement,
+            forEach: forEach
         }
 
         function removeElement(arr, element) {
@@ -20,6 +21,16 @@
             }
 
             return -1;
+        }
+
+        function forEach(arr, f) {
+            if (!arr || !Array.isArray(arr))
+                return;
+
+            for (var i = 0; i < arr.length; i++) {
+                var element = arr[i];
+                f(element);
+            }
         }
     }
 } ());

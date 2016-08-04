@@ -36,13 +36,13 @@
                 var diff = eventDateMoment.diff(now, "DD/MM/YYYY HH:mm:ss");
                 timelineEvent.from_now = moment.duration(diff).humanize(true);
 
-                if (previousStep && previousStep !== timelineEvent.event_data.step) {
+                if (previousStep && previousStep !== (timelineEvent.event_data.step || '_')) {
                     timelineEvent.isStepChanging = true;
                     previousStep = timelineEvent.event_data.step;
                 }
 
                 if (!previousStep) {
-                    previousStep = timelineEvent.event_data.step;
+                    previousStep = timelineEvent.event_data.step || '_';
                 }
             }
         }

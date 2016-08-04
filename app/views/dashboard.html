@@ -11,15 +11,15 @@
             <div class="statistic-box dashboard">
                 <ul class="list-group clear-list statistics m-t">
                     <li class="list-group-item fist-item">
-                        <strong><span class="pull-right">{{ numberOfPatients }}</span></strong>
+                        <strong><span class="pull-right">{{ ::patientStatistics.number_of_patients }}</span></strong>
                         Registered Patients:
                     </li>
                     <li class="list-group-item">
-                        <strong><span class="pull-right">{{ numberOfScreenedPatients }}</span></strong>
+                        <strong><span class="pull-right">{{ ::patientStatistics.number_of_patients_with_confirmed_variant_report }}</span></strong>
                         Patients with Confirmed Variant Report:
                     </li>
                     <li class="list-group-item">
-                        <strong><span class="pull-right">{{ numberOfPatientsWithTreatment }}</span></strong>
+                        <strong><span class="pull-right">{{ ::patientStatistics.number_of_patients_on_treatment_arm }}</span></strong>
                         Patients on Treatment:
                     </li>
                     <li class="list-group-item">
@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <div class="col-sm-6 col-md-6" ng-init="setCanvasHeight('#treatmentArmAccrualCanvas', 100);loadTreatmentArmAccrualData();">
+        <div class="col-sm-6 col-md-6" ng-init="setCanvasHeight('#treatmentArmAccrualCanvas', 100);">
             <div class="text-center">
                 <h3>Top 5 Treatment<br> Arm Accrual</h3>
             </div>
@@ -47,7 +47,7 @@
             </div>
         </div>
 
-        <div class="col-sm-3 col-md-3" ng-init="setCanvasHeight('#amoiCanvas', 95);loadChartjsDonutChartData();">
+        <div class="col-sm-3 col-md-3" ng-init="setCanvasHeight('#amoiCanvas', 95);loadSequencedAndConfirmedChartData();">
             <div class="text-center">
                 <h3>Sequenced & Confirmed <br> Patients with aMOIs</h3>
             </div>
@@ -60,23 +60,9 @@
     </div>
 
     <div class="wrapper wrapper-dashboard">
-        <div vertilize-container class="row">
-            <div vertilize class="col-lg-4 col-md-4 col-sm-6">
-
-                <div class="ibox-title ibox-title-no-line" id="activity-column">
-                    <h3>Activity Feed</h3>
-                </div>
-
-                <div class="ibox-content inspinia-timeline" ng-controller="ActivityController as activity" ng-init="activity.loadData(10)"
-                    id="panding-items-column">
-                    <div class="timeline-item" ng-repeat="timelineEvent in activity.data">
-                        <timeline timeline-event="timelineEvent" type="timelineEvent.event_type" layout="'narrow'"></timeline>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-8 col-md-8 col-sm-6">
-                <div vertilize class="panel-container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel-container">
                     <div class="ibox-title ibox-title-no-line">
                         <h3>Pending Review </h3>
                     </div>
@@ -113,19 +99,17 @@
                                                         <i class="fa fa-file-text-o"></i>
                                                     </a>
                                                 </td>
-                                                <td ng-if="patient.clia_lab === 'MoCha'">
-                                                    <a ui-sref="clia-labs" ng-click="clialab('mocha')">{{ patient.clia_lab | dashify }}</a>
-                                                </td>
-                                                <td ng-if="patient.clia_lab === 'MDA'">
-                                                    <a ui-sref="clia-labs" ng-click="clialab('mdacc')">{{ patient.clia_lab | dashify }}</a>
+                                                <td>
+                                                    <a ng-if="patient.clia_lab === 'MoCha'" ui-sref="clia-labs" ng-click="clialab('mocha')">{{ patient.clia_lab | dashify }}</a>
+                                                    <a ng-if="patient.clia_lab === 'MDA'" ui-sref="clia-labs" ng-click="clialab('mdacc')">{{ patient.clia_lab | dashify }}</a>
                                                 </td>
                                                 <td>{{ patient.specimen_received_date | gmt }}</td>
                                                 <td>{{ patient.variant_report_received_date | gmt }}</td>
                                                 <td><span ng-if="patient.days_pending >= days_pending_range.upper_bound_yellow"
-                                                        class="label label-danger">{{ patient.days_pending | dashify }}</span>
+                                                        class="label label-danger">{{ patient.days_pending }}</span>
                                                     <span ng-if="patient.days_pending < days_pending_range.upper_bound_yellow && patient.days_pending >= days_pending_range.upper_bound_green"
-                                                        class="label label-warning">{{ patient.days_pending | dashify }}</span>
-                                                    <span ng-if="patient.days_pending < days_pending_range.upper_bound_green" class="label label-primary">{{ patient.days_pending | dashify }}</span>
+                                                        class="label label-warning">{{ patient.days_pending }}</span>
+                                                    <span ng-if="patient.days_pending < days_pending_range.upper_bound_green" class="label label-primary">{{ patient.days_pending }}</span>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -163,19 +147,17 @@
                                                         <i class="fa fa-file-text-o"></i>
                                                     </a>
                                                 </td>
-                                                <td ng-if="patient.clia_lab === 'MoCha'">
-                                                    <a ui-sref="clia-labs" ng-click="clialab('mocha')">{{ patient.clia_lab | dashify }}</a>
-                                                </td>
-                                                <td ng-if="patient.clia_lab === 'MDA'">
-                                                    <a ui-sref="clia-labs" ng-click="clialab('mdacc')">{{ patient.clia_lab | dashify }}</a>
+                                                <td>
+                                                    <a ng-if="patient.clia_lab === 'MoCha'" ui-sref="clia-labs" ng-click="clialab('mocha')">{{ patient.clia_lab | dashify }}</a>
+                                                    <a ng-if="patient.clia_lab === 'MDA'" ui-sref="clia-labs" ng-click="clialab('mdacc')">{{ patient.clia_lab | dashify }}</a>
                                                 </td>
                                                 <td>{{ patient.specimen_received_date | gmt }}</td>
                                                 <td>{{ patient.variant_report_received_date | gmt }}</td>
                                                 <td><span ng-if="patient.days_pending >= days_pending_range.upper_bound_yellow"
-                                                        class="label label-danger">{{ patient.days_pending | dashify }}</span>
+                                                        class="label label-danger">{{ patient.days_pending }}</span>
                                                     <span ng-if="patient.days_pending < days_pending_range.upper_bound_yellow && patient.days_pending >= days_pending_range.upper_bound_green"
-                                                        class="label label-warning">{{ patient.days_pending | dashify }}</span>
-                                                    <span ng-if="patient.days_pending < days_pending_range.upper_bound_green" class="label label-primary">{{ patient.days_pending | dashify }}</span>
+                                                        class="label label-warning">{{ patient.days_pending }}</span>
+                                                    <span ng-if="patient.days_pending < days_pending_range.upper_bound_green" class="label label-primary">{{ patient.days_pending }}</span>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -219,10 +201,10 @@
                                                 </td>
                                                 <td>{{ patient.assignment_date | gmt }}</td>
                                                 <td><span ng-if="patient.hours_pending >= hours_pending_range.upper_bound_yellow"
-                                                        class="label label-danger">{{ patient.hours_pending | dashify }}</span>
+                                                        class="label label-danger">{{ patient.hours_pending }}</span>
                                                     <span ng-if="patient.hours_pending < hours_pending_range.upper_bound_yellow && patient.hours_pending >= hours_pending_range.upper_bound_green"
-                                                        class="label label-warning">{{ patient.hours_pending | dashify }}</span>
-                                                    <span ng-if="patient.hours_pending < hours_pending_range.upper_bound_green" class="label label-primary">{{ patient.hours_pending | dashify }}</span>
+                                                        class="label label-warning">{{ patient.hours_pending }}</span>
+                                                    <span ng-if="patient.hours_pending < hours_pending_range.upper_bound_green" class="label label-primary">{{ patient.hours_pending }}</span>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -230,6 +212,22 @@
                                 </div>
                             </uib-tab>
                         </uib-tabset>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="ibox-title ibox-title-no-line" id="activity-column">
+                    <h3>Activity Feed</h3>
+                </div>
+
+                <div class="ibox-content inspinia-timeline" ng-controller="ActivityController as activity" ng-init="activity.loadData(10)"
+                    id="panding-items-column">
+                    <div class="timeline-item" ng-repeat="timelineEvent in activity.data">
+                        <timeline timeline-event="timelineEvent" type="timelineEvent.event_type"></timeline>
                     </div>
                 </div>
             </div>
