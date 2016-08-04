@@ -9,8 +9,10 @@
                                          matchApi,
                                          sharedCliaProperties) {
 
-        this.dtOptions = DTOptionsBuilder.newOptions()
+        this.dtOptions = DTOptionsBuilder
+            .newOptions()
             .withDisplayLength(100);
+
         this.dtColumnDefs = [];
         this.dtInstance = {};
 
@@ -25,7 +27,7 @@
 
         $scope.loadSpecimenTrackingList = loadSpecimenTrackingList;
 
-        $scope.specimenTrackingList = [];
+        $scope.shipments = [];
 
         $scope.sites = {
             'mda': {
@@ -52,7 +54,6 @@
         ];
         
         $scope.showHideRow = function() {
-            
         }
 
         function setupTooltip(label, xval, yval) {
@@ -89,28 +90,30 @@
 
         $scope.pieOptions = setupPieChartOptions('#legendContainer');
 
-        function setupSites() {
-            angular.forEach($scope.specimenTrackingList, function(value) {
-                var biopsy = value;
-                angular.forEach(biopsy.assays, function() {
-                    if (biopsy.site === 'MoCha') $scope.sites.mocha.count++;
-                    if (biopsy.site === 'MDA') $scope.sites.mda.count++;
-                });
-            });
-        }
-
         function loadSpecimenTrackingList() {
             matchApi
                 .loadSpecimenTrackingList()
                 .then(function (d) {
-                    $scope.specimenTrackingList = d.data;
-                })
-                .then (setupSites)
-                .then (updateSiteStatistics)
-                .then(setupTrendAnalysisData)
+                    $scope.shipments = angular.copy(d.data);
+                    setupSites();
+                    updateSiteStatistics();
+                    setupTrendAnalysisData();
+                });
         }
 
-        updateSiteStatistics = function () {
+        function setupSites() {
+            angular.forEach($scope.shipments, function(value) {
+                var shipment = value;
+                angular.forEach(shipment.assays, function() {
+                    if (shipment.destination && shipment.destination.toUpperCase() === 'MOCHA') 
+                        $scope.sites.mocha.count++;
+                    else if (shipment.destination && shipment.destination.toUpperCase() === 'MDA') 
+                        $scope.sites.mda.count++;
+                });
+            });
+        }
+
+        function updateSiteStatistics() {
             var total = $scope.sites.mocha.count + $scope.sites.mda.count;
             total = (total === 0) ? 1 : total;
 
@@ -120,8 +123,8 @@
             $scope.pieDataset[1].data = $scope.sites.mocha.count;
         }
 
-        setupTrendAnalysisData = function() {
-            angular.forEach($scope.specimenTrackingList, function(value) {
+        function setupTrendAnalysisData() {
+            angular.forEach($scope.shipments, function(value) {
                 console.log('value');
                 console.log(value);
                 console.log('collected_date');

@@ -95,34 +95,31 @@
                         <th>Fedex Tracking</th>
                         <th>Pathology Status</th>
                         <th>Pathology Status Date</th>
-
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat-start="specimenTrackingItem in specimenTrackingList">
-                        <!-- ng-repeat -->
-                        <td><a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id, section: 'tissue_variant_report', molecular_id: specimenTrackingItem.molecular_id, analysis_id: specimenTrackingItem.analysis_id })">{{ specimenTrackingItem.molecular_id | dashify }}</a></td>
-                        <td><a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id, section: 'surgical_event', surgical_event_id: specimenTrackingItem.surgical_event_id })">{{ specimenTrackingItem.surgical_event_id | dashify }}</a></td>
-                        <td><a ui-sref="patient({ patient_id: specimenTrackingItem.patient_id })">{{ specimenTrackingItem.patient_id}}</a></td>
-                        <td>{{ specimenTrackingItem.collected_date | utc | dashify }}</td>
-                        <td>{{ specimenTrackingItem.received_date | utc }}</td>
-                        <td>{{ specimenTrackingItem.type }}</td>
-                        <td>{{ specimenTrackingItem.shipped_date | utc }}</td>
-                        <td ng-if="specimenTrackingItem.site === 'MoCha'">
-                            <a ui-sref="clia-labs" ng-click="clialab('mocha')">{{ specimenTrackingItem.site | dashify }}</a>
-                        </td>
-                        <td ng-if="specimenTrackingItem.site === 'MDA'">
-                            <a ui-sref="clia-labs" ng-click="clialab('mdacc')">{{ specimenTrackingItem.site | dashify }}</a>
+                    <tr ng-repeat-start="shipment in shipments">
+                        <td><a ui-sref="patient({ patient_id: shipment.patient_id, section: 'tissue_variant_report', molecular_id: shipment.molecular_id, analysis_id: shipment.analysis_id })">{{ shipment.molecular_id | dashify }}</a></td>
+                        <td><a ui-sref="patient({ patient_id: shipment.patient_id, section: 'surgical_event', surgical_event_id: shipment.surgical_event_id })">{{ shipment.surgical_event_id | dashify }}</a></td>
+                        <td><a ui-sref="patient({ patient_id: shipment.patient_id })">{{ shipment.patient_id}}</a></td>
+                        <td>{{ shipment.collected_date | utc | dashify }}</td>
+                        <td>{{ shipment.received_date | utc }}</td>
+                        <td>{{ shipment.type }}</td>
+                        <td>{{ shipment.shipped_date | utc }}</td>
+                        <td>
+                            <a ng-if="shipment.destination && shipment.destination.toUpperCase() === 'MOCHA'" ui-sref="clia-labs" ng-click="clialab('mocha')">{{ shipment.destination | dashify }}</a>
+                            <a ng-if="shipment.destination && shipment.destination.toUpperCase() === 'MDA'" ui-sref="clia-labs" ng-click="clialab('mdacc')">{{ shipment.destination | dashify }}</a>
+                            <span ng-if="shipment.destination && shipment.destination.toUpperCase() !== 'MOCHA' && shipment.destination.toUpperCase() !== 'MDA'">{{ shipment.destination }}</span>
                         </td>
                         <td>
-                            <tracking-link carrier="'fedex'" tracking-number="specimenTrackingItem.fedex_tracking"></tracking-link>
+                            <tracking-link carrier="'fedex'" tracking-number="shipment.tracking_id"></tracking-link>
                         </td>
-                        <td>{{ specimenTrackingItem.pathology_status }}</td>
-                        <td>{{ specimenTrackingItem.pathology_status_date | utc }}</td>
+                        <td>{{ shipment.pathology_status }}</td>
+                        <td>{{ shipment.pathology_status_date | utc }}</td>
                     </tr>
                     <tr ng-repeat-end>
 
-                        <td class="no-padding" ng-if="specimenTrackingItem.assays.length > 0" colspan="11">
+                        <td class="no-padding" ng-if="shipment.assays.length > 0" colspan="11">
 
                             <div class="ibox no-padding">
                                 <div class="ibox-title no-padding">
@@ -130,32 +127,24 @@
                                 </div>
                                 <div class="ibox-content ibox-content-no-padding ibox-title-no-line">
                                     <ul class="panel-list">
-                                        <li ng-repeat="assayItem in specimenTrackingItem.assays" class="info-element">
+                                        <li ng-repeat="assay in shipment.assays" class="info-element">
                                             <div class="row">
-                                                <div class="col-md-2 col-sm-6 text-left">
+                                                <div class="col-md-4 col-sm-6 text-left">
                                                     <dl class="dl-horizontal-narrow">
-                                                        <dt>IHC</dt>
-                                                        <dd ng-style="{'color':'{{ analysis.status | analysisStatus }}'}">{{::assayItem.ihc}}</dd>
+                                                        <dt>Biomarker</dt>
+                                                        <dd ng-style="{'color':'{{ analysis.status | analysisStatus }}'}">{{::assay.biomarker}}</dd>
                                                     </dl>
                                                 </div>
-                                                <div class="col-md-3 col-sm-6 text-left">
-                                                    <dl class="dl-horizontal-narrow">
-                                                        <dt>Assay Order Date</dt>
-                                                        <dd>{{assayItem.assay_order_date | utc}}</dd>
-
-                                                    </dl>
-                                                </div>
-                                                <div class="col-md-3 col-sm-6 text-left">
+                                                <div class="col-md-4 col-sm-6 text-left">
                                                     <dl class="dl-horizontal-narrow">
                                                         <dt>Assay Result Date</dt>
-                                                        <dd>{{assayItem.assay_result_date | utc}}</dd>
-
+                                                        <dd>{{assay.result_date | utc}}</dd>
                                                     </dl>
                                                 </div>
-                                                <div class="col-md-3 col-sm-6 text-left">
+                                                <div class="col-md-4 col-sm-6 text-left">
                                                     <dl class="dl-horizontal-narrow">
                                                         <dt>Result</dt>
-                                                        <dd><span ng-style="{'color':'{{ assayItem.result_information | assayStatus }}'}">{{assayItem.result_information}}</span></dd>
+                                                        <dd><span ng-style="{'color':'{{ assay.result | assayStatus }}'}">{{assay.result}}</span></dd>
                                                     </dl>
                                                 </div>
 
