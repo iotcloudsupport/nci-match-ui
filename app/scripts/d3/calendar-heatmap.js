@@ -370,16 +370,10 @@ angular.module('matchbox.calendar-heatmap', []).
             .attr('font-size', function () {
               return Math.floor(label_padding / 3) + 'px';
             })
-
-              .html(function (d) {
-
-               var month = getMonth(d.toLocaleDateString("en-us", {month: "short"}));
-
-
-                // return '<form action=""> <input onClick="ajaxResultPost()" type="submit" value="' + d.toLocaleDateString("en-us", {month: "short"}) + '"> </form>';
+            .html(function (d) {
+                var month = getMonth(d.toLocaleDateString("en-us", {month: "short"}));
                 return '<a href="javascript: void(0)" target="_self" onClick="ajaxResultPost(' + month + ')" style="text-decoration: underline"> ' + d.toLocaleDateString("en-us", {month: "short"}) + '</a>'
-
-              })
+            })
 
               // .attr("xlink:href": d.toLocaleDateString('en-us', {month: 'short'}))
 
