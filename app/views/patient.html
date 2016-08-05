@@ -293,16 +293,16 @@
                                                         <div class="col-md-3 text-right">
                                                             <div class="row">
                                                                 <div class="col-md-12 text-right">
-                                                                    <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analysis.dna_bam_path_name)">DNA BAM</a>
-                                                                    <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analysis.dna_bai_path_name)">DNA BAI</a>
-                                                                    <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analysis.vcf_path_name)">VCF</a>
+                                                                    <a href="{{currentTissueVariantReport.dna_bam_path_name}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analysis.dna_bam_path_name)">DNA BAM</a>
+                                                                    <a href="{{currentTissueVariantReport.dna_bai_path_name}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analysis.dna_bai_path_name)">DNA BAI</a>
+                                                                    <a href="{{currentTissueVariantReport.vcf_path_name}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analysis.vcf_path_name)">VCF</a>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-12 text-right">
-                                                                    <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analysis.rna_bam_path_name)">cDNA BAM</a>
-                                                                    <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analysis.rna_bai_path_name)">cDNA BAI</a>
-                                                                    <a href="#" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analysis.qc_report_path_name)">QC Report</a>
+                                                                    <a href="{{currentTissueVariantReport.rna_bam_path_name}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analysis.rna_bam_path_name)">cDNA BAM</a>
+                                                                    <a href="{{currentTissueVariantReport.rna_bai_path_name}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analysis.rna_bai_path_name)">cDNA BAI</a>
+                                                                    <a href="{{currentTissueVariantReport.qc_report_url}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(analysis.qc_report_url)">QC Report</a>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
@@ -414,7 +414,7 @@
                                                             <div class="col-md-12 text-left">
                                                                 <a href="{{currentTissueVariantReport.dna_ram_path_name}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentTissueVariantReport.dna_ram_path_name)">cDNA BAM</a>
                                                                 <a href="{{currentTissueVariantReport.dna_rai_path_name}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentTissueVariantReport.dna_rai_path_name)">cDNA BAI</a>
-                                                                <a href="{{currentTissueVariantReport.dna_qc_path_name}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentTissueVariantReport.dna_qc_path_name)">QC Report</a>
+                                                                <a href="{{currentTissueVariantReport.qc_report_url}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentTissueVariantReport.qc_report_url)">QC Report</a>
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -1144,7 +1144,7 @@
                                                     <div class="col-md-12 text-left">
                                                         <a href="{{currentBloodVariantReport.dna_ram_path_name}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentBloodVariantReport.dna_ram_path_name)">cDNA BAM</a>
                                                         <a href="{{currentBloodVariantReport.dna_rai_path_name}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentBloodVariantReport.dna_rai_path_name)">cDNA BAI</a>
-                                                        <a href="{{currentBloodVariantReport.dna_qc_path_name}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentBloodVariantReport.dna_qc_path_name)">QC Report</a>
+                                                        <a href="{{currentBloodVariantReport.qc_report_url}}" class="btn btn-xs btn-outline file-button-xs" ng-class="getFileButtonClass(currentBloodVariantReport.qc_report_url)">QC Report</a>
                                                     </div>
                                                 </div>
                                                 <div class="row">
