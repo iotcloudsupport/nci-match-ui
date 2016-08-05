@@ -7,6 +7,7 @@
                                          matchConfig,
                                          DTOptionsBuilder,
                                          matchApi,
+                                         matchApiMock,
                                          sharedCliaProperties) {
 
         this.dtOptions = DTOptionsBuilder.newOptions()
@@ -100,7 +101,7 @@
         }
 
         function loadSpecimenTrackingList() {
-            matchApi
+            matchApiMock
                 .loadSpecimenTrackingList()
                 .then(function (d) {
                     $scope.specimenTrackingList = d.data;
@@ -130,21 +131,36 @@
                 //console.log(value.pathology_status_date - value.shipped_date);
                 console.log(moment(value.collected_date).isValid());
                 var start = moment(value.collected_date);
-                var end = moment(value.shipped_date);
-                var duration = moment.duration(end.diff(start));
-                console.log(duration.asDays());
-                $scope.chartData[0].data.push(1470069480018, 39);
+                var shipped = moment(value.shipped_date);
+                var pathology = moment(value.pathology_status_date);
+                var shippedDuration = moment.duration(shipped.diff(start)).asDays();
+                var concordanceDuration = moment.duration(pathology.diff(shipped)).asDays();
+
+                console.log(shippedDuration);
+                var chartDataItemShipped = [];
+                var chartDataItemConcordance = [];
+
+                //chartDataItem.push(start.toString());
+                chartDataItemShipped.push(start.valueOf());
+                chartDataItemShipped.push(shippedDuration);
+                $scope.chartData[0].data.push(chartDataItemShipped);
+                chartDataItemConcordance.push(start.valueOf());
+                chartDataItemConcordance.push(concordanceDuration);
+                $scope.chartData[1].data.push(chartDataItemConcordance);
             });
+            console.log($scope.chartData);
+
+            var xLabel = $("<div style='position:absolute;text-align:center;font-size:12px;bottom:3px;left:0;right:0;'></div>").text("Specimen Collected Date").appendTo($('#trendChart'));
         }
 
         $scope.chartData = [
             {
-                label: "Concordance Date",
+                label: "Specimen Shipped",
                 data: [
-                    [1470059187808, 1.3],
+                    /*[1470059187808, 1.3],
                     [1470059230071, 1.0],
                     [1470059317984, 0.6],
-                    [1470059480018, 2.1]/*,
+                    [1470059480018, 2.1],
                      [5, 30],
                      [6, 45],
                      [7, 34],
@@ -156,12 +172,13 @@
                 ]
             },
             {
-                label: "Specimen Shipped Date",
+                label: "Concordance",
                 data: [
-                    [1470059187808, 1.0],
+                    /*[1470059187808, 1.0],
+                     1436346393000
                     [1470059230071, 0.7],
                     [1470059317984, 3.1],
-                    [1470059480018, 1.5]/*,
+                    [1470059480018, 1.5],
                      [5, 32],
                      [6, 44],
                      [7, 34],
@@ -200,13 +217,16 @@
                             }
                         ]
                     }
+                },
+                points: {
+                    show: true
                 }
             },
             xaxis: {
                 //tickDecimals: 0
                 mode: "time",
-                timeformat: "%d-%b-%y %H:%M:%S",
-                tickSize: [1, 'minute']
+                timeformat: "%d-%b-%y",
+                //tickSize: [1, 'minute']
             },
             colors: ["#1ab394"],
             grid: {
