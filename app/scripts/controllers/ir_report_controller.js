@@ -28,8 +28,8 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         $scope.tokenIpAddress = [];
         $scope.positiveList = [];
         $scope.negativeList = [];
-            $scope.mochaQueryList = [];
-            $scope.mdaccQueryList = [];
+        $scope.mochaQueryList = [];
+        $scope.mdaccQueryList = [];
 
         $scope.singleNucleotideVariantsList = [];
         $scope.indelsList = [];
@@ -69,27 +69,31 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
             //HEATMAP
             //LOAD DATA
-            matchApiMock
+                matchApiMock
                 .loadMocha_Month_List()
                 .then(function (d) {
                     angular.forEach(d, function (value,k) {
                         var d;
                         angular.forEach(value, function (v,k) {
-                            // console.log(" isoDate ----> "+v.date_created )
+
                             if(v.date_created !== undefined) {
+                                var mid = "Positive";
+                                if(v.molecular_id.indexOf('Ntc') == 0) {
+                                    mid = "Ntc";
+                                }
                                 d = new Date(v.date_created);
                                 $scope.heatMapList.push({
                                     'name': v.molecular_id,
                                     'date_created': d,
                                     'date': d.getDate(),
                                     'month': d.getMonth(),
-                                    'year': d.getYear()
+                                    'year': d.getYear(),
+                                    'status': v.current_status,
+                                    'mid': mid
                                 });
                             }
                         })
                     });
-
-
 
                     //START HEATMAP
                     // $scope.exampleData = angular.forEach($scope.heatMapList, function (value,k) {
@@ -137,9 +141,6 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
                 // });
 
-
-
-
                 // Initialize random data for the demo
                 var now = moment().endOf('day').toDate();
                 var yearAgo = moment().startOf('day').subtract(1, 'year').toDate();
@@ -157,10 +158,14 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                             details: Array.apply(null, new Array(Math.floor(Math.random() * 12))).map(function (e, i, arr) {
                                 var name = array[1];
                                 var date = array[2];
+                                var status = array[3];
+                                var mid = array[4];
 
                                 return {
                                     'name': name,
                                     'date': date,
+                                    'status': status,
+                                    'mid': mid,
                                     'value': 3600 * ((arr.length - i) / 5) + Math.floor(Math.random() * 3600)
                                     // 'date': function () {
                                     //     var projectDate = new Date(dateElement.getTime());
@@ -185,16 +190,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                         return {
                             date: dateElement,
                             details: Array.apply(null, new Array(Math.floor(Math.random() * 2))).map(function (e, i, arr) {
-
-
                                 var name = "";
-                                // if ((Math.random() * 3) > 2) {
-                                //     name = 'Positive Controls ';
-                                // }
-                                // else {
-                                //     name = 'Ntc Controls ';
-                                // }
-
                                 return {
                                     'name': "",
                                     'date': function () {
@@ -228,7 +224,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                         // console.log("OBJ-->"+JSON.stringify(obj))
                         if(obj.month === d.getMonth() && obj.date === d.getDate() && obj.year === d.getYear()) {
                             // console.log(d.getMonth() + " -- obj.month--> " + obj.month + " -- obj.date--> " + obj.date)
-                            check = [true,obj.name,obj.date_created];
+                            check = [true, obj.name, obj.date_created, obj.status, obj.mid];
                         }
 
                         return check;
@@ -1172,11 +1168,8 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                 };
             };
 
-
-            $scope.updateCustomRequest = function (month) {
-
-                console.log("BRANCH--->"+$scope.branch)
-
+            //Heatmap Months
+            $scope.updateMonthRequest = function (month) {
 
                 if ($scope.branch == 'mocha') {
                     matchApiMock
@@ -1239,13 +1232,98 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                         })
                     }
             };
+            //Heatmap Months
+
+            //Heatmap Weekday 
+            $scope.updateWeekDayRequest = function (weekday) {
+
+                if ($scope.branch == 'mocha') {
+                    matchApiMock
+                        .loadMocha_Month_List()
+                        .then(function (d) {
+
+
+                            console.log(dt.getDay())
+
+                            //Parse data
+                            for (var i = d.data.length - 1; i >= 0; i--) {
+                                dt = new Date(d.data[i].date_created);
+                                if ((dt.getDay() + 1) !== weekday) {
+                                    d.data.splice(i, 1);
+                                }
+                            }
+
+                            loadMoChaMonthList(d);
+
+                            // $scope.barData = {
+                            //     labels: armNames,
+                            //     datasets: [
+                            //         {
+                            //             // label: "<b style='color:darkgreen;'>Positive Controls</b>",
+                            //             backgroundColor: 'darkgreen',
+                            //             fillColor: 'darkgreen',
+                            //             strokeColor: 'rgba(220,220,220,0.8)',
+                            //             pointColor: 'darkgreen',
+                            //             highlightFill: '#23c6c8', //"rgba(220,220,220,0.75)",
+                            //             highlightStroke: 'rgba(220,220,220,1)',
+                            //             data: $scope.count_mda_dates
+                            //         },
+                            //         {
+                            //             // label: "<b style='color:navy;'>No Template Controls</b>",
+                            //             backgroundColor: 'navy',
+                            //             fillColor: 'navy',
+                            //             strokeColor: 'rgba(151,187,205,1)',
+                            //             pointColor: 'navy',
+                            //             highlightFill: '#23c6c8', //'rgba(220,220,220,0.75)',
+                            //             highlightStroke: 'rgba(220,220,220,1)',
+                            //             data: $scope.ntc_dates
+                            //         }
+                            //
+                            //     ]
+                            // };
+                        });
+
+                }
+
+                else{
+                    matchApiMock
+                        .loadMDACC_Month_List()
+                        .then(function (d) {
+
+                            //Parse data
+                            for (var i = d.data.length - 1; i >= 0; i--) {
+                                dt = new Date(d.data[i].date_created);
+                                if ((dt.getDay() + 1) !== weekday) {
+                                    d.data.splice(i, 1);
+                                }
+                            }
+                            loadMDACCMonthList(d);
+                        })
+                }
+            };
+            //Heatmap Weekday
     });
 
-function ajaxResultPost(id) {
+function heatmapMonthPost(id) {
 
     var scope = angular.element(document.getElementById("MainWrap")).scope();
     scope.$apply(function () {
-        scope.updateCustomRequest(id);
+        scope.updateMonthRequest(id);
+    });
+
+    // var mdascope = angular.element(document.getElementById("MDACCWrap")).scope();
+    // mdascope.$apply(function () {
+    //     mdascope.updateCustomRequest(id);
+    // });
+}
+
+function heatmapWeekDayPost(id) {
+
+    console.log("^^^ "+id)
+
+    var scope = angular.element(document.getElementById("MainWrap")).scope();
+    scope.$apply(function () {
+        scope.updateWeekDayRequest(id);
     });
 
     // var mdascope = angular.element(document.getElementById("MDACCWrap")).scope();

@@ -72,8 +72,6 @@ angular.module('matchbox.calendar-heatmap', []).
         // Watch for data availability
         scope.$watch('data', function (data) {
 
-          // console.log("DATA ---> " + JSON.stringify(data))
-
           if ( !data ) { return; }
 
           // Get daily summary if that was not provided
@@ -82,19 +80,25 @@ angular.module('matchbox.calendar-heatmap', []).
               var summary = d.details.reduce( function(uniques, project) {
                 if ( !uniques[project.name] ) {
                   uniques[project.name] = {
-                    'value': project.value
+                    'value': project.value,
+                    'status': project.status,
+                    'mid': project.mid
                   };
                 } else {
                   uniques[project.name].value += project.value;
                 }
                 return uniques;
               }, {});
+
               var unsorted_summary = Object.keys(summary).map(function (key) {
                 return {
                   'name': key,
-                  'value': summary[key].value
+                  'value': summary[key].value,
+                  'status': summary[key].status,
+                  'mid': summary[key].mid
                 };
               });
+
               d.summary = unsorted_summary.sort(function (a, b) {
                 return b.value - a.value;
               });
@@ -112,8 +116,6 @@ angular.module('matchbox.calendar-heatmap', []).
          */
         scope.drawChart = function (type) {
 
-
-
           if ( !scope.data ) { return; }
 
           if ( scope.overview === 'year' ) {
@@ -125,8 +127,6 @@ angular.module('matchbox.calendar-heatmap', []).
           } else if ( scope.overview === 'day' ) {
             scope.drawDayOverview();
           }
-
-
 
         };
 
@@ -149,9 +149,9 @@ angular.module('matchbox.calendar-heatmap', []).
             .range(['#ffffff', scope.color || '#ff4500'])
             .domain([-0.15 * max_value, max_value]);
 
-          // var ntc_color = d3.scale.linear()
-          //     .range(['#ffffff', scope.color || '#ff003b'])
-          //     .domain([-0.15 * max_value, max_value]);
+          var ntc_color = d3.scale.linear()
+              .range(['green', 'limegreen'])
+              .domain([-0.15 * max_value, max_value]);
 
 
           // var color = d3.scale.linear()
@@ -182,6 +182,7 @@ angular.module('matchbox.calendar-heatmap', []).
             .append('rect')
             .attr('class', 'item item-circle')
             .style('opacity', 0)
+            .style('cursor', 'pointer')
             .attr('x', function (d) {
               return calcItemX(d) + (item_size - calcItemSize(d)) / 2;
             })
@@ -201,25 +202,28 @@ angular.module('matchbox.calendar-heatmap', []).
               return calcItemSize(d);
             })
             .attr('fill', function (d) {
+              var mid = "positive";
 
+              angular.forEach(d.summary, function (value) {
+                mid = value.mid;
+              });
 
+              if(mid == 'Ntc'){
+                return ( d.total > 0 ) ? ntc_color(d.total) : 'transparent';
+              }
+              else {
+                return ( d.total > 0 ) ? color(d.total) : 'transparent';
+              }
 
-              // angular.forEach(d.details, function (d) {
-              //   if( d.name.substring(0,3) === 'Ntc'){
-              //     console.log("###-->" + d.name)
-              //     return ( d.total > 0 ) ? color(d.total) : 'transparent';
-              //   }
-              //   else{
-              //     return  color(10) : 'transparent';
-              //   }
-              // });
-
-              // console.log(d.total + " color(d.total)-->" + color(d.total))
-
-              // console.log(d.data + " --- "  + color(d.total))
-              return ( d.total > 0 ) ? color(d.total) : 'transparent';
             })
+              // .html(function (d) {
+              //   var month = getMonth(d.toLocaleDateString("en-us", {month: "short"}));
+              //   return '<a href="javascript: void(0)" target="_self" onClick="heatmapMonthPost(' + month + ')" style="text-decoration: underline"> ' + d.toLocaleDateString("en-us", {month: "short"}) + '</a>'
+              // })
             .on('click', function (d) {
+
+
+
               if ( in_transition ) { return; }
 
               // Don't transition if there is no data to show
@@ -239,8 +243,10 @@ angular.module('matchbox.calendar-heatmap', []).
               // Redraw the chart
               scope.overview = 'day';
               scope.drawChart();
+
             })
             .on('mouseover', function (d) {
+
               if ( in_transition ) { return; }
 
               // Pulsating animation
@@ -279,11 +285,14 @@ angular.module('matchbox.calendar-heatmap', []).
               var tooltip_html = '';
               tooltip_html += '<div class="header"><strong>' + (d.total ? scope.formatTime(d.total) : 'No time') + ' tracked</strong></div>';
               tooltip_html += '<div>on ' + moment(d.date).format('dddd, MMM Do YYYY') + '</div><br>';
+              // console.log("status-->" + JSON.stringify(d[0]))
 
               // Add summary to the tooltip
               angular.forEach(d.summary, function (d) {
+
                 tooltip_html += '<div><span><strong>' + d.name + ' | Sample Run Time: ' + '</strong></span>';
-                tooltip_html += '<span>' + scope.formatTime(d.value) + '</span></div>';
+                tooltip_html += '<span>' + scope.formatTime(d.value) + '</span>'
+                tooltip_html += '<span>' + ' | Status: ' + d.status + '</span></div>';
               });
 
               // Calculate tooltip position
@@ -372,7 +381,7 @@ angular.module('matchbox.calendar-heatmap', []).
             })
             .html(function (d) {
                 var month = getMonth(d.toLocaleDateString("en-us", {month: "short"}));
-                return '<a href="javascript: void(0)" target="_self" onClick="ajaxResultPost(' + month + ')" style="text-decoration: underline"> ' + d.toLocaleDateString("en-us", {month: "short"}) + '</a>'
+                return '<a href="javascript: void(0)" target="_self" onClick="heatmapMonthPost(' + month + ')" style="text-decoration: underline"> ' + d.toLocaleDateString("en-us", {month: "short"}) + '</a>'
             })
 
               // .attr("xlink:href": d.toLocaleDateString('en-us', {month: 'short'}))
@@ -447,9 +456,19 @@ angular.module('matchbox.calendar-heatmap', []).
             .attr('font-size', function () {
               return Math.floor(label_padding / 3) + 'px';
             })
-            .text(function (d) {
-              return moment(d).format('dddd')[0];
+            .html(function (d) {
+
+              // console.log(moment(d).format('ddd'))
+              // var day = moment(d).format('dddd')[0];
+
+              var day = moment(d).format('ddd');
+
+
+              return '<a href="javascript: void(0)" target="_self" onClick="heatmapWeekDayPost(' + day + ')" style="text-decoration: underline"> ' + day + '</a>'
             })
+            // .text(function (d) {
+            //   return moment(d).format('dddd')[0];
+            // })
             .on('mouseenter', function (d) {
               if ( in_transition ) { return; }
 
@@ -1264,7 +1283,8 @@ angular.module('matchbox.calendar-heatmap', []).
           button.transition()
             .duration(transition_duration)
             .ease('ease-in')
-            .style('opacity', 1);
+            .style('opacity', 1)
+            .style('cursor', 'pointer');
         };
 
 
