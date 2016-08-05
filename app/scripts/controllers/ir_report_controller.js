@@ -1302,6 +1302,74 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                 }
             };
             //Heatmap Weekday
+
+            //Heatmap Months
+            $scope.updateSingleDayRequest = function (id) {
+
+                if ($scope.branch == 'mocha') {
+                    matchApiMock
+                        .loadMocha_Month_List()
+                        .then(function (d) {
+                            var name = "";
+
+                            //Parse data
+                            for (var i = d.data.length - 1; i >= 0; i--) {
+                                name = d.data[i].molecular_id;
+
+                                if (id !== name) {
+                                    d.data.splice(i, 1);
+                                }
+                            }
+
+                            loadMoChaMonthList(d);
+
+                            // $scope.barData = {
+                            //     labels: armNames,
+                            //     datasets: [
+                            //         {
+                            //             // label: "<b style='color:darkgreen;'>Positive Controls</b>",
+                            //             backgroundColor: 'darkgreen',
+                            //             fillColor: 'darkgreen',
+                            //             strokeColor: 'rgba(220,220,220,0.8)',
+                            //             pointColor: 'darkgreen',
+                            //             highlightFill: '#23c6c8', //"rgba(220,220,220,0.75)",
+                            //             highlightStroke: 'rgba(220,220,220,1)',
+                            //             data: $scope.count_mda_dates
+                            //         },
+                            //         {
+                            //             // label: "<b style='color:navy;'>No Template Controls</b>",
+                            //             backgroundColor: 'navy',
+                            //             fillColor: 'navy',
+                            //             strokeColor: 'rgba(151,187,205,1)',
+                            //             pointColor: 'navy',
+                            //             highlightFill: '#23c6c8', //'rgba(220,220,220,0.75)',
+                            //             highlightStroke: 'rgba(220,220,220,1)',
+                            //             data: $scope.ntc_dates
+                            //         }
+                            //
+                            //     ]
+                            // };
+                        });
+
+                }
+
+                else{
+                    matchApiMock
+                        .loadMDACC_Month_List()
+                        .then(function (d) {
+
+                            //Parse data
+                            for (var i = d.data.length - 1; i >= 0; i--) {
+                                dt = new Date(d.data[i].date_created);
+                                if ((dt.getMonth() + 1) !== month) {
+                                    d.data.splice(i, 1);
+                                }
+                            }
+                            loadMDACCMonthList(d);
+                        })
+                }
+            };
+            //Heatmap Months
     });
 
 function heatmapMonthPost(id) {
@@ -1309,6 +1377,19 @@ function heatmapMonthPost(id) {
     var scope = angular.element(document.getElementById("MainWrap")).scope();
     scope.$apply(function () {
         scope.updateMonthRequest(id);
+    });
+
+    // var mdascope = angular.element(document.getElementById("MDACCWrap")).scope();
+    // mdascope.$apply(function () {
+    //     mdascope.updateCustomRequest(id);
+    // });
+}
+
+function heatmapSinglePost(id) {
+    
+    var scope = angular.element(document.getElementById("MainWrap")).scope();
+    scope.$apply(function () {
+        scope.updateSingleDayRequest(id);
     });
 
     // var mdascope = angular.element(document.getElementById("MDACCWrap")).scope();

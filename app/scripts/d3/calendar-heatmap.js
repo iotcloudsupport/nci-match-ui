@@ -221,8 +221,11 @@ angular.module('matchbox.calendar-heatmap', []).
               //   return '<a href="javascript: void(0)" target="_self" onClick="heatmapMonthPost(' + month + ')" style="text-decoration: underline"> ' + d.toLocaleDateString("en-us", {month: "short"}) + '</a>'
               // })
             .on('click', function (d) {
+              var name = "";
 
-
+              angular.forEach(d.details, function (value) {
+                name = value.name;
+              });
 
               if ( in_transition ) { return; }
 
@@ -243,6 +246,8 @@ angular.module('matchbox.calendar-heatmap', []).
               // Redraw the chart
               scope.overview = 'day';
               scope.drawChart();
+
+              return heatmapSinglePost(name.toString());
 
             })
             .on('mouseover', function (d) {
