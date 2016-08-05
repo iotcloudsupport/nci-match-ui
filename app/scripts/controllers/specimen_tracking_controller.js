@@ -126,20 +126,12 @@
 
         function setupTrendAnalysisData() {
             angular.forEach($scope.shipments, function(value) {
-                console.log('value');
-                console.log(value);
-                console.log('collected_date');
-                console.log(value.collected_date);
-                //console.log(value.shipped_date - value.collected_date);
-                //console.log(value.pathology_status_date - value.shipped_date);
-                console.log(moment(value.collected_date).isValid());
                 var start = moment(value.collected_date);
                 var shipped = moment(value.shipped_date);
                 var pathology = moment(value.pathology_status_date);
                 var shippedDuration = moment.duration(shipped.diff(start)).asDays();
                 var concordanceDuration = moment.duration(pathology.diff(shipped)).asDays();
 
-                console.log(shippedDuration);
                 var chartDataItemShipped = [];
                 var chartDataItemConcordance = [];
 
@@ -151,7 +143,6 @@
                 chartDataItemConcordance.push(concordanceDuration);
                 $scope.chartData[1].data.push(chartDataItemConcordance);
             });
-            console.log($scope.chartData);
 
             var xLabel = $("<div style='position:absolute;text-align:center;font-size:12px;bottom:3px;left:0;right:0;'></div>").text("Specimen Collected Date").appendTo($('#trendChart'));
         }
@@ -159,38 +150,11 @@
         $scope.chartData = [
             {
                 label: "Specimen Shipped",
-                data: [
-                    /*[1470059187808, 1.3],
-                    [1470059230071, 1.0],
-                    [1470059317984, 0.6],
-                    [1470059480018, 2.1],
-                     [5, 30],
-                     [6, 45],
-                     [7, 34],
-                     [8, 25],
-                     [9, 19],
-                     [10, 34],
-                     [11, 32],
-                     [12, 44]*/
-                ]
+                data: []
             },
             {
                 label: "Concordance",
-                data: [
-                    /*[1470059187808, 1.0],
-                     1436346393000
-                    [1470059230071, 0.7],
-                    [1470059317984, 3.1],
-                    [1470059480018, 1.5],
-                     [5, 32],
-                     [6, 44],
-                     [7, 34],
-                     [8, 25],
-                     [9, 19],
-                     [10, 34],
-                     [11, 32],
-                     [12, 44]*/
-                ]
+                data: []
             }
 
         ];
@@ -198,8 +162,7 @@
         calculatePercent = function (numerator, denominator) {
             return (numerator / denominator) * 100;
         }
-
-        console.log((new Date()).getTime());
+        
         /**
          * Line Chart Options
          */
