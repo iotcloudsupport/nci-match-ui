@@ -17,10 +17,6 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         .withOption('searching', false);
 
 
-
-
-
-
         $scope.irList = [];
         $scope.moChaList = [];
         $scope.mdAccList = [];
@@ -32,7 +28,8 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         $scope.tokenIpAddress = [];
         $scope.positiveList = [];
         $scope.negativeList = [];
-            $scope.mochaQueryList = [];
+        $scope.mochaQueryList = [];
+        $scope.mdaccQueryList = [];
 
         $scope.singleNucleotideVariantsList = [];
         $scope.indelsList = [];
@@ -54,58 +51,273 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         $scope.loadSampleHRFiles = loadSampleHRFiles;
         $scope.schedule = "weekmap";
 
-            $scope.loadMap = function (id) {
-                if(id == "heatmap"){
-                    $scope.schedule = "weekmap";
-                    $scope.monthview = 'none';
-                    $scope.barlegend = "Total Positive / NTC Control Status";
+        $scope.heatMapList = [];
+
+        $scope.loadMap = function (id) {
+            if(id == "heatmap"){
+                $scope.schedule = "weekmap";
+                $scope.monthview = 'none';
+                $scope.barlegend = "Total Positive / NTC Control Status";
+            }
+            else {
+                $scope.schedule = "heatmap";
+                $scope.barlegend = "History of Total Positive / NTC Control Status";
+
+                //HEATMAP
+                if($scope.branch == 'mocha') {
+                    matchApiMock
+                        .loadMocha_Month_List()
+                        .then(function (d) {
+                            angular.forEach(d, function (value, k) {
+                                var d;
+                                angular.forEach(value, function (v, k) {
+
+                                    if (v.date_created !== undefined) {
+                                        var mid = "Positive";
+                                        if (v.molecular_id.indexOf('Ntc') == 0) {
+                                            mid = "Ntc";
+                                        }
+                                        d = new Date(v.date_created);
+                                        $scope.heatMapList.push({
+                                            'name': v.molecular_id,
+                                            'date_created': d,
+                                            'date': d.getDate(),
+                                            'month': d.getMonth(),
+                                            'year': d.getYear(),
+                                            'status': v.current_status,
+                                            'mid': mid
+                                        });
+                                    }
+                                })
+                            });
+
+                            // Initialize random data for the demo
+                            var now = moment().endOf('day').toDate();
+                            var yearAgo = moment().startOf('day').subtract(1, 'year').toDate();
+
+                            $scope.exampleData = d3.time.days(yearAgo, now).map(function (dateElement) {
+                                var array = [];
+
+                                //Check heat map date
+                                // var check = hasDate(dateElement);
+                                array = hasDate(dateElement);
+
+                                if (array[0] === true) {
+                                    return {
+                                        date: dateElement,
+                                        details: Array.apply(null, new Array(Math.floor(Math.random() * 12))).map(function (e, i, arr) {
+                                            var name = array[1];
+                                            var date = array[2];
+                                            var status = array[3];
+                                            var mid = array[4];
+
+                                            return {
+                                                'name': name,
+                                                'date': date,
+                                                'status': status,
+                                                'mid': mid,
+                                                'value': 3600 * ((arr.length - i) / 5) + Math.floor(Math.random() * 3600)
+                                                // 'date': function () {
+                                                //     var projectDate = new Date(dateElement.getTime());
+                                                //     projectDate.setHours(Math.floor(Math.random() * 24))
+                                                //     projectDate.setMinutes(Math.floor(Math.random() * 60));
+                                                //     return projectDate;
+                                                // }(),
+                                                // 'value': 3600 * ((arr.length - i) / 5) + Math.floor(Math.random() * 3600)
+                                            };
+                                        }),
+                                        init: function () {
+                                            this.total = this.details.reduce(function (prev, e) {
+
+                                                return prev + e.value;
+                                            }, 0);
+                                            return this;
+                                        }
+                                    }.init();
+                                }
+                                else {
+
+                                    return {
+                                        date: dateElement,
+                                        details: Array.apply(null, new Array(Math.floor(Math.random() * 2))).map(function (e, i, arr) {
+                                            var name = "";
+                                            return {
+                                                'name': "",
+                                                'date': function () {
+                                                    var projectDate = new Date(dateElement.getTime());
+                                                    projectDate.setHours(Math.floor(Math.random() * 24))
+                                                    projectDate.setMinutes(Math.floor(Math.random() * 60));
+                                                    return projectDate;
+                                                }(),
+                                                'value': 3600 * ((arr.length - i) / 5) + Math.floor(Math.random() * 3600)
+                                            };
+                                        }),
+                                        init: function () {
+                                            this.total = this.details.reduce(function (prev, e) {
+
+                                                return;
+
+                                                // return prev + e.value;
+                                            }, 0);
+                                            return this;
+                                        }
+                                    }.init();
+
+                                }
+
+                            });
+
+                            function hasDate(dateElement) {
+                                var d = new Date(dateElement);
+                                var check = [false, 0];
+                                jQuery.map($scope.heatMapList, function (obj) {
+                                    // console.log("OBJ-->"+JSON.stringify(obj))
+                                    if (obj.month === d.getMonth() && obj.date === d.getDate() && obj.year === d.getYear()) {
+                                        // console.log(d.getMonth() + " -- obj.month--> " + obj.month + " -- obj.date--> " + obj.date)
+                                        check = [true, obj.name, obj.date_created, obj.status, obj.mid];
+                                    }
+
+                                    return check;
+                                });
+
+                                return check;
+                            }
+                        });
                 }
-                else {
-                    $scope.schedule = "heatmap";
-                    $scope.barlegend = "History of Total Positive / NTC Control Status";
+                else if($scope.branch == 'mdacc') {
+
+                    matchApiMock
+                        .loadMDACC_Month_List()
+                        .then(function (d) {
+                            angular.forEach(d, function (value, k) {
+                                var d;
+                                angular.forEach(value, function (v, k) {
+
+                                    if (v.date_created !== undefined) {
+                                        var mid = "Positive";
+                                        if (v.molecular_id.indexOf('Ntc') == 0) {
+                                            mid = "Ntc";
+                                        }
+                                        d = new Date(v.date_created);
+                                        $scope.heatMapList.push({
+                                            'name': v.molecular_id,
+                                            'date_created': d,
+                                            'date': d.getDate(),
+                                            'month': d.getMonth(),
+                                            'year': d.getYear(),
+                                            'status': v.current_status,
+                                            'mid': mid
+                                        });
+                                    }
+                                })
+                            });
+
+                            // Initialize random data for the demo
+                            var now = moment().endOf('day').toDate();
+                            var yearAgo = moment().startOf('day').subtract(1, 'year').toDate();
+
+                            $scope.exampleData = d3.time.days(yearAgo, now).map(function (dateElement) {
+                                var array = [];
+
+                                //Check heat map date
+                                // var check = hasDate(dateElement);
+                                array = hasDate(dateElement);
+
+                                if (array[0] === true) {
+                                    return {
+                                        date: dateElement,
+                                        details: Array.apply(null, new Array(Math.floor(Math.random() * 12))).map(function (e, i, arr) {
+                                            var name = array[1];
+                                            var date = array[2];
+                                            var status = array[3];
+                                            var mid = array[4];
+
+                                            return {
+                                                'name': name,
+                                                'date': date,
+                                                'status': status,
+                                                'mid': mid,
+                                                'value': 3600 * ((arr.length - i) / 5) + Math.floor(Math.random() * 3600)
+                                                // 'date': function () {
+                                                //     var projectDate = new Date(dateElement.getTime());
+                                                //     projectDate.setHours(Math.floor(Math.random() * 24))
+                                                //     projectDate.setMinutes(Math.floor(Math.random() * 60));
+                                                //     return projectDate;
+                                                // }(),
+                                                // 'value': 3600 * ((arr.length - i) / 5) + Math.floor(Math.random() * 3600)
+                                            };
+                                        }),
+                                        init: function () {
+                                            this.total = this.details.reduce(function (prev, e) {
+
+                                                return prev + e.value;
+                                            }, 0);
+                                            return this;
+                                        }
+                                    }.init();
+                                }
+                                else {
+
+                                    return {
+                                        date: dateElement,
+                                        details: Array.apply(null, new Array(Math.floor(Math.random() * 2))).map(function (e, i, arr) {
+                                            var name = "";
+                                            return {
+                                                'name': "",
+                                                'date': function () {
+                                                    var projectDate = new Date(dateElement.getTime());
+                                                    projectDate.setHours(Math.floor(Math.random() * 24))
+                                                    projectDate.setMinutes(Math.floor(Math.random() * 60));
+                                                    return projectDate;
+                                                }(),
+                                                'value': 3600 * ((arr.length - i) / 5) + Math.floor(Math.random() * 3600)
+                                            };
+                                        }),
+                                        init: function () {
+                                            this.total = this.details.reduce(function (prev, e) {
+
+                                                return;
+
+                                                // return prev + e.value;
+                                            }, 0);
+                                            return this;
+                                        }
+                                    }.init();
+
+                                }
+
+                            });
+
+                            function hasDate(dateElement) {
+                                var d = new Date(dateElement);
+                                var check = [false, 0];
+                                jQuery.map($scope.heatMapList, function (obj) {
+                                    // console.log("OBJ-->"+JSON.stringify(obj))
+                                    if (obj.month === d.getMonth() && obj.date === d.getDate() && obj.year === d.getYear()) {
+                                        // console.log(d.getMonth() + " -- obj.month--> " + obj.month + " -- obj.date--> " + obj.date)
+                                        check = [true, obj.name, obj.date_created, obj.status, obj.mid];
+                                    }
+
+                                    return check;
+                                });
+
+                                return check;
+                            }
+                        });
+
                 }
-            };
-            
-            //HEATMAP
-            // Initialize random data for the demo
-            var now = moment().endOf('day').toDate();
-            var yearAgo = moment().startOf('day').subtract(1, 'year').toDate();
-            $scope.exampleData = d3.time.days(yearAgo, now).map(function (dateElement) {
+                //HEATMAP
+
+            }
+        };
 
 
 
-                return {
-                    date: dateElement,
-                    details: Array.apply(null, new Array(Math.floor(Math.random() * 2))).map(function(e, i, arr) {
 
-                        // console.log(Math.random() * 3)
 
-                        var name = "";
-                        if((Math.random() * 3) > 2){name = 'Positive Controls ';}
-                        else {name = 'Ntc Controls ';}
 
-                        return {
-                            'name': name + Math.floor(Math.random() * 123),
-                            'date': function () {
-                                var projectDate = new Date(dateElement.getTime());
-                                projectDate.setHours(Math.floor(Math.random() * 24))
-                                projectDate.setMinutes(Math.floor(Math.random() * 60));
-                                return projectDate;
-                            }(),
-                            'value': 3600 * ((arr.length - i) / 5) + Math.floor(Math.random() * 3600)
-                        };
-                    }),
-                    init: function () {
-                        this.total = this.details.reduce(function (prev, e) {
 
-                            return prev + e.value;
-                        }, 0);
-                        return this;
-                    }
-                }.init();
 
-            });
-            //HEATMAP
 
             // Set custom color for the calendar heatmap
             $scope.color = '#cd2327';
@@ -171,7 +383,51 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                 $scope.monthview = 'aug';
                 $scope.mochaQueryList = data.data;
 
-                console.log("reloadData--> " + $scope.mochaQueryList);
+            };
+
+            function loadMDACCMonthList(data) {
+                $scope.count_dates = [0, 0, 0, 0, 0, 0, 0];
+
+                angular.forEach(data, function (value,k) {
+                    angular.forEach(value, function (v,k) {
+
+                        if(v.current_status === 'FAILED'){$scope.pos_status[0] += 1;}
+                        if(v.current_status === 'PASSED'){$scope.pos_status[1] += 1;}
+                        else if(v.current_status === '-'){$scope.pos_status[2] += 1;}
+
+                        var tmp;
+                        switch (v.week_date) {
+                            case 'Mon':
+                                tmp = $scope.count_dates[0];
+                                $scope.count_dates[0] = tmp + 1;
+                                break;
+                            case 'Tue':
+                                tmp = $scope.count_dates[1];
+                                $scope.count_dates[1] = tmp + 1;
+                                break;
+                            case 'Wed':
+                                tmp = $scope.count_dates[2];
+                                $scope.count_dates[2] = tmp + 1;
+                                break;
+                            case 'Thu':
+                                tmp = $scope.count_dates[3];
+                                $scope.count_dates[3] = tmp + 1;
+                                break;
+                            case 'Fri':
+                                tmp = $scope.count_dates[4];
+                                $scope.count_dates[4] = tmp + 1;
+                                break;
+                            case 'Sat':
+                                // console.log("Selected Case Number is 6");
+                                break;
+                            default:
+                        }
+                    });
+                });
+
+                $scope.monthview = 'aug';
+                $scope.mdaccQueryList = data.data;
+
             };
 
             vm.dtInstance = {};
@@ -184,7 +440,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             }
 
             function callback(json) {
-                console.log(json);
+                // console.log(json);
             }
 
             // function callback(json) {
@@ -985,52 +1241,212 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                 };
             };
 
+            //Heatmap Months
+            $scope.updateMonthRequest = function (month) {
 
-            $scope.updateCustomRequest = function (data) {
+                if ($scope.branch == 'mocha') {
+                    matchApiMock
+                        .loadMocha_Month_List()
+                        .then(function (d) {
 
+                            //Parse data
+                            for (var i = d.data.length - 1; i >= 0; i--) {
+                                dt = new Date(d.data[i].date_created);
+                                if ((dt.getMonth() + 1) !== month) {
+                                    d.data.splice(i, 1);
+                                }
+                            }
 
-                console.log('### RUN TEST--> ' + data)
+                            loadMoChaMonthList(d);
 
-                matchApiMock
-                    .loadMocha_Month_List()
-                    .then(function (d) {
+                            // $scope.barData = {
+                            //     labels: armNames,
+                            //     datasets: [
+                            //         {
+                            //             // label: "<b style='color:darkgreen;'>Positive Controls</b>",
+                            //             backgroundColor: 'darkgreen',
+                            //             fillColor: 'darkgreen',
+                            //             strokeColor: 'rgba(220,220,220,0.8)',
+                            //             pointColor: 'darkgreen',
+                            //             highlightFill: '#23c6c8', //"rgba(220,220,220,0.75)",
+                            //             highlightStroke: 'rgba(220,220,220,1)',
+                            //             data: $scope.count_mda_dates
+                            //         },
+                            //         {
+                            //             // label: "<b style='color:navy;'>No Template Controls</b>",
+                            //             backgroundColor: 'navy',
+                            //             fillColor: 'navy',
+                            //             strokeColor: 'rgba(151,187,205,1)',
+                            //             pointColor: 'navy',
+                            //             highlightFill: '#23c6c8', //'rgba(220,220,220,0.75)',
+                            //             highlightStroke: 'rgba(220,220,220,1)',
+                            //             data: $scope.ntc_dates
+                            //         }
+                            //
+                            //     ]
+                            // };
+                        });
 
-                        loadMoChaMonthList(d);
+                    }
 
-                        // $scope.barData = {
-                        //     labels: armNames,
-                        //     datasets: [
-                        //         {
-                        //             // label: "<b style='color:darkgreen;'>Positive Controls</b>",
-                        //             backgroundColor: 'darkgreen',
-                        //             fillColor: 'darkgreen',
-                        //             strokeColor: 'rgba(220,220,220,0.8)',
-                        //             pointColor: 'darkgreen',
-                        //             highlightFill: '#23c6c8', //"rgba(220,220,220,0.75)",
-                        //             highlightStroke: 'rgba(220,220,220,1)',
-                        //             data: $scope.count_mda_dates
-                        //         },
-                        //         {
-                        //             // label: "<b style='color:navy;'>No Template Controls</b>",
-                        //             backgroundColor: 'navy',
-                        //             fillColor: 'navy',
-                        //             strokeColor: 'rgba(151,187,205,1)',
-                        //             pointColor: 'navy',
-                        //             highlightFill: '#23c6c8', //'rgba(220,220,220,0.75)',
-                        //             highlightStroke: 'rgba(220,220,220,1)',
-                        //             data: $scope.ntc_dates
-                        //         }
-                        //
-                        //     ]
-                        // };
-                    });
+                else{
+                    matchApiMock
+                        .loadMDACC_Month_List()
+                        .then(function (d) {
+
+                            //Parse data
+                            for (var i = d.data.length - 1; i >= 0; i--) {
+                                dt = new Date(d.data[i].date_created);
+                                if ((dt.getMonth() + 1) !== month) {
+                                    d.data.splice(i, 1);
+                                }
+                            }
+                            loadMDACCMonthList(d);
+                        })
+                    }
             };
+            //Heatmap Months
+
+            //Heatmap Weekday 
+            $scope.updateWeekDayRequest = function (weekday) {
+
+                if ($scope.branch == 'mocha') {
+                    matchApiMock
+                        .loadMocha_Month_List()
+                        .then(function (d) {
+                            //Parse data
+                            for (var i = d.data.length - 1; i >= 0; i--) {
+                                dt = new Date(d.data[i].date_created);
+                                if ((dt.getDay() + 1) !== weekday) {
+                                    d.data.splice(i, 1);
+                                }
+                            }
+
+                            loadMoChaMonthList(d);
+
+                            // $scope.barData = {
+                            //     labels: armNames,
+                            //     datasets: [
+                            //         {
+                            //             // label: "<b style='color:darkgreen;'>Positive Controls</b>",
+                            //             backgroundColor: 'darkgreen',
+                            //             fillColor: 'darkgreen',
+                            //             strokeColor: 'rgba(220,220,220,0.8)',
+                            //             pointColor: 'darkgreen',
+                            //             highlightFill: '#23c6c8', //"rgba(220,220,220,0.75)",
+                            //             highlightStroke: 'rgba(220,220,220,1)',
+                            //             data: $scope.count_mda_dates
+                            //         },
+                            //         {
+                            //             // label: "<b style='color:navy;'>No Template Controls</b>",
+                            //             backgroundColor: 'navy',
+                            //             fillColor: 'navy',
+                            //             strokeColor: 'rgba(151,187,205,1)',
+                            //             pointColor: 'navy',
+                            //             highlightFill: '#23c6c8', //'rgba(220,220,220,0.75)',
+                            //             highlightStroke: 'rgba(220,220,220,1)',
+                            //             data: $scope.ntc_dates
+                            //         }
+                            //
+                            //     ]
+                            // };
+                        });
+
+                }
+
+                else{
+                    matchApiMock
+                        .loadMDACC_Month_List()
+                        .then(function (d) {
+
+                            //Parse data
+                            for (var i = d.data.length - 1; i >= 0; i--) {
+                                dt = new Date(d.data[i].date_created);
+                                if ((dt.getDay() + 1) !== weekday) {
+                                    d.data.splice(i, 1);
+                                }
+                            }
+                            loadMDACCMonthList(d);
+                        })
+                }
+            };
+            //Heatmap Weekday
+
+            //Heatmap Months
+            $scope.updateSingleDayRequest = function (id) {
+
+
+                if ($scope.branch == 'mocha') {
+                    matchApiMock
+                        .loadMocha_Month_List()
+                        .then(function (d) {
+                            var name = "";
+                            //Parse data
+                            for (var i = d.data.length - 1; i >= 0; i--) {
+                                name = d.data[i].molecular_id;
+                                if (id !== name) {
+                                    d.data.splice(i, 1);
+                                }
+                            }
+                            loadMoChaMonthList(d);
+                        });
+                }
+                else{
+                    matchApiMock
+                        .loadMDACC_Month_List()
+                        .then(function (d) {
+                            var name = "";
+                            //Parse data
+                            for (var i = d.data.length - 1; i >= 0; i--) {
+                                name = d.data[i].molecular_id;
+                                if (id !== name) {
+                                    d.data.splice(i, 1);
+                                }
+                            }
+                            loadMDACCMonthList(d);
+                        })
+                }
+            };
+            //Heatmap Months
     });
 
-function ajaxResultPost(id) {
+function heatmapMonthPost(id) {
 
     var scope = angular.element(document.getElementById("MainWrap")).scope();
     scope.$apply(function () {
-        scope.updateCustomRequest(id);
+        scope.updateMonthRequest(id);
     });
+
+    // var mdascope = angular.element(document.getElementById("MDACCWrap")).scope();
+    // mdascope.$apply(function () {
+    //     mdascope.updateCustomRequest(id);
+    // });
+}
+
+function heatmapSinglePost(id) {
+    
+    var scope = angular.element(document.getElementById("MainWrap")).scope();
+    scope.$apply(function () {
+        scope.updateSingleDayRequest(id);
+    });
+
+    // var mdascope = angular.element(document.getElementById("MDACCWrap")).scope();
+    // mdascope.$apply(function () {
+    //     mdascope.updateCustomRequest(id);
+    // });
+}
+
+function heatmapWeekDayPost(id) {
+
+    console.log("^^^ "+id)
+
+    var scope = angular.element(document.getElementById("MainWrap")).scope();
+    scope.$apply(function () {
+        scope.updateWeekDayRequest(id);
+    });
+
+    // var mdascope = angular.element(document.getElementById("MDACCWrap")).scope();
+    // mdascope.$apply(function () {
+    //     mdascope.updateCustomRequest(id);
+    // });
 }

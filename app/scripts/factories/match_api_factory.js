@@ -49,7 +49,7 @@
             }
 
             function loadSpecimenTrackingList() {
-                return $http.get(matchConfig.patientApiBaseUrl + '/specimenTracking');
+                return $http.get(matchConfig.patientApiBaseUrl + '/specimenTracking/shipments');
             }
 
             function loadTissueVariantReportsList() {
