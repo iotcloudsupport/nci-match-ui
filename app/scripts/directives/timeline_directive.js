@@ -96,7 +96,8 @@
                 type: '<',
                 isStepChanging: '<',
                 layout: '<',
-                showStepDelimiter: '<'                
+                showStepDelimiter: '<',
+                showEntityId: '<'                
             },
             link: linker
         }
