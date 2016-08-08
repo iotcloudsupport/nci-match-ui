@@ -44,7 +44,7 @@
     function utc() {
         return function (date) {
             if (date === null || date === '' || date === '-') {
-                return date;
+                return '-';
             }
 
             if (angular.isDefined(date)) {

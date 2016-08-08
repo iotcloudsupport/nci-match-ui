@@ -1,4 +1,4 @@
-describe('Controller: Reports Controller', function () {
+xdescribe('Controller: Reports Controller', function () {
 
     beforeEach(module('config.matchbox', 'http.matchbox', 'matchbox.reports'));
 

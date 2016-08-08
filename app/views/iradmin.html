@@ -14,7 +14,10 @@
 
 <div class="wrapper" ng-controller="IrAdminController">
     <!--CHARTS-->
-    <div class="ibox float-e-margins animated fadeInRight header-box-container" ng-init="loadSampleBreakups();loadHeartMoChaBeatList();">
+    <!--<div class="ibox float-e-margins animated fadeInRight header-box-container" ng-init="loadSampleBreakups();">-->
+
+
+        <div class="ibox float-e-margins animated fadeInRight header-box-container" ng-init="loadSampleBreakups();loadHeartMoChaBeatList();">
         <div class="col-lg-12 white-bg push-down-inner-panel">
 
             <div class="row toolbar-row ibox-content">
@@ -29,8 +32,6 @@
                     </label>
                 </div>
             </div>
-
-
 
             <!--PIE CHART-->
             <div ng-if="branch == 'mocha'" >
@@ -190,6 +191,7 @@
                 </div>
             </div>
             <!--HISTOGRAM CHART-->
+
 
             <!--PIE CHART-->
             <div ng-if="branch == 'mdacc'" >

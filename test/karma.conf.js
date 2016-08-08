@@ -27,7 +27,6 @@ module.exports = function(config) {
       '../bower_components/jquery-ui/jquery-ui.js',
       '../bower_components/angular-mocks/angular-mocks.js',
       '../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
-      // '../bower_components/angular-ui-router/release/angular-ui-router.js',
       '../bower_components/angular-ui-router/release/angular-ui-router.min.js',
       '../bower_components/angular-prompt/dist/angular-prompt.min.js',
       '../bower_components/moment/moment.js',
@@ -52,8 +51,8 @@ module.exports = function(config) {
     // list of files to exclude
     exclude: [
       'spec/controllers/ir_qc_controller_spec.js',
-      'spec/controllers/ir_sample_controller_spec.js'
-      // '../app/scripts/factories/match_http_factory.mock.js'
+      'spec/controllers/ir_sample_controller_spec.js',
+      '../app/scripts/factories/match_http_factory.mock.js'
     ],
 
 

@@ -1,6 +1,6 @@
 angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'datatables', 'ngResource'])
     .controller('IrAdminController',
-        function( $scope, $http, $window, $stateParams, DTOptionsBuilder, irAdminApi, matchApiMock, $location, $anchorScroll, $timeout, sharedCliaProperties, $resource) {
+        function( $scope, $http, $window, $stateParams, DTOptionsBuilder, matchApiMock, $location, $anchorScroll, $timeout, sharedCliaProperties) {
 
         angular.element(document).ready(function () {
             $('.equal-height-panels .panel').matchHeight();
@@ -717,6 +717,8 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             $scope.setSampleType = setSampleType;
 
             function setSampleType(reportType) {
+
+                alert("pop")
 
                 $scope.positives = "undefined";
                 $scope.negatives = "undefined";

@@ -82,15 +82,12 @@
             function loadPatientPendingAssignmentReportsList() {
                 return $http.get('data/dashboard_patient_assignment_reports.json');
             }
-            
             function loadTreatmentArmList() {
                 return $http.get('data/treatment_arms_list.json');
             }
-
             function loadQc_Table(){
                 return $http.get('data/sample_qc.json');
             }
-
             function loadSnv_Table(){
                 return $http.get('data/sample_qc.json');
             }

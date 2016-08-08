@@ -1,4 +1,4 @@
-describe('Factory: Get Basic Treatment Arms Service', function () {
+xdescribe('Factory: Get Basic Treatment Arms Service', function () {
 
     beforeEach(module('config.matchbox', 'http.matchbox'));
 

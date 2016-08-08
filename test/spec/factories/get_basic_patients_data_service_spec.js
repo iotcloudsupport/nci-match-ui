@@ -1,4 +1,4 @@
-describe('Factory: Get Basic Patients Data Service', function () {
+xdescribe('Factory: Get Basic Patients Data Service', function () {
 
     beforeEach(module('config.matchbox', 'http.matchbox'));
 

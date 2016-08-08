@@ -1,4 +1,4 @@
-describe('Controller: Ir Sample Controller', function () {
+xdescribe('Controller: Ir Sample Controller', function () {
 
     'use strict'
 

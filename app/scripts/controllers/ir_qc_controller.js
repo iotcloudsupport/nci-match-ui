@@ -1,5 +1,5 @@
 angular.module('matchbox.qcsample',[ ])
-    .controller('QcSampleController', function($scope, $http, $window, $stateParams, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, svgApi, matchApiMock, sharedCliaProperties) {
+    .controller('QcSampleController', function($scope, $http, $window, $stateParams, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, matchApiMock, sharedCliaProperties) {
         angular.element(document).ready(function () {
             $('.equal-height-panels .panel').matchHeight();
         });

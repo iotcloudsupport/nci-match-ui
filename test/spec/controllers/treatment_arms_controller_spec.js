@@ -1,4 +1,4 @@
-describe('Controller: Treatment Arms Controller', function () {
+xdescribe('Controller: Treatment Arms Controller', function () {
 
     beforeEach(module('config.matchbox', 'http.matchbox', 'matchbox.treatment-arms'));
 
