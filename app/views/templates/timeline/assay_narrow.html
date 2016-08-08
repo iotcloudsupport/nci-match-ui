@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col-md-12">
             <p class="m-b-xs event-content">
-                <span ng-if="timelineEvent.entity_id">
+                <span ng-if="timelineEvent.entity_id && showEntityId">
                     Patient: <span class="timeline-value"><patient-title patient-id="timelineEvent.entity_id" text="timelineEvent.entity_id"></patient-title></span>
                 <br>
                 </span>

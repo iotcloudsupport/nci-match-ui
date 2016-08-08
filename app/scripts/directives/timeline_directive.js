@@ -11,34 +11,6 @@
     function timeline($compile, $http, $templateCache, $log) {
         var baseUrl = '/views/templates/timeline/';
 
-        // $scope.getIcon = function () {
-        //     switch ($scope.event_type) {
-        //         case 'assay':
-        //             return 'fa-flask';
-
-        //         case 'specimen':
-        //             return 'fa-truck';
-
-        //         case 'user':
-        //         case 'pathology_status':
-        //             return 'fa-user-md';
-
-        //         case 'assignment_report':
-        //         case 'treatment_arm':
-        //             return 'fa-medkit';
-
-        //         case 'variant_report':
-        //             return 'fa-bar-chart';
-
-        //         case 'patient':
-        //             return 'fa-user';
-
-        //         case 'generic':
-        //         default:
-        //             return 'fa-clock-o';
-        //     }
-        // }
-
         var templateMap = {
             'assay.normal': baseUrl + 'assay.html',
             'assay.narrow': baseUrl + 'assay_narrow.html',
