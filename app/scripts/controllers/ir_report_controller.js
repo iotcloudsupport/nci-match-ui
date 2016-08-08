@@ -718,8 +718,6 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
             function setSampleType(reportType) {
 
-                alert("pop")
-
                 $scope.positives = "undefined";
                 $scope.negatives = "undefined";
 
