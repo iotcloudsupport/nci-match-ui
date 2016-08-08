@@ -387,7 +387,7 @@
                                                         </thead>
                                                         <tbody>
 
-                                                        <tr ng-repeat="ta in mochaQueryList">
+                                                        <tr ng-repeat="ta in mochaQueryList | sampleBreak">
                                                             <td> {{ta.molecular_is | dashify }}</td>
                                                             <td>{{ta.date_created | dashify }}</td>
                                                             <td>{{ta.date_received | dashify }}</td>
@@ -635,7 +635,7 @@
                                                 <table datatable="ng"
                                                        dt-options="DashCtrl.dtOptions"
                                                        dt-columns="DashCtrl.dtColumns"
-                                                       dt-instance="DashCtrl.dtInstanceCallback"
+                                                       dt-instance="DashCtrl.dtInstance"
                                                        class="table table-bordered table-striped">
                                                     <thead>
                                                     <tr>
