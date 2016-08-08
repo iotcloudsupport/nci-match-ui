@@ -1279,7 +1279,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                             }
 
                             // if()
-                            console.log(d.data.molecular_id + " -->"+JSON.stringify(d))
+                            // console.log(d.data.molecular_id + " -->"+JSON.stringify(d))
 
                             loadMoChaMonthList(d);
 

@@ -11,7 +11,8 @@
         .filter('taStatus', taStatus)
         .filter('utc', utc)
         .filter('titlecase', titlecase)
-        .filter('dashify', dashify);
+        .filter('dashify', dashify)
+        .filter('sampleBreak', sampleBreak);
 
     function isNotString(text) {
         return typeof text !== "string";
@@ -170,5 +171,23 @@
             return text ? text : '-';
         };
     }
+
+
+    function sampleBreak() {
+        return function (data, id) {
+
+            // console.log("ID-->"+id)
+
+            var arrayToReturn = [];
+            for (var i=0; i<data.length; i++){
+
+                if (data[i].molecular_id.substring(0,id.length) !== id) {
+                    arrayToReturn.push(data[i]);
+                }
+            }
+
+            return arrayToReturn;
+        };
+    };
 
 } ());
