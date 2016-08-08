@@ -176,8 +176,6 @@
     function sampleBreak() {
         return function (data, id) {
 
-            // console.log("ID-->"+id)
-
             var arrayToReturn = [];
             for (var i=0; i<data.length; i++){
 
@@ -185,6 +183,7 @@
                     arrayToReturn.push(data[i]);
                 }
             }
+            
 
             return arrayToReturn;
         };

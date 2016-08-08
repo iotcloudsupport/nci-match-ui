@@ -347,7 +347,7 @@
 
         <uib-tabset active="indextab" ng-if="branch === 'mocha'" >
 
-            <uib-tab heading="Positive Sample Controls " index="0" >
+            <uib-tab heading="Positive Sample Controls {{count[1]}}"  index="0" >
 
                 <!--SCROLL TIC-->
                 <div id="mochabottom"></div>
@@ -903,7 +903,7 @@
             </uib-tab>
 
             <!--NO TEMPLAT CONTROL-->
-            <uib-tab index="1" heading="No Template Control ">
+            <uib-tab index="1" heading="No Template Control {{count[0]}}">
 
                 <div class="col-lg-16">
                     <div class="ibox float-e-margins">

@@ -54,6 +54,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         $scope.heatMapList = [];
 
         $scope.loadMap = function (id) {
+            $scope.count = [];
             if(id == "heatmap"){
                 $scope.schedule = "weekmap";
                 $scope.monthview = 'none';
@@ -342,9 +343,20 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             //MOCHA
             function loadMoChaMonthList(data) {
                 $scope.count_dates = [0, 0, 0, 0, 0, 0, 0];
+                $scope.count = [0, 0];
 
                 angular.forEach(data, function (value,k) {
                     angular.forEach(value, function (v,k) {
+
+                        if (v.molecular_id !== undefined) {
+                            if (v.molecular_id.substring(0, 3) === 'Ntc') {
+                                $scope.count[0] += 1;
+                            }
+                            else {
+                                $scope.count[1] += 1;
+                            }
+                        }
+
 
                         if(v.current_status === 'FAILED'){$scope.pos_status[0] += 1;}
                         if(v.current_status === 'PASSED'){$scope.pos_status[1] += 1;}
