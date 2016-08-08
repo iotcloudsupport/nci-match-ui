@@ -7,7 +7,6 @@
                                          matchConfig,
                                          DTOptionsBuilder,
                                          matchApi,
-                                         matchApiMock,
                                          sharedCliaProperties) {
 
         this.dtOptions = DTOptionsBuilder
@@ -92,7 +91,7 @@
         $scope.pieOptions = setupPieChartOptions('#legendContainer');
 
         function loadSpecimenTrackingList() {
-            matchApiMock
+            matchApi
                 .loadSpecimenTrackingList()
                 .then(function (d) {
                     $scope.shipments = angular.copy(d.data);
