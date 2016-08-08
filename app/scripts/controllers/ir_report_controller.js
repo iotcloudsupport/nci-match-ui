@@ -1,6 +1,6 @@
 angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'datatables', 'ngResource'])
     .controller('IrAdminController',
-        function( $scope, $http, $window, $stateParams, DTOptionsBuilder, irAdminApi, matchApiMock, $location, $anchorScroll, $timeout, sharedCliaProperties, $resource) {
+        function( $scope, $http, $window, $stateParams, DTOptionsBuilder, matchApiMock, $location, $anchorScroll, $timeout, sharedCliaProperties) {
 
         angular.element(document).ready(function () {
             $('.equal-height-panels .panel').matchHeight();
@@ -718,6 +718,8 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
             function setSampleType(reportType) {
 
+                alert("pop")
+
                 $scope.positives = "undefined";
                 $scope.negatives = "undefined";
 
@@ -814,6 +816,27 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                 matchApiMock
                     .openPositives(index)
                     .then(function (d) {
+
+                        // for (var i = d.data.length - 1; i >= 0; i--) {
+                        //     var dta = d.data[i];
+                        //
+                        //     for (var key in dta) {
+                        //         // console.log(key + ' is ' + dta[key]);
+                        //
+                        //         if (key !== id) {
+                        //             d.data.splice(i, 1);
+                        //         }
+                        //
+                        //     }
+                        //
+                        //
+                        //     // console.log("POSITIVE-->"+( dta.attr["SampleControl_MoCha_1"]))
+                        //
+                        //     // name = d.data[i].molecular_id;
+                        //
+                        //
+                        // }
+
                         loadPositivesList(d);
                     });
             };
@@ -1256,6 +1279,9 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                                     d.data.splice(i, 1);
                                 }
                             }
+
+                            // if()
+                            console.log(d.data.molecular_id + " -->"+JSON.stringify(d))
 
                             loadMoChaMonthList(d);
 
