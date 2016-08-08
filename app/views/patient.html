@@ -482,11 +482,11 @@
                                                     <dt>Total MOIs</dt>
                                                     <dd>{{currentTissueVariantReport.total_mois }}</dd>
                                                     <dt>Total aMOIs</dt>
-                                                    <dd>{{currentTissueVariantReport.total_amois }}</dd>
+                                                    <dd>{{currentTissueVariantReport.total_is_amoi }}</dd>
                                                     <dt>Total Confirmed MOIs</dt>
                                                     <dd>{{currentTissueVariantReport.total_confirmed_mois }}</dd>
                                                     <dt>Total Confirmed aMOIs</dt>
-                                                    <dd>{{currentTissueVariantReport.total_confirmed_amois }}</dd>
+                                                    <dd>{{currentTissueVariantReport.total_confirmed_s }}</dd>
                                                 </dl>
                                             </div>
                                         </div>
@@ -550,17 +550,17 @@
                                                     <a ng-if="variant.comment " href ng-click="editComment(variant, currentTissueVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
                                                 </td>
                                                 <td>
-                                                    <a class="report-link" href ng-click="openCosmicId( variant.variant_id )">
-                                                        {{variant.variant_id | dashify }}
+                                                    <a class="report-link" href ng-click="openCosmicId( variant.identifier )">
+                                                        {{variant.identifier | dashify }}
                                                     </a>
                                                 </td>
-                                                <td ng-if="variantReportMode!=='QC'">{{::variant.aMOI | dashify }}<sup>({{::variant.inclusion}})</sup></td>
+                                                <td ng-if="variantReportMode!=='QC'">{{::variant.is_amoi | dashify }}<sup>({{::variant.inclusion}})</sup></td>
                                                 <td>{{::variant.chromosome | dashify }}</td>
                                                 <td>{{::variant.position | dashify }}</td>
-                                                <td>{{::variant.cds_ref | dashify }}</td>
-                                                <td>{{::variant.cds_alt | dashify }}</td>
-                                                <td>{{::variant.ocp_ref | dashify }}</td>
-                                                <td>{{::variant.ocp_alt | dashify }}</td>
+                                                <td>{{::variant.cds_reference | dashify }}</td>
+                                                <td>{{::variant.cds_alternative | dashify }}</td>
+                                                <td>{{::variant.ocp_reference | dashify }}</td>
+                                                <td>{{::variant.ocp_alternative | dashify }}</td>
                                                 <td>{{::variant.strand | dashify }}</td>
                                                 <td>{{::variant.allele_frequency | dashify }}</td>
                                                 <td>
@@ -578,7 +578,7 @@
                                             </tr>
 
                                             <tr ng-if="!currentTissueVariantReport.variants.snvs_and_indels || !currentTissueVariantReport.variants.snvs_and_indels.length">
-                                                <td colspan="8"><span class="text-muted">No SNVs, MNVs or Indels</span></td>
+                                                <td colspan="20"><span class="text-muted">No SNVs, MNVs or Indels</span></td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -620,7 +620,7 @@
                                                     <td>
                                                         <a href ng-click="openCosmicGene(variant.identifier)" class="report-link"> {{::variant.identifier | dashify }} </a>
                                                     </td>
-                                                    <td ng-if="variantReportMode!=='QC'">{{variant.aMOI | dashify }}<sup>({{variant.inclusion}})</sup></td>
+                                                    <td ng-if="variantReportMode!=='QC'">{{variant.is_amoi | dashify }}<sup>({{variant.inclusion}})</sup></td>
                                                     <td>{{variant.chromosome | dashify }}</td>
                                                     <td>{{variant.rawCopyNumber | dashify }}</td>
                                                     <td>{{variant.copyNumber | dashify }}</td>
@@ -629,7 +629,7 @@
                                                 </tr>
 
                                                 <tr ng-if="!currentTissueVariantReport.variants.copy_number_variants || !currentTissueVariantReport.variants.copy_number_variants.length">
-                                                    <td colspan="8"><span class="text-muted">No Copy Number Variants</span></td>
+                                                    <td colspan="9"><span class="text-muted">No Copy Number Variants</span></td>
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -670,7 +670,7 @@
                                                         <a ng-if="variant.comment " href ng-click="editComment(variant, currentTissueVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
                                                     </td>
                                                     <td>{{variant.identifier}}</td>
-                                                    <td ng-if="variantReportMode!=='QC'">{{variant.aMOI | dashify }}}}<sup>({{variant.inclusion}})</sup></td>
+                                                    <td ng-if="variantReportMode!=='QC'">{{variant.is_amoi | dashify }}}}<sup>({{variant.inclusion}})</sup></td>
                                                     <td>{{variant.gene2 | dashify }}</td>
                                                     <td>{{variant.gene2count | dashify }}</td>
                                                     <td>
@@ -684,7 +684,7 @@
                                                 </tr>
 
                                                 <tr ng-if="!currentTissueVariantReport.variants.gene_fusions || !currentTissueVariantReport.variants.gene_fusions.length">
-                                                    <td colspan="8"><span class="text-muted">No Gene Fusions</span></td>
+                                                    <td colspan="9"><span class="text-muted">No Gene Fusions</span></td>
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -1024,7 +1024,7 @@
                                         </thead>
                                         <tbody>
                                         <tr class="table-subheader ">
-                                            <td colspan="8 ">
+                                            <td colspan="2">
                                                 <h5>1 - NO VARIANT MATCH</h5>
                                             </td>
                                         </tr>
@@ -1036,7 +1036,7 @@
                                         </tr>
 
                                         <tr class="table-subheader ">
-                                            <td colspan="8 ">
+                                            <td colspan="2">
                                                 <h5>2 - RECORD BASED EXCLUSION</h5>
                                             </td>
                                         </tr>
@@ -1049,7 +1049,7 @@
                                         </tr>
 
                                         <tr class="table-subheader ">
-                                            <td colspan="8 ">
+                                            <td colspan="2">
                                                 <h5>3 - SELECTED</h5>
                                             </td>
                                         </tr>
@@ -1238,13 +1238,13 @@
                                                 </a>
 
                                             </td>
-                                            <td ng-if="variantReportMode!=='QC'">{{variant.aMOI | dashify }}<sup>({{variant.inclusion}})</sup></td>
+                                            <td ng-if="variantReportMode!=='QC'">{{variant.is_amoi | dashify }}<sup>({{variant.inclusion}})</sup></td>
                                             <td>{{variant.chrom | dashify }}</td>
                                             <td>{{variant.position | dashify }}</td>
-                                            <td>{{variant.cds_ref | dashify }}</td>
-                                            <td>{{variant.cds_alt | dashify }}</td>
-                                            <td>{{variant.ocp_ref | dashify }}</td>
-                                            <td>{{variant.ocp_alt | dashify }}</td>
+                                            <td>{{variant.cds_reference | dashify }}</td>
+                                            <td>{{variant.cds_alternative | dashify }}</td>
+                                            <td>{{variant.ocp_reference | dashify }}</td>
+                                            <td>{{variant.ocp_alternative | dashify }}</td>
                                             <td>{{variant.strand | dashify }}</td>
                                             <td>{{variant.alleleFreq | dashify }}</td>
                                             <td>{{variant.funcGene | dashify }}</td>
@@ -1258,7 +1258,7 @@
                                         </tr>
 
                                         <tr ng-if="!currentBloodVariantReport.variants.snvs_and_indels || !currentBloodVariantReport.variants.snvs_and_indels.length">
-                                            <td colspan="8"><span class="text-muted">No SNVs, MNVs or Indels</span></td>
+                                            <td colspan="20"><span class="text-muted">No SNVs, MNVs or Indels</span></td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -1299,7 +1299,7 @@
                                                 <a ng-if="variant.comment " href ng-click="editComment(variant, currentBloodVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
                                             </td>
                                             <td>{{variant.id | dashify }}</td>
-                                            <td ng-if="variantReportMode!=='QC'">{{variant.aMOI | dashify }}<sup>({{variant.inclusion}})</sup></td>
+                                            <td ng-if="variantReportMode!=='QC'">{{variant.is_amoi | dashify }}<sup>({{variant.inclusion}})</sup></td>
                                             <td>{{variant.chrom | dashify }}</td>
                                             <td>{{variant.rawCN | dashify }}</td>
                                             <td>{{variant.cn | dashify }}</td>
@@ -1308,7 +1308,7 @@
                                         </tr>
 
                                         <tr ng-if="!currentBloodVariantReport.variants.copy_number_variants || !currentBloodVariantReport.variants.copy_number_variants.length">
-                                            <td colspan="8"><span class="text-muted">No Copy Number Variants</span></td>
+                                            <td colspan="9"><span class="text-muted">No Copy Number Variants</span></td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -1349,7 +1349,7 @@
                                             <a ng-if="variant.comment " href ng-click="editComment(variant, currentBloodVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
                                         </td>
                                         <td>{{variant.id | dashify }}</td>
-                                        <td ng-if="variantReportMode!=='QC'">{{variant.aMOI | dashify }}<sup>({{variant.inclusion}})</sup></td>
+                                        <td ng-if="variantReportMode!=='QC'">{{variant.is_amoi | dashify }}<sup>({{variant.inclusion}})</sup></td>
                                         <td>{{variant.gene2 | dashify }}</td>
                                         <td>{{variant.gene2count | dashify }}</td>
                                         <td>{{variant.gene1 | dashify }}</td>
@@ -1358,7 +1358,7 @@
                                     </tr>
 
                                     <tr ng-if="!currentBloodVariantReport.variants.gene_fusions || !currentBloodVariantReport.variants.gene_fusions.length">
-                                        <td colspan="8"><span class="text-muted">No Gene Fusions</span></td>
+                                        <td colspan="9"><span class="text-muted">No Gene Fusions</span></td>
                                     </tr>
                                     </tbody>
                                 </table>
