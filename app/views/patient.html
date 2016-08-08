@@ -588,6 +588,7 @@
                                         <div class="ibox-title ibox-title-no-line-no-padding">
                                             <h3>Copy Number Variants</h3>
                                         </div>
+                                        
                                         <div class="table-responsive" style="border: none">
                                             <table datatable="ng"
                                                    dt-options="dtOptions"
@@ -760,7 +761,7 @@
                                                                     <td>{{::ta.reference | dashify }}</td>
                                                                     <td>{{::ta.alternative | dashify }}</td>
                                                                     <td>{{::ta.filter | dashify }}</td>
-                                                                    <td>{{::ta.alleleFrequency | dashify }}</td>
+                                                                    <td>{{::ta.allele_frequencyuency | dashify }}</td>
                                                                     <td>
                                                                         <a href ng-click="openCosmicGene(ta.gene)" class="report-link">{{::ta.gene}}</a>
                                                                     </td>
@@ -768,7 +769,7 @@
                                                                     <td>{{::ta.exon | dashify }}</td>
                                                                     <td>{{::ta.function | dashify }}</td>
                                                                     <td>{{::ta.hgvs | dashify }}</td>
-                                                                    <td>{{::ta.readDepth | dashify }}</td>
+                                                                    <td>{{::ta.read_depth | dashify }}</td>
                                                                     <td>{{::ta.transcript | dashify }}</td>
                                                                     <td>{{::ta.proteinMatch | dashify }}</td>
 
@@ -883,7 +884,7 @@
                                                                     <td>{{::ta.oncominevariantclass | dashify }}</td>
                                                                     <td>{{::ta.exon | dashify }}</td>
                                                                     <td>{{::ta.function | dashify }}</td>
-                                                                    <td>{{::ta.readDepth | dashify }}</td>
+                                                                    <td>{{::ta.read_depth | dashify }}</td>
                                                                 </tr>
                                                                 </tbody>
                                                             </table>
@@ -1231,28 +1232,25 @@
                                                 <a ng-if="variant.comment " href ng-click="editComment(variant, currentBloodVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
                                             </td>
                                             <td>
-                                                <!--{{variant.id | dashify }}-->
-
-                                                <a class="report-link" href ng-click="openCosmicId( variant.id )">
-                                                    {{variant.id | dashify }}
+                                                <a class="report-link" href ng-click="openCosmicId( variant.identifier )">
+                                                    {{variant.identifier | dashify }}
                                                 </a>
-
                                             </td>
                                             <td ng-if="variantReportMode!=='QC'">{{variant.is_amoi | dashify }}<sup>({{variant.inclusion}})</sup></td>
-                                            <td>{{variant.chrom | dashify }}</td>
+                                            <td>{{variant.chromosome | dashify }}</td>
                                             <td>{{variant.position | dashify }}</td>
                                             <td>{{variant.cds_reference | dashify }}</td>
                                             <td>{{variant.cds_alternative | dashify }}</td>
                                             <td>{{variant.ocp_reference | dashify }}</td>
                                             <td>{{variant.ocp_alternative | dashify }}</td>
                                             <td>{{variant.strand | dashify }}</td>
-                                            <td>{{variant.alleleFreq | dashify }}</td>
+                                            <td>{{variant.allele_frequency | dashify }}</td>
                                             <td>{{variant.func_gene | dashify }}</td>
-                                            <td>{{variant.oncomineVariantClass | dashify }}</td>
+                                            <td>{{variant.oncomine_variant_class | dashify }}</td>
                                             <td>{{variant.exon | dashify }}</td>
-                                            <td>{{variant.funct | dashify }}</td>
-                                            <td>{{variant.hGVS | dashify }}</td>
-                                            <td>{{variant.readDepth | dashify }}</td>
+                                            <td>{{variant.function | dashify }}</td>
+                                            <td>{{variant.hgvs | dashify }}</td>
+                                            <td>{{variant.read_depth | dashify }}</td>
                                             <td>{{variant.transcript | dashify }}</td>
                                             <td>{{variant.protein | dashify }}</td>
                                         </tr>
@@ -1268,14 +1266,14 @@
                                 <div class="ibox-title ibox-title-no-line-no-padding">
                                     <h3>Copy Number Variants</h3>
                                 </div>
-
-                                <div class="table-responsive" style="border: none">
+                                        
+                                <div class="table-responsive" style="border: noneidentifier
                                     <table datatable="ng"
-                                           dt-options="dtOptions"
-                                           dt-column-defs="dtColumnDefs"
-                                           dt-instance="dtInstance"
-                                           dt-columns="dtColumns"
-                                           class="table table-small-font table-striped" role="grid" >
+                                            dt-options="dtOptions"
+                                            dt-column-defs="dtColumnDefs"
+                                            dt-instance="dtInstance"
+                                            dt-columns="dtColumns"
+                                            class="table table-small-font table-striped" role="grid" >
                                         <thead>
                                         <tr>
                                             <th ng-if="variantReportMode!=='QC'">Confirm</th>
@@ -1295,16 +1293,18 @@
                                                 <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentBloodVariantReport.status==='PENDING'">
                                                 </div>
                                             </td>
-                                            <td ng-if="variantReportMode!=='QC'">
+                                            <td ng-if="variantReportMode!=='QC' ">
                                                 <a ng-if="variant.comment " href ng-click="editComment(variant, currentBloodVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
                                             </td>
-                                            <td>{{variant.id | dashify }}</td>
+                                            <td>
+                                                <a href ng-click="openCosmicGene(variant.identifier)" class="report-link"> {{::variant.identifier | dashify }} </a>
+                                            </td>
                                             <td ng-if="variantReportMode!=='QC'">{{variant.is_amoi | dashify }}<sup>({{variant.inclusion}})</sup></td>
-                                            <td>{{variant.chrom | dashify }}</td>
-                                            <td>{{variant.rawCN | dashify }}</td>
-                                            <td>{{variant.cn | dashify }}</td>
-                                            <td>{{variant.ci5percent | dashify }}</td>
-                                            <td>{{variant.ci95percent | dashify }}</td>
+                                            <td>{{variant.chromosome | dashify }}</td>
+                                            <td>{{variant.raw_copy_number | dashify }}</td>
+                                            <td>{{variant.copy_number | dashify }}</td>
+                                            <td>{{variant.confidence_interval_5_percent | dashify }}</td>
+                                            <td>{{variant.confidence_interval_95_percent | dashify }}</td>
                                         </tr>
 
                                         <tr ng-if="!currentBloodVariantReport.variants.copy_number_variants || !currentBloodVariantReport.variants.copy_number_variants.length">
@@ -1319,50 +1319,56 @@
                                     <h3>Gene Fusions</h3>
                                 </div>
 
-                                <div class="table-responsive" style="border: none">
+                                <div class="table-responsive" style="border: noneidentifier
                                     <table datatable="ng"
-                                           dt-options="dtOptions"
-                                           dt-column-defs="dtColumnDefs"
-                                           dt-instance="dtInstance"
-                                           dt-columns="dtColumns"
-                                           class="table table-small-font table-striped" role="grid" >
-                                    <thead>
-                                    <tr>
-                                        <th ng-if="variantReportMode!=='QC'">Confirm</th>
-                                        <th ng-if="variantReportMode!=='QC'">Comment</th>
-                                        <th>ID</th>
-                                        <th ng-if="variantReportMode!=='QC'">aMOI</th>
-                                        <th>Gene 2</th>
-                                        <th>Gene 2 Count</th>
-                                        <th>Gene 1</th>
-                                        <th>Gene 1 Count</th>
-                                        <th>Annotation</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr ng-repeat="variant in currentBloodVariantReport.variants.gene_fusions" style="cursor: auto;" role="row" class="odd">
-                                        <td ng-if="variantReportMode!=='QC'">
-                                            <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentBloodVariantReport.status==='PENDING'">
-                                            </div>
-                                        </td>
-                                        <td ng-if="variantReportMode!=='QC'">
-                                            <a ng-if="variant.comment " href ng-click="editComment(variant, currentBloodVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
-                                        </td>
-                                        <td>{{variant.id | dashify }}</td>
-                                        <td ng-if="variantReportMode!=='QC'">{{variant.is_amoi | dashify }}<sup>({{variant.inclusion}})</sup></td>
-                                        <td>{{variant.gene2 | dashify }}</td>
-                                        <td>{{variant.gene2count | dashify }}</td>
-                                        <td>{{variant.gene1 | dashify }}</td>
-                                        <td>{{variant.gene1count | dashify }}</td>
-                                        <td>{{variant.annotation | dashify }}</td>
-                                    </tr>
+                                            dt-options="dtOptions"
+                                            dt-column-defs="dtColumnDefs"
+                                            dt-instance="dtInstance"
+                                            dt-columns="dtColumns"
+                                            class="table table-small-font table-striped" role="grid" >
+                                        <thead>
+                                        <tr>
+                                            <th ng-if="variantReportMode!=='QC'">Confirm</th>
+                                            <th ng-if="variantReportMode!=='QC'">Comment</th>
+                                            <th>ID</th>
+                                            <th ng-if="variantReportMode!=='QC'">aMOI</th>
+                                            <th>Gene 2</th>
+                                            <th>Gene 2 Count</th>
+                                            <th>Gene 1</th>
+                                            <th>Gene 1 Count</th>
+                                            <th>Annotation</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-repeat="variant in currentBloodVariantReport.variants.gene_fusions" style="cursor: auto;" role="row" class="odd">
+                                            <td ng-if="variantReportMode!=='QC'">
+                                                <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentBloodVariantReport.status==='PENDING'">
+                                                </div>
+                                            </td>
+                                            <td ng-if="variantReportMode!=='QC'">
+                                                <a ng-if="variant.comment " href ng-click="editComment(variant, currentBloodVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
+                                            </td>
+                                            <td>{{variant.identifier}}</td>
+                                            <td ng-if="variantReportMode!=='QC'">{{variant.is_amoi | dashify }}}}<sup>({{variant.inclusion}})</sup></td>
+                                            <td>{{variant.gene2 | dashify }}</td>
+                                            <td>{{variant.gene2count | dashify }}</td>
+                                            <td>
+                                                <a class="report-link" href ng-click="openCosmicGene( variant.gene )">
+                                                    {{variant.gene | dashify }}
+                                                </a>
+                                                <!--{{variant.gene | dashify }}-->
+                                            </td>
+                                            <td>{{variant.gene1count | dashify }}</td>
+                                            <td>{{variant.annotation | dashify }}</td>
+                                        </tr>
 
-                                    <tr ng-if="!currentBloodVariantReport.variants.gene_fusions || !currentBloodVariantReport.variants.gene_fusions.length">
-                                        <td colspan="9"><span class="text-muted">No Gene Fusions</span></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                        <tr ng-if="!currentBloodVariantReport.variants.gene_fusions || !currentBloodVariantReport.variants.gene_fusions.length">
+                                            <td colspan="9"><span class="text-muted">No Gene Fusions</span></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
+
                             </div>
                             <!--FILTERED-->
 
@@ -1429,7 +1435,7 @@
                                                             <td>{{::ta.reference | dashify }}</td>
                                                             <td>{{::ta.alternative | dashify }}</td>
                                                             <td>{{::ta.filter | dashify }}</td>
-                                                            <td>{{::ta.alleleFrequency | dashify }}</td>
+                                                            <td>{{::ta.allele_frequencyuency | dashify }}</td>
                                                             <td>
                                                                 <a href ng-click="openCosmicGene(ta.gene)" class="report-link">{{::ta.gene | dashify }}</a>
                                                             </td>
@@ -1437,7 +1443,7 @@
                                                             <td>{{::ta.exon | dashify }}</td>
                                                             <td>{{::ta.function | dashify }}</td>
                                                             <td>{{::ta.hgvs | dashify }}</td>
-                                                            <td>{{::ta.readDepth | dashify }}</td>
+                                                            <td>{{::ta.read_depth | dashify }}</td>
                                                             <td>{{::ta.transcript | dashify }}</td>
                                                             <td>{{::ta.proteinMatch | dashify }}</td>
                                                         </tr>
@@ -1551,7 +1557,7 @@
                                                             <td>{{::ta.oncominevariantclass | dashify }}</td>
                                                             <td>{{::ta.exon | dashify }}</td>
                                                             <td>{{::ta.function | dashify }}</td>
-                                                            <td>{{::ta.readDepth | dashify }}</td>
+                                                            <td>{{::ta.read_depth | dashify }}</td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
