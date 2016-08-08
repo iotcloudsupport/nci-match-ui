@@ -1,4 +1,4 @@
-describe('Controller: Specimen Tracking Controller', function () {
+xdescribe('Controller: Specimen Tracking Controller', function () {
 
     beforeEach(module('config.matchbox', 'http.matchbox', 'matchbox.specimen-tracking'));
 

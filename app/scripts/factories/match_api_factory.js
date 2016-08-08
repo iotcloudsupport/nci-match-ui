@@ -1,6 +1,6 @@
 (function () {
 
-    angular.module('matchbox.http')
+    angular.module('matchbox.http', [])
         .factory('matchApi', function ($http, matchConfig, $q, $log) {
             return {
                 loadPatient: loadPatient,

@@ -1,4 +1,4 @@
-describe('Controller: Patients Controller', function () {
+xdescribe('Controller: Patients Controller', function () {
 
     'use strict'
 

@@ -1,4 +1,4 @@
-describe('Factory: Get Report List Service', function () {
+xdescribe('Factory: Get Report List Service', function () {
 
     beforeEach(module('config.matchbox', 'http.matchbox'));
 

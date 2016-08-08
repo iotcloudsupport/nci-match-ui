@@ -1,4 +1,4 @@
-describe('Factory: Get Patient Speciment Tracking Summary Service', function () {
+xdescribe('Factory: Get Patient Speciment Tracking Summary Service', function () {
 
     beforeEach(module('config.matchbox', 'http.matchbox'));
 
