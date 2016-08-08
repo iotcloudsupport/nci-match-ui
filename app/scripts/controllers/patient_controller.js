@@ -404,6 +404,10 @@
                 return;
 
             var currentAssignment = $scope.data.assignment_report;
+            if (!currentAssignment) {
+                $log.debug('No assignment received from service');
+                return;
+            }
 
             if ($scope.currentTissueVariantReport.molecular_id !== currentAssignment.molecular_id
                 || $scope.currentTissueVariantReport.analysis_id !== currentAssignment.analysis_id) {

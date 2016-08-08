@@ -564,11 +564,11 @@
                                                 <td>{{::variant.strand | dashify }}</td>
                                                 <td>{{::variant.allele_frequency | dashify }}</td>
                                                 <td>
-                                                    <a class="report-link" href ng-click="openCosmicGene( variant.funcGene )">
-                                                        {{variant.funcGene | dashify }}
+                                                    <a class="report-link" href ng-click="openCosmicGene( variant.func_gene )">
+                                                        {{variant.func_gene | dashify }}
                                                     </a>
                                                 </td>
-                                                <td>{{::variant.oncomine_variant_class | dashify }}</td>
+                                                <td>{{::variant.oncominevariantclass | dashify }}</td>
                                                 <td>{{::variant.exon | dashify }}</td>
                                                 <td>{{::variant.function | dashify }}</td>
                                                 <td>{{::variant.hgvs | dashify }}</td>
@@ -622,10 +622,10 @@
                                                     </td>
                                                     <td ng-if="variantReportMode!=='QC'">{{variant.is_amoi | dashify }}<sup>({{variant.inclusion}})</sup></td>
                                                     <td>{{variant.chromosome | dashify }}</td>
-                                                    <td>{{variant.rawCopyNumber | dashify }}</td>
-                                                    <td>{{variant.copyNumber | dashify }}</td>
-                                                    <td>{{variant.confidenceInterval5percent | dashify }}</td>
-                                                    <td>{{variant.confidenceInterval95percent | dashify }}</td>
+                                                    <td>{{variant.raw_copy_number | dashify }}</td>
+                                                    <td>{{variant.copy_number | dashify }}</td>
+                                                    <td>{{variant.confidence_interval_5_percent | dashify }}</td>
+                                                    <td>{{variant.confidence_interval_95_percent | dashify }}</td>
                                                 </tr>
 
                                                 <tr ng-if="!currentTissueVariantReport.variants.copy_number_variants || !currentTissueVariantReport.variants.copy_number_variants.length">
@@ -822,10 +822,10 @@
                                                                     <td>{{::ta.reference | dashify }}</td>
                                                                     <td>{{::ta.alternative | dashify }}</td>
                                                                     <td>{{::ta.filter | dashify }}</td>
-                                                                    <td>{{::ta.rawCopyNumber | dashify }}</td>
-                                                                    <td>{{::ta.copyNumber | dashify }}</td>
-                                                                    <td>{{::ta.confidenceInterval5percent | dashify }}</td>
-                                                                    <td>{{::ta.confidenceInterval95percent | dashify }}</td>
+                                                                    <td>{{::ta.raw_copy_number | dashify }}</td>
+                                                                    <td>{{::ta.copy_number | dashify }}</td>
+                                                                    <td>{{::ta.confidence_interval_5_percent | dashify }}</td>
+                                                                    <td>{{::ta.confidence_interval_95_percent | dashify }}</td>
 
                                                                 </tr>
                                                                 </tbody>
@@ -1247,7 +1247,7 @@
                                             <td>{{variant.ocp_alternative | dashify }}</td>
                                             <td>{{variant.strand | dashify }}</td>
                                             <td>{{variant.alleleFreq | dashify }}</td>
-                                            <td>{{variant.funcGene | dashify }}</td>
+                                            <td>{{variant.func_gene | dashify }}</td>
                                             <td>{{variant.oncomineVariantClass | dashify }}</td>
                                             <td>{{variant.exon | dashify }}</td>
                                             <td>{{variant.funct | dashify }}</td>
@@ -1490,10 +1490,10 @@
                                                             <td>{{::ta.reference | dashify }}</td>
                                                             <td>{{::ta.alternative | dashify }}</td>
                                                             <td>{{::ta.filter | dashify }}</td>
-                                                            <td>{{::ta.rawCopyNumber | dashify }}</td>
-                                                            <td>{{::ta.copyNumber | dashify }}</td>
-                                                            <td>{{::ta.confidenceInterval5percent | dashify }}</td>
-                                                            <td>{{::ta.confidenceInterval95percent | dashify }}</td>
+                                                            <td>{{::ta.raw_copy_number | dashify }}</td>
+                                                            <td>{{::ta.copy_number | dashify }}</td>
+                                                            <td>{{::ta.confidence_interval_5_percent | dashify }}</td>
+                                                            <td>{{::ta.confidence_interval_95_percent | dashify }}</td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
