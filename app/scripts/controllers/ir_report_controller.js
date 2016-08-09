@@ -54,13 +54,17 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         $scope.heatMapList = [];
 
         $scope.loadMap = function (id) {
+
             $scope.count = [];
             if(id == "heatmap"){
+                $scope.indextab = 0;
                 $scope.schedule = "weekmap";
                 $scope.monthview = 'none';
                 $scope.barlegend = "Total Positive / NTC Control Status";
+
             }
             else {
+                $scope.indextab = 0;
                 $scope.schedule = "heatmap";
                 $scope.barlegend = "History of Total Positive / NTC Control Status";
 
@@ -335,6 +339,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             $scope.ntc_status = [0, 0, 0];
             $scope.pos_mda_status = [0, 0, 0];
             $scope.ntc_mda_status = [0, 0, 0];
+            $scope.indextab = 0;
 
             aMoiLabels = ['Failed', 'Success', 'Not Generated'];
             ntcMoiLabels = ['Failed', 'Success', 'Not Generated'];
@@ -351,9 +356,11 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                         if (v.molecular_id !== undefined) {
                             if (v.molecular_id.substring(0, 3) === 'Ntc') {
                                 $scope.count[0] += 1;
+                                $scope.indextab = 1;
                             }
                             else {
                                 $scope.count[1] += 1;
+                                $scope.indextab = 0;
                             }
                         }
 
@@ -827,6 +834,35 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                     .openPositives(index)
                     .then(function (d) {
 
+                        for (var i = d.data.length - 1; i >= 0; i--) {
+                            var dta = d.data[i];
+
+                            for (var key in dta) {
+                                if (key !== id) {
+                                    d.data.splice(i, 1);
+                                }
+                                else{
+                                    var newObject = jQuery.extend([], d.data[i][id]);
+                                }
+                            }
+                        }
+                        loadPositivesList(newObject);
+                    });
+            };
+
+            $scope.openHeatMapPositives = function (id, status) {
+                $scope.selectedRow = id;
+                $scope.mid = id;
+                $scope.titleid = id;
+                $scope.status = status;
+                $scope.positives = 'mocha';
+
+                var index = id.substring(id.indexOf("MoCha_") + 6, id.length) + '.json';
+
+                matchApiMock
+                    .openPositives(index)
+                    .then(function (d) {
+
                         // for (var i = d.data.length - 1; i >= 0; i--) {
                         //     var dta = d.data[i];
                         //
@@ -854,25 +890,25 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             // GENERATE TABLES
             $scope.generateMocha_Table = function () {
 
-                   var nr = $scope.mochaList.length + 2;
+               var nr = $scope.mochaList.length + 2;
                var mol = "SampleControl_MoCha_" + nr;
 
-                       $scope.mochaList.push({
-                               "molecular_is": mol,
-                           "variant_reports": "-",
-                           "current_status": "-",
-                           "date_created": $scope.date,
-                           "date_received": "-"
+                   $scope.mochaList.push({
+                       "molecular_is": mol,
+                       "variant_reports": "-",
+                       "current_status": "-",
+                       "date_created": $scope.date,
+                       "date_received": "-"
                    });
             };
 
             $scope.generateNtcMocha_Table = function () {
 
-                   var nr = $scope.mochaNtcList.length + 2;
+               var nr = $scope.mochaNtcList.length + 2;
                var mol = "NtcControl_MoCha_" + nr;
 
                    $scope.mochaNtcList.push({
-                           "molecular_is": mol,
+                       "molecular_is": mol,
                        "variant_reports": "-",
                        "current_status": "-",
                        "date_created": "June 8, 2016 4:51 PM GMT",
@@ -912,12 +948,22 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             //SNV
             function loadPositivesList(data) {
 
-                $scope.positiveControlList = data.data;
-                angular.forEach(data.data, function (value,key) {
-                    if(value.negativeVariantsList !== undefined){
-                        $scope.negativeVariantsList = value.negativeVariantsList;
-                    }
-                });
+                if(data.data === undefined){
+                    $scope.positiveControlList = data;
+                    angular.forEach(data, function (value,key) {
+                        if(value.negativeVariantsList !== undefined){
+                            $scope.negativeVariantsList = value.negativeVariantsList;
+                        }
+                    });
+                }
+                else{
+                    $scope.positiveControlList = data.data;
+                    angular.forEach(data.data, function (value,key) {
+                        if(value.negativeVariantsList !== undefined){
+                            $scope.negativeVariantsList = value.negativeVariantsList;
+                        }
+                    });
+                }
             };
 
 
@@ -934,20 +980,51 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                 matchApiMock
                     .openMDACCPositives(index)
                     .then(function (d) {
-                        loadMDAPositivesList(d);
+
+                        for (var i = d.data.length - 1; i >= 0; i--) {
+                            var dta = d.data[i];
+
+                            for (var key in dta) {
+                                if (key !== id) {
+                                    d.data.splice(i, 1);
+                                }
+                                else{
+                                    var newObject = jQuery.extend([], d.data[i][id]);
+                                }
+                            }
+                        }
+                        
+                        loadMDAPositivesList(newObject);
                     });
             };
 
             //SNV
             function loadMDAPositivesList(data) {
 
-                $scope.positiveControlList = data.data;
+                if(data.data === undefined){
+                    $scope.positiveControlList = data;
+                    angular.forEach(data, function (value,key) {
+                        if(value.negativeVariantsList !== undefined){
+                            $scope.negativeVariantsList = value.negativeVariantsList;
+                        }
+                    });
+                }
+                else{
+                    $scope.positiveControlList = data.data;
+                    angular.forEach(data.data, function (value,key) {
+                        if(value.negativeVariantsList !== undefined){
+                            $scope.negativeVariantsList = value.negativeVariantsList;
+                        }
+                    });
+                }
 
-                angular.forEach(data.data, function (value,key) {
-                    if(value.negativeVariantsList !== undefined){
-                        $scope.negativeVariantsList = value.negativeVariantsList;
-                    }
-                });
+                // $scope.positiveControlList = data.data;
+                // angular.forEach(data.data, function (value,key) {
+                //     if(value.negativeVariantsList !== undefined){
+                //         $scope.negativeVariantsList = value.negativeVariantsList;
+                //     }
+                // });
+
             };
 
             $scope.closePositives = function() {
