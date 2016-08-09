@@ -117,8 +117,8 @@
             }
 
             function openPositives(index){
-                return $http.get('data/sample_positive_control_' + index);
-                // return $http.get('data/sample_positive_mocha_data.json');
+                // return $http.get('data/sample_positive_control_' + index);
+                return $http.get('data/sample_positive_mocha_data.json');
             }
 
             function openMDACCPositives(index){

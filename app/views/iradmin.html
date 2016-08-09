@@ -347,7 +347,7 @@
 
         <uib-tabset active="indextab" ng-if="branch === 'mocha'" >
 
-            <uib-tab heading="Positive Sample Controls {{count[1]}}"  index="0" >
+            <uib-tab heading="Positive Sample Controls"  index="0" >
 
                 <!--SCROLL TIC-->
                 <div id="mochabottom"></div>
@@ -373,7 +373,6 @@
                                                 <form class="form-horizontal" role="form" ng-submit="showPositiveControlConfirmation('MoCha')">
                                                     <input disabled="disabled" class="btn btn-xs btn-default file-button-xl" type="submit" value="Generate MSN" class="btn btn-primary" />
                                                 </form>
-
 
                                                 <div>
                                                     <table datatable="ng" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance"
@@ -903,7 +902,7 @@
             </uib-tab>
 
             <!--NO TEMPLAT CONTROL-->
-            <uib-tab index="1" heading="No Template Control {{count[0]}}">
+            <uib-tab index="1" heading="No Template Control">
 
                 <div class="col-lg-16">
                     <div class="ibox float-e-margins">
