@@ -4,6 +4,7 @@
         .factory('matchApi', function ($http, matchConfig, $q, $log) {
             return {
                 loadPatient: loadPatient,
+                loadPatientActionItems: loadPatientActionItems,
                 loadPatientList: loadPatientList,
                 loadActivity: loadActivity,
                 loadDashboardStatistics: loadDashboardStatistics,
@@ -32,6 +33,11 @@
             function loadPatient(id) {
                 $log.info('Loading patient ' + id);
                 return $http.get(matchConfig.patientApiBaseUrl + '/patients/' + id);
+            }
+
+            function loadPatientActionItems(id) {
+                $log.info('Loading action items for patient ' + id);
+                return $http.get(matchConfig.patientApiBaseUrl + '/patients/' + id + '/pendingItems');
             }
 
             function loadActivity(id) {
