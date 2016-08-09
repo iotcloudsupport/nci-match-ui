@@ -16,6 +16,7 @@
         store,
         $filter,
         arrayTools,
+        dateTools,
         $location,
         $anchorScroll) {
 
@@ -90,6 +91,7 @@
         $scope.dzAddedFile = dzAddedFile;
         $scope.dzError = dzError;
         $scope.loadPatientData = loadPatientData;
+        $scope.loadActionItems = loadActionItems;
         $scope.showWarning = showWarning;
         $scope.showConfirmation = showConfirmation;
         $scope.editComment = editComment;
@@ -235,6 +237,32 @@
 
         function getVariantReportModeClass(reportMode) {
             return $scope.variantReportMode === reportMode ? 'active' : '';
+        }
+
+        function loadActionItems() {
+            matchApi
+                .loadPatientActionItems($stateParams.patient_id)
+                .then(setupActionItems, handleActionItemsLoadError);
+        }
+
+        function setupActionItems(data) {
+            if (!data || !data.data) {
+                $log.error('The web service didn\'t send Patient Action Items data.');
+                return;
+            }
+
+            $scope.actionItems = [];
+            angular.copy(data.data, $scope.actionItems);
+    
+            arrayTools.forEach($scope.actionItems, function (element) {
+                var days_pending  = dateTools.calculateDaysPending(element, 'created_date');
+                element.days_pending  = days_pending || days_pending === 0 ? days_pending : '-';
+            });
+        }
+
+        function handleActionItemsLoadError(e) {
+            $log.error('Error while retrieving Patient Action Items data from the service.');
+            $log.error(e);
         }
 
         function loadPatientData() {

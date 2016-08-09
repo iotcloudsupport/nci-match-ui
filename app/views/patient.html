@@ -74,13 +74,13 @@
         <div class="tabs-container">
             <uib-tabset active="activeTabIndex">
                 <uib-tab heading="Summary" select="setActiveTab('summary')">
-                    <div class="panel-body">
+                    <div class="panel-body" ng-init="loadActionItems()">
 
-                        <div ng-if="data.action_items">
+                        <div ng-if="actionItems">
                             <div class="ibox-title ibox-title-no-line-no-padding">
                                 <h3>Actions Needed</h3>
                             </div>
-                            <action-items items="data.action_items" patient-id="patient_id"></action-items>
+                            <action-items items="actionItems" patient-id="patient_id"></action-items>
                         </div>
 
                         <div ng-if="data.ta_history" class="ibox-title ibox-title-no-line-no-padding">

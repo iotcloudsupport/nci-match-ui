@@ -2,7 +2,8 @@
     "use strict";
 
     angular.module('matchbox.tools', [])
-        .factory('arrayTools', arrayTools);
+        .factory('arrayTools', arrayTools)
+        .factory('dateTools', dateTools);
 
     function arrayTools() {
         return {
@@ -33,4 +34,29 @@
             }
         }
     }
+
+    function dateTools() {
+        return {
+            calculateDaysPending: calculateDaysPending
+        }
+
+        function calculateDaysPending(element, dateAttr) {
+            if (!(dateAttr in element))
+                return null
+
+            var dateValue = element[dateAttr];
+            if (!dateValue) 
+                return null
+            
+            var now = moment();
+            var dateValueMoment = moment(dateValue);
+            var diff = dateValueMoment.diff(now, "DD/MM/YYYY HH:mm:ss");
+
+            return moment.duration(diff).days();
+        }
+    }
 } ());
+
+
+
+

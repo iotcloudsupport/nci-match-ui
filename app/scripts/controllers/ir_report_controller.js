@@ -834,74 +834,18 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                     .openPositives(index)
                     .then(function (d) {
 
-
-                        // console.log( "  -POSITIVE-->" + ( JSON.stringify(d)))
-
                         for (var i = d.data.length - 1; i >= 0; i--) {
                             var dta = d.data[i];
 
                             for (var key in dta) {
-                                // console.log(key + ' is ' + dta[key]);
-
-                                // console.log(id + "  -POSITIVE-->" + ( JSON.stringify(key)))
-
-
                                 if (key !== id) {
                                     d.data.splice(i, 1);
                                 }
                                 else{
-
                                     var newObject = jQuery.extend([], d.data[i][id]);
-                                    // delete d.data[id];
-
-                                    // d.data.splice(0, 1);
-
-                                    // delete d.data[i][id];
-
                                 }
-
                             }
                         }
-
-
-                        // angular.forEach(d.data, function (value,key) {
-                        //
-                        //     angular.forEach(value, function (v,k) {
-                        //
-                        //         console.log( id + "  -->" + k)
-                        //
-                        //         if(id === k){
-                        //
-                        //             console.log( "  -POSITIVE-->" + ( JSON.stringify(v)))
-                        //         }
-                        //     })
-                        // });
-
-
-                        // for (var i = d.data.length - 1; i >= 0; i--) {
-                        //     var dta = d.data[i];
-                        //
-                        //     for (var key in dta) {
-                        //         // console.log(key + ' is ' + dta[key]);
-                        //
-                        //         if (key !== id) {
-                        //             d.data.splice(i, 1);
-                        //         }
-                        //
-                        //     }
-
-
-                            // console.log("POSITIVE-->"+( dta.attr["SampleControl_MoCha_1"]))
-
-                            // name = d.data[i].molecular_id;
-
-
-                        // }
-
-                        // delete d.test.key1;
-
-
-
                         loadPositivesList(newObject);
                     });
             };
@@ -1004,8 +948,6 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             //SNV
             function loadPositivesList(data) {
 
-                // console.log(JSON.stringify(data))
-
                 if(data.data === undefined){
                     $scope.positiveControlList = data;
                     angular.forEach(data, function (value,key) {
@@ -1038,20 +980,51 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                 matchApiMock
                     .openMDACCPositives(index)
                     .then(function (d) {
-                        loadMDAPositivesList(d);
+
+                        for (var i = d.data.length - 1; i >= 0; i--) {
+                            var dta = d.data[i];
+
+                            for (var key in dta) {
+                                if (key !== id) {
+                                    d.data.splice(i, 1);
+                                }
+                                else{
+                                    var newObject = jQuery.extend([], d.data[i][id]);
+                                }
+                            }
+                        }
+                        
+                        loadMDAPositivesList(newObject);
                     });
             };
 
             //SNV
             function loadMDAPositivesList(data) {
 
-                $scope.positiveControlList = data.data;
+                if(data.data === undefined){
+                    $scope.positiveControlList = data;
+                    angular.forEach(data, function (value,key) {
+                        if(value.negativeVariantsList !== undefined){
+                            $scope.negativeVariantsList = value.negativeVariantsList;
+                        }
+                    });
+                }
+                else{
+                    $scope.positiveControlList = data.data;
+                    angular.forEach(data.data, function (value,key) {
+                        if(value.negativeVariantsList !== undefined){
+                            $scope.negativeVariantsList = value.negativeVariantsList;
+                        }
+                    });
+                }
 
-                angular.forEach(data.data, function (value,key) {
-                    if(value.negativeVariantsList !== undefined){
-                        $scope.negativeVariantsList = value.negativeVariantsList;
-                    }
-                });
+                // $scope.positiveControlList = data.data;
+                // angular.forEach(data.data, function (value,key) {
+                //     if(value.negativeVariantsList !== undefined){
+                //         $scope.negativeVariantsList = value.negativeVariantsList;
+                //     }
+                // });
+
             };
 
             $scope.closePositives = function() {

@@ -2,7 +2,7 @@
     angular.module('matchbox.dashboard', [])
         .controller('DashboardController', DashboardController);
 
-    function DashboardController($scope, matchApi, store, DTOptionsBuilder, sharedCliaProperties, arrayTools) {
+    function DashboardController($scope, matchApi, store, DTOptionsBuilder, sharedCliaProperties, arrayTools, dateTools) {
         $scope.lastUpdated = (new Date()).getTime();
         $scope.name = 'MATCHBox User';
         $scope.name = setName();
@@ -210,21 +210,10 @@
                 .then(function (d) {
                     $scope.pendingTissueVariantReportList = d.data;
                     arrayTools.forEach($scope.pendingTissueVariantReportList, function (element) {
-                        calculateDaysPending(element, 'status_date');
+                        var days_pending  = dateTools.calculateDaysPending(element, 'status_date');
+                        element.days_pending  = days_pending || days_pending === 0 ? days_pending : '-';
                     });
                 });
-        }
-
-        function calculateDaysPending(element, dateAttr) {
-            var dateValue = element[dateAttr];
-            if (dateValue) {
-                var now = moment();
-                var dateValueMoment = moment(dateValue);
-                var diff = dateValueMoment.diff(now, "DD/MM/YYYY HH:mm:ss");
-                element.days_pending = moment.duration(diff).days();
-            } else {
-                element.days_pending = '-';
-            }
         }
 
         function loadBloodVariantReportsList() {
@@ -233,7 +222,8 @@
                 .then(function (d) {
                     $scope.pendingBloodVariantReportList = d.data;
                     arrayTools.forEach($scope.pendingTissueVariantReportList, function (element) {
-                        calculateDaysPending(element, 'status_date');
+                        var days_pending  = dateTools.calculateDaysPending(element, 'status_date');
+                        element.days_pending  = days_pending || days_pending === 0 ? days_pending : '-';
                     });
                 });
         }
@@ -244,7 +234,8 @@
                 .then(function (d) {
                     $scope.pendingAssignmentReportList = d.data;
                     arrayTools.forEach($scope.pendingTissueVariantReportList, function (element) {
-                        calculateDaysPending(element, 'status_date');
+                        var days_pending  = dateTools.calculateDaysPending(element, 'status_date');
+                        element.days_pending  = days_pending || days_pending === 0 ? days_pending : '-';
                     });
                 });
         }
