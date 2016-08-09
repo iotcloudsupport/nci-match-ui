@@ -6,20 +6,18 @@
                                          $http,
                                          matchConfig,
                                          DTOptionsBuilder,
-                                         matchApiMock,
+                                         matchApi,
                                          sharedCliaProperties) {
 
-        /*this.dtOptions = DTOptionsBuilder
+        this.dtOptions = DTOptionsBuilder
             .newOptions()
-            .withDisplayLength(100);*/
+            .withOption('info', false);
+        this.dtOptions = DTOptionsBuilder
+            .newOptions()
+            .withOption('paging', false);
 
         this.dtColumnDefs = [];
         this.dtInstance = {};
-
-        this.ddOptions = {
-            'info': false,
-            'paging': false
-        };
 
         $scope.clialab = function (id) {
             sharedCliaProperties.setProperty(id);
@@ -91,7 +89,7 @@
         $scope.pieOptions = setupPieChartOptions('#legendContainer');
 
         function loadSpecimenTrackingList() {
-            matchApiMock
+            matchApi
                 .loadSpecimenTrackingList()
                 .then(function (d) {
                     $scope.shipments = angular.copy(d.data);
