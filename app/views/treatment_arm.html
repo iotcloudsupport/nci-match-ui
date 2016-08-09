@@ -202,7 +202,7 @@
                                                             </thead>
                                                             <tbody>
                                                                 <tr ng-repeat="item in currentVersion.exclusion_diseases">
-                                                                    <td>{{item.medra_code | dashify }}</td>
+                                                                    <td>{{item.disease_code | dashify }}</td>
                                                                     <td>{{item.short_name | dashify }}</td>
                                                                     <td>{{item.ctep_category | dashify }}</td>
                                                                 </tr>
@@ -229,7 +229,7 @@
                                                             </thead>
                                                             <tbody>
                                                                 <tr ng-repeat="item in currentVersion.inclusion_diseases">
-                                                                    <td>{{item.medra_code | dashify }}</td>
+                                                                    <td>{{item.disease_code | dashify }}</td>
                                                                     <td>{{item.short_name | dashify }}</td>
                                                                     <td>{{item.ctep_category | dashify }}</td>
                                                                 </tr>
