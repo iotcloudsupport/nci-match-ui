@@ -8,7 +8,6 @@
         $state,
         DTOptionsBuilder,
         DTColumnDefBuilder,
-        treatmentArmApi,
         matchApi,
         colorFactory,
         $log) {
@@ -255,8 +254,7 @@
         function setupRulesExlcusionInclusionLists() {
             for (var i = 0; i < $scope.versions.length; i++) {
                 var version = $scope.versions[i];
-                setupCriteriaList(version.variant_report.svns_and_indels[0], version, 'snvsInclusion', 'snvsExclusion');
-                setupCriteriaList(version.variant_report.svns_and_indels[1], version, 'snvsInclusion', 'snvsExclusion');
+                setupCriteriaList(version.variant_report.svns_and_indels, version, 'snvsInclusion', 'snvsExclusion');
                 setupCriteriaList(version.variant_report.copy_number_variants, version, 'cnvsInclusion', 'cnvsExclusion');
                 setupCriteriaList(version.variant_report.gene_fusions, version, 'geneFusionsInclusion', 'geneFusionsExclusion');
                 setupCriteriaList(version.variant_report.non_hotspot_rules, version, 'nhrsInclusion', 'nhrsExclusion');
@@ -269,6 +267,10 @@
 
             version[inclusionArrayName] = inclusionList;
             version[exclusionArrayName] = exclusionList;
+
+            if (!sourceArray) {
+                return;
+            }
 
             for (var i = 0; i < sourceArray.length; i++) {
                 var row = sourceArray[i];

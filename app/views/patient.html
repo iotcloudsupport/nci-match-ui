@@ -672,15 +672,15 @@
                                                     </td>
                                                     <td>{{variant.identifier}}</td>
                                                     <td ng-if="variantReportMode!=='QC'">{{variant.is_amoi | dashify }}}}<sup>({{variant.inclusion}})</sup></td>
-                                                    <td>{{variant.gene2 | dashify }}</td>
-                                                    <td>{{variant.gene2count | dashify }}</td>
+                                                    <td>{{variant.gene_2 | dashify }}</td>
+                                                    <td>{{variant.gene_2_count | dashify }}</td>
                                                     <td>
                                                         <a class="report-link" href ng-click="openCosmicGene( variant.gene )">
                                                             {{variant.gene | dashify }}
                                                         </a>
                                                         <!--{{variant.gene | dashify }}-->
                                                     </td>
-                                                    <td>{{variant.gene1count | dashify }}</td>
+                                                    <td>{{variant.gene_1_count | dashify }}</td>
                                                     <td>{{variant.annotation | dashify }}</td>
                                                 </tr>
 
@@ -748,13 +748,10 @@
                                                                 <tbody>
 
                                                                 <tr ng-repeat="ta in snvList | limitTo:totalDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">
-
                                                                     <td>
                                                                         <a class="report-link" href ng-click="openCosmicId( ta.identifier )">
                                                                             {{ta.identifier | dashify }}
                                                                         </a>
-
-                                                                        <!--{{::ta.identifier | dashify }}-->
                                                                     </td>
                                                                     <td>{{::ta.chromosome | dashify }}</td>
                                                                     <td>{{::ta.position | dashify }}</td>
@@ -1350,7 +1347,7 @@
                                             </td>
                                             <td>{{variant.identifier}}</td>
                                             <td ng-if="variantReportMode!=='QC'">{{variant.is_amoi | dashify }}}}<sup>({{variant.inclusion}})</sup></td>
-                                            <td>{{variant.gene2 | dashify }}</td>
+                                            <td>{{variant.gene_2 | dashify }}</td>
                                             <td>{{variant.gene2count | dashify }}</td>
                                             <td>
                                                 <a class="report-link" href ng-click="openCosmicGene( variant.gene )">
@@ -1358,7 +1355,7 @@
                                                 </a>
                                                 <!--{{variant.gene | dashify }}-->
                                             </td>
-                                            <td>{{variant.gene1count | dashify }}</td>
+                                            <td>{{variant.gene_1_count | dashify }}</td>
                                             <td>{{variant.annotation | dashify }}</td>
                                         </tr>
 
