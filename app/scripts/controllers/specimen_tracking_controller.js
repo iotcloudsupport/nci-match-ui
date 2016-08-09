@@ -1,5 +1,5 @@
 (function () {
-    angular.module('matchbox.specimen-tracking',['datatables'])
+    angular.module('matchbox.specimen-tracking',['ui.bootstrap','cgPrompt', 'ui.router','datatables','ngResource'])
         .controller('SpecimenTrackingController', SpecimenTrackingController);
 
     function SpecimenTrackingController( $scope,
@@ -9,9 +9,9 @@
                                          matchApiMock,
                                          sharedCliaProperties) {
 
-        this.dtOptions = DTOptionsBuilder
+        /*this.dtOptions = DTOptionsBuilder
             .newOptions()
-            .withDisplayLength(100);
+            .withDisplayLength(100);*/
 
         this.dtColumnDefs = [];
         this.dtInstance = {};
