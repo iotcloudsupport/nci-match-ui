@@ -145,12 +145,17 @@ angular.module('matchbox.calendar-heatmap', []).
             return d.total;
           });
 
+          // var color = d3.scale.linear()
+          //   .range(['#ffffff', scope.color || '#ff4500'])
+          //   .domain([-0.15 * max_value, max_value]);
+
+
           var color = d3.scale.linear()
-            .range(['#ffffff', scope.color || '#ff4500'])
-            .domain([-0.15 * max_value, max_value]);
+              .range(['lightpink', 'red'])
+              .domain([-0.15 * max_value, max_value]);
 
           var ntc_color = d3.scale.linear()
-              .range(['green', 'limegreen'])
+              .range(['palegreen', 'green'])
               .domain([-0.15 * max_value, max_value]);
 
 
@@ -610,10 +615,22 @@ angular.module('matchbox.calendar-heatmap', []).
               return Math.min(dayScale.rangeBand(), max_block_height);
             })
             .attr('fill', function (d) {
+              var c = '#cd2327';
+              scope.color = c;
+
+              angular.forEach(d, function (value) {
+                if(value === 'Ntc'){
+                  c = '#2E8B57';
+                  scope.color = c;
+                }
+              });
+
               var color = d3.scale.linear()
-                .range(['#ffffff', scope.color || '#ff4500'])
+                .range(['#ffffff', scope.color || c])
                 .domain([-0.15 * max_value, max_value]);
+
               return color(d.value) || '#ff4500';
+
             })
             .style('opacity', 0)
             .on('mouseover', function(d) {
@@ -1078,8 +1095,17 @@ angular.module('matchbox.calendar-heatmap', []).
             .attr('height', function () {
               return Math.min(projectScale.rangeBand(), max_block_height);
             })
-            .attr('fill', function () {
-              return scope.color || '#ff4500';
+            .attr('fill', function (d) {
+              var c = '#cd2327';
+              scope.color = c;
+
+              angular.forEach(d, function (value) {
+                if(value === 'Ntc'){
+                  c = '#2E8B57';
+                  scope.color = c;
+                }
+              });
+              return scope.color || c ;
             })
             .style('opacity', 0)
             .on('mouseover', function(d) {
