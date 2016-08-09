@@ -1,5 +1,5 @@
 (function () {
-    angular.module('matchbox.specimen-tracking',['datatables'])
+    angular.module('matchbox.specimen-tracking',['ui.bootstrap','datatables','ngResource'])
         .controller('SpecimenTrackingController', SpecimenTrackingController);
 
     function SpecimenTrackingController( $scope,
