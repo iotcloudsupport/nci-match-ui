@@ -1,12 +1,12 @@
 (function () {
-    angular.module('matchbox.specimen-tracking',[])
+    angular.module('matchbox.specimen-tracking',['datatables'])
         .controller('SpecimenTrackingController', SpecimenTrackingController);
 
     function SpecimenTrackingController( $scope,
                                          $http,
                                          matchConfig,
                                          DTOptionsBuilder,
-                                         matchApi,
+                                         matchApiMock,
                                          sharedCliaProperties) {
 
         this.dtOptions = DTOptionsBuilder
@@ -91,7 +91,7 @@
         $scope.pieOptions = setupPieChartOptions('#legendContainer');
 
         function loadSpecimenTrackingList() {
-            matchApi
+            matchApiMock
                 .loadSpecimenTrackingList()
                 .then(function (d) {
                     $scope.shipments = angular.copy(d.data);
