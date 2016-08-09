@@ -379,7 +379,7 @@
                                         <div class="col-md-12">
                                             <h4>
                                                 <div class="btn-group" uib-dropdown dropdown-append-to-body>
-                                                    <button id="btn-append-to-body" type="button" class="btn btn-success btn-outline" uib-dropdown-toggle>{{tissueVariantReportOption.text}}<span class="caret"></span></button>
+                                                    <button id="btn-append-to-body-2" type="button" class="btn btn-success btn-outline" uib-dropdown-toggle>{{tissueVariantReportOption.text}}<span class="caret"></span></button>
                                                     <ul class="dropdown-menu" uib-dropdown-menu role="menu">
                                                         <li ng-repeat="item in tissueVariantReportOptions" role="menuitem"><a href ng-click="onTissueVariantReportSelected(item)">{{item.text}}</a></li>
                                                     </ul>
@@ -931,7 +931,7 @@
                                     <div class="col-md-12">
                                         <h4>
                                             <div class="btn-group" uib-dropdown dropdown-append-to-body>
-                                                <button id="btn-append-to-body" type="button" class="btn btn-success btn-outline" uib-dropdown-toggle>{{assignmentReportOption.text}}<span class="caret"></span></button>
+                                                <button id="btn-append-to-body-3" type="button" class="btn btn-success btn-outline" uib-dropdown-toggle>{{assignmentReportOption.text}}<span class="caret"></span></button>
                                                 <ul class="dropdown-menu" uib-dropdown-menu role="menu">
                                                     <li ng-repeat="item in assignmentReportOptions" role="menuitem"><a href ng-click="onAssignmentReportSelected(item)">{{item.text}}</a></li>
                                                 </ul>
@@ -1093,10 +1093,10 @@
                                 <div class="col-md-8 text-left">
                                     <div class="btn-group btn-group-margin" data-toggle="buttons">
                                         <label class="btn btn-outline btn-success" ng-class="getVariantReportModeClass('FILTERED')" ng-click="setVariantReportMode('FILTERED')" title="Show Filtered Report">
-                                            <input type="radio" name="variantReportMode" id="option3">Filtered
+                                            <input type="radio" name="variantReportMode" id="option3_1">Filtered
                                         </label>
                                         <label class="btn btn-outline btn-success" ng-class="getVariantReportModeClass('QC')" ng-click="setVariantReportMode('QC')" title="Show to QC Report">
-                                            <input type="radio" name="variantReportMode" id="option4">QC Report
+                                            <input type="radio" name="variantReportMode" id="option4_1">QC Report
                                         </label>
                                     </div>
                                 </div>
@@ -1109,7 +1109,7 @@
                                 <div class="col-md-12">
                                     <h4>
                                         <div class="btn-group" uib-dropdown dropdown-append-to-body>
-                                            <button id="btn-append-to-body" type="button" class="btn btn-success btn-outline" uib-dropdown-toggle>{{bloodVariantReportOption.text}}<span class="caret"></span></button>
+                                            <button id="btn-append-to-body-4" type="button" class="btn btn-success btn-outline" uib-dropdown-toggle>{{bloodVariantReportOption.text}}<span class="caret"></span></button>
                                             <ul class="dropdown-menu" uib-dropdown-menu role="menu">
                                                 <li ng-repeat="item in bloodVariantReportOptions" role="menuitem"><a href ng-click="onBloodVariantReportSelected(item)">{{item.text}}</a></li>
                                             </ul>
@@ -1264,7 +1264,7 @@
                                     <h3>Copy Number Variants</h3>
                                 </div>
                                         
-                                <div class="table-responsive" style="border: noneidentifier
+                                <div class="table-responsive" style="border: none">
                                     <table datatable="ng"
                                             dt-options="dtOptions"
                                             dt-column-defs="dtColumnDefs"
@@ -1316,7 +1316,7 @@
                                     <h3>Gene Fusions</h3>
                                 </div>
 
-                                <div class="table-responsive" style="border: noneidentifier
+                                <div class="table-responsive" style="border: none">
                                     <table datatable="ng"
                                             dt-options="dtOptions"
                                             dt-column-defs="dtColumnDefs"
