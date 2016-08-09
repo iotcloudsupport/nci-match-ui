@@ -190,7 +190,7 @@
             xaxis: {
                 //tickDecimals: 0
                 mode: "time",
-                timeformat: "%d-%b-%y",
+                timeformat: "%d-%b-%y"
                 //tickSize: [1, 'minute']
             },
             colors: ["#1ab394"],
