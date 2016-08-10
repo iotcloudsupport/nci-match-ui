@@ -7,13 +7,16 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         });
 
         var vm = this;
-        vm.dtOptions = DTOptionsBuilder.newOptions()
+
+            vm.dtInstances = [];
+
+            vm.dtOptions = DTOptionsBuilder.newOptions()
         .withDisplayLength(5);
 
-        vm.dtOptions = DTOptionsBuilder.newOptions()
+            vm.dtOptions = DTOptionsBuilder.newOptions()
         .withOption('bLengthChange', false);
 
-        vm.dtOptions = DTOptionsBuilder.newOptions()
+            vm.dtOptions = DTOptionsBuilder.newOptions()
         .withOption('searching', false);
 
 
@@ -532,6 +535,10 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                 });
 
                 $scope.mochaList = data.data;
+
+
+
+
                 $scope.monthview = 'none';
 
                 // console.log(' ** --> ' + JSON.stringify($scope.mochaList))

@@ -7,7 +7,8 @@
         .directive('sideNavigation', sideNavigation)
         .directive('minimalizaSidebar', minimalizaSidebar)
         .directive('collapseToggleLeft', collapseToggleLeft)
-        .directive('collapseToggleLeftClosed', collapseToggleLeftClosed);
+        .directive('collapseToggleLeftClosed', collapseToggleLeftClosed)
+        .directive('datatableSetup', datatableSetup);
 
     /**
      * pageTitle - Directive for set Page title - mata title
@@ -125,5 +126,26 @@
             }
         };
     }
+
+
+        function datatableSetup($timeout) {
+            return {
+                restrict: 'A',
+                link: function(scope, element, attrs) {
+
+
+                    console.log("Dadaaaaa --> " + JSON.stringify(element))
+
+                    $timeout(function () {
+                        element.dataTable();
+                    });
+
+                    // $timeout(function () {
+                    //     console.log("Dadaaaaa")
+                    //     // do something
+                    // });
+                }
+            };
+        };
 
 } ());

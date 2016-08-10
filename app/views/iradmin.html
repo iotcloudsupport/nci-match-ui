@@ -375,7 +375,10 @@
                                                 </form>
 
                                                 <div>
-                                                    <table datatable="ng" dt-options="dtOptions" dt-columns="dtColumns" dt-instance="dtInstance"
+                                                    <table datatable="ng"
+                                                           dt-options="dtOptions"
+                                                           dt-columns="dtColumns"
+                                                           dt-instance="dtInstance"
                                                            class="table table-bordered table-striped">
                                                         <thead>
                                                         <tr>
@@ -389,7 +392,7 @@
                                                         <tbody>
 
                                                         <tr ng-repeat="ta in mochaQueryList | sampleBreak:'Ntc'">
-                                                            <td> {{ta.molecular_is | dashify }}</td>
+                                                            <td> {{ta.molecular_id | dashify }}</td>
                                                             <td>{{ta.date_created | dashify }}</td>
                                                             <td>{{ta.date_received | dashify }}</td>
                                                             <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
@@ -625,7 +628,7 @@
 
 
                                             <div ng-if="monthview == 'none'" class="ibox-content ibox-title-no-line"
-                                                 ng-controller="IrAdminController as DashCtrl"
+                                                 ng-controller="IrAdminController"
                                                  ng-init="loadSampleBreakups()">
 
                                                 <form class="form-horizontal" role="form" ng-submit="showPositiveControlConfirmation('MoCha')">
@@ -633,9 +636,9 @@
                                                 </form>
 
                                                 <table datatable="ng"
-                                                       dt-options="DashCtrl.dtOptions"
-                                                       dt-columns="DashCtrl.dtColumns"
-                                                       dt-instance="DashCtrl.dtInstance"
+                                                       dt-options="dtOptions"
+                                                       dt-columns="dtColumns"
+                                                       dt-instance="dtInstance"
                                                        class="table table-bordered table-striped">
                                                     <thead>
                                                     <tr>
@@ -649,7 +652,7 @@
                                                     <tbody>
 
                                                     <tr ng-repeat="ta in mochaList">
-                                                        <td> {{ta.molecular_is | dashify }}</td>
+                                                        <td> {{ta.molecular_id | dashify }}</td>
                                                         <td>{{ta.date_created | dashify }}</td>
                                                         <td>{{ta.date_received | dashify }}</td>
                                                         <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
@@ -939,7 +942,7 @@
                                                         <tbody>
 
                                                         <tr ng-repeat="ta in mochaQueryList | sampleBreak:'Sample'">
-                                                            <td>{{ta.molecular_is | dashify }}</td>
+                                                            <td>{{ta.molecular_id | dashify }}</td>
                                                             <td>{{ta.date_created | dashify }}</td>
                                                             <td>{{ta.date_received | dashify}}</td>
                                                             <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
@@ -1151,13 +1154,19 @@
                                                 <!--NTC-->
 
                                                 <!--NTC-->
-                                                <div ng-if="monthview == 'none'" class="ibox-content ibox-title-no-line" ng-controller="IrAdminController" ng-init="loadMochaNtc_Table()">
+                                                <div ng-if="monthview == 'none'" class="ibox-content ibox-title-no-line"
+                                                     ng-controller="IrAdminController as DashCtrl"
+                                                     ng-init="loadMochaNtc_Table()">
 
                                                     <form class="form-horizontal" role="form" ng-submit="showNoTemplateControlConfirmation('MoCha')">
                                                         <input class="btn btn-xs btn-primary file-button-xl" type="submit" value="Generate MSN" class="btn btn-primary" />
                                                     </form>
 
-                                                    <table datatable="ng" dt-options="datatable.dtOptions" dt-column-defs="datatable.dtColumnDefs" class="table table-bordered table-striped">
+                                                    <table datatable="ng"
+                                                           dt-options="DashCtrl.dtOptions"
+                                                           dt-columns="DashCtrl.dtColumns"
+                                                           dt-instance="DashCtrl.dtInstance"
+                                                           class="table table-bordered table-striped">
                                                         <thead>
                                                         <tr>
                                                             <th class="">Molecular ID </th>
@@ -1170,7 +1179,7 @@
                                                         <tbody>
 
                                                         <tr ng-repeat="ta in mochaNtcList">
-                                                            <td>{{ta.molecular_is | dashify }}</td>
+                                                            <td>{{ta.molecular_id | dashify }}</td>
                                                             <td>{{ta.date_created | dashify }}</td>
                                                             <td>{{ta.date_received | dashify}}</td>
                                                             <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
@@ -1182,7 +1191,7 @@
                                                         </tr>
 
                                                         </tbody>
-                                                    </table>
+                                                    </table >
 
                                                     <!--NTC MOCHA TABLES-->
                                                     <div class="row" ng-if="negatives === 'mocha'">
@@ -1443,7 +1452,7 @@
                                                     <tbody>
 
                                                     <tr ng-repeat="ta in mdaccQueryList  | sampleBreak:'Ntc'">
-                                                        <td>{{ta.molecular_is | dashify }}</td>
+                                                        <td>{{ta.molecular_id | dashify }}</td>
                                                         <td>{{ta.date_created | dashify }}</td>
                                                         <td>{{ta.date_received | dashify }}</td>
                                                         <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
@@ -1688,7 +1697,7 @@
                                                     <tbody>
 
                                                     <tr ng-repeat="ta in mdaccList">
-                                                        <td>{{ta.molecular_is | dashify }}</td>
+                                                        <td>{{ta.molecular_id | dashify }}</td>
                                                         <td>{{ta.date_created | dashify }}</td>
                                                         <td>{{ta.date_received | dashify }}</td>
                                                         <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
@@ -1963,7 +1972,7 @@
                                                         <tbody>
 
                                                         <tr ng-repeat="ta in mdaccQueryList | sampleBreak:'Sample'">
-                                                            <td>{{ta.molecular_is | dashify }}</td>
+                                                            <td>{{ta.molecular_id | dashify }}</td>
                                                             <td>{{ta.date_created | dashify }}</td>
                                                             <td>{{ta.date_received | dashify }}</td>
                                                             <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
@@ -2193,7 +2202,7 @@
                                                         <tbody>
 
                                                         <tr ng-repeat="ta in mdaccNtcList">
-                                                            <td>{{ta.molecular_is | dashify }}</td>
+                                                            <td>{{ta.molecular_id | dashify }}</td>
                                                             <td>{{ta.date_created | dashify }}</td>
                                                             <td>{{ta.date_received | dashify }}</td>
                                                             <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
