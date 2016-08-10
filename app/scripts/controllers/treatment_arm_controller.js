@@ -254,7 +254,7 @@
         function setupRulesExlcusionInclusionLists() {
             for (var i = 0; i < $scope.versions.length; i++) {
                 var version = $scope.versions[i];
-                setupCriteriaList(version.variant_report.svns_and_indels, version, 'snvsInclusion', 'snvsExclusion');
+                setupCriteriaList(version.variant_report.single_nucleotide_variants, version, 'snvsInclusion', 'snvsExclusion');
                 setupCriteriaList(version.variant_report.copy_number_variants, version, 'cnvsInclusion', 'cnvsExclusion');
                 setupCriteriaList(version.variant_report.gene_fusions, version, 'geneFusionsInclusion', 'geneFusionsExclusion');
                 setupCriteriaList(version.variant_report.non_hotspot_rules, version, 'nhrsInclusion', 'nhrsExclusion');
