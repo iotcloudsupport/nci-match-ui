@@ -7,9 +7,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         });
 
         var vm = this;
-
             vm.dtInstances = [];
-
             vm.dtOptions = DTOptionsBuilder.newOptions()
         .withDisplayLength(5);
 
@@ -67,6 +65,8 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         $scope.ntc_mda_ntc_dates = [0, 0, 0, 0, 0, 0, 0];
         $scope.pos_status = [0, 0, 0];
         $scope.ntc_status = [0, 0, 0];
+        $scope.pos_week_status = [0, 0, 0];
+        $scope.ntc_week_status = [0, 0, 0];
         $scope.pos_mda_status = [0, 0, 0];
         $scope.ntc_mda_status = [0, 0, 0];
         $scope.indextab = 0;
@@ -76,6 +76,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
             $scope.count = [];
             if(id == "heatmap"){
+
                 $scope.indextab = 0;
                 $scope.schedule = "weekmap";
                 $scope.monthview = 'none';
@@ -85,6 +86,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             else {
                 $scope.indextab = 0;
                 $scope.schedule = "heatmap";
+                // $scope.monthview = 'aug';
                 $scope.barlegend = "History of Total Positive / NTC Control Status";
 
                 //HEATMAP
@@ -112,7 +114,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                                             'mid': mid
                                         });
                                     }
-                                })
+                                });
                             });
 
                             // Initialize random data for the demo
@@ -141,13 +143,6 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                                                 'status': status,
                                                 'mid': mid,
                                                 'value': 3600 * ((arr.length - i) / 5) + Math.floor(Math.random() * 3600)
-                                                // 'date': function () {
-                                                //     var projectDate = new Date(dateElement.getTime());
-                                                //     projectDate.setHours(Math.floor(Math.random() * 24))
-                                                //     projectDate.setMinutes(Math.floor(Math.random() * 60));
-                                                //     return projectDate;
-                                                // }(),
-                                                // 'value': 3600 * ((arr.length - i) / 5) + Math.floor(Math.random() * 3600)
                                             };
                                         }),
                                         init: function () {
@@ -180,15 +175,12 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                                             this.total = this.details.reduce(function (prev, e) {
 
                                                 return;
-
                                                 // return prev + e.value;
                                             }, 0);
                                             return this;
                                         }
                                     }.init();
-
                                 }
-
                             });
 
                             function hasDate(dateElement) {
@@ -495,9 +487,9 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                 angular.forEach(data, function (value,k) {
                     angular.forEach(value, function (v,k) {
 
-                        if(v.current_status === 'FAILED'){$scope.pos_status[0] += 1;}
-                        else if(v.current_status === 'PASSED'){$scope.pos_status[1] += 1;}
-                        else if(v.current_status === '-'){$scope.pos_status[2] += 1;}
+                        if(v.current_status === 'FAILED'){$scope.pos_week_status[0] += 1;}
+                        else if(v.current_status === 'PASSED'){$scope.pos_week_status[1] += 1;}
+                        else if(v.current_status === '-'){$scope.pos_week_status[2] += 1;}
 
                         var tmp;
                         switch (v.week_date) {
@@ -678,7 +670,6 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                 'log':'data/sample_hr_log_file.txt'
             });
             $scope.hrReports = hr_files;
-            // alert(JSON.stringify( $scope.hrReports))
         };
 
             $scope.getFileButtonClass = getFileButtonClass;
@@ -1122,7 +1113,6 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                             labels: armNames,
                             datasets: [
                                 {
-                                    // label: "<b style='color:darkgreen;'>Positive Controls</b>",
                                     backgroundColor: 'darkgreen',
                                     fillColor: 'darkgreen',
                                     strokeColor: 'rgba(220,220,220,0.8)',
@@ -1132,7 +1122,6 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                                     data:  $scope.count_mda_dates
                                 },
                                 {
-                                    // label: "<b style='color:navy;'>No Template Controls</b>",
                                     backgroundColor: 'navy',
                                     fillColor: 'navy',
                                     strokeColor: 'rgba(151,187,205,1)',
@@ -1147,21 +1136,21 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
                         aMoiHighlight = "#000088"; //"#dedede";
 
-                        $scope.pieData = [
+                        $scope.pieWeekData = [
                             {
-                                value: $scope.pos_status[0],
+                                value: $scope.pos_week_status[0],
                                 color: "darkred",
                                 highlight: aMoiHighlight,
                                 label: aMoiLabels[0]
                             },
                             {
-                                value: $scope.pos_status[1],
+                                value: $scope.pos_week_status[1],
                                 color: "darkgreen",
                                 highlight: aMoiHighlight,
                                 label: aMoiLabels[1]
                             },
                             {
-                                value: $scope.pos_status[2],
+                                value: $scope.pos_week_status[2],
                                 color: "#18a689", //"#ab0102",
                                 highlight: aMoiHighlight,
                                 label: aMoiLabels[2]
@@ -1341,9 +1330,6 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
                     });
 
-
-
-
                 $scope.barlegend = "Total Positive / NTC Control Status";
                 /**
                  * Options for Doughnut chart
@@ -1359,6 +1345,57 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                     animateScale : false
                 };
             };
+
+            function resetPositivePieChart(){
+
+                $scope.pieData = [
+                    {
+                        value: $scope.pos_status[0],
+                        color: "darkred",
+                        highlight: aMoiHighlight,
+                        label: aMoiLabels[0]
+                    },
+                    {
+                        value: $scope.pos_status[1],
+                        color: "darkgreen",
+                        highlight: aMoiHighlight,
+                        label: aMoiLabels[1]
+                    },
+                    {
+                        value: $scope.pos_status[2],
+                        color: "#18a689", //"#ab0102",
+                        highlight: aMoiHighlight,
+                        label: aMoiLabels[2]
+                    }
+
+                ];
+
+            }
+
+            function resetNtcPieChart(){
+
+                $scope.ntcpieData = [
+                    {
+                        value: $scope.ntc_status[0],
+                        color: "orange",
+                        highlight: aMoiHighlight,
+                        label: ntcMoiLabels[0]
+                    },
+                    {
+                        value: $scope.ntc_status[1],
+                        color: "navy",
+                        highlight: aMoiHighlight,
+                        label: ntcMoiLabels[1]
+                    },
+                    {
+                        value: $scope.ntc_status[2],
+                        color: "indigo", //"#ab0102",
+                        highlight: aMoiHighlight,
+                        label: ntcMoiLabels[2]
+                    }
+                ];
+            }
+
 
             //Heatmap Months
             $scope.updateMonthRequest = function (month) {
@@ -1376,41 +1413,11 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                                 }
                             }
 
-                            // if()
-                            // console.log(d.data.molecular_id + " -->"+JSON.stringify(d))
-
                             loadMoChaMonthList(d);
-
-                            // $scope.barData = {
-                            //     labels: armNames,
-                            //     datasets: [
-                            //         {
-                            //             // label: "<b style='color:darkgreen;'>Positive Controls</b>",
-                            //             backgroundColor: 'darkgreen',
-                            //             fillColor: 'darkgreen',
-                            //             strokeColor: 'rgba(220,220,220,0.8)',
-                            //             pointColor: 'darkgreen',
-                            //             highlightFill: '#23c6c8', //"rgba(220,220,220,0.75)",
-                            //             highlightStroke: 'rgba(220,220,220,1)',
-                            //             data: $scope.count_mda_dates
-                            //         },
-                            //         {
-                            //             // label: "<b style='color:navy;'>No Template Controls</b>",
-                            //             backgroundColor: 'navy',
-                            //             fillColor: 'navy',
-                            //             strokeColor: 'rgba(151,187,205,1)',
-                            //             pointColor: 'navy',
-                            //             highlightFill: '#23c6c8', //'rgba(220,220,220,0.75)',
-                            //             highlightStroke: 'rgba(220,220,220,1)',
-                            //             data: $scope.ntc_dates
-                            //         }
-                            //
-                            //     ]
-                            // };
+                            resetPositivePieChart();
+                            resetNtcPieChart();
                         });
-
                     }
-
                 else{
                     matchApiMock
                         .loadMDACC_Month_List()
@@ -1424,7 +1431,9 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                                 }
                             }
                             loadMDACCMonthList(d);
-                        })
+                            resetPositivePieChart();
+                            resetNtcPieChart();
+                        });
                     }
             };
             //Heatmap Months
