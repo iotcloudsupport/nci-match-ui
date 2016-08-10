@@ -344,6 +344,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             function loadMoChaMonthList(data) {
                 $scope.count_dates = [0, 0, 0, 0, 0, 0, 0];
                 $scope.count = [0, 0];
+                $scope.pos_status = [0, 0, 0];
 
                 angular.forEach(data, function (value,k) {
                     angular.forEach(value, function (v,k) {
@@ -359,9 +360,8 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                             }
                         }
 
-
                         if(v.current_status === 'FAILED'){$scope.pos_status[0] += 1;}
-                        if(v.current_status === 'PASSED'){$scope.pos_status[1] += 1;}
+                        else if(v.current_status === 'PASSED'){$scope.pos_status[1] += 1;}
                         else if(v.current_status === '-'){$scope.pos_status[2] += 1;}
 
                         var tmp;
@@ -397,16 +397,19 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                 $scope.monthview = 'aug';
                 $scope.mochaQueryList = data.data;
 
+                // console.log(' ** --> ' + JSON.stringify($scope.pos_status))
+
             };
 
             function loadMDACCMonthList(data) {
                 $scope.count_dates = [0, 0, 0, 0, 0, 0, 0];
+                $scope.pos_status = [0, 0, 0];
 
                 angular.forEach(data, function (value,k) {
                     angular.forEach(value, function (v,k) {
 
                         if(v.current_status === 'FAILED'){$scope.pos_status[0] += 1;}
-                        if(v.current_status === 'PASSED'){$scope.pos_status[1] += 1;}
+                        else if(v.current_status === 'PASSED'){$scope.pos_status[1] += 1;}
                         else if(v.current_status === '-'){$scope.pos_status[2] += 1;}
 
                         var tmp;
@@ -487,12 +490,13 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             
             function loadMoChaList(data) {
                 $scope.count_dates = [0, 0, 0, 0, 0, 0, 0];
+                $scope.pos_status = [0, 0, 0];
 
                 angular.forEach(data, function (value,k) {
                     angular.forEach(value, function (v,k) {
 
                         if(v.current_status === 'FAILED'){$scope.pos_status[0] += 1;}
-                        if(v.current_status === 'PASSED'){$scope.pos_status[1] += 1;}
+                        else if(v.current_status === 'PASSED'){$scope.pos_status[1] += 1;}
                         else if(v.current_status === '-'){$scope.pos_status[2] += 1;}
 
                         var tmp;
@@ -526,16 +530,18 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
                 });
 
+
+
                 $scope.mochaList = data.data;
                 $scope.monthview = 'none';
 
-                // console.log(' ** --> ' + JSON.stringify($scope.mochaList))
+                // console.log(' ** --> ' + JSON.stringify($scope.pos_status))
 
             };
 
             function loadMoChaNtcList(data) {
-
                 $scope.ntc_dates = [0, 0, 0, 0, 0, 0, 0];
+                $scope.ntc_status = [0, 0, 0];
 
                 angular.forEach(data, function (value,k) {
                     angular.forEach(value, function (v,k) {
@@ -579,8 +585,8 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
             //MDA
             function loadMDACCList(data) {
-
                 $scope.count_mda_dates = [0, 0, 0, 0, 0, 0, 0];
+                $scope.pos_mda_status = [0, 0, 0];
 
                 angular.forEach(data, function (value,k) {
                     angular.forEach(value, function (v,k) {
@@ -891,7 +897,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                        "molecular_id": mol,
                        "variant_reports": "-",
                        "current_status": "-",
-                       "date_created": $scope.date,
+                       "date_created": moment.unix($scope.date / 1000).utc().format('LLL') + ' GMT',
                        "date_received": "-"
                    });
             };
@@ -905,7 +911,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                        "molecular_id": mol,
                        "variant_reports": "-",
                        "current_status": "-",
-                       "date_created": "June 8, 2016 4:51 PM GMT",
+                       "date_created": moment.unix($scope.date / 1000).utc().format('LLL') + ' GMT',
                        "date_received": "-"
                });
             };
@@ -919,7 +925,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                            "molecular_id": mol,
                        "variant_reports": "-",
                        "current_status": "-",
-                       "date_created": "June 8, 2016 4:51 PM GMT",
+                       "date_created": moment.unix($scope.date / 1000).utc().format('LLL') + ' GMT',
                        "date_received": "-"
                });
             };
@@ -933,7 +939,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                            "molecular_id": mol,
                        "variant_reports": "-",
                        "current_status": "-",
-                       "date_created": $scope.date,
+                       "date_created": moment.unix($scope.date / 1000).utc().format('LLL') + ' GMT',
                        "date_received": "-"
                });
             };
