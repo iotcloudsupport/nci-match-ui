@@ -108,7 +108,6 @@
             });
 
             if (top_5_arm_counts.length < 1) {
-                console.log('here');
                 top_5_arm_labels.push("There are no Treatment Arms with Patients assigned.");
                 top_5_arm_counts.push(0);
             }
