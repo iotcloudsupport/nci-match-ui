@@ -87,6 +87,7 @@
                 <thead>
                     <tr>
                         <th>Molecular ID</th>
+                        <th>Slide Barcode</th>
                         <th>Surgical Event ID</th>
                         <th>Patient ID</th>
                         <th>Collected Date</th>
@@ -102,11 +103,12 @@
                 <tbody>
                     <tr ng-repeat-start="shipment in shipments">
                         <td><a ui-sref="patient({ patient_id: shipment.patient_id, section: 'tissue_variant_report', molecular_id: shipment.molecular_id, analysis_id: shipment.analysis_id })">{{ shipment.molecular_id | dashify }}</a></td>
+                        <td>{{ shipment.slide_barcode | dashify }}</td>
                         <td><a ui-sref="patient({ patient_id: shipment.patient_id, section: 'surgical_event', surgical_event_id: shipment.surgical_event_id })">{{ shipment.surgical_event_id | dashify }}</a></td>
                         <td><a ui-sref="patient({ patient_id: shipment.patient_id })">{{ shipment.patient_id}}</a></td>
                         <td>{{ shipment.collected_date | utc | dashify }}</td>
                         <td>{{ shipment.received_date | utc }}</td>
-                        <td>{{ shipment.type }}</td>
+                        <td>{{ shipment.type | dashify }}</td>
                         <td>{{ shipment.shipped_date | utc }}</td>
                         <td>
                             <a ng-if="shipment.destination && shipment.destination.toUpperCase() === 'MOCHA'" ui-sref="clia-labs" ng-click="clialab('mocha')">{{ shipment.destination | dashify }}</a>
