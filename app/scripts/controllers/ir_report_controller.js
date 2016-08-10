@@ -41,7 +41,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         $scope.sitename = 'undefined';
         $scope.barlegend = 'Total Positive / NTC Control Status';
         $scope.titleid = "";
-        $scope.mochaList=[];
+        // $scope.mochaList=[];
         $scope.mochaMonthList=[];
         $scope.mochaNtcList=[];
         $scope.mdaccList=[];
@@ -56,6 +56,22 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
         $scope.heatMapList = [];
 
+        $scope.color = '#cd2327';
+        $scope.overview = 'year';
+        // $scope.monthview = '';
+
+        $scope.count_dates = [0, 0, 0, 0, 0, 0, 0];
+        $scope.count_mda_dates = [0, 0, 0, 0, 0, 0, 0];
+        $scope.ntc_dates = [0, 0, 0, 0, 0, 0, 0];
+        $scope.ntc_mda_dates = [0, 0, 0, 0, 0, 0, 0];
+        $scope.ntc_mda_ntc_dates = [0, 0, 0, 0, 0, 0, 0];
+        $scope.pos_status = [0, 0, 0];
+        $scope.ntc_status = [0, 0, 0];
+        $scope.pos_mda_status = [0, 0, 0];
+        $scope.ntc_mda_status = [0, 0, 0];
+        $scope.indextab = 0;
+
+        //    LOAD NEW MAPPING AREA
         $scope.loadMap = function (id) {
 
             $scope.count = [];
@@ -318,35 +334,11 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
             }
         };
-
-
-
-
-
-
-
-
+        //    LOAD NEW MAPPING AREA
 
             // Set custom color for the calendar heatmap
-            $scope.color = '#cd2327';
-            $scope.overview = 'year';
-            // $scope.monthview = '';
-
-
-            $scope.count_dates = [0, 0, 0, 0, 0, 0, 0];
-            $scope.count_mda_dates = [0, 0, 0, 0, 0, 0, 0];
-            $scope.ntc_dates = [0, 0, 0, 0, 0, 0, 0];
-            $scope.ntc_mda_dates = [0, 0, 0, 0, 0, 0, 0];
-            $scope.ntc_mda_ntc_dates = [0, 0, 0, 0, 0, 0, 0];
-            $scope.pos_status = [0, 0, 0];
-            $scope.ntc_status = [0, 0, 0];
-            $scope.pos_mda_status = [0, 0, 0];
-            $scope.ntc_mda_status = [0, 0, 0];
-            $scope.indextab = 0;
-
             aMoiLabels = ['Failed', 'Success', 'Not Generated'];
             ntcMoiLabels = ['Failed', 'Success', 'Not Generated'];
-
 
             //MOCHA
             function loadMoChaMonthList(data) {
@@ -535,10 +527,6 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                 });
 
                 $scope.mochaList = data.data;
-
-
-
-
                 $scope.monthview = 'none';
 
                 // console.log(' ** --> ' + JSON.stringify($scope.mochaList))
@@ -899,9 +887,8 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
                var nr = $scope.mochaList.length + 2;
                var mol = "SampleControl_MoCha_" + nr;
-
                    $scope.mochaList.push({
-                       "molecular_is": mol,
+                       "molecular_id": mol,
                        "variant_reports": "-",
                        "current_status": "-",
                        "date_created": $scope.date,
@@ -915,7 +902,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                var mol = "NtcControl_MoCha_" + nr;
 
                    $scope.mochaNtcList.push({
-                       "molecular_is": mol,
+                       "molecular_id": mol,
                        "variant_reports": "-",
                        "current_status": "-",
                        "date_created": "June 8, 2016 4:51 PM GMT",
@@ -929,7 +916,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                var mol = "SampleControl_MDACC_" + nr;
 
                    $scope.mdaccList.push({
-                           "molecular_is": mol,
+                           "molecular_id": mol,
                        "variant_reports": "-",
                        "current_status": "-",
                        "date_created": "June 8, 2016 4:51 PM GMT",
@@ -943,7 +930,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                var mol = "NtcControl_MDACC_" + nr;
 
                    $scope.mdaccNtcList.push({
-                           "molecular_is": mol,
+                           "molecular_id": mol,
                        "variant_reports": "-",
                        "current_status": "-",
                        "date_created": $scope.date,
@@ -1114,6 +1101,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
             //LOAD SAMPLES
             $scope.loadSampleBreakups = function() {
+                $scope.indextab = 0;
 
                 armNames = ['Mon.', 'Tue.', ' Wed.', 'Thu.', 'Fri.', 'Sat.', 'Sun.'];
                 mdaccNames = ['Mon.', 'Tue.', ' Wed.', 'Thu.', 'Fri.', 'Sat.', 'Sun.'];
@@ -1121,6 +1109,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                 matchApiMock
                     .loadMocha_List()
                     .then(function (d) {
+3
                         loadMoChaList(d);
 
                         $scope.barData = {
@@ -1175,6 +1164,8 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                         ];
                     });
 
+          
+
                 matchApiMock
                     .loadMochaNtc_Table()
                     .then(function (d) {
@@ -1228,6 +1219,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                             }
                         ];
                     });
+
 
 
                 matchApiMock
@@ -1289,6 +1281,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                     });
 
 
+
                 matchApiMock
                     .loadMDACCNtc_Table()
                     .then(function (d) {
@@ -1341,6 +1334,9 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                         ];
 
                     });
+
+
+
 
                 $scope.barlegend = "Total Positive / NTC Control Status";
                 /**
