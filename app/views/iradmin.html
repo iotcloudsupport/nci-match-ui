@@ -106,15 +106,9 @@
                                             <canvas id="mochaBar" barchart ng-attr-data="barData" labels="false" options="barOptions" legend="false" responsive="true"
                                                     width="700" height="200">
                                             </canvas>
-
-
                                             <div><b style='color:darkgreen;'>Positive Controls</b></div>
                                             <div><b style='color:navy;'>No Template Controls</b></div>
-
                                         </div>
-
-
-
                                     </div>
                                 </div>
                             </div>
@@ -122,7 +116,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-2 cols-height cols-bottom text-center">
+                <div ng-if="monthview == 'aug'" class="col-lg-2 cols-height cols-bottom text-center">
                     <div class="col-lg-10 text-center">
                         <h4>Positive Controls</h4>
                     </div>
@@ -187,8 +181,75 @@
                             </table>
                         </div>
                     </div>
-
                 </div>
+
+                <div ng-if="monthview == 'none'" class="col-lg-2 cols-height cols-bottom text-center">
+                    <div class="col-lg-10 text-center">
+                        <h4>Positive Controls</h4>
+                    </div>
+
+                    <div class="tabs-container">
+                        <div class="col-lg-8">
+                            <canvas id="amoiCanvas" doughnutchart class="chart chart-doughnut" options="doughnutOptions" ng-attr-data="pieWeekData" responsive="true"
+                                    width="78" height="78">
+                            </canvas>
+
+                            <table class="table" role="grid" width="100%" style="font-size: 10px">
+                                <thead>
+                                <tr>
+                                    <td>Success Status</td>
+                                    <td>Failed Status</td>
+                                    <td>No Sample</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <td>
+                                    <div class="font-bold "> {{pos_week_status[1]}} </div>
+                                </td>
+                                <td>
+                                    <div class="font-bold "> {{pos_week_status[0]}} </div>
+                                </td>
+                                <td>
+                                    <div class="font-bold "> {{pos_week_status[2]}} </div>
+                                </td>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                    <div class="tabs-container">
+                        <div class="col-lg-10 text-center">
+                            <h4>No Template Controls</h4>
+                        </div>
+                        <div class="col-lg-8">
+                            <canvas id="amoiCanvas" doughnutchart ng-attr-data="ntcpieData" responsive="true" width="78" height="78" options="doughnutOptions">
+                            </canvas>
+                            <table class="table" role="grid" width="100%" style="font-size: 10px">
+                                <thead>
+                                <tr>
+                                    <td>Success Status</td>
+                                    <td>Failed Status</td>
+                                    <td>No Sample</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <td>
+                                    <div class="font-bold "> {{ntc_status[1]}} </div>
+                                </td>
+                                <td>
+                                    <div class="font-bold "> {{ntc_status[0]}} </div>
+                                </td>
+                                <td>
+                                    <div class="font-bold "> {{ntc_status[2]}} </div>
+                                </td>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <!--HISTOGRAM CHART-->
 
@@ -275,7 +336,8 @@
                 </div>
                 <!--PIE CHART-->
 
-                <div class="col-lg-2 cols-height cols-bottom text-center">
+                <!--PIE CHARTS-->
+                <div ng-if="monthview == 'aug'" class="col-lg-2 cols-height cols-bottom text-center">
                     <div class="col-lg-10 text-center">
                         <h4>Positive Controls</h4>
                     </div>
@@ -336,6 +398,70 @@
                         </div>
                     </div>
                 </div>
+
+                <!--WEEk CHARTS-->
+                <div ng-if="monthview == 'none'" class="col-lg-2 cols-height cols-bottom text-center">
+                    <div class="col-lg-10 text-center">
+                        <h4>Positive Controls</h4>
+                    </div>
+                    <div class="tabs-container">
+                        <div class="col-lg-8">
+                            <canvas id="mdaCanvas" doughnutchart options="doughnutOptions" ng-attr-data="pieWeekMdaData" responsive="true" width="78" height="78">
+                            </canvas>
+                            <table class="table" role="grid" width="100%" style="font-size: 10px">
+                                <thead>
+                                <tr>
+                                    <td>Success Status</td>
+                                    <td>Failed Status</td>
+                                    <td>No Sample</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <td>
+                                    <div class="font-bold "> {{pos_mda_status[1]}} </div>
+                                </td>
+                                <td>
+                                    <div class="font-bold "> {{pos_mda_status[0]}} </div>
+                                </td>
+                                <td>
+                                    <div class="font-bold "> {{pos_mda_status[2]}} </div>
+                                </td>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tabs-container">
+                        <div class="col-lg-10 text-center">
+                            <h4>No Template Controls</h4>
+                        </div>
+                        <div class="col-lg-8">
+                            <canvas id="mdantcCanvas" doughnutchart ng-attr-data="ntcMdapieData" responsive="true" width="78" height="78" options="doughnutOptions">
+                            </canvas>
+                            <table class="table" role="grid" width="100%" style="font-size: 10px">
+                                <thead>
+                                <tr>
+                                    <td>Success Status</td>
+                                    <td>Failed Status</td>
+                                    <td>No Sample</td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <td>
+                                    <div class="font-bold "> {{ntc_mda_status[1]}} </div>
+                                </td>
+                                <td>
+                                    <div class="font-bold "> {{ntc_mda_status[0]}} </div>
+                                </td>
+                                <td>
+                                    <div class="font-bold "> {{ntc_mda_status[2]}} </div>
+                                </td>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <!--HISTOGRAM CHART-->
         </div>
@@ -652,7 +778,7 @@
                                                     <tbody>
 
                                                     <tr ng-repeat="ta in mochaList">
-                                                        <td> {{ta.molecular_id | dashify }}</td>
+                                                        <td>{{ta.molecular_id | dashify }}</td>
                                                         <td>{{ta.date_created | dashify }}</td>
                                                         <td>{{ta.date_received | dashify }}</td>
                                                         <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
@@ -2183,13 +2309,19 @@
                                                 </div>
 
                                                 <!--NTC-->
-                                                <div ng-if="monthview == 'none'" class="ibox-content ibox-title-no-line">
+                                                <div ng-if="monthview == 'none'"
+                                                     class="ibox-content ibox-title-no-line"
+                                                     ng-controller="IrAdminController as DashCtrl">
 
                                                     <form class="form-horizontal" role="form" ng-submit="showNoTemplateControlConfirmation('MDACC')">
                                                         <input class="btn btn-xs btn-primary file-button-xl" type="submit" value="Generate MSN" class="btn btn-primary" />
                                                     </form>
 
-                                                    <table datatable="ng" dt-options="datatable.dtOptions" dt-column-defs="datatable.dtColumnDefs" class="table table-bordered table-striped">
+                                                    <table datatable="ng"
+                                                           dt-options="DashCtrl.dtOptions"
+                                                           dt-columns="DashCtrl.dtColumns"
+                                                           dt-instance="DashCtrl.dtInstance"
+                                                           class="table table-bordered table-striped">
                                                         <thead>
                                                         <tr>
                                                             <th class="">Molecular ID </th>
