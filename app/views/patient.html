@@ -568,7 +568,7 @@
                                                         {{variant.func_gene | dashify }}
                                                     </a>
                                                 </td>
-                                                <td>{{::variant.oncominevariantclass | dashify }}</td>
+                                                <td>{{::variant.oncomine_variant_class | dashify }}</td>
                                                 <td>{{::variant.exon | dashify }}</td>
                                                 <td>{{::variant.function | dashify }}</td>
                                                 <td>{{::variant.hgvs | dashify }}</td>
@@ -625,8 +625,8 @@
                                                     <td>{{variant.chromosome | dashify }}</td>
                                                     <td>{{variant.raw_copy_number | dashify }}</td>
                                                     <td>{{variant.copy_number | dashify }}</td>
-                                                    <td>{{variant.confidence_interval_5_percent | dashify }}</td>
-                                                    <td>{{variant.confidence_interval_95_percent | dashify }}</td>
+                                                    <td>{{variant.confidence_interval_5percent | dashify }}</td>
+                                                    <td>{{variant.confidence_interval_95percent | dashify }}</td>
                                                 </tr>
 
                                                 <tr ng-if="!currentTissueVariantReport.variants.copy_number_variants || !currentTissueVariantReport.variants.copy_number_variants.length">
@@ -672,15 +672,14 @@
                                                     </td>
                                                     <td>{{variant.identifier}}</td>
                                                     <td ng-if="variantReportMode!=='QC'">{{variant.is_amoi | dashify }}}}<sup>({{variant.inclusion}})</sup></td>
-                                                    <td>{{variant.gene_2 | dashify }}</td>
-                                                    <td>{{variant.gene_2_count | dashify }}</td>
+                                                    <td>{{variant.driver_gene | dashify }}</td>
+                                                    <td>{{variant.driver_read_count | dashify }}</td>
                                                     <td>
-                                                        <a class="report-link" href ng-click="openCosmicGene( variant.gene )">
-                                                            {{variant.gene | dashify }}
+                                                        <a class="report-link" href ng-click="openCosmicGene( variant.partner_gene )">
+                                                            {{variant.partner_gene | dashify }}
                                                         </a>
-                                                        <!--{{variant.gene | dashify }}-->
                                                     </td>
-                                                    <td>{{variant.gene_1_count | dashify }}</td>
+                                                    <td>{{variant.partner_rea_count | dashify }}</td>
                                                     <td>{{variant.annotation | dashify }}</td>
                                                 </tr>
 
@@ -703,7 +702,7 @@
 
                                                     <div class="col-lg-12">
 
-                                                        <!--SNV TABLE-->
+                                                        <!--SNVs/MNVs/Indels TABLE-->
                                                         <div class="ibox-title ibox-title-no-line-no-padding">
                                                             <h3>SNVs/MNVs/Indels</h3>
                                                         </div>
@@ -728,16 +727,18 @@
                                                                     <th class="label2" >Id</th>
                                                                     <th class="label2" >Chrom</th>
                                                                     <th class="label2" >Position</th>
-                                                                    <th class="label2" >Reference</th>
-                                                                    <th class="label2" >Alternative</th>
+                                                                    <th class="label2" >CDS Ref</th>
+                                                                    <th class="label2" >CDS Alt</th>
+                                                                    <th class="label2" >OCP Ref</th>
+                                                                    <th class="label2" >OCP Alt</th>
+                                                                    <th class="label2" >Strand</th>
                                                                     <th class="label2" >Filter</th>
                                                                     <th class="label2" >Allele Freq</th>
-
                                                                     <th class="label2" >Func Gene</th> <!-- openCosmicGene("MTOR") -->
                                                                     <th class="label2" >Oncomine Variant Class</th>
                                                                     <th class="label2" >Exon</th>
                                                                     <th class="label2" >Function</th>
-                                                                    <th class="label2" >Hgvs</th>
+                                                                    <th class="label2" >HGVS</th>
                                                                     <th class="label2" >Read Depth</th>
                                                                     <th class="label2" >Transcript</th>
                                                                     <th class="label2" >Protein</th>
@@ -747,28 +748,31 @@
 
                                                                 <tbody>
 
-                                                                <tr ng-repeat="ta in snvList | limitTo:totalDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">
+                                                                <tr ng-repeat="variant in snvList | limitTo:totalDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">
                                                                     <td>
-                                                                        <a class="report-link" href ng-click="openCosmicId( ta.identifier )">
-                                                                            {{ta.identifier | dashify }}
+                                                                        <a class="report-link" href ng-click="openCosmicId( variant.identifier )">
+                                                                            {{variant.identifier | dashify }}
                                                                         </a>
                                                                     </td>
-                                                                    <td>{{::ta.chromosome | dashify }}</td>
-                                                                    <td>{{::ta.position | dashify }}</td>
-                                                                    <td>{{::ta.reference | dashify }}</td>
-                                                                    <td>{{::ta.alternative | dashify }}</td>
-                                                                    <td>{{::ta.filter | dashify }}</td>
-                                                                    <td>{{::ta.allele_frequency | dashify }}</td>
+                                                                    <td>{{::variant.chromosome | dashify }}</td>
+                                                                    <td>{{::variant.position | dashify }}</td>
+                                                                    <td>{{::variant.cds_reference | dashify }}</td>
+                                                                    <td>{{::variant.cds_alternative | dashify }}</td>
+                                                                    <td>{{::variant.ocp_reference | dashify }}</td>
+                                                                    <td>{{::variant.ocp_alternative | dashify }}</td>
+                                                                    <td>{{::variant.strand | dashify }}</td>
+                                                                    <td>{{::variant.filter | dashify }}</td>
+                                                                    <td>{{::variant.allele_frequency | dashify }}</td>
                                                                     <td>
-                                                                        <a href ng-click="openCosmicGene(ta.gene)" class="report-link">{{::ta.gene}}</a>
+                                                                        <a href ng-click="openCosmicGene(variant.func_gene)" class="report-link">{{::variant.func_gene}}</a>
                                                                     </td>
-                                                                    <td>{{::ta.oncominevariantclass | dashify }}</td>
-                                                                    <td>{{::ta.exon | dashify }}</td>
-                                                                    <td>{{::ta.function | dashify }}</td>
-                                                                    <td>{{::ta.hgvs | dashify }}</td>
-                                                                    <td>{{::ta.read_depth | dashify }}</td>
-                                                                    <td>{{::ta.transcript | dashify }}</td>
-                                                                    <td>{{::ta.protein_match | dashify }}</td>
+                                                                    <td>{{::variant.oncomine_variant_class | dashify }}</td>
+                                                                    <td>{{::variant.exon | dashify }}</td>
+                                                                    <td>{{::variant.function | dashify }}</td>
+                                                                    <td>{{::variant.hgvs | dashify }}</td>
+                                                                    <td>{{::variant.read_depth | dashify }}</td>
+                                                                    <td>{{::variant.transcript | dashify }}</td>
+                                                                    <td>{{::variant.protein | dashify }}</td>
 
                                                                 </tr>
                                                                 </tbody>
@@ -811,19 +815,19 @@
                                                                 </thead>
                                                                 <tbody>
 
-                                                                <tr ng-repeat="ta in cnvList | limitTo:totalDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">
+                                                                <tr ng-repeat="variant in cnvList | limitTo:totalDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">
                                                                     <td>
-                                                                        <a href ng-click="openCosmicGene(ta.identifier)" class="report-link"> {{::ta.identifier | dashify }} </a>
+                                                                        <a href ng-click="openCosmicGene(variant.identifier)" class="report-link"> {{::variant.identifier | dashify }} </a>
                                                                     </td>
-                                                                    <td>{{::ta.chromosome | dashify }}</td>
-                                                                    <td>{{::ta.position | dashify }}</td>
-                                                                    <td>{{::ta.reference | dashify }}</td>
-                                                                    <td>{{::ta.alternative | dashify }}</td>
-                                                                    <td>{{::ta.filter | dashify }}</td>
-                                                                    <td>{{::ta.raw_copy_number | dashify }}</td>
-                                                                    <td>{{::ta.copy_number | dashify }}</td>
-                                                                    <td>{{::ta.confidence_interval_5_percent | dashify }}</td>
-                                                                    <td>{{::ta.confidence_interval_95_percent | dashify }}</td>
+                                                                    <td>{{::variant.chromosome | dashify }}</td>
+                                                                    <td>{{::variant.position | dashify }}</td>
+                                                                    <td>{{::variant.reference | dashify }}</td>
+                                                                    <td>{{::variant.alternative | dashify }}</td>
+                                                                    <td>{{::variant.filter | dashify }}</td>
+                                                                    <td>{{::variant.raw_copy_number | dashify }}</td>
+                                                                    <td>{{::variant.copy_number | dashify }}</td>
+                                                                    <td>{{::variant.confidence_interval_5percent | dashify }}</td>
+                                                                    <td>{{::variant.confidence_interval_95percent | dashify }}</td>
 
                                                                 </tr>
                                                                 </tbody>
@@ -868,20 +872,20 @@
                                                                 </thead>
                                                                 <tbody>
 
-                                                                <tr ng-repeat="ta in geneList | limitTo:totalDisplayed " style="cursor: auto; " role="row" class="odd">
+                                                                <tr ng-repeat="variant in geneList | limitTo:totalDisplayed " style="cursor: auto; " role="row" class="odd">
                                                                     <td>
-                                                                        <a href ng-click="openCosmicFusionId(ta.identifier)" class="report-link"> {{::ta.identifier | dashify }} </a>
+                                                                        <a href ng-click="openCosmicFusionId(variant.identifier)" class="report-link"> {{::variant.identifier | dashify }} </a>
                                                                     </td>
-                                                                    <td>{{::ta.chromosome | dashify }}</td>
-                                                                    <td>{{::ta.position | dashify }}</td>
-                                                                    <td>{{::ta.reference | dashify }}</td>
-                                                                    <td>{{::ta.alternative | dashify }}</td>
-                                                                    <td>{{::ta.filter | dashify }}</td>
-                                                                    <td>{{::ta.gene | dashify }}</td>
-                                                                    <td>{{::ta.oncominevariantclass | dashify }}</td>
-                                                                    <td>{{::ta.exon | dashify }}</td>
-                                                                    <td>{{::ta.function | dashify }}</td>
-                                                                    <td>{{::ta.read_depth | dashify }}</td>
+                                                                    <td>{{::variant.chromosome | dashify }}</td>
+                                                                    <td>{{::variant.position | dashify }}</td>
+                                                                    <td>{{::variant.reference | dashify }}</td>
+                                                                    <td>{{::variant.alternative | dashify }}</td>
+                                                                    <td>{{::variant.filter | dashify }}</td>
+                                                                    <td>{{::variant.func_gene | dashify }}</td>
+                                                                    <td>{{::variant.oncomine_variant_class | dashify }}</td>
+                                                                    <td>{{::variant.exon | dashify }}</td>
+                                                                    <td>{{::variant.function | dashify }}</td>
+                                                                    <td>{{::variant.read_depth | dashify }}</td>
                                                                 </tr>
                                                                 </tbody>
                                                             </table>
@@ -1222,34 +1226,40 @@
                                         <tbody>
                                         <tr ng-repeat="variant in currentBloodVariantReport.variants.snvs_and_indels" style="cursor: auto;" role="row" class="odd">
                                             <td ng-if="variantReportMode!=='QC'">
-                                                <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentBloodVariantReport.status==='PENDING'">
+                                                <div check-box-with-confirm confirm-title="{{confirmTitle}}"
+                                                        confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
+                                                        comment="variant.comment" prompt-only-if="true" enabled="currentTissueVariantReport.status==='PENDING'">
                                                 </div>
                                             </td>
                                             <td ng-if="variantReportMode!=='QC'">
-                                                <a ng-if="variant.comment " href ng-click="editComment(variant, currentBloodVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
+                                                <a ng-if="variant.comment " href ng-click="editComment(variant, currentTissueVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
                                             </td>
                                             <td>
                                                 <a class="report-link" href ng-click="openCosmicId( variant.identifier )">
                                                     {{variant.identifier | dashify }}
                                                 </a>
                                             </td>
-                                            <td ng-if="variantReportMode!=='QC'">{{variant.is_amoi | dashify }}<sup>({{variant.inclusion}})</sup></td>
-                                            <td>{{variant.chromosome | dashify }}</td>
-                                            <td>{{variant.position | dashify }}</td>
-                                            <td>{{variant.cds_reference | dashify }}</td>
-                                            <td>{{variant.cds_alternative | dashify }}</td>
-                                            <td>{{variant.ocp_reference | dashify }}</td>
-                                            <td>{{variant.ocp_alternative | dashify }}</td>
-                                            <td>{{variant.strand | dashify }}</td>
-                                            <td>{{variant.allele_frequency | dashify }}</td>
-                                            <td>{{variant.func_gene | dashify }}</td>
-                                            <td>{{variant.oncomine_variant_class | dashify }}</td>
-                                            <td>{{variant.exon | dashify }}</td>
-                                            <td>{{variant.function | dashify }}</td>
-                                            <td>{{variant.hgvs | dashify }}</td>
-                                            <td>{{variant.read_depth | dashify }}</td>
-                                            <td>{{variant.transcript | dashify }}</td>
-                                            <td>{{variant.protein | dashify }}</td>
+                                            <td ng-if="variantReportMode!=='QC'">{{::variant.is_amoi | dashify }}<sup>({{::variant.inclusion}})</sup></td>
+                                            <td>{{::variant.chromosome | dashify }}</td>
+                                            <td>{{::variant.position | dashify }}</td>
+                                            <td>{{::variant.cds_reference | dashify }}</td>
+                                            <td>{{::variant.cds_alternative | dashify }}</td>
+                                            <td>{{::variant.ocp_reference | dashify }}</td>
+                                            <td>{{::variant.ocp_alternative | dashify }}</td>
+                                            <td>{{::variant.strand | dashify }}</td>
+                                            <td>{{::variant.allele_frequency | dashify }}</td>
+                                            <td>
+                                                <a class="report-link" href ng-click="openCosmicGene( variant.func_gene )">
+                                                    {{variant.func_gene | dashify }}
+                                                </a>
+                                            </td>
+                                            <td>{{::variant.oncomine_variant_class | dashify }}</td>
+                                            <td>{{::variant.exon | dashify }}</td>
+                                            <td>{{::variant.function | dashify }}</td>
+                                            <td>{{::variant.hgvs | dashify }}</td>
+                                            <td>{{::variant.read_depth | dashify }}</td>
+                                            <td>{{::variant.transcript | dashify }}</td>
+                                            <td>{{::variant.protein | dashify }}</td>
                                         </tr>
 
                                         <tr ng-if="!currentBloodVariantReport.variants.snvs_and_indels || !currentBloodVariantReport.variants.snvs_and_indels.length">
@@ -1287,11 +1297,11 @@
                                         <tbody>
                                         <tr ng-repeat="variant in currentBloodVariantReport.variants.copy_number_variants" style="cursor: auto;" role="row" class="odd">
                                             <td ng-if="variantReportMode!=='QC'">
-                                                <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentBloodVariantReport.status==='PENDING'">
+                                                <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentTissueVariantReport.status==='PENDING'">
                                                 </div>
                                             </td>
                                             <td ng-if="variantReportMode!=='QC' ">
-                                                <a ng-if="variant.comment " href ng-click="editComment(variant, currentBloodVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
+                                                <a ng-if="variant.comment " href ng-click="editComment(variant, currentTissueVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
                                             </td>
                                             <td>
                                                 <a href ng-click="openCosmicGene(variant.identifier)" class="report-link"> {{::variant.identifier | dashify }} </a>
@@ -1300,8 +1310,8 @@
                                             <td>{{variant.chromosome | dashify }}</td>
                                             <td>{{variant.raw_copy_number | dashify }}</td>
                                             <td>{{variant.copy_number | dashify }}</td>
-                                            <td>{{variant.confidence_interval_5_percent | dashify }}</td>
-                                            <td>{{variant.confidence_interval_95_percent | dashify }}</td>
+                                            <td>{{variant.confidence_interval_5percent | dashify }}</td>
+                                            <td>{{variant.confidence_interval_95percent | dashify }}</td>
                                         </tr>
 
                                         <tr ng-if="!currentBloodVariantReport.variants.copy_number_variants || !currentBloodVariantReport.variants.copy_number_variants.length">
@@ -1339,23 +1349,22 @@
                                         <tbody>
                                         <tr ng-repeat="variant in currentBloodVariantReport.variants.gene_fusions" style="cursor: auto;" role="row" class="odd">
                                             <td ng-if="variantReportMode!=='QC'">
-                                                <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentBloodVariantReport.status==='PENDING'">
+                                                <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentTissueVariantReport.status==='PENDING'">
                                                 </div>
                                             </td>
                                             <td ng-if="variantReportMode!=='QC'">
-                                                <a ng-if="variant.comment " href ng-click="editComment(variant, currentBloodVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
+                                                <a ng-if="variant.comment " href ng-click="editComment(variant, currentTissueVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
                                             </td>
                                             <td>{{variant.identifier}}</td>
                                             <td ng-if="variantReportMode!=='QC'">{{variant.is_amoi | dashify }}}}<sup>({{variant.inclusion}})</sup></td>
-                                            <td>{{variant.gene_2 | dashify }}</td>
-                                            <td>{{variant.gene2count | dashify }}</td>
+                                            <td>{{variant.driver_gene | dashify }}</td>
+                                            <td>{{variant.driver_read_count | dashify }}</td>
                                             <td>
-                                                <a class="report-link" href ng-click="openCosmicGene( variant.gene )">
-                                                    {{variant.gene | dashify }}
+                                                <a class="report-link" href ng-click="openCosmicGene( variant.partner_gene )">
+                                                    {{variant.partner_gene | dashify }}
                                                 </a>
-                                                <!--{{variant.gene | dashify }}-->
                                             </td>
-                                            <td>{{variant.gene_1_count | dashify }}</td>
+                                            <td>{{variant.partner_rea_count | dashify }}</td>
                                             <td>{{variant.annotation | dashify }}</td>
                                         </tr>
 
@@ -1381,7 +1390,7 @@
 
                                             <div class="col-lg-12">
 
-                                                <!--SNV TABLE-->
+                                                <!--SNVs/MNVs/Indels TABLE-->
                                                 <div class="ibox-title ibox-title-no-line-no-padding">
                                                     <h3>SNVs/MNVs/Indels</h3>
                                                 </div>
@@ -1414,7 +1423,7 @@
                                                             <th class="label2" >Oncomine Variant Class</th>
                                                             <th class="label2" >Exon</th>
                                                             <th class="label2" >Function</th>
-                                                            <th class="label2" >Hgvs</th>
+                                                            <th class="label2" >HGVS</th>
                                                             <th class="label2" >Read Depth</th>
                                                             <th class="label2" >Transcript</th>
                                                             <th class="label2" >Protein</th>
@@ -1425,24 +1434,30 @@
                                                         <tbody>
 
                                                         <tr ng-repeat="ta in snvList | limitTo:totalDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">
-
-                                                            <td>{{::ta.identifier | dashify }}</td>
-                                                            <td>{{::ta.chromosome | dashify }}</td>
-                                                            <td>{{::ta.position | dashify }}</td>
-                                                            <td>{{::ta.reference | dashify }}</td>
-                                                            <td>{{::ta.alternative | dashify }}</td>
-                                                            <td>{{::ta.filter | dashify }}</td>
-                                                            <td>{{::ta.allele_frequency | dashify }}</td>
                                                             <td>
-                                                                <a href ng-click="openCosmicGene(ta.gene)" class="report-link">{{::ta.gene | dashify }}</a>
+                                                                <a class="report-link" href ng-click="openCosmicId( variant.identifier )">
+                                                                    {{variant.identifier | dashify }}
+                                                                </a>
                                                             </td>
-                                                            <td>{{::ta.oncominevariantclass | dashify }}</td>
-                                                            <td>{{::ta.exon | dashify }}</td>
-                                                            <td>{{::ta.function | dashify }}</td>
-                                                            <td>{{::ta.hgvs | dashify }}</td>
-                                                            <td>{{::ta.read_depth | dashify }}</td>
-                                                            <td>{{::ta.transcript | dashify }}</td>
-                                                            <td>{{::ta.protein_match | dashify }}</td>
+                                                            <td>{{::variant.chromosome | dashify }}</td>
+                                                            <td>{{::variant.position | dashify }}</td>
+                                                            <td>{{::variant.cds_reference | dashify }}</td>
+                                                            <td>{{::variant.cds_alternative | dashify }}</td>
+                                                            <td>{{::variant.ocp_reference | dashify }}</td>
+                                                            <td>{{::variant.ocp_alternative | dashify }}</td>
+                                                            <td>{{::variant.strand | dashify }}</td>
+                                                            <td>{{::variant.filter | dashify }}</td>
+                                                            <td>{{::variant.allele_frequency | dashify }}</td>
+                                                            <td>
+                                                                <a href ng-click="openCosmicGene(variant.func_gene)" class="report-link">{{::variant.func_gene}}</a>
+                                                            </td>
+                                                            <td>{{::variant.oncomine_variant_class | dashify }}</td>
+                                                            <td>{{::variant.exon | dashify }}</td>
+                                                            <td>{{::variant.function | dashify }}</td>
+                                                            <td>{{::variant.hgvs | dashify }}</td>
+                                                            <td>{{::variant.read_depth | dashify }}</td>
+                                                            <td>{{::variant.transcript | dashify }}</td>
+                                                            <td>{{::variant.protein | dashify }}</td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
@@ -1484,19 +1499,19 @@
                                                         </thead>
                                                         <tbody>
 
-                                                        <tr ng-repeat="ta in cnvList | limitTo:totalDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">
+                                                        <tr ng-repeat="variant in cnvList | limitTo:tovariantlDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">
                                                             <td>
-                                                                <a href ng-click="openCosmicGene(ta.identifier)" class="report-link"> {{::ta.identifier | dashify }} </a>
+                                                                <a href ng-click="openCosmicGene(variant.identifier)" class="report-link"> {{::variant.identifier | dashify }} </a>
                                                             </td>
-                                                            <td>{{::ta.chromosome | dashify }}</td>
-                                                            <td>{{::ta.position | dashify }}</td>
-                                                            <td>{{::ta.reference | dashify }}</td>
-                                                            <td>{{::ta.alternative | dashify }}</td>
-                                                            <td>{{::ta.filter | dashify }}</td>
-                                                            <td>{{::ta.raw_copy_number | dashify }}</td>
-                                                            <td>{{::ta.copy_number | dashify }}</td>
-                                                            <td>{{::ta.confidence_interval_5_percent | dashify }}</td>
-                                                            <td>{{::ta.confidence_interval_95_percent | dashify }}</td>
+                                                            <td>{{::variant.chromosome | dashify }}</td>
+                                                            <td>{{::variant.position | dashify }}</td>
+                                                            <td>{{::variant.reference | dashify }}</td>
+                                                            <td>{{::variant.alternative | dashify }}</td>
+                                                            <td>{{::variant.filter | dashify }}</td>
+                                                            <td>{{::variant.raw_copy_number | dashify }}</td>
+                                                            <td>{{::variant.copy_number | dashify }}</td>
+                                                            <td>{{::variant.confidence_interval_5percent | dashify }}</td>
+                                                            <td>{{::variant.confidence_interval_95percent | dashify }}</td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
@@ -1540,21 +1555,20 @@
                                                         </thead>
                                                         <tbody>
 
-                                                        <tr ng-repeat="ta in geneList | limitTo:totalDisplayed " style="cursor: auto; " role="row" class="odd">
+                                                        <tr ng-repeat="variant in geneList | limitTo:totalDisplayed " style="cursor: auto; " role="row" class="odd">
                                                             <td>
-                                                                <a href ng-click="openCosmicFusionId(ta.identifier)" class="report-link"> {{::ta.identifier | dashify }} </a>
-                                                                <!--{{::ta.chromosome | dashify }}-->
+                                                                <a href ng-click="openCosmicFusionId(variant.identifier)" class="report-link"> {{::variant.identifier | dashify }} </a>
                                                             </td>
-                                                            <td>{{::ta.chromosome | dashify }}</td>
-                                                            <td>{{::ta.position | dashify }}</td>
-                                                            <td>{{::ta.reference | dashify }}</td>
-                                                            <td>{{::ta.alternative | dashify }}</td>
-                                                            <td>{{::ta.filter | dashify }}</td>
-                                                            <td>{{::ta.gene | dashify }}</td>
-                                                            <td>{{::ta.oncominevariantclass | dashify }}</td>
-                                                            <td>{{::ta.exon | dashify }}</td>
-                                                            <td>{{::ta.function | dashify }}</td>
-                                                            <td>{{::ta.read_depth | dashify }}</td>
+                                                            <td>{{::variant.chromosome | dashify }}</td>
+                                                            <td>{{::variant.position | dashify }}</td>
+                                                            <td>{{::variant.reference | dashify }}</td>
+                                                            <td>{{::variant.alternative | dashify }}</td>
+                                                            <td>{{::variant.filter | dashify }}</td>
+                                                            <td>{{::variant.func_gene | dashify }}</td>
+                                                            <td>{{::variant.oncomine_variant_class | dashify }}</td>
+                                                            <td>{{::variant.exon | dashify }}</td>
+                                                            <td>{{::variant.function | dashify }}</td>
+                                                            <td>{{::variant.read_depth | dashify }}</td>
                                                         </tr>
                                                         </tbody>
                                                     </table>
