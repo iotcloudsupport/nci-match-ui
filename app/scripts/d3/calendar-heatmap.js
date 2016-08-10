@@ -370,7 +370,13 @@ angular.module('matchbox.calendar-heatmap', []).
                 });
 
           function getMonth(monthStr){
-            return new Date(monthStr+'-1-01').getMonth()+1
+            var d = new Date(monthStr);
+            // var month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            // return month_names_short[d.getMonth()];
+
+            return d.getMonth();
+
+            // return new Date(monthStr+'-1-01').getMonth() + 1;
           }
 
           // Add month labels
@@ -390,8 +396,13 @@ angular.module('matchbox.calendar-heatmap', []).
               return Math.floor(label_padding / 3) + 'px';
             })
             .html(function (d) {
-                var month = getMonth(d.toLocaleDateString("en-us", {month: "short"}));
-                return '<a href="javascript: void(0)" target="_self" onClick="heatmapMonthPost(' + month + ')" style="text-decoration: underline"> ' + d.toLocaleDateString("en-us", {month: "short"}) + '</a>'
+              var month = getMonth(d);
+              var month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+              var month_short = month_names_short[d.getMonth()];
+
+              var m = parseInt(month) + 1
+                // var month = getMonth(d.toLocaleDateString("en-us", {month: "short"}));
+                return '<a href="javascript: void(0)" target="_self" onClick="heatmapMonthPost(' + m + ')" style="text-decoration: underline"> ' + month_short + '</a>'
             })
 
               // .attr("xlink:href": d.toLocaleDateString('en-us', {month: 'short'}))
