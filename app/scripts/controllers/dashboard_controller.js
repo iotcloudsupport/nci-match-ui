@@ -67,6 +67,68 @@
         $scope.loadPatientPendingAssignmentReportsList = loadPatientPendingAssignmentReportsList;
         $scope.loadDashboardData = loadDashboardData;
 
+        var aMoiLabels = [
+            '<span class="chart-legend-digit">0</span> aMOI',
+            '<span class="chart-legend-digit">1</span> aMOI',
+            '<span class="chart-legend-digit">2</span> aMOI',
+            '<span class="chart-legend-digit">3</span> aMOI',
+            '<span class="chart-legend-digit">4</span> aMOI',
+            '<span class="chart-legend-digit">5+</span> aMOI'
+        ];
+        var aMoiHighlight = "#000088";
+
+        $scope.donutOptions = {
+            segmentShowStroke: true,
+            segmentStrokeColor: "#fff",
+            segmentStrokeWidth: 2,
+            percentageInnerCutout: 45, // This is 0 for Pie charts
+            animationSteps: 100,
+            animationEasing: "easeOutBounce",
+            animateRotate: true,
+            animateScale: false,
+            responsive: true,
+            legendTemplate: '<ul class="dashboard donut-chart-legend"><% for (var i=0; i<segments.length; i++) {%><i class="fa fa-square" style="color: <%=segments[i].fillColor%>" ></i> <%if(segments[i].label){%><%=segments[i].label%> : <strong><%=segments[i].value%> patients</strong> <%}%><br><%}%></ul>'
+        };
+
+        $scope.donutData = [
+            {
+                value: 0,
+                color: "#23c6c8",
+                highlight: aMoiHighlight,
+                label: aMoiLabels[0]
+            },
+            {
+                value: 0,
+                color: "#1c84c6",
+                highlight: aMoiHighlight,
+                label: aMoiLabels[1]
+            },
+            {
+                value: 0,
+                color: "#18a689", //"#ab0102",
+                highlight: aMoiHighlight,
+                label: aMoiLabels[2]
+            },
+            {
+                value: 0,
+                color: "#f8ac59",
+                highlight: aMoiHighlight,
+                label: aMoiLabels[3]
+            },
+            {
+                value: 0,
+                color: "#707070",
+                highlight: aMoiHighlight,
+                label: aMoiLabels[4]
+            },
+            {
+                value: 0,
+                color: "#cfcfcf",
+                highlight: aMoiHighlight,
+                label: aMoiLabels[5]
+            }
+        ];
+
         $scope.clialab = function (id) {
             sharedCliaProperties.setProperty(id);
         };
@@ -143,67 +205,16 @@
                 .then(function (d) {
                     var stats = d.data;
 
-                    var aMoiLabels = [
-                        '<span class="chart-legend-digit">0</span> aMOI',
-                        '<span class="chart-legend-digit">1</span> aMOI',
-                        '<span class="chart-legend-digit">2</span> aMOI',
-                        '<span class="chart-legend-digit">3</span> aMOI',
-                        '<span class="chart-legend-digit">4</span> aMOI',
-                        '<span class="chart-legend-digit">5+</span> aMOI'
-                    ];
-                    var aMoiHighlight = "#000088";
+                    console.log("stats");
+                    console.log(stats);
+                    var strnum = '2';
+                    $scope.donutData[0].value = Number(stats.patients_with_0_amois);
+                    $scope.donutData[1].value = Number(stats.patients_with_1_amois);
+                    $scope.donutData[2].value = Number(stats.patients_with_2_amois);
+                    $scope.donutData[3].value = Number(stats.patients_with_3_amois);
+                    $scope.donutData[4].value = Number(stats.patients_with_4_amois);
+                    $scope.donutData[5].value = Number(stats.patients_with_5_or_more_amois);
 
-                    $scope.donutOptions = {
-                        segmentShowStroke: true,
-                        segmentStrokeColor: "#fff",
-                        segmentStrokeWidth: 2,
-                        percentageInnerCutout: 45, // This is 0 for Pie charts
-                        animationSteps: 100,
-                        animationEasing: "easeOutBounce",
-                        animateRotate: true,
-                        animateScale: false,
-                        responsive: true,
-                        legendTemplate: '<ul class="dashboard donut-chart-legend"><% for (var i=0; i<segments.length; i++) {%><i class="fa fa-square" style="color: <%=segments[i].fillColor%>" ></i> <%if(segments[i].label){%><%=segments[i].label%> : <strong><%=segments[i].value%> patients</strong> <%}%><br><%}%></ul>'
-                    };
-
-                    $scope.donutData = [
-                        {
-                            value: stats.patients_with_0_amois,
-                            color: "#23c6c8",
-                            highlight: aMoiHighlight,
-                            label: aMoiLabels[0]
-                        },
-                        {
-                            value: stats.patients_with_1_amois,
-                            color: "#1c84c6",
-                            highlight: aMoiHighlight,
-                            label: aMoiLabels[1]
-                        },
-                        {
-                            value: stats.patients_with_2_amois,
-                            color: "#18a689", //"#ab0102",
-                            highlight: aMoiHighlight,
-                            label: aMoiLabels[2]
-                        },
-                        {
-                            value: stats.patients_with_3_amois,
-                            color: "#f8ac59",
-                            highlight: aMoiHighlight,
-                            label: aMoiLabels[3]
-                        },
-                        {
-                            value: stats.patients_with_4_amois,
-                            color: "#707070",
-                            highlight: aMoiHighlight,
-                            label: aMoiLabels[4]
-                        },
-                        {
-                            value: stats.patients_with_5_or_more_amois,
-                            color: "#cfcfcf",
-                            highlight: aMoiHighlight,
-                            label: aMoiLabels[5]
-                        }
-                    ];
                 });
 
         }
