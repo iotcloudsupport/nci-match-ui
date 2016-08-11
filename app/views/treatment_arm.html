@@ -426,7 +426,6 @@
                                                                 <th>Chrom <i class="fa fa-question-circle" data-placement="top"
                                                                         title="{{tooltipContent.chr}}" onmouseenter="$(this).tooltip('show')"></i></th>
                                                                 <th>Position</th>
-                                                                <th>Protein</th>
                                                                 <th>LOE <i class="fa fa-question-circle" data-placement="top"
                                                                         title="{{tooltipContent.loe}}" onmouseenter="$(this).tooltip('show')"></i></th>
                                                                 <th>Lit <i class="fa fa-question-circle" data-placement="top"
@@ -444,7 +443,6 @@
                                                                 <td><a ng-click="openGene(item.func_gene)">{{item.func_gene | dashify }}</a></td>
                                                                 <td>{{item.chromosome | dashify }}</td>
                                                                 <td>{{item.position | dashify }}</td>
-                                                                <td>{{item.description | dashify }}</td>
                                                                 <td>{{item.level_of_evidence | dashify }}</td>
                                                                 <td>
                                                                     <table>
@@ -469,7 +467,6 @@
                                                                 <th>Chrom <i class="fa fa-question-circle" data-placement="top"
                                                                         title="{{tooltipContent.chr}}" onmouseenter="$(this).tooltip('show')"></i></th>
                                                                 <th>Position</th>
-                                                                <th>Protein</th>
                                                                 <th>LOE <i class="fa fa-question-circle" data-placement="top"
                                                                         title="{{tooltipContent.loe}}" onmouseenter="$(this).tooltip('show')"></i></th>
                                                                 <th>Lit <i class="fa fa-question-circle" data-placement="top"
@@ -484,7 +481,6 @@
                                                                 <td><a ng-click="openGene(item.func_gene)">{{item.func_gene | dashify }}</a></td>
                                                                 <td>{{item.chromosome | dashify }}</td>
                                                                 <td>{{item.position | dashify }}</td>
-                                                                <td>{{item.description | dashify }}</td>
                                                                 <td>{{item.level_of_evidence | dashify }}</td>
                                                                 <td>
                                                                     <table>
@@ -524,7 +520,6 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>ID</th>
-                                                                <th>Gene</th>
                                                                 <th>LOE <i class="fa fa-question-circle" data-placement="top"
                                                                         title="{{tooltipContent.loe}}" onmouseenter="$(this).tooltip('show')"></i></th>
                                                                 <th>Lit <i class="fa fa-question-circle" data-placement="top"
@@ -540,8 +535,7 @@
                                                         <tbody>
                                                             <tr ng-repeat="item in currentVersion.geneFusionsInclusion">
                                                                 <td><a ng-click="openId(item.identifier)">{{item.identifier | dashify }}</td>
-                                                            <td><a ng-click="openGene(item.func_gene)">{{item.func_gene | dashify }}</a></td>
-                                                                <td>{{item.level_of_evidence | dashify }}</td>
+                                                                                              <td>{{item.level_of_evidence | dashify }}</td>
                                                                 <td>
                                                                     <table>
                                                                         <tr ng-repeat="subitem in item.public_med_ids">
@@ -562,7 +556,6 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>ID</th>
-                                                                <th>Gene</th>
                                                                 <th>LOE <i class="fa fa-question-circle" data-placement="top"
                                                                         title="{{tooltipContent.loe}}" onmouseenter="$(this).tooltip('show')"></i></th>
                                                                 <th>Lit <i class="fa fa-question-circle" data-placement="top"
@@ -575,8 +568,7 @@
                                                         <tbody>
                                                             <tr ng-repeat="item in currentVersion.geneFusionsExclusion">
                                                                 <td><a ng-click="openId(item.identifier)">{{item.identifier | dashify }}</td>
-                                                            <td><a ng-click="openGene(item.func_gene)">{{item.func_gene | dashify }}</a></td>
-                                                                <td>{{item.level_of_evidence | dashify }}</td>
+                                                                                              <td>{{item.level_of_evidence | dashify }}</td>
                                                                 <td>
                                                                     <table>
                                                                         <tr ng-repeat="subitem in item.public_med_ids">
