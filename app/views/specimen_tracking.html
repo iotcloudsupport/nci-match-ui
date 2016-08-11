@@ -30,7 +30,7 @@
                                         {{sites.mda.percent}}%
                                     </h3>
                                     <small>
-                                            <a ui-sref="clia-labs" ng-click="clialab('mdacc')" style="color: white">MDA</a>
+                                            <a ui-sref="clia-labs" ng-click="clialab('mdacc')" style="color: white">BOSTON</a>
                                     </small>
                                 </div>
                             </div>
@@ -102,8 +102,8 @@
                         <td>{{ shipment.shipped_date | utc }}</td>
                         <td>
                             <a ng-if="shipment.destination && shipment.destination.toUpperCase() === 'MOCHA'" ui-sref="clia-labs" ng-click="clialab('mocha')">{{ shipment.destination | dashify }}</a>
-                            <a ng-if="shipment.destination && shipment.destination.toUpperCase() === 'MDA'" ui-sref="clia-labs" ng-click="clialab('mdacc')">{{ shipment.destination | dashify }}</a>
-                            <span ng-if="shipment.destination && shipment.destination.toUpperCase() !== 'MOCHA' && shipment.destination.toUpperCase() !== 'MDA'">{{ shipment.destination }}</span>
+                            <a ng-if="shipment.destination && shipment.destination.toUpperCase() === 'BOSTON'" ui-sref="clia-labs" ng-click="clialab('mdacc')">{{ shipment.destination | dashify }}</a>
+                            <span ng-if="shipment.destination && shipment.destination.toUpperCase() !== 'MOCHA' && shipment.destination.toUpperCase() !== 'BOSTON'">{{ shipment.destination }}</span>
                         </td>
                         <td>
                             <tracking-link carrier="'fedex'" tracking-number="shipment.tracking_id"></tracking-link>
@@ -113,7 +113,7 @@
                     </tr>
                     <tr ng-repeat-end>
 
-                        <td class="no-padding" ng-if="shipment.assays.length > 0" colspan="11">
+                        <td class="no-padding" ng-if="shipment.assays.length > 0" colspan="12">
 
                             <div class="ibox no-padding">
                                 <div class="ibox-title no-padding">
