@@ -1,5 +1,5 @@
 (function () {
-    angular.module('matchbox.treatment-arm', [])
+    angular.module('matchbox.treatment-arm', ['ui.bootstrap', 'cgPrompt', 'ui.router', 'datatables', 'ngResource'])
         .controller('TreatmentArmController', TreatmentArmController);
 
     function TreatmentArmController($scope,
@@ -22,6 +22,20 @@
             'paging': false,
             'bFilter': false
         };
+
+        /*var vm = this;
+            vm.dtInstances = [];
+            vm.dtOptions = DTOptionsBuilder.newOptions()
+                .withOption('info', false);
+            vm.dtOptions = DTOptionsBuilder.newOptions()
+                .withOption('paging', false);
+
+            vm.ddOptions = DTOptionsBuilder.newOptions()
+                .withOption('info', false);
+            vm.ddOptions = DTOptionsBuilder.newOptions()
+                .withOption('paging', false);
+            vm.ddOptions = DTOptionsBuilder.newOptions()
+                .withOption('bFilter', false);*/
 
         /*
          To get the zero records message, add to above type: 'oLanguage': {"sEmptyTable": "There are no SNV inclusions"}

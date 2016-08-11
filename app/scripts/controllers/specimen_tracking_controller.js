@@ -40,7 +40,7 @@
 
         $scope.pieDataset = [
             {
-                label: "MDA",
+                label: "Boston",
                 data: 0,
                 color: "#1ab394"
             },
@@ -93,6 +93,7 @@
                 .loadSpecimenTrackingList()
                 .then(function (d) {
                     $scope.shipments = angular.copy(d.data);
+                    console.log($scope.shipments);
                     setupSites();
                     updateSiteStatistics();
                     setupTrendAnalysisData();
@@ -102,12 +103,12 @@
         function setupSites() {
             angular.forEach($scope.shipments, function(value) {
                 var shipment = value;
-                angular.forEach(shipment.assays, function() {
-                    if (shipment.destination && shipment.destination.toUpperCase() === 'MOCHA') 
+                //angular.forEach(shipment.assays, function() {
+                    if (shipment.destination && shipment.destination.toUpperCase() === 'MOCHA')
                         $scope.sites.mocha.count++;
-                    else if (shipment.destination && shipment.destination.toUpperCase() === 'MDA') 
+                    else if (shipment.destination && shipment.destination.toUpperCase() === 'BOSTON')
                         $scope.sites.mda.count++;
-                });
+                //});
             });
         }
 
