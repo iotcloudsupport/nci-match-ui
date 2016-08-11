@@ -39,6 +39,58 @@ raw_copy_number
 read_depth
 reference_allele_observations
 transcript
-treatment_arms { current: [TAs], future [TAs]}
+is_amoi: true,
+treatment_arms: [
+    {
+        amoi_status: "current_inclusion" | "current_exclusion" | "prior_inclusion" | "prior_exclusion",
+        name: "TA name",
+        version: "TA version",
+        stratum_id: "TA Stratum"
+    }    
+]     
 type
 variant_class
+
+
+snvs_and_indels
+    confirmed
+    comment
+    identifier
+    is_amoi
+    treatment_arms
+    chromosome
+    position
+    cds_reference
+    cds_alternative
+    ocp_reference
+    ocp_alternative
+    strand
+    allele_frequency
+    variantfunc_gene
+    oncomine_variant_class
+    exon
+    function
+    hgvs
+    read_depth
+    transcript
+    protein
+
+copy_number_variants
+    confirmed
+    comment
+    identifier
+    chromosome
+    raw_copy_number
+    copy_number
+    confidence_interval_5percent
+    confidence_interval_95percent
+
+gene_fusions
+    confirmed
+    comment
+    identifier
+    driver_gene
+    driver_read_count
+    partner_gene
+    partner_rea_count
+    annotation
