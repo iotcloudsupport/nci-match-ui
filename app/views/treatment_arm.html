@@ -706,11 +706,11 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr ng-repeat="item in currentVersion.pten_results">
-                                                                <td>{{item.assay | dashify }}</td>
-                                                                <td><a ng-click="openGene(item.pten_variant)">{{item.pten_variant | dashify }}</a></td>
-                                                                <td>{{item.pten_ihc_result | dashify }}</td>
-                                                                <td>{{item.variant_association | dashify }}</td>
+                                                            <tr ng-repeat="item in currentVersion.assay_results">
+                                                                <td>{{item.gene | dashify }}</td>
+                                                                <td><a ng-click="openGene(item.assay_variant)">{{item.assay_variant | dashify }}</a></td>
+                                                                <td>{{item.assay_result_status | dashify }}</td>
+                                                                <td>{{item.assay_variant | dashify }}</td>
                                                                 <td>{{item.level_of_evidence | dashify }}</td>
                                                                 <td style="text-align:right">{{item.num_patients_with_gene | dashify }}</td>
                                                                 <td style="text-align:right">{{item.num_patients_with_gene_on_arm | dashify }}</td>
