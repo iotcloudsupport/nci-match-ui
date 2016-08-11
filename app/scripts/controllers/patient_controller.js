@@ -121,21 +121,6 @@
         $scope.uploadSampleFile = uploadSampleFile;
         $scope.navigateToTissueVariantReport = navigateToTissueVariantReport;
 
-        $scope.amoi_treatment_arms = [
-            {
-                "amoi_status": "current_inclusion",
-                "name": "TA name",
-                "version": "TA version",
-                "stratum_id": "TA Stratum"
-            },    
-            {
-                "amoi_status": "prior_exclusion",
-                "name": "TA name",
-                "version": "TA version",
-                "stratum_id": "TA Stratum"
-            }    
-        ]
-
         //FILTER
         // $scope.$watch('confirmed', function (newValue, oldValue) {
         //     if (newValue === 'ALL') {
@@ -811,20 +796,23 @@
         }
 
         function getAllFilesButtonClass(obj) {
-            try {
-                if (obj) {
-                    for (var i = 0; i < arguments.length; i++) {
-                        if (arguments[i] in obj && obj[arguments[i]]) {
-                            return vm.enabledFileButtonClass;
-                        }
-                    }
-                } else {
-                    //$log.debug('getAllFilesButtonClass no obj');
-                }
-                return vm.disabledFileButtonClass;
-            } catch (error) {
-                return vm.disabledFileButtonClass;
-            }
+            return vm.disabledFileButtonClass;
+
+            // TODO: enable after demo
+            // try {
+            //     if (obj) {
+            //         for (var i = 0; i < arguments.length; i++) {
+            //             if (arguments[i] in obj && obj[arguments[i]]) {
+            //                 return vm.enabledFileButtonClass;
+            //             }
+            //         }
+            //     } else {
+            //         //$log.debug('getAllFilesButtonClass no obj');
+            //     }
+            //     return vm.disabledFileButtonClass;
+            // } catch (error) {
+            //     return vm.disabledFileButtonClass;
+            // }
         }
 
         function getNewFileButtonClass(shipment, analysis) {
