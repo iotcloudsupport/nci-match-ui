@@ -121,6 +121,21 @@
         $scope.uploadSampleFile = uploadSampleFile;
         $scope.navigateToTissueVariantReport = navigateToTissueVariantReport;
 
+        $scope.amoi_treatment_arms = [
+            {
+                "amoi_status": "current_inclusion",
+                "name": "TA name",
+                "version": "TA version",
+                "stratum_id": "TA Stratum"
+            },    
+            {
+                "amoi_status": "prior_exclusion",
+                "name": "TA name",
+                "version": "TA version",
+                "stratum_id": "TA Stratum"
+            }    
+        ]
+
         //FILTER
         // $scope.$watch('confirmed', function (newValue, oldValue) {
         //     if (newValue === 'ALL') {
@@ -131,10 +146,10 @@
         // });
 
         //FILTER
-        $scope.$watch('confirmed', function(newValue, oldValue) {
+        $scope.$watch('confirmed', function (newValue, oldValue) {
 
             console.log(newValue);
-            if(newValue === 'ALL') {
+            if (newValue === 'ALL') {
                 $scope.filterCol = "";
                 // $scope.dtInstance.DataTable.search("");
                 $scope.dtInstance.DataTable.search("").draw();
@@ -253,10 +268,10 @@
 
             $scope.actionItems = [];
             angular.copy(data.data, $scope.actionItems);
-    
+
             arrayTools.forEach($scope.actionItems, function (element) {
-                var days_pending  = dateTools.calculateDaysPending(element, 'created_date');
-                element.days_pending  = days_pending || days_pending === 0 ? days_pending : '-';
+                var days_pending = dateTools.calculateDaysPending(element, 'created_date');
+                element.days_pending = days_pending || days_pending === 0 ? days_pending : '-';
             });
         }
 

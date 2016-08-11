@@ -12,25 +12,30 @@
     function treatmentArmTitle($uibModal, $log) {
         var controller = function () {
             var vm = this;
-            
-            vm.hasData = function() {
+
+            vm.hasData = function () {
                 return vm.name || vm.version || vm.stratum;
             };
 
-            vm.getTextColor = function() {
+            vm.hasDisplayText = function () {
+                return vm.displayText;
+            };
+
+            vm.getTextColor = function () {
                 return vm.textColor ? vm.textColor : 'color:inherit';
             }
         };
 
         /*jshint multistr: true */
         var template = '<span class="ta-title">\
-                    \
                     <span ng-if="vm.hasData() && vm.noUrl" style="color:{{vm.getTextColor()}}">\
-                        <span class="ta-name" style="color:{{vm.getTextColor()}}">{{vm.name}}</span> (<span class="ta-stratum" style="color:{{vm.getTextColor()}}">{{vm.stratum}}</span><span ng-if="vm.version" class="ta-version" style="color:{{vm.getTextColor()}}">, {{vm.version}}</span>)\
+                        <span ng-if="vm.hasDisplayText()"><span class="ta-name" style="color:{{vm.getTextColor()}}">{{vm.displayText}}</span></span>\
+                        <span ng-if="!vm.hasDisplayText()"><span class="ta-name" style="color:{{vm.getTextColor()}}">{{vm.name}}</span> (<span class="ta-stratum" style="color:{{vm.getTextColor()}}">{{vm.stratum}}</span><span ng-if="vm.version" class="ta-version" style="color:{{vm.getTextColor()}}">, {{vm.version}}</span>)</span>\
                     </span>\
                     \
                     <a ng-if="vm.hasData() && !vm.noUrl" ui-sref="treatment-arm({ name: vm.name, stratum: vm.stratum, version: vm.version } )" style="color:{{vm.getTextColor()}}">\
-                        <span class="ta-name" style="color:{{vm.getTextColor()}}">{{vm.name}}</span> (<span class="ta-stratum" style="color:{{vm.getTextColor()}}">{{vm.stratum}}</span><span ng-if="vm.version" class="ta-version" style="color:{{vm.getTextColor()}}">, {{vm.version}}</span>)\
+                        <span ng-if="vm.hasDisplayText()"><span class="ta-name" style="color:{{vm.getTextColor()}}">{{vm.displayText}}</span></span>\
+                        <span ng-if="!vm.hasDisplayText()"><span class="ta-name" style="color:{{vm.getTextColor()}}">{{vm.name}}</span> (<span class="ta-stratum" style="color:{{vm.getTextColor()}}">{{vm.stratum}}</span><span ng-if="vm.version" class="ta-version" style="color:{{vm.getTextColor()}}">, {{vm.version}}</span>)</span>\
                     </a>\
                     <span ng-if="!vm.hasData()">-</span>\
                 </span>';
@@ -46,7 +51,8 @@
                 stratum: '<',
                 version: '<',
                 noUrl: '<',
-                textColor: '<'
+                textColor: '<',
+                displayText: '<'
             }
         }
     }
