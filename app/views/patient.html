@@ -64,7 +64,8 @@
                             <dd>{{::data.disease.code}}</dd>
 
                             <dt>Prior Drugs</dt>
-                            <dd>{{data.prior_drugs.join(', ')}}</dd>
+                            <dd> <span ng-repeat="drug in data.prior_drugs">{{drug.name}}{{$last?'':', '}}</span>                                </dd>
+
                         </dl>
                     </div>
                 </div>
