@@ -83,7 +83,7 @@
                                 .cnvChartData()
                                 .then(draw, handleError);
 
-                            console.log(" -- Start svg data load -- ")
+                            console.log(" -- Start svg data load -- ");
                         }
 
 

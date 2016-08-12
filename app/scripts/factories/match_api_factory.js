@@ -163,6 +163,10 @@
                 return $http.get('data/cnvChart.json');
             }
 
+            function cnvChartData() {
+                return $http.get('https://s3.amazonaws.com/pedmatch-demo/3355/3355-bsn-msn-2/job1/test1.vr_chart.json');
+            }
+
             function loadSampleHRFiles() {
                 var hr_files = [];
                 hr_files.push({
