@@ -710,13 +710,14 @@
             });
         }
  
-        function createConfrmResult(id, patient_id, molecular_id, type, confirmed, comment, comment_user) {
+        function createConfrmResult(id, patient_id, molecular_id, type, status, comment, comment_user) {
             return {
                 "id": id,
                 "patient_id": patient_id,
                 "molecular_id": molecular_id,
+                "analysis_id": analysis_id,
                 "type": type,
-                "confirmed": confirmed,
+                "status": status,
                 "comment": comment,
                 "comment_user": comment_user
             }
@@ -736,7 +737,11 @@
                             variantReport.molecular_id, 
                             variantReport.patient_id, 
                             variantReport.molecular_id, 
-                            variantReport.variant_report_type, false, comment, $scope.currentUser))
+                            variantReport.analysis_id, 
+                            variantReport.variant_report_type, 
+                            'REJECTED', 
+                            comment, 
+                            $scope.currentUser))
                         .then(function() {
                             variantReport.status = 'REJECTED';
                             variantReport.comment = comment;
@@ -777,7 +782,11 @@
                             variantReport.molecular_id, 
                             variantReport.patient_id, 
                             variantReport.molecular_id, 
-                            variantReport.variant_report_type, false, comment, $scope.currentUser))
+                            variantReport.analysis_id, 
+                            variantReport.variant_report_type, 
+                            'CONFIRMED', 
+                            comment, 
+                            $scope.currentUser))
                         .then(function() {
                             variantReport.status = 'CONFIRMED';
                             variantReport.comment = null;

@@ -440,7 +440,7 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr ng-repeat="item in currentVersion.cnvsInclusion">
-                                                                <td><a ng-click="openGene(item.func_gene)">{{item.func_gene | dashify }}</a></td>
+                                                                <td><a ng-click="openGene(item.func_gene)">{{item.identifier | dashify }}</a></td>
                                                                 <td>{{item.chromosome | dashify }}</td>
                                                                 <td>{{item.position | dashify }}</td>
                                                                 <td>{{item.level_of_evidence | dashify }}</td>
