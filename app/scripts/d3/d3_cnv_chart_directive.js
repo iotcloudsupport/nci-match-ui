@@ -4,9 +4,9 @@
     angular.module('d3', ['d3module'])
         .directive('d3CnvChart', cnvChart);
 
-    cnvChart.$inject = ['d3service', '$log', '$timeout', '$http', '$window'];
+    cnvChart.$inject = ['d3service', '$log', '$timeout', '$http', '$window', 'matchApi'];
 
-    function cnvChart(d3Service, $log, $timeout, $http, $window) {
+    function cnvChart(d3Service, $log, $timeout, $http, $window, matchApi) {
 
         return {
             restrict: 'EA',
@@ -15,6 +15,15 @@
             },
             link: link
         }
+
+        // function loadQc_Table() {
+        //     matchApi
+        //         .cnvChartData()
+        //         .then(function (d) {
+        //
+        //             console.log("DATA--> " + JSON.stringify(d));
+        //         });
+        // };
 
         function link(scope, iElement, iAttrs) {
             // on window resize, re-render d3 canvas
@@ -46,11 +55,37 @@
                             return (d === 1 ? 'red' : (d === 2 ? 'green' : 'teal'))
                         };
 
+                        // function loadQc_Table() {
+                        //     matchApi
+                        //         .cnvChartData()
+                        //         .then(draw, handleError);
+                        //
+                        //     // .then(function (d) {
+                        //     //     console.log("DATA--> " + JSON.stringify(d));
+                        //     // });
+                        // };
+
+
+                        // function execute() {
+                        //     // Move data retrieving outside of the directive (into a service)
+                        //
+                        //     console.log(" -- Start svg data load -- ")
+                        //
+                        //     loadQc_Table();
+                        //
+                        //
+                        //     var url = "data/cnvChart.json";
+                        //     $http.get(url).then(draw, handleError);
+                        // }
+
                         function execute() {
-                            // Move data retrieving outside of the directive (into a service)
-                            var url = "data/cnvChart.json";
-                            $http.get(url).then(draw, handleError); 
+                            matchApi
+                                .cnvChartData()
+                                .then(draw, handleError);
+
+                            console.log(" -- Start svg data load -- ")
                         }
+
 
                         function handleError(response) {
                             $log.error(response);

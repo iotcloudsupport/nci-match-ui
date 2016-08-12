@@ -25,7 +25,8 @@
                 loadMDACC_Table: loadMDACC_Table,
                 loadMDACCNtc_Table: loadMDACCNtc_Table,
                 openPositives: openPositives,
-                openMDACCPositives: openMDACCPositives
+                openMDACCPositives: openMDACCPositives,
+                cnvChartData: cnvChartData
             };
 
 
@@ -128,6 +129,10 @@
 
             function openMDACCPositives(index) {
                 return $http.get('data/sample_mda_positive_control_' + index);
+            }
+
+            function cnvChartData() {
+                return $http.get('data/cnvChart.json');
             }
 
             function loadSampleHRFiles() {
