@@ -38,15 +38,6 @@
             </div>
         </div>
 
-        <div class="col-sm-6 col-md-6" ng-init="setCanvasHeight('#treatmentArmAccrualCanvas', 100);">
-            <div class="text-center">
-                <h3>Top 5 Treatment<br> Arm Accrual</h3>
-            </div>
-            <div id="chartBox" class="statistic-box dashboard">
-                <canvas id="treatmentArmAccrualCanvas" barchart options="barOptions" ng-attr-data="barData" responsive="true"></canvas>
-            </div>
-        </div>
-
         <div class="col-sm-3 col-md-3" ng-init="setCanvasHeight('#amoiCanvas', 95);loadSequencedAndConfirmedChartData();">
             <div class="text-center">
                 <h3>Sequenced & Confirmed <br> Patients with aMOIs</h3>
@@ -54,6 +45,15 @@
             <div class="statistic-box dashboard">
                 <canvas id="amoiCanvas" doughnutchart options="donutOptions" ng-attr-data="donutData" legend="true" responsive="true"></canvas>
                 <!--  legend="true" -->
+            </div>
+        </div>
+
+        <div class="col-sm-6 col-md-6" ng-init="setCanvasHeight('#treatmentArmAccrualCanvas', 100);">
+            <div class="text-center">
+                <h3>Top 5 Treatment<br> Arm Accrual</h3>
+            </div>
+            <div id="chartBox" class="statistic-box dashboard">
+                <canvas id="treatmentArmAccrualCanvas" barchart options="barOptions" ng-attr-data="barData" responsive="true"></canvas>
             </div>
         </div>
 
