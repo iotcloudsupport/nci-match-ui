@@ -159,15 +159,28 @@
                 return $http.get('data/sample_mda_positive_control_' + index);
             }
 
-            function cnvChartData() {
-                return $http.get('data/cnvChart.json');
-            }
+            // function cnvChartData() {
+            //     return $http.get('data/cnvChart.json');
+            // }
 
             function cnvChartData(id) {
 
+                return $http.get('data/cnvChart.json');
+
+
+                // if(id===""){
+                //     +                    return $http.get('https://s3.amazonaws.com/mattietest/cnvChart.json');
+                //     +                }
+                // +                else if(id==='3355'){
+                //     +                    return $http.get('https://s3.amazonaws.com/pedmatch-demo/3355/3355-bsn-msn-2/job1/test1.vr_chart.json');
+                //     +                }
+                // +                else {
+                //     +                    return $http.get('https://s3.amazonaws.com/bdd-test-data/demo/'+ id +'/' + id + '-00012/ANI_' + id + '-00012/' + id + '.vr_chart.json');
+                //     +                }
+
                 // if(id===""){
                 //     return $http.get('https://s3.amazonaws.com/pedmatch-demo/3355/3355-bsn-msn-2/job1/test1.vr_chart.json');
-                //     // return $http.get('https://s3.amazonaws.com/mattietest/cnvChart.json');
+                //     return $http.get('https://s3.amazonaws.com/mattietest/cnvChart.json');
                 //     // return $http.get('https://s3.amazonaws.com/pedmatch-demo/3344/3344-bsn-msn-2/job1/cnvChart.json');
                 // }
                 // else if(id==='3355'){
@@ -178,7 +191,7 @@
                 // }
 
 
-                return $http.get('https://s3.amazonaws.com/pedmatch-demo/3355/3355-bsn-msn-2/job1/test1.vr_chart.json');
+                // return $http.get('https://s3.amazonaws.com/pedmatch-demo/3355/3355-bsn-msn-2/job1/test1.vr_chart.json');
             }
 
             function loadSampleHRFiles() {
