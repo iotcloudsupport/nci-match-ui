@@ -500,7 +500,7 @@
                                         </div>
                                     </div>
 
-                                    <div ng-if="activeTab=='tissue_report'" d3-cnv-chart=""></div>
+                                    <div ng-if="activeTab=='tissue_report'" d3-cnv-chart="{{data.patient_id}}"></div>
 
                                     <div ng-if="variantReportMode === 'FILTERED'">
                                         <!--Single Nucleitide Variants-->
@@ -1190,7 +1190,7 @@
                                 </div>
                             </div>
 
-                            <div ng-if="activeTab=='blood_variant_report'" d3-cnv-chart=""></div>
+                            <div ng-if="activeTab=='blood_variant_report'" d3-cnv-chart="{{data.patient_id}}"></div>
 
                             <!--FILTERED-->
                             <div ng-if="variantReportMode === 'FILTERED'">

@@ -8,6 +8,8 @@
 
     function cnvChart(d3Service, $log, $timeout, $http, $window, matchApi) {
 
+
+
         return {
             restrict: 'EA',
             scope: {
@@ -26,6 +28,13 @@
         // };
 
         function link(scope, iElement, iAttrs) {
+
+
+            scope.text = iAttrs["d3CnvChart"];
+
+
+
+
             // on window resize, re-render d3 canvas
             $window.onresize = function () {
                 return scope.$apply();
@@ -80,7 +89,7 @@
 
                         function execute() {
                             matchApi
-                                .cnvChartData()
+                                .cnvChartData(scope.text)
                                 .then(draw, handleError);
 
                             console.log(" -- Start svg data load -- ");
