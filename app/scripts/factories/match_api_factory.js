@@ -26,9 +26,10 @@
                 loadMDACCNtc_Table: loadMDACCNtc_Table,
                 openPositives: openPositives,
                 openMDACCPositives: openMDACCPositives,
-                cnvChartData: cnvChartData
+                cnvChartData: cnvChartData,
+                updateVariantStatus: updateVariantStatus,
+                updateVariantReportStatus: updateVariantReportStatus
             };
-
 
             // Patient API - START
             function loadPatient(id) {
@@ -53,6 +54,21 @@
 
             function loadPatientList() {
                 return $http.get(matchConfig.patientApiBaseUrl + '/patients');
+            }
+
+            function updateVariantStatus(confirmationResult) {
+                return $http.put(matchConfig.patientApiBaseUrl + '/patients/' + confirmationResult.patient_id + '/variantStatus', confirmationResult);                
+            }
+
+            function updateVariantReportStatus(confirmationResult) {
+                return $http({
+                        url: matchConfig.patientApiBaseUrl + '/patients/' + confirmationResult.patient_id + '/variantReportStatus',
+                        method: "PUT",
+                        data: confirmationResult,
+                        headers: {
+                            'Content-Type': 'application/json; charset=utf-8'
+                        }
+                    });                
             }
 
             function loadSpecimenTrackingList() {

@@ -709,6 +709,18 @@
                 }
             });
         }
+ 
+        function createConfrmResult(id, patient_id, molecular_id, type, confirmed, comment, comment_user) {
+            return {
+                "id": id,
+                "patient_id": patient_id,
+                "molecular_id": molecular_id,
+                "type": type,
+                "confirmed": confirmed,
+                "comment": comment,
+                "comment_user": comment_user
+            }
+        }
 
         function rejectVariantReport(variantReport) {
             showPrompt({
@@ -720,25 +732,66 @@
                 if (!variantReport) {
                     $log.error('Current Variant Report is not set');
                 } else {
-                    variantReport.status = 'REJECTED';
-                    variantReport.comment = comment;
-                    variantReport.comment_user = $scope.currentUser;
-                    variantReport.status_date = moment.utc(new Date()).utc();
+                    matchApi.updateVariantReportStatus(createConfrmResult(
+                            variantReport.molecular_id, 
+                            variantReport.patient_id, 
+                            variantReport.molecular_id, 
+                            variantReport.variant_report_type, false, comment, $scope.currentUser))
+                        .then(function() {
+                            variantReport.status = 'REJECTED';
+                            variantReport.comment = comment;
+                            variantReport.comment_user = $scope.currentUser;
+                            variantReport.status_date = moment.utc(new Date()).utc();
 
-                    if (variantReport.variants.snvs_and_indels)
-                        updateVariants(variantReport.variants.snvs_and_indels, false);
+                            if (variantReport.variants.snvs_and_indels)
+                                updateVariants(variantReport.variants.snvs_and_indels, false);
 
-                    if (variantReport.variants.copy_number_variants)
-                        updateVariants(variantReport.variants.copy_number_variants, false);
+                            if (variantReport.variants.copy_number_variants)
+                                updateVariants(variantReport.variants.copy_number_variants, false);
 
-                    if (variantReport.variants.gene_fusions)
-                        updateVariants(variantReport.variants.gene_fusions, false);
+                            if (variantReport.variants.gene_fusions)
+                                updateVariants(variantReport.variants.gene_fusions, false);
 
-                    if (variantReport.variant_report_type === 'BLOOD') {
-                        updateBloodVariantReportOption(variantReport);
-                    } else if (variantReport.variant_report_type === 'TISSUE') {
-                        updateTissueVariantReportOption(variantReport);
-                    }
+                            if (variantReport.variant_report_type === 'BLOOD') {
+                                updateBloodVariantReportOption(variantReport);
+                            } else if (variantReport.variant_report_type === 'TISSUE') {
+                                updateTissueVariantReportOption(variantReport);
+                            }
+                        }, function(error) {
+                            $log.error(error);
+                        });
+                }
+            });
+        }
+
+        function confirmVariantReport(variantReport) {
+            showPrompt({
+                title: 'Confirm Variant Report',
+                message: 'Are you sure you want to confirm the Variant Report?',
+                buttons: [{ label: 'OK', primary: true }, { label: 'Cancel', cancel: true }]
+            }).then(function (comment) {
+                if (!variantReport) {
+                    $log.error('Current Variant Report is not set');
+                } else {
+                    matchApi.updateVariantReportStatus(createConfrmResult(
+                            variantReport.molecular_id, 
+                            variantReport.patient_id, 
+                            variantReport.molecular_id, 
+                            variantReport.variant_report_type, false, comment, $scope.currentUser))
+                        .then(function() {
+                            variantReport.status = 'CONFIRMED';
+                            variantReport.comment = null;
+                            variantReport.comment_user = $scope.currentUser;
+                            variantReport.status_date = moment.utc(new Date()).utc();
+
+                            if (variantReport.variant_report_type === 'BLOOD') {
+                                updateBloodVariantReportOption(variantReport);
+                            } else if (variantReport.variant_report_type === 'TISSUE') {
+                                updateTissueVariantReportOption(variantReport);
+                            }
+                        }, function(error) {
+                            $log.error(error);
+                        });
                 }
             });
         }
@@ -752,29 +805,6 @@
                 }
                 variants[i].confirmed = confirmed;
             }
-        }
-
-        function confirmVariantReport(variantReport) {
-            showPrompt({
-                title: 'Confirm Variant Report',
-                message: 'Are you sure you want to confirm the Variant Report?',
-                buttons: [{ label: 'OK', primary: true }, { label: 'Cancel', cancel: true }]
-            }).then(function (comment) {
-                if (!variantReport) {
-                    $log.error('Current Variant Report is not set');
-                } else {
-                    variantReport.status = 'CONFIRMED';
-                    variantReport.comment = null;
-                    variantReport.comment_user = $scope.currentUser;
-                    variantReport.status_date = moment.utc(new Date()).utc();
-
-                    if (variantReport.variant_report_type === 'BLOOD') {
-                        updateBloodVariantReportOption(variantReport);
-                    } else if (variantReport.variant_report_type === 'TISSUE') {
-                        updateTissueVariantReportOption(variantReport);
-                    }
-                }
-            });
         }
 
         function updateTissueVariantReportOption(variantReport) {
