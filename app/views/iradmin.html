@@ -522,7 +522,7 @@
                                                             <td>{{ta.date_created | dashify }}</td>
                                                             <td>{{ta.date_received | dashify }}</td>
                                                             <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
-                                                                <a class="ng-binding ng-scope" ng-click="openPositives(ta.variant_reports, ta.current_status);gotoBottom('mocha')" href>
+                                                                <a class="ng-binding ng-scope" ng-click="openPositives(ta.variant_reports, ta.current_status, ta.date_created, ta.date_received);gotoBottom('mocha')" href>
                                                                     {{ta.variant_reports | dashify }}
                                                                 </a>
                                                             </td>
@@ -573,13 +573,13 @@
                                                                         <dd>{{posDate}} </dd>
 
                                                                         <dt>File Received Date</dt>
-                                                                        <dd>September 18, 2015 3:21 PM GMT </dd>
+                                                                        <dd>{{date_created}} </dd>
 
                                                                         <dt>Torrent Variant Caller Version</dt>
                                                                         <dd>tvc 4.4-8</dd>
 
                                                                         <dt>Status</dt>
-                                                                        <dd>{{ status }}</dd>
+                                                                        <dd ng-style="{'color':'{{ status | irsample }}'}">{{ status }}</dd>
 
                                                                     </dl>
                                                                 </div>
@@ -782,7 +782,7 @@
                                                         <td>{{ta.date_created | dashify }}</td>
                                                         <td>{{ta.date_received | dashify }}</td>
                                                         <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
-                                                            <a class="ng-binding ng-scope" ng-click="openPositives(ta.variant_reports, ta.current_status);gotoBottom('mocha')" href>
+                                                            <a class="ng-binding ng-scope" ng-click="openPositives(ta.variant_reports, ta.current_status, ta.date_created, ta.date_received);gotoBottom('mocha')" href>
                                                                 {{ta.variant_reports | dashify }}
                                                             </a>
                                                         </td>
@@ -832,13 +832,13 @@
                                                                         <dd>{{posDate}} </dd>
 
                                                                         <dt>File Received Date</dt>
-                                                                        <dd>September 18, 2015 3:21 PM GMT </dd>
+                                                                        <dd>{{date_received}} </dd>
 
                                                                         <dt>Torrent Variant Caller Version</dt>
                                                                         <dd>tvc 4.4-8</dd>
 
                                                                         <dt>Status</dt>
-                                                                        <dd>{{ status }}</dd>
+                                                                        <dd ng-style="{'color':'{{ status | irsample }}'}">{{ status }}</dd>
 
                                                                     </dl>
                                                                 </div>
@@ -1118,17 +1118,16 @@
                                                                             <dd>1</dd>
 
                                                                             <dt>Positive Control Loaded Date</dt>
-                                                                            <dd>July 31, 2015 3:57 PM GMT </dd>
+                                                                            <dd>{{posDate}} </dd>
 
                                                                             <dt>File Received Date</dt>
-                                                                            <dd>September 18, 2015 3:21 PM GMT
-                                                                            </dd>
+                                                                            <dd>{{date_received}} </dd>
 
                                                                             <dt>Torrent Variant Caller Version</dt>
                                                                             <dd>tvc 4.4-8 </dd>
 
                                                                             <dt>Status</dt>
-                                                                            <dd>{{ status }}</dd>
+                                                                            <dd ng-style="{'color':'{{ status | irsample }}'}">{{ status }}</dd>
 
                                                                         </dl>
                                                                     </div>
@@ -1355,17 +1354,16 @@
                                                                             <dd>1</dd>
 
                                                                             <dt>Positive Control Loaded Date</dt>
-                                                                            <dd>July 31, 2015 3:57 PM GMT </dd>
+                                                                            <dd>{{posDate}} </dd>
 
                                                                             <dt>File Received Date</dt>
-                                                                            <dd>September 18, 2015 3:21 PM GMT
-                                                                            </dd>
+                                                                            <dd>{{date_received}} </dd>
 
                                                                             <dt>Torrent Variant Caller Version</dt>
                                                                             <dd>tvc 4.4-8 </dd>
 
                                                                             <dt>Status</dt>
-                                                                            <dd>{{ status }}</dd>
+                                                                            <dd ng-style="{'color':'{{ status | irsample }}'}">{{ status }}</dd>
 
                                                                         </dl>
                                                                     </div>
@@ -1582,7 +1580,7 @@
                                                         <td>{{ta.date_created | dashify }}</td>
                                                         <td>{{ta.date_received | dashify }}</td>
                                                         <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
-                                                            <a class="ng-binding ng-scope" ng-click="openMDACCPositives(ta.variant_reports, ta.current_status);gotoBottom('mdacc')" href>
+                                                            <a class="ng-binding ng-scope" ng-click="openMDACCPositives(ta.variant_reports, ta.current_status, ta.date_created, ta.date_received);gotoBottom('mdacc')" href>
                                                                 {{ta.variant_reports | dashify }}
                                                             </a>
                                                         </td>
@@ -1633,13 +1631,13 @@
                                                                         <dd>{{posDate}} </dd>
 
                                                                         <dt>File Received Date</dt>
-                                                                        <dd>September 18, 2015 3:21 PM GMT </dd>
+                                                                        <dd>{{date_received}} </dd>
 
                                                                         <dt>Torrent Variant Caller Version</dt>
                                                                         <dd>tvc 4.4-8 </dd>
 
                                                                         <dt>Status</dt>
-                                                                        <dd>{{ status }}</dd>
+                                                                        <dd ng-style="{'color':'{{ status | irsample }}'}">{{ status }}</dd>
 
                                                                     </dl>
                                                                 </div>
@@ -1827,7 +1825,7 @@
                                                         <td>{{ta.date_created | dashify }}</td>
                                                         <td>{{ta.date_received | dashify }}</td>
                                                         <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
-                                                            <a class="ng-binding ng-scope" ng-click="openMDACCPositives(ta.variant_reports, ta.current_status);gotoBottom('mdacc')" href>
+                                                            <a class="ng-binding ng-scope" ng-click="openMDACCPositives(ta.variant_reports, ta.current_status, ta.date_created, ta.date_received);gotoBottom('mdacc')" href>
                                                                 {{ta.variant_reports | dashify }}
                                                             </a>
                                                         </td>
@@ -1878,13 +1876,13 @@
                                                                         <dd>{{posDate}} </dd>
 
                                                                         <dt>File Received Date</dt>
-                                                                        <dd>September 18, 2015 3:21 PM GMT </dd>
+                                                                        <dd>{{date_received}} </dd>
 
                                                                         <dt>Torrent Variant Caller Version</dt>
                                                                         <dd>tvc 4.4-8 </dd>
 
                                                                         <dt>Status</dt>
-                                                                        <dd>{{ status }}</dd>
+                                                                        <dd ng-style="{'color':'{{ status | irsample }}'}">{{ status }}</dd>
 
                                                                     </dl>
                                                                 </div>
@@ -2149,17 +2147,16 @@
                                                                             <dd>1</dd>
 
                                                                             <dt>Positive Control Loaded Date</dt>
-                                                                            <dd>July 31, 2015 3:57 PM GMT </dd>
+                                                                            <dd>{{posDate}} </dd>
 
                                                                             <dt>File Received Date</dt>
-                                                                            <dd>September 18, 2015 3:21 PM GMT
-                                                                            </dd>
+                                                                            <dd>{{date_received}} </dd>
 
                                                                             <dt>Torrent Variant Caller Version</dt>
                                                                             <dd>tvc 4.4-8 </dd>
 
                                                                             <dt>Status</dt>
-                                                                            <dd>{{ status }}</dd>
+                                                                            <dd ng-style="{'color':'{{ status | irsample }}'}">{{ status }}</dd>
 
                                                                         </dl>
                                                                     </div>
@@ -2385,17 +2382,16 @@
                                                                             <dd>1</dd>
 
                                                                             <dt>Positive Control Loaded Date</dt>
-                                                                            <dd>July 31, 2015 3:57 PM GMT </dd>
+                                                                            <dd>{{posDate}} </dd>
 
                                                                             <dt>File Received Date</dt>
-                                                                            <dd>September 18, 2015 3:21 PM GMT
-                                                                            </dd>
+                                                                            <dd>{{date_received}} </dd>
 
                                                                             <dt>Torrent Variant Caller Version</dt>
                                                                             <dd>tvc 4.4-8 </dd>
 
                                                                             <dt>Status</dt>
-                                                                            <dd>{{ status }}</dd>
+                                                                            <dd ng-style="{'color':'{{ status | irsample }}'}">{{ status }}</dd>
 
                                                                         </dl>
                                                                     </div>

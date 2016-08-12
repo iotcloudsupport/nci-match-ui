@@ -352,7 +352,6 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                                 highlightStroke: 'rgba(220,220,220,1)',
                                 data: $scope.ntc_dates
                             }
-
                         ]
                     };
 
@@ -379,10 +378,6 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                         }
 
                     ];
-
-
-
-                    
                 });
 
 
@@ -1031,12 +1026,14 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
         //POSITIVES
         //Svg for samples
-        $scope.openPositives = function (id, status) {
+        $scope.openPositives = function (id, status, datereceived, datecreated) {
             $scope.selectedRow = id;
             $scope.mid = id;
             $scope.titleid = id;
             $scope.status = status;
             $scope.positives = 'mocha';
+            $scope.date_received = datecreated;
+            $scope.posDate = datereceived;
 
             var index = id.substring(id.indexOf("MoCha_") + 6, id.length) + '.json';
 
@@ -1155,12 +1152,15 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         };
 
         //MDA Positives
-        $scope.openMDACCPositives = function (id, status) {
+        $scope.openMDACCPositives = function (id, status, datereceived, datecreated) {
             $scope.selectedRow = id;
             $scope.mid = id;
             $scope.titleid = id;
             $scope.status = status;
             $scope.positives = 'mdacc';
+            $scope.date_received = datecreated;
+            $scope.posDate = datereceived;
+
 
             var index = id.substring(id.indexOf("MDACC_") + 6, id.length) + '.json';
 
