@@ -1013,9 +1013,21 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             else {$scope.generateNtcMDACC_Table();}
         };
 
+
+        function makeid()
+        {
+            var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+            for( var i=0; i < 12; i++ )
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+            return text;
+        }
+
         $scope.posDate = "undefined";
-        $scope.tvarDate = "undefined";
-        $scope.aid = "undefined";
+        $scope.tvarDate = Math.floor(Math.random() * 6) + 1  ;
+        $scope.aid = makeid();
 
         //POSITIVES
         //Svg for samples
