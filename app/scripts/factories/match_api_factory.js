@@ -28,7 +28,8 @@
                 openMDACCPositives: openMDACCPositives,
                 cnvChartData: cnvChartData,
                 updateVariantStatus: updateVariantStatus,
-                updateVariantReportStatus: updateVariantReportStatus
+                updateVariantReportStatus: updateVariantReportStatus,
+                updateAssignmentReportStatus: updateAssignmentReportStatus
             };
 
             // Patient API - START
@@ -64,6 +65,17 @@
                 return $http({
                         url: matchConfig.patientApiBaseUrl + '/patients/' + confirmationResult.patient_id + '/variantReportStatus',
                         method: "PUT",
+                        data: confirmationResult,
+                        headers: {
+                            'Content-Type': 'application/json; charset=utf-8'
+                        }
+                    });                
+            }
+
+            function updateAssignmentReportStatus(confirmationResult) {
+                return $http({
+                        url: matchConfig.patientApiBaseUrl + '/patients/' + confirmationResult.patient_id + '/assignmentConfirmation',
+                        method: "POST",
                         data: confirmationResult,
                         headers: {
                             'Content-Type': 'application/json; charset=utf-8'

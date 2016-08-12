@@ -684,10 +684,24 @@
                 if (!assignmentReport) {
                     $log.error('Current Assignment Report is not set');
                 } else {
-                    assignmentReport.status = 'CONFIRMED';
-                    assignmentReport.comment = null;
-                    assignmentReport.comment_user = $scope.currentUser;
-                    assignmentReport.status_date = moment.utc(new Date()).utc();
+                    matchApi.updateAssignmentReportStatus(createConfrmResult(
+                            null, 
+                            assignmentReport.patient_id, 
+                            assignmentReport.molecular_id, 
+                            assignmentReport.analysis_id, 
+                            null, 
+                            'CONFIRMED', 
+                            comment, 
+                            $scope.currentUser,
+                            'ASSIGNMENT'))
+                        .then(function() {
+                            assignmentReport.status = 'CONFIRMED';
+                            assignmentReport.comment = null;
+                            assignmentReport.comment_user = $scope.currentUser;
+                            assignmentReport.status_date = moment.utc(new Date()).utc();
+                        }, function(error) {
+                            $log.error(error);
+                        });                    
                 }
             });
         }
@@ -702,24 +716,45 @@
                 if (!assignmentReport) {
                     $log.error('Current Assignment Report is not set');
                 } else {
-                    assignmentReport.status = 'REJECTED';
-                    assignmentReport.comment = comment;
-                    assignmentReport.comment_user = $scope.currentUser;
-                    assignmentReport.status_date = moment.utc(new Date()).utc();
-                }
+                    matchApi.updateAssignmentReportStatus(createConfrmResult(
+                            null, 
+                            assignmentReport.patient_id, 
+                            assignmentReport.molecular_id, 
+                            assignmentReport.analysis_id, 
+                            null, 
+                            'CONFIRMED', 
+                            comment, 
+                            $scope.currentUser,
+                            'ASSIGNMENT'))
+                        .then(function() {
+                            assignmentReport.status = 'REJECTED';
+                            assignmentReport.comment = comment;
+                            assignmentReport.comment_user = $scope.currentUser;
+                            assignmentReport.status_date = moment.utc(new Date()).utc();
+                        }, function(error) {
+                            $log.error(error);
+                        });
+                                    }
             });
         }
  
-        function createConfrmResult(id, patient_id, molecular_id, type, status, comment, comment_user) {
-            return {
-                "id": id,
-                "patient_id": patient_id,
-                "molecular_id": molecular_id,
-                "analysis_id": analysis_id,
-                "type": type,
-                "status": status,
-                "comment": comment,
-                "comment_user": comment_user
+        function createConfrmResult(id, patient_id, molecular_id, type, status, comment, comment_user, status_type) {
+            var confirmResult = {
+                'patient_id': patient_id,
+                'molecular_id': molecular_id,
+                'analysis_id': analysis_id,
+                'type': type,
+                'status': status,
+                'comment': comment,
+                'comment_user': comment_user
+            };
+
+            if (status_type) {
+                confirmResult['status_type'] = status_type;
+            }
+
+            if (id) {
+                confirmResult['id'] = id;
             }
         }
 
@@ -734,14 +769,15 @@
                     $log.error('Current Variant Report is not set');
                 } else {
                     matchApi.updateVariantReportStatus(createConfrmResult(
-                            variantReport.molecular_id, 
+                            null, 
                             variantReport.patient_id, 
                             variantReport.molecular_id, 
                             variantReport.analysis_id, 
                             variantReport.variant_report_type, 
                             'REJECTED', 
                             comment, 
-                            $scope.currentUser))
+                            $scope.currentUser,
+                            null))
                         .then(function() {
                             variantReport.status = 'REJECTED';
                             variantReport.comment = comment;
@@ -779,14 +815,15 @@
                     $log.error('Current Variant Report is not set');
                 } else {
                     matchApi.updateVariantReportStatus(createConfrmResult(
-                            variantReport.molecular_id, 
+                            null, 
                             variantReport.patient_id, 
                             variantReport.molecular_id, 
                             variantReport.analysis_id, 
                             variantReport.variant_report_type, 
                             'CONFIRMED', 
                             comment, 
-                            $scope.currentUser))
+                            $scope.currentUser,
+                            null))
                         .then(function() {
                             variantReport.status = 'CONFIRMED';
                             variantReport.comment = null;
