@@ -1,35 +1,44 @@
-angular.module('matchbox.qcsample',[ ])
-    .controller('QcSampleController', function($scope, $http, $window, $stateParams, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, matchApiMock, sharedCliaProperties) {
+angular.module('matchbox.qcsample',['ui.bootstrap', 'cgPrompt', 'ui.router', 'datatables', 'ngResource'])
+    .controller('QcSampleController', function($scope, $http, $window, $stateParams, matchConfig, DTOptionsBuilder, DTColumnDefBuilder, matchApiMock, sharedCliaProperties,sharedCliaArray) {
         angular.element(document).ready(function () {
             $('.equal-height-panels .panel').matchHeight();
         });
 
-        var vm = this;
-
-        $scope.dtOptions = DTOptionsBuilder.newOptions()
-            .withDisplayLength(25);
-        // .withDOM('<"top">t<"bottom"<"b_left"iT><"b_center"p><"b_right"l>><"clear spacer">');
-
-        this.dtColumnDefs = [];
-
+        // var vm = this;
         $scope.dtInstance = {};
+        // vm.dtOptions = DTOptionsBuilder.newOptions()
+        //     .withDisplayLength(25);
+
+
+        $scope.dtOptions = DTOptionsBuilder
+            .newOptions()
+            .withDisplayLength(25);
+
+        // vm.dtOptions = DTOptionsBuilder.newOptions()
+        //     .withOption('bLengthChange', false);
+        //
+        // vm.dtOptions = DTOptionsBuilder.newOptions()
+        //     .withOption('searching', false);
+
+
 
         $scope.confirmed = '';
+        // $scope.dfilter = 'none';
 
         //FILTER
-        $scope.$watch('confirmed', function(newValue, oldValue) {
-
-            // console.log($scope.confirmed);
-            if(newValue === 'ALL') {
-                $scope.filterCol = "";
-                // $scope.dtInstance.DataTable.search("");
-                $scope.dtInstance.DataTable.search("").draw();
-            }
-            else {
-                // $scope.dtInstance.DataTable.search(newValue);
-                $scope.dtInstance.DataTable.search(newValue).draw();
-            }
-        });
+        // $scope.$watch('confirmed', function(newValue, oldValue) {
+        //
+        //     // console.log($scope.confirmed);
+        //     if(newValue === 'ALL') {
+        //         $scope.filterCol = "";
+        //         // $scope.dtInstance.DataTable.search("");
+        //         // $scope.dtInstance.DataTable.search("").draw();
+        //     }
+        //     else {
+        //         // $scope.dtInstance.DataTable.search(newValue);
+        //         // $scope.dtInstance.DataTable.search(newValue).draw();
+        //     }
+        // });
 
 
         $scope.sampleId=$stateParams.sampleId;
@@ -46,8 +55,32 @@ angular.module('matchbox.qcsample',[ ])
         $scope.loadSnv_Table = loadSnv_Table;
         $scope.loadGene_Table = loadGene_Table;
 
+        // function makeid()
+        // {
+        //     var text = "";
+        //     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        //
+        //     for( var i=0; i < 12; i++ )
+        //         text += possible.charAt(Math.floor(Math.random() * possible.length));
+        //
+        //     return text;
+        // }
+        //
+        // $scope.posDate = "undefined";
+        // $scope.tvarDate = Math.floor(Math.random() * 6) + 1  ;
+        // $scope.aid = makeid();
+
+        var properties = [];
+        var properties = sharedCliaArray.getProperty();
+
+        $scope.aid = properties[0];
+        $scope.posDate = properties[1];
+        $scope.tvarDate = properties[2];
+
+
+
         function getFileButtonClass(filePath) {
-            return filePath ? vm.enabledFileButtonClass : vm.disabledFileButtonClass;
+            return filePath ? $scope.enabledFileButtonClass : $scope.disabledFileButtonClass;
         }
 
         
@@ -83,6 +116,8 @@ angular.module('matchbox.qcsample',[ ])
             }
             $window.focus();
         };
+
+
 
         //Svg for samples
         $scope.loadSvgGeneList = function () {
@@ -220,7 +255,7 @@ angular.module('matchbox.qcsample',[ ])
         };
 
         $scope.data = [];
-        $scope.snvList = {};
+        $scope.snvList = [];
         $scope.cnvList = {};
         $scope.geneList = {};
 
@@ -253,17 +288,63 @@ angular.module('matchbox.qcsample',[ ])
 
         function loadQcList(data) {
             $scope.cnvList = data.data.copyNumberVariants;
+
         };
 
         //SNV
+        // function loadSnv_Table() {
+        //     matchApiMock
+        //         .loadQc_Table()
+        //         .then(loadSnvList);
+        // };
+
+        function loadSnvList(data) {
+            // console.log("---> " + JSON.stringify($scope.filter))
+            $scope.snvList = data.data.singleNucleotideVariants;
+        };
         function loadSnv_Table() {
             matchApiMock
                 .loadQc_Table()
                 .then(loadSnvList);
+                // .then(function (d) {
+                //
+                //     // console.log("---> " + JSON.stringify(d))
+                //
+                //     // var name = "";
+                //     // //Parse data
+                //     // for (var i = d.data.length - 1; i >= 0; i--) {
+                //     //     name = d.data[i].molecular_id;
+                //     //     if (id !== name) {
+                //     //         d.data.splice(i, 1);
+                //     //     }
+                //     // }
+                //     // loadMoChaMonthList(d);
+                // });
         };
 
-        function loadSnvList(data) {
-            $scope.snvList = data.data.singleNucleotideVariants;
+        $scope.confirmedFunc = function () {
+            var id = $scope.dropValue;
+            $scope.snvList = [];
+
+            matchApiMock
+                .loadQc_Table()
+                .then(function (d) {
+                    var filter;
+
+                    if(id === "ALL") {
+                        angular.forEach(d.data.singleNucleotideVariants, function (value, key) {
+                            $scope.snvList.push(value);
+                        });
+                    }
+                    else {
+                        angular.forEach(d.data.singleNucleotideVariants, function (value, key) {
+                            filter = value.filter;
+                            if (id === filter) {
+                                $scope.snvList.push(value);
+                            }
+                        });
+                    }
+                });
         };
 
         //GENE

@@ -13,4 +13,16 @@ angular.module('matchbox.service', [])
                 property = value;
             }
         };
+    })
+    .service('sharedCliaArray', function () {
+        var array = [];
+
+        return {
+            getProperty: function () {
+                return array;
+            },
+            setProperty: function(value) {
+                array = value;
+            }
+        };
     });

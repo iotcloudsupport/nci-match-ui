@@ -1,6 +1,6 @@
 angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'datatables', 'ngResource'])
     .controller('IrAdminController',
-        function( $scope, $http, $window, $stateParams, DTOptionsBuilder, matchApiMock, $location, $anchorScroll, $timeout, sharedCliaProperties) {
+        function( $scope, $http, $window, $stateParams, DTOptionsBuilder, matchApiMock, $location, $anchorScroll, $timeout, sharedCliaProperties, sharedCliaArray) {
 
         angular.element(document).ready(function () {
             $('.equal-height-panels .panel').matchHeight();
@@ -78,6 +78,21 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
         $scope.positiveControlList = [];
         $scope.negativeVariantsList = [];
+
+        function makeid()
+        {
+            var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+            for( var i=0; i < 12; i++ )
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+            return text;
+        }
+
+        $scope.posDate = "undefined";
+        $scope.tvarDate = Math.floor(Math.random() * 6) + 1  ;
+        $scope.aid = makeid();
 
         //    LOAD NEW MAPPING AREA
         $scope.loadMap = function (id) {
@@ -1009,20 +1024,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         };
 
 
-        function makeid()
-        {
-            var text = "";
-            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-            for( var i=0; i < 12; i++ )
-                text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-            return text;
-        }
-
-        $scope.posDate = "undefined";
-        $scope.tvarDate = Math.floor(Math.random() * 6) + 1  ;
-        $scope.aid = makeid();
 
         //POSITIVES
         //Svg for samples
@@ -1034,6 +1036,8 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             $scope.positives = 'mocha';
             $scope.date_received = datecreated;
             $scope.posDate = datereceived;
+
+            sharedCliaArray.setProperty([$scope.aid, $scope.posDate, $scope.tvarDate])
 
             var index = id.substring(id.indexOf("MoCha_") + 6, id.length) + '.json';
 
