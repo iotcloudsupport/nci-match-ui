@@ -166,8 +166,9 @@
             function cnvChartData(id) {
 
                 if(id===""){
+                    return $http.get('https://s3.amazonaws.com/pedmatch-demo/3355/3355-bsn-msn-2/job1/test1.vr_chart.json');
                     // return $http.get('https://s3.amazonaws.com/mattietest/cnvChart.json');
-                    return $http.get('https://s3.amazonaws.com/pedmatch-demo/3344/3344-bsn-msn-2/job1/cnvChart.json');
+                    // return $http.get('https://s3.amazonaws.com/pedmatch-demo/3344/3344-bsn-msn-2/job1/cnvChart.json');
                 }
                 else if(id==='3355'){
                     return $http.get('https://s3.amazonaws.com/pedmatch-demo/3355/3355-bsn-msn-2/job1/test1.vr_chart.json');
