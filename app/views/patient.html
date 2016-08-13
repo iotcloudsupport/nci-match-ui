@@ -1084,8 +1084,11 @@
                                 <div ng-if="!(currentTissueVariantReport && currentTissueVariantReport.status=='CONFIRMED' && assignmentReportOptions.length)">
                                     <div class="row">
                                         <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-                                            <div class="no-data-panel text-muted">
-                                                <i class="fa fa-info-circle fa-2x"></i><span> Assignment Report Is Not Available.</span>
+                                            <div ng-if="current_status === 'VARIANT_REPORT_CONFIRMED'" class="no-data-panel text-muted">
+                                                <i class="fa fa-info-circle fa-2x"></i><span> Assignment Report is being generated. Please refresh the page to see up-to-date data.</span>
+                                            </div>
+                                            <div ng-if="current_status !== 'VARIANT_REPORT_CONFIRMED'" class="no-data-panel text-muted">
+                                                <i class="fa fa-info-circle fa-2x"></i><span> Assignment Report is not yet available.</span>
                                             </div>
                                         </div>
                                     </div>

@@ -37,7 +37,8 @@
 
     function dateTools() {
         return {
-            calculateDaysPending: calculateDaysPending
+            calculateDaysPending: calculateDaysPending,
+            calculateHoursPending: calculateHoursPending
         }
 
         function calculateDaysPending(element, dateAttr) {
@@ -53,6 +54,21 @@
             var diff = nowMoment.diff(dateValueMoment, "DD/MM/YYYY HH:mm:ss");
 
             return moment.duration(diff).days();
+        }
+
+        function calculateHoursPending(element, dateAttr) {
+            if (!(dateAttr in element))
+                return null
+
+            var dateValue = element[dateAttr];
+            if (!dateValue) 
+                return null
+            
+            var nowMoment = moment();
+            var dateValueMoment = moment(dateValue);
+            var diff = nowMoment.diff(dateValueMoment, "DD/MM/YYYY HH:mm:ss");
+
+            return moment.duration(diff).hours();
         }
     }
 } ());

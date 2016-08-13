@@ -103,8 +103,8 @@
                                                     <a ng-if="patient.clia_lab === 'MoCha'" ui-sref="clia-labs" ng-click="clialab('mocha')">{{ patient.clia_lab | dashify }}</a>
                                                     <a ng-if="patient.clia_lab === 'MDA'" ui-sref="clia-labs" ng-click="clialab('mdacc')">{{ patient.clia_lab | dashify }}</a>
                                                 </td>
-                                                <td>{{ patient.specimen_received_date | gmt }}</td>
-                                                <td>{{ patient.variant_report_received_date | gmt }}</td>
+                                                <td>{{ patient.specimen_received_date | utc }}</td>
+                                                <td>{{ patient.variant_report_received_date | utc }}</td>
                                                 <td><span ng-if="patient.days_pending >= days_pending_range.upper_bound_yellow"
                                                         class="label label-danger">{{ patient.days_pending }}</span>
                                                     <span ng-if="patient.days_pending < days_pending_range.upper_bound_yellow && patient.days_pending >= days_pending_range.upper_bound_green"
@@ -151,8 +151,8 @@
                                                     <a ng-if="patient.clia_lab === 'MoCha'" ui-sref="clia-labs" ng-click="clialab('mocha')">{{ patient.clia_lab | dashify }}</a>
                                                     <a ng-if="patient.clia_lab === 'MDA'" ui-sref="clia-labs" ng-click="clialab('mdacc')">{{ patient.clia_lab | dashify }}</a>
                                                 </td>
-                                                <td>{{ patient.specimen_received_date | gmt }}</td>
-                                                <td>{{ patient.variant_report_received_date | gmt }}</td>
+                                                <td>{{ patient.specimen_received_date | utc }}</td>
+                                                <td>{{ patient.variant_report_received_date | utc }}</td>
                                                 <td><span ng-if="patient.days_pending >= days_pending_range.upper_bound_yellow"
                                                         class="label label-danger">{{ patient.days_pending }}</span>
                                                     <span ng-if="patient.days_pending < days_pending_range.upper_bound_yellow && patient.days_pending >= days_pending_range.upper_bound_green"
@@ -199,7 +199,7 @@
                                                 <td>
                                                     <treatment-arm-title name="patient.treatment_arm" stratum="patient.treatment_arm_stratum_id" version="patient.treatment_arm_version"></treatment-arm-title>
                                                 </td>
-                                                <td>{{ patient.assignment_date | gmt }}</td>
+                                                <td>{{ patient.assigned_date | utc }}</td>
                                                 <td><span ng-if="patient.hours_pending >= hours_pending_range.upper_bound_yellow"
                                                         class="label label-danger">{{ patient.hours_pending }}</span>
                                                     <span ng-if="patient.hours_pending < hours_pending_range.upper_bound_yellow && patient.hours_pending >= hours_pending_range.upper_bound_green"
