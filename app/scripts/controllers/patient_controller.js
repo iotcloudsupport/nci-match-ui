@@ -691,7 +691,7 @@
                             assignmentReport.analysis_id, 
                             null, 
                             'CONFIRMED', 
-                            comment, 
+                            ' ', 
                             $scope.currentUser,
                             'ASSIGNMENT'))
                         .then(function() {
@@ -738,7 +738,7 @@
             });
         }
  
-        function createConfrmResult(id, patient_id, molecular_id, type, status, comment, comment_user, status_type) {
+        function createConfrmResult(id, patient_id, molecular_id, analysis_id, type, status, comment, comment_user, status_type) {
             var confirmResult = {
                 'patient_id': patient_id,
                 'molecular_id': molecular_id,
@@ -756,6 +756,8 @@
             if (id) {
                 confirmResult['id'] = id;
             }
+
+            return confirmResult;
         }
 
         function rejectVariantReport(variantReport) {
@@ -821,7 +823,7 @@
                             variantReport.analysis_id, 
                             variantReport.variant_report_type, 
                             'CONFIRMED', 
-                            comment, 
+                            ' ', 
                             $scope.currentUser,
                             null))
                         .then(function() {
