@@ -25,7 +25,7 @@
             <br>
             </span>
 
-            <span ng-if="timelineEvent.event_data.comment">
+            <span ng-if="timelineEvent.event_data.comment && timelineEvent.event_data.comment !== ' '">
                 Comments: <span class="timeline-value">{{::timelineEvent.event_data.comment}}</span>
                 <br>
             </span>

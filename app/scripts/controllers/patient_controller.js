@@ -1025,7 +1025,7 @@
         }
 
         function showAssignmentReportActions(report) {
-            return report && report.status && report.status === 'PENDING_CONFIRMATION';
+            return report && report.status && report.status === 'PENDING';
         }
 
         function navigateTo(navigateTo) {
