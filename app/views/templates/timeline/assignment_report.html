@@ -21,7 +21,7 @@
             </span>
 
             <span ng-if="timelineEvent.entity_id && timelineEvent.event_data.molecular_id && timelineEvent.event_data.analysis_id">
-                Assignment Report: <span class="timeline-value"><patient-title text-color="timelineEvent.event_data.assignment_report_status | status" patient-id="timelineEvent.entity_id" section="'assignment_report'" text="timelineEvent.event_data.assignment_report_status" molecular-id="timelineEvent.event_data.molecular_id" analysis-id="timelineEvent.event_data.analysis_id"></patient-title></span>
+                Assignment Report: <span class="timeline-value"><patient-title text-color="timelineEvent.event_data.assignment_report_status | patientStatus" patient-id="timelineEvent.entity_id" section="'assignment_report'" text="timelineEvent.event_data.assignment_report_status" molecular-id="timelineEvent.event_data.molecular_id" analysis-id="timelineEvent.event_data.analysis_id"></patient-title></span>
             <br>
             </span>
 

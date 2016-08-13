@@ -291,6 +291,7 @@
             angular.copy(data.data, scopeData);
             $scope.data = scopeData;
 
+            setupDisease();
             setupCurrentTreatmentArm();
             setupSlides();
             setupSurgicalEventOptions();
@@ -300,6 +301,13 @@
             setupSelectedTreatmentArm();
             setupUserName();
             navigateTo($stateParams);
+        }
+
+        function setupDisease() {
+            if (!($scope.data && $scope.data.disease && $scope.data.disease.length))
+                return;
+
+            $scope.disease = angular.copy($scope.data.disease[0]);
         }
 
         function setupUserName() {

@@ -55,13 +55,13 @@
                     <div class="header-info-box top-main-header-box">
                         <dl class="dl-horizontal">
                             <dt>Disease Name</dt>
-                            <dd>{{::data.disease.name}}</dd>
+                            <dd>{{::disease.disease_name}}</dd>
 
                             <dt>Disease Code Type</dt>
-                            <dd>{{::data.disease.type}}</dd>
+                            <dd>{{::disease.disease_code_type}}</dd>
 
                             <dt>Disease Code</dt>
-                            <dd>{{::data.disease.code}}</dd>
+                            <dd>{{::disease.disease_code}}</dd>
 
                             <dt>Prior Drugs</dt>
                             <dd> <span ng-repeat="drug in data.prior_drugs">{{drug.drug_name}}{{$last?'':', '}}</span></dd>
@@ -1084,10 +1084,10 @@
                                 <div ng-if="!(currentTissueVariantReport && currentTissueVariantReport.status=='CONFIRMED' && assignmentReportOptions.length)">
                                     <div class="row">
                                         <div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-                                            <div ng-if="current_status === 'VARIANT_REPORT_CONFIRMED'" class="no-data-panel text-muted">
+                                            <div ng-if="data.current_status === 'PENDING_CONFIRMATION'" class="no-data-panel text-muted">
                                                 <i class="fa fa-info-circle fa-2x"></i><span> Assignment Report is being generated. Please refresh the page to see up-to-date data.</span>
                                             </div>
-                                            <div ng-if="current_status !== 'VARIANT_REPORT_CONFIRMED'" class="no-data-panel text-muted">
+                                            <div ng-if="data.current_status !== 'PENDING_CONFIRMATION'" class="no-data-panel text-muted">
                                                 <i class="fa fa-info-circle fa-2x"></i><span> Assignment Report is not yet available.</span>
                                             </div>
                                         </div>
