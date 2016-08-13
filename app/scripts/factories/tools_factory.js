@@ -48,9 +48,9 @@
             if (!dateValue) 
                 return null
             
-            var now = moment();
+            var nowMoment = moment();
             var dateValueMoment = moment(dateValue);
-            var diff = dateValueMoment.diff(now, "DD/MM/YYYY HH:mm:ss");
+            var diff = nowMoment.diff(dateValueMoment, "DD/MM/YYYY HH:mm:ss");
 
             return moment.duration(diff).days();
         }

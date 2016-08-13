@@ -132,6 +132,8 @@
 
         //FILTER
         $scope.$watch('confirmed', function (newValue, oldValue) {
+            if (!($scope.dtInstance && $scope.dtInstance.DataTable && $scope.dtInstance.DataTable.search))
+                return;
 
             console.log(newValue);
             if (newValue === 'ALL') {
