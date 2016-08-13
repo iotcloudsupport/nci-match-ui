@@ -68,12 +68,12 @@
         $scope.loadDashboardData = loadDashboardData;
 
         var aMoiLabels = [
-            '<span class="chart-legend-digit">0</span> aMOI',
-            '<span class="chart-legend-digit">1</span> aMOI',
-            '<span class="chart-legend-digit">2</span> aMOI',
-            '<span class="chart-legend-digit">3</span> aMOI',
-            '<span class="chart-legend-digit">4</span> aMOI',
-            '<span class="chart-legend-digit">5+</span> aMOI'
+            '0 aMOI',
+            '1 aMOI',
+            '2 aMOI',
+            '3 aMOI',
+            '4 aMOI',
+            '5+ aMOI'
         ];
         var aMoiHighlight = "#000088";
 
@@ -204,19 +204,13 @@
                 .loadSequencedAndConfirmedChartData()
                 .then(function (d) {
                     var stats = d.data;
-
-                    console.log("stats");
-                    console.log(stats);
-                    var strnum = '2';
                     $scope.donutData[0].value = Number(stats.patients_with_0_amois);
                     $scope.donutData[1].value = Number(stats.patients_with_1_amois);
                     $scope.donutData[2].value = Number(stats.patients_with_2_amois);
                     $scope.donutData[3].value = Number(stats.patients_with_3_amois);
                     $scope.donutData[4].value = Number(stats.patients_with_4_amois);
                     $scope.donutData[5].value = Number(stats.patients_with_5_or_more_amois);
-
                 });
-
         }
 
         function loadTissueVariantReportsList() {
@@ -256,6 +250,7 @@
         }
 
         function loadDashboardData() {
+            loadSequencedAndConfirmedChartData();
             loadTissueVariantReportsList();
             loadBloodVariantReportsList();
             loadPatientPendingAssignmentReportsList();
