@@ -984,7 +984,7 @@
                                                 <h4>Assignment</h4>
                                                 <dl class="dl-horizontal">
                                                     <dt>Generated Date</dt>
-                                                    <dd>{{currentAssignmentReport.generated_date | utc}}</dd>
+                                                    <dd>{{currentAssignmentReport.assigned_date | utc}}</dd>
 
                                                     <dt>Sent to COG Date</dt>
                                                     <dd>{{currentAssignmentReport.sent_to_cog_date | utc}}</dd>
@@ -1018,9 +1018,9 @@
                                     </table>
 
                                     <div class="panel panel-primary">
-                                        <div class="panel-heading"><i class="fa fa-bullseye"></i>Selected Treatment Arm:    <treatment-arm-title name="selectedTreatmentArm.treatment_arm" version="selectedTreatmentArm.treatment_arm_version" stratum="selectedTreatmentArm.treatment_arm_stratum_id" text-color="'#fff'"></treatment-arm-title> </div>
+                                        <div class="panel-heading"><i class="fa fa-bullseye"></i>Selected Treatment Arm: <treatment-arm-title name="currentTreatmentArm.name" version="currentTreatmentArm.version" stratum="currentTreatmentArm.stratum" text-color="'#fff'"></treatment-arm-title> </div>
                                         <div class="panel-body">
-                                            <p>{{selectedTreatmentArm.reason}}</p>
+                                            <p>{{currentTreatmentArm.reason}}</p>
                                         </div>
                                     </div>
 
@@ -1032,39 +1032,39 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr class="table-subheader ">
+                                        <tr ng-if="currentAssignmentReport.assignmentLogic.no_match.length" class="table-subheader ">
                                             <td colspan="2">
                                                 <h5>1 - NO VARIANT MATCH</h5>
                                             </td>
                                         </tr>
-                                        <tr ng-repeat="ta in currentAssignmentReport.treatment_arms.no_match " style="cursor: auto; " role="row" class="odd">
+                                        <tr ng-repeat="ta in currentAssignmentReport.assignmentLogic.no_match" style="cursor: auto; " role="row" class="odd">
                                             <td class="status-blue">
-                                                <treatment-arm-title name="ta.treatment_arm" version="ta.treatment_arm_version" stratum="ta.treatment_arm_stratum_id"></treatment-arm-title>
+                                                <treatment-arm-title name="ta.treatmentArmName" version="ta.treatmentArmVersion" stratum="ta.treatmentArmStratumId"></treatment-arm-title>
                                             </td>
                                             <td>{{::ta.reason | dashify }}</td>
                                         </tr>
 
-                                        <tr class="table-subheader ">
+                                        <tr ng-if="currentAssignmentReport.assignmentLogic.record_based_exclusion.length" class="table-subheader ">
                                             <td colspan="2">
                                                 <h5>2 - RECORD BASED EXCLUSION</h5>
                                             </td>
                                         </tr>
-                                        <tr ng-repeat="ta in currentAssignmentReport.treatment_arms.record_based_exclusion " style="cursor: auto;
+                                        <tr ng-repeat="ta in currentAssignmentReport.assignmentLogic.record_based_exclusion" style="cursor: auto;
                                                 " role="row " class="odd ">
                                             <td class="status-blue ">
-                                                <treatment-arm-title name="ta.treatment_arm" version="ta.treatment_arm_version" stratum="ta.treatment_arm_stratum_id"></treatment-arm-title>
+                                                <treatment-arm-title name="ta.treatmentArmName" version="ta.treatmentArmVersion" stratum="ta.treatmentArmStratumId"></treatment-arm-title>
                                             </td>
                                             <td>{{::ta.reason | dashify }}</td>
                                         </tr>
 
-                                        <tr class="table-subheader ">
+                                        <tr ng-if="currentAssignmentReport.assignmentLogic.selected.length" class="table-subheader ">
                                             <td colspan="2">
                                                 <h5>3 - SELECTED</h5>
                                             </td>
                                         </tr>
-                                        <tr ng-repeat="ta in currentAssignmentReport.treatment_arms.selected " style="cursor: auto; " role="row" class="odd">
+                                        <tr ng-repeat="ta in currentAssignmentReport.assignmentLogic.selected" style="cursor: auto; " role="row" class="odd">
                                             <td class="status-blue ">
-                                                <treatment-arm-title name="ta.treatment_arm" version="ta.treatment_arm_version" stratum="ta.treatment_arm_stratum_id"></treatment-arm-title>
+                                                <treatment-arm-title name="ta.treatmentArmName" version="ta.treatmentArmVersion" stratum="ta.treatmentArmStratumId"></treatment-arm-title>
                                             </td>
                                             <td>{{::ta.reason | dashify }}</td>
                                         </tr>

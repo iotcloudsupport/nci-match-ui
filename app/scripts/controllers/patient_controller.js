@@ -298,7 +298,6 @@
             setupVariantReportOptions();
             setupVariantReports();
             setupAssignmentReportOptions();
-            setupSelectedTreatmentArm();
             setupUserName();
             navigateTo($stateParams);
         }
@@ -468,17 +467,6 @@
             $scope.assignmentReportOptions.push($scope.assignmentReportOption);
         }
 
-        function setupSelectedTreatmentArm() {
-            if (!($scope.data &&
-                $scope.data.assignment_report &&
-                $scope.data.assignment_report.treatment_arms &&
-                $scope.data.assignment_report.treatment_arms.selected)) {
-                return;
-            }
-
-            $scope.selectedTreatmentArm = $scope.data.assignment_report.treatment_arms.selected[0];
-        }
-
         function selectTissueVariantReport(option) {
             var previous = $scope.currentTissueVariantReport;
             $scope.currentTissueVariantReport = null;
@@ -604,18 +592,23 @@
         }
 
         function setupCurrentTreatmentArm() {
-            var selected = $scope.data &&
+            var selected = null;
+
+            if ($scope.data &&
                 $scope.data.assignment_report &&
-                $scope.data.assignment_report.treatment_arms &&
-                $scope.data.assignment_report.treatment_arms.selected &&
-                $scope.data.assignment_report.treatment_arms.selected.length ? $scope.data.assignment_report.treatment_arms.selected[0] : null;
+                $scope.data.assignment_report.assignment_logic &&
+                $scope.data.assignment_report.assignment_logic.length) {
+
+                selected = $scope.data.assignment_report.assignment_logic.find(
+                    function (x) { return x.reasonCategory === 'SELECTED' });
+            }
 
             if (selected) {
                 $scope.currentTreatmentArm = {
-                    name: selected.treatment_arm,
-                    version: selected.treatment_arm_version,
-                    stratum: selected.treatment_arm_stratum,
-                    reason: selected.reason
+                    name: selected.treatmentArmName,
+                    version: selected.treatmentArmVersion,
+                    stratum: selected.treatmentArmStratumId,
+                    reason: selected.reasons ? selected.reasons.map(function (x) { return x.verifiedRuleResult; }).join() : ''
                 }
             }
         }
@@ -695,23 +688,23 @@
                     $log.error('Current Assignment Report is not set');
                 } else {
                     matchApi.updateAssignmentReportStatus(createConfrmResult(
-                            null, 
-                            assignmentReport.patient_id, 
-                            assignmentReport.molecular_id, 
-                            assignmentReport.analysis_id, 
-                            null, 
-                            'CONFIRMED', 
-                            ' ', 
-                            $scope.currentUser,
-                            'ASSIGNMENT'))
-                        .then(function() {
+                        null,
+                        assignmentReport.patient_id,
+                        assignmentReport.molecular_id,
+                        assignmentReport.analysis_id,
+                        null,
+                        'CONFIRMED',
+                        ' ',
+                        $scope.currentUser,
+                        'ASSIGNMENT'))
+                        .then(function () {
                             assignmentReport.status = 'CONFIRMED';
                             assignmentReport.comment = null;
                             assignmentReport.comment_user = $scope.currentUser;
                             assignmentReport.status_date = moment.utc(new Date()).utc();
-                        }, function(error) {
+                        }, function (error) {
                             $log.error(error);
-                        });                    
+                        });
                 }
             });
         }
@@ -727,27 +720,27 @@
                     $log.error('Current Assignment Report is not set');
                 } else {
                     matchApi.updateAssignmentReportStatus(createConfrmResult(
-                            null, 
-                            assignmentReport.patient_id, 
-                            assignmentReport.molecular_id, 
-                            assignmentReport.analysis_id, 
-                            null, 
-                            'CONFIRMED', 
-                            comment, 
-                            $scope.currentUser,
-                            'ASSIGNMENT'))
-                        .then(function() {
+                        null,
+                        assignmentReport.patient_id,
+                        assignmentReport.molecular_id,
+                        assignmentReport.analysis_id,
+                        null,
+                        'CONFIRMED',
+                        comment,
+                        $scope.currentUser,
+                        'ASSIGNMENT'))
+                        .then(function () {
                             assignmentReport.status = 'REJECTED';
                             assignmentReport.comment = comment;
                             assignmentReport.comment_user = $scope.currentUser;
                             assignmentReport.status_date = moment.utc(new Date()).utc();
-                        }, function(error) {
+                        }, function (error) {
                             $log.error(error);
                         });
-                                    }
+                }
             });
         }
- 
+
         function createConfrmResult(id, patient_id, molecular_id, analysis_id, type, status, comment, comment_user, status_type) {
             var confirmResult = {
                 'patient_id': patient_id,
@@ -781,16 +774,16 @@
                     $log.error('Current Variant Report is not set');
                 } else {
                     matchApi.updateVariantReportStatus(createConfrmResult(
-                            null, 
-                            variantReport.patient_id, 
-                            variantReport.molecular_id, 
-                            variantReport.analysis_id, 
-                            variantReport.variant_report_type, 
-                            'REJECTED', 
-                            comment, 
-                            $scope.currentUser,
-                            null))
-                        .then(function() {
+                        null,
+                        variantReport.patient_id,
+                        variantReport.molecular_id,
+                        variantReport.analysis_id,
+                        variantReport.variant_report_type,
+                        'REJECTED',
+                        comment,
+                        $scope.currentUser,
+                        null))
+                        .then(function () {
                             variantReport.status = 'REJECTED';
                             variantReport.comment = comment;
                             variantReport.comment_user = $scope.currentUser;
@@ -810,7 +803,7 @@
                             } else if (variantReport.variant_report_type === 'TISSUE') {
                                 updateTissueVariantReportOption(variantReport);
                             }
-                        }, function(error) {
+                        }, function (error) {
                             $log.error(error);
                         });
                 }
@@ -827,16 +820,16 @@
                     $log.error('Current Variant Report is not set');
                 } else {
                     matchApi.updateVariantReportStatus(createConfrmResult(
-                            null, 
-                            variantReport.patient_id, 
-                            variantReport.molecular_id, 
-                            variantReport.analysis_id, 
-                            variantReport.variant_report_type, 
-                            'CONFIRMED', 
-                            ' ', 
-                            $scope.currentUser,
-                            null))
-                        .then(function() {
+                        null,
+                        variantReport.patient_id,
+                        variantReport.molecular_id,
+                        variantReport.analysis_id,
+                        variantReport.variant_report_type,
+                        'CONFIRMED',
+                        ' ',
+                        $scope.currentUser,
+                        null))
+                        .then(function () {
                             variantReport.status = 'CONFIRMED';
                             variantReport.comment = null;
                             variantReport.comment_user = $scope.currentUser;
@@ -847,7 +840,7 @@
                             } else if (variantReport.variant_report_type === 'TISSUE') {
                                 updateTissueVariantReportOption(variantReport);
                             }
-                        }, function(error) {
+                        }, function (error) {
                             $log.error(error);
                         });
                 }
@@ -967,6 +960,28 @@
             $scope.currentAssignmentReport = null;
             if ($scope.data.assignment_report.molecular_id === option.value.molecular_id && $scope.data.assignment_report.analysis_id === option.value.analysis_id) {
                 $scope.currentAssignmentReport = $scope.data.assignment_report;
+
+                $scope.currentAssignmentReport.assignmentLogic = {
+                    no_match: [],
+                    record_based_exclusion: [],
+                    selected: []
+                };
+
+                for (var i = 0; i < $scope.currentAssignmentReport.assignment_logic.length; i++) {
+                    var logic = $scope.currentAssignmentReport.assignment_logic[i];
+                    
+                    var uimLogic = null;
+                    uimLogic = angular.copy(logic);
+                    uimLogic.reason = logic.reasons ? logic.reasons.map(function(x) { return x.verifiedRuleResult; }).join():''
+
+                    if (logic.reasonCategory === 'NO_MATCH') {
+                        $scope.currentAssignmentReport.assignmentLogic.no_match.push(uimLogic);
+                    } else if (logic.reasonCategory === 'RECORD_BASED_EXCLUSION') {
+                        $scope.currentAssignmentReport.assignmentLogic.record_based_exclusion.push(uimLogic);
+                    } else if (logic.reasonCategory === 'SELECTED') {
+                        $scope.currentAssignmentReport.assignmentLogic.selected.push(uimLogic);
+                    }
+                }
             }
         }
 
@@ -1010,7 +1025,7 @@
         }
 
         function showAssignmentReportActions(report) {
-            return report && report.status && report.status === 'PENDING';
+            return report && report.status && report.status === 'PENDING_CONFIRMATION';
         }
 
         function navigateTo(navigateTo) {
