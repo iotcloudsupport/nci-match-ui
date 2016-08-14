@@ -48,10 +48,10 @@
                                     {{ ::patient.current_status | dashify }}
                                 </td>
                                 <td>{{ ::patient.current_step_number | dashify }}</td>
-                                <td>{{ ::patient.disease_name | dashify }}</td>
+                                <td>{{ ::(patient.diseases && patient.diseases.length ? patient.diseases[0].disease_name : '-')  | dashify }}</td>
                                 <td ng-if="patient.treatment_arm === null">-</td>
                                 <td ng-if="patient.treatment_arm !== null">
-                                    <treatment-arm-title name="patient.treatment_arm" stratum="patient.treatment_arm_stratum_id" version="patient.treatment_arm_version"></treatment-arm-title>
+                                    <treatment-arm-title name="patient.treatment_arm_name" stratum="patient.treatment_arm_stratum_id" version="patient.treatment_arm_version"></treatment-arm-title>
                                 </td>
                                 <td>{{ patient.registration_date | utc }}</td>
                                 <td>{{ patient.off_trial_date | utc }}</td>

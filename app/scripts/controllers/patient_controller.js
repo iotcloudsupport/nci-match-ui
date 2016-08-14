@@ -177,11 +177,16 @@
         //COSMIC LINKS
 
         //Sample Mocks
+        function handleQcLoadError(error) {
+            $log.error('Error while loading QC data');
+            $log.error(error);
+        }
+
         //CNV
         function loadQcTable() {
             matchApi
                 .loadQc_Table()
-                .then(loadQcList);
+                .then(loadQcList, handleQcLoadError);
         }
 
         function loadQcList(data) {
@@ -192,7 +197,7 @@
         function loadSnvTable() {
             matchApi
                 .loadQc_Table()
-                .then(loadSnvList);
+                .then(loadSnvList, handleQcLoadError);
         }
 
         function loadSnvList(data) {
@@ -203,7 +208,7 @@
         function loadGeneTable() {
             matchApi
                 .loadQc_Table()
-                .then(loadGeneList);
+                .then(loadGeneList, handleQcLoadError);
         }
 
         function loadGeneList(data) {
