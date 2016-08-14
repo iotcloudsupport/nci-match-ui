@@ -7,48 +7,30 @@
     cnvChart.$inject = ['d3service', '$log', '$timeout', '$http', '$window', 'matchApi'];
 
     function cnvChart(d3Service, $log, $timeout, $http, $window, matchApi) {
-
-
-
         return {
             restrict: 'EA',
-            scope: {
-                data: "="
-            },
+            scope: {},
             link: link
         }
 
-        // function loadQc_Table() {
-        //     matchApi
-        //         .cnvChartData()
-        //         .then(function (d) {
-        //
-        //             console.log("DATA--> " + JSON.stringify(d));
-        //         });
-        // };
-
         function link(scope, iElement, iAttrs) {
-
-
             scope.text = iAttrs["d3CnvChart"];
-
-
-
+            scope.chartDataUrl = iAttrs["chartDataUrl"];
 
             // on window resize, re-render d3 canvas
             $window.onresize = function () {
                 return scope.$apply();
             };
 
-            scope.$watch(function () {
-                return angular.element($window)[0].innerWidth;
-            }, function () {
-                return scope.render();
-            }
+            scope.$watch(
+                function () {
+                    return angular.element($window)[0].innerWidth;
+                }, function () {
+                    return scope.render(scope);
+                }
             );
 
-
-            scope.render = function () {
+            scope.render = function (scope) {
                 d3Service.d3().then(function (d3) {
                     $timeout(function () {
 
@@ -64,40 +46,21 @@
                             return (d === 1 ? 'red' : (d === 2 ? 'green' : 'teal'))
                         };
 
-                        // function loadQc_Table() {
-                        //     matchApi
-                        //         .cnvChartData()
-                        //         .then(draw, handleError);
-                        //
-                        //     // .then(function (d) {
-                        //     //     console.log("DATA--> " + JSON.stringify(d));
-                        //     // });
-                        // };
-
-
-                        // function execute() {
-                        //     // Move data retrieving outside of the directive (into a service)
-                        //
-                        //     console.log(" -- Start svg data load -- ")
-                        //
-                        //     loadQc_Table();
-                        //
-                        //
-                        //     var url = "data/cnvChart.json";
-                        //     $http.get(url).then(draw, handleError);
-                        // }
-
                         function execute() {
+                            $log.debug('Loading CNV data from ' + scope.chartDataUrl);
                             matchApi
-                                .cnvChartData(scope.text)
+                                .loadCnvChartData(scope.chartDataUrl)
                                 .then(draw, handleError);
-
-                            console.log(" -- Start svg data load -- ");
                         }
 
-
-                        function handleError(response) {
-                            $log.error(response);
+                        function handleError(error) {
+                            $log.error('Error while loading CNV chart data. Fallback to mock data.');
+                            $log.error(error);
+                            matchApi
+                                .cnvChartData(scope.text)
+                                .then(draw, function(error){
+                                    $log.error('Unable to load mock data', error);
+                                });
                         }
 
                         function draw(response) {
