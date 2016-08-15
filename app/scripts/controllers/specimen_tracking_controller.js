@@ -28,24 +28,24 @@
         $scope.shipments = [];
 
         $scope.sites = {
-            'mda': {
-                'count': 0,
-                'percent': 0
+            mda: {
+                count: 0,
+                percent: 0
             },
-            'mocha': {
-                'count': 0,
-                'percent': 0
+            mocha: {
+                count: 0,
+                percent: 0
             }
         }
 
         $scope.pieDataset = [
             {
-                label: "Boston",
+                label: "MDA",
                 data: 0,
                 color: "#1ab394"
             },
             {
-                label: "Mocha",
+                label: "MoCha",
                 data: 0,
                 color: "#1c84c6"
             }
@@ -93,7 +93,6 @@
                 .loadSpecimenTrackingList()
                 .then(function (d) {
                     $scope.shipments = angular.copy(d.data);
-                    console.log($scope.shipments);
                     setupSites();
                     updateSiteStatistics();
                     setupTrendAnalysisData();
@@ -103,12 +102,10 @@
         function setupSites() {
             angular.forEach($scope.shipments, function(value) {
                 var shipment = value;
-                //angular.forEach(shipment.assays, function() {
-                    if (shipment.destination && shipment.destination.toUpperCase() === 'MOCHA')
-                        $scope.sites.mocha.count++;
-                    else if (shipment.destination && shipment.destination.toUpperCase() === 'BOSTON')
-                        $scope.sites.mda.count++;
-                //});
+                if (shipment.destination && shipment.destination.toUpperCase() === 'MOCHA')
+                    $scope.sites.mocha.count++;
+                else if (shipment.destination && shipment.destination.toUpperCase() === 'MDA')
+                    $scope.sites.mda.count++;
             });
         }
 
