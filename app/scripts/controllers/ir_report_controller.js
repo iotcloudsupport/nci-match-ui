@@ -1235,10 +1235,14 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             });
         };
 
-        $scope.openNegatives = function(id, status) {
+        $scope.openNegatives = function(id, status, datereceived, datecreated) {
             $scope.selectedRow = id;
             $scope.negatives = 'mocha';
             $scope.status = status;
+            $scope.date_received = datecreated;
+            $scope.posDate = datereceived;
+
+            sharedCliaArray.setProperty([$scope.aid, $scope.posDate, $scope.tvarDate])
 
             var url ="data/sample_ntc_mocha_control_1.json";
 

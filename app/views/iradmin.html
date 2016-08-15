@@ -1072,7 +1072,7 @@
                                                             <td>{{ta.date_created | dashify }}</td>
                                                             <td>{{ta.date_received | dashify}}</td>
                                                             <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
-                                                        <a class="ng-binding ng-scope" ng-click="openNegatives(ta.variant_reports, ta.current_status);gotoBottom('ntcmocha')" href>
+                                                        <a class="ng-binding ng-scope" ng-click="openNegatives(ta.variant_reports, ta.current_status, ta.date_created, ta.date_received);gotoBottom('ntcmocha')" href>
                                                             {{ta.variant_reports | dashify }}
                                                         </a>
                                                         </td>
@@ -1103,10 +1103,10 @@
                                                                             <dd>NtcControl_MoCha_1</dd>
 
                                                                             <dt>Analysis ID</dt>
-                                                                            <dd>job_1</dd>
+                                                                            <dd>{{aid}}</dd>
 
                                                                             <dt>Total Variants</dt>
-                                                                            <dd>18</dd>
+                                                                            <dd>{{tvarDate}}</dd>
 
                                                                             <dt>MAPD</dt>
                                                                             <dd> 0.268 </dd>
@@ -1308,7 +1308,7 @@
                                                             <td>{{ta.date_created | dashify }}</td>
                                                             <td>{{ta.date_received | dashify}}</td>
                                                             <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
-                                                                <a class="ng-binding ng-scope" ng-click="openNegatives(ta.variant_reports, ta.current_status);gotoBottom('ntcmocha')" href>
+                                                                <a class="ng-binding ng-scope" ng-click="openNegatives(ta.variant_reports, ta.current_status, ta.date_created, ta.date_received);gotoBottom('ntcmocha')" href>
                                                                     {{ta.variant_reports | dashify }}
                                                                 </a>
                                                             </td>
@@ -1339,10 +1339,10 @@
                                                                             <dd>NtcControl_MoCha_1</dd>
 
                                                                             <dt>Analysis ID</dt>
-                                                                            <dd>job_1</dd>
+                                                                            <dd>{{aid}}</dd>
 
                                                                             <dt>Total Variants</dt>
-                                                                            <dd>18</dd>
+                                                                            <dd>{{tvarDate}}</dd>
 
                                                                             <dt>MAPD</dt>
                                                                             <dd> 0.268 </dd>
@@ -2132,10 +2132,10 @@
                                                                             <dd>NtcControl_MDACC_1</dd>
 
                                                                             <dt>Analysis ID</dt>
-                                                                            <dd>job_1</dd>
+                                                                            <dd>{{aid}}</dd>
 
                                                                             <dt>Total Variants</dt>
-                                                                            <dd>18</dd>
+                                                                            <dd>{{tvarDate}}</dd>
 
                                                                             <dt>MAPD</dt>
                                                                             <dd> 0.268 </dd>
@@ -2367,7 +2367,7 @@
                                                                             <dd>NtcControl_MDACC_1</dd>
 
                                                                             <dt>Analysis ID</dt>
-                                                                            <dd>job_1</dd>
+                                                                            <dd>{{aid}}</dd>
 
                                                                             <dt>Total Variants</dt>
                                                                             <dd>18</dd>
