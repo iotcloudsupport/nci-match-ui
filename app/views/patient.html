@@ -107,15 +107,18 @@
                                 <td>{{ta.assignment_date | utc}}</td>
                             </tr>
                             </tbody>
-                        </table>
+                        </table> 
 
-                        <div class="ibox-title ibox-title-no-line-no-padding">
-                            <h3>Patient Timeline</h3>
-                        </div>
+                        <div ng-controller="ActivityController as activity" ng-init="activity.startLoading()">
+                            <div class="ibox-title ibox-title-no-line-no-padding">
+                                <h3>Patient Timeline</h3>
+                                <small class="text-muted">Loaded at {{activity.lastUpdated}}</small>
+                            </div>
 
-                        <div class="ibox-content inspinia-timeline" ng-controller="ActivityController as activity" ng-init="activity.loadData()">
-                            <div class="timeline-item" ng-repeat="timelineEvent in activity.data">
-                                <timeline timeline-event="timelineEvent" type="timelineEvent.event_type" show-step-delimiter="'true'"></timeline>
+                            <div class="ibox-content inspinia-timeline">
+                                <div class="timeline-item" ng-repeat="timelineEvent in activity.data">
+                                    <timeline timeline-event="timelineEvent" type="timelineEvent.event_type" show-step-delimiter="'true'"></timeline>
+                                </div>
                             </div>
                         </div>
 
@@ -1014,9 +1017,10 @@
                                     </table>
 
                                     <div class="panel panel-primary">
-                                        <div class="panel-heading"><i class="fa fa-bullseye"></i>Selected Treatment Arm: <treatment-arm-title name="currentTreatmentArm.name" version="currentTreatmentArm.version" stratum="currentTreatmentArm.stratum" text-color="'#fff'"></treatment-arm-title> </div>
+                                        <div class="panel-heading"><i class="fa fa-bullseye"></i>Selected Treatment Arm: <span ng-if="!currentTreatmentArm">[None]</span><treatment-arm-title ng-if="currentTreatmentArm" name="currentTreatmentArm.name" version="currentTreatmentArm.version" stratum="currentTreatmentArm.stratum" text-color="'#fff'"></treatment-arm-title></div>
                                         <div class="panel-body">
-                                            <p>{{currentTreatmentArm.reason}}</p>
+                                            <p ng-if="currentTreatmentArm">{{currentTreatmentArm.reason}}</p>
+                                            <p ng-if="!currentTreatmentArm">No SELECTED logic was found in the current assignment</p>
                                         </div>
                                     </div>
 

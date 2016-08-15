@@ -466,7 +466,7 @@
 
             var currentAssignment = $scope.data.assignment_report;
             if (!currentAssignment) {
-                $log.debug('No assignment received from service');
+                $log.debug('No assignment received from the web service');
                 return;
             }
 
@@ -479,12 +479,10 @@
             var receivedDate = currentAssignment.received_from_cog_date && currentAssignment.received_from_cog_date !== '-' ? $filter('utc')(currentAssignment.received_from_cog_date) : '-';
 
             $scope.assignmentReportOption = {
-                text: $scope.currentTreatmentArm.name +
-                ' | Received from COG ' + receivedDate,
+                text: currentAssignment.analysis_id + ' | Received from COG ' + receivedDate,
                 value: {
                     molecular_id: currentAssignment.molecular_id,
-                    analysis_id: currentAssignment.analysis_id,
-                    assignmemnt_reason: $scope.currentTreatmentArm.reason
+                    analysis_id: currentAssignment.analysis_id
                 }
             };
 
@@ -634,6 +632,8 @@
                     stratum: selected.treatmentArmStratumId,
                     reason: selected.reasons ? selected.reasons.map(function (x) { return x.verifiedRuleResult; }).join() : ''
                 }
+            } else {
+                $log.info('The web service didn\'t send Assignment Report that has SELECTED Treatment Arm');
             }
         }
 
