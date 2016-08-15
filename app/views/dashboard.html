@@ -228,8 +228,9 @@
         <div class="row wrapper-dashboard">
             <div class="col-md-12">
 
-                <div class="ibox-title ibox-title-no-line" id="activity-column">
+                <div class="ibox-title ibox-title-no-line activity-header-panel" id="activity-column">
                     <h3>Activity Feed</h3>
+                    <small class="text-muted">Showing last 10 messages</small>
                 </div>
 
                 <div class="ibox-content inspinia-timeline" ng-controller="ActivityController as activity" ng-init="activity.loadData(10)"
