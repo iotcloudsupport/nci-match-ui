@@ -8,7 +8,7 @@
         vm.data = [];
         vm.startLoading = startLoading;
         vm.maxItems = null;
-        vm.pollingInterval = 1000;
+        vm.pollingInterval = 10000;
         vm.lastUpdated = moment().format('LTS');
 
         function poll() {
