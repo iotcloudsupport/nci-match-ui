@@ -756,11 +756,7 @@
                                                                 <tbody>
 
                                                                 <tr ng-repeat="variant in snvList | limitTo:totalDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">
-                                                                    <td>
-                                                                        <a class="report-link" href ng-click="openCosmicId( variant.identifier )">
-                                                                            {{variant.identifier | dashify }}
-                                                                        </a>
-                                                                    </td>
+                                                                    <td><a class="report-link" href ng-click="openCosmicId( variant.identifier )">{{variant.identifier | dashify }}</a></td>
                                                                     <td>{{::variant.chromosome | dashify }}</td>
                                                                     <td>{{::variant.position | dashify }}</td>
                                                                     <td>{{::variant.cds_reference | dashify }}</td>
@@ -770,9 +766,7 @@
                                                                     <td>{{::variant.strand | dashify }}</td>
                                                                     <td>{{::variant.filter | dashify }}</td>
                                                                     <td>{{::variant.allele_frequency | dashify }}</td>
-                                                                    <td>
-                                                                        <a href ng-click="openCosmicGene(variant.func_gene)" class="report-link">{{::variant.func_gene}}</a>
-                                                                    </td>
+                                                                    <td><a href ng-click="openCosmicGene(variant.func_gene)" class="report-link">{{::variant.func_gene}}</a></td>
                                                                     <td>{{::variant.oncomine_variant_class | dashify }}</td>
                                                                     <td>{{::variant.exon | dashify }}</td>
                                                                     <td>{{::variant.function | dashify }}</td>
