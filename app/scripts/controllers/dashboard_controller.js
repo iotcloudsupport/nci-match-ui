@@ -77,6 +77,24 @@
         ];
         var aMoiHighlight = "#000088";
 
+        // $scope.donutOptions = {
+        //     segmentShowStroke: true,
+        //     segmentStrokeColor: "#fff",
+        //     segmentStrokeWidth: 2,
+        //     percentageInnerCutout: 45, // This is 0 for Pie charts
+        //     animationSteps: 100,
+        //     animationEasing: "easeOutBounce",
+        //     animateRotate: true,
+        //     animateScale: false,
+        //     responsive: true,
+        //     legendTemplate: '<ul class="dashboard donut-chart-legend">' +
+        //     '<% for (var i=0; i<segments.length; i++) {%>' +
+        //     '<i class="fa fa-square" style="color: <%=segments[i].fillColor%>" ></i> ' +
+        //     '<%if(segments[i].label){%><%=segments[i].label%> : <strong><%=segments[i].value%> patients</strong> <%}%>' +
+        //     '<br><%}%>' +
+        //     '</ul>'
+        // };
+
         $scope.donutOptions = {
             segmentShowStroke: true,
             segmentStrokeColor: "#fff",
@@ -87,8 +105,10 @@
             animateRotate: true,
             animateScale: false,
             responsive: true,
-            legendTemplate: '<ul class="dashboard donut-chart-legend"><% for (var i=0; i<segments.length; i++) {%><i class="fa fa-square" style="color: <%=segments[i].fillColor%>" ></i> <%if(segments[i].label){%><%=segments[i].label%> : <strong><%=segments[i].value%> patients</strong> <%}%><br><%}%></ul>'
+            legendTemplate: false
         };
+
+        Chart.defaults.global.legend = false;
 
         $scope.donutData = [
             {
@@ -199,17 +219,32 @@
             }
         }
 
+        $scope.amoi_0 = 0;
+        $scope.amoi_1 = 0;
+        $scope.amoi_2 = 0;
+        $scope.amoi_3 = 0;
+        $scope.amoi_4 = 0;
+        $scope.amoi_5 = 0
+
+
+
         function loadSequencedAndConfirmedChartData() {
             matchApi
                 .loadSequencedAndConfirmedChartData()
                 .then(function (d) {
                     var stats = d.data;
                     $scope.donutData[0].value = Number(stats.patients_with_0_amois);
+                    $scope.amoi_0 = $scope.donutData[0].value;
                     $scope.donutData[1].value = Number(stats.patients_with_1_amois);
+                    $scope.amoi_1 = $scope.donutData[1].value;
                     $scope.donutData[2].value = Number(stats.patients_with_2_amois);
+                    $scope.amoi_2 = $scope.donutData[2].value;
                     $scope.donutData[3].value = Number(stats.patients_with_3_amois);
+                    $scope.amoi_3 = $scope.donutData[3].value;
                     $scope.donutData[4].value = Number(stats.patients_with_4_amois);
+                    $scope.amoi_4 = $scope.donutData[4].value;
                     $scope.donutData[5].value = Number(stats.patients_with_5_or_more_amois);
+                    $scope.amoi_5 = $scope.donutData[5].value;
                 });
         }
 
