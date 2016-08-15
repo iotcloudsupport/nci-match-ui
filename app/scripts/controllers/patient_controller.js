@@ -296,6 +296,7 @@
             angular.copy(data.data, scopeData);
             $scope.data = scopeData;
 
+            mockProcessGenesAssayGenes();
             setupDisease();
             setupCurrentTreatmentArm();
             setupSlides();
@@ -305,6 +306,24 @@
             setupAssignmentReportOptions();
             setupUserName();
             navigateTo($stateParams);
+        }
+
+        function mockProcessGenesAssayGenes() {
+            for (var i = 0; i < $scope.data.specimens.length; i++) {
+                var surgicalEvent = $scope.data.specimens[i];
+
+                if (!surgicalEvent.assays)
+                    continue;
+
+                for (var j = 0; j < surgicalEvent.assays.length; j++) {
+                    var assay = surgicalEvent.assays[j];
+                    if (assay.biomarker && assay.biomarker.toUpperCase().includes('PTEN')){
+                        assay.gene = 'PTEN';
+                    } else if (assay.biomarker && assay.biomarker.toUpperCase().includes('MLH1')){
+                        assay.gene = 'MLH1';
+                    }
+                }
+            }
         }
 
         function setupDisease() {
@@ -974,10 +993,10 @@
 
                 for (var i = 0; i < $scope.currentAssignmentReport.assignment_logic.length; i++) {
                     var logic = $scope.currentAssignmentReport.assignment_logic[i];
-                    
+
                     var uimLogic = null;
                     uimLogic = angular.copy(logic);
-                    uimLogic.reason = logic.reasons ? logic.reasons.map(function(x) { return x.verifiedRuleResult; }).join():''
+                    uimLogic.reason = logic.reasons ? logic.reasons.map(function (x) { return x.verifiedRuleResult; }).join() : ''
 
                     if (logic.reasonCategory === 'NO_MATCH') {
                         $scope.currentAssignmentReport.assignmentLogic.no_match.push(uimLogic);

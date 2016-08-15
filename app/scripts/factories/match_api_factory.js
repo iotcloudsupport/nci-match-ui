@@ -174,8 +174,7 @@
             }
 
             function cnvChartData(id) {
-
-                if (id === "") {
+                if (id === '') {
                     return $http.get('data/cnvChart.json');
                 }
                 else if (id === '3355') {

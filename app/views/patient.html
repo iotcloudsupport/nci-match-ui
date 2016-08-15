@@ -213,6 +213,7 @@
                             <table class="table" role="grid">
                                 <thead>
                                     <tr>
+                                        <th width="20%" class="label2">Assay</th>
                                         <th width="20%" class="label2">Gene</th>
                                         <th width="20%" class="label2">Result Date</th>
                                         <th width="20%" class="label2">Result</th>
@@ -221,6 +222,7 @@
                                 <tbody>
                                     <tr ng-repeat="assay in currentSurgicalEvent.assays" style="cursor: auto;" role="row" class="odd">
                                         <td>{{assay.biomarker | dashify}}</td>
+                                        <td>{{assay.gene | dashify}}</td>
                                         <td>{{assay.result_date | utc | dashify}}</td>
                                         <td>
                                             <span style="color:{{ assay.result | assayStatus }}">{{assay.result | dashify}}</span>
