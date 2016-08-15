@@ -77,7 +77,7 @@
                 <uib-tab heading="Summary" select="setActiveTab('summary')">
                     <div class="panel-body" ng-init="loadActionItems()">
 
-                        <div ng-if="actionItems">
+                        <div ng-if="actionItems && actionItems.length">
                             <div class="ibox-title ibox-title-no-line-no-padding">
                                 <h3>Actions Needed</h3>
                             </div>
