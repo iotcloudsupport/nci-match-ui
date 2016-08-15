@@ -19,6 +19,11 @@
                 <br>
             <br>
             </span>
+            
+            <span ng-if="timelineEvent.event_data.treatment_arm">
+                Treatment Arm: <span class="timeline-value"><treatment-arm-title name="timelineEvent.event_data.treatment_arm.name" version="timelineEvent.event_data.treatment_arm.version" stratum="timelineEvent.event_data.treatment_arm.stratum"></treatment-arm-title></span>
+            <br>
+            </span>
 
             <span ng-if="timelineEvent.event_data.location">
                 Locations: <span class="timeline-value">{{::timelineEvent.event_data.location}}</span>
