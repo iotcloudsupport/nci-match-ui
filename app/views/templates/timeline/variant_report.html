@@ -15,6 +15,11 @@
                 </span>
             <br>
             </span>
+            <span ng-if="timelineEvent.entity_id && !showEntityId && timelineEvent.event_data.patient_status">
+                Patient Status: <span class="timeline-value" style="color: {{::timelineEvent.event_data.patient_status | patientStatus}}">{{::timelineEvent.event_data.patient_status}}</span>
+                <br>
+            <br>
+            </span>
 
             <span ng-if="timelineEvent.event_data.surgical_event_id">
                 Surgical Event ID: <span class="timeline-value"><patient-title patient-id="timelineEvent.entity_id"

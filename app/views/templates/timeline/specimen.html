@@ -20,6 +20,11 @@
                 </span>
             <br>
             </span>
+            <span ng-if="timelineEvent.entity_id && !showEntityId && timelineEvent.event_data.patient_status">
+                Patient Status: <span class="timeline-value" style="color: {{::timelineEvent.event_data.patient_status | patientStatus}}">{{::timelineEvent.event_data.patient_status}}</span>
+                <br>
+            <br>
+            </span>
        
             <span ng-if="timelineEvent.event_data.specimen_type">
                 Type: <span class="timeline-value">{{::timelineEvent.event_data.specimen_type }}</span>
