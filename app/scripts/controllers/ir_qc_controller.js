@@ -54,6 +54,7 @@ angular.module('matchbox.qcsample',['ui.bootstrap', 'cgPrompt', 'ui.router', 'da
         $scope.loadQc_Table = loadQc_Table;
         $scope.loadSnv_Table = loadSnv_Table;
         $scope.loadGene_Table = loadGene_Table;
+        $scope.chartLink = "/data/cnvChart.json";
 
         // function makeid()
         // {
