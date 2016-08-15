@@ -226,15 +226,14 @@
         </div>
 
         <div class="row wrapper-dashboard">
-            <div class="col-md-12">
+            <div class="col-md-12" ng-controller="ActivityController as activity" ng-init="activity.startLoading(10)">
 
                 <div class="ibox-title ibox-title-no-line activity-header-panel" id="activity-column">
                     <h3>Activity Feed</h3>
-                    <small class="text-muted">Showing last 10 messages</small>
+                    <small class="text-muted">Showing last 10 messages, loaded at {{activity.lastUpdated}}</small>
                 </div>
 
-                <div class="ibox-content inspinia-timeline" ng-controller="ActivityController as activity" ng-init="activity.loadData(10)"
-                    id="panding-items-column">
+                <div class="ibox-content inspinia-timeline" id="panding-items-column">
                     <div class="timeline-item" ng-repeat="timelineEvent in activity.data">
                         <timeline timeline-event="timelineEvent" type="timelineEvent.event_type" show-entity-id="true"></timeline>
                     </div>

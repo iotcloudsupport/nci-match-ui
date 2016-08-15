@@ -2,15 +2,30 @@
     angular.module('matchbox.common', [])
         .controller('ActivityController', ActivityController);
 
-    function ActivityController(matchApi, $stateParams, $log) {
-        var vm = this; 
+    function ActivityController(matchApi, $stateParams, $log, $timeout) {
+        var vm = this;
 
         vm.data = [];
-        vm.loadData = loadData;
+        vm.startLoading = startLoading;
         vm.maxItems = null;
+        vm.pollingInterval = 1000;
+        vm.lastUpdated = moment().format('LTS');
 
-        function loadData(maxItems) {
+        function poll() {
+            $timeout(function () {
+                loadData();
+                poll();
+            }, vm.pollingInterval);
+        }
+
+        function startLoading(maxItems) {
             vm.maxItems = maxItems;
+            loadData();
+            poll();
+        }
+
+        function loadData() {
+            vm.lastUpdated = moment().format('LTS');
             matchApi
                 .loadActivity($stateParams.patient_id)
                 .then(setupScope, handleActivityLoadError);
@@ -20,7 +35,7 @@
             $log.error(e);
             return;
         }
-        
+
         function setupScope(data) {
             vm.data = [];
 
