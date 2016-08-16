@@ -35,6 +35,8 @@
         'matchbox.calendar-heatmap',
         'angular.vertilize',
         'datatables',
-        'ngResource'
+        'ngResource',
+        'dataGrid', 
+        'pagination'
     ]);
 })();

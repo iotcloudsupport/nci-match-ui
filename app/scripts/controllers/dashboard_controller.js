@@ -42,6 +42,15 @@
             "upper_bound_yellow": 14
         };
 
+        $scope.gridOptions = {
+            data: [], //required parameter - array with data 
+            //optional parameter - start sort options 
+            sort: {
+                predicate: 'companyName',
+                direction: 'asc'
+            }
+        };
+
         this.dtOptions = DTOptionsBuilder.newOptions()
             .withDisplayLength(25);
         this.dtOptions = DTOptionsBuilder.newOptions()
@@ -249,9 +258,20 @@
         }
 
         function loadTissueVariantReportsList() {
+
+            $scope.gridOptions = {
+                data: [], //required parameter - array with data 
+                //optional parameter - start sort options 
+                sort: {
+                    predicate: 'companyName',
+                    direction: 'asc'
+                }
+            };
+            
             matchApi
                 .loadTissueVariantReportsList()
                 .then(function (d) {
+                    $scope.gridOptions.data = d.data;
                     $scope.pendingTissueVariantReportList = d.data;
                     arrayTools.forEach($scope.pendingTissueVariantReportList, function (element) {
                         var days_pending  = dateTools.calculateDaysPending(element, 'status_date');
