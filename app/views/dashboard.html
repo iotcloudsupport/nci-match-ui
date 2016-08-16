@@ -117,15 +117,7 @@
                                                 <td ng-bind="item.specimen_received_date | utc"></td>
                                                 <td ng-bind="item.variant_report_received_date | utc"></td>
                                                 <td>
-                                                    <span ng-if="item.days_pending >= days_pending_range.upper_bound_yellow" class="label label-danger">
-                                                        <span ng-bind="item.days_pending"></span>
-                                                    </span>
-                                                    <span ng-if="item.days_pending < days_pending_range.upper_bound_yellow && item.days_pending >= days_pending_range.upper_bound_green" class="label label-warning">
-                                                        <span ng-bind="item.days_pending"></span>
-                                                    </span>
-                                                    <span ng-if="item.days_pending < days_pending_range.upper_bound_green" class="label label-primary">
-                                                        <span ng-bind="item.days_pending"></span>
-                                                    </span>
+                                                    <number-color-badge value="item.days_pending" yellow-threshold="days_pending_range.upper_bound_green" red-threshold="days_pending_range.upper_bound_yellow"></number-color-badge>
                                                 </td>
                                             </tr>
                                             </tbody>

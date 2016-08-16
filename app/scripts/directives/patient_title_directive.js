@@ -14,7 +14,7 @@
      *   analysisId
      *   surgicalEventId
      */
-    function patientTitle($uibModal, $log) {
+    function patientTitle($log) {
         var controller = function () {
             var vm = this;
 

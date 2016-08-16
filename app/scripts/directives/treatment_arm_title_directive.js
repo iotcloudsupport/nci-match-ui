@@ -9,7 +9,7 @@
      * Expects an object with the follwing properties:
      *   'name', 'stratum', ;version'
      */
-    function treatmentArmTitle($uibModal, $log) {
+    function treatmentArmTitle($log) {
         var controller = function () {
             var vm = this;
 

@@ -9,7 +9,7 @@
      * Expects an object with the follwing properties:
      *   'name', 'stratum', ;version'
      */
-    function treatmentArmVariantLink($uibModal, $log) {
+    function treatmentArmVariantLink($log) {
         var controller = function () {
             var vm = this;
 
