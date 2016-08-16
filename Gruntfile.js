@@ -25,35 +25,29 @@ module.exports = function (grunt) {
         readDir: 'app/scripts/env',
 
         exec: {
-                echo_grunt_version: {
-                    cmd: function () {
-                        return 'echo ' + this.version;
-                    }
-                },
-
-                echo_auth: {
-
-                    cmd: function () {
-
-                        var LOG_USER = "$AUTH0_CLIENT_ID";
-                        var DB_PASSWORD = "password";
-                        var SESSION_ID = "$TERM_SESSION_ID";
-
-                         var SETUP = 'echo $AUTH0_CLIENT_ID';
-
-                        return SETUP;
-                    }
+            echo_grunt_version: {
+                cmd: function () {
+                    return 'echo ' + this.version;
                 }
-
+            },
+            echo_auth: {
+                cmd: function () {
+                    var LOG_USER = "$AUTH0_CLIENT_ID";
+                    var DB_PASSWORD = "password";
+                    var SESSION_ID = "$TERM_SESSION_ID";
+                    var SETUP = 'echo $AUTH0_CLIENT_ID';
+                    return SETUP;
+                }
+            }
         },
 
-        //SET ENVIRONMENTS
+        // SET ENVIRONMENTS
         ngconstant: {
             // Options for all targets
             options: {
                 space: '  ',
                 wrap: '"use strict";\n\n {\%= __ngModule %}',
-                name: 'login_config',
+                name: 'login_config'
             },
             // Environment targets
             development: {
@@ -204,7 +198,7 @@ module.exports = function (grunt) {
                 options: {
                     nospawn: true,
                     livereload: '<%= connect.options.livereload %>'
-                },
+                }
             },
             js: {
                 files: ['<%= inspinia.app %>/scripts/{,*/}*.js'],
@@ -284,7 +278,7 @@ module.exports = function (grunt) {
                         cwd: 'bower_components/bootstrap',
                         src: ['fonts/*.*'],
                         dest: '<%= inspinia.dist %>'
-                    },
+                    }
                 ]
             },
             styles: {
@@ -375,7 +369,7 @@ module.exports = function (grunt) {
 
         grunt.task.run([
             'clean:server',
-            'ngconstant:development', // ADD THIS
+            'ngconstant:development',
             'copy:styles',
             'connect:livereload',
             'watch'
@@ -389,35 +383,29 @@ module.exports = function (grunt) {
 
         grunt.task.run([
             'clean:server',
-            'ngconstant:production', // ADD THIS
+            'ngconstant:production',
             'copy:styles',
             'connect:livereload',
             'watch'
         ]);
     });
 
-    //SHELL CONFIGURATION
+    // SHELL CONFIGURATION
     grunt.registerTask('default', function () {
-
         var exec = require('child_process').exec,child,done = grunt.task.current.async();
-
         child = exec('echo "$AUTH0_DOMAIN"',
-
             function(error, stdout, stderr){
-
                 grunt.log.writeln('SET FOR SHELL ENV VARIABLE: ' + stdout + " Error 1: " + stderr + "Error 2: " + error );
 
-                //AUTH0_CLIENT_ID
-                if(stdout.trim() === 'ncimatch.auth0.com'){///usr/local/bin/
-
+                if(stdout.trim() === 'ncimatch.auth0.com') {
                     grunt.log.writeln('TAR file for Grunt started. ENV: ' + stdout);
                     grunt.task.run([
                         'buildtest'
                     ]);
                 }
-                // Technique recommended on #grunt IRC channel. Tell Grunt asych function is finished. Pass error for logging; if operation completes successfully error will be null
+                // Technique recommended on #grunt IRC channel. Tell Grunt asych function is finished.
+                // Pass error for logging; if operation completes successfully error will be null.
                 done(error);
-                // done("Error in TAR file buildup: " + error);
             }
         );
     });
@@ -469,7 +457,5 @@ module.exports = function (grunt) {
         'test',
         'build'
     ]);
-
-
 
 };
