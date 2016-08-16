@@ -42,33 +42,24 @@
         }
 
         function calculateDaysPending(element, dateAttr) {
-            if (!(dateAttr in element))
-                return null
-
-            var dateValue = element[dateAttr];
-            if (!dateValue) 
-                return null
-            
-            var nowMoment = moment();
-            var dateValueMoment = moment(dateValue);
-            var diff = nowMoment.diff(dateValueMoment, "DD/MM/YYYY HH:mm:ss");
-
-            return moment.duration(diff).days();
+            return moment.duration(calculateDateDiff(element, dateAttr)).days();
         }
 
         function calculateHoursPending(element, dateAttr) {
+            return moment.duration(calculateDateDiff(element, dateAttr)).hours();
+        }
+
+        function calculateDateDiff(element, dateAttr) {
             if (!(dateAttr in element))
                 return null
 
             var dateValue = element[dateAttr];
-            if (!dateValue) 
+            if (!dateValue)
                 return null
-            
+
             var nowMoment = moment();
             var dateValueMoment = moment(dateValue);
-            var diff = nowMoment.diff(dateValueMoment, "DD/MM/YYYY HH:mm:ss");
-
-            return moment.duration(diff).hours();
+            return nowMoment.diff(dateValueMoment, "DD/MM/YYYY HH:mm:ss");
         }
     }
 } ());
