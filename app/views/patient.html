@@ -148,19 +148,19 @@
                                         <h4>Event</h4>
                                         <dl class="dl-horizontal">
                                             <dt>Surgical Event ID</dt>
-                                            <dd>{{currentSurgicalEvent.surgical_event_id}}</dd>
+                                            <dd>{{currentSurgicalEvent.surgical_event_id | dashify}}</dd>
 
                                             <dt>Type</dt>
-                                            <dd>{{currentSurgicalEvent.type}}</dd>
+                                            <dd>{{currentSurgicalEvent.type | dashify}}</dd>
 
                                             <dt>Collection Date</dt>
-                                            <dd>{{currentSurgicalEvent.collected_date | utc}}</dd>
+                                            <dd>{{currentSurgicalEvent.collected_date | utc | dashify}}</dd>
 
                                             <dt>Received Date</dt>
-                                            <dd>{{currentSurgicalEvent.received_date | utc}}</dd>
+                                            <dd>{{currentSurgicalEvent.received_date | utc | dashify}}</dd>
 
                                             <dt>Failure Date</dt>
-                                            <dd>{{currentSurgicalEvent.failed_date | utc}}</dd>
+                                            <dd>{{currentSurgicalEvent.failed_date | utc | dashify}}</dd>
                                         </dl>
                                     </div>
                                 </div>
@@ -169,10 +169,10 @@
                                         <h4>Pathology</h4>
                                         <dl class="dl-horizontal">
                                             <dt>Status</dt>
-                                            <dd>{{currentSurgicalEvent.pathology_status}}</dd>
+                                            <dd>{{currentSurgicalEvent.pathology_status | dashify}}</dd>
 
                                             <dt>Received Date</dt>
-                                            <dd>{{currentSurgicalEvent.pathology_status_date | utc}}</dd>
+                                            <dd>{{currentSurgicalEvent.pathology_status_date | utc | dashify}}</dd>
 
                                             <dt>Comment</dt>
                                             <dd>{{currentSurgicalEvent.comments | dashify}}</dd>
@@ -218,6 +218,7 @@
                                     <tr>
                                         <th width="20%" class="label2">Assay</th>
                                         <th width="20%" class="label2">Gene</th>
+                                        <th width="20%" class="label2">Order Date</th>
                                         <th width="20%" class="label2">Result Date</th>
                                         <th width="20%" class="label2">Result</th>
                                     </tr>
@@ -226,6 +227,7 @@
                                     <tr ng-repeat="assay in currentSurgicalEvent.assays" style="cursor: auto;" role="row" class="odd">
                                         <td>{{assay.biomarker | dashify}}</td>
                                         <td>{{assay.gene | dashify}}</td>
+                                        <td>{{assay.rordered_date | utc | dashify}}</td>
                                         <td>{{assay.result_date | utc | dashify}}</td>
                                         <td>
                                             <span style="color:{{ assay.result | assayStatus }}">{{assay.result | dashify}}</span>
@@ -437,7 +439,8 @@
                                                     <dd ng-show="variantReport.confirmedRejectedDate">{{currentTissueVariantReport.confirmedRejectedDate | utc}}</dd>
 
                                                     <dt>Status</dt>
-                                                    <dd style="color: {{currentTissueVariantReport.status | analysisStatus }}">{{currentTissueVariantReport.status}} <span ng-if="currentTissueVariantReport.comment_user"> (user: {{currentTissueVariantReport.comment_user}})</span></dd>
+                                                    <dd style="color: {{currentTissueVariantReport.status | analysisStatus }}">{{currentTissueVariantReport.status}}
+                                                        <span ng-if="currentTissueVariantReport.comment_user"> (user: {{currentTissueVariantReport.comment_user}})</span></dd>
 
                                                     <dt ng-if="currentTissueVariantReport.comment">Comments</dt>
                                                     <dd ng-if="currentTissueVariantReport.comment">{{currentTissueVariantReport.comment}}</dd>
@@ -549,11 +552,13 @@
                                                 <td ng-if="variantReportMode!=='QC'">
                                                     <div check-box-with-confirm confirm-title="{{confirmTitle}}"
                                                          confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
-                                                         comment="variant.comment" prompt-only-if="true" enabled="currentTissueVariantReport.status==='PENDING'">
+                                                         comment="variant.comment" prompt-only-if="true"
+                                                         enabled="currentTissueVariantReport.status==='PENDING'">
                                                     </div>
                                                 </td>
                                                 <td ng-if="variantReportMode!=='QC'">
-                                                    <a ng-if="variant.comment " href ng-click="editComment(variant, currentTissueVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
+                                                    <a ng-if="variant.comment " href ng-click="editComment(variant, currentTissueVariantReport.status==='PENDING' )">
+                                                        <i class="fa fa-file-text-o "></i></a>
                                                 </td>
                                                 <td>
                                                     <a class="report-link" href ng-click="openCosmicId( variant.identifier )">
@@ -620,11 +625,16 @@
                                                 <tbody>
                                                 <tr ng-repeat="variant in currentTissueVariantReport.variants.copy_number_variants" style="cursor: auto;" role="row" class="odd">
                                                     <td ng-if="variantReportMode!=='QC'">
-                                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentTissueVariantReport.status==='PENDING'">
+                                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}"
+                                                             confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
+                                                             comment="variant.comment" prompt-only-if="true"
+                                                             enabled="currentTissueVariantReport.status==='PENDING'">
                                                         </div>
                                                     </td>
                                                     <td ng-if="variantReportMode!=='QC' ">
-                                                        <a ng-if="variant.comment " href ng-click="editComment(variant, currentTissueVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
+                                                        <a ng-if="variant.comment " href ng-click="editComment(variant, currentTissueVariantReport.status==='PENDING' )">
+                                                            <i class="fa fa-file-text-o "></i>
+                                                        </a>
                                                     </td>
                                                     <td>
                                                         <a href ng-click="openCosmicGene(variant.identifier)" class="report-link"> {{::variant.identifier | dashify }} </a>
