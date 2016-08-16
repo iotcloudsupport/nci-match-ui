@@ -79,9 +79,29 @@
                             <uib-tab heading="Tissue Variant Reports">                                
                                 <div class="panel-body" ng-init="loadTissueVariantReportsList()">
 
-
                                     <div grid-data grid-options="gridOptions" grid-actions="gridActions">
-                                        <!-- sample table layout goes below, but remember that you can you any mark-up here. -->
+                                        <div class="row">
+                                            <div class="col pull-left">
+                                                <form class="form-inline">
+                                                    <div class="form-group">
+                                                        <div class="items-per-page">
+                                                            <label for="itemsOnPageSelect2">Show</label>
+                                                            <select id="itemsOnPageSelect2" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
+                                                                <option>10</option>
+                                                                <option>25</option>
+                                                                <option>50</option>
+                                                                <option>100</option>
+                                                            </select>
+                                                            <label for="itemsOnPageSelect2">per page</label>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="col pull-right">
+                                                <input type="text" name="" value="something">
+                                            </div>
+                                        </div>
+
                                         <table class="table table-striped">
                                             <thead>
                                             <tr>
@@ -124,15 +144,12 @@
                                             </tbody>
                                         </table>
 
-                                        <!--<div class="form-group items-per-page">
-                                            <label for="itemsOnPageSelect1">Items per page:</label>
-                                            <select id="itemsOnPageSelect1" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
-                                                <option>10</option>
-                                                <option>25</option>
-                                                <option>50</option>
-                                                <option>100</option>
-                                            </select>
-                                        </div>                                        -->
+                                        <form class="form-inline pull-left">
+                                            <div class="form-group">
+                                                <grid-pagination max-size="5" class="pagination-sm" total-items="paginationOptions.totalItems" ng-model="paginationOptions.currentPage"
+                                                    ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                                            </div>
+                                        </form>
                                     </div>
 
 
