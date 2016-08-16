@@ -25,7 +25,7 @@
         scriptTag.src = 'bower_components/d3/d3.min.js';
 
         scriptTag.onreadystatechange = function () {
-            if (this.readyState == 'complete') {
+            if (this.readyState === 'complete') {
                 onScriptLoad();
             }
         }
@@ -35,7 +35,6 @@
         s.appendChild(scriptTag);
 
         function boxify(d3) {
-
             // Inspired by http://informationandvisualization.de/blog/box-plot
             d3.box = function () {
                 var width = 1,
@@ -248,10 +247,7 @@
                         var boxTick = g.selectAll("text.box")
                             .data(quartileData);
 
-
-
-                        if (showLabels == true) {
-
+                        if (showLabels === true) {
                             boxTick.enter().append("text")
                                 .attr("class", "box")
                                 .attr("dy", ".3em")
@@ -277,8 +273,7 @@
                         var whiskerTick = g.selectAll("text.whisker")
                             .data(whiskerData || []);
 
-                        if (showLabels == true) {
-
+                        if (showLabels === true) {
                             whiskerTick.enter().append("text")
                                 .attr("class", "whisker")
                                 .attr("dy", ".3em")
@@ -341,7 +336,7 @@
 
                 box.domain = function (x) {
                     if (!arguments.length) return domain;
-                    domain = x == null ? x : d3.functor(x);
+                    domain = x === null ? x : d3.functor(x);
                     return box;
                 };
 
@@ -373,9 +368,6 @@
             };
 
             function boxWhiskers(d) {
-
-                alert(JSON.stringify(d))
-
                 return [0, d.length - 1];
             }
 
@@ -392,7 +384,6 @@
             d3: function () { return d.promise; },
             boxify: boxify
         };
-
 
     }
 

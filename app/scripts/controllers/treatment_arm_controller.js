@@ -2,7 +2,8 @@
     angular.module('matchbox.treatment-arm', ['ui.bootstrap', 'cgPrompt', 'ui.router', 'datatables', 'ngResource'])
         .controller('TreatmentArmController', TreatmentArmController);
 
-    function TreatmentArmController($scope,
+    function TreatmentArmController(
+        $scope,
         $window,
         $stateParams,
         $state,
@@ -209,7 +210,6 @@
             $log.error(e);
             $log.info('Error while retriving data from the service. Transferring back to Treatment Arm list');
             $state.transitionTo('treatment-arms');
-            return;
         }
 
         function setupScope(data) {
@@ -254,12 +254,6 @@
                     historyItem.date = gmtDate.toGMTString();
                     $scope.versionHistory.push(historyItem);
                 });
-                //mock data configuration
-                /*for (var j = 0; j < version.status_log.length; j++) {
-                    var historyItem = angular.copy(version.status_log[j])
-                    historyItem.version = version.version;
-                    $scope.versionHistory.push(historyItem);
-                }*/
             }            
         }
 
@@ -367,7 +361,6 @@
             $scope.inExclusionType = 'inclusion';
             setInExclusion();
             changeHeight();
-            // $log.debug($scope.inExclusionType);
             $(window).on("resize.doResize", function () {
                 $scope.$apply(function () {
                     changeHeight();
