@@ -1,45 +1,40 @@
 (function () {
-
-    angular.module('matchbox.treatment-arms',[])
+    angular
+        .module('matchbox.treatment-arms',[])
         .controller('TreatmentArmsController', TreatmentArmsController);
 
+    function TreatmentArmsController (
+        $scope,
+        matchApi) {
 
-            function TreatmentArmsController (
-                $scope,
-                DTOptionsBuilder,
-                matchApi,
-                $stateParams) {
+        $scope.dtOptions = {
+            'info': false,
+            'paging': false
+        };
 
-                this.dtOptions = {
-                    'info': false,
-                    'paging': false
-                };
-                this.dtColumnDefs = [];
-                this.dtInstance = {};
+        $scope.dtColumnDefs = [];
+        $scope.dtInstance = {};
 
-                $scope.treatmentArmList = [];
+        $scope.treatmentArmList = [];
 
-                $scope.displayTreatmentArmList = function () {
-                    matchApi
-                        .loadTreatmentArmList()
-                        .then(function (d) {
-                            $scope.treatmentArmList = d.data;
-                            for (var i = 0; i < $scope.treatmentArmList.length; i++) {
-                                var ta = $scope.treatmentArmList[i];
-                                if (ta.current_patients !== undefined && ta.current_patients !== null) {
-                                    ta.current_patients = Math.floor(ta.current_patients);
-                                }
-                                if (ta.former_patients !== undefined && ta.former_patients !== null) {
-                                    ta.former_patients = Math.floor(ta.former_patients);
-                                }
-                                if (ta.not_enrolled_patients !== undefined && ta.not_enrolled_patients !== null) {
-                                    ta.not_enrolled_patients = Math.floor(ta.not_enrolled_patients);
-                                }
-                                if (ta.pending_patients !== undefined && ta.pending_patients !== null) {
-                                    ta.pending_patients = Math.floor(ta.pending_patients);
-                                }
-                            }
-                        });
-                };
-            }
+        $scope.displayTreatmentArmList = function() {
+            matchApi
+                .loadTreatmentArmList()
+                .then(function (d) {
+                    $scope.treatmentArmList = d.data;
+                    angular.forEach($scope.treatmentArmList, function(ta, index) {
+                        ta.current_patients = formatNumber(ta.current_patients);
+                        ta.former_patients = formatNumber(ta.former_patients);
+                        ta.not_enrolled_patients = formatNumber(ta.not_enrolled_patients);
+                        ta.pending_patients = formatNumber(ta.pending_patients);
+                        ta.pending_patients = formatNumber(ta.pending_patients);
+                    });
+                });
+        };
+
+        formatNumber = function(value) {
+            if (angular.isUndefined(value) || value === null || !angular.isNumber(value)) return '?';
+            return Math.floor(value);
+        }
+    }
 } ());
