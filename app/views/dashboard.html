@@ -120,6 +120,7 @@
                                                     <number-color-badge value="item.days_pending" yellow-threshold="days_pending_range.upper_bound_green" red-threshold="days_pending_range.upper_bound_yellow"></number-color-badge>
                                                 </td>
                                             </tr>
+                                            <tr ng-if="!gridOptions.data || !gridOptions.data.length"><td colspan="8" class="text-muted">No pending Tissue Variant reports</td></tr>
                                             </tbody>
                                         </table>
 
