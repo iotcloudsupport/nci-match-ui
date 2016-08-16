@@ -2,22 +2,20 @@
     angular.module('matchbox.specimen-tracking',['ui.bootstrap','cgPrompt', 'ui.router','datatables','ngResource'])
         .controller('SpecimenTrackingController', SpecimenTrackingController);
 
-    function SpecimenTrackingController( $scope,
-                                         $http,
-                                         matchConfig,
-                                         DTOptionsBuilder,
-                                         matchApi,
-                                         sharedCliaProperties) {
+    function SpecimenTrackingController($scope,
+                                        DTOptionsBuilder,
+                                        matchApi,
+                                        sharedCliaProperties) {
 
-        this.dtOptions = DTOptionsBuilder
+        $scope.dtOptions = DTOptionsBuilder
             .newOptions()
             .withOption('info', false);
-        this.dtOptions = DTOptionsBuilder
+        $scope.dtOptions = DTOptionsBuilder
             .newOptions()
             .withOption('paging', false);
 
-        this.dtColumnDefs = [];
-        this.dtInstance = {};
+        $scope.dtColumnDefs = [];
+        $scope.dtInstance = {};
 
         $scope.clialab = function (id) {
             sharedCliaProperties.setProperty(id);
@@ -113,8 +111,8 @@
             var total = $scope.sites.mocha.count + $scope.sites.mda.count;
             total = (total === 0) ? 1 : total;
 
-            $scope.sites.mda.percent = Math.round(calculatePercent($scope.sites.mda.count, total));
-            $scope.sites.mocha.percent = Math.round(calculatePercent($scope.sites.mocha.count, total));
+            $scope.sites.mda.percent = calculatePercent($scope.sites.mda.count, total);
+            $scope.sites.mocha.percent = calculatePercent($scope.sites.mocha.count, total);
             $scope.pieDataset[0].data = $scope.sites.mda.count;
             $scope.pieDataset[1].data = $scope.sites.mocha.count;
         }
@@ -130,10 +128,10 @@
                 var chartDataItemShipped = [];
                 var chartDataItemConcordance = [];
 
-                //chartDataItem.push(start.toString());
                 chartDataItemShipped.push(start.valueOf());
                 chartDataItemShipped.push(shippedDuration);
                 $scope.chartData[0].data.push(chartDataItemShipped);
+
                 chartDataItemConcordance.push(start.valueOf());
                 chartDataItemConcordance.push(concordanceDuration);
                 $scope.chartData[1].data.push(chartDataItemConcordance);
@@ -155,12 +153,9 @@
         ];
 
         calculatePercent = function (numerator, denominator) {
-            return (numerator / denominator) * 100;
+            return Math.round((numerator / denominator) * 100);
         }
-        
-        /**
-         * Line Chart Options
-         */
+
         $scope.lineOptions = {
             series: {
                 stack: true,
@@ -184,10 +179,8 @@
                 }
             },
             xaxis: {
-                //tickDecimals: 0
                 mode: "time",
                 timeformat: "%d-%b-%y"
-                //tickSize: [1, 'minute']
             },
             colors: ["#1ab394"],
             grid: {
@@ -205,8 +198,6 @@
                 content: "collected: %x, days elapsed: %y"
             }
         };
-
-
     }
 }());
 
