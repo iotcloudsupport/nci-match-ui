@@ -292,9 +292,6 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
             data: { pageTitle: 'Login' }
         })
 
-    console.log(ENV.AUTH0_DOMAIN);
-    console.log(ENV.AUTH0_CLIENT_ID);
-    console.log(ENV.loginUrl);
     authProvider.init({
         domain: ENV.AUTH0_DOMAIN,
         clientID: ENV.AUTH0_CLIENT_ID,
@@ -311,19 +308,18 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
 angular.module('matchbox')
     .config(config)
     .run(function($rootScope, $state, auth, store, jwtHelper, $location, ENV) {
-
         $rootScope.$state = $state;
         $rootScope.$on('$locationChangeStart', function() {
             var token = store.get('token');
             if (token) {
-                $rootScope.showHeader = true; //Open the headers
+                $rootScope.showHeader = true;
                 if (!jwtHelper.isTokenExpired(token)) {
                     if (!auth.isAuthenticated) {
                         auth.authenticate(store.get('profile'), token);
                     }
                 }
             } else {
-                $rootScope.showHeader = false; //Close the headers
+                $rootScope.showHeader = false;
                 $location.path('/auth/login');
             }
         });
