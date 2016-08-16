@@ -175,7 +175,7 @@
                                             <dd>{{currentSurgicalEvent.pathology_status_date | utc}}</dd>
 
                                             <dt>Comment</dt>
-                                            <dd>{{currentSurgicalEvent.comments}}</dd>
+                                            <dd>{{currentSurgicalEvent.comments | dashify}}</dd>
                                         </dl>
                                     </div>
                                 </div>
@@ -267,7 +267,7 @@
                                         <td>{{shipment.dna_volume | dashify}}</td>
                                         <td>{{shipment.reported_date | utc | dashify}}</td>
                                         <td>
-                                            <div class="text-truncate-200px"  data-placement="top" title="{{shipment.comments}}" onmouseenter="$(this).tooltip('show')" >{{shipment.comments}}</div>
+                                            <div class="text-truncate-200px"  data-placement="top" title="{{shipment.comments}}" onmouseenter="$(this).tooltip('show')" >{{shipment.comments | dashify}}</div>
                                         </td>
                                     </tr>
                                     <tr ng-repeat-end>
