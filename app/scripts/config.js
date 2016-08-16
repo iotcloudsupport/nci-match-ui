@@ -103,9 +103,6 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
             url: "/treatment-arms",
             templateUrl: "views/treatment_arms.html",
             data: { pageTitle: 'Treatment Arms', requiresLogin: true },
-            controller: function($scope, $stateParams) {
-                console.log($stateParams);
-            },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -129,10 +126,8 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
             url: "/treatment-arm?name&stratum&version",
             templateUrl: "views/treatment_arm.html",
             data: { pageTitle: 'Treatment Arm', requiresLogin: true },
-            controller: function($scope, $stateParams) { //, $stateParams
-                console.log($stateParams);
-                $scope.taid = $stateParams.name; //treatmentArmId;
-                //$scope.tavsn = $stateParams.treatmentArmVersion;
+            controller: function($scope, $stateParams) {
+                $scope.taid = $stateParams.name;
             },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
@@ -202,7 +197,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
         .state('clia-labs', {
             url: "/clia-labs",
             templateUrl: "views/iradmin.html",
-            data: { pageTitle: 'IR Reporters', requiresLogin: true },
+            data: { pageTitle: 'CLIA Labs', requiresLogin: true },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([
@@ -232,7 +227,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
         .state('ocsample', {
             url: "/ocsample/:sampleId",
             templateUrl: "views/ocsample.html",
-            data: { pageTitle: 'IR Sample Quality Control Report', requiresLogin: true },
+            data: { pageTitle: 'Sample Quality Control Report', requiresLogin: true },
             controller: function($scope, $stateParams) {
                 $scope.sid = $stateParams.sampleId;
             },
@@ -258,7 +253,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
         .state('ntc_quality_control', {
             url: "/ntc_quality_control/:sampleId",
             templateUrl: "views/ntc_quality_control.html",
-            data: { pageTitle: 'IR NTC Quality Control Report', requiresLogin: true },
+            data: { pageTitle: 'NTC Quality Control Report', requiresLogin: true },
             controller: function($scope, $stateParams) {
                 $scope.sid = $stateParams.sampleId;
             },
