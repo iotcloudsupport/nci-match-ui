@@ -86,24 +86,6 @@
         ];
         var aMoiHighlight = "#000088";
 
-        // $scope.donutOptions = {
-        //     segmentShowStroke: true,
-        //     segmentStrokeColor: "#fff",
-        //     segmentStrokeWidth: 2,
-        //     percentageInnerCutout: 45, // This is 0 for Pie charts
-        //     animationSteps: 100,
-        //     animationEasing: "easeOutBounce",
-        //     animateRotate: true,
-        //     animateScale: false,
-        //     responsive: true,
-        //     legendTemplate: '<ul class="dashboard donut-chart-legend">' +
-        //     '<% for (var i=0; i<segments.length; i++) {%>' +
-        //     '<i class="fa fa-square" style="color: <%=segments[i].fillColor%>" ></i> ' +
-        //     '<%if(segments[i].label){%><%=segments[i].label%> : <strong><%=segments[i].value%> patients</strong> <%}%>' +
-        //     '<br><%}%>' +
-        //     '</ul>'
-        // };
-
         $scope.donutOptions = {
             segmentShowStroke: true,
             segmentStrokeColor: "#fff",
@@ -235,8 +217,6 @@
         $scope.amoi_4 = 0;
         $scope.amoi_5 = 0
 
-
-
         function loadSequencedAndConfirmedChartData() {
             matchApi
                 .loadSequencedAndConfirmedChartData()
@@ -263,11 +243,14 @@
                 data: [], //required parameter - array with data 
                 //optional parameter - start sort options 
                 sort: {
-                    predicate: 'companyName',
-                    direction: 'asc'
+                    predicate: 'days_pending',
+                    direction: 'desc'
                 }
             };
-            
+
+            $scope.gridActions = {
+            }
+
             matchApi
                 .loadTissueVariantReportsList()
                 .then(function (d) {

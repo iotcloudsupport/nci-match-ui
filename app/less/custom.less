@@ -701,3 +701,37 @@ button.btn-default.dim:active {
 .activity-header-panel {
   height: 62px;
 }
+
+// .table > thead > tr > th {
+//     vertical-align: middle;
+// }
+
+.margin-bottom-basic {
+    margin-bottom: 15px;
+}
+
+.pagination {
+    margin: 0;
+}
+
+.items-per-page {
+    margin-left: 15px;
+}
+
+.sortable:after {
+    font: 14px/1 FontAwesome;
+    font-size: 0.8em;
+    content: "\f0dc";
+    padding-left: 4px;
+    color: darken(@light-gray, 20%);
+}
+
+.sortable.sort-ascent:after {
+    content: '\f0de';
+    vertical-align: bottom;
+}
+
+.sortable.sort-descent:after {
+    content: "\f0dd";
+    vertical-align: top;
+}

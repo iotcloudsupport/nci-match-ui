@@ -82,17 +82,17 @@
 
                                     <div grid-data grid-options="gridOptions" grid-actions="gridActions">
                                         <!-- sample table layout goes below, but remember that you can you any mark-up here. -->
-                                        <table class="table">
+                                        <table class="table table-striped">
                                             <thead>
                                             <tr>
-                                                <th>Patient ID</th>
-                                                <th>Molecular ID</th>
-                                                <th>Analysis ID</th>
+                                                <th sortable="patient_id" class="sortable">Patient ID</th>
+                                                <th sortable="molecular_id" class="sortable">Molecular ID</th>
+                                                <th sortable="analysis_id" class="sortable">Analysis ID</th>
                                                 <th class="text-center">Variant Report</th>
-                                                <th>CLIA Lab</th>
-                                                <th>Specimen Received Date</th>
-                                                <th>Variant Report Received Date</th>
-                                                <th>Days Pending</th>
+                                                <th sortable="clia_lab" class="sortable">CLIA Lab</th>
+                                                <th sortable="specimen_received_date" class="sortable">Specimen Received Date</th>
+                                                <th sortable="variant_report_received_date" class="sortable">Variant Report Received Date</th>
+                                                <th sortable="days_pending" class="sortable">Days Pending</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -122,6 +122,16 @@
                                             </tr>
                                             </tbody>
                                         </table>
+
+                                        <!--<div class="form-group items-per-page">
+                                            <label for="itemsOnPageSelect1">Items per page:</label>
+                                            <select id="itemsOnPageSelect1" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
+                                                <option>10</option>
+                                                <option>25</option>
+                                                <option>50</option>
+                                                <option>100</option>
+                                            </select>
+                                        </div>                                        -->
                                     </div>
 
 
