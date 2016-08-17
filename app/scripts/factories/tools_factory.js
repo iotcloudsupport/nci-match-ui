@@ -8,7 +8,8 @@
     function arrayTools() {
         return {
             removeElement: removeElement,
-            forEach: forEach
+            forEach: forEach,
+            itemHasValue: itemHasValue
         }
 
         function removeElement(arr, element) {
@@ -32,6 +33,21 @@
                 var element = arr[i];
                 f(element);
             }
+        }
+
+        function itemHasValue(item, value, searchableProps) {
+            if (!value && value !== 0)
+                return true;
+
+            var props = searchableProps || Object.keys(item);
+            for (var i = 0; i < props.length; i++) {
+                var prop = props[i];
+                if ((item[prop] || item[prop] === 0) && (item[prop] + '').toLowerCase().indexOf(value.toLowerCase()) >= 0) {
+                    return true;
+                }                                
+            }
+
+            return false;
         }
     }
 

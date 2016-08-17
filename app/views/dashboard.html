@@ -99,7 +99,12 @@
                                             </div>
                                             <div class="col pull-right">
                                                 <div class="grid-filter">
-                                                    <input type="text" class="form-control input-sm">
+                                                    <input type="text" class="form-control input-sm order-search-box"
+                                                                                    placeholder="Filter by all columns"
+                                                                                    ng-change="gridActions.filter()"
+                                                                                    ng-model="filterAll"
+                                                                                    filter-by="filterAll"
+                                                                                    filter-type="text">                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -142,7 +147,9 @@
                                                     <number-color-badge value="item.days_pending" yellow-threshold="days_pending_range.upper_bound_green" red-threshold="days_pending_range.upper_bound_yellow"></number-color-badge>
                                                 </td>
                                             </tr>
-                                            <tr ng-if="!gridOptions.data || !gridOptions.data.length"><td colspan="8" class="text-muted">No pending Tissue Variant reports</td></tr>
+                                            <tr ng-if="!gridOptions.data || !gridOptions.data.length" class="no-data-message">
+                                                <td colspan="8" class="text-muted">No pending Tissue Variant reports</td>
+                                            </tr>
                                             </tbody>
                                         </table>
 

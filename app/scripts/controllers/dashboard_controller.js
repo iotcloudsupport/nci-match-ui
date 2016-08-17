@@ -3,8 +3,6 @@
         .controller('DashboardController', DashboardController);
 
     function DashboardController($scope, matchApi, store, DTOptionsBuilder, sharedCliaProperties, arrayTools, dateTools) {
-        $scope.lastUpdated = (new Date()).getTime();
-        $scope.name = 'MATCHBox User';
         $scope.name = setName();
 
         $scope.numberOfPatients = '?';
@@ -240,16 +238,19 @@
         function loadTissueVariantReportsList() {
 
             $scope.gridOptions = {
-                data: [], //required parameter - array with data 
-                //optional parameter - start sort options 
+                data: [], 
                 sort: {
                     predicate: 'days_pending',
                     direction: 'desc'
+                },
+                customFilters: {
+                    filterAll: function (items, value, predicate) {
+                        return items.filter(function (item) {
+                            return arrayTools.itemHasValue(item, value, $scope.gridOptions.searchableProps);
+                        });
+                    }
                 }
             };
-
-            $scope.gridActions = {
-            }
 
             matchApi
                 .loadTissueVariantReportsList()
