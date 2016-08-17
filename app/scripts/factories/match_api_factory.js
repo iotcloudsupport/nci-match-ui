@@ -12,7 +12,7 @@
                 loadSequencedAndConfirmedChartData: loadSequencedAndConfirmedChartData,
                 loadTissueVariantReportsList: loadTissueVariantReportsList,
                 loadBloodVariantReportsList: loadBloodVariantReportsList,
-                loadPatientPendingAssignmentReportsList: loadPatientPendingAssignmentReportsList,
+                loadPendingAssignmentReportsList: loadPendingAssignmentReportsList,
                 loadSpecimenTrackingList: loadSpecimenTrackingList,
                 loadTreatmentArmList: loadTreatmentArmList,
                 loadPatientsForTa: loadPatientsForTa,
@@ -96,7 +96,7 @@
                 return $http.get(matchConfig.patientApiBaseUrl + '/dashboard/pendingVariantReports/blood');
             }
 
-            function loadPatientPendingAssignmentReportsList() {
+            function loadPendingAssignmentReportsList() {
                 return $http.get(matchConfig.patientApiBaseUrl + '/dashboard/pendingAssignmentReports');
             }
 

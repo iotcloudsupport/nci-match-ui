@@ -6,7 +6,6 @@
             $scope, 
             matchApi, 
             store, 
-            DTOptionsBuilder, 
             sharedCliaProperties, 
             arrayTools, 
             dateTools,
@@ -29,18 +28,6 @@
 
         $scope.patientStatistics = {};
 
-        $scope.now = new Date();
-
-        $scope.message = [
-            'Patient Registration',
-            'Tissue Specimen Received',
-            'Tissue Specimen Failure',
-            'New Treatment Arm',
-            'Treatment Arm Open',
-            'Treatment Arm Closed',
-            'Blood Specimen Received'
-        ];
-
         $scope.days_pending_range = {
             "upper_bound_green": 8,
             "upper_bound_yellow": 14
@@ -51,38 +38,12 @@
             "upper_bound_yellow": 14
         };
 
-        $scope.pendingTissueVariantReportGridOptions = {
-            data: [], //required parameter - array with data 
-            //optional parameter - start sort options 
-            sort: {
-                predicate: 'companyName',
-                direction: 'asc'
-            }
-        };
-
-        this.dtOptions = DTOptionsBuilder.newOptions()
-            .withDisplayLength(25);
-        this.dtOptions = DTOptionsBuilder.newOptions()
-            .withOption('bPaginate', false)
-        this.dtOptions = DTOptionsBuilder.newOptions()
-            .withOption('bLengthChange', false);
-
-        this.dtColumnDefs = [];
-        this.dtInstance = {};
-
-        this.ddOptions = {
-            'info': false,
-            'paging': false,
-            'bFilter': false,
-            'order': [7, 'desc']
-        };
-
         $scope.loadDashboardStatisticsData = loadDashboardStatisticsData;
         $scope.setCanvasHeight = setCanvasHeight;
         $scope.loadSequencedAndConfirmedChartData = loadSequencedAndConfirmedChartData;
         $scope.loadTissueVariantReportsList = loadTissueVariantReportsList;
         $scope.loadBloodVariantReportsList = loadBloodVariantReportsList;
-        $scope.loadPatientPendingAssignmentReportsList = loadPatientPendingAssignmentReportsList;
+        $scope.loadPendingAssignmentReportsList = loadPendingAssignmentReportsList;
         $scope.loadDashboardData = loadDashboardData;
 
         var aMoiLabels = [
@@ -169,11 +130,80 @@
                     filterAll: function (items, value, predicate) {
                         return items.filter(function (item) {
                             return arrayTools.itemHasValue(item, value, 
-                                $scope.pendingTissueVariantReportGridOptions.searchableProps, $scope.pendingTissueVariantReportGridOptions.ngColumnFilters, $filter);
+                                $scope.pendingBloodVariantReportGridOptions.searchableProps, $scope.pendingBloodVariantReportGridOptions.ngColumnFilters, $filter);
                         });
                     }
                 }
             };
+
+            $scope.pendingAssignmentReportGridOptions = {
+                data: [],
+                ngColumnFilters: {
+                    "assigned_date": "utc"
+                },
+                sort: {
+                    predicate: 'hours_pending',
+                    direction: 'desc'
+                },
+                searchableProps: [
+                    'patient_id',
+                    'molecular_id',
+                    'analysis_id',
+                    'disease',
+                    'assigned_date',
+                    'hours_pending',
+                    'treatment_arm_title'
+                ],
+                customFilters: {
+                    filterAll: function (items, value, predicate) {
+                        return items.filter(function (item) {
+                            return arrayTools.itemHasValue(item, value, 
+                                $scope.pendingAssignmentReportGridOptions.searchableProps, $scope.pendingAssignmentReportGridOptions.ngColumnFilters, $filter);
+                        });
+                    }
+                }
+            };
+        }
+
+        function loadTissueVariantReportsList() {
+            matchApi
+                .loadTissueVariantReportsList()
+                .then(function (d) {
+                    $scope.pendingTissueVariantReportGridOptions.data = d.data;
+                    calculateDaysPending($scope.pendingTissueVariantReportGridOptions.data);
+                });
+        }
+
+        function loadBloodVariantReportsList() {
+            matchApi
+                .loadBloodVariantReportsList()
+                .then(function (d) {
+                    $scope.pendingBloodVariantReportGridOptions.data = d.data;
+                    calculateDaysPending($scope.pendingBloodVariantReportGridOptions.data);
+                });
+        }
+
+        function loadPendingAssignmentReportsList() {
+            matchApi
+                .loadPendingAssignmentReportsList()
+                .then(function (d) {
+                    $scope.pendingAssignmentReportGridOptions.data = d.data;
+                    calculateHoursPending($scope.pendingAssignmentReportGridOptions.data);
+                });
+        }
+
+        function calculateDaysPending(data) {
+            arrayTools.forEach(data, function (element) {
+                var days_pending = dateTools.calculateDaysPending(element, 'status_date');
+                element.days_pending = days_pending || days_pending === 0 ? days_pending : '-';
+            });
+        }
+
+        function calculateHoursPending(data) {
+            arrayTools.forEach(data, function (element) {
+                var hours_pending = dateTools.calculateHoursPending(element, 'status_date');
+                element.hours_pending = hours_pending || hours_pending === 0 ? hours_pending : '-';
+            });
         }
 
         $scope.donutData = [
@@ -312,48 +342,11 @@
                 });
         }
 
-        function loadTissueVariantReportsList() {
-            matchApi
-                .loadTissueVariantReportsList()
-                .then(function (d) {
-                    $scope.pendingTissueVariantReportGridOptions.data = d.data;
-                    calculatePendingDays($scope.pendingTissueVariantReportGridOptions.data);
-                });
-        }
-
-        function loadBloodVariantReportsList() {
-            matchApi
-                .loadBloodVariantReportsList()
-                .then(function (d) {
-                    $scope.pendingBloodVariantReportGridOptions.data = d.data;
-                    calculatePendingDays($scope.pendingBloodVariantReportGridOptions.data);
-                });
-        }
-
-        function loadPatientPendingAssignmentReportsList() {
-            matchApi
-                .loadPatientPendingAssignmentReportsList()
-                .then(function (d) {
-                    $scope.pendingAssignmentReportList = d.data;
-                    arrayTools.forEach($scope.pendingAssignmentReportList, function (element) {
-                        var hours_pending = dateTools.calculateHoursPending(element, 'status_date');
-                        element.hours_pending = hours_pending || hours_pending === 0 ? hours_pending : '-';
-                    });
-                });
-        }
-
-        function calculatePendingDays(data) {
-            arrayTools.forEach(data, function (element) {
-                var days_pending = dateTools.calculateDaysPending(element, 'status_date');
-                element.days_pending = days_pending || days_pending === 0 ? days_pending : '-';
-            });
-        }
-
         function loadDashboardData() {
             loadSequencedAndConfirmedChartData();
             loadTissueVariantReportsList();
             loadBloodVariantReportsList();
-            loadPatientPendingAssignmentReportsList();
+            loadPendingAssignmentReportsList();
             loadDashboardStatisticsData();
         }
     }
