@@ -35,14 +35,16 @@
             }
         }
 
-        function itemHasValue(item, value, searchableProps) {
-            if (!value && value !== 0)
+        function itemHasValue(item, filterValue, searchableProps, ngColumnFilters, $filter) {
+            if (!filterValue && filterValue !== 0)
                 return true;
 
             var props = searchableProps || Object.keys(item);
             for (var i = 0; i < props.length; i++) {
                 var prop = props[i];
-                if ((item[prop] || item[prop] === 0) && (item[prop] + '').toLowerCase().indexOf(value.toLowerCase()) >= 0) {
+                var itemValue = (prop in ngColumnFilters) ? $filter(ngColumnFilters[prop])(item[prop]) : item[prop];
+
+                if ((itemValue || itemValue === 0) && (itemValue + '').toLowerCase().indexOf(filterValue.toLowerCase()) >= 0) {
                     return true;
                 }                                
             }

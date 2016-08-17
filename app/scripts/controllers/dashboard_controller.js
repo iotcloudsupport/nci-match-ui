@@ -2,7 +2,16 @@
     angular.module('matchbox.dashboard', [])
         .controller('DashboardController', DashboardController);
 
-    function DashboardController($scope, matchApi, store, DTOptionsBuilder, sharedCliaProperties, arrayTools, dateTools) {
+    function DashboardController(
+            $scope, 
+            matchApi, 
+            store, 
+            DTOptionsBuilder, 
+            sharedCliaProperties, 
+            arrayTools, 
+            dateTools,
+            $filter) {
+
         $scope.name = setName();
 
         $scope.numberOfPatients = '?';
@@ -236,17 +245,30 @@
         }
 
         function loadTissueVariantReportsList() {
-
             $scope.gridOptions = {
-                data: [], 
+                data: [],
+                ngColumnFilters: {
+                    "specimen_received_date": "utc", 
+                    "variant_report_received_date": "utc"
+                },
                 sort: {
                     predicate: 'days_pending',
                     direction: 'desc'
                 },
+                searchableProps: [
+                    'patient_id',
+                    'molecular_id',
+                    'analysis_id',
+                    'clia_lab',
+                    'specimen_received_date',
+                    'variant_report_received_date',
+                    'days_pending'
+                ],
                 customFilters: {
                     filterAll: function (items, value, predicate) {
                         return items.filter(function (item) {
-                            return arrayTools.itemHasValue(item, value, $scope.gridOptions.searchableProps);
+                            return arrayTools.itemHasValue(item, value, 
+                                $scope.gridOptions.searchableProps, $scope.gridOptions.ngColumnFilters, $filter);
                         });
                     }
                 }
@@ -258,8 +280,8 @@
                     $scope.gridOptions.data = d.data;
                     $scope.pendingTissueVariantReportList = d.data;
                     arrayTools.forEach($scope.pendingTissueVariantReportList, function (element) {
-                        var days_pending  = dateTools.calculateDaysPending(element, 'status_date');
-                        element.days_pending  = days_pending || days_pending === 0 ? days_pending : '-';
+                        var days_pending = dateTools.calculateDaysPending(element, 'status_date');
+                        element.days_pending = days_pending || days_pending === 0 ? days_pending : '-';
                     });
                 });
         }
@@ -270,8 +292,8 @@
                 .then(function (d) {
                     $scope.pendingBloodVariantReportList = d.data;
                     arrayTools.forEach($scope.pendingBloodVariantReportList, function (element) {
-                        var days_pending  = dateTools.calculateDaysPending(element, 'status_date');
-                        element.days_pending  = days_pending || days_pending === 0 ? days_pending : '-';
+                        var days_pending = dateTools.calculateDaysPending(element, 'status_date');
+                        element.days_pending = days_pending || days_pending === 0 ? days_pending : '-';
                     });
                 });
         }
@@ -282,8 +304,8 @@
                 .then(function (d) {
                     $scope.pendingAssignmentReportList = d.data;
                     arrayTools.forEach($scope.pendingAssignmentReportList, function (element) {
-                        var hours_pending  = dateTools.calculateHoursPending(element, 'status_date');
-                        element.hours_pending  = hours_pending || hours_pending === 0 ? hours_pending : '-';
+                        var hours_pending = dateTools.calculateHoursPending(element, 'status_date');
+                        element.hours_pending = hours_pending || hours_pending === 0 ? hours_pending : '-';
                     });
                 });
         }
