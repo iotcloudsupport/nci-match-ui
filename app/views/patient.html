@@ -29,19 +29,19 @@
                     <div class="header-info-box top-main-header-box">
                         <dl class="dl-horizontal">
                             <dt>Patient ID</dt>
-                            <dd>{{data.patient_id}}</dd>
+                            <dd>{{data.patient_id | dashify}}</dd>
 
                             <dt>Patient</dt>
-                            <dd>{{data.gender}}, {{data.ethnicity}}</dd>
+                            <dd>{{data.gender}}, {{data.ethnicity | dashify}}</dd>
 
                             <dt>Last Rejoin Scan Date</dt>
-                            <dd>{{ data.last_rejoin_scan_date | utc }}</dd>
+                            <dd>{{ data.last_rejoin_scan_date | utc  | dashify}}</dd>
 
                             <dt>Status</dt>
-                            <dd style="color: {{ data.current_status | patientStatus }}">{{data.current_status}}</dd>
+                            <dd style="color: {{ data.current_status | patientStatus }}">{{data.current_status | dashify}}</dd>
 
                             <dt> Current Step</dt>
-                            <dd>{{data.current_step_number}}</dd>
+                            <dd>{{data.current_step_number | dashify}}</dd>
 
                             <dt>Treatment Arm</dt>
                             <dd>
@@ -55,13 +55,13 @@
                     <div class="header-info-box top-main-header-box">
                         <dl class="dl-horizontal">
                             <dt>Disease Name</dt>
-                            <dd>{{::disease.disease_name}}</dd>
+                            <dd>{{::disease.disease_name | dashify}}</dd>
 
                             <dt>Disease Code Type</dt>
-                            <dd>{{::disease.disease_code_type}}</dd>
+                            <dd>{{::disease.disease_code_type | dashify}}</dd>
 
                             <dt>Disease Code</dt>
-                            <dd>{{::disease.disease_code}}</dd>
+                            <dd>{{::disease.disease_code | dashify}}</dd>
 
                             <dt>Prior Drugs</dt>
                             <dd> <span ng-repeat="drug in data.prior_drugs">{{drug.drug_name}}{{$last?'':', '}}</span></dd>
