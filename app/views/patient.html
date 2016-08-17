@@ -64,7 +64,8 @@
                             <dd>{{::disease.disease_code | dashify}}</dd>
 
                             <dt>Prior Drugs</dt>
-                            <dd> <span ng-repeat="drug in data.prior_drugs">{{drug.drug_name}}{{$last?'':', '}}</span></dd>
+                            <dd ng-if="data.prior_drugs"> <span ng-repeat="drug in data.prior_drugs">{{drug.drug_name}}{{$last?'':', '}}</span></dd>
+                            <dd ng-if="!data.prior_drugs"> - </dd>
 
                         </dl>
                     </div>
@@ -640,6 +641,7 @@
                                                         <a ng-if="variant.comment " href ng-click="editComment(variant, currentTissueVariantReport.status==='PENDING' )">
                                                             <i class="fa fa-file-text-o "></i>
                                                         </a>
+                                                        <p ng-if="!variant.comment"> - </p>
                                                     </td>
                                                     <td>
                                                         <a href ng-click="openCosmicGene(variant.identifier)" class="report-link"> {{::variant.identifier | dashify }} </a>
@@ -689,11 +691,14 @@
                                                 <tbody>
                                                 <tr ng-repeat="variant in currentTissueVariantReport.variants.gene_fusions" style="cursor: auto;" role="row" class="odd">
                                                     <td ng-if="variantReportMode!=='QC'">
-                                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentTissueVariantReport.status==='PENDING'">
+                                                        <div check-box-with-confirm confirm-title="{{confirmTitle}}"
+                                                             confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment"
+                                                             prompt-only-if="true" enabled="currentTissueVariantReport.status==='PENDING'">
                                                         </div>
                                                     </td>
                                                     <td ng-if="variantReportMode!=='QC'">
                                                         <a ng-if="variant.comment " href ng-click="editComment(variant, currentTissueVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
+                                                        <p ng-if="!variant.comment"> - </p>
                                                     </td>
                                                     <td>{{variant.identifier}}</td>
                                                     <td ng-if="variantReportMode!=='QC'">
@@ -1271,6 +1276,7 @@
                                             </td>
                                             <td ng-if="variantReportMode!=='QC'">
                                                 <a ng-if="variant.comment " href ng-click="editComment(variant, currentTissueVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
+                                                <p ng-if="!variant.comment"> - </p>
                                             </td>
                                             <td>
                                                 <a class="report-link" href ng-click="openCosmicId( variant.identifier )">
@@ -1337,11 +1343,14 @@
                                         <tbody>
                                         <tr ng-repeat="variant in currentBloodVariantReport.variants.copy_number_variants" style="cursor: auto;" role="row" class="odd">
                                             <td ng-if="variantReportMode!=='QC'">
-                                                <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentTissueVariantReport.status==='PENDING'">
+                                                <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}"
+                                                     is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true"
+                                                     enabled="currentTissueVariantReport.status==='PENDING'">
                                                 </div>
                                             </td>
                                             <td ng-if="variantReportMode!=='QC' ">
                                                 <a ng-if="variant.comment " href ng-click="editComment(variant, currentTissueVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
+                                                <p ng-if="!variant.comment"> - </p>
                                             </td>
                                             <td>
                                                 <a href ng-click="openCosmicGene(variant.identifier)" class="report-link"> {{::variant.identifier | dashify }} </a>
@@ -1391,11 +1400,14 @@
                                         <tbody>
                                         <tr ng-repeat="variant in currentBloodVariantReport.variants.gene_fusions" style="cursor: auto;" role="row" class="odd">
                                             <td ng-if="variantReportMode!=='QC'">
-                                                <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true" enabled="currentTissueVariantReport.status==='PENDING'">
+                                                <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}"
+                                                     is-checked="variant.confirmed" comment="variant.comment" prompt-only-if="true"
+                                                     enabled="currentTissueVariantReport.status==='PENDING'">
                                                 </div>
                                             </td>
                                             <td ng-if="variantReportMode!=='QC'">
                                                 <a ng-if="variant.comment " href ng-click="editComment(variant, currentTissueVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
+                                                <p ng-if="!variant.comment"> - </p>
                                             </td>
                                             <td>{{variant.identifier}}</td>
                                             <td ng-if="variantReportMode!=='QC'">
