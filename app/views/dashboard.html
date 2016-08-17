@@ -23,11 +23,11 @@
                         Patients on Treatment:
                     </li>
                     <li class="list-group-item">
-                        <strong><span class="pull-right">{{ pendingTissueVariantReportGridOptions.length }}</span></strong>
+                        <strong><span class="pull-right">{{ pendingTissueVariantReportGridOptions.data.length }}</span></strong>
                         Pending Tissue Variant Reports:
                     </li>
                     <li class="list-group-item">
-                        <strong><span class="pull-right">{{ pendingBloodVariantReportList.length }}</span></strong>
+                        <strong><span class="pull-right">{{ pendingBloodVariantReportGridOptions.data.length }}</span></strong>
                         Pending Blood Variant Reports:
                     </li>
                     <li class="list-group-item">
@@ -163,54 +163,94 @@
                                     </div>
                                 </div>
                             </uib-tab>
+
                             <uib-tab heading="Blood Variant Reports">
                                 <div class="panel-body" ng-init="loadBloodVariantReportsList()">
-                                    <table datatable="ng" dt-options="DashCtrl.ddOptions" dt-column-defs="DashCtrl.dtColumnDefs" dt-instance="DashCtrl.dtInstance"
-                                        class="table table-striped table-bordered table-hover">
-                                        <thead>
+                                    <div id="pendingBloodVRs" grid-data grid-options="pendingBloodVariantReportGridOptions" grid-actions="gridActions" class="data-grid">
+                                        <div class="row">
+                                            <div class="col pull-left">
+                                                <form class="form-inline">
+                                                    <div class="form-group">
+                                                        <div class="items-per-page">
+                                                            <label for="itemsOnPageSelect2">Show</label>
+                                                            <select id="itemsOnPageSelect2" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
+                                                                <option>10</option>
+                                                                <option>25</option>
+                                                                <option>50</option>
+                                                                <option>100</option>
+                                                            </select>
+                                                            <label for="itemsOnPageSelect2">per page</label>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="col pull-right">
+                                                <div class="grid-filter">
+                                                    <input type="text" class="form-control input-sm order-search-box"
+                                                        placeholder="Filter by all columns"
+                                                        grid-id="pendingBloodVRs"
+                                                        ng-change="gridActions.filter()"
+                                                        ng-model="filterAll"
+                                                        filter-by="filterAll"
+                                                        filter-type="text">                                                
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <table class="table table-striped">
+                                            <thead>
                                             <tr>
-                                                <th>Patient ID</th>
-                                                <th>Molecular ID</th>
-                                                <th>Analysis ID</th>
+                                                <th sortable="patient_id" class="sortable">Patient ID</th>
+                                                <th sortable="molecular_id" class="sortable">Molecular ID</th>
+                                                <th sortable="analysis_id" class="sortable">Analysis ID</th>
                                                 <th class="text-center">Variant Report</th>
-                                                <th>CLIA Lab</th>
-                                                <th>Specimen Received Date</th>
-                                                <th>Variant Report Received Date</th>
-                                                <th>Days Pending</th>
+                                                <th sortable="clia_lab" class="sortable">CLIA Lab</th>
+                                                <th sortable="specimen_received_date" class="sortable">Specimen Received Date</th>
+                                                <th sortable="variant_report_received_date" class="sortable">Variant Report Received Date</th>
+                                                <th sortable="days_pending" class="sortable">Days Pending</th>
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr ng-repeat="patient in pendingBloodVariantReportList">
+                                            </thead>
+                                            <tbody>
+                                            <tr grid-item>
                                                 <td>
-                                                    <a ui-sref="patient({ patient_id: patient.patient_id })">
-                                                        <i class="fa fa-user"></i> {{::patient.patient_id | dashify }}
+                                                    <a ui-sref="patient({ patient_id: item.patient_id })">
+                                                        <i class="fa fa-user"></i> <span ng-bind="item.patient_id | dashify"></span> 
                                                     </a>
                                                 </td>
-                                                <td><a ui-sref="patient({ patient_id: patient.patient_id, section: 'surgical_event', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })">{{ patient.molecular_id | dashify }}</a></td>
-                                                <td><a ui-sref="patient({ patient_id: patient.patient_id, section: 'blood_variant_report', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })">{{ patient.analysis_id | dashify }}</a></td>
+                                                <td><a ui-sref="patient({ patient_id: item.patient_id, section: 'surgical_event', molecular_id: item.molecular_id, analysis_id: item.analysis_id })"><span ng-bind="item.molecular_id | dashify"></span></a></td>
+                                                <td><a ui-sref="patient({ patient_id: item.patient_id, section: 'blood_variant_report', molecular_id: item.molecular_id, analysis_id: item.analysis_id })"><span ng-bind="item.analysis_id | dashify"></span></a></td>
                                                 <td class="text-center">
-                                                    <a ui-sref="patient({ patient_id: patient.patient_id, section: 'blood_variant_report', molecular_id: patient.molecular_id, analysis_id: patient.analysis_id })"
-                                                        title="Variant Report">
+                                                    <a ui-sref="patient({ patient_id: item.patient_id, section: 'blood_variant_report', molecular_id: item.molecular_id, analysis_id: item.analysis_id })" title="Variant Report">
                                                         <i class="fa fa-file-text-o"></i>
                                                     </a>
                                                 </td>
-                                                <td>
-                                                    <a ng-if="patient.clia_lab === 'MoCha'" ui-sref="clia-labs" ng-click="clialab('mocha')">{{ patient.clia_lab | dashify }}</a>
-                                                    <a ng-if="patient.clia_lab === 'MDA'" ui-sref="clia-labs" ng-click="clialab('mdacc')">{{ patient.clia_lab | dashify }}</a>
+                                                <td ng-switch="item.clia_lab">
+                                                    <a ng-when="MoCha" ui-sref="clia-labs" ng-click="clialab('mocha')"><span ng-bind="item.clia_lab"></span></a>
+                                                    <a ng-when="MDA" ui-sref="clia-labs" ng-click="clialab('mdacc')"><span ng-bind="item.clia_lab"></span></a>
+                                                    <span ng-other>-</span>
                                                 </td>
-                                                <td>{{ patient.specimen_received_date | utc }}</td>
-                                                <td>{{ patient.variant_report_received_date | utc }}</td>
-                                                <td><span ng-if="patient.days_pending >= days_pending_range.upper_bound_yellow"
-                                                        class="label label-danger">{{ patient.days_pending }}</span>
-                                                    <span ng-if="patient.days_pending < days_pending_range.upper_bound_yellow && patient.days_pending >= days_pending_range.upper_bound_green"
-                                                        class="label label-warning">{{ patient.days_pending }}</span>
-                                                    <span ng-if="patient.days_pending < days_pending_range.upper_bound_green" class="label label-primary">{{ patient.days_pending }}</span>
+                                                <td ng-bind="item.specimen_received_date | utc"></td>
+                                                <td ng-bind="item.variant_report_received_date | utc"></td>
+                                                <td>
+                                                    <number-color-badge value="item.days_pending" yellow-threshold="days_pending_range.upper_bound_green" red-threshold="days_pending_range.upper_bound_yellow"></number-color-badge>
                                                 </td>
                                             </tr>
-                                        </tbody>
-                                    </table>
+                                            <tr ng-if="!pendingBloodVariantReportGridOptions.data || !pendingBloodVariantReportGridOptions.data.length" class="no-data-message">
+                                                <td colspan="8" class="text-muted">No pending Blood Variant reports</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <form class="form-inline pull-left">
+                                            <div class="form-group">
+                                                <grid-pagination max-size="5" class="pagination-sm" total-items="paginationOptions.totalItems" ng-model="paginationOptions.currentPage"
+                                                    ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </uib-tab>
+
                             <uib-tab heading="Assignment Reports">
                                 <div class="panel-body" ng-init="loadPatientPendingAssignmentReportsList()">
                                     <table datatable="ng" dt-options="DashCtrl.ddOptions" dt-column-defs="DashCtrl.dtColumnDefs" dt-instance="DashCtrl.dtInstance"

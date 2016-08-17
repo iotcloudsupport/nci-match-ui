@@ -21,8 +21,11 @@
         $scope.numberOfPendingTissueVariantReports = '?';
         $scope.numberOfPendingBloodVariantReports = '?';
 
-        $scope.pendingBloodVariantReportList = [];
         $scope.pendingAssignmentReportList = [];
+
+        $scope.pendingTissueVariantReportGridOptions = {};
+        $scope.pendingBloodVariantReportGridOptions = {};
+        $scope.pendingAssignmentReportGridOptions = {};        
 
         $scope.patientStatistics = {};
 
@@ -111,6 +114,66 @@
 
         function activate() {
             setupGridOptions();
+        }
+
+        function setupGridOptions() {
+            $scope.pendingTissueVariantReportGridOptions = {
+                data: [],
+                ngColumnFilters: {
+                    "specimen_received_date": "utc", 
+                    "variant_report_received_date": "utc"
+                },
+                sort: {
+                    predicate: 'days_pending',
+                    direction: 'desc'
+                },
+                searchableProps: [
+                    'patient_id',
+                    'molecular_id',
+                    'analysis_id',
+                    'clia_lab',
+                    'specimen_received_date',
+                    'variant_report_received_date',
+                    'days_pending'
+                ],
+                customFilters: {
+                    filterAll: function (items, value, predicate) {
+                        return items.filter(function (item) {
+                            return arrayTools.itemHasValue(item, value, 
+                                $scope.pendingTissueVariantReportGridOptions.searchableProps, $scope.pendingTissueVariantReportGridOptions.ngColumnFilters, $filter);
+                        });
+                    }
+                }
+            };
+
+            $scope.pendingBloodVariantReportGridOptions = {
+                data: [],
+                ngColumnFilters: {
+                    "specimen_received_date": "utc", 
+                    "variant_report_received_date": "utc"
+                },
+                sort: {
+                    predicate: 'days_pending',
+                    direction: 'desc'
+                },
+                searchableProps: [
+                    'patient_id',
+                    'molecular_id',
+                    'analysis_id',
+                    'clia_lab',
+                    'specimen_received_date',
+                    'variant_report_received_date',
+                    'days_pending'
+                ],
+                customFilters: {
+                    filterAll: function (items, value, predicate) {
+                        return items.filter(function (item) {
+                            return arrayTools.itemHasValue(item, value, 
+                                $scope.pendingTissueVariantReportGridOptions.searchableProps, $scope.pendingTissueVariantReportGridOptions.ngColumnFilters, $filter);
+                        });
+                    }
+                }
+            };
         }
 
         $scope.donutData = [
@@ -249,46 +312,12 @@
                 });
         }
 
-        function setupGridOptions() {
-            $scope.pendingTissueVariantReportGridOptions = {
-                data: [],
-                ngColumnFilters: {
-                    "specimen_received_date": "utc", 
-                    "variant_report_received_date": "utc"
-                },
-                sort: {
-                    predicate: 'days_pending',
-                    direction: 'desc'
-                },
-                searchableProps: [
-                    'patient_id',
-                    'molecular_id',
-                    'analysis_id',
-                    'clia_lab',
-                    'specimen_received_date',
-                    'variant_report_received_date',
-                    'days_pending'
-                ],
-                customFilters: {
-                    filterAll: function (items, value, predicate) {
-                        return items.filter(function (item) {
-                            return arrayTools.itemHasValue(item, value, 
-                                $scope.pendingTissueVariantReportGridOptions.searchableProps, $scope.pendingTissueVariantReportGridOptions.ngColumnFilters, $filter);
-                        });
-                    }
-                }
-            };
-        }
-
         function loadTissueVariantReportsList() {
             matchApi
                 .loadTissueVariantReportsList()
                 .then(function (d) {
                     $scope.pendingTissueVariantReportGridOptions.data = d.data;
-                    arrayTools.forEach($scope.pendingTissueVariantReportGridOptions, function (element) {
-                        var days_pending = dateTools.calculateDaysPending(element, 'status_date');
-                        element.days_pending = days_pending || days_pending === 0 ? days_pending : '-';
-                    });
+                    calculatePendingDays($scope.pendingTissueVariantReportGridOptions.data);
                 });
         }
 
@@ -296,11 +325,8 @@
             matchApi
                 .loadBloodVariantReportsList()
                 .then(function (d) {
-                    $scope.pendingBloodVariantReportList = d.data;
-                    arrayTools.forEach($scope.pendingBloodVariantReportList, function (element) {
-                        var days_pending = dateTools.calculateDaysPending(element, 'status_date');
-                        element.days_pending = days_pending || days_pending === 0 ? days_pending : '-';
-                    });
+                    $scope.pendingBloodVariantReportGridOptions.data = d.data;
+                    calculatePendingDays($scope.pendingBloodVariantReportGridOptions.data);
                 });
         }
 
@@ -314,6 +340,13 @@
                         element.hours_pending = hours_pending || hours_pending === 0 ? hours_pending : '-';
                     });
                 });
+        }
+
+        function calculatePendingDays(data) {
+            arrayTools.forEach(data, function (element) {
+                var days_pending = dateTools.calculateDaysPending(element, 'status_date');
+                element.days_pending = days_pending || days_pending === 0 ? days_pending : '-';
+            });
         }
 
         function loadDashboardData() {
