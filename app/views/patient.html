@@ -457,16 +457,16 @@
 
                                                 <dl class="dl-horizontal dl-horizontal-expanded-label">
                                                     <dt>Total Variants</dt>
-                                                    <dd>{{currentTissueVariantReport.total_variants}}</dd>
+                                                    <dd>{{currentTissueVariantReport.total_variants | dashify}}</dd>
 
                                                     <dt>Cellularity</dt>
-                                                    <dd>{{currentTissueVariantReport.cellularity}}</dd>
+                                                    <dd>{{currentTissueVariantReport.cellularity | dashify}}</dd>
                                                 </dl>
 
                                                 <dl class="dl-horizontal dl-horizontal-expanded-label" ng-if="variantReportMode=='QC'">
                                                     <dt>Oncomine Control Panel Summary</dt>
                                                     <dd class="row">
-                                                        <table class="table" role="grid" width="100">
+                                                        <table ng-if="currentTissueVariantReport.oncomine_report" class="table" role="grid" width="100">
                                                             <thead>
                                                             <td><a>LMNA</a></td>
                                                             <td><a>TBP</a></td>
@@ -484,6 +484,7 @@
                                                             <td>{{::oncomine.sum | dashify }}</td>
                                                             </tbody>
                                                         </table>
+                                                        <p ng-if="!currentTissueVariantReport.oncomine_report"> - </p>
                                                     </dd>
                                                 </dl>
 
@@ -1211,10 +1212,10 @@
 
                                         <dl class="dl-horizontal dl-horizontal-expanded-label">
                                             <dt>Total Variants</dt>
-                                            <dd>{{currentBloodVariantReport.total_variants}}</dd>
+                                            <dd>{{currentBloodVariantReport.total_variants | dashify}}</dd>
 
                                             <dt>Cellularity</dt>
-                                            <dd>{{currentBloodVariantReport.cellularity}}</dd>
+                                            <dd>{{currentBloodVariantReport.cellularity | dashify}}</dd>
                                         </dl>
                                     </div>
                                 </div>
