@@ -21,7 +21,6 @@
         $scope.numberOfPendingTissueVariantReports = '?';
         $scope.numberOfPendingBloodVariantReports = '?';
 
-        $scope.pendingTissueVariantReportList = [];
         $scope.pendingBloodVariantReportList = [];
         $scope.pendingAssignmentReportList = [];
 
@@ -49,7 +48,7 @@
             "upper_bound_yellow": 14
         };
 
-        $scope.gridOptions = {
+        $scope.pendingTissueVariantReportGridOptions = {
             data: [], //required parameter - array with data 
             //optional parameter - start sort options 
             sort: {
@@ -107,6 +106,12 @@
         };
 
         Chart.defaults.global.legend = false;
+
+        activate();
+
+        function activate() {
+            setupGridOptions();
+        }
 
         $scope.donutData = [
             {
@@ -244,8 +249,8 @@
                 });
         }
 
-        function loadTissueVariantReportsList() {
-            $scope.gridOptions = {
+        function setupGridOptions() {
+            $scope.pendingTissueVariantReportGridOptions = {
                 data: [],
                 ngColumnFilters: {
                     "specimen_received_date": "utc", 
@@ -268,18 +273,19 @@
                     filterAll: function (items, value, predicate) {
                         return items.filter(function (item) {
                             return arrayTools.itemHasValue(item, value, 
-                                $scope.gridOptions.searchableProps, $scope.gridOptions.ngColumnFilters, $filter);
+                                $scope.pendingTissueVariantReportGridOptions.searchableProps, $scope.pendingTissueVariantReportGridOptions.ngColumnFilters, $filter);
                         });
                     }
                 }
             };
+        }
 
+        function loadTissueVariantReportsList() {
             matchApi
                 .loadTissueVariantReportsList()
                 .then(function (d) {
-                    $scope.gridOptions.data = d.data;
-                    $scope.pendingTissueVariantReportList = d.data;
-                    arrayTools.forEach($scope.pendingTissueVariantReportList, function (element) {
+                    $scope.pendingTissueVariantReportGridOptions.data = d.data;
+                    arrayTools.forEach($scope.pendingTissueVariantReportGridOptions, function (element) {
                         var days_pending = dateTools.calculateDaysPending(element, 'status_date');
                         element.days_pending = days_pending || days_pending === 0 ? days_pending : '-';
                     });
