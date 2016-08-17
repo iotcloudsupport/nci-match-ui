@@ -218,9 +218,10 @@
                                     <tr>
                                         <th width="20%" class="label2">Assay</th>
                                         <th width="20%" class="label2">Gene</th>
-                                        <th width="20%" class="label2">Order Date</th>
+                                        <th width="20%" class="label2">Ordered Date</th>
                                         <th width="20%" class="label2">Result Date</th>
                                         <th width="20%" class="label2">Result</th>
+                                        <th width="20%" class="label2">Comments</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -232,6 +233,7 @@
                                         <td>
                                             <span style="color:{{ assay.result | assayStatus }}">{{assay.result | dashify}}</span>
                                         </td>
+                                        <td>{{assay.comments | dashify}}</td>
                                     </tr>
                                     <tr ng-if="!currentSurgicalEvent.assays || !currentSurgicalEvent.assays.length">
                                         <td colspan="3"><span class="text-muted">No assay history</span></td>
@@ -558,7 +560,9 @@
                                                 </td>
                                                 <td ng-if="variantReportMode!=='QC'">
                                                     <a ng-if="variant.comment " href ng-click="editComment(variant, currentTissueVariantReport.status==='PENDING' )">
-                                                        <i class="fa fa-file-text-o "></i></a>
+                                                        <i class="fa fa-file-text-o "></i>
+                                                    </a>
+                                                    <p ng-if="!variant.comment"> - </p>
                                                 </td>
                                                 <td>
                                                     <a class="report-link" href ng-click="openCosmicId( variant.identifier )">
