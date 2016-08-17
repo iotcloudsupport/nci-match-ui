@@ -690,53 +690,59 @@ button.btn-default.dim:active {
   }
 }
 
-.table {
-  tr {
-    td.content-cell {
-      padding-left: 25px;
+.data-grid {
+  .table {
+    tr {
+      td.content-cell {
+        padding-left: 25px;
+      }
     }
   }
-}
 
-.activity-header-panel {
-  height: 62px;
-}
+  .activity-header-panel {
+    height: 62px;
+  }
 
-// .table > thead > tr > th {
-//     vertical-align: middle;
-// }
+  // .table > thead > tr > th {
+  //     vertical-align: middle;
+  // }
 
-.margin-bottom-basic {
-    margin-bottom: 15px;
-}
+  .margin-bottom-basic {
+      margin-bottom: 15px;
+  }
 
-.pagination {
-    margin: 0;
-}
+  .pagination {
+      margin: 0;
+  }
 
-.items-per-page {
-    margin-bottom: 10px;
-    margin-left: 15px;
+  .items-per-page {
+      margin-bottom: 10px;
+      margin-left: 15px;
 
-    label {
-      font-weight: normal;
-    }
-}
+      label {
+        font-weight: normal;
+      }
+  }
 
-.sortable:after {
-    font: 14px/1 FontAwesome;
-    font-size: 0.8em;
-    content: "\f0dc";
-    padding-left: 4px;
-    color: darken(@light-gray, 20%);
-}
+  .sortable:after {
+      font: 14px/1 FontAwesome;
+      font-size: 0.8em;
+      content: "\f0dc";
+      padding-left: 4px;
+      color: darken(@light-gray, 20%);
+  }
 
-.sortable.sort-ascent:after {
-    content: '\f0de';
-    vertical-align: bottom;
-}
+  .sortable.sort-ascent:after {
+      content: '\f0de';
+      vertical-align: bottom;
+  }
 
-.sortable.sort-descent:after {
-    content: "\f0dd";
-    vertical-align: top;
+  .sortable.sort-descent:after {
+      content: "\f0dd";
+      vertical-align: top;
+  }
+
+  .grid-filter {
+    margin-right: 15px;
+  }
 }

@@ -79,7 +79,7 @@
                             <uib-tab heading="Tissue Variant Reports">                                
                                 <div class="panel-body" ng-init="loadTissueVariantReportsList()">
 
-                                    <div grid-data grid-options="gridOptions" grid-actions="gridActions">
+                                    <div grid-data grid-options="gridOptions" grid-actions="gridActions" class="data-grid">
                                         <div class="row">
                                             <div class="col pull-left">
                                                 <form class="form-inline">
@@ -98,7 +98,9 @@
                                                 </form>
                                             </div>
                                             <div class="col pull-right">
-                                                <input type="text" name="" value="something">
+                                                <div class="grid-filter">
+                                                    <input type="text" class="form-control input-sm">
+                                                </div>
                                             </div>
                                         </div>
 
