@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    function VrFilteredReportController($scope, $element, $attrs) {
+    function VrFilteredReportController($scope, $element, $attrs, $log) {
         var ctrl = this;
 
         ctrl.confirmTitle = '';
@@ -13,6 +13,7 @@
             ctrl.gridOptions = {
                 data: ctrl.gridData
             };
+            $log.debug('Initialized VR with ' + ctrl.gridData.data.length);
         };
 
         ctrl.onItemConfirmed = function (item) {
@@ -20,7 +21,7 @@
         };
     }
 
-    angular.module('matchbox').component('vrFilteredReport', {
+    angular.module('matchbox').component('variantReportFiltered', {
         templateUrl: 'views/templates/variant_report/vr_filtered_snv_mnv_indel_table.html',
         controller: VrFilteredReportController,
         bindings: {
