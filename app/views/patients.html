@@ -63,7 +63,7 @@
                                 <i class="fa fa-user"></i> <span ng-bind="item.patient_id | dashify"></span>
                             </a>
                         </td>
-                        <td><span ng-style="{'color':'{{getStatusColor($scope)}}'}" style="color: {{getStatusColor(item)}}" ng-bind="item.current_status | dashify"></span></td>
+                        <td><span style="color:item.current_status" ng-bind="item.current_status | dashify">item.current_status</span></td>
                         <td ng-bind="item.current_step_number | dashify"></td>
                         <td ng-bind="item.disease_list | dashify"></td>
                         <td>

@@ -12,8 +12,8 @@
         activate();
 
         $scope.getStatusColor = function(status) {
-            var color = $filter('patientStatus')(item.current_status); 
-            return $filter('patientStatus')(item.current_status);
+            $log.debug('status = ' + status); 
+            return $filter('patientStatus')(status);
         }
 
         function activate() {
