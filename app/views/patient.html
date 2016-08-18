@@ -286,7 +286,9 @@
                                                                 <dd><a ng-click="navigateToTissueVariantReport(analysis.molecular_id, analysis.analysis_id)"> {{analysis.analysis_id | dashify }} </a></dd>
 
                                                                 <dt>Status</dt>
-                                                                <dd style="{color:{{ analysis.status | analysisStatus }}">{{analysis.status | titlecase}} <span ng-if="analysis.comment_user"> (user: {{analysis.comment_user}})</span></dd>
+                                                                <dd style="{color:{{ analysis.status | analysisStatus }}">{{analysis.status | titlecase}}
+                                                                    <span ng-if="analysis.comment_user"> (user: {{analysis.comment_user}})</span>
+                                                                </dd>
 
                                                                 <dt ng-if="analysis.comment">Comment</dt>
                                                                 <dd ng-if="analysis.comment">{{analysis.comment}}</dd>
