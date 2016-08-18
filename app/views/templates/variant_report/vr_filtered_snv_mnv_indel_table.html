@@ -1,74 +1,69 @@
-<div class="table-responsive" style="border: none">
-    <table datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs" dt-instance="dtInstance" dt-columns="dtColumns"
-        class="table table-small-font table-striped" role="grid">
+<div id="{{$ctrl.gridId}}" grid-data grid-options="$ctrl.gridOptions" grid-actions="$ctrl.gridActions" class="data-grid">
+    <table class="table table-striped">
         <thead>
             <tr>
-                <th ng-if="variantReportMode!=='QC'">Confirm</th>
-                <th ng-if="variantReportMode!=='QC'">Comment</th>
-                <th>ID</th>
-                <th ng-if="variantReportMode!=='QC'" style="width: 15%">aMOI</th>
-                <th>Chrom</th>
-                <th>Position</th>
-                <th>CDS Ref</th>
-                <th>CDS Alt</th>
-                <th>OCP Ref</th>
-                <th>OCP Alt</th>
-                <th>Strand</th>
-                <th>Allele Freq</th>
-                <th>Func Gene</th>
-                <th>Oncomine Variant Class</th>
-                <th>Exon</th>
-                <th>Function</th>
-                <th>HGVS</th>
-                <th>Read Depth</th>
-                <th>Transcript</th>
-                <th>Protein</th>
+                <th sortable="confirmed" class="sortable">Confirm</th>
+                <th sortable="comment" class="sortable">Comment</th>
+                <th sortable="identifier" class="sortable">ID</th>
+                <th sortable="is_amoi" class="sortable" style="width: 15%">aMOI</th>
+                <th sortable="chromosome" class="sortable">Chrom</th>
+                <th sortable="position" class="sortable">Position</th>
+                <th sortable="cds_reference" class="sortable">CDS Ref</th>
+                <th sortable="cds_alternative" class="sortable">CDS Alt</th>
+                <th sortable="ocp_reference" class="sortable">OCP Ref</th>
+                <th sortable="ocp_alternative" class="sortable">OCP Alt</th>
+                <th sortable="strand" class="sortable">Strand</th>
+                <th sortable="allele_frequency" class="sortable">Allele Freq</th>
+                <th sortable="func_gene" class="sortable">Func Gene</th>
+                <th sortable="oncomine_variant_class" class="sortable">Oncomine Variant Class</th>
+                <th sortable="exon" class="sortable">Exon</th>
+                <th sortable="function" class="sortable">Function</th>
+                <th sortable="hgvs" class="sortable">HGVS</th>
+                <th sortable="read_depth" class="sortable">Read Depth</th>
+                <th sortable="transcript" class="sortable">Transcript</th>
+                <th sortable="protein" class="sortable">Protein</th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="variant in currentTissueVariantReport.variants.snvs_and_indels" style="cursor: auto;" role="row" class="odd">
-                <td ng-if="variantReportMode!=='QC'">
-                    <div check-box-with-confirm confirm-title="{{confirmTitle}}" confirm-message="{{confirmMessage}}" is-checked="variant.confirmed"
-                        comment="variant.comment" prompt-only-if="true" enabled="currentTissueVariantReport.status==='PENDING'">
+            <tr grid-item>
+                <td>
+                    <div check-box-with-confirm confirm-title="{{$ctrl.confirmTitle}}" confirm-message="{{$ctrl.confirmMessage}}" is-checked="item.confirmed"
+                        comment="item.comment" prompt-only-if="true" enabled="$ctrl.isEditable">
                     </div>
                 </td>
-                <td ng-if="variantReportMode!=='QC'">
-                    <a ng-if="variant.comment " href ng-click="editComment(variant, currentTissueVariantReport.status==='PENDING' )">
+                <td>
+                    <a ng-if="item.comment " href ng-click="editComment(variant, $ctrl.isEditable )">
                         <i class="fa fa-file-text-o "></i>
                     </a>
-                    <p ng-if="!variant.comment"> - </p>
+                    <p ng-if="!item.comment"> - </p>
                 </td>
                 <td>
-                    <a class="report-link" href ng-click="openCosmicId( variant.identifier )">
-                                                        {{variant.identifier | dashify }}
-                                                    </a>
+                    <a class="report-link" href ng-click="openCosmicId( item.identifier )">{{item.identifier | dashify }}</a>
                 </td>
-                <td ng-if="variantReportMode!=='QC'" style="width: 15%">
-                    <treatment-arm-variant-link is-amoi="variant.is_amoi" treatment-arms="variant.treatment_arms"></treatment-arm-variant-link>
+                <td style="width: 15%">
+                    <treatment-arm-variant-link is-amoi="item.is_amoi" treatment-arms="item.treatment_arms"></treatment-arm-variant-link>
                 </td>
-                <td>{{::variant.chromosome | dashify }}</td>
-                <td>{{::variant.position | dashify }}</td>
-                <td>{{::variant.cds_reference | dashify }}</td>
-                <td>{{::variant.cds_alternative | dashify }}</td>
-                <td>{{::variant.ocp_reference | dashify }}</td>
-                <td>{{::variant.ocp_alternative | dashify }}</td>
-                <td>{{::variant.strand | dashify }}</td>
-                <td>{{::variant.allele_frequency | dashify }}</td>
+                <td ng-bind="item.chromosome | dashify"></td>
+                <td ng-bind="item.position | dashify"></td>
+                <td ng-bind="item.cds_reference | dashify"></td>
+                <td ng-bind="item.cds_alternative | dashify"></td>
+                <td ng-bind="item.ocp_reference | dashify"></td>
+                <td ng-bind="item.ocp_alternative | dashify"></td>
+                <td ng-bind="item.strand | dashify"></td>
+                <td ng-bind="item.allele_frequency | dashify"></td>
                 <td>
-                    <a class="report-link" href ng-click="openCosmicGene( variant.func_gene )">
-                                                        {{variant.func_gene | dashify }}
-                                                    </a>
+                    <a class="report-link" href ng-click="openCosmicGene( item.func_gene )"><span ng-bind="item.func_gene | dashify"></span></a>
                 </td>
-                <td>{{::variant.oncomine_variant_class | dashify }}</td>
-                <td>{{::variant.exon | dashify }}</td>
-                <td>{{::variant.function | dashify }}</td>
-                <td>{{::variant.hgvs | dashify }}</td>
-                <td>{{::variant.read_depth | dashify }}</td>
-                <td>{{::variant.transcript | dashify }}</td>
-                <td>{{::variant.protein | dashify }}</td>
+                <td ng-bind="item.oncomine_variant_class | dashify"></td>
+                <td ng-bind="item.exon | dashify"></td>
+                <td ng-bind="item.function | dashify"></td>
+                <td ng-bind="item.hgvs | dashify"></td>
+                <td ng-bind="item.read_depth | dashify"></td>
+                <td ng-bind="item.transcript | dashify"></td>
+                <td ng-bind="item.protein | dashify"></td>
             </tr>
 
-            <tr ng-if="!currentTissueVariantReport.variants.snvs_and_indels || !currentTissueVariantReport.variants.snvs_and_indels.length">
+            <tr ng-if="!$ctrl.gridOptions.data || !$ctrl.gridOptions.data.length">
                 <td colspan="20"><span class="text-muted">No SNVs, MNVs or Indels</span></td>
             </tr>
         </tbody>

@@ -520,6 +520,12 @@
                                             <h3>SNVs/MNVs/Indels</h3>
                                         </div>
 
+                                        <variant-report-filtered 
+                                            grid-id="tissueFilteredSmiVr" 
+                                            is-editable="currentTissueVariantReport.status==='PENDING'"
+                                            items="currentTissueVariantReport.variants.snvs_and_indels">
+                                        </variant-report-filtered>
+
                                         <div class="table-responsive" style="border: none">
                                             <table datatable="ng"
                                                    dt-options="dtOptions"
