@@ -11,7 +11,7 @@
 
         ctrl.$onInit = function() {
             ctrl.gridOptions = {
-                data: ctrl.gridData
+                data: ctrl.items
             };
             $log.debug('Initialized VR with ' + ctrl.gridData.data.length);
         };

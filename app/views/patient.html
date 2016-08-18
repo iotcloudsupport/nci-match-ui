@@ -515,7 +515,7 @@
                                         </div>
                                     </div>
 
-                                    <div ng-if="activeTab=='tissue_report'" d3-cnv-chart="{{data.patient_id}}" chart-data-url="{{currentTissueVariantReport.vr_chart_data_url}}"></div>
+                                    <!--<div ng-if="activeTab=='tissue_report'" d3-cnv-chart="{{data.patient_id}}" chart-data-url="{{currentTissueVariantReport.vr_chart_data_url}}"></div>-->
 
                                     <div ng-if="variantReportMode === 'FILTERED'">
                                         <!--Single Nucleitide Variants-->
@@ -529,7 +529,7 @@
                                             items="currentTissueVariantReport.variants.snvs_and_indels">
                                         </variant-report-filtered>
 
-                                        <!--<div class="table-responsive" style="border: none">
+                                        <div class="table-responsive" style="border: none">
                                             <table datatable="ng"
                                                    dt-options="dtOptions"
                                                    dt-column-defs="dtColumnDefs"
@@ -610,7 +610,7 @@
                                             </tr>
                                             </tbody>
                                         </table>
-                                        </div>-->
+                                        </div>
 
                                         <!--Copy Number Variants-->
                                         <div class="ibox-title ibox-title-no-line-no-padding">

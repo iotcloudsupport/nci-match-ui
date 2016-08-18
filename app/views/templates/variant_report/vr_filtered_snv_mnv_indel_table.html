@@ -1,4 +1,4 @@
-<div id="$ctrl.gridId" grid-data grid-options="$ctrl.gridOptions" grid-actions="$ctrl.gridActions" class="data-grid">
+<div id="$ctrl.gridId" grid-data grid-options="$ctrl.gridOptions" grid-actions="$ctrl.gridActions" class="data-grid table-responsive">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -28,7 +28,7 @@
         <tbody>
             <tr grid-item>
                 <td>
-                    <div check-box-with-confirm confirm-title="{{$ctrl.confirmTitle}}" confirm-message="{{$ctrl.confirmMessage}}" is-checked="item.confirmed"
+                    <div check-box-with-confirm confirm-title="$ctrl.confirmTitle" confirm-message="$ctrl.confirmMessage" is-checked="item.confirmed"
                         comment="item.comment" prompt-only-if="true" enabled="$ctrl.isEditable">
                     </div>
                 </td>
@@ -39,7 +39,7 @@
                     <p ng-if="!item.comment"> - </p>
                 </td>
                 <td>
-                    <a class="report-link" href ng-click="openCosmicId( item.identifier )">{{item.identifier | dashify }}</a>
+                    <a class="report-link" href ng-click="openCosmicId( item.identifier )"><span ng-bind="item.identifier | dashify"></span></a>
                 </td>
                 <td style="width: 15%">
                     <treatment-arm-variant-link is-amoi="item.is_amoi" treatment-arms="item.treatment_arms"></treatment-arm-variant-link>
