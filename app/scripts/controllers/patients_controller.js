@@ -4,13 +4,52 @@
         .controller('PatientsController', PatientsController);
 
     function PatientsController($scope,
-        DTOptionsBuilder,
         matchApi,
-        $log) {
+        $log,
+        arrayTools,
+        $filter) {
 
-        this.dtOptions = DTOptionsBuilder.newOptions().withDisplayLength(100);
-        this.dtColumnDefs = [];
-        this.dtInstance = {};
+        activate();
+
+        $scope.getStatusColor = function(status) {
+            var color = $filter('patientStatus')(item.current_status); 
+            return $filter('patientStatus')(item.current_status);
+        }
+
+        function activate() {
+            setupGrids();
+        }
+
+        function setupGrids() {
+            $scope.gridOptions = {
+                data: [],
+                ngColumnFilters: {
+                    "registration_date": "utc",
+                    "off_trial_date": "utc"
+                },
+                sort: {
+                    predicate: 'patient_id',
+                    direction: 'asc'
+                },
+                searchableProps: [
+                    'patient_id',
+                    'current_status',
+                    'current_step_number',
+                    'disease_list',
+                    'registration_date',
+                    'off_trial_date',
+                    'treatment_arm_title'
+                ],
+                customFilters: {
+                    filterAll: function (items, value, predicate) {
+                        return items.filter(function (item) {
+                            return arrayTools.itemHasValue(item, value, 
+                                $scope.gridOptions.searchableProps, $scope.gridOptions.ngColumnFilters, $filter);
+                        });
+                    }
+                }
+            };
+        }
 
         $scope.patientList = [];
 
@@ -22,6 +61,8 @@
 
         function setupScope(data) {
             $scope.patientList = data.data;
+            $scope.gridOptions.data = data.data;
+
             for (var i = 0; i < $scope.patientList.length; i++) {
                 var item = $scope.patientList[i];
                 if (item.current_assignment && item.current_assignment.assignment_logic && item.current_assignment.assignment_logic.length) {
@@ -32,6 +73,10 @@
                             item.treatment_arm_version = logic.treatmentArmVersion;
                             item.treatment_arm_stratum_id = logic.treatmentArmStratumId;
                         }
+                    }
+
+                    if (item.diseases && item.diseases.length) {
+                        item.disease_list = item.diseases.map(function(x) { return x.disease_name }).join(', ');
                     }
                 }
             }
