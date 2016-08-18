@@ -29,19 +29,19 @@
                     <div class="header-info-box top-main-header-box">
                         <dl class="dl-horizontal">
                             <dt>Patient ID</dt>
-                            <dd>{{data.patient_id | dashify}}</dd>
+                            <dd>{{data.patient_id | dashify }}</dd>
 
                             <dt>Patient</dt>
-                            <dd>{{data.gender}}, {{data.ethnicity | dashify}}</dd>
+                            <dd>{{data.gender}}, {{data.ethnicity | dashify }}</dd>
 
                             <dt>Last Rejoin Scan Date</dt>
-                            <dd>{{ data.last_rejoin_scan_date | utc  | dashify}}</dd>
+                            <dd>{{ data.last_rejoin_scan_date | utc  | dashify }}</dd>
 
                             <dt>Status</dt>
-                            <dd style="color: {{ data.current_status | patientStatus }}">{{data.current_status | dashify}}</dd>
+                            <dd style="color: {{ data.current_status | patientStatus }}">{{data.current_status | dashify }}</dd>
 
                             <dt> Current Step</dt>
-                            <dd>{{data.current_step_number | dashify}}</dd>
+                            <dd>{{data.current_step_number | dashify }}</dd>
 
                             <dt>Treatment Arm</dt>
                             <dd>
@@ -55,13 +55,13 @@
                     <div class="header-info-box top-main-header-box">
                         <dl class="dl-horizontal">
                             <dt>Disease Name</dt>
-                            <dd>{{::disease.disease_name | dashify}}</dd>
+                            <dd>{{::disease.disease_name | dashify }}</dd>
 
                             <dt>Disease Code Type</dt>
-                            <dd>{{::disease.disease_code_type | dashify}}</dd>
+                            <dd>{{::disease.disease_code_type | dashify }}</dd>
 
                             <dt>Disease Code</dt>
-                            <dd>{{::disease.disease_code | dashify}}</dd>
+                            <dd>{{::disease.disease_code | dashify }}</dd>
 
                             <dt>Prior Drugs</dt>
                             <dd ng-if="data.prior_drugs"> <span ng-repeat="drug in data.prior_drugs">{{drug.drug_name}}{{$last?'':', '}}</span></dd>
@@ -103,8 +103,8 @@
                                 <td>
                                     <treatment-arm-title name="ta.name" stratum="ta.stratum" version="ta.version"></treatment-arm-title>
                                 </td>
-                                <td>{{ta.step | dashify}}</td>
-                                <td>{{ta.assignment_reason | dashify}}</td>
+                                <td>{{ta.step | dashify }}</td>
+                                <td>{{ta.assignment_reason | dashify }}</td>
                                 <td>{{ta.assignment_date | utc}}</td>
                             </tr>
                             </tbody>
@@ -149,19 +149,19 @@
                                         <h4>Event</h4>
                                         <dl class="dl-horizontal">
                                             <dt>Surgical Event ID</dt>
-                                            <dd>{{currentSurgicalEvent.surgical_event_id | dashify}}</dd>
+                                            <dd>{{currentSurgicalEvent.surgical_event_id | dashify }}</dd>
 
                                             <dt>Type</dt>
-                                            <dd>{{currentSurgicalEvent.type | dashify}}</dd>
+                                            <dd>{{currentSurgicalEvent.type | dashify }}</dd>
 
                                             <dt>Collection Date</dt>
-                                            <dd>{{currentSurgicalEvent.collected_date | utc | dashify}}</dd>
+                                            <dd>{{currentSurgicalEvent.collected_date | utc | dashify }}</dd>
 
                                             <dt>Received Date</dt>
-                                            <dd>{{currentSurgicalEvent.received_date | utc | dashify}}</dd>
+                                            <dd>{{currentSurgicalEvent.received_date | utc | dashify }}</dd>
 
                                             <dt>Failure Date</dt>
-                                            <dd>{{currentSurgicalEvent.failed_date | utc | dashify}}</dd>
+                                            <dd>{{currentSurgicalEvent.failed_date | utc | dashify }}</dd>
                                         </dl>
                                     </div>
                                 </div>
@@ -170,13 +170,13 @@
                                         <h4>Pathology</h4>
                                         <dl class="dl-horizontal">
                                             <dt>Status</dt>
-                                            <dd>{{currentSurgicalEvent.pathology_status | dashify}}</dd>
+                                            <dd>{{currentSurgicalEvent.pathology_status | dashify }}</dd>
 
                                             <dt>Received Date</dt>
-                                            <dd>{{currentSurgicalEvent.pathology_status_date | utc | dashify}}</dd>
+                                            <dd>{{currentSurgicalEvent.pathology_status_date | utc | dashify }}</dd>
 
                                             <dt>Comment</dt>
-                                            <dd>{{currentSurgicalEvent.comments | dashify}}</dd>
+                                            <dd>{{currentSurgicalEvent.comments | dashify }}</dd>
                                         </dl>
                                     </div>
                                 </div>
@@ -197,12 +197,12 @@
                                 </thead>
                                 <tbody>
                                     <tr ng-repeat="slide in currentSurgicalEvent.slides" style="cursor: auto;" role="row" class="odd">
-                                        <td>{{slide.slide_barcode | dashify}}</td>
-                                        <td>{{slide.carrier | dashify}}</td>
+                                        <td>{{slide.slide_barcode | dashify }}</td>
+                                        <td>{{slide.carrier | dashify }}</td>
                                         <td>
                                             <tracking-link carrier="'fedex'" tracking-number="slide.tracking_id"></tracking-link>
                                         </td>
-                                        <td>{{slide.shipped_dttm | utc | dashify}}</td>
+                                        <td>{{slide.shipped_dttm | utc | dashify }}</td>
                                     </tr>
                                     <tr ng-if="!currentSurgicalEvent.slides || !currentSurgicalEvent.slides.length">
                                         <td colspan="4"><span class="text-muted">No slides shipped</span></td>
@@ -217,24 +217,24 @@
                             <table class="table" role="grid">
                                 <thead>
                                     <tr>
-                                        <th width="20%" class="label2">Assay</th>
-                                        <th width="20%" class="label2">Gene</th>
-                                        <th width="20%" class="label2">Ordered Date</th>
-                                        <th width="20%" class="label2">Result Date</th>
-                                        <th width="20%" class="label2">Result</th>
-                                        <th width="20%" class="label2">Comments</th>
+                                        <th width="" class="label2">Assay</th>
+                                        <th width="" class="label2">Gene</th>
+                                        <th width="" class="label2">Ordered Date</th>
+                                        <th width="" class="label2">Result Date</th>
+                                        <th width="" class="label2">Result</th>
+                                        <th width="" class="label2">Comments</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr ng-repeat="assay in currentSurgicalEvent.assays" style="cursor: auto;" role="row" class="odd">
-                                        <td>{{assay.biomarker | dashify}}</td>
-                                        <td>{{assay.gene | dashify}}</td>
-                                        <td>{{assay.rordered_date | utc | dashify}}</td>
-                                        <td>{{assay.result_date | utc | dashify}}</td>
+                                        <td>{{assay.biomarker | dashify }}</td>
+                                        <td>{{assay.gene | dashify }}</td>
+                                        <td>{{assay.rordered_date | utc | dashify }}</td>
+                                        <td>{{assay.result_date | utc | dashify }}</td>
                                         <td>
-                                            <span style="color:{{ assay.result | assayStatus }}">{{assay.result | dashify}}</span>
+                                            <span style="color:{{ assay.result | assayStatus }}">{{assay.result | dashify }}</span>
                                         </td>
-                                        <td>{{assay.comments | dashify}}</td>
+                                        <td>{{assay.comments | dashify }}</td>
                                     </tr>
                                     <tr ng-if="!currentSurgicalEvent.assays || !currentSurgicalEvent.assays.length">
                                         <td colspan="3"><span class="text-muted">No assay history</span></td>
@@ -262,17 +262,18 @@
                                     </thead>
                                     <tbody>
                                     <tr ng-repeat-start="shipment in currentSurgicalEvent.specimen_shipments" style="cursor: auto;" role="row" class="odd">
-                                        <td>{{shipment.molecular_id | dashify}}</td>
-                                        <td>{{shipment.type | dashify}}</td>
-                                        <td>{{shipment.site | dashify}}</td>
+                                        <td>{{shipment.molecular_id | dashify }}</td>
+                                        <td>{{shipment.type | dashify }}</td>
+                                        <td>{{shipment.site | dashify }}</td>
                                         <td>
-                                            <tracking-link carrier="'fedex'" tracking-number="shipment.tracking_number"></tracking-link>
+                                            <tracking-link ng-if="shipment.tracking_number" carrier="'fedex'" tracking-number="shipment.tracking_number"></tracking-link>
+                                            <p ng-if="!shipment.tracking_number"> - </p>
                                         </td>
-                                        <td>{{shipment.dna_concordance | dashify}}</td>
-                                        <td>{{shipment.dna_volume | dashify}}</td>
-                                        <td>{{shipment.reported_date | utc | dashify}}</td>
+                                        <td>{{shipment.dna_concordance | dashify }}</td>
+                                        <td>{{shipment.dna_volume | dashify }}</td>
+                                        <td>{{shipment.reported_date | utc | dashify }}</td>
                                         <td>
-                                            <div class="text-truncate-200px"  data-placement="top" title="{{shipment.comments}}" onmouseenter="$(this).tooltip('show')" >{{shipment.comments | dashify}}</div>
+                                            <div class="text-truncate-200px"  data-placement="top" title="{{shipment.comments}}" onmouseenter="$(this).tooltip('show')" >{{shipment.comments | dashify }}</div>
                                         </td>
                                     </tr>
                                     <tr ng-repeat-end>
@@ -283,10 +284,12 @@
                                                         <div class="col-md-4 col-sm-6 text-left">
                                                             <dl class="dl-horizontal-narrow">
                                                                 <dt>Analysis ID</dt>
-                                                                <dd><a ng-click="navigateToTissueVariantReport(analysis.molecular_id, analysis.analysis_id)"> {{analysis.analysis_id | dashify}} </a></dd>
+                                                                <dd><a ng-click="navigateToTissueVariantReport(analysis.molecular_id, analysis.analysis_id)"> {{analysis.analysis_id | dashify }} </a></dd>
 
                                                                 <dt>Status</dt>
-                                                                <dd style="{color:{{ analysis.status | analysisStatus }}">{{analysis.status | titlecase}} <span ng-if="analysis.comment_user"> (user: {{analysis.comment_user}})</span></dd>
+                                                                <dd style="{color:{{ analysis.status | analysisStatus }}">{{analysis.status | titlecase}}
+                                                                    <span ng-if="analysis.comment_user"> (user: {{analysis.comment_user}})</span>
+                                                                </dd>
 
                                                                 <dt ng-if="analysis.comment">Comment</dt>
                                                                 <dd ng-if="analysis.comment">{{analysis.comment}}</dd>
@@ -458,10 +461,10 @@
 
                                                 <dl class="dl-horizontal dl-horizontal-expanded-label">
                                                     <dt>Total Variants</dt>
-                                                    <dd>{{currentTissueVariantReport.total_variants | dashify}}</dd>
+                                                    <dd>{{currentTissueVariantReport.total_variants | dashify }}</dd>
 
                                                     <dt>Cellularity</dt>
-                                                    <dd>{{currentTissueVariantReport.cellularity | dashify}}</dd>
+                                                    <dd>{{currentTissueVariantReport.cellularity | dashify }}</dd>
                                                 </dl>
 
                                                 <dl class="dl-horizontal dl-horizontal-expanded-label" ng-if="variantReportMode=='QC'">
@@ -797,7 +800,9 @@
                                                                     <td>{{::variant.strand | dashify }}</td>
                                                                     <td>{{::variant.filter | dashify }}</td>
                                                                     <td>{{::variant.allele_frequency | dashify }}</td>
-                                                                    <td><a href ng-click="openCosmicGene(variant.func_gene)" class="report-link">{{::variant.func_gene}}</a></td>
+                                                                    <td><a href ng-click="openCosmicGene(variant.func_gene)" class="report-link">
+                                                                        {{::variant.func_gene | dashify }}
+                                                                        </a></td>
                                                                     <td>{{::variant.oncomine_variant_class | dashify }}</td>
                                                                     <td>{{::variant.exon | dashify }}</td>
                                                                     <td>{{::variant.function | dashify }}</td>
@@ -906,7 +911,9 @@
 
                                                                 <tr ng-repeat="variant in geneList | limitTo:totalDisplayed " style="cursor: auto; " role="row" class="odd">
                                                                     <td>
-                                                                        <a href ng-click="openCosmicFusionId(variant.identifier)" class="report-link"> {{::variant.identifier | dashify }} </a>
+                                                                        <a href ng-click="openCosmicFusionId(variant.identifier)" class="report-link">
+                                                                            {{::variant.identifier | dashify }}
+                                                                        </a>
                                                                     </td>
                                                                     <td>{{::variant.chromosome | dashify }}</td>
                                                                     <td>{{::variant.position | dashify }}</td>
@@ -928,9 +935,7 @@
                                             </div>
                                         </div>
                                         <!--TABLES-->
-
                                     </div>
-
 
                                     <div class="ibox-content ibox-title-no-line-no-padding" ng-if="showVariantReportActions(currentTissueVariantReport)">
                                         <div class="row">
@@ -956,7 +961,7 @@
 
                         <!--Assignment Report-->
                         <div ng-if="variantReportMode!=='QC'" class="ibox">
-                            <div class="ibox-title">
+                            <div class="ibox-title ibox-title-no-line-no-padding">
                                 <!--<div collapse-toggle-left></div>-->
                                 <h2>Assignment Report</h2>
                             </div>
@@ -988,19 +993,20 @@
                                             <div class="header-info-box assignment-header-box">
                                                 <dl class="dl-horizontal">
                                                     <dt>Molecular ID</dt>
-                                                    <dd>{{currentAssignmentReport.molecular_id}}</dd>
+                                                    <dd>{{currentAssignmentReport.molecular_id | dashify }}</dd>
 
                                                     <dt>Analysis ID</dt>
-                                                    <dd>{{currentAssignmentReport.analysis_id}}</dd>
+                                                    <dd>{{currentAssignmentReport.analysis_id | dashify }}</dd>
 
                                                     <dt>Status</dt>
-                                                    <dd style="{color:{{ currentAssignmentReport.status | analysisStatus }}">{{currentAssignmentReport.status}} <span ng-if="currentAssignmentReport.comment_user"> (user: {{currentAssignmentReport.comment_user}})</span></dd>
+                                                    <dd style="{color:{{ currentAssignmentReport.status | analysisStatus }}">{{currentAssignmentReport.status | dashify }}
+                                                        <span ng-if="currentAssignmentReport.comment_user"> (user: {{currentAssignmentReport.comment_user | dashify }})</span></dd>
 
                                                     <dt ng-if="currentAssignmentReport.comment">Comments</dt>
-                                                    <dd ng-if="currentAssignmentReport.comment">{{currentAssignmentReport.comment}}</dd>
+                                                    <dd ng-if="currentAssignmentReport.comment">{{currentAssignmentReport.comment | dashify }}</dd>
 
-                                                    <dt ng-if="needToDisplayReportStatus(currentAssignmentReport)">{{currentAssignmentReport.status | titlecase}} Date</dt>
-                                                    <dd ng-if="needToDisplayReportStatus(currentAssignmentReport)">{{currentAssignmentReport.status_date | utc}}</dd>
+                                                    <dt ng-if="needToDisplayReportStatus(currentAssignmentReport)">{{currentAssignmentReport.status | titlecase | dashify }} Date</dt>
+                                                    <dd ng-if="needToDisplayReportStatus(currentAssignmentReport)">{{currentAssignmentReport.status_date | utc | dashify }}</dd>
                                                 </dl>
                                             </div>
                                         </div>
@@ -1009,13 +1015,13 @@
                                                 <h4>Assignment</h4>
                                                 <dl class="dl-horizontal">
                                                     <dt>Generated Date</dt>
-                                                    <dd>{{currentAssignmentReport.assigned_date | utc}}</dd>
+                                                    <dd>{{currentAssignmentReport.assigned_date | utc | dashify }}</dd>
 
                                                     <dt>Sent to COG Date</dt>
-                                                    <dd>{{currentAssignmentReport.sent_to_cog_date | utc}}</dd>
+                                                    <dd>{{currentAssignmentReport.sent_to_cog_date | utc | dashify }}</dd>
 
                                                     <dt>Received from COG Date</dt>
-                                                    <dd>{{currentAssignmentReport.received_from_cog_date | utc}}</dd>
+                                                    <dd>{{currentAssignmentReport.received_from_cog_date | utc | dashify }}</dd>
                                                 </dl>
                                             </div>
                                         </div>
@@ -1035,17 +1041,19 @@
                                         </thead>
                                         <tbody>
                                         <tr ng-repeat="assay in currentAssignmentReport.assays" style="cursor: auto; " role="row" class="odd">
-                                            <td>{{assay.gene}}</td>
-                                            <td><span style="{color:{{ assay.result | assayStatus }}">{{assay.result}}</span></td>
-                                            <td>{{assay.comment}}</td>
+                                            <td>{{assay.gene | dashify }}</td>
+                                            <td><span style="{color:{{ assay.result | assayStatus }}">{{assay.result | dashify }}</span></td>
+                                            <td>{{assay.comment | dashify }}</td>
                                         </tr>
                                         </tbody>
                                     </table>
 
                                     <div class="panel panel-primary">
-                                        <div class="panel-heading"><i class="fa fa-bullseye"></i>Selected Treatment Arm: <span ng-if="!currentTreatmentArm">[None]</span><treatment-arm-title ng-if="currentTreatmentArm" name="currentTreatmentArm.name" version="currentTreatmentArm.version" stratum="currentTreatmentArm.stratum" text-color="'#fff'"></treatment-arm-title></div>
+                                        <div class="panel-heading"><i class="fa fa-bullseye"></i>Selected Treatment Arm:
+                                            <span ng-if="!currentTreatmentArm">[None]</span>
+                                            <treatment-arm-title ng-if="currentTreatmentArm" name="currentTreatmentArm.name" version="currentTreatmentArm.version" stratum="currentTreatmentArm.stratum" text-color="'#fff'"></treatment-arm-title></div>
                                         <div class="panel-body">
-                                            <p ng-if="currentTreatmentArm">{{currentTreatmentArm.reason}}</p>
+                                            <p ng-if="currentTreatmentArm">{{currentTreatmentArm.reason | dashify }}</p>
                                             <p ng-if="!currentTreatmentArm">No SELECTED logic was found in the current assignment</p>
                                         </div>
                                     </div>
@@ -1223,10 +1231,10 @@
 
                                         <dl class="dl-horizontal dl-horizontal-expanded-label">
                                             <dt>Total Variants</dt>
-                                            <dd>{{currentBloodVariantReport.total_variants | dashify}}</dd>
+                                            <dd>{{currentBloodVariantReport.total_variants | dashify }}</dd>
 
                                             <dt>Cellularity</dt>
-                                            <dd>{{currentBloodVariantReport.cellularity | dashify}}</dd>
+                                            <dd>{{currentBloodVariantReport.cellularity | dashify }}</dd>
                                         </dl>
                                     </div>
                                 </div>
@@ -1281,7 +1289,8 @@
                                                 </div>
                                             </td>
                                             <td ng-if="variantReportMode!=='QC'">
-                                                <a ng-if="variant.comment " href ng-click="editComment(variant, currentTissueVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
+                                                <a ng-if="variant.comment " href
+                                                   ng-click="editComment(variant, currentTissueVariantReport.status==='PENDING' )"> <i class="fa fa-file-text-o "></i></a>
                                                 <p ng-if="!variant.comment"> - </p>
                                             </td>
                                             <td>
@@ -1302,8 +1311,9 @@
                                             <td>{{::variant.allele_frequency | dashify }}</td>
                                             <td>
                                                 <a class="report-link" href ng-click="openCosmicGene( variant.func_gene )">
-                                                    {{variant.func_gene | dashify }}
+                                                    {{variant.func_gene }}
                                                 </a>
+                                                <p ng-if="!variant.func_gene"> - </p>
                                             </td>
                                             <td>{{::variant.oncomine_variant_class | dashify }}</td>
                                             <td>{{::variant.exon | dashify }}</td>
@@ -1511,7 +1521,11 @@
                                                             <td>{{::variant.filter | dashify }}</td>
                                                             <td>{{::variant.allele_frequency | dashify }}</td>
                                                             <td>
-                                                                <a href ng-click="openCosmicGene(variant.func_gene)" class="report-link">{{::variant.func_gene}}</a>
+                                                                <a href ng-click="openCosmicGene(variant.func_gene)"
+                                                                   class="report-link">
+                                                                    {{::variant.func_gene | dashify }}
+                                                                </a>
+                                                                <!--<p ng-if="!variant.func_gene"> - </p>-->
                                                             </td>
                                                             <td>{{::variant.oncomine_variant_class | dashify }}</td>
                                                             <td>{{::variant.exon | dashify }}</td>

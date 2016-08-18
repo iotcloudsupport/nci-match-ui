@@ -91,7 +91,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat-start="shipment in shipments">
+                    <tr ng-repeat="shipment in shipments">
                         <td><a ui-sref="patient({ patient_id: shipment.patient_id, section: 'tissue_variant_report', molecular_id: shipment.molecular_id, analysis_id: shipment.analysis_id })">{{ shipment.molecular_id | dashify }}</a></td>
                         <td>{{ shipment.slide_barcode | dashify }}</td>
                         <td><a ui-sref="patient({ patient_id: shipment.patient_id, section: 'surgical_event', surgical_event_id: shipment.surgical_event_id })">{{ shipment.surgical_event_id | dashify }}</a></td>
@@ -110,44 +110,6 @@
                         </td>
                         <td>{{ shipment.pathology_status }}</td>
                         <td>{{ shipment.pathology_status_date | utc }}</td>
-                    </tr>
-                    <tr ng-repeat-end>
-
-                        <td class="no-padding" ng-if="shipment.assays.length > 0" colspan="12">
-
-                            <div class="ibox no-padding">
-                                <div class="ibox-title no-padding">
-                                    <div collapse-toggle-left-closed></div>
-                                </div>
-                                <div class="ibox-content ibox-content-no-padding ibox-title-no-line">
-                                    <ul class="panel-list">
-                                        <li ng-repeat="assay in shipment.assays" class="info-element">
-                                            <div class="row">
-                                                <div class="col-md-4 col-sm-6 text-left">
-                                                    <dl class="dl-horizontal-narrow">
-                                                        <dt>Biomarker</dt>
-                                                        <dd ng-style="{'color':'{{ analysis.status | analysisStatus }}'}">{{::assay.biomarker}}</dd>
-                                                    </dl>
-                                                </div>
-                                                <div class="col-md-4 col-sm-6 text-left">
-                                                    <dl class="dl-horizontal-narrow">
-                                                        <dt>Assay Result Date</dt>
-                                                        <dd>{{assay.result_date | utc}}</dd>
-                                                    </dl>
-                                                </div>
-                                                <div class="col-md-4 col-sm-6 text-left">
-                                                    <dl class="dl-horizontal-narrow">
-                                                        <dt>Result</dt>
-                                                        <dd><span ng-style="{'color':'{{ assay.result | assayStatus }}'}">{{assay.result}}</span></dd>
-                                                    </dl>
-                                                </div>
-
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </td>
                     </tr>
                 </tbody>
             </table>

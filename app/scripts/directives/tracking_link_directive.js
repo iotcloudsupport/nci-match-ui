@@ -30,6 +30,11 @@
         /*jshint multistr: true */
         var template = '<span><a href="{{vm.getTrackingUrl()}}" target="_blank">{{vm.trackingNumber}}</a></span>';
 
+        // var template = '<span ng-if="vm.trackingNumber">\
+        //     <a href="{{vm.getTrackingUrl()}}" target="_blank">{{vm.trackingNumber | dashify }}</a>\
+        //     </span>\
+        //     <span ng-if="!vm.trackingNumber"> - </span>';
+        
         return {
             bindToController: true,
             restrict: 'EA',
