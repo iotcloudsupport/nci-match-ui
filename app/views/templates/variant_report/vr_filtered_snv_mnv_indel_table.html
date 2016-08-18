@@ -39,7 +39,7 @@
                     <p ng-if="!item.comment"> - </p>
                 </td>
                 <td>
-                    <a class="report-link" href ng-click="openCosmicId( item.identifier )"><span ng-bind="item.identifier | dashify"></span></a>
+                    <cosmic-link link-id="item.identifier" link-type="'cosmicId'" text="item.identifier"></cosmic-link>
                 </td>
                 <td style="width: 15%">
                     <treatment-arm-variant-link is-amoi="item.is_amoi" treatment-arms="item.treatment_arms"></treatment-arm-variant-link>
@@ -53,7 +53,8 @@
                 <td ng-bind="item.strand | dashify"></td>
                 <td ng-bind="item.allele_frequency | dashify"></td>
                 <td>
-                    <a class="report-link" href ng-click="openCosmicGene( item.func_gene )"><span ng-bind="item.func_gene | dashify"></span></a>
+                    <a class="report-link" href ng-click="$ctrl.openCosmicGene( item.func_gene )"><span ng-bind="item.func_gene | dashify"></span></a>
+                    <cosmic-link link-id="item.identifier" link-type="'cosmicGene'" text="item.identifier"></cosmic-link>
                 </td>
                 <td ng-bind="item.oncomine_variant_class | dashify"></td>
                 <td ng-bind="item.exon | dashify"></td>
