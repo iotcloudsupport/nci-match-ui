@@ -266,7 +266,8 @@
                                         <td>{{shipment.type | dashify }}</td>
                                         <td>{{shipment.site | dashify }}</td>
                                         <td>
-                                            <tracking-link carrier="'fedex'" tracking-number="shipment.tracking_number"></tracking-link>
+                                            <tracking-link ng-if="shipment.tracking_number" carrier="'fedex'" tracking-number="shipment.tracking_number"></tracking-link>
+                                            <p ng-if="!shipment.tracking_number"> - </p>
                                         </td>
                                         <td>{{shipment.dna_concordance | dashify }}</td>
                                         <td>{{shipment.dna_volume | dashify }}</td>
