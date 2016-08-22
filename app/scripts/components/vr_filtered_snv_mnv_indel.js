@@ -37,17 +37,12 @@
 
             modalInstance.result.then(function (comment) {
                 variant.comment = comment;
-                $log.debug('comment');
-                $log.debug(comment);
             });
         };
 
         ctrl.onItemConfirmed = function(item) {
-            $log.debug('ctrl.onItemConfirmed:');
-            $log.debug(item);
-
             if (ctrl.onVariantConfirmed) {
-                ctrl.onVariantConfirmed(item);
+                ctrl.onVariantConfirmed({variant:item});
             }
         }
     }
