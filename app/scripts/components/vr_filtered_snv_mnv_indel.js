@@ -4,9 +4,6 @@
     function VrFilteredSnvMnvIndel($scope, $element, $attrs, $log, $window) {
         var ctrl = this;
 
-        ctrl.confirmTitle = '';
-        ctrl.confirmMessage = '';
-
         ctrl.gridOptions = {};
 
         ctrl.$onInit = function() {
@@ -15,31 +12,40 @@
             };
         };
 
-        ctrl.onItemConfirmed = function (item) {
-            ctrl.onItemConfirmed(item);
+        ctrl.editComment = function(variant, isEnabled) {
+            $log.debug('Variant = ' + variant);
+
+            var modalInstance = $uibModal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: 'views/templates/modal_dialog_with_comment.html',
+                controller: 'ModalDialogWithCommentController',
+                resolve: {
+                    comment: function () {
+                        return variant.comment;
+                    },
+                    title: function () {
+                        return $scope.confirmTitle;
+                    },
+                    message: function () {
+                        return isEnabled ? $scope.confirmMessage : '';
+                    },
+                    enabled: function () {
+                        return isEnabled;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (comment) {
+                variant.comment = comment;
+                $log.debug('comment');
+                $log.debug(comment);
+            });
         };
 
-        //COSMIC LINKS
-        ctrl.openCosmicGene = function (id) {
-            $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + id.toLowerCase(), "_blank");
-            $window.focus();
-        };
-
-        ctrl.openCosmicId = function (id) {
-            id = id.substring(4, id.length)
-            $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + id.toLowerCase(), "_blank");
-            $window.focus();
-        };
-
-        ctrl.openCosmicFusionId = function (id) {
-            var numericId = id.substring(id.indexOf("_") - 3, (id.length - 2));
-
-            if (numericId !== null) {
-                $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + numericId.toLowerCase(), "_blank");
-            }
-            $window.focus();
-        };
-        //COSMIC LINKS        
+        ctrl.onItemConfirmed = function(item) {
+            $log.debug('ctrl.onItemConfirmed:');
+            $log.debug(item);
+        }
     }
 
     angular.module('matchbox').component('vrFilteredSnvMnvIndel', {
@@ -48,8 +54,7 @@
         bindings: {
             gridId: '<',
             items: '<',
-            isEditable: '<',
-            onItemConfirmed: '&'
+            isEditable: '<'
         }
     });
 

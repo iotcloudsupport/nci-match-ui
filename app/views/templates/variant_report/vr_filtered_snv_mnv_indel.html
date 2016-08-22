@@ -26,17 +26,23 @@
         </thead>
 
         <tbody>
-            <tr grid-item>
+            <tr ng-repeat="item in $ctrl.gridOptions.data" grid-item>
                 <td>
-                    <div check-box-with-confirm confirm-title="Confirmation Change Comments" confirm-message="Please enter a reason:" is-checked="item.confirmed"
-                        comment="item.comment" prompt-only-if="true" enabled="$ctrl.isEditable">
-                    </div>
+                    <check-box-with-confirm item="item" 
+                        confirm-title="Confirmation Change Comments" 
+                        confirm-message="Please enter a reason:"
+                        is-checked="item.confirmed"
+                        comment="item.comment"
+                        prompt-only-if="true"
+                        enabled="$ctrl.isEditable"
+                        on-item-confirmed="$ctrl.onItemConfirmed(item)">
+                    </check-box-with-confirm>
                 </td>
-                <td>
-                    <a ng-if="item.comment " href ng-click="editComment(variant, $ctrl.isEditable )">
-                        <i class="fa fa-file-text-o "></i>
+                <td>                    
+                    <a ng-if="item.comment" href ng-click="$ctrl.editComment(variant, $ctrl.isEditable )">
+                        <i class="fa fa-file-text-o"></i>
                     </a>
-                    <p ng-if="!item.comment"> - </p>
+                    <p ng-if="!item.comment"> - !</p>
                 </td>
                 <td>
                     <cosmic-link link-id="item.identifier" link-type="'cosmicId'" text="item.identifier"></cosmic-link>

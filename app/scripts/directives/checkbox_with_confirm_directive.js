@@ -12,6 +12,9 @@
             vm.toggle = function (comment) {
                 vm.isChecked = !vm.isChecked;
                 vm.comment = comment;
+                if (vm.onItemConfirmed) {
+                    vm.onItemConfirmed(vm.item);
+                }
             };
 
             vm.confirm = function () {
@@ -65,12 +68,13 @@
                 confirmTitle: '@confirmTitle',
                 confirmMessage: '@confirmMessage',
                 isChecked: '=',
-                reason: '=',
                 promptOnlyIf: '=',
                 comment: '=',
-                enabled: '='
+                enabled: '=',
+                item: '<',
+                onItemConfirmed: '&'
             },
-            restrict: 'A',
+            restrict: 'EA',
             template: template,
             controller: controller,
             controllerAs: 'vm',
