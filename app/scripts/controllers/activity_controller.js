@@ -10,18 +10,18 @@
         vm.maxItems = null;
         vm.pollingInterval = 10000;
         vm.lastUpdated = moment().format('LTS');
+        vm.intervalPromise = null;
 
         $scope.$on('$destroy', function () {
             stop();
         });
 
-        // stops the interval
         function stop() {
-            $interval.cancel(promise);
+            $interval.cancel(vm.intervalPromise);
         }
 
         function poll() {
-            $interval(function () {
+            vm.intervalPromise = $interval(function () {
                 loadData();
             }, vm.pollingInterval);
         }
