@@ -55,7 +55,7 @@
                 <td ng-bind="item.annotation | dashify"></td>
             </tr>
 
-            <tr ng-if="!$ctrl.gridOptions.data || !$ctrl.gridOptions.data.length">
+            <tr ng-if="!$ctrl.gridOptions.data || !$ctrl.gridOptions.data.length" class="no-data-message">
                 <td colspan="20"><span class="text-muted">Gene Fusions</span></td>
             </tr>
         </tbody>

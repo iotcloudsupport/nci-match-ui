@@ -3,13 +3,58 @@
 </div>
 
 <div id="$ctrl.gridId" grid-data grid-options="$ctrl.gridOptions" grid-actions="$ctrl.gridActions" class="data-grid table-responsive">
+    <div class="row">
+        <div class="col pull-left">
+            <form class="form-inline">
+                <div class="form-group">
+                    <div class="items-per-page">
+                        <label for="itemsOnPageSelect2">Show</label>
+                        <select id="itemsOnPageSelect2" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage"
+                            ng-change="reloadGrid()">
+                                                <option>10</option>
+                                                <option>25</option>
+                                                <option>50</option>
+                                                <option>100</option>
+                                            </select>
+                        <label for="itemsOnPageSelect2">per page</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col pull-right">
+            <div class="row">
+                <div class="col pull-left">
+                    <div class="form-group">
+                        <div class="items-per-page">
+                            <label for="itemsOnPageSelect3">Filter</label>
+                            <select id="itemsOnPageSelect3" class="form-control input-sm" ng-model="filter" filter-by="filter" ng-change="gridActions.filter()"
+                                grid-id="$ctrl.gridId">
+                                <option></option>
+                                <option>10</option>
+                                <option>25</option>
+                                <option>50</option>
+                                <option>100</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col pull-right">
+                    <div class="grid-filter">
+                        <input type="text" class="form-control input-sm order-search-box" placeholder="Select Filter" grid-id="$ctrl.gridId" ng-change="gridActions.filter()"
+                            ng-model="filterAll" filter-by="filterAll" filter-type="text">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <table class="table table-striped">
         <thead>
             <tr>
-                <th sortable="confirmed" class="sortable">Confirm</th>
-                <th sortable="comment" class="sortable">Comment</th>
                 <th sortable="identifier" class="sortable">ID</th>
-                <th sortable="is_amoi" class="sortable" style="width: 15%">aMOI</th>
+                <th sortable="is_amoi" class="sortable">aMOI</th>
+                <th sortable="filter" class="filter">Filter</th>
                 <th sortable="chromosome" class="sortable">Chrom</th>
                 <th sortable="position" class="sortable">Position</th>
                 <th sortable="cds_reference" class="sortable">CDS Ref</th>
@@ -31,23 +76,6 @@
 
         <tbody>
             <tr ng-repeat="item in $ctrl.gridOptions.data" grid-item>
-                <td>
-                    <check-box-with-confirm item="item" 
-                        confirm-title="Confirmation Change Comments" 
-                        confirm-message="Please enter a reason:"
-                        is-checked="item.confirmed"
-                        comment="item.comment"
-                        prompt-only-if="true"
-                        enabled="$ctrl.isEditable"
-                        on-item-confirmed="$ctrl.onItemConfirmed(item)">
-                    </check-box-with-confirm>
-                </td>
-                <td>                    
-                    <a ng-if="item.comment" href ng-click="$ctrl.editComment(item, $ctrl.isEditable )">
-                        <i class="fa fa-file-text-o"></i>
-                    </a>
-                    <p ng-if="!item.comment"> - </p>
-                </td>
                 <td>
                     <cosmic-link link-id="item.identifier" link-type="'cosmicId'" text="item.identifier"></cosmic-link>
                 </td>
@@ -79,4 +107,11 @@
             </tr>
         </tbody>
     </table>
+
+    <form class="form-inline pull-left">
+        <div class="form-group">
+            <grid-pagination max-size="5" class="pagination-sm" total-items="paginationOptions.totalItems" ng-model="paginationOptions.currentPage"
+                ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+        </div>
+    </form>
 </div>

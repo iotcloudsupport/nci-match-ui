@@ -50,7 +50,7 @@
                 <td ng-bind="item.confidence_interval_95percent | dashify"></td>
             </tr>
 
-            <tr ng-if="!$ctrl.gridOptions.data || !$ctrl.gridOptions.data.length">
+            <tr ng-if="!$ctrl.gridOptions.data || !$ctrl.gridOptions.data.length" class="no-data-message">
                 <td colspan="9"><span class="text-muted">No Copy Number Variants</span></td>
             </tr>
         </tbody>

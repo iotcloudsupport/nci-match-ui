@@ -545,7 +545,11 @@
                                     </div>
 
                                     <!--QC-->
-                                    <div ng-if="variantReportMode === 'QC'">
+                                    <div ng-if="variantReportMode === 'QC'" ng-init="loadSnvTable()">
+                                        <vr-qc-snv-mnv-indel 
+                                            grid-id="tissueQcSnvMnvIndelsVr" 
+                                            items="snvList">
+                                        </vr-qc-snv-mnv-indel>
 
                                         <!--TABLES-->
                                         <div class="no-horizontal-padding header-box-container" >
@@ -560,8 +564,7 @@
                                                         <div class="ibox-title ibox-title-no-line-no-padding">
                                                             <h3>SNVs/MNVs/Indels</h3>
                                                         </div>
-                                                        <div class="col-md-12 white-bg animated fadeInRight"
-                                                             ng-init="loadSnvTable()">
+                                                        <div class="col-md-12 white-bg animated fadeInRight">
 
                                                             <table datatable="ng"
                                                                    dt-options="DashCtrl.dtOptions"
@@ -1093,7 +1096,6 @@
                                         <div class="row" >
 
                                             <div class="col-lg-12">
-
                                                 <!--SNVs/MNVs/Indels TABLE-->
                                                 <div class="ibox-title ibox-title-no-line-no-padding">
                                                     <h3>SNVs/MNVs/Indels</h3>

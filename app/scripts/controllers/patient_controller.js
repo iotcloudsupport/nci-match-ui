@@ -94,7 +94,6 @@
         $scope.loadActionItems = loadActionItems;
         $scope.showWarning = showWarning;
         $scope.showConfirmation = showConfirmation;
-        $scope.editComment = editComment;
         $scope.confirmVariantReport = confirmVariantReport;
         $scope.rejectVariantReport = rejectVariantReport;
         $scope.confirmAssignmentReport = confirmAssignmentReport;
@@ -646,36 +645,6 @@
             // $log.debug(errorMessage);
         }
 
-        function editComment(variant, isEnabled) {
-            $log.debug('Variant = ' + variant);
-
-            var modalInstance = $uibModal.open({
-                animation: $scope.animationsEnabled,
-                templateUrl: 'views/templates/modal_dialog_with_comment.html',
-                controller: 'ModalDialogWithCommentController',
-                resolve: {
-                    comment: function () {
-                        return variant.comment;
-                    },
-                    title: function () {
-                        return $scope.confirmTitle;
-                    },
-                    message: function () {
-                        return isEnabled ? $scope.confirmMessage : '';
-                    },
-                    enabled: function () {
-                        return isEnabled;
-                    }
-                }
-            });
-
-            modalInstance.result.then(function (comment) {
-                variant.comment = comment;
-                $log.debug('comment');
-                $log.debug(comment);
-            });
-        }
-
         function showPrompt(options) {
             return prompt(options);
         }
@@ -902,23 +871,20 @@
         }
 
         function getAllFilesButtonClass(obj) {
-            return vm.disabledFileButtonClass;
-
-            // TODO: enable after demo
-            // try {
-            //     if (obj) {
-            //         for (var i = 0; i < arguments.length; i++) {
-            //             if (arguments[i] in obj && obj[arguments[i]]) {
-            //                 return vm.enabledFileButtonClass;
-            //             }
-            //         }
-            //     } else {
-            //         //$log.debug('getAllFilesButtonClass no obj');
-            //     }
-            //     return vm.disabledFileButtonClass;
-            // } catch (error) {
-            //     return vm.disabledFileButtonClass;
-            // }
+            try {
+                if (obj) {
+                    for (var i = 0; i < arguments.length; i++) {
+                        if (arguments[i] in obj && obj[arguments[i]]) {
+                            return vm.enabledFileButtonClass;
+                        }
+                    }
+                } else {
+                    //$log.debug('getAllFilesButtonClass no obj');
+                }
+                return vm.disabledFileButtonClass;
+            } catch (error) {
+                return vm.disabledFileButtonClass;
+            }
         }
 
         function getNewFileButtonClass(shipment, analysis) {
@@ -1197,7 +1163,7 @@
         }
 
         function onItemConfirmed(variant) {
-            $log.debug('function onItemConfirmed(variant)');
+            $log.debug('TODO: call Patient API service to confirm Variant');
             $log.debug(variant);
         }
     }
