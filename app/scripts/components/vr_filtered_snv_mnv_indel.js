@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    function VrFilteredSnvMnvIndel($scope, $element, $attrs, $log, $window) {
+    function VrFilteredSnvMnvIndel($scope, $element, $attrs, $log, $uibModal) {
         var ctrl = this;
 
         ctrl.gridOptions = {};
@@ -24,10 +24,10 @@
                         return variant.comment;
                     },
                     title: function () {
-                        return $scope.confirmTitle;
+                        return 'Confirmation Change Comments';
                     },
                     message: function () {
-                        return isEnabled ? $scope.confirmMessage : '';
+                        return isEnabled ? 'Please enter a reason:' : '';
                     },
                     enabled: function () {
                         return isEnabled;
@@ -45,6 +45,10 @@
         ctrl.onItemConfirmed = function(item) {
             $log.debug('ctrl.onItemConfirmed:');
             $log.debug(item);
+
+            if (ctrl.onVariantConfirmed) {
+                ctrl.onVariantConfirmed(item);
+            }
         }
     }
 
@@ -54,7 +58,8 @@
         bindings: {
             gridId: '<',
             items: '<',
-            isEditable: '<'
+            isEditable: '<',
+            onVariantConfirmed: '&'
         }
     });
 

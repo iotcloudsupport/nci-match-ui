@@ -526,7 +526,8 @@
                                         <vr-filtered-snv-mnv-indel 
                                             grid-id="tissueFilteredSmiVr" 
                                             is-editable="currentTissueVariantReport.status==='PENDING'"
-                                            items="currentTissueVariantReport.variants.snvs_and_indels">
+                                            items="currentTissueVariantReport.variants.snvs_and_indels"
+                                            on-variant-confirmed="onItemConfirmed(item)">
                                         </vr-filtered-snv-mnv-indel>
 
                                         <div class="table-responsive" style="border: none">

@@ -39,10 +39,10 @@
                     </check-box-with-confirm>
                 </td>
                 <td>                    
-                    <a ng-if="item.comment" href ng-click="$ctrl.editComment(variant, $ctrl.isEditable )">
+                    <a ng-if="item.comment" href ng-click="$ctrl.editComment(item, $ctrl.isEditable )">
                         <i class="fa fa-file-text-o"></i>
                     </a>
-                    <p ng-if="!item.comment"> - !</p>
+                    <p ng-if="!item.comment"> - </p>
                 </td>
                 <td>
                     <cosmic-link link-id="item.identifier" link-type="'cosmicId'" text="item.identifier"></cosmic-link>

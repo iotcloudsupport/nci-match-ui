@@ -120,6 +120,7 @@
         $scope.loadGeneTable = loadGeneTable;
         $scope.uploadSampleFile = uploadSampleFile;
         $scope.navigateToTissueVariantReport = navigateToTissueVariantReport;
+        $scope.onItemConfirmed = onItemConfirmed;
 
         //FILTER
         // $scope.$watch('confirmed', function (newValue, oldValue) {
@@ -1193,6 +1194,11 @@
                 $log.debug('analysis');
                 $log.debug(analysis);
             });
+        }
+
+        function onItemConfirmed(variant) {
+            $log.debug('function onItemConfirmed(variant)');
+            $log.debug(variant);
         }
     }
 
