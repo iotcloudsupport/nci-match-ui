@@ -1,0 +1,58 @@
+<div class="ibox-title ibox-title-no-line-no-padding">
+    <h3>Copy Number Variants</h3>
+</div>
+
+<div id="$ctrl.gridId" grid-data grid-options="$ctrl.gridOptions" grid-actions="$ctrl.gridActions" class="data-grid table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th sortable="confirmed" class="sortable">Confirm</th>
+                <th sortable="comment" class="sortable">Comment</th>
+                <th sortable="identifier" class="sortable">ID</th>
+                <th sortable="is_amoi" class="sortable" style="width: 15%">aMOI</th>
+                <th sortable="chromosome" class="sortable">Chrom</th>
+                <th sortable="raw_copy_number" class="sortable">Raw CN</th>
+                <th sortable="copy_number" class="sortable">CN</th>
+                <th sortable="confidence_interval_5percent" class="sortable">CI 5%</th>
+                <th sortable="confidence_interval_95percent" class="sortable">CI 95%</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="item in $ctrl.gridOptions.data" grid-item>
+                <td>
+                    <check-box-with-confirm item="item" 
+                        confirm-title="Confirmation Change Comments" 
+                        confirm-message="Please enter a reason:"
+                        is-checked="item.confirmed"
+                        comment="item.comment"
+                        prompt-only-if="true"
+                        enabled="$ctrl.isEditable"
+                        on-item-confirmed="$ctrl.onItemConfirmed(item)">
+                    </check-box-with-confirm>
+                </td>
+                <td>                    
+                    <a ng-if="item.comment" href ng-click="$ctrl.editComment(item, $ctrl.isEditable )">
+                        <i class="fa fa-file-text-o"></i>
+                    </a>
+                    <p ng-if="!item.comment"> - </p>
+                </td>
+                <td>
+                    <cosmic-link link-id="item.identifier" link-type="'cosmicId'" text="item.identifier"></cosmic-link>
+                </td>
+                <td style="width: 15%">
+                    <treatment-arm-variant-link is-amoi="item.is_amoi" treatment-arms="item.treatment_arms"></treatment-arm-variant-link>
+                </td>
+                <td ng-bind="item.chromosome | dashify"></td>
+                <td ng-bind="item.raw_copy_number | dashify"></td>
+                <td ng-bind="item.copy_number | dashify"></td>
+                <td ng-bind="item.confidence_interval_5percent | dashify"></td>
+                <td ng-bind="item.confidence_interval_95percent | dashify"></td>
+            </tr>
+
+            <tr ng-if="!$ctrl.gridOptions.data || !$ctrl.gridOptions.data.length">
+                <td colspan="9"><span class="text-muted">No Copy Number Variants</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

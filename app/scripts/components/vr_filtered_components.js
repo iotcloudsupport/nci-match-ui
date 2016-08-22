@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    function VrFilteredSnvMnvIndel($scope, $element, $attrs, $log, $uibModal) {
+    function VrFiltered($scope, $element, $attrs, $log, $uibModal) {
         var ctrl = this;
 
         ctrl.gridOptions = {};
@@ -49,7 +49,29 @@
 
     angular.module('matchbox').component('vrFilteredSnvMnvIndel', {
         templateUrl: 'views/templates/variant_report/vr_filtered_snv_mnv_indel.html',
-        controller: VrFilteredSnvMnvIndel,
+        controller: VrFiltered,
+        bindings: {
+            gridId: '<',
+            items: '<',
+            isEditable: '<',
+            onVariantConfirmed: '&'
+        }
+    });
+
+    angular.module('matchbox').component('vrFilteredCnv', {
+        templateUrl: 'views/templates/variant_report/vr_filtered_cnv.html',
+        controller: VrFiltered,
+        bindings: {
+            gridId: '<',
+            items: '<',
+            isEditable: '<',
+            onVariantConfirmed: '&'
+        }
+    });
+
+    angular.module('matchbox').component('vrFilteredGf', {
+        templateUrl: 'views/templates/variant_report/vr_filtered_gf.html',
+        controller: VrFiltered,
         bindings: {
             gridId: '<',
             items: '<',

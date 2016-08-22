@@ -1,0 +1,63 @@
+<div class="ibox-title ibox-title-no-line-no-padding">
+    <h3>Gene Fusions</h3>
+</div>
+
+<div id="$ctrl.gridId" grid-data grid-options="$ctrl.gridOptions" grid-actions="$ctrl.gridActions" class="data-grid table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th sortable="confirmed" class="sortable">Confirm</th>
+                <th sortable="comment" class="sortable">Comment</th>
+                <th sortable="identifier" class="sortable">ID</th>
+                <th sortable="is_amoi" class="sortable" style="width: 15%">aMOI</th>
+
+                <th sortable="driver_gene" class="sortable">Gene 2</th>
+                <th sortable="driver_read_count" class="sortable">Gene 2 Count</th>
+                <th sortable="partner_gene" class="sortable">Gene 1</th>
+                <th sortable="partner_read_count" class="sortable">Gene 1 Count</th>
+                <th sortable="annotation" class="sortable">Annotation</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="item in $ctrl.gridOptions.data" grid-item>
+                <td>
+                    <check-box-with-confirm item="item" 
+                        confirm-title="Confirmation Change Comments" 
+                        confirm-message="Please enter a reason:"
+                        is-checked="item.confirmed"
+                        comment="item.comment"
+                        prompt-only-if="true"
+                        enabled="$ctrl.isEditable"
+                        on-item-confirmed="$ctrl.onItemConfirmed(item)">
+                    </check-box-with-confirm>
+                </td>
+                <td>                    
+                    <a ng-if="item.comment" href ng-click="$ctrl.editComment(item, $ctrl.isEditable )">
+                        <i class="fa fa-file-text-o"></i>
+                    </a>
+                    <p ng-if="!item.comment"> - </p>
+                </td>
+                <td>
+                    <cosmic-link link-id="item.identifier" link-type="'cosmicId'" text="item.identifier"></cosmic-link>
+                </td>
+                <td style="width: 15%">
+                    <treatment-arm-variant-link is-amoi="item.is_amoi" treatment-arms="item.treatment_arms"></treatment-arm-variant-link>
+                </td>
+
+                <td ng-bind="item.driver_gene | dashify"></td>
+                <td ng-bind="item.driver_read_count | dashify"></td>
+                <td>
+                    <cosmic-link link-id="item.partner_gene" link-type="'cosmicFusionId'" text="item.partner_gene"></cosmic-link>
+                </td>
+                <td ng-bind="item.read_count | dashify"></td>
+                <td ng-bind="item.partner_read_count | dashify"></td>
+                <td ng-bind="item.annotation | dashify"></td>
+            </tr>
+
+            <tr ng-if="!$ctrl.gridOptions.data || !$ctrl.gridOptions.data.length">
+                <td colspan="20"><span class="text-muted">Gene Fusions</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
