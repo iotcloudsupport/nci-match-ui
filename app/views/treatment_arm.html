@@ -18,8 +18,7 @@
         <div class="col-lg-2"></div>
     </div>
 
-    <div class="wrapper">
-
+    <div class="wrapper animated fadeInRight">
         <div class="no-horizontal-padding header-box-container">
             <div class="row">
                 <div class="col-lg-6 col-md-6">
@@ -48,10 +47,9 @@
                             </dd>
 
                             <dt></dt>
-                            <dd ng-style="selectedVersion.latest === 'This is the latest version.' && {'color':'green'} ||
-                                        selectedVersion.latest === 'This is not the latest version.' && {'color': 'red'}">{{selectedVersion.latest}}
+                            <dd ng-style="selectedVersion.latest === 'This is the latest version.' && {'color':'green'} || selectedVersion.latest === 'This is not the latest version.' && {'color': 'red'}">
+                                {{selectedVersion.latest}}
                             </dd>
-
                         </dl>
                     </div>
                 </div>
@@ -59,24 +57,23 @@
                 <div class="col-lg-6 col-md-6">
                     <div id="right-info-box" class="header-info-box ta-header-box">
                         <dl class="dl-horizontal">
-
-                            <dt>Genes</dt>
+                            <dt>Gene(s)</dt>
                             <dd>{{currentVersion.gene}}</dd>
 
                             <dt>Patients on Arm Version</dt>
-                            <dd>{{currentVersion.num_patients_assigned}}</dd>
+                            <dd>{{currentVersion.num_patients_assigned | dashify}}</dd>
 
                             <dt>Total Patients on Arm</dt>
-                            <dd>{{currentVersion.num_patients_assigned_basic}}</dd>
+                            <dd>{{currentVersion.num_patients_assigned_basic | dashify}}</dd>
 
-                            <dt>Drug</dt>
-                            <dd> <span ng-repeat="drug in currentVersion.treatment_arm_drugs">{{drug.name}}{{$last?'':', '}}</span>                                </dd>
+                            <dt>Drug(s)</dt>
+                            <dd><span ng-repeat="drug in currentVersion.treatment_arm_drugs">{{drug.name}}{{$last?'':', '}}</span></dd>
 
                             <dt>Download</dt>
                             <dd>
-                                <button class="btn btn-outline btn-success" title="Export Variant Report to PDF"><i class="fa fa-file-pdf-o"></i>&nbsp;&nbsp;PDF</button>
-                                <button class="btn btn-outline btn-success" title="Export Variant Report to Excel"><i class="fa fa-file-excel-o"></i>&nbsp;&nbsp;Excel</button>
-                                <button class="btn btn-outline btn-success" title="Export Pharma Report"><i class="fa fa-file-text-o"></i>&nbsp;&nbsp;Pharma</button>
+                                <button class="btn btn-outline btn-success" title="Export Variant Report to PDF"><i class="fa fa-file-pdf-o"></i> PDF</button>
+                                <button class="btn btn-outline btn-success" title="Export Variant Report to Excel"><i class="fa fa-file-excel-o"></i>&nbsp;Excel</button>
+                                <button class="btn btn-outline btn-success" title="Export Pharma Report"><i class="fa fa-file-text-o"></i>&nbsp;Pharma</button>
                             </dd>
 
                         </dl>
