@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    function VrFilteredReportController($scope, $element, $attrs, $log, $window) {
+    function VrFilteredSnvMnvIndel($scope, $element, $attrs, $log, $window) {
         var ctrl = this;
 
         ctrl.confirmTitle = '';
@@ -42,9 +42,9 @@
         //COSMIC LINKS        
     }
 
-    angular.module('matchbox').component('variantReportFiltered', {
-        templateUrl: 'views/templates/variant_report/vr_filtered_snv_mnv_indel_table.html',
-        controller: VrFilteredReportController,
+    angular.module('matchbox').component('vrFilteredSnvMnvIndel', {
+        templateUrl: 'views/templates/variant_report/vr_filtered_snv_mnv_indel.html',
+        controller: VrFilteredSnvMnvIndel,
         bindings: {
             gridId: '<',
             items: '<',

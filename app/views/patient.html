@@ -515,7 +515,7 @@
                                         </div>
                                     </div>
 
-                                    <div ng-if="activeTab=='tissue_report'" d3-cnv-chart="{{data.patient_id}}" chart-data-url="{{currentTissueVariantReport.vr_chart_data_url}}"></div>
+                                    <!--<div ng-if="activeTab=='tissue_report'" d3-cnv-chart="{{data.patient_id}}" chart-data-url="{{currentTissueVariantReport.vr_chart_data_url}}"></div>-->
 
                                     <div ng-if="variantReportMode === 'FILTERED'">
                                         <!--Single Nucleitide Variants-->
@@ -523,11 +523,11 @@
                                             <h3>SNVs/MNVs/Indels</h3>
                                         </div>
 
-                                        <variant-report-filtered 
+                                        <vr-filtered-snv-mnv-indel 
                                             grid-id="tissueFilteredSmiVr" 
                                             is-editable="currentTissueVariantReport.status==='PENDING'"
                                             items="currentTissueVariantReport.variants.snvs_and_indels">
-                                        </variant-report-filtered>
+                                        </vr-filtered-snv-mnv-indel>
 
                                         <div class="table-responsive" style="border: none">
                                             <table datatable="ng"
