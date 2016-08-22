@@ -12,6 +12,7 @@
         .filter('utc', utc)
         .filter('titlecase', titlecase)
         .filter('dashify', dashify)
+        .filter('floor', floor)
         .filter('sampleBreak', sampleBreak);
 
     function isNotString(text) {
@@ -172,10 +173,15 @@
         };
     }
 
+    function floor() {
+        return function (text) {
+            if (angular.isUndefined(text) || text === null || !angular.isNumber(parseFloat(text))) return '-';
+            return Math.floor(text);
+        };
+    }
 
     function sampleBreak() {
         return function (data, id) {
-
             var arrayToReturn = [];
             for (var i=0; i<data.length; i++){
 
@@ -183,10 +189,8 @@
                     arrayToReturn.push(data[i]);
                 }
             }
-            
-
             return arrayToReturn;
         };
-    };
+    }
 
 } ());

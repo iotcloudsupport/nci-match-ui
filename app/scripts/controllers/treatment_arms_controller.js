@@ -5,36 +5,57 @@
 
     function TreatmentArmsController (
         $scope,
-        matchApi) {
+        arrayTools,
+        matchApi,
+        $filter) {
 
-        $scope.dtOptions = {
-            'info': false,
-            'paging': false
-        };
-
-        $scope.dtColumnDefs = [];
-        $scope.dtInstance = {};
+        setupGrids();
 
         $scope.treatmentArmList = [];
 
-        $scope.displayTreatmentArmList = function() {
+        $scope.loadTreatmentArmList = function() {
             matchApi
                 .loadTreatmentArmList()
                 .then(function (d) {
                     $scope.treatmentArmList = d.data;
-                    angular.forEach($scope.treatmentArmList, function(ta, index) {
-                        ta.current_patients = formatNumber(ta.current_patients);
-                        ta.former_patients = formatNumber(ta.former_patients);
-                        ta.not_enrolled_patients = formatNumber(ta.not_enrolled_patients);
-                        ta.pending_patients = formatNumber(ta.pending_patients);
-                        ta.pending_patients = formatNumber(ta.pending_patients);
-                    });
+                    $scope.gridOptions.data = d.data;
                 });
         };
 
-        formatNumber = function(value) {
-            if (angular.isUndefined(value) || value === null || !angular.isNumber(value)) return '?';
-            return Math.floor(value);
+        function setupGrids() {
+            $scope.gridOptions = {
+                data: [],
+                ngColumnFilters: {
+                    "date_opened": "utc",
+                    "date_suspended_or_closed": "utc"
+                },
+                sort: {
+                    predicate: 'name',
+                    direction: 'asc'
+                },
+                searchableProps: [
+                    'name',
+                    'current_patients',
+                    'former_patients',
+                    'not_enrolled_patients',
+                    'pending_patients',
+                    'treatment_arm_status',
+                    'date_opened',
+                    'date_closed'
+                ],
+                customFilters: {
+                    filterAll: function (items, value, predicate) {
+                        return items.filter(function (item) {
+                            return arrayTools.itemHasValue(
+                                item,
+                                value,
+                                $scope.gridOptions.searchableProps,
+                                $scope.gridOptions.ngColumnFilters,
+                                $filter);
+                        });
+                    }
+                }
+            };
         }
     }
 } ());
