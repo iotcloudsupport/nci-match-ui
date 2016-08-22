@@ -31,7 +31,9 @@
             .withOption('searching', false);
 
         $scope.currentUser = null;
-
+        
+        $scope.snvList = [];
+        
         vm.enabledFileButtonClass = 'btn-success';
         vm.disabledFileButtonClass = 'btn-default btn-outline-default disabled';
 
