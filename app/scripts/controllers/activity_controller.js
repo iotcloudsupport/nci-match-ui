@@ -29,7 +29,7 @@
         function startLoading(maxItems) {
             vm.maxItems = maxItems;
             loadData();
-            poll();
+//            poll();
         }
 
         function loadData() {
