@@ -2,7 +2,7 @@
     angular.module('matchbox.common', [])
         .controller('ActivityController', ActivityController);
 
-    function ActivityController(matchApi, $stateParams, $log, $timeout) {
+    function ActivityController($scope, matchApi, $stateParams, $log, $interval) {
         var vm = this;
 
         vm.data = [];
@@ -11,10 +11,18 @@
         vm.pollingInterval = 10000;
         vm.lastUpdated = moment().format('LTS');
 
+        $scope.$on('$destroy', function () {
+            stop();
+        });
+
+        // stops the interval
+        function stop() {
+            $interval.cancel(promise);
+        }
+
         function poll() {
-            $timeout(function () {
+            $interval(function () {
                 loadData();
-                poll();
             }, vm.pollingInterval);
         }
 
