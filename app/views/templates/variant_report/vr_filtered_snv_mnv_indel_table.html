@@ -53,8 +53,7 @@
                 <td ng-bind="item.strand | dashify"></td>
                 <td ng-bind="item.allele_frequency | dashify"></td>
                 <td>
-                    <a class="report-link" href ng-click="$ctrl.openCosmicGene( item.func_gene )"><span ng-bind="item.func_gene | dashify"></span></a>
-                    <cosmic-link link-id="item.identifier" link-type="'cosmicGene'" text="item.identifier"></cosmic-link>
+                    <cosmic-link link-id="item.func_gene" link-type="'cosmicGene'" text="item.func_gene"></cosmic-link>
                 </td>
                 <td ng-bind="item.oncomine_variant_class | dashify"></td>
                 <td ng-bind="item.exon | dashify"></td>

@@ -25,6 +25,10 @@
             }
 
             vm.getLinkId = function() {
+                if (!vm.linkId) {
+                    return '';
+                }
+
                 switch (vm.linkType) {
                     case 'cosmicGene': 
                         return vm.linkId;
