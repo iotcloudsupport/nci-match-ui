@@ -8,9 +8,6 @@
     cnvChart.$inject = ['d3service', '$log', '$timeout', '$http', '$window', 'matchApi'];
 
     function d3Popover($scope, $sce) {
-
-        console.log("----> RUN")
-
         $scope.dynamicPopover = {
             content: 'Hello, World!',
             templateUrl: 'myPopoverTemplate.html',
@@ -221,10 +218,9 @@
                                 .attr("width", width + margin.left + margin.right)
                                 .attr("height", height + margin.top + margin.bottom)
                                 .attr("class", "box")
-
                                 .append("g")
                                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-                                ;
+                                .style("cursor", "pointer");
 
                             var pad = 0.3;
                             var lin = 0.6;
@@ -374,15 +370,8 @@
                                     var t = d3.transform(d3.select(this).attr("transform"));
                                     var locX = t.translate[0];
 
-                                    console.log("START TIP")
                                     $(this).popover("show");
-
                                 });
-
-                                // when the input range changes update the circle
-                                // d3.select("#" + mainid).on("mouseout", function () {
-                                //     $(this).popover('destroy');
-                                // });
                             });
 
                             // add a title
@@ -591,127 +580,12 @@
                             }
                         }
 
-                        // popoverexecute();
-
                         execute();
 
                     }, 100);
                 });
             };
         }
-
-        // function alink(scope, iElement, iAttrs) {
-        //     scope.text = iAttrs["d3Popover"];
-        //
-        //     console.log("START--> " + JSON.stringify(scope.text))
-        //     // return scope.text;
-        //
-        // }
-
-        // function linkSample(scope, iElement, iAttrs) {
-        //     d3Service.d3().then(function (d3) {
-        //         $timeout(function () {
-        //
-        //             var svg = d3.select(iElement[0])
-        //                 .append("svg")
-        //                 .attr("width", "100%");
-        //
-        //             // on window resize, re-render d3 canvas
-        //             $window.onresize = function () {
-        //                 return scope.$apply();
-        //             };
-        //
-        //             scope.$watch(function () {
-        //                 return angular.element($window)[0].innerWidth;
-        //             }, function () {
-        //                 return scope.render(scope.data);
-        //             }
-        //             );
-        //
-        //             scope.$watch(function () {
-        //                 return iElement.offset().top
-        //             }, function (pos) {
-        //                 $log.debug(pos)
-        //                 // if (outOfBorder) {
-        //                 //   $log.debug('invisible')
-        //                 // } else {
-        //                 //   $log.debug('visible')
-        //                 // }
-        //             });
-        //
-        //             scope.$watch(function () {
-        //                 return iElement.offset().left
-        //             }, function (pos) {
-        //                 $log.debug(pos)
-        //                 // if (outOfBorder) {
-        //                 //   $log.debug('invisible')
-        //                 // } else {
-        //                 //   $log.debug('visible')
-        //                 // }
-        //             });
-        //
-        //             // watch for data changes and re-render
-        //             scope.$watch('data', function (newVals, oldVals) {
-        //                 return scope.render(newVals);
-        //             }, true);
-        //
-        //             // define render function
-        //             scope.render = function (data) {
-        //                 if (iElement.offset().top <= 0 || iElement.offset().left <= 0)
-        //                     return;
-        //
-        //                 // remove all previous items before render
-        //                 svg.selectAll("*").remove();
-        //
-        //                 // setup variables
-        //                 var width, height, max;
-        //                 width = d3.select(iElement[0])[0][0].offsetWidth - 20;
-        //                 // 20 is for margins and can be changed
-        //                 height = scope.data.length * 35;
-        //                 // 35 = 30(bar height) + 5(margin between bars)
-        //                 max = 98;
-        //                 // this can also be found dynamically when the data is not static
-        //                 // max = Math.max.apply(Math, _.map(data, ((val)-> val.count)))
-        //
-        //                 // set the height based on the calculations above
-        //                 svg.attr('height', height);
-        //
-        //                 //create the rectangles for the bar chart
-        //                 svg.selectAll("rect")
-        //                     .data(data)
-        //                     .enter()
-        //                     .append("rect")
-        //                     .on("click", function (d, i) { return scope.onClick({ item: d }); })
-        //                     .attr("height", 30) // height of each bar
-        //                     .attr("width", 0) // initial width of 0 for transition
-        //                     .attr("x", 10) // half of the 20 side margin specified above
-        //                     .attr("y", function (d, i) {
-        //                         return i * 35;
-        //                     }) // height + margin between bars
-        //                     .transition()
-        //                     .duration(400) // time of duration
-        //                     .attr("width", function (d) {
-        //                         return d.score / (max / width);
-        //                     }); // width based on scale
-        //
-        //                 svg.selectAll("text")
-        //                     .data(data)
-        //                     .enter()
-        //                     .append("text")
-        //                     .attr("fill", "#fff")
-        //                     .attr("y", function (d, i) { return i * 35 + 22; })
-        //                     .attr("x", 15)
-        //                     .text(function (d) { return d[scope.label]; });
-        //
-        //             };
-        //
-        //         }, 100);
-        //
-        //     })
-        // }
-
     }
-
-
 
 } ());
