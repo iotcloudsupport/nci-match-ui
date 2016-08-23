@@ -5,11 +5,11 @@
         var ctrl = this;
 
         ctrl.isLoading = true;
+        ctrl.filterValues = {};
         ctrl.gridActions = {};
 
         ctrl.gridOptions = {
             data: [],
-            urlSync: true,
             sort: {
                 predicate: 'identifier',
                 direction: 'asc'
@@ -62,13 +62,30 @@
 
         function loadQcList(data) {
             ctrl.isLoading = false;
-            ctrl.gridOptions.data = data.data.copy_number_variants;
+            ctrl.gridOptions.data = processFilterColumn(data.data.copy_number_variants);
         }
 
         function handleQcLoadError(error) {
             ctrl.isLoading = false;
             $log.error('Error while loading QC data');
             $log.error(error);
+        }
+
+        function processFilterColumn(data) {
+            if (!data)
+                return data;
+
+            for (var i = 0; i < data.length; i++) {
+                var element = data[i];
+                if ('filter' in element) {
+                    element._filter_col = element.filter;
+                    if (!(element.filter in ctrl.filterValues)) {
+                        ctrl.filterValues[element.filter] = element.filter;
+                    }
+                }
+            }
+
+            return data;
         }
     }
 
