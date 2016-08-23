@@ -1,8 +1,3 @@
-                                        <vr-qc-snv-mnv-indel 
-                                            grid-id="tissueQcSnvMnvIndelsVr" 
-                                            url="'data/3366.qc_report.json'">
-                                        </vr-qc-snv-mnv-indel>
-
 <div ng-controller="PatientController" ng-init="loadPatientData()">
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-10">
@@ -551,6 +546,10 @@
 
                                     <!--QC-->
                                     <div ng-if="variantReportMode === 'QC'" ng-init="loadSnvTable()">
+                                        <vr-qc-snv-mnv-indel 
+                                            grid-id="tissueQcSnvMnvIndelsVr" 
+                                            url="'data/3366.qc_report.json'">
+                                        </vr-qc-snv-mnv-indel>
                                         
 
                                         <!--TABLES-->

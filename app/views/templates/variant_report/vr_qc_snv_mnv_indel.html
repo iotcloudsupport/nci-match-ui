@@ -5,7 +5,7 @@
 <div id="qcReportCnv" grid-data grid-options="$ctrl.gridOptions" grid-actions="$ctrl.gridActions" class="data-grid">
     <div class="row">
         <form class="form-inline">
-            <div class="col-md-2 pull-left">
+            <div class="col-md-6 text-left">
                 <div class="form-group">
                     <div class="items-per-page">
                         <label for="itemsOnPageSelect2">Show</label>
@@ -20,25 +20,15 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-            </div>
-            <div class="col-md-2 pull-left">
-                <div class="form-group">
-                    <div class="items-per-page">
-                        <label for="filterFilter">Filter Column</label>
-                        <select id="filterFilter" class="form-control input-sm" grid-id="qcReportCnv" ng-change="$ctrl.gridActions.filter()" ng-model="_filter_col"
-                            filter-by="_filter_col" filter-type="select">
-                            <option></option>
-                            <option ng-repeat="filterValue in $ctrl.filterValues">{{filterValue}}</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2 pull-right">
-                <div class="grid-filter">
-                    <input type="text" class="form-control input-sm order-search-box" placeholder="Filter by all columns" grid-id="qcReportCnv"
-                        ng-change="$ctrl.gridActions.filter()" ng-model="filterAll" filter-by="filterAll" filter-type="text">
-                </div>
+            <div class="col-md-6 text-right">
+                <label for="filterFilter">"Filter" Column</label>
+                <select id="filterFilter" class="form-control input-sm" grid-id="qcReportCnv" placeholder="Value for Filter column" ng-change="$ctrl.gridActions.filter()" ng-model="_filter_col"
+                    filter-by="_filter_col" filter-type="select">
+                    <option></option>
+                    <option ng-repeat="filterValue in $ctrl.filterValues">{{filterValue}}</option>
+                </select>
+                <input type="text" class="form-control input-sm all-filter" placeholder="Or filter by other columns" grid-id="qcReportCnv"
+                    ng-change="$ctrl.gridActions.filter()" ng-model="filterAll" filter-by="filterAll" filter-type="text">
             </div>
         </form>
     </div>
@@ -106,10 +96,17 @@
         </tbody>
     </table>
 
-    <form class="form-inline pull-left">
-        <div class="form-group">
-            <grid-pagination max-size="5" class="pagination-sm" total-items="paginationOptions.totalItems" ng-model="paginationOptions.currentPage"
-                ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+    <div class="row">
+        <div class="col pull-left">
+            <form class="form-inline">
+                <div class="form-group">
+                    <grid-pagination max-size="5" class="pagination-sm" total-items="paginationOptions.totalItems" ng-model="paginationOptions.currentPage"
+                        ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                </div>
+            </form>
         </div>
-    </form>
+        <div class="col pull-left">
+            <span class="item-count" ng-bind="filtered.length + ' items'"></span>
+        </div>
+    </div>
 </div>
