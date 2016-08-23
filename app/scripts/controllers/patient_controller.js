@@ -4,8 +4,6 @@
         .controller('PatientController', PatientController);
 
     function PatientController($scope,
-        DTOptionsBuilder,
-        DTColumnDefBuilder,
         matchApi,
         $stateParams,
         $log,
@@ -22,17 +20,7 @@
 
         var vm = this;
 
-        $scope.dtColumnDefs = DTColumnDefBuilder.newColumnDef(0).notSortable();
-
-        $scope.dtOptions = DTOptionsBuilder.newOptions()
-            .withDisplayLength(10)
-            .withOption('paging', false)
-            .withOption('bLengthChange', false)
-            .withOption('searching', false);
-
         $scope.currentUser = null;
-        
-        $scope.snvList = [];
         
         vm.enabledFileButtonClass = 'btn-success';
         vm.disabledFileButtonClass = 'btn-default btn-outline-default disabled';
@@ -116,107 +104,9 @@
         $scope.needToDisplayReportStatus = needToDisplayReportStatus;
         $scope.needToDisplayCbnaWarning = needToDisplayCbnaWarning;
         $scope.getNewFileButtonClass = getNewFileButtonClass;
-        $scope.loadQcTable = loadQcTable;
-        $scope.loadSnvTable = loadSnvTable;
-        $scope.loadGeneTable = loadGeneTable;
         $scope.uploadSampleFile = uploadSampleFile;
         $scope.navigateToTissueVariantReport = navigateToTissueVariantReport;
         $scope.onItemConfirmed = onItemConfirmed;
-
-        //FILTER
-        // $scope.$watch('confirmed', function (newValue, oldValue) {
-        //     if (newValue === 'ALL') {
-        //         $scope.filterCol = "";
-        //     } else {
-        //         $scope.filterCol = newValue;
-        //     }
-        // });
-
-        //FILTER
-        $scope.$watch('confirmed', function (newValue, oldValue) {
-            if (!($scope.dtInstance && $scope.dtInstance.DataTable && $scope.dtInstance.DataTable.search))
-                return;
-
-            console.log(newValue);
-            if (newValue === 'ALL') {
-                $scope.filterCol = "";
-                // $scope.dtInstance.DataTable.search("");
-                $scope.dtInstance.DataTable.search("").draw();
-            }
-            else {
-                // $scope.dtInstance.DataTable.search(newValue);
-                $scope.dtInstance.DataTable.search(newValue).draw();
-            }
-        });
-
-        //Large data flow controller
-        $scope.totalDisplayed = 100;
-
-        $scope.loadMore = function () {
-            $scope.totalDisplayed += 20;
-        };
-
-        //COSMIC LINKS
-        $scope.openCosmicGene = function (id) {
-            $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + id.toLowerCase(), "_blank");
-            $window.focus();
-        };
-
-        $scope.openCosmicId = function (id) {
-            id = id.substring(4, id.length)
-            $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + id.toLowerCase(), "_blank");
-            $window.focus();
-        };
-
-        $scope.openCosmicFusionId = function (id) {
-            var numericId = id.substring(id.indexOf("_") - 3, (id.length - 2));
-
-            if (numericId !== null) {
-                $window.open("http://cancer.sanger.ac.uk/cosmic/gene/overview?ln=" + numericId.toLowerCase(), "_blank");
-            }
-            $window.focus();
-        };
-        //COSMIC LINKS
-
-        //Sample Mocks
-        function handleQcLoadError(error) {
-            $log.error('Error while loading QC data');
-            $log.error(error);
-        }
-
-        //CNV
-        function loadQcTable() {
-            matchApi
-                .loadQc_Table()
-                .then(loadQcList, handleQcLoadError);
-        }
-
-        function loadQcList(data) {
-            $scope.cnvList = data.data.copyNumberVariants;
-        }
-
-        //SNV
-        function loadSnvTable() {
-            matchApi
-                .loadQc_Table()
-                .then(loadSnvList, handleQcLoadError);
-        }
-
-        function loadSnvList(data) {
-            $scope.snvList = data.data.singleNucleotideVariants;
-        }
-
-        //GENE
-        function loadGeneTable() {
-            matchApi
-                .loadQc_Table()
-                .then(loadGeneList, handleQcLoadError);
-        }
-
-        function loadGeneList(data) {
-            $scope.geneList = data.data.geneFusions;
-        }
-        //Sample Mocks
 
         function setActiveTab(tab) {
             $scope.activeTab = tab;
