@@ -82,6 +82,7 @@
                 <td style="width: 15%">
                     <treatment-arm-variant-link is-amoi="item.is_amoi" treatment-arms="item.treatment_arms"></treatment-arm-variant-link>
                 </td>
+                <td ng-bind="item.filter | dashify"></td>
                 <td ng-bind="item.chromosome | dashify"></td>
                 <td ng-bind="item.position | dashify"></td>
                 <td ng-bind="item.cds_reference | dashify"></td>

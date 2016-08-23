@@ -14,7 +14,8 @@
 
         ctrl.$onInit = function () {
             ctrl.gridOptions = {
-                data: ctrl.items,
+                data: [],
+                urlSync: true,
                 sort: {
                     predicate: 'identifier',
                     direction: 'asc'
