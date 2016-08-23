@@ -1,10 +1,42 @@
 (function () {
     'use strict';
 
-    angular.module('d3', ['d3module'])
+    angular.module('d3', ['d3module', 'ui.bootstrap'])
+        // .directive('d3Popover', d3Popover)
         .directive('d3CnvChart', cnvChart);
 
     cnvChart.$inject = ['d3service', '$log', '$timeout', '$http', '$window', 'matchApi'];
+
+    function d3Popover($scope, $sce) {
+
+        console.log("----> RUN")
+
+        $scope.dynamicPopover = {
+            content: 'Hello, World!',
+            templateUrl: 'myPopoverTemplate.html',
+            title: 'Title'
+        };
+
+        $scope.placement = {
+            options: [
+                'top',
+                'top-left',
+                'top-right',
+                'bottom',
+                'bottom-left',
+                'bottom-right',
+                'left',
+                'left-top',
+                'left-bottom',
+                'right',
+                'right-top',
+                'right-bottom'
+            ],
+            selected: 'top'
+        };
+
+        $scope.htmlPopover = $sce.trustAsHtml('<b style="color: red">I can</b> have <div class="label label-success">HTML</div> content');
+    }
 
     function cnvChart(d3Service, $log, $timeout, $http, $window, matchApi) {
         return {
@@ -14,6 +46,21 @@
         }
 
         function link(scope, iElement, iAttrs) {
+            var tooltip = d3.select("body")
+                .append("div")
+                .attr("class", "tooltip")
+                .style("opacity", 0)
+
+                .style("position", "absolute")
+
+                .style("width", "140px")
+                .style("height", "28px")
+                .style("padding", "2px")
+                // .style("background", "lightsteelblue")
+                .style("border", "1px")
+                .style("text-align", "left")
+                .style("font-size", "12px");
+
             scope.text = iAttrs["d3CnvChart"];
             scope.chartDataUrl = iAttrs["chartDataUrl"];
 
@@ -126,7 +173,6 @@
                                 }
                             }
 
-
                             //Count same chromosmes
                             var obj = {};
                             for (var i = 0, j = genes.length; i < j; i++) {
@@ -177,18 +223,8 @@
                                 .attr("class", "box")
 
                                 .append("g")
-                                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-                            // //Svg identification
-                            // var svg = d3.select("#D3Box")
-                            //     .append("svg")
-                            //     .attr("id", "dbox")
-                            //     .attr("width", width + margin.left + margin.right)
-                            //     .attr("height", height + margin.top + margin.bottom)
-                            //     .attr("class", "box")
-                            //     .attr("fill", "black")
-                            //     .append("g")
-                            //     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+                                .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+                                ;
 
                             var pad = 0.3;
                             var lin = 0.6;
@@ -252,13 +288,43 @@
                                     }
                                 })
                                 .call(chart.width(x.rangeBand()))
-                                .on("click", function () {
+                                .on('mouseover', function(d) {
+                                    var label = jQuery.makeArray( d[0] );
+                                    var header = label[0];
+                                    var chr = label[1];
+                                    var color = "darkgreen";
+
+                                    var array = jQuery.makeArray( d[1] );
+                                    var cn = array[0];
+                                    var ci05 = array[1];
+                                    var ci95 = array[2];
+
+                                    if(jQuery.inArray(header, tsg_genes) !== -1){color='crimson';}
+
+                                    tooltip.transition().duration(0)
+                                    tooltip.html(
+                                        '<ul class="list-group no-bullets" style="background-color: white;">' +
+                                                '<li class="nav-header navbar-light">' +
+                                                '<a style="color:white; padding: 10px; background-color: ' + color + ' ">' + header + '</a>' +
+                                                '</li>' +
+                                            '<li class="list-group-item" style="width:100%;">CHR: ' + chr + '</li>' +
+                                            '<li class="list-group-item" style="width:100%;">CN: ' + cn + '</li>' +
+                                            '<li class="list-group-item" style="width:100%;">CI 5%: ' + ci05 + '</li>' +
+                                            '<li class="list-group-item" style="width:100%;">CI 95%: ' + ci95 + '</li>' +
+                                        '</ul>'
+                                    )
+                                        .style("opacity", 1)
+                                        .style("left", (d3.event.pageX - 75) + "px")
+                                        .style("top", (d3.event.pageY - 250) + "px");
+                                })
+                                .on("mouseout", function(d) {
+                                    tooltip.transition().duration(0)
+                                        .style("opacity", 0);
                                 });
 
                             //Set cnv chart location and render position
                             var svg_height = height + 200;
                             var svg_width = width + 100;
-
 
                                 //responsive SVG needs these 2 attributes and no width and height attr
                             svg.attr("viewBox", "0 0 " + svg_width + " " + svg_height)
@@ -284,49 +350,39 @@
 
                                 //Is gene red gene?
                                 if ($.inArray(mainid, tsg_genes) !== -1) {
-                                    d3.selectAll("g").select("#" + mainid).select('rect').style("fill", "Crimson");
+                                    d3.selectAll("g").select("#" + mainid)
+                                        .select('rect')
+                                        .style("fill", "Crimson");
                                 }
                                 else {
-                                    d3.selectAll("g").select("#" + mainid).select('rect').style("fill", "Green");
+                                    d3.selectAll("g").select("#" + mainid)
+                                        .select('rect')
+                                        .style("fill", "Green");
                                 }
 
                                 //// when the input range changes update the circle
-                                d3.select("#" + mainid).on("mouseover", function () {
+                                d3.select("#" + mainid).on("click", function () {
+
                                     if ($.inArray(mainid, tsg_genes) !== -1) {
                                         label = '<span class="label label-danger">' + mainid + '</span>';
                                     }
                                     else {
                                         label = '<span class="label label-primary">' + mainid + '</span>';
                                     }
-                                    var dir = 'top';
+                                    var dir = 'auto top';
                                     var locY = d3.select(this).select("rect").attr("y");
                                     var t = d3.transform(d3.select(this).attr("transform"));
                                     var locX = t.translate[0];
 
-                                    $(this).popover({
-                                        trigger: 'hover',
-                                        html: 'true',
-                                        title: function () {
-                                            return label;
-                                        },
-                                        placement: dir,
-                                        container: 'body',
-                                        content: function () {
-                                            return '<ul class="list-group no-bullets">' +
-                                                '<li class="list-group-item" style="width:100%;">POS: ' + pos + '</li>' +
-                                                '<li class="list-group-item" style="width:100%;">CN: ' + cn + '</li>' +
-                                                '<li class="list-group-item" style="width:100%;">CI 5%: ' + ci05 + '</li>' +
-                                                '<li class="list-group-item" style="width:100%;">CI 95%: ' + ci95 + '</li>' +
-                                                '</ul>';
-                                        }
-                                    });
+                                    console.log("START TIP")
                                     $(this).popover("show");
+
                                 });
 
                                 // when the input range changes update the circle
-                                d3.select("#" + mainid).on("mouseout", function () {
-                                    $(this).popover('destroy');
-                                });
+                                // d3.select("#" + mainid).on("mouseout", function () {
+                                //     $(this).popover('destroy');
+                                // });
                             });
 
                             // add a title
@@ -535,115 +591,127 @@
                             }
                         }
 
+                        // popoverexecute();
+
                         execute();
 
                     }, 100);
-                })
-            }
+                });
+            };
         }
 
-        function linkSample(scope, iElement, iAttrs) {
-            d3Service.d3().then(function (d3) {
-                $timeout(function () {
+        // function alink(scope, iElement, iAttrs) {
+        //     scope.text = iAttrs["d3Popover"];
+        //
+        //     console.log("START--> " + JSON.stringify(scope.text))
+        //     // return scope.text;
+        //
+        // }
 
-                    var svg = d3.select(iElement[0])
-                        .append("svg")
-                        .attr("width", "100%");
-
-                    // on window resize, re-render d3 canvas
-                    $window.onresize = function () {
-                        return scope.$apply();
-                    };
-
-                    scope.$watch(function () {
-                        return angular.element($window)[0].innerWidth;
-                    }, function () {
-                        return scope.render(scope.data);
-                    }
-                    );
-
-                    scope.$watch(function () {
-                        return iElement.offset().top
-                    }, function (pos) {
-                        $log.debug(pos)
-                        // if (outOfBorder) {
-                        //   $log.debug('invisible')
-                        // } else {
-                        //   $log.debug('visible')
-                        // }
-                    });
-
-                    scope.$watch(function () {
-                        return iElement.offset().left
-                    }, function (pos) {
-                        $log.debug(pos)
-                        // if (outOfBorder) {
-                        //   $log.debug('invisible')
-                        // } else {
-                        //   $log.debug('visible')
-                        // }
-                    });
-
-                    // watch for data changes and re-render
-                    scope.$watch('data', function (newVals, oldVals) {
-                        return scope.render(newVals);
-                    }, true);
-
-                    // define render function
-                    scope.render = function (data) {
-                        if (iElement.offset().top <= 0 || iElement.offset().left <= 0)
-                            return;
-
-                        // remove all previous items before render
-                        svg.selectAll("*").remove();
-
-                        // setup variables
-                        var width, height, max;
-                        width = d3.select(iElement[0])[0][0].offsetWidth - 20;
-                        // 20 is for margins and can be changed
-                        height = scope.data.length * 35;
-                        // 35 = 30(bar height) + 5(margin between bars)
-                        max = 98;
-                        // this can also be found dynamically when the data is not static
-                        // max = Math.max.apply(Math, _.map(data, ((val)-> val.count)))
-
-                        // set the height based on the calculations above
-                        svg.attr('height', height);
-
-                        //create the rectangles for the bar chart
-                        svg.selectAll("rect")
-                            .data(data)
-                            .enter()
-                            .append("rect")
-                            .on("click", function (d, i) { return scope.onClick({ item: d }); })
-                            .attr("height", 30) // height of each bar
-                            .attr("width", 0) // initial width of 0 for transition
-                            .attr("x", 10) // half of the 20 side margin specified above
-                            .attr("y", function (d, i) {
-                                return i * 35;
-                            }) // height + margin between bars
-                            .transition()
-                            .duration(400) // time of duration
-                            .attr("width", function (d) {
-                                return d.score / (max / width);
-                            }); // width based on scale
-
-                        svg.selectAll("text")
-                            .data(data)
-                            .enter()
-                            .append("text")
-                            .attr("fill", "#fff")
-                            .attr("y", function (d, i) { return i * 35 + 22; })
-                            .attr("x", 15)
-                            .text(function (d) { return d[scope.label]; });
-
-                    };
-
-                }, 100);
-
-            })
-        }
+        // function linkSample(scope, iElement, iAttrs) {
+        //     d3Service.d3().then(function (d3) {
+        //         $timeout(function () {
+        //
+        //             var svg = d3.select(iElement[0])
+        //                 .append("svg")
+        //                 .attr("width", "100%");
+        //
+        //             // on window resize, re-render d3 canvas
+        //             $window.onresize = function () {
+        //                 return scope.$apply();
+        //             };
+        //
+        //             scope.$watch(function () {
+        //                 return angular.element($window)[0].innerWidth;
+        //             }, function () {
+        //                 return scope.render(scope.data);
+        //             }
+        //             );
+        //
+        //             scope.$watch(function () {
+        //                 return iElement.offset().top
+        //             }, function (pos) {
+        //                 $log.debug(pos)
+        //                 // if (outOfBorder) {
+        //                 //   $log.debug('invisible')
+        //                 // } else {
+        //                 //   $log.debug('visible')
+        //                 // }
+        //             });
+        //
+        //             scope.$watch(function () {
+        //                 return iElement.offset().left
+        //             }, function (pos) {
+        //                 $log.debug(pos)
+        //                 // if (outOfBorder) {
+        //                 //   $log.debug('invisible')
+        //                 // } else {
+        //                 //   $log.debug('visible')
+        //                 // }
+        //             });
+        //
+        //             // watch for data changes and re-render
+        //             scope.$watch('data', function (newVals, oldVals) {
+        //                 return scope.render(newVals);
+        //             }, true);
+        //
+        //             // define render function
+        //             scope.render = function (data) {
+        //                 if (iElement.offset().top <= 0 || iElement.offset().left <= 0)
+        //                     return;
+        //
+        //                 // remove all previous items before render
+        //                 svg.selectAll("*").remove();
+        //
+        //                 // setup variables
+        //                 var width, height, max;
+        //                 width = d3.select(iElement[0])[0][0].offsetWidth - 20;
+        //                 // 20 is for margins and can be changed
+        //                 height = scope.data.length * 35;
+        //                 // 35 = 30(bar height) + 5(margin between bars)
+        //                 max = 98;
+        //                 // this can also be found dynamically when the data is not static
+        //                 // max = Math.max.apply(Math, _.map(data, ((val)-> val.count)))
+        //
+        //                 // set the height based on the calculations above
+        //                 svg.attr('height', height);
+        //
+        //                 //create the rectangles for the bar chart
+        //                 svg.selectAll("rect")
+        //                     .data(data)
+        //                     .enter()
+        //                     .append("rect")
+        //                     .on("click", function (d, i) { return scope.onClick({ item: d }); })
+        //                     .attr("height", 30) // height of each bar
+        //                     .attr("width", 0) // initial width of 0 for transition
+        //                     .attr("x", 10) // half of the 20 side margin specified above
+        //                     .attr("y", function (d, i) {
+        //                         return i * 35;
+        //                     }) // height + margin between bars
+        //                     .transition()
+        //                     .duration(400) // time of duration
+        //                     .attr("width", function (d) {
+        //                         return d.score / (max / width);
+        //                     }); // width based on scale
+        //
+        //                 svg.selectAll("text")
+        //                     .data(data)
+        //                     .enter()
+        //                     .append("text")
+        //                     .attr("fill", "#fff")
+        //                     .attr("y", function (d, i) { return i * 35 + 22; })
+        //                     .attr("x", 15)
+        //                     .text(function (d) { return d[scope.label]; });
+        //
+        //             };
+        //
+        //         }, 100);
+        //
+        //     })
+        // }
 
     }
+
+
 
 } ());
