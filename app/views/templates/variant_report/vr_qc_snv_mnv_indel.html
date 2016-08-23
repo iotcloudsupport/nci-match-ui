@@ -2,7 +2,7 @@
     <h3>SNVs/MNVs/Indels</h3>
 </div>
 
-<div id="$ctrl.gridId" grid-data grid-options="$ctrl.gridOptions" grid-actions="$ctrl.gridActions" class="data-grid table-responsive">
+<div id="qcReportCnv" grid-data grid-options="$ctrl.gridOptions" grid-actions="$ctrl.gridActions" class="data-grid">
     <div class="row">
         <div class="col pull-left">
             <form class="form-inline">
@@ -11,40 +11,20 @@
                         <label for="itemsOnPageSelect2">Show</label>
                         <select id="itemsOnPageSelect2" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage"
                             ng-change="reloadGrid()">
-                                                <option>10</option>
-                                                <option>25</option>
-                                                <option>50</option>
-                                                <option>100</option>
-                                            </select>
+                            <option>10</option>
+                            <option>25</option>
+                            <option>50</option>
+                            <option>100</option>
+                        </select>
                         <label for="itemsOnPageSelect2">per page</label>
                     </div>
                 </div>
             </form>
         </div>
         <div class="col pull-right">
-            <div class="row">
-                <div class="col pull-left">
-                    <div class="form-group">
-                        <div class="items-per-page">
-                            <label for="itemsOnPageSelect3">Filter</label>
-                            <select id="itemsOnPageSelect3" class="form-control input-sm" ng-model="filter" filter-by="filter" ng-change="gridActions.filter()"
-                                grid-id="$ctrl.gridId">
-                                <option></option>
-                                <option>10</option>
-                                <option>25</option>
-                                <option>50</option>
-                                <option>100</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="col pull-right">
-                    <div class="grid-filter">
-                        <input type="text" class="form-control input-sm order-search-box" placeholder="Select Filter" grid-id="$ctrl.gridId" ng-change="gridActions.filter()"
-                            ng-model="filterAll" filter-by="filterAll" filter-type="text">
-                    </div>
-
-                </div>
+            <div class="grid-filter">
+                <input type="text" class="form-control input-sm order-search-box" placeholder="Filter by all columns" grid-id="qcReportCnv"
+                    ng-change="$ctrl.gridActions.filter()" ng-model="filterAll" filter-by="filterAll" filter-type="text">
             </div>
         </div>
     </div>
@@ -53,9 +33,72 @@
         <thead>
             <tr>
                 <th sortable="identifier" class="sortable">ID</th>
-                <th sortable="is_amoi" class="sortable">aMOI</th>
-                <th sortable="filter" class="filter">Filter</th>
                 <th sortable="chromosome" class="sortable">Chrom</th>
+                <th sortable="filter" class="filter">Filter</th>
+                <th sortable="position" class="sortable">Position</th>
+                <th sortable="cds_reference" class="sortable">CDS Ref</th>
+                <th sortable="cds_alternative" class="sortable">CDS Alt</th>
+                <th sortable="ocp_reference" class="sortable">OCP Ref</th>
+                <th sortable="ocp_alternative" class="sortable">OCP Alt</th>
+                <th sortable="strand" class="sortable">Strand</th>
+                <th sortable="allele_frequency" class="sortable">Allele Freq</th>
+                <th sortable="func_gene" class="sortable">Func Gene</th>
+                <th sortable="oncomine_variant_class" class="sortable">Oncomine Variant Class</th>
+                <th sortable="exon" class="sortable">Exon</th>
+                <th sortable="function" class="sortable">Function</th>
+                <th sortable="hgvs" class="sortable">HGVS</th>
+                <th sortable="read_depth" class="sortable">Read Depth</th>
+                <th sortable="transcript" class="sortable">Transcript</th>
+                <th sortable="protein" class="sortable">Protein</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr grid-item>
+                <td>
+                    <cosmic-link link-id="item.identifier" link-type="'cosmicId'" text="item.identifier"></cosmic-link>
+                </td>
+                <td ng-bind="item.filter | dashify"></td>
+                <td ng-bind="item.chromosome | dashify"></td>
+                <td ng-bind="item.position | dashify"></td>
+                <td ng-bind="item.cds_reference | dashify"></td>
+                <td ng-bind="item.cds_alternative | dashify"></td>
+                <td ng-bind="item.ocp_reference | dashify"></td>
+                <td ng-bind="item.ocp_alternative | dashify"></td>
+                <td ng-bind="item.strand | dashify"></td>
+                <td ng-bind="item.allele_frequency | dashify"></td>
+                <td>
+                    <cosmic-link link-id="item.func_gene" link-type="'cosmicGene'" text="item.func_gene"></cosmic-link>
+                </td>
+                <td ng-bind="item.oncomine_variant_class | dashify"></td>
+                <td ng-bind="item.exon | dashify"></td>
+                <td ng-bind="item.function | dashify"></td>
+                <td ng-bind="item.hgvs | dashify"></td>
+                <td ng-bind="item.read_depth | dashify"></td>
+                <td ng-bind="item.transcript | dashify"></td>
+                <td ng-bind="item.protein | dashify"></td>
+            </tr>
+
+            <tr ng-if="!gridOptions.data || !gridOptions.data.length" class="no-data-message">
+                <td colspan="7" class="text-muted">No patients</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form class="form-inline pull-left">
+        <div class="form-group">
+            <grid-pagination max-size="5" class="pagination-sm" total-items="paginationOptions.totalItems" ng-model="paginationOptions.currentPage"
+                ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+        </div>
+    </form>
+</div>
+
+<!--<div id="qcSvnGrid" grid-data grid-options="$ctrl.gridOptions" grid-actions="$ctrl.gridActions" class="data-grid table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th sortable="identifier" class="sortable">ID</th>
+                <th sortable="chromosome" class="sortable">Chrom</th>
+                <th sortable="filter" class="filter">Filter</th>
                 <th sortable="position" class="sortable">Position</th>
                 <th sortable="cds_reference" class="sortable">CDS Ref</th>
                 <th sortable="cds_alternative" class="sortable">CDS Alt</th>
@@ -78,9 +121,6 @@
             <tr ng-repeat="item in $ctrl.gridOptions.data" grid-item>
                 <td>
                     <cosmic-link link-id="item.identifier" link-type="'cosmicId'" text="item.identifier"></cosmic-link>
-                </td>
-                <td style="width: 15%">
-                    <treatment-arm-variant-link is-amoi="item.is_amoi" treatment-arms="item.treatment_arms"></treatment-arm-variant-link>
                 </td>
                 <td ng-bind="item.filter | dashify"></td>
                 <td ng-bind="item.chromosome | dashify"></td>
@@ -115,4 +155,4 @@
                 ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
         </div>
     </form>
-</div>
+</div>-->

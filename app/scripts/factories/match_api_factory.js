@@ -128,8 +128,11 @@
             }
             // Treatment Arm API - END
 
-            function loadQc_Table() {
-                return $http.get('data/sample_qc.json');
+            function loadQc_Table(url) {
+                if (url)
+                    return $http.get(url);
+                else
+                    return $http.get('data/sample_qc.json');
             }
 
             function loadSnv_Table() {
