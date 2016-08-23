@@ -4,11 +4,12 @@
     function VrQcController($scope, $element, $attrs, $log, arrayTools, $filter, matchApi) {
         var ctrl = this;
 
+        ctrl.isLoading = true;
         ctrl.gridActions = {};
 
         ctrl.gridOptions = {
             data: [],
-            // urlSync: true,
+            urlSync: true,
             sort: {
                 predicate: 'identifier',
                 direction: 'asc'
@@ -60,11 +61,12 @@
         }
 
         function loadQcList(data) {
+            ctrl.isLoading = false;
             ctrl.gridOptions.data = data.data.copy_number_variants;
-            $log.debug('Initialized with ' + ctrl.gridOptions.data.length);
         }
 
         function handleQcLoadError(error) {
+            ctrl.isLoading = false;
             $log.error('Error while loading QC data');
             $log.error(error);
         }
