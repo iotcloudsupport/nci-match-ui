@@ -1,8 +1,8 @@
 <div class="ibox-title ibox-title-no-line-no-padding">
-    <h3>SNVs/MNVs/Indels</h3>
+    <h3>Gene Fusions</h3>
 </div>
 
-<div id="qcReportSnvMnvInd" grid-data grid-options="$ctrl.gridOptions" grid-actions="$ctrl.gridActions" class="data-grid">
+<div id="qcReportGf" grid-data grid-options="$ctrl.gridOptions" grid-actions="$ctrl.gridActions" class="data-grid">
     <div class="row">
         <form class="form-inline">
             <div class="col-md-6 text-left">
@@ -22,12 +22,12 @@
             </div>
             <div class="col-md-6 text-right">
                 <label for="filterFilter">"Filter" Column</label>
-                <select id="filterFilter" class="form-control input-sm" grid-id="qcReportSnvMnvInd" placeholder="Value for Filter column" ng-change="$ctrl.gridActions.filter()" ng-model="_filter_col"
+                <select id="filterFilter" class="form-control input-sm" grid-id="qcReportGf" placeholder="Value for Filter column" ng-change="$ctrl.gridActions.filter()" ng-model="_filter_col"
                     filter-by="_filter_col" filter-type="select">
                     <option></option>
                     <option ng-repeat="filterValue in $ctrl.filterValues">{{filterValue}}</option>
                 </select>
-                <input type="text" class="form-control input-sm all-filter" placeholder="Or filter by other columns" grid-id="qcReportSnvMnvInd"
+                <input type="text" class="form-control input-sm all-filter" placeholder="Or filter by other columns" grid-id="qcReportGf"
                     ng-change="$ctrl.gridActions.filter()" ng-model="filterAll" filter-by="filterAll" filter-type="text">
             </div>
         </form>
@@ -37,23 +37,18 @@
         <thead>
             <tr>
                 <th sortable="identifier" class="sortable">ID</th>
-                <th sortable="chromosome" class="sortable">Chrom</th>
-                <th sortable="position" class="sortable">Position</th>
-                <th sortable="cds_reference" class="sortable">CDS Ref</th>
-                <th sortable="cds_alternative" class="sortable">CDS Alt</th>
-                <th sortable="ocp_reference" class="sortable">OCP Ref</th>
-                <th sortable="ocp_alternative" class="sortable">OCP Alt</th>
-                <th sortable="strand" class="sortable">Strand</th>
+
                 <th sortable="filter" class="filter">Filter</th>
-                <th sortable="allele_frequency" class="sortable">Allele Freq</th>
-                <th sortable="func_gene" class="sortable">Func Gene</th>
-                <th sortable="oncomine_variant_class" class="sortable">Oncomine Variant Class</th>
-                <th sortable="exon" class="sortable">Exon</th>
-                <th sortable="function" class="sortable">Function</th>
-                <th sortable="hgvs" class="sortable">HGVS</th>
-                <th sortable="read_depth" class="sortable">Read Depth</th>
-                <th sortable="transcript" class="sortable">Transcript</th>
-                <th sortable="protein" class="sortable">Protein</th>
+
+                <th sortable="driver_gene" class="sortable">Gene 2</th>
+
+                <th sortable="driver_read_count" class="sortable">Gene 2 Count</th>
+
+                <th sortable="partner_gene" class="sortable">Gene 1</th>
+
+                <th sortable="partner_read_count" class="sortable">Gene 1 Count</th>
+
+                <th sortable="annotation" class="sortable">Annotation</th>
             </tr>
         </thead>
         <tbody>
@@ -61,29 +56,18 @@
                 <td>
                     <cosmic-link link-id="item.identifier" link-type="'cosmicId'" text="item.identifier"></cosmic-link>
                 </td>
-                <td ng-bind="item.chromosome | dashify"></td>
-                <td ng-bind="item.position | dashify"></td>
-                <td ng-bind="item.cds_reference | dashify"></td>
-                <td ng-bind="item.cds_alternative | dashify"></td>
-                <td ng-bind="item.ocp_reference | dashify"></td>
-                <td ng-bind="item.ocp_alternative | dashify"></td>
-                <td ng-bind="item.strand | dashify"></td>
-                <td ng-bind="item.filter | dashify"></td>
-                <td ng-bind="item.allele_frequency | dashify"></td>
+                <td ng-bind="item.filter"></td>
+                <td ng-bind="item.driver_gene | dashify"></td>
+                <td ng-bind="item.driver_read_count | dashify"></td>
                 <td>
-                    <cosmic-link link-id="item.func_gene" link-type="'cosmicGene'" text="item.func_gene"></cosmic-link>
+                    <cosmic-link link-id="item.partner_gene" link-type="'cosmicFusionId'" text="item.partner_gene"></cosmic-link>
                 </td>
-                <td ng-bind="item.oncomine_variant_class | dashify"></td>
-                <td ng-bind="item.exon | dashify"></td>
-                <td ng-bind="item.function | dashify"></td>
-                <td ng-bind="item.hgvs | dashify"></td>
-                <td ng-bind="item.read_depth | dashify"></td>
-                <td ng-bind="item.transcript | dashify"></td>
-                <td ng-bind="item.protein | dashify"></td>
+                <td ng-bind="item.partner_read_count | dashify"></td>
+                <td ng-bind="item.annotation | dashify"></td>
             </tr>
 
             <tr ng-if="$ctrl.isLoading">
-                <td colspan="18" class="loading-indicator">
+                <td colspan="7" class="loading-indicator">
                     <i class="fa fa-cog fa-spin fa-fw"></i>
                     <span class="sr-only">Loading...</span>
                     <span>Loading...</span>
@@ -91,7 +75,7 @@
             </tr>
 
             <tr ng-if="!$ctrl.gridOptions.data || !$ctrl.gridOptions.data.length" class="no-data-message">
-                <td colspan="18" class="text-muted">No SNVs, MNVs or Indels</td>
+                <td colspan="7" class="text-muted">No Gene Fusions</td>
             </tr>
         </tbody>
     </table>

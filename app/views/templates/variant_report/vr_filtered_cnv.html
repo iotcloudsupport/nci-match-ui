@@ -11,6 +11,7 @@
                 <th sortable="identifier" class="sortable">ID</th>
                 <th sortable="is_amoi" class="sortable" style="width: 15%">aMOI</th>
                 <th sortable="chromosome" class="sortable">Chrom</th>
+                <th sortable="filter" class="filter">Filter</th>
                 <th sortable="raw_copy_number" class="sortable">Raw CN</th>
                 <th sortable="copy_number" class="sortable">CN</th>
                 <th sortable="confidence_interval_5percent" class="sortable">CI 5%</th>
@@ -51,7 +52,7 @@
             </tr>
 
             <tr ng-if="!$ctrl.gridOptions.data || !$ctrl.gridOptions.data.length" class="no-data-message">
-                <td colspan="9"><span class="text-muted">No Copy Number Variants</span></td>
+                <td colspan="10"><span class="text-muted">No Copy Number Variants</span></td>
             </tr>
         </tbody>
     </table>
