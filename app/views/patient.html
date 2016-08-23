@@ -548,7 +548,9 @@
                                     <div ng-if="variantReportMode === 'QC'" ng-init="loadSnvTable()">
                                         <vr-qc-snv-mnv-indel 
                                             grid-id="tissueQcSnvMnvIndelsVr" 
-                                            url="'data/3366.qc_report.json'">
+                                            url="'data/3366.qc_report.json'"
+                                            file-section="copy_number_variants"
+                                            searchable-props="identifier|chromosome|position|cds_reference|cds_alternative|ocp_reference|ocp_alternative|strand|allele_frequency|func_gene|oncomine_variant_class|exon|function|hgvs|read_depth|transcript|protein">
                                         </vr-qc-snv-mnv-indel>
                                         
 

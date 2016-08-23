@@ -8,6 +8,8 @@
         ctrl.filterValues = {};
         ctrl.gridActions = {};
 
+        ctrl.searchablePropArray = getSearchableProps();
+
         ctrl.gridOptions = {
             data: [],
             sort: {
@@ -15,25 +17,7 @@
                 direction: 'asc'
             },
             ngColumnFilters: [],
-            searchableProps: [
-                'identifier',
-                'chromosome',
-                'position',
-                'cds_reference',
-                'cds_alternative',
-                'ocp_reference',
-                'ocp_alternative',
-                'strand',
-                'allele_frequency',
-                'func_gene',
-                'oncomine_variant_class',
-                'exon',
-                'function',
-                'hgvs',
-                'read_depth',
-                'transcript',
-                'protein'
-            ],
+            searchableProps: ctrl.searchablePropArray,
             customFilters: {
                 filterAll: function (items, value, predicate) {
                     return items.filter(function (item) {
@@ -54,6 +38,13 @@
             loadQcTable();
         };
 
+        function getSearchableProps() {
+            if (!ctrl.searchableProps)
+                return [];
+
+            return ctrl.searchableProps.split('|');
+        }
+
         function loadQcTable() {
             matchApi
                 .loadQc_Table(ctrl.url)
@@ -62,7 +53,7 @@
 
         function loadQcList(data) {
             ctrl.isLoading = false;
-            ctrl.gridOptions.data = processFilterColumn(data.data.copy_number_variants);
+            ctrl.gridOptions.data = processFilterColumn(data.data[ctrl.fileSection]);
         }
 
         function handleQcLoadError(error) {
@@ -94,7 +85,31 @@
         controller: VrQcController,
         bindings: {
             gridId: '<',
-            url: '<'
+            url: '<',
+            searchableProps: '@',
+            fileSection: '@'
+        }           
+    });
+
+    angular.module('matchbox').component('vrQcCnv', {
+        templateUrl: 'views/templates/variant_report/vr_qc_cnv.html',
+        controller: VrQcController,
+        bindings: {
+            gridId: '<',
+            url: '<',
+            searchableProps: '@',
+            fileSection: '@'
+        }
+    });
+
+    angular.module('matchbox').component('vrQcGf', {
+        templateUrl: 'views/templates/variant_report/vr_qc_gf.html',
+        controller: VrQcController,
+        bindings: {
+            gridId: '<',
+            url: '<',
+            searchableProps: '@',
+            fileSection: '@'
         }
     });
 
