@@ -2,37 +2,27 @@
     'use strict';
 
     angular.module('d3', ['d3module', 'ui.bootstrap'])
-        // .directive('d3Popover', d3Popover)
         .directive('d3CnvChart', cnvChart);
 
     cnvChart.$inject = ['d3service', '$log', '$timeout', '$http', '$window', 'matchApi'];
 
-    function d3Popover($scope, $sce) {
-        $scope.dynamicPopover = {
-            content: 'Hello, World!',
-            templateUrl: 'myPopoverTemplate.html',
-            title: 'Title'
-        };
+    function buildTooltip(){
 
-        $scope.placement = {
-            options: [
-                'top',
-                'top-left',
-                'top-right',
-                'bottom',
-                'bottom-left',
-                'bottom-right',
-                'left',
-                'left-top',
-                'left-bottom',
-                'right',
-                'right-top',
-                'right-bottom'
-            ],
-            selected: 'top'
-        };
+        var tooltip = d3.select("body")
+            .append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0)
 
-        $scope.htmlPopover = $sce.trustAsHtml('<b style="color: red">I can</b> have <div class="label label-success">HTML</div> content');
+            .style("position", "absolute")
+
+            .style("width", "140px")
+            .style("height", "28px")
+            .style("padding", "2px")
+            .style("border", "1px")
+            .style("text-align", "left")
+            .style("font-size", "12px");
+
+        return tooltip;
     }
 
     function cnvChart(d3Service, $log, $timeout, $http, $window, matchApi) {
@@ -43,20 +33,7 @@
         }
 
         function link(scope, iElement, iAttrs) {
-            var tooltip = d3.select("body")
-                .append("div")
-                .attr("class", "tooltip")
-                .style("opacity", 0)
-
-                .style("position", "absolute")
-
-                .style("width", "140px")
-                .style("height", "28px")
-                .style("padding", "2px")
-                // .style("background", "lightsteelblue")
-                .style("border", "1px")
-                .style("text-align", "left")
-                .style("font-size", "12px");
+            var tooltip = "";
 
             scope.text = iAttrs["d3CnvChart"];
             scope.chartDataUrl = iAttrs["chartDataUrl"];
@@ -201,7 +178,6 @@
                             var line2 = (height - ((height / max) * 2)) + margin.top;
                             var line7 = (height - ((height / max) * rank)) + margin.top;
 
-
                             //Build the box
                             var chart = d3.box()
                                 .whiskers(iqr(1.5))
@@ -285,6 +261,7 @@
                                 })
                                 .call(chart.width(x.rangeBand()))
                                 .on('mouseover', function(d) {
+
                                     var label = jQuery.makeArray( d[0] );
                                     var header = label[0];
                                     var chr = label[1];
@@ -296,6 +273,8 @@
                                     var ci95 = array[2];
 
                                     if(jQuery.inArray(header, tsg_genes) !== -1){color='crimson';}
+
+                                    tooltip = buildTooltip();
 
                                     tooltip.transition().duration(0)
                                     tooltip.html(
@@ -312,10 +291,10 @@
                                         .style("opacity", 1)
                                         .style("left", (d3.event.pageX - 75) + "px")
                                         .style("top", (d3.event.pageY - 250) + "px");
+
                                 })
                                 .on("mouseout", function(d) {
-                                    tooltip.transition().duration(0)
-                                        .style("opacity", 0);
+                                    tooltip.remove();
                                 });
 
                             //Set cnv chart location and render position
@@ -357,21 +336,22 @@
                                 }
 
                                 //// when the input range changes update the circle
-                                d3.select("#" + mainid).on("click", function () {
+                                // d3.select("#" + mainid).on("click", function () {
+                                //
+                                //     if ($.inArray(mainid, tsg_genes) !== -1) {
+                                //         label = '<span class="label label-danger">' + mainid + '</span>';
+                                //     }
+                                //     else {
+                                //         label = '<span class="label label-primary">' + mainid + '</span>';
+                                //     }
+                                //     var dir = 'auto top';
+                                //     var locY = d3.select(this).select("rect").attr("y");
+                                //     var t = d3.transform(d3.select(this).attr("transform"));
+                                //     var locX = t.translate[0];
+                                //
+                                //     $(this).popover("show");
+                                // });
 
-                                    if ($.inArray(mainid, tsg_genes) !== -1) {
-                                        label = '<span class="label label-danger">' + mainid + '</span>';
-                                    }
-                                    else {
-                                        label = '<span class="label label-primary">' + mainid + '</span>';
-                                    }
-                                    var dir = 'auto top';
-                                    var locY = d3.select(this).select("rect").attr("y");
-                                    var t = d3.transform(d3.select(this).attr("transform"));
-                                    var locX = t.translate[0];
-
-                                    $(this).popover("show");
-                                });
                             });
 
                             // add a title
@@ -587,5 +567,4 @@
             };
         }
     }
-
 } ());
