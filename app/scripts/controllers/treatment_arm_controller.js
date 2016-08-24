@@ -71,6 +71,40 @@
 
         $scope.versionHistory = [];
 
+        $scope.allPatientsDataGridOptions = {};
+
+        activate();
+
+        function activate() {
+            setupGridOptions();
+        }
+
+        function setupGridOptions() {
+            $scope.allPatientsDataGridOptions = {
+                data: [],
+                ngColumnFilters: {
+                    //"date": "utc",
+                },
+                sort: {
+                    //predicate: 'days_pending',
+                    //direction: 'desc'
+                },
+                searchableProps: [
+                    'patient_id',
+                    'analysis_id'
+                    //add more
+                ],
+                customFilters: {
+                    filterAll: function (items, value, predicate) {
+                        return items.filter(function (item) {
+                            return arrayTools.itemHasValue(item, value,
+                                $scope.allPatientsDataGridOptions.searchableProps, $scope.allPatientsDataGridOptions.ngColumnFilters, $filter);
+                        });
+                    }
+                }
+            }
+        }
+
         function setInExclusionType(inExclusionType) {
             if ($scope.inExclusionType === inExclusionType) {
                 return;
