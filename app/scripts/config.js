@@ -225,7 +225,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
             }
         })
         .state('ocsample', {
-            url: "/ocsample/:sampleId",
+            url: "/ocsample?sampleId",
             templateUrl: "views/ocsample.html",
             data: { pageTitle: 'Sample Quality Control Report', requiresLogin: true },
             controller: function($scope, $stateParams) {
@@ -251,7 +251,7 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
             }
         })
         .state('ntc_quality_control', {
-            url: "/ntc_quality_control/:sampleId",
+            url: "/ntc_quality_control?sampleId",
             templateUrl: "views/ntc_quality_control.html",
             data: { pageTitle: 'NTC Quality Control Report', requiresLogin: true },
             controller: function($scope, $stateParams) {
