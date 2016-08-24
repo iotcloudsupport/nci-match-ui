@@ -51,8 +51,6 @@
             };
         }
 
-        $scope.patientList = [];
-
         $scope.loadPatientList = function () {
             matchApi
                 .loadPatientList()
@@ -60,11 +58,10 @@
         };
 
         function setupScope(data) {
-            $scope.patientList = data.data;
             $scope.gridOptions.data = data.data;
 
-            for (var i = 0; i < $scope.patientList.length; i++) {
-                var item = $scope.patientList[i];
+            for (var i = 0; i < $scope.gridOptions.data.length; i++) {
+                var item = $scope.gridOptions.data[i];
                 if (item.current_assignment && item.current_assignment.assignment_logic && item.current_assignment.assignment_logic.length) {
                     for (var j = 0; j < item.current_assignment.assignment_logic.length; j++) {
                         var logic = item.current_assignment.assignment_logic[j];
