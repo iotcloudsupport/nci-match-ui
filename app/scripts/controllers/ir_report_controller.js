@@ -979,7 +979,8 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
         $scope.gotoBottom = function(id) {
 
-            var tic = id + 'bottom';
+            // var tic = id + 'bottom';
+            var tic = id + '=samplevariants';
 
             $timeout(function() {
                 $location.hash(tic);
