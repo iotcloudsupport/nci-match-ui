@@ -197,6 +197,9 @@
                                     <td ng-bind="item.diseases | dashify"></td>
                                     <td ng-bind="item.reason | dashify"></td>
                                 </tr>
+                                <tr ng-if="!allPatientDataGridOptions.data || !allPatientDataGridOptions.data.length" class="no-data-message">
+                                    <td colspan="8" class="text-muted">No patients have been assigned to this treatment arm.</td>
+                                </tr>
                                 </tbody>
                             </table>
 
