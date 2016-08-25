@@ -8,7 +8,6 @@
                 loadPatientList: loadPatientList,
                 loadActivity: loadActivity,
                 loadDashboardStatistics: loadDashboardStatistics,
-                loadTreatmentArmAccrual: loadTreatmentArmAccrual,
                 loadSequencedAndConfirmedChartData: loadSequencedAndConfirmedChartData,
                 loadTissueVariantReportsList: loadTissueVariantReportsList,
                 loadBloodVariantReportsList: loadBloodVariantReportsList,
@@ -106,10 +105,6 @@
 
             function loadDashboardStatistics() {
                 return $http.get(matchConfig.patientApiBaseUrl + '/dashboard/patientStatistics');
-            }
-
-            function loadTreatmentArmAccrual() {
-                return $http.get(matchConfig.patientApiBaseUrl + '/dashboard/treatmentArmAccrual');
             }
             // Patient API - END
 
