@@ -36,7 +36,7 @@
         'angular.vertilize',
         'datatables',
         'ngResource',
-        'dataGrid', 
+        'dataGrid',
         'pagination'
     ]);
 })();
