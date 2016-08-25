@@ -63,6 +63,9 @@
         }
 
         function processFilterColumn(data) {
+            ctrl.filterValues = {};
+            ctrl.filterValues['ALL'] = { text: 'ALL', value: '' };
+
             if (!data)
                 return data;
 
@@ -71,7 +74,7 @@
                 if ('filter' in element) {
                     element._filter_col = element.filter;
                     if (!(element.filter in ctrl.filterValues)) {
-                        ctrl.filterValues[element.filter] = element.filter;
+                        ctrl.filterValues[element.filter] = { text: element.filter, value: element.filter };
                     }
                 }
             }
