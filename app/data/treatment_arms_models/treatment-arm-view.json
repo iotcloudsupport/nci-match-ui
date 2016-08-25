@@ -1,0 +1,210 @@
+[{
+  "active": true,
+  "name": "APEC1621-A",
+  "date_created": "2016-06-24T15:38:31+00:00",
+  "version": "2015-08-06",
+  "stratum_id": "100",
+  "description": "TEST Treatment Arm used by Cucumber Tests",
+  "target_id": "113",
+  "target_name": "Crizotinib",
+  "gene": "ALK",
+  "treatment_arm_status": "OPEN",
+  "study_id": "APEC1621",
+  "assay_rules": [{
+    "type": "IHC",
+    "assay_result_status": "POSITIVE",
+    "assay_variant": "PRESENT",
+    "gene": "PTEN",
+    "level_of_evidence":"3.0"
+  }, {
+    "type": "IHC",
+    "assay_result_status": "POSITIVE",
+    "assay_variant": "EMPTY",
+    "gene": "MLH1",
+    "level_of_evidence":"5.0"
+  }],
+  "num_patients_assigned": 2,
+  "date_opened": "2016-06-24T15:38:31+00:00",
+  "treatment_arm_drugs": [{
+    "name": "Crizotinib",
+    "pathway": "ALK",
+    "drug_id": "113"
+  }, {
+    "name": "Afatinib",
+    "pathway": "EGFR",
+    "drug_id": "123"
+  }],
+  "non_hotspot_rules": [{
+    "inclusion": true,
+    "public_med_ids": [
+      "18827604",
+      "21917678",
+      "23181703"
+    ],
+    "arm_specific": "false",
+    "func_gene": "EGFR",
+    "level_of_evidence": "3.0",
+    "function": "missense",
+    "oncomine_variant_class": "deleterious",
+    "type": "nhr",
+    "exon": "19"
+  },
+    {
+      "inclusion": true,
+      "public_med_ids": [
+        "24192927"
+      ],
+      "arm_specific": "false",
+      "func_gene": "ERBB2",
+      "level_of_evidence": "3.0",
+      "function": "nonsense",
+      "oncomine_variant_class": "amplification",
+      "type": "nhr",
+      "exon": "20"
+    }],
+  "single_nucleotide_variants": [{
+    "alternative": "G",
+    "arm_specific": false,
+    "chromosome": "chrX",
+    "confirmed": false,
+    "identifier": "COSM757681",
+    "inclusion": false,
+    "level_of_evidence": "3.0",
+    "position":"70349258",
+    "rare":false,
+    "reference": "C"
+  }, {
+    "alternative": "C",
+    "arm_specific": false,
+    "chromosome": "chr6",
+    "confirmed": false,
+    "identifier": "COSM1074639",
+    "inclusion": true,
+    "level_of_evidence": "3.0",
+    "position":"152419923",
+    "rare":false,
+    "reference": "A"
+  }],
+  "indels": [{
+    "alternative": "C",
+    "arm_specific": false,
+    "chromosome": "chr17",
+    "confirmed": false,
+    "identifier": "COSM44451",
+    "inclusion": false,
+    "level_of_evidence": "3.0",
+    "position": "7577064",
+    "rare": false,
+    "reference": "T"
+  }, {
+    "alternative": "T",
+    "arm_specific": false,
+    "chromosome": "chr9",
+    "confirmed": false,
+    "identifier": "COSM52975",
+    "inclusion": true,
+    "level_of_evidence": "3.0",
+    "position": "80412493",
+    "rare": false,
+    "reference": "C"
+  }],
+  "copy_number_variants": [{
+    "arm_specific": false,
+    "chromosome": "chr1",
+    "confidence_interval_5percent": "4.04279",
+    "confidence_interval_95percent": "4.36137",
+    "confirmed": false,
+    "copy_number": "8.2",
+    "identifier": "BCL9",
+    "inclusion": false,
+    "level_of_evidence": "2.0",
+    "ocp_alternative": "<CNV>",
+    "ocp_reference": "G",
+    "position": "147022100",
+    "rare":false,
+    "raw_copy_number":"8.2",
+    "ref_copy_number":"2.0"
+  }, {
+    "arm_specific": false,
+    "chromosome": "chr1",
+    "confidence_interval_5percent": "1.59412",
+    "confidence_interval_95percent": "1.81291",
+    "confirmed": false,
+    "copy_number": "7.7",
+    "identifier": "MYCL",
+    "inclusion": true,
+    "level_of_evidence": "2.0",
+    "ocp_alternative": "<CNV>",
+    "ocp_reference": "C",
+    "position": "40361592",
+    "rare":false,
+    "raw_copy_number":"7.7",
+    "ref_copy_number":"2.0"
+  }],
+  "gene_fusions": [{
+    "identifier": "TPM3-ALK.T7A20",
+    "inclusion": true,
+    "public_med_ids": ["23724913"],
+    "ocp_reference": "A",
+    "arm_specific": "false",
+    "func_gene": "ALK",
+    "level_of_evidence": "2.0",
+    "ocp_alternative": "[chr1:154142875[A",
+    "chromosome": "2.0",
+    "description": "ALK translocation",
+    "position": "29446394",
+    "type": "gf"
+  }, {
+    "identifier": "FGFR2-OFD1.F17O3",
+    "inclusion": true,
+    "public_med_ids": null,
+    "ocp_reference": "C",
+    "arm_specific": "false",
+    "func_gene": "FGFR2",
+    "level_of_evidence": "3.0",
+    "ocp_alternative": "C[chrX:13754596[",
+    "chromosome": "10.0",
+    "description": "some description",
+    "position": "123243211",
+    "type": "gf"
+  }],
+  "diseases": [{
+    "disease_code_type": "ICD-O",
+    "disease_code": "9380/3",
+    "disease_name": "Glioma, NOS",
+    "exclusion": true
+  }, {
+    "disease_code_type": "ICD-O",
+    "disease_code": "9380/3",
+    "disease_name": "Glioblastoma Multiforme",
+    "exclusion": true
+  }, {
+    "disease_code_type": "ICD-O",
+    "disease_code": "8012/2",
+    "disease_name": "Large Cell Carcinoma, NOS",
+    "exclusion": false
+  }, {
+    "disease_code_type": "ICD-O",
+    "disease_code": "8012/2",
+    "disease_name": "Lung Adenocarcinoma, NOS",
+    "exclusion": false
+  }],
+  "exclusion_drugs": [{
+    "name": "Doxorubicin Hydrochloride",
+    "drug_id": "10001",
+    "drug_class": "ALK inhibitor",
+    "target": "ALK"
+  }, {
+    "name": "Clarithromycin",
+    "drug_id": "10001",
+    "drug_class": "Macrolide Antimicrobial",
+    "target": "ALK"
+  }],
+  "status_log": {
+    "1471631732": "OPEN"
+  },
+  "current_patients": "2",
+  "former_patients": "0",
+  "not_enrolled_patients": "0",
+  "pending_patients": "1"
+}]

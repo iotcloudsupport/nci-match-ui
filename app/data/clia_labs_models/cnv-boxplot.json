@@ -1,0 +1,24 @@
+{
+  "site": "MoCha",
+  "molecular_id": "SampleControl_MoCha_1",
+  "analysis_id": "cf1f02a6-6a34-11e6-8b77-86f30ca893d3",
+  "mapd": 0.268,
+  "cellularity": 1.0,
+  "torrent_variant_caller_version": "tvc 4.4-8",
+  "filename": "MSN17871_v1_MSN17871_RNA_v1.vcf",
+  "genes": [{
+    "gene": "MYCL",
+    "values": [1.538427, 1.594352, 1.644085, 1.703368, 1.778046, 1.807268, 1.93, 2.061067, 2.09494, 2.186785, 2.265637, 2.336309, 2.421239],
+    "chromosome": "1",
+    "position": "40361592",
+    "raw_copy_number": 1.93,
+    "confidence_interval": ["0.05:1.64409", "0.95:2.26564"]
+  }, {
+    "gene": "BCL9",
+    "values": [2.117143, 2.192017, 2.258542, 2.337772, 2.437471, 2.476453, 2.64, 2.814347, 2.859357, 2.981301, 3.085885, 3.179537, 3.291984],
+    "chromosome": "1",
+    "position": "147022100",
+    "raw_copy_number": 2.64,
+    "confidence_interval": ["0.05:2.25854", "0.95:3.08589"]
+  }]
+}

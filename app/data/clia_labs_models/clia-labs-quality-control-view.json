@@ -1,0 +1,64 @@
+{
+  "site": "MoCha",
+  "molecular_id": "SampleControl_MoCha_1",
+  "analysis_id": "cf1f02a6-6a34-11e6-8b77-86f30ca893d3",
+  "total_variants": 4,
+  "mapd": 0.268,
+  "cellularity": 1.0,
+  "file_received_date": "2016-06-21T19:51:00+00:00",
+  "torrent_variant_caller_version": "tvc 4.4-8",
+  "oncomine_control_panel_summary": {
+    "LRP1": 802932,
+    "TBP": 439343,
+    "MYC": 37998,
+    "HMBS": 41934,
+    "ITGB7": 30633
+  },
+  "single_nucleotide_variants": [{
+    "identifier": "COSM12580",
+    "chromosome": "3",
+    "position": "178916946",
+    "ocp_reference": "G",
+    "ocp_alternative": "C",
+    "allele_frequency": "0.138275",
+    "function_gene": null,
+    "oncomine_variant_class": "Hotspot",
+    "function": "missense",
+    "hgvs": "c.333G>C",
+    "read_depth": 1403,
+    "transcript": "NM_006218.2",
+    "protein": "p.Lys111Asn"
+  }],
+  "indels": [{
+    "identifier": ".",
+    "chromosome": "7",
+    "position": "48916816",
+    "ocp_reference": "ACTT",
+    "ocp_alternative": "-",
+    "allele_frequency": "0.221567",
+    "function_gene": null,
+    "oncomine_variant_class": "Deleterious",
+    "function": "frameshiftDeletion",
+    "hgvs": "c.346_349delACTT",
+    "read_depth": 1187,
+    "transcript": "NM_000321.2",
+    "protein": "p.Thr116fs"
+  }],
+  "copy_number_variants": [{
+    "identifier": "ERBB2",
+    "chromosome": "17",
+    "position": "37845133",
+    "raw_copy_number": 7.5,
+    "copy_number": 7.5,
+    "confidence_interval_5percent": 1.44331,
+    "confidence_interval_95percent": 1.55891
+  }],
+  "gene_fusions": [{
+    "identifier": "KLC1-ALK.K9A20.COSF1276",
+    "gene2": "ALK",
+    "gene2_count": 2000,
+    "gene1": "KLC1",
+    "gene1_count": 2000,
+    "annotation": "COSF1276"
+  }]
+}

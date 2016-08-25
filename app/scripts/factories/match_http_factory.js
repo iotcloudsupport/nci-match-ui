@@ -37,42 +37,42 @@
             function loadActivity(id) {
                 if (id) {
                     $log.info('Loading patient activity ' + id);
-                    return $http.get('data/activity_patient_' + id + '.json');
+                    return $http.get('data/demo/activity_patient_' + id + '.json');
                 } else {
                     $log.info('Loading dashboard activity');
-                    return $http.get('data/dashboard_activity.json');
+                    return $http.get('data/demo/dashboard_activity.json');
                 }
             }
 
             function loadPatientList() {
-                return $http.get('data/patient_list.json');
+                return $http.get('data/demo/patient_list.json');
             }
 
             function loadTreatmentArmDetails(name, stratum) {
-                return $http.get('data/treatment_arm_' + name + '_' + stratum + '.json');
+                return $http.get('data/demo/treatment_arm_' + name + '_' + stratum + '.json');
             }
 
             function loadPatientsForTa(name, stratum) {
-                return $http.get('data/treatment_arm_' + name + '_' + stratum +  '_patients.json');
+                return $http.get('data/demo/treatment_arm_' + name + '_' + stratum +  '_patients.json');
             }
 
             function loadSpecimenTrackingList() {
-                return $http.get('data/specimen_tracking_list.json');
+                return $http.get('data/demo/specimen_tracking_list.json');
             }
 
             function loadDashboardStatistics() {
-                return $http.get('data/dashboard_statistics.json');
+                return $http.get('data/demo/dashboard_statistics.json');
             }
 
             function loadTreatmentArmAccrual() {
-                return $http.get('data/dashboard_treatment_arm_accrual.json');
+                return $http.get('data/demo/dashboard_treatment_arm_accrual.json');
             }
             function loadChartjsDonutChart(){
-                return $http.get('data/dashboard_donut_chart.json');
+                return $http.get('data/demo/dashboard_donut_chart.json');
             }
 
             function loadTissueVariantReportsList(){
-                return $http.get('data/dashboard_tissue_variant_reports.json');
+                return $http.get('data/demo/dashboard_tissue_variant_reports.json');
             }
 
             function loadBloodVariantReportsList() {
@@ -80,59 +80,59 @@
             }
 
             function loadPatientPendingAssignmentReportsList() {
-                return $http.get('data/dashboard_patient_assignment_reports.json');
+                return $http.get('data/demo/dashboard_patient_assignment_reports.json');
             }
             
             function loadTreatmentArmList() {
-                return $http.get('data/treatment_arms_list.json');
+                return $http.get('data/demo/treatment_arms_list.json');
             }
 
             function loadQc_Table(){
-                return $http.get('data/sample_qc.json');
+                return $http.get('data/demo/sample_qc.json');
             }
 
             function loadSnv_Table(){
-                return $http.get('data/sample_qc.json');
+                return $http.get('data/demo/sample_qc.json');
             }
 
             function loadMocha_List(){
-                return $http.get('data/sample_mocha_list.json');
+                return $http.get('data/demo/sample_mocha_list.json');
             }
 
             function loadMocha_Month_List(){
-                return $http.get('data/sample_mocha_list_month.json');
+                return $http.get('data/demo/sample_mocha_list_month.json');
             }
 
             function loadMDACC_Month_List(){
-                return $http.get('data/sample_mdacc_list_month.json');
+                return $http.get('data/demo/sample_mdacc_list_month.json');
             }
 
             function loadMochaNtc_Table(){
-                return $http.get('data/sample_mocha_ntc_list.json');
+                return $http.get('data/demo/sample_mocha_ntc_list.json');
             }
 
             function loadMDACC_Table(){
-                return $http.get('data/sample_mdacc_list.json');
+                return $http.get('data/demo/sample_mdacc_list.json');
             }
 
             function loadMDACCNtc_Table(){
-                return $http.get('data/sample_mdacc_ntc_list.json');
+                return $http.get('data/demo/sample_mdacc_ntc_list.json');
             }
 
             function openPositives(index){
-                return $http.get('data/sample_positive_control_' + index);
+                return $http.get('data/demo/sample_positive_control_' + index);
             }
 
             function openMDACCPositives(index){
-                return $http.get('data/sample_mda_positive_control_' + index);
+                return $http.get('data/demo/sample_mda_positive_control_' + index);
             }
 
             function loadSampleHRFiles(){
                 var hr_files = [];
                 hr_files.push({
-                    'report':'data/sample_hr_data_report.json',
-                    'data':'data/sample_hr_data_file.txt',
-                    'log':'data/sample_hr_log_file.txt'
+                    'report':'data/demo/sample_hr_data_report.json',
+                    'data':'data/demo/sample_hr_data_file.txt',
+                    'log':'data/demo/sample_hr_log_file.txt'
                 });
                 return hr_files;
             }

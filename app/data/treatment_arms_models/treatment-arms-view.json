@@ -1,0 +1,31 @@
+[{
+  "name":"APEC1621-A",
+  "treatment_arm_status":"OPEN",
+  "date_opened":"2016-06-24T15:38:31+00:00",
+  "date_suspended": null,
+  "date_closed": null,
+  "current_patients": 2,
+  "former_patients": 0,
+  "not_enrolled_patients": 0,
+  "pending_patients": 1
+}, {
+  "name":"APEC1621-B",
+  "treatment_arm_status":"SUSPENDED",
+  "date_opened":"2016-06-25T15:38:31+00:00",
+  "date_suspended": "2016-08-04T15:38:31+00:00",
+  "date_closed": null,
+  "current_patients": 0,
+  "former_patients": 2,
+  "not_enrolled_patients": 0,
+  "pending_patients": 4
+}, {
+  "name":"APEC1621-C",
+  "treatment_arm_status":"CLOSED",
+  "date_opened":"2016-06-27T15:38:31+00:00",
+  "date_suspended": "2016-08-10T15:38:31+00:00",
+  "date_closed": "2016-08-11T15:38:31+00:00",
+  "current_patients": 0,
+  "former_patients": 2,
+  "not_enrolled_patients": 0,
+  "pending_patients": 0
+}]
