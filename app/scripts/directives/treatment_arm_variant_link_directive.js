@@ -62,7 +62,7 @@
             }
 
             vm.getTreatmentArmTitle = function(ta) {
-                return ta.name + ' (' + ta.stratum_id + ', ' + ta.version + ')';
+                return ta.name + ' (' + ta.stratum + ', ' + ta.version + ')';
             }
         };
 
@@ -70,7 +70,7 @@
         var template = 
         '<div ng-if="vm.isAmoi" class="ta-amoi-status">\
             <div ng-repeat="ta in vm.treatmentArms">\
-                <treatment-arm-title name="ta.name" stratum="ta.stratum_id" version="ta.version" display-text="vm.getDisplayText(ta)" text-color="vm.getTextColor(ta)" data-placement="top" title="{{vm.getTreatmentArmTitle(ta)}}" onmouseenter="$(this).tooltip(\'show\')"></treatment-arm-title>\
+                <treatment-arm-title name="ta.name" stratum="ta.stratum" version="ta.version" display-text="vm.getDisplayText(ta)" text-color="vm.getTextColor(ta)" data-placement="top" title="{{vm.getTreatmentArmTitle(ta)}}" onmouseenter="$(this).tooltip(\'show\')"></treatment-arm-title>\
                 <sup>{{vm.getInclusion(ta)}}</sup>\
             </div>\
         </div>\
