@@ -978,8 +978,6 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         };
 
         $scope.gotoBottom = function(id) {
-
-            // var tic = id + 'bottom';
             var tic = id + '=samplevariants';
 
             $timeout(function() {
@@ -1213,9 +1211,18 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         $scope.closePositives = function() {
             $scope.selectedRow = "";
             $scope.positives = 'undefined';
-
+            resetPosition();
         };
         //POSITIVES
+
+        function resetPosition(){
+            var tic = '';
+
+            $timeout(function() {
+                $location.hash(tic);
+                $anchorScroll();
+            });
+        }
 
         function loadNegativesList(data) {
 
@@ -1289,10 +1296,9 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         $scope.closeNegatives = function() {
             $scope.selectedRow = "";
             $scope.negatives = 'undefined';
+            resetPosition();
 
         };
-
-
 
             function resetPositivePieChart(){
 
