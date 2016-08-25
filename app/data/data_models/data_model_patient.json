@@ -1,6 +1,11 @@
 {
     "patient_id": "00002",
     "gender": "FEMALE",
+    "ethnicity": "White",
+    "races": [
+        "WHITE"
+    ],
+    "registration_date": "2016-08-15T18:31:42.000+00:00",
     "last_rejoin_scan_date": "2016-08-15T18:31:42.000+00:00",
     "current_status": "PENDING_CONFIRMATION",
     "current_step_number": "1.0",
@@ -18,15 +23,79 @@
         "AZD9291",
         "ZZDR987"
     ],
-
-
-
-    "registration_date": "2016-08-15T18:31:42.000+00:00",
-    "study_id": "APEC1621",
-    "ethnicity": "White",
-    "races": [
-        "WHITE"
+    "action_items": [
+        {
+            "action_type": "pending_tissue_variant_report | pending_blood_variant_report | pending_assignment_report",
+            "molecular_id": "00002-00012",
+            "analysis_id": "ANI_00002-00012"
+        }
     ],
+    "ta_history": [
+        {
+            "name": "APEC1621-B",
+            "stratum": "STR1",
+            "version": "2015-08-06",
+            "step": "1.1",
+            "assignment_reason": "Reason goes here",
+            "assignment_date": "2016-07-15T18:31:42.000+00:00" 
+        }
+    ],
+    "specimens": [
+        {
+            "surgical_event_id": "00002-Tissue_Specimen_1",
+            "type": "TISSUE",
+            "collected_date": "2016-08-15T18:34:14+00:00",
+            "received_date": "2016-08-15T18:34:14+00:00",
+            "failed_date": null,
+            "pathology_status": "Y",
+            "pathology_status_date": "2016-08-15T18:41:48+00:00",
+            "comments": "Surgical Event comments go here",
+            "assays": [
+                {
+                    "biomarker": "ICCPTENs",
+                    "gene": "PTEN",
+                    "ordered_date": "2016-08-15T14:39:17-04:00",
+                    "result_date": "2016-08-15T14:39:17-04:00",
+                    "result": "NEGATIVE",
+                    "comments": "Assay comments go here"
+                }
+            ],
+            "specimen_shipments": [
+                {
+                    "molecular_id": "00002-00012",
+                    "slide_barcode": null,
+                    "carrier": "Federal Express",
+                    "shipped_date": "2016-08-15T18:36:46+00:00",
+                    "type": "TISSUE_DNA_AND_CDNA",
+                    "destination": "MDA",
+                    "tracking_id": "7956 4568 1235",
+                    "dna_concordance": "2",
+                    "dna_volume_ul": "10.0",
+                    "reported_date": "2016-08-15T18:36:46+00:00",
+                    "comments": "Specimen shipment comments go here",
+                    "analyses": [
+                        {
+                            "analysis_id": "ANI_00002-00012",
+                            "status": "CONFIRMED",
+                            "status_date": "2016-08-15T18:54:35.000+00:00",
+                            "comment_user": "rick.zakharov@gmail.com",
+                            "comment": "Analysis comments go here",
+                            "variant_report_received_date": "2016-08-15T18:43:09.000+00:00",
+                            "dna_bam_path_name": "https://s3.amazonaws.com/bdd-test-data/demo/00002/00002-00012/ANI_00002-00012/dna.bam",
+                            "dna_bai_path_name": "https://s3.amazonaws.com/bdd-test-data/demo/00002/00002-00012/ANI_00002-00012/dna.bai",
+                            "vcf_path_name": "https://s3.amazonaws.com/bdd-test-data/demo/00002/00002-00012/ANI_00002-00012/00002.vcf",
+                            "rna_bam_path_name": "https://s3.amazonaws.com/bdd-test-data/demo/00002/00002-00012/ANI_00002-00012/cdna.bam",
+                            "rna_bai_path_name": "https://s3.amazonaws.com/bdd-test-data/demo/00002/00002-00012/ANI_00002-00012/cdna.bai",
+                            "tsv_path_name": "https://s3.amazonaws.com/bdd-test-data/demo/00002/00002-00012/ANI_00002-00012/00002.tsv",
+                            "qc_report_url": "https://s3.amazonaws.com/bdd-test-data/demo/00002/00002-00012/ANI_00002-00012/00002.qc_report.json",
+                            "vr_chart_data_url": "https://s3.amazonaws.com/bdd-test-data/demo/00002/00002-00012/ANI_00002-00012/00002.vr_chart.json"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+
     "current_assignment": {
         "status_date": "2016-08-15T18:54:53+00:00",
         "assignment_logic": [
@@ -66,8 +135,7 @@
         "analysis_id": "ANI_00002-00012",
         "status": "PENDING"
     },
-    "documents": null,
-    "message": null,
+
     "variant_reports": [
         {
             "surgical_event_id": null,
@@ -1662,144 +1730,7 @@
             }
         }
     ],
-    "specimens": [
-        {
-            "patient_id": "00002",
-            "collected_date": "2016-08-15T18:34:14+00:00",
-            "surgical_event_id": "00002-Tissue_Specimen_1",
-            "failed_date": null,
-            "study_id": "APEC1621",
-            "type": "TISSUE",
-            "received_date": "2016-08-15T18:34:14+00:00",
-            "pathology_status": "Y",
-            "pathology_status_date": "2016-08-15T18:41:48+00:00",
-            "variant_report_confirmed_date": null,
-            "active_molecular_id": "00002-00012",
-            "assays": [
-                {
-                    "result": "NEGATIVE",
-                    "biomarker": "ICCPTENs",
-                    "result_date": "2016-08-15T14:39:17-04:00",
-                    "ordered_date": null
-                },
-                {
-                    "result": "NEGATIVE",
-                    "biomarker": "ICCMLH1s",
-                    "result_date": "2016-08-15T14:40:33-04:00",
-                    "ordered_date": null
-                }
-            ],
-            "specimen_shipments": [
-                {
-                    "uuid": "7fb1af0c-a205-4a4c-b3ef-bb5528604e3a",
-                    "shipped_date": "2016-08-15T18:36:46+00:00",
-                    "patient_id": "00002",
-                    "surgical_event_id": "00002-Tissue_Specimen_1",
-                    "molecular_id": "00002-00012",
-                    "slide_barcode": null,
-                    "study_id": "APEC1621",
-                    "type": "TISSUE_DNA_AND_CDNA",
-                    "molecular_dna_id": "00012D",
-                    "molecular_cdna_id": "00012C",
-                    "carrier": "Federal Express",
-                    "tracking_id": "7956 4568 1235",
-                    "destination": "MDA",
-                    "dna_volume_ul": "10.0",
-                    "dna_concentration_ng_per_ul": "25.0",
-                    "cdna_volume_ul": "10.0",
-                    "analyses": [
-                        {
-                            "analysis_id": "ANI_00002-00012",
-                            "variant_report_received_date": "2016-08-15T18:43:09.000+00:00",
-                            "status": "CONFIRMED",
-                            "status_date": "2016-08-15T18:54:35.000+00:00",
-                            "comment": " ",
-                            "comment_user": "rick.zakharov@gmail.com",
-                            "dna_bam_path_name": "https://s3.amazonaws.com/bdd-test-data/demo/00002/00002-00012/ANI_00002-00012/dna.bam",
-                            "dna_bai_path_name": null,
-                            "rna_bam_path_name": "https://s3.amazonaws.com/bdd-test-data/demo/00002/00002-00012/ANI_00002-00012/cdna.bam",
-                            "rna_bai_path_name": null,
-                            "vcf_path_name": "https://s3.amazonaws.com/bdd-test-data/demo/00002/00002-00012/ANI_00002-00012/00002.vcf",
-                            "tsv_path_name": "https://s3.amazonaws.com/bdd-test-data/demo/00002/00002-00012/ANI_00002-00012/00002.tsv",
-                            "qc_report_url": "https://s3.amazonaws.com/bdd-test-data/demo/00002/00002-00012/ANI_00002-00012/00002.qc_report.json",
-                            "vr_chart_data_url": "https://s3.amazonaws.com/bdd-test-data/demo/00002/00002-00012/ANI_00002-00012/00002.vr_chart.json"
-                        }
-                    ]
-                },
-                {
-                    "uuid": "e0b8009a-0224-4770-872d-0df76723f14c",
-                    "shipped_date": "2016-08-15T18:38:01+00:00",
-                    "patient_id": "00002",
-                    "surgical_event_id": "00002-Tissue_Specimen_1",
-                    "molecular_id": null,
-                    "slide_barcode": "0BJ6A5",
-                    "study_id": "APEC1621",
-                    "type": "SLIDE",
-                    "molecular_dna_id": null,
-                    "molecular_cdna_id": null,
-                    "carrier": "Federal Express",
-                    "tracking_id": "7956 4568 1235",
-                    "destination": "MDA",
-                    "dna_volume_ul": null,
-                    "dna_concentration_ng_per_ul": null,
-                    "cdna_volume_ul": null,
-                    "analyses": []
-                }
-            ]
-        },
-        {
-            "patient_id": "00002",
-            "collected_date": "2016-08-15T18:32:58+00:00",
-            "surgical_event_id": null,
-            "failed_date": null,
-            "study_id": "APEC1621",
-            "type": "BLOOD",
-            "received_date": "2016-08-15T18:32:58+00:00",
-            "pathology_status": null,
-            "pathology_status_date": null,
-            "variant_report_confirmed_date": null,
-            "active_molecular_id": "00002-00013",
-            "assays": null,
-            "specimen_shipments": [
-                {
-                    "uuid": "9e62bd09-0b0d-4716-9b51-afad738d5cfc",
-                    "shipped_date": "2016-08-15T18:35:30+00:00",
-                    "patient_id": "00002",
-                    "surgical_event_id": null,
-                    "molecular_id": "00002-00013",
-                    "slide_barcode": null,
-                    "study_id": "APEC1621",
-                    "type": "BLOOD_DNA",
-                    "molecular_dna_id": null,
-                    "molecular_cdna_id": null,
-                    "carrier": "Federal Express",
-                    "tracking_id": "7956 4568 1235",
-                    "destination": "MDA",
-                    "dna_volume_ul": "10.0",
-                    "dna_concentration_ng_per_ul": "25.0",
-                    "cdna_volume_ul": "10.0",
-                    "analyses": [
-                        {
-                            "analysis_id": "ANI_00002-00013",
-                            "variant_report_received_date": "2016-08-15T18:44:29.000+00:00",
-                            "status": "PENDING",
-                            "status_date": "2016-08-15T18:44:29.000+00:00",
-                            "comment": null,
-                            "comment_user": null,
-                            "dna_bam_path_name": "https://s3.amazonaws.com/bdd-test-data/demo/00002/00002-00012/ANI_00002-00012/dna.bam",
-                            "dna_bai_path_name": null,
-                            "rna_bam_path_name": "https://s3.amazonaws.com/bdd-test-data/demo/00002/00002-00012/ANI_00002-00012/cdna.bam",
-                            "rna_bai_path_name": null,
-                            "vcf_path_name": "https://s3.amazonaws.com/bdd-test-data/demo/00002/00002-00012/ANI_00002-00012/00002.vcf",
-                            "tsv_path_name": "https://s3.amazonaws.com/bdd-test-data/demo/00002/00002-00012/ANI_00002-00012/00002.tsv",
-                            "qc_report_url": "https://s3.amazonaws.com/bdd-test-data/demo/00002/00002-00012/ANI_00002-00012/00002.qc_report.json",
-                            "vr_chart_data_url": "https://s3.amazonaws.com/bdd-test-data/demo/00002/00002-00012/ANI_00002-00012/00002.vr_chart.json"
-                        }
-                    ]
-                }
-            ]
-        }
-    ],
+    
     "assignment_report": {
         "status_date": "2016-08-15T18:54:53+00:00",
         "assignment_logic": [
@@ -1838,5 +1769,9 @@
         ],
         "analysis_id": "ANI_00002-00012",
         "status": "PENDING"
-    }
+    },
+
+    "documents": [
+
+    ]
 }

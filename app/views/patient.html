@@ -73,6 +73,7 @@
             </div>
         </div>
 
+
         <div class="tabs-container">
             <uib-tabset active="activeTabIndex">
                 <uib-tab heading="Summary" select="setActiveTab('summary')">
@@ -202,7 +203,7 @@
                                         <td>
                                             <tracking-link carrier="'fedex'" tracking-number="slide.tracking_id"></tracking-link>
                                         </td>
-                                        <td>{{slide.shipped_dttm | utc | dashify }}</td>
+                                        <td>{{slide.shipped_date | utc | dashify }}</td>
                                     </tr>
                                     <tr ng-if="!currentSurgicalEvent.slides || !currentSurgicalEvent.slides.length">
                                         <td colspan="4"><span class="text-muted">No slides shipped</span></td>
@@ -229,7 +230,7 @@
                                     <tr ng-repeat="assay in currentSurgicalEvent.assays" style="cursor: auto;" role="row" class="odd">
                                         <td>{{assay.biomarker | dashify }}</td>
                                         <td>{{assay.gene | dashify }}</td>
-                                        <td>{{assay.rordered_date | utc | dashify }}</td>
+                                        <td>{{assay.ordered_date | utc | dashify }}</td>
                                         <td>{{assay.result_date | utc | dashify }}</td>
                                         <td>
                                             <span style="color:{{ assay.result | assayStatus }}">{{assay.result | dashify }}</span>
@@ -264,13 +265,13 @@
                                     <tr ng-repeat-start="shipment in currentSurgicalEvent.specimen_shipments" style="cursor: auto;" role="row" class="odd">
                                         <td>{{shipment.molecular_id | dashify }}</td>
                                         <td>{{shipment.type | dashify }}</td>
-                                        <td>{{shipment.site | dashify }}</td>
+                                        <td>{{shipment.destination | dashify }}</td>
                                         <td>
-                                            <tracking-link ng-if="shipment.tracking_number" carrier="'fedex'" tracking-number="shipment.tracking_number"></tracking-link>
-                                            <p ng-if="!shipment.tracking_number"> - </p>
+                                            <tracking-link ng-if="shipment.tracking_id" carrier="'fedex'" tracking-number="shipment.tracking_id"></tracking-link>
+                                            <p ng-if="!shipment.tracking_id"> - </p>
                                         </td>
                                         <td>{{shipment.dna_concordance | dashify }}</td>
-                                        <td>{{shipment.dna_volume | dashify }}</td>
+                                        <td>{{shipment.dna_volume_ul | dashify }}</td>
                                         <td>{{shipment.reported_date | utc | dashify }}</td>
                                         <td>
                                             <div class="text-truncate-200px"  data-placement="top" title="{{shipment.comments}}" onmouseenter="$(this).tooltip('show')" >{{shipment.comments | dashify }}</div>
