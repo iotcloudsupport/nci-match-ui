@@ -1,0 +1,217 @@
+[
+    {
+        "entity_id": "00002",
+        "event_date": "2016-08-15T18:54:53+00:00",
+        "event_type": "assignment_report",
+        "event_message": "Patient assignment is pending confirmation",
+        "event_data": {
+            "treatment_arm": {
+                "name": "TA123",
+                "version": "2016-01-15",
+                "stratum": "STR03"
+            },
+            "assignment_report_status": "PENDING",
+            "surgical_event_id": "00002-Tissue_Specimen_1",
+            "molecular_id": "00002-00012",
+            "step": "1.0",
+            "patient_status": "PENDING_CONFIRMATION",
+            "analysis_id": "ANI_00002-00012",
+            "status": "PENDING_CONFIRMATION"
+        }
+    },
+    {
+        "entity_id": "00002",
+        "event_date": "2016-08-15T18:54:51+00:00",
+        "event_type": "assignment_report",
+        "event_message": "Patient is ready for assignment, awaiting treatment arm statuses from COG.",
+        "event_data": {
+            "step": "1.0",
+            "assignment_report_status": "AWAITING_TREATMENT_ARM_STATUS",
+            "surgical_event_id": "00002-Tissue_Specimen_1",
+            "analysis_id": "ANI_00002-00012",
+            "status": "AWAITING_TREATMENT_ARM_STATUS",
+            "molecular_id": "00002-00012"
+        }
+    },
+    {
+        "entity_id": "00002",
+        "event_date": "2016-08-15T18:54:40+00:00",
+        "event_type": "assignment_report",
+        "event_message": "Patient is ready for assignment, awaiting patient data from COG.",
+        "event_data": {
+            "step": "1.0",
+            "assignment_report_status": "AWAITING_PATIENT_DATA",
+            "surgical_event_id": "00002-Tissue_Specimen_1",
+            "analysis_id": "ANI_00002-00012",
+            "status": "AWAITING_PATIENT_DATA",
+            "molecular_id": "00002-00012"
+        }
+    },
+    {
+        "entity_id": "00002",
+        "event_date": "2016-08-15T18:54:35+00:00",
+        "event_type": "variant_report",
+        "event_message": "TISSUE Variant Report updated to CONFIRMED.",
+        "event_data": {
+            "variant_report_status": "CONFIRMED",
+            "surgical_event_id": "00002-Tissue_Specimen_1",
+            "patient_id": "00002",
+            "molecular_id": "00002-00012",
+            "comment_user": "rick.zakharov@gmail.com",
+            "comment": " ",
+            "step": "1.0",
+            "type": "TISSUE",
+            "analysis_id": "ANI_00002-00012",
+            "status": "CONFIRMED"
+        }
+    },
+    {
+        "entity_id": "00002",
+        "event_date": "2016-08-15T18:44:29+00:00",
+        "event_type": "variant_report",
+        "event_message": "BLOOD Variant Report received.",
+        "event_data": {
+            "variant_report_status": "PENDING",
+            "specimen_received_date": "2016-08-15T14:34:14-04:00",
+            "molecular_id": "00002-00013",
+            "variant_report_type": "BLOOD",
+            "step": "1.0",
+            "clia_lab": "MDA",
+            "analysis_id": "ANI_00002-00013"
+        }
+    },
+    {
+        "entity_id": "00002",
+        "event_date": "2016-08-15T18:43:09+00:00",
+        "event_type": "variant_report",
+        "event_message": "TISSUE Variant Report received.",
+        "event_data": {
+            "variant_report_status": "PENDING",
+            "surgical_event_id": "00002-Tissue_Specimen_1",
+            "specimen_received_date": "2016-08-15T14:34:14-04:00",
+            "molecular_id": "00002-00012",
+            "variant_report_type": "TISSUE",
+            "step": "1.0",
+            "clia_lab": "MDA",
+            "analysis_id": "ANI_00002-00012"
+        }
+    },
+    {
+        "entity_id": "00002",
+        "event_date": "2016-08-15T18:41:52+00:00",
+        "event_type": "pathology_status",
+        "event_message": "Pathology status Y received from MDA.",
+        "event_data": {
+            "surgical_event_id": "00002-Tissue_Specimen_1",
+            "step": "1.0",
+            "pathology_status": "Y"
+        }
+    },
+    {
+        "entity_id": "00002",
+        "event_date": "2016-08-15T18:40:41+00:00",
+        "event_type": "assay",
+        "event_message": "Assay result for ICCMLH1s received from MDA.",
+        "event_data": {
+            "assay_result": "NEGATIVE",
+            "step": "1.0",
+            "surgical_event_id": "00002-Tissue_Specimen_1",
+            "biomarker": "ICCMLH1s"
+        }
+    },
+    {
+        "entity_id": "00002",
+        "event_date": "2016-08-15T18:39:18+00:00",
+        "event_type": "assay",
+        "event_message": "Assay result for ICCPTENs received from MDA.",
+        "event_data": {
+            "assay_result": "NEGATIVE",
+            "step": "1.0",
+            "surgical_event_id": "00002-Tissue_Specimen_1",
+            "biomarker": "ICCPTENs"
+        }
+    },
+    {
+        "entity_id": "00002",
+        "event_date": "2016-08-15T18:38:07+00:00",
+        "event_type": "specimen",
+        "event_message": "Specimen Shipment of type SLIDE shipped from NCH.",
+        "event_data": {
+            "destination": "MDA",
+            "tracking_number": "7956 4568 1235",
+            "carrier": "Federal Express",
+            "step": "1.0",
+            "slide_barcode": "0BJ6A5",
+            "surgical_event_id": "00002-Tissue_Specimen_1"
+        }
+    },
+    {
+        "entity_id": "00002",
+        "event_date": "2016-08-15T18:36:55+00:00",
+        "event_type": "specimen",
+        "event_message": "Specimen Shipment of type TISSUE_DNA_AND_CDNA shipped from NCH.",
+        "event_data": {
+            "carrier": "Federal Express",
+            "surgical_event_id": "00002-Tissue_Specimen_1",
+            "molecular_cdna_id": "00012C",
+            "molecular_id": "00002-00012",
+            "destination": "MDA",
+            "tracking_number": "7956 4568 1235",
+            "step": "1.0",
+            "molecular_dna_id": "00012D"
+        }
+    },
+    {
+        "entity_id": "00002",
+        "event_date": "2016-08-15T18:35:33+00:00",
+        "event_type": "specimen",
+        "event_message": "Specimen Shipment of type BLOOD_DNA shipped from NCH.",
+        "event_data": {
+            "destination": "MDA",
+            "tracking_number": "7956 4568 1235",
+            "carrier": "Federal Express",
+            "step": "1.0",
+            "molecular_id": "00002-00013"
+        }
+    },
+    {
+        "entity_id": "00002",
+        "event_date": "2016-08-15T18:34:21+00:00",
+        "event_type": "specimen",
+        "event_message": "Specimen of type TISSUE received at NCH.",
+        "event_data": {
+            "collected_dttm": "2016-08-15T14:34:14-04:00",
+            "surgical_event_id": "00002-Tissue_Specimen_1",
+            "patient_id": "00002",
+            "step": "1.0",
+            "study_id": "APEC1621",
+            "type": "TISSUE",
+            "received_dttm": "2016-08-15T14:34:14-04:00"
+        }
+    },
+    {
+        "entity_id": "00002",
+        "event_date": "2016-08-15T18:33:09+00:00",
+        "event_type": "specimen",
+        "event_message": "Specimen of type BLOOD received at NCH.",
+        "event_data": {
+            "collected_dttm": "2016-08-15T14:32:58-04:00",
+            "step": "1.0",
+            "study_id": "APEC1621",
+            "type": "BLOOD",
+            "received_dttm": "2016-08-15T14:32:58-04:00",
+            "patient_id": "00002"
+        }
+    },
+    {
+        "entity_id": "00002",
+        "event_date": "2016-08-15T18:31:47+00:00",
+        "event_type": "patient",
+        "event_message": "Patient received REGISTRATION message from COG.",
+        "treatment_arm": {
+            "name": "TA123",
+            "version": "2016-01-15",
+            "stratum": "STR03"
+        }
+    }
+]
