@@ -17,28 +17,22 @@
                         <div class="statistic-box dashboard">
                             <ul class="list-group clear-list statistics m-t">
                                 <li class="list-group-item fist-item">
-                                    <strong><span class="pull-right">{{ ::patientStatistics.number_of_patients }}</span></strong>
-                                    Registered Patients:
+                                    <strong><span class="pull-right">{{ ::patientStatistics.number_of_patients }}</span></strong>                                    Registered Patients:
                                 </li>
                                 <li class="list-group-item">
-                                    <strong><span class="pull-right">{{ ::patientStatistics.number_of_patients_with_confirmed_variant_report }}</span></strong>
-                                    Patients with Confirmed Variant Report:
+                                    <strong><span class="pull-right">{{ ::patientStatistics.number_of_patients_with_confirmed_variant_report }}</span></strong>                                    Patients with Confirmed Variant Report:
                                 </li>
                                 <li class="list-group-item">
-                                    <strong><span class="pull-right">{{ ::patientStatistics.number_of_patients_on_treatment_arm }}</span></strong>
-                                    Patients on Treatment:
+                                    <strong><span class="pull-right">{{ ::patientStatistics.number_of_patients_on_treatment_arm }}</span></strong>                                    Patients on Treatment:
                                 </li>
                                 <li class="list-group-item">
-                                    <strong><span class="pull-right">{{ pendingTissueVariantReportGridOptions.data.length }}</span></strong>
-                                    Pending Tissue Variant Reports:
+                                    <strong><span class="pull-right">{{ pendingTissueVariantReportGridOptions.data.length }}</span></strong>                                    Pending Tissue Variant Reports:
                                 </li>
                                 <li class="list-group-item">
-                                    <strong><span class="pull-right">{{ pendingBloodVariantReportGridOptions.data.length }}</span></strong>
-                                    Pending Blood Variant Reports:
+                                    <strong><span class="pull-right">{{ pendingBloodVariantReportGridOptions.data.length }}</span></strong>                                    Pending Blood Variant Reports:
                                 </li>
                                 <li class="list-group-item">
-                                    <strong><span class="pull-right">{{ pendingAssignmentReportGridOptions.data.length }}</span></strong>
-                                    Pending Assignment Reports:
+                                    <strong><span class="pull-right">{{ pendingAssignmentReportGridOptions.data.length }}</span></strong>                                    Pending Assignment Reports:
                                 </li>
                             </ul>
                         </div>
@@ -52,13 +46,7 @@
                         <div class="statistic-box dashboard">
                             <canvas id="amoiCanvas" doughnutchart options="donutOptions" ng-attr-data="donutData" legend="true" responsive="true"></canvas>
 
-                            <ul class="dashboard donut-chart-legend"><i class="fa fa-square" style="color: #23c6c8"></i>
-                                0 aMOI : <strong>   {{amoi_0}} patients</strong> <br><i class="fa fa-square" style="color: #1c84c6"></i>
-                                1 aMOI : <strong>   {{amoi_1}} patients</strong> <br><i class="fa fa-square" style="color: #18a689"></i>
-                                2 aMOI : <strong>   {{amoi_2}} patients</strong> <br><i class="fa fa-square" style="color: #f8ac59"></i>
-                                3 aMOI : <strong>   {{amoi_3}} patients</strong> <br><i class="fa fa-square" style="color: #707070"></i>
-                                4 aMOI : <strong>   {{amoi_4}} patients</strong> <br><i class="fa fa-square" style="color: #cfcfcf"></i>
-                                5+ aMOI : <strong>  {{amoi_5}} patients</strong> <br></ul>
+                            <ul class="dashboard donut-chart-legend"><i class="fa fa-square" style="color: #23c6c8"></i> 0 aMOI : <strong>   {{amoi_0}} patients</strong>                                <br><i class="fa fa-square" style="color: #1c84c6"></i> 1 aMOI : <strong>   {{amoi_1}} patients</strong>                                <br><i class="fa fa-square" style="color: #18a689"></i> 2 aMOI : <strong>   {{amoi_2}} patients</strong>                                <br><i class="fa fa-square" style="color: #f8ac59"></i> 3 aMOI : <strong>   {{amoi_3}} patients</strong>                                <br><i class="fa fa-square" style="color: #707070"></i> 4 aMOI : <strong>   {{amoi_4}} patients</strong>                                <br><i class="fa fa-square" style="color: #cfcfcf"></i> 5+ aMOI : <strong>  {{amoi_5}} patients</strong>                                <br></ul>
                         </div>
                     </div>
                 </div>
@@ -72,286 +60,293 @@
                         </div>
                     </div>
                 </div>
-            </div>            
+            </div>
         </div>
     </div>
 
     <div class="wrapper animated fadeInRight">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel-container">
-                    <div class="ibox-title ibox-title-no-line">
-                        <h3>Pending Review </h3>
-                    </div>
-                    <div class="tabs-container no-tab-pane-border">
-                        <uib-tabset>
-                            <uib-tab heading="Tissue Variant Reports">                                
-                                <div class="panel-body">
+        <div class="panel-container pending-review">
+            <div class="ibox-title ibox-title-no-line">
+                <h3>Pending Review </h3>
+            </div>
+            <div class="tabs-container no-tab-pane-border">
+                <uib-tabset>
+                    <uib-tab heading="Tissue Variant Reports">
+                        <div class="panel-body">
 
-                                    <div id="pendingTissueVRs" grid-data grid-options="pendingTissueVariantReportGridOptions" grid-actions="pendingTissueVariantReportGridActions" class="data-grid">
-                                        <div class="row">
-                                            <div class="col pull-left">
-                                                <form class="form-inline">
-                                                    <div class="form-group">
-                                                        <div class="items-per-page">
-                                                            <label for="itemsOnPageSelect2">Show</label>
-                                                            <select id="itemsOnPageSelect2" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
+                            <div id="pendingTissueVRs" grid-data grid-options="pendingTissueVariantReportGridOptions" grid-actions="pendingTissueVariantReportGridActions"
+                                class="data-grid">
+                                <div class="row">
+                                    <div class="col pull-left">
+                                        <form class="form-inline">
+                                            <div class="form-group">
+                                                <div class="items-per-page">
+                                                    <label for="itemsOnPageSelect2">Show</label>
+                                                    <select id="itemsOnPageSelect2" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage"
+                                                        ng-change="reloadGrid()">
                                                                 <option>10</option>
                                                                 <option>25</option>
                                                                 <option>50</option>
                                                                 <option>100</option>
                                                             </select>
-                                                            <label for="itemsOnPageSelect2">per page</label>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="col pull-right">
-                                                <div class="grid-filter">
-                                                    <input type="text" class="form-control input-sm order-search-box"
-                                                        placeholder="Filter by all columns"
-                                                        grid-id="pendingTissueVRs"
-                                                        ng-change="pendingTissueVariantReportGridActions.filter()"
-                                                        ng-model="filterAll"
-                                                        filter-by="filterAll"
-                                                        filter-type="text">                                                
+                                                    <label for="itemsOnPageSelect2">per page</label>
                                                 </div>
-                                            </div>
-                                        </div>
-
-                                        <table class="table table-striped">
-                                            <thead>
-                                            <tr>
-                                                <th sortable="patient_id" class="sortable">Patient ID</th>
-                                                <th sortable="molecular_id" class="sortable">Molecular ID</th>
-                                                <th sortable="analysis_id" class="sortable">Analysis ID</th>
-                                                <th class="text-center">Variant Report</th>
-                                                <th sortable="clia_lab" class="sortable">CLIA Lab</th>
-                                                <th sortable="specimen_received_date" class="sortable">Specimen Received Date</th>
-                                                <th sortable="variant_report_received_date" class="sortable">Variant Report Received Date</th>
-                                                <th sortable="days_pending" class="sortable">Days Pending</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr grid-item>
-                                                <td>
-                                                    <a ui-sref="patient({ patient_id: item.patient_id })">
-                                                        <i class="fa fa-user"></i> <span ng-bind="item.patient_id | dashify"></span> 
-                                                    </a>
-                                                </td>
-                                                <td><a ui-sref="patient({ patient_id: item.patient_id, section: 'surgical_event', molecular_id: item.molecular_id, analysis_id: item.analysis_id })"><span ng-bind="item.molecular_id | dashify"></span></a></td>
-                                                <td><a ui-sref="patient({ patient_id: item.patient_id, section: 'tissue_variant_report', molecular_id: item.molecular_id, analysis_id: item.analysis_id })"><span ng-bind="item.analysis_id | dashify"></span></a></td>
-                                                <td class="text-center">
-                                                    <a ui-sref="patient({ patient_id: item.patient_id, section: 'tissue_variant_report', molecular_id: item.molecular_id, analysis_id: item.analysis_id })" title="Variant Report">
-                                                        <i class="fa fa-file-text-o"></i>
-                                                    </a>
-                                                </td>
-                                                <td ng-switch="item.clia_lab">
-                                                    <a ng-when="MoCha" ui-sref="clia-labs" ng-click="clialab('mocha')"><span ng-bind="item.clia_lab"></span></a>
-                                                    <a ng-when="MDA" ui-sref="clia-labs" ng-click="clialab('mdacc')"><span ng-bind="item.clia_lab"></span></a>
-                                                    <span ng-other>-</span>
-                                                </td>
-                                                <td ng-bind="item.specimen_received_date | utc"></td>
-                                                <td ng-bind="item.variant_report_received_date | utc"></td>
-                                                <td>
-                                                    <number-color-badge value="item.days_pending" yellow-threshold="days_pending_range.upper_bound_green" red-threshold="days_pending_range.upper_bound_yellow"></number-color-badge>
-                                                </td>
-                                            </tr>
-                                            <tr ng-if="!pendingTissueVariantReportGridOptions.data || !pendingTissueVariantReportGridOptions.data.length" class="no-data-message">
-                                                <td colspan="8" class="text-muted">No pending Tissue Variant Reports</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-
-                                        <form class="form-inline pull-left">
-                                            <div class="form-group">
-                                                <grid-pagination max-size="5" class="pagination-sm" total-items="paginationOptions.totalItems" ng-model="paginationOptions.currentPage"
-                                                    ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
                                             </div>
                                         </form>
                                     </div>
+                                    <div class="col pull-right">
+                                        <div class="grid-filter">
+                                            <input type="text" class="form-control input-sm order-search-box" placeholder="Filter by all columns" grid-id="pendingTissueVRs"
+                                                ng-change="pendingTissueVariantReportGridActions.filter()" ng-model="filterAll"
+                                                filter-by="filterAll" filter-type="text">
+                                        </div>
+                                    </div>
                                 </div>
-                            </uib-tab>
 
-                            <uib-tab heading="Blood Variant Reports">
-                                <div class="panel-body">
-                                    <div id="pendingBloodVRs" grid-data grid-options="pendingBloodVariantReportGridOptions" grid-actions="pendingBloodVariantReportGridActions" class="data-grid">
-                                        <div class="row">
-                                            <div class="col pull-left">
-                                                <form class="form-inline">
-                                                    <div class="form-group">
-                                                        <div class="items-per-page">
-                                                            <label for="itemsOnPageSelect3">Show</label>
-                                                            <select id="itemsOnPageSelect3" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th sortable="patient_id" class="sortable">Patient ID</th>
+                                            <th sortable="molecular_id" class="sortable">Molecular ID</th>
+                                            <th sortable="analysis_id" class="sortable">Analysis ID</th>
+                                            <th class="text-center">Variant Report</th>
+                                            <th sortable="clia_lab" class="sortable">CLIA Lab</th>
+                                            <th sortable="specimen_received_date" class="sortable">Specimen Received Date</th>
+                                            <th sortable="variant_report_received_date" class="sortable">Variant Report Received Date</th>
+                                            <th sortable="days_pending" class="sortable">Days Pending</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr grid-item>
+                                            <td>
+                                                <a ui-sref="patient({ patient_id: item.patient_id })">
+                                                    <i class="fa fa-user"></i> <span ng-bind="item.patient_id | dashify"></span>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a ui-sref="patient({ patient_id: item.patient_id, section: 'surgical_event', molecular_id: item.molecular_id, analysis_id: item.analysis_id })"><span ng-bind="item.molecular_id | dashify"></span></a>
+                                            </td>
+                                            <td>
+                                                <a ui-sref="patient({ patient_id: item.patient_id, section: 'tissue_variant_report', molecular_id: item.molecular_id, analysis_id: item.analysis_id })"><span ng-bind="item.analysis_id | dashify"></span></a>
+                                            </td>
+                                            <td class="text-center">
+                                                <a ui-sref="patient({ patient_id: item.patient_id, section: 'tissue_variant_report', molecular_id: item.molecular_id, analysis_id: item.analysis_id })"
+                                                    title="Variant Report">
+                                                    <i class="fa fa-file-text-o"></i>
+                                                </a>
+                                            </td>
+                                            <td ng-switch="item.clia_lab">
+                                                <a ng-when="MoCha" ui-sref="clia-labs" ng-click="clialab('mocha')"><span ng-bind="item.clia_lab"></span></a>
+                                                <a ng-when="MDA" ui-sref="clia-labs" ng-click="clialab('mdacc')"><span ng-bind="item.clia_lab"></span></a>
+                                                <span ng-other>-</span>
+                                            </td>
+                                            <td ng-bind="item.specimen_received_date | utc"></td>
+                                            <td ng-bind="item.variant_report_received_date | utc"></td>
+                                            <td>
+                                                <number-color-badge value="item.days_pending" yellow-threshold="days_pending_range.upper_bound_green" red-threshold="days_pending_range.upper_bound_yellow"></number-color-badge>
+                                            </td>
+                                        </tr>
+                                        <tr ng-if="!pendingTissueVariantReportGridOptions.data || !pendingTissueVariantReportGridOptions.data.length" class="no-data-message">
+                                            <td colspan="8" class="text-muted">No pending Tissue Variant Reports</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <form class="form-inline pull-left">
+                                    <div class="form-group">
+                                        <grid-pagination max-size="5" class="pagination-sm" total-items="paginationOptions.totalItems" ng-model="paginationOptions.currentPage"
+                                            ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </uib-tab>
+
+                    <uib-tab heading="Blood Variant Reports">
+                        <div class="panel-body">
+                            <div id="pendingBloodVRs" grid-data grid-options="pendingBloodVariantReportGridOptions" grid-actions="pendingBloodVariantReportGridActions"
+                                class="data-grid">
+                                <div class="row">
+                                    <div class="col pull-left">
+                                        <form class="form-inline">
+                                            <div class="form-group">
+                                                <div class="items-per-page">
+                                                    <label for="itemsOnPageSelect3">Show</label>
+                                                    <select id="itemsOnPageSelect3" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage"
+                                                        ng-change="reloadGrid()">
                                                                 <option>10</option>
                                                                 <option>25</option>
                                                                 <option>50</option>
                                                                 <option>100</option>
                                                             </select>
-                                                            <label for="itemsOnPageSelect3">per page</label>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="col pull-right">
-                                                <div class="grid-filter">
-                                                    <input type="text" class="form-control input-sm order-search-box"
-                                                        placeholder="Filter by all columns"
-                                                        grid-id="pendingBloodVRs"
-                                                        ng-change="pendingBloodVariantReportGridActions.filter()"
-                                                        ng-model="filterAll"
-                                                        filter-by="filterAll"
-                                                        filter-type="text">                                                
+                                                    <label for="itemsOnPageSelect3">per page</label>
                                                 </div>
-                                            </div>
-                                        </div>
-
-                                        <table class="table table-striped">
-                                            <thead>
-                                            <tr>
-                                                <th sortable="patient_id" class="sortable">Patient ID</th>
-                                                <th sortable="molecular_id" class="sortable">Molecular ID</th>
-                                                <th sortable="analysis_id" class="sortable">Analysis ID</th>
-                                                <th class="text-center">Variant Report</th>
-                                                <th sortable="clia_lab" class="sortable">CLIA Lab</th>
-                                                <th sortable="specimen_received_date" class="sortable">Specimen Received Date</th>
-                                                <th sortable="variant_report_received_date" class="sortable">Variant Report Received Date</th>
-                                                <th sortable="days_pending" class="sortable">Days Pending</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr grid-item>
-                                                <td>
-                                                    <a ui-sref="patient({ patient_id: item.patient_id })">
-                                                        <i class="fa fa-user"></i> <span ng-bind="item.patient_id | dashify"></span> 
-                                                    </a>
-                                                </td>
-                                                <td><a ui-sref="patient({ patient_id: item.patient_id, section: 'surgical_event', molecular_id: item.molecular_id, analysis_id: item.analysis_id })"><span ng-bind="item.molecular_id | dashify"></span></a></td>
-                                                <td><a ui-sref="patient({ patient_id: item.patient_id, section: 'blood_variant_report', molecular_id: item.molecular_id, analysis_id: item.analysis_id })"><span ng-bind="item.analysis_id | dashify"></span></a></td>
-                                                <td class="text-center">
-                                                    <a ui-sref="patient({ patient_id: item.patient_id, section: 'blood_variant_report', molecular_id: item.molecular_id, analysis_id: item.analysis_id })" title="Variant Report">
-                                                        <i class="fa fa-file-text-o"></i>
-                                                    </a>
-                                                </td>
-                                                <td ng-switch="item.clia_lab">
-                                                    <a ng-when="MoCha" ui-sref="clia-labs" ng-click="clialab('mocha')"><span ng-bind="item.clia_lab"></span></a>
-                                                    <a ng-when="MDA" ui-sref="clia-labs" ng-click="clialab('mdacc')"><span ng-bind="item.clia_lab"></span></a>
-                                                    <span ng-other>-</span>
-                                                </td>
-                                                <td ng-bind="item.specimen_received_date | utc"></td>
-                                                <td ng-bind="item.variant_report_received_date | utc"></td>
-                                                <td>
-                                                    <number-color-badge value="item.days_pending" yellow-threshold="days_pending_range.upper_bound_green" red-threshold="days_pending_range.upper_bound_yellow"></number-color-badge>
-                                                </td>
-                                            </tr>
-                                            <tr ng-if="!pendingBloodVariantReportGridOptions.data || !pendingBloodVariantReportGridOptions.data.length" class="<no></no>-data-message">
-                                                <td colspan="8" class="text-muted">No pending Blood Variant Reports</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-
-                                        <form class="form-inline pull-left">
-                                            <div class="form-group">
-                                                <grid-pagination max-size="5" class="pagination-sm" total-items="paginationOptions.totalItems" ng-model="paginationOptions.currentPage"
-                                                    ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
                                             </div>
                                         </form>
                                     </div>
+                                    <div class="col pull-right">
+                                        <div class="grid-filter">
+                                            <input type="text" class="form-control input-sm order-search-box" placeholder="Filter by all columns" grid-id="pendingBloodVRs"
+                                                ng-change="pendingBloodVariantReportGridActions.filter()" ng-model="filterAll"
+                                                filter-by="filterAll" filter-type="text">
+                                        </div>
+                                    </div>
                                 </div>
-                            </uib-tab>
 
-                            <uib-tab heading="Assignment Reports">
-                                <div class="panel-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th sortable="patient_id" class="sortable">Patient ID</th>
+                                            <th sortable="molecular_id" class="sortable">Molecular ID</th>
+                                            <th sortable="analysis_id" class="sortable">Analysis ID</th>
+                                            <th class="text-center">Variant Report</th>
+                                            <th sortable="clia_lab" class="sortable">CLIA Lab</th>
+                                            <th sortable="specimen_received_date" class="sortable">Specimen Received Date</th>
+                                            <th sortable="variant_report_received_date" class="sortable">Variant Report Received Date</th>
+                                            <th sortable="days_pending" class="sortable">Days Pending</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr grid-item>
+                                            <td>
+                                                <a ui-sref="patient({ patient_id: item.patient_id })">
+                                                    <i class="fa fa-user"></i> <span ng-bind="item.patient_id | dashify"></span>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a ui-sref="patient({ patient_id: item.patient_id, section: 'surgical_event', molecular_id: item.molecular_id, analysis_id: item.analysis_id })"><span ng-bind="item.molecular_id | dashify"></span></a>
+                                            </td>
+                                            <td>
+                                                <a ui-sref="patient({ patient_id: item.patient_id, section: 'blood_variant_report', molecular_id: item.molecular_id, analysis_id: item.analysis_id })"><span ng-bind="item.analysis_id | dashify"></span></a>
+                                            </td>
+                                            <td class="text-center">
+                                                <a ui-sref="patient({ patient_id: item.patient_id, section: 'blood_variant_report', molecular_id: item.molecular_id, analysis_id: item.analysis_id })"
+                                                    title="Variant Report">
+                                                    <i class="fa fa-file-text-o"></i>
+                                                </a>
+                                            </td>
+                                            <td ng-switch="item.clia_lab">
+                                                <a ng-when="MoCha" ui-sref="clia-labs" ng-click="clialab('mocha')"><span ng-bind="item.clia_lab"></span></a>
+                                                <a ng-when="MDA" ui-sref="clia-labs" ng-click="clialab('mdacc')"><span ng-bind="item.clia_lab"></span></a>
+                                                <span ng-other>-</span>
+                                            </td>
+                                            <td ng-bind="item.specimen_received_date | utc"></td>
+                                            <td ng-bind="item.variant_report_received_date | utc"></td>
+                                            <td>
+                                                <number-color-badge value="item.days_pending" yellow-threshold="days_pending_range.upper_bound_green" red-threshold="days_pending_range.upper_bound_yellow"></number-color-badge>
+                                            </td>
+                                        </tr>
+                                        <tr ng-if="!pendingBloodVariantReportGridOptions.data || !pendingBloodVariantReportGridOptions.data.length" class="<no></no>-data-message">
+                                            <td colspan="8" class="text-muted">No pending Blood Variant Reports</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
 
-                                    <div id="pendingAssignReps" grid-data grid-options="pendingAssignmentReportGridOptions" grid-actions="pendingAssignmentReportGridActions" class="data-grid">
-                                        <div class="row">
-                                            <div class="col pull-left">
-                                                <form class="form-inline">
-                                                    <div class="form-group">
-                                                        <div class="items-per-page">
-                                                            <label for="itemsOnPageSelect4">Show</label>
-                                                            <select id="itemsOnPageSelect4" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
+                                <form class="form-inline pull-left">
+                                    <div class="form-group">
+                                        <grid-pagination max-size="5" class="pagination-sm" total-items="paginationOptions.totalItems" ng-model="paginationOptions.currentPage"
+                                            ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </uib-tab>
+
+                    <uib-tab heading="Assignment Reports">
+                        <div class="panel-body">
+
+                            <div id="pendingAssignReps" grid-data grid-options="pendingAssignmentReportGridOptions" grid-actions="pendingAssignmentReportGridActions"
+                                class="data-grid">
+                                <div class="row">
+                                    <div class="col pull-left">
+                                        <form class="form-inline">
+                                            <div class="form-group">
+                                                <div class="items-per-page">
+                                                    <label for="itemsOnPageSelect4">Show</label>
+                                                    <select id="itemsOnPageSelect4" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage"
+                                                        ng-change="reloadGrid()">
                                                                 <option>10</option>
                                                                 <option>25</option>
                                                                 <option>50</option>
                                                                 <option>100</option>
                                                             </select>
-                                                            <label for="itemsOnPageSelect4">per page</label>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="col pull-right">
-                                                <div class="grid-filter">
-                                                    <input type="text" class="form-control input-sm order-search-box"
-                                                        placeholder="Filter by all columns"
-                                                        grid-id="pendingAssignReps"
-                                                        ng-change="pendingAssignmentReportGridActions.filter()"
-                                                        ng-model="filterAll"
-                                                        filter-by="filterAll"
-                                                        filter-type="text">                                                
+                                                    <label for="itemsOnPageSelect4">per page</label>
                                                 </div>
-                                            </div>
-                                        </div>
-
-                                        <table class="table table-striped">
-                                            <thead>
-                                            <tr>
-                                                <th sortable="patient_id" class="sortable">Patient ID</th>
-                                                <th sortable="molecular_id" class="sortable">Molecular ID</th>
-                                                <th sortable="analysis_id" class="sortable">Analysis ID</th>
-                                                <th class="text-center">Assignment Report</th>
-                                                <th sortable="disease" class="sortable">Disease</th>
-                                                <th sortable="treatment_arm_title" class="sortable">Assigned Treatment Arm</th>
-                                                <th sortable="assigned_date" class="sortable">Assignment Date</th>
-                                                <th sortable="hours_pending" class="sortable">Hours Pending</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr grid-item>
-                                                <td>
-                                                    <a ui-sref="patient({ patient_id: item.patient_id })">
-                                                        <i class="fa fa-user"></i> <span ng-bind="item.patient_id | dashify"></span> 
-                                                    </a>
-                                                </td>
-                                                <td><a ui-sref="patient({ patient_id: item.patient_id, section: 'surgical_event', molecular_id: item.molecular_id, analysis_id: item.analysis_id })"><span ng-bind="item.molecular_id | dashify"></span></a></td>
-                                                <td><a ui-sref="patient({ patient_id: item.patient_id, section: 'assignment_report', molecular_id: item.molecular_id, analysis_id: item.analysis_id })"><span ng-bind="item.analysis_id | dashify"></span></a></td>
-                                                <td class="text-center">
-                                                    <a ui-sref="patient({ patient_id: item.patient_id, section: 'assignment_report', molecular_id: item.molecular_id, analysis_id: item.analysis_id })" title="Assignment Report">
-                                                        <i class="fa fa-file-text-o"></i>
-                                                    </a>
-                                                </td>
-                                                <td ng-bind="item.disease | dashify"></td>
-                                                <td ng-bind="item.variant_report_received_date | utc"></td>
-                                                <td>
-                                                    <treatment-arm-title name="item.treatment_arm" stratum="item.treatment_arm_stratum_id" version="item.treatment_arm_version"></treatment-arm-title>
-                                                </td>
-                                                <td>
-                                                    <number-color-badge value="item.hours_pending" yellow-threshold="hours_pending_range.upper_bound_green" red-threshold="hours_pending_range.upper_bound_yellow"></number-color-badge>
-                                                </td>
-                                            </tr>
-                                            <tr ng-if="!pendingAssignmentReportGridOptions.data || !pendingAssignmentReportGridOptions.data.length" class="no-data-message">
-                                                <td colspan="8" class="text-muted">No pending Assignment Reports</td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-
-                                        <form class="form-inline pull-left">
-                                            <div class="form-group">
-                                                <grid-pagination max-size="5" class="pagination-sm" total-items="paginationOptions.totalItems" ng-model="paginationOptions.currentPage"
-                                                    ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
                                             </div>
                                         </form>
                                     </div>
+                                    <div class="col pull-right">
+                                        <div class="grid-filter">
+                                            <input type="text" class="form-control input-sm order-search-box" placeholder="Filter by all columns" grid-id="pendingAssignReps"
+                                                ng-change="pendingAssignmentReportGridActions.filter()" ng-model="filterAll"
+                                                filter-by="filterAll" filter-type="text">
+                                        </div>
+                                    </div>
                                 </div>
-                            </uib-tab>
-                        </uib-tabset>
-                    </div>
-                </div>
+
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th sortable="patient_id" class="sortable">Patient ID</th>
+                                            <th sortable="molecular_id" class="sortable">Molecular ID</th>
+                                            <th sortable="analysis_id" class="sortable">Analysis ID</th>
+                                            <th class="text-center">Assignment Report</th>
+                                            <th sortable="disease" class="sortable">Disease</th>
+                                            <th sortable="treatment_arm_title" class="sortable">Assigned Treatment Arm</th>
+                                            <th sortable="assigned_date" class="sortable">Assignment Date</th>
+                                            <th sortable="hours_pending" class="sortable">Hours Pending</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr grid-item>
+                                            <td>
+                                                <a ui-sref="patient({ patient_id: item.patient_id })">
+                                                    <i class="fa fa-user"></i> <span ng-bind="item.patient_id | dashify"></span>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <a ui-sref="patient({ patient_id: item.patient_id, section: 'surgical_event', molecular_id: item.molecular_id, analysis_id: item.analysis_id })"><span ng-bind="item.molecular_id | dashify"></span></a>
+                                            </td>
+                                            <td>
+                                                <a ui-sref="patient({ patient_id: item.patient_id, section: 'assignment_report', molecular_id: item.molecular_id, analysis_id: item.analysis_id })"><span ng-bind="item.analysis_id | dashify"></span></a>
+                                            </td>
+                                            <td class="text-center">
+                                                <a ui-sref="patient({ patient_id: item.patient_id, section: 'assignment_report', molecular_id: item.molecular_id, analysis_id: item.analysis_id })"
+                                                    title="Assignment Report">
+                                                    <i class="fa fa-file-text-o"></i>
+                                                </a>
+                                            </td>
+                                            <td ng-bind="item.disease | dashify"></td>
+                                            <td ng-bind="item.variant_report_received_date | utc"></td>
+                                            <td>
+                                                <treatment-arm-title name="item.treatment_arm" stratum="item.treatment_arm_stratum_id" version="item.treatment_arm_version"></treatment-arm-title>
+                                            </td>
+                                            <td>
+                                                <number-color-badge value="item.hours_pending" yellow-threshold="hours_pending_range.upper_bound_green" red-threshold="hours_pending_range.upper_bound_yellow"></number-color-badge>
+                                            </td>
+                                        </tr>
+                                        <tr ng-if="!pendingAssignmentReportGridOptions.data || !pendingAssignmentReportGridOptions.data.length" class="no-data-message">
+                                            <td colspan="8" class="text-muted">No pending Assignment Reports</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <form class="form-inline pull-left">
+                                    <div class="form-group">
+                                        <grid-pagination max-size="5" class="pagination-sm" total-items="paginationOptions.totalItems" ng-model="paginationOptions.currentPage"
+                                            ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </uib-tab>
+                </uib-tabset>
             </div>
         </div>
+    </div>
 
-        <div class="row">
+    <div class="wrapper animated fadeInRight">
+        <div class="row activity-feed-row">
             <div class="col-md-12" ng-controller="ActivityController as activity" ng-init="activity.startLoading(10)">
                 <div class="ibox-title ibox-title-no-line panel-title">
                     <h3>Activity Feed</h3>
