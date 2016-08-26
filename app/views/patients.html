@@ -57,13 +57,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr grid-item>
+                    <tr ng-repeat="item in gridOptions.data">
                         <td>
                             <a ui-sref="patient({ patient_id: item.patient_id })">
                                 <i class="fa fa-user"></i> <span ng-bind="item.patient_id | dashify"></span>
                             </a>
                         </td>
-                        <td><span style="color:item.current_status" ng-bind="item.current_status | dashify">item.current_status</span></td>
+                        <td><span style="color:{{item.current_status | patientStatus}}" ng-bind="item.current_status | dashify">item.current_status</span></td>
                         <td ng-bind="item.current_step_number | dashify"></td>
                         <td ng-bind="item.disease_list | dashify"></td>
                         <td>
