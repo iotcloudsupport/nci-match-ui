@@ -29,8 +29,16 @@
             </ul>
             <ul class="nav navbar-top-links navbar-right">
                 <li>
-                   <a ng-click="logout()">
-                        <span class="welcome">Welcome, <span class="user-name">{{name}}</span></span> <i class="fa fa-sign-out"></i></a>
+                   <span class="welcome">Welcome, <span class="user-name">{{name}}</span></span>
+<!--
+                   <treatment-arm-title name="ta.name" stratum="ta.stratum" version="ta.version" 
+                        display-text="vm.getDisplayText(ta)" text-color="vm.getTextColor(ta)" 
+                        data-placement="top" 
+                        title="{{vm.getTreatmentArmTitle(ta)}}" 
+                        onmouseenter="$(this).tooltip('show')"></treatment-arm-title>-->
+                </li>
+                <li>
+                   <a ng-click="logout()" data-placement="bottom" onmouseenter="$(this).tooltip('show')" title="Sign-Out"><i class="fa fa-sign-out"></i></a>
                 </li>
             </ul>
         </div>
