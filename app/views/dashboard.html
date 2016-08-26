@@ -353,13 +353,12 @@
 
         <div class="row">
             <div class="col-md-12" ng-controller="ActivityController as activity" ng-init="activity.startLoading(10)">
-
-                <div class="ibox-title ibox-title-no-line activity-header-panel" id="activity-column">
+                <div class="ibox-title ibox-title-no-line panel-title">
                     <h3>Activity Feed</h3>
                     <small class="text-muted">Showing last 10 messages, last updated at {{activity.lastUpdated}}</small>
                 </div>
 
-                <div class="ibox-content inspinia-timeline" id="panding-items-column">
+                <div class="ibox-content ibox-content-no-padding ibox-title-no-line">
                     <div class="timeline-item" ng-repeat="timelineEvent in activity.data">
                         <timeline timeline-event="timelineEvent" type="timelineEvent.event_type" show-entity-id="true"></timeline>
                     </div>
