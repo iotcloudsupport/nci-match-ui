@@ -11,10 +11,7 @@
 
         activate();
 
-        $scope.getStatusColor = function(status) {
-            $log.debug('status = ' + status); 
-            return $filter('patientStatus')(status);
-        }
+        $scope.gridActions = {};
 
         function activate() {
             setupGrids();

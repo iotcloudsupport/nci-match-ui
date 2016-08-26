@@ -57,7 +57,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="item in gridOptions.data">
+                    <tr ng-repeat="item in filtered">
                         <td>
                             <a ui-sref="patient({ patient_id: item.patient_id })">
                                 <i class="fa fa-user"></i> <span ng-bind="item.patient_id | dashify"></span>
