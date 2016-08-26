@@ -11,8 +11,6 @@
             dateTools,
             $filter) {
 
-        $scope.name = setName();
-
         $scope.numberOfPatients = '?';
         $scope.numberOfScreenedPatients = '?';
         $scope.numberOfPatientsWithTreatment = '?';
@@ -252,19 +250,6 @@
         $scope.clialab = function (id) {
             sharedCliaProperties.setProperty(id);
         };
-
-        function setName() {
-            var name;
-            var profile = store.get('profile');
-            if (profile.user_metadata && profile.user_metadata.firstName) {
-                name = profile.user_metadata.firstName;
-            } else if (profile.email) {
-                name = profile.email;
-            } else {
-                name = 'MATCHBox User';
-            }
-            return name;
-        }
 
         function setCanvasHeight(elementName, heightVal) {
             var ctx = $(elementName)[0].getContext('2d');
