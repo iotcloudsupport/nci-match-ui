@@ -292,11 +292,9 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
         clientID: ENV.AUTH0_CLIENT_ID,
         loginUrl: ENV.loginUrl
     });
-
     jwtInterceptorProvider.tokenGetter = function(store) {
         return store.get('token');
     }
-
     $httpProvider.interceptors.push('jwtInterceptor');
 }
 
