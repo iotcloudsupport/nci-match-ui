@@ -22,6 +22,10 @@
 
         $scope.pendingAssignmentReportList = [];
 
+        $scope.pendingTissueVariantReportGridActions = {};
+        $scope.pendingBloodVariantReportGridActions = {};
+        $scope.pendingAssignmentReportGridActions = {};        
+
         $scope.pendingTissueVariantReportGridOptions = {};
         $scope.pendingBloodVariantReportGridOptions = {};
         $scope.pendingAssignmentReportGridOptions = {};        

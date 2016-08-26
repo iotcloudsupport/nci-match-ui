@@ -78,7 +78,7 @@
                             <uib-tab heading="Tissue Variant Reports">                                
                                 <div class="panel-body">
 
-                                    <div id="pendingTissueVRs" grid-data grid-options="pendingTissueVariantReportGridOptions" grid-actions="gridActions" class="data-grid">
+                                    <div id="pendingTissueVRs" grid-data grid-options="pendingTissueVariantReportGridOptions" grid-actions="pendingTissueVariantReportGridActions" class="data-grid">
                                         <div class="row">
                                             <div class="col pull-left">
                                                 <form class="form-inline">
@@ -101,7 +101,7 @@
                                                     <input type="text" class="form-control input-sm order-search-box"
                                                         placeholder="Filter by all columns"
                                                         grid-id="pendingTissueVRs"
-                                                        ng-change="gridActions.filter()"
+                                                        ng-change="pendingTissueVariantReportGridActions.filter()"
                                                         ng-model="filterAll"
                                                         filter-by="filterAll"
                                                         filter-type="text">                                                
@@ -165,7 +165,7 @@
 
                             <uib-tab heading="Blood Variant Reports">
                                 <div class="panel-body">
-                                    <div id="pendingBloodVRs" grid-data grid-options="pendingBloodVariantReportGridOptions" grid-actions="gridActions" class="data-grid">
+                                    <div id="pendingBloodVRs" grid-data grid-options="pendingBloodVariantReportGridOptions" grid-actions="pendingBloodVariantReportGridActions" class="data-grid">
                                         <div class="row">
                                             <div class="col pull-left">
                                                 <form class="form-inline">
@@ -188,7 +188,7 @@
                                                     <input type="text" class="form-control input-sm order-search-box"
                                                         placeholder="Filter by all columns"
                                                         grid-id="pendingBloodVRs"
-                                                        ng-change="gridActions.filter()"
+                                                        ng-change="pendingBloodVariantReportGridActions.filter()"
                                                         ng-model="filterAll"
                                                         filter-by="filterAll"
                                                         filter-type="text">                                                
@@ -253,7 +253,7 @@
                             <uib-tab heading="Assignment Reports">
                                 <div class="panel-body">
 
-                                    <div id="pendingAssignReps" grid-data grid-options="pendingAssignmentReportGridOptions" grid-actions="gridActions" class="data-grid">
+                                    <div id="pendingAssignReps" grid-data grid-options="pendingAssignmentReportGridOptions" grid-actions="pendingAssignmentReportGridActions" class="data-grid">
                                         <div class="row">
                                             <div class="col pull-left">
                                                 <form class="form-inline">
@@ -276,7 +276,7 @@
                                                     <input type="text" class="form-control input-sm order-search-box"
                                                         placeholder="Filter by all columns"
                                                         grid-id="pendingAssignReps"
-                                                        ng-change="gridActions.filter()"
+                                                        ng-change="pendingAssignmentReportGridActions.filter()"
                                                         ng-model="filterAll"
                                                         filter-by="filterAll"
                                                         filter-type="text">                                                
