@@ -279,6 +279,24 @@
             var top_5_arm_labels = [];
             var top_5_arm_counts = [];
 
+treatment_arm_accrual = [
+        {
+            "name": "TA123",
+            "stratum_id": "STR7",
+            "patients": "10"
+        },
+        {
+            "name": "TA345",
+            "stratum_id": "STR7",
+            "patients": "10"
+        },
+        {
+            "name": "TA567",
+            "stratum_id": "STR7",
+            "patients": "10"
+        }
+    ];
+
             angular.forEach(treatment_arm_accrual, function (value) {
                 top_5_arm_labels.push(value.name + " (" + value.stratum_id + ")");
                 top_5_arm_counts.push(value.patients);
