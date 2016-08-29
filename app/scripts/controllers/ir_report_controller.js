@@ -1,6 +1,94 @@
 angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'datatables', 'ngResource'])
     .controller('IrAdminController',
-        function( $scope, $http, $window, $stateParams, DTOptionsBuilder, matchApiMock, $location, $anchorScroll, $timeout, sharedCliaProperties, sharedCliaArray) {
+        function( $scope, $http, $window, $stateParams, DTOptionsBuilder, matchApiMock, matchApi, $location, $anchorScroll, $timeout, sharedCliaProperties, sharedCliaArray) {
+            var self = this;
+            var site = $stateParams.site;
+            var urlparams = $location.search();
+
+            if(site === 'MDACC'){
+
+                $scope.$watch(function() { return self[""]; }, function (newVal) {
+                    $location.search("site", 'MDACC');
+                    $location.search("type", 'positive');
+                    // $location.search("type", 'positive');
+                });
+                sharedCliaProperties.setProperty('mdacc');
+
+            }
+            else{
+
+                $scope.$watch(function() { return self[""]; }, function (newVal) {
+                    $location.search("site", 'MoCha');
+                    $location.search("type", 'positive');
+                });
+
+                // if(urlparams.type === 'negative') {
+                //     // $location.search("type", 'negative');
+                //     // $scope.indextab = 1;
+                // }
+                // else{
+                //     $location.search("type", 'positive');
+                // }
+
+                sharedCliaProperties.setProperty('mocha');
+
+            };
+
+
+            $scope.gotoUrlBottom = function(tic) {
+                var id = tic.substring(tic.indexOf("=") + 1,tic.length);
+
+                $scope.selectedRow = id;
+                $scope.mid = id;
+                $scope.titleid = id;
+                $scope.status = 'FAILED';
+                $scope.positives = 'mocha';
+                // $scope.date_received = datecreated;
+                // $scope.posDate = datereceived;
+
+                // var tic = 'variant='+id;
+                $timeout(function() {
+
+
+
+                    if(id.indexOf("Ntc") !== -1) {
+                        // $scope.indextab = 1;
+                        $location.hash(tic);
+                        $anchorScroll();
+
+                        getIndex(id);
+                    }
+                    else{
+                        // $scope.indextab = 0;
+                        $location.hash(tic);
+                        $anchorScroll();
+
+                        getIndex(id);
+                    }
+                });
+            };
+
+            function getIndex(index) {
+                matchApiMock
+                    .openPositives(index)
+                    .then(function (d) {
+
+                        for (var i = d.data.length - 1; i >= 0; i--) {
+                            var dta = d.data[i];
+
+                            for (var key in dta) {
+                                if (key !== index) {
+                                    d.data.splice(i, 1);
+                                }
+                                else {
+                                    var newObject = jQuery.extend([], d.data[i][index]);
+                                }
+                            }
+                        }
+                        loadPositivesList(newObject);
+                    });
+            }
+
 
         angular.element(document).ready(function () {
             $('.equal-height-panels .panel').matchHeight();
@@ -16,6 +104,15 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
             vm.dtOptions = DTOptionsBuilder.newOptions()
         .withOption('searching', false);
+
+
+            // if ( $location.search().hasOwnProperty( '#variant' ) ) {
+            //
+            //     console.log($location.search().target + "  --- VARIANT--> " + $stateParams.variant)
+            //
+            //     // var myvalue = $location.search()['myparam'];
+            //     // 'myvalue' now stores '33'
+            // }
 
 
         $scope.irList = [];
@@ -46,6 +143,9 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         $scope.mdaccNtcList=[];
         $scope.status = "";
         $scope.branch = sharedCliaProperties.getProperty();
+
+            // console.log("$scope.branch-->" + $scope.branch)
+
         $scope.mid = "undefined";
         $scope.cellColor = "";
         $scope.hrReports = null;
@@ -69,7 +169,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         $scope.ntc_week_status = [0, 0, 0];
         $scope.pos_mda_status = [0, 0, 0];
         $scope.ntc_mda_status = [0, 0, 0];
-        $scope.indextab = 0;
+        // $scope.indextab = 0;
 
         $scope.siteName = [];
         $scope.site = 'undefined';
@@ -100,14 +200,14 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             $scope.count = [];
             if(id == "heatmap"){
 
-                $scope.indextab = 0;
+                // $scope.indextab = 0;
                 $scope.schedule = "weekmap";
                 $scope.monthview = 'none';
                 $scope.barlegend = "Total Positive / NTC Control Status";
 
             }
             else {
-                $scope.indextab = 0;
+                // $scope.indextab = 0;
                 $scope.schedule = "heatmap";
                 // $scope.monthview = 'aug';
                 $scope.barlegend = "History of Total Positive / NTC Control Status";
@@ -210,9 +310,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                                 var d = new Date(dateElement);
                                 var check = [false, 0];
                                 jQuery.map($scope.heatMapList, function (obj) {
-                                    // console.log("OBJ-->"+JSON.stringify(obj))
                                     if (obj.month === d.getMonth() && obj.date === d.getDate() && obj.year === d.getYear()) {
-                                        // console.log(d.getMonth() + " -- obj.month--> " + obj.month + " -- obj.date--> " + obj.date)
                                         check = [true, obj.name, obj.date_created, obj.status, obj.mid];
                                     }
                                     return check;
@@ -317,9 +415,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                                 var d = new Date(dateElement);
                                 var check = [false, 0];
                                 jQuery.map($scope.heatMapList, function (obj) {
-                                    // console.log("OBJ-->"+JSON.stringify(obj))
                                     if (obj.month === d.getMonth() && obj.date === d.getDate() && obj.year === d.getYear()) {
-                                        // console.log(d.getMonth() + " -- obj.month--> " + obj.month + " -- obj.date--> " + obj.date)
                                         check = [true, obj.name, obj.date_created, obj.status, obj.mid];
                                     }
                                     return check;
@@ -335,7 +431,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
         //LOAD SAMPLES
         $scope.loadSampleBreakups = function() {
-            $scope.indextab = 0;
+            // $scope.indextab = 0;
 
             armNames = ['Mon.', 'Tue.', ' Wed.', 'Thu.', 'Fri.', 'Sat.', 'Sun.'];
             mdaccNames = ['Mon.', 'Tue.', ' Wed.', 'Thu.', 'Fri.', 'Sat.', 'Sun.'];
@@ -504,33 +600,8 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                             highlight: aMoiHighlight,
                             label: aMoiLabels[2]
                         }
-
                     ];
-
-                    // $scope.pieMdaData = [
-                    //     {
-                    //         value: $scope.pos_mda_status[0],
-                    //         color: "darkred",
-                    //         highlight: aMoiHighlight,
-                    //         label: aMoiLabels[0]
-                    //     },
-                    //     {
-                    //         value: $scope.pos_mda_status[1],
-                    //         color: "darkgreen",
-                    //         highlight: aMoiHighlight,
-                    //         label: aMoiLabels[1]
-                    //     },
-                    //     {
-                    //         value: $scope.pos_mda_status[2],
-                    //         color: "#18a689", //"#ab0102",
-                    //         highlight: aMoiHighlight,
-                    //         label: aMoiLabels[2]
-                    //     }
-                    //
-                    // ];
-
                 });
-
 
 
             matchApiMock
@@ -663,8 +734,6 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             $scope.monthview = 'aug';
             $scope.mochaQueryList = data.data;
 
-            // console.log(' ** --> ' + JSON.stringify($scope.pos_status))
-
         };
 
         function loadMDACCMonthList(data) {
@@ -757,8 +826,6 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
             $scope.mochaList = data.data;
             $scope.monthview = 'none';
-
-            // console.log(' ** --> ' + JSON.stringify($scope.pos_status))
 
         };
 
@@ -895,9 +962,9 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         function loadSampleHRFiles() {
             var hr_files = [];
             hr_files.push({
-                'report':'data/sample_hr_data_report.json',
-                'data':'data/sample_hr_data_file.txt',
-                'log':'data/sample_hr_log_file.txt'
+                'report':'data/demo/sample_hr_data_report.json',
+                'data':'data/demo/sample_hr_data_file.txt',
+                'log':'data/demo/sample_hr_log_file.txt'
             });
             $scope.hrReports = hr_files;
         };
@@ -952,12 +1019,14 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             if(reportType === 'MoCha'){
                 $scope.branch = 'mocha';
                 $scope.sitename = 'MoCha';
-
             }
             else if(reportType === 'MDACC'){
                 $scope.branch = 'mdacc';
                 $scope.sitename = 'MDACC';
             }
+
+            $location.search('site', $scope.sitename);
+            sharedCliaProperties.setProperty($scope.branch);
 
             if ($scope.SampleType === reportType) {
                 return;
@@ -978,8 +1047,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         };
 
         $scope.gotoBottom = function(id) {
-            var tic = id + '=samplevariants';
-
+            var tic = 'variant='+id;
             $timeout(function() {
                 $location.hash(tic);
                 // $("body").animate({scrollTop: $location.offset().top}, "slow");
@@ -1026,7 +1094,6 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
 
         //POSITIVES
-        //Svg for samples
         $scope.openPositives = function (id, status, datereceived, datecreated) {
             $scope.selectedRow = id;
             $scope.mid = id;
@@ -1058,6 +1125,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                     }
                     loadPositivesList(newObject);
                 });
+
         };
 
         $scope.openHeatMapPositives = function (id, status) {
@@ -1230,52 +1298,86 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
                 if(value.type == 'snv'){
                     $scope.indelsList.push(value);
-                    // $scope.negativeVariantsList = value.negativeVariantsList;
                 }
                 if(value.type == 'id'){
                     $scope.indelsList.push(value);
-                    // $scope.negativeVariantsList = value.negativeVariantsList;
                 }
                 if(value.type == 'gf'){
                     $scope.geneFusionsList.push(value);
-                    // $scope.negativeVariantsList = value.negativeVariantsList;
                 }
             });
         };
 
-        $scope.openNegatives = function(id, status, datereceived, datecreated) {
+        $scope.openNegatives = function (id, status, datereceived, datecreated) {
             $scope.selectedRow = id;
-            $scope.negatives = 'mocha';
+            $scope.mid = id;
+            $scope.titleid = id;
             $scope.status = status;
+            $scope.positives = 'mocha';
             $scope.date_received = datecreated;
             $scope.posDate = datereceived;
 
             sharedCliaArray.setProperty([$scope.aid, $scope.posDate, $scope.tvarDate])
 
-            var url ="data/sample_ntc_mocha_control_1.json";
+            var index = id.substring(id.indexOf("MoCha_") + 6, id.length) + '.json';
 
-            $.ajax({
+            matchApi
+                .openNegatives(index)
+                .then(function (d) {
 
-                type   :  "GET",
-                url      :   url,
-                contentType : "application/json",
-                dataType      : "json",
-                data            :  {},
-                success: function(data){
-                    loadNegativesList(data);
-                },
-                error:function(jqXHR,textStatus,errorThrown){
-                    alert("Error: "+textStatus.toString());
-                }
-            });
+                    for (var i = d.data.length - 1; i >= 0; i--) {
+                        var dta = d.data[i];
+
+                        for (var key in dta) {
+                            if (key !== id) {
+                                d.data.splice(i, 1);
+                            }
+                            else{
+                                var newObject = jQuery.extend([], d.data[i][id]);
+                            }
+                        }
+                    }
+
+                    loadNegativesList(d);
+                });
+
         };
+
+        // $scope.openNegatives = function(id, status, datereceived, datecreated) {
+        //     $scope.selectedRow = id;
+        //     $scope.negatives = 'mocha';
+        //     $scope.status = status;
+        //     $scope.date_received = datecreated;
+        //     $scope.posDate = datereceived;
+        //
+        //     sharedCliaArray.setProperty([$scope.aid, $scope.posDate, $scope.tvarDate])
+        //
+        //     var url ="data/demo/sample_ntc_mocha_control_1.json";
+        //
+        //     $.ajax({
+        //
+        //         type   :  "GET",
+        //         url      :   url,
+        //         contentType : "application/json",
+        //         dataType      : "json",
+        //         data            :  {},
+        //         success: function(data){
+        //             loadNegativesList(data);
+        //         },
+        //         error:function(jqXHR,textStatus,errorThrown){
+        //             alert("Error: "+textStatus.toString());
+        //         }
+        //     });
+        // };
+
+
 
         $scope.openMDANegatives = function(id, status) {
             $scope.selectedRow = id;
             $scope.negatives = 'mdacc';
             $scope.status = status;
 
-            var url ="data/sample_ntc_mdacc_control_1.json";
+            var url ="data/demo/sample_ntc_mdacc_control_1.json";
 
             $.ajax({
 
@@ -1504,8 +1606,6 @@ function heatmapSinglePost(id) {
 }
 
 function heatmapWeekDayPost(id) {
-
-    console.log("^^^ "+id)
 
     var scope = angular.element(document.getElementById("MainWrap")).scope();
     scope.$apply(function () {

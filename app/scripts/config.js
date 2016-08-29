@@ -195,9 +195,12 @@ function config($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, authPro
             }
         })
         .state('clia-labs', {
-            url: "/clia-labs",
+            url: "/clia-labs?site",
             templateUrl: "views/iradmin.html",
             data: { pageTitle: 'CLIA Labs', requiresLogin: true },
+            controller: function($scope, $stateParams) {
+                $scope.site = $stateParams.site;
+            },
             resolve: {
                 loadPlugin: function ($ocLazyLoad) {
                     return $ocLazyLoad.load([

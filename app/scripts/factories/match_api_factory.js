@@ -24,6 +24,7 @@
                 loadMDACC_Table: loadMDACC_Table,
                 loadMDACCNtc_Table: loadMDACCNtc_Table,
                 openPositives: openPositives,
+                openNegatives: openNegatives,
                 openMDACCPositives: openMDACCPositives,
                 cnvChartData: cnvChartData,
                 updateVariantStatus: updateVariantStatus,
@@ -127,35 +128,38 @@
                 if (url)
                     return $http.get(url);
                 else
-                    return $http.get('data/sample_qc.json');
+                    return $http.get('data/demo/sample_qc.json');
             }
 
             function loadSnv_Table() {
-                return $http.get('data/sample_qc.json');
+                return $http.get('data/demo/sample_qc.json');
             }
 
             function loadMocha_List() {
-                return $http.get('data/sample_mocha_list.json');
+                return $http.get('data/demo/sample_mocha_list.json');
             }
 
             function loadMochaNtc_Table() {
-                return $http.get('data/sample_mocha_ntc_list.json');
+                return $http.get('data/demo/sample_mocha_ntc_list.json');
             }
 
             function loadMDACC_Table() {
-                return $http.get('data/sample_mdacc_list.json');
+                return $http.get('data/demo/sample_mdacc_list.json');
             }
 
             function loadMDACCNtc_Table() {
-                return $http.get('data/sample_mdacc_ntc_list.json');
+                return $http.get('data/demo/sample_mdacc_ntc_list.json');
             }
 
             function openPositives(index) {
-                return $http.get('data/sample_positive_control_' + index);
+                return $http.get('data/demo/sample_positive_control_' + index);
+            }
+            function openNegatives(index) {
+                return $http.get('data/demo/sample_ntc_mocha_control_1.json');
             }
 
             function openMDACCPositives(index) {
-                return $http.get('data/sample_mda_positive_control_' + index);
+                return $http.get('data/demo/sample_mda_positive_control_' + index);
             }
 
             function loadCnvChartData(url) {
@@ -173,22 +177,22 @@
 
             function cnvChartData(id) {
                 if (id === '') {
-                    return $http.get('data/cnvChart.json');
+                    return $http.get('data/demo/cnvChart.json');
                 }
                 else if (id === '3355') {
-                    return $http.get('data/cnvChart.json');
+                    return $http.get('data/demo/cnvChart.json');
                 }
                 else {
-                    return $http.get('data/' + id + '.vr_chart.json');
+                    return $http.get('data/demo/' + id + '.vr_chart.json');
                 }
             }
 
             function loadSampleHRFiles() {
                 var hr_files = [];
                 hr_files.push({
-                    'report': 'data/sample_hr_data_report.json',
-                    'data': 'data/sample_hr_data_file.txt',
-                    'log': 'data/sample_hr_log_file.txt'
+                    'report': 'data/demo/sample_hr_data_report.json',
+                    'data': 'data/demo/sample_hr_data_file.txt',
+                    'log': 'data/demo/sample_hr_log_file.txt'
                 });
                 return hr_files;
             }

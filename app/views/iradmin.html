@@ -16,7 +16,6 @@
     <!--CHARTS-->
     <!--<div class="ibox float-e-margins animated fadeInRight header-box-container" ng-init="loadSampleBreakups();">-->
 
-
         <div class="ibox float-e-margins animated fadeInRight header-box-container" ng-init="loadSampleBreakups();loadHeartMoChaBeatList();">
         <div class="col-lg-12 white-bg push-down-inner-panel">
 
@@ -28,7 +27,7 @@
                     </label>
                     <label class="btn btn-outline btn-success" ng-class="{'active' : (sitename=='MDACC')}" ng-click="setSampleType('MDACC')"
                            title="Switch to MD Anderson Report">
-                        <input type="radio" name="SampleType">MD Andersson
+                        <input type="radio" name="SampleType">MD Anderson
                     </label>
                 </div>
             </div>
@@ -473,9 +472,10 @@
         <uib-tabset active="indextab" ng-if="branch === 'mocha'" >
 
             <uib-tab heading="Positive Sample Controls"  index="0" >
-
                 <!--SCROLL TIC-->
-                <div id="mocha=samplevariants"></div>
+                <!--<div id="mocha=samplevariants"></div>-->
+                <div ng-repeat="ta in mochaList" id="variant={{ta.molecular_id}}"></div>
+
                 <!--SCROLL TIC-->
 
                 <div class="col-lg-16" >
@@ -521,7 +521,8 @@
                                                             <td>{{ta.date_created | dashify }}</td>
                                                             <td>{{ta.date_received | dashify }}</td>
                                                             <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
-                                                                <a class="ng-binding ng-scope" ng-click="openPositives(ta.variant_reports, ta.current_status, ta.date_created, ta.date_received);gotoBottom('mocha')" href>
+                                                                <a class="ng-binding ng-scope"
+                                                                   ng-click="openPositives(ta.variant_reports, ta.current_status, ta.date_created, ta.date_received);gotoBottom(ta.variant_reports)" href>
                                                                     {{ta.variant_reports | dashify }}
                                                                 </a>
                                                             </td>
@@ -784,7 +785,7 @@
                                                         <td>{{ta.date_created | dashify }}</td>
                                                         <td>{{ta.date_received | dashify }}</td>
                                                         <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
-                                                            <a class="ng-binding ng-scope" ng-click="openPositives(ta.variant_reports, ta.current_status, ta.date_created, ta.date_received);gotoBottom('mocha')" href>
+                                                            <a class="ng-binding ng-scope" ng-click="openPositives(ta.variant_reports, ta.current_status, ta.date_created, ta.date_received);gotoBottom(ta.molecular_id)" href>
                                                                 {{ta.variant_reports | dashify }}
                                                             </a>
                                                         </td>
@@ -1032,6 +1033,7 @@
 
             </uib-tab>
 
+
             <!--NO TEMPLAT CONTROL-->
             <uib-tab index="1" heading="No Template Control">
 
@@ -1043,7 +1045,9 @@
                                 <!--MOCHA NTC-->
                                 <div class="animated fadeInRight">
 
-                                    <div id="ntcmocha=samplevariants"></div>
+                                    <!--<div id="ntcmocha=samplevariants"></div>-->
+                                    --->
+                                    <div ng-repeat="ta in mochaNtcList" id="variant={{ta.molecular_id}}"></div>
 
                                     <div class="row">
                                         <div class="col-lg-16">
@@ -1057,7 +1061,8 @@
                                                         <input disabled="disabled" class="btn btn-xs btn-default file-button-xl" type="submit" value="Generate MSN" class="btn btn-primary" />
                                                     </form>
 
-                                                    <table datatable="ng" dt-options="datatable.dtOptions" dt-column-defs="datatable.dtColumnDefs" class="table table-bordered table-striped">
+                                                    <table datatable="ng" dt-options="datatable.dtOptions" dt-column-defs="datatable.dtColumnDefs"
+                                                           class="table table-bordered table-striped">
                                                         <thead>
                                                         <tr>
                                                             <th class="">Molecular ID </th>
@@ -1074,7 +1079,7 @@
                                                             <td>{{ta.date_created | dashify }}</td>
                                                             <td>{{ta.date_received | dashify}}</td>
                                                             <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
-                                                        <a class="ng-binding ng-scope" ng-click="openNegatives(ta.variant_reports, ta.current_status, ta.date_created, ta.date_received);gotoBottom('ntcmocha')" href>
+                                                        <a class="ng-binding ng-scope" ng-click="openNegatives(ta.variant_reports, ta.current_status, ta.date_created, ta.date_received);gotoBottom(ta.molecular_id)" href>
                                                             {{ta.variant_reports | dashify }}
                                                         </a>
                                                         </td>
@@ -1310,7 +1315,7 @@
                                                             <td>{{ta.date_created | dashify }}</td>
                                                             <td>{{ta.date_received | dashify}}</td>
                                                             <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
-                                                                <a class="ng-binding ng-scope" ng-click="openNegatives(ta.variant_reports, ta.current_status, ta.date_created, ta.date_received);gotoBottom('ntcmocha')" href>
+                                                                <a class="ng-binding ng-scope" ng-click="openNegatives(ta.variant_reports, ta.current_status, ta.date_created, ta.date_received);gotoBottom(ta.molecular_id)" href>
                                                                     {{ta.variant_reports | dashify }}
                                                                 </a>
                                                             </td>
