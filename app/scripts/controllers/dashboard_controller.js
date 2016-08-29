@@ -44,6 +44,7 @@
 
         $scope.loadDashboardStatisticsData = loadDashboardStatisticsData;
         $scope.setCanvasHeight = setCanvasHeight;
+        $scope.setCanvasSize = setCanvasSize;
         $scope.loadSequencedAndConfirmedChartData = loadSequencedAndConfirmedChartData;
         $scope.loadTissueVariantReportsList = loadTissueVariantReportsList;
         $scope.loadBloodVariantReportsList = loadBloodVariantReportsList;
@@ -257,6 +258,12 @@
         function setCanvasHeight(elementName, heightVal) {
             var ctx = $(elementName)[0].getContext('2d');
             ctx.canvas.height = heightVal;
+        }
+
+        function setCanvasSize(elementName, heightVal, widthVal) {
+            var ctx = $(elementName)[0].getContext('2d');
+            ctx.canvas.height = heightVal;
+            ctx.canvas.width = widthVal;
         }
 
         function loadDashboardStatisticsData() {

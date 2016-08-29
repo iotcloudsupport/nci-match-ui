@@ -13,61 +13,81 @@
                     <a ng-click="goto('activity')">Activity Feed</a>
                 </li>
             </ol>
-         </div>
+        </div>
     </div>
 
     <div class="wrapper animated fadeInRight" id="statistics">
         <div class="no-horizontal-padding header-box-container">
-            <div class="row">
-                <div class="col-lg-4 col-md-4">
-                    <div class="header-info-box top-dashboard-header-box" ng-init="loadDashboardData()">
+            <div class="header-info-box top-dashboard-header-box">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4">
                         <div>
-                            <h3>Patients<br>Statistics</h3>
+                            <h3>Patients Statistics</h3>
                         </div>
 
-                        <div class="statistic-box dashboard">
+                        <div class="statistic-box dashboard" ng-init="loadDashboardData()">
                             <ul class="list-group clear-list statistics m-t">
                                 <li class="list-group-item fist-item">
-                                    <strong><span class="pull-right">{{ ::patientStatistics.number_of_patients }}</span></strong>                                    Registered Patients:
+                                    <strong><span class="pull-right">{{ ::patientStatistics.number_of_patients }}</span></strong>                                        Registered Patients:
                                 </li>
                                 <li class="list-group-item">
-                                    <strong><span class="pull-right">{{ ::patientStatistics.number_of_patients_with_confirmed_variant_report }}</span></strong>                                    Patients with Confirmed Variant Report:
+                                    <strong><span class="pull-right">{{ ::patientStatistics.number_of_patients_with_confirmed_variant_report }}</span></strong>                                        Patients with Confirmed Variant Report:
                                 </li>
                                 <li class="list-group-item">
-                                    <strong><span class="pull-right">{{ ::patientStatistics.number_of_patients_on_treatment_arm }}</span></strong>                                    Patients on Treatment:
+                                    <strong><span class="pull-right">{{ ::patientStatistics.number_of_patients_on_treatment_arm }}</span></strong>                                        Patients on Treatment:
                                 </li>
                                 <li class="list-group-item">
-                                    <strong><span class="pull-right">{{ pendingTissueVariantReportGridOptions.data.length }}</span></strong>                                    Pending Tissue Variant Reports:
+                                    <strong><span class="pull-right">{{ pendingTissueVariantReportGridOptions.data.length }}</span></strong>                                        Pending Tissue Variant Reports:
                                 </li>
                                 <li class="list-group-item">
-                                    <strong><span class="pull-right">{{ pendingBloodVariantReportGridOptions.data.length }}</span></strong>                                    Pending Blood Variant Reports:
+                                    <strong><span class="pull-right">{{ pendingBloodVariantReportGridOptions.data.length }}</span></strong>                                        Pending Blood Variant Reports:
                                 </li>
                                 <li class="list-group-item">
-                                    <strong><span class="pull-right">{{ pendingAssignmentReportGridOptions.data.length }}</span></strong>                                    Pending Assignment Reports:
+                                    <strong><span class="pull-right">{{ pendingAssignmentReportGridOptions.data.length }}</span></strong>                                        Pending Assignment Reports:
                                 </li>
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="header-info-box top-dashboard-header-box" ng-init="setCanvasHeight('#amoiCanvas', 95)">
-                        <div class="text-center">
-                            <h3>Sequenced & Confirmed <br> Patients with aMOIs</h3>
+                    <div class="col-lg-4 col-md-4">
+                        <div>
+                            <h3>Sequenced & Confirmed Patients with aMOIs</h3>
                         </div>
-                        <div class="statistic-box dashboard">
-                            <canvas id="amoiCanvas" doughnutchart options="donutOptions" ng-attr-data="donutData" legend="true" responsive="true"></canvas>
-
-                            <ul class="dashboard donut-chart-legend"><i class="fa fa-square" style="color: #23c6c8"></i> 0 aMOI : <strong>   {{amoi_0}} patients</strong>                                <br><i class="fa fa-square" style="color: #1c84c6"></i> 1 aMOI : <strong>   {{amoi_1}} patients</strong>                                <br><i class="fa fa-square" style="color: #18a689"></i> 2 aMOI : <strong>   {{amoi_2}} patients</strong>                                <br><i class="fa fa-square" style="color: #f8ac59"></i> 3 aMOI : <strong>   {{amoi_3}} patients</strong>                                <br><i class="fa fa-square" style="color: #707070"></i> 4 aMOI : <strong>   {{amoi_4}} patients</strong>                                <br><i class="fa fa-square" style="color: #cfcfcf"></i> 5+ aMOI : <strong>  {{amoi_5}} patients</strong>                                <br></ul>
+                        <div class="statistic-box dashboard" ng-init="setCanvasSize('#amoiCanvas', 200, 200)">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-6 col-sm-6">
+                                    <canvas id="amoiCanvas" doughnutchart options="donutOptions" ng-attr-data="donutData" responsive="false"></canvas>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-sm-6">
+                                    <ul class="dashboard donut-chart-legend">
+                                        <li>
+                                            <i class="fa fa-square" style="color: #23c6c8"></i> 0 aMOI: <strong> {{amoi_0}} patients</strong>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-square" style="color: #1c84c6"></i> 1 aMOI: <strong> {{amoi_1}} patients</strong>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-square" style="color: #18a689"></i> 2 aMOI: <strong> {{amoi_2}} patients</strong>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-square" style="color: #f8ac59"></i> 3 aMOI: <strong> {{amoi_3}} patients</strong>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-square" style="color: #707070"></i> 4 aMOI: <strong> {{amoi_4}} patients</strong>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-square" style="color: #cfcfcf"></i> 5+ aMOI: <strong> {{amoi_5}} patients</strong>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-4">
-                    <div class="header-info-box top-dashboard-header-box" ng-init="setCanvasHeight('#treatmentArmAccrualCanvas', 100);">
-                        <div class="text-center">
-                            <h3>Top 5 Treatment<br> Arm Accrual</h3>
+                    <div class="col-lg-4 col-md-4">
+                        <div>
+                            <h3>Top 5 Treatment Arm Accrual</h3>
                         </div>
-                        <div id="chartBox" class="statistic-box dashboard">
-                            <canvas id="treatmentArmAccrualCanvas" barchart options="barOptions" ng-attr-data="barData" responsive="true"></canvas>
+                        <div id="chartBox" class="statistic-box dashboard" ng-init="setCanvasSize('#treatmentArmAccrualCanvas', 200, 400);">
+                            <canvas id="treatmentArmAccrualCanvas" barchart options="barOptions" ng-attr-data="barData" responsive="false"></canvas>
                         </div>
                     </div>
                 </div>
