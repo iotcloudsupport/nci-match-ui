@@ -785,7 +785,7 @@ button.btn-default.dim:active {
 }
 
 .top-dashboard-header-box {
-  height: 300px;
+  height: 320px;
   margin-bottom: 0px;
   padding-bottom: 26px;
 }
@@ -822,14 +822,30 @@ button.btn-default.dim:active {
   content: "|";
 }
 
-ul.donut-chart-legend {
-  margin-top: 10px;
-  font-size: smaller;
-  padding: 0;
-  list-style: none;
-  padding-top: 99px;
-  margin-left: -23px;
+.donut-chart-container {
+  text-align: center;
+
+  .donut-chart {
+    display: inline-block;
+    // float: left;
+    width: 200px;
+    height: 200px;
+  }
+
+  .donut-chart-legend {
+    display: inline-block;
+    // text-align: left;
+    // float: right;
+    ul {
+      margin-top: 10px;
+      font-size: smaller;
+      padding: 0;
+      list-style: none;
+      padding-top: 99px;
+    }
+  }
 }
+
 
 h3.treatment-arm-accrual {
   padding-left: 15px;

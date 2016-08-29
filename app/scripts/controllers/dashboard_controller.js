@@ -306,6 +306,7 @@ treatment_arm_accrual = [
                 top_5_arm_labels.push("There are no Treatment Arms with Patients assigned.");
                 top_5_arm_counts.push(0);
             }
+            
             $scope.barData = {
                 labels: top_5_arm_labels,
                 datasets: [
