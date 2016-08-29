@@ -1,4 +1,4 @@
-<div class="row border-bottom white-bg" ng-controller="NavigationController">
+<div class="row border-bottom white-bg" ng-controller="NavigationController" >
     <nav class="navbar navbar-static-top" role="navigation">
         <div class="navbar-header">
             <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
@@ -30,12 +30,6 @@
             <ul class="nav navbar-top-links navbar-right">
                 <li>
                    <span class="welcome">Welcome, <span class="user-name">{{name}}</span></span>
-<!--
-                   <treatment-arm-title name="ta.name" stratum="ta.stratum" version="ta.version" 
-                        display-text="vm.getDisplayText(ta)" text-color="vm.getTextColor(ta)" 
-                        data-placement="top" 
-                        title="{{vm.getTreatmentArmTitle(ta)}}" 
-                        onmouseenter="$(this).tooltip('show')"></treatment-arm-title>-->
                 </li>
                 <li>
                    <a ng-click="logout()" data-placement="bottom" onmouseenter="$(this).tooltip('show')" title="Sign-Out"><i class="fa fa-sign-out"></i></a>

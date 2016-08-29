@@ -3,15 +3,15 @@
         .controller('DashboardController', DashboardController);
 
     function DashboardController(
-            $scope, 
-            matchApi, 
-            store, 
-            sharedCliaProperties, 
-            arrayTools, 
-            dateTools,
-            $filter,
-            $location,
-            $anchorScroll) {
+        $scope,
+        matchApi,
+        store,
+        sharedCliaProperties,
+        arrayTools,
+        dateTools,
+        $filter,
+        $location,
+        $anchorScroll) {
 
         $scope.numberOfPatients = '?';
         $scope.numberOfScreenedPatients = '?';
@@ -24,11 +24,11 @@
 
         $scope.pendingTissueVariantReportGridActions = {};
         $scope.pendingBloodVariantReportGridActions = {};
-        $scope.pendingAssignmentReportGridActions = {};        
+        $scope.pendingAssignmentReportGridActions = {};
 
         $scope.pendingTissueVariantReportGridOptions = {};
         $scope.pendingBloodVariantReportGridOptions = {};
-        $scope.pendingAssignmentReportGridOptions = {};        
+        $scope.pendingAssignmentReportGridOptions = {};
 
         $scope.patientStatistics = {};
 
@@ -50,7 +50,7 @@
         $scope.loadBloodVariantReportsList = loadBloodVariantReportsList;
         $scope.loadPendingAssignmentReportsList = loadPendingAssignmentReportsList;
         $scope.loadDashboardData = loadDashboardData;
-        $scope.goto = goto;
+        $scope.gotoAnchor = gotoAnchor;
 
         var aMoiLabels = [
             '0 aMOI',
@@ -87,7 +87,7 @@
             $scope.pendingTissueVariantReportGridOptions = {
                 data: [],
                 ngColumnFilters: {
-                    "specimen_received_date": "utc", 
+                    "specimen_received_date": "utc",
                     "variant_report_received_date": "utc"
                 },
                 sort: {
@@ -106,7 +106,7 @@
                 customFilters: {
                     filterAll: function (items, value, predicate) {
                         return items.filter(function (item) {
-                            return arrayTools.itemHasValue(item, value, 
+                            return arrayTools.itemHasValue(item, value,
                                 $scope.pendingTissueVariantReportGridOptions.searchableProps, $scope.pendingTissueVariantReportGridOptions.ngColumnFilters, $filter);
                         });
                     }
@@ -116,7 +116,7 @@
             $scope.pendingBloodVariantReportGridOptions = {
                 data: [],
                 ngColumnFilters: {
-                    "specimen_received_date": "utc", 
+                    "specimen_received_date": "utc",
                     "variant_report_received_date": "utc"
                 },
                 sort: {
@@ -135,7 +135,7 @@
                 customFilters: {
                     filterAll: function (items, value, predicate) {
                         return items.filter(function (item) {
-                            return arrayTools.itemHasValue(item, value, 
+                            return arrayTools.itemHasValue(item, value,
                                 $scope.pendingBloodVariantReportGridOptions.searchableProps, $scope.pendingBloodVariantReportGridOptions.ngColumnFilters, $filter);
                         });
                     }
@@ -163,7 +163,7 @@
                 customFilters: {
                     filterAll: function (items, value, predicate) {
                         return items.filter(function (item) {
-                            return arrayTools.itemHasValue(item, value, 
+                            return arrayTools.itemHasValue(item, value,
                                 $scope.pendingAssignmentReportGridOptions.searchableProps, $scope.pendingAssignmentReportGridOptions.ngColumnFilters, $filter);
                         });
                     }
@@ -279,23 +279,23 @@
             var top_5_arm_labels = [];
             var top_5_arm_counts = [];
 
-treatment_arm_accrual = [
-        {
-            "name": "TA123",
-            "stratum_id": "STR7",
-            "patients": "10"
-        },
-        {
-            "name": "TA345",
-            "stratum_id": "STR7",
-            "patients": "10"
-        },
-        {
-            "name": "TA567",
-            "stratum_id": "STR7",
-            "patients": "10"
-        }
-    ];
+            treatment_arm_accrual = [
+                {
+                    "name": "TA123",
+                    "stratum_id": "STR7",
+                    "patients": "10"
+                },
+                {
+                    "name": "TA345",
+                    "stratum_id": "STR7",
+                    "patients": "10"
+                },
+                {
+                    "name": "TA567",
+                    "stratum_id": "STR7",
+                    "patients": "10"
+                }
+            ];
 
             angular.forEach(treatment_arm_accrual, function (value) {
                 top_5_arm_labels.push(value.name + " (" + value.stratum_id + ")");
@@ -306,7 +306,7 @@ treatment_arm_accrual = [
                 top_5_arm_labels.push("There are no Treatment Arms with Patients assigned.");
                 top_5_arm_counts.push(0);
             }
-            
+
             $scope.barData = {
                 labels: top_5_arm_labels,
                 datasets: [
@@ -371,6 +371,19 @@ treatment_arm_accrual = [
         function goto(section) {
             $location.hash(section);
             $anchorScroll();
+        }
+
+        function gotoAnchor(x) {
+            var newHash = 'anchor' + x;
+            if ($location.hash() !== newHash) {
+                // set the $location.hash to `newHash` and
+                // $anchorScroll will automatically scroll to it
+                $location.hash('anchor' + x);
+            } else {
+                // call $anchorScroll() explicitly,
+                // since $location.hash hasn't changed
+                $anchorScroll();
+            }
         }
     }
 

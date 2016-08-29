@@ -37,6 +37,7 @@
         'datatables',
         'ngResource',
         'dataGrid',
-        'pagination'
+        'pagination',
+        'ngScrollSpy'
     ]);
 })();

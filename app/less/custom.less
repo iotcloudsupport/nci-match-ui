@@ -827,17 +827,15 @@ button.btn-default.dim:active {
 
   .donut-chart {
     display: inline-block;
-    // float: left;
     width: 200px;
     height: 200px;
   }
 
   .donut-chart-legend {
     display: inline-block;
-    // text-align: left;
-    // float: right;
     ul {
       margin-top: 10px;
+      margin-left: 15px;
       font-size: smaller;
       padding: 0;
       list-style: none;
@@ -846,7 +844,30 @@ button.btn-default.dim:active {
   }
 }
 
-
 h3.treatment-arm-accrual {
   padding-left: 15px;
+}
+
+.sticky-navbar {
+  width: 100%;
+  z-index: 5;
+  top: 0px;
+}
+
+.footer.fixed {
+  padding: 0px; 
+  background-color: transparent;
+  border-style: none;
+
+  .fade-out {
+    widows: 100;
+    height: 40px;
+    .linear-gradient( bottom, @gray, fade(@gray, 10%) ); 
+  }
+
+  .footer-content {
+    padding: 15px;
+    background-color: @gray;
+    border-top: 1px solid #e7eaec;
+  }
 }
