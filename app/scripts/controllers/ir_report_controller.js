@@ -6,32 +6,15 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             var urlparams = $location.search();
 
             if(site === 'MDACC'){
-
-                $scope.$watch(function() { return self[""]; }, function (newVal) {
-                    $location.search("site", 'MDACC');
-                    $location.search("type", 'positive');
-                    // $location.search("type", 'positive');
-                });
+                $location.search("site", 'MDACC');
+                $location.search("type", 'positive');
                 sharedCliaProperties.setProperty('mdacc');
 
             }
             else{
-
-                $scope.$watch(function() { return self[""]; }, function (newVal) {
-                    $location.search("site", 'MoCha');
-                    $location.search("type", 'positive');
-                });
-
-                // if(urlparams.type === 'negative') {
-                //     // $location.search("type", 'negative');
-                //     // $scope.indextab = 1;
-                // }
-                // else{
-                //     $location.search("type", 'positive');
-                // }
-
+                $location.search("site", 'MoCha');
+                $location.search("type", 'positive');
                 sharedCliaProperties.setProperty('mocha');
-
             };
 
 
