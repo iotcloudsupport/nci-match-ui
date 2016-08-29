@@ -9,7 +9,9 @@
             sharedCliaProperties, 
             arrayTools, 
             dateTools,
-            $filter) {
+            $filter,
+            $location,
+            $anchorScroll) {
 
         $scope.numberOfPatients = '?';
         $scope.numberOfScreenedPatients = '?';
@@ -47,6 +49,7 @@
         $scope.loadBloodVariantReportsList = loadBloodVariantReportsList;
         $scope.loadPendingAssignmentReportsList = loadPendingAssignmentReportsList;
         $scope.loadDashboardData = loadDashboardData;
+        $scope.goto = goto;
 
         var aMoiLabels = [
             '0 aMOI',
@@ -337,6 +340,11 @@
             loadBloodVariantReportsList();
             loadPendingAssignmentReportsList();
             loadDashboardStatisticsData();
+        }
+
+        function goto(section) {
+            $location.hash(section);
+            $anchorScroll();
         }
     }
 
