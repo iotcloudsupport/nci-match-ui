@@ -106,6 +106,8 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                                 }
                                 else {
                                     var newObject = jQuery.extend([], d.data[i][index]);
+                                    
+                                    // console.log("newObject-->" + JSON.stringify(newObject))
                                 }
                             }
                         }
@@ -193,8 +195,8 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         // $scope.positives = 'undefined';
         $scope.barData = {};
 
-        $scope.positiveControlList = [];
-        $scope.negativeVariantsList = [];
+        // $scope.positiveControlList = [];
+        // $scope.negativeVariantsList = [];
 
         function makeid()
         {
@@ -1240,6 +1242,9 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                     }
                 });
             }
+
+            // console.log("$scope.positiveControlList--> " + $scope.positiveControlList)
+
         };
 
         //MDA Positives
@@ -1314,6 +1319,8 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
         function loadNegativesList(data) {
 
+            // console.log(JSON.stringify(data))
+
             angular.forEach(data, function (value,key) {
 
                 if(value.type == 'snv'){
@@ -1341,7 +1348,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
             var index = id.substring(id.indexOf("MoCha_") + 6, id.length) + '.json';
 
-            matchApi
+            matchApiMock
                 .openNegatives(index)
                 .then(function (d) {
 

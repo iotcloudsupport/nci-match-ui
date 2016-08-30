@@ -915,6 +915,7 @@
                                                                     <div class="ibox-title ibox-title-no-line pull">
                                                                         <h3>Positive Controls</h3>
                                                                     </div>
+
                                                                     <table class="table" role="grid">
                                                                         <thead>
                                                                         <tr>
@@ -1545,7 +1546,9 @@
             <uib-tab heading="Positive Sample Controls" index="0" ng-click="typeChange()">
 
                 <!--SCROLL TIC-->
-                <div id="mdacc=samplevariants"></div>
+                ****-->
+
+                <div ng-repeat="ta in mdaccList" id="molecular_id={{ta.molecular_id}}"></div>
                 <!--SCROLL TIC-->
 
                 <div class="col-lg-16">
@@ -1830,7 +1833,7 @@
                                                         <td>{{ta.date_created | dashify }}</td>
                                                         <td>{{ta.date_received | dashify }}</td>
                                                         <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
-                                                            <a class="ng-binding ng-scope" ng-click="openMDACCPositives(ta.variant_reports, ta.current_status, ta.date_created, ta.date_received);gotoBottom('mdacc')" href>
+                                                            <a class="ng-binding ng-scope" ng-click="openMDACCPositives(ta.variant_reports, ta.current_status, ta.date_created, ta.date_received);gotoBottom(ta.variant_reports)" href>
                                                                 {{ta.variant_reports | dashify }}
                                                             </a>
                                                         </td>
