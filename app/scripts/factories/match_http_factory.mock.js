@@ -26,6 +26,7 @@
                 loadMDACC_Table: loadMDACC_Table,
                 loadMDACCNtc_Table: loadMDACCNtc_Table,
                 openPositives: openPositives,
+                openNegatives: openNegatives,
                 openMDACCPositives: openMDACCPositives
             };
 
@@ -121,6 +122,10 @@
 
             function openPositives(index){
                 return $http.get('data/demo/sample_positive_mocha_data.json');
+            }
+
+            function openNegatives(index) {
+                return $http.get('data/demo/sample_ntc_mocha_control_1.json');
             }
 
             function openMDACCPositives(index){
