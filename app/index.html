@@ -41,9 +41,8 @@
 </head>
 
 <body>
-
     <div id="wrapper" class="top-navigation">
-        <div ng-if='showHeader'>
+        <div ng-if="showHeader">
             <div ng-include="'views/common/top_navigation.html'"></div>
         </div>
         <div id="page-wrapper" class="gray-bg {{$state.current.name}}">
@@ -53,9 +52,6 @@
             <div ng-include="'views/common/footer.html'"></div>
         </div>
     </div>
-
-    <!-- Main view  -->
-    <!--<div ui-view></div>-->
 
     <!-- build:js(.) scripts/vendor.js -->
 
@@ -87,8 +83,6 @@
 
     <!-- Inspinia Custom JS -->
     <script src="scripts/inspinia.js"></script>
-
-
 
     <!-- Dropzone -->
     <script src="bower_components/dropzone/downloads/dropzone.min.js"></script>
