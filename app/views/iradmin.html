@@ -475,7 +475,7 @@
             <uib-tab heading="Positive Sample Controls" ng-click="typeChange()" index="0" >
                 <!--SCROLL TIC-->
                 <!--<div id="mocha=samplevariants"></div>-->
-                <div ng-repeat="ta in mochaList" id="variant={{ta.molecular_id}}"></div>
+                <div ng-repeat="ta in mochaList" id="molecular_id={{ta.molecular_id}}"></div>
 
                 <!--SCROLL TIC-->
 
@@ -1046,7 +1046,7 @@
                                 <div class="animated fadeInRight">
 
                                     <!--<div id="ntcmocha=samplevariants"></div>-->
-                                    <div ng-repeat="ta in mochaNtcList" id="variant={{ta.molecular_id}}"></div>
+                                    <div ng-repeat="ta in mochaNtcList" id="molecular_id={{ta.molecular_id}}"></div>
 
                                     <div class="row">
                                         <div class="col-lg-16">
