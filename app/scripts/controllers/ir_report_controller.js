@@ -66,13 +66,14 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                 $scope.mid = id;
                 $scope.titleid = id;
                 $scope.status = 'FAILED';
-                $scope.positives = 'mocha';
+                // $scope.positives = 'mocha';
                 // $scope.date_received = datecreated;
                 // $scope.posDate = datereceived;
 
                 // var tic = 'variant='+id;
                 $timeout(function() {
                     if(id.indexOf("Ntc") !== -1) {
+                        $scope.negatives = 'mocha';
                         // $scope.indextab = 1;
                         $location.hash(tic);
                         $anchorScroll();
@@ -80,6 +81,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                         getIndex(id);
                     }
                     else{
+                        $scope.positives = 'mocha';
                         // $scope.indextab = 0;
                         $location.hash(tic);
                         $anchorScroll();
@@ -129,16 +131,6 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
             vm.dtOptions = DTOptionsBuilder.newOptions()
         .withOption('searching', false);
-
-
-            // if ( $location.search().hasOwnProperty( '#variant' ) ) {
-            //
-            //     console.log($location.search().target + "  --- VARIANT--> " + $stateParams.variant)
-            //
-            //     // var myvalue = $location.search()['myparam'];
-            //     // 'myvalue' now stores '33'
-            // }
-
 
         $scope.irList = [];
         $scope.moChaList = [];
@@ -1341,7 +1333,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             $scope.mid = id;
             $scope.titleid = id;
             $scope.status = status;
-            $scope.positives = 'mocha';
+            $scope.negatives = 'mocha';
             $scope.date_received = datecreated;
             $scope.posDate = datereceived;
 
