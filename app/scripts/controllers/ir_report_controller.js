@@ -4,22 +4,40 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             var self = this;
             var site = $stateParams.site;
             var urlparams = $location.search();
+            var type = urlparams.type;
 
-            if(site === 'MDACC'){
+            if(site === 'MDACC') {
                 $location.search("site", 'MDACC');
-                $location.search("type", 'positive');
                 sharedCliaProperties.setProperty('mdacc');
 
             }
-            else{
+            else {
                 $location.search("site", 'MoCha');
-                $location.search("type", 'positive');
                 sharedCliaProperties.setProperty('mocha');
-            };
+                }
 
+            if(typeof type === 'undefined' || type === 'positive') {
+                $location.search("type", 'positive');
+                $scope.indextab = 0;
+            }
+            else {
+                $location.search("type", type);
+                $scope.indextab = 1;
+                }
+
+            $scope.typeChange = typeChange;
+
+            function typeChange() {
+                if($location.search().type === 'negative') {
+                    $location.search("type", 'positive');
+                }
+                else{
+                    $location.search("type", 'negative');
+                }
+            }
 
             $scope.gotoUrlBottom = function(tic) {
-                var id = tic.substring(tic.indexOf("=") + 1,tic.length);
+                var id = tic.substring(tic.indexOf("=") + 1, tic.length);
 
                 $scope.selectedRow = id;
                 $scope.mid = id;

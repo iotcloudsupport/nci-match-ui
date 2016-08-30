@@ -102,7 +102,8 @@
                                         <!--CALENDAR-->
 
                                         <div ng-if="schedule == 'weekmap'">
-                                            <canvas id="mochaBar" barchart ng-attr-data="barData" labels="false" options="barOptions" legend="false" responsive="true"
+                                            <canvas id="mochaBar" barchart ng-attr-data="barData" labels="false" options="barOptions"
+                                                    legend="false" responsive="true"
                                                     width="700" height="200">
                                             </canvas>
                                             <div><b style='color:darkgreen;'>Positive Controls</b></div>
@@ -467,11 +468,11 @@
     <!--CHARTS-->
 
     <!--TABLES-->
-    <div class="tabs-container" ng-init="indextab = 0">
+    <div class="tabs-container" ng-init="{indextab}">
 
         <uib-tabset active="indextab" ng-if="branch === 'mocha'" >
 
-            <uib-tab heading="Positive Sample Controls"  index="0" >
+            <uib-tab heading="Positive Sample Controls" ng-click="typeChange()" index="0" >
                 <!--SCROLL TIC-->
                 <!--<div id="mocha=samplevariants"></div>-->
                 <div ng-repeat="ta in mochaList" id="variant={{ta.molecular_id}}"></div>
@@ -1033,9 +1034,8 @@
 
             </uib-tab>
 
-
             <!--NO TEMPLAT CONTROL-->
-            <uib-tab index="1" heading="No Template Control">
+            <uib-tab index="1" heading="No Template Control" ng-click="typeChange()">
 
                 <div class="col-lg-16">
                     <div class="ibox float-e-margins">
@@ -1046,7 +1046,6 @@
                                 <div class="animated fadeInRight">
 
                                     <!--<div id="ntcmocha=samplevariants"></div>-->
-                                    --->
                                     <div ng-repeat="ta in mochaNtcList" id="variant={{ta.molecular_id}}"></div>
 
                                     <div class="row">
@@ -1535,15 +1534,13 @@
 
             </uib-tab>
 
-
         </uib-tabset>
 
 
 
         <uib-tabset active="indextab" ng-if="branch === 'mdacc'">
 
-
-            <uib-tab heading="Positive Sample Controls " index="0" >
+            <uib-tab heading="Positive Sample Controls" index="0" ng-click="typeChange()">
 
                 <!--SCROLL TIC-->
                 <div id="mdacc=samplevariants"></div>
@@ -1552,7 +1549,6 @@
                 <div class="col-lg-16">
 
                     <div class="ibox float-e-margins">
-                        <!--<div class="col-lg-16" >-->
 
                         <div class="ibox-content ibox-title-no-line">
 
@@ -2066,7 +2062,7 @@
             </uib-tab>
 
             <!--NO TEMPLAT CONTROL-->
-            <uib-tab index="1" heading="No Template Control ">
+            <uib-tab index="1" heading="No Template Control " ng-click="typeChange()">
 
                 <div class="col-lg-16">
                     <div class="ibox float-e-margins">
@@ -2560,7 +2556,6 @@
                 </div>
 
             </uib-tab>
-
 
         </uib-tabset>
 
