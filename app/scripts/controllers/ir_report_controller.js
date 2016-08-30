@@ -28,17 +28,18 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             $scope.typeChange = typeChange;
 
             function typeChange() {
+                //Clean hash
+                $location.hash(null);
                 if($location.search().type === 'negative') {
                     $location.search("type", 'positive');
                 }
-                else{
+                else {
                     $location.search("type", 'negative');
-                }
+                    }
             }
 
             $scope.gotoUrlBottom = function(tic) {
                 var id = tic.substring(tic.indexOf("=") + 1, tic.length);
-
                 $scope.selectedRow = id;
                 $scope.mid = id;
                 $scope.titleid = id;
@@ -135,7 +136,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         $scope.copyNumberVariantsList = [];
         $scope.geneFusionsList = [];
         $scope.sitename = 'undefined';
-        $scope.barlegend = 'Total Positive / NTC Control Status';
+        $scope.barlegend = 'Total Positive / No Template Control Status';
         $scope.titleid = "";
         // $scope.mochaList=[];
         $scope.mochaMonthList=[];
@@ -204,14 +205,14 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                 // $scope.indextab = 0;
                 $scope.schedule = "weekmap";
                 $scope.monthview = 'none';
-                $scope.barlegend = "Total Positive / NTC Control Status";
+                $scope.barlegend = "Total Positive / No Template Control Status";
 
             }
             else {
                 // $scope.indextab = 0;
                 $scope.schedule = "heatmap";
                 // $scope.monthview = 'aug';
-                $scope.barlegend = "History of Total Positive / NTC Control Status";
+                $scope.barlegend = "History of Total Positive / No Template Control Status";
 
                 //HEATMAP
                 if($scope.branch == 'mocha') {
@@ -658,7 +659,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
                 });
 
-            $scope.barlegend = "Total Positive / NTC Control Status";
+            $scope.barlegend = "Total Positive / No Template Control Status";
             /**
              * Options for Doughnut chart
              */
@@ -1017,6 +1018,9 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             $scope.positives = "undefined";
             $scope.negatives = "undefined";
 
+            //Clean hash
+            $location.hash(null);
+
             if(reportType === 'MoCha'){
                 $scope.branch = 'mocha';
                 $scope.sitename = 'MoCha';
@@ -1048,7 +1052,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         };
 
         $scope.gotoBottom = function(id) {
-            var tic = 'variant='+id;
+            var tic = 'molecular_id='+id;
             $timeout(function() {
                 $location.hash(tic);
                 // $("body").animate({scrollTop: $location.offset().top}, "slow");
@@ -1103,6 +1107,9 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             $scope.positives = 'mocha';
             $scope.date_received = datecreated;
             $scope.posDate = datereceived;
+
+
+            console.log($scope.selectedRow)
 
             sharedCliaArray.setProperty([$scope.aid, $scope.posDate, $scope.tvarDate])
 
