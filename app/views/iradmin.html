@@ -472,10 +472,10 @@
 
         <uib-tabset active="indextab" ng-if="branch === 'mocha'" >
 
-            <uib-tab heading="Positive Sample Controls" ng-click="typeChange()" index="0" >
+            <uib-tab heading="Positive Sample Controls" ng-click="positiveChange()" index="0" >
                 <!--SCROLL TIC-->
-                <!--<div id="mocha=samplevariants"></div>-->
-                <div ng-repeat="ta in mochaList" id="molecular_id={{ta.molecular_id}}"></div>
+                <!--<div id="bottom"></div>-->
+                <!--<div ng-repeat="ta in mochaList" id="molecular_id={{ta.molecular_id}}"></div>-->
 
                 <!--SCROLL TIC-->
 
@@ -788,7 +788,8 @@
                                                         <td>{{ta.date_created | dashify }}</td>
                                                         <td>{{ta.date_received | dashify }}</td>
                                                         <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
-                                                            <a class="ng-binding ng-scope" ng-click="openPositives(ta.variant_reports, ta.current_status, ta.date_created, ta.date_received);gotoBottom(ta.molecular_id)" href>
+                                                            <a class="ng-binding ng-scope"
+                                                               ng-click="openPositives(ta.variant_reports, ta.current_status, ta.date_created, ta.date_received);" href>
                                                                 {{ta.variant_reports | dashify }}
                                                             </a>
                                                         </td>
@@ -800,6 +801,8 @@
 
                                                 <!--QC TABS-->
                                                 <div class="row" ng-if="positives === 'mocha'">
+
+                                                    <div id="bottom"></div>
 
                                                     <!--MOCK MOCHA GENERATOR-->
                                                     <div class="wrapper">
@@ -906,7 +909,6 @@
                                                         </div>
 
                                                         <!--SPOT TABS-->
-
                                                         <div class="row">
 
                                                             <div class="col-lg-16">
@@ -1023,22 +1025,16 @@
 
                                     </div>
                                 </div>
-
                             </div>
                             <!--MOCHA GENERATOR-->
-
                         </div>
-
                         <!--</div>-->
-
                     </div>
-
                 </div>
-
             </uib-tab>
 
             <!--NO TEMPLAT CONTROL-->
-            <uib-tab index="1" heading="No Template Control" ng-click="typeChange()">
+            <uib-tab index="1" heading="No Template Control" ng-click="ntcChange()">
 
                 <div class="col-lg-16">
                     <div class="ibox float-e-margins">
@@ -1049,7 +1045,9 @@
                                 <div class="animated fadeInRight">
 
                                     <!--<div id="ntcmocha=samplevariants"></div>-->
-                                    <div ng-repeat="ta in mochaNtcList" id="molecular_id={{ta.molecular_id}}"></div>
+                                    <!--<div ng-repeat="ta in mochaNtcList" id="molecular_id={{ta.molecular_id}}"></div>-->
+
+                                    <div id="ntcbottom"></div>
 
                                     <div class="row">
                                         <div class="col-lg-16">
@@ -1081,7 +1079,7 @@
                                                             <td>{{ta.date_created | dashify }}</td>
                                                             <td>{{ta.date_received | dashify}}</td>
                                                             <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
-                                                        <a class="ng-binding ng-scope" ng-click="openNegatives(ta.variant_reports, ta.current_status, ta.date_created, ta.date_received);gotoBottom(ta.molecular_id)" href>
+                                                        <a class="ng-binding ng-scope" ng-click="openNegatives(ta.variant_reports, ta.current_status, ta.date_created, ta.date_received);" href>
                                                             {{ta.variant_reports | dashify }}
                                                         </a>
                                                         </td>
@@ -1317,7 +1315,7 @@
                                                             <td>{{ta.date_created | dashify }}</td>
                                                             <td>{{ta.date_received | dashify}}</td>
                                                             <td ng-class="{highliteRow: ta.variant_reports === selectedRow}">
-                                                                <a class="ng-binding ng-scope" ng-click="openNegatives(ta.variant_reports, ta.current_status, ta.date_created, ta.date_received);gotoBottom(ta.molecular_id)" href>
+                                                                <a class="ng-binding ng-scope" ng-click="openNegatives(ta.variant_reports, ta.current_status, ta.date_created, ta.date_received);" href>
                                                                     {{ta.variant_reports | dashify }}
                                                                 </a>
                                                             </td>
@@ -1435,6 +1433,7 @@
                                                                         <div class="ibox-title ibox-title-no-line pull">
                                                                             <h3>SNVs/MNVs/Indels</h3>
                                                                         </div>
+
                                                                         <table class="table" role="grid">
                                                                             <thead>
                                                                             <tr>
