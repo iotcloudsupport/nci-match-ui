@@ -80,6 +80,8 @@
         $scope.snvsMnvsIndelsGridOptions = {};
         $scope.cnvsGridOptions = {};
         $scope.geneFusionsGridOptions = {};
+        $scope.nonHotspotRulesGridOptions = {};
+        $scope.nonSequencingAssaysGridOptions = {};
 
         activate();
 
@@ -234,11 +236,11 @@
                 sort: {
                     //predicate: 'days_pending',
                     //direction: 'desc' date selected
-                    predicate: 'gene',
+                    predicate: 'func_gene',
                     direction: 'asc'
                 },
                 searchableProps: [
-                    'gene',
+                    'func_gene',
                     'chromosome',
                     'position',
                     'level_of_evidence',
@@ -279,6 +281,67 @@
                         return items.filter(function (item) {
                             return arrayTools.itemHasValue(item, value,
                                 $scope.geneFusionsGridOptions.searchableProps, $scope.geneFusionsGridOptions.ngColumnFilters, $filter);
+                        });
+                    }
+                }
+            };
+            $scope.nonHotspotRulesGridOptions = {
+                data: [],
+                ngColumnFilters: {
+                    //"date": "utc",
+
+                },
+                sort: {
+                    //predicate: 'days_pending',
+                    //direction: 'desc' date selected
+                    predicate: 'func_gene',
+                    direction: 'asc'
+                },
+                searchableProps: [
+                    'func_gene',
+                    'exon',
+                    'oncomine_variant_class',
+                    'function',
+                    'level_of_evidence',
+                    'num_patients_with_variant',
+                    'num_patients_with_variant_on_arm',
+                    'percent_patients_with_variant_on_arm'
+                ],
+                customFilters: {
+                    filterAll: function (items, value, predicate) {
+                        return items.filter(function (item) {
+                            return arrayTools.itemHasValue(item, value,
+                                $scope.cnvsGridOptions.searchableProps, $scope.cnvs.ngColumnFilters, $filter);
+                        });
+                    }
+                }
+            };
+            $scope.nonSequencingAssaysGridOptions = {
+                data: [],
+                ngColumnFilters: {
+                    //"date": "utc",
+
+                },
+                sort: {
+                    //predicate: 'days_pending',
+                    //direction: 'desc' date selected
+                    predicate: 'func_gene',
+                    direction: 'asc'
+                },
+                searchableProps: [
+                    'func_gene',
+                    'assay_result_status',
+                    'assay_variant',
+                    'level_of_evidence',
+                    'num_patients_with_variant',
+                    'num_patients_with_variant_on_arm',
+                    'percent_patients_with_variant_on_arm'
+                ],
+                customFilters: {
+                    filterAll: function (items, value, predicate) {
+                        return items.filter(function (item) {
+                            return arrayTools.itemHasValue(item, value,
+                                $scope.cnvsGridOptions.searchableProps, $scope.cnvs.ngColumnFilters, $filter);
                         });
                     }
                 }
