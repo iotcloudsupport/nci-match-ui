@@ -8,6 +8,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             var molecular_id = urlparams.molecular_id;
             var hash =  $location.hash();
 
+            //Site
             if(site === 'MDACC') {
                 $location.search("site", 'MDACC');
                 sharedCliaProperties.setProperty('mdacc');
@@ -17,49 +18,105 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                 $location.search("site", 'MoCha');
                 sharedCliaProperties.setProperty('mocha');
                 }
-
+            //Type
             if(typeof type === 'undefined' || type === 'positive') {
                 $location.search("type", 'positive');
                 $scope.indextab = 0;
+                //Molecular_id
+                if(hash !== "") {
+                    $location.hash(null);
+                    loadPositivePage(molecular_id);
+                }
             }
             else {
                 $location.search("type", type);
                 $scope.indextab = 1;
+                //Molecular_id
+                if(hash !== ""){
+                    $location.hash(null);
+                    loadNtcPage(molecular_id);
                 }
+            }
 
-            // console.log(hash === "")
 
-            if(hash !== "") {
-                var id = hash.substring(hash.indexOf('=')+1, hash.length);
 
-                $location.hash(null);
-                    $timeout(function() {
-                        $location.hash(hash);
-                        $anchorScroll();
-                    } );
+            //Load positive page function
+            $scope.loadPositivePage = loadPositivePage;
+            //Load Ntc page function
+            $scope.loadNtcPage = loadNtcPage;
+            //Load page function
+            $scope.loadPage = loadPage;
+            //Close tabs functions
+            $scope.positiveChange = positiveChange;
+            $scope.ntcChange = ntcChange;
 
-                gotoUrlBottom(hash);
-
-                $scope.positives = 'mocha';
-
-                };
-
-            $scope.typeChange = typeChange;
-
-            function typeChange() {
+            function positiveChange() {
                 //Clean hash
+                $scope.closePositives();
+                // $scope.closeNegatives();
+
                 $location.hash(null);
+                $location.search("molecular_id", null);
                 if($location.search().type === 'negative') {
                     $location.search("type", 'positive');
                 }
                 else {
                     $location.search("type", 'negative');
-                    }
+                }
             }
 
-            $scope.gotoUrlBottom = gotoUrlBottom;
+            function ntcChange() {
+                //Clean hash
+                // $scope.closePositives();
+                $scope.closeNegatives();
 
-            function gotoUrlBottom(tic) {
+                $location.hash(null);
+                $location.search("molecular_id", null);
+                if($location.search().type === 'negative') {
+                    $location.search("type", 'positive');
+                }
+                else {
+                    $location.search("type", 'negative');
+                }
+            }
+
+            function loadPositivePage(id) {
+                $scope.selectedRow = id;
+                $scope.mid = id;
+                $scope.titleid = id;
+                $scope.status = 'FAILED';
+                $location.search("molecular_id", id);
+
+                getPositiveIndex(id);
+                $timeout(function() {
+                    $scope.positives = 'mocha';
+                    // $scope.indextab = 0;
+                    $location.hash('bottom');
+                    $anchorScroll();
+                });
+            }
+
+            function loadNtcPage(id) {
+                // var id = tic.substring(tic.indexOf("=") + 1, tic.length);
+
+                console.log(id)
+
+                $scope.selectedRow = id;
+                $scope.mid = id;
+                $scope.titleid = id;
+                $scope.status = 'FAILED';
+                $location.search("molecular_id", id);
+
+                getNtcIndex(id);
+                $timeout(function() {
+                    $scope.positives = 'mocha';
+                    // $scope.indextab = 0;
+                    $location.hash('ntcbottom');
+                    $anchorScroll();
+                });
+            }
+
+            function loadPage(tic) {
                 var id = tic.substring(tic.indexOf("=") + 1, tic.length);
 
                 $scope.selectedRow = id;
@@ -71,28 +128,47 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                 // $scope.posDate = datereceived;
 
                 // var tic = 'variant='+id;
-                $timeout(function() {
-                    if(id.indexOf("Ntc") !== -1) {
-                        $scope.negatives = 'mocha';
-                        // $scope.indextab = 1;
-                        $location.hash(tic);
-                        $anchorScroll();
 
-                        getIndex(id);
-                    }
-                    else{
+                if(id.indexOf("Ntc") !== -1) {
+                    getNtcIndex(id);
+                    $timeout(function() {
                         $scope.positives = 'mocha';
                         // $scope.indextab = 0;
-                        $location.hash(tic);
+                        $location.hash('bottom');
                         $anchorScroll();
-
-                        getIndex(id);
-                    }
-                });
+                    });
+                }
+                else{
+                    getPositiveIndex(id);
+                    $timeout(function() {
+                        $scope.positives = 'mocha';
+                        // $scope.indextab = 0;
+                        $location.hash('bottom');
+                        $anchorScroll();
+                    });
+                }
             };
 
-            function getIndex(index) {
+            // if(hash !== "") {
+            //     var id = hash.substring(hash.indexOf('=') + 1, hash.length);
+            //
+            //     $location.hash(null);
+            //         $timeout(function() {
+            //             $location.hash(hash);
+            //             $anchorScroll();
+            //         } );
+            //
+            //     loadPage(hash);
+            //
+            //     $scope.positives = 'mocha';
+            //
+            //     };
 
+
+
+
+
+            function getPositiveIndex(index) {
                 matchApiMock
                     .openPositives(index)
                     .then(function (d) {
@@ -106,16 +182,20 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                                 }
                                 else {
                                     var newObject = jQuery.extend([], d.data[i][index]);
-                                    
-                                    // console.log("newObject-->" + JSON.stringify(newObject))
                                 }
                             }
                         }
                         loadPositivesList(newObject);
                     });
 
-                // $scope.positives = 'mocha';
-                // $scope.monthview = 'none';
+            }
+
+            function getNtcIndex(index) {
+                matchApiMock
+                    .openNegatives(index)
+                    .then(function (d) {
+                        loadNegativesList(d);
+                    });
             }
 
 
@@ -1071,7 +1151,8 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
         $scope.gotoBottom = function(id) {
             var tic = 'molecular_id='+id;
             $timeout(function() {
-                $location.hash(tic);
+                $location.search("molecular_id", id);
+                $location.hash('bottom');
                 // $("body").animate({scrollTop: $location.offset().top}, "slow");
                 $anchorScroll();
             });
@@ -1124,9 +1205,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             $scope.positives = 'mocha';
             $scope.date_received = datecreated;
             $scope.posDate = datereceived;
-
             sharedCliaArray.setProperty([$scope.aid, $scope.posDate, $scope.tvarDate])
-
             var index = id.substring(id.indexOf("MoCha_") + 6, id.length) + '.json';
 
             matchApiMock
@@ -1148,6 +1227,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                     loadPositivesList(newObject);
                 });
 
+            loadPositivePage(id);
         };
 
         $scope.openHeatMapPositives = function (id, status) {
@@ -1306,23 +1386,18 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             $scope.positives = 'undefined';
             resetPosition();
         };
-        //POSITIVES
 
         function resetPosition(){
-            var tic = '';
-
             $timeout(function() {
-                $location.hash(tic);
+                $location.hash(null);
                 $anchorScroll();
             });
         }
 
-        function loadNegativesList(data) {
+        function loadNegativesList(d) {
+            $scope.negatives = 'mocha';
 
-            // console.log(JSON.stringify(data))
-
-            angular.forEach(data, function (value,key) {
-
+            angular.forEach(d.data, function (value,key) {
                 if(value.type == 'snv'){
                     $scope.indelsList.push(value);
                 }
@@ -1352,52 +1427,31 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                 .openNegatives(index)
                 .then(function (d) {
 
-                    for (var i = d.data.length - 1; i >= 0; i--) {
-                        var dta = d.data[i];
+                    // for (var i = d.data.length - 1; i >= 0; i--) {
+                    //     var dta = d.data[i];
+                    //
+                    //     for (var key in dta) {
+                    //
+                    //         console.log(key + " -- " + id)
+                    //
+                    //         if (key !== id) {
+                    //             d.data.splice(i, 1);
+                    //         }
+                    //         else{
+                    //             var newObject = jQuery.extend([], d.data[i][id]);
+                    //         }
+                    //     }
+                    // }
 
-                        for (var key in dta) {
-                            if (key !== id) {
-                                d.data.splice(i, 1);
-                            }
-                            else{
-                                var newObject = jQuery.extend([], d.data[i][id]);
-                            }
-                        }
-                    }
+
+
 
                     loadNegativesList(d);
                 });
 
+            loadNtcPage(id);
+
         };
-
-        // $scope.openNegatives = function(id, status, datereceived, datecreated) {
-        //     $scope.selectedRow = id;
-        //     $scope.negatives = 'mocha';
-        //     $scope.status = status;
-        //     $scope.date_received = datecreated;
-        //     $scope.posDate = datereceived;
-        //
-        //     sharedCliaArray.setProperty([$scope.aid, $scope.posDate, $scope.tvarDate])
-        //
-        //     var url ="data/demo/sample_ntc_mocha_control_1.json";
-        //
-        //     $.ajax({
-        //
-        //         type   :  "GET",
-        //         url      :   url,
-        //         contentType : "application/json",
-        //         dataType      : "json",
-        //         data            :  {},
-        //         success: function(data){
-        //             loadNegativesList(data);
-        //         },
-        //         error:function(jqXHR,textStatus,errorThrown){
-        //             alert("Error: "+textStatus.toString());
-        //         }
-        //     });
-        // };
-
-
 
         $scope.openMDANegatives = function(id, status) {
             $scope.selectedRow = id;
