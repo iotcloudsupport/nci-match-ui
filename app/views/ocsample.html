@@ -169,199 +169,237 @@
                             <div class="col-lg-12" >
 
                                 <!--SNV TABLE-->
-                                <div class="ibox-title ibox-title-no-line-no-padding">
-                                    <h3>SNVs/MNVs/Indels</h3>
+                                <div class="col-md-12 white-bg animated fadeInRight">
+                                    <vr-qc-snv-mnv-indel
+                                            grid-id="tissueQcSnvMnvIndelsVr"
+                                            url="'data/demo/sample_qc.json'"
+                                            file-section="snvs_and_indels"
+                                            searchable-props="identifier|chromosome|position|cds_reference|cds_alternative|ocp_reference|ocp_alternative|strand|allele_frequency|func_gene|oncomine_variant_class|exon|function|hgvs|read_depth|transcript|protein">
+                                    </vr-qc-snv-mnv-indel>
                                 </div>
-
-                                <div class="col-md-12 white-bg animated fadeInRight"
-                                     ng-controller="QcSampleController"
-                                     ng-init="loadSnv_Table()">
-
-
-                                    <div class="form-group">
-                                        <label>
-                                            <div class="pull-right" style="width:200px">
-                                                <select width="100%" class="form-control pull-right" ng-model="dropValue" ng-change="confirmedFunc()" >
-                                                    <option value="ALL" selected="selected">ALL</option>
-                                                    <option value="PASS" >PASS</option>
-                                                    <option value="NOCALL" >NOCALL</option>
-                                                    <option value=".">.</option>
-                                                </select>
-                                            </div>
-                                        </label>
-                                    </div>
-
-                                    <table datatable="ng"
-                                            dt-options="dtOptions"
-                                            dt-columns="dtColumns"
-                                            dt-instance="dtInstance"
-                                           class="table table-striped table-bordered">
-                                        <thead>
-                                        <tr>
-                                            <th class="label2" >Id</th>
-                                            <th class="label2" >Chrom</th>
-                                            <th class="label2" >Position</th>
-                                            <th class="label2" >Reference</th>
-                                            <th class="label2" >Alternative</th>
-                                            <th class="label2" >Filter</th>
-                                            <th class="label2" >Allele Freq</th>
-
-                                            <th class="label2" >Func Gene</th> <!-- openCosmicGene("MTOR") -->
-                                            <th class="label2" >Oncomine Variant Class</th>
-                                            <th class="label2" >Exon</th>
-                                            <th class="label2" >Function</th>
-                                            <th class="label2" >Hgvs</th>
-                                            <th class="label2" >Read Depth</th>
-                                            <th class="label2" >Transcript</th>
-                                            <th class="label2" >Protein</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <!--<tr ng-repeat="ta in snvList | limitTo:totalDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">-->
-
-                                        <tr ng-repeat="ta in snvList | limitTo:totalDisplayed" style="cursor: auto; " role="row" class="odd">
-                                            <td>{{::ta.identifier | dashify }}</td>
-                                            <td>{{::ta.chromosome | dashify }}</td>
-                                            <td>{{::ta.position | dashify }}</td>
-                                            <td>{{::ta.reference | dashify }}</td>
-                                            <td>{{::ta.alternative | dashify }}</td>
-                                            <td>{{::ta.filter | dashify }}</td>
-                                            <td>{{::ta.alleleFrequency | dashify }}</td>
-                                            <td>
-                                                <a href ng-click="openCosmicGene(ta.gene)" class="report-link">{{::ta.gene}}</a>
-                                            </td>
-                                            <td>{{::ta.oncominevariantclass | dashify }}</td>
-                                            <td>{{::ta.exon | dashify }}</td>
-                                            <td>{{::ta.function | dashify }}</td>
-                                            <td>{{::ta.hgvs | dashify }}</td>
-                                            <td>{{::ta.readDepth | dashify }}</td>
-                                            <td>{{::ta.transcript | dashify }}</td>
-                                            <td>{{::ta.proteinMatch | dashify }}</td>
-                                        </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-
                                 <!--SNV TABLE-->
 
                                 <!--CNV TABLE-->
-                                <div class="ibox-title ibox-title-no-line-no-padding">
-                                    <h3>Copy Number Variants</h3>
-                                </div>
-
-                                <div class="col-md-12 white-bg animated fadeInRight"
-                                     ng-controller="QcSampleController as DashCtrl"
-                                     ng-init="loadQc_Table()">
-                                    <table datatable="ng"
-                                           dt-options="DashCtrl.dtOptions"
-                                           dt-column-defs="DashCtrl.dtColumnDefs"
-                                           dt-instance="dtInstance"
-                                           dt-columns="dtColumns"
-                                           class="table table-striped table-bordered dataTable table-hover">
-                                        <thead>
-
-                                        <!--<div class="form-group">-->
-                                            <!--<label>-->
-                                                <!--<div confirmed="confirmed" custom-element class="pull-right" style="width:200px"></div>-->
-                                            <!--</label>-->
-                                        <!--</div>-->
-
-                                        <tr>
-                                            <th class="label2" >Id</th>
-                                            <th class="label2" >Chrom</th>
-                                            <th class="label2" >Position</th>
-                                            <th class="label2" >Reference</th>
-                                            <th class="label2" >Alternative</th>
-                                            <th class="label2" >Filter</th>
-                                            <th class="label2" >RAW Nc</th>
-                                            <th class="label2" >FCN</th>
-                                            <th class="label2" >Cl 5%</th>
-                                            <th class="label2" >Cl 95%</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-
-                                        <tr ng-repeat="ta in cnvList | limitTo:totalDisplayed | filter:searchFilter" style="cursor: auto; " role="row" class="odd">
-                                            <td>
-                                                <a href ng-click="openCosmicGene(ta.identifier)" class="report-link"> {{::ta.identifier | dashify }} </a>
-                                            </td>
-                                            <td>{{::ta.chromosome | dashify }}</td>
-                                            <td>{{::ta.position | dashify }}</td>
-                                            <td>{{::ta.reference | dashify }}</td>
-                                            <td>{{::ta.alternative | dashify }}</td>
-                                            <td>{{::ta.filter | dashify }}</td>
-                                            <td>{{::ta.rawCopyNumber | dashify }}</td>
-                                            <td>{{::ta.copyNumber | dashify }}</td>
-                                            <td>{{::ta.confidenceInterval5percent | dashify }}</td>
-                                            <td>{{::ta.confidenceInterval95percent | dashify }}</td>
-
-                                        </tr>
-                                        </tbody>
-                                    </table>
-
+                                <div class="col-md-12 white-bg animated fadeInRight">
+                                    <vr-qc-cnv
+                                            grid-id="tissueQcCnv"
+                                            url="'data/demo/3366.qc_report.json'"
+                                            file-section="copy_number_variants"
+                                            searchable-props="identifier|chromosome|position|cds_reference|cds_alternative|ocp_reference|ocp_alternative|strand|allele_frequency|func_gene|oncomine_variant_class|exon|function|hgvs|read_depth|transcript|protein">
+                                    </vr-qc-cnv>
                                 </div>
                                 <!--CNV TABLE-->
 
                                 <!--GENE TABLE-->
-                                <div class="ibox-title ibox-title-no-line-no-padding">
-                                    <h3>Gene Fusions</h3>
-                                </div>
-                                <div class="col-md-12 white-bg animated fadeInRight"
-                                     ng-controller="QcSampleController as DashCtrl"
-                                     ng-init="loadGene_Table()">
-                                    <table datatable="ng"
-                                           dt-options="DashCtrl.dtOptions"
-                                           dt-column-defs="DashCtrl.dtColumnDefs"
-                                           dt-instance="dtInstance"
-                                           dt-columns="dtColumns"
-                                           class="table table-striped table-bordered dataTable table-hover">
-                                        <thead>
-
-                                        <!--<div class="form-group">-->
-                                            <!--<label>-->
-                                                <!--<div confirmed="confirmed" custom-element class="pull-right" style="width:200px"></div>-->
-                                            <!--</label>-->
-                                        <!--</div>-->
-
-                                        <tr>
-                                            <th class="label2" >Id</th> <!--openCosmicGene("ACVRL1")-->
-                                            <th class="label2" >Chrom</th>
-                                            <th class="label2" >Position</th>
-                                            <th class="label2" >Reference</th>
-                                            <th class="label2" >Alternative</th>
-                                            <th class="label2" >Filter</th>
-                                            <th class="label2" >Func Gene</th>
-                                            <th class="label2" >Oncomine Variant Class</th>
-                                            <th class="label2" >Exon</th>
-                                            <th class="label2" >Function</th>
-                                            <th class="label2" >Read Count</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-
-                                        <tr ng-repeat="ta in geneList | limitTo:totalDisplayed " style="cursor: auto; " role="row" class="odd">
-                                            <td>
-                                                <a href ng-click="openCosmicFusionId(ta.identifier)" class="report-link"> {{::ta.identifier | dashify }} </a>
-                                            </td>
-                                            <td>{{::ta.chromosome | dashify }}</td>
-                                            <td>{{::ta.position | dashify }}</td>
-                                            <td>{{::ta.reference | dashify }}</td>
-                                            <td>{{::ta.alternative | dashify }}</td>
-                                            <td>{{::ta.filter | dashify }}</td>
-                                            <td>{{::ta.gene | dashify }}</td>
-                                            <td>{{::ta.oncominevariantclass | dashify }}</td>
-                                            <td>{{::ta.exon | dashify }}</td>
-                                            <td>{{::ta.function | dashify }}</td>
-                                            <td>{{::ta.readDepth | dashify }}</td>
-
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                                <div class="col-md-12 white-bg animated fadeInRight">
+                                    <vr-qc-gf
+                                            grid-id="tissueQcGf"
+                                            url="'data/demo/3366.qc_report.json'"
+                                            file-section="gene_fusions"
+                                            searchable-props="identifier|chromosome|position|cds_reference|cds_alternative|ocp_reference|ocp_alternative|strand|allele_frequency|func_gene|oncomine_variant_class|exon|function|hgvs|read_depth|transcript|protein">
+                                    </vr-qc-gf>
                                 </div>
                                 <!--GENE TABLE-->
 
                             </div>
+
+
+                            <!--<div class="col-lg-12" >-->
+
+                                <!--&lt;!&ndash;SNV TABLE&ndash;&gt;-->
+                                <!--<div class="ibox-title ibox-title-no-line-no-padding">-->
+                                    <!--<h3>SNVs/MNVs/Indels</h3>-->
+                                <!--</div>-->
+
+                                <!--<div class="col-md-12 white-bg animated fadeInRight"-->
+                                     <!--ng-controller="QcSampleController"-->
+                                     <!--ng-init="loadSnv_Table()">-->
+
+
+                                    <!--<div class="form-group">-->
+                                        <!--<label>-->
+                                            <!--<div class="pull-right" style="width:200px">-->
+                                                <!--<select width="100%" class="form-control pull-right" ng-model="dropValue" ng-change="confirmedFunc()" >-->
+                                                    <!--<option value="ALL" selected="selected">ALL</option>-->
+                                                    <!--<option value="PASS" >PASS</option>-->
+                                                    <!--<option value="NOCALL" >NOCALL</option>-->
+                                                    <!--<option value=".">.</option>-->
+                                                <!--</select>-->
+                                            <!--</div>-->
+                                        <!--</label>-->
+                                    <!--</div>-->
+
+                                    <!--<table datatable="ng"-->
+                                            <!--dt-options="dtOptions"-->
+                                            <!--dt-columns="dtColumns"-->
+                                            <!--dt-instance="dtInstance"-->
+                                           <!--class="table table-striped table-bordered">-->
+                                        <!--<thead>-->
+                                        <!--<tr>-->
+                                            <!--<th class="label2" >Id</th>-->
+                                            <!--<th class="label2" >Chrom</th>-->
+                                            <!--<th class="label2" >Position</th>-->
+                                            <!--<th class="label2" >Reference</th>-->
+                                            <!--<th class="label2" >Alternative</th>-->
+                                            <!--<th class="label2" >Filter</th>-->
+                                            <!--<th class="label2" >Allele Freq</th>-->
+
+                                            <!--<th class="label2" >Func Gene</th> &lt;!&ndash; openCosmicGene("MTOR") &ndash;&gt;-->
+                                            <!--<th class="label2" >Oncomine Variant Class</th>-->
+                                            <!--<th class="label2" >Exon</th>-->
+                                            <!--<th class="label2" >Function</th>-->
+                                            <!--<th class="label2" >Hgvs</th>-->
+                                            <!--<th class="label2" >Read Depth</th>-->
+                                            <!--<th class="label2" >Transcript</th>-->
+                                            <!--<th class="label2" >Protein</th>-->
+                                        <!--</tr>-->
+                                        <!--</thead>-->
+                                        <!--<tbody>-->
+                                        <!--&lt;!&ndash;<tr ng-repeat="ta in snvList | limitTo:totalDisplayed | filter:filterCol" style="cursor: auto; " role="row" class="odd">&ndash;&gt;-->
+
+                                        <!--<tr ng-repeat="ta in snvList | limitTo:totalDisplayed" style="cursor: auto; " role="row" class="odd">-->
+                                            <!--<td>{{::ta.identifier | dashify }}</td>-->
+                                            <!--<td>{{::ta.chromosome | dashify }}</td>-->
+                                            <!--<td>{{::ta.position | dashify }}</td>-->
+                                            <!--<td>{{::ta.reference | dashify }}</td>-->
+                                            <!--<td>{{::ta.alternative | dashify }}</td>-->
+                                            <!--<td>{{::ta.filter | dashify }}</td>-->
+                                            <!--<td>{{::ta.alleleFrequency | dashify }}</td>-->
+                                            <!--<td>-->
+                                                <!--<a href ng-click="openCosmicGene(ta.gene)" class="report-link">{{::ta.gene}}</a>-->
+                                            <!--</td>-->
+                                            <!--<td>{{::ta.oncominevariantclass | dashify }}</td>-->
+                                            <!--<td>{{::ta.exon | dashify }}</td>-->
+                                            <!--<td>{{::ta.function | dashify }}</td>-->
+                                            <!--<td>{{::ta.hgvs | dashify }}</td>-->
+                                            <!--<td>{{::ta.readDepth | dashify }}</td>-->
+                                            <!--<td>{{::ta.transcript | dashify }}</td>-->
+                                            <!--<td>{{::ta.proteinMatch | dashify }}</td>-->
+                                        <!--</tr>-->
+
+                                        <!--</tbody>-->
+                                    <!--</table>-->
+                                <!--</div>-->
+
+                                <!--&lt;!&ndash;SNV TABLE&ndash;&gt;-->
+
+                                <!--&lt;!&ndash;CNV TABLE&ndash;&gt;-->
+                                <!--<div class="ibox-title ibox-title-no-line-no-padding">-->
+                                    <!--<h3>Copy Number Variants</h3>-->
+                                <!--</div>-->
+
+                                <!--<div class="col-md-12 white-bg animated fadeInRight"-->
+                                     <!--ng-controller="QcSampleController as DashCtrl"-->
+                                     <!--ng-init="loadQc_Table()">-->
+                                    <!--<table datatable="ng"-->
+                                           <!--dt-options="DashCtrl.dtOptions"-->
+                                           <!--dt-column-defs="DashCtrl.dtColumnDefs"-->
+                                           <!--dt-instance="dtInstance"-->
+                                           <!--dt-columns="dtColumns"-->
+                                           <!--class="table table-striped table-bordered dataTable table-hover">-->
+                                        <!--<thead>-->
+
+                                        <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<label>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;<div confirmed="confirmed" custom-element class="pull-right" style="width:200px"></div>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</label>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+                                        <!--<tr>-->
+                                            <!--<th class="label2" >Id</th>-->
+                                            <!--<th class="label2" >Chrom</th>-->
+                                            <!--<th class="label2" >Position</th>-->
+                                            <!--<th class="label2" >Reference</th>-->
+                                            <!--<th class="label2" >Alternative</th>-->
+                                            <!--<th class="label2" >Filter</th>-->
+                                            <!--<th class="label2" >RAW Nc</th>-->
+                                            <!--<th class="label2" >FCN</th>-->
+                                            <!--<th class="label2" >Cl 5%</th>-->
+                                            <!--<th class="label2" >Cl 95%</th>-->
+                                        <!--</tr>-->
+                                        <!--</thead>-->
+                                        <!--<tbody>-->
+
+                                        <!--<tr ng-repeat="ta in cnvList | limitTo:totalDisplayed | filter:searchFilter" style="cursor: auto; " role="row" class="odd">-->
+                                            <!--<td>-->
+                                                <!--<a href ng-click="openCosmicGene(ta.identifier)" class="report-link"> {{::ta.identifier | dashify }} </a>-->
+                                            <!--</td>-->
+                                            <!--<td>{{::ta.chromosome | dashify }}</td>-->
+                                            <!--<td>{{::ta.position | dashify }}</td>-->
+                                            <!--<td>{{::ta.reference | dashify }}</td>-->
+                                            <!--<td>{{::ta.alternative | dashify }}</td>-->
+                                            <!--<td>{{::ta.filter | dashify }}</td>-->
+                                            <!--<td>{{::ta.rawCopyNumber | dashify }}</td>-->
+                                            <!--<td>{{::ta.copyNumber | dashify }}</td>-->
+                                            <!--<td>{{::ta.confidenceInterval5percent | dashify }}</td>-->
+                                            <!--<td>{{::ta.confidenceInterval95percent | dashify }}</td>-->
+
+                                        <!--</tr>-->
+                                        <!--</tbody>-->
+                                    <!--</table>-->
+
+                                <!--</div>-->
+                                <!--&lt;!&ndash;CNV TABLE&ndash;&gt;-->
+
+                                <!--&lt;!&ndash;GENE TABLE&ndash;&gt;-->
+                                <!--<div class="ibox-title ibox-title-no-line-no-padding">-->
+                                    <!--<h3>Gene Fusions</h3>-->
+                                <!--</div>-->
+                                <!--<div class="col-md-12 white-bg animated fadeInRight"-->
+                                     <!--ng-controller="QcSampleController as DashCtrl"-->
+                                     <!--ng-init="loadGene_Table()">-->
+                                    <!--<table datatable="ng"-->
+                                           <!--dt-options="DashCtrl.dtOptions"-->
+                                           <!--dt-column-defs="DashCtrl.dtColumnDefs"-->
+                                           <!--dt-instance="dtInstance"-->
+                                           <!--dt-columns="dtColumns"-->
+                                           <!--class="table table-striped table-bordered dataTable table-hover">-->
+                                        <!--<thead>-->
+
+                                        <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<label>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;<div confirmed="confirmed" custom-element class="pull-right" style="width:200px"></div>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</label>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+                                        <!--<tr>-->
+                                            <!--<th class="label2" >Id</th> &lt;!&ndash;openCosmicGene("ACVRL1")&ndash;&gt;-->
+                                            <!--<th class="label2" >Chrom</th>-->
+                                            <!--<th class="label2" >Position</th>-->
+                                            <!--<th class="label2" >Reference</th>-->
+                                            <!--<th class="label2" >Alternative</th>-->
+                                            <!--<th class="label2" >Filter</th>-->
+                                            <!--<th class="label2" >Func Gene</th>-->
+                                            <!--<th class="label2" >Oncomine Variant Class</th>-->
+                                            <!--<th class="label2" >Exon</th>-->
+                                            <!--<th class="label2" >Function</th>-->
+                                            <!--<th class="label2" >Read Count</th>-->
+                                        <!--</tr>-->
+                                        <!--</thead>-->
+                                        <!--<tbody>-->
+
+                                        <!--<tr ng-repeat="ta in geneList | limitTo:totalDisplayed " style="cursor: auto; " role="row" class="odd">-->
+                                            <!--<td>-->
+                                                <!--<a href ng-click="openCosmicFusionId(ta.identifier)" class="report-link"> {{::ta.identifier | dashify }} </a>-->
+                                            <!--</td>-->
+                                            <!--<td>{{::ta.chromosome | dashify }}</td>-->
+                                            <!--<td>{{::ta.position | dashify }}</td>-->
+                                            <!--<td>{{::ta.reference | dashify }}</td>-->
+                                            <!--<td>{{::ta.alternative | dashify }}</td>-->
+                                            <!--<td>{{::ta.filter | dashify }}</td>-->
+                                            <!--<td>{{::ta.gene | dashify }}</td>-->
+                                            <!--<td>{{::ta.oncominevariantclass | dashify }}</td>-->
+                                            <!--<td>{{::ta.exon | dashify }}</td>-->
+                                            <!--<td>{{::ta.function | dashify }}</td>-->
+                                            <!--<td>{{::ta.readDepth | dashify }}</td>-->
+
+                                        <!--</tr>-->
+                                        <!--</tbody>-->
+                                    <!--</table>-->
+                                <!--</div>-->
+                                <!--&lt;!&ndash;GENE TABLE&ndash;&gt;-->
+
+                            <!--</div>-->
 
                         </div>
                     </div>
