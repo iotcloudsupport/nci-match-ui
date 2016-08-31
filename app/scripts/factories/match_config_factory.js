@@ -15,9 +15,9 @@ angular.module('matchbox.config', [])
             };
         } else if ($location.host().endsWith('pedmatch-int.nci.nih.gov')) {
             return {
-                'reportApiBaseUrl': urlPrefix + 'api/v1',
-                'treatmentArmApiBaseUrl': urlPrefix + 'api/v1',
-                'patientApiBaseUrl' : urlPrefix + 'api/v1'
+                'reportApiBaseUrl': urlPrefix + '/api/v1',
+                'treatmentArmApiBaseUrl': urlPrefix + '/api/v1',
+                'patientApiBaseUrl' : urlPrefix + '/api/v1'
             };
         } else {
             return {
