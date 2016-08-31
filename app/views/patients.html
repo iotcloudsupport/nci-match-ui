@@ -58,7 +58,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="item in filtered">
+                        <tr ng-repeat="item in filtered | startFrom:(paginationOptions.currentPage-1)*paginationOptions.itemsPerPage | limitTo:paginationOptions.itemsPerPage track by $index">
                             <td>
                                 <a ui-sref="patient({ patient_id: item.patient_id })">
                                     <i class="fa fa-user"></i> <span ng-bind="item.patient_id | dashify"></span>
@@ -80,12 +80,19 @@
                     </tbody>
                 </table>
 
-                <form class="form-inline pull-left">
-                    <div class="form-group">
-                        <grid-pagination max-size="5" class="pagination-sm" total-items="paginationOptions.totalItems" ng-model="paginationOptions.currentPage"
-                            ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                <div class="row">
+                    <div class="col pull-left">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <grid-pagination max-size="5" class="pagination-sm" total-items="paginationOptions.totalItems" ng-model="paginationOptions.currentPage"
+                                    ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                            </div>
+                        </form>
                     </div>
-                </form>
+                    <div class="col pull-left">
+                        <span class="item-count" ng-bind="filtered.length + ' items'"></span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -70,8 +70,16 @@
         $scope.getInExclusionTypeClass = getInExclusionTypeClass;
 
         $scope.versionHistory = [];
+        
+        $scope.gridActions = {};
 
         $scope.allPatientsDataGridOptions = {};
+        $scope.exclusionaryDiseasesGridOptions = {};
+        $scope.inclusionaryDiseasesGridOptions = {};
+        $scope.exclusionaryDrugsGridOptions = {};
+        $scope.snvsMnvsIndelsGridOptions = {};
+        $scope.cnvsGridOptions = {};
+        $scope.geneFusionsGridOptions = {};
 
         activate();
 
@@ -84,15 +92,26 @@
                 data: [],
                 ngColumnFilters: {
                     //"date": "utc",
+                    "dateSelected": "utc",
+                    "dateOnArm": "utc",
+                    "dateOffArm": "utc"
+
                 },
                 sort: {
                     //predicate: 'days_pending',
-                    //direction: 'desc'
+                    //direction: 'desc' date selected
                 },
                 searchableProps: [
+                    'slot',
                     'patient_id',
-                    'analysis_id'
-                    //add more
+                    'treatmentArmVersion',
+                    'patientAssignmentStatusOutcome',
+                    'dateSelected',
+                    'dateOffArm',
+                    'timeOnArm',
+                    'step',
+                    'diseases',
+                    'reason'
                 ],
                 customFilters: {
                     filterAll: function (items, value, predicate) {
@@ -102,7 +121,168 @@
                         });
                     }
                 }
+            };
+            $scope.exclusionaryDiseasesGridOptions = {
+                data: [],
+                ngColumnFilters: {
+
+                },
+                sort: {
+                    predicate: 'short_name',
+                    direction: 'asc'
+                },
+                searchableProps: [
+                    'disease_code',
+                    'short_name',
+                    'ctep_category'
+                ],
+                customFilters: {
+                    filterAll: function (items, value, predicate) {
+                        return items.filter(function (item) {
+                            return arrayTools.itemHasValue(item, value,
+                                $scope.exclusionaryDiseasesGridOptions.searchableProps, $scope.exclusionaryDiseasesGridOptions.ngColumnFilters, $filter);
+                        });
+                    }
+                }
             }
+            $scope.inclusionaryDiseasesGridOptions = {
+                data: [],
+                ngColumnFilters: {
+
+                },
+                sort: {
+                    predicate: 'short_name',
+                    direction: 'asc'
+                },
+                searchableProps: [
+                    'disease_code',
+                    'short_name',
+                    'ctep_category'
+                ],
+                customFilters: {
+                    filterAll: function (items, value, predicate) {
+                        return items.filter(function (item) {
+                            return arrayTools.itemHasValue(item, value,
+                                $scope.inclusionaryDiseasesGridOptions.searchableProps, $scope.inclusionaryDiseasesGridOptions.ngColumnFilters, $filter);
+                        });
+                    }
+                }
+            }
+            $scope.exclusionaryDrugsGridOptions = {
+                data: [],
+                ngColumnFilters: {
+
+                },
+                sort: {
+                    predicate: 'drug_id',
+                    direction: 'asc'
+                },
+                searchableProps: [
+                    'drug_id',
+                    'name'
+                ],
+                customFilters: {
+                    filterAll: function (items, value, predicate) {
+                        return items.filter(function (item) {
+                            return arrayTools.itemHasValue(item, value,
+                                $scope.exclusionaryDrugsGridOptions.searchableProps, $scope.exclusionaryDrugsGridOptions.ngColumnFilters, $filter);
+                        });
+                    }
+                }
+            }
+            $scope.snvsMnvsIndelsGridOptions = {
+                data: [],
+                ngColumnFilters: {
+                    //"date": "utc",
+
+                },
+                sort: {
+                    //predicate: 'days_pending',
+                    //direction: 'desc' date selected
+                    predicate: 'identifier',
+                    direction: 'asc'
+                },
+                searchableProps: [
+                    'identifier',
+                    'chromosome',
+                    'position',
+                    'cds_reference',
+                    'cds_alternative',
+                    'ocp_reference',
+                    'ocp_alternative',
+                    'strand',
+                    'level_of_evidence',
+                    'num_patients_with_variant',
+                    'num_patients_with_variant_on_arm',
+                    'percent_patients_with_variant_on_arm'
+                ],
+                customFilters: {
+                    filterAll: function (items, value, predicate) {
+                        return items.filter(function (item) {
+                            return arrayTools.itemHasValue(item, value,
+                                $scope.snvsMnvsIndelsGridOptions.searchableProps, $scope.snvsMnvsIndelsGridOptions.ngColumnFilters, $filter);
+                        });
+                    }
+                }
+            };
+            $scope.cnvsGridOptions = {
+                data: [],
+                ngColumnFilters: {
+                    //"date": "utc",
+
+                },
+                sort: {
+                    //predicate: 'days_pending',
+                    //direction: 'desc' date selected
+                    predicate: 'gene',
+                    direction: 'asc'
+                },
+                searchableProps: [
+                    'gene',
+                    'chromosome',
+                    'position',
+                    'level_of_evidence',
+                    'num_patients_with_variant',
+                    'num_patients_with_variant_on_arm',
+                    'percent_patients_with_variant_on_arm'
+                ],
+                customFilters: {
+                    filterAll: function (items, value, predicate) {
+                        return items.filter(function (item) {
+                            return arrayTools.itemHasValue(item, value,
+                                $scope.cnvsGridOptions.searchableProps, $scope.cnvs.ngColumnFilters, $filter);
+                        });
+                    }
+                }
+            };
+            $scope.geneFusionsGridOptions = {
+                data: [],
+                ngColumnFilters: {
+                    //"date": "utc",
+
+                },
+                sort: {
+                    //predicate: 'days_pending',
+                    //direction: 'desc' date selected
+                    predicate: 'identifier',
+                    direction: 'asc'
+                },
+                searchableProps: [
+                    'identifier',
+                    'level_of_evidence',
+                    'num_patients_with_variant',
+                    'num_patients_with_variant_on_arm',
+                    'percent_patients_with_variant_on_arm'
+                ],
+                customFilters: {
+                    filterAll: function (items, value, predicate) {
+                        return items.filter(function (item) {
+                            return arrayTools.itemHasValue(item, value,
+                                $scope.geneFusionsGridOptions.searchableProps, $scope.geneFusionsGridOptions.ngColumnFilters, $filter);
+                        });
+                    }
+                }
+            };
         }
 
         function setInExclusionType(inExclusionType) {
@@ -262,7 +442,7 @@
             angular.copy(data.data, scopeData);
             $scope.versions = scopeData;
             $scope.currentVersion = $scope.versions[0];
-            $scope.currentVersion.latest = 'This is the latest version.';
+            $scope.currentVersion.latest = 'This is the latest version.'; //need to set $scope.exclusionaryDiseasesGridOptions with currentVersion.exclusion_diseases ... and other disease tables also
             setupHistory();
             setupRulesExlcusionInclusionLists();
             setupFinal();

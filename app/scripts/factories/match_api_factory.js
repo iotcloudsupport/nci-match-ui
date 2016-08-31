@@ -50,7 +50,7 @@
                     return $http.get(matchConfig.patientApiBaseUrl + '/patients/' + id + '/timeline');
                 } else {
                     $log.info('Loading dashboard activity');
-                    return $http.get(matchConfig.patientApiBaseUrl + '/timeline');
+                    return $http.get(matchConfig.patientApiBaseUrl + '/timeline/timeline');
                 }
             }
 
@@ -85,27 +85,27 @@
             }
 
             function loadSpecimenTrackingList() {
-                return $http.get(matchConfig.patientApiBaseUrl + '/specimenTracking/shipments');
+                return $http.get(matchConfig.patientApiBaseUrl + '/patients/shipments');
             }
 
             function loadTissueVariantReportsList() {
-                return $http.get(matchConfig.patientApiBaseUrl + '/dashboard/pendingVariantReports/tissue');
+                return $http.get(matchConfig.patientApiBaseUrl + '/patients/variant_reports?status=PENDING&type=TISSUE');
             }
 
             function loadBloodVariantReportsList() {
-                return $http.get(matchConfig.patientApiBaseUrl + '/dashboard/pendingVariantReports/blood');
+                return $http.get(matchConfig.patientApiBaseUrl + '/patients/variant_reports?status=PENDING&type=BLOOD');
             }
 
             function loadPendingAssignmentReportsList() {
-                return $http.get(matchConfig.patientApiBaseUrl + '/dashboard/pendingAssignmentReports');
+                return $http.get(matchConfig.patientApiBaseUrl + '/patients/assignment_reports?status=PENDING');
             }
 
             function loadSequencedAndConfirmedChartData() {
-                return $http.get(matchConfig.patientApiBaseUrl + '/dashboard/sequencedAndConfirmedPatients');
+                return $http.get(matchConfig.patientApiBaseUrl + '/patients/sequencedAndConfirmedPatients');
             }
 
             function loadDashboardStatistics() {
-                return $http.get(matchConfig.patientApiBaseUrl + '/dashboard/patientStatistics');
+                return $http.get(matchConfig.patientApiBaseUrl + '/patients/statistics');
             }
             // Patient API - END
 
