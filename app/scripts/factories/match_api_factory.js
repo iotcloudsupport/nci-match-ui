@@ -105,7 +105,7 @@
             }
 
             function loadDashboardStatistics() {
-                return $http.get(matchConfig.patientApiBaseUrl + '/dashboard/patientStatistics');
+                return $http.get(matchConfig.patientApiBaseUrl + '/patients/statistics');
             }
             // Patient API - END
 

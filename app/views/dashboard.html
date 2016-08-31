@@ -1,23 +1,23 @@
-<div class="row wrapper border-bottom white-bg page-heading sticky-navbar"  affix>
-    <div class="col-lg-12">
-        <h2>Dashboard</h2>
-        <ol class="dashboard-anchor">
-            <li>
-                <a ng-click="gotoAnchor('1')">Statistcs</a>
-            </li>
-            <li>
-                <a ng-click="gotoAnchor('2')">Pending Items</a>
-            </li>
-            <li>
-                <a ng-click="gotoAnchor('3')">Activity Feed</a>
-            </li>
-        </ol>
-    </div>
-</div>
-
 <div ng-controller="DashboardController" class="page-content-padded">
+    <div class="row wrapper border-bottom white-bg page-heading sticky-navbar" affix>
+        <div class="col-lg-12">
+            <h2>Dashboard</h2>
+            <ol class="dashboard-anchor">
+                <li>
+                    <a ng-click="goto('statistics')">Statistcs</a>
+                </li>
+                <li>
+                    <a ng-click="goto('pending')">Pending Items</a>
+                </li>
+                <li>
+                    <a ng-click="goto('activity')">Activity Feed</a>
+                </li>
+            </ol>
+        </div>
+    </div>
 
-    <div class="wrapper animated fadeInRight anchor" id="anchor1">
+    <div class="wrapper animated fadeInRight">
+        <a class="anchor statistics" id="statistics"></a>
         <div class="no-horizontal-padding header-box-container">
             <div class="header-info-box top-dashboard-header-box">
                 <div class="row">
@@ -94,7 +94,9 @@
         </div>
     </div>
 
-    <div class="wrapper animated fadeInRight anchor" id="anchor2">
+    <a class="anchor pending" id="pending"></a>
+
+    <div class="wrapper animated fadeInRight anchor">
         <div class="panel-container pending-review">
             <div class="ibox-title ibox-title-no-line">
                 <h3>Pending Review </h3>
@@ -375,7 +377,9 @@
         </div>
     </div>
 
-    <div class="wrapper animated fadeInRight anchor" id="anchor3">
+    <a class="anchor activity" id="activity"></a>
+
+    <div class="wrapper animated fadeInRight anchor">
         <div class="row activity-feed-row">
             <div class="col-md-12" ng-controller="ActivityController as activity" ng-init="activity.startLoading(10)">
                 <div class="ibox-title ibox-title-no-line panel-title">

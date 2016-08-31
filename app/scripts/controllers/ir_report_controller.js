@@ -5,6 +5,8 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             var site = $stateParams.site;
             var urlparams = $location.search();
             var type = urlparams.type;
+            var molecular_id = urlparams.molecular_id;
+            var hash =  $location.hash();
 
             if(site === 'MDACC') {
                 $location.search("site", 'MDACC');
@@ -25,6 +27,23 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                 $scope.indextab = 1;
                 }
 
+            // console.log(hash === "")
+
+            if(hash !== "") {
+                var id = hash.substring(hash.indexOf('=')+1, hash.length);
+
+                $location.hash(null);
+                    $timeout(function() {
+                        $location.hash(hash);
+                        $anchorScroll();
+                    } );
+
+                gotoUrlBottom(hash);
+
+                $scope.positives = 'mocha';
+
+                };
+
             $scope.typeChange = typeChange;
 
             function typeChange() {
@@ -38,22 +57,23 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                     }
             }
 
-            $scope.gotoUrlBottom = function(tic) {
+            $scope.gotoUrlBottom = gotoUrlBottom;
+
+            function gotoUrlBottom(tic) {
                 var id = tic.substring(tic.indexOf("=") + 1, tic.length);
+
                 $scope.selectedRow = id;
                 $scope.mid = id;
                 $scope.titleid = id;
                 $scope.status = 'FAILED';
-                $scope.positives = 'mocha';
+                // $scope.positives = 'mocha';
                 // $scope.date_received = datecreated;
                 // $scope.posDate = datereceived;
 
                 // var tic = 'variant='+id;
                 $timeout(function() {
-
-
-
                     if(id.indexOf("Ntc") !== -1) {
+                        $scope.negatives = 'mocha';
                         // $scope.indextab = 1;
                         $location.hash(tic);
                         $anchorScroll();
@@ -61,6 +81,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                         getIndex(id);
                     }
                     else{
+                        $scope.positives = 'mocha';
                         // $scope.indextab = 0;
                         $location.hash(tic);
                         $anchorScroll();
@@ -71,6 +92,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             };
 
             function getIndex(index) {
+
                 matchApiMock
                     .openPositives(index)
                     .then(function (d) {
@@ -84,11 +106,16 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                                 }
                                 else {
                                     var newObject = jQuery.extend([], d.data[i][index]);
+                                    
+                                    // console.log("newObject-->" + JSON.stringify(newObject))
                                 }
                             }
                         }
                         loadPositivesList(newObject);
                     });
+
+                // $scope.positives = 'mocha';
+                // $scope.monthview = 'none';
             }
 
 
@@ -106,16 +133,6 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
             vm.dtOptions = DTOptionsBuilder.newOptions()
         .withOption('searching', false);
-
-
-            // if ( $location.search().hasOwnProperty( '#variant' ) ) {
-            //
-            //     console.log($location.search().target + "  --- VARIANT--> " + $stateParams.variant)
-            //
-            //     // var myvalue = $location.search()['myparam'];
-            //     // 'myvalue' now stores '33'
-            // }
-
 
         $scope.irList = [];
         $scope.moChaList = [];
@@ -148,7 +165,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
             // console.log("$scope.branch-->" + $scope.branch)
 
-        $scope.mid = "undefined";
+        // $scope.mid = "undefined";
         $scope.cellColor = "";
         $scope.hrReports = null;
         $scope.loadSampleHRFiles = loadSampleHRFiles;
@@ -175,11 +192,11 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
         $scope.siteName = [];
         $scope.site = 'undefined';
-        $scope.positives = 'undefined';
+        // $scope.positives = 'undefined';
         $scope.barData = {};
 
-        $scope.positiveControlList = [];
-        $scope.negativeVariantsList = [];
+        // $scope.positiveControlList = [];
+        // $scope.negativeVariantsList = [];
 
         function makeid()
         {
@@ -1015,8 +1032,8 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
         function setSampleType(reportType) {
 
-            $scope.positives = "undefined";
-            $scope.negatives = "undefined";
+            // $scope.positives = "undefined";
+            // $scope.negatives = "undefined";
 
             //Clean hash
             $location.hash(null);
@@ -1107,9 +1124,6 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             $scope.positives = 'mocha';
             $scope.date_received = datecreated;
             $scope.posDate = datereceived;
-
-
-            console.log($scope.selectedRow)
 
             sharedCliaArray.setProperty([$scope.aid, $scope.posDate, $scope.tvarDate])
 
@@ -1228,6 +1242,9 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
                     }
                 });
             }
+
+            // console.log("$scope.positiveControlList--> " + $scope.positiveControlList)
+
         };
 
         //MDA Positives
@@ -1302,6 +1319,8 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
         function loadNegativesList(data) {
 
+            // console.log(JSON.stringify(data))
+
             angular.forEach(data, function (value,key) {
 
                 if(value.type == 'snv'){
@@ -1321,7 +1340,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
             $scope.mid = id;
             $scope.titleid = id;
             $scope.status = status;
-            $scope.positives = 'mocha';
+            $scope.negatives = 'mocha';
             $scope.date_received = datecreated;
             $scope.posDate = datereceived;
 
@@ -1329,7 +1348,7 @@ angular.module('matchbox.iradmin',['ui.bootstrap', 'cgPrompt', 'ui.router', 'dat
 
             var index = id.substring(id.indexOf("MoCha_") + 6, id.length) + '.json';
 
-            matchApi
+            matchApiMock
                 .openNegatives(index)
                 .then(function (d) {
 

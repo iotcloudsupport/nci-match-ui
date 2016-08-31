@@ -1,5 +1,5 @@
 <div ng-controller="PatientController" ng-init="loadPatientData()" class="page-content-padded">
-    <div class="row wrapper border-bottom white-bg page-heading">
+    <div class="row wrapper border-bottom white-bg page-heading sticky-navbar" affix>
         <div class="col-lg-10">
             <h2>Patient</h2>
             <ol class="breadcrumb">
@@ -375,11 +375,11 @@
                                             </div>
                                             <div class="btn-group btn-group-margin" data-toggle="buttons">
                                                 <label class="btn btn-outline btn-success" ng-class="getVariantReportModeClass('FILTERED')"
-                                                       ng-click="setVariantReportMode('FILTERED')" title="Show Filtered Report">
+                                                    ng-click="setVariantReportMode('FILTERED')" title="Show Filtered Report">
                                                     <input type="radio" name="variantReportMode" id="option3">Filtered
                                                 </label>
                                                 <label class="btn btn-outline btn-success" ng-class="getVariantReportModeClass('QC')"
-                                                       ng-click="setVariantReportMode('QC')" title="Show to QC Report">
+                                                    ng-click="setVariantReportMode('QC')" title="Show to QC Report">
                                                     <input type="radio" name="variantReportMode" id="option4">QC Report
                                                 </label>
                                             </div>

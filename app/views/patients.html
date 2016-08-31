@@ -1,90 +1,92 @@
-<div class="row wrapper border-bottom white-bg page-heading">
-    <div class="col-lg-10">
-        <h2>Patients</h2>
-        <ol class="breadcrumb">
-            <li>
-                <a ui-sref="dashboard">Dashboard</a>
-            </li>
-            <li class="active">
-                <strong>Patients</strong>
-            </li>
-        </ol>
-    </div>
-    <div class="col-lg-2">
+<div class="page-content-padded">
+    <div class="row wrapper border-bottom white-bg page-heading sticky-navbar" affix>
+        <div class="col-lg-10">
+            <h2>Patients</h2>
+            <ol class="breadcrumb">
+                <li>
+                    <a ui-sref="dashboard">Dashboard</a>
+                </li>
+                <li class="active">
+                    <strong>Patients</strong>
+                </li>
+            </ol>
+        </div>
+        <div class="col-lg-2">
 
+        </div>
     </div>
-</div>
 
-<div class="wrapper push-up-inner-panel animated fadeInRight" ng-controller="PatientsController" ng-init="loadPatientList()">
-    <div class="ibox-content grid-container">
-        <div id="patientGrid" grid-data grid-options="gridOptions" grid-actions="gridActions" class="data-grid">
-            <div class="row">
-                <div class="col pull-left">
-                    <form class="form-inline">
-                        <div class="form-group">
-                            <div class="items-per-page">
-                                <label for="itemsOnPageSelect2">Show</label>
-                                <select id="itemsOnPageSelect2" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage"
-                                    ng-change="reloadGrid()">
+    <div class="wrapper push-up-inner-panel animated fadeInRight" ng-controller="PatientsController" ng-init="loadPatientList()">
+        <div class="ibox-content grid-container">
+            <div id="patientGrid" grid-data grid-options="gridOptions" grid-actions="gridActions" class="data-grid">
+                <div class="row">
+                    <div class="col pull-left">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <div class="items-per-page">
+                                    <label for="itemsOnPageSelect2">Show</label>
+                                    <select id="itemsOnPageSelect2" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage"
+                                        ng-change="reloadGrid()">
                                                         <option>10</option>
                                                         <option>25</option>
                                                         <option>50</option>
                                                         <option>100</option>
                                                     </select>
-                                <label for="itemsOnPageSelect2">per page</label>
+                                    <label for="itemsOnPageSelect2">per page</label>
+                                </div>
                             </div>
+                        </form>
+                    </div>
+                    <div class="col pull-right">
+                        <div class="grid-filter">
+                            <input type="text" class="form-control input-sm order-search-box" placeholder="Filter by all columns" grid-id="patientGrid"
+                                ng-change="gridActions.filter()" ng-model="filterAll" filter-by="filterAll" filter-type="text">
                         </div>
-                    </form>
-                </div>
-                <div class="col pull-right">
-                    <div class="grid-filter">
-                        <input type="text" class="form-control input-sm order-search-box" placeholder="Filter by all columns" grid-id="patientGrid"
-                            ng-change="gridActions.filter()" ng-model="filterAll" filter-by="filterAll" filter-type="text">
                     </div>
                 </div>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th sortable="patient_id" class="sortable">Patient ID</th>
+                            <th sortable="current_status" class="sortable">Status</th>
+                            <th sortable="current_step_number" class="sortable">Step Number</th>
+                            <th sortable="disease_list" class="sortable">Disease</th>
+                            <th sortable="treatment_arm_title" class="sortable">Treatment Arm</th>
+                            <th sortable="registration_date" class="sortable">Registration Date</th>
+                            <th sortable="off_trial_date" class="sortable">Off Trial Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in filtered">
+                            <td>
+                                <a ui-sref="patient({ patient_id: item.patient_id })">
+                                    <i class="fa fa-user"></i> <span ng-bind="item.patient_id | dashify"></span>
+                                </a>
+                            </td>
+                            <td><span style="color:{{item.current_status | patientStatus}}" ng-bind="item.current_status | dashify">item.current_status</span></td>
+                            <td ng-bind="item.current_step_number | dashify"></td>
+                            <td ng-bind="item.disease_list | dashify"></td>
+                            <td>
+                                <treatment-arm-title name="item.treatment_arm_name" stratum="item.treatment_arm_stratum_id" version="item.treatment_arm_version"></treatment-arm-title>
+                            </td>
+                            <td ng-bind="item.registration_date | utc"></td>
+                            <td ng-bind="item.off_trial_date | utc"></td>
+                        </tr>
+
+                        <tr ng-if="!gridOptions.data || !gridOptions.data.length" class="no-data-message">
+                            <td colspan="7" class="text-muted">No patients</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <form class="form-inline pull-left">
+                    <div class="form-group">
+                        <grid-pagination max-size="5" class="pagination-sm" total-items="paginationOptions.totalItems" ng-model="paginationOptions.currentPage"
+                            ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                    </div>
+                </form>
             </div>
-
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th sortable="patient_id" class="sortable">Patient ID</th>
-                        <th sortable="current_status" class="sortable">Status</th>
-                        <th sortable="current_step_number" class="sortable">Step Number</th>
-                        <th sortable="disease_list" class="sortable">Disease</th>
-                        <th sortable="treatment_arm_title" class="sortable">Treatment Arm</th>
-                        <th sortable="registration_date" class="sortable">Registration Date</th>
-                        <th sortable="off_trial_date" class="sortable">Off Trial Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="item in filtered">
-                        <td>
-                            <a ui-sref="patient({ patient_id: item.patient_id })">
-                                <i class="fa fa-user"></i> <span ng-bind="item.patient_id | dashify"></span>
-                            </a>
-                        </td>
-                        <td><span style="color:{{item.current_status | patientStatus}}" ng-bind="item.current_status | dashify">item.current_status</span></td>
-                        <td ng-bind="item.current_step_number | dashify"></td>
-                        <td ng-bind="item.disease_list | dashify"></td>
-                        <td>
-                            <treatment-arm-title name="item.treatment_arm_name" stratum="item.treatment_arm_stratum_id" version="item.treatment_arm_version"></treatment-arm-title>
-                        </td>
-                        <td ng-bind="item.registration_date | utc"></td>
-                        <td ng-bind="item.off_trial_date | utc"></td>
-                    </tr>
-
-                    <tr ng-if="!gridOptions.data || !gridOptions.data.length" class="no-data-message">
-                        <td colspan="7" class="text-muted">No patients</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <form class="form-inline pull-left">
-                <div class="form-group">
-                    <grid-pagination max-size="5" class="pagination-sm" total-items="paginationOptions.totalItems" ng-model="paginationOptions.currentPage"
-                        ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
-                </div>
-            </form>
         </div>
     </div>
 </div>

@@ -50,7 +50,7 @@
         $scope.loadBloodVariantReportsList = loadBloodVariantReportsList;
         $scope.loadPendingAssignmentReportsList = loadPendingAssignmentReportsList;
         $scope.loadDashboardData = loadDashboardData;
-        $scope.gotoAnchor = gotoAnchor;
+        $scope.goto = goto;
 
         var aMoiLabels = [
             '0 aMOI',
@@ -371,19 +371,6 @@
         function goto(section) {
             $location.hash(section);
             $anchorScroll();
-        }
-
-        function gotoAnchor(x) {
-            var newHash = 'anchor' + x;
-            if ($location.hash() !== newHash) {
-                // set the $location.hash to `newHash` and
-                // $anchorScroll will automatically scroll to it
-                $location.hash('anchor' + x);
-            } else {
-                // call $anchorScroll() explicitly,
-                // since $location.hash hasn't changed
-                $anchorScroll();
-            }
         }
     }
 
