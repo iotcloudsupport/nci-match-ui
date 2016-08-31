@@ -198,7 +198,7 @@
                                     <td ng-bind="item.reason | dashify"></td>
                                 </tr>
                                 <tr ng-if="!allPatientDataGridOptions.data || !allPatientDataGridOptions.data.length" class="no-data-message">
-                                    <td colspan="8" class="text-muted">No patients have been assigned to this treatment arm.</td>
+                                    <td colspan="13" class="text-muted">No patients have been assigned to this treatment arm</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -222,145 +222,236 @@
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <div class="ibox float-e-margins">
-                                                    <div class="ibox-title ibox-title-no-line-no-padding">
-                                                        <h3>Exclusionary Diseases</h3>
+                                                <div id="exclusionaryDiseases" grid-data grid-options="exclusionaryDiseasesGridOptions" grid-actions="gridActions" class="data-grid">
+                                                    <div class="col pull-left">
+                                                        <div>
+                                                            <h3>Exclusionary Diseases</h3><br>
+                                                        </div>
+
                                                     </div>
-                                                    <div class="ibox-content">
-                                                        <table datatable="ng" dt-options="ddOptions" dt-columns="dtColumnDefs" dt-instance="dtInstance" class="table table-striped table-bordered table-hover"
-                                                            style="width:100%">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Code</th>
-                                                                    <th>Name</th>
-                                                                    <th>Type</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr ng-repeat="item in currentVersion.exclusion_diseases">
-                                                                    <td>{{item.disease_code | dashify }}</td>
-                                                                    <td>{{item.short_name | dashify }}</td>
-                                                                    <td>{{item.ctep_category | dashify }}</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
+                                                    <div class="col pull-right">
+                                                        <div class="grid-filter">
+                                                            <input type="text" class="form-control input-sm order-search-box"
+                                                                   placeholder="Filter by all columns"
+                                                                   grid-id="exclusionaryDiseases"
+                                                                   ng-change="gridActions.filter()"
+                                                                   ng-model="filterAll"
+                                                                   filter-by="filterAll"
+                                                                   filter-type="text">
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                    <tr>
+                                                        <th sortable="disease_code" class="sortable">Code</th>
+                                                        <th sortable="short_name" class="sortable">Name</th>
+                                                        <th sortable="ctep_category" class="sortable">Type</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr grid-item>
+
+                                                        <td ng-bind="item.disease_code | dashify"></td>
+                                                        <td ng-bind="item.short_name | dashify"></td>
+                                                        <td ng-bind="item.ctep_category | dashify"></td>
+
+                                                    </tr>
+                                                    <tr ng-if="!exclusionaryDiseasesGridOptions.data || !exclusionaryDiseasesGridOptions.data.length" class="no-data-message">
+                                                        <td colspan="3" class="text-muted">No exclusionary diseases</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <form class="form-inline pull-left">
+                                                    <div class="form-group">
+                                                        <grid-pagination max-size="5" class="pagination-sm" total-items="paginationOptions.totalItems" ng-model="paginationOptions.currentPage"
+                                                                         ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div id="inclusionaryDiseases" grid-data grid-options="inclusionaryDiseasesGridOptions" grid-actions="gridActions" class="data-grid">
+                                                    <div class="col pull-left">
+                                                        <div>
+                                                            <h3>Inclusionary Diseases</h3><br>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col pull-right">
+                                                        <div class="grid-filter">
+                                                            <input type="text" class="form-control input-sm order-search-box"
+                                                                   placeholder="Filter by all columns"
+                                                                   grid-id="inclusionaryDiseases"
+                                                                   ng-change="gridActions.filter()"
+                                                                   ng-model="filterAll"
+                                                                   filter-by="filterAll"
+                                                                   filter-type="text">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                    <tr>
+                                                        <th sortable="disease_code" class="sortable">Code</th>
+                                                        <th sortable="short_name" class="sortable">Name</th>
+                                                        <th sortable="ctep_category" class="sortable">Type</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr grid-item>
+
+                                                        <td ng-bind="item.disease_code | dashify"></td>
+                                                        <td ng-bind="item.short_name | dashify"></td>
+                                                        <td ng-bind="item.ctep_category | dashify"></td>
+
+                                                    </tr>
+                                                    <tr ng-if="!inclusionaryDiseasesGridOptions.data || !inclusionaryDiseasesGridOptions.data.length" class="no-data-message">
+                                                        <td colspan="3" class="text-muted">No inclusionary diseases</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                <form class="form-inline pull-left">
+                                                    <div class="form-group">
+                                                        <grid-pagination max-size="5" class="pagination-sm" total-items="paginationOptions.totalItems" ng-model="paginationOptions.currentPage"
+                                                                         ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                                                    </div>
+                                                </form>
                                             </div>
 
-                                            <div class="col-lg-6">
-                                                <div class="ibox float-e-margins">
-                                                    <div class="ibox-title ibox-title-no-line-no-padding">
-                                                        <h3>Inclusionary Diseases</h3>
-                                                    </div>
-                                                    <div class="ibox-content">
-                                                        <table datatable="ng" dt-options="ddOptions" dt-columns="dtColumnDefs" dt-instance="dtInstance" class="table table-striped table-bordered table-hover"
-                                                            style="width:100%">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Code</th>
-                                                                    <th>Name</th>
-                                                                    <th>Type</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr ng-repeat="item in currentVersion.inclusion_diseases">
-                                                                    <td>{{item.disease_code | dashify }}</td>
-                                                                    <td>{{item.short_name | dashify }}</td>
-                                                                    <td>{{item.ctep_category | dashify }}</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-6">
-                                                <div class="ibox float-e-margins">
-                                                    <div class="ibox-title ibox-title-no-line-no-padding">
-                                                        <h3>Exclusionary Drugs</h3>
+                                                <div id="exclusionaryDrugs" grid-data grid-options="exclusionaryDrugsGridOptions" grid-actions="gridActions" class="data-grid">
+                                                    <div class="col pull-left">
+                                                        <div>
+                                                            <h3>Exclusionary Drugs</h3><br>
+                                                        </div>
+
                                                     </div>
-                                                    <div class="ibox-content">
-                                                        <table datatable="ng" dt-options="ddOptions" dt-columns="dtColumnDefs" dt-instance="dtInstance" class="table table-striped table-bordered table-hover"
-                                                            style="width:100%">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>ID</th>
-                                                                    <th>Name</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr ng-repeat="item in currentVersion.exclusion_drugs">
-                                                                    <td>{{item.drug_id | dashify }}</td>
-                                                                    <td>{{item.name | dashify }}</td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
+                                                    <div class="col pull-right">
+                                                        <div class="grid-filter">
+                                                            <input type="text" class="form-control input-sm order-search-box"
+                                                                   placeholder="Filter by all columns"
+                                                                   grid-id="exclusionaryDrugs"
+                                                                   ng-change="gridActions.filter()"
+                                                                   ng-model="filterAll"
+                                                                   filter-by="filterAll"
+                                                                   filter-type="text">
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                    <tr>
+                                                        <th sortable="drug_id" class="sortable">ID</th>
+                                                        <th sortable="name" class="sortable">Name</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr grid-item>
+
+                                                        <td ng-bind="item.drug_id | dashify"></td>
+                                                        <td ng-bind="item.name | dashify"></td>
+                                                    </tr>
+                                                    <tr ng-if="!exclusionaryDrugsGridOptions.data || !exclusionaryDrugsGridOptions.data.length" class="no-data-message">
+                                                        <td colspan="3" class="text-muted">No exclusionary drugs</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                <form class="form-inline pull-left">
+                                                    <div class="form-group">
+                                                        <grid-pagination max-size="5" class="pagination-sm" total-items="paginationOptions.totalItems" ng-model="paginationOptions.currentPage"
+                                                                         ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
+
                                     </div>
                                 </uib-tab>
 
                                 <uib-tab heading="SNVs / MNVs / Indels">
                                     <div class="panel-body">
-                                        <div class="ibox float-e-margins">
-                                            <div class="ibox-content" style="border-top-width: 0px">
+                                            <div id="snvsMnvsIndels" grid-data grid-options="snvsMnvsIndelsGridOptions" grid-actions="gridActions" class="data-grid">
+                                                <div class="row">
+                                                    <div class="col pull-left">
+                                                        <form class="form-inline">
+                                                            <div class="form-group">
+                                                                <div class="items-per-page">
+                                                                    <label for="itemsOnPageSelectSnv">Show</label>
+                                                                    <select id="itemsOnPageSelectSnv" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage"
+                                                                            ng-change="reloadGrid()">
+                                                                        <option>10</option>
+                                                                        <option>25</option>
+                                                                        <option>50</option>
+                                                                        <option>100</option>
+                                                                    </select>
+                                                                    <label for="itemsOnPageSelectSnv">per page</label>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="col pull-right">
+                                                        <div class="grid-filter">
+                                                            <input type="text" class="form-control input-sm order-search-box" placeholder="Filter by all columns" grid-id="snvsMnvsIndels"
+                                                                   ng-change="gridActions.filter()" ng-model="filterAll" filter-by="filterAll" filter-type="text">
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="btn-group">
                                                     <div class="btn-group btn-group-margin" data-toggle="buttons">
                                                         <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('inclusion')" ng-click="setInExclusionType('inclusion')"
-                                                            title="Switch to Inclusion">
-                                                                <input type="radio" name="inExclusionType" id="option1">INCLUSION
-                                                            </label>
+                                                               title="Switch to Inclusion">
+                                                            <input type="radio" name="inExclusionType" id="option1">INCLUSION
+                                                        </label>
                                                         <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('exclusion')" ng-click="setInExclusionType('exclusion')"
-                                                            title="Switch to Exclusion">
-                                                                <input type="radio" name="inExclusionType" id="option2">EXCLUSION
-                                                            </label>
+                                                               title="Switch to Exclusion">
+                                                            <input type="radio" name="inExclusionType" id="option2">EXCLUSION
+                                                        </label>
                                                     </div>
                                                 </div>
                                                 <br><br>
                                                 <div class="row" ng-if="inExclusionType === 'inclusion'">
-                                                    <table datatable="ng" dt-options="dtOptions" class="table table-striped table-bordered table-hover" style="width:100%">
+                                                    <table class="table table-striped">
                                                         <thead>
                                                             <tr>
-                                                                <th>ID</th>
-                                                                <th>Chrom <i class="fa fa-question-circle" data-placement="top"
-                                                                        title="{{tooltipContent.chr}}" onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                <th>Position</th>
-                                                                <th>CDS Ref <i class="fa fa-question-circle" data-placement="top"
-                                                                        title="{{tooltipContent.ref}}" onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                <th>CDS Alt <i class="fa fa-question-circle" data-placement="top"
-                                                                        title="{{tooltipContent.alt}}" onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                <th>OCP Ref <i class="fa fa-question-circle" data-placement="top"
-                                                                        title="{{tooltipContent.ref}}" onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                <th>OCP Alt <i class="fa fa-question-circle" data-placement="top"
-                                                                        title="{{tooltipContent.alt}}" onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                <th>Strand <i class="fa fa-question-circle" data-placement="top"
-                                                                        title="{{tooltipContent.alt}}" onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                <th>LOE <i class="fa fa-question-circle" data-placement="top"
-                                                                        title="{{tooltipContent.loe}}" onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                <th>Lit <i class="fa fa-question-circle" data-placement="top"
-                                                                        title="{{tooltipContent.lit}}" onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                <th>Total # Of Patients With Variant</th>
-                                                                <th>Patients With Variant Who Were Assigned To This Arm</th>
-                                                                <th>% Of Patients With Variant On Arm Of Total Patients With
+                                                                <th sortable="identifier" class="sortable">ID</th>
+                                                                <th sortable="chromosome" class="sortable">Chrom <i class="fa fa-question-circle" data-placement="top"
+                                                                             title="{{tooltipContent.chr}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                <th sortable="position" class="sortable">Position</th>
+                                                                <th sortable="cds_reference" class="sortable">CDS Ref <i class="fa fa-question-circle" data-placement="top"
+                                                                               title="{{tooltipContent.ref}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                <th sortable="cds_alternative" class="sortable">CDS Alt <i class="fa fa-question-circle" data-placement="top"
+                                                                               title="{{tooltipContent.alt}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                <th sortable="ocp_reference" class="sortable">OCP Ref <i class="fa fa-question-circle" data-placement="top"
+                                                                               title="{{tooltipContent.ref}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                <th sortable="ocp_alternative" class="sortable">OCP Alt <i class="fa fa-question-circle" data-placement="top"
+                                                                               title="{{tooltipContent.alt}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                <th sortable="strand" class="sortable">Strand <i class="fa fa-question-circle" data-placement="top"
+                                                                              title="{{tooltipContent.alt}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                <th sortable="level_of_evidence" class="sortable">LOE <i class="fa fa-question-circle" data-placement="top"
+                                                                           title="{{tooltipContent.loe}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                <th class="text-center">Lit <i class="fa fa-question-circle" data-placement="top"
+                                                                           title="{{tooltipContent.lit}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                <th sortable="num_patients_with_variant" class="sortable">Total # Of Patients With Variant</th>
+                                                                <th sortable="num_patients_with_variant_on_arm" class="sortable">Patients With Variant Who Were Assigned To This Arm</th>
+                                                                <th sortable="percent_patients_with_variant_on_arm" class="sortable">% Of Patients With Variant On Arm Of Total Patients With
                                                                     Variant
                                                                 </th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr ng-model="version" ng-repeat="item in currentVersion.snvsInclusion">
-                                                                <td><a ng-click="openId(item.identifier)">{{item.identifier | dashify }}</a></td>
-                                                                <td>{{item.chromosome | dashify }}</td>
-                                                                <td>{{item.position | dashify }}</td>
-                                                                <td>{{item.cds_reference | dashify }}</td>
-                                                                <td>{{item.cds_alternative | dashify }}</td>
-                                                                <td>{{item.ocp_reference | dashify }}</td>
-                                                                <td>{{item.ocp_alternative | dashify }}</td>
-                                                                <td>{{item.strand | dashify }}</td>
-                                                                <td>{{item.level_of_evidence | dashify }}</td>
+                                                            <tr grid-item ng-model="version">
+                                                                <td><a ng-click="openId(item.identifier)"><span ng-bind="item.identifier | dashify"></span></a></td>
+                                                                <td ng-bind="item.chromosome | dashify"></td>
+                                                                <td ng-bind="item.position | dashify"></td>
+                                                                <td ng-bind="item.cds_reference | dashify"></td>
+                                                                <td ng-bind="item.cds_alternative | dashify"></td>
+                                                                <td ng-bind="item.ocp_reference | dashify"></td>
+                                                                <td ng-bind="item.ocp_alternative | dashify"></td>
+                                                                <td ng-bind="item.strand | dashify"></td>
+                                                                <td ng-bind="item.level_of_evidence | dashify"></td>
                                                                 <td>
                                                                     <table>
                                                                         <tr ng-repeat="subitem in item.public_med_ids">
@@ -368,214 +459,331 @@
                                                                         </tr>
                                                                     </table>
                                                                 </td>
-                                                                <td style="text-align:right">{{item.num_patients_with_variant | dashify }}</td>
-                                                                <td style="text-align:right">{{item.num_patients_with_variant_on_arm | dashify }}</td>
-                                                                <td style="text-align:right">{{item.percent_patients_with_variant_on_arm | dashify }}
-                                                                </td>
+                                                                <td ng-bind="item.num_patients_with_variant | dashify" style="text-align:right"></td>
+                                                                <td ng-bind="item.num_patients_with_variant_on_arm | dashify" style="text-align:right"></td>
+                                                                <td ng-bind="item.percent_patients_with_variant_on_arm | dashify" style="text-align:right"></td>
+                                                            </tr>
+                                                            <tr ng-if="!snvsMnvsIndelsGridOptions.data || !snvsMnvsIndelsGridOptions.data.length" class="no-data-message">
+                                                                <td colspan="13" class="text-muted">No inclusion SNVs / MNVs / Indels</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
+                                                    <form class="form-inline pull-left">
+                                                        <div class="form-group">
+                                                            <grid-pagination max-size="5" class="pagination-sm" total-items="paginationOptions.totalItems" ng-model="paginationOptions.currentPage"
+                                                                             ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                                 <div class="row" ng-if="inExclusionType === 'exclusion'">
-                                                    <table datatable="ng" dt-options="dtOptions" class="table table-striped table-bordered table-hover" style="width:100%">
+                                                    <table class="table table-striped">
                                                         <thead>
-                                                            <tr>
-                                                                <th>ID</th>
-                                                                <th>Chrom <i class="fa fa-question-circle" data-placement="top"
-                                                                        title="{{tooltipContent.chr}}" onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                <th>Position</th>
-                                                                <th>CDS Ref <i class="fa fa-question-circle" data-placement="top"
-                                                                        title="{{tooltipContent.ref}}" onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                <th>CDS Alt <i class="fa fa-question-circle" data-placement="top"
-                                                                        title="{{tooltipContent.alt}}" onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                <th>OCP Ref <i class="fa fa-question-circle" data-placement="top"
-                                                                        title="{{tooltipContent.ref}}" onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                <th>OCP Alt <i class="fa fa-question-circle" data-placement="top"
-                                                                        title="{{tooltipContent.alt}}" onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                <th>Strand <i class="fa fa-question-circle" data-placement="top"
-                                                                        title="{{tooltipContent.alt}}" onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                <th>Lit <i class="fa fa-question-circle" data-placement="top"
-                                                                        title="{{tooltipContent.lit}}" onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                <th>Total # Of Patients With Variant</th>
-                                                                <th>Patients With Variant Who Were Excluded From This Arm</th>
-                                                            </tr>
+                                                        <tr>
+                                                            <th sortable="identifier" class="sortable">ID</th>
+                                                            <th sortable="chromosome" class="sortable">Chrom <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.chr}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th sortable="position" class="sortable">Position</th>
+                                                            <th sortable="cds_reference" class="sortable">CDS Ref <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.ref}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th sortable="cds_alternative" class="sortable">CDS Alt <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.alt}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th sortable="ocp_reference" class="sortable">OCP Ref <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.ref}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th sortable="ocp_alternative" class="sortable">OCP Alt <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.alt}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <<th sortable="strand" class="sortable">Strand <i class="fa fa-question-circle" data-placement="top"
+                                                                                                              title="{{tooltipContent.alt}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th class="text-center">Lit <i class="fa fa-question-circle" data-placement="top"
+                                                                                           title="{{tooltipContent.lit}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                            <th sortable="num_patients_with_variant" class="sortable">Total # Of Patients With Variant</th>
+                                                            <th sortable="num_patients_with_variant_on_arm" class="sortable">Patients With Variant Who Were Excluded From This Arm</th>
+                                                        </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr ng-model="version" ng-repeat="item in currentVersion.snvsExclusion">
-                                                                <td><a ng-click="openId(item.identifier)">{{item.identifier | dashify }}</a></td>
-                                                                <td>{{item.chromosome | dashify }}</td>
-                                                                <td>{{item.position | dashify }}</td>
-                                                                <td>{{item.cds_reference | dashify }}</td>
-                                                                <td>{{item.cds_alternative | dashify }}</td>
-                                                                <td>{{item.ocp_reference | dashify }}</td>
-                                                                <td>{{item.ocp_alternative | dashify }}</td>
-                                                                <td>{{item.strand | dashify }}</td>
+                                                            <tr grid-item ng-model="version">
+                                                                <td><a ng-click="openId(item.identifier)"><span ng-bind="item.identifier | dashify"></span></a></td>
+                                                                <td ng-bind="item.chromosome | dashify"></td>
+                                                                <td ng-bind="item.position | dashify"></td>
+                                                                <td ng-bind="item.cds_reference | dashify"></td>
+                                                                <td ng-bind="item.cds_alternative | dashify"></td>
+                                                                <td ng-bind="item.ocp_reference | dashify"></td>
+                                                                <td ng-bind="item.ocp_alternative | dashify"></td>
+                                                                <td ng-bind="item.strand | dashify"></td>
                                                                 <td>
-                                                                    <div ng-repeat="subitem in item.public_med_ids">
-                                                                        <a ng-click="openPubMed(subitem)">{{subitem | dashify }}</a>
-                                                                    </div>
+                                                                    <table>
+                                                                        <tr ng-repeat="subitem in item.public_med_ids">
+                                                                            <td><a ng-click="openPubMed(subitem)">{{subitem | dashify }}</a></td>
+                                                                        </tr>
+                                                                    </table>
                                                                 </td>
-                                                                <td style="text-align:right">{{item.num_patients_with_variant | dashify }}</td>
-                                                                <td style="text-align:right">{{item.num_patients_with_variant_on_arm | dashify }}</td>
+                                                                <td ng-bind="item.num_patients_with_variant | dashify" style="text-align:right"></td>
+                                                                <td ng-bind="item.num_patients_with_variant_on_arm | dashify" style="text-align:right"></td>
+                                                            </tr>
+                                                            <tr ng-if="!snvsMnvsIndelsGridOptions.data || !snvsMnvsIndelsGridOptions.data.length" class="no-data-message">
+                                                                <td colspan="13" class="text-muted">No exclusion CNVs</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
                                                 </div>
                                             </div>
-                                        </div>
                                     </div>
                                 </uib-tab>
 
                                 <uib-tab heading="CNVs">
                                     <div class="panel-body">
-                                        <div class="ibox float-e-margins">
-                                            <div class="ibox-content" style="border-top-width: 0px">
-                                                <div class="btn-group btn-group-margin" data-toggle="buttons">
-                                                    <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('inclusion')" ng-click="setInExclusionType('inclusion')"
-                                                        title="Switch to Inclusion">
-                                                    <input type="radio" name="inExclusionType" id="option1">INCLUSION
-                                                </label>
-                                                    <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('exclusion')" ng-click="setInExclusionType('exclusion')"
-                                                        title="Switch to Exclusion">
-                                                    <input type="radio" name="inExclusionType" id="option2">EXCLUSION
-                                                </label>
+                                            <div id="cnvs" grid-data grid-options="cnvsGridOptions" grid-actions="gridActions" class="data-grid">
+                                                <div class="row">
+                                                    <div class="col pull-left">
+                                                        <form class="form-inline">
+                                                            <div class="form-group">
+                                                                <div class="items-per-page">
+                                                                    <label for="itemsOnPageSelectCnv">Show</label>
+                                                                    <select id="itemsOnPageSelectCnv" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage"
+                                                                            ng-change="reloadGrid()">
+                                                                        <option>10</option>
+                                                                        <option>25</option>
+                                                                        <option>50</option>
+                                                                        <option>100</option>
+                                                                    </select>
+                                                                    <label for="itemsOnPageSelectCnv">per page</label>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="col pull-right">
+                                                        <div class="grid-filter">
+                                                            <input type="text" class="form-control input-sm order-search-box" placeholder="Filter by all columns" grid-id="cnvs"
+                                                                   ng-change="gridActions.filter()" ng-model="filterAll" filter-by="filterAll" filter-type="text">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="btn-group">
+                                                    <div class="btn-group btn-group-margin" data-toggle="buttons">
+                                                        <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('inclusion')" ng-click="setInExclusionType('inclusion')"
+                                                               title="Switch to Inclusion">
+                                                            <input type="radio" name="inExclusionType" id="option1">INCLUSION
+                                                        </label>
+                                                        <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('exclusion')" ng-click="setInExclusionType('exclusion')"
+                                                               title="Switch to Exclusion">
+                                                            <input type="radio" name="inExclusionType" id="option2">EXCLUSION
+                                                        </label>
+                                                    </div>
                                                 </div>
                                                 <br><br>
-                                                <div class="row" ng-if="inExclusionType == 'inclusion'">
-                                                    <table datatable="ng" dt-options="dtOptions" class="table table-striped table-bordered table-hover" style="width:100%">
+                                                <div class="row" ng-if="inExclusionType === 'inclusion'">
+                                                    <table class="table table-striped">
                                                         <thead>
                                                             <tr>
-                                                                <th>Gene</th>
-                                                                <th>Chrom <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.chr}}" onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                <th>Position</th>
-                                                                <th>LOE <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.loe}}" onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                <th>Lit <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.lit}}" onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                <th>Total # Patients With Copy Number</th>
-                                                                <th>Patients With This Copy Number Who Were Assigned To This Arm</th>
-                                                                <th>% Of Patients With Copy Number On Arm Of Total Patients With Variant</th>
+                                                                <th sortable="gene" class="sortable">Gene</th>
+                                                                <th sortable="chromosome" class="sortable">Chrom <i class="fa fa-question-circle" data-placement="top"
+                                                                                                                    title="{{tooltipContent.chr}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                <th sortable="position" class="sortable">Position</th>
+                                                                <th sortable="level_of_evidence" class="sortable">LOE <i class="fa fa-question-circle" data-placement="top"
+                                                                                                                         title="{{tooltipContent.loe}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                <th class="text-center">Lit <i class="fa fa-question-circle" data-placement="top"
+                                                                                               title="{{tooltipContent.lit}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                <th sortable="num_patients_with_variant" class="sortable">Total # Of Patients With Copy Number</th>
+                                                                <th sortable="num_patients_with_variant_on_arm" class="sortable">Patients With This Copy Number Who Were Assigned To This Arm</th>
+                                                                <th sortable="percent_patients_with_variant_on_arm" class="sortable">% Of Patients With Variant On Arm Of Total Patients With
+                                                                    Variant
+                                                                </th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr ng-repeat="item in currentVersion.cnvsInclusion">
-                                                                <td><a ng-click="openGene(item.identifier)">{{item.identifier | dashify }}</a></td>
-                                                                <td>{{item.chromosome | dashify }}</td>
-                                                                <td>{{item.position | dashify }}</td>
-                                                                <td>{{item.level_of_evidence | dashify }}</td>
+                                                            <tr grid-item ng-model="version">
+                                                                <td><a ng-click="openId(item.identifier)"><span ng-bind="item.identifier | dashify"></span></a></td>
+                                                                <td ng-bind="item.chromosome | dashify"></td>
+                                                                <td ng-bind="item.position | dashify"></td>
+                                                                <td ng-bind="item.cds_reference | dashify"></td>
+                                                                <td ng-bind="item.cds_alternative | dashify"></td>
+                                                                <td ng-bind="item.ocp_reference | dashify"></td>
+                                                                <td ng-bind="item.ocp_alternative | dashify"></td>
+                                                                <td ng-bind="item.strand | dashify"></td>
+                                                                <td ng-bind="item.level_of_evidence | dashify"></td>
                                                                 <td>
-                                                                    <div ng-repeat="subitem in item.public_med_ids">
-                                                                        <a ng-click="openPubMed(subitem)">{{subitem | dashify }}</a>
-                                                                    </div>
+                                                                    <table>
+                                                                        <tr ng-repeat="subitem in item.public_med_ids">
+                                                                            <td><a ng-click="openPubMed(subitem)">{{subitem | dashify }}</a></td>
+                                                                        </tr>
+                                                                    </table>
                                                                 </td>
-                                                                <td style="text-align:right">{{item.num_patients_with_variant | dashify }}</td>
-                                                                <td style="text-align:right">{{item.num_patients_with_variant_on_arm | dashify }}</td>
-                                                                <td style="text-align:right">{{item.percent_patients_with_variant_on_arm | dashify }}
-                                                                </td>
+                                                                <td ng-bind="item.num_patients_with_variant | dashify" style="text-align:right"></td>
+                                                                <td ng-bind="item.num_patients_with_variant_on_arm | dashify" style="text-align:right"></td>
+                                                                <td ng-bind="item.percent_patients_with_variant_on_arm | dashify" style="text-align:right"></td>
+                                                            </tr>
+                                                            <tr ng-if="!cnvsGridOptions.data || !cnvsGridOptions.data.length" class="no-data-message">
+                                                                <td colspan="13" class="text-muted">No inclusion CNVs</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
+                                                    <form class="form-inline pull-left">
+                                                        <div class="form-group">
+                                                            <grid-pagination max-size="5" class="pagination-sm" total-items="paginationOptions.totalItems" ng-model="paginationOptions.currentPage"
+                                                                             ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                                <div class="row" ng-if="inExclusionType == 'exclusion'">
-                                                    <table datatable="ng" dt-options="dtOptions" class="table table-striped table-bordered table-hover" style="width:100%">
+                                                <div class="row" ng-if="inExclusionType === 'exclusion'">
+                                                    <table class="table table-striped">
                                                         <thead>
                                                             <tr>
-                                                                <th>Gene</th>
-                                                                <th>Chrom <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.chr}}" onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                <th>Position</th>
-                                                                <th>Lit <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.lit}}" onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                <th>Total # Patients With Copy Number</th>
-                                                                <th>Patients With This Copy Number Who Were Excluded From This Arm</th>
+                                                                <th sortable="gene" class="sortable">Gene</th>
+                                                                <th sortable="chromosome" class="sortable">Chrom <i class="fa fa-question-circle" data-placement="top"
+                                                                                                                    title="{{tooltipContent.chr}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                <th sortable="position" class="sortable">Position</th>
+                                                                <th sortable="level_of_evidence" class="sortable">LOE <i class="fa fa-question-circle" data-placement="top"
+                                                                                                                         title="{{tooltipContent.loe}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                <th class="text-center">Lit <i class="fa fa-question-circle" data-placement="top"
+                                                                                               title="{{tooltipContent.lit}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                                <th sortable="num_patients_with_variant" class="sortable">Total # Of Patients With Copy Number</th>
+                                                                <th sortable="num_patients_with_variant_on_arm" class="sortable">Patients With This Copy Number Who Were Excluded From This Arm</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr ng-repeat="item in currentVersion.cnvsExclusion">
-                                                                <td><a ng-click="openGene(item.identifier)">{{item.identifier | dashify }}</a></td>
-                                                                <td>{{item.chromosome | dashify }}</td>
-                                                                <td>{{item.position | dashify }}</td>
+                                                            <tr grid-item ng-model="version">
+                                                                <td><a ng-click="openId(item.identifier)"><span ng-bind="item.identifier | dashify"></span></a></td>
+                                                                <td ng-bind="item.chromosome | dashify"></td>
+                                                                <td ng-bind="item.position | dashify"></td>
+                                                                <td ng-bind="item.cds_reference | dashify"></td>
+                                                                <td ng-bind="item.cds_alternative | dashify"></td>
+                                                                <td ng-bind="item.ocp_reference | dashify"></td>
+                                                                <td ng-bind="item.ocp_alternative | dashify"></td>
+                                                                <td ng-bind="item.strand | dashify"></td>
+                                                                <td ng-bind="item.level_of_evidence | dashify"></td>
                                                                 <td>
-                                                                    <div ng-repeat="subitem in item.public_med_ids">
-                                                                        <a ng-click="openPubMed(subitem)">{{subitem | dashify }}</a>
-                                                                    </div>
+                                                                    <table>
+                                                                        <tr ng-repeat="subitem in item.public_med_ids">
+                                                                            <td><a ng-click="openPubMed(subitem)">{{subitem | dashify }}</a></td>
+                                                                        </tr>
+                                                                    </table>
                                                                 </td>
-                                                                <td style="text-align:right">{{item.num_patients_with_variant | dashify }}</td>
-                                                                <td style="text-align:right">{{item.num_patients_with_variant_on_arm | dashify }}</td>
+                                                                <td ng-bind="item.num_patients_with_variant | dashify" style="text-align:right"></td>
+                                                                <td ng-bind="item.num_patients_with_variant_on_arm | dashify" style="text-align:right"></td>
+                                                            </tr>
+                                                            <tr ng-if="!cnvsGridOptions.data || !cnvsGridOptions.data.length" class="no-data-message">
+                                                                <td colspan="13" class="text-muted">No exclusion CNVs</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
+                                                    <form class="form-inline pull-left">
+                                                        <div class="form-group">
+                                                            <grid-pagination max-size="5" class="pagination-sm" total-items="paginationOptions.totalItems" ng-model="paginationOptions.currentPage"
+                                                                             ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
-                                        </div>
                                     </div>
                                 </uib-tab>
 
                                 <uib-tab heading="Gene Fusions">
                                     <div class="panel-body">
-                                        <div class="ibox float-e-margins">
-                                            <div class="ibox-content" style="border-top-width: 0px">
+                                        <div id="geneFusions" grid-data grid-options="geneFusionsGridOptions" grid-actions="gridActions" class="data-grid">
+                                            <div class="row">
+                                                <div class="col pull-left">
+                                                    <form class="form-inline">
+                                                        <div class="form-group">
+                                                            <div class="items-per-page">
+                                                                <label for="itemsOnPageSelectGeneFusion">Show</label>
+                                                                <select id="itemsOnPageSelectGeneFusion" class="form-control input-sm" ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage"
+                                                                        ng-change="reloadGrid()">
+                                                                    <option>10</option>
+                                                                    <option>25</option>
+                                                                    <option>50</option>
+                                                                    <option>100</option>
+                                                                </select>
+                                                                <label for="itemsOnPageSelectGeneFusion">per page</label>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="col pull-right">
+                                                    <div class="grid-filter">
+                                                        <input type="text" class="form-control input-sm order-search-box" placeholder="Filter by all columns" grid-id="snvsMnvsIndels"
+                                                               ng-change="gridActions.filter()" ng-model="filterAll" filter-by="filterAll" filter-type="text">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="btn-group">
                                                 <div class="btn-group btn-group-margin" data-toggle="buttons">
                                                     <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('inclusion')" ng-click="setInExclusionType('inclusion')"
-                                                        title="Switch to Inclusion">
-                                                    <input type="radio" name="inExclusionType" id="option1">INCLUSION
-                                                </label>
+                                                           title="Switch to Inclusion">
+                                                        <input type="radio" name="inExclusionType" id="option1">INCLUSION
+                                                    </label>
                                                     <label class="btn btn-outline btn-success" ng-class="getInExclusionTypeClass('exclusion')" ng-click="setInExclusionType('exclusion')"
-                                                        title="Switch to Exclusion">
-                                                    <input type="radio" name="inExclusionType" id="option2">EXCLUSION
-                                                </label>
+                                                           title="Switch to Exclusion">
+                                                        <input type="radio" name="inExclusionType" id="option2">EXCLUSION
+                                                    </label>
                                                 </div>
-                                                <br><br>
-                                                <div class="row" ng-if="inExclusionType == 'inclusion'">
-                                                    <table datatable="ng" dt-options="dtOptions" class="table table-striped table-bordered table-hover" style="width:100%">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>ID</th>
-                                                                <th>LOE <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.loe}}" onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                <th>Lit <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.lit}}" onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                <th>Total # Patients With Gene Fusion</th>
-                                                                <th>Patients With This Gene Fusion Who Were Assigned To This Arm
-                                                                </th>
-                                                                <th>% Of Patients With Gene Fusion On Arm Of Total Patients With Gene Fusion</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr ng-repeat="item in currentVersion.geneFusionsInclusion">
-                                                                <td><a ng-click="openId(item.identifier)">{{item.identifier | dashify }}</a></td>
-                                                                <td>{{item.level_of_evidence | dashify }}</td>
-                                                                <td>
-                                                                    <div ng-repeat="subitem in item.public_med_ids">
-                                                                        <a ng-click="openPubMed(subitem)">{{subitem | dashify }}</a>
-                                                                    </div>                                                                    
-                                                                </td>
-                                                                <td style="text-align:right">{{item.num_patients_with_variant | dashify }}</td>
-                                                                <td style="text-align:right">{{item.num_patients_with_variant_on_arm | dashify }}</td>
-                                                                <td style="text-align:right">{{item.percent_patients_with_variant_on_arm | dashify }}</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <div class="row" ng-if="inExclusionType == 'exclusion'">
-                                                    <table datatable="ng" dt-options="dtOptions" class="table table-striped table-bordered table-hover" style="width:100%">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>ID</th>
-                                                                <th>Lit <i class="fa fa-question-circle" data-placement="top" title="{{tooltipContent.lit}}" onmouseenter="$(this).tooltip('show')"></i></th>
-                                                                <th>Total # Patients With Gene Fusion</th>
-                                                                <th>Patients With This Gene Fusion Who Were Excluded From This Arm
-                                                                </th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr ng-repeat="item in currentVersion.geneFusionsExclusion">
-                                                                <td><a ng-click="openId(item.identifier)">{{item.identifier | dashify }}</a></td>
-                                                                <td>
-                                                                    <div ng-repeat="subitem in item.public_med_ids">
-                                                                        <a ng-click="openPubMed(subitem)">{{subitem | dashify }}</a>
-                                                                    </div>                                                                                                                                        
-                                                                </td>
-                                                                <td style="text-align:right">{{item.num_patients_with_variant | dashify }}</td>
-                                                                <td style="text-align:right">{{item.num_patients_with_variant_on_arm | dashify }}</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                            </div>
+                                            <br><br>
+                                            <div class="row" ng-if="inExclusionType === 'inclusion'">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                    <tr>
+                                                        <th sortable="identifier" class="sortable">ID</th>
+                                                        <th sortable="level_of_evidence" class="sortable">LOE <i class="fa fa-question-circle" data-placement="top"
+                                                                                                                 title="{{tooltipContent.loe}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                        <th class="text-center">Lit <i class="fa fa-question-circle" data-placement="top"
+                                                                                       title="{{tooltipContent.lit}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                        <th sortable="num_patients_with_variant" class="sortable">Total # Of Patients With Gene Fusion</th>
+                                                        <th sortable="num_patients_with_variant_on_arm" class="sortable">Patients With This Gene Fusion Who Were Assigned To This Arm</th>
+                                                        <th sortable="percent_patients_with_variant_on_arm" class="sortable">% Of Patients With Variant On Arm Of Total Patients With
+                                                            Gene Fusion
+                                                        </th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr grid-item ng-model="version">
+                                                            <td><a ng-click="openId(item.identifier)"><span ng-bind="item.identifier | dashify"></span></a></td>
+                                                            <td ng-bind="item.level_of_evidence | dashify"></td>
+                                                            <td>
+                                                                <table>
+                                                                    <tr ng-repeat="subitem in item.public_med_ids">
+                                                                        <td><a ng-click="openPubMed(subitem)">{{subitem | dashify }}</a></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                            <td ng-bind="item.num_patients_with_variant | dashify" style="text-align:right"></td>
+                                                            <td ng-bind="item.num_patients_with_variant_on_arm | dashify" style="text-align:right"></td>
+                                                            <td ng-bind="item.percent_patients_with_variant_on_arm | dashify" style="text-align:right"></td>
+                                                        </tr>
+                                                        <tr ng-if="!geneFusionsGridOptions.data || !geneFusionsGridOptions.data.length" class="no-data-message">
+                                                            <td colspan="13" class="text-muted">No inclusion Gene Fusions</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <form class="form-inline pull-left">
+                                                    <div class="form-group">
+                                                        <grid-pagination max-size="5" class="pagination-sm" total-items="paginationOptions.totalItems" ng-model="paginationOptions.currentPage"
+                                                                         ng-change="reloadGrid()" items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="row" ng-if="inExclusionType === 'exclusion'">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                    <tr>
+                                                        <th sortable="identifier" class="sortable">ID</th>
+                                                        <th class="text-center">Lit <i class="fa fa-question-circle" data-placement="top"
+                                                                                       title="{{tooltipContent.lit}}" onmouseenter="$(this).tooltip('show')"></i></th>
+                                                        <th sortable="num_patients_with_variant" class="sortable">Total # Of Patients With Gene Fusion</th>
+                                                        <th sortable="num_patients_with_variant_on_arm" class="sortable">Patients With This Gene Fusion Who Were Excluded From This Arm</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr grid-item ng-model="version">
+                                                        <td><a ng-click="openId(item.identifier)"><span ng-bind="item.identifier | dashify"></span></a></td>
+                                                        <td>
+                                                            <table>
+                                                                <tr ng-repeat="subitem in item.public_med_ids">
+                                                                    <td><a ng-click="openPubMed(subitem)">{{subitem | dashify }}</a></td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                        <td ng-bind="item.num_patients_with_variant | dashify" style="text-align:right"></td>
+                                                        <td ng-bind="item.num_patients_with_variant_on_arm | dashify" style="text-align:right"></td>
+                                                    </tr>
+                                                    <tr ng-if="!geneFusionsGridOptions.data || !geneFusionsGridOptions.data.length" class="no-data-message">
+                                                        <td colspan="13" class="text-muted">No exclusion Gene Fusions</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
