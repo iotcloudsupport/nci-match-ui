@@ -29,22 +29,22 @@
                         <div class="statistic-box dashboard" ng-init="loadDashboardData()">
                             <ul class="list-group clear-list statistics m-t">
                                 <li class="list-group-item fist-item">
-                                    <strong><span class="pull-right">{{ ::patientStatistics.number_of_patients }}</span></strong>                                        Registered Patients:
+                                    <strong><span class="pull-right">{{ ::patientStatistics.number_of_patients || 0 }}</span></strong> Registered Patients:
                                 </li>
                                 <li class="list-group-item">
-                                    <strong><span class="pull-right">{{ ::patientStatistics.number_of_patients_with_confirmed_variant_report }}</span></strong>                                        Patients with Confirmed Variant Report:
+                                    <strong><span class="pull-right">{{ ::patientStatistics.number_of_patients_with_confirmed_variant_report || 0 }}</span></strong> Patients with Confirmed Variant Report:
                                 </li>
                                 <li class="list-group-item">
-                                    <strong><span class="pull-right">{{ ::patientStatistics.number_of_patients_on_treatment_arm }}</span></strong>                                        Patients on Treatment:
+                                    <strong><span class="pull-right">{{ ::patientStatistics.number_of_patients_on_treatment_arm || 0 }}</span></strong> Patients on Treatment:
                                 </li>
                                 <li class="list-group-item">
-                                    <strong><span class="pull-right">{{ pendingTissueVariantReportGridOptions.data.length }}</span></strong>                                        Pending Tissue Variant Reports:
+                                    <strong><span class="pull-right">{{ pendingTissueVariantReportGridOptions.data.length || 0 }}</span></strong> Pending Tissue Variant Reports:
                                 </li>
                                 <li class="list-group-item">
-                                    <strong><span class="pull-right">{{ pendingBloodVariantReportGridOptions.data.length }}</span></strong>                                        Pending Blood Variant Reports:
+                                    <strong><span class="pull-right">{{ pendingBloodVariantReportGridOptions.data.length || 0 }}</span></strong> Pending Blood Variant Reports:
                                 </li>
                                 <li class="list-group-item">
-                                    <strong><span class="pull-right">{{ pendingAssignmentReportGridOptions.data.length }}</span></strong>                                        Pending Assignment Reports:
+                                    <strong><span class="pull-right">{{ pendingAssignmentReportGridOptions.data.length || 0 }}</span></strong> Pending Assignment Reports:
                                 </li>
                             </ul>
                         </div>
@@ -391,7 +391,7 @@
                     <div class="timeline-item" ng-repeat="timelineEvent in activity.data">
                         <timeline timeline-event="timelineEvent" type="timelineEvent.event_type" show-entity-id="true"></timeline>
                     </div>
-                    <div ng-if="!activity.data" class="no-data-panel text-muted">
+                    <div ng-if="!activity.data || !activity.data.length" class="no-data-panel text-muted">
                         <i class="fa fa-info-circle fa-2x"></i><span>No activity feed data yet.</span>
                     </div>
                 </div>
