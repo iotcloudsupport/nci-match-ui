@@ -50,7 +50,7 @@
                     return $http.get(matchConfig.patientApiBaseUrl + '/patients/' + id + '/timeline');
                 } else {
                     $log.info('Loading dashboard activity');
-                    return $http.get(matchConfig.patientApiBaseUrl + '/timeline/timeline');
+                    return $http.get(matchConfig.patientApiBaseUrl + '/patients/timeline');
                 }
             }
 
