@@ -494,7 +494,7 @@
                 $log.error('The web service didn\'t send Treatment Arm data. Transferring back to Treatment Arm list');
                 $state.transitionTo('treatment-arms');
             }
-
+            console.log(data);
             $scope.name = $stateParams.name;
             $scope.version = $stateParams.version;
             $scope.stratum = $stateParams.stratum;
@@ -537,10 +537,11 @@
         function setupRulesExlcusionInclusionLists() {
             for (var i = 0; i < $scope.versions.length; i++) {
                 var version = $scope.versions[i];
-                setupCriteriaList(version.variant_report.snvs_and_indels, version, 'snvsInclusion', 'snvsExclusion');
-                setupCriteriaList(version.variant_report.copy_number_variants, version, 'cnvsInclusion', 'cnvsExclusion');
-                setupCriteriaList(version.variant_report.gene_fusions, version, 'geneFusionsInclusion', 'geneFusionsExclusion');
-                setupCriteriaList(version.variant_report.non_hotspot_rules, version, 'nhrsInclusion', 'nhrsExclusion');
+                //setupCriteriaList(version.variant_report.snvs_and_indels, version, 'snvsInclusion', 'snvsExclusion');
+                setupCriteriaList(version.single_nucleotide_variants, version, 'snvsInclusion', 'snvsExclusion');
+                setupCriteriaList(version.copy_number_variants, version, 'cnvsInclusion', 'cnvsExclusion');
+                setupCriteriaList(version.gene_fusions, version, 'geneFusionsInclusion', 'geneFusionsExclusion');
+                setupCriteriaList(version.non_hotspot_rules, version, 'nhrsInclusion', 'nhrsExclusion');
             }
         }
 
