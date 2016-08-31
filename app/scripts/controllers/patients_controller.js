@@ -9,15 +9,17 @@
         arrayTools,
         $filter) {
 
-        activate();
-
         $scope.gridActions = {};
+        $scope.gridOptions = {};
+
+        activate();
 
         function activate() {
             setupGrids();
         }
 
         function setupGrids() {
+            $scope.gridActions = {};
             $scope.gridOptions = {
                 data: [],
                 ngColumnFilters: {
