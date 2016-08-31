@@ -21,9 +21,9 @@ angular.module('matchbox.config', [])
             };
         } else {
             return {
-                'reportApiBaseUrl': urlPrefix + ':' + $location.port() + '/reportapi',
-                'treatmentArmApiBaseUrl': urlPrefix + ':' + $location.port() + '/treatmentarmapi',
-                'patientApiBaseUrl' : urlPrefix + ':' + $location.port() + '/patientapi'
+                'reportApiBaseUrl': urlPrefix + '/api/v1',
+                'treatmentArmApiBaseUrl': urlPrefix + '/api/v1',
+                'patientApiBaseUrl' : urlPrefix + '/api/v1'
             };
         }
     });
