@@ -13,6 +13,12 @@ angular.module('matchbox.config', [])
                 'treatmentArmApiBaseUrl': urlPrefix + ':10235',
                 'patientApiBaseUrl' : urlPrefix + ':10240'
             };
+        } else if ($location.host().endsWith('pedmatch-int.nci.nih.gov')) {
+            return {
+                'reportApiBaseUrl': urlPrefix + 'api/v1',
+                'treatmentArmApiBaseUrl': urlPrefix + 'api/v1',
+                'patientApiBaseUrl' : urlPrefix + 'api/v1'
+            };
         } else {
             return {
                 'reportApiBaseUrl': urlPrefix + ':' + $location.port() + '/reportapi',
