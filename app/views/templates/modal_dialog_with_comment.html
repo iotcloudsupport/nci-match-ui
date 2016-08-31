@@ -1,18 +1,16 @@
-<!--<script type="text/ng-template" id="views/templates/modal_dialog_with_comment.html">-->
-    <div class="modal-header">
-        <h3 class="modal-title">{{ title }}</h3>
+<div class="modal-header">
+    <h3 class="modal-title">{{ title }}</h3>
+</div>
+<div class="modal-body">
+    <div class="form-group">
+        <label for="comment">{{ message }}</label>
+        <input type="textarea" name="comment" ng-model="comment" class="form-control" autofocus="autofocus" ng-disabled="!enabled">
     </div>
-    <div class="modal-body">
-        <div class="form-group">
-            <label for="comment">{{ message }}</label>
-            <input type="textarea" name="comment" ng-model="comment" class="form-control" autofocus="autofocus" ng-disabled="!enabled">
-        </div>
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-default" type="button" ng-click="ok()" ng-if="enabled">OK</button>
-        <button class="btn btn-default" type="button" ng-click="cancel()">
-            <span ng-if="enabled">Cancel</span>
-            <span ng-if="!enabled">Close</span>
-        </button>
-    </div>
-<!--</script>-->
+</div>
+<div class="modal-footer">
+    <button class="btn btn-default" type="button" ng-click="ok()" ng-if="enabled" ng-disabled="!isValid">OK</button>
+    <button class="btn btn-default" type="button" ng-click="cancel()">
+        <span ng-if="enabled">Cancel</span>
+        <span ng-if="!enabled">Close</span>
+    </button>
+</div>
