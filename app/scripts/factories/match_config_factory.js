@@ -3,9 +3,9 @@ angular.module('matchbox.config', [])
         var urlPrefix = $location.protocol() + '://' + $location.host();
         if ($location.host() === 'localhost' || $location.host() === '127.0.0.1') {
             return {
-                'reportApiBaseUrl': urlPrefix + ':9292',//9292
-                'treatmentArmApiBaseUrl': urlPrefix + ':10235',//':4569',
-                'patientApiBaseUrl' : urlPrefix + ':10240'//9898
+                'reportApiBaseUrl': urlPrefix + ':9292/api/v1',//9292
+                'treatmentArmApiBaseUrl': urlPrefix + ':10235/api/v1',//':4569',
+                'patientApiBaseUrl' : urlPrefix + ':10240/api/v1'//9898
             };
         } else if ($location.host().endsWith('pedmatch.org')) {
             return {
