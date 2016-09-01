@@ -112,11 +112,11 @@
 
             // Treatment Arm API - START
             function loadTreatmentArmList() {
-                return $http.get(matchConfig.treatmentArmApiBaseUrl + '/basicTreatmentArms');
+                return $http.get(matchConfig.treatmentArmApiBaseUrl + '/treatment_arms?active=true&basic=true');
             }
 
             function loadTreatmentArmDetails(name, stratum) {
-                return $http.get(matchConfig.treatmentArmApiBaseUrl + '/treatmentArms/' + name + '/' + stratum);
+                return $http.get(matchConfig.treatmentArmApiBaseUrl + '/treatment_arms/' + name + '/' + stratum + '?combine_variants=[["single_nucleotide_variants", "indels"]]');
             }
 
             function loadPatientsForTa(name, stratum) {
